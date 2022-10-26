@@ -35,7 +35,7 @@ Type of `children: React.ReactNode`
 
 - Children are mandatory
 - We could accept any valid ReactNode which is one of `ReactElement | ReactText | ReactFragment | ReactPortal | boolean | null | undefined`.
-- The reason to accept `ReactNode` for `BaseText` is since this is a raw structure for the consumers they can satisfy their use case of building anything custom for rare use cases. For example, composing BaseText components by nesting them to make one word bold in a sentence.
+- The reason to accept `ReactNode` for `BaseText` is since this is a raw structure for the consumers they can satisfy their usecase of building anything custom for rare usecases. For example, composing BaseText components by nesting them to make one word bold in a sentence.
 
 ```
 <BaseText>
@@ -65,8 +65,8 @@ Type of `children: React.ReactNode`
 Type of `children: string`
 
 - Children are mandatory
-- We would accept only String for Title components since there's no use case where people would want to have special formatting in Title.
-- There are use cases on our landing pages where we highlight or animate certain parts of the word or even add a logo inside the title. For those use cases, I guess consumers have to use two components and place them side by side regardless of using some layout utilities(of course since heading and title are block elements).
+- We would accept only String for Title components since there's no usecase where people would want to have special formatting in Title.
+- There are usecases on our landing pages where we highlight or animate certain parts of the word or even add a logo inside the title. For those usecases, I guess consumers have to use two components and place them side by side regardless of using some layout utilities(of course since heading and title are block elements).
 
 * `Heading`
 
@@ -87,8 +87,8 @@ Type of `children: string`
 Type of `children: string`
 
 - Children are mandatory
-- We would accept only String for Heading components since there's no use case where people would want to have special formatting in Heading.
-- There are use cases on our landing pages where we highlight or animate certain parts of the word or even add a logo inside the title. For those use cases, I guess consumers have to use two components and place them side by side regardless of using some layout utilities(of course since heading and title are block elements).
+- We would accept only String for Heading components since there's no usecase where people would want to have special formatting in Heading.
+- There are usecases on our landing pages where we highlight or animate certain parts of the word or even add a logo inside the title. For those usecases, I guess consumers have to use two components and place them side by side regardless of using some layout utilities(of course since heading and title are block elements).
 
 Why prop name `variant`?
 
@@ -121,7 +121,7 @@ Type of `children: React.ReactNode`
 
 - Children are mandatory
 - We could accept any valid ReactNode which is one of `ReactElement | ReactText | ReactFragment | ReactPortal | boolean | null | undefined`.
-- The reason to accept `ReactNode` and not `string` for `Text` is since it's a body text which will mostly be used in paragraphs and the main content on the page so it's better to have the flexibility for consumers because usually in the body text there are use cases to add some code snippets inline or highlight a word within the paragraph without explicitly building the `Text` component from scratch using `BaseText`.
+- The reason to accept `ReactNode` and not `string` for `Text` is since it's a body text which will mostly be used in paragraphs and the main content on the page so it's better to have the flexibility for consumers because usually in the body text there are usecases to add some code snippets inline or highlight a word within the paragraph without explicitly building the `Text` component from scratch using `BaseText`.
 
 - `Code`
 

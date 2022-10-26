@@ -72,6 +72,6 @@ We'll expose an `PasswordInput` component with the following API:
 
 ## Open questions
 
-Q1. Does the password toggle button qualify for a disclosure pattern? I couldn't find anything significant on such a use case. Content visibility toggles (like FAQ sections) do qualify for such a pattern but not sure if password fits the use case because content is already on the screen, we just change the masked text to actual? For such a pattern we would need `aria-controls` and `aria-expanded` to be implemented correctly.
+Q1. Does the password toggle button qualify for a disclosure pattern? I couldn't find anything significant on such a usecase. Content visibility toggles (like FAQ sections) do qualify for such a pattern but not sure if password fits the usecase because content is already on the screen, we just change the masked text to actual? For such a pattern we would need `aria-controls` and `aria-expanded` to be implemented correctly.
 
 A1. Skipping for now.

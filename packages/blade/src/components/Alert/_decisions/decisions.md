@@ -143,7 +143,7 @@ This full bleed layout works for all desktop, mobile and native when the `isBord
 
 **A2.** We can do some static checks with TypeScript where feasible, for example enforcing `SecondaryAction` to be used only with `PrimaryAction` but some checks are outside scope of TypeScript and in the realm of runtime checks which at the moment seems like an overkill, for example restricting the content type for `description` prop.
 
-**Q3.** Should we make alerts focussable so they're discoverable by tabbing? It would mean also showing a visible keyboard focus indicator. Not doing this currently because I can't think of possible use cases right now, maybe we can revisit this later if / when needed.
+**Q3.** Should we make alerts focussable so they're discoverable by tabbing? It would mean also showing a visible keyboard focus indicator. Not doing this currently because I can't think of possible usecases right now, maybe we can revisit this later if / when needed.
 
 **A3.** TBD
 
@@ -157,7 +157,7 @@ This full bleed layout works for all desktop, mobile and native when the `isBord
 
 **Q6.** Should `isFullWidth`, `isBorderless` be decoupled or not? Should borderless be a variant instead?
 
-**A6.** We would need both `isFullWidth` and `isBorderless` to exist, because there are use cases of alerts to span the full width of the container (which might be more than the default max-width of 584px). However, since `isBorderless` alert is only supposed to be used in full bleed layouts, it would automatically set `isFullWidth` to `true`. Also, since we can't think of future variants right now I'm leaning towards not making borderless as sole variant. Another alternative is to instead have a `variant` prop that can be `default` | `fullwidth` | `fullwidth-borderless` but so far we haven’t used variant in this sense.
+**A6.** We would need both `isFullWidth` and `isBorderless` to exist, because there are usecases of alerts to span the full width of the container (which might be more than the default max-width of 584px). However, since `isBorderless` alert is only supposed to be used in full bleed layouts, it would automatically set `isFullWidth` to `true`. Also, since we can't think of future variants right now I'm leaning towards not making borderless as sole variant. Another alternative is to instead have a `variant` prop that can be `default` | `fullwidth` | `fullwidth-borderless` but so far we haven’t used variant in this sense.
 
 ## Alternatives
 
