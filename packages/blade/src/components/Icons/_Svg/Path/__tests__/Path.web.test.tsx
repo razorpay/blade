@@ -24,8 +24,12 @@ describe('<Path />', () => {
   });
 
   it('should not accept dashed props', () => {
-    // @ts-expect-error no dashed props are accepted
-    const { container } = renderWithTheme(<Path fill-opacity={0} d="" />);
+    const { container } = renderWithTheme(
+      <Svg viewBox="0 0 6 6" height="40px" width="40px" fill="none">
+        {/* @ts-expect-error no dashed props are accepted */}
+        <Path fill-opacity={0} d="" />
+      </Svg>,
+    );
     expect(container).toMatchSnapshot();
   });
 });

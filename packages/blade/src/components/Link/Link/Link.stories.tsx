@@ -13,11 +13,11 @@ import { Highlight, Link as StorybookLink } from '@storybook/design-system';
 import type { LinkProps } from './Link';
 import LinkComponent from './Link';
 import iconMap from '~components/Icons/iconMap';
-import { InfoIcon } from '~components/Icons';
+import { DownloadIcon, InfoIcon } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
 import Box from '~components/Box';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -77,6 +77,7 @@ export default {
       name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
+      mapping: iconMap,
     },
   },
   parameters: {
@@ -86,14 +87,11 @@ export default {
   },
 } as Meta<LinkProps>;
 
-const LinkTemplate: ComponentStory<typeof LinkComponent> = ({ icon, children, ...args }) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-
-  return (
-    <LinkComponent icon={IconComponent} {...args}>
-      {children}
-    </LinkComponent>
-  );
+const LinkTemplate: ComponentStory<typeof LinkComponent> = ({
+  children = 'Learn More',
+  ...args
+}) => {
+  return <LinkComponent {...args}>{children}</LinkComponent>;
 };
 
 export const Default = LinkTemplate.bind({});
@@ -188,6 +186,64 @@ DisabledLinkButton.parameters = {
   docs: {
     description: {
       story: 'Link Button in a disabled state',
+    },
+  },
+};
+
+export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
+  const href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  const onClick = (): void => console.log('Never gonna give you up');
+
+  return (
+    <Box display="flex" flexDirection="row">
+      <Box display="flex" flexDirection="column" marginRight="spacing.5">
+        <Box marginBottom="spacing.3">
+          <Heading>Anchor variant</Heading>
+        </Box>
+        <Box marginBottom="spacing.2">
+          <LinkComponent
+            variant="anchor"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="small"
+            icon={DownloadIcon}
+          >
+            Small anchor link
+          </LinkComponent>
+        </Box>
+        <LinkComponent
+          variant="anchor"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="medium"
+          icon={DownloadIcon}
+        >
+          Medium anchor link
+        </LinkComponent>
+      </Box>
+      <Box display="flex" flexDirection="column">
+        <Box marginBottom="spacing.3">
+          <Heading>Button variant</Heading>
+        </Box>
+        <Box marginBottom="spacing.2">
+          <LinkComponent size="small" variant="button" onClick={onClick} icon={DownloadIcon}>
+            Small link button
+          </LinkComponent>
+        </Box>
+        <LinkComponent size="medium" variant="button" onClick={onClick} icon={DownloadIcon}>
+          Medium link button
+        </LinkComponent>
+      </Box>
+    </Box>
+  );
+};
+LinkSizes.parameters = {
+  docs: {
+    description: {
+      story:
+        '`size` prop can be used to render a `small` or `medium` (default) sized Link component',
     },
   },
 };

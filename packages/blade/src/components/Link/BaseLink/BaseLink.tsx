@@ -23,6 +23,13 @@ type BaseLinkCommonProps = {
   iconPosition?: 'left' | 'right';
   onClick?: (event: SyntheticEvent) => void;
   accessibilityLabel?: string;
+
+  /**
+   * Sets the size of the link
+   *
+   * @default medium
+   */
+  size?: 'small' | 'medium';
 };
 
 /*
@@ -88,6 +95,7 @@ type BaseLinkStyleProps = {
   role: 'button' | 'link';
   defaultRel: BaseLinkProps['rel'];
   type?: 'button';
+  fontSize: BaseTextProps['fontSize'];
 };
 
 const getColorToken = ({
@@ -132,7 +140,7 @@ const getProps = ({
   contrast,
   isVisited,
   target,
-  hasIcon,
+  size,
 }: {
   theme: Theme;
   variant: NonNullable<BaseLinkProps['variant']>;
@@ -143,7 +151,7 @@ const getProps = ({
   contrast: NonNullable<BaseLinkProps['contrast']>;
   isVisited: boolean;
   target: BaseLinkProps['target'];
-  hasIcon: boolean;
+  size: 'small' | 'medium';
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
   const props: BaseLinkStyleProps = {
@@ -158,7 +166,8 @@ const getProps = ({
       isDisabled,
       isVisited,
     }) as IconProps['color'],
-    iconSize: hasIcon && (!children || children?.trim().length === 0) ? 'medium' : 'small',
+    fontSize: size === 'medium' ? 100 : 75,
+    iconSize: size,
     iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
       variant,
@@ -199,6 +208,7 @@ const BaseLink = ({
   className,
   // @ts-expect-error avoiding exposing to public
   style,
+  size = 'medium',
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
@@ -214,6 +224,7 @@ const BaseLink = ({
     iconColor,
     iconPadding,
     iconSize,
+    fontSize,
     textColor,
     focusRingColor,
     motionDuration,
@@ -233,7 +244,7 @@ const BaseLink = ({
     contrast,
     isVisited,
     target,
-    hasIcon: Boolean(Icon),
+    size,
   });
 
   const handleOnClick = (event: SyntheticEvent): void => {
@@ -277,7 +288,7 @@ const BaseLink = ({
         <BaseText
           textDecorationLine={textDecorationLine}
           color={textColor}
-          fontSize={100}
+          fontSize={fontSize}
           textAlign="center"
           fontWeight="bold"
         >

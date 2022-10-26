@@ -52,6 +52,8 @@ hiddenStoryStyle.textContent = `
 `;
 document.head.append(hiddenStoryStyle);
 
+export const toggleHiddenStoryStyle = isDisabled => hiddenStoryStyle.disabled = isDisabled
+
 const InternalStoryAddon = () => {
   const [{ showInternalComponents }, updateGlobals] = useGlobals();
 
@@ -59,7 +61,7 @@ const InternalStoryAddon = () => {
     updateGlobals({
       showInternalComponents: !showInternalComponents,
     });
-    hiddenStoryStyle.disabled = showInternalComponents ? undefined : 'disabled';
+    toggleHiddenStoryStyle(!showInternalComponents)
   }, [showInternalComponents]);
 
   return (
