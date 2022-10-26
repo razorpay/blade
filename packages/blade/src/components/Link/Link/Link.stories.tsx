@@ -77,6 +77,7 @@ export default {
       name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
+      mapping: iconMap,
     },
   },
   parameters: {
@@ -86,14 +87,11 @@ export default {
   },
 } as Meta<LinkProps>;
 
-const LinkTemplate: ComponentStory<typeof LinkComponent> = ({ icon, children, ...args }) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-
-  return (
-    <LinkComponent icon={IconComponent} {...args}>
-      {children}
-    </LinkComponent>
-  );
+const LinkTemplate: ComponentStory<typeof LinkComponent> = ({
+  children = 'Learn More',
+  ...args
+}) => {
+  return <LinkComponent {...args}>{children}</LinkComponent>;
 };
 
 export const Default = LinkTemplate.bind({});
