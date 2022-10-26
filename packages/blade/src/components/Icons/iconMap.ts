@@ -17,6 +17,7 @@ import EyeOffIconComponent from './EyeOffIcon';
 import HistoryIconComponent from './HistoryIcon';
 import HomeIconComponent from './HomeIcon';
 import InfoIconComponent from './InfoIcon';
+import LinkIconComponent from './LinkIcon';
 import PauseIconComponent from './PauseIcon';
 import PlusIconComponent from './PlusIcon';
 import RupeeIconComponent from './RupeeIcon';
@@ -63,6 +64,7 @@ const iconMap: Record<string, IconComponent> = {
   HomeIcon: HomeIconComponent,
   InfoIcon: InfoIconComponent,
   MinusIcon: MinusIconComponent,
+  LinkIcon: LinkIconComponent,
   PauseIcon: PauseIconComponent,
   PlusIcon: PlusIconComponent,
   RupeeIcon: RupeeIconComponent,
