@@ -90,7 +90,7 @@ type CheckboxProps = {
    */
   validationState?: 'error' | 'none';
   /**
-   * Size of the radios
+   * Size of the checkbox
    *
    * @default "medium"
    */

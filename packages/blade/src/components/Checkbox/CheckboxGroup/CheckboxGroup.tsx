@@ -73,7 +73,7 @@ type CheckboxGroupProps = {
    */
   name?: string;
   /**
-   * Size of the radios
+   * Size of the checkbox
    *
    * @default "medium"
    */
