@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.4.1
+
+### Patch Changes
+
+- 49894f2: feat: adding Link icon
+
 ## 3.4.0
 
 ### Minor Changes
