@@ -10,5 +10,5 @@ jobs:
     steps:
       - uses: styfle/cancel-workflow-action@0.4.0
         with:
-          workflow_id: cancel.yml, blade-old-validate.yml, blade-old-release.yml, blade-validate.yml, blade-release.yml, blade-tokens-upload.yml
+          workflow_id: cancel.yml, blade-chromatic.yml, blade-tokens-upload.yml, blade-validate.yml, release.yml, security.yml
           access_token: ${{ github.token }}
