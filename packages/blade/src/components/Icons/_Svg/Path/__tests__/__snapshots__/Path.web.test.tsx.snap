@@ -2,9 +2,17 @@
 
 exports[`<Path /> should not accept dashed props 1`] = `
 <div>
-  <path
-    d=""
-  />
+  <svg
+    aria-hidden="true"
+    fill="none"
+    height="40px"
+    viewBox="0 0 6 6"
+    width="40px"
+  >
+    <path
+      d=""
+    />
+  </svg>
 </div>
 `;
 
