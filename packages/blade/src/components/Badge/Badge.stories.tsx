@@ -74,6 +74,7 @@ export default {
       name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
+      mapping: iconMap,
     },
   },
   parameters: {
@@ -83,13 +84,8 @@ export default {
   },
 } as Meta<BadgeProps>;
 
-const BadgeTemplate: ComponentStory<typeof BadgeComponent> = ({ icon, children, ...args }) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-  return (
-    <BadgeComponent icon={IconComponent} {...args}>
-      {children}
-    </BadgeComponent>
-  );
+const BadgeTemplate: ComponentStory<typeof BadgeComponent> = ({ children, ...args }) => {
+  return <BadgeComponent {...args}>{children}</BadgeComponent>;
 };
 
 export const Badge = BadgeTemplate.bind({});
