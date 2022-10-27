@@ -34,7 +34,7 @@ fs.copyFileSync(path.join(MONOREPO_ROOT, 'README.md'), path.join(BLADE_ROOT, 'RE
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
 
 try {
-  execa.commandSync('npm publish --dry-run', {
+  execa.commandSync('npm publish', {
     cwd: BLADE_ROOT,
     stdio: 'inherit',
   });
