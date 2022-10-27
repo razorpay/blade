@@ -23,7 +23,7 @@ This package is under active development.
 
 - [Documentation](https://master--61c19ee8d3d282003ac1d81c.chromatic.com)
 - [Installation Guide](https://master--61c19ee8d3d282003ac1d81c.chromatic.com/?path=/docs/guides-installation--page)
-- [Contributing guidelines](./CONTRIBUTING.md)
+- [Contributing guidelines](https://github.com/razorpay/blade/blob/master/CONTRIBUTING.md)
 
 ---
 
@@ -36,4 +36,4 @@ This package is under active development.
 
 ## 📝 License
 
-Licensed under the [MIT License](./LICENSE).
+Licensed under the [MIT License](https://github.com/razorpay/blade/blob/master/LICENSE.md).
