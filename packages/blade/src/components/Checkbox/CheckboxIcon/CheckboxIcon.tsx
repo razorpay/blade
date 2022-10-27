@@ -6,7 +6,7 @@ import { CheckboxIconWrapper } from './CheckboxIconWrapper';
 import { Fade } from './Fade';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
-import { getIn } from '~utils';
+import { getIn, makeSpace } from '~utils';
 
 const svgSize = {
   small: {
@@ -20,8 +20,8 @@ const svgSize = {
 };
 
 const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' }) => {
-  const width = `${svgSize[size].width}px`;
-  const height = `${svgSize[size].height}px`;
+  const width = makeSpace(svgSize[size].width);
+  const height = makeSpace(svgSize[size].height);
 
   return (
     <Svg width={width} height={height} viewBox="0 0 8 8" fill="none">
