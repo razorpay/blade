@@ -112,6 +112,7 @@ const CheckboxGroup = ({
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const gap = checkboxSizes.group.gap[size][matchedDeviceType];
+  const childCount = React.Children.count(children);
 
   return (
     <CheckboxGroupProvider value={contextValue}>
@@ -126,8 +127,14 @@ const CheckboxGroup = ({
           {label}
         </FormLabel>
         <Box>
-          <Box display="flex" flexDirection="column" gap={gap}>
-            {children}
+          <Box display="flex" flexDirection="column">
+            {React.Children.map(children, (child, index) => {
+              return (
+                <Box key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
+                  {child}
+                </Box>
+              );
+            })}
           </Box>
           <FormHint
             errorText={errorText}

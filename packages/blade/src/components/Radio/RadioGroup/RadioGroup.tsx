@@ -113,6 +113,7 @@ const RadioGroup = ({
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const isReactNative = getPlatformType() === 'react-native';
   const gap = radioSizes.group.gap[size][matchedDeviceType];
+  const childCount = React.Children.count(children);
 
   return (
     <RadioGroupProvider value={contextValue}>
@@ -131,8 +132,14 @@ const RadioGroup = ({
           {label}
         </FormLabel>
         <Box>
-          <Box display="flex" flexDirection="column" gap={gap}>
-            {children}
+          <Box display="flex" flexDirection="column">
+            {React.Children.map(children, (child, index) => {
+              return (
+                <Box key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
+                  {child}
+                </Box>
+              );
+            })}
           </Box>
           <FormHint
             type={validationState === 'error' ? 'error' : 'help'}

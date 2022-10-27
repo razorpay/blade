@@ -150,455 +150,486 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
     <View
       display="flex"
       flexDirection="column"
-      gap="spacing.3"
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "column",
-            "gap": 8,
           },
         ]
       }
     >
       <View
+        marginBottom="spacing.3"
         style={
           Array [
-            Object {},
+            Object {
+              "marginBottom": 8,
+            },
           ]
         }
       >
         <View
-          accessibilityInvalid={false}
-          accessibilityRequired={false}
-          accessibilityRole="checkbox"
-          accessibilityState={
-            Object {
-              "checked": false,
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             Array [
-              Object {
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 2,
-                "marginTop": 2,
-              },
+              Object {},
             ]
           }
-          value="apple"
         >
           <View
-            display="flex"
-            flexDirection="column"
+            accessibilityInvalid={false}
+            accessibilityRequired={false}
+            accessibilityRole="checkbox"
+            accessibilityState={
+              Object {
+                "checked": false,
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
                   "display": "flex",
-                  "flexDirection": "column",
+                  "flexDirection": "row",
+                  "marginBottom": 2,
+                  "marginTop": 2,
                 },
               ]
             }
+            value="apple"
           >
             <View
-              alignItems="center"
               display="flex"
-              flexDirection="row"
+              flexDirection="column"
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
+                    "flexDirection": "column",
                   },
                 ]
               }
             >
               <View
-                isChecked={false}
-                isNegative={false}
-                size="medium"
+                alignItems="center"
+                display="flex"
+                flexDirection="row"
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderColor": "hsla(214, 18%, 69%, 1)",
-                      "borderRadius": 2,
-                      "borderStyle": "solid",
-                      "borderWidth": 1.5,
                       "display": "flex",
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginBottom": 2,
-                      "marginLeft": 2,
-                      "marginRight": 2,
-                      "marginTop": 2,
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                marginLeft="spacing.2"
-                style={
-                  Array [
-                    Object {
-                      "marginLeft": 4,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="surface.text.subtle.lowContrast"
-                fontFamily="text"
-                fontSize={100}
-                fontWeight="regular"
-                lineHeight="l"
-                style={
-                  Array [
-                    Object {
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 15,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 24,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "left",
-                      "textDecorationLine": "none",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Apple
-              </Text>
+                <View
+                  isChecked={false}
+                  isNegative={false}
+                  size="medium"
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderColor": "hsla(214, 18%, 69%, 1)",
+                        "borderRadius": 2,
+                        "borderStyle": "solid",
+                        "borderWidth": 1.5,
+                        "display": "flex",
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginBottom": 2,
+                        "marginLeft": 2,
+                        "marginRight": 2,
+                        "marginTop": 2,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  marginLeft="spacing.2"
+                  style={
+                    Array [
+                      Object {
+                        "marginLeft": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="surface.text.subtle.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(216, 27%, 36%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "left",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  Apple
+                </Text>
+              </View>
+              <View
+                marginLeft="spacing.7"
+                style={
+                  Array [
+                    Object {
+                      "marginLeft": 24,
+                    },
+                  ]
+                }
+              />
             </View>
-            <View
-              marginLeft="spacing.7"
-              style={
-                Array [
-                  Object {
-                    "marginLeft": 24,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
       <View
+        marginBottom="spacing.3"
         style={
           Array [
-            Object {},
+            Object {
+              "marginBottom": 8,
+            },
           ]
         }
       >
         <View
-          accessibilityInvalid={false}
-          accessibilityRequired={false}
-          accessibilityRole="checkbox"
-          accessibilityState={
-            Object {
-              "checked": false,
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             Array [
-              Object {
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 2,
-                "marginTop": 2,
-              },
+              Object {},
             ]
           }
-          value="mango"
         >
           <View
-            display="flex"
-            flexDirection="column"
+            accessibilityInvalid={false}
+            accessibilityRequired={false}
+            accessibilityRole="checkbox"
+            accessibilityState={
+              Object {
+                "checked": false,
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
                   "display": "flex",
-                  "flexDirection": "column",
+                  "flexDirection": "row",
+                  "marginBottom": 2,
+                  "marginTop": 2,
                 },
               ]
             }
+            value="mango"
           >
             <View
-              alignItems="center"
               display="flex"
-              flexDirection="row"
+              flexDirection="column"
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
+                    "flexDirection": "column",
                   },
                 ]
               }
             >
               <View
-                isChecked={false}
-                isNegative={false}
-                size="medium"
+                alignItems="center"
+                display="flex"
+                flexDirection="row"
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderColor": "hsla(214, 18%, 69%, 1)",
-                      "borderRadius": 2,
-                      "borderStyle": "solid",
-                      "borderWidth": 1.5,
                       "display": "flex",
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginBottom": 2,
-                      "marginLeft": 2,
-                      "marginRight": 2,
-                      "marginTop": 2,
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                marginLeft="spacing.2"
-                style={
-                  Array [
-                    Object {
-                      "marginLeft": 4,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="surface.text.subtle.lowContrast"
-                fontFamily="text"
-                fontSize={100}
-                fontWeight="regular"
-                lineHeight="l"
-                style={
-                  Array [
-                    Object {
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 15,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 24,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "left",
-                      "textDecorationLine": "none",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Mango
-              </Text>
+                <View
+                  isChecked={false}
+                  isNegative={false}
+                  size="medium"
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderColor": "hsla(214, 18%, 69%, 1)",
+                        "borderRadius": 2,
+                        "borderStyle": "solid",
+                        "borderWidth": 1.5,
+                        "display": "flex",
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginBottom": 2,
+                        "marginLeft": 2,
+                        "marginRight": 2,
+                        "marginTop": 2,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  marginLeft="spacing.2"
+                  style={
+                    Array [
+                      Object {
+                        "marginLeft": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="surface.text.subtle.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(216, 27%, 36%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "left",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  Mango
+                </Text>
+              </View>
+              <View
+                marginLeft="spacing.7"
+                style={
+                  Array [
+                    Object {
+                      "marginLeft": 24,
+                    },
+                  ]
+                }
+              />
             </View>
-            <View
-              marginLeft="spacing.7"
-              style={
-                Array [
-                  Object {
-                    "marginLeft": 24,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
       <View
+        marginBottom={0}
         style={
           Array [
-            Object {},
+            Object {
+              "marginBottom": 0,
+            },
           ]
         }
       >
         <View
-          accessibilityInvalid={false}
-          accessibilityRequired={false}
-          accessibilityRole="checkbox"
-          accessibilityState={
-            Object {
-              "checked": false,
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             Array [
-              Object {
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 2,
-                "marginTop": 2,
-              },
+              Object {},
             ]
           }
-          value="orange"
         >
           <View
-            display="flex"
-            flexDirection="column"
+            accessibilityInvalid={false}
+            accessibilityRequired={false}
+            accessibilityRole="checkbox"
+            accessibilityState={
+              Object {
+                "checked": false,
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
                   "display": "flex",
-                  "flexDirection": "column",
+                  "flexDirection": "row",
+                  "marginBottom": 2,
+                  "marginTop": 2,
                 },
               ]
             }
+            value="orange"
           >
             <View
-              alignItems="center"
               display="flex"
-              flexDirection="row"
+              flexDirection="column"
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
+                    "flexDirection": "column",
                   },
                 ]
               }
             >
               <View
-                isChecked={false}
-                isNegative={false}
-                size="medium"
+                alignItems="center"
+                display="flex"
+                flexDirection="row"
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderColor": "hsla(214, 18%, 69%, 1)",
-                      "borderRadius": 2,
-                      "borderStyle": "solid",
-                      "borderWidth": 1.5,
                       "display": "flex",
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginBottom": 2,
-                      "marginLeft": 2,
-                      "marginRight": 2,
-                      "marginTop": 2,
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                marginLeft="spacing.2"
-                style={
-                  Array [
-                    Object {
-                      "marginLeft": 4,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="surface.text.subtle.lowContrast"
-                fontFamily="text"
-                fontSize={100}
-                fontWeight="regular"
-                lineHeight="l"
-                style={
-                  Array [
-                    Object {
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 15,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 24,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "left",
-                      "textDecorationLine": "none",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Orange
-              </Text>
+                <View
+                  isChecked={false}
+                  isNegative={false}
+                  size="medium"
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderColor": "hsla(214, 18%, 69%, 1)",
+                        "borderRadius": 2,
+                        "borderStyle": "solid",
+                        "borderWidth": 1.5,
+                        "display": "flex",
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginBottom": 2,
+                        "marginLeft": 2,
+                        "marginRight": 2,
+                        "marginTop": 2,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  marginLeft="spacing.2"
+                  style={
+                    Array [
+                      Object {
+                        "marginLeft": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="surface.text.subtle.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(216, 27%, 36%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "left",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  Orange
+                </Text>
+              </View>
+              <View
+                marginLeft="spacing.7"
+                style={
+                  Array [
+                    Object {
+                      "marginLeft": 24,
+                    },
+                  ]
+                }
+              />
             </View>
-            <View
-              marginLeft="spacing.7"
-              style={
-                Array [
-                  Object {
-                    "marginLeft": 24,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
@@ -757,455 +788,486 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
     <View
       display="flex"
       flexDirection="column"
-      gap="spacing.3"
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "column",
-            "gap": 8,
           },
         ]
       }
     >
       <View
+        marginBottom="spacing.3"
         style={
           Array [
-            Object {},
+            Object {
+              "marginBottom": 8,
+            },
           ]
         }
       >
         <View
-          accessibilityInvalid={false}
-          accessibilityRequired={false}
-          accessibilityRole="checkbox"
-          accessibilityState={
-            Object {
-              "checked": false,
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             Array [
-              Object {
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 2,
-                "marginTop": 2,
-              },
+              Object {},
             ]
           }
-          value="apple"
         >
           <View
-            display="flex"
-            flexDirection="column"
+            accessibilityInvalid={false}
+            accessibilityRequired={false}
+            accessibilityRole="checkbox"
+            accessibilityState={
+              Object {
+                "checked": false,
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
                   "display": "flex",
-                  "flexDirection": "column",
+                  "flexDirection": "row",
+                  "marginBottom": 2,
+                  "marginTop": 2,
                 },
               ]
             }
+            value="apple"
           >
             <View
-              alignItems="center"
               display="flex"
-              flexDirection="row"
+              flexDirection="column"
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
+                    "flexDirection": "column",
                   },
                 ]
               }
             >
               <View
-                isChecked={false}
-                isNegative={false}
-                size="medium"
+                alignItems="center"
+                display="flex"
+                flexDirection="row"
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderColor": "hsla(214, 18%, 69%, 1)",
-                      "borderRadius": 2,
-                      "borderStyle": "solid",
-                      "borderWidth": 1.5,
                       "display": "flex",
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginBottom": 2,
-                      "marginLeft": 2,
-                      "marginRight": 2,
-                      "marginTop": 2,
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                marginLeft="spacing.2"
-                style={
-                  Array [
-                    Object {
-                      "marginLeft": 4,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="surface.text.subtle.lowContrast"
-                fontFamily="text"
-                fontSize={100}
-                fontWeight="regular"
-                lineHeight="l"
-                style={
-                  Array [
-                    Object {
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 15,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 24,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "left",
-                      "textDecorationLine": "none",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Apple
-              </Text>
+                <View
+                  isChecked={false}
+                  isNegative={false}
+                  size="medium"
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderColor": "hsla(214, 18%, 69%, 1)",
+                        "borderRadius": 2,
+                        "borderStyle": "solid",
+                        "borderWidth": 1.5,
+                        "display": "flex",
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginBottom": 2,
+                        "marginLeft": 2,
+                        "marginRight": 2,
+                        "marginTop": 2,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  marginLeft="spacing.2"
+                  style={
+                    Array [
+                      Object {
+                        "marginLeft": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="surface.text.subtle.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(216, 27%, 36%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "left",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  Apple
+                </Text>
+              </View>
+              <View
+                marginLeft="spacing.7"
+                style={
+                  Array [
+                    Object {
+                      "marginLeft": 24,
+                    },
+                  ]
+                }
+              />
             </View>
-            <View
-              marginLeft="spacing.7"
-              style={
-                Array [
-                  Object {
-                    "marginLeft": 24,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
       <View
+        marginBottom="spacing.3"
         style={
           Array [
-            Object {},
+            Object {
+              "marginBottom": 8,
+            },
           ]
         }
       >
         <View
-          accessibilityInvalid={false}
-          accessibilityRequired={false}
-          accessibilityRole="checkbox"
-          accessibilityState={
-            Object {
-              "checked": false,
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             Array [
-              Object {
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 2,
-                "marginTop": 2,
-              },
+              Object {},
             ]
           }
-          value="mango"
         >
           <View
-            display="flex"
-            flexDirection="column"
+            accessibilityInvalid={false}
+            accessibilityRequired={false}
+            accessibilityRole="checkbox"
+            accessibilityState={
+              Object {
+                "checked": false,
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
                   "display": "flex",
-                  "flexDirection": "column",
+                  "flexDirection": "row",
+                  "marginBottom": 2,
+                  "marginTop": 2,
                 },
               ]
             }
+            value="mango"
           >
             <View
-              alignItems="center"
               display="flex"
-              flexDirection="row"
+              flexDirection="column"
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
+                    "flexDirection": "column",
                   },
                 ]
               }
             >
               <View
-                isChecked={false}
-                isNegative={false}
-                size="medium"
+                alignItems="center"
+                display="flex"
+                flexDirection="row"
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderColor": "hsla(214, 18%, 69%, 1)",
-                      "borderRadius": 2,
-                      "borderStyle": "solid",
-                      "borderWidth": 1.5,
                       "display": "flex",
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginBottom": 2,
-                      "marginLeft": 2,
-                      "marginRight": 2,
-                      "marginTop": 2,
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                marginLeft="spacing.2"
-                style={
-                  Array [
-                    Object {
-                      "marginLeft": 4,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="surface.text.subtle.lowContrast"
-                fontFamily="text"
-                fontSize={100}
-                fontWeight="regular"
-                lineHeight="l"
-                style={
-                  Array [
-                    Object {
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 15,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 24,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "left",
-                      "textDecorationLine": "none",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Mango
-              </Text>
+                <View
+                  isChecked={false}
+                  isNegative={false}
+                  size="medium"
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderColor": "hsla(214, 18%, 69%, 1)",
+                        "borderRadius": 2,
+                        "borderStyle": "solid",
+                        "borderWidth": 1.5,
+                        "display": "flex",
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginBottom": 2,
+                        "marginLeft": 2,
+                        "marginRight": 2,
+                        "marginTop": 2,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  marginLeft="spacing.2"
+                  style={
+                    Array [
+                      Object {
+                        "marginLeft": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="surface.text.subtle.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(216, 27%, 36%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "left",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  Mango
+                </Text>
+              </View>
+              <View
+                marginLeft="spacing.7"
+                style={
+                  Array [
+                    Object {
+                      "marginLeft": 24,
+                    },
+                  ]
+                }
+              />
             </View>
-            <View
-              marginLeft="spacing.7"
-              style={
-                Array [
-                  Object {
-                    "marginLeft": 24,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
       <View
+        marginBottom={0}
         style={
           Array [
-            Object {},
+            Object {
+              "marginBottom": 0,
+            },
           ]
         }
       >
         <View
-          accessibilityInvalid={false}
-          accessibilityRequired={false}
-          accessibilityRole="checkbox"
-          accessibilityState={
-            Object {
-              "checked": false,
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             Array [
-              Object {
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 2,
-                "marginTop": 2,
-              },
+              Object {},
             ]
           }
-          value="orange"
         >
           <View
-            display="flex"
-            flexDirection="column"
+            accessibilityInvalid={false}
+            accessibilityRequired={false}
+            accessibilityRole="checkbox"
+            accessibilityState={
+              Object {
+                "checked": false,
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
                   "display": "flex",
-                  "flexDirection": "column",
+                  "flexDirection": "row",
+                  "marginBottom": 2,
+                  "marginTop": 2,
                 },
               ]
             }
+            value="orange"
           >
             <View
-              alignItems="center"
               display="flex"
-              flexDirection="row"
+              flexDirection="column"
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
+                    "flexDirection": "column",
                   },
                 ]
               }
             >
               <View
-                isChecked={false}
-                isNegative={false}
-                size="medium"
+                alignItems="center"
+                display="flex"
+                flexDirection="row"
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderColor": "hsla(214, 18%, 69%, 1)",
-                      "borderRadius": 2,
-                      "borderStyle": "solid",
-                      "borderWidth": 1.5,
                       "display": "flex",
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginBottom": 2,
-                      "marginLeft": 2,
-                      "marginRight": 2,
-                      "marginTop": 2,
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                marginLeft="spacing.2"
-                style={
-                  Array [
-                    Object {
-                      "marginLeft": 4,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="surface.text.subtle.lowContrast"
-                fontFamily="text"
-                fontSize={100}
-                fontWeight="regular"
-                lineHeight="l"
-                style={
-                  Array [
-                    Object {
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 15,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 24,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "left",
-                      "textDecorationLine": "none",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Orange
-              </Text>
+                <View
+                  isChecked={false}
+                  isNegative={false}
+                  size="medium"
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderColor": "hsla(214, 18%, 69%, 1)",
+                        "borderRadius": 2,
+                        "borderStyle": "solid",
+                        "borderWidth": 1.5,
+                        "display": "flex",
+                        "height": 16,
+                        "justifyContent": "center",
+                        "marginBottom": 2,
+                        "marginLeft": 2,
+                        "marginRight": 2,
+                        "marginTop": 2,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  marginLeft="spacing.2"
+                  style={
+                    Array [
+                      Object {
+                        "marginLeft": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="surface.text.subtle.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(216, 27%, 36%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "left",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  Orange
+                </Text>
+              </View>
+              <View
+                marginLeft="spacing.7"
+                style={
+                  Array [
+                    Object {
+                      "marginLeft": 24,
+                    },
+                  ]
+                }
+              />
             </View>
-            <View
-              marginLeft="spacing.7"
-              style={
-                Array [
-                  Object {
-                    "marginLeft": 24,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
