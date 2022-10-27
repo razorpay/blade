@@ -1,5 +1,6 @@
 {
   "name": "@razorpay/blade",
+  "description": "The Design System that powers Razorpay",
   "version": "3.4.1",
   "license": "MIT",
   "engines": {
@@ -17,6 +18,11 @@
     "tokens.js",
     "utils.d.ts",
     "utils.js"
+  ],
+  "keywords": [
+    "design system",
+    "razorpay",
+    "blade"
   ],
   "exports": {
     "./components": {

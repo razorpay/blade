@@ -25,16 +25,14 @@ This package is under active development.
 - [Installation Guide](https://master--61c19ee8d3d282003ac1d81c.chromatic.com/?path=/docs/guides-installation--page)
 - [Contributing guidelines](./CONTRIBUTING.md)
 
-
-------
+---
 
 > **Note**
 >
 > The blade-old package has been moved to it's own repo.
-> [github.com/razorpay/blade-old](https://github.com/razorpay/blade-old)
-> 
+> [github.com/razorpay/blade-old](https://github.com/razorpay/blade-old) (Only accessible to Razorpay employees)
+>
 > It is under **maintenance** and it won't have any major releases.
-
 
 ## 📝 License
 
