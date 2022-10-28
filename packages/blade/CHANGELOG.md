@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.5.1
+
+### Patch Changes
+
+- dea879d: fix(IconButton): add `type="button"` to stop form submission
+
 ## 3.5.0
 
 ### Minor Changes
