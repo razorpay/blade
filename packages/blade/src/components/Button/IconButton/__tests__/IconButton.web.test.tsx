@@ -31,12 +31,12 @@ describe('<IconButton />', () => {
   });
 
   it('should not submit form', async () => {
+    const noop = () => {};
     const user = userEvent.setup();
-    const onClick = jest.fn();
     const onSubmit = jest.fn();
     const { getByRole } = renderWithTheme(
       <form onSubmit={onSubmit}>
-        <IconButton accessibilityLabel="Close" icon={CloseIcon} onClick={onClick} />,
+        <IconButton accessibilityLabel="Close" icon={CloseIcon} onClick={noop} />,
       </form>,
     );
     const iconButton = getByRole('button');
