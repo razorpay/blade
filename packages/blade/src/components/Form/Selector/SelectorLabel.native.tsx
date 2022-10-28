@@ -4,13 +4,12 @@ import styled from 'styled-components/native';
 import type { SelectorLabelProps } from './types';
 import { makeSpace } from '~utils';
 
-const StyledSelectorLabel = styled.Pressable({
+const StyledSelectorLabel = styled.Pressable(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
-  // TODO: We don't have 2px spacing token
-  marginTop: makeSpace(2),
-  marginBottom: makeSpace(2),
-});
+  marginTop: makeSpace(theme.spacing[1]),
+  marginBottom: makeSpace(theme.spacing[1]),
+}));
 
 const SelectorLabel = ({ children, inputProps }: SelectorLabelProps): React.ReactElement => {
   return <StyledSelectorLabel {...inputProps}>{children}</StyledSelectorLabel>;

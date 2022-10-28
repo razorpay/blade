@@ -70,23 +70,34 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
         <View
           isChecked={false}
           isNegative={false}
+          size="medium"
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
+                "backgroundColor": "transparent",
+                "borderColor": "hsla(214, 18%, 69%, 1)",
                 "borderRadius": 2,
                 "borderStyle": "solid",
-                "borderWidth": 1,
+                "borderWidth": 1.5,
                 "display": "flex",
                 "height": 16,
                 "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 0,
+                "marginBottom": 2,
+                "marginLeft": 2,
+                "marginRight": 2,
+                "marginTop": 2,
                 "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          marginLeft="spacing.2"
+          style={
+            Array [
+              Object {
+                "marginLeft": 4,
               },
             ]
           }
@@ -209,23 +220,34 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           isChecked={false}
           isDisabled={true}
           isNegative={false}
+          size="medium"
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "backgroundColor": "hsla(220, 30%, 96%, 1)",
-                "borderColor": "hsla(220, 30%, 96%, 1)",
+                "backgroundColor": "transparent",
+                "borderColor": "hsla(216, 44%, 23%, 0.18)",
                 "borderRadius": 2,
                 "borderStyle": "solid",
-                "borderWidth": 1,
+                "borderWidth": 1.5,
                 "display": "flex",
                 "height": 16,
                 "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 0,
+                "marginBottom": 2,
+                "marginLeft": 2,
+                "marginRight": 2,
+                "marginTop": 2,
                 "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          marginLeft="spacing.2"
+          style={
+            Array [
+              Object {
+                "marginLeft": 4,
               },
             ]
           }
@@ -348,6 +370,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         <View
           isChecked={false}
           isNegative={true}
+          size="medium"
           style={
             Array [
               Object {
@@ -356,15 +379,25 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
                 "borderColor": "hsla(8, 73%, 47%, 1)",
                 "borderRadius": 2,
                 "borderStyle": "solid",
-                "borderWidth": 1,
+                "borderWidth": 1.5,
                 "display": "flex",
                 "height": 16,
                 "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 0,
+                "marginBottom": 2,
+                "marginLeft": 2,
+                "marginRight": 2,
+                "marginTop": 2,
                 "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          marginLeft="spacing.2"
+          style={
+            Array [
+              Object {
+                "marginLeft": 4,
               },
             ]
           }
