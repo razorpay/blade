@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.5.0
+
+### Minor Changes
+
+- 8dc131d: feat(blade): added `small` variant in Checkbox/Radio
+
 ## 3.4.2
 
 ### Patch Changes
