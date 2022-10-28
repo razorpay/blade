@@ -13,6 +13,7 @@ export type CheckboxGroupContextType = Pick<
   | 'defaultValue'
   | 'value'
   | 'onChange'
+  | 'size'
 > & { state?: State };
 
 const CheckboxGroupContext = React.createContext<CheckboxGroupContextType>({});

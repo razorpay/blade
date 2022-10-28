@@ -16,13 +16,12 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   justify-content: center;
   width: 16px;
   height: 16px;
-  border-width: 1px;
+  border-width: 1.5px;
   border-style: solid;
-  margin: 0px;
+  margin: 2px;
   border-radius: 2px;
-  margin-right: 8px;
-  background-color: hsla(220,27%,98%,1);
-  border-color: hsla(216,19%,89%,1);
+  background-color: transparent;
+  border-color: hsla(214,18%,69%,1);
 }
 
 .c5 {
@@ -54,11 +53,15 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   align-items: center;
 }
 
-.c7 {
+.c6 {
+  margin-left: 4px;
+}
+
+.c8 {
   margin-left: 24px;
 }
 
-.c6 {
+.c7 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -104,8 +107,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 
 .c3:hover + div,
 .c3:focus + div {
-  border-color: hsla(216,19%,89%,1);
-  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(216,44%,23%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -148,15 +151,19 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
+                height="12px"
+                viewBox="0 0 8 8"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                  d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
                   fill="hsla(220, 27%, 98%, 1)"
                   fill-rule="evenodd"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.5"
                 />
               </svg>
             </div>
@@ -167,6 +174,9 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           </div>
           <div
             class="c6"
+          />
+          <div
+            class="c7"
             color="surface.text.subtle.lowContrast"
             font-family="text"
             font-size="100"
@@ -176,7 +186,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           </div>
         </div>
         <div
-          class="c7"
+          class="c8"
         />
       </div>
     </label>
@@ -200,13 +210,12 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   justify-content: center;
   width: 16px;
   height: 16px;
-  border-width: 1px;
+  border-width: 1.5px;
   border-style: solid;
-  margin: 0px;
+  margin: 2px;
   border-radius: 2px;
-  margin-right: 8px;
-  background-color: hsla(220,30%,96%,1);
-  border-color: hsla(220,30%,96%,1);
+  background-color: transparent;
+  border-color: hsla(216,44%,23%,0.18);
 }
 
 .c5 {
@@ -238,11 +247,15 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   align-items: center;
 }
 
-.c7 {
+.c6 {
+  margin-left: 4px;
+}
+
+.c8 {
   margin-left: 24px;
 }
 
-.c6 {
+.c7 {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -323,15 +336,19 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
+                height="12px"
+                viewBox="0 0 8 8"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                  d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
                   fill="hsla(214, 18%, 69%, 1)"
                   fill-rule="evenodd"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.5"
                 />
               </svg>
             </div>
@@ -342,6 +359,9 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           </div>
           <div
             class="c6"
+          />
+          <div
+            class="c7"
             color="surface.text.placeholder.lowContrast"
             font-family="text"
             font-size="100"
@@ -351,7 +371,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           </div>
         </div>
         <div
-          class="c7"
+          class="c8"
         />
       </div>
     </label>
@@ -375,11 +395,10 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   justify-content: center;
   width: 16px;
   height: 16px;
-  border-width: 1px;
+  border-width: 1.5px;
   border-style: solid;
-  margin: 0px;
+  margin: 2px;
   border-radius: 2px;
-  margin-right: 8px;
   background-color: hsla(9,91%,56%,0.09);
   border-color: hsla(8,73%,47%,1);
 }
@@ -413,19 +432,23 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   align-items: center;
 }
 
-.c7 {
-  margin-left: 24px;
+.c6 {
+  margin-left: 4px;
 }
 
 .c8 {
-  margin-top: 4px;
+  margin-left: 24px;
 }
 
 .c9 {
+  margin-top: 4px;
+}
+
+.c10 {
   margin-right: 4px;
 }
 
-.c6 {
+.c7 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -439,7 +462,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   padding: 0;
 }
 
-.c10 {
+.c11 {
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -520,15 +543,19 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
+                height="12px"
+                viewBox="0 0 8 8"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                  d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
                   fill="hsla(220, 27%, 98%, 1)"
                   fill-rule="evenodd"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.5"
                 />
               </svg>
             </div>
@@ -539,6 +566,9 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           </div>
           <div
             class="c6"
+          />
+          <div
+            class="c7"
             color="surface.text.subtle.lowContrast"
             font-family="text"
             font-size="100"
@@ -548,12 +578,12 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           </div>
         </div>
         <div
-          class="c7"
+          class="c8"
         />
       </div>
     </label>
     <div
-      class="c8"
+      class="c9"
     >
       <span
         style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
@@ -581,10 +611,10 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           />
         </svg>
         <div
-          class="c9"
+          class="c10"
         />
         <span
-          class="c10"
+          class="c11"
           color="feedback.text.negative.lowContrast"
           font-family="text"
           font-size="50"
@@ -615,11 +645,10 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   justify-content: center;
   width: 16px;
   height: 16px;
-  border-width: 1px;
+  border-width: 1.5px;
   border-style: solid;
-  margin: 0px;
+  margin: 2px;
   border-radius: 2px;
-  margin-right: 8px;
   background-color: hsla(213,89%,56%,1);
   border-color: hsla(213,89%,56%,1);
 }
@@ -658,11 +687,15 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   align-items: center;
 }
 
-.c8 {
+.c7 {
+  margin-left: 4px;
+}
+
+.c9 {
   margin-left: 24px;
 }
 
-.c7 {
+.c8 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -753,15 +786,19 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
+                height="12px"
+                viewBox="0 0 8 8"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                  d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
                   fill="hsla(220, 27%, 98%, 1)"
                   fill-rule="evenodd"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.5"
                 />
               </svg>
             </div>
@@ -772,21 +809,28 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
+                height="12px"
+                viewBox="0 0 8 8"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"
-                  d="M12.3536 4.64645C12.5488 4.84171 12.5488 5.15829 12.3536 5.35355L6.85355 10.8536C6.65829 11.0488 6.34171 11.0488 6.14645 10.8536L3.64645 8.35355C3.45118 8.15829 3.45118 7.84171 3.64645 7.64645C3.84171 7.45118 4.15829 7.45118 4.35355 7.64645L6.5 9.79289L11.6464 4.64645C11.8417 4.45118 12.1583 4.45118 12.3536 4.64645Z"
+                  d="M6.90237 1.76413C7.03254 1.89431 7.03254 2.10536 6.90237 2.23554L3.2357 5.90221C3.10553 6.03238 2.89447 6.03238 2.7643 5.90221L1.09763 4.23554C0.967456 4.10536 0.967456 3.89431 1.09763 3.76414C1.22781 3.63396 1.43886 3.63396 1.56904 3.76414L3 5.1951L6.43096 1.76413C6.56114 1.63396 6.77219 1.63396 6.90237 1.76413Z"
                   fill="hsla(220, 27%, 98%, 1)"
                   fill-rule="evenodd"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0.5"
                 />
               </svg>
             </div>
           </div>
           <div
             class="c7"
+          />
+          <div
+            class="c8"
             color="surface.text.subtle.lowContrast"
             font-family="text"
             font-size="100"
@@ -796,7 +840,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
           </div>
         </div>
         <div
-          class="c8"
+          class="c9"
         />
       </div>
     </label>

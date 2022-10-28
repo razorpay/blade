@@ -1,10 +1,12 @@
 import React from 'react';
+import { radioSizes } from '../radioTokens';
 import { RadioGroupProvider } from './RadioContext';
 import { useRadioGroup } from './useRadioGroup';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
-import { getPlatformType } from '~utils';
+import { getPlatformType, useBreakpoint } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 type RadioGroupProps = {
   /**
@@ -70,6 +72,12 @@ type RadioGroupProps = {
    * (Useful for form submission).
    */
   name?: string;
+  /**
+   * Size of the radios
+   *
+   * @default "medium"
+   */
+  size?: 'small' | 'medium';
 };
 
 const RadioGroup = ({
@@ -85,6 +93,7 @@ const RadioGroup = ({
   defaultValue,
   onChange,
   value,
+  size = 'medium',
 }: RadioGroupProps): React.ReactElement => {
   const { contextValue, ids } = useRadioGroup({
     defaultValue,
@@ -94,12 +103,17 @@ const RadioGroup = ({
     onChange,
     validationState,
     value,
+    size,
   });
 
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const isReactNative = getPlatformType() === 'react-native';
+  const gap = radioSizes.group.gap[size][matchedDeviceType];
+  const childCount = React.Children.count(children);
 
   return (
     <RadioGroupProvider value={contextValue}>
@@ -118,8 +132,14 @@ const RadioGroup = ({
           {label}
         </FormLabel>
         <Box>
-          <Box display="flex" flexDirection="column" gap={2}>
-            {children}
+          <Box display="flex" flexDirection="column">
+            {React.Children.map(children, (child, index) => {
+              return (
+                <Box key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
+                  {child}
+                </Box>
+              );
+            })}
           </Box>
           <FormHint
             type={validationState === 'error' ? 'error' : 'help'}
