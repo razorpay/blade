@@ -30,7 +30,7 @@ describe('<IconButton />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it.only('should not submit form', async () => {
+  it('should not submit form', async () => {
     const user = userEvent.setup();
     const onClick = jest.fn();
     const onSubmit = jest.fn();
