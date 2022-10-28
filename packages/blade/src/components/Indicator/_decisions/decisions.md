@@ -19,11 +19,9 @@ Sample usecase:
 Sample usage:
 
 ```jsx
-<Indicator
-  intent="positive"
-  label="Active | xyz@email.com"
-  accessibilityLabel="Active for xyz@email.com"
-/>
+<Indicator intent="positive" accessibilityLabel="Active for xyz@email.com">
+  Active | xyz@email.com
+</Indicator>
 ```
 
 ### Indicator
@@ -33,7 +31,7 @@ We'll expose an `Indicator` component with the following API:
 | Prop               | Type                                                      | Default     | Description                                    | Required |
 | ------------------ | --------------------------------------------------------- | ----------- | ---------------------------------------------- | -------- |
 | accessibilityLabel | `string`                                                  | `undefined` | Sets the aria-label for screen readers         | ♿️      |
-| label              | `string`                                                  | `undefined` | Shows a text label beside the circle indicator |          |
+| children           | `string`                                                  | `undefined` | Shows a text label beside the circle indicator |          |
 | intent             | `positive`,`negative`, `notice`, `information`, `neutral` | `neutral`   | Sets the color tone of circle indicator        |          |
 | size               | `xsmall`,`small`, `medium`                                | `medium`    | Sets the size of circle indicator              |          |
 
