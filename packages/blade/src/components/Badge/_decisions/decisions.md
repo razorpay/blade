@@ -70,7 +70,7 @@ import { Badge, InfoIcon } from '@razorpay/components';
 - [Polaris](https://polaris.shopify.com/components/badge)
 - [Chakra](https://chakra-ui.com/docs/components/badge/)
 - [MUI](https://mui.com/material-ui/react-badge/)
-- [Maltine](https://mantine.dev/core/badge/)
+- [Mantine](https://mantine.dev/core/badge/)
 - [Primer](https://primer.style/react/Label)
 - [Carbon](https://carbondesignsystem.com/components/tag/usage/)
 - [Atlassian](https://atlassian.design/components/badge/examples)

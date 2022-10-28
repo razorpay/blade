@@ -62,6 +62,7 @@ export default {
     defaultValue: undefined,
     onChange: undefined,
     value: undefined,
+    size: 'medium',
   },
   argTypes: {
     value: {
@@ -87,9 +88,7 @@ export default {
 const RadioTemplate: ComponentStory<typeof RadioGroupComponent> = ({ children, ...args }) => {
   return (
     <RadioGroupComponent {...args}>
-      <RadioComponent helpText="Apples are bad" value="apple">
-        Apple
-      </RadioComponent>
+      <RadioComponent value="apple">Apple</RadioComponent>
       <RadioComponent value="mango">Mango</RadioComponent>
       <RadioComponent value="orange">Orange</RadioComponent>
     </RadioGroupComponent>
@@ -130,6 +129,12 @@ Required.args = {
   necessityIndicator: 'required',
 };
 
+export const Small = RadioTemplate.bind({});
+Small.storyName = 'Small';
+Small.args = {
+  size: 'small',
+};
+
 export const LabelPositionLeft = RadioTemplate.bind({});
 LabelPositionLeft.storyName = 'LabelPositionLeft';
 LabelPositionLeft.args = {
@@ -143,11 +148,26 @@ export const KitchenSink = (): React.ReactElement => {
     <>
       <RadioGroupComponent
         helpText="Select atleast one"
-        label="Uncontrolled"
+        label="Medium"
+        defaultValue="orange"
+        onChange={(e) => console.log(e)}
+        size="medium"
+      >
+        <RadioComponent value="apple">Apple</RadioComponent>
+        <RadioComponent value="mango">Mango</RadioComponent>
+        <RadioComponent value="orange">Orange</RadioComponent>
+      </RadioGroupComponent>
+      <Text>&nbsp;</Text>
+      <RadioGroupComponent
+        size="small"
+        helpText="Select atleast one"
+        label="Small"
         defaultValue="orange"
         onChange={(e) => console.log(e)}
       >
-        <RadioComponent value="apple">Apple</RadioComponent>
+        <RadioComponent helpText="Apples are good" value="apple">
+          Apple
+        </RadioComponent>
         <RadioComponent value="mango">Mango</RadioComponent>
         <RadioComponent value="orange">Orange</RadioComponent>
       </RadioGroupComponent>

@@ -11,10 +11,13 @@ import { Meta } from '@storybook/addon-docs';
 
 Before you install the package, make sure that you have performed following steps:
 
-- You must be running Node version >=14.0.0
-- You must have `yarn` installed
+- You must be running Node version >=14.19.0
+
+<details>
+<summary>Razorpay Employees have to point @razorpay scope to GitHub Package Registry. Follow the steps below</summary>
+
 - Generate a Personal Access Token on GitHub by [visiting this link](https://github.com/settings/tokens/new?scopes=repo,workflow,write:packages,read:repo_hook,write:packages)
-  - If you belong to razorpay organisation then you will need to enable SSO by clicking `Authorize` button next to Razorpay logo.
+  - Enable SSO by clicking `Authorize` button next to Razorpay logo.
 - Run `code ~/.bashrc` or `code ~/.zshrc` in your editor and add this line
   ```
   export GITHUB_ACCESS_TOKEN="<YOUR_TOKEN>"
@@ -22,13 +25,14 @@ Before you install the package, make sure that you have performed following step
   > Note: Replace `<YOUR_TOKEN>` with your actual GitHub Personal Access Token
 - Run `source ~/.bashrc` or `source ~/.zshrc` based on the file you added your token.
 - Run `code ~/.npmrc` and append the following
+  ```bash
+  # add following to your .npmrc
+  @razorpay:registry=https://npm.pkg.github.com/
+  //npm.pkg.github.com/:always-auth=true
+  //npm.pkg.github.com/:_authToken=${GITHUB_ACCESS_TOKEN}
+  ```
 
-```bash
-# add following to your .npmrc
-@razorpay:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:always-auth=true
-//npm.pkg.github.com/:_authToken=${GITHUB_ACCESS_TOKEN}
-```
+</details>
 
 ## ⬇️ Add blade to your application
 

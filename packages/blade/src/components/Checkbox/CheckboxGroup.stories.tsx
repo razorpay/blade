@@ -130,6 +130,12 @@ Required.args = {
   necessityIndicator: 'required',
 };
 
+export const Small = CheckboxGroupTemplate.bind({});
+Small.storyName = 'Small';
+Small.args = {
+  size: 'small',
+};
+
 export const LabelPositionLeft = CheckboxGroupTemplate.bind({});
 LabelPositionLeft.storyName = 'LabelPositionLeft';
 LabelPositionLeft.args = {
@@ -193,6 +199,18 @@ export const KitchenSink = (): React.ReactElement => {
         helpText="Select atleast one"
         label="Uncontrolled"
         defaultValue={['apple', 'orange']}
+        onChange={(e) => console.log(e)}
+      >
+        <CheckboxComponent value="apple">Apple</CheckboxComponent>
+        <CheckboxComponent value="mango">Mango</CheckboxComponent>
+        <CheckboxComponent value="orange">Orange</CheckboxComponent>
+      </CheckboxGroupComponent>
+      <Text>&nbsp;</Text>
+      <CheckboxGroupComponent
+        helpText="Small sized checkboxes"
+        label="Small checkboxes"
+        size="small"
+        defaultValue={['orange']}
         onChange={(e) => console.log(e)}
       >
         <CheckboxComponent value="apple">Apple</CheckboxComponent>

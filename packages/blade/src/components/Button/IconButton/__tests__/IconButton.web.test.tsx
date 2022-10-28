@@ -30,6 +30,21 @@ describe('<IconButton />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
+  it('should not submit form', async () => {
+    const noop = () => {};
+    const user = userEvent.setup();
+    const onSubmit = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <form onSubmit={onSubmit}>
+        <IconButton accessibilityLabel="Close" icon={CloseIcon} onClick={noop} />,
+      </form>,
+    );
+    const iconButton = getByRole('button');
+    await user.click(iconButton);
+
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+
   it('should have a11y label', () => {
     const noop = () => {};
     const a11yLabel = 'Close modal';

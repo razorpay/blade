@@ -1,9 +1,12 @@
 import React from 'react';
+import { checkboxSizes } from '../checkboxTokens';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabel, FormHint } from '~components/Form';
 import Box from '~components/Box';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
+import { useBreakpoint } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 type CheckboxGroupProps = {
   /**
@@ -69,6 +72,12 @@ type CheckboxGroupProps = {
    * (Useful for form submission).
    */
   name?: string;
+  /**
+   * Size of the checkbox
+   *
+   * @default "medium"
+   */
+  size?: 'small' | 'medium';
 };
 
 const CheckboxGroup = ({
@@ -84,6 +93,7 @@ const CheckboxGroup = ({
   defaultValue,
   onChange,
   value,
+  size = 'medium',
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
     defaultValue,
@@ -93,11 +103,16 @@ const CheckboxGroup = ({
     name,
     labelPosition,
     validationState,
+    size,
   });
 
+  const { theme } = useTheme();
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const gap = checkboxSizes.group.gap[size][matchedDeviceType];
+  const childCount = React.Children.count(children);
 
   return (
     <CheckboxGroupProvider value={contextValue}>
@@ -112,8 +127,14 @@ const CheckboxGroup = ({
           {label}
         </FormLabel>
         <Box>
-          <Box display="flex" flexDirection="column" gap={2}>
-            {children}
+          <Box display="flex" flexDirection="column">
+            {React.Children.map(children, (child, index) => {
+              return (
+                <Box key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
+                  {child}
+                </Box>
+              );
+            })}
           </Box>
           <FormHint
             errorText={errorText}

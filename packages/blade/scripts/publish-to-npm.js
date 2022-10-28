@@ -21,6 +21,7 @@ const execa = require('execa');
 
 const BLADE_ROOT = path.join(__dirname, '..');
 const NPMRC_PATH = path.join(BLADE_ROOT, '.npmrc');
+const MONOREPO_ROOT = path.join(BLADE_ROOT, '../..');
 
 const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:always-auth=true
@@ -29,6 +30,7 @@ const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
 
 console.log('[blade]: Publishing on NPM ✨');
 
+fs.copyFileSync(path.join(MONOREPO_ROOT, 'README.md'), path.join(BLADE_ROOT, 'README.md'));
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
 
 try {
@@ -38,4 +40,5 @@ try {
   });
 } finally {
   fs.rmSync(NPMRC_PATH);
+  fs.rmSync(path.join(BLADE_ROOT, 'README.md'));
 }

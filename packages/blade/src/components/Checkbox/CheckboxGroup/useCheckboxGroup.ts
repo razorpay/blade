@@ -19,6 +19,7 @@ type UseCheckboxGroupProps = Pick<
   | 'value'
   | 'defaultValue'
   | 'onChange'
+  | 'size'
 >;
 
 export type State = {
@@ -37,6 +38,7 @@ const useCheckboxGroup = ({
   onChange,
   validationState,
   name,
+  size,
 }: UseCheckboxGroupProps) => {
   const { platform } = useTheme();
   const { labelId } = useFormId('checkbox-group');
@@ -85,8 +87,9 @@ const useCheckboxGroup = ({
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name,
       state,
+      size,
     };
-  }, [validationState, isDisabled, platform, labelPosition, name, state]);
+  }, [validationState, isDisabled, platform, labelPosition, name, state, size]);
 
   return { state, contextValue, ids: { labelId } };
 };
