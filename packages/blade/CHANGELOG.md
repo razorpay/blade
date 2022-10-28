@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.4.2
+
+### Patch Changes
+
+- 48c36af: feat: add README to npm
+
 ## 3.4.1
 
 ### Patch Changes
