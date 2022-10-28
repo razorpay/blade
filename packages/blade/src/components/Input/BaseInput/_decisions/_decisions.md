@@ -89,7 +89,7 @@ Reusable components candidate
 - [x] motion for the textfield animation in active state
 - [x] Do we have a usecase of using textfield without label or form level things?
   - Not right now. we'll mark label as required field for now
-- [x] fullWidth input field do we have a usecase?
+- [x] fullWidth input field do we have a use case?
   - TextField will always be 100% width of the container
 - [x] textContentType for autocomplete on native ios only
   - https://reactnative.dev/docs/textinput#textcontenttype-ios
@@ -104,18 +104,18 @@ Reusable components candidate
 
 - [x] Do we need leading and trailing both icons? or we shall just accept an `icon` prop and then decide the position internally?
   - **Conclusion**: We shall just accept `icon` prop and we'll always fix the position on the left internally. This will visually bring in consistency when multiple input fields are placed in one form.
-- [x] Do we have a usecase to show clear button in case of password field?
+- [x] Do we have a use case to show clear button in case of password field?
   - yes. the clear button will be shown before the show password button.
 - [x] returnKeyType native - native
   - enterkeyhint - web
-- [x] Do we need link? what is the usecase?
+- [x] Do we need link? what is the use case?
   - NA
 - [x] How to handle the view layout changes on mobile when the keyboard appears so the input doesn't moves out of the view
   - accept and pass ref
 - [x] `textAlign` on native need to be exposed?
   - yes might be required for OTP
 - [x] multiline error messages?
-  - deferred for now until we have a usecase for it
+  - deferred for now until we have a use case for it
 - [x] Do we need to show errorText/successText along with helpText or only one of them can be shown at a time?
 
   - only one at a time in the priority errorText > successText > helpText
