@@ -47,6 +47,6 @@ In MacOS we can press `fn+⌘+f5` to open up voice-over and test out our compone
 
 We also have a manual testing checklist in [Accessibility RFC](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#manual-testing)
 
-> If you are not familar with using screen reader you can [follow this guide](https://dequeuniversity.com/tips/learn-voiceover),
+> If you are not familiar with using screen reader you can [follow this guide](https://dequeuniversity.com/tips/learn-voiceover),
 > And also ask for manual reviews from Anurag or Abinash.
 
