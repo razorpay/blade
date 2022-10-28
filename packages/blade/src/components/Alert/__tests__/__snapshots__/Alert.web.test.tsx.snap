@@ -129,6 +129,7 @@ exports[`<Alert /> should render 1`] = `
     <button
       aria-label="Dismiss alert"
       class="c3"
+      type="button"
     >
       <svg
         aria-hidden="true"
@@ -276,6 +277,7 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
     <button
       aria-label="Dismiss alert"
       class="c3"
+      type="button"
     >
       <svg
         aria-hidden="true"
@@ -432,6 +434,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     <button
       aria-label="Dismiss alert"
       class="c3"
+      type="button"
     >
       <svg
         aria-hidden="true"

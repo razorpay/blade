@@ -55,6 +55,7 @@ const StyledIconButton = ({
   <StyledButton
     onClick={onClick}
     contrast={contrast}
+    type="button"
     {...makeAccessible({ label: accessibilityLabel })}
   >
     <Icon size={size} color="currentColor" />
