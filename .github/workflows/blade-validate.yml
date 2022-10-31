@@ -1,8 +1,6 @@
 name: Blade Validate
 
-on: 
-  pull_request:
-     types: [open, edited, synchronize]
+on: [pull_request]
 
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
@@ -12,34 +10,6 @@ concurrency: # cancel previously running workflows when a new workflow is re-run
   cancel-in-progress: true
 
 jobs:
-  pr-title:
-    name: PR Title Check
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-    steps:
-      - uses: amannn/action-semantic-pull-request@v5
-        id: pr_title_check
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: marocchino/sticky-pull-request-comment@v2
-        # When the previous steps fails, the workflow would stop. By adding this
-        # condition you can continue the execution with the populated error message.
-        if: always() && (steps.pr_title_check.outputs.error_message != null)
-        with:
-          header: pr_title_comment
-          message: |            
-            We follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your PR Title doesn't fit the specification.
-
-            Details:
-            
-            ```
-            ${{ steps. pr_title_check.outputs.error_message }}
-            ```
-      # Delete a previous comment when the issue has been resolved
-      - if: ${{ steps.pr_title_check.outputs.error_message == null }}
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:   
-          header: pr_title_comment
-          delete: true
   validate:
     name: Validate Source Code
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
