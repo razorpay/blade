@@ -22,19 +22,19 @@ jobs:
         # condition you can continue the execution with the populated error message.
         if: always() && (steps.pr_title_check.outputs.error_message != null)
         with:
-          header: pr_title_comment
+          header: pr-title-comment
           message: |            
             We follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your PR Title doesn't fit the specification.
 
             Details:
             
             ```
-            ${{ steps. pr_title_check.outputs.error_message }}
+            ${{ steps.pr_title_check.outputs.error_message }}
             ```
       # Delete a previous comment when the issue has been resolved
       - if: ${{ steps.pr_title_check.outputs.error_message == null }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:   
-          header: pr_title_comment
+          header: pr-title-comment
           delete: true
   
