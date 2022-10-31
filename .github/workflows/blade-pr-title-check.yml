@@ -36,4 +36,4 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:   
           header: pr-title-comment
-          delete: true
+          hide: true
