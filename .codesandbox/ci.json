@@ -1,4 +1,5 @@
 {
+  "node": "14",
   "packages": ["packages/blade"],
   "buildCommand": "build",
   "publishDirectory": {
