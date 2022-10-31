@@ -12,6 +12,8 @@ jobs:
   pr-title-check:
     name: Check
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: amannn/action-semantic-pull-request@v5
         id: pr_title_check
@@ -20,8 +22,7 @@ jobs:
         # condition you can continue the execution with the populated error message.
         if: always() && (steps.pr_title_check.outputs.error_message != null)
         with:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-          header: pr-title-lint-error
+          header: pr-title-comment
           message: |            
             We follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your PR Title doesn't fit the specification.
 
@@ -34,7 +35,6 @@ jobs:
       - if: ${{ steps.pr_title_check.outputs.error_message == null }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:   
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-          header: pr-title-lint-error
+          header: pr-title-comment
           delete: true
   
