@@ -1,0 +1,7 @@
+{
+  "packages": ["packages/blade"],
+  "buildCommand": "build",
+  "publishDirectory": {
+    "blade": "build"
+  }
+}
