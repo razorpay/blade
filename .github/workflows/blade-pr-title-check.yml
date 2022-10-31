@@ -37,5 +37,5 @@ jobs:
         with:   
           header: pr-title-comment
           recreate: true
-          message: ''
+          message: 'Looks okay'
   
