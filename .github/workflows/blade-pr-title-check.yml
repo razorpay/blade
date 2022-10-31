@@ -36,6 +36,5 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:   
           header: pr-title-comment
-          recreate: true
           message: '✅ PR Title follows [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/).'
   
