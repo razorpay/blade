@@ -1,5 +1,6 @@
 {
   "node": "14",
   "packages": ["packages/blade"],
-  "buildCommand": false
+  "buildCommand": false,
+  "sandboxes": ["react"]
 }
