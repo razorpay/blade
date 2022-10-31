@@ -10,6 +10,12 @@ concurrency: # cancel previously running workflows when a new workflow is re-run
   cancel-in-progress: true
 
 jobs:
+  pr-title:
+    name: PR Title Check
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: semantic-pull-request
+        uses: amannn/action-semantic-pull-request@v5.0.2
   validate:
     name: Validate Source Code
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
