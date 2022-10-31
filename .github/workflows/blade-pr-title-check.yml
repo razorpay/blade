@@ -10,9 +10,9 @@ concurrency: # cancel previously running workflows when a new workflow is re-run
 
 jobs:
   pr-title-check:
+    name: Check
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
-      - name: Check
       - uses: amannn/action-semantic-pull-request@v5
         id: pr_title_check
         env:
