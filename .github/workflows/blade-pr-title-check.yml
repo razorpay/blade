@@ -37,5 +37,5 @@ jobs:
         with:   
           header: pr-title-comment
           recreate: true
-          message: 'Looks okay'
+          message: '✅ PR Title follows [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/).'
   
