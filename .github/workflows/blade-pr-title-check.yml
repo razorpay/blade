@@ -22,7 +22,7 @@ jobs:
         # condition you can continue the execution with the populated error message.
         if: always() && (steps.pr_title_check.outputs.error_message != null)
         with:
-          header: pr-title-comment
+          header: conventional
           message: |            
             We follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your PR Title doesn't fit the specification.
 
@@ -35,6 +35,6 @@ jobs:
       - if: ${{ steps.pr_title_check.outputs.error_message == null }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:   
-          header: pr-title-comment
+          header: conventional
           delete: true
   
