@@ -18,6 +18,7 @@ import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
 import { Text as BladeText } from '~components/Typography';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -50,7 +51,19 @@ const Page = (): ReactElement => {
       <br />
       <br />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Badge } from '@razorpay/blade/components'; \nimport type { BadgeProps } from '@razorpay/blade/components';`}</Highlight>
+      <Sandbox>
+        {`
+        import { Badge } from '@razorpay/blade/components';
+        import type { BadgeProps } from '@razorpay/blade/components';
+        
+        function App() {
+          return <Badge>Boop</Badge>
+        }
+
+        export default App;
+        `}
+      </Sandbox>
+      {/* <Highlight language="tsx">{`import { Badge } from '@razorpay/blade/components'; \nimport type { BadgeProps } from '@razorpay/blade/components';`}</Highlight> */}
       <Title>Example</Title>
       <Subtitle>
         This is the default badge. You can change the properties of this button using the controls
