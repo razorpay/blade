@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: semantic-pull-request
         uses: amannn/action-semantic-pull-request@v5.0.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   validate:
     name: Validate Source Code
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
