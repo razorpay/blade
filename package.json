@@ -20,7 +20,7 @@
     "tsc:blade": "yarn workspace @razorpay/blade typecheck",
     "lint": "eslint --ext js,jsx,ts,tsx packages",
     "publish-npm": "lerna run --scope @razorpay/blade publish-npm",
-    "release": "changeset publish",
+    "release": "lerna run --scope @razorpay/blade generate-github-npmrc && changeset publish",
     "build": "lerna run --scope @razorpay/blade build"
   },
   "dependencies": {},

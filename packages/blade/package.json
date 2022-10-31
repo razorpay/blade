@@ -75,7 +75,8 @@
     "start:web": "yarn react",
     "start:all": "run-p start:native start:web",
     "chromatic": "npx chromatic",
-    "publish-npm": "node ./scripts/publish-to-npm.js"
+    "publish-npm": "node ./scripts/publishToNpm.js",
+    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js"
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",
