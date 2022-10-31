@@ -66,7 +66,7 @@ const getWebConfig = ({ exportCategory }) => ({
       sourcemap: true,
     },
   ],
-  external: (id) => id.includes('@babel/runtime'),
+  external: [/@babel\/runtime/],
   plugins: [
     pluginPeerDepsExternal(),
     pluginResolve({ extensions: webExtensions }),
@@ -90,7 +90,7 @@ const getNativeConfig = ({ exportCategory }) => ({
       sourcemap: true,
     },
   ],
-  external: (id) => id.includes('@babel/runtime'),
+  external: [/@babel\/runtime/],
   plugins: [
     pluginPeerDepsExternal(),
     pluginResolve({ extensions: nativeExtensions }),
