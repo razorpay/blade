@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.5.2
+
+### Patch Changes
+
+- ffe9872: fix: `@babel-runtime` issues when importing in codesandbox and vite
+
 ## 3.5.1
 
 ### Patch Changes
