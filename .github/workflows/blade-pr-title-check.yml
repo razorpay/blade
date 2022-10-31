@@ -36,7 +36,4 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:   
           header: pr-title-comment
-          recreate: true
-          message: |            
-            Bingo! Edited
-  
+          delete: true
