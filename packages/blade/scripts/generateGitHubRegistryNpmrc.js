@@ -14,8 +14,8 @@ const MONOREPO_ROOT = path.join(__dirname, '../../..');
 const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
 const npmRcContent = `@razorpay:registry=https://npm.pkg.github.com/
-//registry.npmjs.org/:always-auth=true
-//registry.npmjs.org/:_authToken=\${GITHUB_ACCESS_TOKEN}
+//npm.pkg.github.com/:always-auth=true
+//npm.pkg.github.com/:_authToken=\${GITHUB_ACCESS_TOKEN}
 `;
 
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
