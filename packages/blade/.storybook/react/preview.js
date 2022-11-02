@@ -1,6 +1,7 @@
+import styled from 'styled-components';
 import { theme, toggleHiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
-import { BladeProvider } from '../../src/components/BladeProvider';
+import { BladeProvider, useTheme } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 import ErrorBoundary from './ErrorBoundary';
 const { GlobalStyle } = global;
@@ -41,9 +42,32 @@ export const parameters = {
   },
 };
 
+const StoryCanvas = styled.div(
+  ({ theme, context }) =>
+    `
+      position: ${context.viewMode === 'story' ? 'absolute' : 'relative'};
+      top: 0;
+      left: 0;
+      border-right: 'none';
+      border: ${theme.border.width.thin}px solid ${theme.colors.surface.border.subtle.lowContrast};
+      right: 0;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      overflow: auto;
+      padding: 2rem;
+      border-radius: ${
+        context.viewMode === 'story'
+          ? `${theme.border.radius.none}px`
+          : `${theme.border.radius.medium}px`
+      };
+      background: ${theme.colors.surface.background.level1.lowContrast};
+    `,
+);
+
 export const decorators = [
   (Story, context) => {
-    toggleHiddenStoryStyle(context.globals.showInternalComponents)
+    toggleHiddenStoryStyle(context.globals.showInternalComponents);
     const getThemeTokens = () => {
       if (context.globals.themeTokenName === 'paymentTheme') {
         return paymentTheme;
@@ -52,6 +76,7 @@ export const decorators = [
         return bankingTheme;
       }
     };
+    console.log(paymentTheme);
     return (
       <ErrorBoundary>
         <GlobalStyle />
@@ -60,7 +85,9 @@ export const decorators = [
           themeTokens={getThemeTokens()}
           colorScheme={context.globals.colorScheme}
         >
-          <Story />
+          <StoryCanvas context={context}>
+            <Story />
+          </StoryCanvas>
         </BladeProvider>
       </ErrorBoundary>
     );
