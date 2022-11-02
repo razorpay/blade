@@ -12,15 +12,15 @@ const colors: ColorsWithModes = {
       background: {
         level1: {
           lowContrast: globalColors.neutral.blueGrayLight[100],
-          highContrast: globalColors.neutral.blueGrayLight[1100],
+          highContrast: globalColors.neutral.blueGrayLight[1200],
         },
         level2: {
           lowContrast: globalColors.neutral.blueGrayLight[0],
-          highContrast: globalColors.neutral.blueGrayLight[900],
+          highContrast: globalColors.neutral.blueGrayLight[1100],
         },
         level3: {
           lowContrast: globalColors.neutral.blueGrayLight[50],
-          highContrast: globalColors.neutral.blueGrayLight[1300],
+          highContrast: globalColors.neutral.blueGrayLight[1000],
         },
       },
       border: {
@@ -91,14 +91,38 @@ const colors: ColorsWithModes = {
         800: globalColors.chromatic.azure[950],
       },
       gray: {
-        200: globalColors.neutral.blueGrayLight[50],
-        300: globalColors.neutral.blueGrayLight[100],
-        400: globalColors.neutral.blueGrayLight[300],
-        500: globalColors.neutral.blueGrayLight[500],
-        600: globalColors.neutral.blueGrayLight[600],
-        700: globalColors.neutral.blueGrayLight[800],
-        a50: globalColors.neutral.blueGrayLight.a50,
-        a100: globalColors.neutral.blueGrayLight.a100,
+        200: {
+          lowContrast: globalColors.neutral.blueGrayLight[50],
+          highContrast: globalColors.neutral.blueGrayLight[1000],
+        },
+        300: {
+          lowContrast: globalColors.neutral.blueGrayLight[100],
+          highContrast: globalColors.neutral.blueGrayLight[900],
+        },
+        400: {
+          lowContrast: globalColors.neutral.blueGrayLight[300],
+          highContrast: globalColors.neutral.blueGrayLight[800],
+        },
+        500: {
+          lowContrast: globalColors.neutral.blueGrayLight[500],
+          highContrast: globalColors.neutral.blueGrayLight[700],
+        },
+        600: {
+          lowContrast: globalColors.neutral.blueGrayLight[600],
+          highContrast: globalColors.neutral.blueGrayLight[500],
+        },
+        700: {
+          lowContrast: globalColors.neutral.blueGrayLight[800],
+          highContrast: globalColors.neutral.blueGrayLight[100],
+        },
+        a50: {
+          lowContrast: globalColors.neutral.blueGrayLight.a50,
+          highContrast: globalColors.neutral.blueGrayLight.a300,
+        },
+        a100: {
+          lowContrast: globalColors.neutral.blueGrayLight.a100,
+          highContrast: globalColors.neutral.blueGrayLight.a400,
+        },
       },
       secondary: { 500: globalColors.chromatic.emerald[500] },
     },
@@ -1054,15 +1078,15 @@ const colors: ColorsWithModes = {
       background: {
         level1: {
           lowContrast: globalColors.neutral.blueGrayDark[1300],
-          highContrast: globalColors.neutral.blueGrayDark[700],
+          highContrast: globalColors.neutral.blueGrayDark[800],
         },
         level2: {
           lowContrast: globalColors.neutral.blueGrayDark[1100],
-          highContrast: globalColors.neutral.blueGrayDark[600],
+          highContrast: globalColors.neutral.blueGrayDark[700],
         },
         level3: {
           lowContrast: globalColors.neutral.blueGrayDark[900],
-          highContrast: globalColors.neutral.blueGrayDark[1100],
+          highContrast: globalColors.neutral.blueGrayDark[600],
         },
       },
       border: {
@@ -1133,14 +1157,38 @@ const colors: ColorsWithModes = {
         800: globalColors.chromatic.azure[900],
       },
       gray: {
-        200: globalColors.neutral.blueGrayDark[800],
-        300: globalColors.neutral.blueGrayDark[700],
-        400: globalColors.neutral.blueGrayDark[600],
-        500: globalColors.neutral.blueGrayDark[500],
-        600: globalColors.neutral.blueGrayDark[400],
-        700: globalColors.neutral.blueGrayDark[200],
-        a50: globalColors.neutral.blueGrayDark.a50,
-        a100: globalColors.neutral.blueGrayDark.a100,
+        200: {
+          lowContrast: globalColors.neutral.blueGrayDark[800],
+          highContrast: globalColors.neutral.blueGrayDark[600],
+        },
+        300: {
+          lowContrast: globalColors.neutral.blueGrayDark[700],
+          highContrast: globalColors.neutral.blueGrayDark[500],
+        },
+        400: {
+          lowContrast: globalColors.neutral.blueGrayDark[600],
+          highContrast: globalColors.neutral.blueGrayDark[400],
+        },
+        500: {
+          lowContrast: globalColors.neutral.blueGrayDark[500],
+          highContrast: globalColors.neutral.blueGrayDark[300],
+        },
+        600: {
+          lowContrast: globalColors.neutral.blueGrayDark[400],
+          highContrast: globalColors.neutral.blueGrayDark[200],
+        },
+        700: {
+          lowContrast: globalColors.neutral.blueGrayDark[200],
+          highContrast: globalColors.neutral.blueGrayDark[50],
+        },
+        a50: {
+          lowContrast: globalColors.neutral.blueGrayDark.a50,
+          highContrast: globalColors.neutral.blueGrayDark.a300,
+        },
+        a100: {
+          lowContrast: globalColors.neutral.blueGrayDark.a100,
+          highContrast: globalColors.neutral.blueGrayDark.a400,
+        },
       },
       secondary: { 500: globalColors.chromatic.emerald[500] },
     },
