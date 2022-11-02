@@ -9,7 +9,7 @@ import {
   Description,
 } from '@storybook/addon-docs';
 import capitalize from 'lodash/capitalize';
-import { Highlight, Link } from '@storybook/design-system';
+import { Highlight } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
@@ -19,6 +19,7 @@ import Box from '~components/Box';
 import { Text as BladeText } from '~components/Typography';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -45,11 +46,7 @@ const Page = (): ReactElement => {
         Badges are used to show small amount of color coded metadata, which are ideal for getting
         user attention.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <br />
-      <br />
+      <FigmaEmbed src={figmaURL} />
       <Title>Usage</Title>
       <Sandbox>
         {`
