@@ -53,11 +53,14 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox>
         {`
-        import { Badge } from '@razorpay/blade/components';
-        import type { BadgeProps } from '@razorpay/blade/components';
+        import { Badge, InfoIcon } from '@razorpay/blade/components';
         
         function App() {
-          return <Badge>Boop</Badge>
+          return (
+            <Badge variant="neutral" icon={InfoIcon}>
+              Boop
+            </Badge>
+          )
         }
 
         export default App;
