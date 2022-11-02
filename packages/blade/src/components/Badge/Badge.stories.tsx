@@ -46,7 +46,7 @@ const Page = (): ReactElement => {
         Badges are used to show small amount of color coded metadata, which are ideal for getting
         user attention.
       </Subtitle>
-      <FigmaEmbed src={figmaURL} />
+      <FigmaEmbed title="Badge Figma Design" src={figmaURL} />
       <Title>Usage</Title>
       <Sandbox>
         {`
