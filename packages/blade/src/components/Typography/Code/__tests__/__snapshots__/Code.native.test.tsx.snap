@@ -6,6 +6,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 4,
         "lineHeight": 16,
         "paddingBottom": 0,
@@ -54,6 +55,7 @@ exports[`<Code /> should render medium Code 1`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 4,
         "lineHeight": 16,
         "paddingBottom": 0,
@@ -102,6 +104,7 @@ exports[`<Code /> should render small Code 1`] = `
   style={
     Array [
       Object {
+        "backgroundColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 4,
         "lineHeight": 16,
         "paddingBottom": 0,
