@@ -38,6 +38,9 @@ type ColorNeutralScale = Readonly<{
   a50: string;
   a100: string;
   a200: string;
+  a300: string;
+  a400: string;
+  a500: string;
 }>;
 
 export type Color = Readonly<{
@@ -203,6 +206,9 @@ const colors: Color = {
       a50: `hsla(216, 44%, 23%, ${opacity[1]})`,
       a100: `hsla(216, 44%, 23%, ${opacity[2]})`,
       a200: `hsla(216, 44%, 23%, ${opacity[3]})`,
+      a300: `hsla(214, 21%, 94%, ${opacity[1]})`,
+      a400: `hsla(214, 21%, 94%, ${opacity[2]})`,
+      a500: `hsla(214, 21%, 94%, ${opacity[3]})`,
     },
     blueGrayDark: {
       0: `hsla(0, 0%, 99%, ${opacity[9]})`,
@@ -224,6 +230,9 @@ const colors: Color = {
       a50: `hsla(220, 11%, 84%, ${opacity[1]})`,
       a100: `hsla(220, 11%, 84%, ${opacity[2]})`,
       a200: `hsla(220, 11%, 84%, ${opacity[3]})`,
+      a300: `hsla(217, 11%, 76%, ${opacity[1]})`,
+      a400: `hsla(217, 11%, 76%, ${opacity[2]})`,
+      a500: `hsla(217, 11%, 76%, ${opacity[3]})`,
     },
     navyGrayLight: {
       0: `hsla(0, 0%, 100%, ${opacity[9]})`,
@@ -245,6 +254,9 @@ const colors: Color = {
       a50: `hsla(226, 44%, 23%, ${opacity[1]})`,
       a100: `hsla(226, 44%, 23%, ${opacity[2]})`,
       a200: `hsla(226, 44%, 23%, ${opacity[3]})`,
+      a300: `hsla(223, 21%, 94%, ${opacity[1]})`,
+      a400: `hsla(223, 21%, 94%, ${opacity[2]})`,
+      a500: `hsla(223, 21%, 94%, ${opacity[3]})`,
     },
     navyGrayDark: {
       0: `hsla(0, 0%, 99%, ${opacity[9]})`,
@@ -266,6 +278,9 @@ const colors: Color = {
       a50: `hsla(233, 11%, 84%, ${opacity[1]})`,
       a100: `hsla(233, 11%, 84%, ${opacity[2]})`,
       a200: `hsla(233, 11%, 84%, ${opacity[3]})`,
+      a300: `hsla(231, 11%, 76%, ${opacity[1]})`,
+      a400: `hsla(231, 11%, 76%, ${opacity[2]})`,
+      a500: `hsla(231, 11%, 76%, ${opacity[3]})`,
     },
     ashGrayLight: {
       0: `hsla(0, 0%, 100%, ${opacity[9]})`,
@@ -287,6 +302,9 @@ const colors: Color = {
       a50: `hsla(214, 15%, 18%, ${opacity[1]})`,
       a100: `hsla(214, 15%, 18%, ${opacity[2]})`,
       a200: `hsla(214, 15%, 18%, ${opacity[3]})`,
+      a300: `hsla(214, 15%, 18%, ${opacity[3]})`,
+      a400: `hsla(214, 15%, 18%, ${opacity[3]})`,
+      a500: `hsla(214, 15%, 18%, ${opacity[3]})`,
     },
     ashGrayDark: {
       0: `hsla(0, 0%, 99%, ${opacity[9]})`,
@@ -308,6 +326,9 @@ const colors: Color = {
       a50: `hsla(240, 1%, 84%, ${opacity[1]})`,
       a100: `hsla(240, 1%, 84%, ${opacity[2]})`,
       a200: `hsla(240, 1%, 84%, ${opacity[3]})`,
+      a300: `hsla(240, 1%, 84%, ${opacity[3]})`,
+      a400: `hsla(240, 1%, 84%, ${opacity[3]})`,
+      a500: `hsla(240, 1%, 84%, ${opacity[3]})`,
     },
   },
 };

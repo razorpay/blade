@@ -209,17 +209,23 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8 {
-  background-color: hsla(220,27%,98%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
 
+.c8 backgroundColor {
+  low-contrast: hsla(220,27%,98%,1);
+  high-contrast: hsla(216,33%,29%,1);
+}
+
+.c8 borderBottomColor {
+  low-contrast: hsla(216,19%,89%,1);
+  high-contrast: hsla(217,18%,45%,1);
+}
+
 .c8:hover {
-  background-color: hsla(220,30%,96%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -232,13 +238,31 @@ exports[`<TextArea /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c8:hover backgroundColor {
+  low-contrast: hsla(220,30%,96%,1);
+  high-contrast: hsla(216,27%,36%,1);
+}
+
+.c8:hover borderBottomColor {
+  low-contrast: hsla(216,19%,89%,1);
+  high-contrast: hsla(217,18%,45%,1);
+}
+
 .c8:focus-within {
-  background-color: hsla(220,27%,98%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+}
+
+.c8:focus-within backgroundColor {
+  low-contrast: hsla(220,27%,98%,1);
+  high-contrast: hsla(216,33%,29%,1);
+}
+
+.c8:focus-within borderBottomColor {
+  low-contrast: hsla(216,19%,89%,1);
+  high-contrast: hsla(217,18%,45%,1);
 }
 
 .c5 {
@@ -547,17 +571,23 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8 {
-  background-color: hsla(220,27%,98%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
 
+.c8 backgroundColor {
+  low-contrast: hsla(220,27%,98%,1);
+  high-contrast: hsla(216,33%,29%,1);
+}
+
+.c8 borderBottomColor {
+  low-contrast: hsla(216,19%,89%,1);
+  high-contrast: hsla(217,18%,45%,1);
+}
+
 .c8:hover {
-  background-color: hsla(220,30%,96%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -570,13 +600,31 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c8:hover backgroundColor {
+  low-contrast: hsla(220,30%,96%,1);
+  high-contrast: hsla(216,27%,36%,1);
+}
+
+.c8:hover borderBottomColor {
+  low-contrast: hsla(216,19%,89%,1);
+  high-contrast: hsla(217,18%,45%,1);
+}
+
 .c8:focus-within {
-  background-color: hsla(220,27%,98%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+}
+
+.c8:focus-within backgroundColor {
+  low-contrast: hsla(220,27%,98%,1);
+  high-contrast: hsla(216,33%,29%,1);
+}
+
+.c8:focus-within borderBottomColor {
+  low-contrast: hsla(216,19%,89%,1);
+  high-contrast: hsla(217,18%,45%,1);
 }
 
 .c5 {

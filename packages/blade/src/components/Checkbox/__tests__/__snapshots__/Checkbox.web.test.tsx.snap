@@ -21,7 +21,11 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: transparent;
-  border-color: hsla(214,18%,69%,1);
+}
+
+.c4 borderColor {
+  low-contrast: hsla(214,18%,69%,1);
+  high-contrast: hsla(216,15%,54%,1);
 }
 
 .c5 {
@@ -107,12 +111,21 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 
 .c3:hover + div,
 .c3:focus + div {
-  border-color: hsla(214,18%,69%,1);
-  background-color: hsla(216,44%,23%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
   transition-duration: 70ms;
+}
+
+.c3:hover + div borderColor,
+.c3:focus + div borderColor {
+  low-contrast: hsla(214,18%,69%,1);
+  high-contrast: hsla(216,15%,54%,1);
+}
+
+.c3:hover + div backgroundColor,
+.c3:focus + div backgroundColor {
+  low-contrast: hsla(216,44%,23%,0.09);
 }
 
 <div>
@@ -158,7 +171,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
                 <path
                   clip-rule="evenodd"
                   d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                  fill="hsla(220, 27%, 98%, 1)"
+                  fill="[object Object]"
                   fill-rule="evenodd"
                   stroke="white"
                   stroke-linecap="round"
@@ -215,7 +228,10 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   margin: 2px;
   border-radius: 2px;
   background-color: transparent;
-  border-color: hsla(216,44%,23%,0.18);
+}
+
+.c4 borderColor {
+  low-contrast: hsla(216,44%,23%,0.18);
 }
 
 .c5 {
@@ -343,7 +359,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
                 <path
                   clip-rule="evenodd"
                   d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                  fill="hsla(214, 18%, 69%, 1)"
+                  fill="[object Object]"
                   fill-rule="evenodd"
                   stroke="white"
                   stroke-linecap="round"
@@ -550,7 +566,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
                 <path
                   clip-rule="evenodd"
                   d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                  fill="hsla(220, 27%, 98%, 1)"
+                  fill="[object Object]"
                   fill-rule="evenodd"
                   stroke="white"
                   stroke-linecap="round"
@@ -793,7 +809,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
                 <path
                   clip-rule="evenodd"
                   d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                  fill="hsla(220, 27%, 98%, 1)"
+                  fill="[object Object]"
                   fill-rule="evenodd"
                   stroke="white"
                   stroke-linecap="round"
@@ -816,7 +832,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
                 <path
                   clip-rule="evenodd"
                   d="M6.90237 1.76413C7.03254 1.89431 7.03254 2.10536 6.90237 2.23554L3.2357 5.90221C3.10553 6.03238 2.89447 6.03238 2.7643 5.90221L1.09763 4.23554C0.967456 4.10536 0.967456 3.89431 1.09763 3.76414C1.22781 3.63396 1.43886 3.63396 1.56904 3.76414L3 5.1951L6.43096 1.76413C6.56114 1.63396 6.77219 1.63396 6.90237 1.76413Z"
-                  fill="hsla(220, 27%, 98%, 1)"
+                  fill="[object Object]"
                   fill-rule="evenodd"
                   stroke="white"
                   stroke-linecap="round"

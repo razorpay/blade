@@ -51,7 +51,7 @@ const checkboxIconColors: CheckboxIconColors = {
     default: {
       border: {
         checked: 'colors.brand.primary.500',
-        unchecked: 'colors.brand.gray.500',
+        unchecked: 'colors.brand.gray.500.lowContrast',
       },
       background: {
         checked: 'colors.brand.primary.500',
@@ -61,10 +61,10 @@ const checkboxIconColors: CheckboxIconColors = {
     disabled: {
       border: {
         checked: 'transparent',
-        unchecked: 'colors.brand.gray.a100',
+        unchecked: 'colors.brand.gray.a100.lowContrast',
       },
       background: {
-        checked: 'colors.brand.gray.a100',
+        checked: 'colors.brand.gray.a100.lowContrast',
         unchecked: 'transparent',
       },
     },

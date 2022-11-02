@@ -196,8 +196,6 @@ Array [
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -332,8 +330,6 @@ Array [
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -468,8 +464,6 @@ Array [
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -604,8 +598,6 @@ Array [
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -740,8 +732,6 @@ Array [
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -876,8 +866,6 @@ Array [
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,

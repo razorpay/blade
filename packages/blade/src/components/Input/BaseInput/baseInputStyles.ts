@@ -32,12 +32,12 @@ export const getInputBackgroundAndBorderStyles = ({
   'theme' | 'isFocused' | 'isDisabled' | 'validationState' | 'isHovered'
 >): CSSObject => {
   // normal state
-  let backgroundColor = theme.colors.brand.gray[200];
-  let borderBottomColor = theme.colors.brand.gray[400];
+  let backgroundColor = theme.colors.brand.gray[200].lowContrast;
+  let borderBottomColor = theme.colors.brand.gray[400].lowContrast;
 
   //hoverState
   if (isHovered) {
-    backgroundColor = theme.colors.brand.gray[300];
+    backgroundColor = theme.colors.brand.gray[300].lowContrast;
   }
 
   // focused state
@@ -47,8 +47,8 @@ export const getInputBackgroundAndBorderStyles = ({
 
   // disabled state
   if (isDisabled) {
-    backgroundColor = theme.colors.brand.gray[200];
-    borderBottomColor = theme.colors.brand.gray[300];
+    backgroundColor = theme.colors.brand.gray[200].lowContrast;
+    borderBottomColor = theme.colors.brand.gray[300].lowContrast;
   }
 
   // validation state

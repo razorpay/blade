@@ -17,10 +17,14 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,19%,89%,1);
   border-radius: 4px;
   display: inline-block;
   line-height: 1rem;
+}
+
+.c0 backgroundColor {
+  low-contrast: hsla(216,19%,89%,1);
+  high-contrast: hsla(217,18%,45%,1);
 }
 
 <div>
@@ -56,10 +60,14 @@ exports[`<Code /> should render medium Code 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,19%,89%,1);
   border-radius: 4px;
   display: inline-block;
   line-height: 1rem;
+}
+
+.c0 backgroundColor {
+  low-contrast: hsla(216,19%,89%,1);
+  high-contrast: hsla(217,18%,45%,1);
 }
 
 <div>
@@ -95,10 +103,14 @@ exports[`<Code /> should render small Code 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,19%,89%,1);
   border-radius: 4px;
   display: inline-block;
   line-height: 1rem;
+}
+
+.c0 backgroundColor {
+  low-contrast: hsla(216,19%,89%,1);
+  high-contrast: hsla(217,18%,45%,1);
 }
 
 <div>
