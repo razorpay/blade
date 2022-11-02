@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.5.3
+
+### Patch Changes
+
+- 92cfa80: fix(Alert): throw error if `secondaryAction` is defined without `primaryAction`
+
 ## 3.5.2
 
 ### Patch Changes
