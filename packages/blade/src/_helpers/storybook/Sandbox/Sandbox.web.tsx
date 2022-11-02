@@ -3,7 +3,12 @@ import { Sandpack } from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
 
-function Sandbox({ children }: { children: string }): JSX.Element {
+export type SandboxProps = {
+  children: string;
+  language?: 'javascript' | 'typescript' | 'jsx' | 'tsx';
+};
+
+function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
   const {
     // @ts-expect-error globals is available but the typings in storybook are properly defined hence, ignoring it
     globals: { themeTokenName, colorScheme },
@@ -51,7 +56,7 @@ function Sandbox({ children }: { children: string }): JSX.Element {
             </StrictMode>
           );
           `,
-        '/App.tsx': dedent(children),
+        [`/App.${language}`]: dedent(children),
       }}
       customSetup={{
         dependencies: {

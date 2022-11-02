@@ -63,7 +63,6 @@ const Page = (): ReactElement => {
         export default App;
         `}
       </Sandbox>
-      {/* <Highlight language="tsx">{`import { Badge } from '@razorpay/blade/components'; \nimport type { BadgeProps } from '@razorpay/blade/components';`}</Highlight> */}
       <Title>Example</Title>
       <Subtitle>
         This is the default badge. You can change the properties of this button using the controls
