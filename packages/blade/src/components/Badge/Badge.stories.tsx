@@ -9,7 +9,7 @@ import {
   Description,
 } from '@storybook/addon-docs';
 import capitalize from 'lodash/capitalize';
-import { Highlight, Link } from '@storybook/design-system';
+import { Highlight } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
@@ -18,6 +18,8 @@ import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
 import { Text as BladeText } from '~components/Typography';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -44,13 +46,23 @@ const Page = (): ReactElement => {
         Badges are used to show small amount of color coded metadata, which are ideal for getting
         user attention.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <br />
-      <br />
+      <FigmaEmbed title="Badge Figma Design" src={figmaURL} />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Badge } from '@razorpay/blade/components'; \nimport type { BadgeProps } from '@razorpay/blade/components';`}</Highlight>
+      <Sandbox>
+        {`
+        import { Badge, InfoIcon } from '@razorpay/blade/components';
+        
+        function App(): JSX.Element {
+          return (
+            <Badge variant="neutral" icon={InfoIcon}>
+              Boop
+            </Badge>
+          )
+        }
+
+        export default App;
+        `}
+      </Sandbox>
       <Title>Example</Title>
       <Subtitle>
         This is the default badge. You can change the properties of this button using the controls
