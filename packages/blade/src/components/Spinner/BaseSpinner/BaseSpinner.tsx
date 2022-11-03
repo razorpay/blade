@@ -56,9 +56,9 @@ const getColor = ({
       `feedback.${intent}.action.icon.primary.disabled.${contrast}Contrast`,
     );
   } else if (contrast == 'low') {
-    return getIn(theme.colors, 'brand.gray.700');
+    return getIn(theme.colors, 'brand.gray.700.lowContrast');
   } else {
-    return getIn(theme.colors, 'brand.gray.400');
+    return getIn(theme.colors, 'brand.gray.400.lowContrast');
   }
 };
 
