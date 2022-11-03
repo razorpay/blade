@@ -55,7 +55,7 @@ const Page = (): ReactElement => {
         {`
         import { Badge, InfoIcon } from '@razorpay/blade/components';
         
-        function App() {
+        function App(): JSX.Element {
           return (
             <Badge variant="neutral" icon={InfoIcon}>
               Boop
