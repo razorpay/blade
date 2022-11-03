@@ -4,6 +4,7 @@
 
 ### Minor Changes
 
+- 0f4df3a: feat(blade): added counter component
 - c5b28bc: feat(tokens): add new tokens to neutral palette
 
 ## 3.5.3
