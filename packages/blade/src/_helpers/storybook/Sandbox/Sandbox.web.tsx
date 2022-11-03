@@ -22,7 +22,7 @@ function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
         template="react-ts"
         files={{
           '/index.tsx': dedent`import { StrictMode } from "react";
-            import * as ReactDOMClient from "react-dom/client";
+            import ReactDOM from "react-dom";
             import styled, { createGlobalStyle } from "styled-components";
   
             import { BladeProvider, Theme } from "@razorpay/blade/components";
@@ -53,10 +53,8 @@ function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
             if (!rootElement) {
               throw new Error("root is null");
             }
-            
-            const root = ReactDOMClient.createRoot(rootElement);
-            
-            root.render(
+                        
+            ReactDOM.render(
               <StrictMode>
                 <BladeProvider themeTokens={${themeTokenName}} colorScheme="${colorScheme}">
                   <GlobalStyles />
@@ -64,15 +62,16 @@ function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
                     <App />
                   </BackgroundBox>
                 </BladeProvider>
-              </StrictMode>
+              </StrictMode>,
+              rootElement
             );
             `,
           [`/App.${language}`]: dedent(children),
         }}
         customSetup={{
           dependencies: {
-            react: '18.0.0',
-            'react-dom': '18.0.0',
+            react: '17.0.2',
+            'react-dom': '17.0.2',
             'react-scripts': '4.0.3',
             '@razorpay/blade': '*',
             '@fontsource/lato': '4.5.10',
