@@ -56,12 +56,12 @@ const radioIconColors: RadioIconColors = {
   variants: {
     default: {
       dot: {
-        checked: 'colors.brand.gray.200',
-        unchecked: 'colors.brand.gray.200',
+        checked: 'colors.brand.gray.200.lowContrast',
+        unchecked: 'colors.brand.gray.200.lowContrast',
       },
       border: {
         checked: 'colors.brand.primary.500',
-        unchecked: 'colors.brand.gray.500',
+        unchecked: 'colors.brand.gray.500.lowContrast',
       },
       background: {
         checked: 'colors.brand.primary.500',
@@ -70,22 +70,22 @@ const radioIconColors: RadioIconColors = {
     },
     disabled: {
       dot: {
-        checked: 'colors.brand.gray.200',
-        unchecked: 'colors.brand.gray.200',
+        checked: 'colors.brand.gray.200.lowContrast',
+        unchecked: 'colors.brand.gray.200.lowContrast',
       },
       border: {
         checked: 'transparent',
-        unchecked: 'colors.brand.gray.a100',
+        unchecked: 'colors.brand.gray.a100.lowContrast',
       },
       background: {
-        checked: 'colors.brand.gray.a100',
+        checked: 'colors.brand.gray.a100.lowContrast',
         unchecked: 'transparent',
       },
     },
     negative: {
       dot: {
-        checked: 'colors.brand.gray.200',
-        unchecked: 'colors.brand.gray.200',
+        checked: 'colors.brand.gray.200.lowContrast',
+        unchecked: 'colors.brand.gray.200.lowContrast',
       },
       border: {
         checked: 'colors.feedback.border.negative.highContrast',
