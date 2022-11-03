@@ -8,7 +8,7 @@ import Box from '~components/Box';
 
 export type SandboxProps = {
   children: string;
-  language?: 'js' | 'ts' | 'jsx' | 'tsx';
+  language?: 'ts' | 'tsx';
 };
 
 function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
