@@ -81,7 +81,7 @@ const Indicator = ({
   const isReactNative = getPlatformType() === 'react-native';
   const isWeb = !isReactNative;
   const a11yProps = makeAccessible({
-    label: accessibilityLabel,
+    label: accessibilityLabel ?? children,
     ...(isWeb && { role: 'status' }),
   });
 
