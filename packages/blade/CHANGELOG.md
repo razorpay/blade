@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.6.0
+
+### Minor Changes
+
+- c5b28bc: feat(tokens): add new tokens to neutral palette
+
 ## 3.5.3
 
 ### Patch Changes
