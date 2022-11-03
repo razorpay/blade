@@ -2,6 +2,8 @@ import React from 'react';
 import { Sandpack } from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
+// @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
+import packageJson from '../../../../package.json'; // eslint-disable-line
 import Box from '~components/Box';
 
 export type SandboxProps = {
@@ -70,12 +72,12 @@ function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
         }}
         customSetup={{
           dependencies: {
-            react: '17.0.2',
-            'react-dom': '17.0.2',
+            react: packageJson.peerDependencies.react,
+            'react-dom': packageJson.peerDependencies['react-dom'],
             'react-scripts': '4.0.3',
             '@razorpay/blade': '*',
             '@fontsource/lato': '4.5.10',
-            'styled-components': '5.3.6',
+            'styled-components': packageJson.peerDependencies['styled-components'],
           },
         }}
         options={{
