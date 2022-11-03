@@ -29,6 +29,7 @@ const getStories = () => {
     require('../../src/components/Checkbox/Checkbox.stories.tsx'),
     require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
     require('../../src/components/Icons/Icons.stories.tsx'),
+    require('../../src/components/Indicator/Indicator.stories.tsx'),
     require('../../src/components/Input/BaseInput/BaseInput.stories.tsx'),
     require('../../src/components/Input/OTPInput/OTPInput.stories.tsx'),
     require('../../src/components/Input/PasswordInput/PasswordInput.stories.tsx'),
