@@ -8,6 +8,7 @@ export * from './Input/TextInput';
 export * from './Input/PasswordInput';
 export * from './Input/TextArea';
 export * from './Input/OTPInput';
+export * from './Indicator';
 export * from './Link';
 export * from './LiveAnnouncer';
 export * from './Radio';
