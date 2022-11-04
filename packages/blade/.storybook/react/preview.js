@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { theme, toggleHiddenStoryStyle } from './manager';
+import { DocsContainer } from '@storybook/addon-docs';
 import { global } from '@storybook/design-system';
-import { BladeProvider, useTheme } from '../../src/components/BladeProvider';
+import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 import ErrorBoundary from './ErrorBoundary';
 const { GlobalStyle } = global;
@@ -39,6 +40,34 @@ export const parameters = {
   },
   docs: {
     theme,
+    components: {
+      summary: styled.summary`
+        font-family: ${theme.fontBase};
+        color: ${theme.textColor};
+        font-weight: normal;
+        cursor: pointer;
+      `,
+      li: styled.li`
+        :not(:first-child) {
+          padding-top: 16px;
+        }
+        font-size: 14px;
+
+        & :not(pre) > code {
+          line-height: 1;
+          margin: 0 2px;
+          padding: 3px 5px;
+          white-space: nowrap;
+          border-radius: 3px;
+          font-size: 13px;
+          border: 1px solid #eeeeee;
+          background-color: #f8f8f8;
+        }
+      `,
+    },
+    container: ({ children, context }) => {
+      return <DocsContainer context={context}>{children}</DocsContainer>;
+    },
   },
 };
 
@@ -76,7 +105,7 @@ export const decorators = [
         return bankingTheme;
       }
     };
-    console.log(paymentTheme);
+
     return (
       <ErrorBoundary>
         <GlobalStyle />
