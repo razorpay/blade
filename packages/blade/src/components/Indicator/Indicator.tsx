@@ -67,13 +67,14 @@ const Indicator = ({
   const fillColor = theme.colors.feedback.background[intent].highContrast;
   const strokeColor = theme.colors.brand.gray[200].lowContrast;
   const getDimension = useCallback((): Dimensions => {
+    // the actual svg size would get reduced by 2 because of stroke width
     switch (size) {
       case 'small':
-        return { svgSize: '8', textSize: 'small' };
+        return { svgSize: '10', textSize: 'small' };
       case 'xsmall':
-        return { svgSize: '6', textSize: 'small' };
+        return { svgSize: '8', textSize: 'small' };
       default:
-        return { svgSize: '10', textSize: 'medium' };
+        return { svgSize: '12', textSize: 'medium' };
     }
   }, [size]);
   const dimensions = getDimension();
