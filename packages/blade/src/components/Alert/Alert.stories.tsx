@@ -6,7 +6,6 @@ import { Highlight, Link } from '@storybook/design-system';
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
-import { colors } from '~tokens/global';
 import Box from '~components/Box';
 
 const Page = (): ReactElement => {
@@ -188,7 +187,7 @@ FullWidth.parameters = {
 
 export const Borderless: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
-    <Box background={colors.neutral.blueGrayLight[100]} height={200} position="relative">
+    <Box height={200} position="relative">
       <Box position="absolute" width="100%">
         <AlertComponent {...args} />
       </Box>

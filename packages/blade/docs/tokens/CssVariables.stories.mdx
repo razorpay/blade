@@ -2,35 +2,7 @@ import { Meta, DocsContainer } from '@storybook/addon-docs';
 import { useTheme, BladeProvider } from '../../src//components';
 import { paymentTheme, bankingTheme } from '../../src//tokens';
 
-<Meta
-  title="Tokens/CSS Variables"
-  parameters={{
-    docs: {
-      container: ({ children, context }) => {
-        const getThemeTokens = () => {
-          if (context.globals.themeTokenName === 'paymentTheme') {
-            return paymentTheme;
-          }
-          if (context.globals.themeTokenName === 'bankingTheme') {
-            return bankingTheme;
-          }
-          return null;
-        };
-        return (
-          <DocsContainer context={context}>
-            <BladeProvider
-              key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
-              themeTokens={getThemeTokens()}
-              colorScheme={context.globals.colorScheme}
-            >
-              {children}
-            </BladeProvider>
-          </DocsContainer>
-        );
-      },
-    },
-  }}
-/>
+<Meta title="Tokens/CSS Variables" />
 
 # ✨ CSS Variables
 

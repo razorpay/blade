@@ -23,7 +23,7 @@ export const theme = create({
   fontCode: 'monospace',
 
   // Text colors
-  textColor: '#333333',
+  textColor: 'hsla(228,56%,17%,1)',
   textInverseColor: '#FFFFFF',
   textMutedColor: '#666666',
 

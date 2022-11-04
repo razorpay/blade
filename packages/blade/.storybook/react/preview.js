@@ -1,9 +1,11 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 import { theme, toggleHiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
-import { BladeProvider, useTheme } from '../../src/components/BladeProvider';
+import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 import ErrorBoundary from './ErrorBoundary';
+import { H1, H2, Paragraph, H3, List } from './docs-components';
 const { GlobalStyle } = global;
 
 export const parameters = {
@@ -39,6 +41,60 @@ export const parameters = {
   },
   docs: {
     theme,
+    components: {
+      h1: H1,
+      h2: H2,
+      h3: H3,
+      p: styled(Paragraph)`
+        margin: 12px 0px;
+      `,
+      li: List,
+      summary: styled.summary`
+        font-family: ${theme.fontBase};
+        font-weight: normal;
+        cursor: pointer;
+      `,
+    },
+    container: ({ children, context }) => {
+      const shouldEnforcePaymentTheme = !context.kind.includes('Tokens');
+
+      const getThemeTokens = () => {
+        if (context.globals.themeTokenName === 'paymentTheme') {
+          return paymentTheme;
+        }
+        if (context.globals.themeTokenName === 'bankingTheme') {
+          return bankingTheme;
+        }
+        return null;
+      };
+
+      const themeTokens = getThemeTokens();
+
+      const GlobalBackground = createGlobalStyle`
+        .sbdocs-wrapper {
+          background-color: ${
+            themeTokens.colors[
+              shouldEnforcePaymentTheme || context.globals.colorScheme === 'light'
+                ? 'onLight'
+                : 'onDark'
+            ].surface.background.level3.lowContrast
+          };
+        }
+      `;
+
+      return (
+        <DocsContainer context={context}>
+          <GlobalBackground />
+          <BladeProvider
+            key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+            themeTokens={shouldEnforcePaymentTheme ? paymentTheme : themeTokens}
+            colorScheme={shouldEnforcePaymentTheme ? 'light' : context.globals.colorScheme}
+          >
+            {children}
+          </BladeProvider>
+        </DocsContainer>
+      );
+    },
   },
 };
 
@@ -76,7 +132,7 @@ export const decorators = [
         return bankingTheme;
       }
     };
-    console.log(paymentTheme);
+
     return (
       <ErrorBoundary>
         <GlobalStyle />
