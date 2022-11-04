@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme, toggleHiddenStoryStyle } from './manager';
-import { DocsContainer } from '@storybook/addon-docs';
 import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
@@ -64,9 +63,6 @@ export const parameters = {
           background-color: #f8f8f8;
         }
       `,
-    },
-    container: ({ children, context }) => {
-      return <DocsContainer context={context}>{children}</DocsContainer>;
     },
   },
 };
