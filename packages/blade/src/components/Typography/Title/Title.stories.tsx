@@ -7,11 +7,12 @@ import {
   Stories,
   PRIMARY_STORY,
 } from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { TitleProps } from './';
 import { Title as TitleComponent } from './';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -39,13 +40,23 @@ const Page = (): ReactElement => {
         goal is visual storytelling. For example, use Title as marketing content on landing pages or
         to capture attention during onboarding.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
+      <FigmaEmbed src={figmaURL} title="Title Figma Designs" />
       <br />
       <br />
       <StorybookTitle>Usage</StorybookTitle>
-      <Highlight language="tsx">{`import { Title } from '@razorpay/blade/components' \nimport type { TitleProps } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox>
+        {`
+          import { Title } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <Title size="large">Blade by Razorpay</Title>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
       <StorybookTitle>Example</StorybookTitle>
       <Primary />
       <StorybookTitle>Properties</StorybookTitle>

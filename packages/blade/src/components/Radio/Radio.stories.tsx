@@ -2,12 +2,13 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
 import { Text } from '../Typography';
 import type { RadioGroupProps } from './RadioGroup/RadioGroup';
 import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 
 const Page = (): React.ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -18,6 +19,13 @@ const Page = (): React.ReactElement => {
       darkModeURL:
         'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
     },
+    {
+      themeTokenName: 'bankingTheme',
+      lightModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11314%3A278927',
+      darkModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11314%3A278927',
+    },
   ]);
 
   return (
@@ -27,13 +35,33 @@ const Page = (): React.ReactElement => {
         Radio & RadioGroup can be used in forms when a user needs to single value from several
         options.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
+      <FigmaEmbed src={figmaURL} title="Radio Figma Designs" />
       <br />
       <br />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Radio, RadioGroup } from '@razorpay/blade/components' \nimport type { RadioProps, RadioGroupProps } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox showConsole>
+        {`
+          import { RadioGroup, Radio } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <RadioGroup
+                helpText="Select atleast one"
+                label="Fruits"
+                name="fruits"
+                defaultValue="orange"
+                onChange={(e) => console.log(e)}
+              >
+                <Radio value="apple">Apple</Radio>
+                <Radio value="mango">Mango</Radio>
+                <Radio value="orange">Orange</Radio>
+              </RadioGroup>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
       <Title>Example</Title>
       <Subtitle>
         This is the default radio. You can change the properties of this button using the controls

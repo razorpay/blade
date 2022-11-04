@@ -38,9 +38,8 @@ function Sandbox({ children, language = 'tsx', showConsole = false }: SandboxPro
             const BackgroundBox = styled.div(
               ({ theme }: { theme: Theme }) => ({
                 backgroundColor: theme.colors.surface.background.level1.lowContrast,
-                height: '100vh',
-                width: '100vw',
-                padding: '12px'
+                minHeight: '100vh',
+                padding: '12px 24px'
               })
             );
 
@@ -68,6 +67,8 @@ function Sandbox({ children, language = 'tsx', showConsole = false }: SandboxPro
               </StrictMode>,
               rootElement
             );
+
+            console.clear(); // There could be some codesandbox warnings, clearing them here on init
             `,
           [`/App.${language}`]: dedent(children),
         }}

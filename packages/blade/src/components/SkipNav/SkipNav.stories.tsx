@@ -8,13 +8,13 @@ import {
   PRIMARY_STORY,
   Description,
 } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import { Button } from '~components/Button';
 import { Link } from '~components/Link';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav';
 import { Text } from '~components/Typography';
 import Box from '~components/Box';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): ReactElement => {
   return (
@@ -29,7 +29,39 @@ const Page = (): ReactElement => {
       <br />
       <br />
       <StorybookTitle>Usage</StorybookTitle>
-      <Highlight language="tsx">{`import { SkipNavLink, SkipNavContent } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox>
+        {`
+          import { 
+            SkipNavLink, 
+            SkipNavContent, 
+            Text, 
+            Link,
+            Code 
+          } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <div>
+                <Text>Click somewhere on the text here to focus on this window and press <Code>TAB</Code> key to see it in action</Text>
+                <SkipNavLink>Skip to content</SkipNavLink>
+                <nav style={{ marginBottom: '800px' }}>
+                  <ul>
+                    <li><Link href="#">Nav link 1</Link></li>
+                    <li><Link href="#">Nav link 2</Link></li>
+                    <li><Link href="#">Nav link 3</Link></li>
+                  </ul>
+                </nav>
+                <main>
+                  <SkipNavContent />
+                  <Text>Main Content of the Page</Text>
+                </main>
+              </div>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
       <StorybookTitle>Example</StorybookTitle>
       <Primary />
       <StorybookTitle>Properties</StorybookTitle>

@@ -1,9 +1,9 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
 import React from 'react';
 import type { OTPInputProps } from './OTPInput';
 import { OTPInput as OTPInputComponent } from './OTPInput';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -128,7 +128,20 @@ export default {
             transaction. These are a group of inputs and can be either 4 or 6 characters long.
           </Subtitle>
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { OTPInput } from '@razorpay/blade/components' \nimport type { OTPInputProps } from '@razorpay/blade/components'`}</Highlight>
+          <Sandbox showConsole>
+            {`
+              import { OTPInput } from '@razorpay/blade/components';
+
+              function App(): JSX.Element {
+                return (
+                  // Fill OTP and check console
+                  <OTPInput label="Enter OTP" onOTPFilled={(e) => console.log(e)} />
+                )
+              }
+
+              export default App;
+            `}
+          </Sandbox>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
