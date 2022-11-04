@@ -10,7 +10,7 @@ import {
 } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
-import { Highlight, Link } from '@storybook/design-system';
+import { Highlight } from '@storybook/design-system';
 import styled from 'styled-components';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
@@ -20,6 +20,8 @@ import { Text } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Box from '~components/Box';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -46,13 +48,24 @@ const Page = (): ReactElement => {
         This is the Button component which can be used for various CTAs. It is available in 3
         different variants.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
+      <FigmaEmbed title="Button Figma Designs" src={figmaURL} />
       <br />
       <br />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Button } from '@razorpay/blade/components' \nimport type { ButtonProps } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox showConsole>
+        {`
+        import { Button } from '@razorpay/blade/components'
+        
+        function App(): JSX.Element {
+          return (
+            // Try changing variant here to secondary
+            <Button variant="primary" onClick={() => console.log('Tadaaaa')}>Click Me!</Button>
+          )
+        }
+
+        export default App;
+      `}
+      </Sandbox>
       <Title>Example</Title>
       <Subtitle>
         This is the default button. You can change the properties of this button using the controls

@@ -1,13 +1,14 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { Highlight, Link } from '@storybook/design-system';
 
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import { colors } from '~tokens/global';
 import Box from '~components/Box';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -35,10 +36,48 @@ const Page = (): ReactElement => {
         explanations inside the system in a prominent way.
       </Subtitle>
       <Title>Usage</Title>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <Highlight language="tsx">{`import { Alert } from '@razorpay/blade/components' \nimport type { AlertProps } from '@razorpay/blade/components'`}</Highlight>
+      <FigmaEmbed title="Alert Figma Designs" src={figmaURL} />
+      <Sandbox>
+        {`
+        import { useState } from 'react';
+        import { Alert, Button } from '@razorpay/blade/components';
+
+        function App() {
+          const [showAlert, setShowAlert] = useState(false);
+          return (
+            <div>
+              <Button onClick={() => setShowAlert(!showAlert)}>Click to be alerted!</Button>
+              <br /><br />
+              <div>
+                { 
+                  showAlert 
+                  ? <Alert 
+                      title="The Button is Clicked 👀" 
+                      description="Click the Button again to hide alert"
+                      actions={{
+                        primary: {
+                          onClick: () => {
+                            alert('Alert from the alert hehe')
+                          },
+                          text: 'Primary Action'
+                        },
+                        secondary: {
+                          href: 'https://razorpay.com',
+                          target: '_blank',
+                          text: 'Go to Razorpay.com'
+                        }
+                      }}
+                    /> 
+                  : null 
+                }
+              </div>
+            </div>
+          )
+        }
+
+        export default App;
+        `}
+      </Sandbox>
       <Title>Example</Title>
       <Subtitle>You can change the properties using the controls in the table below.</Subtitle>
       <Primary />

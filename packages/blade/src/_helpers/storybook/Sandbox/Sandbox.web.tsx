@@ -9,9 +9,10 @@ import Box from '~components/Box';
 export type SandboxProps = {
   children: string;
   language?: 'ts' | 'tsx';
+  showConsole?: boolean;
 };
 
-function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
+function Sandbox({ children, language = 'tsx', showConsole = false }: SandboxProps): JSX.Element {
   const {
     // @ts-expect-error globals is available but the typings in storybook are properly defined hence, ignoring it
     globals: { themeTokenName, colorScheme },
@@ -83,6 +84,7 @@ function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
         options={{
           showInlineErrors: true,
           showConsoleButton: true,
+          showConsole,
         }}
       />
       <br />
