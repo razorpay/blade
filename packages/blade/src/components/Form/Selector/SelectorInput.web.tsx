@@ -16,11 +16,11 @@ const variants = {
   default: {
     background: {
       checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.a50',
+      unchecked: 'colors.brand.gray.a50.lowContrast',
     },
     border: {
       checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.500',
+      unchecked: 'colors.brand.gray.500.lowContrast',
     },
   },
 };

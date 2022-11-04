@@ -1,5 +1,18 @@
 # @razorpay/blade
 
+## 3.6.0
+
+### Minor Changes
+
+- 0f4df3a: feat(blade): added counter component
+- c5b28bc: feat(tokens): add new tokens to neutral palette
+
+## 3.5.3
+
+### Patch Changes
+
+- 92cfa80: fix(Alert): throw error if `secondaryAction` is defined without `primaryAction`
+
 ## 3.5.2
 
 ### Patch Changes
