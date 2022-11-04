@@ -23,17 +23,17 @@ const Page = (): React.ReactElement => {
     >
       <Sandbox>
         {`
-          import { Badge, InfoIcon } from '@razorpay/blade/components';
-          
-          function App(): JSX.Element {
-            return (
-              <Badge variant="neutral" icon={InfoIcon}>
-                Boop
-              </Badge>
-            )
-          }
+        import { Badge, InfoIcon } from '@razorpay/blade/components';
+        
+        function App(): JSX.Element {
+          return (
+            <Badge variant="neutral" icon={InfoIcon}>
+              Boop
+            </Badge>
+          )
+        }
 
-          export default App;
+        export default App;
         `}
       </Sandbox>
     </StoryPageWrapper>
