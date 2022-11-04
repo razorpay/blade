@@ -65,7 +65,7 @@ const Indicator = ({
   const { theme } = useTheme();
 
   const fillColor = theme.colors.feedback.background[intent].highContrast;
-  const strokeColor = theme.colors.brand.gray[200];
+  const strokeColor = theme.colors.brand.gray[200].lowContrast;
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':
