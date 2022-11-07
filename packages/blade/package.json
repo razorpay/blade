@@ -41,7 +41,8 @@
     }
   },
   "scripts": {
-    "typecheck": "run-s types:typecheck:*",
+    "typecheck": "run-p types:typecheck:*",
+    "test": "run-p test:*",
     "prepublish": "yarn build",
     "build": "run-s build:*",
     "clearCache": "jest --clearCache",
