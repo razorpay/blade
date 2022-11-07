@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { theme, toggleHiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components/BladeProvider';
@@ -38,12 +39,60 @@ export const parameters = {
   },
   docs: {
     theme,
+    components: {
+      summary: styled.summary`
+        font-family: ${theme.fontBase};
+        color: ${theme.textColor};
+        font-weight: normal;
+        cursor: pointer;
+      `,
+      li: styled.li`
+        :not(:first-child) {
+          padding-top: 16px;
+        }
+        font-size: 14px;
+
+        & :not(pre) > code {
+          line-height: 1;
+          margin: 0 2px;
+          padding: 3px 5px;
+          white-space: nowrap;
+          border-radius: 3px;
+          font-size: 13px;
+          border: 1px solid #eeeeee;
+          background-color: #f8f8f8;
+        }
+      `,
+    },
   },
 };
 
+const StoryCanvas = styled.div(
+  ({ theme, context }) =>
+    `
+      position: ${context.viewMode === 'story' ? 'absolute' : 'relative'};
+      top: 0;
+      left: 0;
+      border-right: 'none';
+      border: ${theme.border.width.thin}px solid ${theme.colors.surface.border.subtle.lowContrast};
+      right: 0;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      overflow: auto;
+      padding: 2rem;
+      border-radius: ${
+        context.viewMode === 'story'
+          ? `${theme.border.radius.none}px`
+          : `${theme.border.radius.medium}px`
+      };
+      background: ${theme.colors.surface.background.level1.lowContrast};
+    `,
+);
+
 export const decorators = [
   (Story, context) => {
-    toggleHiddenStoryStyle(context.globals.showInternalComponents)
+    toggleHiddenStoryStyle(context.globals.showInternalComponents);
     const getThemeTokens = () => {
       if (context.globals.themeTokenName === 'paymentTheme') {
         return paymentTheme;
@@ -52,6 +101,7 @@ export const decorators = [
         return bankingTheme;
       }
     };
+
     return (
       <ErrorBoundary>
         <GlobalStyle />
@@ -60,7 +110,9 @@ export const decorators = [
           themeTokens={getThemeTokens()}
           colorScheme={context.globals.colorScheme}
         >
-          <Story />
+          <StoryCanvas context={context}>
+            <Story />
+          </StoryCanvas>
         </BladeProvider>
       </ErrorBoundary>
     );
