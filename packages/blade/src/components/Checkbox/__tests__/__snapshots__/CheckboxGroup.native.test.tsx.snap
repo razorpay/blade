@@ -68,7 +68,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
@@ -127,7 +126,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
                 Object {},
@@ -294,7 +292,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
-                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -452,7 +449,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
-                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -610,7 +606,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
-                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -706,7 +701,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
@@ -765,7 +759,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
                 Object {},
@@ -932,7 +925,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
-                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -1090,7 +1082,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
-                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -1248,7 +1239,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
-                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -1314,7 +1304,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]

@@ -125,7 +125,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -275,7 +274,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -425,7 +423,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -567,7 +564,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "textAlign": "left",
               "textDecorationLine": "none",
             },
           ]
