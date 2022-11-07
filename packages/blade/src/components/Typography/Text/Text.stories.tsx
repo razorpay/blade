@@ -74,11 +74,3 @@ const TextTemplate: ComponentStory<typeof TextComponent> = (args) => {
 
 export default TextStoryMeta;
 export const Text = TextTemplate.bind({});
-
-export const WithParentCenterAligned = (): JSX.Element => {
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <TextComponent>Lorem ipum</TextComponent>
-    </div>
-  );
-};
