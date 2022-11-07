@@ -10,7 +10,6 @@ exports[`<BaseText /> should render regular text 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -38,7 +37,6 @@ exports[`<BaseText /> should render text as paragraph element 1`] = `
   -webkit-text-decoration-line: line-through;
   text-decoration-line: line-through;
   line-height: 1rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -67,7 +65,6 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
   -webkit-text-decoration-line: line-through;
   text-decoration-line: line-through;
   line-height: 1rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -96,7 +93,6 @@ exports[`<BaseText /> should render text with default properties 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }

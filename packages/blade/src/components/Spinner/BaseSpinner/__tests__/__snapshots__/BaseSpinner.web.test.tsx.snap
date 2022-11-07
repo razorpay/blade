@@ -198,7 +198,6 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -831,7 +830,6 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }

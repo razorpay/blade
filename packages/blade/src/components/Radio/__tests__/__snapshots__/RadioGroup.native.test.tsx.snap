@@ -69,7 +69,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
@@ -128,7 +127,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
                 Object {},
@@ -291,7 +289,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -444,7 +441,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -597,7 +593,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -662,7 +657,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -745,7 +739,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
@@ -804,7 +797,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
                 Object {},
@@ -967,7 +959,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -1120,7 +1111,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -1273,7 +1263,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
