@@ -1,4 +1,4 @@
-name: Blade PR Title Lint
+name: Blade PR Title Check
 
 on: 
   pull_request:
