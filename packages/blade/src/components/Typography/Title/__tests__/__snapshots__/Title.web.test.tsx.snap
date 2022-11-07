@@ -10,7 +10,6 @@ exports[`<Title /> should render Title with default properties 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 2.5rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -39,7 +38,6 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 3.75rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -68,7 +66,6 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 2.5rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -97,7 +94,6 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 2.5rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -126,7 +122,6 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 2.5rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
