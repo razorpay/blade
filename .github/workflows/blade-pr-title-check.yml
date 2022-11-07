@@ -24,7 +24,7 @@ jobs:
         with:
           header: pr-title-comment
           message: |            
-            We follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your PR Title doesn't fit the specification.
+            ❌ PR title doesn't follow [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/).
 
             Details:
             
