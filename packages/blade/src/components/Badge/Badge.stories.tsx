@@ -1,5 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import capitalize from 'lodash/capitalize';
+import { Title } from '@storybook/addon-docs';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
 import { InfoIcon } from '~components/Icons';
@@ -21,6 +22,7 @@ const Page = (): React.ReactElement => {
       componentName="Badge"
       componentDescription="Badges are used to show small amount of color coded metadata, which are ideal for getting user attention."
     >
+      <Title>Usage</Title>
       <Sandbox>
         {`
         import { Badge, InfoIcon } from '@razorpay/blade/components';

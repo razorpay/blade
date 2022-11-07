@@ -33,7 +33,6 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
       <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
       <br />
       <br />
-      <Title>Usage</Title>
       {props.children}
       <Title>Example</Title>
       <Subtitle>
