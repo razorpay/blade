@@ -38,21 +38,27 @@ const Page = (): React.ReactElement => {
       <br />
       <br />
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox showConsole editorHeight={400}>
         {`
           import { CheckboxGroup, Checkbox } from '@razorpay/blade/components';
 
           function App(): JSX.Element {
             return (
               <CheckboxGroup 
-                label="Which are your favorite Fruits?"
-                name="fruits" 
+                label="Where do you want to collect payments?"
+                name="payment-collection" 
                 onChange={({name, values}) => console.log({name, values})}
-                helpText="Select Fruits"
               >
-                <Checkbox value="apple">Apple</Checkbox>
-                <Checkbox value="mango">Mango</Checkbox>
-                <Checkbox value="orange">Orange</Checkbox>
+                <Checkbox value="website">Website</Checkbox>
+                <Checkbox value="android">Android App</Checkbox>
+                <Checkbox value="ios">iOS App</Checkbox>
+                <Checkbox 
+                  value="social-media" 
+                  helpText="Like WhatsApp, Facebook, Instagram"
+                >
+                  Social Media
+                </Checkbox>
+                <Checkbox value="offline-store">Offline Store</Checkbox>
               </CheckboxGroup>
             )
           }
