@@ -35,8 +35,8 @@ const Page = (): ReactElement => {
         Alerts are messages that communicate information to users about any significant changes or
         explanations inside the system in a prominent way.
       </Subtitle>
-      <Title>Usage</Title>
       <FigmaEmbed title="Alert Figma Designs" src={figmaURL} />
+      <Title>Usage</Title>
       <Sandbox>
         {`
         import { useState } from 'react';
