@@ -10,7 +10,7 @@ const getBaseTextStyles = ({
   fontStyle = 'normal',
   textDecorationLine = 'none',
   lineHeight = 'l',
-  textAlign = 'left',
+  textAlign,
   theme,
 }: StyledBaseTextProps): CSSObject => {
   const textColor = getIn(theme.colors, color);
