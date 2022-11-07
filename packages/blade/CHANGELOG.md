@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.6.1
+
+### Patch Changes
+
+- add9b3e: fix(Typography): inherit `text-align` property from parent in Typography components
+
 ## 3.6.0
 
 ### Minor Changes
