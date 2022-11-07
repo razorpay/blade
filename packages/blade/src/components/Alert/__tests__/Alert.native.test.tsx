@@ -94,4 +94,19 @@ describe('<Alert />', () => {
 
     expect(alert).toBeTruthy();
   });
+
+  it('should throw an error if secondary action is defined without primary action', () => {
+    const onClickSecondary = jest.fn();
+    expect(() =>
+      renderWithTheme(
+        <Alert
+          description="Currently you can only accept payments in international currencies using PayPal."
+          // @ts-expect-error testing failure case when there is no primary action passed
+          actions={{
+            secondary: { text: 'Link', onClick: onClickSecondary },
+          }}
+        />,
+      ),
+    ).toThrow(`[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.`);
+  });
 });

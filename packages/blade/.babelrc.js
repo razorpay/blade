@@ -82,7 +82,6 @@ const configs = {
         [
           '@babel/plugin-transform-runtime',
           {
-            corejs: 3,
             helpers: true,
             regenerator: true,
           },
@@ -107,7 +106,6 @@ const configs = {
         [
           '@babel/plugin-transform-runtime',
           {
-            corejs: 3,
             helpers: true,
             regenerator: true,
           },
@@ -133,7 +131,6 @@ const configs = {
         [
           '@babel/plugin-transform-runtime',
           {
-            corejs: 3,
             helpers: true,
             regenerator: true,
           },
