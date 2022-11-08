@@ -89,7 +89,6 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
       mapping: iconMap,
-      defaultValue: 'ArrowLeftIcon',
     },
   },
   parameters: {
@@ -104,6 +103,12 @@ const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({
   ...args
 }) => {
   return <ButtonComponent {...args}>{children}</ButtonComponent>;
+};
+
+export const ButtonTempTest: ComponentStory<typeof ButtonComponent> = () => {
+  return (
+    <ButtonComponent icon={iconMap.ArrowLeftIcon}>TEST BUTTON FOR UI REVIEWS PR</ButtonComponent>
+  );
 };
 
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
