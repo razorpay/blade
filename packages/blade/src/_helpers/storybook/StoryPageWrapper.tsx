@@ -1,4 +1,12 @@
-import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
+import {
+  ArgsTable,
+  Primary,
+  PRIMARY_STORY,
+  Stories,
+  Subtitle,
+  Title,
+  Description,
+} from '@storybook/addon-docs';
 import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
 
@@ -10,6 +18,7 @@ type StoryPageWrapperTypes = {
   componentDescription: string;
   componentName: string;
   children: React.ReactNode;
+  note?: string;
 };
 
 const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
@@ -30,6 +39,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
     <>
       <Title />
       <Subtitle>{props.componentDescription}</Subtitle>
+      {props.note ? <Description markdown={`> **Note** <br/>${props.note}`} /> : null}
       <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
       <br />
       <br />
