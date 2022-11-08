@@ -34,3 +34,4 @@ jobs:
           workingDir: packages/blade
           buildScriptName: react:storybook:build
           exitOnceUploaded: true
+          exitZeroOnChanges: false
