@@ -10,7 +10,6 @@ exports[`<Code /> should render Code with default properties 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -49,7 +48,6 @@ exports[`<Code /> should render medium Code 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -88,7 +86,6 @@ exports[`<Code /> should render small Code 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }

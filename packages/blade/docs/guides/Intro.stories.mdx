@@ -5,45 +5,45 @@ import { Meta } from '@storybook/addon-docs';
 <div style={{ margin: '0 auto', maxWidth: '600px', textAlign: 'center' }}>
 
 <h1 align="center">Blade</h1>
+<h4>The Design System that powers Razorpay</h4>
 <p align="center">
   <a href="https://github.com/styled-components/styled-components">
     <img
-      src="https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e"
+      src="https://img.shields.io/badge/%F0%9F%92%85%20style-styled--components-orange.svg?colorB=db748e&colorA=444444&style=flat-square"
       alt="Blade is styled with styled-components"
     />
   </a>
   &nbsp;&nbsp;
   <a href="https://github.com/facebook/jest">
-    <img src="https://jestjs.io/img/jest-badge.svg" alt="Blade is tested with jest" />
+    <img
+      src="https://img.shields.io/badge/tested%20with-jest-15c213.svg?colorA=444444&colorB=15c213&style=flat-square&logo=jest"
+      alt="Blade is tested with jest"
+    />
   </a>
   &nbsp;&nbsp;
   <a href="https://github.com/razorpay/blade/blob/master/LICENSE.md">
     <img
-      src="https://img.shields.io/badge/license-MIT-blue.svg"
+      src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square&colorA=444444"
       alt="Blade is released under the MIT license."
     />
   </a>
 </p>
 
-<h4>
-  <b>The Design System that powers Razorpay</b>
-</h4>
-
 </div>
 
-# 📦 Packages
+## 📦 Packages
 
 Blade has 2 packages
 
-## [`@razorpay/blade`](https://github.com/razorpay/blade/tree/master/packages/blade)
+### [@razorpay/blade](https://github.com/razorpay/blade/tree/master/packages/blade)
 
 This package is under **active development**. We'll only refer to this version of blade throughout this documentation.
 
-## [`@razorpay/blade-old`](https://github.com/razorpay/blade-old#--blade-old)
+### [@razorpay/blade-old](https://github.com/razorpay/blade-old#--blade-old)
 
 This package is under **maintenance** and it won't have any major releases. It will be **deprecated** once the newer version (`@razorpay/blade`) is ready for a stable release. The repository is private and only accessible to Razorpay Employees. Documentation for this package can be found [here](https://github.com/razorpay/blade-old#--blade-old)
 
-# 📝 Versioning & Publishing
+## 📝 Versioning & Publishing
 
 - The first step in publishing a new version of blade is to first the mention the type of change and bump the version. We are using [`changesets`](https://github.com/atlassian/changesets) to handle automated versioning for us based on the intent of the change we mention in the PR.
 - Once a PR is approved by the authors of blade, based on if the PR needs a new version to be published the author will add a changeset to the PR.
@@ -59,6 +59,6 @@ This package is under **maintenance** and it won't have any major releases. It w
 
 > 🗒 You can read in depth about our shipping strategy [here](https://github.com/razorpay/blade/blob/master/rfcs/2021-06-15-shipping-blade.md)
 
-# ⌛️ Current State
+## ⌛️ Current State
 
 For the current state of things please refer to the left hand sidebar. We're actively working on adding more components, utilities and docs. Please reach us on Slack at `#design-system` for any queries or create an issue on the GitHub repo.
