@@ -15,16 +15,16 @@ const Page = (): ReactElement => {
     {
       themeTokenName: 'paymentTheme',
       lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6824%3A61',
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789',
       darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6824%3A61',
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789',
     },
     {
       themeTokenName: 'bankingTheme',
       lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=6824%3A61',
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11098%3A286031',
       darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=6824%3A61',
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11098%3A286031',
     },
   ]);
 
@@ -35,9 +35,9 @@ const Page = (): ReactElement => {
         Alerts are messages that communicate information to users about any significant changes or
         explanations inside the system in a prominent way.
       </Subtitle>
-      <Title>Usage</Title>
       <FigmaEmbed title="Alert Figma Designs" src={figmaURL} />
-      <Sandbox>
+      <Title>Usage</Title>
+      <Sandbox editorHeight={500}>
         {`
         import { useState } from 'react';
         import { Alert, Button } from '@razorpay/blade/components';
@@ -46,7 +46,9 @@ const Page = (): ReactElement => {
           const [showAlert, setShowAlert] = useState(false);
           return (
             <div>
-              <Button onClick={() => setShowAlert(!showAlert)}>Click to be alerted!</Button>
+              <Button onClick={() => setShowAlert(!showAlert)}>
+                Click to be alerted!
+              </Button>
               <br /><br />
               <div>
                 { 

@@ -39,22 +39,29 @@ const Page = (): React.ReactElement => {
       <br />
       <br />
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
         {`
           import { RadioGroup, Radio } from '@razorpay/blade/components';
 
           function App(): JSX.Element {
             return (
               <RadioGroup
-                helpText="Select atleast one"
-                label="Fruits"
-                name="fruits"
-                defaultValue="orange"
-                onChange={(e) => console.log(e)}
+                helpText="Select only one"
+                label="Where do you want to collect payments?"
+                name="payment-collection" 
+                onChange={({name, value}) => console.log({name, value})}
+                defaultValue="website"
               >
-                <Radio value="apple">Apple</Radio>
-                <Radio value="mango">Mango</Radio>
-                <Radio value="orange">Orange</Radio>
+                <Radio value="website">Website</Radio>
+                <Radio value="android">Android App</Radio>
+                <Radio value="ios">iOS App</Radio>
+                <Radio 
+                  value="social-media" 
+                  helpText="Like WhatsApp, Facebook, Instagram"
+                >
+                  Social Media
+                </Radio>
+                <Radio value="offline-store">Offline Store</Radio>
               </RadioGroup>
             )
           }

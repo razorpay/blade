@@ -36,7 +36,7 @@ const Page = (): ReactElement => {
       <br />
       <br />
       <Title>Usage</Title>
-      <Sandbox>
+      <Sandbox editorWidthPercentage={60}>
         {`
           import { Code, Text } from '@razorpay/blade/components';
 
