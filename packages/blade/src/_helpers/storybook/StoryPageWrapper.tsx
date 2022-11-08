@@ -36,7 +36,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
       {props.children}
       <Title>Example</Title>
       <Subtitle>
-        {`This is the default ${props.componentName}. You can change the properties of this button using the controls in the table below.`}
+        {`This is the default ${props.componentName}. You can change the properties using the controls below.`}
       </Subtitle>
       <Primary />
       <Title>Properties</Title>
