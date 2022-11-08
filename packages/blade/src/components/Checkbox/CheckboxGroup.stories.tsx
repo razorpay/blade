@@ -38,7 +38,7 @@ const Page = (): React.ReactElement => {
       <br />
       <br />
       <Title>Usage</Title>
-      <Sandbox showConsole editorHeight={400}>
+      <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
         {`
           import { CheckboxGroup, Checkbox } from '@razorpay/blade/components';
 

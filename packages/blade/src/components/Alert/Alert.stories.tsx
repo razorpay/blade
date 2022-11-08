@@ -37,7 +37,7 @@ const Page = (): ReactElement => {
       </Subtitle>
       <FigmaEmbed title="Alert Figma Designs" src={figmaURL} />
       <Title>Usage</Title>
-      <Sandbox>
+      <Sandbox editorHeight={500}>
         {`
         import { useState } from 'react';
         import { Alert, Button } from '@razorpay/blade/components';
@@ -46,7 +46,9 @@ const Page = (): ReactElement => {
           const [showAlert, setShowAlert] = useState(false);
           return (
             <div>
-              <Button onClick={() => setShowAlert(!showAlert)}>Click to be alerted!</Button>
+              <Button onClick={() => setShowAlert(!showAlert)}>
+                Click to be alerted!
+              </Button>
               <br /><br />
               <div>
                 { 

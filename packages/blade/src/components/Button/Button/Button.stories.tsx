@@ -59,7 +59,12 @@ const Page = (): ReactElement => {
         function App(): JSX.Element {
           return (
             // Try changing variant here to secondary
-            <Button variant="primary" onClick={() => console.log('Tadaaaa')}>Click Me!</Button>
+            <Button 
+              variant="primary" 
+              onClick={() => console.log('Tadaaaa')}
+            >
+              Click Me!
+            </Button>
           )
         }
 

@@ -11,6 +11,7 @@ export type SandboxProps = {
   language?: 'ts' | 'tsx';
   showConsole?: boolean;
   editorHeight?: number;
+  editorWidthPercentage?: number;
 };
 
 function Sandbox({
@@ -18,6 +19,7 @@ function Sandbox({
   language = 'tsx',
   showConsole = false,
   editorHeight = 300,
+  editorWidthPercentage = 50,
 }: SandboxProps): JSX.Element {
   const {
     // @ts-expect-error globals is available but the typings in storybook are properly defined hence, ignoring it
@@ -93,6 +95,7 @@ function Sandbox({
           showConsoleButton: true,
           showConsole,
           editorHeight,
+          editorWidthPercentage,
         }}
       />
       <br />

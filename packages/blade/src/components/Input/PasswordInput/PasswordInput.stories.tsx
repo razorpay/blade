@@ -43,7 +43,10 @@ const Page = (): ReactElement => {
 
           function App(): JSX.Element {
             return (
-              <PasswordInput label="Enter Password" onChange={(e) => console.log(e)} />
+              <PasswordInput 
+                label="Enter Password" 
+                onChange={(e) => console.log(e)} 
+              />
             )
           }
 

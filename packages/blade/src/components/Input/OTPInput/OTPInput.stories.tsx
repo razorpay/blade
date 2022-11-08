@@ -135,7 +135,10 @@ export default {
               function App(): JSX.Element {
                 return (
                   // Fill OTP and check console
-                  <OTPInput label="Enter OTP" onOTPFilled={(e) => console.log(e)} />
+                  <OTPInput 
+                    label="Enter OTP" 
+                    onOTPFilled={(e) => console.log(e)} 
+                  />
                 )
               }
 

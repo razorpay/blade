@@ -29,7 +29,7 @@ const Page = (): ReactElement => {
       <br />
       <br />
       <StorybookTitle>Usage</StorybookTitle>
-      <Sandbox>
+      <Sandbox editorHeight={400}>
         {`
           import { 
             SkipNavLink, 
