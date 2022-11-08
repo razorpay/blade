@@ -89,6 +89,7 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
       mapping: iconMap,
+      defaultValue: 'ArrowLeftIcon',
     },
   },
   parameters: {
