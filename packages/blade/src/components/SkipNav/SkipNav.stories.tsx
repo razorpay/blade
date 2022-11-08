@@ -1,13 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import {
-  Title as StorybookTitle,
-  Subtitle,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-  Description,
-} from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Button } from '~components/Button';
 import { Link } from '~components/Link';
@@ -15,20 +7,15 @@ import { SkipNavContent, SkipNavLink } from '~components/SkipNav';
 import { Text } from '~components/Typography';
 import Box from '~components/Box';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
   return (
-    <>
-      <StorybookTitle />
-      <Description>SkipNav component is only available on web.</Description>
-      <Subtitle>
-        The SkipNav component lets users skip the navigation and jump to the main content of the
-        page. Useful when you have navbars at the top and the user wants to jump directly to the
-        main content.
-      </Subtitle>
-      <br />
-      <br />
-      <StorybookTitle>Usage</StorybookTitle>
+    <StoryPageWrapper
+      componentDescription="The SkipNav component lets users skip the navigation and jump to the main content of the page. Useful when you have navbars at the top and the user wants to jump directly to the main content."
+      componentName="SkipNav"
+    >
+      <Title>Usage</Title>
       <Sandbox editorHeight={400}>
         {`
           import { 
@@ -62,12 +49,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <StorybookTitle>Example</StorybookTitle>
-      <Primary />
-      <StorybookTitle>Properties</StorybookTitle>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 

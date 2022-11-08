@@ -11,7 +11,7 @@ import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
 
 type StoryPageWrapperTypes = {
-  figmaURL: {
+  figmaURL?: {
     paymentTheme: string;
     bankingTheme: string;
   };
@@ -25,13 +25,13 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
   const figmaURL = useMakeFigmaURL([
     {
       themeTokenName: 'paymentTheme',
-      lightModeURL: props.figmaURL.paymentTheme,
-      darkModeURL: props.figmaURL.paymentTheme,
+      lightModeURL: props.figmaURL?.paymentTheme,
+      darkModeURL: props.figmaURL?.paymentTheme,
     },
     {
       themeTokenName: 'bankingTheme',
-      lightModeURL: props.figmaURL.bankingTheme,
-      darkModeURL: props.figmaURL.bankingTheme,
+      lightModeURL: props.figmaURL?.bankingTheme,
+      darkModeURL: props.figmaURL?.bankingTheme,
     },
   ]);
 
@@ -40,9 +40,12 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
       <Title />
       <Subtitle>{props.componentDescription}</Subtitle>
       {props.note ? <Description markdown={`> **Note** <br/>${props.note}`} /> : null}
-      <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
-      <br />
-      <br />
+      {figmaURL !== '#' ? (
+        <>
+          <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} /> <br />
+          <br />
+        </>
+      ) : null}
       {props.children}
       <Title>Example</Title>
       <Subtitle>

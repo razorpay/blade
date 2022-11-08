@@ -1,43 +1,26 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import { Text } from '../Typography';
 import type { RadioGroupProps } from './RadioGroup/RadioGroup';
 import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): React.ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11314%3A278927',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11314%3A278927',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Radio & RadioGroup can be used in forms when a user needs to single value from several
-        options.
-      </Subtitle>
-      <FigmaEmbed src={figmaURL} title="Radio Figma Designs" />
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentDescription="Radio & RadioGroup can be used in forms when a user needs to single value from several options."
+      componentName="Radio"
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11314%3A278927',
+      }}
+    >
       <Title>Usage</Title>
       <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
         {`
@@ -69,16 +52,7 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default radio. You can change the properties of this button using the controls
-        in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 
