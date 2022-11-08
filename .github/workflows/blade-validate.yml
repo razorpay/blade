@@ -22,14 +22,11 @@ jobs:
           install-command: yarn --frozen-lockfile
       - name: Lint Source Code
         run: yarn lint
-      - name: Run Web Tests
-        run: yarn test:react
-        working-directory: packages/blade
-      - name: Run Native Tests
-        run: yarn test:react-native
-        working-directory: packages/blade
       - name: Run TypeScript Checks
         run: yarn typecheck
+        working-directory: packages/blade
+      - name: Run Web & Native Tests
+        run: yarn test
         working-directory: packages/blade
       - name: Build Blade
         run: yarn build

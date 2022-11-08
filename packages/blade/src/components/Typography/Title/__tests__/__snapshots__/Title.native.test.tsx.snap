@@ -26,7 +26,6 @@ exports[`<Title /> should render Title with default properties 1`] = `
         "paddingLeft": 0,
         "paddingRight": 0,
         "paddingTop": 0,
-        "textAlign": "left",
         "textDecorationLine": "none",
       },
     ]
@@ -62,7 +61,6 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
         "paddingLeft": 0,
         "paddingRight": 0,
         "paddingTop": 0,
-        "textAlign": "left",
         "textDecorationLine": "none",
       },
     ]
@@ -98,7 +96,6 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
         "paddingLeft": 0,
         "paddingRight": 0,
         "paddingTop": 0,
-        "textAlign": "left",
         "textDecorationLine": "none",
       },
     ]
@@ -134,7 +131,6 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
         "paddingLeft": 0,
         "paddingRight": 0,
         "paddingTop": 0,
-        "textAlign": "left",
         "textDecorationLine": "none",
       },
     ]
@@ -170,7 +166,6 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
         "paddingLeft": 0,
         "paddingRight": 0,
         "paddingTop": 0,
-        "textAlign": "left",
         "textDecorationLine": "none",
       },
     ]

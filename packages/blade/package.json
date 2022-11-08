@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "license": "MIT",
   "engines": {
     "node": ">=14.18.0"
@@ -41,7 +41,8 @@
     }
   },
   "scripts": {
-    "typecheck": "run-s types:typecheck:*",
+    "typecheck": "run-p types:typecheck:*",
+    "test": "run-p test:*",
     "prepublish": "yarn build",
     "build": "run-s build:*",
     "clearCache": "jest --clearCache",

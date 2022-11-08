@@ -13,60 +13,60 @@ To start using tokens in your application you can follow these steps:
 
 1. Wrap your App with `BladeProvider` and pass it `paymentTheme` or `bankingTheme` tokens.
 
-```jsx
-// App entry point
-import { BladeProvider } from '@razorpay/blade/components';
-import { paymentTheme } from '@razorpay/blade/tokens';
+   ```jsx
+   // App entry point
+   import { BladeProvider } from '@razorpay/blade/components';
+   import { paymentTheme } from '@razorpay/blade/tokens';
 
-function App(): JSX.Element {
-  return (
-    <React.Fragment>
-      <BladeProvider themeTokens={paymentTheme}>
-        <Card />
-      </BladeProvider>
-    </React.Fragment>
-  );
-}
+   function App(): JSX.Element {
+     return (
+       <React.Fragment>
+         <BladeProvider themeTokens={paymentTheme}>
+           <Card />
+         </BladeProvider>
+       </React.Fragment>
+     );
+   }
 
-export default App;
-```
+   export default App;
+   ```
 
 2. You can also pass an optional `colorScheme` prop to the `BladeProvider` mentioning whether you want the `light`, `dark` or `system`'s default color scheme. The default is `light`.
 
-```jsx
-<BladeProvider themeTokens={paymentTheme} colorScheme="dark">
-  <Card />
-</BladeProvider>
-```
+   ```jsx
+   <BladeProvider themeTokens={paymentTheme} colorScheme="dark">
+     <Card />
+   </BladeProvider>
+   ```
 
-1. After you've wrapped your App with `BladeProvider`, you can use the `useTheme()` hook to get access to the current theme context.
+3. After you've wrapped your App with `BladeProvider`, you can use the `useTheme()` hook to get access to the current theme context.
 
-```jsx
-import { useTheme, Theme } from '@razorpay/blade/components';
+   ```jsx
+   import { useTheme, Theme } from '@razorpay/blade/components';
 
-const Card = (): React.ReactElement => {
-  const { theme } = useTheme();
-  return (
-    <React.Fragment>
-      <DisplayLarge theme={theme}>Cash Advance</DisplayLarge>
-      <StyledCard theme={theme}>
-        <CaptionRegular theme={theme}>
-          This amount will be deducted in 3 installments from your settlement balance between Feb
-          18-20 on a daily basis.
-        </CaptionRegular>
-      </StyledCard>
-    </React.Fragment>
-  );
-};
+   const Card = (): React.ReactElement => {
+     const { theme } = useTheme();
+     return (
+       <React.Fragment>
+         <DisplayLarge theme={theme}>Cash Advance</DisplayLarge>
+         <StyledCard theme={theme}>
+           <CaptionRegular theme={theme}>
+             This amount will be deducted in 3 installments from your settlement balance between Feb
+             18-20 on a daily basis.
+           </CaptionRegular>
+         </StyledCard>
+       </React.Fragment>
+     );
+   };
 
-const StyledCard = styled.div(
-  ({ theme }: { theme: Theme }) => `
-    width: 368px;
-    background-color: ${theme.colors.surface.background.level2.lowContrast};
-    border-radius: ${theme.border.radius.medium}px;
-    padding: ${theme.spacing[5]}px;
-    display: flex;
-    flex-direction: column;
-`,
-);
-```
+   const StyledCard = styled.div(
+     ({ theme }: { theme: Theme }) => `
+       width: 368px;
+       background-color: ${theme.colors.surface.background.level2.lowContrast};
+       border-radius: ${theme.border.radius.medium}px;
+       padding: ${theme.spacing[5]}px;
+       display: flex;
+       flex-direction: column;
+   `,
+   );
+   ```

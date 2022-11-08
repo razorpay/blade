@@ -38,7 +38,6 @@ exports[`<Code /> should render Code with default properties 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -87,7 +86,6 @@ exports[`<Code /> should render medium Code 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -136,7 +134,6 @@ exports[`<Code /> should render small Code 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
