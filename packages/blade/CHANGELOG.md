@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 3.6.2
+
+### Patch Changes
+
+- 63c950a: feat(IconButton): export IconButton
+  - Adds a new `IconButton` component useful for making transparent icon only buttons
+
 ## 3.6.1
 
 ### Patch Changes

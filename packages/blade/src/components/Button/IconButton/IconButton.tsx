@@ -3,7 +3,7 @@ import type { ReactElement } from 'react';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
 
-export type IconButtonProps = {
+type IconButtonProps = {
   /**
    * Icon component to be rendered, eg. `CloseIcon`
    */
@@ -31,7 +31,8 @@ export type IconButtonProps = {
 };
 
 /**
- * Internal component for making clickable icons
+ * Component for making clickable icons with transparent background.
+ * For other cases please use `Button` component with `icon` prop.
  */
 const IconButton = ({
   icon,
@@ -51,4 +52,4 @@ const IconButton = ({
   );
 };
 
-export default IconButton;
+export { IconButtonProps, IconButton };
