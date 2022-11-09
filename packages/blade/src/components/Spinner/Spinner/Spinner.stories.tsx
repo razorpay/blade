@@ -1,41 +1,25 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { SpinnerProps } from './Spinner';
 import { Spinner as SpinnerComponent } from './Spinner';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Box from '~components/Box';
 import { Text } from '~components/Typography';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=14825%3A203592',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=14825%3A203592',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11506%3A284715',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11506%3A284715',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        A spinner is an element with a looping animation that indicates loading is in process.
-      </Subtitle>
-      <FigmaEmbed src={figmaURL} title="Spinner Figma Designs" />
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentDescription="A spinner is an element with a looping animation that indicates loading is in process."
+      componentName="Spinner"
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=14825%3A203592',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11506%3A284715',
+      }}
+    >
       <Title>Usage</Title>
       <Sandbox>
         {`
@@ -59,16 +43,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default spinner. You can change the properties of this spinner using the
-        controls in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 

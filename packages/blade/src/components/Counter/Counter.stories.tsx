@@ -1,42 +1,25 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { CounterProps } from './Counter';
 import { Counter as CounterComponent } from './Counter';
 import Box from '~components/Box';
 import { Text as BladeText } from '~components/Typography';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8222%3A70827',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8222%3A70827',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=8222%3A70827',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=8222%3A70827',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Counters are visual indicators that contains numerical values, tallies or counts in regards
-        to some context. It can be used to show non-interactive numerical data.
-      </Subtitle>
-      <FigmaEmbed title="Counter Figma Designs" src={figmaURL} />
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentName="Counter"
+      componentDescription="Counters are visual indicators that contains numerical values, tallies or counts in regards to some context. It can be used to show non-interactive numerical data."
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8222%3A70827',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=8222%3A70827',
+      }}
+    >
       <Title>Usage</Title>
       <Sandbox>
         {`
@@ -52,16 +35,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default Counter. You can change the properties of this button using the controls
-        in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 
