@@ -1,10 +1,11 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { TextProps } from './';
 import { Text as TextComponent } from './';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -32,13 +33,23 @@ const Page = (): ReactElement => {
         Title or Heading to display content in a hierarchical structure. It applies responsive
         styles automatically based on the device it is being rendered on.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
+      <FigmaEmbed src={figmaURL} title="Text Figma Designs" />
       <br />
       <br />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Text } from '@razorpay/blade/components' \nimport type { TextProps } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox>
+        {`
+          import { Text } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <Text>Lorem Ipsum</Text>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
       <Title>Example</Title>
       <Primary />
       <Title>Properties</Title>

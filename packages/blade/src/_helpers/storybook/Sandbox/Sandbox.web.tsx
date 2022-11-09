@@ -9,9 +9,18 @@ import Box from '~components/Box';
 export type SandboxProps = {
   children: string;
   language?: 'ts' | 'tsx';
+  showConsole?: boolean;
+  editorHeight?: number;
+  editorWidthPercentage?: number;
 };
 
-function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
+function Sandbox({
+  children,
+  language = 'tsx',
+  showConsole = false,
+  editorHeight = 300,
+  editorWidthPercentage = 50,
+}: SandboxProps): JSX.Element {
   const {
     // @ts-expect-error globals is available but the typings in storybook are properly defined hence, ignoring it
     globals: { themeTokenName, colorScheme },
@@ -37,9 +46,8 @@ function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
             const BackgroundBox = styled.div(
               ({ theme }: { theme: Theme }) => ({
                 backgroundColor: theme.colors.surface.background.level1.lowContrast,
-                height: '100vh',
-                width: '100vw',
-                padding: '12px'
+                minHeight: '100vh',
+                padding: '12px 24px'
               })
             );
 
@@ -67,6 +75,8 @@ function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
               </StrictMode>,
               rootElement
             );
+
+            console.clear(); // There could be some codesandbox warnings, clearing them here on init
             `,
           [`/App.${language}`]: dedent(children),
         }}
@@ -83,6 +93,9 @@ function Sandbox({ children, language = 'tsx' }: SandboxProps): JSX.Element {
         options={{
           showInlineErrors: true,
           showConsoleButton: true,
+          showConsole,
+          editorHeight,
+          editorWidthPercentage,
         }}
       />
       <br />
