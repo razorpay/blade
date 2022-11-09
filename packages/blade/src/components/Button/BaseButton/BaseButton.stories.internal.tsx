@@ -1,8 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 import iconMap from '~components/Icons/iconMap';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 export default {
   title: 'Components/Button/BaseButton (Internal)',
@@ -31,17 +31,10 @@ export default {
   parameters: {
     docs: {
       page: () => (
-        <>
-          <Title />
-          <Subtitle>
-            This is the BaseButton component. It is only for internal Blade usage.
-          </Subtitle>
-          <Title>Example</Title>
-          <Primary />
-          <Title>Properties</Title>
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </>
+        <StoryPageWrapper
+          componentDescription="This is the BaseButton component. It is only for internal Blade usage."
+          componentName="Internal BaseButton"
+        />
       ),
     },
   },
@@ -62,4 +55,4 @@ const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
 
 export const BaseButton = BaseButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-BaseButton.storyName = 'BaseButton';
+BaseButton.storyName = 'Default';

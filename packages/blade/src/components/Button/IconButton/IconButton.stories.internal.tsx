@@ -1,29 +1,17 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 
 import type { IconButtonProps } from './IconButton';
 import IconButtonComponent from './IconButton';
 import iconMap from '~components/Icons/iconMap';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Internal component - useful for making clickable icons. For example - close button for
-        modals, inputs, etc.
-      </Subtitle>
-      <Title>Usage</Title>
-      <Title>Example</Title>
-      <Subtitle>
-        You can change the properties of this button using the controls in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    <StoryPageWrapper
+      componentDescription="Internal component - useful for making clickable icons. For example - close button for modals, inputs, etc."
+      componentName="Internal IconButton"
+    />
   );
 };
 

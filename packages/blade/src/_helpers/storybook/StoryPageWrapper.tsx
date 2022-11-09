@@ -17,7 +17,7 @@ type StoryPageWrapperTypes = {
   };
   componentDescription: string;
   componentName: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   note?: string;
 };
 
