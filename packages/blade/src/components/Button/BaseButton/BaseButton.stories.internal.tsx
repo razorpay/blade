@@ -33,7 +33,7 @@ export default {
       page: () => (
         <StoryPageWrapper
           componentDescription="This is the BaseButton component. It is only for internal Blade usage."
-          componentName="Internal BaseButton"
+          componentName="BaseButton"
         />
       ),
     },

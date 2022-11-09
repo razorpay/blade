@@ -7,6 +7,7 @@ import {
   Title,
   Description,
 } from '@storybook/addon-docs';
+import { Highlight } from '@storybook/design-system';
 import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
 
@@ -19,6 +20,10 @@ type StoryPageWrapperTypes = {
   componentName: string;
   children?: React.ReactNode;
   note?: string;
+  /**
+   * Use this to override default imports
+   */
+  imports?: string;
 };
 
 const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
@@ -47,6 +52,19 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         </>
       ) : null}
       {props.children}
+      {props.imports === '' ? null : (
+        <>
+          <Title>Imports</Title>
+          <Highlight language="tsx">
+            {props.imports
+              ? props.imports
+              : `import { ${props.componentName} } from '@razorpay/blade';\nimport type { ${props.componentName}Props } from '@razorpay/blade';`}
+          </Highlight>
+          <br />
+          <br />
+        </>
+      )}
+
       <Title>Example</Title>
       <Subtitle>
         {`This is the default ${props.componentName}. You can change the properties using the controls below.`}

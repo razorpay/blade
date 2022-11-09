@@ -10,7 +10,7 @@ const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentDescription="Internal component - useful for making clickable icons. For example - close button for modals, inputs, etc."
-      componentName="Internal IconButton"
+      componentName="IconButton"
     />
   );
 };
