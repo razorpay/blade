@@ -31,7 +31,8 @@ export type IconButtonProps = {
 };
 
 /**
- * Internal component for making clickable icons
+ * Component for making clickable icons with transparent background.
+ * For other cases please use `Button` component with `icon` prop.
  */
 const IconButton = ({
   icon,
