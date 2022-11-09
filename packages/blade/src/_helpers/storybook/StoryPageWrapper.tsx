@@ -58,7 +58,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           <Highlight language="tsx">
             {props.imports
               ? props.imports
-              : `import { ${props.componentName} } from '@razorpay/blade';\nimport type { ${props.componentName}Props } from '@razorpay/blade';`}
+              : `import { ${props.componentName} } from '@razorpay/blade/components';\nimport type { ${props.componentName}Props } from '@razorpay/blade/components';`}
           </Highlight>
           <br />
           <br />
