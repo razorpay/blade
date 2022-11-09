@@ -2,11 +2,12 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title, Subtitle, Primary, ArgsTable, PRIMARY_STORY, Stories } from '@storybook/addon-docs';
-import { Link, Highlight } from '@storybook/design-system';
 import { Text } from '../Typography';
 import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
 import type { CheckboxGroupProps } from './';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): React.ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -17,6 +18,13 @@ const Page = (): React.ReactElement => {
       darkModeURL:
         'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
     },
+    {
+      themeTokenName: 'bankingTheme',
+      lightModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230590',
+      darkModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230590',
+    },
   ]);
 
   return (
@@ -26,13 +34,38 @@ const Page = (): React.ReactElement => {
         CheckboxGroup can be used to group together multiple checkboxes in a forms which provides
         out of the box state management for the multi-checkboxes and other features.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
+      <FigmaEmbed title="Checkbox Group Figma Designs" src={figmaURL} />
       <br />
       <br />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { CheckboxGroup } from '@razorpay/blade/components' \nimport type { CheckboxGroupProps } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
+        {`
+          import { CheckboxGroup, Checkbox } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <CheckboxGroup 
+                label="Where do you want to collect payments?"
+                name="payment-collection" 
+                onChange={({name, values}) => console.log({name, values})}
+              >
+                <Checkbox value="website">Website</Checkbox>
+                <Checkbox value="android">Android App</Checkbox>
+                <Checkbox value="ios">iOS App</Checkbox>
+                <Checkbox 
+                  value="social-media" 
+                  helpText="Like WhatsApp, Facebook, Instagram"
+                >
+                  Social Media
+                </Checkbox>
+                <Checkbox value="offline-store">Offline Store</Checkbox>
+              </CheckboxGroup>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
       <Title>Example</Title>
       <Subtitle>
         This is the default CheckboxGroup. You can change the properties of this button using the

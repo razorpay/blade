@@ -8,12 +8,13 @@ import {
   Stories,
   PRIMARY_STORY,
 } from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
+import { Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
 import type { VisuallyHiddenProps } from './types';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): ReactElement => {
   return (
@@ -34,7 +35,22 @@ const Page = (): ReactElement => {
       <br />
       <br />
       <StorybookTitle>Usage</StorybookTitle>
-      <Highlight language="tsx">{`import { VisuallyHidden } from '@razorpay/blade/components' \nimport type { VisuallyHiddenProps } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox>
+        {`
+          import { VisuallyHidden, Checkbox, Text } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <div>
+                <Text>If you focus on checkbox below with voice over enabled, you will hear "Hidden Label" announcement</Text>
+                <Checkbox><VisuallyHidden>Hidden Label</VisuallyHidden></Checkbox>
+              </div>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
       <StorybookTitle>Example</StorybookTitle>
       <Primary />
       <StorybookTitle>Properties</StorybookTitle>

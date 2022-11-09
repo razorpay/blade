@@ -16,13 +16,17 @@ Before you install the package, make sure that you have performed following step
 <details>
 <summary>Razorpay Employees have to point @razorpay scope to GitHub Package Registry. Follow the steps below</summary>
 
-- Generate a Personal Access Token on GitHub by [visiting this link](https://github.com/settings/tokens/new?scopes=repo,workflow,write:packages,read:repo_hook,write:packages)
-  - Enable SSO by clicking `Authorize` button next to Razorpay logo.
+- Generate a Personal Access Token on GitHub by [visiting this link](https://github.com/settings/tokens/new?scopes=repo,workflow,write:packages,read:repo_hook,write:packages) (Enable SSO by clicking `Authorize` button next to Razorpay logo.)
 - Run `code ~/.bashrc` or `code ~/.zshrc` in your editor and add this line
+
   ```
   export GITHUB_ACCESS_TOKEN="<YOUR_TOKEN>"
   ```
-  > Note: Replace `<YOUR_TOKEN>` with your actual GitHub Personal Access Token
+
+  > **Note**
+  >
+  > Replace `<YOUR_TOKEN>` with your actual GitHub Personal Access Token
+
 - Run `source ~/.bashrc` or `source ~/.zshrc` based on the file you added your token.
 - Run `code ~/.npmrc` and append the following
   ```bash
@@ -34,13 +38,13 @@ Before you install the package, make sure that you have performed following step
 
 </details>
 
-## ⬇️ Add blade to your application
+## ⬇ Add blade to your application
 
 1. Install blade as a dependency. Blade has a peer dependency on `styled-components`, you can skip adding it if you already have it installed in your project.
 
-```shell
-yarn add @razorpay/blade styled-components
-```
+   ```shell
+   yarn add @razorpay/blade styled-components
+   ```
 
 2. Follow [this guide](#-install-fonts) to install the fonts.
 3. For **React Native** projects, follow [this guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) to support `react-native-reanimated` on Android & iOS which is required by Blade.
@@ -58,14 +62,16 @@ We are using `Lato` font family which is not a system font so we need to perform
 
 For web projects we can either use google fonts or self hosted fonts. Self hosted fonts have certain benefits that you can find [here](https://fontsource.org/docs/introduction)
 
-#### Self Hosted(Recommended)
+#### Self Hosted (Recommended)
 
 We recommend to use self hosted fonts. We'll use [Fontsource](https://fontsource.org/) which provides fonts as npm packages.
 
 - Install `Lato` font
+
   ```shell
   yarn add @fontsource/lato
   ```
+
 - Import within your app entry file(eg: `App.tsx`, `entryBrowser.tsx` etc.).
   ```js
   import '@fontsource/lato/400.css';
@@ -81,6 +87,7 @@ There are downsides to using google fonts which can be found [here](https://font
 - Download `Lato` font from [here](https://fonts.google.com/share?selection.family=Lato:wght@400;700)
 - Copy the font files and paste it under the directory `<project_root>/public/fonts`(**create the directory if it doesn't exist**)
 - Create React Native config file at the root of your project - `<project_root>/react-native.config.js` and add following content to it
+
   ```js
   module.exports = {
     // ... rest of the config
@@ -104,12 +111,15 @@ Follow the next steps mentioned below for configuring fonts to work on android:
   </font-family>
   ```
 - Navigate to `/android/app/src/main/java/com/<your_package_name>/MainApplication.java` and add following contents to it
-  ```java
+
+  ```js
   // add the below import statement after all the import statements
   import com.facebook.react.views.text.ReactFontManager;
   ```
+
   Now search for `onCreate` method and add the following line to it
-  ```java
+
+  ```js
   public void onCreate() {
     // add below line as the first line
     ReactFontManager.getInstance().addCustomFont(this, "Lato", R.font.lato);
@@ -122,6 +132,7 @@ Follow the next steps mentioned below for configuring fonts to work on android:
 Follow the next steps mentioned below for configuring fonts to work on iOS:
 
 - Once you've copied the font files under `<project_root>/public/fonts` you need to link it using following command
+
   ```shell
   npx react-native link --platform ios
   ```

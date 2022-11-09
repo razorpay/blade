@@ -1,10 +1,10 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
 import React from 'react';
 import type { TextAreaProps } from './TextArea';
 import { TextArea as TextAreaComponent } from './TextArea';
 import Box from '~components/Box';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -149,7 +149,24 @@ export default {
             The TextArea component lets you enter long form text which spans over multiple lines.
           </Subtitle>
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { TextArea } from '@razorpay/blade/components' \nimport type { TextAreaProps } from '@razorpay/blade/components'`}</Highlight>
+          <Sandbox>
+            {`
+              import { TextArea } from '@razorpay/blade/components';
+
+              function App(): JSX.Element {
+                return (
+                  <TextArea 
+                    label="Description" 
+                    placeholder="Enter Description"
+                    helpText="Enter Text Here" 
+                    maxCharacters={100} 
+                  />
+                )
+              }
+
+              export default App;
+            `}
+          </Sandbox>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>

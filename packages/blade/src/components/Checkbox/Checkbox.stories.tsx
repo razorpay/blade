@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Text } from '../Typography';
 import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): React.ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -17,6 +18,13 @@ const Page = (): React.ReactElement => {
       darkModeURL:
         'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
     },
+    {
+      themeTokenName: 'bankingTheme',
+      lightModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230354',
+      darkModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230354',
+    },
   ]);
 
   return (
@@ -26,13 +34,26 @@ const Page = (): React.ReactElement => {
         Checkbox can be used in forms when a user needs to select multiple values from several
         options.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
+      <FigmaEmbed title="Checkbox Figma Designs" src={figmaURL} />
       <br />
       <br />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Checkbox } from '@razorpay/blade/components' \nimport type { CheckboxProps } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox showConsole>
+        {`
+        import { Checkbox } from '@razorpay/blade/components'
+        
+        function App(): JSX.Element {
+          return (
+            // Check console
+            <Checkbox onChange={(e) => console.log(e.isChecked)}>
+              Toggle Checkbox
+            </Checkbox>
+          )
+        }
+
+        export default App;
+      `}
+      </Sandbox>
       <Title>Example</Title>
       <Subtitle>
         This is the default checkbox. You can change the properties of this button using the
