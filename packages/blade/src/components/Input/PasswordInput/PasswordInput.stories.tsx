@@ -1,42 +1,26 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 
 import type { PasswordInputProps } from './PasswordInput';
 import { PasswordInput } from './PasswordInput';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A110176',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A110176',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9995%3A180296',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9995%3A180296',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        PasswordInput is an input field for entering passwords. The input is masked by default. On
-        mobile devices the last typed letter is shown for a brief moment. The masking can be toggled
-        using an optional reveal button.
-      </Subtitle>
+    <StoryPageWrapper
+      componentName="PasswordInput"
+      componentDescription="PasswordInput is an input field for entering passwords. The input is masked by default. On mobile devices the last typed letter is shown for a brief moment. The masking can be toggled using an optional reveal button."
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A110176',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9995%3A180296',
+      }}
+    >
       <Title>Usage</Title>
-      <FigmaEmbed title="Password Figma Designs" src={figmaURL} />
       <Sandbox showConsole>
         {`
           import { PasswordInput } from '@razorpay/blade/components';
@@ -53,13 +37,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Subtitle>You can change the properties using the controls in the table below.</Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 
