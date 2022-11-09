@@ -1,40 +1,24 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
 import { Code as CodeComponent } from './Code';
 import Box from '~components/Box';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189840',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189840',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Code component can be used for displaying token, variable names, or inlined code snippets.
-      </Subtitle>
-      <FigmaEmbed src={figmaURL} title="Heading Figma Designs" />
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentDescription="Code component can be used for displaying token, variable names, or inlined code snippets."
+      componentName="Code"
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189840',
+      }}
+    >
       <Title>Usage</Title>
       <Sandbox editorWidthPercentage={60}>
         {`
@@ -50,12 +34,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 

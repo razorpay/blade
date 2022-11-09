@@ -1,42 +1,25 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { Title, Subtitle, Primary, ArgsTable, PRIMARY_STORY, Stories } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import { Text } from '../Typography';
 import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
 import type { CheckboxGroupProps } from './';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): React.ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230590',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230590',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        CheckboxGroup can be used to group together multiple checkboxes in a forms which provides
-        out of the box state management for the multi-checkboxes and other features.
-      </Subtitle>
-      <FigmaEmbed title="Checkbox Group Figma Designs" src={figmaURL} />
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentName="CheckboxGroup"
+      componentDescription="CheckboxGroup can be used to group together multiple checkboxes in a forms which provides out of the box state management for the multi-checkboxes and other features."
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230590',
+      }}
+    >
       <Title>Usage</Title>
       <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
         {`
@@ -66,16 +49,7 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default CheckboxGroup. You can change the properties of this button using the
-        controls in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 
