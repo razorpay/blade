@@ -3,7 +3,7 @@ import type { ReactElement } from 'react';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
 
-export type IconButtonProps = {
+type IconButtonProps = {
   /**
    * Icon component to be rendered, eg. `CloseIcon`
    */
@@ -52,4 +52,4 @@ const IconButton = ({
   );
 };
 
-export default IconButton;
+export { IconButtonProps, IconButton };
