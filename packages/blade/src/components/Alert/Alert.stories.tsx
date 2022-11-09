@@ -4,7 +4,6 @@ import type { ReactElement } from 'react';
 
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
-import { colors } from '~tokens/global';
 import Box from '~components/Box';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -208,7 +207,7 @@ FullWidth.parameters = {
 
 export const Borderless: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
-    <Box background={colors.neutral.blueGrayLight[100]} height={200} position="relative">
+    <Box height={200} position="relative">
       <Box position="absolute" width="100%">
         <AlertComponent {...args} />
       </Box>

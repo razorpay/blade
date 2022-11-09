@@ -1,10 +1,11 @@
 // .storybook/manager.js
 import React from 'react';
+import { create } from '@storybook/theming';
 import { addons, types } from '@storybook/addons';
 import { useGlobals } from '@storybook/api';
 import { Icons, IconButton } from '@storybook/components';
 
-export const theme = {
+export const theme = create({
   base: 'light',
 
   colorPrimary: '#FF4785',
@@ -22,7 +23,7 @@ export const theme = {
   fontCode: 'monospace',
 
   // Text colors
-  textColor: '#333333',
+  textColor: 'rgb(19, 38, 68)',
   textInverseColor: '#FFFFFF',
   textMutedColor: '#666666',
 
@@ -40,7 +41,7 @@ export const theme = {
   brandTitle: 'Blade',
   brandUrl: 'https://github.com/razorpay/blade',
   // brandImage: 'https://place-hold.it/350x150',
-};
+});
 
 const ADDON_ID = 'internal-components-addon';
 const TOOL_ID = 'internal-components-tool';
@@ -52,7 +53,7 @@ hiddenStoryStyle.textContent = `
 `;
 document.head.append(hiddenStoryStyle);
 
-export const toggleHiddenStoryStyle = isDisabled => hiddenStoryStyle.disabled = isDisabled
+export const toggleHiddenStoryStyle = (isDisabled) => (hiddenStoryStyle.disabled = isDisabled);
 
 const InternalStoryAddon = () => {
   const [{ showInternalComponents }, updateGlobals] = useGlobals();
@@ -61,7 +62,7 @@ const InternalStoryAddon = () => {
     updateGlobals({
       showInternalComponents: !showInternalComponents,
     });
-    toggleHiddenStoryStyle(!showInternalComponents)
+    toggleHiddenStoryStyle(!showInternalComponents);
   }, [showInternalComponents]);
 
   return (
