@@ -1,7 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { Highlight, Link } from '@storybook/design-system';
 
 import type { IndicatorProps } from './Indicator';
 import { Indicator as IndicatorComponent } from './Indicator';
@@ -9,6 +8,8 @@ import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Box from '~components/Box';
 import { Button } from '~components/Button';
 import { getPlatformType } from '~utils';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -35,11 +36,24 @@ const Page = (): ReactElement => {
         Indicators describe the condition of an entity. They can be used to convey semantic meaning,
         such as statuses and semantical-categories.
       </Subtitle>
+      <FigmaEmbed title="Alert Figma Designs" src={figmaURL} />
       <Title>Usage</Title>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <Highlight language="tsx">{`import { Indicator } from '@razorpay/blade/components' \nimport type { IndicatorProps } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox editorHeight={500}>
+        {`
+        import { useState } from 'react';
+        import { Indicator } from '@razorpay/blade/components';
+
+        function App() {
+          return (
+            <div>
+              <Indicator accessibilityLabel="Success" intent="positive" />
+            </div>
+          )
+        }
+
+        export default App;
+        `}
+      </Sandbox>
       <Title>Example</Title>
       <Subtitle>You can change the properties using the controls in the table below.</Subtitle>
       <Primary />
