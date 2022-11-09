@@ -2,6 +2,7 @@ export * from './Alert';
 export * from './Badge';
 export * from './BladeProvider';
 export * from './Button';
+export * from './Button/IconButton';
 export * from './Counter';
 export * from './Checkbox';
 export * from './Icons';
