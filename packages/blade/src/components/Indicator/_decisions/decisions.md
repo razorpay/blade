@@ -65,9 +65,9 @@ Sample usage:
 Web:
 
 - The component accepts an `accessibilityLabel` prop to let users pass an `aria-label` used by screen readers. This is helpful in building UIs where an `Indicator` is used without a visible `label`.
-- If `label` is provided without any `accessibilityLabel` we use an `aria-label` internally to let the screen readers use `label` for a11y purposes.
-- If both `label` and `accessibilityLabel` are provided we set the `aria-label` to prefer the provided `accessibilityLabel` text for screen readers while visually the `label` will be visible on screen.
-- We set a `status` role on the `Indicator` to politely announce state changes to the component, for example change in `label` or `accessibilityLabel` text
+- If `children` is provided without any `accessibilityLabel` we use an `aria-label` internally to let the screen readers use `children` for a11y purposes.
+- If both `children` and `accessibilityLabel` are provided we set the `aria-label` to prefer the provided `accessibilityLabel` text for screen readers while visually the `children` will be visible on screen.
+- We set a `status` role on the `Indicator` to politely announce state changes to the component, for example change in `children` or `accessibilityLabel` text
 
 Native:
 
