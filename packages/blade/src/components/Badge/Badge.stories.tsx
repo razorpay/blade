@@ -1,52 +1,27 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import {
-  Title,
-  Subtitle,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-  Description,
-} from '@storybook/addon-docs';
 import capitalize from 'lodash/capitalize';
-import { Highlight } from '@storybook/design-system';
-import type { ReactElement } from 'react';
+import { Title } from '@storybook/addon-docs';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
 import { InfoIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
 import { Text as BladeText } from '~components/Typography';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
-const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8110%3A417',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8110%3A417',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9727%3A118573',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9727%3A118573',
-    },
-  ]);
-
+const Page = (): React.ReactElement => {
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Badges are used to show small amount of color coded metadata, which are ideal for getting
-        user attention.
-      </Subtitle>
-      <FigmaEmbed title="Badge Figma Design" src={figmaURL} />
+    <StoryPageWrapper
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8110%3A417',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9727%3A118573',
+      }}
+      componentName="Badge"
+      componentDescription="Badges are used to show small amount of color coded metadata, which are ideal for getting user attention."
+    >
       <Title>Usage</Title>
       <Sandbox>
         {`
@@ -63,18 +38,7 @@ const Page = (): ReactElement => {
         export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default badge. You can change the properties of this button using the controls
-        in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Description markdown=">Note: `icon` prop accepts an `IconComponent` of Blade which should be used as:" />
-      <Highlight language="tsx">{`import { Badge, InfoIcon } from '@razorpay/blade/components'; \n\n &ltBadge icon={InfoIcon}>Label&lt/Badge>`}</Highlight>
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 

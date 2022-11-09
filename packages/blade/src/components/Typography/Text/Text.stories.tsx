@@ -1,41 +1,23 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { TextProps } from './';
 import { Text as TextComponent } from './';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189844',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189844',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        The Text component is used to display main content of the page. It is often clubbed with
-        Title or Heading to display content in a hierarchical structure. It applies responsive
-        styles automatically based on the device it is being rendered on.
-      </Subtitle>
-      <FigmaEmbed src={figmaURL} title="Text Figma Designs" />
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentDescription="The Text component is used to display main content of the page. It is often clubbed with Title or Heading to display content in a hierarchical structure. It applies responsive styles automatically based on the device it is being rendered on."
+      componentName="Text"
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189844',
+      }}
+    >
       <Title>Usage</Title>
       <Sandbox>
         {`
@@ -50,12 +32,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 
