@@ -1,52 +1,45 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { Highlight, Link } from '@storybook/design-system';
 
 import type { IndicatorProps } from './Indicator';
 import { Indicator as IndicatorComponent } from './Indicator';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Box from '~components/Box';
 import { Button } from '~components/Button';
 import { getPlatformType } from '~utils';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8224%3A1',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8224%3A1',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=8224%3A0',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=8224%3A0',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Indicators describe the condition of an entity. They can be used to convey semantic meaning,
-        such as statuses and semantical-categories.
-      </Subtitle>
+    <StoryPageWrapper
+      componentName="Indicator"
+      componentDescription="Indicators describe the condition of an entity. They can be used to convey semantic meaning,
+    such as statuses and semantical-categories."
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8224%3A1',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=8224%3A0',
+      }}
+    >
       <Title>Usage</Title>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <Highlight language="tsx">{`import { Indicator } from '@razorpay/blade/components' \nimport type { IndicatorProps } from '@razorpay/blade/components'`}</Highlight>
-      <Title>Example</Title>
-      <Subtitle>You can change the properties using the controls in the table below.</Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+      <Sandbox editorHeight={500}>
+        {`
+        import { Indicator } from '@razorpay/blade/components';
+
+        function App() {
+          return (
+            <div>
+              <Indicator accessibilityLabel="Success" intent="positive" />
+            </div>
+          )
+        }
+
+        export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
   );
 };
 
