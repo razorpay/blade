@@ -10,7 +10,12 @@ describe('<Indicator />', () => {
 
   it('should render different variants for size and intent', () => {
     const { toJSON } = renderWithTheme(
-      <Indicator accessibilityLabel="Warning" size="small" intent="notice" />,
+      <>
+        <Indicator accessibilityLabel="Warning" size="small" intent="notice" />
+        <Indicator accessibilityLabel="Success" size="medium" intent="positive" />
+        <Indicator accessibilityLabel="Error" size="xsmall" intent="negative" />
+        <Indicator accessibilityLabel="Info" intent="information" />
+      </>,
     );
 
     expect(toJSON()).toMatchSnapshot();

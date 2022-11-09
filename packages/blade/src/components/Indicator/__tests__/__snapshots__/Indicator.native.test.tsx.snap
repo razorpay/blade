@@ -113,113 +113,442 @@ exports[`<Indicator /> should render 1`] = `
 `;
 
 exports[`<Indicator /> should render different variants for size and intent 1`] = `
-<View
-  accessibilityLabel="Warning"
-  alignItems="center"
-  display="flex"
-  flexDirection="row"
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "display": "flex",
-        "flexDirection": "row",
-      },
-    ]
-  }
->
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="10"
-    bbWidth="10"
-    fill="none"
-    focusable={false}
-    height="10"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 10,
-          "width": 10,
-        },
-      ]
-    }
-    vbHeight={12}
-    vbWidth={12}
-    width="10"
-  >
-    <RNSVGGroup
-      fill={null}
-      propList={
-        Array [
-          "fill",
-        ]
-      }
-    >
-      <RNSVGCircle
-        cx="6"
-        cy="6"
-        fill={4290738691}
-        propList={
-          Array [
-            "fill",
-            "stroke",
-          ]
-        }
-        r="5.5"
-        stroke={4294572539}
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
+Array [
   <View
-    marginLeft="spacing.2"
+    accessibilityLabel="Warning"
+    alignItems="center"
+    display="flex"
+    flexDirection="row"
     style={
       Array [
         Object {
-          "marginLeft": 4,
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
   >
-    <Text
-      color="surface.text.normal.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight="s"
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      align="xMidYMid"
+      bbHeight="10"
+      bbWidth="10"
+      fill="none"
+      focusable={false}
+      height="10"
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
       style={
         Array [
           Object {
-            "color": "hsla(217, 56%, 17%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
           },
-          Object {},
+          Object {
+            "flex": 0,
+            "height": 10,
+            "width": 10,
+          },
         ]
       }
-    />
-  </View>
-</View>
+      vbHeight={12}
+      vbWidth={12}
+      width="10"
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          Array [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGCircle
+          cx="6"
+          cy="6"
+          fill={4290738691}
+          propList={
+            Array [
+              "fill",
+              "stroke",
+            ]
+          }
+          r="5.5"
+          stroke={4294572539}
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <View
+      marginLeft="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginLeft": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.normal.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      />
+    </View>
+  </View>,
+  <View
+    accessibilityLabel="Success"
+    alignItems="center"
+    display="flex"
+    flexDirection="row"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      align="xMidYMid"
+      bbHeight="12"
+      bbWidth="12"
+      fill="none"
+      focusable={false}
+      height="12"
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": 12,
+            "width": 12,
+          },
+        ]
+      }
+      vbHeight={12}
+      vbWidth={12}
+      width="12"
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          Array [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGCircle
+          cx="6"
+          cy="6"
+          fill={4278224216}
+          propList={
+            Array [
+              "fill",
+              "stroke",
+            ]
+          }
+          r="5.5"
+          stroke={4294572539}
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <View
+      marginLeft="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginLeft": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.normal.lowContrast"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="l"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 15,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 24,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      />
+    </View>
+  </View>,
+  <View
+    accessibilityLabel="Error"
+    alignItems="center"
+    display="flex"
+    flexDirection="row"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      align="xMidYMid"
+      bbHeight="8"
+      bbWidth="8"
+      fill="none"
+      focusable={false}
+      height="8"
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": 8,
+            "width": 8,
+          },
+        ]
+      }
+      vbHeight={12}
+      vbWidth={12}
+      width="8"
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          Array [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGCircle
+          cx="6"
+          cy="6"
+          fill={4291770400}
+          propList={
+            Array [
+              "fill",
+              "stroke",
+            ]
+          }
+          r="5.5"
+          stroke={4294572539}
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <View
+      marginLeft="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginLeft": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.normal.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      />
+    </View>
+  </View>,
+  <View
+    accessibilityLabel="Info"
+    alignItems="center"
+    display="flex"
+    flexDirection="row"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      align="xMidYMid"
+      bbHeight="12"
+      bbWidth="12"
+      fill="none"
+      focusable={false}
+      height="12"
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": 12,
+            "width": 12,
+          },
+        ]
+      }
+      vbHeight={12}
+      vbWidth={12}
+      width="12"
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          Array [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGCircle
+          cx="6"
+          cy="6"
+          fill={4278226099}
+          propList={
+            Array [
+              "fill",
+              "stroke",
+            ]
+          }
+          r="5.5"
+          stroke={4294572539}
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <View
+      marginLeft="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginLeft": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.normal.lowContrast"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="l"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 15,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 24,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      />
+    </View>
+  </View>,
+]
 `;
