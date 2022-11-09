@@ -9,7 +9,6 @@ import {
   Description,
 } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { Highlight, Link as StorybookLink } from '@storybook/design-system';
 import type { LinkProps } from './Link';
 import LinkComponent from './Link';
 import iconMap from '~components/Icons/iconMap';
@@ -18,6 +17,8 @@ import { BaseText } from '~components/Typography/BaseText';
 import Box from '~components/Box';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import { Heading, Text } from '~components/Typography';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -45,13 +46,29 @@ const Page = (): ReactElement => {
         user. The Link component can also be used as an inline button in certain cases with the
         `button` variant
       </Subtitle>
-      <StorybookLink withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </StorybookLink>
+      <FigmaEmbed src={figmaURL} title="Link Figma Designs" />
       <br />
       <br />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Link } from '@razorpay/blade/components' \nimport type { LinkProps } from '@razorpay/blade/components'`}</Highlight>
+      <Sandbox>
+        {`
+          import { Link } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <Link 
+                href="https://razorpay.com" 
+                target="_blank" 
+                rel="noopener noreferer"
+              >
+                Go to Razorpay.com
+              </Link>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
       <Description markdown="> **Note:** While using the `Link` component with React Native, please ensure you have gone through platform-specific prerequisites like adding `LSApplicationQueriesSchemes` in `Info.plist` for iOS and adding `intent` queries in `AndroidManifest.xml` for Android. For a detailed guide, follow React Native's [Linking Documentation](https://reactnative.dev/docs/linking#canopenurl)." />
       <Title>Example</Title>
       <Subtitle>

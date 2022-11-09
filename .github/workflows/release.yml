@@ -8,10 +8,6 @@ on:
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
-concurrency: # cancel previously running workflows when a new workflow is re-run
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   release:
     name: Release

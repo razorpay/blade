@@ -7,10 +7,6 @@ on:
   schedule:
     - cron: '30 20 * * *'
 
-concurrency: # cancel previously running workflows when a new workflow is re-run
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   semgrep:
     if: (github.actor != 'dependabot[bot]')

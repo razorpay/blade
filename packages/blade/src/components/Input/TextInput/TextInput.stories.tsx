@@ -1,12 +1,12 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
 import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -192,7 +192,23 @@ export default {
             url, search or plain text.
           </Subtitle>
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { TextInput } from '@razorpay/blade/components' \nimport type { TextInputProps } from '@razorpay/blade/components'`}</Highlight>
+          <Sandbox showConsole>
+            {`
+              import { TextInput } from '@razorpay/blade/components';
+
+              function App(): JSX.Element {
+                return (
+                  <TextInput 
+                    label="Name" 
+                    placeholder="Enter Name" 
+                    onChange={(e) => console.log(e)} 
+                  />
+                )
+              }
+
+              export default App;
+            `}
+          </Sandbox>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>

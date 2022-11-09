@@ -10,7 +10,6 @@ exports[`<Text /> should render Text with default properties 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -39,7 +38,6 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -76,7 +74,6 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -113,7 +110,6 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -150,7 +146,6 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  text-align: left;
   margin: 0;
   padding: 0;
 }

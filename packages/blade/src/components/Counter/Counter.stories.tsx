@@ -1,12 +1,13 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { CounterProps } from './Counter';
 import { Counter as CounterComponent } from './Counter';
 import Box from '~components/Box';
 import { Text as BladeText } from '~components/Typography';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -33,13 +34,24 @@ const Page = (): ReactElement => {
         Counters are visual indicators that contains numerical values, tallies or counts in regards
         to some context. It can be used to show non-interactive numerical data.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
+      <FigmaEmbed title="Counter Figma Designs" src={figmaURL} />
       <br />
       <br />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Counter } from '@razorpay/blade/components'; \nimport type { CounterProps } from '@razorpay/blade/components';`}</Highlight>
+      <Sandbox>
+        {`
+          import { Counter } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              // Change values to anything less than 99 to see change
+              <Counter max={99} value={140} />
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
       <Title>Example</Title>
       <Subtitle>
         This is the default Counter. You can change the properties of this button using the controls
