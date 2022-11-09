@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Indicator /> should render 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  margin-left: 4px;
+}
+
+.c2 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    aria-label="Success"
+    class="c0"
+    display="flex"
+    role="status"
+  >
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="12"
+      viewBox="0 0 12 12"
+      width="12"
+    >
+      <circle
+        cx="6"
+        cy="6"
+        fill="hsla(216, 33%, 29%, 1)"
+        r="5.5"
+        stroke="hsla(220, 27%, 98%, 1)"
+      />
+    </svg>
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.normal.lowContrast"
+        font-family="text"
+        font-size="100"
+        font-style="normal"
+        font-weight="regular"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Indicator /> should render different variants for size and intent 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  margin-left: 4px;
+}
+
+.c2 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c3 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    aria-label="Warning"
+    class="c0"
+    display="flex"
+    role="status"
+  >
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="10"
+      viewBox="0 0 12 12"
+      width="10"
+    >
+      <circle
+        cx="6"
+        cy="6"
+        fill="hsla(38, 97%, 38%, 1)"
+        r="5.5"
+        stroke="hsla(220, 27%, 98%, 1)"
+      />
+    </svg>
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.normal.lowContrast"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      />
+    </div>
+  </div>
+  <div
+    aria-label="Success"
+    class="c0"
+    display="flex"
+    role="status"
+  >
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="12"
+      viewBox="0 0 12 12"
+      width="12"
+    >
+      <circle
+        cx="6"
+        cy="6"
+        fill="hsla(160, 100%, 26%, 1)"
+        r="5.5"
+        stroke="hsla(220, 27%, 98%, 1)"
+      />
+    </svg>
+    <div
+      class="c1"
+    >
+      <p
+        class="c3 Text__StyledText-wkh56f-0"
+        color="surface.text.normal.lowContrast"
+        font-family="text"
+        font-size="100"
+        font-style="normal"
+        font-weight="regular"
+      />
+    </div>
+  </div>
+  <div
+    aria-label="Error"
+    class="c0"
+    display="flex"
+    role="status"
+  >
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="8"
+      viewBox="0 0 12 12"
+      width="8"
+    >
+      <circle
+        cx="6"
+        cy="6"
+        fill="hsla(8, 73%, 47%, 1)"
+        r="5.5"
+        stroke="hsla(220, 27%, 98%, 1)"
+      />
+    </svg>
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.normal.lowContrast"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      />
+    </div>
+  </div>
+  <div
+    aria-label="Info"
+    class="c0"
+    display="flex"
+    role="status"
+  >
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="12"
+      viewBox="0 0 12 12"
+      width="12"
+    >
+      <circle
+        cx="6"
+        cy="6"
+        fill="hsla(193, 100%, 35%, 1)"
+        r="5.5"
+        stroke="hsla(220, 27%, 98%, 1)"
+      />
+    </svg>
+    <div
+      class="c1"
+    >
+      <p
+        class="c3 Text__StyledText-wkh56f-0"
+        color="surface.text.normal.lowContrast"
+        font-family="text"
+        font-size="100"
+        font-style="normal"
+        font-weight="regular"
+      />
+    </div>
+  </div>
+</div>
+`;
