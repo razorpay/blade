@@ -1,5 +1,6 @@
 import type { ComponentType, ReactElement } from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
+import { Title } from '@storybook/addon-docs';
 import iconMap from './iconMap';
 import type { IconProps } from '.';
 import { CreditCardIcon } from '.';
@@ -20,6 +21,7 @@ const Page = (): ReactElement => {
           'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9308%3A64839',
       }}
     >
+      <Title>Usage</Title>
       <Sandbox>
         {`
         import { Button, ArrowRightIcon } from '@razorpay/blade/components';
