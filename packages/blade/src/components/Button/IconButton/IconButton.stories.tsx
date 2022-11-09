@@ -1,39 +1,25 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 
 import type { IconButtonProps } from './IconButton';
 import IconButtonComponent from './IconButton';
 import iconMap from '~components/Icons/iconMap';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195699&t=b5e9P6qSqxDsq2rz-4',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195699&t=b5e9P6qSqxDsq2rz-4',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Useful for making clickable icons. For example - close button for modals, inputs, etc.
-      </Subtitle>
-      <FigmaEmbed title="IconButton Figma Designs" src={figmaURL} />
+    <StoryPageWrapper
+      componentName="IconButton"
+      componentDescription="Useful for making clickable icons. For example - close button for modals, inputs, etc."
+      figmaURL={{
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195699&t=b5e9P6qSqxDsq2rz-4',
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4',
+      }}
+    >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
@@ -51,15 +37,7 @@ const Page = (): ReactElement => {
         export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Subtitle>
-        You can change the properties of this button using the controls in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 
