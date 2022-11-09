@@ -35,4 +35,5 @@ export type BoxProps = {
   className?: string;
   transform?: CSSObject['transform'];
   background?: CSSObject['background'];
+  zIndex?: CSSObject['zIndex'];
 };
