@@ -1,40 +1,25 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Box from '~components/Box';
-import FigmaEmbed from '~src/_helpers/storybook/FigmaEmbed';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11098%3A286031',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11098%3A286031',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Alerts are messages that communicate information to users about any significant changes or
-        explanations inside the system in a prominent way.
-      </Subtitle>
-      <FigmaEmbed title="Alert Figma Designs" src={figmaURL} />
+    <StoryPageWrapper
+      componentName="Alert"
+      componentDescription="Alerts are messages that communicate information to users about any significant changes or explanations inside the system in a prominent way."
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11098%3A286031',
+      }}
+    >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
@@ -79,13 +64,7 @@ const Page = (): ReactElement => {
         export default App;
         `}
       </Sandbox>
-      <Title>Example</Title>
-      <Subtitle>You can change the properties using the controls in the table below.</Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    </StoryPageWrapper>
   );
 };
 
