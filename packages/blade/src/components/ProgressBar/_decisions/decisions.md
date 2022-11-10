@@ -32,6 +32,12 @@ import { ProgressBar } from '@razorpay/components';
 />
 ```
 
+### Accessibility
+- We'll accept a prop `accessibilityLabel` which will be passed on as `aria-label` for web & `accessibilityLabel` for native to aide screen readers
+- By default the value of `accessibilityLabel` will be the same as `label` prop with a fallback to `"Loading"` and can be overwritten with something more meaningful by the consumer.
+- We will set `aria-role` as `progressbar`
+- We will pass the value of `value` prop as `aria-valuenow`
+
 ## Open Questions
 - Why not medium instead of large progress bar?
 - What should be the default progress bar size?
