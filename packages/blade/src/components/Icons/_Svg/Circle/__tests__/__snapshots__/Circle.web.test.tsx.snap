@@ -12,6 +12,7 @@ exports[`<Circle /> should render html circle component 1`] = `
       cx="200"
       cy="100"
       r="4"
+      stroke-width="1"
       x="10"
       y="10"
     />

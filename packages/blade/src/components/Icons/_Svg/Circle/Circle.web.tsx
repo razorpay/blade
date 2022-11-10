@@ -11,8 +11,7 @@ const Circle = ({ cx, cy, x, y, r, fill, stroke, strokeWidth }: CircleProps): Re
       r={r}
       fill={fill}
       stroke={stroke}
-      // eslint-disable-next-line react/no-unknown-property
-      stroke-width={strokeWidth}
+      strokeWidth={strokeWidth}
     />
   );
 };

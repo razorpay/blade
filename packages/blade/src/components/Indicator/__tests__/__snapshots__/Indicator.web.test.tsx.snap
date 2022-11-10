@@ -20,7 +20,7 @@ exports[`<Indicator /> should render 1`] = `
 }
 
 .c2 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 400;
@@ -42,16 +42,22 @@ exports[`<Indicator /> should render 1`] = `
     <svg
       aria-hidden="true"
       fill="none"
-      height="12"
-      viewBox="0 0 12 12"
-      width="12"
+      height="8"
+      viewBox="0 0 10 10"
+      width="8"
     >
       <circle
-        cx="6"
-        cy="6"
+        cx="5"
+        cy="5"
         fill="hsla(216, 33%, 29%, 1)"
-        r="5.5"
-        stroke="hsla(220, 27%, 98%, 1)"
+        r="5"
+      />
+      <circle
+        cx="5"
+        cy="5"
+        r="4.75"
+        stroke="hsla(214, 21%, 94%, 0.18)"
+        stroke-width="0.5"
       />
     </svg>
     <div
@@ -59,7 +65,7 @@ exports[`<Indicator /> should render 1`] = `
     >
       <p
         class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
+        color="surface.text.subtle.lowContrast"
         font-family="text"
         font-size="100"
         font-style="normal"
@@ -90,7 +96,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
 }
 
 .c2 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
   font-weight: 400;
@@ -103,7 +109,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
 }
 
 .c3 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 400;
@@ -125,16 +131,22 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     <svg
       aria-hidden="true"
       fill="none"
-      height="10"
-      viewBox="0 0 12 12"
-      width="10"
+      height="6"
+      viewBox="0 0 10 10"
+      width="6"
     >
       <circle
-        cx="6"
-        cy="6"
+        cx="5"
+        cy="5"
         fill="hsla(38, 97%, 38%, 1)"
-        r="5.5"
-        stroke="hsla(220, 27%, 98%, 1)"
+        r="5"
+      />
+      <circle
+        cx="5"
+        cy="5"
+        r="4.75"
+        stroke="hsla(214, 21%, 94%, 0.18)"
+        stroke-width="0.5"
       />
     </svg>
     <div
@@ -142,7 +154,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <p
         class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
+        color="surface.text.subtle.lowContrast"
         font-family="text"
         font-size="75"
         font-style="normal"
@@ -159,16 +171,22 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     <svg
       aria-hidden="true"
       fill="none"
-      height="12"
-      viewBox="0 0 12 12"
-      width="12"
+      height="8"
+      viewBox="0 0 10 10"
+      width="8"
     >
       <circle
-        cx="6"
-        cy="6"
+        cx="5"
+        cy="5"
         fill="hsla(160, 100%, 26%, 1)"
-        r="5.5"
-        stroke="hsla(220, 27%, 98%, 1)"
+        r="5"
+      />
+      <circle
+        cx="5"
+        cy="5"
+        r="4.75"
+        stroke="hsla(214, 21%, 94%, 0.18)"
+        stroke-width="0.5"
       />
     </svg>
     <div
@@ -176,7 +194,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <p
         class="c3 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
+        color="surface.text.subtle.lowContrast"
         font-family="text"
         font-size="100"
         font-style="normal"
@@ -194,25 +212,31 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       aria-hidden="true"
       fill="none"
       height="8"
-      viewBox="0 0 12 12"
+      viewBox="0 0 10 10"
       width="8"
     >
       <circle
-        cx="6"
-        cy="6"
+        cx="5"
+        cy="5"
         fill="hsla(8, 73%, 47%, 1)"
-        r="5.5"
-        stroke="hsla(220, 27%, 98%, 1)"
+        r="5"
+      />
+      <circle
+        cx="5"
+        cy="5"
+        r="4.75"
+        stroke="hsla(214, 21%, 94%, 0.18)"
+        stroke-width="0.5"
       />
     </svg>
     <div
       class="c1"
     >
       <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
+        class="c3 Text__StyledText-wkh56f-0"
+        color="surface.text.subtle.lowContrast"
         font-family="text"
-        font-size="75"
+        font-size="100"
         font-style="normal"
         font-weight="regular"
       />
@@ -227,16 +251,22 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     <svg
       aria-hidden="true"
       fill="none"
-      height="12"
-      viewBox="0 0 12 12"
-      width="12"
+      height="8"
+      viewBox="0 0 10 10"
+      width="8"
     >
       <circle
-        cx="6"
-        cy="6"
+        cx="5"
+        cy="5"
         fill="hsla(193, 100%, 35%, 1)"
-        r="5.5"
-        stroke="hsla(220, 27%, 98%, 1)"
+        r="5"
+      />
+      <circle
+        cx="5"
+        cy="5"
+        r="4.75"
+        stroke="hsla(214, 21%, 94%, 0.18)"
+        stroke-width="0.5"
       />
     </svg>
     <div
@@ -244,7 +274,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <p
         class="c3 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
+        color="surface.text.subtle.lowContrast"
         font-family="text"
         font-size="100"
         font-style="normal"
