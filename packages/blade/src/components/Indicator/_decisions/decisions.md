@@ -33,7 +33,7 @@ We'll expose an `Indicator` component with the following API:
 | accessibilityLabel | `string`                                                  | `undefined` | Sets the aria-label for screen readers         | ♿️      |
 | children           | `string`                                                  | `undefined` | Shows a text label beside the circle indicator |          |
 | intent             | `positive`,`negative`, `notice`, `information`, `neutral` | `neutral`   | Sets the color tone of circle indicator        |          |
-| size               | `xsmall`,`small`, `medium`                                | `medium`    | Sets the size of circle indicator              |          |
+| size               | `small`,`medium`, `large`                                 | `medium`    | Sets the size of circle indicator              |          |
 
 > **Note**
 >
