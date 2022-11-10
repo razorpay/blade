@@ -12,7 +12,7 @@ A Progress bar is generally a branded element that indicates progress of process
 | Prop | Type | Default | Description | Required |
 |---|---|---|---|---|
 | label | `string` | `undefined` | The label to be rendered with the progress bar. |  |
-| progress | number | `undefined` | The current progress for the progress bar. The progress bar would be in an indeterminate state if `progress` is not passed. |  |
+| value | number | `undefined` | The current progress value for the progress bar. The progress bar would be in an indeterminate state if `progress` is not passed. |  |
 | contrast | `low`, `high` | `low` | The contrast of the progress bar to be rendered. |  |
 | intent | `positive`,`negative`, `notice`, `information`, `neutral` | `undefined` | The intent of the progress bar to be rendered. | |
 | size | `large`, `small` | `small` | The size of the progress bar to be rendered. |  |
@@ -25,7 +25,7 @@ import { ProgressBar } from '@razorpay/components';
 
 <ProgressBar 
   label='Loading' 
-  progress={20} 
+  value={20} 
   contrast='low'
   size='large'
   accessibilityLabel='Loading Payments'
