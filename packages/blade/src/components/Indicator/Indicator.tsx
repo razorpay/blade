@@ -22,7 +22,7 @@ type IndicatorCommonProps = {
    *
    * @default medium
    */
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 };
 
 type IndicatorWithoutA11yLabel = {
@@ -65,16 +65,15 @@ const Indicator = ({
   const { theme } = useTheme();
 
   const fillColor = theme.colors.feedback.background[intent].highContrast;
-  const strokeColor = theme.colors.brand.gray[200].lowContrast;
+  const strokeColor = theme.colors.brand.gray.a100.highContrast;
   const getDimension = useCallback((): Dimensions => {
-    // the actual svg size would get reduced by 2 because of stroke width
     switch (size) {
       case 'small':
-        return { svgSize: '10', textSize: 'small' };
-      case 'xsmall':
-        return { svgSize: '8', textSize: 'small' };
+        return { svgSize: '6', textSize: 'small' };
+      case 'large':
+        return { svgSize: '10', textSize: 'medium' };
       default:
-        return { svgSize: '12', textSize: 'medium' };
+        return { svgSize: '8', textSize: 'medium' };
     }
   }, [size]);
   const dimensions = getDimension();
@@ -88,11 +87,12 @@ const Indicator = ({
 
   return (
     <Box display="flex" flexDirection="row" alignItems="center" {...a11yProps}>
-      <Svg width={dimensions.svgSize} height={dimensions.svgSize} viewBox="0 0 12 12" fill="none">
-        <Circle cx="6" cy="6" r="5.5" fill={fillColor} stroke={strokeColor} />
+      <Svg width={dimensions.svgSize} height={dimensions.svgSize} viewBox="0 0 10 10" fill="none">
+        <Circle cx="5" cy="5" r="5" fill={fillColor} />
+        <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
       </Svg>
       <Box marginLeft="spacing.2">
-        <Text contrast="low" size={dimensions.textSize}>
+        <Text contrast="low" type="subtle" size={dimensions.textSize}>
           {children}
         </Text>
       </Box>

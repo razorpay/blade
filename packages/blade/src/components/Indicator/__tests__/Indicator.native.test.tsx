@@ -13,7 +13,7 @@ describe('<Indicator />', () => {
       <>
         <Indicator accessibilityLabel="Warning" size="small" intent="notice" />
         <Indicator accessibilityLabel="Success" size="medium" intent="positive" />
-        <Indicator accessibilityLabel="Error" size="xsmall" intent="negative" />
+        <Indicator accessibilityLabel="Error" size="large" intent="negative" />
         <Indicator accessibilityLabel="Info" intent="information" />
       </>,
     );
