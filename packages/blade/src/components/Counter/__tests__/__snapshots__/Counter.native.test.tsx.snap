@@ -14,7 +14,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -96,7 +96,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -178,7 +178,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -260,7 +260,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -342,7 +342,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -424,7 +424,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -506,7 +506,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -588,7 +588,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -670,7 +670,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -752,7 +752,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -834,7 +834,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -916,7 +916,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
+        "minHeight": 20,
       },
     ]
   }
@@ -998,7 +998,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 20,
+        "minHeight": 16,
       },
     ]
   }
@@ -1031,7 +1031,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
   >
     <Text
       color="feedback.text.neutral.lowContrast"
-      fontSize={75}
+      fontSize={50}
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -1040,7 +1040,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
           Object {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 12,
+            "fontSize": 11,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 16,
