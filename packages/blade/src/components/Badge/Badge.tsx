@@ -3,6 +3,7 @@ import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
+import { fontSize, iconPadding, iconSize, padding } from './badgeTokens';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent, IconProps } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
@@ -34,7 +35,7 @@ type BadgeProps = {
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Icon to be displayed in the badge.
    * Accepts a component of type `IconComponent` from Blade.
@@ -116,8 +117,8 @@ const Badge = ({
   return (
     <StyledBadge backgroundColor={backgroundColor} size={size} platform={platform}>
       <Box
-        paddingRight="spacing.3"
-        paddingLeft="spacing.3"
+        paddingRight={padding[size]}
+        paddingLeft={padding[size]}
         display="flex"
         flex={1}
         flexDirection="row"
@@ -126,12 +127,12 @@ const Badge = ({
         overflow="hidden"
       >
         {Icon ? (
-          <Box paddingRight={Boolean(Icon) ? 'spacing.2' : 'spacing.0'} display="flex">
-            <Icon color={iconColor} size="small" />
+          <Box paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
+            <Icon color={iconColor} size={iconSize[size]} />
           </Box>
         ) : null}
         <StyledBaseText
-          fontSize={75}
+          fontSize={fontSize[size]}
           fontWeight={fontWeight}
           lineHeight="s"
           color={textColor}
