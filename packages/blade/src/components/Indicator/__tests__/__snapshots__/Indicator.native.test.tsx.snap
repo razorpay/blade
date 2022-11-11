@@ -383,11 +383,11 @@ Array [
     <RNSVGSvgView
       accessibilityElementsHidden={true}
       align="xMidYMid"
-      bbHeight="8"
-      bbWidth="8"
+      bbHeight="10"
+      bbWidth="10"
       fill="none"
       focusable={false}
-      height="8"
+      height="10"
       importantForAccessibility="no-hide-descendants"
       meetOrSlice={0}
       minX={0}
@@ -400,14 +400,14 @@ Array [
           },
           Object {
             "flex": 0,
-            "height": 8,
-            "width": 8,
+            "height": 10,
+            "width": 10,
           },
         ]
       }
       vbHeight={10}
       vbWidth={10}
-      width="8"
+      width="10"
     >
       <RNSVGGroup
         fill={null}

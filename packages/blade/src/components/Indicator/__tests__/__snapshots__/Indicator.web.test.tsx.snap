@@ -211,9 +211,9 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     <svg
       aria-hidden="true"
       fill="none"
-      height="8"
+      height="10"
       viewBox="0 0 10 10"
-      width="8"
+      width="10"
     >
       <circle
         cx="5"
