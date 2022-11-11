@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.7.0
+
+### Minor Changes
+
+- 67e5059: feat(Indicator): add Indicator component
+
 ## 3.6.2
 
 ### Patch Changes
