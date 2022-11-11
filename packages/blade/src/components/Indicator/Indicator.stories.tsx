@@ -97,6 +97,7 @@ Composition.args = {
   children: undefined,
   intent: 'notice',
   accessibilityLabel: 'New offers',
+  size: 'large',
 };
 Composition.parameters = {
   docs: {

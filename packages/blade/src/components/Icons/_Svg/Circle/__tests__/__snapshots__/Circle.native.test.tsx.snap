@@ -43,7 +43,13 @@ exports[`<Circle /> should render react-native-svg Circle component 1`] = `
           10,
         ]
       }
+      propList={
+        Array [
+          "strokeWidth",
+        ]
+      }
       r="4"
+      strokeWidth="1"
     />
   </RNSVGGroup>
 </RNSVGSvgView>
