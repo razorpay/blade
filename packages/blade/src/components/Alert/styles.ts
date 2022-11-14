@@ -14,7 +14,11 @@ export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject
 
   return {
     background: feedbackColors.background[intent][contrastType],
-    padding: `${makeSpace(theme.spacing[4])} ${makeSpace(theme.spacing[5])}`,
+    padding: isBorderless
+      ? `${makeSpace(theme.spacing[4])} ${makeSpace(theme.spacing[5])}`
+      : `${makeSpace(theme.spacing[3])} ${makeSpace(theme.spacing[3])} ${makeSpace(
+          theme.spacing[4],
+        )} ${makeSpace(theme.spacing[3])}`,
     borderRadius: makeBorderSize(
       isBorderless ? theme.border.radius.none : theme.border.radius.medium,
     ),
