@@ -69,14 +69,20 @@ export default {
   },
 } as Meta<IconProps>;
 
-const IconTemplate: ComponentStory<ComponentType<IconProps & { icon?: string }>> = ({
+const IconTemplate: ComponentStory<ComponentType<IconProps & { icon: string }>> = ({
   icon,
   ...args
 }) => {
-  if (icon) {
-    const IconComponent = iconMap[icon];
-    return <IconComponent {...args} />;
-  }
+  const IconComponent = iconMap[icon];
+  return <IconComponent {...args} />;
+};
+
+export const Icon = IconTemplate.bind({});
+Icon.args = {
+  icon: 'CreditCardIcon',
+};
+
+export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) => {
   return (
     <Box>
       {Object.keys(iconMap).map((icon, key) => {
@@ -98,9 +104,4 @@ const IconTemplate: ComponentStory<ComponentType<IconProps & { icon?: string }>>
       })}
     </Box>
   );
-};
-
-export const Icon = IconTemplate.bind({});
-Icon.args = {
-  icon: undefined,
 };
