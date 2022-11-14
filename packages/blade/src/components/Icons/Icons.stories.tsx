@@ -5,7 +5,6 @@ import iconMap from './iconMap';
 import type { IconProps } from '.';
 import { CreditCardIcon } from '.';
 import Box from '~components/Box';
-import { Text } from '~components/Typography';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import Sandbox from '~src/_helpers/storybook/Sandbox';
 
@@ -98,7 +97,16 @@ export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) 
             key={key}
           >
             <IconComponent {...args} />
-            <Text size="small">{icon}</Text>
+            <small
+              style={{
+                width: '90%',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                textAlign: 'center',
+              }}
+            >
+              {icon}
+            </small>
           </Box>
         );
       })}
