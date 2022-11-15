@@ -2,35 +2,20 @@
   "private": true,
   "main": "src/index.tsx",
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "@fontsource/lato": "4.5.10",
     "@razorpay/blade": "../../../../build/",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-scripts": "4.0.3",
     "styled-components": "5.3.6"
   },
   "devDependencies": {
+    "vite": "3.2.3",
     "@types/react": "18.0.23",
     "@types/react-dom": "18.0.7",
-    "typescript": "4.4.2",
     "@types/styled-components": "5.1.26"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }
