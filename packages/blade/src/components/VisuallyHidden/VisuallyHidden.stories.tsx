@@ -1,28 +1,21 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ComponentStory, Meta } from '@storybook/react';
-import {
-  Title as StorybookTitle,
-  Subtitle,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-} from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
+import { Title as StorybookTitle } from '@storybook/addon-docs';
+import { Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
 import type { VisuallyHiddenProps } from './types';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
   return (
-    <>
-      <StorybookTitle />
-      <Subtitle>
-        The VisuallyHidden component makes content hidden from sighted users but available for
-        screen reader users.
-      </Subtitle>
+    <StoryPageWrapper
+      componentDescription="The VisuallyHidden component makes content hidden from sighted users but available for screen reader users."
+      componentName="VisuallyHidden"
+    >
       <Link
         withArrow={true}
         href="https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#hidden-content"
@@ -34,13 +27,23 @@ const Page = (): ReactElement => {
       <br />
       <br />
       <StorybookTitle>Usage</StorybookTitle>
-      <Highlight language="tsx">{`import { VisuallyHidden } from '@razorpay/blade/components' \nimport type { VisuallyHiddenProps } from '@razorpay/blade/components'`}</Highlight>
-      <StorybookTitle>Example</StorybookTitle>
-      <Primary />
-      <StorybookTitle>Properties</StorybookTitle>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+      <Sandbox>
+        {`
+          import { VisuallyHidden, Checkbox, Text } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <div>
+                <Text>If you focus on checkbox below with voice over enabled, you will hear "Hidden Label" announcement</Text>
+                <Checkbox><VisuallyHidden>Hidden Label</VisuallyHidden></Checkbox>
+              </div>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
   );
 };
 

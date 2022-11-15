@@ -1,50 +1,70 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { Highlight, Link } from '@storybook/design-system';
 
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Box from '~components/Box';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6824%3A61',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6824%3A61',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=6824%3A61',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=6824%3A61',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Alerts are messages that communicate information to users about any significant changes or
-        explanations inside the system in a prominent way.
-      </Subtitle>
+    <StoryPageWrapper
+      componentName="Alert"
+      componentDescription="Alerts are messages that communicate information to users about any significant changes or explanations inside the system in a prominent way."
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11098%3A286031',
+      }}
+    >
       <Title>Usage</Title>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <Highlight language="tsx">{`import { Alert } from '@razorpay/blade/components' \nimport type { AlertProps } from '@razorpay/blade/components'`}</Highlight>
-      <Title>Example</Title>
-      <Subtitle>You can change the properties using the controls in the table below.</Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+      <Sandbox editorHeight={500}>
+        {`
+        import { useState } from 'react';
+        import { Alert, Button } from '@razorpay/blade/components';
+
+        function App() {
+          const [showAlert, setShowAlert] = useState(false);
+          return (
+            <div>
+              <Button onClick={() => setShowAlert(!showAlert)}>
+                Click to be alerted!
+              </Button>
+              <br /><br />
+              <div>
+                { 
+                  showAlert 
+                  ? <Alert 
+                      title="The Button is Clicked 👀" 
+                      description="Click the Button again to hide alert"
+                      actions={{
+                        primary: {
+                          onClick: () => {
+                            alert('Alert from the alert hehe')
+                          },
+                          text: 'Primary Action'
+                        },
+                        secondary: {
+                          href: 'https://razorpay.com',
+                          target: '_blank',
+                          text: 'Go to Razorpay.com'
+                        }
+                      }}
+                    /> 
+                  : null 
+                }
+              </div>
+            </div>
+          )
+        }
+
+        export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
   );
 };
 

@@ -1,9 +1,10 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
+import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { OTPInputProps } from './OTPInput';
 import { OTPInput as OTPInputComponent } from './OTPInput';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -120,21 +121,35 @@ export default {
   parameters: {
     docs: {
       page: () => (
-        <>
-          <Title />
-          <Subtitle>
-            A one-time password (OTP), also known as a one-time PIN, one-time authorization code
-            (OTAC) or dynamic password, is a password that is valid for only one login session or a
-            transaction. These are a group of inputs and can be either 4 or 6 characters long.
-          </Subtitle>
+        <StoryPageWrapper
+          componentName="OTPInput"
+          componentDescription="A one-time password (OTP), also known as a one-time PIN, one-time authorization code (OTAC) or dynamic password, is a password that is valid for only one login session or a transaction. These are a group of inputs and can be either 4 or 6 characters long."
+          figmaURL={{
+            paymentTheme:
+              'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A191059',
+            bankingTheme:
+              'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9941%3A193027',
+          }}
+        >
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { OTPInput } from '@razorpay/blade/components' \nimport type { OTPInputProps } from '@razorpay/blade/components'`}</Highlight>
-          <Title>Example</Title>
-          <Primary />
-          <Title>Properties</Title>
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </>
+          <Sandbox showConsole>
+            {`
+              import { OTPInput } from '@razorpay/blade/components';
+
+              function App(): JSX.Element {
+                return (
+                  // Fill OTP and check console
+                  <OTPInput 
+                    label="Enter OTP" 
+                    onOTPFilled={(e) => console.log(e)} 
+                  />
+                )
+              }
+
+              export default App;
+            `}
+          </Sandbox>
+        </StoryPageWrapper>
       ),
     },
   },

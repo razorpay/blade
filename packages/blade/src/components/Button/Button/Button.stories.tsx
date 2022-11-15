@@ -1,16 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import {
-  Title,
-  Subtitle,
-  Primary,
-  ArgsTable,
-  Stories,
-  Description,
-  PRIMARY_STORY,
-} from '@storybook/addon-docs';
+import { Title, Description, Heading } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
-import { Highlight, Link } from '@storybook/design-system';
+import { Highlight } from '@storybook/design-system';
 import styled from 'styled-components';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
@@ -18,53 +10,48 @@ import { BaseText } from '~components/Typography/BaseText';
 import { CreditCardIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import Box from '~components/Box';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9611%3A78487',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9611%3A78487',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        This is the Button component which can be used for various CTAs. It is available in 3
-        different variants.
-      </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentDescription="This is the Button component which can be used for various CTAs. It is available in 3 different variants."
+      componentName="Button"
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9611%3A78487',
+      }}
+    >
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Button } from '@razorpay/blade/components' \nimport type { ButtonProps } from '@razorpay/blade/components'`}</Highlight>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default button. You can change the properties of this button using the controls
-        in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Description markdown=">Note: `icon` prop accepts an `IconComponent` of Blade which should be used as:" />
+      <Sandbox showConsole>
+        {`
+        import { Button } from '@razorpay/blade/components'
+        
+        function App(): JSX.Element {
+          return (
+            // Try changing variant here to secondary
+            <Button 
+              variant="primary" 
+              onClick={() => console.log('Tadaaaa')}
+            >
+              Click Me!
+            </Button>
+          )
+        }
+
+        export default App;
+      `}
+      </Sandbox>
+      <Heading>Usage with Icon</Heading>
+      <Description markdown="`icon` prop accepts an `IconComponent` of Blade which should be used as:" />
       <Highlight language="tsx">{`import { Button, CreditCardIcon } from '@razorpay/blade/components'; \n\n &ltButton icon={CreditCardIcon}>Pay Now&lt/Button>`}</Highlight>
-      <Stories />
-    </>
+      <br />
+      <br />
+    </StoryPageWrapper>
   );
 };
 

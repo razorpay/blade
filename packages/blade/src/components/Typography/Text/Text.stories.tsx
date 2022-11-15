@@ -1,50 +1,38 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { TextProps } from './';
 import { Text as TextComponent } from './';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189844',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189844',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        The Text component is used to display main content of the page. It is often clubbed with
-        Title or Heading to display content in a hierarchical structure. It applies responsive
-        styles automatically based on the device it is being rendered on.
-      </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentDescription="The Text component is used to display main content of the page. It is often clubbed with Title or Heading to display content in a hierarchical structure. It applies responsive styles automatically based on the device it is being rendered on."
+      componentName="Text"
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189844',
+      }}
+    >
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Text } from '@razorpay/blade/components' \nimport type { TextProps } from '@razorpay/blade/components'`}</Highlight>
-      <Title>Example</Title>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+      <Sandbox>
+        {`
+          import { Text } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <Text>Lorem Ipsum</Text>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
   );
 };
 

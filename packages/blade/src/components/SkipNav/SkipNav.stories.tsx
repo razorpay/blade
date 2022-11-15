@@ -1,41 +1,56 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import {
-  Title as StorybookTitle,
-  Subtitle,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-  Description,
-} from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
+import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Button } from '~components/Button';
 import { Link } from '~components/Link';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav';
 import { Text } from '~components/Typography';
 import Box from '~components/Box';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
   return (
-    <>
-      <StorybookTitle />
-      <Description>SkipNav component is only available on web.</Description>
-      <Subtitle>
-        The SkipNav component lets users skip the navigation and jump to the main content of the
-        page. Useful when you have navbars at the top and the user wants to jump directly to the
-        main content.
-      </Subtitle>
-      <br />
-      <br />
-      <StorybookTitle>Usage</StorybookTitle>
-      <Highlight language="tsx">{`import { SkipNavLink, SkipNavContent } from '@razorpay/blade/components'`}</Highlight>
-      <StorybookTitle>Example</StorybookTitle>
-      <Primary />
-      <StorybookTitle>Properties</StorybookTitle>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+    <StoryPageWrapper
+      componentDescription="The SkipNav component lets users skip the navigation and jump to the main content of the page. Useful when you have navbars at the top and the user wants to jump directly to the main content."
+      componentName="SkipNav"
+      imports=""
+    >
+      <Title>Usage</Title>
+      <Sandbox editorHeight={400}>
+        {`
+          import { 
+            SkipNavLink, 
+            SkipNavContent, 
+            Text, 
+            Link,
+            Code 
+          } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <div>
+                <Text>Click somewhere on the text here to focus on this window and press <Code>TAB</Code> key to see it in action</Text>
+                <SkipNavLink>Skip to content</SkipNavLink>
+                <nav style={{ marginBottom: '800px' }}>
+                  <ul>
+                    <li><Link href="#">Nav link 1</Link></li>
+                    <li><Link href="#">Nav link 2</Link></li>
+                    <li><Link href="#">Nav link 3</Link></li>
+                  </ul>
+                </nav>
+                <main>
+                  <SkipNavContent />
+                  <Text>Main Content of the Page</Text>
+                </main>
+              </div>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
   );
 };
 

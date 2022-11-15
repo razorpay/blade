@@ -26,10 +26,12 @@ const getStories = () => {
     require('../../src/components/Alert/Alert.stories.tsx'),
     require('../../src/components/Badge/Badge.stories.tsx'),
     require('../../src/components/Button/Button/Button.stories.tsx'),
+    require('../../src/components/Button/IconButton/IconButton.stories.tsx'),
     require('../../src/components/Checkbox/Checkbox.stories.tsx'),
     require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
     require('../../src/components/Counter/Counter.stories.tsx'),
     require('../../src/components/Icons/Icons.stories.tsx'),
+    require('../../src/components/Indicator/Indicator.stories.tsx'),
     require('../../src/components/Input/BaseInput/BaseInput.stories.tsx'),
     require('../../src/components/Input/OTPInput/OTPInput.stories.tsx'),
     require('../../src/components/Input/PasswordInput/PasswordInput.stories.tsx'),
@@ -51,7 +53,6 @@ const getStories = () => {
     require('../../src/storybook-recipes/SimpleCardWithTokens/CardWithTokens.stories.tsx'),
     require('../../src/tokens/theme/overrideTheme.stories.tsx'),
     require('../../src/components/Button/BaseButton/BaseButton.stories.internal.tsx'),
-    require('../../src/components/Button/IconButton/IconButton.stories.internal.tsx'),
   ];
 };
 

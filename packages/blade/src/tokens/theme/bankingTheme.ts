@@ -1146,7 +1146,7 @@ const colors: ColorsWithModes = {
         },
       },
     },
-    overlay: { background: globalColors.neutral.navyGrayDark[600] },
+    overlay: { background: globalColors.neutral.navyGrayDark.a400 },
     brand: {
       primary: {
         300: globalColors.chromatic.azure.a100,
@@ -1196,7 +1196,7 @@ const colors: ColorsWithModes = {
       background: {
         neutral: {
           lowContrast: globalColors.neutral.navyGrayDark.a100,
-          highContrast: globalColors.neutral.navyGrayDark[50],
+          highContrast: globalColors.neutral.navyGrayDark.a100,
         },
         positive: {
           lowContrast: globalColors.chromatic.emerald.a100,
@@ -1240,7 +1240,7 @@ const colors: ColorsWithModes = {
       text: {
         neutral: {
           lowContrast: globalColors.neutral.navyGrayDark[100],
-          highContrast: globalColors.neutral.navyGrayDark[800],
+          highContrast: globalColors.neutral.navyGrayDark[50],
         },
         positive: {
           lowContrast: globalColors.chromatic.emerald[500],
@@ -1262,7 +1262,7 @@ const colors: ColorsWithModes = {
       icon: {
         neutral: {
           lowContrast: globalColors.neutral.navyGrayDark[100],
-          highContrast: globalColors.neutral.navyGrayDark[800],
+          highContrast: globalColors.neutral.navyGrayDark[50],
         },
         positive: {
           lowContrast: globalColors.chromatic.emerald[500],
@@ -1357,23 +1357,23 @@ const colors: ColorsWithModes = {
             link: {
               default: {
                 lowContrast: globalColors.neutral.navyGrayDark[100],
-                highContrast: globalColors.neutral.navyGrayDark[700],
+                highContrast: globalColors.neutral.navyGrayDark[100],
               },
               hover: {
                 lowContrast: globalColors.neutral.navyGrayDark[200],
-                highContrast: globalColors.neutral.navyGrayDark[500],
+                highContrast: globalColors.neutral.navyGrayDark[200],
               },
               focus: {
                 lowContrast: globalColors.neutral.navyGrayDark[300],
-                highContrast: globalColors.neutral.navyGrayDark[400],
+                highContrast: globalColors.neutral.navyGrayDark[300],
               },
               active: {
                 lowContrast: globalColors.neutral.navyGrayDark[300],
-                highContrast: globalColors.neutral.navyGrayDark[400],
+                highContrast: globalColors.neutral.navyGrayDark[300],
               },
               disabled: {
                 lowContrast: globalColors.neutral.navyGrayDark[400],
-                highContrast: globalColors.neutral.navyGrayDark[300],
+                highContrast: globalColors.neutral.navyGrayDark[400],
               },
             },
           },
@@ -1403,23 +1403,23 @@ const colors: ColorsWithModes = {
             link: {
               default: {
                 lowContrast: globalColors.neutral.navyGrayDark[100],
-                highContrast: globalColors.neutral.navyGrayDark[700],
+                highContrast: globalColors.neutral.navyGrayDark[100],
               },
               hover: {
                 lowContrast: globalColors.neutral.navyGrayDark[200],
-                highContrast: globalColors.neutral.navyGrayDark[500],
+                highContrast: globalColors.neutral.navyGrayDark[200],
               },
               focus: {
                 lowContrast: globalColors.neutral.navyGrayDark[300],
-                highContrast: globalColors.neutral.navyGrayDark[400],
+                highContrast: globalColors.neutral.navyGrayDark[300],
               },
               active: {
                 lowContrast: globalColors.neutral.navyGrayDark[300],
-                highContrast: globalColors.neutral.navyGrayDark[400],
+                highContrast: globalColors.neutral.navyGrayDark[300],
               },
               disabled: {
                 lowContrast: globalColors.neutral.navyGrayDark[400],
-                highContrast: globalColors.neutral.navyGrayDark[300],
+                highContrast: globalColors.neutral.navyGrayDark[400],
               },
             },
           },

@@ -1,49 +1,59 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
+import { Title } from '@storybook/addon-docs';
 import { Text } from '../Typography';
 import type { RadioGroupProps } from './RadioGroup/RadioGroup';
 import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): React.ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Radio & RadioGroup can be used in forms when a user needs to single value from several
-        options.
-      </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentDescription="Radio & RadioGroup can be used in forms when a user needs to single value from several options."
+      componentName="Radio"
+      imports={`import { Radio, RadioGroup } from '@razorpay/blade/components';\nimport type { RadioProps, RadioGroupProps } from '@razorpay/blade/components';`}
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11314%3A278927',
+      }}
+    >
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Radio, RadioGroup } from '@razorpay/blade/components' \nimport type { RadioProps, RadioGroupProps } from '@razorpay/blade/components'`}</Highlight>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default radio. You can change the properties of this button using the controls
-        in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+      <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
+        {`
+          import { RadioGroup, Radio } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <RadioGroup
+                helpText="Select only one"
+                label="Where do you want to collect payments?"
+                name="payment-collection" 
+                onChange={({name, value}) => console.log({name, value})}
+                defaultValue="website"
+              >
+                <Radio value="website">Website</Radio>
+                <Radio value="android">Android App</Radio>
+                <Radio value="ios">iOS App</Radio>
+                <Radio 
+                  value="social-media" 
+                  helpText="Like WhatsApp, Facebook, Instagram"
+                >
+                  Social Media
+                </Radio>
+                <Radio value="offline-store">Offline Store</Radio>
+              </RadioGroup>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
   );
 };
 

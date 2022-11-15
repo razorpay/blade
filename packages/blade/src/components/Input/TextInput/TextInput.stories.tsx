@@ -1,12 +1,13 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
+import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
+import Sandbox from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -185,20 +186,35 @@ export default {
   parameters: {
     docs: {
       page: () => (
-        <>
-          <Title />
-          <Subtitle>
-            The TextInput component is a component that can be used to input name, email, telephone,
-            url, search or plain text.
-          </Subtitle>
+        <StoryPageWrapper
+          componentDescription="The TextInput component is a component that can be used to input name, email, telephone, url, search or plain text."
+          componentName="TextInput"
+          figmaURL={{
+            paymentTheme:
+              'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A210737',
+            bankingTheme:
+              'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9941%3A155140',
+          }}
+        >
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { TextInput } from '@razorpay/blade/components' \nimport type { TextInputProps } from '@razorpay/blade/components'`}</Highlight>
-          <Title>Example</Title>
-          <Primary />
-          <Title>Properties</Title>
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </>
+          <Sandbox showConsole>
+            {`
+              import { TextInput } from '@razorpay/blade/components';
+
+              function App(): JSX.Element {
+                return (
+                  <TextInput 
+                    label="Name" 
+                    placeholder="Enter Name" 
+                    onChange={(e) => console.log(e)} 
+                  />
+                )
+              }
+
+              export default App;
+            `}
+          </Sandbox>
+        </StoryPageWrapper>
       ),
     },
   },
