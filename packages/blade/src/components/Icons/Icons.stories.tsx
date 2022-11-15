@@ -97,8 +97,9 @@ export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) 
             key={key}
           >
             <IconComponent {...args} />
-            <small
+            <Box
               style={{
+                fontSize: 12,
                 width: '90%',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
@@ -106,7 +107,7 @@ export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) 
               }}
             >
               {icon}
-            </small>
+            </Box>
           </Box>
         );
       })}
