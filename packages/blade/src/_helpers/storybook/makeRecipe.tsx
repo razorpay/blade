@@ -53,7 +53,7 @@ export const makeRecipe = (
   const { recipeTitle, ...contexts } = props;
   const { packageJson, files } = getProjectFiles(contexts);
 
-  const Example = (): JSX.Element | null => {
+  const Example = (): JSX.Element => {
     return <RecipeSandbox files={files} dependencies={packageJson?.dependencies} />;
   };
 
