@@ -131,6 +131,12 @@ BadgeMediumSize.args = {
 };
 BadgeMediumSize.storyName = 'Medium Size';
 
+export const BadgeLargeSize = BadgesWithVariantTemplate.bind({});
+BadgeLargeSize.args = {
+  size: 'large',
+};
+BadgeLargeSize.storyName = 'Large Size';
+
 export const BadgeWithIcon = BadgesWithVariantTemplate.bind({});
 BadgeWithIcon.args = {
   icon: InfoIcon,

@@ -1,16 +1,13 @@
 import type { ReactElement } from 'react';
-import type { CSSObject } from 'styled-components';
-import styled from 'styled-components';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
-import { fontSize, iconPadding, iconSize, padding } from './badgeTokens';
+import { iconPadding, iconSize, horizontalPadding, verticalPadding } from './badgeTokens';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent, IconProps } from '~components/Icons';
-import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { Text } from '~components/Typography';
 
 type BadgeProps = {
   /**
@@ -85,18 +82,18 @@ const getColorProps = ({
   return props;
 };
 
-const StyledBaseText = styled(BaseText)(
-  (): CSSObject => {
-    if (getPlatformType() !== 'react-native') {
-      return {
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-      };
-    }
-    return {};
-  },
-);
+// const StyledBaseText = styled(BaseText)(
+//   (): CSSObject => {
+//     if (getPlatformType() !== 'react-native') {
+//       return {
+//         whiteSpace: 'nowrap',
+//         overflow: 'hidden',
+//         textOverflow: 'ellipsis',
+//       };
+//     }
+//     return {};
+//   },
+// );
 
 const Badge = ({
   children,
@@ -117,10 +114,11 @@ const Badge = ({
   return (
     <StyledBadge backgroundColor={backgroundColor} size={size} platform={platform}>
       <Box
-        paddingRight={padding[size]}
-        paddingLeft={padding[size]}
+        paddingRight={horizontalPadding[size]}
+        paddingLeft={horizontalPadding[size]}
+        paddingTop={verticalPadding[size]}
+        paddingBottom={verticalPadding[size]}
         display="flex"
-        flex={1}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
@@ -131,16 +129,23 @@ const Badge = ({
             <Icon color={iconColor} size={iconSize[size]} />
           </Box>
         ) : null}
-        <StyledBaseText
-          fontSize={fontSize[size]}
-          fontWeight={fontWeight}
-          lineHeight="s"
-          color={textColor}
-          textAlign="center"
+        <Text
+          {...(size === 'small'
+            ? {
+                variant: 'caption',
+                // weight: fontWeight,
+              }
+            : {
+                variant: 'body',
+                size: 'small',
+                weight: fontWeight,
+              })}
+          type="normal"
           truncateAfterLines={1}
+          _color={textColor}
         >
           {children}
-        </StyledBaseText>
+        </Text>
       </Box>
     </StyledBadge>
   );

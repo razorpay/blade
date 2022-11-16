@@ -93,9 +93,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
 const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
   if (truncateAfterLines) {
     if (getPlatformType() === 'react-native') {
-      return {
-        numberOfLines: truncateAfterLines,
-      };
+      return null;
     }
     return {
       overflow: 'hidden',
