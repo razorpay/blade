@@ -1,20 +1,26 @@
-import { Sandpack } from '@codesandbox/sandpack-react';
 import type { Meta } from '@storybook/react';
 import React from 'react';
+import { RecipeSandbox } from './Sandbox';
 
 type ProjectFilesType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  packageJson: Record<string, any>;
-  files: Record<string, string>;
+  packageJson: Record<string, any> | null;
+  files: Record<string, string> | null;
 };
 
 interface WebpackContexts {
-  exampleSrcContext: __WebpackModuleApi.RequireContext;
-  exampleBaseContext: __WebpackModuleApi.RequireContext;
+  exampleSrcContext: __WebpackModuleApi.RequireContext | null;
+  exampleBaseContext: __WebpackModuleApi.RequireContext | null;
 }
 
 const getProjectFiles = (contexts: WebpackContexts): ProjectFilesType => {
   const { exampleSrcContext, exampleBaseContext } = contexts;
+  if (!exampleSrcContext || !exampleBaseContext) {
+    return {
+      packageJson: null,
+      files: null,
+    };
+  }
   const keys = exampleSrcContext.keys();
   const values = keys.map(exampleSrcContext);
   const allFiles: Record<string, string> = {};
@@ -41,33 +47,20 @@ interface MakeRecipeProps extends WebpackContexts {
   recipeTitle: string;
 }
 
-export const makeRecipe = (props: MakeRecipeProps): { meta: Meta; Example: () => JSX.Element } => {
+export const makeRecipe = (
+  props: MakeRecipeProps,
+): { meta: Meta; Example: () => JSX.Element | null } => {
   const { recipeTitle, ...contexts } = props;
   const { packageJson, files } = getProjectFiles(contexts);
 
-  const Example = (): JSX.Element => {
-    return (
-      <Sandpack
-        template="react-ts"
-        files={files}
-        customSetup={{
-          dependencies: {
-            ...packageJson.dependencies,
-            '@razorpay/blade': '*',
-          },
-        }}
-        options={{
-          showConsole: true,
-          showConsoleButton: true,
-        }}
-      />
-    );
+  const Example = (): JSX.Element | null => {
+    return <RecipeSandbox files={files} dependencies={packageJson?.dependencies} />;
   };
 
   return {
     meta: {
       title: `Recipes/${recipeTitle}`,
-      component: Sandpack,
+      component: Example,
       parameters: {
         previewTabs: {
           'storybook/docs/panel': {

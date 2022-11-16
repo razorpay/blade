@@ -104,4 +104,28 @@ function Sandbox({
   );
 }
 
+export type RecipeSandboxProps = {
+  files: Record<string, string> | null;
+  dependencies: Record<string, string> | null;
+};
+
+export const RecipeSandbox = ({ files, dependencies }: RecipeSandboxProps): JSX.Element => {
+  return (
+    <Sandpack
+      template="react-ts"
+      files={files}
+      customSetup={{
+        dependencies: {
+          ...dependencies,
+          '@razorpay/blade': '*',
+        },
+      }}
+      options={{
+        showConsole: true,
+        showConsoleButton: true,
+      }}
+    />
+  );
+};
+
 export default Sandbox;
