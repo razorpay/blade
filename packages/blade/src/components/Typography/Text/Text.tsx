@@ -11,21 +11,20 @@ type TextCommonProps = {
   type?: TextTypes;
   contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
-  _color?: BaseTextProps['color'];
   children: React.ReactNode;
+  weight?: keyof Theme['typography']['fonts']['weight'];
+  _color?: BaseTextProps['color'];
 };
 
 export type TextVariant = 'body' | 'caption';
 
 type TextBodyVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'body'>;
-  weight?: keyof Theme['typography']['fonts']['weight'];
   size?: 'small' | 'medium';
 };
 
 type TextCaptionVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'caption'>;
-  weight?: keyof Pick<Theme['typography']['fonts']['weight'], 'regular'>;
   size?: 'medium';
 };
 
@@ -76,9 +75,6 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.lineHeight = 's';
     }
   } else if (variant === 'caption') {
-    if (weight === 'bold') {
-      throw new Error(`[Blade: Text]: weight cannot be 'bold' when variant is 'caption'`);
-    }
     if (size === 'small') {
       throw new Error(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
     }

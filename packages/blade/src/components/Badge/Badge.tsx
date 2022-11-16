@@ -133,14 +133,13 @@ const Badge = ({
           {...(size === 'small'
             ? {
                 variant: 'caption',
-                // weight: fontWeight,
               }
             : {
                 variant: 'body',
                 size: 'small',
-                weight: fontWeight,
               })}
           type="normal"
+          weight={fontWeight}
           truncateAfterLines={1}
           _color={textColor}
         >
