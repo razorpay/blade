@@ -14,6 +14,8 @@ export type SandboxProps = {
   editorWidthPercentage?: number;
 };
 
+console.log('ENVVVV', { SHA: process.env.GITHUB_SHA });
+
 function Sandbox({
   children,
   language = 'tsx',
