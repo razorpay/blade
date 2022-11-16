@@ -16,6 +16,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		BE94BDCFE4A742E89E116690 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0A80DCDFF54BF28ED33285 /* Lato-Regular.ttf */; };
 		F31095E142B84AD0A9E345EB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 856B36C0CBEA4725AD05BF92 /* Lato-Bold.ttf */; };
+		DD50086558394F9D8B0F07DA /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2D9B3E1EEE34EC9AD42AA9C /* Lato-Italic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		C0A881CF5CF3F2B244570E2A /* Pods-blade.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade.debug.xcconfig"; path = "Target Support Files/Pods-blade/Pods-blade.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-blade.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade.release.xcconfig"; path = "Target Support Files/Pods-blade/Pods-blade.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A2D9B3E1EEE34EC9AD42AA9C /* Lato-Italic.ttf */ = {isa = PBXFileReference; name = "Lato-Italic.ttf"; path = "../public/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			children = (
 				856B36C0CBEA4725AD05BF92 /* Lato-Bold.ttf */,
 				4C0A80DCDFF54BF28ED33285 /* Lato-Regular.ttf */,
+				A2D9B3E1EEE34EC9AD42AA9C /* Lato-Italic.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				F31095E142B84AD0A9E345EB /* Lato-Bold.ttf in Resources */,
 				BE94BDCFE4A742E89E116690 /* Lato-Regular.ttf in Resources */,
+				DD50086558394F9D8B0F07DA /* Lato-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
