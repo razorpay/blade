@@ -14,6 +14,18 @@ export type SandboxProps = {
   editorWidthPercentage?: number;
 };
 
+const getBladeVersion = (): string => {
+  const sha = process.env.GITHUB_SHA;
+  if (sha) {
+    const shortSha = sha.slice(0, 8);
+    return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
+  }
+
+  return '*';
+};
+
+const bladeVersion = getBladeVersion();
+
 function Sandbox({
   children,
   language = 'tsx',
@@ -85,7 +97,7 @@ function Sandbox({
             react: packageJson.peerDependencies.react,
             'react-dom': packageJson.peerDependencies['react-dom'],
             'react-scripts': '4.0.3',
-            '@razorpay/blade': '*',
+            '@razorpay/blade': bladeVersion,
             '@fontsource/lato': '4.5.10',
             'styled-components': packageJson.peerDependencies['styled-components'],
           },
