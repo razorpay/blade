@@ -12,19 +12,19 @@ type TextCommonProps = {
   contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
   children: React.ReactNode;
+  weight?: keyof Theme['typography']['fonts']['weight'];
+  _color?: BaseTextProps['color'];
 };
 
 export type TextVariant = 'body' | 'caption';
 
 type TextBodyVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'body'>;
-  weight?: keyof Theme['typography']['fonts']['weight'];
   size?: 'small' | 'medium';
 };
 
 type TextCaptionVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'caption'>;
-  weight?: keyof Pick<Theme['typography']['fonts']['weight'], 'regular'>;
   size?: 'medium';
 };
 
@@ -92,9 +92,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
 const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
   if (truncateAfterLines) {
     if (getPlatformType() === 'react-native') {
-      return {
-        numberOfLines: truncateAfterLines,
-      };
+      return null;
     }
     return {
       overflow: 'hidden',
@@ -115,10 +113,12 @@ const Text = <T extends { variant: TextVariant }>({
   contrast = 'low',
   truncateAfterLines,
   children,
+  _color,
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
     ...getTextProps({ variant, type, weight, size, contrast }),
+    ...(_color ? { color: _color } : {}),
   };
   return <StyledText {...props}>{children}</StyledText>;
 };
