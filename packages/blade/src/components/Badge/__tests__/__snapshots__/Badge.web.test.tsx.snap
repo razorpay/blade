@@ -3,7 +3,6 @@
 exports[`<Badge /> should render Badge with Icon 1`] = `
 .c0 {
   background-color: hsla(216,44%,23%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -18,28 +17,11 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   width: fit-content;
 }
 
-.c3 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -52,6 +34,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   padding-right: 8px;
 }
@@ -64,10 +48,25 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   padding-right: 4px;
 }
 
+.c3 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c4 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -106,14 +105,16 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
           />
         </svg>
       </div>
-      <div
+      <p
         class="c3 c4"
         color="feedback.text.neutral.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -122,7 +123,6 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 exports[`<Badge /> should render Badge with bold font 1`] = `
 .c0 {
   background-color: hsla(216,44%,23%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -135,6 +135,29 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .c2 {
@@ -146,39 +169,16 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -190,14 +190,16 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.neutral.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="bold"
       >
         LABEL
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -206,7 +208,6 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 exports[`<Badge /> should render Badge with default props 1`] = `
 .c0 {
   background-color: hsla(216,44%,23%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -219,6 +220,29 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .c2 {
@@ -230,39 +254,16 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -274,14 +275,16 @@ exports[`<Badge /> should render Badge with default props 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.neutral.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -290,7 +293,6 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 .c0 {
   background-color: hsla(218,89%,51%,1);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -305,28 +307,11 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   width: fit-content;
 }
 
-.c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -339,14 +324,31 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   padding-right: 8px;
 }
 
+.c2 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -358,14 +360,16 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="badge.text.blue.highContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -374,7 +378,6 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 .c0 {
   background-color: hsla(193,100%,35%,1);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -389,28 +392,11 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   width: fit-content;
 }
 
-.c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -423,14 +409,31 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   padding-right: 8px;
 }
 
+.c2 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -442,14 +445,16 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.information.highContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -458,7 +463,6 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 .c0 {
   background-color: hsla(8,73%,47%,1);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -473,28 +477,11 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   width: fit-content;
 }
 
-.c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -507,14 +494,31 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   padding-right: 8px;
 }
 
+.c2 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -526,14 +530,16 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.negative.highContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -542,7 +548,6 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 .c0 {
   background-color: hsla(216,33%,29%,1);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -557,28 +562,11 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   width: fit-content;
 }
 
-.c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -591,14 +579,31 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   padding-right: 8px;
 }
 
+.c2 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -610,14 +615,16 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.neutral.highContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -626,7 +633,6 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 .c0 {
   background-color: hsla(38,97%,38%,1);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -641,28 +647,11 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   width: fit-content;
 }
 
-.c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -675,14 +664,31 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   padding-right: 8px;
 }
 
+.c2 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -694,14 +700,16 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.notice.highContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -710,7 +718,6 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 .c0 {
   background-color: hsla(160,100%,26%,1);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -725,28 +732,11 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   width: fit-content;
 }
 
-.c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -759,14 +749,31 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   padding-right: 8px;
 }
 
+.c2 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -778,14 +785,16 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.positive.highContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -794,7 +803,6 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 .c0 {
   background-color: hsla(218,89%,51%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -807,6 +815,29 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .c2 {
@@ -818,39 +849,16 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -862,14 +870,16 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="badge.text.blue.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -878,7 +888,6 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 .c0 {
   background-color: hsla(193,100%,35%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -891,6 +900,29 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .c2 {
@@ -902,39 +934,16 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -946,14 +955,16 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.information.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -962,7 +973,6 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 .c0 {
   background-color: hsla(9,91%,56%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -975,6 +985,29 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .c2 {
@@ -986,39 +1019,16 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -1030,14 +1040,16 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.negative.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -1046,7 +1058,6 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 .c0 {
   background-color: hsla(216,44%,23%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -1059,6 +1070,29 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .c2 {
@@ -1070,39 +1104,16 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -1114,14 +1125,16 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.neutral.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -1130,7 +1143,6 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 .c0 {
   background-color: hsla(36,100%,44%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -1143,6 +1155,29 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .c2 {
@@ -1154,39 +1189,16 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -1198,14 +1210,16 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.notice.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -1214,7 +1228,6 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 .c0 {
   background-color: hsla(155,100%,31%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -1227,6 +1240,29 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .c2 {
@@ -1238,39 +1274,16 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -1282,14 +1295,16 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.positive.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -1298,7 +1313,6 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render medium size Badge 1`] = `
 .c0 {
   background-color: hsla(216,44%,23%,0.09);
-  min-height: 20px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -1311,6 +1325,29 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .c2 {
@@ -1322,39 +1359,16 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -1366,14 +1380,16 @@ exports[`<Badge /> should render medium size Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.neutral.lowContrast"
+        font-family="text"
         font-size="75"
+        font-style="normal"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -1382,7 +1398,6 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 exports[`<Badge /> should render small size Badge 1`] = `
 .c0 {
   background-color: hsla(216,44%,23%,0.09);
-  min-height: 16px;
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -1397,28 +1412,11 @@ exports[`<Badge /> should render small size Badge 1`] = `
   width: fit-content;
 }
 
-.c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.6875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1431,14 +1429,31 @@ exports[`<Badge /> should render small size Badge 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 0px;
+  padding-bottom: 0px;
   padding-left: 8px;
   padding-right: 8px;
 }
 
+.c2 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.6875rem;
+  font-weight: 400;
+  font-style: italic;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c3 {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 <div>
@@ -1450,14 +1465,16 @@ exports[`<Badge /> should render small size Badge 1`] = `
       display="flex"
       overflow="hidden"
     >
-      <div
+      <p
         class="c2 c3"
         color="feedback.text.neutral.lowContrast"
+        font-family="text"
         font-size="50"
+        font-style="italic"
         font-weight="regular"
       >
         Label
-      </div>
+      </p>
     </div>
   </div>
 </div>
