@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 3.7.1
+
+### Patch Changes
+
+- 03bb818: feat(tokens): add new tokens
+  - updates color tokens of banking theme to match the designs
+- 002e0a2: feat(tokens): add new tokens
+  - Updates tokens for payment theme to match the designs
+- 66f473e: fix: remove aria-hidden for checkbox and radio
+
 ## 3.7.0
 
 ### Minor Changes
