@@ -271,7 +271,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                   <input
                     aria-checked="false"
                     aria-disabled="false"
-                    aria-hidden="true"
                     aria-invalid="false"
                     aria-required="false"
                     class="c8"
@@ -350,7 +349,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                   <input
                     aria-checked="false"
                     aria-disabled="false"
-                    aria-hidden="true"
                     aria-invalid="false"
                     aria-required="false"
                     class="c8"
@@ -429,7 +427,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                   <input
                     aria-checked="false"
                     aria-disabled="false"
-                    aria-hidden="true"
                     aria-invalid="false"
                     aria-required="false"
                     class="c8"
@@ -765,7 +762,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   <input
                     aria-checked="false"
                     aria-disabled="false"
-                    aria-hidden="true"
                     aria-invalid="false"
                     aria-required="false"
                     class="c8"
@@ -844,7 +840,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   <input
                     aria-checked="false"
                     aria-disabled="false"
-                    aria-hidden="true"
                     aria-invalid="false"
                     aria-required="false"
                     class="c8"
@@ -923,7 +918,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   <input
                     aria-checked="false"
                     aria-disabled="false"
-                    aria-hidden="true"
                     aria-invalid="false"
                     aria-required="false"
                     class="c8"

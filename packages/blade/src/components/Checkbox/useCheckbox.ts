@@ -94,7 +94,6 @@ const useCheckbox = ({
   const accessibilityProps = makeAccessible({
     role: 'checkbox',
     required: Boolean(isRequired),
-    hidden: !isReactNative,
     invalid: Boolean(hasError),
     disabled: Boolean(isDisabled),
     checked: checkboxState,
