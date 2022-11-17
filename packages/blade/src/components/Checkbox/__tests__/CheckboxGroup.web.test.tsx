@@ -50,7 +50,7 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
+    getAllByRole('checkbox').forEach((checkbox) => {
       expect(checkbox).toBeDisabled();
     });
   });
@@ -65,7 +65,7 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
+    getAllByRole('checkbox').forEach((checkbox) => {
       expect(checkbox).toHaveAttribute('name', 'fruits');
     });
   });
@@ -110,7 +110,7 @@ describe('<CheckboxGroup />', () => {
 
     expect(queryByText(helpText)).not.toBeInTheDocument();
     expect(queryByText(errorText)).toBeInTheDocument();
-    getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
+    getAllByRole('checkbox').forEach((checkbox) => {
       expect(checkbox).toBeInvalid();
     });
   });
@@ -151,10 +151,7 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    expect(getByRole('checkbox', { hidden: true, checked: true })).toHaveAttribute(
-      'value',
-      'apple',
-    );
+    expect(getByRole('checkbox', { checked: true })).toHaveAttribute('value', 'apple');
 
     await user.tab();
     expect(getByLabelText('Apple')).toHaveFocus();
@@ -196,10 +193,7 @@ describe('<CheckboxGroup />', () => {
     };
     const { getByLabelText, getByRole, getByTestId } = renderWithTheme(<Example />);
 
-    expect(getByRole('checkbox', { hidden: true, checked: true })).toHaveAttribute(
-      'value',
-      'apple',
-    );
+    expect(getByRole('checkbox', { checked: true })).toHaveAttribute('value', 'apple');
 
     await user.tab();
     expect(getByLabelText('Apple')).toHaveFocus();

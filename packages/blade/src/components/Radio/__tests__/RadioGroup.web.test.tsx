@@ -48,7 +48,7 @@ describe('<RadioGroup />', () => {
       </RadioGroup>,
     );
 
-    getAllByRole('radio', { hidden: true }).forEach((radio) => {
+    getAllByRole('radio').forEach((radio) => {
       expect(radio).toBeDisabled();
     });
   });
@@ -63,7 +63,7 @@ describe('<RadioGroup />', () => {
       </RadioGroup>,
     );
 
-    getAllByRole('radio', { hidden: true }).forEach((radio) => {
+    getAllByRole('radio').forEach((radio) => {
       expect(radio).toHaveAttribute('name', 'fruits');
     });
   });
@@ -108,7 +108,7 @@ describe('<RadioGroup />', () => {
 
     expect(queryByText(helpText)).not.toBeInTheDocument();
     expect(queryByText(errorText)).toBeInTheDocument();
-    getAllByRole('radio', { hidden: true }).forEach((radio) => {
+    getAllByRole('radio').forEach((radio) => {
       expect(radio).toBeInvalid();
     });
   });
@@ -130,7 +130,7 @@ describe('<RadioGroup />', () => {
       </RadioGroup>,
     );
 
-    expect(getByRole('radio', { hidden: true, checked: true })).toHaveAttribute('value', 'apple');
+    expect(getByRole('radio', { checked: true })).toHaveAttribute('value', 'apple');
 
     await user.tab();
     expect(getByLabelText('Apple')).toHaveFocus();
@@ -171,7 +171,7 @@ describe('<RadioGroup />', () => {
     };
     const { getByLabelText, getByRole, getByTestId } = renderWithTheme(<Example />);
 
-    expect(getByRole('radio', { hidden: true, checked: true })).toHaveAttribute('value', 'apple');
+    expect(getByRole('radio', { checked: true })).toHaveAttribute('value', 'apple');
 
     await user.tab();
     expect(getByLabelText('Apple')).toHaveFocus();
