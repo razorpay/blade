@@ -811,6 +811,87 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render large size Badge 1`] = `
+<View
+  backgroundColor="feedback.background.neutral.lowContrast"
+  platform="onMobile"
+  size="large"
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "borderRadius": 9999,
+        "display": "flex",
+        "flexWrap": "nowrap",
+        "maxWidth": 100,
+      },
+    ]
+  }
+>
+  <View
+    alignItems="center"
+    display="flex"
+    flexDirection="row"
+    justifyContent="center"
+    overflow="hidden"
+    paddingBottom="spacing.2"
+    paddingLeft="spacing.4"
+    paddingRight="spacing.4"
+    paddingTop="spacing.2"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "paddingBottom": 4,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 4,
+        },
+      ]
+    }
+  >
+    <Text
+      color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
+      fontSize={75}
+      fontStyle="normal"
+      fontWeight="regular"
+      lineHeight="s"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 27%, 36%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 16,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+          Object {},
+        ]
+      }
+    >
+      Label
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 <View
   backgroundColor="badge.background.blue.lowContrast"
