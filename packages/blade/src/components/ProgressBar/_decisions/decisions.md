@@ -54,39 +54,41 @@ After `3000ms` the progress bar would start pulsating to indicate to the user th
 
 **Problem:**
 - We have use-cases where a progress bar could be used:
-<img src="./progress-bar-static.png" width="240" />
+  - <img src="./progress-bar-static.png" width="240" />
+
 - In such cases, we wouldn't want the progress bar to pulsate after `3000ms` since this will remain static.
 
 **Possible Solutions:**
 1. Use prop `variant` as `'static'` and `'default' | 'animated'`
 
-Pros -
+- Pros:
    - `variant` is a commonly used prop and makes it easy to understand that a different variation of the component exists
 
-Cons -
+- Cons:
    - When the variant would be `static`, it won't entirely be static. When the `value` is changed, it will animate (easing with duration for filling the bar) to the new value. Only the pulsating animation would be disabled.
    - Education effort would be needed to communicate exactly what we mean by a static variant and where should it be used.
 
 2. Use prop `animation` as `'none'` and `'default' | 'pulse'`
 
-Pros -
+- Pros:
    - `animation` is more specific than `variant` since the only change would be related to animation.
 
-Cons - 
+- Cons:
   - When the animation would be `none`, it won't entirely be none. When the `value` is changed, it will animate (easing with duration for filling the bar) to the new value. Only the pulsating animation would be disabled.
   - Education effort would be needed to communicate exactly what we mean by animation as none, pulse (or default) and where should it be used.
   
-1. Use prop `showPulsatingAnimation` as `boolean`
+3. Use prop `showPulsatingAnimation` as `boolean`
 
-Pros -
+- Pros:
    - It would be a single-purpose boolean and is easy to understand what it does.
 
-Cons -
+- Cons:
    - Could be slightly misleading since `showPulsatingAnimation={true}` will only show the animation after a default delay of `3000ms`. By its name, a consumer might confuse it to show the pulsating animation immediately and report this as a bug.
 
 ## Open Questions
 - Why not medium instead of large progress bar?
 - What should be the default progress bar size?
+- Animation for indeterminate state is pending from design
 
 ## References
 - [Reshaped](https://reshaped.so/content/docs/components/progress)
