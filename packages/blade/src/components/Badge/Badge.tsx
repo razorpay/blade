@@ -82,19 +82,6 @@ const getColorProps = ({
   return props;
 };
 
-// const StyledBaseText = styled(BaseText)(
-//   (): CSSObject => {
-//     if (getPlatformType() !== 'react-native') {
-//       return {
-//         whiteSpace: 'nowrap',
-//         overflow: 'hidden',
-//         textOverflow: 'ellipsis',
-//       };
-//     }
-//     return {};
-//   },
-// );
-
 const Badge = ({
   children,
   contrast = 'low',
