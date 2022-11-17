@@ -105,25 +105,42 @@ function Sandbox({
 }
 
 export type RecipeSandboxProps = {
-  files: Record<string, string> | null;
-  dependencies: Record<string, string> | null;
+  title: string;
+  /**
+   * ID of the sandbox.
+   *
+   *
+   * E.g. For this URL https://codesandbox.io/s/blade-form-7holu5?file=/src/App.tsx,
+   *
+   * The id will be - `blade-form-7holu5`
+   *
+   */
+  codesandboxId: string;
+  /** E.g. `/src/Form.tsx`  */
+  activeFile?: `/${string}`;
 };
 
-export const RecipeSandbox = ({ files, dependencies }: RecipeSandboxProps): JSX.Element => {
+/**
+ * Direct Embed of the Codesandbox as iframe. To be used in recipes.
+ *
+ * Use `Sandbox` component instead for embedding example of particular component.
+ */
+export const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
+  const activeFile = props.activeFile ? encodeURIComponent(props.activeFile) : '%2Fsrc%2FApp.tsx';
+
   return (
-    <Sandpack
-      template="react-ts"
-      files={files}
-      customSetup={{
-        dependencies: {
-          ...dependencies,
-          '@razorpay/blade': '*',
-        },
+    <iframe
+      src={`https://codesandbox.io/embed/${props.codesandboxId}?fontsize=14&hidenavigation=1&module=${activeFile}&theme=light`}
+      style={{
+        width: '100%',
+        height: '500px',
+        border: '0',
+        borderRadius: '4px',
+        overflow: 'hidden',
       }}
-      options={{
-        showConsole: true,
-        showConsoleButton: true,
-      }}
+      title={props.title}
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
     />
   );
 };
