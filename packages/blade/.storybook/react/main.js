@@ -29,6 +29,7 @@ module.exports = {
   env: (config) => ({
     ...config,
     GITHUB_SHA: process.env.GITHUB_SHA,
+    GITHUB_REF: process.env.GITHUB_REF,
   }),
   staticDirs: ['../../public/storybook-site'],
   webpackFinal: async (config, { configType }) => {
