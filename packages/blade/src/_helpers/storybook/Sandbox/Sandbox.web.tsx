@@ -15,6 +15,7 @@ export type SandboxProps = {
 };
 
 const getBladeVersion = (): string => {
+  console.log(process.env.NODE_ENV);
   const sha = process.env.GITHUB_SHA;
   if (sha) {
     const shortSha = sha.slice(0, 8);
