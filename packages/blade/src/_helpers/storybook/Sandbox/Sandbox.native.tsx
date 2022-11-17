@@ -10,8 +10,7 @@ function Sandbox({ children }: SandboxProps): JSX.Element {
 
 export const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   const codesandboxURL = `https://codesandbox.io/s/${props.codesandboxId}?file=${props.activeFile}`;
-  // @ts-expect-error: Link only support `string` type and breaks when we pass a variable
-  return <Link href={codesandboxURL}>Open {props.title} Recipe in CodeSandbox</Link>;
+  return <Link href={codesandboxURL}>Open in CodeSandbox</Link>;
 };
 
 export default Sandbox;
