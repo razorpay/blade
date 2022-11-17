@@ -3,7 +3,7 @@ import { Title as StorybookTitle } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { TitleProps } from './';
 import { Title as TitleComponent } from './';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {

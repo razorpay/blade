@@ -6,7 +6,7 @@ import dedent from 'dedent';
 import packageJson from '../../../../package.json'; // eslint-disable-line
 import Box from '~components/Box';
 
-export type SandboxProps = {
+type SandboxProps = {
   children: string;
   language?: 'ts' | 'tsx';
   showConsole?: boolean;
@@ -104,7 +104,7 @@ function Sandbox({
   );
 }
 
-export type RecipeSandboxProps = {
+type RecipeSandboxProps = {
   title: string;
   /**
    * ID of the sandbox.
@@ -125,7 +125,7 @@ export type RecipeSandboxProps = {
  *
  * Use `Sandbox` component instead for embedding example of particular component.
  */
-export const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
+const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   const activeFile = props.activeFile ? encodeURIComponent(props.activeFile) : '%2Fsrc%2FApp.tsx';
 
   return (
@@ -145,4 +145,4 @@ export const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   );
 };
 
-export default Sandbox;
+export { Sandbox, SandboxProps, RecipeSandbox, RecipeSandboxProps };

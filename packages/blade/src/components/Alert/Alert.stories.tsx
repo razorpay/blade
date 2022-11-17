@@ -5,7 +5,7 @@ import type { ReactElement } from 'react';
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
 import Box from '~components/Box';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {

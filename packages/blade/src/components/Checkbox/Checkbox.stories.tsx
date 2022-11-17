@@ -5,7 +5,7 @@ import React from 'react';
 import { Text } from '../Typography';
 import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): React.ReactElement => {
