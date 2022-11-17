@@ -15,8 +15,10 @@ export type SandboxProps = {
 };
 
 const getBladeVersion = (): string => {
+  // We don't publish codesandbox ci on master so version is not present
+  const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
   const sha = process.env.GITHUB_SHA;
-  if (sha) {
+  if (sha && !isMaster) {
     const shortSha = sha.slice(0, 8);
     return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
   }
