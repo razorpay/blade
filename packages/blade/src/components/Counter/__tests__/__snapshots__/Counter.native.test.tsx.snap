@@ -14,7 +14,6 @@ exports[`<Counter /> should render Counter with default props 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -26,8 +25,10 @@ exports[`<Counter /> should render Counter with default props 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -39,15 +40,19 @@ exports[`<Counter /> should render Counter with default props 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -68,13 +73,11 @@ exports[`<Counter /> should render Counter with default props 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -96,7 +99,6 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -108,8 +110,10 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -121,15 +125,19 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.information.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -150,13 +158,11 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -178,7 +184,6 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -190,8 +195,10 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -203,15 +210,19 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.negative.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -232,13 +243,11 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -260,7 +269,6 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -272,8 +280,10 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -285,15 +295,19 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -314,13 +328,11 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -342,7 +354,6 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -354,8 +365,10 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -367,15 +380,19 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.notice.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -396,13 +413,11 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -424,7 +439,6 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -436,8 +450,10 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -449,15 +465,19 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.positive.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -478,13 +498,96 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
+    >
+      20
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render large size Counter 1`] = `
+<View
+  backgroundColor="feedback.background.neutral.lowContrast"
+  platform="onMobile"
+  size="large"
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "borderRadius": 9999,
+        "display": "flex",
+        "flexWrap": "nowrap",
+        "maxWidth": 100,
+      },
+    ]
+  }
+>
+  <View
+    alignItems="center"
+    display="flex"
+    flex={1}
+    flexDirection="row"
+    justifyContent="center"
+    overflow="hidden"
+    paddingBottom="spacing.1"
+    paddingLeft="spacing.3"
+    paddingRight="spacing.3"
+    paddingTop="spacing.1"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexBasis": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "paddingBottom": 2,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 2,
+        },
+      ]
+    }
+  >
+    <Text
+      color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
+      fontSize={100}
+      fontStyle="normal"
+      fontWeight="regular"
+      lineHeight="l"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 27%, 36%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+          Object {},
+        ]
+      }
     >
       20
     </Text>
@@ -506,7 +609,6 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -518,8 +620,10 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -531,15 +635,19 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.information.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -560,13 +668,11 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -588,7 +694,6 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -600,8 +705,10 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -613,15 +720,19 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.negative.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -642,13 +753,11 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -670,7 +779,6 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -682,8 +790,10 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -695,15 +805,19 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -724,13 +838,11 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -752,7 +864,6 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -764,8 +875,10 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -777,15 +890,19 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.notice.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -806,13 +923,11 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -834,7 +949,6 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -846,8 +960,10 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -859,15 +975,19 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.positive.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -888,13 +1008,11 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -916,7 +1034,6 @@ exports[`<Counter /> should render medium size Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -928,8 +1045,10 @@ exports[`<Counter /> should render medium size Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -941,15 +1060,19 @@ exports[`<Counter /> should render medium size Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -970,13 +1093,11 @@ exports[`<Counter /> should render medium size Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>
@@ -998,7 +1119,6 @@ exports[`<Counter /> should render small size Counter 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 20,
       },
     ]
   }
@@ -1010,8 +1130,10 @@ exports[`<Counter /> should render small size Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
+    paddingBottom="spacing.0"
+    paddingLeft="spacing.2"
+    paddingRight="spacing.2"
+    paddingTop="spacing.0"
     style={
       Array [
         Object {
@@ -1023,15 +1145,19 @@ exports[`<Counter /> should render small size Counter 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
-          "paddingLeft": 8,
-          "paddingRight": 8,
+          "paddingBottom": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 0,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.lowContrast"
-      fontSize={75}
+      fontFamily="text"
+      fontSize={50}
+      fontStyle="italic"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -1040,8 +1166,8 @@ exports[`<Counter /> should render small size Counter 1`] = `
           Object {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
+            "fontSize": 11,
+            "fontStyle": "italic",
             "fontWeight": "400",
             "lineHeight": 16,
             "marginBottom": 0,
@@ -1052,13 +1178,11 @@ exports[`<Counter /> should render small size Counter 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       20
     </Text>

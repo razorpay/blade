@@ -22,6 +22,11 @@ describe('<Counter />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render large size Counter', () => {
+    const { toJSON } = renderWithTheme(<Counter size="large" value={20} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render low contrast positive intent Counter', () => {
     const { toJSON } = renderWithTheme(<Counter intent="positive" contrast="low" value={20} />);
     expect(toJSON()).toMatchSnapshot();
