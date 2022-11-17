@@ -14,4 +14,14 @@ export function BladeForm(): JSX.Element {
 export default {
   title: 'Recipes/Blade Form',
   component: BladeForm,
+  parameters: {
+    options: {
+      showPanel: false,
+    },
+    previewTabs: {
+      'storybook/docs/panel': {
+        hidden: true,
+      },
+    },
+  },
 } as Meta;
