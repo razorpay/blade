@@ -15,6 +15,7 @@ export default {
   title: 'Recipes/Simple Form',
   component: SimpleForm,
   parameters: {
+    viewMode: 'story',
     options: {
       showPanel: false,
     },
