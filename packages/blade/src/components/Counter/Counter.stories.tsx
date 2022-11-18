@@ -120,3 +120,10 @@ CounterMediumSize.args = {
   size: 'medium',
 };
 CounterMediumSize.storyName = 'Medium Size';
+
+export const CounterLargeSize = CountersWithVariantTemplate.bind({});
+CounterLargeSize.args = {
+  value: 20,
+  size: 'large',
+};
+CounterLargeSize.storyName = 'Large Size';
