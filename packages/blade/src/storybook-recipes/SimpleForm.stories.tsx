@@ -24,5 +24,8 @@ export default {
         hidden: true,
       },
     },
+    // Running visual tests of recipes can give false negatives because this is not exactly a story
+    // E.g. the code can change, or codesandbox might be in the loading state
+    chromatic: { disableSnapshot: true },
   },
 } as Meta;
