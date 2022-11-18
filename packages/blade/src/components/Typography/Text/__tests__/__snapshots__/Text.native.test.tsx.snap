@@ -63,9 +63,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
         "paddingTop": 0,
         "textDecorationLine": "none",
       },
-      Object {
-        "numberOfLines": 3,
-      },
+      Object {},
     ]
   }
 >
@@ -101,9 +99,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
         "paddingTop": 0,
         "textDecorationLine": "none",
       },
-      Object {
-        "numberOfLines": 3,
-      },
+      Object {},
     ]
   }
 >
@@ -139,9 +135,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
         "paddingTop": 0,
         "textDecorationLine": "none",
       },
-      Object {
-        "numberOfLines": 3,
-      },
+      Object {},
     ]
   }
 >
