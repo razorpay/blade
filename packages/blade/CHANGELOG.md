@@ -1,5 +1,14 @@
 # @razorpay/blade
 
+## 3.8.0
+
+### Minor Changes
+
+- 32c1f05: feat(Counter): design changes
+
+  - Added small variant in Counter
+  - Fixed italic font
+
 ## 3.7.1
 
 ### Patch Changes
