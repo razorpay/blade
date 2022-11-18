@@ -2,7 +2,7 @@ import type { CounterProps } from './Counter';
 import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
-type BadgeMaxWidth = 100 | 120;
+type CounterMaxWidth = 100 | 120;
 
 const verticalPadding: Record<NonNullable<CounterProps['size']>, DotNotationSpacingStringToken> = {
   small: 'spacing.0',
@@ -19,7 +19,7 @@ const horizontalPadding: Record<
   large: 'spacing.3',
 };
 
-const maxWidth: Record<NonNullable<TypographyPlatforms>, BadgeMaxWidth> = {
+const maxWidth: Record<NonNullable<TypographyPlatforms>, CounterMaxWidth> = {
   onMobile: 100,
   onDesktop: 120,
 };
