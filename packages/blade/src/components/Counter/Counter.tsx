@@ -98,7 +98,6 @@ const Counter = ({
         paddingTop={verticalPadding[size]}
         paddingBottom={verticalPadding[size]}
         display="flex"
-        flex={1}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
