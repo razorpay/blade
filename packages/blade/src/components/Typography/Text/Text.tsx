@@ -14,10 +14,7 @@ type TextCommonProps = {
   children: React.ReactNode;
   weight?: keyof Theme['typography']['fonts']['weight'];
   /**
-   * Sets the color of the Text component
-   *
-   * ## Only for internal use
-   *
+   * **For Internal use only**:  Sets the color of the Text component
    */
   color?: BaseTextProps['color'];
 };
