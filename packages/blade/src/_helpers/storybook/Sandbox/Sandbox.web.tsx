@@ -128,14 +128,14 @@ export type RecipeSandboxProps = {
  */
 export const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   const activeFile = props.activeFile ? encodeURIComponent(props.activeFile) : '%2Fsrc%2FApp.tsx';
-  const editorWidth = props.editorWidthPercentage ? props.editorWidthPercentage : 60;
+  const editorWidth = props.editorWidthPercentage ? props.editorWidthPercentage : 50;
 
   return (
     <iframe
       src={`https://codesandbox.io/embed/${props.codesandboxId}?fontsize=14&module=${activeFile}&theme=light&eslint=1&editorsize=${editorWidth}`}
       style={{
         width: '100%',
-        height: '500px',
+        height: '100%',
         border: '0',
         borderRadius: '4px',
         overflow: 'hidden',

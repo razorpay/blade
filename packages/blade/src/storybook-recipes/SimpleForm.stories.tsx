@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react';
 import { RecipeSandbox } from '~src/_helpers/storybook/Sandbox';
 
-export function BladeForm(): JSX.Element {
+export function SimpleForm(): JSX.Element {
   return (
     <RecipeSandbox
       title="Blade Form"
@@ -12,8 +12,8 @@ export function BladeForm(): JSX.Element {
 }
 
 export default {
-  title: 'Recipes/Blade Form',
-  component: BladeForm,
+  title: 'Recipes/Simple Form',
+  component: SimpleForm,
   parameters: {
     options: {
       showPanel: false,
