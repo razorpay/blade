@@ -106,7 +106,7 @@ const Counter = ({
           type="normal"
           weight="regular"
           truncateAfterLines={1}
-          _color={textColor}
+          color={textColor}
         >
           {content}
         </Text>
