@@ -43,18 +43,16 @@ type ColorProps = {
 };
 
 const getColorProps = ({
-  intent,
-  contrast,
+  intent = 'neutral',
+  contrast = 'low',
 }: {
   intent: NonNullable<CounterProps['intent']>;
   contrast: NonNullable<CounterProps['contrast']>;
 }): ColorProps => {
   const props: ColorProps = {
-    textColor: 'feedback.text.neutral.lowContrast',
-    backgroundColor: 'feedback.background.neutral.lowContrast',
+    textColor: `feedback.text.${intent}.${contrast}Contrast`,
+    backgroundColor: `feedback.background.${intent}.${contrast}Contrast`,
   };
-  props.textColor = `feedback.text.${intent}.${contrast}Contrast`;
-  props.backgroundColor = `feedback.background.${intent}.${contrast}Contrast`;
   return props;
 };
 
