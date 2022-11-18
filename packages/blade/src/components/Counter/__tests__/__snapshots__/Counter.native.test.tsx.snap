@@ -21,7 +21,6 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -34,10 +33,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -106,7 +102,6 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -119,10 +114,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -191,7 +183,6 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -204,10 +195,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -276,7 +264,6 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -289,10 +276,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -361,7 +345,6 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -374,10 +357,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -446,7 +426,6 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -459,10 +438,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -531,7 +507,6 @@ exports[`<Counter /> should render large size Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -544,10 +519,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -616,7 +588,6 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -629,10 +600,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -701,7 +669,6 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -714,10 +681,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -786,7 +750,6 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -799,10 +762,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -871,7 +831,6 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -884,10 +843,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -956,7 +912,6 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -969,10 +924,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -1041,7 +993,6 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -1054,10 +1005,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 2,
@@ -1126,7 +1074,6 @@ exports[`<Counter /> should render small size Counter 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
@@ -1139,10 +1086,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
           "paddingBottom": 0,
