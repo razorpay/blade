@@ -128,7 +128,7 @@ const Badge = ({
           type="normal"
           weight={fontWeight}
           truncateAfterLines={1}
-          _color={textColor}
+          color={textColor}
         >
           {children}
         </Text>
