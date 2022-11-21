@@ -47,6 +47,7 @@ import { ProgressBar } from '@razorpay/components';
 - By default the value of `accessibilityLabel` will be the same as `label` prop with a fallback to `"Loading"` and can be overwritten with something more meaningful by the consumer.
 - We will set `aria-role` as `progressbar`
 - We will pass the value of `value` prop as `aria-valuenow`
+- Pass `aria-busy` as `true`
 
 ## Handling pulsating animation
 After `3000ms` the progress bar would start pulsating to indicate to the user that the process is slow but isn't stuck.
@@ -89,6 +90,7 @@ After `3000ms` the progress bar would start pulsating to indicate to the user th
 - Why not medium instead of large progress bar?
 - What should be the default progress bar size?
 - Animation for indeterminate state is pending from design
+- Should we have an `animationSpeed` with values `slow`, `medium`, `fast` for indeterminate progress bars? [Ref](https://www.figma.com/proto/33zLifLnf2XXmU5iakKq1H/Address-serviceability-loader?page-id=60%3A14227&node-id=93%3A19491&scaling=min-zoom&starting-point-node-id=93%3A19205&show-proto-sidebar=1)
 
 ## References
 - [Reshaped](https://reshaped.so/content/docs/components/progress)
