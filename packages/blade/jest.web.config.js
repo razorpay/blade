@@ -2,7 +2,7 @@ const ignores = ['/node_modules/'];
 
 module.exports = {
   testPathIgnorePatterns: [...ignores, 'native.test'],
-  collectCoverageFrom: ['./src/**/*.web.{ts,tsx}'],
+  collectCoverageFrom: ['./src/**/*.web.{ts,tsx}', './src/**/*.ssr.{ts,tsx}'],
   coverageThreshold: {
     global: {
       branches: 75,
