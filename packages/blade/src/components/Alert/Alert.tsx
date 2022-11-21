@@ -2,7 +2,13 @@ import type { ReactChild, ReactElement } from 'react';
 import { Fragment, useState } from 'react';
 
 import { StyledAlert } from './StyledAlert';
-import { AlertOctagonIcon, AlertTriangleIcon, CheckCircleIcon, CloseIcon } from '~components/Icons';
+import {
+  AlertOctagonIcon,
+  AlertTriangleIcon,
+  CheckCircleIcon,
+  CloseIcon,
+  InfoIcon,
+} from '~components/Icons';
 import { getPlatformType, makeAccessible } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
@@ -76,9 +82,9 @@ type AlertProps = {
   /**
    * Sets the color tone
    *
-   * @default information
+   * @default neutral
    */
-  intent?: Exclude<Feedback, 'neutral'>;
+  intent?: Feedback;
 
   /**
    * Removes border and border radii, useful for creating full bleed layouts. Automatically sets `isFullWidth` to `true` when enabled.
@@ -112,7 +118,8 @@ const CloseButtonWrapper = isReactNative ? Box : Fragment;
 const intentIconMap = {
   positive: CheckCircleIcon,
   negative: AlertOctagonIcon,
-  information: AlertOctagonIcon,
+  information: InfoIcon,
+  neutral: InfoIcon,
   notice: AlertTriangleIcon,
 };
 
@@ -123,7 +130,7 @@ const Alert = ({
   onDismiss,
   contrast = 'low',
   isFullWidth = false,
-  intent = 'information',
+  intent = 'neutral',
   isBorderless = false,
   actions,
 }: AlertProps): ReactElement | null => {
@@ -134,23 +141,46 @@ const Alert = ({
   }
   const [isVisible, setIsVisible] = useState(true);
   const contrastType = `${contrast}Contrast` as const;
+  const iconSize = isBorderless ? 'large' : 'medium';
+  const textSize = isBorderless ? 'medium' : 'small';
 
   const Icon = intentIconMap[intent];
-  const icon = <Icon color={`feedback.icon.${intent}.${contrastType}`} size="large" />;
+  const icon = (
+    <Box marginTop="spacing.1" display="flex">
+      <Icon color={`feedback.icon.${intent}.${contrastType}`} size={iconSize} />
+    </Box>
+  );
 
   const _title = title ? (
     <Box marginBottom="spacing.2">
-      <Heading size="small" contrast={contrast}>
-        {title}
-      </Heading>
+      {isBorderless ? (
+        <Heading size="small" contrast={contrast}>
+          {title}
+        </Heading>
+      ) : (
+        <Text weight="bold" contrast={contrast}>
+          {title}
+        </Text>
+      )}
     </Box>
   ) : null;
 
-  const _description = <Text contrast={contrast}>{description}</Text>;
+  const _description = (
+    <Box marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
+      <Text size={textSize} contrast={contrast}>
+        {description}
+      </Text>
+    </Box>
+  );
 
   const primaryAction = actions?.primary ? (
     <Box marginRight="spacing.5" display={isReactNative ? 'flex' : 'inline-flex'}>
-      <BaseButton onClick={actions.primary.onClick} intent={intent} contrast={contrast}>
+      <BaseButton
+        size={textSize}
+        onClick={actions.primary.onClick}
+        intent={intent}
+        contrast={contrast}
+      >
         {actions.primary.text}
       </BaseButton>
     </Box>
@@ -175,7 +205,7 @@ const Alert = ({
   }
   const secondaryAction = actions?.secondary ? (
     <SecondaryActionWrapper>
-      <BaseLink contrast={contrast} intent={intent} {...secondaryActionParams}>
+      <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
         {actions.secondary.text}
       </BaseLink>
     </SecondaryActionWrapper>
@@ -201,7 +231,7 @@ const Alert = ({
         accessibilityLabel="Dismiss alert"
         onClick={onClickDismiss}
         contrast={contrast}
-        size="large"
+        size={iconSize}
         icon={CloseIcon}
       />
     </CloseButtonWrapper>
@@ -227,7 +257,7 @@ const Alert = ({
       {...a11yProps}
     >
       {icon}
-      <Box flex={1} paddingLeft="spacing.4" paddingRight="spacing.2">
+      <Box flex={1} paddingLeft={isBorderless ? 'spacing.4' : 'spacing.3'} paddingRight="spacing.2">
         {_title}
         {_description}
         {_actions}
