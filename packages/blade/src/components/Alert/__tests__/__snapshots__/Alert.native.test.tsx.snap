@@ -28,10 +28,12 @@ exports[`<Alert /> should render 1`] = `
   }
 >
   <View
+    display="flex"
     marginTop="spacing.1"
     style={
       Array [
         Object {
+          "display": "flex",
           "marginTop": 2,
         },
       ]
@@ -279,10 +281,12 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
   }
 >
   <View
+    display="flex"
     marginTop="spacing.1"
     style={
       Array [
         Object {
+          "display": "flex",
           "marginTop": 2,
         },
       ]
@@ -530,10 +534,12 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   }
 >
   <View
+    display="flex"
     marginTop="spacing.1"
     style={
       Array [
         Object {
+          "display": "flex",
           "marginTop": 2,
         },
       ]

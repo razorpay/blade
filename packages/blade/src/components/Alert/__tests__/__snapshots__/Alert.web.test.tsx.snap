@@ -22,7 +22,7 @@ exports[`<Alert /> should render 1`] = `
   align-items: flex-start;
 }
 
-.c4 {
+.c5 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -49,21 +49,25 @@ exports[`<Alert /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4:hover {
+.c5:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c4:focus {
+.c5:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c4:active {
+.c5:active {
   color: hsla(217,18%,45%,1);
 }
 
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-top: 2px;
 }
 
@@ -76,6 +80,10 @@ exports[`<Alert /> should render 1`] = `
 }
 
 .c3 {
+  margin-top: 2px;
+}
+
+.c4 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -95,6 +103,7 @@ exports[`<Alert /> should render 1`] = `
   >
     <div
       class="c1"
+      display="flex"
     >
       <svg
         aria-hidden="true"
@@ -123,10 +132,10 @@ exports[`<Alert /> should render 1`] = `
       class="c2"
     >
       <div
-        class="c1"
+        class="c3"
       >
         <p
-          class="c3 Text__StyledText-wkh56f-0"
+          class="c4 Text__StyledText-wkh56f-0"
           color="surface.text.normal.lowContrast"
           font-family="text"
           font-size="75"
@@ -139,7 +148,7 @@ exports[`<Alert /> should render 1`] = `
     </div>
     <button
       aria-label="Dismiss alert"
-      class="c4"
+      class="c5"
       type="button"
     >
       <svg
@@ -181,7 +190,7 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
   align-items: flex-start;
 }
 
-.c4 {
+.c5 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -208,21 +217,25 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4:hover {
+.c5:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c4:focus {
+.c5:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c4:active {
+.c5:active {
   color: hsla(217,18%,45%,1);
 }
 
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-top: 2px;
 }
 
@@ -235,6 +248,10 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
 }
 
 .c3 {
+  margin-top: 2px;
+}
+
+.c4 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -254,6 +271,7 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
   >
     <div
       class="c1"
+      display="flex"
     >
       <svg
         aria-hidden="true"
@@ -282,10 +300,10 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
       class="c2"
     >
       <div
-        class="c1"
+        class="c3"
       >
         <p
-          class="c3 Text__StyledText-wkh56f-0"
+          class="c4 Text__StyledText-wkh56f-0"
           color="surface.text.normal.lowContrast"
           font-family="text"
           font-size="100"
@@ -298,7 +316,7 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
     </div>
     <button
       aria-label="Dismiss alert"
-      class="c4"
+      class="c5"
       type="button"
     >
       <svg
@@ -340,7 +358,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   align-items: flex-start;
 }
 
-.c4 {
+.c5 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -367,21 +385,25 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4:hover {
+.c5:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c4:focus {
+.c5:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c4:active {
+.c5:active {
   color: hsla(217,18%,45%,1);
 }
 
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-top: 2px;
 }
 
@@ -394,6 +416,10 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
 }
 
 .c3 {
+  margin-top: 2px;
+}
+
+.c4 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -413,6 +439,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   >
     <div
       class="c1"
+      display="flex"
     >
       <svg
         aria-hidden="true"
@@ -450,10 +477,10 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       class="c2"
     >
       <div
-        class="c1"
+        class="c3"
       >
         <p
-          class="c3 Text__StyledText-wkh56f-0"
+          class="c4 Text__StyledText-wkh56f-0"
           color="surface.text.normal.lowContrast"
           font-family="text"
           font-size="75"
@@ -466,7 +493,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     </div>
     <button
       aria-label="Dismiss alert"
-      class="c4"
+      class="c5"
       type="button"
     >
       <svg
