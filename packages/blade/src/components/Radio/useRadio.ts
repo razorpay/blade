@@ -117,7 +117,6 @@ const useRadio = ({
   const accessibilityProps = makeAccessible({
     role: 'radio',
     required: Boolean(isRequired),
-    hidden: !isReactNative,
     invalid: Boolean(hasError),
     disabled: Boolean(isDisabled),
     checked: radioState,

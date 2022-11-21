@@ -5,7 +5,7 @@ import type { CounterProps } from './Counter';
 import { Counter as CounterComponent } from './Counter';
 import Box from '~components/Box';
 import { Text as BladeText } from '~components/Typography';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
@@ -120,3 +120,10 @@ CounterMediumSize.args = {
   size: 'medium',
 };
 CounterMediumSize.storyName = 'Medium Size';
+
+export const CounterLargeSize = CountersWithVariantTemplate.bind({});
+CounterLargeSize.args = {
+  value: 20,
+  size: 'large',
+};
+CounterLargeSize.storyName = 'Large Size';

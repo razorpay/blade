@@ -10,7 +10,8 @@ describe('<Checkbox />', () => {
     const labelText = 'Remember password';
     const { container, getByText, getByRole } = renderWithTheme(<Checkbox>{labelText}</Checkbox>);
     expect(container).toMatchSnapshot();
-    expect(getByRole('checkbox', { hidden: true })).toBeInTheDocument();
+    // the name attribute here is the accessibility label name and not the name of the input
+    expect(getByRole('checkbox', { name: labelText })).toBeInTheDocument();
     expect(getByText(labelText)).toBeInTheDocument();
   });
 
@@ -31,14 +32,14 @@ describe('<Checkbox />', () => {
     );
     expect(container).toMatchSnapshot();
     expect(getByText(errorText)).toBeInTheDocument();
-    expect(getByRole('checkbox', { hidden: true })).toBeInvalid();
+    expect(getByRole('checkbox', { name: labelText })).toBeInvalid();
   });
 
   it('should set disabled state with isDisabled', () => {
     const labelText = 'Remember password';
     const { container, getByRole } = renderWithTheme(<Checkbox isDisabled>{labelText}</Checkbox>);
     expect(container).toMatchSnapshot();
-    expect(getByRole('checkbox', { hidden: true })).toBeDisabled();
+    expect(getByRole('checkbox', { name: labelText })).toBeDisabled();
   });
 
   test('user should be able to toggle checkbox', async () => {
@@ -46,11 +47,11 @@ describe('<Checkbox />', () => {
     const labelText = 'Remember password';
     const { getByRole, getByLabelText } = renderWithTheme(<Checkbox>{labelText}</Checkbox>);
 
-    expect(getByRole('checkbox', { hidden: true })).not.toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).not.toBeChecked();
     await user.click(getByLabelText(labelText));
-    expect(getByRole('checkbox', { hidden: true })).toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).toBeChecked();
     await user.click(getByLabelText(labelText));
-    expect(getByRole('checkbox', { hidden: true })).not.toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).not.toBeChecked();
   });
 
   test('user should be able to toggle checkbox with keyboard', async () => {
@@ -58,20 +59,20 @@ describe('<Checkbox />', () => {
     const labelText = 'Remember password';
     const { getByRole } = renderWithTheme(<Checkbox>{labelText}</Checkbox>);
 
-    expect(getByRole('checkbox', { hidden: true })).not.toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).not.toBeChecked();
     await user.tab();
-    expect(getByRole('checkbox', { hidden: true })).toHaveFocus();
+    expect(getByRole('checkbox', { name: labelText })).toHaveFocus();
     await user.keyboard('[Space]');
-    expect(getByRole('checkbox', { hidden: true })).toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).toBeChecked();
     await user.keyboard('[Space]');
-    expect(getByRole('checkbox', { hidden: true })).not.toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).not.toBeChecked();
   });
 
   it('should set defaultChecked', () => {
     const labelText = 'Remember password';
     const { getByRole } = renderWithTheme(<Checkbox defaultChecked>{labelText}</Checkbox>);
 
-    expect(getByRole('checkbox', { hidden: true })).toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).toBeChecked();
   });
 
   it('should support isChecked prop', async () => {
@@ -81,10 +82,10 @@ describe('<Checkbox />', () => {
       <Checkbox isChecked>{labelText}</Checkbox>,
     );
 
-    expect(getByRole('checkbox', { hidden: true })).toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).toBeChecked();
     // should not toggle
     await user.click(getByLabelText(labelText));
-    expect(getByRole('checkbox', { hidden: true })).toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).toBeChecked();
   });
 
   it('should support uncontrolled state', async () => {
@@ -97,10 +98,10 @@ describe('<Checkbox />', () => {
       </Checkbox>,
     );
 
-    expect(getByRole('checkbox', { hidden: true })).toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).toBeChecked();
     expect(checkFn).not.toBeCalled();
     await user.click(getByLabelText(labelText));
-    expect(getByRole('checkbox', { hidden: true })).not.toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).not.toBeChecked();
     expect(checkFn).toBeCalledWith(
       expect.objectContaining({
         isChecked: false,
@@ -109,7 +110,7 @@ describe('<Checkbox />', () => {
     );
     expect(checkFn.mock.calls[0][0].event).not.toBeUndefined();
     await user.click(getByLabelText(labelText));
-    expect(getByRole('checkbox', { hidden: true })).toBeChecked();
+    expect(getByRole('checkbox', { name: labelText })).toBeChecked();
     expect(checkFn).toBeCalledWith(
       expect.objectContaining({
         isChecked: true,
@@ -152,7 +153,7 @@ describe('<Checkbox />', () => {
 
     expect(container).toMatchSnapshot();
     expect(
-      (getByRole('checkbox', { hidden: true }) as HTMLInputElement).indeterminate,
+      (getByRole('checkbox', { name: labelText }) as HTMLInputElement).indeterminate,
     ).toBeTruthy();
   });
 });

@@ -6,13 +6,27 @@ import dedent from 'dedent';
 import packageJson from '../../../../package.json'; // eslint-disable-line
 import Box from '~components/Box';
 
-export type SandboxProps = {
+type SandboxProps = {
   children: string;
   language?: 'ts' | 'tsx';
   showConsole?: boolean;
   editorHeight?: number;
   editorWidthPercentage?: number;
 };
+
+const getBladeVersion = (): string => {
+  // We don't publish codesandbox ci on master so version is not present
+  const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
+  const sha = process.env.GITHUB_SHA;
+  if (sha && !isMaster) {
+    const shortSha = sha.slice(0, 8);
+    return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
+  }
+
+  return '*';
+};
+
+const bladeVersion = getBladeVersion();
 
 function Sandbox({
   children,
@@ -85,7 +99,7 @@ function Sandbox({
             react: packageJson.peerDependencies.react,
             'react-dom': packageJson.peerDependencies['react-dom'],
             'react-scripts': '4.0.3',
-            '@razorpay/blade': '*',
+            '@razorpay/blade': bladeVersion,
             '@fontsource/lato': '4.5.10',
             'styled-components': packageJson.peerDependencies['styled-components'],
           },
@@ -104,7 +118,7 @@ function Sandbox({
   );
 }
 
-export type RecipeSandboxProps = {
+type RecipeSandboxProps = {
   title: string;
   /**
    * ID of the sandbox.
@@ -127,7 +141,7 @@ export type RecipeSandboxProps = {
  *
  * Use `Sandbox` component instead for embedding example of particular component.
  */
-export const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
+const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   const activeFile = props.activeFile ? encodeURIComponent(props.activeFile) : '%2Fsrc%2FApp.tsx';
   const editorWidth = props.editorWidthPercentage ? props.editorWidthPercentage : 50;
 
@@ -148,4 +162,4 @@ export const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   );
 };
 
-export default Sandbox;
+export { Sandbox, SandboxProps, RecipeSandbox, RecipeSandboxProps };
