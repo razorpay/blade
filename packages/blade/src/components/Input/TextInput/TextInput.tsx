@@ -134,6 +134,13 @@ const getKeyboardAndAutocompleteProps = ({
     keyboardAndAutocompleteProps.type = 'text';
   }
 
+  if (type === 'search') {
+    /* when input type:search is provided at that time browser adds a weird close button which collides with our clear button and then we have 2 clear buttons
+     * source: https://github.com/razorpay/blade/issues/857#issue-1457367160
+     */
+    keyboardAndAutocompleteProps.type = 'text';
+  }
+
   return keyboardAndAutocompleteProps;
 };
 
