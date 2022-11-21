@@ -23,6 +23,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
 }
 
 .c2 {
+  padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -51,9 +52,9 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
         <svg
           aria-hidden="true"
           fill="none"
-          height="20px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="20px"
+          width="16px"
         >
           <path
             d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
@@ -98,6 +99,7 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
 }
 
 .c2 {
+  padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -126,9 +128,9 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
         <svg
           aria-hidden="true"
           fill="none"
-          height="20px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="20px"
+          width="16px"
         >
           <path
             d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
@@ -173,6 +175,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
 }
 
 .c2 {
+  padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -201,9 +204,9 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
         <svg
           aria-hidden="true"
           fill="none"
-          height="24px"
+          height="20px"
           viewBox="0 0 24 24"
-          width="24px"
+          width="20px"
         >
           <path
             d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
@@ -248,6 +251,7 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
 }
 
 .c2 {
+  padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -276,9 +280,9 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
         <svg
           aria-hidden="true"
           fill="none"
-          height="20px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="20px"
+          width="16px"
         >
           <path
             d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
@@ -323,6 +327,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 }
 
 .c2 {
+  padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -351,9 +356,9 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
         <svg
           aria-hidden="true"
           fill="none"
-          height="20px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="20px"
+          width="16px"
         >
           <path
             d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
@@ -398,6 +403,7 @@ exports[`<Spinner /> should render small size Spinner 1`] = `
 }
 
 .c2 {
+  padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -426,9 +432,9 @@ exports[`<Spinner /> should render small size Spinner 1`] = `
         <svg
           aria-hidden="true"
           fill="none"
-          height="16px"
+          height="undefinedpx"
           viewBox="0 0 24 24"
-          width="16px"
+          width="undefinedpx"
         >
           <path
             d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"

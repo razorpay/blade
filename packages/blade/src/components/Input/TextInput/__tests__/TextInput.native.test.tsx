@@ -8,10 +8,6 @@ import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
-/**  @TODO: add test case for isLoading once spinner https://github.com/razorpay/blade/pull/685 is merged
- * 1. either of isLoading or clearbutton should be shown at a time
- * 2. if isLoading then the input should be disabled
- */
 describe('<TextInput />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<TextInput label="Enter name" />);
@@ -104,6 +100,22 @@ describe('<TextInput />', () => {
     const input = getByPlaceholderText(placeholder);
 
     expect(input).toBeDisabled();
+  });
+
+  it('should show spinner when isLoading is passed', () => {
+    const label = 'Enter name';
+    const valueInitial = 'Kamlesh';
+
+    const { queryByRole } = renderWithTheme(
+      <TextInput label={label} value={valueInitial} showClearButton={true} isLoading={true} />,
+    );
+
+    let clearButton = queryByRole('button');
+    expect(clearButton).toBeFalsy();
+    clearButton = queryByRole('button');
+    expect(clearButton).toBeFalsy();
+    const loadingSpinner = queryByRole('progressbar');
+    expect(loadingSpinner).toBeTruthy();
   });
 
   it('should handle onChange', () => {
