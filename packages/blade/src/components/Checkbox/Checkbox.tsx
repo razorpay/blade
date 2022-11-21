@@ -194,7 +194,7 @@ const Checkbox = ({
             <SelectorInput
               isChecked={state.isChecked || Boolean(isIndeterminate)}
               isDisabled={_isDisabled}
-              isNegative={_hasError}
+              hasError={_hasError}
               inputProps={inputProps}
             />
             <CheckboxIcon
