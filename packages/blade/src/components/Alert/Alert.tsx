@@ -144,7 +144,7 @@ const Alert = ({
 
   const Icon = intentIconMap[intent];
   const icon = (
-    <Box marginTop="spacing.1">
+    <Box marginTop="spacing.1" display="flex">
       <Icon
         color={`feedback.icon.${intent}.${contrastType}`}
         size={isBorderless ? 'large' : 'medium'}
