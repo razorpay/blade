@@ -141,14 +141,13 @@ const Alert = ({
   }
   const [isVisible, setIsVisible] = useState(true);
   const contrastType = `${contrast}Contrast` as const;
+  const iconSize = isBorderless ? 'large' : 'medium';
+  const textSize = isBorderless ? 'medium' : 'small';
 
   const Icon = intentIconMap[intent];
   const icon = (
     <Box marginTop="spacing.1" display="flex">
-      <Icon
-        color={`feedback.icon.${intent}.${contrastType}`}
-        size={isBorderless ? 'large' : 'medium'}
-      />
+      <Icon color={`feedback.icon.${intent}.${contrastType}`} size={iconSize} />
     </Box>
   );
 
@@ -168,7 +167,7 @@ const Alert = ({
 
   const _description = (
     <Box marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
-      <Text size={isBorderless ? 'medium' : 'small'} contrast={contrast}>
+      <Text size={textSize} contrast={contrast}>
         {description}
       </Text>
     </Box>
@@ -177,7 +176,7 @@ const Alert = ({
   const primaryAction = actions?.primary ? (
     <Box marginRight="spacing.5" display={isReactNative ? 'flex' : 'inline-flex'}>
       <BaseButton
-        size={isBorderless ? 'medium' : 'small'}
+        size={textSize}
         onClick={actions.primary.onClick}
         intent={intent}
         contrast={contrast}
@@ -206,12 +205,7 @@ const Alert = ({
   }
   const secondaryAction = actions?.secondary ? (
     <SecondaryActionWrapper>
-      <BaseLink
-        size={isBorderless ? 'medium' : 'small'}
-        contrast={contrast}
-        intent={intent}
-        {...secondaryActionParams}
-      >
+      <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
         {actions.secondary.text}
       </BaseLink>
     </SecondaryActionWrapper>
@@ -237,7 +231,7 @@ const Alert = ({
         accessibilityLabel="Dismiss alert"
         onClick={onClickDismiss}
         contrast={contrast}
-        size={isBorderless ? 'large' : 'medium'}
+        size={iconSize}
         icon={CloseIcon}
       />
     </CloseButtonWrapper>
