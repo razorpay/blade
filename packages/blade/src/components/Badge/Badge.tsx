@@ -1,15 +1,13 @@
 import type { ReactElement } from 'react';
-import type { CSSObject } from 'styled-components';
-import styled from 'styled-components';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
+import { iconPadding, iconSize, horizontalPadding, verticalPadding } from './badgeTokens';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent, IconProps } from '~components/Icons';
-import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { Text } from '~components/Typography';
 
 type BadgeProps = {
   /**
@@ -34,7 +32,7 @@ type BadgeProps = {
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Icon to be displayed in the badge.
    * Accepts a component of type `IconComponent` from Blade.
@@ -84,19 +82,6 @@ const getColorProps = ({
   return props;
 };
 
-const StyledBaseText = styled(BaseText)(
-  (): CSSObject => {
-    if (getPlatformType() !== 'react-native') {
-      return {
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-      };
-    }
-    return {};
-  },
-);
-
 const Badge = ({
   children,
   contrast = 'low',
@@ -116,30 +101,37 @@ const Badge = ({
   return (
     <StyledBadge backgroundColor={backgroundColor} size={size} platform={platform}>
       <Box
-        paddingRight="spacing.3"
-        paddingLeft="spacing.3"
+        paddingRight={horizontalPadding[size]}
+        paddingLeft={horizontalPadding[size]}
+        paddingTop={verticalPadding[size]}
+        paddingBottom={verticalPadding[size]}
         display="flex"
-        flex={1}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
         overflow="hidden"
       >
         {Icon ? (
-          <Box paddingRight={Boolean(Icon) ? 'spacing.2' : 'spacing.0'} display="flex">
-            <Icon color={iconColor} size="small" />
+          <Box paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
+            <Icon color={iconColor} size={iconSize[size]} />
           </Box>
         ) : null}
-        <StyledBaseText
-          fontSize={75}
-          fontWeight={fontWeight}
-          lineHeight="s"
-          color={textColor}
-          textAlign="center"
+        <Text
+          {...(size === 'small'
+            ? {
+                variant: 'caption',
+              }
+            : {
+                variant: 'body',
+                size: 'small',
+              })}
+          type="normal"
+          weight={fontWeight}
           truncateAfterLines={1}
+          color={textColor}
         >
           {children}
-        </StyledBaseText>
+        </Text>
       </Box>
     </StyledBadge>
   );

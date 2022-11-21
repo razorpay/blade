@@ -35,6 +35,12 @@ describe('<Badge />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render large size Badge', () => {
+    const label = 'Label';
+    const { toJSON } = renderWithTheme(<Badge size="large">{label}</Badge>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Badge with Icon', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(<Badge icon={InfoIcon}>{label}</Badge>);
