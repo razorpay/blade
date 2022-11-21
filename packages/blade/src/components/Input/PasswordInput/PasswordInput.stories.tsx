@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import type { PasswordInputProps } from './PasswordInput';
 import { PasswordInput } from './PasswordInput';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {

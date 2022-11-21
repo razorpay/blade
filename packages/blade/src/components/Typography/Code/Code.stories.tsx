@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 import { Text } from '../Text';
 import { Code as CodeComponent } from './Code';
 import Box from '~components/Box';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {

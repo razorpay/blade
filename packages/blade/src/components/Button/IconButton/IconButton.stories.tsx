@@ -5,7 +5,7 @@ import type { ReactElement } from 'react';
 import type { IconButtonProps } from './IconButton';
 import { IconButton as IconButtonComponent } from './IconButton';
 import iconMap from '~components/Icons/iconMap';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
