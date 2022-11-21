@@ -116,7 +116,7 @@ describe('<TextInput />', () => {
     const label = 'Enter name';
 
     const { getByLabelText, queryByRole } = renderWithTheme(
-      <TextInput label={label} isLoading={true} />,
+      <TextInput label={label} showClearButton={true} isLoading={true} />,
     );
 
     const input = getByLabelText(label);
