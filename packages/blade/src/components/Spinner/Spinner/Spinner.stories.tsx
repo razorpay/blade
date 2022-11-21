@@ -5,7 +5,7 @@ import type { SpinnerProps } from './Spinner';
 import { Spinner as SpinnerComponent } from './Spinner';
 import Box from '~components/Box';
 import { Text } from '~components/Typography';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {

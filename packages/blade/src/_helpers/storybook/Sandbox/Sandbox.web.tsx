@@ -6,7 +6,7 @@ import dedent from 'dedent';
 import packageJson from '../../../../package.json'; // eslint-disable-line
 import Box from '~components/Box';
 
-export type SandboxProps = {
+type SandboxProps = {
   children: string;
   language?: 'ts' | 'tsx';
   showConsole?: boolean;
@@ -118,4 +118,47 @@ function Sandbox({
   );
 }
 
-export default Sandbox;
+type RecipeSandboxProps = {
+  title: string;
+  /**
+   * ID of the sandbox.
+   *
+   *
+   * E.g. For this URL https://codesandbox.io/s/blade-form-7holu5?file=/src/App.tsx,
+   *
+   * The id will be - `blade-form-7holu5`
+   *
+   */
+  codesandboxId: string;
+  /** E.g. `/src/Form.tsx`  */
+  activeFile?: `/${string}`;
+  editorWidthPercentage?: number;
+};
+
+/**
+ * Direct Embed of the Codesandbox as iframe. To be used in recipes.
+ *
+ * Use `Sandbox` component instead for embedding example of particular component.
+ */
+const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
+  const activeFile = props.activeFile ? encodeURIComponent(props.activeFile) : '%2Fsrc%2FApp.tsx';
+  const editorWidth = props.editorWidthPercentage ? props.editorWidthPercentage : 50;
+
+  return (
+    <iframe
+      src={`https://codesandbox.io/embed/${props.codesandboxId}?fontsize=14&module=${activeFile}&theme=light&eslint=1&editorsize=${editorWidth}`}
+      style={{
+        width: '100%',
+        height: '100%',
+        border: '0',
+        borderRadius: '4px',
+        overflow: 'hidden',
+      }}
+      title={props.title}
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+    />
+  );
+};
+
+export { Sandbox, SandboxProps, RecipeSandbox, RecipeSandboxProps };
