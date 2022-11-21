@@ -22,7 +22,9 @@ export const useBreakpoint = ({
   breakpoints: Breakpoints;
 }): BreakpointAndDevice => {
   const supportsMatchMedia =
-    typeof document !== 'undefined' && typeof window?.matchMedia === 'function';
+    typeof document !== 'undefined' &&
+    typeof window !== 'undefined' &&
+    typeof window?.matchMedia === 'function';
 
   const breakpointsTokenAndQueryCollection = useMemo(
     () =>

@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Text /> should render Text with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\">Displaying some text</p></div>"`;
+
+exports[`<Text /> should render Text with default properties 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <p
+    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
+    color="surface.text.normal.lowContrast"
+    font-family="text"
+    font-size="100"
+    font-style="normal"
+    font-weight="regular"
+  >
+    Displaying some text
+  </p>
+</div>
+`;
+
+exports[`<Text /> should render Text with variant "body" 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 jueNxQ Text__StyledText-wkh56f-0 cxeSYd\\">Displaying some text</p></div>"`;
+
+exports[`<Text /> should render Text with variant "body" 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <p
+    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 jueNxQ Text__StyledText-wkh56f-0 cxeSYd"
+    color="surface.text.normal.lowContrast"
+    font-family="text"
+    font-size="100"
+    font-style="normal"
+    font-weight="bold"
+  >
+    Displaying some text
+  </p>
+</div>
+`;
+
+exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><p color=\\"surface.text.normal.highContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 iIsFzI Text__StyledText-wkh56f-0 cxeSYd\\">Displaying some text</p></div>"`;
+
+exports[`<Text /> should render Text with variant "body" and contrast "high" 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <p
+    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 iIsFzI Text__StyledText-wkh56f-0 cxeSYd"
+    color="surface.text.normal.highContrast"
+    font-family="text"
+    font-size="100"
+    font-style="normal"
+    font-weight="bold"
+  >
+    Displaying some text
+  </p>
+</div>
+`;
+
+exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 llXgyx Text__StyledText-wkh56f-0 cxeSYd\\">Displaying some text</p></div>"`;
+
+exports[`<Text /> should render Text with variant "body" and size "small" 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <p
+    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 llXgyx Text__StyledText-wkh56f-0 cxeSYd"
+    color="surface.text.normal.lowContrast"
+    font-family="text"
+    font-size="75"
+    font-style="normal"
+    font-weight="bold"
+  >
+    Displaying some text
+  </p>
+</div>
+`;
+
+exports[`<Text /> should render Text with variant "caption" 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 jueNxQ Text__StyledText-wkh56f-0\\">Displaying some text</p></div>"`;
+
+exports[`<Text /> should render Text with variant "caption" 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <p
+    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 jueNxQ Text__StyledText-wkh56f-0"
+    color="surface.text.normal.lowContrast"
+    font-family="text"
+    font-size="100"
+    font-style="normal"
+    font-weight="bold"
+  >
+    Displaying some text
+  </p>
+</div>
+`;

@@ -17,11 +17,7 @@ module.exports = {
     '\\.(js|ts|tsx)?$': 'babel-jest',
   },
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: [
-    '@testing-library/jest-dom/extend-expect',
-    'jest-useragent-mock',
-    './jest-setup.web.js',
-  ],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './jest-setup.web.js'],
   moduleNameMapper: {
     '^\\~src/(.*)': '<rootDir>/src/$1',
     '^\\~components/(.*)': '<rootDir>/src/components/$1',
