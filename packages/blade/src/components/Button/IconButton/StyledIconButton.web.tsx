@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import type { ReactElement } from 'react';
 import type { StyledIconButtonProps } from './types';
-import { castWebType, makeAccessible, makeMotionTime } from '~utils';
+import { castWebType, dataAttribute, makeAccessible, makeMotionTime } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 
 type StyledButtonProps = {
@@ -57,6 +57,7 @@ const StyledIconButton = ({
     contrast={contrast}
     type="button"
     {...makeAccessible({ label: accessibilityLabel })}
+    {...dataAttribute('blade-component', 'icon-button')}
   >
     <Icon size={size} color="currentColor" />
   </StyledButton>

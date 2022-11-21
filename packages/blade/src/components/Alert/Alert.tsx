@@ -3,7 +3,7 @@ import { Fragment, useState } from 'react';
 
 import { StyledAlert } from './StyledAlert';
 import { AlertOctagonIcon, AlertTriangleIcon, CheckCircleIcon, CloseIcon } from '~components/Icons';
-import { getPlatformType, makeAccessible } from '~utils';
+import { dataAttribute, getPlatformType, makeAccessible } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { Heading, Text } from '~components/Typography';
@@ -225,6 +225,7 @@ const Alert = ({
       isFullWidth={isFullWidth}
       isBorderless={isBorderless}
       {...a11yProps}
+      {...dataAttribute('blade-component', 'alert')}
     >
       {icon}
       <Box flex={1} paddingLeft="spacing.4" paddingRight="spacing.2">

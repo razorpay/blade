@@ -6,6 +6,7 @@ import { Text } from '~components/Typography';
 import Box from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { dataAttribute } from '~utils';
 
 export type CounterProps = {
   /**
@@ -100,6 +101,7 @@ const Counter = ({
         justifyContent="center"
         alignItems="center"
         overflow="hidden"
+        {...dataAttribute('blade-component', 'counter')}
       >
         <Text
           {...textSizes[size]}

@@ -1,11 +1,12 @@
 import type { ReactElement } from 'react';
 import type { SvgProps } from './types';
-import { makeAccessible } from '~utils';
+import { dataAttribute, makeAccessible } from '~utils';
 
 const Svg = ({ children, height, viewBox, width, fill }: SvgProps): ReactElement => {
   return (
     <svg
       {...makeAccessible({ hidden: true })}
+      {...dataAttribute('blade-component', 'icon')}
       height={height}
       viewBox={viewBox}
       width={width}

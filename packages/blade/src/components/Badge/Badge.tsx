@@ -8,6 +8,7 @@ import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
+import { dataAttribute } from '~utils';
 
 type BadgeProps = {
   /**
@@ -99,7 +100,12 @@ const Badge = ({
     contrast,
   });
   return (
-    <StyledBadge backgroundColor={backgroundColor} size={size} platform={platform}>
+    <StyledBadge
+      backgroundColor={backgroundColor}
+      size={size}
+      platform={platform}
+      {...dataAttribute('blade-component', 'badge')}
+    >
       <Box
         paddingRight={horizontalPadding[size]}
         paddingLeft={horizontalPadding[size]}

@@ -4,7 +4,7 @@ import SpinnerIcon from './SpinnerIcon';
 import { SpinningBox } from './SpinningBox';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import { getIn, makeAccessible, makeSize } from '~utils';
+import { dataAttribute, getIn, makeAccessible, makeSize } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import Box from '~components/Box';
 import { Text } from '~components/Typography';
@@ -72,7 +72,7 @@ const BaseSpinner = ({
 }: BaseSpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
-    <Box display="flex">
+    <Box display="flex" {...dataAttribute('blade-component', 'spinner')}>
       <Box
         display="flex"
         alignItems="center"
