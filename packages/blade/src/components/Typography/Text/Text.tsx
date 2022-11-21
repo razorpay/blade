@@ -13,7 +13,10 @@ type TextCommonProps = {
   truncateAfterLines?: number;
   children: React.ReactNode;
   weight?: keyof Theme['typography']['fonts']['weight'];
-  _color?: BaseTextProps['color'];
+  /**
+   * **For Internal use only**:  Sets the color of the Text component
+   */
+  color?: BaseTextProps['color'];
 };
 
 export type TextVariant = 'body' | 'caption';
@@ -110,12 +113,12 @@ const Text = <T extends { variant: TextVariant }>({
   contrast = 'low',
   truncateAfterLines,
   children,
-  _color,
+  color,
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
     ...getTextProps({ variant, type, weight, size, contrast }),
-    ...(_color ? { color: _color } : {}),
+    ...(color ? { color } : {}),
   };
   return <StyledText {...props}>{children}</StyledText>;
 };

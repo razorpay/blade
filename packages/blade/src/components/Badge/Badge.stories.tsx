@@ -7,7 +7,7 @@ import { InfoIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
 import { Text as BladeText } from '~components/Typography';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): React.ReactElement => {

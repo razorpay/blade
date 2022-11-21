@@ -30,3 +30,6 @@ jobs:
           workingDir: packages/blade
           buildScriptName: react:storybook:build
           exitOnceUploaded: true
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF: ${{ github.ref }}

@@ -22,6 +22,11 @@ describe('<Counter />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render large size Counter', () => {
+    const { container } = renderWithTheme(<Counter size="large" value={20} />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render low contrast positive intent Counter', () => {
     const { container } = renderWithTheme(<Counter intent="positive" contrast="low" value={20} />);
     expect(container).toMatchSnapshot();

@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { TextProps } from './';
 import { Text as TextComponent } from './';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
@@ -65,6 +65,6 @@ export const Text = TextTemplate.bind({});
 // ignore private props like _color
 Text.parameters = {
   controls: {
-    exclude: /^_.*/,
+    exclude: 'color',
   },
 };

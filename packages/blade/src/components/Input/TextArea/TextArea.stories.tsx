@@ -4,7 +4,7 @@ import React from 'react';
 import type { TextAreaProps } from './TextArea';
 import { TextArea as TextAreaComponent } from './TextArea';
 import Box from '~components/Box';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const propsCategory = {

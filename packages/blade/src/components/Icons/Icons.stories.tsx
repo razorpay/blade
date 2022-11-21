@@ -4,8 +4,9 @@ import { Title } from '@storybook/addon-docs';
 import iconMap from './iconMap';
 import type { IconProps } from '.';
 import { CreditCardIcon } from '.';
+import Box from '~components/Box';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): ReactElement => {
   return (
@@ -78,4 +79,38 @@ const IconTemplate: ComponentStory<ComponentType<IconProps & { icon: string }>> 
 export const Icon = IconTemplate.bind({});
 Icon.args = {
   icon: 'CreditCardIcon',
+};
+
+export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) => {
+  return (
+    <Box>
+      {Object.keys(iconMap).map((icon, key) => {
+        const IconComponent = iconMap[icon];
+        return (
+          <Box
+            height={95}
+            width={125}
+            display="inline-flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="spacing.6"
+            key={key}
+          >
+            <IconComponent {...args} />
+            <Box
+              style={{
+                fontSize: 12,
+                width: '90%',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                textAlign: 'center',
+              }}
+            >
+              {icon}
+            </Box>
+          </Box>
+        );
+      })}
+    </Box>
+  );
 };

@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { HeadingProps } from './';
 import { Heading as HeadingComponent } from './';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {

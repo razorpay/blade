@@ -26,6 +26,11 @@ module.exports = {
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
   ],
+  env: (config) => ({
+    ...config,
+    GITHUB_SHA: process.env.GITHUB_SHA,
+    GITHUB_REF: process.env.GITHUB_REF,
+  }),
   staticDirs: ['../../public/storybook-site'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

@@ -16,6 +16,7 @@ Counters are visual indicators that contains numerical values, tallies or counts
 | max | `number` | `undefined` | The max value of the counter, if the `value` exceededs `max` then the counter will show a `+` at the end. |  |
 | intent | `positive`,`negative`, `notice`, `information`, `neutral` | `neutral` | The variant of the counter to be rendered. |  |
 | contrast | `low`, `high` | `low` | The contrast of the counter to be rendered. |  |
+| size | `medium`, `small` | `medium` | The size of the counter to be rendered. |  |
 
 ## Usage Example
 

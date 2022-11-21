@@ -6,7 +6,7 @@ import { Text } from '../Typography';
 import type { RadioGroupProps } from './RadioGroup/RadioGroup';
 import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
-import Sandbox from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): React.ReactElement => {

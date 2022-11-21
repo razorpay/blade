@@ -18,7 +18,7 @@ describe('<Radio />', () => {
       </RadioGroup>,
     );
     expect(container).toMatchSnapshot();
-    expect(getByRole('radio', { hidden: true })).toBeInTheDocument();
+    expect(getByRole('radio', { name: labelText })).toBeInTheDocument();
     expect(getByText(labelText)).toBeInTheDocument();
   });
 
@@ -45,7 +45,7 @@ describe('<Radio />', () => {
       </RadioGroup>,
     );
     expect(container).toMatchSnapshot();
-    expect(getByRole('radio', { hidden: true })).toBeDisabled();
+    expect(getByRole('radio', { name: labelText })).toBeDisabled();
   });
 
   test('user should be able set checked state', async () => {
@@ -57,10 +57,10 @@ describe('<Radio />', () => {
       </RadioGroup>,
     );
 
-    expect(getByRole('radio', { hidden: true })).not.toBeChecked();
+    expect(getByRole('radio', { name: labelText })).not.toBeChecked();
     await user.click(getByLabelText(labelText));
-    expect(getByRole('radio', { hidden: true })).toBeChecked();
+    expect(getByRole('radio', { name: labelText })).toBeChecked();
     await user.click(getByLabelText(labelText));
-    expect(getByRole('radio', { hidden: true })).toBeChecked();
+    expect(getByRole('radio', { name: labelText })).toBeChecked();
   });
 });
