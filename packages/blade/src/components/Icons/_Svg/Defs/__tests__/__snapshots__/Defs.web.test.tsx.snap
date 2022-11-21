@@ -4,6 +4,7 @@ exports[`<Defs /> should render html defs component 1`] = `
 <div>
   <svg
     aria-hidden="true"
+    data-blade-component="icon"
     fill="none"
     height="40px"
     viewBox="0 0 6 6"

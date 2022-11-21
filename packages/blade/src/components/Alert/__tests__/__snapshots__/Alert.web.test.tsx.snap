@@ -87,10 +87,12 @@ exports[`<Alert /> should render 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="alert"
     role="status"
   >
     <svg
       aria-hidden="true"
+      data-blade-component="icon"
       fill="none"
       height="20px"
       viewBox="0 0 24 24"
@@ -117,6 +119,7 @@ exports[`<Alert /> should render 1`] = `
       <p
         class="c2 Text__StyledText-wkh56f-0"
         color="surface.text.normal.lowContrast"
+        data-blade-component="text"
         font-family="text"
         font-size="100"
         font-style="normal"
@@ -128,10 +131,12 @@ exports[`<Alert /> should render 1`] = `
     <button
       aria-label="Dismiss alert"
       class="c3"
+      data-blade-component="icon-button"
       type="button"
     >
       <svg
         aria-hidden="true"
+        data-blade-component="icon"
         fill="none"
         height="20px"
         viewBox="0 0 24 24"
@@ -234,10 +239,12 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="alert"
     role="alert"
   >
     <svg
       aria-hidden="true"
+      data-blade-component="icon"
       fill="none"
       height="20px"
       viewBox="0 0 24 24"
@@ -264,6 +271,7 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
       <p
         class="c2 Text__StyledText-wkh56f-0"
         color="surface.text.normal.lowContrast"
+        data-blade-component="text"
         font-family="text"
         font-size="100"
         font-style="normal"
@@ -275,10 +283,12 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
     <button
       aria-label="Dismiss alert"
       class="c3"
+      data-blade-component="icon-button"
       type="button"
     >
       <svg
         aria-hidden="true"
+        data-blade-component="icon"
         fill="none"
         height="20px"
         viewBox="0 0 24 24"
@@ -381,10 +391,12 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="alert"
     role="status"
   >
     <svg
       aria-hidden="true"
+      data-blade-component="icon"
       fill="none"
       height="20px"
       viewBox="0 0 24 24"
@@ -420,6 +432,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       <p
         class="c2 Text__StyledText-wkh56f-0"
         color="surface.text.normal.lowContrast"
+        data-blade-component="text"
         font-family="text"
         font-size="100"
         font-style="normal"
@@ -431,10 +444,12 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     <button
       aria-label="Dismiss alert"
       class="c3"
+      data-blade-component="icon-button"
       type="button"
     >
       <svg
         aria-hidden="true"
+        data-blade-component="icon"
         fill="none"
         height="20px"
         viewBox="0 0 24 24"

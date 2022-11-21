@@ -274,6 +274,7 @@ exports[`<BaseInput /> should render 1`] = `
               <p
                 class="c4 Text__StyledText-wkh56f-0"
                 color="surface.text.subdued.lowContrast"
+                data-blade-component="text"
                 font-family="text"
                 font-size="75"
                 font-style="normal"
@@ -286,6 +287,7 @@ exports[`<BaseInput /> should render 1`] = `
                   <p
                     class="c6 Text__StyledText-wkh56f-0"
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     font-family="text"
                     font-size="100"
                     font-style="normal"
@@ -633,6 +635,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               <p
                 class="c4 Text__StyledText-wkh56f-0"
                 color="surface.text.subdued.lowContrast"
+                data-blade-component="text"
                 font-family="text"
                 font-size="75"
                 font-style="normal"
@@ -645,6 +648,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
                   <p
                     class="c6 Text__StyledText-wkh56f-0"
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     font-family="text"
                     font-size="100"
                     font-style="normal"
@@ -671,6 +675,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
+              data-blade-component="icon"
               fill="none"
               height="16px"
               viewBox="0 0 24 24"
@@ -712,6 +717,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
+              data-blade-component="icon"
               fill="none"
               height="16px"
               viewBox="0 0 24 24"

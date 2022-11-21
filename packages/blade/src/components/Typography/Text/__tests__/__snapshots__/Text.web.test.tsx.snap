@@ -18,6 +18,7 @@ exports[`<Text /> should render Text with default properties 1`] = `
   <p
     class="c0 Text__StyledText-wkh56f-0"
     color="surface.text.normal.lowContrast"
+    data-blade-component="text"
     font-family="text"
     font-size="100"
     font-style="normal"
@@ -54,6 +55,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
   <p
     class="c0 c1"
     color="surface.text.normal.lowContrast"
+    data-blade-component="text"
     font-family="text"
     font-size="100"
     font-style="normal"
@@ -90,6 +92,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
   <p
     class="c0 c1"
     color="surface.text.normal.highContrast"
+    data-blade-component="text"
     font-family="text"
     font-size="100"
     font-style="normal"
@@ -126,6 +129,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   <p
     class="c0 c1"
     color="surface.text.normal.lowContrast"
+    data-blade-component="text"
     font-family="text"
     font-size="75"
     font-style="normal"
@@ -154,6 +158,7 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
   <p
     class="c0 Text__StyledText-wkh56f-0"
     color="surface.text.normal.lowContrast"
+    data-blade-component="text"
     font-family="text"
     font-size="100"
     font-style="normal"
