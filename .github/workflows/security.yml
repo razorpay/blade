@@ -10,6 +10,7 @@ on:
 jobs:
   semgrep:
     if: (github.actor != 'dependabot[bot]')
+    permissions: write-all
     name: Scan
     runs-on: ubuntu-latest                              # nosemgrep : semgrep.dev/s/swati31196:github_provided_runner
     steps:
@@ -52,3 +53,4 @@ jobs:
           -d '{ "state" : "success" , "context" : "github/security-status-check" , "description" : "github/security-status-check", "target_url" : "https://github.com/${{ github.repository }}" }' \
           https://api.github.com/repos/${{ github.repository }}/statuses/${{ env.githubCommit }}
           exit 0
+
