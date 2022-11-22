@@ -49,8 +49,9 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         <>
           <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
           <Description
-            markdown={`> **Note** <br/>The Figma Embed may not work with adblockers enabled. You can also check out the designs on [Figma](${figmaURL}) directly`}
+            markdown={`> **Note** <br/>The Figma Embed may not work with adblockers enabled. <br/>You can pause adblocker for this site or [check out the designs on Figma](${figmaURL}) directly`}
           />
+          <br />
           <br />
           <br />
         </>
