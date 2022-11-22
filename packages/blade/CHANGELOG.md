@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.0.1
+
+### Patch Changes
+
+- 96cf25f: feat: add new icons (lock, settings, file-text, users, slash)
+
 ## 5.0.0
 
 ### Major Changes
