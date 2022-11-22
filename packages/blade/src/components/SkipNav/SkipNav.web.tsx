@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { dataAttribute, testID } from '~utils';
+import { metaAttribute, testID } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 import { BaseLink } from '~components/Link/BaseLink';
 
@@ -41,7 +41,7 @@ const SkipNavContent = ({ id = fallbackId }: SkipNavContentProps): JSX.Element =
       id={id}
       style={{ outline: 0 }}
       {...testID('skipnav-content')}
-      {...dataAttribute('blade-component', 'skipnav')}
+      {...metaAttribute('blade-component', 'skipnav')}
     />
   );
 };

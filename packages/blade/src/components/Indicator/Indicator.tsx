@@ -7,7 +7,7 @@ import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 
 import type { Feedback } from '~tokens/theme/theme';
-import { dataAttribute, getPlatformType, makeAccessible } from '~utils';
+import { metaAttribute, getPlatformType, makeAccessible } from '~utils';
 
 type IndicatorCommonProps = {
   /**
@@ -91,7 +91,7 @@ const Indicator = ({
       flexDirection="row"
       alignItems="center"
       {...a11yProps}
-      {...dataAttribute('blade-component', 'indicator')}
+      {...metaAttribute('blade-component', 'indicator')}
     >
       <Svg width={dimensions.svgSize} height={dimensions.svgSize} viewBox="0 0 10 10" fill="none">
         <Circle cx="5" cy="5" r="5" fill={fillColor} />

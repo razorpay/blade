@@ -1,5 +1,5 @@
 export * from './cloneDeep';
-export * from './dataAttribute';
+export * from './metaAttribute';
 export * from './getColorScheme';
 export * from './getIn';
 export * from './getPlatformType';

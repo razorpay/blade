@@ -15,7 +15,7 @@ import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 
-import { dataAttribute, getPlatformType, makeAccessible, useBreakpoint } from '~utils';
+import { metaAttribute, getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~src/hooks/useInteraction';
@@ -491,7 +491,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
     return (
-      <Box {...dataAttribute('blade-component', componentName!)}>
+      <Box {...metaAttribute('blade-component', componentName!)}>
         <Box
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}

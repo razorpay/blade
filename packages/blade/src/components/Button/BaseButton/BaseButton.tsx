@@ -20,7 +20,7 @@ import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
 import {
-  dataAttribute,
+  metaAttribute,
   makeAccessible,
   usePrevious,
   makeSize,
@@ -369,7 +369,7 @@ const BaseButton = ({
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
-      {...dataAttribute('blade-component', 'button')}
+      {...metaAttribute('blade-component', 'button')}
     >
       {isLoading ? (
         <Box

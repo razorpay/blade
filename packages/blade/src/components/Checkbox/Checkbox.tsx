@@ -4,7 +4,7 @@ import isUndefined from 'lodash/isUndefined';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
-import { dataAttribute, isEmpty } from '~utils';
+import { metaAttribute, isEmpty } from '~utils';
 import Box from '~components/Box';
 import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -187,7 +187,7 @@ const Checkbox = ({
   });
 
   return (
-    <Box {...dataAttribute('blade-component', 'checkbox')}>
+    <Box {...metaAttribute('blade-component', 'checkbox')}>
       <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
         <Box display="flex" flexDirection="column">
           <Box display="flex" alignItems="center" flexDirection="row">

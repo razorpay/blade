@@ -7,7 +7,7 @@ import { FormHint, FormLabel } from '../../Form';
 import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import Box from '~components/Box';
-import { dataAttribute, getPlatformType } from '~utils';
+import { metaAttribute, getPlatformType } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 export type OTPInputProps = Pick<
@@ -251,7 +251,7 @@ const OTPInput = ({
   };
 
   return (
-    <Box {...dataAttribute('blade-component', 'otp-input')}>
+    <Box {...metaAttribute('blade-component', 'otp-input')}>
       <Box
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
