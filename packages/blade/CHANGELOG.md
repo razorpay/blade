@@ -4,8 +4,10 @@
 
 ### Major Changes
 
-- fc2a3bf: > **Warning**
+- fc2a3bf:
 
+  > **Warning**
+  >
   > This is a breaking change for `Alert` component. The UI is updated to match the designs.
 
   feat(Alert): design revamp
