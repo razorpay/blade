@@ -12,6 +12,7 @@ import CreditCardIconComponent from './CreditCardIcon';
 import DollarIconComponent from './DollarIcon';
 import DownloadIconComponent from './DownloadIcon';
 import EditIconComponent from './EditIcon';
+import EmailIconComponent from './EmailIcon';
 import EyeIconComponent from './EyeIcon';
 import EyeOffIconComponent from './EyeOffIcon';
 import HistoryIconComponent from './HistoryIcon';
@@ -56,6 +57,7 @@ const iconMap: Record<string, IconComponent> = {
   DollarIcon: DollarIconComponent,
   DownloadIcon: DownloadIconComponent,
   EditIcon: EditIconComponent,
+  EmailIcon: EmailIconComponent,
   ExternalLinkIcon: ExternalLinkIconComponent,
   EyeIcon: EyeIconComponent,
   EyeOffIcon: EyeOffIconComponent,

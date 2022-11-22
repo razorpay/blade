@@ -58,6 +58,7 @@ export { default as CreditCardIcon } from './CreditCardIcon';
 export { default as DollarIcon } from './DollarIcon';
 export { default as DownloadIcon } from './DownloadIcon';
 export { default as EditIcon } from './EditIcon';
+export { default as EmailIcon } from './EmailIcon';
 export { default as EyeIcon } from './EyeIcon';
 export { default as EyeOffIcon } from './EyeOffIcon';
 export { default as HistoryIcon } from './HistoryIcon';
