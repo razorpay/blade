@@ -6,10 +6,11 @@ import { Path, Svg } from '../_Svg';
 const EmailIcon: IconComponent = ({ size, color }: IconProps): ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
   return (
-    <Svg height={height} viewBox="0 0 24 24" width={width}>
-      <Path d="M0 0h24v24H0V0z" fill={iconColor} />
+    <Svg width={width} height={height} viewBox="0 0 22 18" fill="none">
       <Path
-        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-.4 4.25l-7.07 4.42c-.32.2-.74.2-1.06 0L4.4 8.25c-.25-.16-.4-.43-.4-.72 0-.67.73-1.07 1.3-.72L12 11l6.7-4.19c.57-.35 1.3.05 1.3.72 0 .29-.15.56-.4.72z"
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M22 3.01769V15C22 16.6523 20.6523 18 19 18H3C1.34772 18 0 16.6523 0 15V3C0 1.34772 1.34772 0 3 0H19C20.6443 0 21.987 1.33473 21.9999 2.97608C22.0002 2.98996 22.0003 3.00383 22 3.01769ZM2.10659 2.55392C2.27198 2.22691 2.61205 2 3 2H19C19.388 2 19.7281 2.22695 19.8935 2.55401L11.0001 8.77937L2.10659 2.55392ZM2 4.92062V15C2 15.5477 2.45228 16 3 16H19C19.5477 16 20 15.5477 20 15V4.92074L11.5735 10.8193C11.2292 11.0603 10.7709 11.0603 10.4266 10.8193L2 4.92062Z"
         fill={iconColor}
       />
     </Svg>
