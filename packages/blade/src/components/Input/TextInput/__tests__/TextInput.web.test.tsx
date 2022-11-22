@@ -371,7 +371,7 @@ describe('<TextInput />', () => {
 
     const input = getByLabelText(label);
 
-    expect(input).toHaveAttribute('type', 'search');
+    expect(input).toHaveAttribute('type', 'text');
     expect(input).toHaveAttribute('inputMode', 'search');
     expect(input).toHaveAttribute('enterKeyHint', 'search');
     expect(input).toHaveAttribute('autoComplete', 'off');

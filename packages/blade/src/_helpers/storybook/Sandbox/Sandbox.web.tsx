@@ -133,6 +133,7 @@ type RecipeSandboxProps = {
   /** E.g. `/src/Form.tsx`  */
   activeFile?: `/${string}`;
   editorWidthPercentage?: number;
+  view?: 'preview' | 'editor';
 };
 
 /**
@@ -146,7 +147,7 @@ const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
 
   return (
     <iframe
-      src={`https://codesandbox.io/embed/${props.codesandboxId}?fontsize=14&module=${activeFile}&theme=light&eslint=1&editorsize=${editorWidth}`}
+      src={`https://codesandbox.io/embed/${props.codesandboxId}?fontsize=14&module=${activeFile}&theme=light&eslint=1&editorsize=${editorWidth}&view=${props.view}`}
       style={{
         width: '100%',
         height: '100%',
