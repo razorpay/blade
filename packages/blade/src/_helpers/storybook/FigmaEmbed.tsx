@@ -10,7 +10,6 @@ function FigmaEmbed(props: { src: string; title: string }): JSX.Element {
         allowFullScreen
       />
       <br />
-      <br />
     </>
   );
 }

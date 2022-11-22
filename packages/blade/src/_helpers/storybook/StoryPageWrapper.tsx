@@ -47,7 +47,11 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
       {props.note ? <Description markdown={`> **Note** <br/>${props.note}`} /> : null}
       {figmaURL !== '#' ? (
         <>
-          <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} /> <br />
+          <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
+          <Description
+            markdown={`> **Note** <br/>The Figma Embed may not work with adblockers enabled. You can also check out the designs on [Figma](${figmaURL}) directly`}
+          />
+          <br />
           <br />
         </>
       ) : null}
