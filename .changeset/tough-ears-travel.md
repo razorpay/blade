@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+'@razorpay/blade': patch
 ---
 
-feat: add new icons
+feat: add new icons (lock, settings, file-text, users, slash)
