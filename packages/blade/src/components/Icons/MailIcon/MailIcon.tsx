@@ -3,7 +3,7 @@ import type { IconComponent, IconProps } from '..';
 import useIconProps from '../useIconProps';
 import { Path, Svg } from '../_Svg';
 
-const EmailIcon: IconComponent = ({ size, color }: IconProps): ReactElement => {
+const MailIcon: IconComponent = ({ size, color }: IconProps): ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
@@ -17,4 +17,4 @@ const EmailIcon: IconComponent = ({ size, color }: IconProps): ReactElement => {
   );
 };
 
-export default EmailIcon;
+export default MailIcon;

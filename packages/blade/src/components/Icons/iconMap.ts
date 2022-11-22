@@ -12,7 +12,6 @@ import CreditCardIconComponent from './CreditCardIcon';
 import DollarIconComponent from './DollarIcon';
 import DownloadIconComponent from './DownloadIcon';
 import EditIconComponent from './EditIcon';
-import EmailIconComponent from './EmailIcon';
 import EyeIconComponent from './EyeIcon';
 import EyeOffIconComponent from './EyeOffIcon';
 import HistoryIconComponent from './HistoryIcon';
@@ -35,6 +34,7 @@ import TrendingDownIconComponent from './TrendingDownIcon';
 import HelpCircleIconComponent from './HelpCircleIcon';
 import ExternalLinkIconComponent from './ExternalLinkIcon';
 import MinusIconComponent from './MinusIcon';
+import MailIconComponent from './MailIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -57,7 +57,6 @@ const iconMap: Record<string, IconComponent> = {
   DollarIcon: DollarIconComponent,
   DownloadIcon: DownloadIconComponent,
   EditIcon: EditIconComponent,
-  EmailIcon: EmailIconComponent,
   ExternalLinkIcon: ExternalLinkIconComponent,
   EyeIcon: EyeIconComponent,
   EyeOffIcon: EyeOffIconComponent,
@@ -76,6 +75,7 @@ const iconMap: Record<string, IconComponent> = {
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
+  MailIcon: MailIconComponent,
 };
 
 export default iconMap;
