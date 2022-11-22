@@ -2164,7 +2164,7 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
 </View>
 `;
 
-exports[`<BaseSpinner /> should render small size BaseSpinner 1`] = `
+exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
 <View
   display="flex"
   style={
@@ -2215,11 +2215,11 @@ exports[`<BaseSpinner /> should render small size BaseSpinner 1`] = `
         <RNSVGSvgView
           accessibilityElementsHidden={true}
           align="xMidYMid"
-          bbHeight="undefinedpx"
-          bbWidth="undefinedpx"
+          bbHeight="24px"
+          bbWidth="24px"
           fill="none"
           focusable={false}
-          height="undefinedpx"
+          height="24px"
           importantForAccessibility="no-hide-descendants"
           meetOrSlice={0}
           minX={0}
@@ -2232,14 +2232,14 @@ exports[`<BaseSpinner /> should render small size BaseSpinner 1`] = `
               },
               Object {
                 "flex": 0,
-                "height": "undefinedpx",
-                "width": "undefinedpx",
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width="undefinedpx"
+          width="24px"
         >
           <RNSVGGroup
             fill={null}

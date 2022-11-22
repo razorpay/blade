@@ -610,7 +610,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 </View>
 `;
 
-exports[`<Spinner /> should render small size Spinner 1`] = `
+exports[`<Spinner /> should render xlarge size Spinner 1`] = `
 <View
   display="flex"
   style={
@@ -661,11 +661,11 @@ exports[`<Spinner /> should render small size Spinner 1`] = `
         <RNSVGSvgView
           accessibilityElementsHidden={true}
           align="xMidYMid"
-          bbHeight="undefinedpx"
-          bbWidth="undefinedpx"
+          bbHeight="24px"
+          bbWidth="24px"
           fill="none"
           focusable={false}
-          height="undefinedpx"
+          height="24px"
           importantForAccessibility="no-hide-descendants"
           meetOrSlice={0}
           minX={0}
@@ -678,14 +678,14 @@ exports[`<Spinner /> should render small size Spinner 1`] = `
               },
               Object {
                 "flex": 0,
-                "height": "undefinedpx",
-                "width": "undefinedpx",
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width="undefinedpx"
+          width="24px"
         >
           <RNSVGGroup
             fill={null}

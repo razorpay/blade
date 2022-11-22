@@ -380,7 +380,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 </div>
 `;
 
-exports[`<Spinner /> should render small size Spinner 1`] = `
+exports[`<Spinner /> should render xlarge size Spinner 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -432,9 +432,9 @@ exports[`<Spinner /> should render small size Spinner 1`] = `
         <svg
           aria-hidden="true"
           fill="none"
-          height="undefinedpx"
+          height="24px"
           viewBox="0 0 24 24"
-          width="undefinedpx"
+          width="24px"
         >
           <path
             d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
