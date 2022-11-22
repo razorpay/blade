@@ -18,6 +18,7 @@ import HistoryIconComponent from './HistoryIcon';
 import HomeIconComponent from './HomeIcon';
 import InfoIconComponent from './InfoIcon';
 import LinkIconComponent from './LinkIcon';
+import LockIconComponent from './LockIcon';
 import PauseIconComponent from './PauseIcon';
 import PlusIconComponent from './PlusIcon';
 import RupeeIconComponent from './RupeeIcon';
@@ -35,6 +36,7 @@ import UsersIconComponent from './UsersIcon';
 import HelpCircleIconComponent from './HelpCircleIcon';
 import ExternalLinkIconComponent from './ExternalLinkIcon';
 import MinusIconComponent from './MinusIcon';
+
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -66,6 +68,7 @@ const iconMap: Record<string, IconComponent> = {
   InfoIcon: InfoIconComponent,
   MinusIcon: MinusIconComponent,
   LinkIcon: LinkIconComponent,
+  LockIcon: LockIconComponent,
   PauseIcon: PauseIconComponent,
   PlusIcon: PlusIconComponent,
   RupeeIcon: RupeeIconComponent,
