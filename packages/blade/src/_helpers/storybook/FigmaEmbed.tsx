@@ -12,7 +12,7 @@ function FigmaEmbed(props: { src: string; title: string }): JSX.Element {
         allowFullScreen
       />
       <Description
-        markdown={`> **Note** <br/>If you're using adblockers, the Figma Embed may not work. <br/>You can pause adblocker for this site or [check out the designs on Figma](${props.src}) directly`}
+        markdown={`> **Note** <br/>If you're using adblockers, the Figma Embed may not work. <br/>You can pause adblocker for this site and allow cross site cookies which might be blocked by your browser. Alternatively [check out the designs on Figma](${props.src}) directly`}
       />
       <br />
       <br />
