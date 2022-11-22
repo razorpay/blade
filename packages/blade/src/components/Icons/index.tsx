@@ -77,5 +77,6 @@ export { default as MinusIcon } from './MinusIcon';
 export { default as RotateCounterClockWiseIcon } from './RotateCounterClockWiseIcon';
 export { default as TrendingUpIcon } from './TrendingUpIcon';
 export { default as TrendingDownIcon } from './TrendingDownIcon';
+export { default as UsersIcon } from './UsersIcon';
 export { default as HelpCircleIcon } from './HelpCircleIcon';
 export { default as ExternalLinkIcon } from './ExternalLinkIcon';

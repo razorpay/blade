@@ -31,6 +31,7 @@ import RefreshLeftIconComponent from './RefreshLeftIcon';
 import RotateCounterClockWiseIconComponent from './RotateCounterClockWiseIcon';
 import TrendingUpIconComponent from './TrendingUpIcon';
 import TrendingDownIconComponent from './TrendingDownIcon';
+import UsersIconComponent from './UsersIcon';
 import HelpCircleIconComponent from './HelpCircleIcon';
 import ExternalLinkIconComponent from './ExternalLinkIcon';
 import MinusIconComponent from './MinusIcon';
@@ -74,6 +75,7 @@ const iconMap: Record<string, IconComponent> = {
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
+  UsersIcon: UsersIconComponent,
 };
 
 export default iconMap;
