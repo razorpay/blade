@@ -9,13 +9,15 @@ import {
   CloseIcon,
   InfoIcon,
 } from '~components/Icons';
-import { getPlatformType, makeAccessible } from '~utils';
+import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import { useTheme } from '~components/BladeProvider';
+import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type Nullable<Type> = Type | null;
 
@@ -139,14 +141,37 @@ const Alert = ({
       '[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.',
     );
   }
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isMobile = matchedDeviceType === 'mobile';
+
   const [isVisible, setIsVisible] = useState(true);
   const contrastType = `${contrast}Contrast` as const;
   const iconSize = isBorderless ? 'large' : 'medium';
   const textSize = isBorderless ? 'medium' : 'small';
 
   const Icon = intentIconMap[intent];
+  let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
+
+  // certain special cases below needs special care for near perfect alignment
+  if (isReactNative) {
+    if (isBorderless && !title) {
+      iconOffset = 'spacing.1';
+    } else if (!isBorderless && !title) {
+      iconOffset = 'spacing.0';
+    } else if (!isBorderless && title) {
+      iconOffset = 'spacing.2';
+    }
+  } else if (isMobile) {
+    if (!isBorderless && title) {
+      iconOffset = 'spacing.2';
+    } else if (isBorderless && !title) {
+      iconOffset = 'spacing.2';
+    }
+  }
+
   const icon = (
-    <Box marginTop="spacing.1" display="flex">
+    <Box marginTop={iconOffset} display="flex">
       <Icon color={`feedback.icon.${intent}.${contrastType}`} size={iconSize} />
     </Box>
   );
