@@ -4,7 +4,6 @@ function FigmaEmbed(props: { src: string; title: string }): JSX.Element {
   return (
     <>
       <iframe
-        id="figma-iframe"
         title={props.title}
         style={{ border: 'none' }}
         width="800"
