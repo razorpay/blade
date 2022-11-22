@@ -64,6 +64,7 @@ export { default as HistoryIcon } from './HistoryIcon';
 export { default as HomeIcon } from './HomeIcon';
 export { default as InfoIcon } from './InfoIcon';
 export { default as LinkIcon } from './LinkIcon';
+export { default as LockIcon } from './LockIcon';
 export { default as PauseIcon } from './PauseIcon';
 export { default as PlusIcon } from './PlusIcon';
 export { default as RupeeIcon } from './RupeeIcon';

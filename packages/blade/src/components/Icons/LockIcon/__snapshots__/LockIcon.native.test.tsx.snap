@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LockIcon /> should render LockIcon 1`] = `
+<RNSVGSvgView
+  accessibilityElementsHidden={true}
+  align="xMidYMid"
+  bbHeight="20px"
+  bbWidth="20px"
+  fill="none"
+  focusable={false}
+  height="20px"
+  importantForAccessibility="no-hide-descendants"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Object {
+        "flex": 0,
+        "height": 20,
+        "width": 20,
+      },
+    ]
+  }
+  vbHeight={22}
+  vbWidth={22}
+  width="20px"
+>
+  <RNSVGGroup
+    fill={null}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
+  >
+    <RNSVGPath
+      d="M4 9V6C4 2.68629 6.68629 0 10 0C13.3137 0 16 2.68629 16 6V9H17C18.6569 9 20 10.3431 20 12V19C20 20.6569 18.6569 22 17 22H3C1.34315 22 0 20.6569 0 19V12C0 10.3431 1.34315 9 3 9H4ZM6 6C6 3.79086 7.79086 2 10 2C12.2091 2 14 3.79086 14 6V9H6V6ZM3 11C2.44772 11 2 11.4477 2 12V19C2 19.5523 2.44772 20 3 20H17C17.5523 20 18 19.5523 18 19V12C18 11.4477 17.5523 11 17 11H3Z"
+      fill={4282603381}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;
