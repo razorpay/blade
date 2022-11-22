@@ -14,6 +14,7 @@ import DownloadIconComponent from './DownloadIcon';
 import EditIconComponent from './EditIcon';
 import EyeIconComponent from './EyeIcon';
 import EyeOffIconComponent from './EyeOffIcon';
+import FileTextIconComponent from './FileTextIcon';
 import HistoryIconComponent from './HistoryIcon';
 import HomeIconComponent from './HomeIcon';
 import InfoIconComponent from './InfoIcon';
@@ -64,6 +65,7 @@ const iconMap: Record<string, IconComponent> = {
   ExternalLinkIcon: ExternalLinkIconComponent,
   EyeIcon: EyeIconComponent,
   EyeOffIcon: EyeOffIconComponent,
+  FileTextIcon: FileTextIconComponent,
   HelpCircleIcon: HelpCircleIconComponent,
   HistoryIcon: HistoryIconComponent,
   HomeIcon: HomeIconComponent,

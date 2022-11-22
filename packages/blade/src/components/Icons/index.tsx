@@ -60,6 +60,7 @@ export { default as DownloadIcon } from './DownloadIcon';
 export { default as EditIcon } from './EditIcon';
 export { default as EyeIcon } from './EyeIcon';
 export { default as EyeOffIcon } from './EyeOffIcon';
+export { default as FileTextIcon } from './FileTextIcon';
 export { default as HistoryIcon } from './HistoryIcon';
 export { default as HomeIcon } from './HomeIcon';
 export { default as InfoIcon } from './InfoIcon';
