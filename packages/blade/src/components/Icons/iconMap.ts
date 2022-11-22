@@ -14,14 +14,18 @@ import DownloadIconComponent from './DownloadIcon';
 import EditIconComponent from './EditIcon';
 import EyeIconComponent from './EyeIcon';
 import EyeOffIconComponent from './EyeOffIcon';
+import FileTextIconComponent from './FileTextIcon';
 import HistoryIconComponent from './HistoryIcon';
 import HomeIconComponent from './HomeIcon';
 import InfoIconComponent from './InfoIcon';
 import LinkIconComponent from './LinkIcon';
+import LockIconComponent from './LockIcon';
 import PauseIconComponent from './PauseIcon';
 import PlusIconComponent from './PlusIcon';
 import RupeeIconComponent from './RupeeIcon';
 import SearchIconComponent from './SearchIcon';
+import SettingsIconComponent from './SettingsIcon';
+import SlashIconComponent from './SlashIcon';
 import TrashIconComponent from './TrashIcon';
 import AlertTriangleIconComponent from './AlertTriangleIcon';
 import AlertOctagonIconComponent from './AlertOctagonIcon';
@@ -31,6 +35,7 @@ import RefreshLeftIconComponent from './RefreshLeftIcon';
 import RotateCounterClockWiseIconComponent from './RotateCounterClockWiseIcon';
 import TrendingUpIconComponent from './TrendingUpIcon';
 import TrendingDownIconComponent from './TrendingDownIcon';
+import UsersIconComponent from './UsersIcon';
 import HelpCircleIconComponent from './HelpCircleIcon';
 import ExternalLinkIconComponent from './ExternalLinkIcon';
 import MinusIconComponent from './MinusIcon';
@@ -60,22 +65,27 @@ const iconMap: Record<string, IconComponent> = {
   ExternalLinkIcon: ExternalLinkIconComponent,
   EyeIcon: EyeIconComponent,
   EyeOffIcon: EyeOffIconComponent,
+  FileTextIcon: FileTextIconComponent,
   HelpCircleIcon: HelpCircleIconComponent,
   HistoryIcon: HistoryIconComponent,
   HomeIcon: HomeIconComponent,
   InfoIcon: InfoIconComponent,
   MinusIcon: MinusIconComponent,
   LinkIcon: LinkIconComponent,
+  LockIcon: LockIconComponent,
   PauseIcon: PauseIconComponent,
   PlusIcon: PlusIconComponent,
   RupeeIcon: RupeeIconComponent,
   SearchIcon: SearchIconComponent,
+  SettingsIcon: SettingsIconComponent,
+  SlashIcon: SlashIconComponent,
   TrashIcon: TrashIconComponent,
   RefreshLeftIcon: RefreshLeftIconComponent,
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
   MailIcon: MailIconComponent,
+  UsersIcon: UsersIconComponent,
 };
 
 export default iconMap;
