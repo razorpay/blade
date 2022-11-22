@@ -1,0 +1,17 @@
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+import { Path, Svg } from '../_Svg';
+
+const SlashIcon: IconComponent = ({ size, color }) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+  return (
+    <Svg height={height} width={width} viewBox="0 0 22 22" fill="none">
+      <Path
+        d="M11 0C4.92487 0 0 4.92487 0 11C0 17.0751 4.92487 22 11 22C17.0751 22 22 17.0751 22 11C22 4.92487 17.0751 0 11 0ZM5.38231 3.9681C6.92199 2.73647 8.87499 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L5.38231 3.9681ZM3.9681 5.38231C2.73647 6.92199 2 8.87499 2 11C2 15.9706 6.02944 20 11 20C13.125 20 15.078 19.2635 16.6177 18.0319L3.9681 5.38231Z"
+        fill={iconColor}
+      />
+    </Svg>
+  );
+};
+
+export default SlashIcon;
