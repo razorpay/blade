@@ -251,6 +251,7 @@ exports[`<TextInput /> should render 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="textinput"
   >
     <div
       class="c0"
@@ -274,6 +275,7 @@ exports[`<TextInput /> should render 1`] = `
               <p
                 class="c4 Text__StyledText-wkh56f-0"
                 color="surface.text.subdued.lowContrast"
+                data-blade-component="text"
                 font-family="text"
                 font-size="75"
                 font-style="normal"
@@ -286,6 +288,7 @@ exports[`<TextInput /> should render 1`] = `
                   <p
                     class="c6 Text__StyledText-wkh56f-0"
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     font-family="text"
                     font-size="100"
                     font-style="normal"
@@ -626,6 +629,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="textinput"
   >
     <div
       class="c0"
@@ -649,6 +653,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               <p
                 class="c4 Text__StyledText-wkh56f-0"
                 color="surface.text.subdued.lowContrast"
+                data-blade-component="text"
                 font-family="text"
                 font-size="75"
                 font-style="normal"
@@ -661,6 +666,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                   <p
                     class="c6 Text__StyledText-wkh56f-0"
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     font-family="text"
                     font-size="100"
                     font-style="normal"
@@ -687,6 +693,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <svg
               aria-hidden="true"
+              data-blade-component="icon"
               fill="none"
               height="16px"
               viewBox="0 0 24 24"
@@ -714,6 +721,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             <p
               class="c12 Text__StyledText-wkh56f-0"
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               font-family="text"
               font-size="100"
               font-style="normal"
@@ -748,6 +756,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             <p
               class="c12 Text__StyledText-wkh56f-0"
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               font-family="text"
               font-size="100"
               font-style="normal"

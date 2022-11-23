@@ -251,280 +251,287 @@ exports[`<OTPInput /> should render 1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
+    class=""
+    data-blade-component="otp-input"
   >
-    <label
-      for="otp-37-input-38"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
-    >
-      <div
-        class="c1"
-      >
-        <div
-          class="c2"
-          display="flex"
-        >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Enter OTP
-            <div
-              class="c4"
-            >
-              <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
-          </p>
-        </div>
-      </div>
-    </label>
     <div
-      class="c6"
+      class="c0"
       display="flex"
     >
-      <input
-        hidden=""
-        id="otp-37-input-38"
-        value=""
-      />
-      <div
-        class="c7"
+      <label
+        for="otp-37-input-38"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
-          class=""
+          class="c1"
         >
           <div
-            class="c0"
+            class="c2"
             display="flex"
           >
-            <div
-              class="c8 c9"
-              display="flex"
-              width="100%"
+            <p
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="75"
+              font-style="normal"
+              font-weight="bold"
             >
-              <input
-                aria-describedby=""
-                aria-disabled="false"
-                aria-invalid="false"
-                aria-label="Enter OTP character 1"
-                aria-required="true"
-                autocomplete="one-time-code"
-                class="c10"
-                id="otp-37-input-38-0-49-input-50"
-                inputmode="decimal"
-                placeholder=""
-                required=""
-                type="text"
-                value=""
-              />
-            </div>
-            <div
-              class=" c11"
-            />
+              Enter OTP
+              <div
+                class="c4"
+              >
+                <p
+                  class="c5 Text__StyledText-wkh56f-0"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="100"
+                  font-style="normal"
+                  font-weight="regular"
+                />
+              </div>
+            </p>
           </div>
         </div>
-      </div>
+      </label>
       <div
-        class="c12"
+        class="c6"
+        display="flex"
       >
+        <input
+          hidden=""
+          id="otp-37-input-38"
+          value=""
+        />
         <div
-          class=""
+          class="c7"
         >
           <div
-            class="c0"
-            display="flex"
+            class=""
           >
             <div
-              class="c8 c9"
+              class="c0"
               display="flex"
-              width="100%"
             >
-              <input
-                aria-describedby=""
-                aria-disabled="false"
-                aria-invalid="false"
-                aria-label=" character 2"
-                aria-required="true"
-                autocomplete="one-time-code"
-                class="c10"
-                id="otp-37-input-38-1-55-input-56"
-                inputmode="decimal"
-                placeholder=""
-                required=""
-                type="text"
-                value=""
+              <div
+                class="c8 c9"
+                display="flex"
+                width="100%"
+              >
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label="Enter OTP character 1"
+                  aria-required="true"
+                  autocomplete="one-time-code"
+                  class="c10"
+                  id="otp-37-input-38-0-49-input-50"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class=" c11"
               />
             </div>
-            <div
-              class=" c11"
-            />
           </div>
         </div>
-      </div>
-      <div
-        class="c12"
-      >
         <div
-          class=""
+          class="c12"
         >
           <div
-            class="c0"
-            display="flex"
+            class=""
           >
             <div
-              class="c8 c9"
+              class="c0"
               display="flex"
-              width="100%"
             >
-              <input
-                aria-describedby=""
-                aria-disabled="false"
-                aria-invalid="false"
-                aria-label=" character 3"
-                aria-required="true"
-                autocomplete="one-time-code"
-                class="c10"
-                id="otp-37-input-38-2-61-input-62"
-                inputmode="decimal"
-                placeholder=""
-                required=""
-                type="text"
-                value=""
+              <div
+                class="c8 c9"
+                display="flex"
+                width="100%"
+              >
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 2"
+                  aria-required="true"
+                  autocomplete="one-time-code"
+                  class="c10"
+                  id="otp-37-input-38-1-55-input-56"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class=" c11"
               />
             </div>
-            <div
-              class=" c11"
-            />
           </div>
         </div>
-      </div>
-      <div
-        class="c12"
-      >
         <div
-          class=""
+          class="c12"
         >
           <div
-            class="c0"
-            display="flex"
+            class=""
           >
             <div
-              class="c8 c9"
+              class="c0"
               display="flex"
-              width="100%"
             >
-              <input
-                aria-describedby=""
-                aria-disabled="false"
-                aria-invalid="false"
-                aria-label=" character 4"
-                aria-required="true"
-                autocomplete="one-time-code"
-                class="c10"
-                id="otp-37-input-38-3-67-input-68"
-                inputmode="decimal"
-                placeholder=""
-                required=""
-                type="text"
-                value=""
+              <div
+                class="c8 c9"
+                display="flex"
+                width="100%"
+              >
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 3"
+                  aria-required="true"
+                  autocomplete="one-time-code"
+                  class="c10"
+                  id="otp-37-input-38-2-61-input-62"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class=" c11"
               />
             </div>
-            <div
-              class=" c11"
-            />
           </div>
         </div>
-      </div>
-      <div
-        class="c12"
-      >
         <div
-          class=""
+          class="c12"
         >
           <div
-            class="c0"
-            display="flex"
+            class=""
           >
             <div
-              class="c8 c9"
+              class="c0"
               display="flex"
-              width="100%"
             >
-              <input
-                aria-describedby=""
-                aria-disabled="false"
-                aria-invalid="false"
-                aria-label=" character 5"
-                aria-required="true"
-                autocomplete="one-time-code"
-                class="c10"
-                id="otp-37-input-38-4-73-input-74"
-                inputmode="decimal"
-                placeholder=""
-                required=""
-                type="text"
-                value=""
+              <div
+                class="c8 c9"
+                display="flex"
+                width="100%"
+              >
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 4"
+                  aria-required="true"
+                  autocomplete="one-time-code"
+                  class="c10"
+                  id="otp-37-input-38-3-67-input-68"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class=" c11"
               />
             </div>
-            <div
-              class=" c11"
-            />
           </div>
         </div>
-      </div>
-      <div
-        class="c12"
-      >
         <div
-          class=""
+          class="c12"
         >
           <div
-            class="c0"
-            display="flex"
+            class=""
           >
             <div
-              class="c8 c9"
+              class="c0"
               display="flex"
-              width="100%"
             >
-              <input
-                aria-describedby=""
-                aria-disabled="false"
-                aria-invalid="false"
-                aria-label=" character 6"
-                aria-required="true"
-                autocomplete="one-time-code"
-                class="c10"
-                id="otp-37-input-38-5-79-input-80"
-                inputmode="decimal"
-                placeholder=""
-                required=""
-                type="text"
-                value=""
+              <div
+                class="c8 c9"
+                display="flex"
+                width="100%"
+              >
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 5"
+                  aria-required="true"
+                  autocomplete="one-time-code"
+                  class="c10"
+                  id="otp-37-input-38-4-73-input-74"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class=" c11"
               />
             </div>
+          </div>
+        </div>
+        <div
+          class="c12"
+        >
+          <div
+            class=""
+          >
             <div
-              class=" c11"
-            />
+              class="c0"
+              display="flex"
+            >
+              <div
+                class="c8 c9"
+                display="flex"
+                width="100%"
+              >
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 6"
+                  aria-required="true"
+                  autocomplete="one-time-code"
+                  class="c10"
+                  id="otp-37-input-38-5-79-input-80"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class=" c11"
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div
+      class="c13"
+    />
   </div>
-  <div
-    class="c13"
-  />
 </div>
 `;

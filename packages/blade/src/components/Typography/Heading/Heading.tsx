@@ -68,6 +68,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
     lineHeight: 'xl',
     fontFamily: 'text',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
+    componentName: 'heading',
   };
 
   if (variant === 'regular') {

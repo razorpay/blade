@@ -121,6 +121,7 @@ const RadioGroup = ({
         position={labelPosition}
         labelledBy={ids.labelId}
         accessibilityRole={isReactNative ? 'radiogroup' : 'group'}
+        componentName="radio-group"
       >
         <FormLabel
           as="span"

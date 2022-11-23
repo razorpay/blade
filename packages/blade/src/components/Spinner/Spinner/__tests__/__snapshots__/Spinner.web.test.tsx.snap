@@ -38,6 +38,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="spinner"
     display="flex"
   >
     <div
@@ -51,6 +52,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -114,6 +116,7 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="spinner"
     display="flex"
   >
     <div
@@ -127,6 +130,7 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -190,6 +194,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="spinner"
     display="flex"
   >
     <div
@@ -203,6 +208,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="20px"
           viewBox="0 0 24 24"
@@ -266,6 +272,7 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="spinner"
     display="flex"
   >
     <div
@@ -279,6 +286,7 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -342,6 +350,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="spinner"
     display="flex"
   >
     <div
@@ -355,6 +364,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -418,6 +428,7 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="spinner"
     display="flex"
   >
     <div
@@ -431,6 +442,7 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="24px"
           viewBox="0 0 24 24"

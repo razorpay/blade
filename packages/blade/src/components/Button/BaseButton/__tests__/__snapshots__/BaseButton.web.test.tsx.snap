@@ -211,6 +211,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -230,6 +231,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   </button>
   <button
     class="c4"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -240,6 +242,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
     >
       <div
         class="c6"
+        data-blade-component="spinner"
         display="flex"
       >
         <div
@@ -253,6 +256,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
           >
             <svg
               aria-hidden="true"
+              data-blade-component="icon"
               fill="none"
               height="20px"
               viewBox="0 0 24 24"
@@ -384,6 +388,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -495,6 +500,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -622,6 +628,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -635,6 +642,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -768,6 +776,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -781,6 +790,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -914,6 +924,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -935,6 +946,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -1045,6 +1057,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -1058,6 +1071,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="20px"
           viewBox="0 0 24 24"
@@ -1167,6 +1181,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -1279,6 +1294,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -1391,6 +1407,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -1503,6 +1520,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -1615,6 +1633,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -1727,6 +1746,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -1839,6 +1859,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -1951,6 +1972,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -2063,6 +2085,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -2175,6 +2198,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -2287,6 +2311,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -2399,6 +2424,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -2511,6 +2537,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -2623,6 +2650,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -2734,6 +2762,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -2845,6 +2874,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -2956,6 +2986,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -3067,6 +3098,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -3178,6 +3210,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -3289,6 +3322,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -3400,6 +3434,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -3511,6 +3546,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -3622,6 +3658,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -3733,6 +3770,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -3844,6 +3882,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -3955,6 +3994,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -4066,6 +4106,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -4177,6 +4218,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -4288,6 +4330,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >

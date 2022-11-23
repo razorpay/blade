@@ -72,6 +72,7 @@ exports[`<Link /> should render button variant of link 1`] = `
     aria-disabled="false"
     class="c0"
     cursor="pointer"
+    data-blade-component="link"
     role="button"
     type="button"
   >
@@ -164,6 +165,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
     aria-disabled="true"
     class="c0"
     cursor="not-allowed"
+    data-blade-component="link"
     disabled=""
     role="button"
     type="button"
@@ -257,6 +259,7 @@ exports[`<Link /> should render link with default properties 1`] = `
     aria-disabled="false"
     class="c0"
     cursor="pointer"
+    data-blade-component="link"
     role="link"
   >
     <div
@@ -360,6 +363,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
     aria-disabled="false"
     class="c0"
     cursor="pointer"
+    data-blade-component="link"
     role="link"
   >
     <div
@@ -372,6 +376,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -490,6 +495,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
     aria-disabled="false"
     class="c0"
     cursor="pointer"
+    data-blade-component="link"
     role="link"
   >
     <div
@@ -502,6 +508,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -620,6 +627,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
     aria-disabled="false"
     class="c0"
     cursor="pointer"
+    data-blade-component="link"
     role="link"
   >
     <div
@@ -640,6 +648,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -750,6 +759,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
     aria-disabled="false"
     class="c0"
     cursor="pointer"
+    data-blade-component="link"
     role="link"
   >
     <div
@@ -762,6 +772,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -878,6 +889,7 @@ exports[`<Link /> should render with small size 1`] = `
     aria-disabled="false"
     class="c0"
     cursor="pointer"
+    data-blade-component="link"
     role="link"
   >
     <div
@@ -890,6 +902,7 @@ exports[`<Link /> should render with small size 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="12px"
           viewBox="0 0 24 24"
