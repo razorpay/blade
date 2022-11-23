@@ -14,6 +14,7 @@ const rotate = keyframes`
 
 const SpinningBox = styled(Box)(({ theme }) => {
   return css`
+    padding: 1px;
     width: max-content;
     display: inline-flex;
     animation: ${rotate} ${makeMotionTime(getIn(theme.motion, spinnerMotion.duration))}

@@ -33,7 +33,7 @@ type BaseSpinnerProps = {
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'medium' | 'large' | 'xlarge';
   /**
    * Sets the aria-label for web & accessibilityLabel react-native.
    *
