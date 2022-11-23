@@ -36,11 +36,9 @@ import App from from './App';
 
 function AppWrapper(): JSX.Element {
   return (
-    <React.Fragment>
-      <BladeProvider themeTokens={paymentTheme} colorScheme="light">
-        <App />
-      </BladeProvider>
-    </React.Fragment>
+    <BladeProvider themeTokens={paymentTheme} colorScheme="light">
+      <App />
+    </BladeProvider>
   );
 }
 
