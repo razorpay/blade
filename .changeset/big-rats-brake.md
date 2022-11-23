@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-feat: adding Mail icon
+feat: add Mail icon
