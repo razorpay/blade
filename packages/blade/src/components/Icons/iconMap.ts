@@ -70,6 +70,7 @@ const iconMap: Record<string, IconComponent> = {
   HistoryIcon: HistoryIconComponent,
   HomeIcon: HomeIconComponent,
   InfoIcon: InfoIconComponent,
+  MailIcon: MailIconComponent,
   MinusIcon: MinusIconComponent,
   LinkIcon: LinkIconComponent,
   LockIcon: LockIconComponent,
@@ -84,7 +85,7 @@ const iconMap: Record<string, IconComponent> = {
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
-  MailIcon: MailIconComponent,
+
   UsersIcon: UsersIconComponent,
 };
 
