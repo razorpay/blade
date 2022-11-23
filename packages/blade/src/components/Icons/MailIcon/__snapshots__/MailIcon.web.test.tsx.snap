@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<EmailIcon /> should render EmailIcon 1`] = `
+exports[`<MailIcon /> should render MailIcon 1`] = `
 <div>
   <svg
     aria-hidden="true"
