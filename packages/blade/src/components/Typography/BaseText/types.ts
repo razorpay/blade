@@ -40,6 +40,7 @@ export type BaseTextProps = {
    * React Native only
    */
   numberOfLines?: number;
+  componentName?: 'text' | 'title' | 'heading' | 'code';
 };
 
 export type StyledBaseTextProps = Pick<

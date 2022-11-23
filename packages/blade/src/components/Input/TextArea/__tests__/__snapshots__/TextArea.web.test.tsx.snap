@@ -258,6 +258,7 @@ exports[`<TextArea /> should render 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="textarea"
   >
     <div
       class="c0"
@@ -281,6 +282,7 @@ exports[`<TextArea /> should render 1`] = `
               <p
                 class="c4 Text__StyledText-wkh56f-0"
                 color="surface.text.subdued.lowContrast"
+                data-blade-component="text"
                 font-family="text"
                 font-size="75"
                 font-style="normal"
@@ -293,6 +295,7 @@ exports[`<TextArea /> should render 1`] = `
                   <p
                     class="c6 Text__StyledText-wkh56f-0"
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     font-family="text"
                     font-size="100"
                     font-style="normal"
@@ -594,6 +597,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="textarea"
   >
     <div
       class="c0"
@@ -617,6 +621,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
               <p
                 class="c4 Text__StyledText-wkh56f-0"
                 color="surface.text.subdued.lowContrast"
+                data-blade-component="text"
                 font-family="text"
                 font-size="75"
                 font-style="normal"
@@ -629,6 +634,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
                   <p
                     class="c6 Text__StyledText-wkh56f-0"
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     font-family="text"
                     font-size="100"
                     font-style="normal"

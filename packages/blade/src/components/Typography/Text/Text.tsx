@@ -70,6 +70,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     lineHeight: 'l',
     fontFamily: 'text',
     forwardedAs: isPlatformWeb ? 'p' : undefined,
+    componentName: 'text',
   };
 
   if (variant === 'body') {

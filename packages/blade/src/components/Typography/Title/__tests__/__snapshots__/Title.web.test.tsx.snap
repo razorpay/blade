@@ -18,6 +18,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
   <h3
     class="c0"
     color="surface.text.normal.lowContrast"
+    data-blade-component="title"
     font-family="text"
     font-size="600"
     font-style="normal"
@@ -46,6 +47,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
   <h1
     class="c0"
     color="surface.text.subdued.lowContrast"
+    data-blade-component="title"
     font-family="text"
     font-size="1000"
     font-style="normal"
@@ -74,6 +76,7 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
   <h2
     class="c0"
     color="surface.text.muted.lowContrast"
+    data-blade-component="title"
     font-family="text"
     font-size="700"
     font-style="normal"
@@ -102,6 +105,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
   <h3
     class="c0"
     color="surface.text.normal.lowContrast"
+    data-blade-component="title"
     font-family="text"
     font-size="600"
     font-style="normal"
@@ -130,6 +134,7 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
   <h3
     class="c0"
     color="surface.text.normal.highContrast"
+    data-blade-component="title"
     font-family="text"
     font-size="600"
     font-style="normal"

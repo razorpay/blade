@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { testID } from '~utils';
+import { metaAttribute, MetaConstants, testID } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 import { BaseLink } from '~components/Link/BaseLink';
 
@@ -35,7 +35,15 @@ type SkipNavContentProps = {
 };
 
 const SkipNavContent = ({ id = fallbackId }: SkipNavContentProps): JSX.Element => {
-  return <div tabIndex={-1} id={id} style={{ outline: 0 }} {...testID('skipnav-content')} />;
+  return (
+    <div
+      tabIndex={-1}
+      id={id}
+      style={{ outline: 0 }}
+      {...testID('skipnav-content')}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.SkipNav)}
+    />
+  );
 };
 
 export { SkipNavLink, SkipNavContent };

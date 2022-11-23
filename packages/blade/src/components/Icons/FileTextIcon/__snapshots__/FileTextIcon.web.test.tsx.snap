@@ -4,6 +4,7 @@ exports[`<FileTextIcon /> should render FileTextIcon 1`] = `
 <div>
   <svg
     aria-hidden="true"
+    data-blade-component="icon"
     fill="none"
     height="20px"
     viewBox="0 0 24 24"

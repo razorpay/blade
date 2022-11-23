@@ -221,6 +221,7 @@ export const TextInput = ({
   return (
     <BaseInput
       id="textinput"
+      componentName="textinput"
       ref={textInputRef as React.Ref<HTMLInputElement>}
       label={label}
       labelPosition={labelPosition}

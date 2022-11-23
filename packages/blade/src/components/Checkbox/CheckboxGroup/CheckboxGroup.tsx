@@ -116,7 +116,11 @@ const CheckboxGroup = ({
 
   return (
     <CheckboxGroupProvider value={contextValue}>
-      <SelectorGroupField position={labelPosition} labelledBy={ids.labelId}>
+      <SelectorGroupField
+        position={labelPosition}
+        labelledBy={ids.labelId}
+        componentName="checkbox-group"
+      >
         <FormLabel
           as="span"
           necessityIndicator={necessityIndicator}
