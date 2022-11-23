@@ -1,10 +1,10 @@
 import EmailIcon from '.';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
-describe('<EmailIcon />', () => {
-  it('should render EmailIcon', () => {
+describe('<MailIcon />', () => {
+  it('should render MailIcon', () => {
     const { container } = renderWithTheme(
-      <EmailIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <MailIcon color="feedback.icon.neutral.lowContrast" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });
