@@ -1,37 +1,7 @@
 import { BaseSpinner } from '../BaseSpinner';
-import type { ColorContrastTypes } from '~tokens/theme/theme';
+import type { BaseSpinnerProps } from '../BaseSpinner';
 
-type SpinnerProps = {
-  /**
-   * Sets the label of the spinner.
-   *
-   * @default 'right'
-   */
-  label?: string;
-  /**
-   * Sets the label of the spinner.
-   *
-   */
-  labelPosition?: 'right' | 'bottom';
-  /**
-   * Sets the contrast of the spinner.
-   *
-   * @default 'low'
-   */
-  contrast?: ColorContrastTypes;
-  /**
-   * Sets the size of the spinner.
-   *
-   * @default 'medium'
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Sets the aria-label for web & accessibilityLabel for react-native. Uses `label` as its value if it exists otherwise falls back to "Loading"
-   *
-   * @default 'Loading'
-   */
-  accessibilityLabel?: string;
-};
+type SpinnerProps = Omit<BaseSpinnerProps, 'intent'>;
 
 const Spinner = ({
   label,

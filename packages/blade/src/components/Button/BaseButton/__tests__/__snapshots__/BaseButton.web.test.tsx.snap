@@ -188,6 +188,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 }
 
 .c8 {
+  padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
