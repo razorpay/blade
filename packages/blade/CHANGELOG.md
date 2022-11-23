@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.1.1
+
+### Patch Changes
+
+- 5a6b980: feat: add Mail icon
+
 ## 5.1.0
 
 ### Minor Changes
