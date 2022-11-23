@@ -7,11 +7,6 @@ describe('<BaseSpinner />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render small size BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(<BaseSpinner accessibilityLabel="Loading" size="small" />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
   it('should render medium size BaseSpinner', () => {
     const { toJSON } = renderWithTheme(<BaseSpinner accessibilityLabel="Loading" size="medium" />);
     expect(toJSON()).toMatchSnapshot();
@@ -19,6 +14,11 @@ describe('<BaseSpinner />', () => {
 
   it('should render large size BaseSpinner', () => {
     const { toJSON } = renderWithTheme(<BaseSpinner accessibilityLabel="Loading" size="large" />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render xlarge size BaseSpinner', () => {
+    const { toJSON } = renderWithTheme(<BaseSpinner accessibilityLabel="Loading" size="xlarge" />);
     expect(toJSON()).toMatchSnapshot();
   });
 

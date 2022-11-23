@@ -8,13 +8,6 @@ describe('<BaseSpinner />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render small size BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" size="small" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
   it('should render medium size BaseSpinner', () => {
     const { container } = renderWithTheme(
       <BaseSpinner accessibilityLabel="Loading" size="medium" />,
@@ -25,6 +18,13 @@ describe('<BaseSpinner />', () => {
   it('should render large size BaseSpinner', () => {
     const { container } = renderWithTheme(
       <BaseSpinner accessibilityLabel="Loading" size="large" />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render xlarge size BaseSpinner', () => {
+    const { container } = renderWithTheme(
+      <BaseSpinner accessibilityLabel="Loading" size="xlarge" />,
     );
     expect(container).toMatchSnapshot();
   });

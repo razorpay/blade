@@ -1,4 +1,5 @@
 import { Description } from '@storybook/addon-docs';
+import dedent from 'dedent';
 
 function FigmaEmbed(props: { src: string; title: string }): JSX.Element {
   return (
@@ -12,7 +13,14 @@ function FigmaEmbed(props: { src: string; title: string }): JSX.Element {
         allowFullScreen
       />
       <Description
-        markdown={`> **Note** <br/>If you're using adblockers, the Figma Embed may not work. <br />You can pause adblocker for this site and allow cross site cookies which might be blocked by your browser. <br/> Or you can [check out the designs on Figma](${props.src}) directly`}
+        markdown={dedent`
+          > **Note**
+          > 
+          > Currently the designs are only accessible to Razorpay Employees.
+          >
+          > For Razorpay Employees,<br/>
+          > Figma Embed may not work with adblockers 😿. You can [View Design on Figma](${props.src}) or pause adblockers for this domain.
+        `}
       />
       <br />
       <br />
