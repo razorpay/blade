@@ -8,7 +8,7 @@ import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
-import { metaAttribute } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
 
 type BadgeProps = {
   /**
@@ -104,7 +104,7 @@ const Badge = ({
       backgroundColor={backgroundColor}
       size={size}
       platform={platform}
-      {...metaAttribute('blade-component', 'badge')}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.Badge)}
     >
       <Box
         paddingRight={horizontalPadding[size]}

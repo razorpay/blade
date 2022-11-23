@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import Box from '~components/Box';
-import { metaAttribute, getPlatformType, makeSpace, makeTypographySize } from '~utils';
+import {
+  metaAttribute,
+  getPlatformType,
+  makeSpace,
+  makeTypographySize,
+  MetaConstants,
+} from '~utils';
 import type { FontSize } from '~tokens/global/typography';
 
 export type CodeProps = {
@@ -75,7 +81,7 @@ const Code = ({ children, size = 'small' }: CodeProps): JSX.Element => {
     <CodeContainer
       size={size}
       as={isPlatformWeb ? 'span' : undefined}
-      {...metaAttribute('blade-component', 'code')}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.Code)}
     >
       <BaseText
         color="surface.text.subtle.lowContrast"

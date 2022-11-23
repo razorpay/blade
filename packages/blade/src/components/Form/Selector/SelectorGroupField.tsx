@@ -1,6 +1,6 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
-import { metaAttribute, getPlatformType, makeAccessible } from '~utils';
+import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
 import Box from '~components/Box';
 import type { AriaRoles } from '~utils';
 
@@ -32,7 +32,7 @@ const SelectorGroupField = ({
         role,
         labelledBy,
       })}
-      {...metaAttribute('blade-component', componentName)}
+      {...metaAttribute(MetaConstants.Component, componentName)}
     >
       {children}
     </Box>

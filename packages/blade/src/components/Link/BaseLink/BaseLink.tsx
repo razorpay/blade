@@ -11,7 +11,7 @@ import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
 import { BaseText } from '~components/Typography/BaseText';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-import { makeAccessible, getIn, metaAttribute } from '~utils';
+import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -261,7 +261,7 @@ const BaseLink = ({
   return (
     <StyledBaseLink
       {...syntheticEvents}
-      {...metaAttribute('blade-component', 'link')}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.Link)}
       accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
       variant={variant}
       as={as}
