@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.1.2
+
+### Patch Changes
+
+- bd0b675: chore(blade): added blade component data attributes
+
 ## 5.1.1
 
 ### Patch Changes
