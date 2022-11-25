@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.1.3
+
+### Patch Changes
+
+- af9bdc9: fix(Alert): responsive design alignment
+
 ## 5.1.2
 
 ### Patch Changes
