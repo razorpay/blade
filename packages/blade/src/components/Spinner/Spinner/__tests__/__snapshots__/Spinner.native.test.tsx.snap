@@ -51,11 +51,11 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
         <RNSVGSvgView
           accessibilityElementsHidden={true}
           align="xMidYMid"
-          bbHeight="20px"
-          bbWidth="20px"
+          bbHeight="16px"
+          bbWidth="16px"
           fill="none"
           focusable={false}
-          height="20px"
+          height="16px"
           importantForAccessibility="no-hide-descendants"
           meetOrSlice={0}
           minX={0}
@@ -68,14 +68,14 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 16,
+                "width": 16,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width="20px"
+          width="16px"
         >
           <RNSVGGroup
             fill={null}
@@ -173,11 +173,11 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
         <RNSVGSvgView
           accessibilityElementsHidden={true}
           align="xMidYMid"
-          bbHeight="20px"
-          bbWidth="20px"
+          bbHeight="16px"
+          bbWidth="16px"
           fill="none"
           focusable={false}
-          height="20px"
+          height="16px"
           importantForAccessibility="no-hide-descendants"
           meetOrSlice={0}
           minX={0}
@@ -190,14 +190,14 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 16,
+                "width": 16,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width="20px"
+          width="16px"
         >
           <RNSVGGroup
             fill={null}
@@ -295,11 +295,11 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
         <RNSVGSvgView
           accessibilityElementsHidden={true}
           align="xMidYMid"
-          bbHeight="24px"
-          bbWidth="24px"
+          bbHeight="20px"
+          bbWidth="20px"
           fill="none"
           focusable={false}
-          height="24px"
+          height="20px"
           importantForAccessibility="no-hide-descendants"
           meetOrSlice={0}
           minX={0}
@@ -312,14 +312,14 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
               },
               Object {
                 "flex": 0,
-                "height": 24,
-                "width": 24,
+                "height": 20,
+                "width": 20,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width="24px"
+          width="20px"
         >
           <RNSVGGroup
             fill={null}
@@ -417,11 +417,11 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
         <RNSVGSvgView
           accessibilityElementsHidden={true}
           align="xMidYMid"
-          bbHeight="20px"
-          bbWidth="20px"
+          bbHeight="16px"
+          bbWidth="16px"
           fill="none"
           focusable={false}
-          height="20px"
+          height="16px"
           importantForAccessibility="no-hide-descendants"
           meetOrSlice={0}
           minX={0}
@@ -434,14 +434,14 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 16,
+                "width": 16,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width="20px"
+          width="16px"
         >
           <RNSVGGroup
             fill={null}
@@ -539,11 +539,11 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
         <RNSVGSvgView
           accessibilityElementsHidden={true}
           align="xMidYMid"
-          bbHeight="20px"
-          bbWidth="20px"
+          bbHeight="16px"
+          bbWidth="16px"
           fill="none"
           focusable={false}
-          height="20px"
+          height="16px"
           importantForAccessibility="no-hide-descendants"
           meetOrSlice={0}
           minX={0}
@@ -556,14 +556,14 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 16,
+                "width": 16,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width="20px"
+          width="16px"
         >
           <RNSVGGroup
             fill={null}
@@ -610,7 +610,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 </View>
 `;
 
-exports[`<Spinner /> should render small size Spinner 1`] = `
+exports[`<Spinner /> should render xlarge size Spinner 1`] = `
 <View
   display="flex"
   style={
@@ -661,11 +661,11 @@ exports[`<Spinner /> should render small size Spinner 1`] = `
         <RNSVGSvgView
           accessibilityElementsHidden={true}
           align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
+          bbHeight="24px"
+          bbWidth="24px"
           fill="none"
           focusable={false}
-          height="16px"
+          height="24px"
           importantForAccessibility="no-hide-descendants"
           meetOrSlice={0}
           minX={0}
@@ -678,14 +678,14 @@ exports[`<Spinner /> should render small size Spinner 1`] = `
               },
               Object {
                 "flex": 0,
-                "height": 16,
-                "width": 16,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width="16px"
+          width="24px"
         >
           <RNSVGGroup
             fill={null}

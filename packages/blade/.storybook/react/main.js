@@ -31,7 +31,7 @@ module.exports = {
     GITHUB_SHA: process.env.GITHUB_SHA,
     GITHUB_REF: process.env.GITHUB_REF,
   }),
-  staticDirs: ['../../public/storybook-site'],
+  staticDirs: ['../../public'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.

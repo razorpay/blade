@@ -117,6 +117,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="checkbox"
   >
     <label
       class="c0"
@@ -148,6 +149,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             >
               <svg
                 aria-hidden="true"
+                data-blade-component="icon"
                 fill="none"
                 height="12px"
                 viewBox="0 0 8 8"
@@ -299,6 +301,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="checkbox"
   >
     <label
       class="c0"
@@ -331,6 +334,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             >
               <svg
                 aria-hidden="true"
+                data-blade-component="icon"
                 fill="none"
                 height="12px"
                 viewBox="0 0 8 8"
@@ -503,6 +507,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="checkbox"
   >
     <label
       class="c0"
@@ -535,6 +540,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             >
               <svg
                 aria-hidden="true"
+                data-blade-component="icon"
                 fill="none"
                 height="12px"
                 viewBox="0 0 8 8"
@@ -583,6 +589,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="12px"
           viewBox="0 0 24 24"
@@ -744,6 +751,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="checkbox"
   >
     <label
       class="c0"
@@ -776,6 +784,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             >
               <svg
                 aria-hidden="true"
+                data-blade-component="icon"
                 fill="none"
                 height="12px"
                 viewBox="0 0 8 8"
@@ -799,6 +808,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             >
               <svg
                 aria-hidden="true"
+                data-blade-component="icon"
                 fill="none"
                 height="12px"
                 viewBox="0 0 8 8"

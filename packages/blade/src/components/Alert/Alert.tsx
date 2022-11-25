@@ -9,7 +9,13 @@ import {
   CloseIcon,
   InfoIcon,
 } from '~components/Icons';
-import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
+import {
+  getPlatformType,
+  makeAccessible,
+  metaAttribute,
+  MetaConstants,
+  useBreakpoint,
+} from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { Heading, Text } from '~components/Typography';
@@ -280,6 +286,7 @@ const Alert = ({
       isFullWidth={isFullWidth}
       isBorderless={isBorderless}
       {...a11yProps}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
     >
       {icon}
       <Box flex={1} paddingLeft={isBorderless ? 'spacing.4' : 'spacing.3'} paddingRight="spacing.2">

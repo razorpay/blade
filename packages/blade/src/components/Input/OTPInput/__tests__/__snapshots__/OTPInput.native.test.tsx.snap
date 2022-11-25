@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<OTPInput /> should render 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="column"
@@ -967,7 +973,7 @@ Array [
         </View>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     marginLeft={0}
     style={
@@ -977,6 +983,6 @@ Array [
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;

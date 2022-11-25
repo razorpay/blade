@@ -203,6 +203,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   <div
     aria-labelledby="checkbox-group-49-label-54"
     class="c0"
+    data-blade-component="checkbox-group"
     display="flex"
     role="group"
   >
@@ -220,6 +221,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           <p
             class="c3 Text__StyledText-wkh56f-0"
             color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
             font-family="text"
             font-size="75"
             font-style="normal"
@@ -232,6 +234,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               <p
                 class="c5 Text__StyledText-wkh56f-0"
                 color="surface.text.normal.lowContrast"
+                data-blade-component="text"
                 font-family="text"
                 font-size="100"
                 font-style="normal"
@@ -256,6 +259,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         >
           <div
             class=""
+            data-blade-component="checkbox"
           >
             <label
               class="c6"
@@ -287,6 +291,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     >
                       <svg
                         aria-hidden="true"
+                        data-blade-component="icon"
                         fill="none"
                         height="12px"
                         viewBox="0 0 8 8"
@@ -334,6 +339,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         >
           <div
             class=""
+            data-blade-component="checkbox"
           >
             <label
               class="c6"
@@ -365,6 +371,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     >
                       <svg
                         aria-hidden="true"
+                        data-blade-component="icon"
                         fill="none"
                         height="12px"
                         viewBox="0 0 8 8"
@@ -412,6 +419,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         >
           <div
             class=""
+            data-blade-component="checkbox"
           >
             <label
               class="c6"
@@ -443,6 +451,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     >
                       <svg
                         aria-hidden="true"
+                        data-blade-component="icon"
                         fill="none"
                         height="12px"
                         viewBox="0 0 8 8"
@@ -694,6 +703,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   <div
     aria-labelledby="checkbox-group-19-label-24"
     class="c0"
+    data-blade-component="checkbox-group"
     display="flex"
     role="group"
   >
@@ -711,6 +721,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           <p
             class="c3 Text__StyledText-wkh56f-0"
             color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
             font-family="text"
             font-size="75"
             font-style="normal"
@@ -723,6 +734,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               <p
                 class="c5 Text__StyledText-wkh56f-0"
                 color="surface.text.normal.lowContrast"
+                data-blade-component="text"
                 font-family="text"
                 font-size="100"
                 font-style="normal"
@@ -747,6 +759,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         >
           <div
             class=""
+            data-blade-component="checkbox"
           >
             <label
               class="c6"
@@ -778,6 +791,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     >
                       <svg
                         aria-hidden="true"
+                        data-blade-component="icon"
                         fill="none"
                         height="12px"
                         viewBox="0 0 8 8"
@@ -825,6 +839,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         >
           <div
             class=""
+            data-blade-component="checkbox"
           >
             <label
               class="c6"
@@ -856,6 +871,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     >
                       <svg
                         aria-hidden="true"
+                        data-blade-component="icon"
                         fill="none"
                         height="12px"
                         viewBox="0 0 8 8"
@@ -903,6 +919,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         >
           <div
             class=""
+            data-blade-component="checkbox"
           >
             <label
               class="c6"
@@ -934,6 +951,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     >
                       <svg
                         aria-hidden="true"
+                        data-blade-component="icon"
                         fill="none"
                         height="12px"
                         viewBox="0 0 8 8"

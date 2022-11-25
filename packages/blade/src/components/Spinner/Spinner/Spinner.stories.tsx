@@ -68,11 +68,6 @@ const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
   return (
     <Box>
       <Box marginBottom="spacing.3">
-        <Text>Small</Text>
-        <Box marginBottom="spacing.2" />
-        <SpinnerComponent {...args} size="small" />
-      </Box>
-      <Box marginBottom="spacing.3">
         <Text>Medium</Text>
         <Box marginBottom="spacing.2" />
         <SpinnerComponent {...args} size="medium" />
@@ -81,6 +76,11 @@ const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
         <Text>Large</Text>
         <Box marginBottom="spacing.2" />
         <SpinnerComponent {...args} size="large" />
+      </Box>
+      <Box marginBottom="spacing.3">
+        <Text>Extra Large</Text>
+        <Box marginBottom="spacing.2" />
+        <SpinnerComponent {...args} size="xlarge" />
       </Box>
     </Box>
   );

@@ -26,6 +26,7 @@ const getProps = ({
     lineHeight: '4xl',
     fontFamily: 'text',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
+    componentName: 'title',
   };
 
   if (size === 'small') {

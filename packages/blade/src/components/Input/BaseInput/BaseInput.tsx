@@ -15,7 +15,13 @@ import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 
-import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
+import {
+  metaAttribute,
+  getPlatformType,
+  makeAccessible,
+  useBreakpoint,
+  MetaConstants,
+} from '~utils';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~src/hooks/useInteraction';
@@ -189,6 +195,11 @@ export type BaseInputProps = FormInputLabelProps &
      * Hides the form hint text
      */
     hideFormHint?: boolean;
+    /**
+     * componentName prop sets the data-blade-component attribute name
+     * for internal metric collection purposes
+     */
+    componentName?: string;
   };
 
 const autoCompleteSuggestionTypeValues = [
@@ -425,6 +436,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       trailingFooterSlot,
       numberOfLines,
       id,
+      componentName,
       accessibilityLabel,
       hideLabelText,
       hideFormHint,
@@ -485,7 +497,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
     return (
-      <Box>
+      <Box {...metaAttribute(MetaConstants.Component, componentName!)}>
         <Box
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
