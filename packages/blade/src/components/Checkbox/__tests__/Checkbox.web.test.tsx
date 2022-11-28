@@ -10,7 +10,7 @@ describe('<Checkbox />', () => {
   it('should render checkbox with label', () => {
     const label = (
       <>
-        I accept <Link>Terms and Conditions</Link>
+        I accept <Link href="#">Terms and Conditions</Link>
       </>
     );
 
