@@ -243,6 +243,7 @@ const OTPInput = ({
             errorText={errorText}
             helpText={helpText}
             hideFormHint={true}
+            type="numeric"
           />
         </Box>,
       );
