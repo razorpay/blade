@@ -8,7 +8,7 @@
 
 ```jsx
 <Dropdown variant="single">
-  <Dropdown.Select />
+  <Dropdown.SelectInput />
   <Dropdown.Overlay>
     <ActionList>{/* ActionList components ... */}</ActionList>
   </Dropdown.Overlay>
@@ -18,8 +18,8 @@
 ---
 
 - [Dropdown](#dropdown)
-- [Dropdown.Select](#dropdownselect)
-- [Dropdown.Overlay](#dropdownoverlay)
+  - [Dropdown.Select](#dropdownselect)
+  - [Dropdown.Overlay](#dropdownoverlay)
 - [ActionList](#actionlist)
 
 ---
@@ -29,6 +29,8 @@
 `Dropdown` will be a wrapper component which will handle to logic of opening and closing of the dropdown. It won't separately render anything in UI apart from the first children. (E.g. `Dropdown.Select` in above example)
 
 ### API
+
+Usage
 
 ```jsx
 <Dropdown>{/* Dropdown sub-components */}</Dropdown>
@@ -47,22 +49,22 @@ type DropdownProps = {
 };
 ```
 
-## Dropdown.Select
+### Dropdown.SelectInput
 
 <img src="2022-11-24-16-33-30.png" alt="Select Field Figma Designs" width="500" />
 
 Select is an Input Field that can open a dropdown on click. It can be extended from `BaseInput` component which covers most decisions like validations, focus, etc.
 
-### Designs
+#### Designs
 
 - [Figma - Select](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590%3A171090&t=KTWGvEUBEuUdQh9K-0)
 
-### API
+#### API
 
 Sample Usage
 
 ```jsx
-<Dropdown.Select
+<Dropdown.SelectInput
   helpText="Select only one"
   label="Your favorite Design System"
   labelPosition="top"
@@ -83,17 +85,17 @@ type SelectProps = {
 };
 ```
 
-### A11y
+#### A11y
 
 Would be ideal if we can render it as `Button` with `aria-expanded` prop to handle state of dropdown open and close
 
-## Dropdown.Overlay
+### `Dropdown.Overlay`
 
 An Overlay that positions dropdown correctly. Also a wrapper for `React Portal`.
 
-The animations for dropdown and Aria attributes like `aria-multiselectable="true"` `role="listbox"` like things can be added on Dropdown overlay here.
+The animations for dropdown and Aria attributes like `aria-multiselectable="true"` `role="listbox"` like things can be added on Dropdown overlay here based on variant passed to `Dropdown` component.
 
-### API
+#### API
 
 ```jsx
 <Dropdown>
@@ -102,11 +104,62 @@ The animations for dropdown and Aria attributes like `aria-multiselectable="true
 </Dropdown>
 ```
 
----
-
-# Rough
+It won't accept any props apart from children.
 
 ## ActionList
+
+<img src="2022-11-23-09-50-05.png" alt="ActionList figma screenshot" width="300" />
+
+### Design
+
+- [Figma - ActionList]()
+
+### API
+
+```jsx
+<ActionList backgroundLevel={2}>
+  <ActionList.Header title="Recent Searches" icon={HistoryIcon} /> // Should this be flexible? or
+  constraint
+  <ActionList.SectionHeading title="Hello" />
+  <ActionList.Item title="Something" desciption="some description">
+    <ActionListItem.Leading>
+      <StarIcon />
+    </ActionListItem.Leading>
+    <ActionListItem.Trailing>
+      <Text>⌘ + Space</Text>
+    </ActionListItem.Trailing>
+  </ActionList.Item>
+  <ActionList.Divider />
+  <ActionList.Footer title="Footer Title" description="Subtitle" />
+</ActionList>
+```
+
+```jsx
+<ActionList backgroundLevel={2}>
+  <ActionList.Header title="Recent Searches" icon={HistoryIcon} /> // Should this be flexible? or
+  constraint
+  <ActionList.SectionHeading title="Hello" />
+  <ActionList.Item title="Something" desciption="some description">
+    <ActionListItem.Leading>
+      <StarIcon />
+    </ActionListItem.Leading>
+    <ActionListItem.Trailing>
+      <Text>⌘ + Space</Text>
+    </ActionListItem.Trailing>
+  </ActionList.Item>
+  <ActionList.Divider />
+
+  <ActionList.Footer title="" description="">
+    <ActionList.FooterLeading>
+      <DocIcon />
+    </ActionList.FooterLeading>
+    <ActionList.FooterTrailing>
+      <Button>
+    </ActionList.FooterTrailing>
+  </ActionList.Footer>
+
+</ActionList>
+```
 
 #### Rough Skeleton
 
@@ -147,6 +200,8 @@ Excalidraw Brainstorm: https://excalidraw.com/#json=wNtX7qdgxp5DFQYH0MqFV,RqiMTa
 
 - Can we render `<Dropdown.Select>` as `button` element? (will help with accessibility)
 - Vote: `<Dropdown variant="multi" />` vs `<Dropdown type="multi" />`
+- Should we build this on top of existing dropdown library?
+- Should we call it `subtitle` everywhere, `description` everywhere, or change based on usage.
 
 ## Referrences
 
@@ -175,3 +230,5 @@ so that the component can be more genericly used in Tooltips, Select, Autocomple
 ```
 
 ```
+
+https://github.com/downshift-js/downshift
