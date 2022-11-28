@@ -240,6 +240,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
               class="c8"
               cursor="pointer"
               data-blade-component="link"
+              href="#"
               role="link"
             >
               <div
