@@ -41,9 +41,9 @@ type CheckboxProps = {
    */
   onChange?: OnChange;
   /**
-   * Sets the label text of the checkbox
+   * Sets the label of the checkbox
    */
-  children: string;
+  children: React.ReactNode;
   /**
    * Help text for the checkbox
    */
