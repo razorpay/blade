@@ -111,26 +111,29 @@ It won't accept any props apart from children.
   <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
   <ActionList.SectionHeading title="Hello" />
   <ActionList.Item title="Item Value" desciption="Item Description">
-    <ActionList.ItemLeading>
+    <ActionList.Leading>
       <StarIcon />
-    </ActionList.ItemLeading>
-    <ActionList.ItemTrailing>
+    </ActionList.Leading>
+    <ActionList.Trailing>
       <Text>⌘ + Space</Text>
-    </ActionList.ItemTrailing>
+    </ActionList.Trailing>
   </ActionList.Item>
   <ActionList.Divider />
   <ActionList.Footer title="Footer Title" description="Footer Description">
-    <ActionList.FooterLeading>
+    <ActionList.Leading>
       <DocIcon />
-    </ActionList.FooterLeading>
-    <ActionList.FooterTrailing>
-      <Button>
-    </ActionList.FooterTrailing>
+    </ActionList.Leading>
+    <ActionList.Trailing>
+      <Button variant="secondary" onClick={}>
+        Secondary Button
+      </Button>
+      <Button onClick={}>Primary Button</Button>
+    </ActionList.Trailing>
   </ActionList.Footer>
 </ActionList>
 ```
 
-<details>
+<details open>
 <summary>Alternate Prop-based API</summary>
 
 **Props but flexible**
@@ -159,6 +162,10 @@ It won't accept any props apart from children.
   />
 </ActionList>
 ```
+
+Cons
+
+- What if we get a suffix after title? This is flexible but limits flexibility to `leading` and `trailing`
 
 **Props and constrained**
 
@@ -223,7 +230,9 @@ For this reason, you would see us going with the compound components to give tha
 
 > **Note**
 >
-> We didn't get too much into implementation details during API decisions. Would recommend evaluating this once again while implementing the Dropdown.
+> Didn't get too much into implementation details during API decisions. Would recommend evaluating this once again while implementing the Dropdown.
+
+TLDR; Felt like our Dropdown was a bit more complicated than other dropdowns we've seen so we might have to fight against existing opinions from libraries if we go with libraries.
 
 Some libraries we evaluated
 
@@ -232,8 +241,6 @@ Some libraries we evaluated
   - 😄 Covers the accessibility and gives controls to consumers for styling
   - 🙁 Their API seemed a bit verbose and difficult to implement at first so unsure if it's worth adding library. (We should definitely refer to their Markup for accessibility practices though)
   - 🙁 Around 20kb (~10kb for Select and ~10kb for MultiSelect)
-
-    ![](2022-11-28-18-09-44.png)
 
 - [@radix-ui/react-dropdown-menu](https://www.radix-ui.com/docs/primitives/components/dropdown-menu)
   - 😄 Covers the accessibility gives basic styling
@@ -244,24 +251,32 @@ Some libraries we evaluated
 
 - For single select, we should have `role=menu` on the container and `role=menuitem` on list items
 - For multi select,
-  - we should have `role=listbox` and `aria-multiselectable=true` on the container (because `role=menu` is expected to close on one click)
+  - we should have `role=listbox` and `aria-multiselectable=true` on the container (because `role=menu` is expected to close after one item is selected)
   - Input search/filter should be outside of this container
     Refer: https://primer.style/react/storybook/?path=/story/components-selectpanel--multi-select-story
 
 ## Open Questions
 
+### Dev
+
 - Vote: `variant` or `type` attribute on `Dropdown`?
 
   `<Dropdown variant="multi" />` vs `<Dropdown type="multi" />`
 
-- Should we build this on top of existing dropdown library?
-- Should we call it `subtitle` everywhere, `description` everywhere, or change based on usage.
+- Should we call description/subtitle as `subtitle` everywhere, `description` everywhere, or change based on usage (E.g. See `ActionList.Item` component above).
+
+### Design
+
+- Should we have some type of "Select All" button to select all in multiple select variant?
 
 ## Referrences
 
 - https://www.radix-ui.com/docs/primitives/components/dropdown-menu
 - Primer React
 - Sid's talk on API designs
+- [MDN `role="menu"` Docs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role)
+- [downshift-js](https://www.downshift-js.com/use-multiple-selection)
+- [ ]()
 
 ---
 
