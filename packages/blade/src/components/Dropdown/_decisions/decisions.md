@@ -18,7 +18,7 @@
 ---
 
 - [Dropdown](#dropdown)
-  - [Dropdown.Select](#dropdownselect)
+  - [Dropdown.SelectInput](#dropdownselect)
   - [Dropdown.Overlay](#dropdownoverlay)
 - [ActionList](#actionlist)
 
@@ -26,7 +26,7 @@
 
 ## Dropdown
 
-`Dropdown` will be a wrapper component which will handle to logic of opening and closing of the dropdown. It won't separately render anything in UI apart from the first children. (E.g. `Dropdown.Select` in above example)
+`Dropdown` will be a wrapper component which will handle to logic of opening and closing of the dropdown. It won't separately render anything in UI apart from the first children. (E.g. `Dropdown.SelectInput` in above example)
 
 ### API
 
@@ -65,25 +65,15 @@ Sample Usage
 
 ```jsx
 <Dropdown.SelectInput
-  helpText="Select only one"
   label="Your favorite Design System"
   labelPosition="top"
-  leadingIcon={true}
+  helpText="Select only one"
 />
 ```
 
 Props
 
-TODO: change into table
-
-```ts
-type SelectProps = {
-  label: string;
-  labelPosition?: 'top' | 'left';
-  leadingIcon?: boolean;
-  helpText?: string;
-};
-```
+_All props are similar to the `BaseInput` props._
 
 #### A11y
 
@@ -99,7 +89,7 @@ The animations for dropdown and Aria attributes like `aria-multiselectable="true
 
 ```jsx
 <Dropdown>
-  <Dropdown.Select label="Click For Greetings" />
+  <Dropdown.SelectInput label="Click For Greetings" />
   <Dropdown.Overlay>Hi</Dropdown.Overlay>
 </Dropdown>
 ```
@@ -118,38 +108,18 @@ It won't accept any props apart from children.
 
 ```jsx
 <ActionList backgroundLevel={2}>
-  <ActionList.Header title="Recent Searches" icon={HistoryIcon} /> // Should this be flexible? or
-  constraint
+  <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
   <ActionList.SectionHeading title="Hello" />
-  <ActionList.Item title="Something" desciption="some description">
-    <ActionListItem.Leading>
+  <ActionList.Item title="Item Value" desciption="Item Description">
+    <ActionList.ItemLeading>
       <StarIcon />
-    </ActionListItem.Leading>
-    <ActionListItem.Trailing>
+    </ActionList.ItemLeading>
+    <ActionList.ItemTrailing>
       <Text>⌘ + Space</Text>
-    </ActionListItem.Trailing>
+    </ActionList.ItemTrailing>
   </ActionList.Item>
   <ActionList.Divider />
-  <ActionList.Footer title="Footer Title" description="Subtitle" />
-</ActionList>
-```
-
-```jsx
-<ActionList backgroundLevel={2}>
-  <ActionList.Header title="Recent Searches" icon={HistoryIcon} /> // Should this be flexible? or
-  constraint
-  <ActionList.SectionHeading title="Hello" />
-  <ActionList.Item title="Something" desciption="some description">
-    <ActionListItem.Leading>
-      <StarIcon />
-    </ActionListItem.Leading>
-    <ActionListItem.Trailing>
-      <Text>⌘ + Space</Text>
-    </ActionListItem.Trailing>
-  </ActionList.Item>
-  <ActionList.Divider />
-
-  <ActionList.Footer title="" description="">
+  <ActionList.Footer title="Footer Title" description="Footer Description">
     <ActionList.FooterLeading>
       <DocIcon />
     </ActionList.FooterLeading>
@@ -157,40 +127,122 @@ It won't accept any props apart from children.
       <Button>
     </ActionList.FooterTrailing>
   </ActionList.Footer>
-
 </ActionList>
 ```
 
-#### Rough Skeleton
+<details>
+<summary>Alternate Prop-based API</summary>
 
-Excalidraw Brainstorm: https://excalidraw.com/#json=wNtX7qdgxp5DFQYH0MqFV,RqiMTaQLoW0esjXBWm_1jg
+**Props but flexible**
 
 ```jsx
-<Select />
-<Overlay>
-  <ActionList variant="single-select">
-    <ActionList.SectionHeading/>
-    <ActionList.Item
-      title="Something"
-      description="some description"
-    >
-      <ActionListItem.Leading>{}</ActionListItem.Leading>
-      <ActionListItem.Trailing>{}</ActionListItem.Trailing>
-      <Overlay>
-        <ActionList>
-          <ActionList.Item />
-        </ActionList>
-      </Overlay>
-    </ActionList.Item>
-    <ActionList.Input/>
-    <ActionList.Divider/>
-  </ActionList>
-</Overlay>
+<ActionList backgroundLevel={2}>
+  <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
+  <ActionList.SectionHeading title="Hello" />
+  <ActionList.Item
+    title="Item Value"
+    desciption="Item Description"
+    leading={<StarIcon />}
+    trailing={<Text>⌘ + Space</Text>}
+  />
+  <ActionList.Divider />
+  <ActionList.Footer
+    title="Footer Title"
+    description="Footer Description"
+    leading={<DocIcon />}
+    trailing={
+      <>
+        <Button variant="secondary">Secondary Button</Button>
+        <Button>Primary Button</Button>
+      </>
+    }
+  />
+</ActionList>
 ```
+
+**Props and constrained**
+
+```jsx
+<ActionList backgroundLevel={2}>
+  <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
+  <ActionList.SectionHeading title="Hello" />
+  <ActionList.Item
+    title="Item Value"
+    desciption="Item Description"
+    leading={StarIcon} // Can be IconComponent type or Image URL
+    trailing="⌘ + Space"
+  />
+  <ActionList.Divider />
+  <ActionList.Footer
+    title="Footer Title"
+    description="Footer Description"
+    leading={DocIcon}
+    trailing={{
+      primary: {
+        onClick: () => {},
+        text: 'Primary Action',
+      },
+      secondary: {
+        href: 'https://razorpay.com',
+        target: '_blank',
+        text: 'Go to Razorpay.com',
+      },
+    }}
+    // OR
+    trailing={ArrowRightIcon}
+    // OR
+    trailing={{
+      primary: {
+        onClick: () => {
+          console.log('Feedback Yes Clicked');
+        },
+        icon: { CheckIcon },
+      },
+      secondary: {
+        onClick: () => {
+          console.log('Feedback No Clicked');
+        },
+        icon: { CrossIcon },
+      },
+    }}
+  />
+</ActionList>
+```
+
+</details>
+
+## Why `X` instead of `Y`?
+
+### Why Flexible instead of Constrained API
+
+So far we've been having constrained APIs which worked well. The difference here is, Dropdown in itself is a large component so if one of those contrains don't work for a particular team, they should not have to completely opt-out of the Dropdown. There has to be a simpler escape-hatch for them.
+
+For this reason, you would see us going with the compound components to give that flexibility to users.
+
+### Why not library instead of custom implementation
+
+> **Note**
+>
+> We didn't get too much into implementation details during API decisions. Would recommend evaluating this once again while implementing the Dropdown.
+
+Some libraries we evaluated
+
+- [downshift-js](https://github.com/downshift-js/downshift)
+
+  - 😄 Covers the accessibility and gives controls to consumers for styling
+  - 🙁 Their API seemed a bit verbose and difficult to implement at first so unsure if it's worth adding library. (We should definitely refer to their Markup for accessibility practices though)
+  - 🙁 Around 20kb (~10kb for Select and ~10kb for MultiSelect)
+
+    ![](2022-11-28-18-09-44.png)
+
+- [@radix-ui/react-dropdown-menu](https://www.radix-ui.com/docs/primitives/components/dropdown-menu)
+  - 😄 Covers the accessibility gives basic styling
+  - 🙁 The items are also `Dropdown` compound components so we will have to tie our `ActionList.Item` to `DropdownMenu.Item`. Which means `ActionList` can't be used outside of `Dropdown`?
+  - 🙁 Opinionated so we might face more of such ^^ blockers as we discover more usecases.
 
 ## Accessibility
 
-- For single select, we should have `role=menu` on the container
+- For single select, we should have `role=menu` on the container and `role=menuitem` on list items
 - For multi select,
   - we should have `role=listbox` and `aria-multiselectable=true` on the container (because `role=menu` is expected to close on one click)
   - Input search/filter should be outside of this container
@@ -198,8 +250,10 @@ Excalidraw Brainstorm: https://excalidraw.com/#json=wNtX7qdgxp5DFQYH0MqFV,RqiMTa
 
 ## Open Questions
 
-- Can we render `<Dropdown.Select>` as `button` element? (will help with accessibility)
-- Vote: `<Dropdown variant="multi" />` vs `<Dropdown type="multi" />`
+- Vote: `variant` or `type` attribute on `Dropdown`?
+
+  `<Dropdown variant="multi" />` vs `<Dropdown type="multi" />`
+
 - Should we build this on top of existing dropdown library?
 - Should we call it `subtitle` everywhere, `description` everywhere, or change based on usage.
 
@@ -209,26 +263,8 @@ Excalidraw Brainstorm: https://excalidraw.com/#json=wNtX7qdgxp5DFQYH0MqFV,RqiMTa
 - Primer React
 - Sid's talk on API designs
 
-```jsx
-<Dropdown>
-  <Dropdown.Select />
-  <Dropdown.Overlay>
-    <ActionList>
-      <ActionList.SectionHeading />
-      <ActionList.Item>
-        <ActionList.Leading></ActionList.Leading>
-        <ActionList.Trailing></ActionList.Trailing>
-      </ActionList.Item>
-      <ActionList.Divider />
-    </ActionList>
-  </Dropdown.Overlay>
-</Dropdown>
-```
+---
 
-so that the component can be more genericly used in Tooltips, Select, Autocomplete, etc. We might go with `Dropdown` as a wrapper on top of `Overlay`
+## Rough
 
-```
-
-```
-
-https://github.com/downshift-js/downshift
+Evaluate https://github.com/downshift-js/downshift
