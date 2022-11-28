@@ -36,6 +36,7 @@ module.exports = {
     browser: true,
     jest: true,
   },
+  root: true,
   settings: {
     'import/order': [
       'error',
@@ -101,7 +102,7 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       parserOptions: {
         tsconfigRootDir: __dirname,
-        project: ['./tsconfig.json', './packages/*/tsconfig.json', './examples/tsconfig.json'],
+        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
       },
       extends: [
         'plugin:@typescript-eslint/recommended',
