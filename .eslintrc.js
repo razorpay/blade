@@ -36,7 +36,6 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  root: true,
   settings: {
     'import/order': [
       'error',
