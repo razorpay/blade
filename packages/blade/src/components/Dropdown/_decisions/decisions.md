@@ -4,6 +4,12 @@
 >
 > This document is in progress. Come back later 🏗 🚧 👷🏽
 
+TODO
+
+- [ ] Finalize ActionList API
+- [ ] Create props tables
+- [ ] Cleanup
+
 **Top-View Skeleton**
 
 ```jsx
@@ -18,9 +24,13 @@
 ---
 
 - [Dropdown](#dropdown)
-  - [Dropdown.SelectInput](#dropdownselect)
+  - [Dropdown.SelectInput](#dropdownselectinput)
   - [Dropdown.Overlay](#dropdownoverlay)
 - [ActionList](#actionlist)
+- [Why `x` instead of `y`](#why-x-instead-of-y)
+- [Accessibility](#accessibility)
+- [Open Questions](#open-questions)
+- [Referrences](#referrences)
 
 ---
 
@@ -45,7 +55,7 @@ type DropdownProps = {
    *
    * @default single
    */
-  variant: 'single' | 'multi';
+  variant: 'single' | 'multiple';
 };
 ```
 
@@ -110,7 +120,7 @@ It won't accept any props apart from children.
 <ActionList backgroundLevel={2}>
   <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
   <ActionList.SectionHeading title="Hello" />
-  <ActionList.Item title="Item Value" desciption="Item Description">
+  <ActionList.Item title="Item Value" desciption="Item Description" variant="negative">
     <ActionList.Leading>
       <StarIcon />
     </ActionList.Leading>
@@ -133,7 +143,7 @@ It won't accept any props apart from children.
 </ActionList>
 ```
 
-<details open>
+<details>
 <summary>Alternate Prop-based API</summary>
 
 **Props but flexible**
@@ -145,6 +155,7 @@ It won't accept any props apart from children.
   <ActionList.Item
     title="Item Value"
     desciption="Item Description"
+    variant="negative"
     leading={<StarIcon />}
     trailing={<Text>⌘ + Space</Text>}
   />
@@ -203,13 +214,13 @@ Cons
         onClick: () => {
           console.log('Feedback Yes Clicked');
         },
-        icon: { CheckIcon },
+        icon: CheckIcon,
       },
       secondary: {
         onClick: () => {
           console.log('Feedback No Clicked');
         },
-        icon: { CrossIcon },
+        icon: CrossIcon,
       },
     }}
   />
@@ -217,6 +228,10 @@ Cons
 ```
 
 </details>
+
+<br/><br/>
+
+`TODO: Create props table for compound components`
 
 ## Why `X` instead of `Y`?
 
@@ -250,7 +265,7 @@ Some libraries we evaluated
 ## Accessibility
 
 - For single select, we should have `role=menu` on the container and `role=menuitem` on list items
-- For multi select,
+- For multiple select,
   - we should have `role=listbox` and `aria-multiselectable=true` on the container (because `role=menu` is expected to close after one item is selected)
   - Input search/filter should be outside of this container
     Refer: https://primer.style/react/storybook/?path=/story/components-selectpanel--multi-select-story
@@ -261,7 +276,7 @@ Some libraries we evaluated
 
 - Vote: `variant` or `type` attribute on `Dropdown`?
 
-  `<Dropdown variant="multi" />` vs `<Dropdown type="multi" />`
+  `<Dropdown variant="multiple" />` vs `<Dropdown type="multiple" />`
 
 - Should we call description/subtitle as `subtitle` everywhere, `description` everywhere, or change based on usage (E.g. See `ActionList.Item` component above).
 
