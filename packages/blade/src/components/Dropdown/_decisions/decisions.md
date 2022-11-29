@@ -6,6 +6,7 @@
 
 TODO
 
+- [ ] `onSelect` props
 - [ ] Finalize ActionList API
 - [ ] Create props tables
 - [ ] Cleanup
@@ -75,6 +76,7 @@ Sample Usage
 
 ```jsx
 <Dropdown.SelectInput
+  icon={CalendarIcon}
   label="Your favorite Design System"
   labelPosition="top"
   helpText="Select only one"
@@ -116,50 +118,50 @@ It won't accept any props apart from children.
 
 ### API
 
+#### Simplest Usage Possible
+
 ```jsx
 <ActionList backgroundLevel={2}>
-  <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
-  <ActionList.SectionHeading title="Hello" />
-  <ActionList.Item title="Item Value" desciption="Item Description" variant="negative">
-    <ActionList.Leading>
-      <StarIcon />
-    </ActionList.Leading>
-    <ActionList.Trailing>
-      <Text>⌘ + Space</Text>
-    </ActionList.Trailing>
-  </ActionList.Item>
-  <ActionList.Divider />
-  <ActionList.Footer title="Footer Title" description="Footer Description">
-    <ActionList.Leading>
-      <DocIcon />
-    </ActionList.Leading>
-    <ActionList.Trailing>
-      <Button variant="secondary" onClick={}>
-        Secondary Button
-      </Button>
-      <Button onClick={}>Primary Button</Button>
-    </ActionList.Trailing>
-  </ActionList.Footer>
+  <ActionList.Item
+    title="Accept API"
+    value="accept"
+    desciption="Accept this API"
+    leading={<StarIcon />}
+    trailing={<Text>⌘ + Space + A</Text>}
+  />
+  <ActionList.Item
+    title="Delete"
+    desciption="Delete this value"
+    value="delete"
+    intent="negative"
+    leading={<TrashIcon />}
+    trailing={<Text>⌘ + Space + D</Text>}
+  />
 </ActionList>
 ```
 
-<details>
-<summary>Alternate Prop-based API</summary>
-
-**Props but flexible**
+#### Most Complex Usage Possible
 
 ```jsx
 <ActionList backgroundLevel={2}>
   <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
-  <ActionList.SectionHeading title="Hello" />
+  <ActionList.Section title="Section Heading">
+    <ActionList.Item
+      title="Accept API"
+      value="accept"
+      desciption="Accept this API"
+      leading={<StarIcon />}
+      trailing={<Text>⌘ + Space</Text>}
+    />
+  </ActionList.Section>
   <ActionList.Item
-    title="Item Value"
-    desciption="Item Description"
-    variant="negative"
-    leading={<StarIcon />}
-    trailing={<Text>⌘ + Space</Text>}
+    title="Delete"
+    desciption="Delete this value"
+    value="delete"
+    intent="negative"
+    leading={<TrashIcon />}
+    trailing={<Text>⌘ + Space + D</Text>}
   />
-  <ActionList.Divider />
   <ActionList.Footer
     title="Footer Title"
     description="Footer Description"
@@ -174,9 +176,8 @@ It won't accept any props apart from children.
 </ActionList>
 ```
 
-Cons
-
-- What if we get a suffix after title? This is flexible but limits flexibility to `leading` and `trailing`
+<details>
+<summary>Alternate Prop-based API</summary>
 
 **Props and constrained**
 
@@ -199,11 +200,6 @@ Cons
       primary: {
         onClick: () => {},
         text: 'Primary Action',
-      },
-      secondary: {
-        href: 'https://razorpay.com',
-        target: '_blank',
-        text: 'Go to Razorpay.com',
       },
     }}
     // OR
@@ -295,6 +291,31 @@ Some libraries we evaluated
 
 ---
 
-## Rough
+## Archive
 
-Evaluate https://github.com/downshift-js/downshift
+```jsx
+<ActionList backgroundLevel={2}>
+  <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
+  <ActionList.SectionHeading title="Hello" />
+  <ActionList.Item title="Item Value" desciption="Item Description" variant="negative">
+    <ActionList.Leading>
+      <StarIcon />
+    </ActionList.Leading>
+    <ActionList.Trailing>
+      <Text>⌘ + Space</Text>
+    </ActionList.Trailing>
+  </ActionList.Item>
+  <ActionList.Divider />
+  <ActionList.Footer title="Footer Title" description="Footer Description">
+    <ActionList.Leading>
+      <DocIcon />
+    </ActionList.Leading>
+    <ActionList.Trailing>
+      <Button variant="secondary" onClick={}>
+        Secondary Button
+      </Button>
+      <Button onClick={}>Primary Button</Button>
+    </ActionList.Trailing>
+  </ActionList.Footer>
+</ActionList>
+```
