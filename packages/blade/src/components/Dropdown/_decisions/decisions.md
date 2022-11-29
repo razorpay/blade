@@ -4,20 +4,16 @@
 >
 > This document is in progress. Come back later 🏗 🚧 👷🏽
 
-TODO
-
-- [ ] `onSelect` props
-- [ ] Finalize ActionList API
-- [ ] Create props tables
-- [ ] Cleanup
-
 **Top-View Skeleton**
 
 ```jsx
 <Dropdown>
-  <Dropdown.SelectInput />
+  <Dropdown.SelectInput label="Item Selection" />
   <Dropdown.Overlay>
-    <ActionList>{/* ActionList components ... */}</ActionList>
+    <ActionList>
+      <ActionList.Item title="Item Value" value="item-one" />
+      <ActionList.Item title="Item Value" value="item-two" />
+    </ActionList>
   </Dropdown.Overlay>
 </Dropdown>
 ```
@@ -542,6 +538,8 @@ Some libraries we evaluated
   - 🙁 The items are also `Dropdown` compound components so we will have to tie our `ActionList.Item` to `DropdownMenu.Item`. Which means `ActionList` can't be used outside of `Dropdown`?
   - 🙁 Opinionated so we might face more of such ^^ blockers as we discover more usecases.
 
+<br/><br/>
+
 ## Accessibility
 
 - For single select, we should have `role=menu` on the container and `role=menuitem` on list items
@@ -552,6 +550,8 @@ Some libraries we evaluated
     Refer: https://primer.style/react/storybook/?path=/story/components-selectpanel--multi-select-story
 
 - Dropdown is supposed to open when you focus on select and press `ENTER` or any of the arrow keys. Arrow Up and Down can be pressed to move to next and previous items in the action list.
+
+<br/><br/>
 
 ## Open Questions
 
@@ -567,6 +567,8 @@ Some libraries we evaluated
 
 - Should we have some type of "Select All" button to select all in multiple select variant?
 
+<br/><br/>
+
 ## Referrences
 
 - https://www.radix-ui.com/docs/primitives/components/dropdown-menu
@@ -574,6 +576,5 @@ Some libraries we evaluated
 - Sid's talk on API designs
 - [MDN `role="menu"` Docs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role)
 - [downshift-js](https://www.downshift-js.com/use-multiple-selection)
-- [ ]()
 
-fin
+fin 🌻
