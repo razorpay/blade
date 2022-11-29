@@ -5,6 +5,7 @@ import Box from '~components/Box';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { makeSize } from '~utils';
 import { FormLabel } from '~components/Form';
+import { makeMotionTime, castWebType } from '~src/utils';
 
 type ProgressBarProps = {
   accessibilityLabel?: string;
@@ -29,8 +30,11 @@ type ProgressBarFilledProps = {
   backgroundColor: string;
 };
 
-const ProgressBarFilled = styled(Box)<ProgressBarFilledProps>(({ backgroundColor }) => ({
+const ProgressBarFilled = styled(Box)<ProgressBarFilledProps>(({ backgroundColor, theme }) => ({
   backgroundColor,
+  transitionProperty: 'width',
+  transitionDuration: castWebType(makeMotionTime(theme.motion.duration.quick)),
+  transitionTimingFunction: castWebType(theme.motion.easing.standard.revealing),
 }));
 
 const getProgress = (value: number): number => {
