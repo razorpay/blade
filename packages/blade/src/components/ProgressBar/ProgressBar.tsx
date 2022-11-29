@@ -1,9 +1,10 @@
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
-import { useTheme } from '..';
+import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { makeSize } from '~utils';
+import { FormLabel } from '~components/Form';
 
 type ProgressBarProps = {
   accessibilityLabel?: string;
@@ -47,38 +48,45 @@ const ProgressBar = ({
   intent,
   isIndeterminate,
   label,
-  showPercentage,
+  showPercentage = false,
   size = 'small',
   value = 0,
 }: ProgressBarProps): ReactElement => {
-  console.log(
-    accessibilityLabel,
-    contrast,
-    intent,
-    isIndeterminate,
-    label,
-    showPercentage,
-    size,
-    value,
-  );
+  console.log(accessibilityLabel, intent, isIndeterminate);
 
   const { theme } = useTheme();
   const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];
   const filledBackgroundColor = theme.colors.brand.primary[500];
+  const hasLabel = label && label.trim()?.length > 0;
 
   return (
     <Box>
-      <ProgressBarUnfilled
-        backgroundColor={unfilledBackgroundColor}
-        height={makeSize(progressBarHeight[size])}
-        flex={1}
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent={hasLabel ? 'space-between' : 'flex-end'}
       >
-        <ProgressBarFilled
-          backgroundColor={filledBackgroundColor}
-          height="100%"
-          width={`${getProgress(value)}%`}
-        />
-      </ProgressBarUnfilled>
+        {hasLabel ? (
+          <FormLabel as="label" htmlFor="progressbar" contrast={contrast}>
+            {label}
+          </FormLabel>
+        ) : null}
+        {showPercentage ? (
+          <FormLabel as="span" contrast={contrast}>{`${getProgress(value)}%`}</FormLabel>
+        ) : null}
+      </Box>
+      <Box id="progressbar">
+        <ProgressBarUnfilled
+          backgroundColor={unfilledBackgroundColor}
+          height={makeSize(progressBarHeight[size])}
+        >
+          <ProgressBarFilled
+            backgroundColor={filledBackgroundColor}
+            height="100%"
+            width={`${getProgress(value)}%`}
+          />
+        </ProgressBarUnfilled>
+      </Box>
     </Box>
   );
 };

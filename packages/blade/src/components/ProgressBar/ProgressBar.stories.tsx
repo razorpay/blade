@@ -65,4 +65,10 @@ const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...a
 export const Default = ProgressBarTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
-Default.args = {};
+Default.args = {
+  label: 'Label',
+  value: 20,
+  size: 'medium',
+  contrast: 'low',
+  showPercentage: true,
+};
