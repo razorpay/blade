@@ -1,6 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
+import { useEffect, useState } from 'react';
 import type { ProgressBarProps } from './ProgressBar';
 import { ProgressBar as ProgressBarComponent } from './ProgressBar';
 import iconMap from '~components/Icons/iconMap';
@@ -59,7 +60,22 @@ export default {
 } as Meta<ProgressBarProps>;
 
 const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...args }) => {
-  return <ProgressBarComponent {...args} />;
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (value >= 100) {
+        setValue(0);
+      } else {
+        setValue(value + 30);
+      }
+    }, 2000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [value]);
+
+  return <ProgressBarComponent {...args} value={value} />;
 };
 
 export const Default = ProgressBarTemplate.bind({});
