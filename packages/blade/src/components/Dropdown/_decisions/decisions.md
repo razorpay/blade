@@ -622,20 +622,20 @@ Some libraries we evaluated
   };
   ```
 
-Props
+  Props
 
-```ts
-type UseDropdownHookReturns = {
-  /**
-   * State to tell if dropdown is visible or not
-   */
-  isDropdownVisible: boolean;
-  /**
-   * function to call to change the dropdown state
-   */
-  setIsDropdownVisible: (isDropdownVisible: boolean) => void;
-};
-```
+  ```ts
+  type UseDropdownHookReturns = {
+    /**
+     * State to tell if dropdown is visible or not
+     */
+    isDropdownVisible: boolean;
+    /**
+     * function to call to change the dropdown state
+     */
+    setIsDropdownVisible: (isDropdownVisible: boolean) => void;
+  };
+  ```
 
   </details>
 
