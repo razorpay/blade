@@ -85,32 +85,6 @@ type UseDropdownHookReturns = {
 };
 ```
 
-<details>
-<summary>Alternate API</summary>
-
-Alternative is to add a lot of `isDefaultOpen`, `onOpenChange`, `isOpen` props on `Dropdown` component.
-
-```jsx
-const [isDropdownOpen, setIsDropdownOpen];
-
-const onKeyPressed = (e) => {
-  if (e.ctrlKey && e.keyCode === 75 && !isDropdownVisible) {
-    setIsDropdownOpen(true);
-  }
-};
-
-// ...
-<Dropdown isOpen={isDropdownOpen}></Dropdown>;
-```
-
-Cons:
-
-- This will override the dropdown's default open and close state.
-
-  E.g. if someone sets `isOpen={false}` as static value. The Dropdown will never really open even on clicking the trigger.
-
-</details>
-
 ### Dropdown.SelectInput
 
 <img src="2022-11-24-16-33-30.png" alt="Select Field Figma Designs" width="500" />
