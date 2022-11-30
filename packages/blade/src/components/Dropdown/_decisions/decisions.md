@@ -1,5 +1,7 @@
 # Dropdown & ActionList
 
+<br/>
+
 **Top-View Skeleton**
 
 ```jsx
@@ -14,7 +16,7 @@
 </Dropdown>
 ```
 
----
+<br/>
 
 ## Navigation
 
@@ -33,6 +35,8 @@
 - [Referrences](#referrences)
 
 ---
+
+<br/>
 
 ## Dropdown
 
