@@ -1,5 +1,6 @@
 import type { CSSObject } from 'styled-components';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { Border } from '~tokens/global';
 
 export type BoxProps = {
   display?: CSSObject['display'];
@@ -25,6 +26,8 @@ export type BoxProps = {
   marginBottom?: DotNotationSpacingStringToken | 'auto' | number;
   marginLeft?: DotNotationSpacingStringToken | 'auto' | number;
   marginRight?: DotNotationSpacingStringToken | 'auto' | number;
+  borderRadius?: keyof Border['radius'] | number;
+  border?: CSSObject['border'];
   width?: CSSObject['width'];
   height?: CSSObject['height'];
   gap?: DotNotationSpacingStringToken | 'auto' | number;
