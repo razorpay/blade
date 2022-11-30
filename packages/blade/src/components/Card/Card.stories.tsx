@@ -5,7 +5,6 @@ import { Text } from '~components/Typography';
 import { InfoIcon } from '~components/Icons';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
-import Box from '~components/Box';
 
 export default {
   title: 'Components/Card',
