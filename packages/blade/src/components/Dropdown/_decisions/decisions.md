@@ -586,7 +586,7 @@ Some libraries we evaluated
   - Input search/filter should be outside of this container
     Refer: https://primer.style/react/storybook/?path=/story/components-selectpanel--multi-select-story
 
-- Dropdown is supposed to open when you focus on select and press `ENTER` or any of the arrow keys. Arrow Up and Down can be pressed to move to next and previous items in the action list.
+- Dropdown is supposed to open when you focus on select and press `ENTER`, `SPACE` or any of the arrow keys. Arrow Up and Down can be pressed to move to next and previous items in the action list. Should close on pressing `ESC`.
 
 <br/><br/>
 
