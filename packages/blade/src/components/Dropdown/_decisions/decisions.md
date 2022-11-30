@@ -21,7 +21,6 @@
 ## Navigation
 
 - [Dropdown](#dropdown)
-  - [useDropdown Hook](#usedropdown-hook)
   - [Dropdown.SelectInput](#dropdownselectinput)
   - [Dropdown.Overlay](#dropdownoverlay)
 - [ActionList](#actionlist)
@@ -48,46 +47,10 @@
 Usage
 
 ```jsx
-<Dropdown>{/* Dropdown sub-components */}</Dropdown>
+<Dropdown isDefaultOpen>{/* Dropdown sub-components */}</Dropdown>
 ```
 
 Props
-
-_No Props Needed_
-
-### `useDropdown` hook
-
-> **Note**
->
-> Still evaluating this. Do give some opinions though.
-
-A hook that gives state control of dropdown to user. Can be used in cases where you want to open dropdown on certain events (E.g. On pressing some keyboard keys)
-
-```ts
-const { isDropdownVisible, setIsDropdownVisible } = useDropdown();
-
-const onKeyPressed = (e) => {
-  // Opens dropdown when CTRL + K is pressed while dropdown was not visible
-  if (e.ctrlKey && e.keyCode === 75 && !isDropdownVisible) {
-    setIsDropdownVisible(true);
-  }
-};
-```
-
-Props
-
-```ts
-type UseDropdownHookReturns = {
-  /**
-   * State to tell if dropdown is visible or not
-   */
-  isDropdownVisible: boolean;
-  /**
-   * function to call to change the dropdown state
-   */
-  setIsDropdownVisible: (isDropdownVisible: boolean) => void;
-};
-```
 
 ### Dropdown.SelectInput
 
@@ -627,6 +590,43 @@ Some libraries we evaluated
 - Should we call description/subtitle as `subtitle` everywhere, `description` everywhere, or change based on usage (E.g. See `ActionList.Item` component above).
 
 - `ActionList.Footer` `trailing` prop should allow all JSX components or limit to existing usecases (check Alternate API in [`ActionList.Footer` section](#actionlistfooter))
+
+- Should we give control to users to open/close dropdown? can't think of any usecase right now 🤔. We can do that using `useDropdown` API
+
+  <details>
+  <summary>useDropdown API</summary>
+
+  **`useDropdown` hook**
+
+  A hook that gives state control of dropdown to user. Can be used in cases where you want to open dropdown on certain events (E.g. On pressing some keyboard keys)
+
+  ```ts
+  const { isDropdownVisible, setIsDropdownVisible } = useDropdown();
+
+  const onKeyPressed = (e) => {
+    // Opens dropdown when CTRL + K is pressed while dropdown was not visible
+    if (e.ctrlKey && e.keyCode === 75 && !isDropdownVisible) {
+      setIsDropdownVisible(true);
+    }
+  };
+  ```
+
+Props
+
+```ts
+type UseDropdownHookReturns = {
+  /**
+   * State to tell if dropdown is visible or not
+   */
+  isDropdownVisible: boolean;
+  /**
+   * function to call to change the dropdown state
+   */
+  setIsDropdownVisible: (isDropdownVisible: boolean) => void;
+};
+```
+
+  </details>
 
 ### Design
 
