@@ -264,14 +264,17 @@ Props
 ```ts
 type ActionListProps = {
   children: React.ReactNode;
+
   /**
    * Renders simple menu or checkboxes depending on the variant
    *
    * @default single
    */
   variant?: 'single' | 'multiple';
+
   /** Callback that gets called when item is checked/clicked */
   onChange?: () => void;
+
   /**
    * Changes the background surface level color
    *
@@ -312,25 +315,32 @@ Props
 ```ts
 type ActionListItemProps = {
   title: string;
+
   description: string;
+
   /** Value that we use in JS form. Similar to `value` in `Checkbox` */
   value: string;
+
   /**
    * Leading Icon or assets. Accepts JSX Component
    */
   leading?: React.ReactNode;
+
   /**
    * Trailing Assets. Should ideally be Text component for now
    */
   trailing?: React.ReactNode;
+
   /**
    * Changes item color to red
    *
    * @default neutral
    */
   intent?: 'negative' | 'neutral';
+
   /** Click event on item */
   onClick?: () => void;
+
   /** URL. Should render item as `a` when this is passed */
   href?: string;
 };
@@ -460,9 +470,12 @@ With Only Primary Button
 ```ts
 type ActionListFooter = {
   title?: string;
+
   description?: string;
+
   /** Leading Asset. Ideally Icon but can be any JSX component */
   leading?: React.ReactNode;
+
   /** Trailing Actions. Buttons, Icons, etc */
   trailing?: React.ReactNode;
 };
