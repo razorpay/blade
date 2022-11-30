@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.1.4
+
+### Patch Changes
+
+- 71f274e: fix(Checkbox): allow Checkbox to accept `childern` prop of type `React.ReactNode`
+
 ## 5.1.3
 
 ### Patch Changes
