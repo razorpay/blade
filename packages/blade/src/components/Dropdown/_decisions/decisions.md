@@ -658,7 +658,7 @@ Some libraries we evaluated
 
 <br/><br/>
 
-## Referrences
+## References
 
 - [Primer React's ActionMenu](https://primer.style/react/storybook/?path=/story/deprecated-components-actionmenu--action-menu-with-external-anchor)
 - [Primer React's Select Panel](https://primer.style/react/storybook/?path=/story/components-selectpanel--multi-select-story)
