@@ -1,9 +1,5 @@
 # Dropdown & ActionList
 
-> **Warning**
->
-> This document is in progress. Come back later 🏗 🚧 👷🏽
-
 **Top-View Skeleton**
 
 ```jsx
@@ -78,7 +74,16 @@ Sample Usage
 
 Props
 
-_All props are similar to the `BaseInput` props._
+Mostly similar to other `Input` components extended from `BaseInput`
+
+```ts
+type SelectInputProps = {
+  // ... FormLabelProps like `label`, `labelPosition`
+  // ... FormValidationProps like `validationState`, `helpText`, `errorText`, etc.
+  // ... State Props like `isRequired`, `isDisabled`,
+  icon: IconComponent;
+};
+```
 
 #### A11y
 
@@ -105,7 +110,7 @@ It won't accept any props apart from children.
 
 ## ActionList
 
-ActionList is a plain list of selectable items that perform some action on click.
+Plain list that can be rendered inside dropdown, in navigation menu, or anywhere. It has selectable items that perform some action on click. It can also have multiple selectable items that render as checkboxes
 
 <img src="2022-11-23-09-50-05.png" alt="ActionList figma screenshot" width="300" />
 
@@ -563,6 +568,8 @@ Some libraries we evaluated
 
 - Should we call description/subtitle as `subtitle` everywhere, `description` everywhere, or change based on usage (E.g. See `ActionList.Item` component above).
 
+- `ActionList.Footer` `trailing` prop should allow all JSX components or limit to existing usecases (check Alternate API in [`ActionList.Footer` section](#actionlistfooter))
+
 ### Design
 
 - Should we have some type of "Select All" button to select all in multiple select variant?
@@ -571,10 +578,13 @@ Some libraries we evaluated
 
 ## Referrences
 
-- https://www.radix-ui.com/docs/primitives/components/dropdown-menu
-- Primer React
-- Sid's talk on API designs
+- [Primer React's ActionMenu](https://primer.style/react/storybook/?path=/story/deprecated-components-actionmenu--action-menu-with-external-anchor)
+- [Primer React's Select Panel](https://primer.style/react/storybook/?path=/story/components-selectpanel--multi-select-story)
+- [Code crimes for good component APIs by Siddharth Kshetrapal - React India 2022](https://youtu.be/kr6V4TN09ws)
+- [Radix UI Dropdown](https://www.radix-ui.com/docs/primitives/components/dropdown-menu)
 - [MDN `role="menu"` Docs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role)
 - [downshift-js](https://www.downshift-js.com/use-multiple-selection)
+
+<br/><br/>
 
 fin 🌻
