@@ -538,7 +538,7 @@ So far we've been having constrained APIs which worked well. The difference here
 
 For this reason, you would see us passing entire JSX components instead of limiting it to specific type like we do in other components.
 
-### JSX props instead of Compound Components
+### Components as JSX props instead of Compound Components
 
 Compound components add complex nesting in larger APIs (Check out previously considered API example below). To avoid complex nesting, we're going ahead with prop-based approach where we pass JSX components as props.
 
