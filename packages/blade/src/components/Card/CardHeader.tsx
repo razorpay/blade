@@ -26,7 +26,7 @@ const CardHeader = ({
         justifyContent="space-between"
       >
         <Box display="flex" flexDirection="row">
-          <Box marginRight="spacing.3" alignSelf="center">
+          <Box marginRight="spacing.3" alignSelf="center" display="flex">
             {titlePrefix}
           </Box>
           <Box>

@@ -46,7 +46,7 @@ Card.args = {
   backgroundLevel: 2,
 };
 
-const CardWithTemaplte: ComponentStory<typeof CardComponent> = ({ ...args }) => {
+const CardHeaderTemplate: ComponentStory<typeof CardComponent> = ({ ...args }) => {
   return (
     <CardComponent {...args}>
       <CardComponent.Header
@@ -54,7 +54,7 @@ const CardWithTemaplte: ComponentStory<typeof CardComponent> = ({ ...args }) => 
         subtitle="Subtitle"
         titlePrefix={<InfoIcon color="surface.text.normal.lowContrast" size="xlarge" />}
         titleSuffix={<Counter value={12} />}
-        trailingVisual={<Badge>NEW</Badge>}
+        trailingVisual={<Badge variant="positive">NEW</Badge>}
       />
       <CardComponent.Body>
         <Text>
@@ -85,4 +85,4 @@ const CardWithTemaplte: ComponentStory<typeof CardComponent> = ({ ...args }) => 
   );
 };
 
-export const CardW = CardWithTemaplte.bind({});
+export const CardWithHeader = CardHeaderTemplate.bind({});
