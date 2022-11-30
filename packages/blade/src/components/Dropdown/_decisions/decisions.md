@@ -329,7 +329,9 @@ type ActionListItemProps = {
 
 ### `ActionList.Section`
 
-Just an API that wraps section inside ActionList. This entire component is optional.
+Just an API that wraps section inside ActionList.
+
+This entire component is optional. So it may not be added in the ActionList that doesn't have any sections.
 
 It should also add divider after all items.
 
@@ -344,6 +346,23 @@ It should also add divider after all items.
   </ActionList.Section>
 </ActionList>
 ```
+
+<details>
+<summary>Previously Considered API</summary>
+
+```jsx
+<ActionList>
+  <ActionList.SectionHeading title="Section Heading" />
+  <ActionList.Item
+  // ...props
+  />
+  <ActionList.Divider />
+</ActionList>
+```
+
+We dropped this because people might tend to put Dividers after every item. It doesn't really explain grouping in any way whereas `ActionList.Section` API clearly defines the sections in items.
+
+</details>
 
 #### Props
 
