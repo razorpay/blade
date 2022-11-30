@@ -57,6 +57,10 @@ _No Props Needed_
 
 ### `useDropdown` hook
 
+> **Note**
+>
+> Still evaluating this. Do give some opinions though.
+
 A hook that gives state control of dropdown to user. Can be used in cases where you want to open dropdown on certain events (E.g. On pressing some keyboard keys)
 
 ```ts
