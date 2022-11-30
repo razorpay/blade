@@ -21,6 +21,7 @@
 ## Navigation
 
 - [Dropdown](#dropdown)
+  - [useDropdown Hook](#usedropdown-hook)
   - [Dropdown.SelectInput](#dropdownselectinput)
   - [Dropdown.Overlay](#dropdownoverlay)
 - [ActionList](#actionlist)
@@ -40,7 +41,7 @@
 
 ## Dropdown
 
-`Dropdown` will be a wrapper component which will handle to logic of opening and closing of the dropdown. It won't separately render anything in UI apart from the first children. (E.g. `Dropdown.SelectInput` in above example)
+`Dropdown` will be a wrapper component which will handle the logic of opening and closing of the dropdown. It won't separately render anything in UI apart from the first children. (E.g. `Dropdown.SelectInput` in above example)
 
 ### API
 
@@ -53,6 +54,62 @@ Usage
 Props
 
 _No Props Needed_
+
+### `useDropdown` hook
+
+A hook that gives state control of dropdown to user. Can be used in cases where you want to open dropdown on certain events (E.g. On pressing some keyboard keys)
+
+```ts
+const { isDropdownVisible, setIsDropdownVisible } = useDropdown();
+
+const onKeyPressed = (e) => {
+  // Opens dropdown when CTRL + K is pressed while dropdown was not visible
+  if (e.ctrlKey && e.keyCode === 75 && !isDropdownVisible) {
+    setIsDropdownVisible(true);
+  }
+};
+```
+
+Props
+
+```ts
+type UseDropdownHookReturns = {
+  /**
+   * State to tell if dropdown is visible or not
+   */
+  isDropdownVisible: boolean;
+  /**
+   * function to call to change the dropdown state
+   */
+  setIsDropdownVisible: (isDropdownVisible: boolean) => void;
+};
+```
+
+<details>
+<summary>Alternate API</summary>
+
+Alternative is to add a lot of `isDefaultOpen`, `onOpenChange`, `isOpen` props on `Dropdown` component.
+
+```jsx
+const [isDropdownOpen, setIsDropdownOpen];
+
+const onKeyPressed = (e) => {
+  if (e.ctrlKey && e.keyCode === 75 && !isDropdownVisible) {
+    setIsDropdownOpen(true);
+  }
+};
+
+// ...
+<Dropdown isOpen={isDropdownOpen}></Dropdown>;
+```
+
+Cons:
+
+- This will override the dropdown's default open and close state.
+
+  E.g. if someone sets `isOpen={false}` as static value. The Dropdown will never really open even on clicking the trigger.
+
+</details>
 
 ### Dropdown.SelectInput
 
