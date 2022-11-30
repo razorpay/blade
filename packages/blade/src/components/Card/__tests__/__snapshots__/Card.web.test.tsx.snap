@@ -256,7 +256,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             font-style="normal"
             font-weight="bold"
           >
-            Card Header
+            Card Footer
           </p>
           <p
             class="c5 Text__StyledText-wkh56f-0"
@@ -267,7 +267,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             font-style="normal"
             font-weight="regular"
           >
-            Card subtitle
+            Card footer subtitle
           </p>
         </div>
         <div
