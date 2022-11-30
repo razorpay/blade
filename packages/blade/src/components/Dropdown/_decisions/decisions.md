@@ -354,7 +354,7 @@ type ActionListSectionProps = {
 
 Header of the ActionList
 
-![](2022-11-29-17-36-50.png)
+<img src="2022-11-29-17-36-50.png" alt="ActionList.Header Figma Design" width="300" />
 
 #### Design
 
