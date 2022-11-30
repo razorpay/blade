@@ -52,6 +52,17 @@ Usage
 
 Props
 
+```ts
+type DropdownProps = {
+  /**
+   * Set to true if you want dropdown opened by default
+   *
+   * @default false
+   */
+  isDefaultOpen?: boolean;
+};
+```
+
 ### Dropdown.SelectInput
 
 <img src="2022-11-24-16-33-30.png" alt="Select Field Figma Designs" width="500" />
