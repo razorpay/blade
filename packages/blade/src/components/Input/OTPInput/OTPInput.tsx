@@ -248,7 +248,7 @@ const OTPInput = ({
             errorText={errorText}
             helpText={helpText}
             hideFormHint={true}
-            type={isMasked ? 'password' : 'numeric'}
+            type={isMasked ? 'password' : undefined}
           />
         </Box>,
       );
