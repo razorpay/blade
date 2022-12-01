@@ -1,5 +1,5 @@
 import { fonts } from '../tokens';
-import { lightTheme as baseLightTheme, darkTheme as baseDarkTheme } from './theme.web';
+import { lightTheme as baseLightTheme, darkTheme as baseDarkTheme, THEME_KEY } from './theme.web';
 
 const nativeFonts = {
   ...fonts,
@@ -23,4 +23,4 @@ const darkTheme = {
 };
 
 export default lightTheme;
-export { lightTheme, darkTheme };
+export { lightTheme, darkTheme, THEME_KEY };

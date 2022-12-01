@@ -7,7 +7,7 @@ import View from '../View';
 import Space from './Space';
 
 const StyledView = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[940]};
+  background-color: ${(props) => props.theme.bladeOld.colors.shade[940]};
 `;
 
 storiesOf('Space', module)

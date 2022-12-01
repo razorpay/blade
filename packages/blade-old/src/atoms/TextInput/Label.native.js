@@ -52,13 +52,13 @@ const styles = {
       return getColor(theme, 'shade.980');
     },
     fontSize({ theme }) {
-      return theme.fonts.size.xsmall;
+      return theme.bladeOld.fonts.size.xsmall;
     },
     lineHeight({ theme }) {
-      return theme.fonts.lineHeight.small;
+      return theme.bladeOld.fonts.lineHeight.small;
     },
     fontFamily({ theme }) {
-      return theme.fonts.family.lato.regular;
+      return theme.bladeOld.fonts.family.lato.regular;
     },
   },
 };
@@ -178,8 +178,8 @@ const AnimatedLabel = ({
 
   const animationConfig = {
     fontSize: {
-      initial: parseInt(theme.fonts.size.medium, 10),
-      final: parseInt(theme.fonts.size.xsmall, 10),
+      initial: parseInt(theme.bladeOld.fonts.size.medium, 10),
+      final: parseInt(theme.bladeOld.fonts.size.xsmall, 10),
     },
     topPosition: {
       initial: getInitialTopPosition({

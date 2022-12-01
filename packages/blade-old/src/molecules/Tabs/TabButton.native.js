@@ -53,8 +53,8 @@ const styles = {
 const StyledTabButton = styled(TouchableOpacity)`
   min-width: ${makePxValue(6)};
   background-color: ${styles.tab.backgroundColor};
-  border-top-left-radius: ${(props) => props.theme.spacings.xxsmall};
-  border-top-right-radius: ${(props) => props.theme.spacings.xxsmall};
+  border-top-left-radius: ${(props) => props.theme.bladeOld.spacings.xxsmall};
+  border-top-right-radius: ${(props) => props.theme.bladeOld.spacings.xxsmall};
 `;
 
 const Title = styled(View)`

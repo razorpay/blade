@@ -10,9 +10,9 @@ const makePxValue = (value) => {
 };
 
 const getColorKeys = () => {
-  return Object.keys(theme.colors)
+  return Object.keys(theme.bladeOld.colors)
     .map((base) => {
-      return Object.keys(theme.colors[base]).map((shade) => `${base}.${shade}`);
+      return Object.keys(theme.bladeOld.colors[base]).map((shade) => `${base}.${shade}`);
     })
     .reduce((acc, val) => [...acc, ...val]);
 };
@@ -20,7 +20,7 @@ const getColorKeys = () => {
 const getColor = (currentTheme, color) => {
   const [base, shade] = color.split('.');
   try {
-    return currentTheme.colors[base][shade];
+    return currentTheme.bladeOld.colors[base][shade];
   } catch {
     throw new Error(
       `Invalid color prop\n\nReceived color: ${color}\n\nValid color values:\n ${getColorKeys()}`,
@@ -28,27 +28,27 @@ const getColor = (currentTheme, color) => {
   }
 };
 
-const getVariantColorKeys = () => Object.keys(theme.colors);
+const getVariantColorKeys = () => Object.keys(theme.bladeOld.colors);
 
 const getLineHeight = (currentTheme, textSize) => {
   switch (textSize) {
     case 'xxsmall':
-      return currentTheme.fonts.lineHeight.xsmall;
+      return currentTheme.bladeOld.fonts.lineHeight.xsmall;
     case 'xsmall':
-      return currentTheme.fonts.lineHeight.small;
+      return currentTheme.bladeOld.fonts.lineHeight.small;
     case 'small':
-      return currentTheme.fonts.lineHeight.small;
+      return currentTheme.bladeOld.fonts.lineHeight.small;
     case 'medium':
-      return currentTheme.fonts.lineHeight.medium;
+      return currentTheme.bladeOld.fonts.lineHeight.medium;
     case 'xxxlarge':
-      return currentTheme.fonts.lineHeight.xxlarge;
+      return currentTheme.bladeOld.fonts.lineHeight.xxlarge;
     case 'xxlarge':
-      return currentTheme.fonts.lineHeight.xxlarge;
+      return currentTheme.bladeOld.fonts.lineHeight.xxlarge;
     case 'xlarge':
-      return currentTheme.fonts.lineHeight.xlarge;
+      return currentTheme.bladeOld.fonts.lineHeight.xlarge;
     case 'large':
     default:
-      return currentTheme.fonts.lineHeight.large;
+      return currentTheme.bladeOld.fonts.lineHeight.large;
   }
 };
 

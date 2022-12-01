@@ -11,7 +11,7 @@ const styles = {
   },
   lineHeight({ theme, size, _lineHeight }) {
     if (_lineHeight) {
-      return theme.fonts.lineHeight[_lineHeight];
+      return theme.bladeOld.fonts.lineHeight[_lineHeight];
     } else {
       return getLineHeight(theme, size);
     }
@@ -49,16 +49,16 @@ const styles = {
     return '';
   },
   letterSpacing({ theme, _letterSpacing }) {
-    return `${theme.fonts.letterSpacing[_letterSpacing]}px`;
+    return `${theme.bladeOld.fonts.letterSpacing[_letterSpacing]}px`;
   },
 };
 
 const Text = styled.div.attrs((props) => ({
   ...automationAttributes(props.testID),
 }))`
-  font-family: ${(props) => props.theme.fonts.family.lato[props.weight]};
-  font-weight: ${(props) => props.theme.fonts.weight[props.weight]};
-  font-size: ${(props) => props.theme.fonts.size[props.size]};
+  font-family: ${(props) => props.theme.bladeOld.fonts.family.lato[props.weight]};
+  font-weight: ${(props) => props.theme.bladeOld.fonts.weight[props.weight]};
+  font-size: ${(props) => props.theme.bladeOld.fonts.size[props.size]};
   color: ${styles.color};
   text-decoration: ${styles.textDecoration};
   text-align: ${(props) => props.align};
@@ -78,15 +78,15 @@ const Text = styled.div.attrs((props) => ({
 `;
 
 Text.propTypes = {
-  size: PropTypes.oneOf(Object.keys(baseTheme.fonts.size)),
+  size: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.size)),
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),
   testID: PropTypes.string,
   maxLines: PropTypes.number,
-  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.weight)),
   _isUnderlined: PropTypes.bool,
-  _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
-  _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
+  _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.letterSpacing)),
+  _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.lineHeight)),
 };
 
 Text.defaultProps = {

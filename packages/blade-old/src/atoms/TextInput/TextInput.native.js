@@ -44,19 +44,19 @@ const styles = {
       return [paddingTop, paddingRight, paddingBottom, paddingLeft];
     },
     fontSize({ theme }) {
-      return theme.fonts.size.medium;
+      return theme.bladeOld.fonts.size.medium;
     },
     lineHeight({ theme }) {
       return getLineHeight(theme, 'medium');
     },
     fontFamily({ theme }) {
-      return theme.fonts.family.lato.regular;
+      return theme.bladeOld.fonts.family.lato.regular;
     },
     color({ theme, disabled }) {
       if (disabled) {
-        return theme.colors.shade[940];
+        return theme.bladeOld.colors.shade[940];
       } else {
-        return theme.colors.shade[980];
+        return theme.bladeOld.colors.shade[980];
       }
     },
 
@@ -91,11 +91,11 @@ const styles = {
       if (variant === 'outlined') {
         return 'transparent';
       } else if (disabled) {
-        return theme.colors.tone[930];
+        return theme.bladeOld.colors.tone[930];
       } else if (isFocused) {
-        return theme.colors.tone[940];
+        return theme.bladeOld.colors.tone[940];
       } else {
-        return theme.colors.tone[930];
+        return theme.bladeOld.colors.tone[930];
       }
     },
     marginTop({ _isMultiline, variant }) {
@@ -158,9 +158,9 @@ const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) 
 const getPlaceholderTextColor = ({ theme, disabled, isPlaceholderVisible, hasAnimatedLabel }) => {
   if (isPlaceholderVisible || !hasAnimatedLabel) {
     if (disabled) {
-      return theme.colors.shade[930];
+      return theme.bladeOld.colors.shade[930];
     } else {
-      return theme.colors.shade[940];
+      return theme.bladeOld.colors.shade[940];
     }
   } else {
     return 'transparent';
@@ -394,7 +394,7 @@ const TextInput = React.forwardRef(
                                   onBlur={onTextInputBlur}
                                   onChangeText={onChangeText}
                                   hasText={hasText}
-                                  selectionColor={theme.colors.shade[980]} // not able to change this for Android
+                                  selectionColor={theme.bladeOld.colors.shade[980]} // not able to change this for Android
                                   editable={!disabled}
                                   disabled={disabled}
                                   variant={variant}

@@ -8,8 +8,8 @@ import Button from '../../atoms/Button';
 import Divider from '../../atoms/Divider';
 
 const FullScreenModalHeader = styled(View)`
-  background-color: ${(props) => props.theme.colors.background[300]};
-  shadow-color: ${(props) => props.theme.colors.primary[930]};
+  background-color: ${(props) => props.theme.bladeOld.colors.background[300]};
+  shadow-color: ${(props) => props.theme.bladeOld.colors.primary[930]};
   shadow-offset: 0px 4px;
   shadow-opacity: 1;
   shadow-radius: 15px;

@@ -173,7 +173,7 @@ const styles = {
   height({ size, theme }) {
     switch (size) {
       case 'xsmall':
-        return theme.spacings.xlarge;
+        return theme.bladeOld.spacings.xlarge;
       case 'small':
         return makePxValue(3.5);
       case 'medium':
@@ -188,27 +188,27 @@ const styles = {
     switch (size) {
       case 'xsmall':
         if (children) {
-          return [0, theme.spacings.small];
+          return [0, theme.bladeOld.spacings.small];
         }
-        return [0, theme.spacings.xxsmall];
+        return [0, theme.bladeOld.spacings.xxsmall];
       case 'small':
         if (children) {
-          return [0, theme.spacings.large];
+          return [0, theme.bladeOld.spacings.large];
         }
-        return [0, theme.spacings.xsmall];
+        return [0, theme.bladeOld.spacings.xsmall];
       case 'medium':
         if (children) {
-          return [0, theme.spacings.xxlarge];
+          return [0, theme.bladeOld.spacings.xxlarge];
         }
         return [0, makePxValue(0.75)];
       case 'large':
         if (children) {
-          return [0, theme.spacings.xxlarge];
+          return [0, theme.bladeOld.spacings.xxlarge];
         }
-        return [0, theme.spacings.small];
+        return [0, theme.bladeOld.spacings.small];
       default:
         if (children) {
-          return [0, theme.spacings.xxlarge];
+          return [0, theme.bladeOld.spacings.xxlarge];
         }
         return [0, makePxValue(0.75)];
     }
@@ -334,7 +334,7 @@ const styles = {
 const StyledButton = styled.button`
   box-sizing: border-box; /* TODO: remove after box-sizing: border-box added globally */
   background-color: ${styles.backgroundColor};
-  border-radius: ${(props) => props.theme.spacings.xxsmall};
+  border-radius: ${(props) => props.theme.bladeOld.spacings.xxsmall};
   border: ${styles.border};
   width: ${(props) => (props.block ? '100%' : '')};
   cursor: pointer;

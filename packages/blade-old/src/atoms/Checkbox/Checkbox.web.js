@@ -81,17 +81,17 @@ const styles = {
           if (isChecked || externalChecked) {
             return getColor(theme, `${variantColor}.920`);
           }
-          return theme.colors.tone[930];
+          return theme.bladeOld.colors.tone[930];
         case 'focus':
           if (isChecked || externalChecked) {
             return getColor(theme, `${variantColor}.930`);
           }
-          return theme.colors.tone[940];
+          return theme.bladeOld.colors.tone[940];
         case 'active':
           if (isChecked || externalChecked) {
             return getColor(theme, `${variantColor}.940`);
           }
-          return theme.colors.tone[940];
+          return theme.bladeOld.colors.tone[940];
         default:
           return 'transparent';
       }

@@ -82,7 +82,7 @@ Heading.propTypes = {
   size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']).isRequired,
   color: PropTypes.oneOf(getColorKeys()),
   maxLines: PropTypes.number,
-  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.weight)),
 };
 
 Heading.defaultProps = {

@@ -7,13 +7,13 @@ import Size from '../Size';
 const styles = {
   backgroundColor({ isFocused, hasError, theme, disabled }) {
     if (disabled) {
-      return theme.colors.shade[920];
+      return theme.bladeOld.colors.shade[920];
     } else if (hasError) {
-      return theme.colors.negative[900];
+      return theme.bladeOld.colors.negative[900];
     } else if (isFocused) {
-      return theme.colors.primary[800];
+      return theme.bladeOld.colors.primary[800];
     } else {
-      return theme.colors.shade[940];
+      return theme.bladeOld.colors.shade[940];
     }
   },
 };

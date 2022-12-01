@@ -27,7 +27,7 @@ const styles = {
 
 const ProgressContainer = styled(View)`
   border-radius: 100px;
-  background-color: ${(props) => props.theme.colors.background[800]};
+  background-color: ${(props) => props.theme.bladeOld.colors.background[800]};
 `;
 
 const StyledProgressBar = styled(Animated.View)`

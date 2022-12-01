@@ -15,31 +15,31 @@ const styles = {
     height({ size, theme }) {
       switch (size) {
         case 'medium':
-          return theme.spacings.large;
+          return theme.bladeOld.spacings.large;
         case 'large':
           return makePxValue(3);
         default:
-          return theme.spacings.large;
+          return theme.bladeOld.spacings.large;
       }
     },
     width({ size, theme }) {
       switch (size) {
         case 'medium':
-          return theme.spacings.xxxlarge;
+          return theme.bladeOld.spacings.xxxlarge;
         case 'large':
           return makePxValue(6);
         default:
-          return theme.spacings.xxxlarge;
+          return theme.bladeOld.spacings.xxxlarge;
       }
     },
     radius({ size, theme }) {
       switch (size) {
         case 'medium':
-          return `${parseInt(theme.spacings.large, 10) / 2}px`;
+          return `${parseInt(theme.bladeOld.spacings.large, 10) / 2}px`;
         case 'large':
           return `${parseInt(makePxValue(3), 10) / 2}px`;
         default:
-          return `${parseInt(theme.spacings.large, 10) / 2}px`;
+          return `${parseInt(theme.bladeOld.spacings.large, 10) / 2}px`;
       }
     },
   },
@@ -47,52 +47,52 @@ const styles = {
     height({ size, theme }) {
       switch (size) {
         case 'medium':
-          return theme.spacings.medium;
+          return theme.bladeOld.spacings.medium;
         case 'large':
-          return theme.spacings.large;
+          return theme.bladeOld.spacings.large;
         default:
-          return theme.spacings.medium;
+          return theme.bladeOld.spacings.medium;
       }
     },
     width({ size, theme }) {
       switch (size) {
         case 'medium':
-          return theme.spacings.medium;
+          return theme.bladeOld.spacings.medium;
         case 'large':
-          return theme.spacings.large;
+          return theme.bladeOld.spacings.large;
         default:
-          return theme.spacings.medium;
+          return theme.bladeOld.spacings.medium;
       }
     },
     activeWidth({ size, theme }) {
       switch (size) {
         case 'medium':
-          return theme.spacings.large;
+          return theme.bladeOld.spacings.large;
         case 'large':
-          return theme.spacings.xxlarge;
+          return theme.bladeOld.spacings.xxlarge;
         default:
-          return theme.spacings.large;
+          return theme.bladeOld.spacings.large;
       }
     },
     radius({ size, theme }) {
       switch (size) {
         case 'medium':
-          return `${parseInt(theme.spacings.medium, 10) / 2}px`;
+          return `${parseInt(theme.bladeOld.spacings.medium, 10) / 2}px`;
         case 'large':
-          return `${parseInt(theme.spacings.large, 10) / 2}px`;
+          return `${parseInt(theme.bladeOld.spacings.large, 10) / 2}px`;
         default:
-          return `${parseInt(theme.spacings.medium, 10) / 2}px`;
+          return `${parseInt(theme.bladeOld.spacings.medium, 10) / 2}px`;
       }
     },
   },
   padding({ size, theme }) {
     switch (size) {
       case 'medium':
-        return theme.spacings.xxsmall;
+        return theme.bladeOld.spacings.xxsmall;
       case 'large':
-        return theme.spacings.xsmall;
+        return theme.bladeOld.spacings.xsmall;
       default:
-        return theme.spacings.xxsmall;
+        return theme.bladeOld.spacings.xxsmall;
     }
   },
 };
@@ -104,7 +104,7 @@ const StyledContainer = styled(TouchableOpacity)`
 const StyledKnob = styled(View)`
   position: absolute;
   border-radius: ${styles.knob.radius};
-  background-color: ${(props) => props.theme.colors.light[900]};
+  background-color: ${(props) => props.theme.bladeOld.colors.light[900]};
 `;
 
 const AnimatedContainer = Animated.createAnimatedComponent(StyledContainer);
@@ -328,19 +328,19 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
 
   const interpolateContainerColor = animatedLeftValue.interpolate({
     inputRange: [animationConfig.off.leftSpace, animationConfig.on.leftSpace],
-    outputRange: [theme.colors.shade[960], theme.colors.primary[800]],
+    outputRange: [theme.bladeOld.colors.shade[960], theme.bladeOld.colors.primary[800]],
   });
 
   const activeContainerColor = active
     ? toggle
-      ? theme.colors.primary[700]
-      : theme.colors.shade[950]
+      ? theme.bladeOld.colors.primary[700]
+      : theme.bladeOld.colors.shade[950]
     : null;
 
   const disabledContainerColor = disabled
     ? toggle
-      ? theme.colors.primary[500]
-      : theme.colors.shade[930]
+      ? theme.bladeOld.colors.primary[500]
+      : theme.bladeOld.colors.shade[930]
     : null;
 
   return (

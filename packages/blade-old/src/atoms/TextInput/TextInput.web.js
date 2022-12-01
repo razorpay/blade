@@ -25,9 +25,9 @@ const styles = {
     },
     color({ theme, disabled }) {
       if (disabled) {
-        return theme.colors.shade[940];
+        return theme.bladeOld.colors.shade[940];
       }
-      return theme.colors.shade[980];
+      return theme.bladeOld.colors.shade[980];
     },
   },
   fillContainer: {
@@ -35,18 +35,18 @@ const styles = {
       if (variant === 'outlined') {
         return 'transparent';
       } else if (disabled) {
-        return theme.colors.tone[930];
+        return theme.bladeOld.colors.tone[930];
       } else if (isFocused) {
-        return theme.colors.tone[950];
+        return theme.bladeOld.colors.tone[950];
       }
-      return theme.colors.tone[930];
+      return theme.bladeOld.colors.tone[930];
     },
     hoverBackgroundColor({ variant, theme, disabled }) {
       if (variant === 'filled') {
         if (disabled) {
-          return theme.colors.tone[930];
+          return theme.bladeOld.colors.tone[930];
         }
-        return theme.colors.tone[940];
+        return theme.bladeOld.colors.tone[940];
       }
       return '';
     },
@@ -105,9 +105,9 @@ const InputContainer = styled(View)`
 `;
 
 const StyledInput = styled.input`
-  font-size: ${(props) => props.theme.fonts.size.medium};
-  line-height: ${(props) => props.theme.fonts.lineHeight.medium};
-  font-family: ${(props) => props.theme.fonts.family.lato.regular};
+  font-size: ${(props) => props.theme.bladeOld.fonts.size.medium};
+  line-height: ${(props) => props.theme.bladeOld.fonts.lineHeight.medium};
+  font-family: ${(props) => props.theme.bladeOld.fonts.family.lato.regular};
   color: ${styles.textInput.color};
   border: none;
   background-color: transparent;
@@ -129,7 +129,7 @@ const StyledInput = styled.input`
     outline: none;
   }
   &::selection {
-    background-color: ${(props) => props.theme.colors.primary[980]};
+    background-color: ${(props) => props.theme.bladeOld.colors.primary[980]};
   }
   /* Removes red box shadow rectangle on firefox */
   &:invalid {
@@ -200,9 +200,9 @@ const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) 
 const getPlaceholderTextColor = ({ theme, disabled, isPlaceholderVisible, hasAnimatedLabel }) => {
   if (isPlaceholderVisible || !hasAnimatedLabel) {
     if (disabled) {
-      return theme.colors.shade[930];
+      return theme.bladeOld.colors.shade[930];
     }
-    return theme.colors.shade[940];
+    return theme.bladeOld.colors.shade[940];
   }
   return 'transparent';
 };

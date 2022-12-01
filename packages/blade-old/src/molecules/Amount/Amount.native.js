@@ -182,7 +182,7 @@ Amount.propTypes = {
   size: PropTypes.oneOf(['xsmall', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
   testID: PropTypes.string,
   currency: PropTypes.oneOf(geISOCurrencyList()),
-  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.weight)),
   variant: PropTypes.oneOf(['camel', 'normal']),
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
   subtle: PropTypes.bool,

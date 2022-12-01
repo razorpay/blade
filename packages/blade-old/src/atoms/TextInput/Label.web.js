@@ -26,24 +26,24 @@ const styles = {
     },
     fontSize({ theme, variant, isFocused, hasText, position, width }) {
       if (variant === 'outlined' && !(isFocused || hasText)) {
-        return theme.fonts.size.medium;
+        return theme.bladeOld.fonts.size.medium;
       }
       if (position === 'left' && width !== 'small') {
-        return theme.fonts.size.medium;
+        return theme.bladeOld.fonts.size.medium;
       }
-      return theme.fonts.size.xsmall;
+      return theme.bladeOld.fonts.size.xsmall;
     },
     lineHeight({ variant, theme, isFocused, hasText, position, width }) {
       if (variant === 'outlined' && !(isFocused || hasText)) {
-        return theme.fonts.lineHeight.medium;
+        return theme.bladeOld.fonts.lineHeight.medium;
       }
       if (position === 'left' && width != 'small') {
-        return theme.fonts.lineHeight.medium;
+        return theme.bladeOld.fonts.lineHeight.medium;
       }
-      return theme.fonts.lineHeight.small;
+      return theme.bladeOld.fonts.lineHeight.small;
     },
     fontFamily({ theme }) {
-      return theme.fonts.family.lato.regular;
+      return theme.bladeOld.fonts.family.lato.regular;
     },
   },
   label: {

@@ -60,7 +60,9 @@ addDecorator(withKnobs);
 const SafeAreaWrapper = styled.SafeAreaView`
   flex: 1;
   background-color: ${(props) =>
-    props.isDarkTheme ? theme.dark.colors.background[400] : theme.light.colors.background[400]};
+    props.isDarkTheme
+      ? theme.dark.bladeOld.colors.background[400]
+      : theme.light.bladeOld.colors.background[400]};
 `;
 
 const ThemeSwitch = styled.Switch`
@@ -78,7 +80,9 @@ const SwitchContainer = styled.View`
 
 const ThemeName = styled.Text`
   color: ${(props) =>
-    !props.isDarkTheme ? theme.dark.colors.background[400] : theme.light.colors.background[400]};
+    !props.isDarkTheme
+      ? theme.dark.bladeOld.colors.background[400]
+      : theme.light.bladeOld.colors.background[400]};
   font-size: 14px;
 `;
 
@@ -121,7 +125,9 @@ const App = () => {
     <ThemeProvider theme={isDarkTheme ? theme.dark : theme.light}>
       <StatusBar
         backgroundColor={
-          isDarkTheme ? theme.dark.colors.background[400] : theme.light.colors.background[400]
+          isDarkTheme
+            ? theme.dark.bladeOld.colors.background[400]
+            : theme.light.bladeOld.colors.background[400]
         }
         barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
       />

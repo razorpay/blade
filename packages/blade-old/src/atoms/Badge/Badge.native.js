@@ -50,9 +50,9 @@ const styles = {
   },
   borderRadius({ shape, theme }) {
     if (shape === 'stadium') {
-      return `${parseInt(theme.spacings.xlarge, 10) / 2}px`;
+      return `${parseInt(theme.bladeOld.spacings.xlarge, 10) / 2}px`;
     }
-    return theme.spacings.xxsmall;
+    return theme.bladeOld.spacings.xxsmall;
   },
   fontColor({ variant, fill }) {
     if (fill === 'subtle') {
@@ -76,15 +76,15 @@ const styles = {
   },
   padding({ shape, theme }) {
     if (shape === 'stadium') {
-      return [0, theme.spacings.medium];
+      return [0, theme.bladeOld.spacings.medium];
     }
-    return [0, theme.spacings.xsmall];
+    return [0, theme.bladeOld.spacings.xsmall];
   },
   height({ shape, theme }) {
     if (shape === 'stadium') {
-      return theme.spacings.xlarge;
+      return theme.bladeOld.spacings.xlarge;
     }
-    return theme.spacings.large;
+    return theme.bladeOld.spacings.large;
   },
 };
 

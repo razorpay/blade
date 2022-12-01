@@ -15,21 +15,21 @@ import ModalFooter from './ModalFooter.native';
 const styles = ({ variant, theme }) => {
   if (variant === 'centered') {
     return {
-      'background-color': theme.colors.background[300],
-      'border-radius': theme.spacings.xsmall,
+      'background-color': theme.bladeOld.colors.background[300],
+      'border-radius': theme.bladeOld.spacings.xsmall,
     };
   }
   if (variant === 'fullscreen') {
     return {
-      'background-color': theme.colors.background[400],
+      'background-color': theme.bladeOld.colors.background[400],
     };
   }
   if (variant === 'bottomsheet') {
     return {
-      'background-color': theme.colors.background[300],
+      'background-color': theme.bladeOld.colors.background[300],
       'border-top-left-radius': '8px',
       'border-top-right-radius': '8px',
-      'shadow-color': theme.colors.primary[930],
+      'shadow-color': theme.bladeOld.colors.primary[930],
       'shadow-offset': '0px -4px',
       'shadow-opacity': '1',
       'shadow-radius': '15px',
@@ -47,7 +47,7 @@ const ModalContainer = styled(View)(({ variant, theme }) =>
 );
 
 const BottomSheetDragBar = styled(View)`
-  background-color: ${(props) => props.theme.colors.overlay[50]};
+  background-color: ${(props) => props.theme.bladeOld.colors.overlay[50]};
   border-radius: 4px;
 `;
 
@@ -61,7 +61,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
           isVisible={visible}
           onBackdropPress={onBackdropClick}
           onBackButtonPress={onClose}
-          backdropColor={theme.colors.overlay[200]}
+          backdropColor={theme.bladeOld.colors.overlay[200]}
           propagateSwipe
         >
           <ModalContainer variant="centered">
@@ -122,7 +122,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
             onSwipeComplete={onClose}
             onBackButtonPress={onClose}
             avoidKeyboard={true}
-            backdropColor={theme.colors.overlay[200]}
+            backdropColor={theme.bladeOld.colors.overlay[200]}
             propagateSwipe
           >
             <ModalContainer variant="bottomsheet">

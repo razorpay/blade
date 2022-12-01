@@ -8,7 +8,7 @@ import Text from '../Text';
 import Size from './Size';
 
 const StyledView = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[940]};
+  background-color: ${(props) => props.theme.bladeOld.colors.shade[940]};
 `;
 
 storiesOf('Size', module)

@@ -11,7 +11,7 @@ const styles = {
     return getColor(theme, backgroundColor);
   },
   shadowColor({ theme }) {
-    return theme.colors.primary[920];
+    return theme.bladeOld.colors.primary[920];
   },
   shadowOffset({ variant }) {
     if (variant === 'shadowed') {

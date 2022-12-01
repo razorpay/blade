@@ -70,7 +70,7 @@ Heading.propTypes = {
   color: PropTypes.oneOf(getColorKeys()),
   testID: PropTypes.string,
   maxLines: PropTypes.number,
-  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.weight)),
 };
 
 Heading.defaultProps = {

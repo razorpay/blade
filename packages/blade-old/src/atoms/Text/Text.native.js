@@ -8,10 +8,10 @@ import automation from '../../_helpers/automation-attributes';
 
 const styles = {
   fontFamily({ theme, weight }) {
-    return theme.fonts.family.lato[weight];
+    return theme.bladeOld.fonts.family.lato[weight];
   },
   fontSize({ theme, size }) {
-    return theme.fonts.size[size];
+    return theme.bladeOld.fonts.size[size];
   },
   color({ theme, color }) {
     return getColor(theme, color);
@@ -23,11 +23,11 @@ const styles = {
     }
   },
   letterSpacing({ theme, _letterSpacing }) {
-    return `${theme.fonts.letterSpacing[_letterSpacing]}`;
+    return `${theme.bladeOld.fonts.letterSpacing[_letterSpacing]}`;
   },
   lineHeight({ theme, size, _lineHeight }) {
     if (_lineHeight) {
-      return theme.fonts.lineHeight[_lineHeight];
+      return theme.bladeOld.fonts.lineHeight[_lineHeight];
     } else {
       return getLineHeight(theme, size);
     }
@@ -81,15 +81,15 @@ const Text = ({
 
 Text.propTypes = {
   children: PropTypes.string,
-  size: PropTypes.oneOf(Object.keys(baseTheme.fonts.size)),
+  size: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.size)),
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),
   testID: PropTypes.string,
   maxLines: PropTypes.number,
-  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.weight)),
   _isUnderlined: PropTypes.bool,
-  _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
-  _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
+  _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.letterSpacing)),
+  _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.bladeOld.fonts.lineHeight)),
 };
 
 Text.defaultProps = {

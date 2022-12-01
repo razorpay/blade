@@ -24,7 +24,7 @@ const styles = {
   rootStyle: ({ theme }) => {
     return {
       elevation: 5,
-      shadowColor: theme.colors.primary[930],
+      shadowColor: theme.bladeOld.colors.primary[930],
       shadowOffset: {
         width: 0,
         height: -4,
@@ -35,12 +35,12 @@ const styles = {
   },
   overlayStyle: ({ theme }) => {
     return {
-      backgroundColor: theme.colors.overlay[100],
+      backgroundColor: theme.bladeOld.colors.overlay[100],
     };
   },
   childrenStyle: ({ theme, isSectionList }) => {
     const childrenStyles = {
-      backgroundColor: theme.colors.background[300],
+      backgroundColor: theme.bladeOld.colors.background[300],
     };
     if (isSectionList) {
       return {
@@ -79,14 +79,14 @@ const styles = {
 };
 
 const HeaderContainer = styled(View)`
-  background-color: ${(props) => props.theme.colors.background[300]};
-  border-top-right-radius: ${(props) => props.theme.spacings.small};
-  border-top-left-radius: ${(props) => props.theme.spacings.small};
+  background-color: ${(props) => props.theme.bladeOld.colors.background[300]};
+  border-top-right-radius: ${(props) => props.theme.bladeOld.spacings.small};
+  border-top-left-radius: ${(props) => props.theme.bladeOld.spacings.small};
 `;
 
 const BottomSheetDragBar = styled(View)`
-  background-color: ${(props) => props.theme.colors.overlay[50]};
-  border-radius: ${(props) => props.theme.spacings.xsmall};
+  background-color: ${(props) => props.theme.bladeOld.colors.overlay[50]};
+  border-radius: ${(props) => props.theme.bladeOld.spacings.xsmall};
 `;
 
 const BottomSheet = ({
@@ -212,8 +212,8 @@ const BottomSheet = ({
               <LinearGradient
                 locations={linearGradientLocations}
                 colors={[
-                  theme.colors.primary[930],
-                  theme.colors.primary[920],
+                  theme.bladeOld.colors.primary[930],
+                  theme.bladeOld.colors.primary[920],
                   'rgba(255, 255, 255, 0)',
                 ]}
                 style={styles.linearGradient()}

@@ -14,14 +14,14 @@ import ProgressBar from './ProgressBar';
 const MAX_PROGRESS_VALUE = 100;
 
 const DashedButton = styled(TouchableOpacity)`
-  background-color: ${(props) => props.theme.colors.background[200]};
-  border: 1px dashed ${(props) => props.theme.colors.tone[900]};
+  background-color: ${(props) => props.theme.bladeOld.colors.background[200]};
+  border: 1px dashed ${(props) => props.theme.bladeOld.colors.tone[900]};
   border-radius: 2px;
 `;
 
 const UploadContainer = styled(View)`
-  border: 1px solid ${(props) => props.theme.colors.tone[900]};
-  background-color: ${(props) => props.theme.colors.background[200]};
+  border: 1px solid ${(props) => props.theme.bladeOld.colors.tone[900]};
+  background-color: ${(props) => props.theme.bladeOld.colors.background[200]};
   border-radius: 4px;
 `;
 

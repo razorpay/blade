@@ -50,13 +50,13 @@ const styles = {
 const StyledIndicator = styled(View)`
   background-color: ${styles.backgroundColor};
   border: ${styles.border};
-  border-radius: ${(props) => props.theme.spacings.xsmall};
+  border-radius: ${(props) => props.theme.bladeOld.spacings.xsmall};
 `;
 
 const Indicator = ({ variant, fill }) => {
   const theme = useTheme();
   return (
-    <Size height={theme.spacings.small} width={theme.spacings.small}>
+    <Size height={theme.bladeOld.spacings.small} width={theme.bladeOld.spacings.small}>
       <StyledIndicator variant={variant} fill={fill} />
     </Size>
   );
