@@ -58,7 +58,6 @@ const getBoxStyles = ({
   background,
   zIndex,
   borderRadius,
-  border,
 }: BoxProps & { theme: Theme }): CSSObject => ({
   display,
   flex,
@@ -94,7 +93,6 @@ const getBoxStyles = ({
   background,
   zIndex,
   borderRadius: getIn(theme, `border.radius.${borderRadius}`),
-  border,
 });
 
 export default getBoxStyles;

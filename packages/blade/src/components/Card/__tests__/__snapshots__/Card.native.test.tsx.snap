@@ -72,13 +72,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     }
   >
     <View
-      border="1px solid hsla(216, 44%, 23%, 0.18)"
       style={
         Array [
           Object {
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
             "borderColor": "hsla(216, 44%, 23%, 0.18)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
           },
         ]
       }
@@ -498,11 +497,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
       >
         <View
           alignSelf="center"
+          display="flex"
           marginRight="spacing.3"
           style={
             Array [
               Object {
                 "alignSelf": "center",
+                "display": "flex",
                 "marginRight": 8,
               },
             ]
@@ -752,13 +753,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
       />
     </View>
     <View
-      border="1px solid hsla(216, 44%, 23%, 0.18)"
       style={
         Array [
           Object {
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
             "borderColor": "hsla(216, 44%, 23%, 0.18)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
           },
         ]
       }

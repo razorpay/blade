@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Card /> should render a Card with Footer 1`] = `
+.c2 {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: hsla(216,44%,23%,0.18);
+}
+
 .c0 {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -12,10 +18,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 
 .c1 {
   margin-top: 24px;
-}
-
-.c2 {
-  border: 1px solid hsla(216,44%,23%,0.18);
 }
 
 .c3 {
@@ -325,6 +327,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 `;
 
 exports[`<Card /> should render a Card with Header 1`] = `
+.c13 {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: hsla(216,44%,23%,0.18);
+}
+
 .c0 {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -364,6 +372,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -401,10 +413,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-}
-
-.c13 {
-  border: 1px solid hsla(216,44%,23%,0.18);
 }
 
 .c5 {
@@ -487,6 +495,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         >
           <div
             class="c4"
+            display="flex"
           >
             <svg
               aria-hidden="true"
