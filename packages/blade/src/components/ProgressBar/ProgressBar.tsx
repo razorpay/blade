@@ -1,11 +1,11 @@
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
+import { ProgressBarFilled } from './ProgressBarFilled';
 import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { makeSize } from '~utils';
 import { FormLabel } from '~components/Form';
-import { makeMotionTime, castWebType } from '~src/utils';
 
 type ProgressBarProps = {
   accessibilityLabel?: string;
@@ -24,17 +24,6 @@ type ProgressBarUnfilledProps = {
 
 const ProgressBarUnfilled = styled(Box)<ProgressBarUnfilledProps>(({ backgroundColor }) => ({
   backgroundColor,
-}));
-
-type ProgressBarFilledProps = {
-  backgroundColor: string;
-};
-
-const ProgressBarFilled = styled(Box)<ProgressBarFilledProps>(({ backgroundColor, theme }) => ({
-  backgroundColor,
-  transitionProperty: 'width',
-  transitionDuration: castWebType(makeMotionTime(theme.motion.duration.quick)),
-  transitionTimingFunction: castWebType(theme.motion.easing.standard.revealing),
 }));
 
 const getProgress = (value: number): number => {
@@ -86,8 +75,9 @@ const ProgressBar = ({
         >
           <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
-            height="100%"
-            width={`${getProgress(value)}%`}
+            progress={getProgress(value)}
+            fillMotionDuration="duration.quick"
+            fillMotionEasing="easing.standard.revealing"
           />
         </ProgressBarUnfilled>
       </Box>
