@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.1.5
+
+### Patch Changes
+
+- 756f4b4: feat: allow masked otp input
+
 ## 5.1.4
 
 ### Patch Changes
