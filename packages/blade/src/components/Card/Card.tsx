@@ -1,6 +1,7 @@
 import React from 'react';
 import { CardFooter } from './CardFooter';
 import { CardHeader } from './CardHeader';
+import { CardSurface } from './CardSurface';
 import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
 import { getIn } from '~utils';
@@ -18,7 +19,7 @@ const Card = ({ children, backgroundLevel = 3 }: CardProps): React.ReactElement 
   );
 
   return (
-    <Box
+    <CardSurface
       paddingLeft="spacing.7"
       paddingRight="spacing.7"
       paddingTop="spacing.6"
@@ -27,7 +28,7 @@ const Card = ({ children, backgroundLevel = 3 }: CardProps): React.ReactElement 
       background={backgroundColor}
     >
       {children}
-    </Box>
+    </CardSurface>
   );
 };
 
