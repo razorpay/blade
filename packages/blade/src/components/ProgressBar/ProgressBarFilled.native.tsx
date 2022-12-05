@@ -17,18 +17,18 @@ const ProgressBarFilled = ({
   backgroundColor,
   progress,
   fillMotionDuration,
-  fillMotionEasing,
+  motionEasing,
 }: ProgressBarFilledProps): React.ReactElement => {
   const animatedWidth = useSharedValue(progress);
   const { theme } = useTheme();
   useEffect(() => {
     const duration = castNativeType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
-    const easing = getIn(theme.motion, fillMotionEasing);
+    const easing = getIn(theme.motion, motionEasing);
     animatedWidth.value = withTiming(progress, {
       duration,
       easing,
     });
-  }, [progress, animatedWidth, fillMotionDuration, fillMotionEasing, theme.motion]);
+  }, [progress, animatedWidth, fillMotionDuration, motionEasing, theme.motion]);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
