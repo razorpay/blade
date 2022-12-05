@@ -8,22 +8,14 @@ import {
   CardHeaderTrailing,
 } from './CardHeader';
 import { CardSurface } from './CardSurface';
-import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
-import { getIn } from '~utils';
 
 export type CardProps = {
   children: React.ReactNode;
-  backgroundLevel: 2 | 3;
+  surfaceLevel: 2 | 3;
 };
 
-const Card = ({ children, backgroundLevel = 3 }: CardProps): React.ReactElement => {
-  const { theme } = useTheme();
-  const backgroundColor = getIn(
-    theme,
-    `colors.surface.background.level${backgroundLevel}.lowContrast`,
-  );
-
+const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => {
   return (
     <CardSurface
       paddingLeft="spacing.7"
@@ -31,7 +23,7 @@ const Card = ({ children, backgroundLevel = 3 }: CardProps): React.ReactElement 
       paddingTop="spacing.6"
       paddingBottom="spacing.6"
       borderRadius="medium"
-      background={backgroundColor}
+      surfaceLevel={surfaceLevel}
     >
       {children}
     </CardSurface>
