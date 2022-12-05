@@ -4,11 +4,12 @@ import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
-import { InfoIcon, CloseIcon } from '~components/Icons';
+import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import Box from '~components/Box';
+import { Spinner } from '~components/Spinner';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -134,6 +135,13 @@ const getKeyboardAndAutocompleteProps = ({
     keyboardAndAutocompleteProps.type = 'text';
   }
 
+  if (type === 'search') {
+    /* when input type:search is provided at that time browser adds a weird close button which collides with our clear button and then we have 2 clear buttons
+     * source: https://github.com/razorpay/blade/issues/857#issue-1457367160
+     */
+    keyboardAndAutocompleteProps.type = 'text';
+  }
+
   return keyboardAndAutocompleteProps;
 };
 
@@ -178,8 +186,7 @@ export const TextInput = ({
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
-      // @TODO replace with spinner once it's ready
-      return <InfoIcon size="medium" color="surface.text.subtle.lowContrast" />;
+      return <Spinner accessibilityLabel="Loading Content" />;
     }
 
     if (shouldShowClearButton) {
@@ -214,6 +221,7 @@ export const TextInput = ({
   return (
     <BaseInput
       id="textinput"
+      componentName="textinput"
       ref={textInputRef as React.Ref<HTMLInputElement>}
       label={label}
       labelPosition={labelPosition}

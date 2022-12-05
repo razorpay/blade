@@ -109,6 +109,7 @@ const TextArea = ({
     <BaseInput
       as="textarea"
       id="textarea"
+      componentName="textarea"
       autoFocus={autoFocus}
       ref={inputRef as React.Ref<HTMLInputElement>}
       label={label}

@@ -70,6 +70,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     lineHeight: 'l',
     fontFamily: 'text',
     forwardedAs: isPlatformWeb ? 'p' : undefined,
+    componentName: 'text',
   };
 
   if (variant === 'body') {
@@ -78,9 +79,6 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.lineHeight = 's';
     }
   } else if (variant === 'caption') {
-    if (weight === 'bold') {
-      throw new Error(`[Blade: Text]: weight cannot be 'bold' when variant is 'caption'`);
-    }
     if (size === 'small') {
       throw new Error(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
     }

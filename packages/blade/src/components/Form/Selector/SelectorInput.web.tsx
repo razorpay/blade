@@ -9,7 +9,7 @@ import { screenReaderStyles } from '~components/VisuallyHidden';
 type HoverProps = {
   isChecked?: boolean;
   isDisabled?: boolean;
-  isNegative?: boolean;
+  hasError?: boolean;
 };
 
 const variants = {
@@ -28,10 +28,10 @@ const variants = {
 const getHoverStyles = ({
   theme,
   isDisabled,
-  isNegative,
+  hasError,
   isChecked,
 }: { theme: Theme } & HoverProps): CSSObject => {
-  if (isDisabled || isNegative) return {};
+  if (isDisabled || hasError) return {};
 
   const checked = isChecked ? 'checked' : 'unchecked';
   const backgroundColor = variants.default.background[checked];
@@ -45,7 +45,7 @@ const getHoverStyles = ({
   };
 };
 
-const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, isNegative }) => ({
+const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, hasError }) => ({
   ...screenReaderStyles,
   '&:focus + div': {
     // TODO: Replace with focus outline token
@@ -53,7 +53,7 @@ const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, is
     boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
   },
   '&:hover + div, &:focus + div': {
-    ...getHoverStyles({ theme, isChecked, isDisabled, isNegative }),
+    ...getHoverStyles({ theme, isChecked, isDisabled, hasError }),
   },
 }));
 
@@ -61,13 +61,13 @@ const SelectorInput = ({
   inputProps,
   isChecked,
   isDisabled,
-  isNegative,
+  hasError,
 }: HoverProps & { inputProps: any }): React.ReactElement => {
   return (
     <StyledInput
       isChecked={isChecked}
       isDisabled={isDisabled}
-      isNegative={isNegative}
+      hasError={hasError}
       {...inputProps}
     />
   );

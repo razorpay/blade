@@ -7,7 +7,7 @@ import { FormHint, FormLabel } from '../../Form';
 import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import Box from '~components/Box';
-import { getPlatformType } from '~utils';
+import { metaAttribute, getPlatformType, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 export type OTPInputProps = Pick<
@@ -36,6 +36,10 @@ export type OTPInputProps = Pick<
    * The callback function to be invoked when all the values of the OTPInput are filled
    */
   onOTPFilled?: FormInputOnEvent;
+  /**
+   * Masks input characters in all the fields
+   */
+  isMasked?: boolean;
 };
 
 const isReactNative = getPlatformType() === 'react-native';
@@ -76,6 +80,7 @@ const OTPInput = ({
   successText,
   validationState,
   value: inputValue,
+  isMasked,
 }: OTPInputProps): React.ReactElement => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
@@ -243,6 +248,7 @@ const OTPInput = ({
             errorText={errorText}
             helpText={helpText}
             hideFormHint={true}
+            type={isMasked ? 'password' : undefined}
           />
         </Box>,
       );
@@ -251,7 +257,7 @@ const OTPInput = ({
   };
 
   return (
-    <>
+    <Box {...metaAttribute(MetaConstants.Component, MetaConstants.OTPInput)}>
       <Box
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -279,7 +285,7 @@ const OTPInput = ({
           successTextId={successTextId}
         />
       </Box>
-    </>
+    </Box>
   );
 };
 

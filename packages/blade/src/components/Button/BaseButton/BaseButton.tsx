@@ -19,7 +19,17 @@ import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
-import { makeAccessible, usePrevious, makeSize, makeSpace, makeBorderSize, getIn } from '~utils';
+import {
+  MetaConstants,
+  metaAttribute,
+  makeAccessible,
+  usePrevious,
+  makeSize,
+  makeSpace,
+  makeBorderSize,
+  getIn,
+} from '~utils';
+
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
@@ -360,6 +370,7 @@ const BaseButton = ({
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.Button)}
     >
       {isLoading ? (
         <Box

@@ -14,7 +14,6 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -22,25 +21,25 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
@@ -129,7 +128,9 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
     </View>
     <Text
       color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -150,13 +151,11 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -178,7 +177,6 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -186,32 +184,34 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="bold"
       lineHeight="s"
       numberOfLines={1}
@@ -232,13 +232,11 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       LABEL
     </Text>
@@ -260,7 +258,6 @@ exports[`<Badge /> should render Badge with default props 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -268,32 +265,34 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -314,13 +313,11 @@ exports[`<Badge /> should render Badge with default props 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -342,7 +339,6 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -350,32 +346,34 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="badge.text.blue.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -396,13 +394,11 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -424,7 +420,6 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -432,32 +427,34 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.information.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -478,13 +475,11 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -506,7 +501,6 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -514,32 +508,34 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.negative.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -560,13 +556,11 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -588,7 +582,6 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -596,32 +589,34 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -642,13 +637,11 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -670,7 +663,6 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -678,32 +670,34 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.notice.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -724,13 +718,11 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -752,7 +744,6 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -760,32 +751,34 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.positive.highContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -806,13 +799,92 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
+    >
+      Label
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<Badge /> should render large size Badge 1`] = `
+<View
+  backgroundColor="feedback.background.neutral.lowContrast"
+  platform="onMobile"
+  size="large"
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "borderRadius": 9999,
+        "display": "flex",
+        "flexWrap": "nowrap",
+        "maxWidth": 100,
+      },
+    ]
+  }
+>
+  <View
+    alignItems="center"
+    display="flex"
+    flexDirection="row"
+    justifyContent="center"
+    overflow="hidden"
+    paddingBottom="spacing.2"
+    paddingLeft="spacing.4"
+    paddingRight="spacing.4"
+    paddingTop="spacing.2"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "paddingBottom": 4,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 4,
+        },
+      ]
+    }
+  >
+    <Text
+      color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
+      fontSize={75}
+      fontStyle="normal"
+      fontWeight="regular"
+      lineHeight="s"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 27%, 36%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 16,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+          Object {},
+        ]
+      }
     >
       Label
     </Text>
@@ -834,7 +906,6 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -842,32 +913,34 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="badge.text.blue.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -888,13 +961,11 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -916,7 +987,6 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -924,32 +994,34 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.information.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -970,13 +1042,11 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -998,7 +1068,6 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -1006,32 +1075,34 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.negative.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -1052,13 +1123,11 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -1080,7 +1149,6 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -1088,32 +1156,34 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -1134,13 +1204,11 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -1162,7 +1230,6 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -1170,32 +1237,34 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.notice.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -1216,13 +1285,11 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -1244,7 +1311,6 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -1252,32 +1318,34 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.positive.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -1298,13 +1366,11 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -1326,7 +1392,6 @@ exports[`<Badge /> should render medium size Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 24,
       },
     ]
   }
@@ -1334,32 +1399,34 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.1"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.1"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 2,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 2,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      fontFamily="text"
       fontSize={75}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -1380,13 +1447,11 @@ exports[`<Badge /> should render medium size Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>
@@ -1408,7 +1473,6 @@ exports[`<Badge /> should render small size Badge 1`] = `
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
-        "minHeight": 20,
       },
     ]
   }
@@ -1416,32 +1480,34 @@ exports[`<Badge /> should render small size Badge 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
+    paddingBottom="spacing.0"
     paddingLeft="spacing.3"
     paddingRight="spacing.3"
+    paddingTop="spacing.0"
     style={
       Array [
         Object {
           "alignItems": "center",
           "display": "flex",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 0,
           "paddingLeft": 8,
           "paddingRight": 8,
+          "paddingTop": 0,
         },
       ]
     }
   >
     <Text
       color="feedback.text.neutral.lowContrast"
-      fontSize={75}
+      fontFamily="text"
+      fontSize={50}
+      fontStyle="italic"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -1450,8 +1516,8 @@ exports[`<Badge /> should render small size Badge 1`] = `
           Object {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
+            "fontSize": 11,
+            "fontStyle": "italic",
             "fontWeight": "400",
             "lineHeight": 16,
             "marginBottom": 0,
@@ -1462,13 +1528,11 @@ exports[`<Badge /> should render small size Badge 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textAlign": "center",
             "textDecorationLine": "none",
           },
           Object {},
         ]
       }
-      textAlign="center"
     >
       Label
     </Text>

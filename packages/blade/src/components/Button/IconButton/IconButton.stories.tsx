@@ -21,10 +21,9 @@ const Page = (): ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox editorHeight={500}>
+      <Sandbox showConsole>
         {`
-        import { IconButton } from '@razorpay/blade/components';
-        import { CloseIcon } from '@razorpay/blade/components/Icons';
+        import { IconButton, CloseIcon } from '@razorpay/blade/components';
 
         function App() {
           return (

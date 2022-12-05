@@ -1,72 +1,97 @@
 import { Meta } from '@storybook/addon-docs';
+import figmaComponent from '../images/figma-component.png';
+import figmaToken from '../images/figma-token.png';
 
-<Meta title="Guides/Usage" />
+<Meta title="Guides/How to use?" />
 
 # 👀 How to use blade?
 
 <br />
 <br />
 
-## Tokens
+> Before starting to use Blade make sure you have followed the [installation guide](/story/guides-installation--page&globals=measureEnabled:false#%EF%B8%8F-installation) and installed all the dependencies like `styled-components`, `fonts` etc.
 
-To start using tokens in your application you can follow these steps:
+<br />
 
-1. Wrap your App with `BladeProvider` and pass it `paymentTheme` or `bankingTheme` tokens.
+## Wrap your App with `BladeProvider`
 
-   ```jsx
-   // App entry point
-   import { BladeProvider } from '@razorpay/blade/components';
-   import { paymentTheme } from '@razorpay/blade/tokens';
+The first step to get all the capabilities of Blade is to wrap your Application root under Blade's Provider.
 
-   function App(): JSX.Element {
-     return (
-       <React.Fragment>
-         <BladeProvider themeTokens={paymentTheme}>
-           <Card />
-         </BladeProvider>
-       </React.Fragment>
-     );
-   }
+Blade offers 2 pre-built themes out of the box:
 
-   export default App;
-   ```
+1. `paymentTheme` - To be used in Payment(PG) products.
+2. `bankingTheme` - To be used in RazorpayX products.
 
-2. You can also pass an optional `colorScheme` prop to the `BladeProvider` mentioning whether you want the `light`, `dark` or `system`'s default color scheme. The default is `light`.
+The benefits of using `BladeProvider`?
 
-   ```jsx
-   <BladeProvider themeTokens={paymentTheme} colorScheme="dark">
-     <Card />
-   </BladeProvider>
-   ```
+- Your components will automatically become responsive on different breakpoints.
+- Capability to switch between light mode and dark mode.
+- Units for typography and other layouts (where to use `px`, `rem` etc. will automatically be handled).
 
-3. After you've wrapped your App with `BladeProvider`, you can use the `useTheme()` hook to get access to the current theme context.
+```jsx
+// App entry point
+import { BladeProvider } from '@razorpay/blade/components';
+import { paymentTheme } from '@razorpay/blade/tokens';
+import App from from './App';
 
-   ```jsx
-   import { useTheme, Theme } from '@razorpay/blade/components';
+function AppWrapper(): JSX.Element {
+  return (
+    <BladeProvider themeTokens={paymentTheme} colorScheme="light">
+      <App />
+    </BladeProvider>
+  );
+}
 
-   const Card = (): React.ReactElement => {
-     const { theme } = useTheme();
-     return (
-       <React.Fragment>
-         <DisplayLarge theme={theme}>Cash Advance</DisplayLarge>
-         <StyledCard theme={theme}>
-           <CaptionRegular theme={theme}>
-             This amount will be deducted in 3 installments from your settlement balance between Feb
-             18-20 on a daily basis.
-           </CaptionRegular>
-         </StyledCard>
-       </React.Fragment>
-     );
-   };
+export default AppWrapper;
+```
 
-   const StyledCard = styled.div(
-     ({ theme }: { theme: Theme }) => `
-       width: 368px;
-       background-color: ${theme.colors.surface.background.level2.lowContrast};
-       border-radius: ${theme.border.radius.medium}px;
-       padding: ${theme.spacing[5]}px;
-       display: flex;
-       flex-direction: column;
-   `,
-   );
-   ```
+## Mapping Components from Figma to Blade in your code
+
+Blade is built with **"What you see in Figma is what you get on Code" ** philosophy.
+
+Whenever you get a UI mockup handed over by your designer select the component you want to build. for eg: let's say I want to implement the Export button component from the below mockup.
+
+<img src={figmaComponent} alt="Figma mockup showing how to pick component and it's properties" />
+
+So to know the blade component's name and properties
+
+1. Select the component on Figma
+2. Click on the `locator` icon that will take you to component's properties
+3. Look at the component properties and copy it in code because the same properties exists on the components shipped.
+
+```jsx
+// in your file where you want to implement this
+import { Button, DownloadIcon } from '@razorpay/blade/components';
+
+<Button variant="secondary" size="medium" icon={DownloadIcon} iconPosition="left">
+  Export
+</Button>;
+```
+
+## Mapping Tokens from Figma to Blade in your code
+
+> Tokens are an integral part of design system and are used to store design decisions behind a token(variable) name. That also make things easier to update without you making any change. For this reason **never hardcode** token values in your code but rather use the token name.
+
+Everything that you see on Figma built using Blade you'll always find that in code as well.
+
+Let's see how you can spot a token name from figma and write it in your code
+
+<img src={figmaToken} alt="Figma mockup showing how to pick token" />
+
+Whenever you get a UI mockup handed over by your designer
+
+1. Select the component whose color token you want to use in code up
+2. Click on the inspect panel on the left and click on the token name `Surface/Background/Level3/lowContrast`.
+   > Remember, don't select the hardcoded `hsla` color value.
+3. Now in your code paste this token and replace slashes **`/`** with **`.`**
+   > `Surface/Background/Level3/lowContrast` ➡️ `surface.background.level3.lowContrast`
+
+```jsx
+const StyledCard = styled.div(
+  ({ theme }: { theme: Theme }) => `
+    width: 368px;
+    /* Surface/Background/Level3/lowContrast */
+    background-color: ${theme.colors.surface.background.level3.lowContrast};
+`,
+);
+```

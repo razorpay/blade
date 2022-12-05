@@ -35,6 +35,12 @@ describe('<Badge />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render large size Badge', () => {
+    const label = 'Label';
+    const { container } = renderWithTheme(<Badge size="large">{label}</Badge>);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render Badge with Icon', () => {
     const label = 'Label';
     const { container } = renderWithTheme(<Badge icon={InfoIcon}>{label}</Badge>);

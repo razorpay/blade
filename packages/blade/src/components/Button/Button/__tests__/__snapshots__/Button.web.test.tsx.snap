@@ -91,6 +91,7 @@ exports[`<Button /> should render button with default properties 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -202,6 +203,7 @@ exports[`<Button /> should render button with full width 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -329,6 +331,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -342,6 +345,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -475,6 +479,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -496,6 +501,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       >
         <svg
           aria-hidden="true"
+          data-blade-component="icon"
           fill="none"
           height="16px"
           viewBox="0 0 24 24"
@@ -605,6 +611,7 @@ exports[`<Button /> should render disabled button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -717,6 +724,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -829,6 +837,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     disabled=""
     role="button"
     type="button"
@@ -941,6 +950,7 @@ exports[`<Button /> should render large size button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -1052,6 +1062,7 @@ exports[`<Button /> should render medium size button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -1163,6 +1174,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -1274,6 +1286,7 @@ exports[`<Button /> should render small size button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -1385,6 +1398,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >
@@ -1496,6 +1510,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
 <div>
   <button
     class="c0"
+    data-blade-component="button"
     role="button"
     type="button"
   >

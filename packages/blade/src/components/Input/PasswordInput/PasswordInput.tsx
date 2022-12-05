@@ -120,6 +120,7 @@ const PasswordInput = ({
 
   return (
     <BaseInput
+      componentName="password-input"
       id="password-field"
       label={label}
       labelPosition={labelPosition}

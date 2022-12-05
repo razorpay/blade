@@ -34,6 +34,18 @@ describe('<OTPInput />', () => {
     });
   });
 
+  it('should mask all fields when isMasked is true', () => {
+    const label = 'Enter OTP';
+    const { getAllByLabelText } = renderWithTheme(<OTPInput label={label} isMasked />);
+
+    const allInputs = getAllByLabelText(/character/);
+    allInputs.forEach((input) => {
+      // we assume auto focus is working with this prop in place, no simple way of asserting on focus otherwise
+      // @ts-expect-error TS typings not being picked from library
+      expect(input).toHaveProp('secureTextEntry', true);
+    });
+  });
+
   it('should handle onChange', () => {
     const label = 'Enter OTP';
     const onChange = jest.fn();

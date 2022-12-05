@@ -4,7 +4,7 @@
 type HoverProps = {
   isChecked?: boolean;
   isDisabled?: boolean;
-  isNegative?: boolean;
+  hasError?: boolean;
 };
 // noop in react-native
 const SelectorInput = (_props: HoverProps & { inputProps?: any }): React.ReactElement => {

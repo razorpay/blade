@@ -46,10 +46,12 @@ exports[`<IconButton /> should render 1`] = `
   <button
     aria-label="Close"
     class="c0"
+    data-blade-component="icon-button"
     type="button"
   >
     <svg
       aria-hidden="true"
+      data-blade-component="icon"
       fill="none"
       height="16px"
       viewBox="0 0 24 24"

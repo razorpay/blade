@@ -5,7 +5,7 @@ import type { ColorContrast, Feedback } from '~tokens/theme/theme';
 export type StyledAlertProps = {
   children: ReactNode;
   contrastType: keyof ColorContrast;
-  intent: Exclude<Feedback, 'neutral'>;
+  intent: Feedback;
   isFullWidth: boolean;
   isBorderless: boolean;
 };

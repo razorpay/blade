@@ -11,10 +11,6 @@ import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
-/**  @TODO: add test case for isLoading once spinner https://github.com/razorpay/blade/pull/685 is merged
- * 1. either of isLoading or clearbutton should be shown at a time
- * 2. if isLoading then the input should be disabled
- */
 describe('<TextInput />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(<TextInput label="Enter name" />);
@@ -113,6 +109,26 @@ describe('<TextInput />', () => {
     const input = getByLabelText(label);
 
     expect(input).toBeDisabled();
+  });
+
+  it('should show spinner when isLoading is passed', async () => {
+    const user = userEvent.setup();
+    const label = 'Enter name';
+
+    const { getByLabelText, queryByRole } = renderWithTheme(
+      <TextInput label={label} showClearButton={true} isLoading={true} />,
+    );
+
+    const input = getByLabelText(label);
+    let clearButton = queryByRole('button');
+    expect(clearButton).toBeFalsy();
+    await user.tab();
+    expect(input).toHaveFocus();
+    await user.type(input, 'Kamlesh');
+    clearButton = queryByRole('button');
+    expect(clearButton).toBeFalsy();
+    const loadingSpinner = queryByRole('progressbar');
+    expect(loadingSpinner).toBeTruthy();
   });
 
   it('should handle onChange', async () => {
@@ -371,7 +387,7 @@ describe('<TextInput />', () => {
 
     const input = getByLabelText(label);
 
-    expect(input).toHaveAttribute('type', 'search');
+    expect(input).toHaveAttribute('type', 'text');
     expect(input).toHaveAttribute('inputMode', 'search');
     expect(input).toHaveAttribute('enterKeyHint', 'search');
     expect(input).toHaveAttribute('autoComplete', 'off');

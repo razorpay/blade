@@ -3,16 +3,20 @@
 import userEvents from '@testing-library/user-event';
 import React from 'react';
 import { Checkbox } from '../Checkbox';
+import { Link } from '~components/Link';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<Checkbox />', () => {
   it('should render checkbox with label', () => {
-    const labelText = 'Remember password';
-    const { container, getByText, getByRole } = renderWithTheme(<Checkbox>{labelText}</Checkbox>);
+    const label = (
+      <>
+        I accept <Link href="#">Terms and Conditions</Link>
+      </>
+    );
+
+    const { container, getByRole } = renderWithTheme(<Checkbox>{label}</Checkbox>);
     expect(container).toMatchSnapshot();
-    // the name attribute here is the accessibility label name and not the name of the input
-    expect(getByRole('checkbox', { name: labelText })).toBeInTheDocument();
-    expect(getByText(labelText)).toBeInTheDocument();
+    expect(getByRole('checkbox')).toBeInTheDocument();
   });
 
   it('should render helpText', () => {

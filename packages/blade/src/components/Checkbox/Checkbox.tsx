@@ -4,7 +4,7 @@ import isUndefined from 'lodash/isUndefined';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
-import { isEmpty } from '~utils';
+import { metaAttribute, isEmpty, MetaConstants } from '~utils';
 import Box from '~components/Box';
 import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -41,9 +41,9 @@ type CheckboxProps = {
    */
   onChange?: OnChange;
   /**
-   * Sets the label text of the checkbox
+   * Sets the label of the checkbox
    */
-  children: string;
+  children: React.ReactNode;
   /**
    * Help text for the checkbox
    */
@@ -187,14 +187,14 @@ const Checkbox = ({
   });
 
   return (
-    <Box>
+    <Box {...metaAttribute(MetaConstants.Component, MetaConstants.Checkbox)}>
       <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
         <Box display="flex" flexDirection="column">
           <Box display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
               isChecked={state.isChecked || Boolean(isIndeterminate)}
               isDisabled={_isDisabled}
-              isNegative={_hasError}
+              hasError={_hasError}
               inputProps={inputProps}
             />
             <CheckboxIcon

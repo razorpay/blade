@@ -92,7 +92,7 @@ const Radio = ({
           <SelectorInput
             isChecked={state.isChecked}
             isDisabled={_isDisabled}
-            isNegative={hasError} // TODO: rename to hasError
+            hasError={hasError}
             inputProps={inputProps}
           />
           <RadioIcon

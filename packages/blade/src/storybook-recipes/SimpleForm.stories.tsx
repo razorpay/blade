@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { RecipeSandbox } from '~src/_helpers/storybook/Sandbox';
+import parameters from '~src/_helpers/storybook/recipeParameters';
 
 export function SimpleForm(): JSX.Element {
   return (
@@ -14,18 +15,5 @@ export function SimpleForm(): JSX.Element {
 export default {
   title: 'Recipes/Simple Form',
   component: SimpleForm,
-  parameters: {
-    viewMode: 'story',
-    options: {
-      showPanel: false,
-    },
-    previewTabs: {
-      'storybook/docs/panel': {
-        hidden: true,
-      },
-    },
-    // Running visual tests of recipes can give false negatives because this is not exactly a story
-    // E.g. the code can change, or codesandbox might be in the loading state
-    chromatic: { disableSnapshot: true },
-  },
+  parameters,
 } as Meta;

@@ -1,5 +1,115 @@
 # @razorpay/blade
 
+## 5.1.5
+
+### Patch Changes
+
+- 756f4b4: feat: allow masked otp input
+
+`OTPInput` now supports an `isMasked` prop
+
+## 5.1.4
+
+### Patch Changes
+
+- 71f274e: fix(Checkbox): allow Checkbox to accept `childern` prop of type `React.ReactNode`
+
+## 5.1.3
+
+### Patch Changes
+
+- af9bdc9: fix(Alert): responsive design alignment
+
+## 5.1.2
+
+### Patch Changes
+
+- bd0b675: chore(blade): added blade component data attributes
+
+## 5.1.1
+
+### Patch Changes
+
+- 5a6b980: feat: add Mail icon
+
+## 5.1.0
+
+### Minor Changes
+
+- d4b981e: fix: show `Spinner` on `TextInput` when `isLoading=true`
+  - Adds spinner when `isLoading: true` is passed to `TextInput`. This was a long pending TODO
+  - Update Spinner sizes after the design was updated \* This doesn't need any code mod since there are 9 instances of spinner being used with default variant i.e medium
+
+## 5.0.1
+
+### Patch Changes
+
+- 96cf25f: feat: add new icons (lock, settings, file-text, users, slash)
+
+## 5.0.0
+
+### Major Changes
+
+- fc2a3bf:
+
+  > **Warning**
+  >
+  > This is a breaking change for `Alert` component. The UI is updated to match the designs.
+
+  feat(Alert): design revamp
+
+  - `Alert` is updated to match the new designs
+    - Bordered variant is now more compact and smaller in size
+  - A new `neutral` intent is added. This is the new default if you haven't passed any `intent` explicitly.
+
+  ### Migration guide for consumers
+
+  - Earlier the default `intent` was `information`, this is now updated to `neutral`. If you were earlier using alerts without explicitly passing `intent` you should update that to continue using `information` as intent:
+
+  ```diff
+  <Alert
+  + intent="information"
+  />
+  ```
+
+### Patch Changes
+
+- bb170bb: fix: set input type='text' when type='search' passed
+
+## 4.0.0
+
+### Major Changes
+
+- d747de4: chore: Badge design changes
+
+  - Adds a new small size
+  - Bumps existing small & medium to medium & large respectively
+  - Horizontal padding changes in the large size
+
+  ### Migration Guide for Badge Consumers
+
+  1. For existing `small` size badge, bump the size from `small` to `medium`
+
+  ```diff
+  - <Badge size='small'>...</Badge>
+  + <Badge size='medium'>...</Badge>
+  ```
+
+  2. For existing `medium` size badge, bump the size from `medium` to `large`
+
+  ```diff
+  - <Badge size='medium'>...</Badge>
+  + <Badge size='large'>...</Badge>
+  ```
+
+  3. For existing badge with no `size` specified, add `size='large'` since default size is `medium`
+     > Note: The horizontal padding is changed from `8px` to `12px` for the new `large` size which makes it visually bigger than the existing `medium` size
+
+  ```diff
+  - <Badge>...</Badge>
+  + <Badge size='large'>...</Badge>
+  ```
+
 ## 3.8.0
 
 ### Minor Changes
