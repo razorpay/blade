@@ -1,6 +1,12 @@
 import React from 'react';
-import { CardFooter } from './CardFooter';
-import { CardHeader } from './CardHeader';
+import { CardFooter, CardFooterLeading, CardFooterTrailing } from './CardFooter';
+import {
+  CardHeader,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+} from './CardHeader';
 import { CardSurface } from './CardSurface';
 import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
@@ -43,5 +49,9 @@ const CardBody = ({ children }: CardBodyProps): React.ReactElement => {
 Card.Body = CardBody;
 Card.Footer = CardFooter;
 Card.Header = CardHeader;
+Card.HeaderLeading = CardHeaderLeading;
+Card.HeaderTrailing = CardHeaderTrailing;
+Card.FooterLeading = CardFooterLeading;
+Card.FooterTrailing = CardFooterTrailing;
 
-export { Card };
+export { Card, CardHeaderIcon, CardHeaderCounter };
