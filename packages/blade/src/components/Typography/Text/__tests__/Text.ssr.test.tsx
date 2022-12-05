@@ -1,6 +1,3 @@
-/**
- * @jest-environment node
- */
 import React from 'react';
 import { Text } from '../';
 import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';

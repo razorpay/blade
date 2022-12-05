@@ -1,8 +1,7 @@
 const ignores = ['/node_modules/'];
 
-module.exports = {
+const baseConfig = {
   testPathIgnorePatterns: [...ignores, 'native.test'],
-  collectCoverageFrom: ['./src/**/*.web.{ts,tsx}', './src/**/*.ssr.{ts,tsx}'],
   coverageThreshold: {
     global: {
       branches: 75,
@@ -24,4 +23,24 @@ module.exports = {
     '^\\~utils': '<rootDir>/src/utils',
     '^\\~tokens/(.*)': '<rootDir>/src/tokens/$1',
   },
+};
+
+module.exports = {
+  projects: [
+    {
+      displayName: 'SSR Test',
+      ...baseConfig,
+      testEnvironment: 'node',
+      testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'web.test'],
+      collectCoverageFrom: ['./src/**/*.ssr.{ts,tsx}'],
+      testMatch: ['**/*.ssr.test.{ts,tsx}'],
+    },
+    {
+      displayName: 'CSR Test',
+      ...baseConfig,
+      testEnvironment: 'jsdom',
+      testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'ssr.test'],
+      collectCoverageFrom: ['./src/**/*.web.{ts,tsx}'],
+    },
+  ],
 };
