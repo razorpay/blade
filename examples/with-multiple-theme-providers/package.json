@@ -1,5 +1,5 @@
 {
-  "name": "with-styled-components",
+  "name": "with-multiple-theme-providers",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
