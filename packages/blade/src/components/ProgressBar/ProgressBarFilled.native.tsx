@@ -34,7 +34,8 @@ const ProgressBarFilled = ({
   const animatedOpacity = useSharedValue(1);
   const { theme } = useTheme();
   const easing = getIn(theme.motion, motionEasing);
-  const pulseDuration = castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDuration)));
+  const pulseDuration =
+    castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDuration))) / 2; // since we animate it with 2 steps in a sequence
   useEffect(() => {
     const pulsatingAnimationTimingConfig = {
       duration: pulseDuration,
@@ -45,7 +46,6 @@ const ProgressBarFilled = ({
         castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDelay))),
         withRepeat(
           withSequence(
-            withTiming(1, pulsatingAnimationTimingConfig),
             withTiming(0.65, pulsatingAnimationTimingConfig),
             withTiming(1, pulsatingAnimationTimingConfig),
           ),
