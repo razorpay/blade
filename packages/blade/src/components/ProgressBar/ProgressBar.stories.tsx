@@ -60,7 +60,7 @@ export default {
 } as Meta<ProgressBarProps>;
 
 const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...args }) => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(30);
   useEffect(() => {
     const interval = setInterval(() => {
       if (value >= 100) {
@@ -68,7 +68,7 @@ const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...a
       } else {
         setValue(value + 30);
       }
-    }, 2000);
+    }, 3000);
 
     return () => {
       clearInterval(interval);
