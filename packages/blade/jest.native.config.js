@@ -2,7 +2,7 @@ const ignores = ['/node_modules/'];
 
 module.exports = {
   preset: 'react-native',
-  testPathIgnorePatterns: [...ignores, 'web.test'],
+  testPathIgnorePatterns: [...ignores, 'web.test', 'ssr.test'],
   collectCoverageFrom: ['./src/**/*.native.{ts,tsx}'],
   coverageThreshold: {
     global: {
