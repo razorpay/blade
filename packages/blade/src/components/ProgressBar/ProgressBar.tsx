@@ -49,7 +49,9 @@ const ProgressBar = ({
 
   const { theme } = useTheme();
   const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];
-  const filledBackgroundColor = theme.colors.brand.primary[500];
+  const filledBackgroundColor = intent
+    ? theme.colors.feedback.background[intent].highContrast
+    : theme.colors.brand.primary[500];
   const hasLabel = label && label.trim()?.length > 0;
 
   return (
