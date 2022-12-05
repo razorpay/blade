@@ -16,6 +16,7 @@ type ProgressBarProps = {
   showPercentage?: boolean;
   size?: 'small' | 'medium';
   value?: number;
+  showWaitingAnimation?: boolean;
 };
 
 type ProgressBarUnfilledProps = {
@@ -44,6 +45,7 @@ const ProgressBar = ({
   showPercentage = false,
   size = 'small',
   value = 0,
+  showWaitingAnimation = true,
 }: ProgressBarProps): ReactElement => {
   console.log(accessibilityLabel, intent, isIndeterminate);
 
@@ -78,8 +80,11 @@ const ProgressBar = ({
           <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
             progress={getProgress(value)}
-            fillMotionDuration="duration.quick"
-            fillMotionEasing="easing.standard.revealing"
+            fillMotionDuration="duration.xgentle"
+            pulseMotionDuration="duration.2xgentle"
+            pulseMotionDelay="delay.long"
+            motionEasing="easing.standard.revealing"
+            showWaitingAnimation={showWaitingAnimation}
           />
         </ProgressBarUnfilled>
       </Box>
