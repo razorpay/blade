@@ -8,6 +8,7 @@ A Progress bar is generally a branded element that indicates progress of process
   - [Sample Usage](#sample-usage)
   - [Accessibility](#accessibility)
 - [Handling pulsating animation](#handling-pulsating-animation)
+  - [Conclusion](#conclusion)
 - [Open Questions](#open-questions)
 - [References](#references)
 
@@ -21,13 +22,14 @@ A Progress bar is generally a branded element that indicates progress of process
 | Prop | Type | Default | Description | Required |
 |---|---|---|---|---|
 | label | `string` | `undefined` | The label to be rendered with the progress bar. |  |
-| value | number | `undefined` | The current progress value for the progress bar. The progress bar would be in an indeterminate state if `value` is not passed. |  |
+| value | number | `0` | The current progress value for the progress bar. |  |
 | contrast | `low`, `high` | `low` | The contrast of the progress bar to be rendered. |  |
 | intent | `positive`,`negative`, `notice`, `information`, `neutral` | `undefined` | The intent of the progress bar to be rendered. | |
-| size | `large`, `small` | `small` | The size of the progress bar to be rendered. |  |
-| accessibilityLabel | `string` | `"Loading"` | The accessibility label (aria-label) for the progress bar. |
-| isIndeterminate | `boolean` | `false` | Control whether the progress bar is indeterminate or not. The progress bar would be in an indeterminate state if `progress` is not passed.  |
+| size | `small`, `medium` | `small` | The size of the progress bar to be rendered. |  |
+| accessibilityLabel | `string` | `undefined` | The accessibility label (aria-label) for the progress bar. |
+| isIndeterminate | `boolean` | `false` | Control whether the progress bar is indeterminate or not. |
 | showPercentage | `boolean` | `true` | Control whether the progress bar should show the current progress percentage or not. Percentage would be automatically hidden when the progress bar is in an indeterminate state.  |
+| showWaitingAnimation | `boolean` | `true` | Control whether the progress bar should show the secondary pulsating animation that is triggered after `3000ms` by default. For static progress bar, its recommended to turn this off.  |
 
 ### Sample Usage
 ```jsx
@@ -45,9 +47,10 @@ import { ProgressBar } from '@razorpay/components';
 ### Accessibility
 - We'll accept a prop `accessibilityLabel` which will be passed on as `aria-label` for web & `accessibilityLabel` for native to aide screen readers
 - By default the value of `accessibilityLabel` will be the same as `label` prop with a fallback to `"Loading"` and can be overwritten with something more meaningful by the consumer.
-- We will set `aria-role` as `progressbar`
-- We will pass the value of `value` prop as `aria-valuenow`
-- Pass `aria-busy` as `true`
+- We will set `aria-role` as `progressbar` (`accessibilityRole` for React Native)
+- We will pass the value of `value` prop as `aria-valuenow` (`accessibilityValue` for React Native)
+- Pass `aria-busy` as `true` (`accessibilityState` for React Native)
+
 
 ## Handling pulsating animation
 After `3000ms` the progress bar would start pulsating to indicate to the user that the process is slow but isn't stuck.
@@ -86,9 +89,11 @@ After `3000ms` the progress bar would start pulsating to indicate to the user th
 - Cons:
    - Could be slightly misleading since `showPulsatingAnimation={true}` will only show the animation after a default delay of `3000ms`. By its name, a consumer might confuse it to show the pulsating animation immediately and report this as a bug.
 
+### Conclusion
+We'll expose a `showWaitingAnimation` prop that will allow the consumers to disable the secondary pulsating animation
 ## Open Questions
-- Why not medium instead of large progress bar?
-- What should be the default progress bar size?
+- ~Why not medium instead of large progress bar?~ We'll be using `small` & `medium`
+- ~What should be the default progress bar size?~ `small` will be the default size
 - Animation for indeterminate state is pending from design
 - Should we have an `animationSpeed` with values `slow`, `medium`, `fast` for indeterminate progress bars? [Ref](https://www.figma.com/proto/33zLifLnf2XXmU5iakKq1H/Address-serviceability-loader?page-id=60%3A14227&node-id=93%3A19491&scaling=min-zoom&starting-point-node-id=93%3A19205&show-proto-sidebar=1)
 
