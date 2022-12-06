@@ -9,6 +9,7 @@ A Progress bar is generally a branded element that indicates progress of process
   - [Accessibility](#accessibility)
 - [Handling pulsating animation](#handling-pulsating-animation)
   - [Conclusion](#conclusion)
+- [Meter \& Progress Variants](#meter--progress-variants)
 - [Open Questions](#open-questions)
 - [References](#references)
 
@@ -23,19 +24,21 @@ A Progress bar is generally a branded element that indicates progress of process
 |---|---|---|---|---|
 | label | `string` | `undefined` | The label to be rendered with the progress bar. |  |
 | value | number | `0` | The current progress value for the progress bar. |  |
+| variant | `progress`, `meter` | `progress` | Controls the variant to be rendered. `progress` variant will be rendered as a dynamic progress bar whereas `meter` will be a static meter displaying the current value as meter component.   |
 | contrast | `low`, `high` | `low` | The contrast of the progress bar to be rendered. |  |
 | intent | `positive`,`negative`, `notice`, `information`, `neutral` | `undefined` | The intent of the progress bar to be rendered. | |
 | size | `small`, `medium` | `small` | The size of the progress bar to be rendered. |  |
 | accessibilityLabel | `string` | `undefined` | The accessibility label (aria-label) for the progress bar. |
-| isIndeterminate | `boolean` | `false` | Control whether the progress bar is indeterminate or not. The progress bar will remain in an indeterminate state and respect the `isIndeterminate` prop if `isIndeterminate` is passed along with `value`.  |
+| isIndeterminate | `boolean` | `false` | Control whether the progress bar is indeterminate or not. The progress bar will remain in an indeterminate state and respect the `isIndeterminate` prop if `isIndeterminate` is passed along with `value`. This prop will be ignored if `variant` is `meter`  |
 | showPercentage | `boolean` | `true` | Control whether the progress bar should show the current progress percentage or not. Percentage would be automatically hidden when the progress bar is in an indeterminate state.  |
-| showWaitingAnimation | `boolean` | `true` | Control whether the progress bar should show the secondary pulsating animation that is triggered after `3000ms` by default. For static progress bar, its recommended to turn this off.  |
+
 
 ### Sample Usage
 ```jsx
 import { ProgressBar } from '@razorpay/components';
 
 <ProgressBar 
+  variant='progress'
   label='Loading' 
   value={20} 
   contrast='low'
@@ -47,9 +50,12 @@ import { ProgressBar } from '@razorpay/components';
 ### Accessibility
 - We'll accept a prop `accessibilityLabel` which will be passed on as `aria-label` for web & `accessibilityLabel` for native to aide screen readers
 - By default the value of `accessibilityLabel` will be the same as `label` prop.
-- We will set `aria-role` as `progressbar` (`accessibilityRole` for React Native)
+- We will set `aria-role` as `progressbar` for `progress` variant (`accessibilityRole` for React Native)
+- We will set `aria-role` as `meter` for `meter` variant (`accessibilityRole` for React Native)
 - We will pass the value of `value` prop as `aria-valuenow` (`accessibilityValue` for React Native)
 - Pass `aria-busy` as `true` (`accessibilityState` for React Native)
+- We will set `aria-valuemin` as 0
+- We will set `aria-valuemax` as 100
 
 
 ## Handling pulsating animation
@@ -90,12 +96,25 @@ After `3000ms` the progress bar would start pulsating to indicate to the user th
    - Could be slightly misleading since `showPulsatingAnimation={true}` will only show the animation after a default delay of `3000ms`. By its name, a consumer might confuse it to show the pulsating animation immediately and report this as a bug.
 
 ### Conclusion
-We'll expose a `showWaitingAnimation` prop that will allow the consumers to disable the secondary pulsating animation
+- We will pass a prop `variant` that accepts `progress` or `meter` as values.
+- A `meter` variant will not have the secondary animation
+- Refer the next section about meter component for more details
+
+## Meter & Progress Variants
+- After discussing the use-case of a "static" progress bar, we realized that this is closer to a `meter` component than a `progress` component
+- So we'll expose a prop `variant` which can be `progress` or `meter`
+- `progress` will have primary fill animation as well as secondary pulsating animation
+- `progress` will have accessibility attributes as per the [`progressbar` role](https://w3c.github.io/aria/#progressbar)
+- `meter` will have only the primary fill animation
+- `meter` will have accessibility attributes as per the [`meter` role](https://w3c.github.io/aria/#meter)
+
 ## Open Questions
 - ~Why not medium instead of large progress bar?~ We'll be using `small` & `medium`
 - ~What should be the default progress bar size?~ `small` will be the default size
 - Animation for indeterminate state is pending from design
 - Should we have an `animationSpeed` with values `slow`, `medium`, `fast` for indeterminate progress bars? [Ref](https://www.figma.com/proto/33zLifLnf2XXmU5iakKq1H/Address-serviceability-loader?page-id=60%3A14227&node-id=93%3A19491&scaling=min-zoom&starting-point-node-id=93%3A19205&show-proto-sidebar=1)
+
+
 
 ## References
 - [Reshaped](https://reshaped.so/content/docs/components/progress)
