@@ -28,7 +28,7 @@ const ProgressBarFilled = ({
   motionEasing,
   pulseMotionDuration,
   pulseMotionDelay,
-  showWaitingAnimation,
+  variant,
 }: ProgressBarFilledProps): React.ReactElement => {
   const animatedWidth = useSharedValue(progress);
   const animatedOpacity = useSharedValue(1);
@@ -41,7 +41,7 @@ const ProgressBarFilled = ({
       duration: pulseDuration,
       easing,
     };
-    if (showWaitingAnimation) {
+    if (variant === 'progress') {
       animatedOpacity.value = withDelay(
         castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDelay))),
         withRepeat(
@@ -57,7 +57,7 @@ const ProgressBarFilled = ({
     return () => {
       cancelAnimation(animatedOpacity);
     };
-  }, [animatedOpacity, easing, pulseDuration, pulseMotionDelay, theme.motion]);
+  }, [animatedOpacity, easing, pulseDuration, pulseMotionDelay, theme.motion, variant]);
 
   useEffect(() => {
     const fillDuration = castNativeType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));

@@ -15,7 +15,7 @@ const pulse = keyframes`
   }
 `;
 
-const ProgressBarFilledWithPrimaryAnimation = styled(Box)<ProgressBarFilledProps>(
+const ProgressBarFilledWithFillAnimation = styled(Box)<ProgressBarFilledProps>(
   ({ backgroundColor, theme, progress, fillMotionDuration, motionEasing }) => ({
     backgroundColor,
     height: '100%',
@@ -26,11 +26,11 @@ const ProgressBarFilledWithPrimaryAnimation = styled(Box)<ProgressBarFilledProps
   }),
 );
 
-const ProgressBarFilledWithSecondaryAnimation = styled(
-  ProgressBarFilledWithPrimaryAnimation,
+const ProgressBarFilledWithPulseAnimation = styled(
+  ProgressBarFilledWithFillAnimation,
 )<ProgressBarFilledProps>(
-  ({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, showWaitingAnimation }) =>
-    showWaitingAnimation
+  ({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, variant }) =>
+    variant === 'progress'
       ? css`
           animation: ${pulse}
             ${castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDuration)))}
@@ -40,4 +40,4 @@ const ProgressBarFilledWithSecondaryAnimation = styled(
       : '',
 );
 
-export { ProgressBarFilledWithSecondaryAnimation as ProgressBarFilled };
+export { ProgressBarFilledWithPulseAnimation as ProgressBarFilled };

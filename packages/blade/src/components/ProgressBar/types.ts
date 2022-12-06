@@ -1,3 +1,4 @@
+import type { ProgressBarVariant } from './ProgressBar';
 import type { DelayString, DurationString, EasingString } from '~tokens/global/motion';
 
 type ProgressBarFilledProps = {
@@ -7,7 +8,7 @@ type ProgressBarFilledProps = {
   pulseMotionDuration: DurationString;
   pulseMotionDelay: DelayString;
   motionEasing: EasingString;
-  showWaitingAnimation: boolean;
+  variant: ProgressBarVariant;
 };
 
 export { ProgressBarFilledProps };

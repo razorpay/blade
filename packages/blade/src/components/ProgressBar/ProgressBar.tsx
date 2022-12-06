@@ -7,17 +7,37 @@ import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { makeSize } from '~utils';
 import { FormLabel } from '~components/Form';
 
-type ProgressBarProps = {
+type ProgressBarCommonProps = {
   accessibilityLabel?: string;
   contrast?: ColorContrastTypes;
   intent?: Feedback;
-  isIndeterminate?: boolean;
   label?: string;
   showPercentage?: boolean;
   size?: 'small' | 'medium';
   value?: number;
-  showWaitingAnimation?: boolean;
 };
+
+type ProgressBarVariant = 'progress' | 'meter';
+
+type ProgressBarProgressProps = ProgressBarCommonProps & {
+  variant?: Extract<ProgressBarVariant, 'progress'>;
+  isIndeterminate?: boolean;
+};
+
+type ProgressBarMeterProps = ProgressBarCommonProps & {
+  variant?: Extract<ProgressBarVariant, 'meter'>;
+  isIndeterminate?: undefined;
+};
+
+type ProgressBarProps<T> = T extends {
+  variant: infer Variant;
+}
+  ? Variant extends 'progress'
+    ? ProgressBarProgressProps
+    : Variant extends 'meter'
+    ? ProgressBarMeterProps
+    : T
+  : T;
 
 type ProgressBarUnfilledProps = {
   backgroundColor: string;
@@ -31,12 +51,12 @@ const getProgress = (value: number): number => {
   return Math.floor(Math.min(100, Math.max(0, value)));
 };
 
-const progressBarHeight: Record<NonNullable<ProgressBarProps['size']>, 2 | 4> = {
+const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 | 4> = {
   small: 2,
   medium: 4,
 };
 
-const ProgressBar = ({
+const ProgressBar = <T extends { variant: ProgressBarVariant }>({
   accessibilityLabel,
   contrast = 'low',
   intent,
@@ -45,9 +65,12 @@ const ProgressBar = ({
   showPercentage = false,
   size = 'small',
   value = 0,
-  showWaitingAnimation = true,
-}: ProgressBarProps): ReactElement => {
-  console.log(accessibilityLabel, intent, isIndeterminate);
+  variant = 'progress',
+}: ProgressBarProps<T>): ReactElement => {
+  console.log(accessibilityLabel, isIndeterminate);
+  if (variant === 'meter' && isIndeterminate) {
+    console.warn(`[Blade: BaseLink]: `);
+  }
 
   const { theme } = useTheme();
   const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];
@@ -84,7 +107,7 @@ const ProgressBar = ({
             pulseMotionDuration="duration.2xgentle"
             pulseMotionDelay="delay.long"
             motionEasing="easing.standard.revealing"
-            showWaitingAnimation={showWaitingAnimation}
+            variant={variant}
           />
         </ProgressBarUnfilled>
       </Box>
@@ -92,4 +115,4 @@ const ProgressBar = ({
   );
 };
 
-export { ProgressBar, ProgressBarProps };
+export { ProgressBar, ProgressBarProps, ProgressBarVariant };
