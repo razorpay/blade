@@ -361,11 +361,11 @@ describe('<TextInput />', () => {
     expect(input).toHaveProp('textContentType', 'none');
   });
 
-  it(`type='numeric' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
+  it(`type='number' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
     const placeholder = '2500';
 
     const { getByPlaceholderText } = renderWithTheme(
-      <TextInput label="Enter Monthly Income" placeholder={placeholder} type="numeric" />,
+      <TextInput label="Enter Monthly Income" placeholder={placeholder} type="number" />,
     );
 
     const input = getByPlaceholderText(placeholder);
