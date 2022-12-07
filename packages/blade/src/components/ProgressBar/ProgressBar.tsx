@@ -105,7 +105,7 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
           <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
             progress={getProgress(value)}
-            fillMotionDuration="duration.xgentle"
+            fillMotionDuration="duration.2xgentle"
             pulseMotionDuration="duration.2xgentle"
             pulseMotionDelay="delay.long"
             motionEasing="easing.standard.revealing"
