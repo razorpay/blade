@@ -5,7 +5,7 @@ import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabel, FormHint } from '~components/Form';
 import Box from '~components/Box';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
-import { useBreakpoint } from '~utils';
+import { getPlatformType, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 type CheckboxGroupProps = {
@@ -110,6 +110,7 @@ const CheckboxGroup = ({
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
+  const isReactNative = getPlatformType() === 'react-native';
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const gap = checkboxSizes.group.gap[size][matchedDeviceType];
   const childCount = React.Children.count(children);
@@ -128,7 +129,7 @@ const CheckboxGroup = ({
           id={ids.labelId}
           accessibilityText={accessibilityText}
           spacingRight={labelPosition === 'left' ? 'spacing.5' : 'spacing.0'}
-          spacingBottom={labelPosition === 'top' ? 'spacing.2' : 'spacing.0'}
+          spacingBottom={labelPosition === 'top' || isReactNative ? 'spacing.2' : 'spacing.0'}
         >
           {label}
         </FormLabel>

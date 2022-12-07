@@ -520,7 +520,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
                 position={labelPosition}
                 htmlFor={inputId}
                 spacingRight={labelPosition === 'left' ? 'spacing.5' : 'spacing.0'}
-                spacingBottom={labelPosition === 'top' ? 'spacing.2' : 'spacing.0'}
+                spacingBottom={labelPosition === 'top' || isReactNative ? 'spacing.2' : 'spacing.0'}
               >
                 {label}
               </FormLabel>

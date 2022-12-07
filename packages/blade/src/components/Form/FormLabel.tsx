@@ -129,7 +129,7 @@ const FormLabel = ({
   // What harm can it do?
   if (isReactNative) {
     return (
-      <Box marginRight="spacing.5" marginBottom="spacing.2">
+      <Box marginRight={spacingRight} marginBottom={spacingBottom}>
         {textNode}
       </Box>
     );
