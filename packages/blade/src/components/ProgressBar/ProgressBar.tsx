@@ -87,12 +87,14 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
         justifyContent={hasLabel ? 'space-between' : 'flex-end'}
       >
         {hasLabel ? (
-          <FormLabel as="label" htmlFor="progressbar" contrast={contrast}>
+          <FormLabel as="label" htmlFor="progressbar" contrast={contrast} spacingBottom="spacing.2">
             {label}
           </FormLabel>
         ) : null}
         {showPercentage ? (
-          <FormLabel as="span" contrast={contrast}>{`${getProgress(value)}%`}</FormLabel>
+          <FormLabel as="span" contrast={contrast} spacingBottom="spacing.2">{`${getProgress(
+            value,
+          )}%`}</FormLabel>
         ) : null}
       </Box>
       <Box id="progressbar">
