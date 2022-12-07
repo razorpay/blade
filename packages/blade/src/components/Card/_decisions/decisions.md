@@ -78,7 +78,7 @@ Only one of the component can be used at a time:
 - Badge
 - Text
 - Link
-- IconButton - tertiary
+- IconButton - only tertiary variant
 
 Other recommendations from design side: 
 
@@ -149,14 +149,14 @@ Sample usage:
 | ---------------- | ----------------- | ----------- | -------------------------------------------------------- | -------- |
 | `title`          | `string`          | `undefined` | Title of the Card                                        | ✅        |
 | `subtitle`       | `string`          | `undefined` | Subtitle of the Card                                     |          |
-| `prefix`    | `React.ReactNode` | `undefined` | Prefix element placed before title text (eg: Icon)       |          |
-| `suffix`    | `React.ReactNode` | `undefined` | Suffix element placed after title text (eg: Counter)     |          |
+| `prefix`    | `React.ReactNode` | `undefined` | Prefix element placed before title text (restricted to: Icon)       |          |
+| `suffix`    | `React.ReactNode` | `undefined` | Suffix element placed after title text (restricted to: Counter)     |          |
 
 ### `Card.HeaderTrailing` API
 
 | Prop             | Type              | Default     | Description                                              | Required |
 | ---------------- | ----------------- | ----------- | -------------------------------------------------------- | -------- |
-| `visual` | `React.ReactNode` | `undefined` | Trailing visual element placed on right side of the card |          |
+| `visual` | `React.ReactNode` | `undefined` | Trailing visual element placed on right side of the card (restricted to: Badge, Text, Link, IconButton) |          |
 
 ### `Card.FooterLeading` API
 
@@ -175,6 +175,12 @@ Sample usage:
 type Action = {
   onClick: () => void;
   text: string;
+  type?: 'button' | 'reset' | 'submit';
+  accessibilityLabel: stirng;
+  isLoading: boolean;
+  isDisabled: boolean;
+  icon: React.ReactNode;
+  iconPosition: "left" | "right"
 }
 ```
 
