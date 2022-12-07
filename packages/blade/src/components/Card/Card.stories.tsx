@@ -60,7 +60,7 @@ const CardTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
 
 export const CardExample = CardTemplate.bind({});
 CardExample.args = {
-  backgroundLevel: 2,
+  surfaceLevel: 2,
 };
 
 const CardHeaderTemplate: ComponentStory<typeof Card> = ({ ...args }) => {

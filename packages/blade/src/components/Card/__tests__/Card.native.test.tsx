@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
-import { Card } from '../Card';
+import { Card, CardHeaderIcon, CardHeaderCounter } from '../Card';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
-import { Counter } from '~components/Counter';
 import { Text } from '~components/Typography';
+import { Badge } from '~components/Badge';
 
 describe('<Card />', () => {
   it('should render a plain Card', () => {
     const { toJSON } = renderWithTheme(
-      <Card backgroundLevel={2}>
+      <Card surfaceLevel={2}>
         <Card.Body>
           <Text>Plain Card</Text>
         </Card.Body>
@@ -22,13 +22,16 @@ describe('<Card />', () => {
     const cardTitle = 'Card Header';
     const cardSubtitle = 'Card subtitle';
     const { getByText, toJSON } = renderWithTheme(
-      <Card backgroundLevel={2}>
-        <Card.Header
-          title={cardTitle}
-          subtitle={cardSubtitle}
-          titlePrefix={<InfoIcon color="surface.text.normal.lowContrast" size="xlarge" />}
-          titleSuffix={<Counter value={12} />}
-        />
+      <Card surfaceLevel={2}>
+        <Card.Header>
+          <Card.HeaderLeading
+            title={cardTitle}
+            subtitle={cardSubtitle}
+            prefix={<CardHeaderIcon icon={InfoIcon} />}
+            suffix={<CardHeaderCounter value={12} />}
+          />
+          <Card.HeaderTrailing visual={<Badge>NEW</Badge>} />
+        </Card.Header>
         <Card.Body>
           <Text>Plain Card</Text>
         </Card.Body>
@@ -46,24 +49,25 @@ describe('<Card />', () => {
     const primaryFn = jest.fn();
     const secondaryFn = jest.fn();
     const { getByText, toJSON } = renderWithTheme(
-      <Card backgroundLevel={2}>
+      <Card surfaceLevel={2}>
         <Card.Body>
           <Text>Plain Card</Text>
         </Card.Body>
-        <Card.Footer
-          title={footerTitle}
-          subtitle={footerSubtitle}
-          actions={{
-            primary: {
-              text: 'Save',
-              onClick: primaryFn,
-            },
-            secondary: {
-              text: 'Delete',
-              onClick: secondaryFn,
-            },
-          }}
-        />
+        <Card.Footer>
+          <Card.FooterLeading title={footerTitle} subtitle={footerSubtitle} />
+          <Card.FooterTrailing
+            actions={{
+              primary: {
+                text: 'Save',
+                onClick: primaryFn,
+              },
+              secondary: {
+                text: 'Delete',
+                onClick: secondaryFn,
+              },
+            }}
+          />
+        </Card.Footer>
       </Card>,
     );
 

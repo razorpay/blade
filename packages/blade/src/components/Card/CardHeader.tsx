@@ -60,13 +60,13 @@ const CardHeaderLeading = ({
 }: CardHeaderLeadingProps): React.ReactElement => {
   if (!isOfComponentId(prefix, 'CardHeaderIcon')) {
     throw new Error(
-      '[Blade CardHeaderLeading]: Only Card.Header.Icon component is accepted in prefix',
+      '[Blade CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix',
     );
   }
 
   if (!isOfComponentId(suffix, 'CardHeaderCounter')) {
     throw new Error(
-      '[Blade CardHeaderLeading]: Only Card.Header.Counter component is accepted in suffix',
+      '[Blade CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in suffix',
     );
   }
 

@@ -597,13 +597,17 @@ exports[`<Card /> should render a plain Card 1`] = `
   padding-bottom: 20px;
   padding-left: 24px;
   padding-right: 24px;
-  background: hsla(0,0%,100%,1);
   border-radius: 4px;
+}
+
+.c1 {
+  box-shadow: 0px 1px 2px 0px hsla(216,44%,23%,0.18),0px 0px 1px 0px hsla(216,44%,23%,0.18);
+  background-color: hsla(220,27%,98%,1);
 }
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
       class=""
