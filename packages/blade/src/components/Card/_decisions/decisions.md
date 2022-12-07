@@ -189,6 +189,32 @@ type Action = {
 }
 ```
 
+## Card Sub Components
+
+As you might have noticed, in the Card Header we have few components like `CardHeaderIcon`, `CardHeaderCounter`, these components are to be used with the prefix, suffix & visual prop of the Header. 
+
+We decided to expose these components instead of just letting users pass any JSX element because we want to control few aspects of the API while still keeping it open for future extension. 
+
+For example: 
+
+In the Card Icon, if we just let users pass any Icon they will have to do this: 
+
+```jsx
+<Card.Header prefix={<InfoIcon size="xl" color="action.icon.primary.default" />} />
+```
+
+With this, users will have to know that icon size have to be `xl` & color have to be the exact color token from design, this is inconvinient & error prone. 
+
+To resolve this we will expose a different component which will internally add the neccesary props & render it: 
+
+```jsx
+import { Card, CardHeaderIcon } from "@razorpay/blade/components";
+
+<Card.Header prefix={<CardHeaderIcon icon={InfoIcon} />}>
+```
+
+Note: that in the `prefix`, `suffix` & `visual` we will also restrict these set of components, so that users can't just add any random JSX element & potentially break the layout. 
+
 ## Accessibility 
 
 For Cards there won't be any aria related logic needed to make it accessible. Though important things to consider while building cards are: 
