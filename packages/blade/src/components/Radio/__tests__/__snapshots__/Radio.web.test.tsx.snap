@@ -191,7 +191,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   >
     <span
       id="radio-group-3-label"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      style="width: auto; flex-shrink: 0; word-break: break-all;"
     >
       <div
         class="c1"
@@ -471,7 +471,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   >
     <span
       id="radio-group-10-label"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      style="width: auto; flex-shrink: 0; word-break: break-all;"
     >
       <div
         class="c1"

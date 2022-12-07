@@ -2,10 +2,11 @@ import React from 'react';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType, makeSpace, useBreakpoint } from '~utils';
+import { getIn, getPlatformType, makeSpace, useBreakpoint } from '~utils';
 import Box from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
+import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type CommonProps = {
   as: 'span' | 'label';
@@ -15,6 +16,14 @@ type CommonProps = {
   children: string;
   id?: string;
   contrast?: ColorContrastTypes;
+  /**
+   * Specifies the right spacing for the label
+   */
+  spacingRight?: DotNotationSpacingStringToken;
+  /**
+   * Specifies the bottom spacing for the label
+   */
+  spacingBottom?: DotNotationSpacingStringToken;
 };
 
 type LabelProps = CommonProps & {
@@ -53,6 +62,8 @@ const FormLabel = ({
   id,
   htmlFor,
   contrast = 'low',
+  spacingRight = 'spacing.0',
+  spacingBottom = 'spacing.0',
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -134,12 +145,12 @@ const FormLabel = ({
       style={{
         width,
         flexShrink: 0,
-        marginRight: makeSpace(theme.spacing[5]),
+        marginRight: makeSpace(getIn(theme.spacing, spacingRight)),
         wordBreak: 'break-all',
       }}
       id={id}
     >
-      <Box marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.2'}>{textNode}</Box>
+      <Box marginBottom={spacingBottom}>{textNode}</Box>
     </Component>
   );
 };
