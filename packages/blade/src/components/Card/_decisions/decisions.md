@@ -8,8 +8,13 @@ Cards are used to group similar concepts and tasks together to make easier for m
 - [Card API Constraints](#card-api-constraints)
 - [API](#api)
   - [`Card` API](#card-api)
-  - [`Card.Header` API](#cardheader-api)
-  - [`Card.Footer` API](#cardfooter-api)
+  - [`Card.HeaderLeading` API](#cardheaderleading-api)
+  - [`Card.HeaderTrailing` API](#cardheadertrailing-api)
+  - [`Card.FooterLeading` API](#cardfooterleading-api)
+  - [`Card.FooterTrailing` API](#cardfootertrailing-api)
+- [Accessibility](#accessibility)
+- [Flexiblity vs Constraints Rabbit hole](#flexiblity-vs-constraints-rabbit-hole)
+  - [Alternative APIs](#alternative-apis)
 - [Open Questions](#open-questions)
 
 ## Design
