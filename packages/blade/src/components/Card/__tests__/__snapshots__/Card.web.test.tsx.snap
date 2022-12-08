@@ -517,11 +517,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
   width: fit-content;
 }
 
-.c1 {
-  box-shadow: 0px 1px 2px 0px hsla(216,44%,23%,0.18),0px 0px 1px 0px hsla(216,44%,23%,0.18);
-  background-color: hsla(0,0%,100%,1);
-}
-
 .c14 {
   background-color: hsla(216,44%,23%,0.09);
   border-radius: 9999px;
@@ -536,6 +531,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c1 {
+  box-shadow: 0px 1px 2px 0px hsla(216,44%,23%,0.18),0px 0px 1px 0px hsla(216,44%,23%,0.18);
+  background-color: hsla(0,0%,100%,1);
 }
 
 <div>
