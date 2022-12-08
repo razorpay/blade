@@ -2,11 +2,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react';
 import { Card, CardHeaderIcon, CardHeaderCounter } from '../Card';
+import { CardHeaderBadge } from '../CardHeader';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import { Text } from '~components/Typography';
-import { Badge } from '~components/Badge';
 
 describe('<Card />', () => {
   it('should render a plain Card', () => {
@@ -30,7 +30,7 @@ describe('<Card />', () => {
             prefix={<CardHeaderIcon icon={InfoIcon} />}
             suffix={<CardHeaderCounter value={12} />}
           />
-          <Card.HeaderTrailing visual={<Badge>NEW</Badge>} />
+          <Card.HeaderTrailing visual={<CardHeaderBadge>NEW</CardHeaderBadge>} />
         </Card.Header>
         <Card.Body>
           <Text>Plain Card</Text>
@@ -100,7 +100,7 @@ describe('<Card />', () => {
             prefix={<CardHeaderIcon icon={InfoIcon} />}
             suffix={<CardHeaderCounter value={12} />}
           />
-          <Card.HeaderTrailing visual={<Badge>NEW</Badge>} />
+          <Card.HeaderTrailing visual={<CardHeaderBadge>NEW</CardHeaderBadge>} />
         </Card.Header>
         <Card.Body>Plain Card</Card.Body>
         <Card.Footer>

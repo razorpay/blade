@@ -1,9 +1,9 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import type { CardProps } from './Card';
 import { Card, CardHeaderIcon, CardHeaderCounter } from './Card';
+import { CardHeaderBadge, CardHeaderIconButton } from './CardHeader';
 import { Text } from '~components/Typography';
-import { InfoIcon } from '~components/Icons';
-import { Badge } from '~components/Badge';
+import { InfoIcon, TrashIcon } from '~components/Icons';
 
 export default {
   title: 'Components/Card',
@@ -26,7 +26,7 @@ const CardTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
           prefix={<CardHeaderIcon icon={InfoIcon} />}
           suffix={<CardHeaderCounter value={12} />}
         />
-        <Card.HeaderTrailing visual={<Badge variant="positive">NEW</Badge>} />
+        <Card.HeaderTrailing visual={<CardHeaderBadge variant="positive">NEW</CardHeaderBadge>} />
       </Card.Header>
       <Card.Body>
         <Text>
@@ -73,7 +73,17 @@ const CardHeaderTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
           prefix={<CardHeaderIcon icon={InfoIcon} />}
           suffix={<CardHeaderCounter value={12} />}
         />
-        <Card.HeaderTrailing visual={<Badge variant="positive">NEW</Badge>} />
+        <Card.HeaderTrailing
+          visual={
+            <CardHeaderIconButton
+              icon={TrashIcon}
+              accessibilityLabel="Delete Card"
+              onClick={() => {
+                console.log(1);
+              }}
+            />
+          }
+        />
       </Card.Header>
       <Card.Body>
         <Text>
