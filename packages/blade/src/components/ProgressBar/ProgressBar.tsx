@@ -4,7 +4,7 @@ import { ProgressBarFilled } from './ProgressBarFilled';
 import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
-import { makeSize } from '~utils';
+import { makeAccessible, makeSize } from '~utils';
 import { FormLabel } from '~components/Form';
 
 type ProgressBarCommonProps = {
@@ -78,6 +78,8 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
     ? theme.colors.feedback.background[intent].highContrast
     : theme.colors.brand.primary[500];
   const hasLabel = label && label.trim()?.length > 0;
+  const isMeter = variant === 'meter';
+  const progressValue = getProgress(value);
 
   return (
     <Box>
@@ -92,19 +94,32 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
           </FormLabel>
         ) : null}
         {showPercentage ? (
-          <FormLabel as="span" contrast={contrast} spacingBottom="spacing.2">{`${getProgress(
-            value,
-          )}%`}</FormLabel>
+          <FormLabel
+            as="span"
+            contrast={contrast}
+            spacingBottom="spacing.2"
+          >{`${progressValue}%`}</FormLabel>
         ) : null}
       </Box>
-      <Box id="progressbar">
+      <Box
+        id="progressbar"
+        {...makeAccessible({
+          role: variant === 'meter' ? 'meter' : 'progressbar',
+          label: accessibilityLabel ?? label,
+          busy: !isMeter,
+          valueNow: progressValue,
+          valueText: `${progressValue}${isMeter ? '' : '%'}`,
+          valueMin: 0,
+          valueMax: 100,
+        })}
+      >
         <ProgressBarUnfilled
           backgroundColor={unfilledBackgroundColor}
           height={makeSize(progressBarHeight[size])}
         >
           <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
-            progress={getProgress(value)}
+            progress={progressValue}
             fillMotionDuration="duration.2xgentle"
             pulseMotionDuration="duration.2xgentle"
             pulseMotionDelay="delay.long"
