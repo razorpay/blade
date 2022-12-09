@@ -1,11 +1,14 @@
 import { Divider } from './Divider';
 import Box from '~components/Box';
+import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 
-type Action = {
+export type CardFooterAction = Pick<
+  ButtonProps,
+  'type' | 'accessibilityLabel' | 'isLoading' | 'isDisabled' | 'icon' | 'iconPosition' | 'onClick'
+> & {
   text: string;
-  onClick: () => void;
 };
 
 type CardFooterProps = {
@@ -42,21 +45,21 @@ const CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.R
 
 type CardFooterTrailingProps = {
   actions?: {
-    primary?: Action;
-    secondary?: Action;
+    primary?: CardFooterAction;
+    secondary?: CardFooterAction;
   };
 };
 const CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactElement => {
   return (
     <Box display="flex" flexDirection="row" alignSelf="center">
       {actions?.secondary ? (
-        <Button size="medium" variant="secondary" onClick={actions.secondary.onClick}>
+        <Button size="medium" variant="secondary" {...actions.secondary}>
           {actions.secondary.text}
         </Button>
       ) : null}
       <Box marginLeft="spacing.5" />
       {actions?.primary ? (
-        <Button size="medium" onClick={actions.primary.onClick}>
+        <Button size="medium" {...actions.primary}>
           {actions.primary.text}
         </Button>
       ) : null}

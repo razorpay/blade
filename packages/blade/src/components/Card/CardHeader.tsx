@@ -108,13 +108,13 @@ const CardHeaderLeading = ({
   prefix,
   suffix,
 }: CardHeaderLeadingProps): React.ReactElement => {
-  if (!isOfComponentId(prefix, Components.CardHeaderIcon)) {
+  if (prefix && !isOfComponentId(prefix, Components.CardHeaderIcon)) {
     throw new Error(
       `[Blade CardHeaderLeading]: Only \`${Components.CardHeaderIcon}\` component is accepted in prefix`,
     );
   }
 
-  if (!isOfComponentId(suffix, Components.CardHeaderCounter)) {
+  if (suffix && !isOfComponentId(suffix, Components.CardHeaderCounter)) {
     throw new Error(
       `[Blade CardHeaderLeading]: Only \`${Components.CardHeaderCounter}\` component is accepted in prefix`,
     );
@@ -150,7 +150,7 @@ const headerTrailingAllowedComponents = [
 ];
 
 const CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
-  if (!headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
+  if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
     throw new Error(
       `[Blade CardHeaderTrailing]: Only \`${headerTrailingAllowedComponents.join(
         ', ',
