@@ -1,7 +1,18 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
-import { Card, CardHeaderIcon, CardHeaderCounter } from '../Card';
-import { CardHeaderBadge } from '../CardHeader';
+import {
+  CardBody,
+  Card,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge,
+} from '../Card';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
@@ -10,9 +21,9 @@ describe('<Card />', () => {
   it('should render a plain Card', () => {
     const { toJSON } = renderWithTheme(
       <Card surfaceLevel={2}>
-        <Card.Body>
+        <CardBody>
           <Text>Plain Card</Text>
-        </Card.Body>
+        </CardBody>
       </Card>,
     );
     expect(toJSON()).toMatchSnapshot();
@@ -23,18 +34,18 @@ describe('<Card />', () => {
     const cardSubtitle = 'Card subtitle';
     const { getByText, toJSON } = renderWithTheme(
       <Card surfaceLevel={2}>
-        <Card.Header>
-          <Card.HeaderLeading
+        <CardHeader>
+          <CardHeaderLeading
             title={cardTitle}
             subtitle={cardSubtitle}
             prefix={<CardHeaderIcon icon={InfoIcon} />}
             suffix={<CardHeaderCounter value={12} />}
           />
-          <Card.HeaderTrailing visual={<CardHeaderBadge>NEW</CardHeaderBadge>} />
-        </Card.Header>
-        <Card.Body>
+          <CardHeaderTrailing visual={<CardHeaderBadge>NEW</CardHeaderBadge>} />
+        </CardHeader>
+        <CardBody>
           <Text>Plain Card</Text>
-        </Card.Body>
+        </CardBody>
       </Card>,
     );
 
@@ -50,12 +61,12 @@ describe('<Card />', () => {
     const secondaryFn = jest.fn();
     const { getByText, toJSON } = renderWithTheme(
       <Card surfaceLevel={2}>
-        <Card.Body>
+        <CardBody>
           <Text>Plain Card</Text>
-        </Card.Body>
-        <Card.Footer>
-          <Card.FooterLeading title={footerTitle} subtitle={footerSubtitle} />
-          <Card.FooterTrailing
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title={footerTitle} subtitle={footerSubtitle} />
+          <CardFooterTrailing
             actions={{
               primary: {
                 text: 'Save',
@@ -67,7 +78,7 @@ describe('<Card />', () => {
               },
             }}
           />
-        </Card.Footer>
+        </CardFooter>
       </Card>,
     );
 

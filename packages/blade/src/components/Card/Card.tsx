@@ -6,6 +6,10 @@ import {
   CardHeaderCounter,
   CardHeaderLeading,
   CardHeaderTrailing,
+  CardHeaderBadge,
+  CardHeaderIconButton,
+  CardHeaderLink,
+  CardHeaderText,
 } from './CardHeader';
 import { CardSurface } from './CardSurface';
 import Box from '~components/Box';
@@ -38,12 +42,19 @@ const CardBody = ({ children }: CardBodyProps): React.ReactElement => {
   return <Box>{children}</Box>;
 };
 
-Card.Body = CardBody;
-Card.Footer = CardFooter;
-Card.Header = CardHeader;
-Card.HeaderLeading = CardHeaderLeading;
-Card.HeaderTrailing = CardHeaderTrailing;
-Card.FooterLeading = CardFooterLeading;
-Card.FooterTrailing = CardFooterTrailing;
-
-export { Card, CardHeaderIcon, CardHeaderCounter };
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardBody,
+  CardHeaderLeading,
+  CardFooterLeading,
+  CardHeaderTrailing,
+  CardFooterTrailing,
+  CardHeaderBadge,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderText,
+  CardHeaderLink,
+  CardHeaderIconButton,
+};

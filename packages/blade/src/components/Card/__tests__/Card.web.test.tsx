@@ -1,8 +1,19 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react';
-import { Card, CardHeaderIcon, CardHeaderCounter } from '../Card';
-import { CardHeaderBadge } from '../CardHeader';
+import {
+  CardBody,
+  Card,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge,
+} from '../Card';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
@@ -12,7 +23,7 @@ describe('<Card />', () => {
   it('should render a plain Card', () => {
     const { container } = renderWithTheme(
       <Card surfaceLevel={2}>
-        <Card.Body>Plain Card</Card.Body>
+        <CardBody>Plain Card</CardBody>
       </Card>,
     );
     expect(container).toMatchSnapshot();
@@ -23,18 +34,18 @@ describe('<Card />', () => {
     const cardSubtitle = 'Card subtitle';
     const { getByText, container } = renderWithTheme(
       <Card surfaceLevel={2}>
-        <Card.Header>
-          <Card.HeaderLeading
+        <CardHeader>
+          <CardHeaderLeading
             title={cardTitle}
             subtitle={cardSubtitle}
             prefix={<CardHeaderIcon icon={InfoIcon} />}
             suffix={<CardHeaderCounter value={12} />}
           />
-          <Card.HeaderTrailing visual={<CardHeaderBadge>NEW</CardHeaderBadge>} />
-        </Card.Header>
-        <Card.Body>
+          <CardHeaderTrailing visual={<CardHeaderBadge>NEW</CardHeaderBadge>} />
+        </CardHeader>
+        <CardBody>
           <Text>Plain Card</Text>
-        </Card.Body>
+        </CardBody>
       </Card>,
     );
 
@@ -50,12 +61,12 @@ describe('<Card />', () => {
     const secondaryFn = jest.fn();
     const { getByText, getByRole, container } = renderWithTheme(
       <Card surfaceLevel={2}>
-        <Card.Body>
+        <CardBody>
           <Text>Plain Card</Text>
-        </Card.Body>
-        <Card.Footer>
-          <Card.FooterLeading title={footerTitle} subtitle={footerSubtitle} />
-          <Card.FooterTrailing
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title={footerTitle} subtitle={footerSubtitle} />
+          <CardFooterTrailing
             actions={{
               primary: {
                 text: 'Save',
@@ -67,7 +78,7 @@ describe('<Card />', () => {
               },
             }}
           />
-        </Card.Footer>
+        </CardFooter>
       </Card>,
     );
 
@@ -93,19 +104,19 @@ describe('<Card />', () => {
     const footerSubtitle = 'Card footer subtitle';
     const { container } = renderWithTheme(
       <Card surfaceLevel={2}>
-        <Card.Header>
-          <Card.HeaderLeading
+        <CardHeader>
+          <CardHeaderLeading
             title={cardTitle}
             subtitle={cardSubtitle}
             prefix={<CardHeaderIcon icon={InfoIcon} />}
             suffix={<CardHeaderCounter value={12} />}
           />
-          <Card.HeaderTrailing visual={<CardHeaderBadge>NEW</CardHeaderBadge>} />
-        </Card.Header>
-        <Card.Body>Plain Card</Card.Body>
-        <Card.Footer>
-          <Card.FooterLeading title={footerTitle} subtitle={footerSubtitle} />
-          <Card.FooterTrailing
+          <CardHeaderTrailing visual={<CardHeaderBadge>NEW</CardHeaderBadge>} />
+        </CardHeader>
+        <CardBody>Plain Card</CardBody>
+        <CardFooter>
+          <CardFooterLeading title={footerTitle} subtitle={footerSubtitle} />
+          <CardFooterTrailing
             actions={{
               primary: {
                 text: 'Save',
@@ -117,7 +128,7 @@ describe('<Card />', () => {
               },
             }}
           />
-        </Card.Footer>
+        </CardFooter>
       </Card>,
     );
     await assertAccessible(container);

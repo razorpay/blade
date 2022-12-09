@@ -1,7 +1,20 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import type { CardProps } from './Card';
-import { Card, CardHeaderIcon, CardHeaderCounter } from './Card';
-import { CardHeaderBadge, CardHeaderIconButton } from './CardHeader';
+import {
+  CardBody,
+  Card,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge,
+  CardHeaderIconButton,
+} from './Card';
+
 import { Text } from '~components/Typography';
 import { InfoIcon, TrashIcon } from '~components/Icons';
 
@@ -19,16 +32,16 @@ export default {
 const CardTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
   return (
     <Card {...args}>
-      <Card.Header>
-        <Card.HeaderLeading
+      <CardHeader>
+        <CardHeaderLeading
           title="Card Header"
           subtitle="Subtitle"
           prefix={<CardHeaderIcon icon={InfoIcon} />}
           suffix={<CardHeaderCounter value={12} />}
         />
-        <Card.HeaderTrailing visual={<CardHeaderBadge variant="positive">NEW</CardHeaderBadge>} />
-      </Card.Header>
-      <Card.Body>
+        <CardHeaderTrailing visual={<CardHeaderBadge variant="positive">NEW</CardHeaderBadge>} />
+      </CardHeader>
+      <CardBody>
         <Text>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
           been the industry's standard dummy text ever since the 1500s, when an unknown printer took
@@ -38,10 +51,10 @@ const CardTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
           Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
           PageMaker including versions of Lorem Ipsum.
         </Text>
-      </Card.Body>
-      <Card.Footer>
-        <Card.FooterLeading title="Card footer title" subtitle="Subtitle" />
-        <Card.FooterTrailing
+      </CardBody>
+      <CardFooter>
+        <CardFooterLeading title="Card footer title" subtitle="Subtitle" />
+        <CardFooterTrailing
           actions={{
             primary: {
               onClick: () => console.log(1),
@@ -53,7 +66,7 @@ const CardTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
             },
           }}
         />
-      </Card.Footer>
+      </CardFooter>
     </Card>
   );
 };
@@ -66,14 +79,14 @@ CardExample.args = {
 const CardHeaderTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
   return (
     <Card {...args}>
-      <Card.Header>
-        <Card.HeaderLeading
+      <CardHeader>
+        <CardHeaderLeading
           title="Card Header"
           subtitle="Subtitle"
           prefix={<CardHeaderIcon icon={InfoIcon} />}
           suffix={<CardHeaderCounter value={12} />}
         />
-        <Card.HeaderTrailing
+        <CardHeaderTrailing
           visual={
             <CardHeaderIconButton
               icon={TrashIcon}
@@ -84,8 +97,8 @@ const CardHeaderTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
             />
           }
         />
-      </Card.Header>
-      <Card.Body>
+      </CardHeader>
+      <CardBody>
         <Text>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
           been the industry's standard dummy text ever since the 1500s, when an unknown printer took
@@ -95,10 +108,10 @@ const CardHeaderTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
           Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
           PageMaker including versions of Lorem Ipsum.
         </Text>
-      </Card.Body>
-      <Card.Footer>
-        <Card.FooterLeading title="Card footer title" subtitle="Subtitle" />
-        <Card.FooterTrailing
+      </CardBody>
+      <CardFooter>
+        <CardFooterLeading title="Card footer title" subtitle="Subtitle" />
+        <CardFooterTrailing
           actions={{
             primary: {
               onClick: () => console.log(1),
@@ -110,7 +123,7 @@ const CardHeaderTemplate: ComponentStory<typeof Card> = ({ ...args }) => {
             },
           }}
         />
-      </Card.Footer>
+      </CardFooter>
     </Card>
   );
 };
