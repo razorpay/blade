@@ -69,7 +69,7 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
   value = 0,
   variant = 'progress',
 }: ProgressBarProps<T>): ReactElement => {
-  console.log(accessibilityLabel, isIndeterminate);
+  console.log(isIndeterminate);
   if (variant === 'meter' && isIndeterminate) {
     console.warn(`[Blade: BaseLink]: `);
   }
@@ -98,7 +98,12 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
         ) : null}
         {showPercentage ? (
           <Box marginBottom="spacing.2">
-            <Text size="small" variant="body">{`${progressValue}%`}</Text>
+            <Text
+              type="subdued"
+              variant="body"
+              contrast={contrast}
+              size="small"
+            >{`${progressValue}%`}</Text>
           </Box>
         ) : null}
       </Box>
