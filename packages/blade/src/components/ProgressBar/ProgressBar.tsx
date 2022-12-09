@@ -69,9 +69,10 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
   value = 0,
   variant = 'progress',
 }: ProgressBarProps<T>): ReactElement => {
-  console.log(isIndeterminate);
+  console.log(isIndeterminate); // will be in follow up PR
+
   if (variant === 'meter' && isIndeterminate) {
-    console.warn(`[Blade: BaseLink]: `);
+    console.warn(`[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`);
   }
 
   const { theme } = useTheme();
