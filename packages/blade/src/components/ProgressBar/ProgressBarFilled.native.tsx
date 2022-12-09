@@ -13,13 +13,20 @@ import { useTheme } from '../BladeProvider';
 import type { ProgressBarFilledProps } from './types';
 import { castNativeType, getIn, makeMotionTime } from '~utils';
 
-const AnimatedProgressBarFilled = styled(Animated.View)<
+const ProgressBarFilledContainer = styled(Animated.View)<
   Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress'>
 >(({ backgroundColor, progress }) => ({
   backgroundColor,
   width: `${progress}%`,
   height: '100%',
 }));
+
+const ProgressBarPulseAnimation = styled(Animated.View)({
+  backgroundColor: 'white',
+  opacity: 0,
+  width: '100%',
+  height: '100%',
+});
 
 const ProgressBarFilled = ({
   backgroundColor,
@@ -31,7 +38,7 @@ const ProgressBarFilled = ({
   variant,
 }: ProgressBarFilledProps): React.ReactElement => {
   const animatedWidth = useSharedValue(progress);
-  const animatedOpacity = useSharedValue(1);
+  const animatedOpacity = useSharedValue(0);
   const { theme } = useTheme();
   const easing = getIn(theme.motion, motionEasing);
   const pulseDuration =
@@ -46,8 +53,8 @@ const ProgressBarFilled = ({
         castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDelay))),
         withRepeat(
           withSequence(
-            withTiming(0.65, pulsatingAnimationTimingConfig),
-            withTiming(1, pulsatingAnimationTimingConfig),
+            withTiming(0.25, pulsatingAnimationTimingConfig),
+            withTiming(0, pulsatingAnimationTimingConfig),
           ),
           -1,
         ),
@@ -70,19 +77,26 @@ const ProgressBarFilled = ({
     };
   }, [progress, animatedWidth, fillMotionDuration, motionEasing, theme.motion, easing]);
 
-  const animatedStyles = useAnimatedStyle(() => {
+  const fillAnimatedStyle = useAnimatedStyle(() => {
     return {
       width: `${animatedWidth.value}%`,
+    };
+  });
+
+  const pulseAnimatedStyle = useAnimatedStyle(() => {
+    return {
       opacity: animatedOpacity.value,
     };
   });
 
   return (
-    <AnimatedProgressBarFilled
-      style={animatedStyles}
+    <ProgressBarFilledContainer
+      style={fillAnimatedStyle}
       backgroundColor={backgroundColor}
       progress={progress}
-    />
+    >
+      <ProgressBarPulseAnimation style={pulseAnimatedStyle} />
+    </ProgressBarFilledContainer>
   );
 };
 
