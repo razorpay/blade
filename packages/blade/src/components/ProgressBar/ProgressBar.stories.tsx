@@ -48,7 +48,7 @@ export default {
       page: Page,
     },
   },
-} as Meta<ProgressBarProps<{ variant: 'progress' | 'meter' }>>;
+} as Meta<ProgressBarProps>;
 
 const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...args }) => {
   const [value, setValue] = useState(10);

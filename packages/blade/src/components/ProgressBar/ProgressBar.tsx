@@ -31,15 +31,7 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
   isIndeterminate?: undefined;
 };
 
-type ProgressBarProps<T> = T extends {
-  variant: infer Variant;
-}
-  ? Variant extends 'progress'
-    ? ProgressBarProgressProps
-    : Variant extends 'meter'
-    ? ProgressBarMeterProps
-    : T
-  : T;
+type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
 type ProgressBarUnfilledProps = {
   backgroundColor: string;
@@ -58,7 +50,7 @@ const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 |
   medium: 4,
 };
 
-const ProgressBar = <T extends { variant: ProgressBarVariant }>({
+const ProgressBar = ({
   accessibilityLabel,
   contrast = 'low',
   intent,
@@ -68,7 +60,7 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
   size = 'small',
   value = 0,
   variant = 'progress',
-}: ProgressBarProps<T>): ReactElement => {
+}: ProgressBarProps): ReactElement => {
   console.log(isIndeterminate); // will be in follow up PR
 
   if (variant === 'meter' && isIndeterminate) {
