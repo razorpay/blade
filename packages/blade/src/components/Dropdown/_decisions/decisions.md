@@ -97,9 +97,11 @@ Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attri
 
 An Overlay that positions dropdown correctly.
 
-The animations for dropdown and Aria attributes like `aria-multiselectable="true"` `role="listbox"` like things can be added on Dropdown overlay here based on variant passed to `Dropdown` component.
+Should handle the animations for dropdown.
 
 #### API
+
+Usage
 
 ```jsx
 <Dropdown>
@@ -108,7 +110,9 @@ The animations for dropdown and Aria attributes like `aria-multiselectable="true
 </Dropdown>
 ```
 
-It won't accept any props apart from children.
+Props
+
+_No Props Needed_
 
 <br/><br/>
 
@@ -128,7 +132,7 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
 
 ```jsx
 <ActionList
-  backgroundLevel={2}
+  surfaceLevel={2}
   onChange={(e) => {
     console.log({ name: e.name, values: e.values });
   }}
@@ -156,7 +160,7 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
 #### Most Complex Usage Possible
 
 ```jsx
-<ActionList backgroundLevel={2}>
+<ActionList surfaceLevel={2}>
   <ActionListHeader title="Recent Searches" icon={HistoryIcon} />
   <ActionListSection title="Section Heading">
     <ActionListItem
@@ -195,7 +199,7 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
 **Props and constrained**
 
 ```jsx
-<ActionList backgroundLevel={2}>
+<ActionList surfaceLevel={2}>
   <ActionListHeader title="Recent Searches" icon={HistoryIcon} />
   <ActionListSectionHeading title="Hello" />
   <ActionListItem
@@ -271,7 +275,7 @@ type ActionListProps = {
    *
    * @default 2
    */
-  backgroundLevel: 2 | 3;
+  surfaceLevel: 2 | 3;
 };
 ```
 
@@ -538,7 +542,7 @@ Compound components add complex nesting in larger APIs (Check out previously con
 <summary>Previously considered compound component API</summary>
 
 ```jsx
-<ActionList backgroundLevel={2}>
+<ActionList surfaceLevel={2}>
   <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
   <ActionList.SectionHeading title="Hello" />
   <ActionList.Item title="Item Value" desciption="Item Description" variant="negative">
@@ -675,6 +679,7 @@ Some libraries we evaluated
 ### Design
 
 - Should we have some type of "Select All" button to select all in multiple select variant?
+- Will Header always have title and icon only? can it have more things in future?
 
 <br/><br/>
 
