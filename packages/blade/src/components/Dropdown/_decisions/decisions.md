@@ -1,18 +1,20 @@
 # Dropdown & ActionList
 
+Dropdown Menu displays a list of choices on temporary surfaces. They allow users to make a selection from multiple options. They appear when users interact with a button, action, or other control.
+
 <br/>
 
 **Top-View Skeleton**
 
 ```jsx
 <Dropdown>
-  <Dropdown.SelectInput label="Item Selection" />
-  <Dropdown.Overlay>
+  <SelectInput label="Item Selection" />
+  <DropdownOverlay>
     <ActionList>
-      <ActionList.Item title="Item Value" value="item-one" />
-      <ActionList.Item title="Item Value" value="item-two" />
+      <ActionListItem title="Item Value" value="item-one" />
+      <ActionListItem title="Item Value" value="item-two" />
     </ActionList>
-  </Dropdown.Overlay>
+  </DropdownOverlay>
 </Dropdown>
 ```
 
@@ -21,14 +23,14 @@
 ## Navigation
 
 - [Dropdown](#dropdown)
-  - [Dropdown.SelectInput](#dropdownselectinput)
-  - [Dropdown.Overlay](#dropdownoverlay)
+  - [SelectInput](#selectinput)
+  - [DropdownOverlay](#dropdownoverlay)
 - [ActionList](#actionlist)
   - [ActionList Parent Component](#actionlist-parent-component)
-  - [ActionList.Item](#actionlistitem)
-  - [ActionList.Section](#actionlistsection)
-  - [ActionList.Header](#actionlistheader)
-  - [ActionList.Footer](#actionlistfooter)
+  - [ActionListItem](#actionlistitem)
+  - [ActionListSection](#actionlistsection)
+  - [ActionListHeader](#actionlistheader)
+  - [ActionListFooter](#actionlistfooter)
 - [Why `x` instead of `y`](#why-x-instead-of-y)
 - [Accessibility](#accessibility)
 - [Open Questions](#open-questions)
@@ -40,30 +42,21 @@
 
 ## Dropdown
 
-`Dropdown` will be a wrapper component which will handle the logic of opening and closing of the dropdown. It won't separately render anything in UI apart from the first children. (E.g. `Dropdown.SelectInput` in above example)
+`Dropdown` will be a wrapper component which will handle the logic of opening and closing of the dropdown. It won't separately render anything in UI apart from the first children. (E.g. `SelectInput` in above example)
 
 ### API
 
 Usage
 
 ```jsx
-<Dropdown isDefaultOpen>{/* Dropdown sub-components */}</Dropdown>
+<Dropdown>{/* Dropdown sub-components */}</Dropdown>
 ```
 
 Props
 
-```ts
-type DropdownProps = {
-  /**
-   * Set to true if you want dropdown opened by default
-   *
-   * @default false
-   */
-  isDefaultOpen?: boolean;
-};
-```
+_No Props Needed_
 
-### Dropdown.SelectInput
+### SelectInput
 
 <img src="2022-11-24-16-33-30.png" alt="Select Field Figma Designs" width="500" />
 
@@ -78,11 +71,7 @@ Select is an Input Field that can open a dropdown on click. It can be extended f
 Sample Usage
 
 ```jsx
-<Dropdown.SelectInput
-  icon={CalendarIcon}
-  label="Your favorite Design System"
-  helpText="Select only one"
-/>
+<SelectInput icon={CalendarIcon} label="Your favorite Design System" helpText="Select only one" />
 ```
 
 Props
@@ -100,9 +89,11 @@ type SelectInputProps = {
 
 #### A11y
 
-Would be ideal if we can render it as `button` with `aria-expanded` prop to handle state of dropdown open and close
+Would be ideal if we can render it as `button` with `aria-expanded` prop to handle state of dropdown open and close.
 
-### `Dropdown.Overlay`
+Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded#buttons
+
+### `DropdownOverlay`
 
 An Overlay that positions dropdown correctly.
 
@@ -112,8 +103,8 @@ The animations for dropdown and Aria attributes like `aria-multiselectable="true
 
 ```jsx
 <Dropdown>
-  <Dropdown.SelectInput label="Click For Greetings" />
-  <Dropdown.Overlay>Hi</Dropdown.Overlay>
+  <SelectInput label="Click For Greetings" />
+  <DropdownOverlay>Hi</DropdownOverlay>
 </Dropdown>
 ```
 
@@ -125,7 +116,7 @@ It won't accept any props apart from children.
 
 Plain list that can be rendered inside dropdown, in navigation menu, or anywhere. It has selectable items that perform some action on click. It can also have multiple selectable items that render as checkboxes
 
-<img src="2022-11-23-09-50-05.png" alt="ActionList figma screenshot" width="300" />
+![](2022-12-08-16-58-46.png)
 
 ### Design
 
@@ -142,21 +133,21 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
     console.log({ name: e.name, values: e.values });
   }}
 >
-  <ActionList.Item
+  <ActionListItem
     title="Accept API"
     value="accept"
     desciption="Accept this API"
-    leading={<StarIcon />}
-    trailing={<Text>⌘ + Space + A</Text>}
+    leading={<ActionListItemIcon icon={StarIcon} />}
+    trailing={<ActionListItemText>⌘ + Space + A</ActionListItemText>}
     onClick={() => {}}
   />
-  <ActionList.Item
+  <ActionListItem
     title="Delete"
     desciption="Delete this value"
     value="delete"
     intent="negative"
-    leading={<TrashIcon />}
-    trailing={<Text>⌘ + Space + D</Text>}
+    leading={<ActionListItemIcon icon={TrashIcon} />}
+    trailing={<ActionListItemText>⌘ + Space + D</ActionListItemText>}
     onClick={() => {}}
   />
 </ActionList>
@@ -166,28 +157,28 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
 
 ```jsx
 <ActionList backgroundLevel={2}>
-  <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
-  <ActionList.Section title="Section Heading">
-    <ActionList.Item
+  <ActionListHeader title="Recent Searches" icon={HistoryIcon} />
+  <ActionListSection title="Section Heading">
+    <ActionListItem
       title="Accept API"
       value="accept"
       desciption="Accept this API"
-      leading={<StarIcon />}
-      trailing={<Text>⌘ + Space</Text>}
+      leading={<ActionListItemIcon icon={StarIcon} />}
+      trailing={<ActionListItemText>⌘ + Space</ActionListItemText>}
     />
-  </ActionList.Section>
-  <ActionList.Item
+  </ActionListSection>
+  <ActionListItem
     title="Delete"
     desciption="Delete this value"
     value="delete"
     intent="negative"
-    leading={<TrashIcon />}
-    trailing={<Text>⌘ + Space + D</Text>}
+    leading={<ActionListItemIcon icon={TrashIcon} />}
+    trailing={<ActionListItemText>⌘ + Space + D</ActionListItemText>}
   />
-  <ActionList.Footer
+  <ActionListFooter
     title="Footer Title"
     description="Footer Description"
-    leading={<DocIcon />}
+    leading={<ActionListFooterIcon icon={DocIcon} />}
     trailing={
       <>
         <Button variant="secondary">Secondary Button</Button>
@@ -205,16 +196,16 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
 
 ```jsx
 <ActionList backgroundLevel={2}>
-  <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
-  <ActionList.SectionHeading title="Hello" />
-  <ActionList.Item
+  <ActionListHeader title="Recent Searches" icon={HistoryIcon} />
+  <ActionListSectionHeading title="Hello" />
+  <ActionListItem
     title="Item Value"
     desciption="Item Description"
     leading={StarIcon} // Can be IconComponent type or Image URL
     trailing="⌘ + Space"
   />
-  <ActionList.Divider />
-  <ActionList.Footer
+  <ActionListDivider />
+  <ActionListFooter
     title="Footer Title"
     description="Footer Description"
     leading={DocIcon}
@@ -284,7 +275,7 @@ type ActionListProps = {
 };
 ```
 
-### `ActionList.Item`
+### `ActionListItem`
 
 ![](2022-11-29-17-29-01.png)
 
@@ -297,13 +288,14 @@ type ActionListProps = {
 Usage
 
 ```jsx
-<ActionList.Item
+<ActionListItem
   title="Accept API"
   value="accept"
   desciption="Accept this API"
-  leading={<StarIcon />}
+  leading={<ActionListItemIcon icon={StarIcon} />}
   intent="negative"
-  trailing={<Text>⌘ + Space + A</Text>}
+  trailing={<ActionListItemText>⌘ + Space + A</ActionListItemText>}
+  isDefaultSelected={false}
   onClick={() => {
     console.log('Item clicked');
   }}
@@ -323,11 +315,13 @@ type ActionListItemProps = {
 
   /**
    * Leading Icon or assets. Accepts JSX Component
+   *
+   * Should not be allowed when ActionList variant is multiple select
    */
   leading?: React.ReactNode;
 
   /**
-   * Trailing Assets. Should ideally be Text component for now
+   * Trailing Assets. Should ideally be ActionListItemText component for now
    */
   trailing?: React.ReactNode;
 
@@ -341,12 +335,19 @@ type ActionListItemProps = {
   /** Click event on item */
   onClick?: () => void;
 
+  /**
+   * Set true if you want item to be selected by default
+   *
+   * Should not be allowed when intent is set to negative
+   */
+  isDefaultSelected?: boolean;
+
   /** URL. Should render item as `a` when this is passed */
   href?: string;
 };
 ```
 
-### `ActionList.Section`
+### `ActionListSection`
 
 Just an API that wraps section inside ActionList.
 
@@ -358,11 +359,11 @@ It should also add divider after all items.
 
 ```jsx
 <ActionList>
-  <ActionList.Section title="Section Heading">
-    <ActionList.Item
+  <ActionListSection title="Section Heading">
+    <ActionListItem
     // ...props
     />
-  </ActionList.Section>
+  </ActionListSection>
 </ActionList>
 ```
 
@@ -371,15 +372,15 @@ It should also add divider after all items.
 
 ```jsx
 <ActionList>
-  <ActionList.SectionHeading title="Section Heading" />
-  <ActionList.Item
+  <ActionListSectionHeading title="Section Heading" />
+  <ActionListItem
   // ...props
   />
-  <ActionList.Divider />
+  <ActionListDivider />
 </ActionList>
 ```
 
-We dropped this because people might tend to put Dividers after every item. It doesn't really explain grouping in any way whereas `ActionList.Section` API clearly defines the sections in items.
+We dropped this because people might tend to put Dividers after every item. It doesn't really explain grouping in any way whereas `ActionListSection` API clearly defines the sections in items.
 
 </details>
 
@@ -392,11 +393,11 @@ type ActionListSectionProps = {
 };
 ```
 
-### `ActionList.Header`
+### `ActionListHeader`
 
 Header of the ActionList
 
-<img src="2022-11-29-17-36-50.png" alt="ActionList.Header Figma Design" width="300" />
+<img src="2022-11-29-17-36-50.png" alt="ActionListHeader Figma Design" width="300" />
 
 #### Design
 
@@ -407,7 +408,7 @@ Header of the ActionList
 Usage
 
 ```jsx
-<ActionList.Header title="Recent Searches" icon={HistoryIcon} />
+<ActionListHeader title="Recent Searches" icon={HistoryIcon} />
 ```
 
 Props
@@ -419,7 +420,7 @@ type ActionListHeaderProps = {
 };
 ```
 
-### `ActionList.Footer`
+### `ActionListFooter`
 
 > **Warning**
 >
@@ -440,16 +441,16 @@ Footer of the ActionList
 Simple Usage
 
 ```jsx
-<ActionList.Footer title="Footer Title" description="Footer Description" />
+<ActionListFooter title="Footer Title" description="Footer Description" />
 ```
 
 With Feedback Variant
 
 ```jsx
-<ActionList.Footer
+<ActionListFooter
   title="Footer Title"
   description="Footer Description"
-  leading={<DocIcon />}
+  leading={<ActionListFooterIcon icon={DocIcon} />}
   trailing={
     <>
       <IconButton onClick={} icon={CloseIcon} />
@@ -462,7 +463,7 @@ With Feedback Variant
 With Only Primary Button
 
 ```jsx
-<ActionList.Footer trailing={<Button onClick={}>Apply</Button>} />
+<ActionListFooter trailing={<Button onClick={}>Apply</Button>} />
 ```
 
 **Props**
@@ -487,7 +488,7 @@ type ActionListFooter = {
 **More restrictive and prop-based**
 
 ```jsx
-<ActionList.Footer
+<ActionListFooter
   title="Footer Title"
   description="Footer Description"
   leadingIcon={DocIcon}
@@ -542,16 +543,16 @@ Compound components add complex nesting in larger APIs (Check out previously con
   <ActionList.SectionHeading title="Hello" />
   <ActionList.Item title="Item Value" desciption="Item Description" variant="negative">
     <ActionList.Leading>
-      <StarIcon />
+      <ActionListItemIcon icon={StarIcon} />
     </ActionList.Leading>
     <ActionList.Trailing>
-      <Text>⌘ + Space</Text>
+      <ActionListItemText>⌘ + Space</ActionListItemText>
     </ActionList.Trailing>
   </ActionList.Item>
   <ActionList.Divider />
   <ActionList.Footer title="Footer Title" description="Footer Description">
     <ActionList.Leading>
-      <DocIcon />
+      <ActionListFooterIcon icon={DocIcon} />
     </ActionList.Leading>
     <ActionList.Trailing>
       <Button variant="secondary" onClick={}>
@@ -564,6 +565,14 @@ Compound components add complex nesting in larger APIs (Check out previously con
 ```
 
 </details>
+
+### Individual Components instead of Compound Components
+
+We use `ActionListItem` naming instead of `ActionList.Item` because for better tree-shaking we have to go by creating separate components like `<ActionListIcon icon={StarIcon} />` for assets, icons, and some of the other components atleast.
+
+Then we're left with 2 naming conventions like `ActionListIcon` for some components and `ActionList.Item` for some components.
+
+We decided to go without dot notation anywhere to remove the confusion and tree-shake better.
 
 ### Custom Implementation instead of Library
 
@@ -585,7 +594,7 @@ Some libraries we evaluated
 
 - [@radix-ui/react-dropdown-menu](https://www.radix-ui.com/docs/primitives/components/dropdown-menu)
   - 😄 Covers the accessibility gives basic styling
-  - 🙁 The items are also `Dropdown` compound components so we will have to tie our `ActionList.Item` to `DropdownMenu.Item`. Which means `ActionList` can't be used outside of `Dropdown`?
+  - 🙁 The items are also `Dropdown` compound components so we will have to tie our `ActionListItem` to `DropdownMenu.Item`. Which means `ActionList` can't be used outside of `Dropdown`?
   - 🙁 Opinionated so we might face more of such ^^ blockers as we discover more usecases.
 
 <br/><br/>
@@ -607,13 +616,24 @@ Some libraries we evaluated
 
 ### Dev
 
-- Vote: `variant` or `type` attribute on `Dropdown`?
+- Vote: `variant` or `type` attribute on `Dropdown`? `<Dropdown variant="multiple" />` vs `<Dropdown type="multiple" />`
 
-  `<Dropdown variant="multiple" />` vs `<Dropdown type="multiple" />`
+- Should we call description/subtitle as `subtitle` everywhere, `description` everywhere, or change based on usage (E.g. See `ActionListItem` component above).
 
-- Should we call description/subtitle as `subtitle` everywhere, `description` everywhere, or change based on usage (E.g. See `ActionList.Item` component above).
+  Conclusion: Decide based on use-case.
 
-- `ActionList.Footer` `trailing` prop should allow all JSX components or limit to existing usecases (check Alternate API in [`ActionList.Footer` section](#actionlistfooter))
+  <details>
+  <summary>Discussion Outcomes</summary>
+
+  We will use `subtitle` and `description` based on the usecase. E.g. ActionListItem has description wheras CardHeader has subtitle so we will use prop based on
+
+  </details>
+
+- `ActionListFooter` `trailing` prop should allow all JSX components or limit to existing usecases (check Alternate API in [`ActionListFooter` section](#actionlistfooter))
+
+- Should we use dot-based naming like `ActionList.Item` or create new components like `ActionListItem`?
+
+  Conclusion: Use `ActionListItem` like components without dots. Check out [Individual Components instead of Compound Components](#individual-components-instead-of-compound-components) discussion
 
 - Should we give control to users to open/close dropdown? can't think of any usecase right now 🤔. We can do that using `useDropdown` API
 
