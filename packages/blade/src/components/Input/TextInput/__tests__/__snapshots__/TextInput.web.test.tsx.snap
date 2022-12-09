@@ -263,7 +263,7 @@ exports[`<TextInput /> should render 1`] = `
       >
         <label
           for="textinput-1-input-2"
-          style="width: auto; flex-shrink: 0; word-break: break-all;"
+          style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
         >
           <div
             class="c2"
@@ -641,7 +641,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       >
         <label
           for="textinput-31-input-32"
-          style="width: auto; flex-shrink: 0; word-break: break-all;"
+          style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
         >
           <div
             class="c2"

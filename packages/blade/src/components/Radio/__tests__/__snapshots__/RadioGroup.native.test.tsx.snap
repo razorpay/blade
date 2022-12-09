@@ -17,12 +17,12 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 >
   <View
     marginBottom="spacing.2"
-    marginRight="spacing.0"
+    marginRight="spacing.5"
     style={
       Array [
         Object {
           "marginBottom": 4,
-          "marginRight": 0,
+          "marginRight": 16,
         },
       ]
     }
@@ -687,12 +687,12 @@ exports[`<RadioGroup /> should render with label 1`] = `
 >
   <View
     marginBottom="spacing.2"
-    marginRight="spacing.0"
+    marginRight="spacing.5"
     style={
       Array [
         Object {
           "marginBottom": 4,
-          "marginRight": 0,
+          "marginRight": 16,
         },
       ]
     }

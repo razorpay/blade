@@ -93,7 +93,7 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
         justifyContent={hasLabel ? 'space-between' : 'flex-end'}
       >
         {hasLabel ? (
-          <FormLabel as="label" htmlFor={id} contrast={contrast} spacingBottom="spacing.2">
+          <FormLabel as="label" htmlFor={id} contrast={contrast}>
             {label}
           </FormLabel>
         ) : null}

@@ -13,7 +13,7 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c1 {
-  margin-bottom: 0px;
+  margin-bottom: 4px;
 }
 
 .c2 {
@@ -260,7 +260,7 @@ exports[`<OTPInput /> should render 1`] = `
     >
       <label
         for="otp-37-input-38"
-        style="width: auto; flex-shrink: 0; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
           class="c1"

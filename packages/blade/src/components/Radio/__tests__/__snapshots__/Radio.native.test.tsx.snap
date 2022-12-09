@@ -17,12 +17,12 @@ exports[`<Radio /> should render radio with label 1`] = `
 >
   <View
     marginBottom="spacing.2"
-    marginRight="spacing.0"
+    marginRight="spacing.5"
     style={
       Array [
         Object {
           "marginBottom": 4,
-          "marginRight": 0,
+          "marginRight": 16,
         },
       ]
     }
@@ -332,12 +332,12 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 >
   <View
     marginBottom="spacing.2"
-    marginRight="spacing.0"
+    marginRight="spacing.5"
     style={
       Array [
         Object {
           "marginBottom": 4,
-          "marginRight": 0,
+          "marginRight": 16,
         },
       ]
     }

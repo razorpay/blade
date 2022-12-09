@@ -129,8 +129,6 @@ const RadioGroup = ({
           position={labelPosition}
           id={ids.labelId}
           accessibilityText={accessibilityText}
-          spacingRight={labelPosition === 'left' ? 'spacing.5' : 'spacing.0'}
-          spacingBottom={labelPosition === 'top' || isReactNative ? 'spacing.2' : 'spacing.0'}
         >
           {label}
         </FormLabel>

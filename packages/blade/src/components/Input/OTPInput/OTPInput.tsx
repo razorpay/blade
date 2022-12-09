@@ -258,13 +258,7 @@ const OTPInput = ({
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
         position="relative"
       >
-        <FormLabel
-          as="label"
-          position={labelPosition}
-          htmlFor={inputId}
-          spacingRight={labelPosition === 'left' ? 'spacing.5' : 'spacing.0'}
-          spacingBottom={labelPosition === 'top' || isReactNative ? 'spacing.2' : 'spacing.0'}
-        >
+        <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
           {label}
         </FormLabel>
         <Box display="flex" flexDirection="row">
