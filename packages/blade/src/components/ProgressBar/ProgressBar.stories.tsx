@@ -4,7 +4,6 @@ import type { ReactElement } from 'react';
 import { useEffect, useState } from 'react';
 import type { ProgressBarProps } from './ProgressBar';
 import { ProgressBar as ProgressBarComponent } from './ProgressBar';
-import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
@@ -43,14 +42,6 @@ export default {
   component: ProgressBarComponent,
   args: {
     children: 'Learn More',
-  },
-  argTypes: {
-    icon: {
-      name: 'icon',
-      type: 'select',
-      options: Object.keys(iconMap),
-      mapping: iconMap,
-    },
   },
   parameters: {
     docs: {
