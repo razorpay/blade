@@ -1,11 +1,13 @@
-import type { ReactElement } from 'react';
 import styled from 'styled-components';
+import type { ReactElement } from 'react';
 import { ProgressBarFilled } from './ProgressBarFilled';
+import { FormLabel } from '~components/Form';
+import { makeAccessible, makeSize } from '~utils';
+import { Text } from '~components/Typography/Text';
+import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
-import { makeAccessible, makeSize } from '~utils';
-import { FormLabel } from '~components/Form';
 
 type ProgressBarCommonProps = {
   accessibilityLabel?: string;
@@ -80,6 +82,7 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
   const progressValue = getProgress(value);
+  const id = useId(variant);
 
   return (
     <Box>
@@ -89,20 +92,18 @@ const ProgressBar = <T extends { variant: ProgressBarVariant }>({
         justifyContent={hasLabel ? 'space-between' : 'flex-end'}
       >
         {hasLabel ? (
-          <FormLabel as="label" htmlFor="progressbar" contrast={contrast} spacingBottom="spacing.2">
+          <FormLabel as="label" htmlFor={id} contrast={contrast} spacingBottom="spacing.2">
             {label}
           </FormLabel>
         ) : null}
         {showPercentage ? (
-          <FormLabel
-            as="span"
-            contrast={contrast}
-            spacingBottom="spacing.2"
-          >{`${progressValue}%`}</FormLabel>
+          <Box marginBottom="spacing.2">
+            <Text size="small" variant="body">{`${progressValue}%`}</Text>
+          </Box>
         ) : null}
       </Box>
       <Box
-        id="progressbar"
+        id={id}
         {...makeAccessible({
           role: variant === 'meter' ? 'meter' : 'progressbar',
           label: accessibilityLabel ?? label,
