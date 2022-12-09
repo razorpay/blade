@@ -7,4 +7,5 @@ export type StyledAlertProps = {
   contrastType: keyof ColorContrast;
   intent: Feedback;
   isFullWidth: boolean;
+  isDesktop: boolean;
 };

@@ -114,7 +114,6 @@ type AlertProps = {
 const isReactNative = getPlatformType() === 'react-native';
 
 // Need extra wrappers on React Native only for alignment
-const SecondaryActionWrapper = isReactNative ? Box : Fragment;
 const CloseButtonWrapper = isReactNative ? Box : Fragment;
 
 const intentIconMap = {
@@ -142,7 +141,8 @@ const Alert = ({
   }
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const isMobile = matchedDeviceType === 'mobile';
+  const isDesktop = matchedDeviceType === 'desktop';
+  const isMobile = !isDesktop;
 
   const [isVisible, setIsVisible] = useState(true);
   const contrastType = `${contrast}Contrast` as const;
@@ -167,6 +167,8 @@ const Alert = ({
     } else if (isFullWidth && !title) {
       iconOffset = 'spacing.2';
     }
+  } else if (isFullWidth) {
+    iconOffset = 'spacing.0';
   }
 
   const icon = (
@@ -228,15 +230,26 @@ const Alert = ({
     secondaryActionParams.rel = actions.secondary.rel;
   }
   const secondaryAction = actions?.secondary ? (
-    <SecondaryActionWrapper>
+    <Box marginRight="spacing.4" display={isReactNative ? 'flex' : 'inline-flex'}>
       <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
         {actions.secondary.text}
       </BaseLink>
-    </SecondaryActionWrapper>
+    </Box>
   ) : null;
 
-  const _actions =
-    primaryAction || secondaryAction ? (
+  // For certain cases we wish to render actions inline with text content
+  const showActionsHorizontal = isFullWidth && isDesktop;
+
+  const actionsHorizontal =
+    showActionsHorizontal && (primaryAction || secondaryAction) ? (
+      <Box flexDirection="row" alignItems="center">
+        {primaryAction}
+        {secondaryAction}
+      </Box>
+    ) : null;
+
+  const actionsVertical =
+    !showActionsHorizontal && (primaryAction || secondaryAction) ? (
       <Box marginTop="spacing.4" flexDirection="row" alignItems="center">
         {primaryAction}
         {secondaryAction}
@@ -277,15 +290,21 @@ const Alert = ({
       intent={intent}
       contrastType={contrastType}
       isFullWidth={isFullWidth}
+      isDesktop={isDesktop}
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
     >
       {icon}
-      <Box flex={1} paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'} paddingRight="spacing.2">
+      <Box
+        flex={1}
+        paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
+        paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+      >
         {_title}
         {_description}
-        {_actions}
+        {actionsVertical}
       </Box>
+      {actionsHorizontal}
       {closeButton}
     </StyledAlert>
   );

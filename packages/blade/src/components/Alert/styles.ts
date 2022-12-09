@@ -6,7 +6,7 @@ import { makeBorderSize, makeSize, makeSpace } from '~utils';
 const MAX_WIDTH = 584;
 
 export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject => {
-  const { theme, contrastType, intent, isFullWidth } = props;
+  const { theme, contrastType, intent, isFullWidth, isDesktop } = props;
 
   const feedbackColors = theme.colors.feedback;
 
@@ -26,6 +26,6 @@ export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject
     display: 'flex',
     flexDirection: 'row',
     maxWidth: isFullWidth ? 'auto' : makeSize(MAX_WIDTH),
-    alignItems: 'flex-start',
+    alignItems: isFullWidth && isDesktop ? 'center' : 'flex-start',
   };
 };
