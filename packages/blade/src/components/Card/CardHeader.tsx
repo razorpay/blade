@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Divider } from './Divider';
+import { useInsideCard } from './CardContext';
 import Box from '~components/Box';
 import type { TextProps, TextVariant } from '~components/Typography';
 import { Heading, Text } from '~components/Typography';
@@ -30,26 +31,36 @@ const Components = {
 };
 
 const CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
+  useInsideCard('CardHeaderIcon');
+
   return <Icon color="surface.text.normal.lowContrast" size="xlarge" />;
 };
 CardHeaderIcon.componentId = Components.CardHeaderIcon;
 
 const CardHeaderCounter = (props: CounterProps): React.ReactElement => {
+  useInsideCard('CardHeaderCounter');
+
   return <Counter {...props} />;
 };
 CardHeaderCounter.componentId = Components.CardHeaderCounter;
 
 const CardHeaderBadge = (props: BadgeProps): React.ReactElement => {
+  useInsideCard('CardHeaderBadge');
+
   return <Badge {...props} />;
 };
 CardHeaderBadge.componentId = Components.CardHeaderBadge;
 
 const CardHeaderText = (props: TextProps<{ variant: TextVariant }>): React.ReactElement => {
+  useInsideCard('CardHeaderText');
+
   return <Text {...props} />;
 };
 CardHeaderText.componentId = Components.CardHeaderText;
 
 const CardHeaderLink = (props: LinkProps): React.ReactElement => {
+  useInsideCard('CardHeaderLink');
+
   return <Link {...props} />;
 };
 CardHeaderLink.componentId = Components.CardHeaderLink;
@@ -62,6 +73,8 @@ type CardHeaderIconButtonProps = Omit<
 };
 
 const CardHeaderIconButton = (props: CardHeaderIconButtonProps): React.ReactElement => {
+  useInsideCard('CardHeaderIconButton');
+
   return (
     <Box width={makeSpace(minHeight.xsmall)}>
       <Button {...props} variant="tertiary" size="xsmall" iconPosition="left" isFullWidth />
@@ -81,6 +94,8 @@ const getComponentId = (comp: React.ReactNode): string | null => {
 };
 
 const CardHeader = ({ children }: CardHeaderProps): React.ReactElement => {
+  useInsideCard('CardHeader');
+
   return (
     <Box marginBottom="spacing.7">
       <Box
@@ -108,6 +123,8 @@ const CardHeaderLeading = ({
   prefix,
   suffix,
 }: CardHeaderLeadingProps): React.ReactElement => {
+  useInsideCard('CardHeaderLeading');
+
   if (prefix && !isOfComponentId(prefix, Components.CardHeaderIcon)) {
     throw new Error(
       `[Blade CardHeaderLeading]: Only \`${Components.CardHeaderIcon}\` component is accepted in prefix`,
@@ -152,6 +169,8 @@ const headerTrailingAllowedComponents = [
 ];
 
 const CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
+  useInsideCard('CardHeaderTrailing');
+
   if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
     throw new Error(
       `[Blade CardHeaderTrailing]: Only \`${headerTrailingAllowedComponents.join(

@@ -1,4 +1,5 @@
 import { Divider } from './Divider';
+import { useInsideCard } from './CardContext';
 import Box from '~components/Box';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
@@ -16,6 +17,8 @@ type CardFooterProps = {
 };
 
 const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
+  useInsideCard('CardFooter');
+
   return (
     <Box marginTop="spacing.7">
       <Divider />
@@ -31,6 +34,8 @@ type CardFooterLeadingProps = {
   subtitle?: string;
 };
 const CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.ReactElement => {
+  useInsideCard('CardFooterLeading');
+
   return (
     <Box>
       <Text variant="body" size="medium" weight="bold">
@@ -50,6 +55,8 @@ type CardFooterTrailingProps = {
   };
 };
 const CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactElement => {
+  useInsideCard('CardFooterTrailing');
+
   return (
     <Box display="flex" flexDirection="row" alignSelf="center">
       {actions?.secondary ? (

@@ -12,6 +12,7 @@ import {
   CardHeaderText,
 } from './CardHeader';
 import { CardSurface } from './CardSurface';
+import { CardProvider } from './CardContext';
 import Box from '~components/Box';
 
 export type CardProps = {
@@ -21,16 +22,18 @@ export type CardProps = {
 
 const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => {
   return (
-    <CardSurface
-      paddingLeft="spacing.7"
-      paddingRight="spacing.7"
-      paddingTop="spacing.6"
-      paddingBottom="spacing.6"
-      borderRadius="medium"
-      surfaceLevel={surfaceLevel}
-    >
-      {children}
-    </CardSurface>
+    <CardProvider>
+      <CardSurface
+        paddingLeft="spacing.7"
+        paddingRight="spacing.7"
+        paddingTop="spacing.6"
+        paddingBottom="spacing.6"
+        borderRadius="medium"
+        surfaceLevel={surfaceLevel}
+      >
+        {children}
+      </CardSurface>
+    </CardProvider>
   );
 };
 

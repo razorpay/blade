@@ -230,7 +230,6 @@ export default {
 } as Meta<StoryControlProps>;
 
 const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
-  console.log(args);
   return (
     <Card surfaceLevel={args.surfaceLevel}>
       <CardHeader>
