@@ -110,9 +110,9 @@ const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent
     <Box
       display="flex"
       flexDirection="column"
-      paddingTop="spacing.3"
-      paddingBottom="spacing.5"
-      flexWrap="wrap"
+      marginTop="spacing.3"
+      marginBottom="spacing.5"
+      width="100%"
     >
       {intents.map((intent) => (
         <Box key={intent} paddingTop="spacing.4">
