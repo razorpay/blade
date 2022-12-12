@@ -157,7 +157,6 @@ const ProgressBar = ({
         {...makeAccessible({
           role: variant === 'meter' ? 'meter' : 'progressbar',
           label: accessibilityLabel ?? label,
-          busy: !isMeter,
           valueNow: progressValue,
           valueText: `${progressValue}${isMeter ? '' : '%'}`,
           valueMin: 0,
