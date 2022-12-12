@@ -1,0 +1,2378 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="space-between"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      marginRight="spacing.5"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+            "marginRight": 16,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        display="flex"
+        flexDirection="row"
+        flexWrap="wrap"
+        gap="spacing.0"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "gap": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          color="surface.text.subdued.lowContrast"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="bold"
+          lineHeight="s"
+          style={
+            Array [
+              Object {
+                "color": "hsla(217, 18%, 45%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "700",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+              Object {},
+            ]
+          }
+        >
+          Label
+          <View
+            style={
+              Array [
+                Object {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              color="surface.text.normal.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+            />
+          </View>
+        </Text>
+      </View>
+    </View>
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 18%, 45%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityLabel="Label"
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-1"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(213, 89%, 56%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(213, 89%, 56%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render ProgressBar without label and percentage 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  />,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 50,
+        "text": "50%",
+      }
+    }
+    id="progress-5"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(213, 89%, 56%, 1)"
+        progress={50}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(213, 89%, 56%, 1)",
+              "height": "100%",
+              "width": "50%",
+            },
+            Object {
+              "width": "50%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 19%, 89%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-7"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(214, 21%, 94%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(213, 89%, 56%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(213, 89%, 56%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render high contrast information intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 19%, 89%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-15"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(214, 21%, 94%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(193, 100%, 35%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(193, 100%, 35%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render high contrast negative intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 19%, 89%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-11"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(214, 21%, 94%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(8, 73%, 47%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(8, 73%, 47%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 19%, 89%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-17"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(214, 21%, 94%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(216, 33%, 29%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(216, 33%, 29%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 19%, 89%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-13"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(214, 21%, 94%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(38, 97%, 38%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(38, 97%, 38%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render high contrast positive intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 19%, 89%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-9"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(214, 21%, 94%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(160, 100%, 26%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(160, 100%, 26%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render low contrast information intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 18%, 45%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-14"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(193, 100%, 35%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(193, 100%, 35%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 18%, 45%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-10"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(8, 73%, 47%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(8, 73%, 47%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 18%, 45%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-16"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(216, 33%, 29%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(216, 33%, 29%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 18%, 45%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-12"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(38, 97%, 38%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(38, 97%, 38%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 18%, 45%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-8"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(160, 100%, 26%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(160, 100%, 26%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="space-between"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      marginRight="spacing.5"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+            "marginRight": 16,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        display="flex"
+        flexDirection="row"
+        flexWrap="wrap"
+        gap="spacing.0"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "gap": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          color="surface.text.subdued.lowContrast"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="bold"
+          lineHeight="s"
+          style={
+            Array [
+              Object {
+                "color": "hsla(217, 18%, 45%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "700",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+              Object {},
+            ]
+          }
+        >
+          Label
+          <View
+            style={
+              Array [
+                Object {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              color="surface.text.normal.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+            />
+          </View>
+        </Text>
+      </View>
+    </View>
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 18%, 45%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityLabel="Label"
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-4"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="4px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 4,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(213, 89%, 56%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(213, 89%, 56%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="flex-end"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  />,
+  <View
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": false,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 70,
+        "text": "70",
+      }
+    }
+    id="meter-6"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(213, 89%, 56%, 1)"
+        progress={70}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(213, 89%, 56%, 1)",
+              "height": "100%",
+              "width": "70%",
+            },
+            Object {
+              "width": "70%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
+Array [
+  <View
+    display="flex"
+    flexDirection="row"
+    justifyContent="space-between"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        },
+      ]
+    }
+  >
+    <View
+      marginBottom="spacing.2"
+      marginRight="spacing.5"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+            "marginRight": 16,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        display="flex"
+        flexDirection="row"
+        flexWrap="wrap"
+        gap="spacing.0"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "gap": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          color="surface.text.subdued.lowContrast"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="bold"
+          lineHeight="s"
+          style={
+            Array [
+              Object {
+                "color": "hsla(217, 18%, 45%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "700",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+              Object {},
+            ]
+          }
+        >
+          Label
+          <View
+            style={
+              Array [
+                Object {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              color="surface.text.normal.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+            />
+          </View>
+        </Text>
+      </View>
+    </View>
+    <View
+      marginBottom="spacing.2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 4,
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subdued.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight="s"
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 18%, 45%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20%
+      </Text>
+    </View>
+  </View>,
+  <View
+    accessibilityLabel="Label"
+    accessibilityRole="progressbar"
+    accessibilityState={
+      Object {
+        "busy": true,
+      }
+    }
+    accessibilityValue={
+      Object {
+        "max": 100,
+        "min": 0,
+        "now": 20,
+        "text": "20%",
+      }
+    }
+    id="progress-3"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      backgroundColor="hsla(216, 44%, 23%, 0.18)"
+      height="2px"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+            "height": 2,
+          },
+        ]
+      }
+    >
+      <View
+        backgroundColor="hsla(213, 89%, 56%, 1)"
+        progress={20}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "hsla(213, 89%, 56%, 1)",
+              "height": "100%",
+              "width": "20%",
+            },
+            Object {
+              "width": "20%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": "100%",
+                "opacity": 0,
+                "width": "100%",
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;
