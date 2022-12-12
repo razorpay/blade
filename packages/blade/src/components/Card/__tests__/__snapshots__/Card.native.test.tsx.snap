@@ -602,38 +602,142 @@ exports[`<Card /> should render a Card with Header 1`] = `
             ]
           }
         >
-          <Text
-            color="surface.text.normal.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="bold"
-            lineHeight="l"
+          <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
             style={
               Array [
                 Object {
-                  "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "700",
-                  "lineHeight": 24,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
                 },
-                Object {},
               ]
             }
           >
-            Card Header
-          </Text>
+            <Text
+              accessibilityRole="header"
+              color="surface.text.normal.lowContrast"
+              fontFamily="text"
+              fontSize={200}
+              fontStyle="normal"
+              fontWeight="bold"
+              lineHeight="2xl"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 17,
+                    "fontStyle": "normal",
+                    "fontWeight": "700",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Card Header
+            </Text>
+            <View
+              marginLeft="spacing.3"
+              style={
+                Array [
+                  Object {
+                    "marginLeft": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                backgroundColor="feedback.background.neutral.lowContrast"
+                platform="onMobile"
+                size="medium"
+                style={
+                  Array [
+                    Object {
+                      "alignSelf": "center",
+                      "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+                      "borderRadius": 9999,
+                      "display": "flex",
+                      "flexWrap": "nowrap",
+                      "maxWidth": 100,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="center"
+                  overflow="hidden"
+                  paddingBottom="spacing.1"
+                  paddingLeft="spacing.3"
+                  paddingRight="spacing.3"
+                  paddingTop="spacing.1"
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "overflow": "hidden",
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="feedback.text.neutral.lowContrast"
+                    fontFamily="text"
+                    fontSize={75}
+                    fontStyle="normal"
+                    fontWeight="regular"
+                    lineHeight="s"
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "hsla(216, 27%, 36%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 12,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "lineHeight": 16,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                        Object {},
+                      ]
+                    }
+                  >
+                    12
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
           <Text
             color="surface.text.normal.lowContrast"
             fontFamily="text"
@@ -666,95 +770,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
           >
             Card subtitle
           </Text>
-        </View>
-        <View
-          marginLeft="spacing.3"
-          style={
-            Array [
-              Object {
-                "marginLeft": 8,
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="feedback.background.neutral.lowContrast"
-            platform="onMobile"
-            size="medium"
-            style={
-              Array [
-                Object {
-                  "alignSelf": "center",
-                  "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexWrap": "nowrap",
-                  "maxWidth": 100,
-                },
-              ]
-            }
-          >
-            <View
-              alignItems="center"
-              display="flex"
-              flexDirection="row"
-              justifyContent="center"
-              overflow="hidden"
-              paddingBottom="spacing.1"
-              paddingLeft="spacing.3"
-              paddingRight="spacing.3"
-              paddingTop="spacing.1"
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "overflow": "hidden",
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 2,
-                  },
-                ]
-              }
-            >
-              <Text
-                color="feedback.text.neutral.lowContrast"
-                fontFamily="text"
-                fontSize={75}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight="s"
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 12,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 16,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                    Object {},
-                  ]
-                }
-              >
-                12
-              </Text>
-            </View>
-          </View>
         </View>
       </View>
       <View
