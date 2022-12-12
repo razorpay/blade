@@ -28,11 +28,6 @@ type ProgressBarCommonProps = {
    */
   label?: string;
   /**
-   * Sets whether or not to show the progress percentage for the progress bar.
-   * @default true
-   */
-  showPercentage?: boolean;
-  /**
    * Sets the size of the progress bar.
    * @default 'small'
    */
@@ -57,6 +52,11 @@ type ProgressBarProgressProps = ProgressBarCommonProps & {
    * @default false
    */
   isIndeterminate?: boolean;
+  /**
+   * Sets whether or not to show the progress percentage for the progress bar. Percentage is hidden by default for the `meter` variant.
+   * @default false
+   */
+  hidePercentage?: boolean;
 };
 
 type ProgressBarMeterProps = ProgressBarCommonProps & {
@@ -70,6 +70,11 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
    * @default false
    */
   isIndeterminate?: undefined;
+  /**
+   * Sets whether or not to show the progress percentage for the progress bar. Percentage is hidden by default for the `meter` variant.
+   * @default false
+   */
+  hidePercentage?: undefined;
 };
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
@@ -97,7 +102,7 @@ const ProgressBar = ({
   intent,
   isIndeterminate,
   label,
-  showPercentage = false,
+  hidePercentage = false,
   size = 'small',
   value = 0,
   variant = 'progress',
@@ -106,6 +111,12 @@ const ProgressBar = ({
 
   if (variant === 'meter' && isIndeterminate) {
     console.warn(`[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`);
+  }
+
+  if (variant === 'meter' && hidePercentage) {
+    console.warn(
+      `[Blade: ProgressBar]: Cannot set 'hidePercentage' when 'variant' is 'meter'. Percentage is always hidden for meter.`,
+    );
   }
 
   const { theme } = useTheme();
@@ -130,7 +141,7 @@ const ProgressBar = ({
             {label}
           </FormLabel>
         ) : null}
-        {showPercentage ? (
+        {hidePercentage || isMeter ? null : (
           <Box marginBottom="spacing.2">
             <Text
               type="subdued"
@@ -139,7 +150,7 @@ const ProgressBar = ({
               size="small"
             >{`${progressValue}%`}</Text>
           </Box>
-        ) : null}
+        )}
       </Box>
       <Box
         id={id}

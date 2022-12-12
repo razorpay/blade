@@ -77,5 +77,4 @@ Default.args = {
   value: 20,
   size: 'medium',
   contrast: 'low',
-  showPercentage: true,
 };
