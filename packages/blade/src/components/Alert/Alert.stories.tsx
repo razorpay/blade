@@ -76,7 +76,7 @@ const meta: Meta<AlertProps> = {
     description:
       'Currently you can only accept payments in international currencies using PayPal. You cannot accept payments in INR (₹) using PayPal.',
     isFullWidth: false,
-    isDismissable: true,
+    isDismissible: true,
     contrast: 'low',
     intent: 'information',
     isBorderless: false,
@@ -140,7 +140,7 @@ WithoutActions.parameters = {
 
 export const NonDismissable = AlertTemplate.bind({});
 NonDismissable.args = {
-  isDismissable: false,
+  isDismissible: false,
 };
 NonDismissable.parameters = {
   docs: {

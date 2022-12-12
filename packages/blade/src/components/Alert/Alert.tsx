@@ -66,7 +66,7 @@ type AlertProps = {
    *
    * @default true
    */
-  isDismissable?: boolean;
+  isDismissible?: boolean;
 
   /**
    * A callback when the dismiss button is clicked
@@ -134,7 +134,7 @@ const intentIconMap = {
 const Alert = ({
   description,
   title,
-  isDismissable = true,
+  isDismissible = true,
   onDismiss,
   contrast = 'low',
   isFullWidth = false,
@@ -256,7 +256,7 @@ const Alert = ({
     }
     setIsVisible(false);
   };
-  const closeButton = isDismissable ? (
+  const closeButton = isDismissible ? (
     <CloseButtonWrapper>
       <IconButton
         accessibilityLabel="Dismiss alert"
