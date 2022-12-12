@@ -37,19 +37,22 @@ const ProgressBarPulseAnimation = styled(BoxWithProgressBarFilledTransition)<
     ProgressBarFilledProps,
     'pulseMotionDuration' | 'pulseMotionDelay' | 'motionEasing' | 'variant'
   >
->(({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, variant }) =>
-  variant === 'progress'
+>(({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, variant }) => {
+  const duration = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDuration)));
+  const easing = castWebType(getIn(theme.motion, motionEasing));
+  const delay = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDelay)));
+
+  return variant === 'progress'
     ? css`
         height: 100%;
         width: 100%;
         opacity: 0;
         background-color: white;
-        animation: ${pulse} ${castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDuration)))}
-          ${castWebType(getIn(theme.motion, motionEasing))} infinite;
-        animation-delay: ${castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDelay)))};
+        animation: ${pulse} ${duration} ${easing} infinite;
+        animation-delay: ${delay};
       `
-    : '',
-);
+    : '';
+});
 
 const ProgressBarFilled = ({
   backgroundColor,

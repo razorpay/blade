@@ -107,8 +107,6 @@ const ProgressBar = ({
   value = 0,
   variant = 'progress',
 }: ProgressBarProps): ReactElement => {
-  console.log(isIndeterminate); // will be in follow up PR
-
   if (variant === 'meter' && isIndeterminate) {
     console.warn(`[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`);
   }
@@ -130,7 +128,7 @@ const ProgressBar = ({
   const id = useId(variant);
 
   return (
-    <Box>
+    <>
       <Box
         display="flex"
         flexDirection="row"
@@ -157,7 +155,6 @@ const ProgressBar = ({
         {...makeAccessible({
           role: variant === 'meter' ? 'meter' : 'progressbar',
           label: accessibilityLabel ?? label,
-          busy: !isMeter,
           valueNow: progressValue,
           valueText: `${progressValue}${isMeter ? '' : '%'}`,
           valueMin: 0,
@@ -179,7 +176,7 @@ const ProgressBar = ({
           />
         </ProgressBarUnfilled>
       </Box>
-    </Box>
+    </>
   );
 };
 
