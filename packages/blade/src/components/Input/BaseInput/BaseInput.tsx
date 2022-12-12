@@ -32,7 +32,7 @@ export type BaseInputProps = FormInputLabelProps &
     /**
      * Determines if it needs to be rendered as input or textarea
      */
-    as?: 'input' | 'textarea';
+    as?: 'input' | 'textarea' | 'button';
     /**
      * ID that will be used for accessibility
      */
@@ -567,7 +567,9 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               setCurrentInteraction={setCurrentInteraction}
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
-            />
+            >
+              Select Option
+            </StyledBaseInput>
             <BaseInputVisuals
               interactionElement={interactionElement}
               suffix={suffix}
