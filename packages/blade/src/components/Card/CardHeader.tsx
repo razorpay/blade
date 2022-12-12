@@ -175,7 +175,7 @@ const CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactEle
     throw new Error(
       `[Blade CardHeaderTrailing]: Only \`${headerTrailingAllowedComponents.join(
         ', ',
-      )}\` component is accepted in suffix`,
+      )}\` component is accepted in visual`,
     );
   }
 

@@ -18,6 +18,11 @@ import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import { Text } from '~components/Typography';
+import { Counter } from '~components/Counter';
+import { Badge } from '~components/Badge';
+
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
 
 describe('<Card />', () => {
   it('should render a plain Card', () => {
@@ -52,6 +57,73 @@ describe('<Card />', () => {
     expect(getByText(cardTitle)).toBeInTheDocument();
     expect(getByText(cardSubtitle)).toBeInTheDocument();
     expect(container).toMatchSnapshot();
+  });
+
+  it('should only accept allowed components in Card Header', () => {
+    const cardTitle = 'Card Header';
+    const cardSubtitle = 'Card subtitle';
+    expect(() =>
+      renderWithTheme(
+        <Card surfaceLevel={2}>
+          <CardHeader>
+            <CardHeaderLeading
+              title={cardTitle}
+              subtitle={cardSubtitle}
+              prefix={<InfoIcon color="action.icon.primary.default" size="xsmall" />}
+            />
+          </CardHeader>
+        </Card>,
+      ),
+    ).toThrow('[Blade CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix');
+
+    expect(() =>
+      renderWithTheme(
+        <Card surfaceLevel={2}>
+          <CardHeader>
+            <CardHeaderLeading
+              title={cardTitle}
+              subtitle={cardSubtitle}
+              suffix={<Counter value={12} />}
+            />
+          </CardHeader>
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in prefix',
+    );
+
+    expect(() =>
+      renderWithTheme(
+        <Card surfaceLevel={2}>
+          <CardHeader>
+            <CardHeaderTrailing visual={<Badge>NEW</Badge>} />
+          </CardHeader>
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade CardHeaderTrailing]: Only `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge` component is accepted in visual',
+    );
+  });
+
+  it('should throw error if any sub card components are used outside of Card', () => {
+    expect(() => renderWithTheme(<CardHeader />)).toThrow(
+      '[Blade Card]: CardHeader cannot be used outside of Card component',
+    );
+    expect(() => renderWithTheme(<CardHeaderLeading title="" />)).toThrow(
+      '[Blade Card]: CardHeaderLeading cannot be used outside of Card component',
+    );
+    expect(() => renderWithTheme(<CardHeaderTrailing />)).toThrow(
+      '[Blade Card]: CardHeaderTrailing cannot be used outside of Card component',
+    );
+    expect(() => renderWithTheme(<CardFooter />)).toThrow(
+      '[Blade Card]: CardFooter cannot be used outside of Card component',
+    );
+    expect(() => renderWithTheme(<CardFooterTrailing />)).toThrow(
+      '[Blade Card]: CardFooterTrailing cannot be used outside of Card component',
+    );
+    expect(() => renderWithTheme(<CardFooterLeading title="" />)).toThrow(
+      '[Blade Card]: CardFooterLeading cannot be used outside of Card component',
+    );
   });
 
   it('should render a Card with Footer', () => {
