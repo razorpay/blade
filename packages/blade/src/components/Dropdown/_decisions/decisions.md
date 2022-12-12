@@ -261,11 +261,11 @@ type ActionListProps = {
   children: React.ReactNode;
 
   /**
-   * Renders simple menu or checkboxes depending on the variant
+   * Renders simple menu or checkboxes depending on the type selected here
    *
    * @default single
    */
-  variant?: 'single' | 'multiple';
+  selectionType?: 'single' | 'multiple';
 
   /** Callback that gets called when item is checked/clicked */
   onChange?: () => void;
@@ -320,7 +320,7 @@ type ActionListItemProps = {
   /**
    * Leading Icon or assets. Accepts JSX Component
    *
-   * Should not be allowed when ActionList variant is multiple select
+   * Should not be allowed when ActionList selectionType is multiple select
    */
   leading?: React.ReactNode;
 
@@ -545,7 +545,7 @@ Compound components add complex nesting in larger APIs (Check out previously con
 <ActionList surfaceLevel={2}>
   <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
   <ActionList.SectionHeading title="Hello" />
-  <ActionList.Item title="Item Value" desciption="Item Description" variant="negative">
+  <ActionList.Item title="Item Value" desciption="Item Description" intent="negative">
     <ActionList.Leading>
       <ActionListItemIcon icon={StarIcon} />
     </ActionList.Leading>
