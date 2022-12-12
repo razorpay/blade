@@ -10,24 +10,65 @@ import Box from '~components/Box';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
 type ProgressBarCommonProps = {
+  /**
+   * Sets aria-label to help users know what the progress bar is for. Default value is the same as the `label` passed.
+   */
   accessibilityLabel?: string;
+  /**
+   * Sets the contrast for the progress bar
+   * @default 'low'
+   */
   contrast?: ColorContrastTypes;
+  /**
+   * Sets the intent of the progress bar which changes the feedback color.
+   */
   intent?: Feedback;
+  /**
+   * Sets the label to be rendered for the progress bar. This value will also be used as default for `accessibilityLabel`.
+   */
   label?: string;
+  /**
+   * Sets whether or not to show the progress percentage for the progress bar.
+   * @default true
+   */
   showPercentage?: boolean;
+  /**
+   * Sets the size of the progress bar.
+   * @default 'small'
+   */
   size?: 'small' | 'medium';
+  /**
+   * Sets the progress value of the progress bar.
+   * @default 'small'
+   */
   value?: number;
 };
 
 type ProgressBarVariant = 'progress' | 'meter';
 
 type ProgressBarProgressProps = ProgressBarCommonProps & {
+  /**
+   * Sets the variant to be rendered for thr progress bar.
+   * @default 'progress'
+   */
   variant?: Extract<ProgressBarVariant, 'progress'>;
+  /**
+   * Sets whether the progress bar is in an indeterminate state.
+   * @default false
+   */
   isIndeterminate?: boolean;
 };
 
 type ProgressBarMeterProps = ProgressBarCommonProps & {
+  /**
+   * Sets the variant to be rendered for thr progress bar.
+   * @default 'progress'
+   */
   variant?: Extract<ProgressBarVariant, 'meter'>;
+  /**
+   * Sets whether the progress bar is in an indeterminate state.
+   * @default false
+   */
   isIndeterminate?: undefined;
 };
 
