@@ -8,10 +8,10 @@ Cards are used to group similar concepts and tasks together to make easier for m
 - [Card API Constraints](#card-api-constraints)
 - [API](#api)
   - [`Card` API](#card-api)
-  - [`Card.HeaderLeading` API](#cardheaderleading-api)
-  - [`Card.HeaderTrailing` API](#cardheadertrailing-api)
-  - [`Card.FooterLeading` API](#cardfooterleading-api)
-  - [`Card.FooterTrailing` API](#cardfootertrailing-api)
+  - [`CardHeaderLeading` API](#cardheaderleading-api)
+  - [`CardHeaderTrailing` API](#cardheadertrailing-api)
+  - [`CardFooterLeading` API](#cardfooterleading-api)
+  - [`CardFooterTrailing` API](#cardfootertrailing-api)
 - [Accessibility](#accessibility)
 - [Flexiblity vs Constraints Rabbit hole](#flexiblity-vs-constraints-rabbit-hole)
   - [Alternative APIs](#alternative-apis)
@@ -28,13 +28,13 @@ Cards are used to group similar concepts and tasks together to make easier for m
 Components: 
 
 - `Card`
-- `Card.Header`
-  - `Card.HeaderLeading` 
-  - `Card.HeaderTraling` 
-- `Card.Body`
-- `Card.Footer`
-  - `Card.FooterLeading` 
-  - `Card.FooterTraling` 
+- `CardHeader`
+  - `CardHeaderLeading` 
+  - `CardHeaderTraling` 
+- `CardBody`
+- `CardFooter`
+  - `CardFooterLeading` 
+  - `CardFooterTraling` 
 
 ## Card Requirements
 
@@ -109,32 +109,32 @@ Sample usage:
 
 ```jsx
 <Card backgroundLevel={1}>
-  <Card.Header>
-    <Card.HeaderLeading  
+  <CardHeader>
+    <CardHeaderLeading  
       title="Payments Links" 
       subtitle="Share payment link via an email, SMS, messenger, chatbot etc." 
       prefix={<CardHeaderIcon icon={DollarIcon} />}
       suffix={<CardHeaderCounter amount={20} />}
     />
-    <Card.HeaderTrailing 
+    <CardHeaderTrailing 
       visual={<CardHeaderBadge variant="positive">NEW</CardHeaderBadge>} 
     />
-  </Card.Header>
-  <Card.Body>
+  </CardHeader>
+  <CardBody>
     Card Body Content
-  </Card.Body>
-  <Card.Footer>
-    <Card.FooterLeading 
+  </CardBody>
+  <CardFooter>
+    <CardFooterLeading 
       title="Card Footer Title" 
       subtitle="Card footer subtitle" 
     />
-    <Card.FooterTrailing 
+    <CardFooterTrailing 
       actions={{
         primaryAction: { text: 'Know more', onClick: () => {} },
         secondaryAction: { text: 'Read Docs', onClick: () => {} },
       }}
     />
-  </Card.Footer>
+  </CardFooter>
 </Card>
 ```
 
@@ -147,7 +147,7 @@ Sample usage:
 | `surfaceLevel` | `2, 3` | `2`     | Surface level of the card background color, use this based on where the card is placed |          |
 
 
-### `Card.HeaderLeading` API
+### `CardHeaderLeading` API
 
 
 | Prop             | Type              | Default     | Description                                              | Required |
@@ -157,20 +157,20 @@ Sample usage:
 | `prefix`    | `React.ReactNode` | `undefined` | Prefix element placed before title text (restricted to: Icon)       |          |
 | `suffix`    | `React.ReactNode` | `undefined` | Suffix element placed after title text (restricted to: Counter)     |          |
 
-### `Card.HeaderTrailing` API
+### `CardHeaderTrailing` API
 
 | Prop             | Type              | Default     | Description                                              | Required |
 | ---------------- | ----------------- | ----------- | -------------------------------------------------------- | -------- |
 | `visual` | `React.ReactNode` | `undefined` | Trailing visual element placed on right side of the card (restricted to: Badge, Text, Link, IconButton) |          |
 
-### `Card.FooterLeading` API
+### `CardFooterLeading` API
 
 | Prop       | Type                                     | Default     | Description                                | Required |
 | ---------- | ---------------------------------------- | ----------- | ------------------------------------------ | -------- |
 | `title`    | `string`                                 | `undefined` | Title of the Card                          | ✅        |
 | `subtitle` | `string`                                 | `undefined` | Subtitle of the Card                       |          |
 
-### `Card.FooterTrailing` API
+### `CardFooterTrailing` API
 
 | Prop       | Type                                     | Default     | Description                                | Required |
 | ---------- | ---------------------------------------- | ----------- | ------------------------------------------ | -------- |
@@ -208,9 +208,9 @@ With this, users will have to know that icon size have to be `xl` & color have t
 To resolve this we will expose a different component which will internally add the neccesary props & render it: 
 
 ```jsx
-import { Card, CardHeaderIcon } from "@razorpay/blade/components";
+import { Card, CardHeader, CardHeaderIcon } from "@razorpay/blade/components";
 
-<Card.Header prefix={<CardHeaderIcon icon={InfoIcon} />}>
+<CardHeader prefix={<CardHeaderIcon icon={InfoIcon} />}>
 ```
 
 Note: that in the `prefix`, `suffix` & `visual` we will also restrict these set of components, so that users can't just add any random JSX element & potentially break the layout. 
@@ -505,6 +505,63 @@ After discussing about the criticality of the treeshaking we decided to go with 
 - Check the bundle size of the app to ensure no duplicated components are present
 - Also explore the pattern which we used in CheckboxGroup to use `useCardContext` to validate the components being passed (Though this might not work since useCardContext can only check if it’s an allowed component, It can’t throw error if it’s not.)
 
+
+> **Internal Meeting: Dec 9th 2022**
+> 
+> **Agenda:** Discussing if we should expose components with dot notation or not
+> 
+> Participants: Anurag, Kamlesh, Chaitanya, Abinash, Saurabh
+
+In the current API we have something like this: 
+
+```jsx
+<Card backgroundLevel={1}>
+  <Card.Header>
+    <Card.HeaderLeading  
+      title="Payments Links" 
+      subtitle="Share payment link via an email, SMS, messenger, chatbot etc." 
+      prefix={<CardHeaderIcon icon={DollarIcon} />}
+      suffix={<CardHeaderCounter amount={20} />}
+    />
+    <Card.HeaderTrailing 
+      visual={<CardHeaderBadge variant="positive">NEW</CardHeaderBadge>} 
+    />
+  </Card.Header>
+</Card>
+```
+
+As you've noticed, the problem here is that some components like `Card.HeaderLeading`, `Card.Header` etc are attached to the `Card` component's static methods so that users don't have to import everything but other components like `CardHeaderIcon`, `CardHeaderBadge` are not (reason being treeshaking issue we discussed earlier) 
+
+This causes a confusion for the developer on which components needs to be imported and which are not & also raises the question on "why is the API built like this?" which cannot be answered without the context on the treeshaking problems. 
+
+For this reason we discussed & decided that we will just fallback to normal importable components for all the parts of the Card, this will avoid any confusion. 
+
+```jsx
+import {
+  Card,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge
+} from "@razorpay/blade"
+
+
+<Card backgroundLevel={1}>
+  <CardHeader>
+    <CardHeaderLeading  
+      title="Payments Links" 
+      subtitle="Share payment link via an email, SMS, messenger, chatbot etc." 
+      prefix={<CardHeaderIcon icon={DollarIcon} />}
+      suffix={<CardHeaderCounter amount={20} />}
+    />
+    <CardHeaderTrailing 
+      visual={<CardHeaderBadge variant="positive">NEW</CardHeaderBadge>} 
+    />
+  </CardHeader>
+</Card>
+```
 
 ## Open Questions
 
