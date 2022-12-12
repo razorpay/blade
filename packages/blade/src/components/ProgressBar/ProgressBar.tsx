@@ -107,8 +107,6 @@ const ProgressBar = ({
   value = 0,
   variant = 'progress',
 }: ProgressBarProps): ReactElement => {
-  console.log(isIndeterminate); // will be in follow up PR
-
   if (variant === 'meter' && isIndeterminate) {
     console.warn(`[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`);
   }
