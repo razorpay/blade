@@ -108,6 +108,20 @@ With the above constraints we can propose the Card API as follows:
 Sample usage:
 
 ```jsx
+import {
+  Card,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderBadge,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardBody,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+} from "@razorpay/blade"
+
 <Card backgroundLevel={1}>
   <CardHeader>
     <CardHeaderLeading  
@@ -181,7 +195,7 @@ type Action = {
   onClick: () => void;
   text: string;
   type?: 'button' | 'reset' | 'submit';
-  accessibilityLabel: stirng;
+  accessibilityLabel: string;
   isLoading: boolean;
   isDisabled: boolean;
   icon: React.ReactNode;
@@ -219,7 +233,7 @@ Note: that in the `prefix`, `suffix` & `visual` we will also restrict these set 
 
 For Cards there won't be any aria related logic needed to make it accessible. Though important things to consider while building cards are: 
 
-- Ensure the markup is sementic
+- Ensure the markup is semantic
 - Mantaining proper reading/tab order while placing multiple cards in a group
 
 Since our Cards are not wrapped in a link or is clickable by design we don't have to worry about nested actions. 
@@ -241,16 +255,6 @@ We also evaluated few alternative approaches before finalizing the API, Here are
 
 **API 1:**
 
-*Pros:*
-
-- More customisable than prop based api
-
-*Cons:*
-
-- Hard to enforce via Types
-- Runtime enforcement is complex to do
-- The JSX nesting isn't very simple and doesn't match with the visual design (notice how HeaderCounter is inside HeaderTitle with the title's text)
-
 ```jsx
 <Card.Header>
   <Card.HeaderTitle icon={Clock} subtitle="Card subtitle">
@@ -263,7 +267,32 @@ We also evaluated few alternative approaches before finalizing the API, Here are
 </Card.Header>
 ```
 
+*Pros:*
+
+- More customisable than prop based api
+
+*Cons:*
+
+- Hard to enforce via Types
+- Runtime enforcement is complex to do
+- The JSX nesting isn't very simple and doesn't match with the visual design (notice how HeaderCounter is inside HeaderTitle with the title's text)
+
+---
+
 **API 2:**
+
+```jsx
+<Card.Header>
+  <Card.HeaderLeading>
+    <Clock />
+    <Card.HeaderTitle title="" subtitle=""  />
+    <Counter />
+  </Card.HeaderLeading>
+  <Card.HeaderTrailing>
+    <Badge />
+  </Card.HeaderTrailing>
+</Card.Header>
+```
 
 *Pros:*
 
@@ -279,30 +308,9 @@ We also evaluated few alternative approaches before finalizing the API, Here are
 - The API is too flexible, we want some control over the API to reduce the footguns.
 - We need a few runtime hacks and checks on the `Card.headerLeading` part to make sure we are putting everything on the right place.
 
-```jsx
-<Card.Header>
-  <Card.HeaderLeading>
-    <Clock />
-    <Card.HeaderTitle title="" subtitle=""  />
-    <Counter />
-  </Card.HeaderLeading>
-  <Card.HeaderTrailing>
-    <Badge />
-  </Card.HeaderTrailing>
-</Card.Header>
-```
+---
 
 **API 3:**
-
-Pros: 
-
-- Total control of the API
-
-Cons: 
-
-- API is too restrictive, consumers won't even be able to change the counter's variant
-- Introduces [Apropcalypse](https://twitter.com/dan_abramov/status/1124249242720194560)
-- No scope of future extension, if we change any APIs to add anything we need to introduce a lot of breaking changes
 
 ```jsx
 <Card 
@@ -327,6 +335,17 @@ Cons:
 </Card>
 ```
 
+*Pros:* 
+
+- Total control of the API
+
+*Cons:* 
+
+- API is too restrictive, consumers won't even be able to change the counter's variant
+- Introduces [Apropcalypse](https://twitter.com/dan_abramov/status/1124249242720194560)
+- No scope of future extension, if we change any APIs to add anything we need to introduce a lot of breaking changes
+
+---
 
 > **Internal Meeting: Nov 29th 2022**
 >
@@ -405,15 +424,9 @@ This was a valid concern with the API which we all agreed that needs to be fixed
 </details>
 
 
+-----
+
 **API 5:** Semi-Flexible Compound API:  
-
-
-**Pros:** 
-- Addresses the issue with users needing to pass size & color to icon
-
-**Cons:** 
-- There will be a lot of complex runtime checks we need to do.
-We also need to ensure the ordering of the JSX elements if users change the order, which will lead to more runtime hacks. 
 
 ```jsx
 <Card.Header>
@@ -428,16 +441,16 @@ We also need to ensure the ordering of the JSX elements if users change the orde
 </Card.Header>
 ```
 
-**API 6:** Constrained Prop Based: 
-
 **Pros:** 
-- Gives us total control of how we want to structure the Card
-No footguns as such
+- Addresses the issue with users needing to pass size & color to icon
 
 **Cons:** 
-- Prop based API seems a bit too restrictive
-- Hard to extend later on for future usecases, imagine if we want to add Avatar we need to add `prefixAvatar` prop for it
-- Passing props to counter needs another prop `counterIntent`
+- There will be a lot of complex runtime checks we need to do.
+We also need to ensure the ordering of the JSX elements if users change the order, which will lead to more runtime hacks. 
+
+----
+
+**API 6:** Constrained Prop Based: 
 
 ```jsx
 <Card>
@@ -453,21 +466,20 @@ No footguns as such
 </Card>
 ```
 
+**Pros:** 
+- Gives us total control of how we want to structure the Card
+No footguns as such
+
+**Cons:** 
+- Prop based API seems a bit too restrictive
+- Hard to extend later on for future usecases, imagine if we want to add Avatar we need to add `prefixAvatar` prop for it
+- Passing props to counter needs another prop `counterIntent`
+
+---
+
 **API 7: Final API**
 
 After discussing about the various pros & cons, footguns & advantages of the APIs we proposed a hybrid approach: 
-
-
-**Pros:**
-- Gives us control over which props to expose in components like `Card.Header.Icon`
-- Breaking change resistent, The API is open for extension, if we want we can expose `Card.Header.Avatar` without introducing a breaking change
-- Retains all the advantages of the previous hybrid approach.
-- No runtime hacks to ensure the order of components unlike in the compound component approach
-- We can constrain the titlePrefix, titleSuffix to only accept `Card.Header.{component}`
-
-**Cons:**
-- Treeshaking will be a minor issue, if we have 10 `Card.Header.{component}`s then all 10 will be included in the bundle even if users don't use them
-
 
 ```jsx
 <Card>
@@ -479,6 +491,17 @@ After discussing about the various pros & cons, footguns & advantages of the API
   />
 </Card>
 ```
+
+**Pros:**
+- Gives us control over which props to expose in components like `Card.Header.Icon`
+- Breaking change resistent, The API is open for extension, if we want we can expose `Card.Header.Avatar` without introducing a breaking change
+- Retains all the advantages of the previous hybrid approach.
+- No runtime hacks to ensure the order of components unlike in the compound component approach
+- We can constrain the titlePrefix, titleSuffix to only accept `Card.Header.{component}`
+
+**Cons:**
+- Treeshaking will be a minor issue, if we have 10 `Card.Header.{component}`s then all 10 will be included in the bundle even if users don't use them
+
 
 > **Internal Meeting: Dec 5th 2022**
 > 
