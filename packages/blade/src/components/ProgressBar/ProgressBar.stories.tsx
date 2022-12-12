@@ -28,10 +28,10 @@ const Page = (): ReactElement => {
           function App(): JSX.Element {
             return (
               <ProgressBar 
-                label='Label' 
-                value='30' 
-                variant='progress' 
-                size='medium' 
+                label="Label" 
+                value={30} 
+                variant="progress" 
+                size="medium" 
               />
             )
           }
