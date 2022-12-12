@@ -72,12 +72,10 @@ Components:
 - `Icon`
   - Size & color cannot be changed
 - `Counter`
-  - Size can be changed but not recommended
+  - Size cannot be changed
   - Variant can be changed
 
 **Header Trailing Section**
-
-Anything can be changed in these components, but whats given out of the box are the recommended: 
 
 Only one of the component can be used at a time: 
 - Badge
@@ -85,7 +83,7 @@ Only one of the component can be used at a time:
 - Link
 - IconButton - only tertiary variant
 
-Other recommendations from design side: 
+Other guideline from design side: 
 
 - Never use a primary/secondary action in the header, footer are meant for such actions.
   - This means it's not recommended to change variant of IconButton
@@ -122,7 +120,7 @@ import {
   CardFooterTrailing,
 } from "@razorpay/blade"
 
-<Card backgroundLevel={1}>
+<Card surfaceLevel={2}>
   <CardHeader>
     <CardHeaderLeading  
       title="Payments Links" 
@@ -156,39 +154,39 @@ import {
 ### `Card` API
 
 
-| Prop              | Type   | Default | Description                                                                            | Required |
-| ----------------- | ------ | ------- | -------------------------------------------------------------------------------------- | -------- |
+| Prop           | Type   | Default | Description                                                                            | Required |
+| -------------- | ------ | ------- | -------------------------------------------------------------------------------------- | -------- |
 | `surfaceLevel` | `2, 3` | `2`     | Surface level of the card background color, use this based on where the card is placed |          |
 
 
 ### `CardHeaderLeading` API
 
 
-| Prop             | Type              | Default     | Description                                              | Required |
-| ---------------- | ----------------- | ----------- | -------------------------------------------------------- | -------- |
-| `title`          | `string`          | `undefined` | Title of the Card                                        | ✅        |
-| `subtitle`       | `string`          | `undefined` | Subtitle of the Card                                     |          |
-| `prefix`    | `React.ReactNode` | `undefined` | Prefix element placed before title text (restricted to: Icon)       |          |
-| `suffix`    | `React.ReactNode` | `undefined` | Suffix element placed after title text (restricted to: Counter)     |          |
+| Prop       | Type              | Default     | Description                                                               | Required |
+| ---------- | ----------------- | ----------- | ------------------------------------------------------------------------- | -------- |
+| `title`    | `string`          | `undefined` | Title of the Card                                                         | ✅        |
+| `subtitle` | `string`          | `undefined` | Subtitle of the Card                                                      |          |
+| `prefix`   | `React.ReactNode` | `undefined` | Prefix element placed before title text (restricted to: CardHeaderIcon)   |          |
+| `suffix`   | `React.ReactNode` | `undefined` | Suffix element placed after title text (restricted to: CardHeaderCounter) |          |
 
 ### `CardHeaderTrailing` API
 
-| Prop             | Type              | Default     | Description                                              | Required |
-| ---------------- | ----------------- | ----------- | -------------------------------------------------------- | -------- |
-| `visual` | `React.ReactNode` | `undefined` | Trailing visual element placed on right side of the card (restricted to: Badge, Text, Link, IconButton) |          |
+| Prop     | Type              | Default     | Description                                                                                                                                     | Required |
+| -------- | ----------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `visual` | `React.ReactNode` | `undefined` | Trailing visual element placed on right side of the card (restricted to: CardHeaderBadge, CardHeaderText, CardHeaderLink, CardHeaderIconButton) |          |
 
 ### `CardFooterLeading` API
 
-| Prop       | Type                                     | Default     | Description                                | Required |
-| ---------- | ---------------------------------------- | ----------- | ------------------------------------------ | -------- |
-| `title`    | `string`                                 | `undefined` | Title of the Card                          | ✅        |
-| `subtitle` | `string`                                 | `undefined` | Subtitle of the Card                       |          |
+| Prop       | Type     | Default     | Description          | Required |
+| ---------- | -------- | ----------- | -------------------- | -------- |
+| `title`    | `string` | `undefined` | Title of the Card    | ✅        |
+| `subtitle` | `string` | `undefined` | Subtitle of the Card |          |
 
 ### `CardFooterTrailing` API
 
-| Prop       | Type                                     | Default     | Description                                | Required |
-| ---------- | ---------------------------------------- | ----------- | ------------------------------------------ | -------- |
-| `actions`  | `{ primary: Action, secondary: Action }` | `undefined` | Renders a primary/secondary action buttons |          |
+| Prop      | Type                                     | Default     | Description                                | Required |
+| --------- | ---------------------------------------- | ----------- | ------------------------------------------ | -------- |
+| `actions` | `{ primary: Action, secondary: Action }` | `undefined` | Renders a primary/secondary action buttons |          |
 
 ```ts
 type Action = {
@@ -359,7 +357,7 @@ After careful considerations & discussing with the team we decided the go ahead 
 **API 4:**
 
 ```jsx
-<Card backgroundLevel={1}>
+<Card surfaceLevel={2}>
   <Card.Header 
     title="Payments Links" 
     subtitle="Share payment link via an email, SMS, messenger, chatbot etc." 
@@ -538,7 +536,7 @@ After discussing about the criticality of the treeshaking we decided to go with 
 In the current API we have something like this: 
 
 ```jsx
-<Card backgroundLevel={1}>
+<Card surfaceLevel={2}>
   <Card.Header>
     <Card.HeaderLeading  
       title="Payments Links" 
@@ -571,7 +569,7 @@ import {
 } from "@razorpay/blade"
 
 
-<Card backgroundLevel={1}>
+<Card surfaceLevel={2}>
   <CardHeader>
     <CardHeaderLeading  
       title="Payments Links" 
