@@ -3,7 +3,7 @@ import React from 'react';
 import { Divider } from './Divider';
 import Box from '~components/Box';
 import type { TextProps, TextVariant } from '~components/Typography';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import type { CounterProps } from '~components/Counter';
 import { Counter } from '~components/Counter';
@@ -126,14 +126,16 @@ const CardHeaderLeading = ({
         {prefix}
       </Box>
       <Box>
-        <Text variant="body" size="medium" weight="bold">
-          {title}
-        </Text>
+        <Box display="flex" flexDirection="row" alignItems="center">
+          <Heading size="small" variant="regular" type="normal">
+            {title}
+          </Heading>
+          <Box marginLeft="spacing.3">{suffix}</Box>
+        </Box>
         <Text variant="body" size="small" weight="regular">
           {subtitle}
         </Text>
       </Box>
-      <Box marginLeft="spacing.3">{suffix}</Box>
     </Box>
   );
 };
