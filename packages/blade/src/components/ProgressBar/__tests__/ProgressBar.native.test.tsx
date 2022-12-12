@@ -96,11 +96,12 @@ describe('<ProgressBar />', () => {
       <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} />,
     );
 
-    expect(getByRole('progressbar')).toHaveAccessibleName('Downloading');
+    const progressbar = getByRole('progressbar');
+    expect(progressbar.findByProps({ accessibilityLabel: 'Downloading' })).toBeTruthy();
   });
 
   it('should not have accessibility violations', async () => {
     const { toJSON } = renderWithTheme(<ProgressBar accessibilityLabel="Downloading" value={70} />);
-    await assertAccessible(container);
+    await assertAccessible(toJSON());
   });
 });

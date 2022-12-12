@@ -185,11 +185,6 @@ Array [
   <View
     accessibilityLabel="Label"
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -272,11 +267,6 @@ Array [
   />,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -403,11 +393,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -534,11 +519,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -665,11 +645,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -796,11 +771,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -927,11 +897,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -1058,11 +1023,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -1189,11 +1149,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -1320,11 +1275,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -1451,11 +1401,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -1582,11 +1527,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -1713,11 +1653,6 @@ Array [
   </View>,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -1967,11 +1902,6 @@ Array [
   <View
     accessibilityLabel="Label"
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -2054,11 +1984,6 @@ Array [
   />,
   <View
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": false,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,
@@ -2308,11 +2233,6 @@ Array [
   <View
     accessibilityLabel="Label"
     accessibilityRole="progressbar"
-    accessibilityState={
-      Object {
-        "busy": true,
-      }
-    }
     accessibilityValue={
       Object {
         "max": 100,

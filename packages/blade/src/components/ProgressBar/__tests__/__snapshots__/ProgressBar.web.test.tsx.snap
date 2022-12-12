@@ -186,7 +186,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-label="Label"
     aria-valuemax="100"
     aria-valuemin="0"
@@ -267,7 +266,6 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
     display="flex"
   />
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="50"
@@ -380,7 +378,6 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -493,7 +490,6 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -606,7 +602,6 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -719,7 +714,6 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -832,7 +826,6 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -945,7 +938,6 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -1058,7 +1050,6 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -1171,7 +1162,6 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -1284,7 +1274,6 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -1397,7 +1386,6 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -1510,7 +1498,6 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
@@ -1721,7 +1708,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-label="Label"
     aria-valuemax="100"
     aria-valuemin="0"
@@ -1791,7 +1777,6 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
     display="flex"
   />
   <div
-    aria-busy="false"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="70"
@@ -2002,7 +1987,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
     </div>
   </div>
   <div
-    aria-busy="true"
     aria-label="Label"
     aria-valuemax="100"
     aria-valuemin="0"
