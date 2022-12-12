@@ -79,7 +79,6 @@ const meta: Meta<AlertProps> = {
     isDismissable: true,
     contrast: 'low',
     intent: 'information',
-    isBorderless: false,
     actions: {
       primary: {
         text: 'Primary Action',
@@ -189,7 +188,15 @@ PrimaryActionOnly.parameters = {
   },
 };
 
-export const FullWidth = AlertTemplate.bind({});
+export const FullWidth: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+  return (
+    <Box height={200} position="relative">
+      <Box position="absolute" width="100%">
+        <AlertComponent {...args} />
+      </Box>
+    </Box>
+  );
+};
 FullWidth.args = {
   description: 'Currently you can only accept payments in international currencies using PayPal.',
   intent: 'notice',
@@ -200,31 +207,8 @@ FullWidth.args = {
 FullWidth.parameters = {
   docs: {
     description: {
-      story: 'A full width Alert can be used to span the entire width of its container',
-    },
-  },
-};
-
-export const Borderless: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
-  return (
-    <Box height={200} position="relative">
-      <Box position="absolute" width="100%">
-        <AlertComponent {...args} />
-      </Box>
-    </Box>
-  );
-};
-Borderless.args = {
-  description: 'Use vendor payouts to quickly generate invoices.',
-  actions: undefined,
-  title: undefined,
-  isBorderless: true,
-};
-Borderless.parameters = {
-  docs: {
-    description: {
       story:
-        'A borderless Alert can be used for full-bleed layouts, this automatically makes the alert full width. You can also wrap the alert and adjust layout with absolute positioning if needed.',
+        'A full width Alert can be used to span the entire width of its container. It also makes the Alert borderless and can be used for full-bleed layouts. You can also wrap the alert and adjust layout with absolute positioning if needed.',
     },
   },
 };
