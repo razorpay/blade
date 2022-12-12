@@ -128,7 +128,7 @@ const ProgressBar = ({
   const id = useId(variant);
 
   return (
-    <Box>
+    <>
       <Box
         display="flex"
         flexDirection="row"
@@ -176,7 +176,7 @@ const ProgressBar = ({
           />
         </ProgressBarUnfilled>
       </Box>
-    </Box>
+    </>
   );
 };
 
