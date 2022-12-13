@@ -43,7 +43,7 @@ type ProgressBarVariant = 'progress' | 'meter';
 
 type ProgressBarProgressProps = ProgressBarCommonProps & {
   /**
-   * Sets the variant to be rendered for thr progress bar.
+   * Sets the variant to be rendered for the progress bar.
    * @default 'progress'
    */
   variant?: Extract<ProgressBarVariant, 'progress'>;
