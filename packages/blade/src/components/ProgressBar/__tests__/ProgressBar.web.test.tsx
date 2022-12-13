@@ -138,7 +138,7 @@ describe('<ProgressBar />', () => {
     await assertAccessible(container);
   });
 
-  it('should throw an error when the variant is meter and isIndeterminate is set.', () => {
+  it('should throw an error when the variant is meter and isIndeterminate is set', () => {
     try {
       // @ts-expect-error testing failure case when there is no icon or text passed
       renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />);
@@ -151,7 +151,7 @@ describe('<ProgressBar />', () => {
     }
   });
 
-  it('should throw an error when the variant is meter and hidePercentage is set.', () => {
+  it('should throw an error when the variant is meter and hidePercentage is set', () => {
     try {
       // @ts-expect-error testing failure case when there is no icon or text passed
       renderWithTheme(<ProgressBar variant="meter" hidePercentage={true} />);
