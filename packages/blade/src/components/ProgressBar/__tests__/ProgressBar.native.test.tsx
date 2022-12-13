@@ -1,10 +1,29 @@
+import { useState } from 'react';
+import { fireEvent } from '@testing-library/react-native';
 import { ProgressBar } from '../ProgressBar';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.native';
+import { Button } from '~components/Button';
 
 describe('<ProgressBar />', () => {
   it('should render ProgressBar with default props', () => {
     const { toJSON } = renderWithTheme(<ProgressBar label="Label" value={20} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+  it('should update the progress value appropriately', () => {
+    const UpdatingProgressBar = (): React.ReactElement => {
+      const [progressValue, setProgressValue] = useState(0);
+      return (
+        <>
+          <Button onClick={(): void => setProgressValue(60)}>Update Progress</Button>
+          <ProgressBar label="Label" value={progressValue} />
+        </>
+      );
+    };
+    const { toJSON, getByText } = renderWithTheme(<UpdatingProgressBar />);
+    const updateProgressButton = getByText(/update progress/i);
+    expect(toJSON()).toMatchSnapshot();
+    fireEvent.press(updateProgressButton);
     expect(toJSON()).toMatchSnapshot();
   });
 

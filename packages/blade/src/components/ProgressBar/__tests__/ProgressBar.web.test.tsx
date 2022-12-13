@@ -1,10 +1,29 @@
+import { useState } from 'react';
 import { ProgressBar } from '../ProgressBar';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import { Button } from '~components/Button';
 
 describe('<ProgressBar />', () => {
   it('should render ProgressBar with default props', () => {
     const { container } = renderWithTheme(<ProgressBar label="Label" value={20} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should update the progress value appropriately', () => {
+    const UpdatingProgressBar = (): React.ReactElement => {
+      const [progressValue, setProgressValue] = useState(0);
+      return (
+        <>
+          <Button onClick={(): void => setProgressValue(60)}>Update Progress</Button>
+          <ProgressBar label="Label" value={progressValue} />
+        </>
+      );
+    };
+    const { container, getByText } = renderWithTheme(<UpdatingProgressBar />);
+    const updateProgressButton = getByText(/update progress/i);
+    expect(container).toMatchSnapshot();
+    updateProgressButton.click();
     expect(container).toMatchSnapshot();
   });
 
