@@ -149,7 +149,7 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
     title="Delete"
     description="Delete this value"
     value="delete"
-    variant="negative"
+    intent="negative"
     leading={<ActionListItemIcon icon={TrashIcon} />}
     trailing={<ActionListItemText>⌘ + Space + D</ActionListItemText>}
     onClick={() => {}}
@@ -175,7 +175,7 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
     title="Delete"
     description="Delete this value"
     value="delete"
-    variant="negative"
+    intent="negative"
     leading={<ActionListItemIcon icon={TrashIcon} />}
     trailing={<ActionListItemText>⌘ + Space + D</ActionListItemText>}
   />
@@ -185,7 +185,7 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
     leading={<ActionListFooterIcon icon={DocIcon} />}
     trailing={
       <>
-        <Button variant="secondary">Secondary Button</Button>
+        <Button intent="secondary">Secondary Button</Button>
         <Button>Primary Button</Button>
       </>
     }
@@ -297,7 +297,7 @@ Usage
   value="accept"
   description="Accept this API"
   leading={<ActionListItemIcon icon={StarIcon} />}
-  variant="negative"
+  intent="negative"
   trailing={<ActionListItemText>⌘ + Space + A</ActionListItemText>}
   isDefaultSelected={false}
   onClick={() => {
@@ -332,9 +332,9 @@ type ActionListItemProps = {
   /**
    * Changes item color to red
    *
-   * @default normal
+   * @default undefined
    */
-  variant?: 'negative' | 'normal';
+  intent?: 'negative';
 
   /** Click event on item */
   onClick?: () => void;
@@ -342,7 +342,7 @@ type ActionListItemProps = {
   /**
    * Set true if you want item to be selected by default
    *
-   * Should not be allowed when variant is set to negative
+   * Should not be allowed when intent is set to negative
    */
   isDefaultSelected?: boolean;
 
@@ -449,7 +449,7 @@ Simple Usage
 <ActionListFooter title="Footer Title" description="Footer Description" />
 ```
 
-With Feedback Variant
+With Feedback intent
 
 ```jsx
 <ActionListFooter
@@ -546,7 +546,7 @@ Compound components add complex nesting in larger APIs (Check out previously con
 <ActionList surfaceLevel={2}>
   <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
   <ActionList.SectionHeading title="Hello" />
-  <ActionList.Item title="Item Value" description="Item Description" variant="negative">
+  <ActionList.Item title="Item Value" description="Item Description" intent="negative">
     <ActionList.Leading>
       <ActionListItemIcon icon={StarIcon} />
     </ActionList.Leading>
@@ -560,7 +560,7 @@ Compound components add complex nesting in larger APIs (Check out previously con
       <ActionListFooterIcon icon={DocIcon} />
     </ActionList.Leading>
     <ActionList.Trailing>
-      <Button variant="secondary" onClick={}>
+      <Button intent="secondary" onClick={}>
         Secondary Button
       </Button>
       <Button onClick={}>Primary Button</Button>
@@ -621,7 +621,7 @@ Some libraries we evaluated
 
 ### Dev
 
-- Vote: `variant` or `type` attribute on `Dropdown`? `<Dropdown variant="multiple" />` vs `<Dropdown type="multiple" />`
+- Vote: `intent` or `type` attribute on `Dropdown`? `<Dropdown intent="multiple" />` vs `<Dropdown type="multiple" />`
 
   Conclusion: We went with `selectionType="single | multiple"`
 
@@ -683,7 +683,7 @@ Some libraries we evaluated
 
 ### Design
 
-- Should we have some type of "Select All" button to select all in multiple select variant?
+- Should we have some type of "Select All" button to select all in multiple select intent?
 - Will Header always have title and icon only? can it have more things in future?
   Conclusion: It can have more. Changed the Header API a bit to keep possibilities open for more usecase.
 
