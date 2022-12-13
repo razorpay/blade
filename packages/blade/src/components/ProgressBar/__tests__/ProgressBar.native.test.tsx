@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { fireEvent } from '@testing-library/react-native';
 import { ProgressBar } from '../ProgressBar';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.native';
 import { Button } from '~components/Button';
 
 describe('<ProgressBar />', () => {
@@ -119,14 +118,9 @@ describe('<ProgressBar />', () => {
     expect(progressbar.findByProps({ accessibilityLabel: 'Downloading' })).toBeTruthy();
   });
 
-  it('should not have accessibility violations', async () => {
-    const { toJSON } = renderWithTheme(<ProgressBar accessibilityLabel="Downloading" value={70} />);
-    await assertAccessible(toJSON());
-  });
-
   it('should throw an error when the variant is meter and isIndeterminate is set.', () => {
     try {
-      // @ts-expect-error testing failure case when there is no icon or text passed
+      // @ts-expect-error testing failure case when the variant is meter and isIndeterminate is set
       renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />);
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -139,7 +133,7 @@ describe('<ProgressBar />', () => {
 
   it('should throw an error when the variant is meter and hidePercentage is set.', () => {
     try {
-      // @ts-expect-error testing failure case when there is no icon or text passed
+      // @ts-expect-error testing failure case when the variant is meter and hidePercentage is set
       renderWithTheme(<ProgressBar variant="meter" hidePercentage={true} />);
     } catch (error: unknown) {
       if (error instanceof Error) {
