@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 5.2.1
+
+### Patch Changes
+
+- 9966931: chore: fix dom nesting in form label component
+- e660831: fix: change acceptable BaseInput `type` from `numeric` to `number`
+
 ## 5.2.0
 
 ### Minor Changes
