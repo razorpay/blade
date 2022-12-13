@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import type { ReactElement } from 'react';
+import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { FormLabel } from '~components/Form';
 import { makeAccessible, makeSize } from '~utils';
@@ -79,10 +79,6 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
-const getProgress = (value: number): number => {
-  return Math.floor(Math.min(100, Math.max(0, value)));
-};
-
 const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 | 4> = {
   small: 2,
   medium: 4,
@@ -118,7 +114,7 @@ const ProgressBar = ({
     : theme.colors.brand.primary[500];
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
-  const progressValue = getProgress(value);
+  const progressValue = clamp(value, 0, 100);
 
   return (
     <>
