@@ -124,14 +124,12 @@ const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent
 };
 
 export const ProgressBarWithoutLabelAndPercentage = ProgressBarWithUpdatingValuesTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 ProgressBarWithoutLabelAndPercentage.storyName = 'Without Label & Percentage';
 ProgressBarWithoutLabelAndPercentage.args = {
   hidePercentage: true,
 };
 
 export const ProgressBarSmallSize = ProgressBarWithUpdatingValuesTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 ProgressBarSmallSize.storyName = 'Small Size';
 ProgressBarSmallSize.args = {
   label: 'Label',
@@ -139,7 +137,6 @@ ProgressBarSmallSize.args = {
 };
 
 export const ProgressBarMediumSize = ProgressBarWithUpdatingValuesTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 ProgressBarMediumSize.storyName = 'Medium Size';
 ProgressBarMediumSize.args = {
   label: 'Label',
@@ -147,7 +144,6 @@ ProgressBarMediumSize.args = {
 };
 
 export const ProgressBarWithIntents = ProgressBarWithIntentsTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 ProgressBarWithIntents.storyName = 'Intents';
 ProgressBarWithIntents.args = {
   size: 'medium',
@@ -155,7 +151,6 @@ ProgressBarWithIntents.args = {
 };
 
 export const ProgressBarMeterVariant = ProgressBarTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 ProgressBarMeterVariant.storyName = 'Meter Variant';
 ProgressBarMeterVariant.args = {
   variant: 'meter',
