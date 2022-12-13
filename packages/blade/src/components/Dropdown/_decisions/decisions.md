@@ -483,7 +483,7 @@ type ActionListFooter = {
 
   description?: string;
 
-  /** Leading Asset. Ideally Icon but can be any JSX component */
+  /** Leading Asset. Ideally ActionListFooterIcon */
   leading?: React.ReactNode;
 
   /** Trailing Actions. Buttons, Icons, etc */
