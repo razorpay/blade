@@ -431,10 +431,6 @@ type ActionListHeaderProps = {
 
 ### `ActionListFooter`
 
-> **Warning**
->
-> API yet to be finalized
-
 Footer of the ActionList
 
 ![](2022-11-29-17-40-17.png)
@@ -627,6 +623,8 @@ Some libraries we evaluated
 
 - Vote: `variant` or `type` attribute on `Dropdown`? `<Dropdown variant="multiple" />` vs `<Dropdown type="multiple" />`
 
+  Conclusion: We went with `selectionType="single | multiple"`
+
 - Should we call description/subtitle as `subtitle` everywhere, `description` everywhere, or change based on usage (E.g. See `ActionListItem` component above).
 
   Conclusion: Decide based on use-case.
@@ -681,10 +679,13 @@ Some libraries we evaluated
 
   </details>
 
+  Conclusion: Can do this in future when we see usecase.
+
 ### Design
 
 - Should we have some type of "Select All" button to select all in multiple select variant?
 - Will Header always have title and icon only? can it have more things in future?
+  Conclusion: It can have more. Changed the Header API a bit to keep possibilities open for more usecase.
 
 <br/><br/>
 
