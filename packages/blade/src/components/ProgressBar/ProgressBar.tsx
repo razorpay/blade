@@ -79,14 +79,6 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
-type ProgressBarUnfilledProps = {
-  backgroundColor: string;
-};
-
-const ProgressBarUnfilled = styled(Box)<ProgressBarUnfilledProps>(({ backgroundColor }) => ({
-  backgroundColor,
-}));
-
 const getProgress = (value: number): number => {
   return Math.floor(Math.min(100, Math.max(0, value)));
 };
@@ -161,10 +153,7 @@ const ProgressBar = ({
           valueMax: 100,
         })}
       >
-        <ProgressBarUnfilled
-          backgroundColor={unfilledBackgroundColor}
-          height={makeSize(progressBarHeight[size])}
-        >
+        <Box backgroundColor={unfilledBackgroundColor} height={makeSize(progressBarHeight[size])}>
           <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
             progress={progressValue}
@@ -174,7 +163,7 @@ const ProgressBar = ({
             motionEasing="easing.standard.revealing"
             variant={variant}
           />
-        </ProgressBarUnfilled>
+        </Box>
       </Box>
     </>
   );
