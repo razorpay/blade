@@ -281,20 +281,20 @@ exports[`<BaseInput /> should render 1`] = `
                 font-weight="bold"
               >
                 Enter name
-                <div
-                  class="c5"
-                >
-                  <p
-                    class="c6 Text__StyledText-wkh56f-0"
-                    color="surface.text.normal.lowContrast"
-                    data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
-                  />
-                </div>
               </p>
+              <div
+                class="c5"
+              >
+                <p
+                  class="c6 Text__StyledText-wkh56f-0"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="100"
+                  font-style="normal"
+                  font-weight="regular"
+                />
+              </div>
             </div>
           </div>
         </label>
@@ -642,20 +642,20 @@ exports[`<BaseInput /> should render with icons 1`] = `
                 font-weight="bold"
               >
                 Enter name
-                <div
-                  class="c5"
-                >
-                  <p
-                    class="c6 Text__StyledText-wkh56f-0"
-                    color="surface.text.normal.lowContrast"
-                    data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
-                  />
-                </div>
               </p>
+              <div
+                class="c5"
+              >
+                <p
+                  class="c6 Text__StyledText-wkh56f-0"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="100"
+                  font-style="normal"
+                  font-weight="regular"
+                />
+              </div>
             </div>
           </div>
         </label>
