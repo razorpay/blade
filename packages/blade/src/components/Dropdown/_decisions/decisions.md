@@ -149,7 +149,7 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
     title="Delete"
     description="Delete this value"
     value="delete"
-    intent="negative"
+    variant="negative"
     leading={<ActionListItemIcon icon={TrashIcon} />}
     trailing={<ActionListItemText>⌘ + Space + D</ActionListItemText>}
     onClick={() => {}}
@@ -175,7 +175,7 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
     title="Delete"
     description="Delete this value"
     value="delete"
-    intent="negative"
+    variant="negative"
     leading={<ActionListItemIcon icon={TrashIcon} />}
     trailing={<ActionListItemText>⌘ + Space + D</ActionListItemText>}
   />
@@ -297,7 +297,7 @@ Usage
   value="accept"
   description="Accept this API"
   leading={<ActionListItemIcon icon={StarIcon} />}
-  intent="negative"
+  variant="negative"
   trailing={<ActionListItemText>⌘ + Space + A</ActionListItemText>}
   isDefaultSelected={false}
   onClick={() => {
@@ -332,9 +332,9 @@ type ActionListItemProps = {
   /**
    * Changes item color to red
    *
-   * @default neutral
+   * @default normal
    */
-  intent?: 'negative' | 'neutral';
+  variant?: 'negative' | 'normal';
 
   /** Click event on item */
   onClick?: () => void;
@@ -342,7 +342,7 @@ type ActionListItemProps = {
   /**
    * Set true if you want item to be selected by default
    *
-   * Should not be allowed when intent is set to negative
+   * Should not be allowed when variant is set to negative
    */
   isDefaultSelected?: boolean;
 
@@ -550,7 +550,7 @@ Compound components add complex nesting in larger APIs (Check out previously con
 <ActionList surfaceLevel={2}>
   <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
   <ActionList.SectionHeading title="Hello" />
-  <ActionList.Item title="Item Value" description="Item Description" intent="negative">
+  <ActionList.Item title="Item Value" description="Item Description" variant="negative">
     <ActionList.Leading>
       <ActionListItemIcon icon={StarIcon} />
     </ActionList.Leading>
