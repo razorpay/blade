@@ -99,6 +99,9 @@ const ProgressBar = ({
   value = 0,
   variant = 'progress',
 }: ProgressBarProps): ReactElement => {
+  const { theme } = useTheme();
+  const id = useId(variant);
+
   if (variant === 'meter' && isIndeterminate) {
     console.warn(`[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`);
   }
@@ -109,7 +112,6 @@ const ProgressBar = ({
     );
   }
 
-  const { theme } = useTheme();
   const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];
   const filledBackgroundColor = intent
     ? theme.colors.feedback.background[intent].highContrast
@@ -117,7 +119,6 @@ const ProgressBar = ({
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
   const progressValue = getProgress(value);
-  const id = useId(variant);
 
   return (
     <>
