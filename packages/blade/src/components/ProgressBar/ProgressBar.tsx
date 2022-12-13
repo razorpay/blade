@@ -108,11 +108,11 @@ const ProgressBar = ({
   variant = 'progress',
 }: ProgressBarProps): ReactElement => {
   if (variant === 'meter' && isIndeterminate) {
-    console.warn(`[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`);
+    console.error(`[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`);
   }
 
   if (variant === 'meter' && hidePercentage) {
-    console.warn(
+    console.error(
       `[Blade: ProgressBar]: Cannot set 'hidePercentage' when 'variant' is 'meter'. Percentage is always hidden for meter.`,
     );
   }

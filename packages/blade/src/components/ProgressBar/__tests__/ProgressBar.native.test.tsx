@@ -123,4 +123,30 @@ describe('<ProgressBar />', () => {
     const { toJSON } = renderWithTheme(<ProgressBar accessibilityLabel="Downloading" value={70} />);
     await assertAccessible(toJSON());
   });
+
+  it('should throw an error when the variant is meter and isIndeterminate is set.', () => {
+    try {
+      // @ts-expect-error testing failure case when there is no icon or text passed
+      renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        expect(error.message).toEqual(
+          `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
+        );
+      }
+    }
+  });
+
+  it('should throw an error when the variant is meter and hidePercentage is set.', () => {
+    try {
+      // @ts-expect-error testing failure case when there is no icon or text passed
+      renderWithTheme(<ProgressBar variant="meter" hidePercentage={true} />);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        expect(error.message).toEqual(
+          `[Blade: ProgressBar]: Cannot set 'hidePercentage' when 'variant' is 'meter'. Percentage is always hidden for meter.`,
+        );
+      }
+    }
+  });
 });
