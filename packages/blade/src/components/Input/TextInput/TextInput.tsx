@@ -106,7 +106,7 @@ const getKeyboardAndAutocompleteProps = ({
       keyboardReturnKeyType: 'go',
       autoCompleteSuggestionType: 'none',
     },
-    numeric: {
+    number: {
       keyboardType: 'decimal',
       keyboardReturnKeyType: 'done',
       autoCompleteSuggestionType: 'none',
@@ -128,7 +128,7 @@ const getKeyboardAndAutocompleteProps = ({
   keyboardAndAutocompleteProps.autoCompleteSuggestionType =
     autoCompleteSuggestionType ?? keyboardConfig.autoCompleteSuggestionType;
 
-  if (type === 'numeric') {
+  if (type === 'number') {
     /* the default keyboardType:numeric shows alphanumeric keyboard on iOS but number pad on android. making it type:text and keyboardType:decimal fixes this on all platforms.
      * source: https://css-tricks.com/everything-you-ever-wanted-to-know-about-keyboardType/#aa-decimal
      */
