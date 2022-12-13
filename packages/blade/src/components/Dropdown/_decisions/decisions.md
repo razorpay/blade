@@ -140,14 +140,14 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
   <ActionListItem
     title="Accept API"
     value="accept"
-    desciption="Accept this API"
+    description="Accept this API"
     leading={<ActionListItemIcon icon={StarIcon} />}
     trailing={<ActionListItemText>⌘ + Space + A</ActionListItemText>}
     onClick={() => {}}
   />
   <ActionListItem
     title="Delete"
-    desciption="Delete this value"
+    description="Delete this value"
     value="delete"
     intent="negative"
     leading={<ActionListItemIcon icon={TrashIcon} />}
@@ -161,19 +161,19 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
 
 ```jsx
 <ActionList surfaceLevel={2}>
-  <ActionListHeader title="Recent Searches" icon={HistoryIcon} />
+  <ActionListHeader title="Recent Searches" leading={<ActionListHeaderIcon icon={HistoryIcon} />} />
   <ActionListSection title="Section Heading">
     <ActionListItem
       title="Accept API"
       value="accept"
-      desciption="Accept this API"
+      description="Accept this API"
       leading={<ActionListItemIcon icon={StarIcon} />}
       trailing={<ActionListItemText>⌘ + Space</ActionListItemText>}
     />
   </ActionListSection>
   <ActionListItem
     title="Delete"
-    desciption="Delete this value"
+    description="Delete this value"
     value="delete"
     intent="negative"
     leading={<ActionListItemIcon icon={TrashIcon} />}
@@ -200,11 +200,11 @@ Plain list that can be rendered inside dropdown, in navigation menu, or anywhere
 
 ```jsx
 <ActionList surfaceLevel={2}>
-  <ActionListHeader title="Recent Searches" icon={HistoryIcon} />
+  <ActionListHeader title="Recent Searches" leading={<ActionListHeaderIcon icon={HistoryIcon} />} />
   <ActionListSectionHeading title="Hello" />
   <ActionListItem
     title="Item Value"
-    desciption="Item Description"
+    description="Item Description"
     leading={StarIcon} // Can be IconComponent type or Image URL
     trailing="⌘ + Space"
   />
@@ -295,7 +295,7 @@ Usage
 <ActionListItem
   title="Accept API"
   value="accept"
-  desciption="Accept this API"
+  description="Accept this API"
   leading={<ActionListItemIcon icon={StarIcon} />}
   intent="negative"
   trailing={<ActionListItemText>⌘ + Space + A</ActionListItemText>}
@@ -412,7 +412,7 @@ Header of the ActionList
 Usage
 
 ```jsx
-<ActionListHeader title="Recent Searches" icon={HistoryIcon} />
+<ActionListHeader title="Recent Searches" leading={<ActionListHeaderIcon icon={HistoryIcon} />} />
 ```
 
 Props
@@ -420,7 +420,12 @@ Props
 ```ts
 type ActionListHeaderProps = {
   title: string;
-  icon: IconComponent;
+  /**
+   * Leading visual of header
+   *
+   * Should be limited to `ActionListHeaderIcon`
+   */
+  leading: React.ReactNode;
 };
 ```
 
@@ -545,7 +550,7 @@ Compound components add complex nesting in larger APIs (Check out previously con
 <ActionList surfaceLevel={2}>
   <ActionList.Header title="Recent Searches" icon={HistoryIcon} />
   <ActionList.SectionHeading title="Hello" />
-  <ActionList.Item title="Item Value" desciption="Item Description" intent="negative">
+  <ActionList.Item title="Item Value" description="Item Description" intent="negative">
     <ActionList.Leading>
       <ActionListItemIcon icon={StarIcon} />
     </ActionList.Leading>
