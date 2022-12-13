@@ -56,6 +56,7 @@ const getBoxStyles = ({
   right,
   bottom,
   background,
+  backgroundColor,
   zIndex,
 }: BoxProps & { theme: Theme }): CSSObject => ({
   display,
@@ -90,6 +91,7 @@ const getBoxStyles = ({
   maxWidth: maxWidth ? makeSize(maxWidth) : undefined,
   transform,
   background,
+  backgroundColor,
   zIndex,
 });
 

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import type { ReactElement } from 'react';
+import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { FormLabel } from '~components/Form';
 import { makeAccessible, makeSize } from '~utils';
@@ -79,18 +79,6 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
-type ProgressBarUnfilledProps = {
-  backgroundColor: string;
-};
-
-const ProgressBarUnfilled = styled(Box)<ProgressBarUnfilledProps>(({ backgroundColor }) => ({
-  backgroundColor,
-}));
-
-const getProgress = (value: number): number => {
-  return Math.floor(Math.min(100, Math.max(0, value)));
-};
-
 const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 | 4> = {
   small: 2,
   medium: 4,
@@ -107,6 +95,9 @@ const ProgressBar = ({
   value = 0,
   variant = 'progress',
 }: ProgressBarProps): ReactElement => {
+  const { theme } = useTheme();
+  const id = useId(variant);
+
   if (variant === 'meter' && isIndeterminate) {
     console.error(`[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`);
   }
@@ -117,15 +108,13 @@ const ProgressBar = ({
     );
   }
 
-  const { theme } = useTheme();
   const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];
   const filledBackgroundColor = intent
     ? theme.colors.feedback.background[intent].highContrast
     : theme.colors.brand.primary[500];
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
-  const progressValue = getProgress(value);
-  const id = useId(variant);
+  const progressValue = clamp(value, 0, 100);
 
   return (
     <>
@@ -161,10 +150,7 @@ const ProgressBar = ({
           valueMax: 100,
         })}
       >
-        <ProgressBarUnfilled
-          backgroundColor={unfilledBackgroundColor}
-          height={makeSize(progressBarHeight[size])}
-        >
+        <Box backgroundColor={unfilledBackgroundColor} height={makeSize(progressBarHeight[size])}>
           <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
             progress={progressValue}
@@ -174,7 +160,7 @@ const ProgressBar = ({
             motionEasing="easing.standard.revealing"
             variant={variant}
           />
-        </ProgressBarUnfilled>
+        </Box>
       </Box>
     </>
   );
