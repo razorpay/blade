@@ -123,12 +123,28 @@ describe('<ProgressBar />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should have accessibilityLabel', () => {
+  it('should have the right accessibility attributes for progress variant', () => {
     const { getByRole } = renderWithTheme(
-      <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} />,
+      <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} variant="progress" />,
     );
 
     expect(getByRole('progressbar')).toHaveAccessibleName('Downloading');
+    expect(getByRole('progressbar')).toHaveAttribute('aria-valuenow', '70');
+    expect(getByRole('progressbar')).toHaveAttribute('aria-valuemin', '0');
+    expect(getByRole('progressbar')).toHaveAttribute('aria-valuemax', '100');
+    expect(getByRole('progressbar')).toHaveAttribute('aria-valuetext', '70%');
+  });
+
+  it('should have the right accessibility attributes for meter variant', () => {
+    const { getByRole } = renderWithTheme(
+      <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} variant="meter" />,
+    );
+
+    expect(getByRole('meter')).toHaveAccessibleName('Amount');
+    expect(getByRole('meter')).toHaveAttribute('aria-valuenow', '70');
+    expect(getByRole('meter')).toHaveAttribute('aria-valuemin', '0');
+    expect(getByRole('meter')).toHaveAttribute('aria-valuemax', '100');
+    expect(getByRole('meter')).toHaveAttribute('aria-valuetext', '70');
   });
 
   it('should not have accessibility violations', async () => {

@@ -109,13 +109,38 @@ describe('<ProgressBar />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should have accessibilityLabel', () => {
-    const { getByRole } = renderWithTheme(
-      <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} />,
+  it('should have accessibility attributes for progress variant', async () => {
+    const { getByRole, findByA11yValue } = renderWithTheme(
+      <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} variant="progress" />,
     );
 
     const progressbar = getByRole('progressbar');
     expect(progressbar.findByProps({ accessibilityLabel: 'Downloading' })).toBeTruthy();
+    expect(
+      await findByA11yValue({
+        max: 100,
+        min: 0,
+        now: 70,
+        text: '70%',
+      }),
+    ).toBeTruthy();
+  });
+
+  it('should have accessibility attributes for meter variant', async () => {
+    const { getByRole, findByA11yValue } = renderWithTheme(
+      <ProgressBar label="Label" accessibilityLabel="Amount" value={70} variant="meter" />,
+    );
+
+    const progressbar = getByRole('progressbar');
+    expect(progressbar.findByProps({ accessibilityLabel: 'Amount' })).toBeTruthy();
+    expect(
+      await findByA11yValue({
+        max: 100,
+        min: 0,
+        now: 70,
+        text: '70',
+      }),
+    ).toBeTruthy();
   });
 
   it('should throw an error when the variant is meter and isIndeterminate is set', () => {
