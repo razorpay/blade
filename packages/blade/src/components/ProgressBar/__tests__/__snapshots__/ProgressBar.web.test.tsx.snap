@@ -153,20 +153,20 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             font-weight="bold"
           >
             Label
-            <div
-              class="c4"
-            >
-              <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
           </p>
+          <div
+            class="c4"
+          >
+            <p
+              class="c5 Text__StyledText-wkh56f-0"
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="100"
+              font-style="normal"
+              font-weight="regular"
+            />
+          </div>
         </div>
       </div>
     </label>
@@ -1688,20 +1688,20 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             font-weight="bold"
           >
             Label
-            <div
-              class="c4"
-            >
-              <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
           </p>
+          <div
+            class="c4"
+          >
+            <p
+              class="c5 Text__StyledText-wkh56f-0"
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="100"
+              font-style="normal"
+              font-weight="regular"
+            />
+          </div>
         </div>
       </div>
     </label>
@@ -1969,20 +1969,20 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             font-weight="bold"
           >
             Label
-            <div
-              class="c4"
-            >
-              <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
           </p>
+          <div
+            class="c4"
+          >
+            <p
+              class="c5 Text__StyledText-wkh56f-0"
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="100"
+              font-style="normal"
+              font-weight="regular"
+            />
+          </div>
         </div>
       </div>
     </label>
@@ -2288,20 +2288,20 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             font-weight="bold"
           >
             Label
-            <div
-              class="c8"
-            >
-              <p
-                class="c9 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
           </p>
+          <div
+            class="c8"
+          >
+            <p
+              class="c9 Text__StyledText-wkh56f-0"
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="100"
+              font-style="normal"
+              font-weight="regular"
+            />
+          </div>
         </div>
       </div>
     </label>
@@ -2607,20 +2607,20 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             font-weight="bold"
           >
             Label
-            <div
-              class="c8"
-            >
-              <p
-                class="c9 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              />
-            </div>
           </p>
+          <div
+            class="c8"
+          >
+            <p
+              class="c9 Text__StyledText-wkh56f-0"
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="100"
+              font-style="normal"
+              font-weight="regular"
+            />
+          </div>
         </div>
       </div>
     </label>
