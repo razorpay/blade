@@ -1,0 +1,2667 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c7 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c8 {
+  background-color: hsla(213,89%,56%,1);
+}
+
+.c9 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c10 {
+  background-color: hsla(213,89%,56%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c11 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c3 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <label
+      for="progress-1"
+      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    >
+      <div
+        class="c1"
+      >
+        <div
+          class="c2"
+          display="flex"
+        >
+          <p
+            class="c3 Text__StyledText-wkh56f-0"
+            color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            font-family="text"
+            font-size="75"
+            font-style="normal"
+            font-weight="bold"
+          >
+            Label
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </p>
+        </div>
+      </div>
+    </label>
+    <div
+      class="c1"
+    >
+      <p
+        class="c6 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-label="Label"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-1"
+    role="progressbar"
+  >
+    <div
+      class="c7"
+      height="2px"
+    >
+      <div
+        class="c8 c9 c10"
+      >
+        <div
+          class=" c9 c11"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render ProgressBar without label and percentage 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c2 {
+  background-color: hsla(213,89%,56%,1);
+}
+
+.c3 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c4 {
+  background-color: hsla(213,89%,56%,1);
+  height: 100%;
+  width: 50%;
+}
+
+.c5 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  />
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="50"
+    aria-valuetext="50%"
+    class=""
+    id="progress-7"
+    role="progressbar"
+  >
+    <div
+      class="c1"
+      height="2px"
+    >
+      <div
+        class="c2 c3 c4"
+      >
+        <div
+          class=" c3 c5"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(214,21%,94%,0.18);
+}
+
+.c4 {
+  background-color: hsla(213,89%,56%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(213,89%,56%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(216,19%,89%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-9"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render high contrast information intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(214,21%,94%,0.18);
+}
+
+.c4 {
+  background-color: hsla(193,100%,35%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(193,100%,35%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(216,19%,89%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-17"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render high contrast negative intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(214,21%,94%,0.18);
+}
+
+.c4 {
+  background-color: hsla(8,73%,47%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(8,73%,47%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(216,19%,89%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-13"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(214,21%,94%,0.18);
+}
+
+.c4 {
+  background-color: hsla(216,33%,29%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(216,33%,29%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(216,19%,89%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-19"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(214,21%,94%,0.18);
+}
+
+.c4 {
+  background-color: hsla(38,97%,38%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(38,97%,38%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(216,19%,89%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-15"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render high contrast positive intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(214,21%,94%,0.18);
+}
+
+.c4 {
+  background-color: hsla(160,100%,26%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(160,100%,26%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(216,19%,89%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-11"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render low contrast information intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c4 {
+  background-color: hsla(193,100%,35%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(193,100%,35%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-16"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c4 {
+  background-color: hsla(8,73%,47%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(8,73%,47%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-12"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c4 {
+  background-color: hsla(216,33%,29%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(216,33%,29%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-18"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c4 {
+  background-color: hsla(38,97%,38%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(38,97%,38%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-14"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c3 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c4 {
+  background-color: hsla(160,100%,26%,1);
+}
+
+.c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c6 {
+  background-color: hsla(160,100%,26%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c7 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c2 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <div
+      class="c1"
+    >
+      <p
+        class="c2 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-10"
+    role="progressbar"
+  >
+    <div
+      class="c3"
+      height="2px"
+    >
+      <div
+        class="c4 c5 c6"
+      >
+        <div
+          class=" c5 c7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c7 {
+  height: 4px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c8 {
+  background-color: hsla(213,89%,56%,1);
+}
+
+.c9 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c10 {
+  background-color: hsla(213,89%,56%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c11 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c3 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <label
+      for="progress-6"
+      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    >
+      <div
+        class="c1"
+      >
+        <div
+          class="c2"
+          display="flex"
+        >
+          <p
+            class="c3 Text__StyledText-wkh56f-0"
+            color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            font-family="text"
+            font-size="75"
+            font-style="normal"
+            font-weight="bold"
+          >
+            Label
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </p>
+        </div>
+      </div>
+    </label>
+    <div
+      class="c1"
+    >
+      <p
+        class="c6 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-label="Label"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-6"
+    role="progressbar"
+  >
+    <div
+      class="c7"
+      height="4px"
+    >
+      <div
+        class="c8 c9 c10"
+      >
+        <div
+          class=" c9 c11"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c2 {
+  background-color: hsla(213,89%,56%,1);
+}
+
+.c3 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c4 {
+  background-color: hsla(213,89%,56%,1);
+  height: 100%;
+  width: 70%;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  />
+  <div
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="70"
+    aria-valuetext="70"
+    class=""
+    id="meter-8"
+    role="meter"
+  >
+    <div
+      class="c1"
+      height="2px"
+    >
+      <div
+        class="c2 c3 c4"
+      >
+        <div
+          class=" c3"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c7 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c8 {
+  background-color: hsla(213,89%,56%,1);
+}
+
+.c9 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c10 {
+  background-color: hsla(213,89%,56%,1);
+  height: 100%;
+  width: 20%;
+}
+
+.c11 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c3 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+<div>
+  <div
+    class="c0"
+    display="flex"
+  >
+    <label
+      for="progress-5"
+      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    >
+      <div
+        class="c1"
+      >
+        <div
+          class="c2"
+          display="flex"
+        >
+          <p
+            class="c3 Text__StyledText-wkh56f-0"
+            color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            font-family="text"
+            font-size="75"
+            font-style="normal"
+            font-weight="bold"
+          >
+            Label
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </p>
+        </div>
+      </div>
+    </label>
+    <div
+      class="c1"
+    >
+      <p
+        class="c6 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        20%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-label="Label"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="20"
+    aria-valuetext="20%"
+    class=""
+    id="progress-5"
+    role="progressbar"
+  >
+    <div
+      class="c7"
+      height="2px"
+    >
+      <div
+        class="c8 c9 c10"
+      >
+        <div
+          class=" c9 c11"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c5 {
+  margin-bottom: 4px;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c11 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c12 {
+  background-color: hsla(213,89%,56%,1);
+}
+
+.c13 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c14 {
+  background-color: hsla(213,89%,56%,1);
+  height: 100%;
+  width: 0%;
+}
+
+.c15 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c9 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c10 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c8 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Update Progress
+      </div>
+    </div>
+  </button>
+  <div
+    class="c4"
+    display="flex"
+  >
+    <label
+      for="progress-3"
+      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    >
+      <div
+        class="c5"
+      >
+        <div
+          class="c6"
+          display="flex"
+        >
+          <p
+            class="c7 Text__StyledText-wkh56f-0"
+            color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            font-family="text"
+            font-size="75"
+            font-style="normal"
+            font-weight="bold"
+          >
+            Label
+            <div
+              class="c8"
+            >
+              <p
+                class="c9 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </p>
+        </div>
+      </div>
+    </label>
+    <div
+      class="c5"
+    >
+      <p
+        class="c10 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        0%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-label="Label"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="0"
+    aria-valuetext="0%"
+    class=""
+    id="progress-3"
+    role="progressbar"
+  >
+    <div
+      class="c11"
+      height="2px"
+    >
+      <div
+        class="c12 c13 c14"
+      >
+        <div
+          class=" c13 c15"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c5 {
+  margin-bottom: 4px;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c11 {
+  height: 2px;
+  background-color: hsla(216,44%,23%,0.18);
+}
+
+.c12 {
+  background-color: hsla(213,89%,56%,1);
+}
+
+.c13 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+}
+
+.c14 {
+  background-color: hsla(213,89%,56%,1);
+  height: 100%;
+  width: 60%;
+}
+
+.c15 {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c9 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c10 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c8 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Update Progress
+      </div>
+    </div>
+  </button>
+  <div
+    class="c4"
+    display="flex"
+  >
+    <label
+      for="progress-3"
+      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    >
+      <div
+        class="c5"
+      >
+        <div
+          class="c6"
+          display="flex"
+        >
+          <p
+            class="c7 Text__StyledText-wkh56f-0"
+            color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            font-family="text"
+            font-size="75"
+            font-style="normal"
+            font-weight="bold"
+          >
+            Label
+            <div
+              class="c8"
+            >
+              <p
+                class="c9 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </p>
+        </div>
+      </div>
+    </label>
+    <div
+      class="c5"
+    >
+      <p
+        class="c10 Text__StyledText-wkh56f-0"
+        color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="75"
+        font-style="normal"
+        font-weight="regular"
+      >
+        60%
+      </p>
+    </div>
+  </div>
+  <div
+    aria-label="Label"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="60"
+    aria-valuetext="60%"
+    class=""
+    id="progress-3"
+    role="progressbar"
+  >
+    <div
+      class="c11"
+      height="2px"
+    >
+      <div
+        class="c12 c13 c14"
+      >
+        <div
+          class=" c13 c15"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

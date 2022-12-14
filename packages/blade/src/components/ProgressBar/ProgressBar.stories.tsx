@@ -6,6 +6,7 @@ import type { ProgressBarProps } from './ProgressBar';
 import { ProgressBar as ProgressBarComponent } from './ProgressBar';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import Box from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -26,7 +27,12 @@ const Page = (): ReactElement => {
 
           function App(): JSX.Element {
             return (
-              <ProgressBar />
+              <ProgressBar 
+                label="Label" 
+                value={30} 
+                variant="progress" 
+                size="medium" 
+              />
             )
           }
 
@@ -40,9 +46,6 @@ const Page = (): ReactElement => {
 export default {
   title: 'Components/ProgressBar',
   component: ProgressBarComponent,
-  args: {
-    children: 'Learn More',
-  },
   parameters: {
     docs: {
       page: Page,
@@ -51,6 +54,21 @@ export default {
 } as Meta<ProgressBarProps>;
 
 const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...args }) => {
+  return <ProgressBarComponent {...args} />;
+};
+
+export const Default = ProgressBarTemplate.bind({});
+// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
+Default.storyName = 'Default';
+Default.args = {
+  label: 'Label',
+  value: 20,
+  contrast: 'low',
+};
+
+const ProgressBarWithUpdatingValuesTemplate: ComponentStory<typeof ProgressBarComponent> = ({
+  ...args
+}) => {
   const [value, setValue] = useState(10);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -69,12 +87,75 @@ const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...a
   return <ProgressBarComponent {...args} value={value} />;
 };
 
-export const Default = ProgressBarTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Default.storyName = 'Default';
-Default.args = {
+const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent> = ({
+  ...args
+}) => {
+  const [value, setValue] = useState(10);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (value >= 100) {
+        setValue(0);
+      } else {
+        setValue(value + 30);
+      }
+    }, 2000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [value]);
+  const intents = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      marginTop="spacing.3"
+      marginBottom="spacing.5"
+      width="100%"
+    >
+      {intents.map((intent) => (
+        <Box key={intent} paddingTop="spacing.4">
+          <ProgressBarComponent {...args} intent={intent} value={value} />
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+export const ProgressBarWithoutLabelAndPercentage = ProgressBarWithUpdatingValuesTemplate.bind({});
+ProgressBarWithoutLabelAndPercentage.storyName = 'Without Label & Percentage';
+ProgressBarWithoutLabelAndPercentage.args = {
+  hidePercentage: true,
+};
+
+export const ProgressBarSmallSize = ProgressBarWithUpdatingValuesTemplate.bind({});
+ProgressBarSmallSize.storyName = 'Small Size';
+ProgressBarSmallSize.args = {
   label: 'Label',
-  value: 20,
+  size: 'small',
+};
+
+export const ProgressBarMediumSize = ProgressBarWithUpdatingValuesTemplate.bind({});
+ProgressBarMediumSize.storyName = 'Medium Size';
+ProgressBarMediumSize.args = {
+  label: 'Label',
   size: 'medium',
-  contrast: 'low',
+};
+
+export const ProgressBarWithIntents = ProgressBarWithIntentsTemplate.bind({});
+ProgressBarWithIntents.storyName = 'Intents';
+ProgressBarWithIntents.args = {
+  size: 'medium',
+  label: 'Label',
+};
+
+export const ProgressBarMeterVariant = ProgressBarTemplate.bind({});
+ProgressBarMeterVariant.storyName = 'Meter Variant';
+ProgressBarMeterVariant.args = {
+  variant: 'meter',
+  size: 'medium',
+  value: 10,
+  label: 'Balance: ₹10,000',
+  intent: 'notice',
 };

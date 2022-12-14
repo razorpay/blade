@@ -99,11 +99,13 @@ const ProgressBar = ({
   const id = useId(variant);
 
   if (variant === 'meter' && isIndeterminate) {
-    console.warn(`[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`);
+    throw new Error(
+      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
+    );
   }
 
   if (variant === 'meter' && hidePercentage) {
-    console.warn(
+    throw new Error(
       `[Blade: ProgressBar]: Cannot set 'hidePercentage' when 'variant' is 'meter'. Percentage is always hidden for meter.`,
     );
   }
