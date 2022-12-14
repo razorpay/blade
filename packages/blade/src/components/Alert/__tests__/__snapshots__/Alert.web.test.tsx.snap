@@ -173,12 +173,12 @@ exports[`<Alert /> should render 1`] = `
 </div>
 `;
 
-exports[`<Alert /> should render negative intent and borderless 1`] = `
+exports[`<Alert /> should render positive intent and full width 1`] = `
 .c0 {
-  background: hsla(9,91%,56%,0.09);
+  background: hsla(155,100%,31%,0.09);
   padding: 12px 16px;
   border-radius: 0px;
-  border-color: hsla(9,91%,56%,0.32);
+  border-color: hsla(155,100%,31%,0.32);
   border-width: 0px;
   border-style: solid;
   display: -webkit-box;
@@ -189,10 +189,10 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   max-width: auto;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c5 {
@@ -241,7 +241,7 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 2px;
+  margin-top: 0px;
 }
 
 .c2 {
@@ -249,7 +249,7 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
   -ms-flex: 1;
   flex: 1;
   padding-left: 12px;
-  padding-right: 4px;
+  padding-right: 12px;
 }
 
 .c3 {
@@ -273,179 +273,6 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
   <div
     class="c0"
     data-blade-component="alert"
-    role="alert"
-  >
-    <div
-      class="c1"
-      display="flex"
-    >
-      <svg
-        aria-hidden="true"
-        data-blade-component="icon"
-        fill="none"
-        height="20px"
-        viewBox="0 0 24 24"
-        width="20px"
-      >
-        <path
-          d="M12 7C12.5523 7 13 7.44772 13 8V12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12V8C11 7.44772 11.4477 7 12 7Z"
-          fill="hsla(8, 73%, 47%, 1)"
-        />
-        <path
-          d="M12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17Z"
-          fill="hsla(8, 73%, 47%, 1)"
-        />
-        <path
-          clip-rule="evenodd"
-          d="M7.15289 1.29289C7.33386 1.11193 7.58386 1 7.86 1H16.14C16.4052 1 16.6596 1.10536 16.8471 1.29289L22.7071 7.15289C22.8946 7.34043 23 7.59478 23 7.86V16.14C23 16.4052 22.8946 16.6596 22.7071 16.8471L16.8471 22.7071C16.6596 22.8946 16.4052 23 16.14 23H7.86C7.59478 23 7.34043 22.8946 7.15289 22.7071L1.29289 16.8471C1.10536 16.6596 1 16.4052 1 16.14V7.86C1 7.59478 1.10536 7.34043 1.29289 7.15289L7.15289 1.29289ZM8.27421 3L3 8.27421V15.7258L8.27421 21H15.7258L21 15.7258V8.27421L15.7258 3H8.27421Z"
-          fill="hsla(8, 73%, 47%, 1)"
-          fill-rule="evenodd"
-        />
-      </svg>
-    </div>
-    <div
-      class="c2"
-    >
-      <div
-        class="c3"
-      >
-        <p
-          class="c4 Text__StyledText-wkh56f-0"
-          color="surface.text.normal.lowContrast"
-          data-blade-component="text"
-          font-family="text"
-          font-size="100"
-          font-style="normal"
-          font-weight="regular"
-        >
-          Currently you can only accept payments in international currencies using PayPal.
-        </p>
-      </div>
-    </div>
-    <button
-      aria-label="Dismiss alert"
-      class="c5"
-      data-blade-component="icon-button"
-      type="button"
-    >
-      <svg
-        aria-hidden="true"
-        data-blade-component="icon"
-        fill="none"
-        height="20px"
-        viewBox="0 0 24 24"
-        width="20px"
-      >
-        <path
-          d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-          fill="currentColor"
-        />
-      </svg>
-    </button>
-  </div>
-</div>
-`;
-
-exports[`<Alert /> should render positive intent and full width 1`] = `
-.c0 {
-  background: hsla(155,100%,31%,0.09);
-  padding: 8px 8px 12px 8px;
-  border-radius: 4px;
-  border-color: hsla(155,100%,31%,0.32);
-  border-width: 1px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  max-width: auto;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-}
-
-.c5 {
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 2px;
-  background: transparent;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: hsla(214,18%,69%,1);
-  -webkit-transition-property: color,box-shadow;
-  transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c5:hover {
-  color: hsla(217,18%,45%,1);
-}
-
-.c5:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(217,18%,45%,1);
-}
-
-.c5:active {
-  color: hsla(217,18%,45%,1);
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-}
-
-.c2 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  padding-left: 8px;
-  padding-right: 4px;
-}
-
-.c3 {
-  margin-top: 2px;
-}
-
-.c4 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <div
-    class="c0"
-    data-blade-component="alert"
     role="status"
   >
     <div
@@ -456,9 +283,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         aria-hidden="true"
         data-blade-component="icon"
         fill="none"
-        height="16px"
+        height="20px"
         viewBox="0 0 24 24"
-        width="16px"
+        width="20px"
       >
         <g
           clip-path="url(#clip0_60_208)"
@@ -496,7 +323,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
           color="surface.text.normal.lowContrast"
           data-blade-component="text"
           font-family="text"
-          font-size="75"
+          font-size="100"
           font-style="normal"
           font-weight="regular"
         >
@@ -514,9 +341,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         aria-hidden="true"
         data-blade-component="icon"
         fill="none"
-        height="16px"
+        height="20px"
         viewBox="0 0 24 24"
-        width="16px"
+        width="20px"
       >
         <path
           d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"

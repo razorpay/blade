@@ -47,6 +47,7 @@ This doc talks about the API decisions for `OTPInput`.
 | autoFocus | `boolean` | No | `false` | The autofocus global attribute is a Boolean attribute indicating that an element should be focused on page load. [Web Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus), [Native Reference](https://reactnative.dev/docs/textinput#autofocus) |
 | keyboardReturnKeyType. [Check this table for full reference](#keyboard-return-key-types-for-web-and-native) | `default`, `go`, `done`, `next`, `search`, `send` | No | Closest based on the `type` attribute | Determines how the return key should look on the keyboard on mobile devices or virtual keyboard |
 | keyboardType | `text`, `search`, `telephone`, `email`, `url`, `decimal` | No | `decimal` | Keyboard to be shown for specific input types |
+| isMasked | `boolean` | No | `undefined` | Masks input characters in all the fields |
 
 ## Keyboard return key types for web and native
 

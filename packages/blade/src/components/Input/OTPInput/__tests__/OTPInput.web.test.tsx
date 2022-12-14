@@ -47,6 +47,16 @@ describe('<OTPInput />', () => {
     });
   });
 
+  it('should mask all fields when isMasked is true', () => {
+    const label = 'Enter OTP';
+    const { getAllByLabelText } = renderWithTheme(<OTPInput label={label} isMasked />);
+
+    const allInputs = getAllByLabelText(/character/);
+    allInputs.forEach((input) => {
+      expect(input).toHaveAttribute('type', 'password');
+    });
+  });
+
   it('should handle onChange', async () => {
     const label = 'Enter OTP';
     const onChange = jest.fn();

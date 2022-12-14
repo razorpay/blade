@@ -108,8 +108,8 @@ const FormLabel = ({
         weight="bold"
       >
         {children}
-        {computedAccessibilityNode}
       </Text>
+      {computedAccessibilityNode}
       {/* TODO: Hide from screen readers to prevent double announcement */}
       {necessityLabel}
     </Box>
