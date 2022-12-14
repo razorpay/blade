@@ -118,29 +118,17 @@ describe('<ProgressBar />', () => {
     expect(progressbar.findByProps({ accessibilityLabel: 'Downloading' })).toBeTruthy();
   });
 
-  it('should throw an error when the variant is meter and isIndeterminate is set.', () => {
-    try {
-      // @ts-expect-error testing failure case when the variant is meter and isIndeterminate is set
-      renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />);
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        expect(error.message).toEqual(
-          `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
-        );
-      }
-    }
+  it('should throw an error when the variant is meter and isIndeterminate is set', () => {
+    // @ts-expect-error testing failure case when the variant is meter and isIndeterminate is set
+    expect(() => renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />)).toThrow(
+      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
+    );
   });
 
-  it('should throw an error when the variant is meter and hidePercentage is set.', () => {
-    try {
-      // @ts-expect-error testing failure case when the variant is meter and hidePercentage is set
-      renderWithTheme(<ProgressBar variant="meter" hidePercentage={true} />);
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        expect(error.message).toEqual(
-          `[Blade: ProgressBar]: Cannot set 'hidePercentage' when 'variant' is 'meter'. Percentage is always hidden for meter.`,
-        );
-      }
-    }
+  it('should throw an error when the variant is meter and hidePercentage is set', () => {
+    // @ts-expect-error testing failure case when the variant is meter and hidePercentage is set
+    expect(() => renderWithTheme(<ProgressBar variant="meter" hidePercentage={true} />)).toThrow(
+      `[Blade: ProgressBar]: Cannot set 'hidePercentage' when 'variant' is 'meter'. Percentage is always hidden for meter.`,
+    );
   });
 });
