@@ -137,7 +137,7 @@ describe('<ProgressBar />', () => {
 
   it('should have the right accessibility attributes for meter variant', () => {
     const { getByRole } = renderWithTheme(
-      <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} variant="meter" />,
+      <ProgressBar label="Label" accessibilityLabel="Amount" value={70} variant="meter" />,
     );
 
     expect(getByRole('meter')).toHaveAccessibleName('Amount');
