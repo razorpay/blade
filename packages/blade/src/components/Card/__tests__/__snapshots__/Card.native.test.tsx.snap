@@ -92,14 +92,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     />
     <View
       display="flex"
-      flexDirection="row"
+      flexDirection="column"
       justifyContent="space-between"
       marginTop="spacing.7"
       style={
         Array [
           Object {
             "display": "flex",
-            "flexDirection": "row",
+            "flexDirection": "column",
             "justifyContent": "space-between",
             "marginTop": 24,
           },
@@ -179,135 +179,150 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         </Text>
       </View>
       <View
-        alignSelf="center"
+        alignSelf="auto"
         display="flex"
         flexDirection="row"
+        marginLeft="spacing.0"
+        marginTop="spacing.5"
         style={
           Array [
             Object {
-              "alignSelf": "center",
+              "alignSelf": "auto",
               "display": "flex",
               "flexDirection": "row",
+              "marginLeft": 0,
+              "marginTop": 16,
             },
           ]
         }
       >
         <View
-          accessibilityRole="button"
-          accessibilityState={
-            Object {
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
-          activeBorderColor="hsla(213, 89%, 56%, 1)"
-          borderRadius="2px"
-          borderWidth="1px"
-          buttonPaddingBottom="0px"
-          buttonPaddingLeft="20px"
-          buttonPaddingRight="20px"
-          buttonPaddingTop="0px"
-          collapsable={false}
-          defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
-          defaultBorderColor="hsla(213, 89%, 56%, 1)"
-          focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-          focusBorderColor="hsla(213, 89%, 56%, 1)"
-          focusRingColor="hsla(218, 89%, 51%, 0.18)"
-          focusable={true}
-          hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
-          hoverBorderColor="hsla(213, 89%, 56%, 1)"
-          isFullWidth={false}
-          isLoading={false}
-          minHeight="36px"
-          motionDuration="duration.xquick"
-          motionEasing="easing.standard.effective"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          flexGrow={1}
           style={
             Array [
               Object {
-                "alignSelf": "center",
-                "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                "borderColor": "hsla(213, 89%, 56%, 1)",
-                "borderRadius": 2,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "cursor": "pointer",
-                "minHeight": 36,
-                "paddingBottom": 0,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 0,
-                "width": "auto",
-              },
-              Object {
-                "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                "borderColor": "hsla(213, 89%, 56%, 1)",
+                "flexGrow": 1,
               },
             ]
           }
         >
           <View
-            alignItems="center"
-            display="flex"
-            flex={1}
-            flexDirection="row"
-            isHidden={false}
-            justifyContent="center"
+            accessibilityRole="button"
+            accessibilityState={
+              Object {
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
+            activeBorderColor="hsla(213, 89%, 56%, 1)"
+            borderRadius="2px"
+            borderWidth="1px"
+            buttonPaddingBottom="0px"
+            buttonPaddingLeft="20px"
+            buttonPaddingRight="20px"
+            buttonPaddingTop="0px"
+            collapsable={false}
+            defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
+            defaultBorderColor="hsla(213, 89%, 56%, 1)"
+            focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+            focusBorderColor="hsla(213, 89%, 56%, 1)"
+            focusRingColor="hsla(218, 89%, 51%, 0.18)"
+            focusable={true}
+            hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+            hoverBorderColor="hsla(213, 89%, 56%, 1)"
+            isFullWidth={true}
+            isLoading={false}
+            minHeight="36px"
+            motionDuration="duration.xquick"
+            motionEasing="easing.standard.effective"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "center",
-                  "opacity": 1,
+                  "alignSelf": "center",
+                  "backgroundColor": "hsla(218, 89%, 51%, 0)",
+                  "borderColor": "hsla(213, 89%, 56%, 1)",
+                  "borderRadius": 2,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "cursor": "pointer",
+                  "minHeight": 36,
+                  "paddingBottom": 0,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 0,
+                  "width": "100%",
+                },
+                Object {
+                  "backgroundColor": "hsla(218, 89%, 51%, 0)",
+                  "borderColor": "hsla(213, 89%, 56%, 1)",
                 },
               ]
             }
           >
-            <Text
-              color="action.text.secondary.default"
-              fontSize={100}
-              fontWeight="bold"
-              lineHeight="l"
+            <View
+              alignItems="center"
+              display="flex"
+              flex={1}
+              flexDirection="row"
+              isHidden={false}
+              justifyContent="center"
               style={
                 Array [
                   Object {
-                    "color": "hsla(213, 89%, 56%, 1)",
-                    "fontFamily": "Lato",
-                    "fontSize": 15,
-                    "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 24,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textAlign": "center",
-                    "textDecorationLine": "none",
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "center",
+                    "opacity": 1,
                   },
                 ]
               }
-              textAlign="center"
             >
-              Delete
-            </Text>
+              <Text
+                color="action.text.secondary.default"
+                fontSize={100}
+                fontWeight="bold"
+                lineHeight="l"
+                style={
+                  Array [
+                    Object {
+                      "color": "hsla(213, 89%, 56%, 1)",
+                      "fontFamily": "Lato",
+                      "fontSize": 15,
+                      "fontStyle": "normal",
+                      "fontWeight": "700",
+                      "lineHeight": 24,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "center",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="center"
+              >
+                Delete
+              </Text>
+            </View>
           </View>
         </View>
         <View
@@ -321,121 +336,132 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           }
         />
         <View
-          accessibilityRole="button"
-          accessibilityState={
-            Object {
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-          activeBorderColor="hsla(227, 100%, 45%, 1)"
-          borderRadius="2px"
-          borderWidth="1px"
-          buttonPaddingBottom="0px"
-          buttonPaddingLeft="20px"
-          buttonPaddingRight="20px"
-          buttonPaddingTop="0px"
-          collapsable={false}
-          defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-          defaultBorderColor="hsla(213, 89%, 56%, 1)"
-          focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-          focusBorderColor="hsla(223, 95%, 48%, 1)"
-          focusRingColor="hsla(218, 89%, 51%, 0.18)"
-          focusable={true}
-          hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-          hoverBorderColor="hsla(218, 89%, 51%, 1)"
-          isFullWidth={false}
-          isLoading={false}
-          minHeight="36px"
-          motionDuration="duration.xquick"
-          motionEasing="easing.standard.effective"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          flexGrow={1}
           style={
             Array [
               Object {
-                "alignSelf": "center",
-                "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                "borderColor": "hsla(213, 89%, 56%, 1)",
-                "borderRadius": 2,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "cursor": "pointer",
-                "minHeight": 36,
-                "paddingBottom": 0,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 0,
-                "width": "auto",
-              },
-              Object {
-                "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                "borderColor": "hsla(213, 89%, 56%, 1)",
+                "flexGrow": 1,
               },
             ]
           }
         >
           <View
-            alignItems="center"
-            display="flex"
-            flex={1}
-            flexDirection="row"
-            isHidden={false}
-            justifyContent="center"
+            accessibilityRole="button"
+            accessibilityState={
+              Object {
+                "disabled": false,
+              }
+            }
+            accessible={true}
+            activeBackgroundColor="hsla(227, 100%, 45%, 1)"
+            activeBorderColor="hsla(227, 100%, 45%, 1)"
+            borderRadius="2px"
+            borderWidth="1px"
+            buttonPaddingBottom="0px"
+            buttonPaddingLeft="20px"
+            buttonPaddingRight="20px"
+            buttonPaddingTop="0px"
+            collapsable={false}
+            defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
+            defaultBorderColor="hsla(213, 89%, 56%, 1)"
+            focusBackgroundColor="hsla(223, 95%, 48%, 1)"
+            focusBorderColor="hsla(223, 95%, 48%, 1)"
+            focusRingColor="hsla(218, 89%, 51%, 0.18)"
+            focusable={true}
+            hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
+            hoverBorderColor="hsla(218, 89%, 51%, 1)"
+            isFullWidth={true}
+            isLoading={false}
+            minHeight="36px"
+            motionDuration="duration.xquick"
+            motionEasing="easing.standard.effective"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "center",
-                  "opacity": 1,
+                  "alignSelf": "center",
+                  "backgroundColor": "hsla(213, 89%, 56%, 1)",
+                  "borderColor": "hsla(213, 89%, 56%, 1)",
+                  "borderRadius": 2,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "cursor": "pointer",
+                  "minHeight": 36,
+                  "paddingBottom": 0,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 0,
+                  "width": "100%",
+                },
+                Object {
+                  "backgroundColor": "hsla(213, 89%, 56%, 1)",
+                  "borderColor": "hsla(213, 89%, 56%, 1)",
                 },
               ]
             }
           >
-            <Text
-              color="action.text.primary.default"
-              fontSize={100}
-              fontWeight="bold"
-              lineHeight="l"
+            <View
+              alignItems="center"
+              display="flex"
+              flex={1}
+              flexDirection="row"
+              isHidden={false}
+              justifyContent="center"
               style={
                 Array [
                   Object {
-                    "color": "hsla(0, 0%, 100%, 1)",
-                    "fontFamily": "Lato",
-                    "fontSize": 15,
-                    "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 24,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textAlign": "center",
-                    "textDecorationLine": "none",
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "center",
+                    "opacity": 1,
                   },
                 ]
               }
-              textAlign="center"
             >
-              Save
-            </Text>
+              <Text
+                color="action.text.primary.default"
+                fontSize={100}
+                fontWeight="bold"
+                lineHeight="l"
+                style={
+                  Array [
+                    Object {
+                      "color": "hsla(0, 0%, 100%, 1)",
+                      "fontFamily": "Lato",
+                      "fontSize": 15,
+                      "fontStyle": "normal",
+                      "fontWeight": "700",
+                      "lineHeight": 24,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "center",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="center"
+              >
+                Save
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -501,12 +527,16 @@ exports[`<Card /> should render a Card with Header 1`] = `
     >
       <View
         display="flex"
+        flex={1}
         flexDirection="row"
         style={
           Array [
             Object {
               "display": "flex",
+              "flexBasis": 0,
               "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
             },
           ]
         }
@@ -606,12 +636,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
             alignItems="center"
             display="flex"
             flexDirection="row"
+            flexWrap="wrap"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
+                  "flexWrap": "wrap",
                 },
               ]
             }

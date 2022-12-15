@@ -45,9 +45,18 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
+  margin-top: 0px;
+  margin-left: 16px;
 }
 
-.c10 {
+.c9 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -68,13 +77,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   justify-content: center;
 }
 
-.c13 {
+.c14 {
   margin-left: 16px;
 }
 
-.c9 {
+.c10 {
   min-height: 36px;
-  width: auto;
+  width: 100%;
   cursor: pointer;
   background-color: hsla(218,89%,51%,0);
   border-color: hsla(213,89%,56%,1);
@@ -94,24 +103,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   position: relative;
 }
 
-.c9:hover {
+.c10:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(213,89%,56%,1);
 }
 
-.c9:active {
+.c10:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(213,89%,56%,1);
 }
 
-.c9:focus {
+.c10:focus {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(213,89%,56%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c9 * {
+.c10 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -120,9 +129,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c14 {
+.c15 {
   min-height: 36px;
-  width: auto;
+  width: 100%;
   cursor: pointer;
   background-color: hsla(213,89%,56%,1);
   border-color: hsla(213,89%,56%,1);
@@ -142,24 +151,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   position: relative;
 }
 
-.c14:hover {
+.c15:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c14:active {
+.c15:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c14:focus {
+.c15:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c14 * {
+.c15 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -207,7 +216,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c13 {
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -221,7 +230,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c16 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -235,7 +244,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c11 {
+.c12 {
   opacity: 1;
 }
 
@@ -303,49 +312,57 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           class="c8"
           display="flex"
         >
-          <button
-            class="c9"
-            data-blade-component="button"
-            role="button"
-            type="button"
-          >
-            <div
-              class="c10 c11"
-              display="flex"
-            >
-              <div
-                class="c12"
-                color="action.text.secondary.default"
-                font-size="100"
-                font-weight="bold"
-              >
-                Delete
-              </div>
-            </div>
-          </button>
           <div
-            class="c13"
-          />
-          <button
-            class="c14"
-            data-blade-component="button"
-            role="button"
-            type="button"
+            class="c9"
           >
-            <div
-              class="c10 c11"
-              display="flex"
+            <button
+              class="c10"
+              data-blade-component="button"
+              role="button"
+              type="button"
             >
               <div
-                class="c15"
-                color="action.text.primary.default"
-                font-size="100"
-                font-weight="bold"
+                class="c11 c12"
+                display="flex"
               >
-                Save
+                <div
+                  class="c13"
+                  color="action.text.secondary.default"
+                  font-size="100"
+                  font-weight="bold"
+                >
+                  Delete
+                </div>
               </div>
-            </div>
-          </button>
+            </button>
+          </div>
+          <div
+            class="c14"
+          />
+          <div
+            class="c9"
+          >
+            <button
+              class="c15"
+              data-blade-component="button"
+              role="button"
+              type="button"
+            >
+              <div
+                class="c11 c12"
+                display="flex"
+              >
+                <div
+                  class="c16"
+                  color="action.text.primary.default"
+                  font-size="100"
+                  font-weight="bold"
+                >
+                  Save
+                </div>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -392,6 +409,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -413,6 +433,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
