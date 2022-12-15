@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { Divider } from './Divider';
 import { useInsideCard } from './CardContext';
 import Box from '~components/Box';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
+import { useBreakpoint } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -16,13 +19,27 @@ type CardFooterProps = {
   children?: React.ReactNode;
 };
 
+const useIsMobile = (): boolean => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({
+    breakpoints: theme.breakpoints,
+  });
+  return matchedDeviceType === 'mobile';
+};
+
 const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
+  const isMobile = useIsMobile();
   useInsideCard('CardFooter');
 
   return (
     <Box marginTop="spacing.7">
       <Divider />
-      <Box marginTop="spacing.7" display="flex" flexDirection="row" justifyContent="space-between">
+      <Box
+        marginTop="spacing.7"
+        display="flex"
+        flexDirection={isMobile ? 'column' : 'row'}
+        justifyContent="space-between"
+      >
         {children}
       </Box>
     </Box>
@@ -55,21 +72,32 @@ type CardFooterTrailingProps = {
   };
 };
 const CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactElement => {
+  const isMobile = useIsMobile();
   useInsideCard('CardFooterTrailing');
 
   return (
-    <Box display="flex" flexDirection="row" alignSelf="center">
-      {actions?.secondary ? (
-        <Button size="medium" variant="secondary" {...actions.secondary}>
-          {actions.secondary.text}
-        </Button>
-      ) : null}
+    <Box
+      display="flex"
+      flexDirection="row"
+      alignSelf={isMobile ? 'auto' : 'center'}
+      marginTop={isMobile ? 'spacing.5' : 'spacing.0'}
+      marginLeft={isMobile ? 'spacing.0' : 'spacing.5'}
+    >
+      <Box flexGrow={1}>
+        {actions?.secondary ? (
+          <Button isFullWidth size="medium" variant="secondary" {...actions.secondary}>
+            {actions.secondary.text}
+          </Button>
+        ) : null}
+      </Box>
       <Box marginLeft="spacing.5" />
-      {actions?.primary ? (
-        <Button size="medium" {...actions.primary}>
-          {actions.primary.text}
-        </Button>
-      ) : null}
+      <Box flexGrow={1}>
+        {actions?.primary ? (
+          <Button isFullWidth size="medium" {...actions.primary}>
+            {actions.primary.text}
+          </Button>
+        ) : null}
+      </Box>
     </Box>
   );
 };

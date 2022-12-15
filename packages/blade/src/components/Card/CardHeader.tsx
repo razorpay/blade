@@ -138,12 +138,12 @@ const CardHeaderLeading = ({
   }
 
   return (
-    <Box display="flex" flexDirection="row">
+    <Box flex={1} display="flex" flexDirection="row">
       <Box marginRight="spacing.3" alignSelf="center" display="flex">
         {prefix}
       </Box>
       <Box>
-        <Box display="flex" flexDirection="row" alignItems="center">
+        <Box display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
           <Heading size="small" variant="regular" type="normal">
             {title}
           </Heading>
