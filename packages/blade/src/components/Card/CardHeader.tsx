@@ -83,14 +83,13 @@ const CardHeaderIconButton = (props: CardHeaderIconButtonProps): React.ReactElem
 };
 CardHeaderIconButton.componentId = Components.CardHeaderIconButton;
 
-const isOfComponentId = (comp: React.ReactNode, id: string): boolean => {
-  if (!React.isValidElement(comp)) return false;
-  return (comp.type as any)?.componentId === id;
-};
-
 const getComponentId = (comp: React.ReactNode): string | null => {
   if (!React.isValidElement(comp)) return null;
   return (comp.type as any)?.componentId;
+};
+
+const isOfComponentId = (comp: React.ReactNode, id: string): boolean => {
+  return getComponentId(comp) === id;
 };
 
 const CardHeader = ({ children }: CardHeaderProps): React.ReactElement => {
