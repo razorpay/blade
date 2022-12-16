@@ -1,5 +1,7 @@
+// tsconfig only for typechecking native files
 {
   "extends": "./tsconfig-generate-types.native.json",
+  // overriding `exclude` and removed `**/**.test.ts` so that in CI test files get typechecked
   "exclude": ["**/**.stories.tsx", "**/**.stories.internal.tsx", "**/**.web.ts", "**/**.web.tsx"],
   "compilerOptions": {
     "noEmit": true,
