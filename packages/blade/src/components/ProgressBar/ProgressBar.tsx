@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { FormLabel } from '~components/Form';
-import { makeAccessible, makeSize } from '~utils';
+import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
@@ -150,6 +150,7 @@ const ProgressBar = ({
       </Box>
       <Box
         id={id}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.ProgressBar)}
         {...makeAccessible({
           role: variant === 'meter' ? 'meter' : 'progressbar',
           label: accessibilityLabel ?? label,
