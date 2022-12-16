@@ -24,6 +24,8 @@ A Progress bar is generally a branded element that indicates progress of process
 |---|---|---|---|---|
 | label | `string` | `undefined` | The label to be rendered with the progress bar. |  |
 | value | number | `0` | The current progress value for the progress bar. |  |
+| min | number | `0` | The minimum value for the progress bar. |  |
+| max | number | `100` | The maximum value for the progress bar. |  |
 | variant | `progress`, `meter` | `progress` | Controls the variant to be rendered. `progress` variant will be rendered as a dynamic progress bar whereas `meter` will be a static meter displaying the current value as meter component.   |
 | contrast | `low`, `high` | `low` | The contrast of the progress bar to be rendered. |  |
 | intent | `positive`,`negative`, `notice`, `information`, `neutral` | `undefined` | The intent of the progress bar to be rendered. | |
@@ -53,9 +55,11 @@ import { ProgressBar } from '@razorpay/components';
 - We will set `aria-role` as `progressbar` for `progress` variant (`accessibilityRole` for React Native)
 - We will set `aria-role` as `meter` for `meter` variant (`accessibilityRole` for React Native)
 - We will pass the value of `value` prop as `aria-valuenow` (`accessibilityValue` for React Native)
-- Pass `aria-busy` as `true` (`accessibilityState` for React Native)
-- We will set `aria-valuemin` as 0
-- We will set `aria-valuemax` as 100
+- We will set `aria-valuemin` as `min` (default as `0`)
+- We will set `aria-valuemax` as `max` (default as `100`)
+- We will set `aria-valuenow` as clamped `value` (If value passed is less than min, min would be used as the current value. If value passed is greater than max, max would be used as the current value)
+- We will set `aria-valuetext` as clamped percentage `value` when variant is `progress` (`20` will be passed as `20%`)
+- We will set `aria-valuetext` as clamped `value` when variant is `meter` (`20` will be passed as `20`)
 
 
 ## Handling pulsating animation
