@@ -3,7 +3,7 @@ import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { ProgressBarFilledIndeterminate } from './ProgressBarFilledIndeterminate.web';
 import { FormLabel } from '~components/Form';
-import { makeAccessible, makeSize } from '~utils';
+import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
@@ -38,6 +38,16 @@ type ProgressBarCommonProps = {
    * @default 'small'
    */
   value?: number;
+  /**
+   * Sets the minimum value for the progress bar.
+   * @default 0
+   */
+  min?: number;
+  /**
+   * Sets the maximum value for the progress bar.
+   * @default 100
+   */
+  max?: number;
 };
 
 type ProgressBarVariant = 'progress' | 'meter';
@@ -55,9 +65,9 @@ type ProgressBarProgressProps = ProgressBarCommonProps & {
   isIndeterminate?: boolean;
   /**
    * Sets whether or not to show the progress percentage for the progress bar. Percentage is hidden by default for the `meter` variant.
-   * @default false
+   * @default true
    */
-  hidePercentage?: boolean;
+  showPercentage?: boolean;
 };
 
 type ProgressBarMeterProps = ProgressBarCommonProps & {
@@ -75,7 +85,7 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
    * Sets whether or not to show the progress percentage for the progress bar. Percentage is hidden by default for the `meter` variant.
    * @default false
    */
-  hidePercentage?: undefined;
+  showPercentage?: undefined;
 };
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
@@ -91,10 +101,12 @@ const ProgressBar = ({
   intent,
   isIndeterminate,
   label,
-  hidePercentage = false,
+  showPercentage = true,
   size = 'small',
   value = 0,
   variant = 'progress',
+  min = 0,
+  max = 100,
 }: ProgressBarProps): ReactElement => {
   const { theme } = useTheme();
   const id = useId(variant);
@@ -105,19 +117,14 @@ const ProgressBar = ({
     );
   }
 
-  if (variant === 'meter' && hidePercentage) {
-    throw new Error(
-      `[Blade: ProgressBar]: Cannot set 'hidePercentage' when 'variant' is 'meter'. Percentage is always hidden for meter.`,
-    );
-  }
-
   const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];
   const filledBackgroundColor = intent
     ? theme.colors.feedback.background[intent].highContrast
     : theme.colors.brand.primary[500];
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
-  const progressValue = clamp(value, 0, 100);
+  const progressValue = clamp(value, min, max);
+  const percentageProgressValue = ((progressValue - min) * 100) / (max - min);
 
   return (
     <>
@@ -131,26 +138,27 @@ const ProgressBar = ({
             {label}
           </FormLabel>
         ) : null}
-        {hidePercentage || isMeter ? null : (
+        {!showPercentage || isMeter ? null : (
           <Box marginBottom="spacing.2">
             <Text
               type="subdued"
               variant="body"
               contrast={contrast}
               size="small"
-            >{`${progressValue}%`}</Text>
+            >{`${percentageProgressValue}%`}</Text>
           </Box>
         )}
       </Box>
       <Box
         id={id}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.ProgressBar)}
         {...makeAccessible({
           role: variant === 'meter' ? 'meter' : 'progressbar',
           label: accessibilityLabel ?? label,
-          valueNow: progressValue,
-          valueText: `${progressValue}${isMeter ? '' : '%'}`,
-          valueMin: 0,
-          valueMax: 100,
+          valueNow: isMeter ? progressValue : percentageProgressValue,
+          valueText: isMeter ? `${progressValue}` : `${percentageProgressValue}%`,
+          valueMin: min,
+          valueMax: max,
         })}
       >
         <Box
@@ -161,6 +169,7 @@ const ProgressBar = ({
         >
           <ProgressBarFilledIndeterminate
             backgroundColor={filledBackgroundColor}
+            progress={percentageProgressValue}
             fillMotionDuration="duration.2xgentle"
             pulseMotionDuration="duration.2xgentle"
             pulseMotionDelay="delay.long"

@@ -126,7 +126,7 @@ const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent
 export const ProgressBarWithoutLabelAndPercentage = ProgressBarWithUpdatingValuesTemplate.bind({});
 ProgressBarWithoutLabelAndPercentage.storyName = 'Without Label & Percentage';
 ProgressBarWithoutLabelAndPercentage.args = {
-  hidePercentage: true,
+  showPercentage: false,
 };
 
 export const ProgressBarSmallSize = ProgressBarWithUpdatingValuesTemplate.bind({});
