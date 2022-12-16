@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
+import { ProgressBarFilledIndeterminate } from './ProgressBarFilledIndeterminate.web';
 import { FormLabel } from '~components/Form';
 import { makeAccessible, makeSize } from '~utils';
 import { Text } from '~components/Typography/Text';
@@ -152,8 +153,21 @@ const ProgressBar = ({
           valueMax: 100,
         })}
       >
-        <Box backgroundColor={unfilledBackgroundColor} height={makeSize(progressBarHeight[size])}>
-          <ProgressBarFilled
+        <Box
+          backgroundColor={unfilledBackgroundColor}
+          height={makeSize(progressBarHeight[size])}
+          overflow="hidden"
+          position="relative"
+        >
+          <ProgressBarFilledIndeterminate
+            backgroundColor={filledBackgroundColor}
+            fillMotionDuration="duration.2xgentle"
+            pulseMotionDuration="duration.2xgentle"
+            pulseMotionDelay="delay.long"
+            motionEasing="easing.standard.revealing"
+            variant={variant}
+          />
+          {/* <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
             progress={progressValue}
             fillMotionDuration="duration.2xgentle"
@@ -161,7 +175,7 @@ const ProgressBar = ({
             pulseMotionDelay="delay.long"
             motionEasing="easing.standard.revealing"
             variant={variant}
-          />
+          /> */}
         </Box>
       </Box>
     </>
