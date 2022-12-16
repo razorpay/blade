@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { Divider } from './Divider';
-import { useInsideCard } from './CardContext';
+import { useVerifyInsideCard } from './CardContext';
 import Box from '~components/Box';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
@@ -12,7 +12,7 @@ export type CardFooterAction = Pick<
   ButtonProps,
   'type' | 'accessibilityLabel' | 'isLoading' | 'isDisabled' | 'icon' | 'iconPosition' | 'onClick'
 > & {
-  text: string;
+  text: ButtonProps['children'];
 };
 
 type CardFooterProps = {
@@ -29,7 +29,7 @@ const useIsMobile = (): boolean => {
 
 const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
-  useInsideCard('CardFooter');
+  useVerifyInsideCard('CardFooter');
 
   return (
     <Box marginTop="spacing.7">
@@ -52,7 +52,7 @@ type CardFooterLeadingProps = {
   subtitle?: string;
 };
 const CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.ReactElement => {
-  useInsideCard('CardFooterLeading');
+  useVerifyInsideCard('CardFooterLeading');
 
   return (
     <Box>
@@ -78,7 +78,7 @@ type CardFooterTrailingProps = {
 };
 const CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactElement => {
   const isMobile = useIsMobile();
-  useInsideCard('CardFooterTrailing');
+  useVerifyInsideCard('CardFooterTrailing');
 
   return (
     <Box
@@ -91,7 +91,7 @@ const CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactEl
       <Box flexGrow={1}>
         {actions?.secondary ? (
           <Button isFullWidth size="medium" variant="secondary" {...actions.secondary}>
-            {actions.secondary.text}
+            {actions.secondary.text!}
           </Button>
         ) : null}
       </Box>
@@ -99,7 +99,7 @@ const CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactEl
       <Box flexGrow={1}>
         {actions?.primary ? (
           <Button isFullWidth size="medium" {...actions.primary}>
-            {actions.primary.text}
+            {actions.primary.text!}
           </Button>
         ) : null}
       </Box>
