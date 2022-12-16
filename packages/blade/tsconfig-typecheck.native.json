@@ -1,5 +1,6 @@
 {
   "extends": "./tsconfig-generate-types.native.json",
+  "exclude": ["**/**.stories.tsx", "**/**.stories.internal.tsx", "**/**.web.ts", "**/**.web.tsx"],
   "compilerOptions": {
     "noEmit": true,
     "emitDeclarationOnly": false

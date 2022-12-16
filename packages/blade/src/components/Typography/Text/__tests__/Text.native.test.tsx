@@ -79,7 +79,6 @@ describe('<Text />', () => {
     try {
       const displayText = 'Displaying some text';
       renderWithTheme(
-        // @ts-expect-error testing failure case when weight='bold' is passed with variant='caption'
         <Text type="normal" variant="caption" weight="bold">
           {displayText}
         </Text>,
