@@ -1,16 +1,4 @@
 import React from 'react';
-import { CardFooter, CardFooterLeading, CardFooterTrailing } from './CardFooter';
-import {
-  CardHeader,
-  CardHeaderIcon,
-  CardHeaderCounter,
-  CardHeaderLeading,
-  CardHeaderTrailing,
-  CardHeaderBadge,
-  CardHeaderIconButton,
-  CardHeaderLink,
-  CardHeaderText,
-} from './CardHeader';
 import { CardSurface } from './CardSurface';
 import { CardProvider } from './CardContext';
 import Box from '~components/Box';
@@ -45,19 +33,4 @@ const CardBody = ({ children }: CardBodyProps): React.ReactElement => {
   return <Box>{children}</Box>;
 };
 
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardBody,
-  CardHeaderLeading,
-  CardFooterLeading,
-  CardHeaderTrailing,
-  CardFooterTrailing,
-  CardHeaderBadge,
-  CardHeaderIcon,
-  CardHeaderCounter,
-  CardHeaderText,
-  CardHeaderLink,
-  CardHeaderIconButton,
-};
+export { Card, CardBody };

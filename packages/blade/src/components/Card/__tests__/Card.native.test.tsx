@@ -12,7 +12,7 @@ import {
   CardHeaderIcon,
   CardHeaderCounter,
   CardHeaderBadge,
-} from '../Card';
+} from '../';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';

@@ -39,6 +39,7 @@ const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
         display="flex"
         flexDirection={isMobile ? 'column' : 'row'}
         justifyContent="space-between"
+        alignItems="center"
       >
         {children}
       </Box>
@@ -47,7 +48,7 @@ const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
 };
 
 type CardFooterLeadingProps = {
-  title: string;
+  title?: string;
   subtitle?: string;
 };
 const CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.ReactElement => {
@@ -55,12 +56,16 @@ const CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.R
 
   return (
     <Box>
-      <Text variant="body" size="medium" weight="bold">
-        {title}
-      </Text>
-      <Text variant="body" size="small" weight="regular">
-        {subtitle}
-      </Text>
+      {title && (
+        <Text variant="body" size="medium" weight="bold">
+          {title}
+        </Text>
+      )}
+      {subtitle && (
+        <Text variant="body" size="small" weight="regular">
+          {subtitle}
+        </Text>
+      )}
     </Box>
   );
 };

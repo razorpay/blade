@@ -13,7 +13,7 @@ import {
   CardHeaderIcon,
   CardHeaderCounter,
   CardHeaderBadge,
-} from '../Card';
+} from '../';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';

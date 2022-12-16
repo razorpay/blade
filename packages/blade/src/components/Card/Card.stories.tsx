@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import type { CardFooterAction } from './';
 import {
   CardBody,
   Card,
@@ -15,15 +16,17 @@ import {
   CardHeaderIconButton,
   CardHeaderLink,
   CardHeaderText,
-} from './Card';
-import type { CardFooterAction } from './CardFooter';
+} from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 
 import { Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
-import { TrashIcon } from '~components/Icons';
+import { UsersIcon, TrashIcon } from '~components/Icons';
+
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
+import Box from '~components/Box';
+import { TextInput } from '~components/Input/TextInput';
 
 const Page = (): React.ReactElement => {
   return (
@@ -84,11 +87,11 @@ const Page = (): React.ReactElement => {
                 <CardFooterTrailing
                   actions={{
                     primary: {
-                      onClick: () => console.log(1),
+                      onClick: () => console.log("Primary action clicked"),
                       text: 'Accept',
                     },
                     secondary: {
-                      onClick: () => console.log(1),
+                      onClick: () => console.log("Secondary action clicked"),
                       text: 'Cancel',
                     },
                   }}
@@ -120,7 +123,7 @@ type StoryControlProps = {
   prefix: IconComponent;
   suffix: number;
   visual: React.ReactNode;
-  body: string;
+  body: React.ReactNode;
   footerTitle: string;
   footerSubtitle: string;
   footerPrimaryAction: CardFooterAction;
@@ -144,11 +147,11 @@ export default {
     footerTitle: 'Built for Developers',
     footerSubtitle: 'By Developers.',
     body:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      'Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.',
     footerPrimaryAction: {
       text: 'Learn More',
       onClick: () => {
-        console.log('Primary');
+        console.log('Primary Action Clicked');
       },
       isDisabled: false,
       icon: undefined,
@@ -160,7 +163,7 @@ export default {
     footerSecondaryAction: {
       text: 'Try Demo',
       onClick: () => {
-        console.log('Secondary');
+        console.log('Secondary Action Clicked');
       },
       isDisabled: false,
       icon: undefined,
@@ -258,3 +261,89 @@ const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
 };
 
 export const CardExample = CardTemplate.bind({});
+
+const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement => {
+  return (
+    <Card surfaceLevel={args.surfaceLevel}>
+      <CardHeader>
+        <CardHeaderLeading
+          title="Profile Information"
+          subtitle="We will use this information to keep your account updated"
+          prefix={<CardHeaderIcon icon={UsersIcon} />}
+        />
+        <CardHeaderTrailing visual={<CardHeaderIconButton icon={TrashIcon} />} />
+      </CardHeader>
+      <CardBody>
+        <Box display="flex" flexDirection="row" gap="spacing.5">
+          <Box flex={1}>
+            <TextInput
+              label="First Name"
+              isRequired
+              necessityIndicator="required"
+              placeholder="Enter your first name"
+            />
+          </Box>
+          <Box flex={1}>
+            <TextInput
+              label="Last Name"
+              isRequired
+              necessityIndicator="required"
+              placeholder="Enter your last name"
+            />
+          </Box>
+        </Box>
+        <Box marginTop="spacing.5" />
+        <TextInput
+          label="Address Line 1"
+          isRequired
+          placeholder="Apartment name, number, suite, etc."
+          necessityIndicator="required"
+        />
+        <Box marginTop="spacing.5" />
+        <TextInput label="Address Line 2" isRequired placeholder="Area, Locality, etc." />
+        <Box marginTop="spacing.5" />
+        <Box display="flex" flexDirection="row" gap="spacing.5">
+          <Box flex={1}>
+            <TextInput
+              label="Postal Code"
+              isRequired
+              necessityIndicator="required"
+              placeholder="Zipcode"
+            />
+          </Box>
+          <Box flex={1}>
+            <TextInput
+              label="Country"
+              isRequired
+              necessityIndicator="required"
+              placeholder="Country"
+            />
+          </Box>
+        </Box>
+        <Box marginTop="spacing.5" />
+        <TextInput
+          label="Mobile Number"
+          necessityIndicator="optional"
+          placeholder="Area, Locality, etc."
+        />
+      </CardBody>
+      <CardFooter>
+        <CardFooterLeading subtitle="Last updated on 20th Sep 2022" />
+        <CardFooterTrailing
+          actions={{
+            primary: {
+              text: 'Save Details',
+              onClick: () => console.log('Saved'),
+            },
+            secondary: {
+              text: 'Reset',
+              onClick: () => console.log('Reset'),
+            },
+          }}
+        />
+      </CardFooter>
+    </Card>
+  );
+};
+
+export const CardBodyContent = CardChildrenExample.bind({});

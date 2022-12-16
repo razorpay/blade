@@ -26,7 +26,7 @@ export type BoxProps = {
   marginBottom?: DotNotationSpacingStringToken | 'auto' | number;
   marginLeft?: DotNotationSpacingStringToken | 'auto' | number;
   marginRight?: DotNotationSpacingStringToken | 'auto' | number;
-  borderRadius?: keyof Border['radius'] | number;
+  borderRadius?: keyof Border['radius'];
   width?: CSSObject['width'];
   height?: CSSObject['height'];
   gap?: DotNotationSpacingStringToken | 'auto' | number;
