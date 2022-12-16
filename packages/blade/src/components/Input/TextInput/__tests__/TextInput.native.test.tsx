@@ -294,11 +294,8 @@ describe('<TextInput />', () => {
     const input = getByPlaceholderText(placeholder);
 
     expect(input).toHaveProp('keyboardType', 'default');
-
     expect(input).toHaveProp('returnKeyType', 'default');
-
     expect(input).toHaveProp('autoCompleteType', 'off');
-
     expect(input).toHaveProp('textContentType', 'none');
   });
 
