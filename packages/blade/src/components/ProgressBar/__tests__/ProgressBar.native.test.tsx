@@ -37,7 +37,7 @@ describe('<ProgressBar />', () => {
   });
 
   it('should render ProgressBar without label and percentage', () => {
-    const { toJSON } = renderWithTheme(<ProgressBar hidePercentage={true} value={50} />);
+    const { toJSON } = renderWithTheme(<ProgressBar showPercentage={false} value={50} />);
     expect(toJSON()).toMatchSnapshot();
   });
 
@@ -147,13 +147,6 @@ describe('<ProgressBar />', () => {
     // @ts-expect-error testing failure case when the variant is meter and isIndeterminate is set
     expect(() => renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />)).toThrow(
       `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
-    );
-  });
-
-  it('should throw an error when the variant is meter and hidePercentage is set', () => {
-    // @ts-expect-error testing failure case when the variant is meter and hidePercentage is set
-    expect(() => renderWithTheme(<ProgressBar variant="meter" hidePercentage={true} />)).toThrow(
-      `[Blade: ProgressBar]: Cannot set 'hidePercentage' when 'variant' is 'meter'. Percentage is always hidden for meter.`,
     );
   });
 });
