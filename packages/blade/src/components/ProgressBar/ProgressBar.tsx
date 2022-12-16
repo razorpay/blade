@@ -1,7 +1,6 @@
 import type { ReactElement } from 'react';
 import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
-import { ProgressBarFilledIndeterminate } from './ProgressBarFilledIndeterminate.web';
 import { FormLabel } from '~components/Form';
 import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
@@ -99,7 +98,7 @@ const ProgressBar = ({
   accessibilityLabel,
   contrast = 'low',
   intent,
-  isIndeterminate,
+  isIndeterminate = false,
   label,
   showPercentage = true,
   size = 'small',
@@ -125,6 +124,7 @@ const ProgressBar = ({
   const isMeter = variant === 'meter';
   const progressValue = clamp(value, min, max);
   const percentageProgressValue = ((progressValue - min) * 100) / (max - min);
+  const shouldShowPercentage = showPercentage && !isMeter && !isIndeterminate;
 
   return (
     <>
@@ -138,7 +138,7 @@ const ProgressBar = ({
             {label}
           </FormLabel>
         ) : null}
-        {!showPercentage || isMeter ? null : (
+        {shouldShowPercentage ? (
           <Box marginBottom="spacing.2">
             <Text
               type="subdued"
@@ -147,7 +147,7 @@ const ProgressBar = ({
               size="small"
             >{`${percentageProgressValue}%`}</Text>
           </Box>
-        )}
+        ) : null}
       </Box>
       <Box
         id={id}
@@ -167,16 +167,7 @@ const ProgressBar = ({
           overflow="hidden"
           position="relative"
         >
-          <ProgressBarFilledIndeterminate
-            backgroundColor={filledBackgroundColor}
-            progress={percentageProgressValue}
-            fillMotionDuration="duration.2xgentle"
-            pulseMotionDuration="duration.2xgentle"
-            pulseMotionDelay="delay.long"
-            motionEasing="easing.standard.revealing"
-            variant={variant}
-          />
-          {/* <ProgressBarFilled
+          <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
             progress={progressValue}
             fillMotionDuration="duration.2xgentle"
@@ -184,7 +175,8 @@ const ProgressBar = ({
             pulseMotionDelay="delay.long"
             motionEasing="easing.standard.revealing"
             variant={variant}
-          /> */}
+            isIndeterminate={isIndeterminate}
+          />
         </Box>
       </Box>
     </>

@@ -9,6 +9,7 @@ type ProgressBarFilledProps = {
   pulseMotionDelay: DelayString;
   motionEasing: EasingString;
   variant: ProgressBarVariant;
+  isIndeterminate: boolean;
 };
 
 export { ProgressBarFilledProps };

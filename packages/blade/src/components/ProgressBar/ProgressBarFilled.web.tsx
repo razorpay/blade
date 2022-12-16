@@ -1,3 +1,4 @@
+import type { CSSObject, FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
 import type { ProgressBarFilledProps } from './types';
@@ -16,23 +17,60 @@ const pulse = keyframes`
   }
 `;
 
-const BoxWithProgressBarFilledTransition = styled(Box)<
+const slideAndScale = keyframes`
+  0% {
+    left: -30px;
+    transform: scaleX(100%);
+  }
+  50% {
+    left: 50%;
+    transform: scaleX(500%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(calc(-100% + 30px)) scaleX(100%);
+  }
+`;
+
+const pulseAnimationStyles = ({
+  duration,
+  easing,
+  delay,
+}: {
+  duration: string;
+  easing: string;
+  delay: string;
+}): FlattenSimpleInterpolation => css`
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: white;
+  animation: ${pulse} ${duration} ${easing} infinite;
+  animation-delay: ${delay};
+`;
+
+const BoxWithFilledIndeterminateTransition = styled(Box)<
   Pick<ProgressBarFilledProps, 'fillMotionDuration' | 'motionEasing'>
->(({ theme, fillMotionDuration, motionEasing }) => ({
-  transitionProperty: 'width',
-  transitionDuration: castWebType(makeMotionTime(getIn(theme.motion, fillMotionDuration))),
-  transitionTimingFunction: castWebType(getIn(theme.motion, motionEasing)),
-}));
+>(({ theme, fillMotionDuration, motionEasing }) => {
+  const duration = castWebType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
+  // const easing = castWebType(getIn(theme.motion, motionEasing));
+  const easing = 'linear'; // multi-step keyframe easing is causing visual issues
 
-const ProgressBarFilledContainer = styled(BoxWithProgressBarFilledTransition)<
+  return css`
+    animation: ${slideAndScale} ${duration} ${easing} infinite;
+    position: absolute;
+    width: 5%;
+    height: 100%;
+  `;
+});
+
+const IndeterminateFilledContainer = styled(BoxWithFilledIndeterminateTransition)<
   Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress'>
->(({ backgroundColor, progress }) => ({
+>(({ backgroundColor }) => ({
   backgroundColor,
-  height: '100%',
-  width: `${progress}%`,
 }));
 
-const ProgressBarPulseAnimation = styled(BoxWithProgressBarFilledTransition)<
+const IndeterminatePulseAnimation = styled(BoxWithFilledIndeterminateTransition)<
   Pick<
     ProgressBarFilledProps,
     'pulseMotionDuration' | 'pulseMotionDelay' | 'motionEasing' | 'variant'
@@ -42,16 +80,36 @@ const ProgressBarPulseAnimation = styled(BoxWithProgressBarFilledTransition)<
   const easing = castWebType(getIn(theme.motion, motionEasing));
   const delay = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDelay)));
 
-  return variant === 'progress'
-    ? css`
-        height: 100%;
-        width: 100%;
-        opacity: 0;
-        background-color: white;
-        animation: ${pulse} ${duration} ${easing} infinite;
-        animation-delay: ${delay};
-      `
-    : '';
+  return variant === 'progress' ? pulseAnimationStyles({ duration, easing, delay }) : '';
+});
+
+const BoxWithFilledTransition = styled(Box)<
+  Pick<ProgressBarFilledProps, 'fillMotionDuration' | 'motionEasing'>
+>(({ theme, fillMotionDuration, motionEasing }) => ({
+  transitionProperty: 'width',
+  transitionDuration: castWebType(makeMotionTime(getIn(theme.motion, fillMotionDuration))),
+  transitionTimingFunction: castWebType(getIn(theme.motion, motionEasing)),
+}));
+
+const DeterminateFilledContainer = styled(BoxWithFilledTransition)<
+  Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress'>
+>(({ backgroundColor, progress }) => ({
+  backgroundColor,
+  height: '100%',
+  width: `${progress}%`,
+}));
+
+const DeterminatePulseAnimation = styled(BoxWithFilledTransition)<
+  Pick<
+    ProgressBarFilledProps,
+    'pulseMotionDuration' | 'pulseMotionDelay' | 'motionEasing' | 'variant'
+  >
+>(({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, variant }) => {
+  const duration = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDuration)));
+  const easing = castWebType(getIn(theme.motion, motionEasing));
+  const delay = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDelay)));
+
+  return variant === 'progress' ? pulseAnimationStyles({ duration, easing, delay }) : '';
 });
 
 const ProgressBarFilled = ({
@@ -62,7 +120,15 @@ const ProgressBarFilled = ({
   pulseMotionDelay,
   pulseMotionDuration,
   variant,
+  isIndeterminate,
 }: ProgressBarFilledProps): React.ReactElement => {
+  const ProgressBarFilledContainer = isIndeterminate
+    ? IndeterminateFilledContainer
+    : DeterminateFilledContainer;
+  const ProgressBarPulseAnimation = isIndeterminate
+    ? IndeterminatePulseAnimation
+    : DeterminatePulseAnimation;
+
   return (
     <ProgressBarFilledContainer
       backgroundColor={backgroundColor}
