@@ -37,6 +37,16 @@ type ProgressBarCommonProps = {
    * @default 'small'
    */
   value?: number;
+  /**
+   * Sets the minimum value for the progress bar.
+   * @default 0
+   */
+  min?: number;
+  /**
+   * Sets the maximum value for the progress bar.
+   * @default 100
+   */
+  max?: number;
 };
 
 type ProgressBarVariant = 'progress' | 'meter';
@@ -94,6 +104,8 @@ const ProgressBar = ({
   size = 'small',
   value = 0,
   variant = 'progress',
+  min = 0,
+  max = 100,
 }: ProgressBarProps): ReactElement => {
   const { theme } = useTheme();
   const id = useId(variant);
@@ -116,7 +128,8 @@ const ProgressBar = ({
     : theme.colors.brand.primary[500];
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
-  const progressValue = clamp(value, 0, 100);
+  const progressValue = clamp(value, min, max);
+  const percentageProgressValue = ((progressValue - min) * 100) / (max - min);
 
   return (
     <>
@@ -137,7 +150,7 @@ const ProgressBar = ({
               variant="body"
               contrast={contrast}
               size="small"
-            >{`${progressValue}%`}</Text>
+            >{`${percentageProgressValue}%`}</Text>
           </Box>
         )}
       </Box>
@@ -146,16 +159,16 @@ const ProgressBar = ({
         {...makeAccessible({
           role: variant === 'meter' ? 'meter' : 'progressbar',
           label: accessibilityLabel ?? label,
-          valueNow: progressValue,
-          valueText: `${progressValue}${isMeter ? '' : '%'}`,
-          valueMin: 0,
-          valueMax: 100,
+          valueNow: isMeter ? progressValue : percentageProgressValue,
+          valueText: isMeter ? `${progressValue}` : `${percentageProgressValue}%`,
+          valueMin: min,
+          valueMax: max,
         })}
       >
         <Box backgroundColor={unfilledBackgroundColor} height={makeSize(progressBarHeight[size])}>
           <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
-            progress={progressValue}
+            progress={percentageProgressValue}
             fillMotionDuration="duration.2xgentle"
             pulseMotionDuration="duration.2xgentle"
             pulseMotionDelay="delay.long"
