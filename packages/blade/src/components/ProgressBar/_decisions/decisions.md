@@ -30,7 +30,7 @@ A Progress bar is generally a branded element that indicates progress of process
 | size | `small`, `medium` | `small` | The size of the progress bar to be rendered. |  |
 | accessibilityLabel | `string` | `undefined` | The accessibility label (aria-label) for the progress bar. |
 | isIndeterminate | `boolean` | `false` | Control whether the progress bar is indeterminate or not. The progress bar will remain in an indeterminate state and respect the `isIndeterminate` prop if `isIndeterminate` is passed along with `value`. This prop will be ignored if `variant` is `meter`  |
-| hidePercentage | `boolean` | `false` | Control whether the progress bar should show the current progress percentage or not. Percentage would be automatically hidden when the progress bar is in an indeterminate state.  |
+| showPercentage | `boolean` | `true` | Control whether the progress bar should show the current progress percentage or not. Percentage would be automatically hidden when the progress bar is in an indeterminate state.  |
 
 
 ### Sample Usage
