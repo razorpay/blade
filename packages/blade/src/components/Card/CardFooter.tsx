@@ -32,7 +32,8 @@ const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
   useVerifyInsideCard('CardFooter');
 
   return (
-    <Box marginTop="spacing.7">
+    <Box marginTop="auto">
+      <Box marginTop="spacing.7" />
       <Divider />
       <Box
         marginTop="spacing.7"

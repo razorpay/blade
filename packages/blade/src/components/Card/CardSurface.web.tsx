@@ -12,6 +12,9 @@ const CardSurface = styled(Box)<{ surfaceLevel: 2 | 3 }>(({ surfaceLevel, theme 
   const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
 
   return {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
     boxShadow: `${shadow1}, ${shadow2}`,
     backgroundColor,
   };
