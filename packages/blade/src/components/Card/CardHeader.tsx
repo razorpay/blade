@@ -15,7 +15,8 @@ import { Link } from '~components/Link';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
-import { makeSpace } from '~utils';
+import type { WithComponentId } from '~utils';
+import { getComponentId, isValidAllowedChildren, makeSpace } from '~utils';
 
 const ComponentIds = {
   CardHeaderIcon: 'CardHeaderIcon',
@@ -24,13 +25,6 @@ const ComponentIds = {
   CardHeaderText: 'CardHeaderText',
   CardHeaderLink: 'CardHeaderLink',
   CardHeaderIconButton: 'CardHeaderIconButton',
-};
-
-/**
- * A type defining React component with additional static prop `componentId`
- */
-type WithComponentId<Props> = ((props: Props) => React.ReactElement) & {
-  componentId: string;
 };
 
 const CardHeaderIcon: WithComponentId<{ icon: IconComponent }> = ({ icon: Icon }) => {
@@ -75,7 +69,7 @@ type CardHeaderIconButtonProps = Omit<
   icon: IconComponent;
 };
 
-const CardHeaderIconButton = (props: CardHeaderIconButtonProps): React.ReactElement => {
+const CardHeaderIconButton: WithComponentId<CardHeaderIconButtonProps> = (props) => {
   useVerifyInsideCard('CardHeaderIconButton');
 
   return (
@@ -85,15 +79,6 @@ const CardHeaderIconButton = (props: CardHeaderIconButtonProps): React.ReactElem
   );
 };
 CardHeaderIconButton.componentId = ComponentIds.CardHeaderIconButton;
-
-const getComponentId = (component: React.ReactNode): string | null => {
-  if (!React.isValidElement(component)) return null;
-  return (component.type as any)?.componentId;
-};
-
-const isValidAllowedChildren = (component: React.ReactNode, id: string): boolean => {
-  return getComponentId(component) === id;
-};
 
 type CardHeaderProps = {
   children?: React.ReactNode;
