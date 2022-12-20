@@ -26,35 +26,42 @@ const ComponentIds = {
   CardHeaderIconButton: 'CardHeaderIconButton',
 };
 
-const CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
+/**
+ * A type defining React component with additional static prop `componentId`
+ */
+type WithComponentId<Props> = ((props: Props) => React.ReactElement) & {
+  componentId: string;
+};
+
+const CardHeaderIcon: WithComponentId<{ icon: IconComponent }> = ({ icon: Icon }) => {
   useVerifyInsideCard('CardHeaderIcon');
 
   return <Icon color="surface.text.normal.lowContrast" size="xlarge" />;
 };
 CardHeaderIcon.componentId = ComponentIds.CardHeaderIcon;
 
-const CardHeaderCounter = (props: CounterProps): React.ReactElement => {
+const CardHeaderCounter: WithComponentId<CounterProps> = (props) => {
   useVerifyInsideCard('CardHeaderCounter');
 
   return <Counter {...props} />;
 };
 CardHeaderCounter.componentId = ComponentIds.CardHeaderCounter;
 
-const CardHeaderBadge = (props: BadgeProps): React.ReactElement => {
+const CardHeaderBadge: WithComponentId<BadgeProps> = (props) => {
   useVerifyInsideCard('CardHeaderBadge');
 
   return <Badge {...props} />;
 };
 CardHeaderBadge.componentId = ComponentIds.CardHeaderBadge;
 
-const CardHeaderText = (props: TextProps<{ variant: TextVariant }>): React.ReactElement => {
+const CardHeaderText: WithComponentId<TextProps<{ variant: TextVariant }>> = (props) => {
   useVerifyInsideCard('CardHeaderText');
 
   return <Text {...props} />;
 };
 CardHeaderText.componentId = ComponentIds.CardHeaderText;
 
-const CardHeaderLink = (props: LinkProps): React.ReactElement => {
+const CardHeaderLink: WithComponentId<LinkProps> = (props) => {
   useVerifyInsideCard('CardHeaderLink');
 
   return <Link {...props} />;

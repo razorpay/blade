@@ -8,7 +8,7 @@ const useVerifyInsideCard = (componentName: string): CardContextType => {
   if (!context) {
     throw new Error(`[Blade Card]: ${componentName} cannot be used outside of Card component`);
   }
-  return context;
+  return true;
 };
 
 type CardProviderProps = { children: React.ReactNode };
