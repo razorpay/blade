@@ -57,15 +57,6 @@ const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...a
   return <ProgressBarComponent {...args} />;
 };
 
-export const Default = ProgressBarTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Default.storyName = 'Default';
-Default.args = {
-  label: 'Label',
-  value: 20,
-  contrast: 'low',
-};
-
 const ProgressBarWithUpdatingValuesTemplate: ComponentStory<typeof ProgressBarComponent> = ({
   ...args
 }) => {
@@ -85,6 +76,16 @@ const ProgressBarWithUpdatingValuesTemplate: ComponentStory<typeof ProgressBarCo
   }, [value]);
 
   return <ProgressBarComponent {...args} value={value} />;
+};
+
+export const Default = ProgressBarWithUpdatingValuesTemplate.bind({});
+// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
+Default.storyName = 'Default';
+Default.args = {
+  label: 'Label',
+  value: 20,
+  contrast: 'low',
+  isIndeterminate: true,
 };
 
 const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent> = ({

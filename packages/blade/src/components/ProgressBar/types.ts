@@ -6,6 +6,7 @@ type ProgressBarFilledProps = {
   progress: number;
   fillMotionDuration: DurationString;
   pulseMotionDuration: DurationString;
+  indeterminateMotionDuration: DurationString;
   pulseMotionDelay: DelayString;
   motionEasing: EasingString;
   variant: ProgressBarVariant;

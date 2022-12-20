@@ -176,6 +176,7 @@ const ProgressBar = ({
             progress={progressValue}
             fillMotionDuration="duration.2xgentle"
             pulseMotionDuration="duration.2xgentle"
+            indeterminateMotionDuration="duration.2xgentle"
             pulseMotionDelay="delay.long"
             motionEasing="easing.standard.revealing"
             variant={variant}

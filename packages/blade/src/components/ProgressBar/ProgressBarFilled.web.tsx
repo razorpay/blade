@@ -2,32 +2,34 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
 import type { ProgressBarFilledProps } from './types';
+import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
 import Box from '~components/Box';
 import { castWebType, getIn, makeMotionTime } from '~utils';
 
 const pulseKeyframes = keyframes`
   0% {
-    opacity: 0;
+    opacity: ${pulseAnimation.opacityInitial};
   }
   50% {
-    opacity: 0.25;
+    opacity: ${pulseAnimation.opacityMid};
   }
   100% {
-    opacity: 0;
+    opacity: ${pulseAnimation.opacityFinal};
   }
 `;
 
 const slideAndScaleKeyframes = keyframes`
   0% {
-    left: -8%;
-    transform: scaleX(100%);
+    left: ${indeterminateAnimation.leftInitial};
+    transform: scaleX(${indeterminateAnimation.scaleXInitial});
   }
   50% {
-    transform: scaleX(500%);
+    left: ${indeterminateAnimation.leftMid};
+    transform: scaleX(${indeterminateAnimation.scaleXMid});
   }
   100% {
-    left: 103%;
-    transform: scaleX(100%);
+    left: ${indeterminateAnimation.leftFinal};
+    transform:  scaleX(${indeterminateAnimation.scaleXFinal});
   }
 `;
 
@@ -42,22 +44,22 @@ const getPulseAnimationStyles = ({
 }): FlattenSimpleInterpolation => css`
   height: 100%;
   width: 100%;
-  opacity: 0;
-  background-color: white;
+  opacity: ${pulseAnimation.opacityInitial};
+  background-color: ${pulseAnimation.backgroundColor};
   animation: ${pulseKeyframes} ${duration} ${easing} infinite;
   animation-delay: ${delay};
 `;
 
 const BoxWithIndeterminateAnimation = styled(Box)<
-  Pick<ProgressBarFilledProps, 'fillMotionDuration'>
->(({ theme, fillMotionDuration }) => {
-  const duration = castWebType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
+  Pick<ProgressBarFilledProps, 'fillMotionDuration' | 'indeterminateMotionDuration'>
+>(({ theme, indeterminateMotionDuration }) => {
+  const duration = castWebType(makeMotionTime(getIn(theme.motion, indeterminateMotionDuration)));
   const easing = 'linear'; // TODO: Add this in motion tokens
 
   return css`
     animation: ${slideAndScaleKeyframes} ${duration} ${easing} infinite;
     position: absolute;
-    width: 5%;
+    width: ${indeterminateAnimation.fillWidth};
     height: 100%;
   `;
 });
@@ -90,7 +92,7 @@ const BoxWithProgressFillTransition = styled(Box)<
 }));
 
 const DeterminateFilledContainer = styled(BoxWithProgressFillTransition)<
-  Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress'>
+  Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress' | 'indeterminateMotionDuration'>
 >(({ backgroundColor, progress }) => ({
   backgroundColor,
   height: '100%',
@@ -117,6 +119,7 @@ const ProgressBarFilled = ({
   progress,
   pulseMotionDelay,
   pulseMotionDuration,
+  indeterminateMotionDuration,
   variant,
   isIndeterminate,
 }: ProgressBarFilledProps): React.ReactElement => {
@@ -132,6 +135,7 @@ const ProgressBarFilled = ({
       backgroundColor={backgroundColor}
       fillMotionDuration={fillMotionDuration}
       progress={progress}
+      indeterminateMotionDuration={indeterminateMotionDuration}
     >
       <ProgressBarPulseAnimation
         fillMotionDuration={fillMotionDuration}
