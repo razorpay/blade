@@ -13,6 +13,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       Object {
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderRadius": 4,
+        "display": "flex",
+        "flexDirection": "column",
         "paddingBottom": 20,
         "paddingLeft": 24,
         "paddingRight": 24,
@@ -24,6 +26,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         },
         "shadowOpacity": 1,
         "shadowRadius": 2,
+        "width": "100%",
       },
     ]
   }
@@ -101,7 +104,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       }
     />
     <View
-      alignItems="auto"
+      alignItems="stretch"
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
@@ -109,7 +112,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       style={
         Array [
           Object {
-            "alignItems": "auto",
+            "alignItems": "stretch",
             "display": "flex",
             "flexDirection": "column",
             "justifyContent": "space-between",
@@ -495,6 +498,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
       Object {
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderRadius": 4,
+        "display": "flex",
+        "flexDirection": "column",
         "paddingBottom": 20,
         "paddingLeft": 24,
         "paddingRight": 24,
@@ -506,6 +511,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         },
         "shadowOpacity": 1,
         "shadowRadius": 2,
+        "width": "100%",
       },
     ]
   }
@@ -974,6 +980,8 @@ exports[`<Card /> should render a plain Card 1`] = `
       Object {
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderRadius": 4,
+        "display": "flex",
+        "flexDirection": "column",
         "paddingBottom": 20,
         "paddingLeft": 24,
         "paddingRight": 24,
@@ -985,6 +993,7 @@ exports[`<Card /> should render a plain Card 1`] = `
         },
         "shadowOpacity": 1,
         "shadowRadius": 2,
+        "width": "100%",
       },
     ]
   }
