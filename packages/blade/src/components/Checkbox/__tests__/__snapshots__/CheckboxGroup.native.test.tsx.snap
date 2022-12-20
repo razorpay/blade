@@ -75,67 +75,67 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         }
       >
         Select fruits
-        <View
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "borderColor": "black",
+              "borderStyle": "solid",
+              "borderWidth": 0,
+              "clip": "rect(0 0 0 0)",
+              "clipPath": "inset(50%)",
+              "height": 1,
+              "marginBottom": -1,
+              "marginLeft": 0,
+              "marginRight": -1,
+              "marginTop": 0,
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+              "wordWrap": "normal",
+            },
+          ]
+        }
+      >
+        <Text
+          color="surface.text.normal.lowContrast"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight="l"
           style={
             Array [
               Object {
-                "borderColor": "black",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-                "clip": "rect(0 0 0 0)",
-                "clipPath": "inset(50%)",
-                "height": 1,
-                "marginBottom": -1,
+                "color": "hsla(217, 56%, 17%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 15,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 24,
+                "marginBottom": 0,
                 "marginLeft": 0,
-                "marginRight": -1,
+                "marginRight": 0,
                 "marginTop": 0,
-                "overflow": "hidden",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "position": "absolute",
-                "whiteSpace": "nowrap",
-                "width": 1,
-                "wordWrap": "normal",
+                "textDecorationLine": "none",
               },
+              Object {},
             ]
           }
         >
-          <Text
-            color="surface.text.normal.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight="l"
-            style={
-              Array [
-                Object {
-                  "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-                Object {},
-              ]
-            }
-          >
-            , 
-          </Text>
-        </View>
-      </Text>
+          , 
+        </Text>
+      </View>
     </View>
   </View>
   <View
@@ -708,67 +708,67 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         }
       >
         Select fruits
-        <View
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "borderColor": "black",
+              "borderStyle": "solid",
+              "borderWidth": 0,
+              "clip": "rect(0 0 0 0)",
+              "clipPath": "inset(50%)",
+              "height": 1,
+              "marginBottom": -1,
+              "marginLeft": 0,
+              "marginRight": -1,
+              "marginTop": 0,
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+              "wordWrap": "normal",
+            },
+          ]
+        }
+      >
+        <Text
+          color="surface.text.normal.lowContrast"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight="l"
           style={
             Array [
               Object {
-                "borderColor": "black",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-                "clip": "rect(0 0 0 0)",
-                "clipPath": "inset(50%)",
-                "height": 1,
-                "marginBottom": -1,
+                "color": "hsla(217, 56%, 17%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 15,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 24,
+                "marginBottom": 0,
                 "marginLeft": 0,
-                "marginRight": -1,
+                "marginRight": 0,
                 "marginTop": 0,
-                "overflow": "hidden",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "position": "absolute",
-                "whiteSpace": "nowrap",
-                "width": 1,
-                "wordWrap": "normal",
+                "textDecorationLine": "none",
               },
+              Object {},
             ]
           }
         >
-          <Text
-            color="surface.text.normal.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight="l"
-            style={
-              Array [
-                Object {
-                  "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-                Object {},
-              ]
-            }
-          >
-            , Select one
-          </Text>
-        </View>
-      </Text>
+          , Select one
+        </Text>
+      </View>
     </View>
   </View>
   <View

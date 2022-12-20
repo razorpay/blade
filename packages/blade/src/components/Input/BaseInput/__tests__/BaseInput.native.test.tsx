@@ -90,7 +90,6 @@ describe('<BaseInput />', () => {
     const input = getByPlaceholderText(placeholder);
 
     // we assume auto focus is working with this prop in place, no simple way of asserting on focus otherwise
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('autoFocus', true);
   });
 

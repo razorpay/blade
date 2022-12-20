@@ -46,7 +46,7 @@ export type BaseInputProps = FormInputLabelProps &
      *
      * @default text
      */
-    type?: 'text' | 'telephone' | 'email' | 'url' | 'numeric' | 'search' | 'password';
+    type?: 'text' | 'telephone' | 'email' | 'url' | 'number' | 'search' | 'password';
     /**
      * Used to set the default value of input field when it's uncontrolled
      */

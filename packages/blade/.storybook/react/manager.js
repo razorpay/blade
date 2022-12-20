@@ -4,6 +4,7 @@ import { create } from '@storybook/theming';
 import { addons, types } from '@storybook/addons';
 import { useGlobals } from '@storybook/api';
 import { Icons, IconButton } from '@storybook/components';
+import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 
 export const theme = create({
   base: 'light',
@@ -56,19 +57,22 @@ document.head.append(hiddenStoryStyle);
 export const toggleHiddenStoryStyle = (isDisabled) => (hiddenStoryStyle.disabled = isDisabled);
 
 const InternalStoryAddon = () => {
-  const [{ showInternalComponents }, updateGlobals] = useGlobals();
+  const [globals, updateGlobals] = useGlobals();
+
+  const isActive = globals[INTERNAL_STORY_ADDON_PARAM] || false;
+  toggleHiddenStoryStyle(isActive);
 
   const toggleVisibility = React.useCallback(() => {
     updateGlobals({
-      showInternalComponents: !showInternalComponents,
+      [INTERNAL_STORY_ADDON_PARAM]: !isActive,
     });
-    toggleHiddenStoryStyle(!showInternalComponents);
-  }, [showInternalComponents]);
+    toggleHiddenStoryStyle(!isActive);
+  }, [isActive]);
 
   return (
     <IconButton
       key={TOOL_ID}
-      active={showInternalComponents}
+      active={isActive}
       title="Show internal components"
       onClick={toggleVisibility}
     >
@@ -82,7 +86,7 @@ addons.register(ADDON_ID, () => {
     type: types.TOOL,
     title: 'Toggle Visibility Of Internal Components',
     match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
-    render: InternalStoryAddon,
+    render: () => <InternalStoryAddon />,
   });
 });
 
