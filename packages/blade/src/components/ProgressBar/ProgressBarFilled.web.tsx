@@ -19,14 +19,14 @@ const pulse = keyframes`
 
 const slideAndScale = keyframes`
   0% {
-    left: -10%;
+    left: -8%;
     transform: scaleX(100%);
   }
   50% {
     transform: scaleX(500%);
   }
   100% {
-    left: 110%;
+    left: 103%;
     transform: scaleX(100%);
   }
 `;
