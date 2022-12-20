@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardSurface } from './CardSurface';
-import { CardProvider } from './CardContext';
+import { CardProvider, useVerifyInsideCard } from './CardContext';
 import Box from '~components/Box';
 
 export type CardProps = {
@@ -30,6 +30,8 @@ type CardBodyProps = {
 };
 
 const CardBody = ({ children }: CardBodyProps): React.ReactElement => {
+  useVerifyInsideCard('CardBody');
+
   return <Box>{children}</Box>;
 };
 

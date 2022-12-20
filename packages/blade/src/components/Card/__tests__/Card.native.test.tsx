@@ -59,6 +59,49 @@ describe('<Card />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render a Card with Footer', () => {
+    const footerTitle = 'Card Header';
+    const footerSubtitle = 'Card subtitle';
+    const primaryFn = jest.fn();
+    const secondaryFn = jest.fn();
+    const { getByText, toJSON } = renderWithTheme(
+      <Card surfaceLevel={2}>
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title={footerTitle} subtitle={footerSubtitle} />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Save',
+                onClick: primaryFn,
+              },
+              secondary: {
+                text: 'Delete',
+                onClick: secondaryFn,
+              },
+            }}
+          />
+        </CardFooter>
+      </Card>,
+    );
+
+    expect(getByText(footerTitle)).toBeTruthy();
+    expect(getByText(footerSubtitle)).toBeTruthy();
+
+    // Test action buttons
+    const primaryButton = getByText('Save');
+    fireEvent.press(primaryButton);
+    expect(primaryFn).toHaveBeenCalledTimes(1);
+
+    const secondaryButton = getByText('Delete');
+    fireEvent.press(secondaryButton);
+    expect(secondaryFn).toHaveBeenCalledTimes(1);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should only accept allowed components in Card Header', () => {
     const cardTitle = 'Card Header';
     const cardSubtitle = 'Card subtitle';
@@ -106,6 +149,9 @@ describe('<Card />', () => {
   });
 
   it('should throw error if any sub card components are used outside of Card', () => {
+    expect(() => renderWithTheme(<CardBody>body</CardBody>)).toThrow(
+      '[Blade Card]: CardBody cannot be used outside of Card component',
+    );
     expect(() => renderWithTheme(<CardHeader />)).toThrow(
       '[Blade Card]: CardHeader cannot be used outside of Card component',
     );
@@ -118,54 +164,11 @@ describe('<Card />', () => {
     expect(() => renderWithTheme(<CardFooter />)).toThrow(
       '[Blade Card]: CardFooter cannot be used outside of Card component',
     );
-    expect(() => renderWithTheme(<CardFooterTrailing />)).toThrow(
-      '[Blade Card]: CardFooterTrailing cannot be used outside of Card component',
-    );
     expect(() => renderWithTheme(<CardFooterLeading title="" />)).toThrow(
       '[Blade Card]: CardFooterLeading cannot be used outside of Card component',
     );
-  });
-
-  it('should render a Card with Footer', () => {
-    const footerTitle = 'Card Header';
-    const footerSubtitle = 'Card subtitle';
-    const primaryFn = jest.fn();
-    const secondaryFn = jest.fn();
-    const { getByText, toJSON } = renderWithTheme(
-      <Card surfaceLevel={2}>
-        <CardBody>
-          <Text>Plain Card</Text>
-        </CardBody>
-        <CardFooter>
-          <CardFooterLeading title={footerTitle} subtitle={footerSubtitle} />
-          <CardFooterTrailing
-            actions={{
-              primary: {
-                text: 'Save',
-                onClick: primaryFn,
-              },
-              secondary: {
-                text: 'Delete',
-                onClick: secondaryFn,
-              },
-            }}
-          />
-        </CardFooter>
-      </Card>,
+    expect(() => renderWithTheme(<CardFooterTrailing />)).toThrow(
+      '[Blade Card]: CardFooterTrailing cannot be used outside of Card component',
     );
-
-    expect(getByText(footerTitle)).toBeTruthy();
-    expect(getByText(footerSubtitle)).toBeTruthy();
-
-    // Test action buttons
-    const primaryButton = getByText('Save');
-    fireEvent.press(primaryButton);
-    expect(primaryFn).toHaveBeenCalledTimes(1);
-
-    const secondaryButton = getByText('Delete');
-    fireEvent.press(secondaryButton);
-    expect(secondaryFn).toHaveBeenCalledTimes(1);
-
-    expect(toJSON()).toMatchSnapshot();
   });
 });

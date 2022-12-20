@@ -91,7 +91,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       }
     />
     <View
-      alignItems="center"
+      alignItems="auto"
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
@@ -99,7 +99,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       style={
         Array [
           Object {
-            "alignItems": "center",
+            "alignItems": "auto",
             "display": "flex",
             "flexDirection": "column",
             "justifyContent": "space-between",
