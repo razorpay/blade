@@ -58,38 +58,14 @@ describe('<Text />', () => {
   });
 
   it('should throw error when variant is "caption" and size "small" is passed', () => {
-    try {
-      const displayText = 'Displaying some text';
+    const displayText = 'Displaying some text';
+    expect(() =>
       renderWithTheme(
         // @ts-expect-error testing failure case when size='small' is passed with variant='caption'
         <Text type="normal" variant="caption" truncateAfterLines={3} size="small">
           {displayText}
         </Text>,
-      );
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        expect(error.message).toEqual(
-          `[Blade: Text]: size cannot be 'small' when variant is 'caption'`,
-        );
-      }
-    }
-  });
-
-  it('should throw error when variant is "caption" but weight "bold" is passed', () => {
-    try {
-      const displayText = 'Displaying some text';
-      renderWithTheme(
-        // @ts-expect-error testing failure case when weight='bold' is passed with variant='caption'
-        <Text type="normal" variant="caption" weight="bold">
-          {displayText}
-        </Text>,
-      );
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        expect(error.message).toEqual(
-          `[Blade: Text]: weight cannot be 'bold' when variant is 'caption'`,
-        );
-      }
-    }
+      ),
+    ).toThrow(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
   });
 });
