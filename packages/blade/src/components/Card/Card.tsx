@@ -2,6 +2,7 @@ import React from 'react';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import Box from '~components/Box';
+import { metaAttribute, MetaConstants } from '~utils';
 
 export type CardProps = {
   /**
@@ -29,6 +30,7 @@ const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => 
   return (
     <CardProvider>
       <CardSurface
+        {...metaAttribute(MetaConstants.Component, MetaConstants.Card)}
         paddingLeft="spacing.7"
         paddingRight="spacing.7"
         paddingTop="spacing.6"
@@ -49,7 +51,7 @@ type CardBodyProps = {
 const CardBody = ({ children }: CardBodyProps): React.ReactElement => {
   useVerifyInsideCard('CardBody');
 
-  return <Box>{children}</Box>;
+  return <Box {...metaAttribute(MetaConstants.Component, MetaConstants.CardBody)}>{children}</Box>;
 };
 
 export { Card, CardBody };

@@ -5,7 +5,7 @@ import Box from '~components/Box';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
-import { useBreakpoint } from '~utils';
+import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 export type CardFooterAction = Pick<
@@ -32,7 +32,7 @@ const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
   useVerifyInsideCard('CardFooter');
 
   return (
-    <Box marginTop="auto">
+    <Box marginTop="auto" {...metaAttribute(MetaConstants.Component, MetaConstants.CardFooter)}>
       <Box marginTop="spacing.7" />
       <Divider />
       <Box

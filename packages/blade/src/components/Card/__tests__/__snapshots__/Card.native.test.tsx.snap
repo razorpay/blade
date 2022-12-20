@@ -70,15 +70,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     </Text>
   </View>
   <View
-    marginTop="spacing.7"
+    marginTop="auto"
     style={
       Array [
         Object {
-          "marginTop": 24,
+          "marginTop": "auto",
         },
       ]
     }
   >
+    <View
+      marginTop="spacing.7"
+      style={
+        Array [
+          Object {
+            "marginTop": 24,
+          },
+        ]
+      }
+    />
     <View
       style={
         Array [

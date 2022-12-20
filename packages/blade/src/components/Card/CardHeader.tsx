@@ -16,7 +16,13 @@ import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
 import type { WithComponentId } from '~utils';
-import { getComponentId, isValidAllowedChildren, makeSpace } from '~utils';
+import {
+  metaAttribute,
+  MetaConstants,
+  getComponentId,
+  isValidAllowedChildren,
+  makeSpace,
+} from '~utils';
 
 const ComponentIds = {
   CardHeaderIcon: 'CardHeaderIcon',
@@ -88,7 +94,10 @@ const CardHeader = ({ children }: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');
 
   return (
-    <Box marginBottom="spacing.7">
+    <Box
+      marginBottom="spacing.7"
+      {...metaAttribute(MetaConstants.Component, MetaConstants.CardHeader)}
+    >
       <Box
         marginBottom="spacing.7"
         display="flex"
