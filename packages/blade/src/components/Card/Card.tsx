@@ -4,7 +4,24 @@ import { CardProvider, useVerifyInsideCard } from './CardContext';
 import Box from '~components/Box';
 
 export type CardProps = {
+  /**
+   * Card contents
+   */
   children: React.ReactNode;
+  /**
+   * Sets the background color of the Card according to the surface level tokens
+   *
+   * eg: `theme.colors.surface.background.level1`
+   *
+   * **Description:**
+   *
+   * - 2: Used in layouts which are on top of the main background
+   * - 3: Used over the cards template or as a text input backgrounds.
+   *
+   * **Links:**
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-colors--page#-theme-tokens
+   * - Figma: https://shorturl.at/fsvwK
+   */
   surfaceLevel: 2 | 3;
 };
 

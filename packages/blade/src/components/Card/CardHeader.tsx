@@ -105,7 +105,17 @@ const CardHeader = ({ children }: CardHeaderProps): React.ReactElement => {
 type CardHeaderLeadingProps = {
   title: string;
   subtitle?: string;
+  /**
+   * prefix element of Card
+   *
+   * Accepts: `CardHeaderIcon` component
+   */
   prefix?: React.ReactNode;
+  /**
+   * suffix element of Card
+   *
+   * Accepts: `CardHeaderCounter` component
+   */
   suffix?: React.ReactNode;
 };
 const CardHeaderLeading = ({
@@ -149,6 +159,11 @@ const CardHeaderLeading = ({
 };
 
 type CardHeaderTrailingProps = {
+  /**
+   * Renders a visual ornament in card header trailing section
+   *
+   * Accepts: `CardHeaderLink`, `CardHeaderText`, `CardHeaderIconButton`, `CardHeaderBadge`
+   */
   visual?: React.ReactNode;
 };
 
