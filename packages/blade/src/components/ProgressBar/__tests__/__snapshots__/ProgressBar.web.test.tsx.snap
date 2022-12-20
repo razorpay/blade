@@ -38,6 +38,8 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 }
 
 .c7 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -47,6 +49,13 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 }
 
 .c9 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c11 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -61,7 +70,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   width: 20%;
 }
 
-.c11 {
+.c12 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -200,12 +209,13 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
     <div
       class="c7"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c8 c9 c10"
       >
         <div
-          class=" c9 c11"
+          class=" c11 c12"
         />
       </div>
     </div>
@@ -229,6 +239,8 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 }
 
 .c1 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -238,6 +250,13 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 }
 
 .c3 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c5 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -252,7 +271,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   width: 50%;
 }
 
-.c5 {
+.c6 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -281,12 +300,13 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
     <div
       class="c1"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c2 c3 c4"
       >
         <div
-          class=" c3 c5"
+          class=" c5 c6"
         />
       </div>
     </div>
@@ -314,6 +334,8 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
@@ -323,6 +345,13 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -337,7 +366,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -395,12 +424,13 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -428,6 +458,8 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
@@ -437,6 +469,13 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -451,7 +490,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -509,12 +548,13 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -542,6 +582,8 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
@@ -551,6 +593,13 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -565,7 +614,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -623,12 +672,13 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -656,6 +706,8 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
@@ -665,6 +717,13 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -679,7 +738,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -737,12 +796,13 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -770,6 +830,8 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
@@ -779,6 +841,13 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -793,7 +862,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -851,12 +920,13 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -884,6 +954,8 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
@@ -893,6 +965,13 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -907,7 +986,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -965,12 +1044,13 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -998,6 +1078,8 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -1007,6 +1089,13 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1021,7 +1110,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1079,12 +1168,13 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -1112,6 +1202,8 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -1121,6 +1213,13 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1135,7 +1234,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1193,12 +1292,13 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -1226,6 +1326,8 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -1235,6 +1337,13 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1249,7 +1358,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1307,12 +1416,13 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -1340,6 +1450,8 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -1349,6 +1461,13 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1363,7 +1482,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1421,12 +1540,13 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -1454,6 +1574,8 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
 }
 
 .c3 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -1463,6 +1585,13 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
 }
 
 .c5 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c7 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1477,7 +1606,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   width: 20%;
 }
 
-.c7 {
+.c8 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1535,12 +1664,13 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
     <div
       class="c3"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c4 c5 c6"
       >
         <div
-          class=" c5 c7"
+          class=" c7 c8"
         />
       </div>
     </div>
@@ -1586,6 +1716,8 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 }
 
 .c7 {
+  overflow: hidden;
+  position: relative;
   height: 4px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -1595,6 +1727,13 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 }
 
 .c9 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c11 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1609,7 +1748,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   width: 20%;
 }
 
-.c11 {
+.c12 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1748,12 +1887,13 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
     <div
       class="c7"
       height="4px"
+      overflow="hidden"
     >
       <div
         class="c8 c9 c10"
       >
         <div
-          class=" c9 c11"
+          class=" c11 c12"
         />
       </div>
     </div>
@@ -1777,6 +1917,8 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 }
 
 .c1 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -1786,6 +1928,13 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 }
 
 .c3 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c5 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1818,12 +1967,13 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
     <div
       class="c1"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c2 c3 c4"
       >
         <div
-          class=" c3"
+          class=" c5"
         />
       </div>
     </div>
@@ -1869,6 +2019,8 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 }
 
 .c7 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -1878,6 +2030,13 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 }
 
 .c9 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c11 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1892,7 +2051,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   width: 20%;
 }
 
-.c11 {
+.c12 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2031,12 +2190,13 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
     <div
       class="c7"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c8 c9 c10"
       >
         <div
-          class=" c9 c11"
+          class=" c11 c12"
         />
       </div>
     </div>
@@ -2103,6 +2263,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 }
 
 .c11 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -2112,6 +2274,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 }
 
 .c13 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c15 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2126,7 +2295,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   width: 0%;
 }
 
-.c15 {
+.c16 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2351,12 +2520,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     <div
       class="c11"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c12 c13 c14"
       >
         <div
-          class=" c13 c15"
+          class=" c15 c16"
         />
       </div>
     </div>
@@ -2423,6 +2593,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 }
 
 .c11 {
+  overflow: hidden;
+  position: relative;
   height: 2px;
   background-color: hsla(216,44%,23%,0.18);
 }
@@ -2432,6 +2604,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 }
 
 .c13 {
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 900ms;
+  transition-duration: 900ms;
+}
+
+.c15 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2446,7 +2625,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   width: 60%;
 }
 
-.c15 {
+.c16 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2671,12 +2850,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     <div
       class="c11"
       height="2px"
+      overflow="hidden"
     >
       <div
         class="c12 c13 c14"
       >
         <div
-          class=" c13 c15"
+          class=" c15 c16"
         />
       </div>
     </div>

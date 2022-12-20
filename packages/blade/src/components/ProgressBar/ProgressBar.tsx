@@ -155,10 +155,14 @@ const ProgressBar = ({
         {...makeAccessible({
           role: variant === 'meter' ? 'meter' : 'progressbar',
           label: accessibilityLabel ?? label,
-          valueNow: isMeter ? progressValue : percentageProgressValue,
-          valueText: isMeter ? `${progressValue}` : `${percentageProgressValue}%`,
-          valueMin: min,
-          valueMax: max,
+          valueNow: isIndeterminate ? undefined : isMeter ? progressValue : percentageProgressValue,
+          valueText: isIndeterminate
+            ? undefined
+            : isMeter
+            ? `${progressValue}`
+            : `${percentageProgressValue}%`,
+          valueMin: isIndeterminate ? undefined : min,
+          valueMax: isIndeterminate ? undefined : max,
         })}
       >
         <Box

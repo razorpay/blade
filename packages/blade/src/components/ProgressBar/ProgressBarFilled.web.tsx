@@ -1,4 +1,4 @@
-import type { CSSObject, FlattenSimpleInterpolation } from 'styled-components';
+import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
 import type { ProgressBarFilledProps } from './types';
@@ -19,16 +19,15 @@ const pulse = keyframes`
 
 const slideAndScale = keyframes`
   0% {
-    left: -30px;
+    left: -10%;
     transform: scaleX(100%);
   }
   50% {
-    left: 50%;
     transform: scaleX(500%);
   }
   100% {
-    left: 100%;
-    transform: translateX(calc(-100% + 30px)) scaleX(100%);
+    left: 110%;
+    transform: scaleX(100%);
   }
 `;
 
@@ -50,11 +49,10 @@ const pulseAnimationStyles = ({
 `;
 
 const BoxWithFilledIndeterminateTransition = styled(Box)<
-  Pick<ProgressBarFilledProps, 'fillMotionDuration' | 'motionEasing'>
->(({ theme, fillMotionDuration, motionEasing }) => {
+  Pick<ProgressBarFilledProps, 'fillMotionDuration'>
+>(({ theme, fillMotionDuration }) => {
   const duration = castWebType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
-  // const easing = castWebType(getIn(theme.motion, motionEasing));
-  const easing = 'linear'; // multi-step keyframe easing is causing visual issues
+  const easing = 'linear'; // TODO: Add this in motion tokens
 
   return css`
     animation: ${slideAndScale} ${duration} ${easing} infinite;
@@ -133,7 +131,6 @@ const ProgressBarFilled = ({
     <ProgressBarFilledContainer
       backgroundColor={backgroundColor}
       fillMotionDuration={fillMotionDuration}
-      motionEasing={motionEasing}
       progress={progress}
     >
       <ProgressBarPulseAnimation
