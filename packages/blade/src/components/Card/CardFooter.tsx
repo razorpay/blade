@@ -40,7 +40,7 @@ const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
         display="flex"
         flexDirection={isMobile ? 'column' : 'row'}
         justifyContent="space-between"
-        alignItems={isMobile ? 'auto' : 'center'}
+        alignItems={isMobile ? 'stretch' : 'center'}
       >
         {children}
       </Box>

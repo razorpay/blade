@@ -8,6 +8,9 @@ const CardSurfaceStyled = styled(Box)<{ elevation: number; surfaceLevel: 2 | 3 }
   ({ surfaceLevel, theme }) => {
     const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
     return {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
       shadowOpacity: '1',
       shadowRadius: theme.shadows.blurRadius.level[1],
       shadowColor: theme.shadows.color.level[1],
