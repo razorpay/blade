@@ -39,7 +39,6 @@ const CardSurface = ({
   ...props
 }: CardSurfaceProps): React.ReactElement => {
   const { theme } = useTheme();
-  const isAndroid = Platform.OS === 'android';
 
   return (
     <CardSurfaceStyled
