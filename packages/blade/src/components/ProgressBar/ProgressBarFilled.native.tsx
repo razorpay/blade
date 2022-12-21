@@ -56,34 +56,56 @@ const ProgressBarFilled = ({
   const animatedLeft = useSharedValue(indeterminateAnimation.leftInitial); // for indeterminate slide animation
 
   const { theme } = useTheme();
-  const easing = getIn(theme.motion, motionEasing);
+  const fillAndPulseEasing = getIn(theme.motion, motionEasing);
   const pulseDuration =
     castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDuration))) / 2; // divided by 2 since we animate it with 2 steps in a sequence
 
+  // Trigger animation for progress fill
   useEffect(() => {
-    const indeterminateDuration = castNativeType(
-      makeMotionTime(getIn(theme.motion, indeterminateMotionDuration)),
-    );
-
-    const slideAndScaleAnimationTimingConfig = {
-      duration: indeterminateDuration,
-      easing: Easing.linear,
+    const fillDuration = castNativeType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
+    animatedWidth.value = withTiming(progress, {
+      duration: fillDuration,
+      easing: fillAndPulseEasing,
+    });
+    return () => {
+      cancelAnimation(animatedWidth);
     };
+  }, [progress, animatedWidth, fillMotionDuration, theme, fillAndPulseEasing]);
 
-    if (variant === 'progress') {
+  // Animated styles for progress fill animation
+  const progressFillAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      width: `${animatedWidth.value}%`,
+    };
+  });
+
+  // Trigger animation for indeterminate progress bar
+  useEffect(() => {
+    if (variant === 'progress' && isIndeterminate) {
+      const indeterminateDuration = castNativeType(
+        makeMotionTime(getIn(theme.motion, indeterminateMotionDuration)),
+      );
+      const indeterminateEasing = Easing.linear;
+
+      // Sliding animation
       animatedLeft.value = withRepeat(
-        withTiming(indeterminateAnimation.leftFinal, slideAndScaleAnimationTimingConfig),
+        withTiming(indeterminateAnimation.leftFinal, {
+          duration: indeterminateDuration,
+          easing: indeterminateEasing,
+        }),
         -1,
       );
+
+      // Scaling animation
       animatedScaleX.value = withRepeat(
         withSequence(
           withTiming(indeterminateAnimation.scaleXMid, {
-            duration: slideAndScaleAnimationTimingConfig.duration / 2, // divided by 2 since we animate it with 2 steps in a sequence
-            easing: slideAndScaleAnimationTimingConfig.easing,
+            duration: indeterminateDuration / 2, // divided by 2 since we animate it with 2 steps in a sequence
+            easing: indeterminateEasing,
           }),
           withTiming(indeterminateAnimation.scaleXFinal, {
-            duration: slideAndScaleAnimationTimingConfig.duration / 2, // divided by 2 since we animate it with 2 steps in a sequence
-            easing: slideAndScaleAnimationTimingConfig.easing,
+            duration: indeterminateDuration / 2, // divided by 2 since we animate it with 2 steps in a sequence
+            easing: indeterminateEasing,
           }),
         ),
         -1,
@@ -92,22 +114,23 @@ const ProgressBarFilled = ({
 
     return () => {
       cancelAnimation(animatedLeft);
+      cancelAnimation(animatedScaleX);
     };
-  }, [
-    animatedLeft,
-    animatedScaleX,
-    easing,
-    indeterminateMotionDuration,
-    pulseDuration,
-    pulseMotionDelay,
-    theme.motion,
-    variant,
-  ]);
+  }, [animatedLeft, animatedScaleX, indeterminateMotionDuration, isIndeterminate, theme, variant]);
 
+  // Animated styles for indeterminate animation
+  const indeterminateAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      left: animatedLeft.value,
+      transform: [{ scaleX: animatedScaleX.value }],
+    };
+  });
+
+  //Trigger pulsating animation
   useEffect(() => {
     const pulsatingAnimationTimingConfig = {
       duration: pulseDuration,
-      easing,
+      easing: fillAndPulseEasing,
     };
     if (variant === 'progress') {
       animatedOpacity.value = withDelay(
@@ -125,32 +148,9 @@ const ProgressBarFilled = ({
     return () => {
       cancelAnimation(animatedOpacity);
     };
-  }, [animatedOpacity, easing, pulseDuration, pulseMotionDelay, theme.motion, variant]);
+  }, [animatedOpacity, fillAndPulseEasing, pulseDuration, pulseMotionDelay, theme, variant]);
 
-  useEffect(() => {
-    const fillDuration = castNativeType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
-    animatedWidth.value = withTiming(progress, {
-      duration: fillDuration,
-      easing,
-    });
-    return () => {
-      cancelAnimation(animatedWidth);
-    };
-  }, [progress, animatedWidth, fillMotionDuration, motionEasing, theme.motion, easing]);
-
-  const progressFillAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      width: `${animatedWidth.value}%`,
-    };
-  });
-
-  const indeterminateAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      left: animatedLeft.value,
-      transform: [{ scaleX: animatedScaleX.value }],
-    };
-  });
-
+  // Animated styles for pulse animation
   const pulseAnimatedStyle = useAnimatedStyle(() => {
     return {
       opacity: animatedOpacity.value,
