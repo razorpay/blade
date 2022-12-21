@@ -92,7 +92,7 @@ const getBoxStyles = ({
   transform,
   background,
   zIndex,
-  borderRadius: getIn(theme, `border.radius.${borderRadius}`),
+  borderRadius: borderRadius ? makeSize(getIn(theme, `border.radius.${borderRadius}`)) : undefined,
 });
 
 export default getBoxStyles;
