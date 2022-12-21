@@ -332,6 +332,8 @@ type ActionListItemProps = {
   /**
    * Changes item color to red
    *
+   * Should not be allowed when ActionList selectionType is multiple select
+   *
    * @default undefined
    */
   intent?: 'negative';
