@@ -87,7 +87,6 @@ describe('<TextInput />', () => {
 
     const input = getByPlaceholderText(placeholder);
     // we assume auto focus is working with this prop in place, no simple way of asserting on focus otherwise
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('autoFocus', true);
   });
 
@@ -294,13 +293,9 @@ describe('<TextInput />', () => {
 
     const input = getByPlaceholderText(placeholder);
 
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('keyboardType', 'default');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('returnKeyType', 'default');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('autoCompleteType', 'off');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('textContentType', 'none');
   });
 
@@ -313,13 +308,9 @@ describe('<TextInput />', () => {
 
     const input = getByPlaceholderText(placeholder);
 
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('keyboardType', 'phone-pad');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('returnKeyType', 'done');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('autoCompleteType', 'tel');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('textContentType', 'telephoneNumber');
   });
 
@@ -332,13 +323,9 @@ describe('<TextInput />', () => {
 
     const input = getByPlaceholderText(placeholder);
 
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('keyboardType', 'email-address');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('returnKeyType', 'done');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('autoCompleteType', 'email');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('textContentType', 'emailAddress');
   });
 
@@ -351,32 +338,24 @@ describe('<TextInput />', () => {
 
     const input = getByPlaceholderText(placeholder);
 
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('keyboardType', 'url');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('returnKeyType', 'go');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('autoCompleteType', 'off');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('textContentType', 'none');
   });
 
-  it(`type='numeric' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
+  it(`type='number' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
     const placeholder = '2500';
 
     const { getByPlaceholderText } = renderWithTheme(
-      <TextInput label="Enter Monthly Income" placeholder={placeholder} type="numeric" />,
+      <TextInput label="Enter Monthly Income" placeholder={placeholder} type="number" />,
     );
 
     const input = getByPlaceholderText(placeholder);
 
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('keyboardType', 'decimal-pad');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('returnKeyType', 'done');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('autoCompleteType', 'off');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('textContentType', 'none');
   });
 
@@ -389,13 +368,9 @@ describe('<TextInput />', () => {
 
     const input = getByPlaceholderText(placeholder);
 
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('keyboardType', 'default');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('returnKeyType', 'search');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('autoCompleteType', 'off');
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('textContentType', 'none');
   });
 });

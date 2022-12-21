@@ -367,10 +367,10 @@ describe('<TextInput />', () => {
     expect(input).toHaveAttribute('autoComplete', 'off');
   });
 
-  it(`type='numeric' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
+  it(`type='number' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
     const label = 'Enter Monthly Income';
 
-    const { getByLabelText } = renderWithTheme(<TextInput label={label} type="numeric" />);
+    const { getByLabelText } = renderWithTheme(<TextInput label={label} type="number" />);
 
     const input = getByLabelText(label);
 

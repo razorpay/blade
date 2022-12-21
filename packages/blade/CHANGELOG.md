@@ -1,5 +1,51 @@
 # @razorpay/blade
 
+## 5.2.1
+
+### Patch Changes
+
+- 9966931: chore: fix dom nesting in form label component
+- e660831: fix: change acceptable BaseInput `type` from `numeric` to `number`
+
+## 5.2.0
+
+### Minor Changes
+
+- d03de10: feat(Alert): update `isFullWidth` to make inline borderless alerts on desktop
+
+  > **Warning**
+  >
+  > `isBorderless` prop is removed and its usage is now replaced by `isFullWidth`. The layout is updated to match the designs and is now centered on desktop resolutions.
+
+  ### Steps for migration:
+
+  ```diff
+  <Alert
+  - isBorderless
+  + isFullWidth
+  />
+  ```
+
+## 5.1.5
+
+### Patch Changes
+
+- 756f4b4: feat: allow masked otp input
+
+`OTPInput` now supports an `isMasked` prop
+
+## 5.1.4
+
+### Patch Changes
+
+- 71f274e: fix(Checkbox): allow Checkbox to accept `childern` prop of type `React.ReactNode`
+
+## 5.1.3
+
+### Patch Changes
+
+- af9bdc9: fix(Alert): responsive design alignment
+
 ## 5.1.2
 
 ### Patch Changes
@@ -30,8 +76,10 @@
 
 ### Major Changes
 
-- fc2a3bf: > **Warning**
+- fc2a3bf:
 
+  > **Warning**
+  >
   > This is a breaking change for `Alert` component. The UI is updated to match the designs.
 
   feat(Alert): design revamp

@@ -75,16 +75,18 @@ We recommend to use self hosted fonts. We'll use [Fontsource](https://fontsource
 - Import within your app entry file(eg: `App.tsx`, `entryBrowser.tsx` etc.).
   ```js
   import '@fontsource/lato/400.css';
+  import '@fontsource/lato/400-italic.css';
   import '@fontsource/lato/700.css';
+  import '@fontsource/lato/700-italic.css';
   ```
 
 #### Google Fonts
 
-There are downsides to using google fonts which can be found [here](https://fontsource.org/docs/introduction) but still for some reason if you have some use case where google fonts makes more sense then you can [click this link](https://fonts.google.com/share?selection.family=Lato:wght@400;700) and follow the instructions there to configure `Lato` for your applications.
+There are downsides to using google fonts which can be found [here](https://fontsource.org/docs/introduction) but still for some reason if you have some use case where google fonts makes more sense then you can [click this link](https://fonts.google.com/share?selection.family=Lato:ital,wght@0,400;0,700;1,400;1,700) and follow the instructions there to configure `Lato` for your applications.
 
 ### React Native Projects
 
-- Download `Lato` font from [here](https://fonts.google.com/share?selection.family=Lato:wght@400;700)
+- Download `Lato` font from [here](https://fonts.google.com/share?selection.family=Lato:ital,wght@0,400;0,700;1,400;1,700)
 - Copy the font files and paste it under the directory `<project_root>/public/fonts`(**create the directory if it doesn't exist**)
 - Create React Native config file at the root of your project - `<project_root>/react-native.config.js` and add following content to it
 
@@ -101,13 +103,15 @@ Follow the next steps mentioned below for configuring fonts to work on android:
 
 - Create a directory `font` under `/android/app/src/main/res/font`
 - Copy the font files `Lato-Regular` and `Lato-Bold` you had downloaded earlier and paste them under `/android/app/src/main/res/font`
-- Rename the font files ~~`Lato-Regular.ttf`~~ ➡️ `lato_regular.ttf` and ~~`Lato-Bold.ttf`~~ ➡️`lato_bold.ttf`(**mind the casing and underscores**).
+- Rename the font files ~~`Lato-Regular.ttf`~~ ➡️ `lato_regular.ttf`, ~~`Lato-RegularItalic.ttf`~~ ➡️ `lato_regular_italic.ttf`, ~~`Lato-Bold.ttf`~~ ➡️`lato_bold.ttf` & ~~`Lato-BoldItalic.ttf`~~ ➡️ `lato_bold_italic.ttf`(**mind the casing and underscores**).
 - Create a file `lato.xml` under `/android/app/src/main/res/font/lato.xml` and copy the following contents to it
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
     <font-family xmlns:app="http://schemas.android.com/apk/res-auto">
     <font app:fontStyle="normal" app:fontWeight="400" app:font="@font/lato_regular"/>
     <font app:fontStyle="normal" app:fontWeight="700" app:font="@font/lato_bold" />
+    <font app:fontStyle="italic" app:fontWeight="400" app:font="@font/lato_regular_italic" />
+    <font app:fontStyle="italic" app:fontWeight="700" app:font="@font/lato_bold_italic" />
   </font-family>
   ```
 - Navigate to `/android/app/src/main/java/com/<your_package_name>/MainApplication.java` and add following contents to it

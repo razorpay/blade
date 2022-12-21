@@ -175,6 +175,14 @@ OTPInputHelpText.args = {
   helpText: 'Add a message here',
 };
 
+export const OTPInputMasked = OTPInputTemplate.bind({});
+OTPInputMasked.storyName = 'OTPInput with Masked input';
+OTPInputMasked.args = {
+  isMasked: true,
+  otpLength: 4,
+  label: 'Enter Pin',
+};
+
 export const OTPInputError = OTPInputTemplate.bind({});
 OTPInputError.storyName = 'OTPInput with error';
 OTPInputError.args = {

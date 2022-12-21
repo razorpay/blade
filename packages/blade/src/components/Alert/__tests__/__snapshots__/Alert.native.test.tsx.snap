@@ -5,7 +5,7 @@ exports[`<Alert /> should render 1`] = `
   accessibilityRole="alert"
   contrastType="lowContrast"
   intent="neutral"
-  isBorderless={false}
+  isDesktop={false}
   isFullWidth={false}
   style={
     Array [
@@ -29,12 +29,12 @@ exports[`<Alert /> should render 1`] = `
 >
   <View
     display="flex"
-    marginTop="spacing.1"
+    marginTop="spacing.0"
     style={
       Array [
         Object {
           "display": "flex",
-          "marginTop": 2,
+          "marginTop": 0,
         },
       ]
     }
@@ -253,19 +253,19 @@ exports[`<Alert /> should render 1`] = `
 </View>
 `;
 
-exports[`<Alert /> should render negative intent and borderless 1`] = `
+exports[`<Alert /> should render positive intent and full width 1`] = `
 <View
   accessibilityRole="alert"
   contrastType="lowContrast"
-  intent="negative"
-  isBorderless={true}
-  isFullWidth={false}
+  intent="positive"
+  isDesktop={false}
+  isFullWidth={true}
   style={
     Array [
       Object {
         "alignItems": "flex-start",
-        "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-        "borderColor": "hsla(9, 91%, 56%, 0.32)",
+        "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+        "borderColor": "hsla(155, 100%, 31%, 0.32)",
         "borderRadius": 0,
         "borderStyle": "solid",
         "borderWidth": 0,
@@ -329,36 +329,40 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
           ]
         }
       >
-        <RNSVGPath
-          d="M12 7C12.5523 7 13 7.44772 13 8V12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12V8C11 7.44772 11.4477 7 12 7Z"
-          fill={4291770400}
-          propList={
-            Array [
-              "fill",
-            ]
-          }
-        />
-        <RNSVGPath
-          d="M12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17Z"
-          fill={4291770400}
-          propList={
-            Array [
-              "fill",
-            ]
-          }
-        />
-        <RNSVGPath
-          clipRule={0}
-          d="M7.15289 1.29289C7.33386 1.11193 7.58386 1 7.86 1H16.14C16.4052 1 16.6596 1.10536 16.8471 1.29289L22.7071 7.15289C22.8946 7.34043 23 7.59478 23 7.86V16.14C23 16.4052 22.8946 16.6596 22.7071 16.8471L16.8471 22.7071C16.6596 22.8946 16.4052 23 16.14 23H7.86C7.59478 23 7.34043 22.8946 7.15289 22.7071L1.29289 16.8471C1.10536 16.6596 1 16.4052 1 16.14V7.86C1 7.59478 1.10536 7.34043 1.29289 7.15289L7.15289 1.29289ZM8.27421 3L3 8.27421V15.7258L8.27421 21H15.7258L21 15.7258V8.27421L15.7258 3H8.27421Z"
-          fill={4291770400}
-          fillRule={0}
-          propList={
-            Array [
-              "fill",
-              "fillRule",
-            ]
-          }
-        />
+        <RNSVGGroup
+          clipPath="clip0_60_208"
+        >
+          <RNSVGPath
+            d="M4.15845 7.14679C6.74812 4.11688 11.0222 3.1512 14.663 4.77343C15.1675 4.99821 15.7586 4.77147 15.9834 4.267C16.2082 3.76253 15.9815 3.17135 15.477 2.94657C11.0272 0.96385 5.80325 2.14413 2.6381 5.84735C-0.527049 9.55057 -0.879431 14.8946 1.77205 18.9813C4.42353 23.0681 9.44725 24.9241 14.1189 23.5429C18.7905 22.1616 21.9972 17.8716 22 13V12.07C22 11.5177 21.5523 11.07 21 11.07C20.4477 11.07 20 11.5177 20 12.07V12.9994C19.9977 16.9852 17.3741 20.4948 13.5518 21.6249C9.72957 22.7551 5.61926 21.2365 3.44986 17.8928C1.28047 14.5491 1.56878 10.1767 4.15845 7.14679Z"
+            fill={4278224216}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+          />
+          <RNSVGPath
+            d="M22.7071 4.70711C23.0976 4.31658 23.0976 3.68342 22.7071 3.29289C22.3166 2.90237 21.6834 2.90237 21.2929 3.29289L11 13.5858L8.70711 11.2929C8.31658 10.9024 7.68342 10.9024 7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071L10.2929 15.7071C10.6834 16.0976 11.3166 16.0976 11.7071 15.7071L22.7071 4.70711Z"
+            fill={4278224216}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+          />
+        </RNSVGGroup>
+        <RNSVGDefs>
+          <RNSVGClipPath
+            name="clip0_60_208"
+          >
+            <RNSVGRect
+              height="24"
+              width="24"
+              x={0}
+              y={0}
+            />
+          </RNSVGClipPath>
+        </RNSVGDefs>
       </RNSVGGroup>
     </RNSVGSvgView>
   </View>
@@ -481,263 +485,6 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
         vbHeight={24}
         vbWidth={24}
         width="20px"
-      >
-        <RNSVGGroup
-          fill={null}
-          propList={
-            Array [
-              "fill",
-            ]
-          }
-        >
-          <RNSVGPath
-            d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-            fill={4288851646}
-            propList={
-              Array [
-                "fill",
-              ]
-            }
-          />
-        </RNSVGGroup>
-      </RNSVGSvgView>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Alert /> should render positive intent and full width 1`] = `
-<View
-  accessibilityRole="alert"
-  contrastType="lowContrast"
-  intent="positive"
-  isBorderless={false}
-  isFullWidth={true}
-  style={
-    Array [
-      Object {
-        "alignItems": "flex-start",
-        "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-        "borderColor": "hsla(155, 100%, 31%, 0.32)",
-        "borderRadius": 4,
-        "borderStyle": "solid",
-        "borderWidth": 1,
-        "display": "flex",
-        "flexDirection": "row",
-        "maxWidth": "auto",
-        "paddingBottom": 12,
-        "paddingLeft": 8,
-        "paddingRight": 8,
-        "paddingTop": 8,
-      },
-    ]
-  }
->
-  <View
-    display="flex"
-    marginTop="spacing.1"
-    style={
-      Array [
-        Object {
-          "display": "flex",
-          "marginTop": 2,
-        },
-      ]
-    }
-  >
-    <RNSVGSvgView
-      accessibilityElementsHidden={true}
-      align="xMidYMid"
-      bbHeight="16px"
-      bbWidth="16px"
-      fill="none"
-      focusable={false}
-      height="16px"
-      importantForAccessibility="no-hide-descendants"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": 16,
-            "width": 16,
-          },
-        ]
-      }
-      vbHeight={24}
-      vbWidth={24}
-      width="16px"
-    >
-      <RNSVGGroup
-        fill={null}
-        propList={
-          Array [
-            "fill",
-          ]
-        }
-      >
-        <RNSVGGroup
-          clipPath="clip0_60_208"
-        >
-          <RNSVGPath
-            d="M4.15845 7.14679C6.74812 4.11688 11.0222 3.1512 14.663 4.77343C15.1675 4.99821 15.7586 4.77147 15.9834 4.267C16.2082 3.76253 15.9815 3.17135 15.477 2.94657C11.0272 0.96385 5.80325 2.14413 2.6381 5.84735C-0.527049 9.55057 -0.879431 14.8946 1.77205 18.9813C4.42353 23.0681 9.44725 24.9241 14.1189 23.5429C18.7905 22.1616 21.9972 17.8716 22 13V12.07C22 11.5177 21.5523 11.07 21 11.07C20.4477 11.07 20 11.5177 20 12.07V12.9994C19.9977 16.9852 17.3741 20.4948 13.5518 21.6249C9.72957 22.7551 5.61926 21.2365 3.44986 17.8928C1.28047 14.5491 1.56878 10.1767 4.15845 7.14679Z"
-            fill={4278224216}
-            propList={
-              Array [
-                "fill",
-              ]
-            }
-          />
-          <RNSVGPath
-            d="M22.7071 4.70711C23.0976 4.31658 23.0976 3.68342 22.7071 3.29289C22.3166 2.90237 21.6834 2.90237 21.2929 3.29289L11 13.5858L8.70711 11.2929C8.31658 10.9024 7.68342 10.9024 7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071L10.2929 15.7071C10.6834 16.0976 11.3166 16.0976 11.7071 15.7071L22.7071 4.70711Z"
-            fill={4278224216}
-            propList={
-              Array [
-                "fill",
-              ]
-            }
-          />
-        </RNSVGGroup>
-        <RNSVGDefs>
-          <RNSVGClipPath
-            name="clip0_60_208"
-          >
-            <RNSVGRect
-              height="24"
-              width="24"
-              x={0}
-              y={0}
-            />
-          </RNSVGClipPath>
-        </RNSVGDefs>
-      </RNSVGGroup>
-    </RNSVGSvgView>
-  </View>
-  <View
-    flex={1}
-    paddingLeft="spacing.3"
-    paddingRight="spacing.2"
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "paddingLeft": 8,
-          "paddingRight": 4,
-        },
-      ]
-    }
-  >
-    <View
-      marginTop="spacing.0"
-      style={
-        Array [
-          Object {
-            "marginTop": 0,
-          },
-        ]
-      }
-    >
-      <Text
-        color="surface.text.normal.lowContrast"
-        fontFamily="text"
-        fontSize={75}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight="s"
-        style={
-          Array [
-            Object {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 16,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
-            },
-            Object {},
-          ]
-        }
-      >
-        Currently you can only accept payments in international currencies using PayPal.
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      Array [
-        Object {},
-      ]
-    }
-  >
-    <View
-      accessibilityLabel="Dismiss alert"
-      accessibilityRole="button"
-      accessible={true}
-      collapsable={false}
-      contrast="low"
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Array [
-          Object {
-            "alignSelf": "center",
-          },
-        ]
-      }
-    >
-      <RNSVGSvgView
-        accessibilityElementsHidden={true}
-        align="xMidYMid"
-        bbHeight="16px"
-        bbWidth="16px"
-        fill="none"
-        focusable={false}
-        height="16px"
-        importantForAccessibility="no-hide-descendants"
-        meetOrSlice={0}
-        minX={0}
-        minY={0}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "borderWidth": 0,
-            },
-            Object {
-              "flex": 0,
-              "height": 16,
-              "width": 16,
-            },
-          ]
-        }
-        vbHeight={24}
-        vbWidth={24}
-        width="16px"
       >
         <RNSVGGroup
           fill={null}

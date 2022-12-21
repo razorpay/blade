@@ -9,13 +9,21 @@ import {
   CloseIcon,
   InfoIcon,
 } from '~components/Icons';
-import { getPlatformType, makeAccessible, metaAttribute, MetaConstants } from '~utils';
+import {
+  getPlatformType,
+  makeAccessible,
+  metaAttribute,
+  MetaConstants,
+  useBreakpoint,
+} from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import { useTheme } from '~components/BladeProvider';
+import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type Nullable<Type> = Type | null;
 
@@ -73,7 +81,8 @@ type AlertProps = {
   contrast?: ColorContrastTypes;
 
   /**
-   * Makes the Alert span the entire container width, instead of the default max width of `584px`
+   * Makes the Alert span the entire container width, instead of the default max width of `584px`.
+   * This also makes the alert borderless, useful for creating full bleed layouts.
    *
    * @default false
    */
@@ -85,13 +94,6 @@ type AlertProps = {
    * @default neutral
    */
   intent?: Feedback;
-
-  /**
-   * Removes border and border radii, useful for creating full bleed layouts. Automatically sets `isFullWidth` to `true` when enabled.
-   *
-   * @default false
-   */
-  isBorderless?: boolean;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -112,7 +114,6 @@ type AlertProps = {
 const isReactNative = getPlatformType() === 'react-native';
 
 // Need extra wrappers on React Native only for alignment
-const SecondaryActionWrapper = isReactNative ? Box : Fragment;
 const CloseButtonWrapper = isReactNative ? Box : Fragment;
 
 const intentIconMap = {
@@ -131,7 +132,6 @@ const Alert = ({
   contrast = 'low',
   isFullWidth = false,
   intent = 'neutral',
-  isBorderless = false,
   actions,
 }: AlertProps): ReactElement | null => {
   if (!actions?.primary && actions?.secondary) {
@@ -139,21 +139,47 @@ const Alert = ({
       '[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.',
     );
   }
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isDesktop = matchedDeviceType === 'desktop';
+  const isMobile = !isDesktop;
+
   const [isVisible, setIsVisible] = useState(true);
   const contrastType = `${contrast}Contrast` as const;
-  const iconSize = isBorderless ? 'large' : 'medium';
-  const textSize = isBorderless ? 'medium' : 'small';
+  const iconSize = isFullWidth ? 'large' : 'medium';
+  const textSize = isFullWidth ? 'medium' : 'small';
 
   const Icon = intentIconMap[intent];
+  let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
+
+  // certain special cases below needs special care for near perfect alignment
+  if (isReactNative) {
+    if (isFullWidth && !title) {
+      iconOffset = 'spacing.1';
+    } else if (!isFullWidth && !title) {
+      iconOffset = 'spacing.0';
+    } else if (!isFullWidth && title) {
+      iconOffset = 'spacing.2';
+    }
+  } else if (isMobile) {
+    if (!isFullWidth && title) {
+      iconOffset = 'spacing.2';
+    } else if (isFullWidth && !title) {
+      iconOffset = 'spacing.2';
+    }
+  } else if (isFullWidth) {
+    iconOffset = 'spacing.0';
+  }
+
   const icon = (
-    <Box marginTop="spacing.1" display="flex">
+    <Box marginTop={iconOffset} display="flex">
       <Icon color={`feedback.icon.${intent}.${contrastType}`} size={iconSize} />
     </Box>
   );
 
   const _title = title ? (
     <Box marginBottom="spacing.2">
-      {isBorderless ? (
+      {isFullWidth ? (
         <Heading size="small" contrast={contrast}>
           {title}
         </Heading>
@@ -204,15 +230,26 @@ const Alert = ({
     secondaryActionParams.rel = actions.secondary.rel;
   }
   const secondaryAction = actions?.secondary ? (
-    <SecondaryActionWrapper>
+    <Box marginRight="spacing.4" display={isReactNative ? 'flex' : 'inline-flex'}>
       <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
         {actions.secondary.text}
       </BaseLink>
-    </SecondaryActionWrapper>
+    </Box>
   ) : null;
 
-  const _actions =
-    primaryAction || secondaryAction ? (
+  // For certain cases we wish to render actions inline with text content
+  const showActionsHorizontal = isFullWidth && isDesktop;
+
+  const actionsHorizontal =
+    showActionsHorizontal && (primaryAction || secondaryAction) ? (
+      <Box flexDirection="row" alignItems="center">
+        {primaryAction}
+        {secondaryAction}
+      </Box>
+    ) : null;
+
+  const actionsVertical =
+    !showActionsHorizontal && (primaryAction || secondaryAction) ? (
       <Box marginTop="spacing.4" flexDirection="row" alignItems="center">
         {primaryAction}
         {secondaryAction}
@@ -253,16 +290,21 @@ const Alert = ({
       intent={intent}
       contrastType={contrastType}
       isFullWidth={isFullWidth}
-      isBorderless={isBorderless}
+      isDesktop={isDesktop}
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
     >
       {icon}
-      <Box flex={1} paddingLeft={isBorderless ? 'spacing.4' : 'spacing.3'} paddingRight="spacing.2">
+      <Box
+        flex={1}
+        paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
+        paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+      >
         {_title}
         {_description}
-        {_actions}
+        {actionsVertical}
       </Box>
+      {actionsHorizontal}
       {closeButton}
     </StyledAlert>
   );
