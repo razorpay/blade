@@ -149,7 +149,7 @@ describe('<ProgressBar />', () => {
   });
 
   it('should have accessibility attributes for meter variant', () => {
-    const { getByRole, findByA11yVglue } = renderWithTheme(
+    const { getByRole, findByA11yValue } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Amount" value={70} variant="meter" />,
     );
 
