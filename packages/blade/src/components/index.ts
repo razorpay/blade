@@ -1,6 +1,7 @@
 export * from './Alert';
 export * from './Badge';
 export * from './BladeProvider';
+export * from './Card';
 export * from './Button';
 export * from './Button/IconButton';
 export * from './Counter';
