@@ -109,7 +109,7 @@ describe('<ProgressBar />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should have accessibility attributes for progress variant', async () => {
+  it('should have accessibility attributes for progress variant', () => {
     const { getByRole, getByA11yValue } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} variant="progress" />,
     );
@@ -149,7 +149,7 @@ describe('<ProgressBar />', () => {
   });
 
   it('should have accessibility attributes for meter variant', () => {
-    const { getByRole, findByA11yValue } = renderWithTheme(
+    const { getByRole, findByA11yVglue } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Amount" value={70} variant="meter" />,
     );
 
