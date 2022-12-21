@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.3.0
+
+### Minor Changes
+
+- 26baa81: feat(blade): added Card component
+
 ## 5.2.1
 
 ### Patch Changes
