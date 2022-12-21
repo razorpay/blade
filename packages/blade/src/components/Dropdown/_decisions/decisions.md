@@ -573,11 +573,13 @@ Compound components add complex nesting in larger APIs (Check out previously con
 
 ### Individual Components instead of Compound Components
 
-We use `ActionListItem` naming instead of `ActionList.Item` because for better tree-shaking we have to go by creating separate components like `<ActionListIcon icon={StarIcon} />` for assets, icons, and some of the other components atleast.
+For an API like `ActionList.Item`, we have to assign a component to parent component with `ActionList.Item = ItemComponent`. This breaks the tree-shaking and all the children components of parents are added to bundle irrespective of whether they are used or not.
 
-Then we're left with 2 naming conventions like `ActionListIcon` for some components and `ActionList.Item` for some components.
+Thus, We use `ActionListItem` naming instead of `ActionList.Item` because for better tree-shaking we have to go by creating separate components like `<ActionListIcon icon={StarIcon} />` for assets, icons, and some of the other components atleast.
 
-We decided to go without dot notation anywhere to remove the confusion and tree-shake better.
+We could've gone with individual components for assets (`ActionListAsset`), icons (`ActionListIcon`), and things that matter on bundle size and compound components for layouts like `ActionList.Header`, `ActionList.Footer`, etc. But then we just end up with 2 ways to define and use components.
+
+We decided to go without dot notation anywhere to remove that confusion and tree-shake better.
 
 ### Custom Implementation instead of Library
 
@@ -606,14 +608,9 @@ Some libraries we evaluated
 
 ## Accessibility
 
-- For single select, we should have `role=menu` on the container and `role=menuitem` on list items
-- For multiple select,
-
-  - we should have `role=listbox` and `aria-multiselectable=true` on the container (because `role=menu` is expected to close after one item is selected)
-  - Input search/filter should be outside of this container
-    Refer: https://primer.style/react/storybook/?path=/story/components-selectpanel--multi-select-story
-
-- Dropdown is supposed to open when you focus on select and press `ENTER`, `SPACE` or any of the arrow keys. Arrow Up and Down can be pressed to move to next and previous items in the action list. Should close on pressing `ESC`.
+- For single select, we can refer to [w3.org example of select-only combobox](https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html). It uses `role=combobox` on SelectInput and `role=listbox` on ActionList
+- For multiple select, check out [w3.org listbox guidelines](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/) (search for `multiselect` on that page)
+- Keybindings are also mentioned in the respective w3.org pages
 
 <br/><br/>
 
