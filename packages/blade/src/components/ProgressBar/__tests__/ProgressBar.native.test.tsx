@@ -148,7 +148,7 @@ describe('<ProgressBar />', () => {
     ).toBeTruthy();
   });
 
-  it('should have accessibility attributes for meter variant', async () => {
+  it('should have accessibility attributes for meter variant', () => {
     const { getByRole, findByA11yValue } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Amount" value={70} variant="meter" />,
     );
@@ -156,7 +156,7 @@ describe('<ProgressBar />', () => {
     const progressbar = getByRole('progressbar');
     expect(progressbar.findByProps({ accessibilityLabel: 'Amount' })).toBeTruthy();
     expect(
-      await findByA11yValue({
+      findByA11yValue({
         max: 100,
         min: 0,
         now: 70,
