@@ -1,8 +1,16 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
 import type { BoxProps } from '~components/Box/types';
+
+const isAndroid = Platform.OS === 'android';
+// TODO: Temporary workaround to make android shadows look as close as iOS
+const androidShadow = {
+  color: undefined,
+  elevation: 2,
+};
 
 const CardSurfaceStyled = styled(Box)<{ elevation: number; surfaceLevel: 2 | 3 }>(
   ({ surfaceLevel, theme }) => {
@@ -13,7 +21,7 @@ const CardSurfaceStyled = styled(Box)<{ elevation: number; surfaceLevel: 2 | 3 }
       flexDirection: 'column',
       shadowOpacity: '1',
       shadowRadius: theme.shadows.blurRadius.level[1],
-      shadowColor: theme.shadows.color.level[1],
+      shadowColor: isAndroid ? androidShadow.color : theme.shadows.color.level[1],
       shadowOffset: `0px ${theme.shadows.offsetY.level[1]}px`,
       backgroundColor,
     };
@@ -31,11 +39,13 @@ const CardSurface = ({
   ...props
 }: CardSurfaceProps): React.ReactElement => {
   const { theme } = useTheme();
+  const isAndroid = Platform.OS === 'android';
+
   return (
     <CardSurfaceStyled
       {...props}
       surfaceLevel={surfaceLevel}
-      elevation={theme.shadows.androidElevation.level[1]}
+      elevation={isAndroid ? androidShadow.elevation : theme.shadows.androidElevation.level[1]}
     >
       {children}
     </CardSurfaceStyled>
