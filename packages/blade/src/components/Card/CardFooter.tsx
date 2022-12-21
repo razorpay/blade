@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+import type { ButtonProps } from '../Button';
+import { Button } from '../Button';
 import { Divider } from './Divider';
 import { useVerifyInsideCard } from './CardContext';
 import Box from '~components/Box';
-import type { ButtonProps } from '~components/Button';
-import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
