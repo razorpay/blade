@@ -115,8 +115,8 @@ After `3000ms` the progress bar would start pulsating to indicate to the user th
 ## Open Questions
 - ~Why not medium instead of large progress bar?~ We'll be using `small` & `medium`
 - ~What should be the default progress bar size?~ `small` will be the default size
-- Animation for indeterminate state is pending from design
-- Should we have an `animationSpeed` with values `slow`, `medium`, `fast` for indeterminate progress bars? [Ref](https://www.figma.com/proto/33zLifLnf2XXmU5iakKq1H/Address-serviceability-loader?page-id=60%3A14227&node-id=93%3A19491&scaling=min-zoom&starting-point-node-id=93%3A19205&show-proto-sidebar=1)
+- ~Animation for indeterminate state is pending from design~ Done
+- ~Should we have an `animationSpeed` with values `slow`, `medium`, `fast` for indeterminate progress bars? [Ref](https://www.figma.com/proto/33zLifLnf2XXmU5iakKq1H/Address-serviceability-loader?page-id=60%3A14227&node-id=93%3A19491&scaling=min-zoom&starting-point-node-id=93%3A19205&show-proto-sidebar=1)~ We will not be having any animationSpeed until we get more valid use-cases
 
 
 
