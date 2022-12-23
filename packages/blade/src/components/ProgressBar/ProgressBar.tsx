@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { FormLabel } from '~components/Form';
+import type { AccessibilityProps } from '~utils';
 import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { useId } from '~src/hooks/useId';
@@ -125,14 +126,10 @@ const ProgressBar = ({
   const progressValue = clamp(value, min, max);
   const percentageProgressValue = Math.floor(((progressValue - min) * 100) / (max - min));
   const shouldShowPercentage = showPercentage && !isMeter && !isIndeterminate;
-  const accessibilityProps: {
-    role: 'progressbar' | 'meter';
-    label?: string;
-    valueNow?: number;
-    valueText?: string;
-    valueMin?: number;
-    valueMax?: number;
-  } = {
+  const accessibilityProps: Pick<
+    AccessibilityProps,
+    'role' | 'label' | 'valueMax' | 'valueNow' | 'valueMin' | 'valueText'
+  > = {
     role: 'progressbar',
     label: accessibilityLabel ?? label,
     valueNow: percentageProgressValue,
