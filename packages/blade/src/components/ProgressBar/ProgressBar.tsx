@@ -123,7 +123,7 @@ const ProgressBar = ({
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
   const progressValue = clamp(value, min, max);
-  const percentageProgressValue = ((progressValue - min) * 100) / (max - min);
+  const percentageProgressValue = Math.floor(((progressValue - min) * 100) / (max - min));
   const shouldShowPercentage = showPercentage && !isMeter && !isIndeterminate;
   const accessibilityProps: {
     role: 'progressbar' | 'meter';
@@ -197,7 +197,7 @@ const ProgressBar = ({
         >
           <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
-            progress={progressValue}
+            progress={percentageProgressValue}
             fillMotionDuration="duration.2xgentle"
             pulseMotionDuration="duration.2xgentle"
             indeterminateMotionDuration="duration.2xgentle"
