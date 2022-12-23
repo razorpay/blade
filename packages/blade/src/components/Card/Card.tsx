@@ -1,8 +1,25 @@
 import React from 'react';
 import { CardSurface } from './CardSurface';
-import { CardProvider, useVerifyInsideCard } from './CardContext';
+import { CardProvider, useVerifyInsideCard, useVerifyOnlyAllowedComponents } from './CardContext';
 import Box from '~components/Box';
+import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils';
+
+export const ComponentIds = {
+  CardHeader: 'CardHeader',
+  CardHeaderTrailing: 'CardHeaderTrailing',
+  CardHeaderLeading: 'CardHeaderLeading',
+  CardFooter: 'CardFooter',
+  CardFooterTrailing: 'CardFooterTrailing',
+  CardFooterLeading: 'CardFooterLeading',
+  CardBody: 'CardBody',
+  CardHeaderIcon: 'CardHeaderIcon',
+  CardHeaderCounter: 'CardHeaderCounter',
+  CardHeaderBadge: 'CardHeaderBadge',
+  CardHeaderText: 'CardHeaderText',
+  CardHeaderLink: 'CardHeaderLink',
+  CardHeaderIconButton: 'CardHeaderIconButton',
+};
 
 export type CardProps = {
   /**
@@ -27,6 +44,12 @@ export type CardProps = {
 };
 
 const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => {
+  useVerifyOnlyAllowedComponents(children, 'Card', [
+    ComponentIds.CardHeader,
+    ComponentIds.CardBody,
+    ComponentIds.CardFooter,
+  ]);
+
   return (
     <CardProvider>
       <CardSurface
@@ -48,10 +71,11 @@ type CardBodyProps = {
   children: React.ReactNode;
 };
 
-const CardBody = ({ children }: CardBodyProps): React.ReactElement => {
+const CardBody: WithComponentId<CardBodyProps> = ({ children }) => {
   useVerifyInsideCard('CardBody');
 
   return <Box {...metaAttribute(MetaConstants.Component, MetaConstants.CardBody)}>{children}</Box>;
 };
+CardBody.componentId = ComponentIds.CardBody;
 
 export { Card, CardBody };
