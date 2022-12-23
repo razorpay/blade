@@ -109,15 +109,15 @@ describe('<ProgressBar />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should have accessibility attributes for progress variant', async () => {
-    const { getByRole, findByA11yValue } = renderWithTheme(
+  it('should have accessibility attributes for progress variant', () => {
+    const { getByRole, getByA11yValue } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} variant="progress" />,
     );
 
     const progressbar = getByRole('progressbar');
     expect(progressbar.findByProps({ accessibilityLabel: 'Downloading' })).toBeTruthy();
     expect(
-      await findByA11yValue({
+      getByA11yValue({
         max: 100,
         min: 0,
         now: 70,
@@ -126,7 +126,29 @@ describe('<ProgressBar />', () => {
     ).toBeTruthy();
   });
 
-  it('should have accessibility attributes for meter variant', async () => {
+  it('should have the right accessibility attributes for progress variant in indeterminate state', () => {
+    const { getByRole, getByA11yValue } = renderWithTheme(
+      <ProgressBar
+        label="Label"
+        accessibilityLabel="Checking"
+        isIndeterminate={true}
+        variant="progress"
+      />,
+    );
+
+    const progressbar = getByRole('progressbar');
+    expect(progressbar.findByProps({ accessibilityLabel: 'Checking' })).toBeTruthy();
+    expect(
+      getByA11yValue({
+        max: undefined,
+        min: undefined,
+        now: undefined,
+        text: undefined,
+      }),
+    ).toBeTruthy();
+  });
+
+  it('should have accessibility attributes for meter variant', () => {
     const { getByRole, findByA11yValue } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Amount" value={70} variant="meter" />,
     );
@@ -134,7 +156,7 @@ describe('<ProgressBar />', () => {
     const progressbar = getByRole('progressbar');
     expect(progressbar.findByProps({ accessibilityLabel: 'Amount' })).toBeTruthy();
     expect(
-      await findByA11yValue({
+      findByA11yValue({
         max: 100,
         min: 0,
         now: 70,

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Animated, {
   cancelAnimation,
+  Easing,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
@@ -11,19 +12,29 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useTheme } from '../BladeProvider';
 import type { ProgressBarFilledProps } from './types';
+import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
 import { castNativeType, getIn, makeMotionTime } from '~utils';
 
-const ProgressBarFilledContainer = styled(Animated.View)<
+const ProgressBarIndeterminateFilledContainer = styled(Animated.View)<
+  Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress'>
+>(({ backgroundColor }) => ({
+  backgroundColor,
+  height: '100%',
+  width: indeterminateAnimation.fillWidth,
+  position: 'absolute',
+}));
+
+const ProgressBarDeterminateFilledContainer = styled(Animated.View)<
   Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress'>
 >(({ backgroundColor, progress }) => ({
   backgroundColor,
-  width: `${progress}%`,
   height: '100%',
+  width: `${progress}%`,
 }));
 
 const ProgressBarPulseAnimation = styled(Animated.View)({
-  backgroundColor: 'white',
-  opacity: 0,
+  backgroundColor: pulseAnimation.backgroundColor,
+  opacity: pulseAnimation.opacityInitial,
   width: '100%',
   height: '100%',
 });
@@ -36,25 +47,98 @@ const ProgressBarFilled = ({
   pulseMotionDuration,
   pulseMotionDelay,
   variant,
+  isIndeterminate,
+  indeterminateMotionDuration,
 }: ProgressBarFilledProps): React.ReactElement => {
-  const animatedWidth = useSharedValue(progress);
-  const animatedOpacity = useSharedValue(0);
+  const animatedWidth = useSharedValue(progress); // for progress fill animation
+  const animatedOpacity = useSharedValue(pulseAnimation.opacityInitial); // for pulse animation
+  const animatedScaleX = useSharedValue(indeterminateAnimation.scaleXInitial); // for indeterminate scale animation
+  const animatedLeft = useSharedValue(indeterminateAnimation.leftInitial); // for indeterminate slide animation
+
   const { theme } = useTheme();
-  const easing = getIn(theme.motion, motionEasing);
+  const fillAndPulseEasing = getIn(theme.motion, motionEasing);
   const pulseDuration =
-    castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDuration))) / 2; // since we animate it with 2 steps in a sequence
+    castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDuration))) / 2; // divided by 2 since we animate it with 2 steps in a sequence
+
+  // Trigger animation for progress fill
+  useEffect(() => {
+    const fillDuration = castNativeType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
+    animatedWidth.value = withTiming(progress, {
+      duration: fillDuration,
+      easing: fillAndPulseEasing,
+    });
+    return () => {
+      cancelAnimation(animatedWidth);
+    };
+  }, [progress, animatedWidth, fillMotionDuration, theme, fillAndPulseEasing]);
+
+  // Animated styles for progress fill animation
+  const progressFillAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      width: `${animatedWidth.value}%`,
+    };
+  });
+
+  // Trigger animation for indeterminate progress bar
+  useEffect(() => {
+    if (variant === 'progress' && isIndeterminate) {
+      const indeterminateDuration = castNativeType(
+        makeMotionTime(getIn(theme.motion, indeterminateMotionDuration)),
+      );
+      const indeterminateEasing = Easing.linear;
+
+      // Sliding animation
+      animatedLeft.value = withRepeat(
+        withTiming(indeterminateAnimation.leftFinal, {
+          duration: indeterminateDuration,
+          easing: indeterminateEasing,
+        }),
+        -1,
+      );
+
+      // Scaling animation
+      animatedScaleX.value = withRepeat(
+        withSequence(
+          withTiming(indeterminateAnimation.scaleXMid, {
+            duration: indeterminateDuration / 2, // divided by 2 since we animate it with 2 steps in a sequence
+            easing: indeterminateEasing,
+          }),
+          withTiming(indeterminateAnimation.scaleXFinal, {
+            duration: indeterminateDuration / 2, // divided by 2 since we animate it with 2 steps in a sequence
+            easing: indeterminateEasing,
+          }),
+        ),
+        -1,
+      );
+    }
+
+    return () => {
+      cancelAnimation(animatedLeft);
+      cancelAnimation(animatedScaleX);
+    };
+  }, [animatedLeft, animatedScaleX, indeterminateMotionDuration, isIndeterminate, theme, variant]);
+
+  // Animated styles for indeterminate animation
+  const indeterminateAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      left: animatedLeft.value,
+      transform: [{ scaleX: animatedScaleX.value }],
+    };
+  });
+
+  //Trigger pulsating animation
   useEffect(() => {
     const pulsatingAnimationTimingConfig = {
       duration: pulseDuration,
-      easing,
+      easing: fillAndPulseEasing,
     };
     if (variant === 'progress') {
       animatedOpacity.value = withDelay(
         castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDelay))),
         withRepeat(
           withSequence(
-            withTiming(0.25, pulsatingAnimationTimingConfig),
-            withTiming(0, pulsatingAnimationTimingConfig),
+            withTiming(pulseAnimation.opacityMid, pulsatingAnimationTimingConfig),
+            withTiming(pulseAnimation.opacityFinal, pulsatingAnimationTimingConfig),
           ),
           -1,
         ),
@@ -64,34 +148,22 @@ const ProgressBarFilled = ({
     return () => {
       cancelAnimation(animatedOpacity);
     };
-  }, [animatedOpacity, easing, pulseDuration, pulseMotionDelay, theme.motion, variant]);
+  }, [animatedOpacity, fillAndPulseEasing, pulseDuration, pulseMotionDelay, theme, variant]);
 
-  useEffect(() => {
-    const fillDuration = castNativeType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
-    animatedWidth.value = withTiming(progress, {
-      duration: fillDuration,
-      easing,
-    });
-    return () => {
-      cancelAnimation(animatedWidth);
-    };
-  }, [progress, animatedWidth, fillMotionDuration, motionEasing, theme.motion, easing]);
-
-  const fillAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      width: `${animatedWidth.value}%`,
-    };
-  });
-
+  // Animated styles for pulse animation
   const pulseAnimatedStyle = useAnimatedStyle(() => {
     return {
       opacity: animatedOpacity.value,
     };
   });
 
+  const ProgressBarFilledContainer = isIndeterminate
+    ? ProgressBarIndeterminateFilledContainer
+    : ProgressBarDeterminateFilledContainer;
+
   return (
     <ProgressBarFilledContainer
-      style={fillAnimatedStyle}
+      style={isIndeterminate ? indeterminateAnimatedStyle : progressFillAnimatedStyle}
       backgroundColor={backgroundColor}
       progress={progress}
     >

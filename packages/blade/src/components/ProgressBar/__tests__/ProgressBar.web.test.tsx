@@ -135,6 +135,23 @@ describe('<ProgressBar />', () => {
     expect(getByRole('progressbar')).toHaveAttribute('aria-valuetext', '70%');
   });
 
+  it('should have the right accessibility attributes for progress variant in indeterminate state', () => {
+    const { getByRole } = renderWithTheme(
+      <ProgressBar
+        label="Label"
+        accessibilityLabel="Checking"
+        isIndeterminate={true}
+        variant="progress"
+      />,
+    );
+
+    expect(getByRole('progressbar')).toHaveAccessibleName('Checking');
+    expect(getByRole('progressbar').getAttribute('aria-valuenow')).toBeNull();
+    expect(getByRole('progressbar').getAttribute('aria-valuemin')).toBeNull();
+    expect(getByRole('progressbar').getAttribute('aria-valuemax')).toBeNull();
+    expect(getByRole('progressbar').getAttribute('aria-valuetext')).toBeNull();
+  });
+
   it('should have the right accessibility attributes for meter variant', () => {
     const { getByRole } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Amount" value={70} variant="meter" />,

@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { FormLabel } from '~components/Form';
+import type { AccessibilityProps } from '~utils';
 import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { useId } from '~src/hooks/useId';
@@ -98,7 +99,7 @@ const ProgressBar = ({
   accessibilityLabel,
   contrast = 'low',
   intent,
-  isIndeterminate,
+  isIndeterminate = false,
   label,
   showPercentage = true,
   size = 'small',
@@ -123,7 +124,32 @@ const ProgressBar = ({
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
   const progressValue = clamp(value, min, max);
-  const percentageProgressValue = ((progressValue - min) * 100) / (max - min);
+  const percentageProgressValue = Math.floor(((progressValue - min) * 100) / (max - min));
+  const shouldShowPercentage = showPercentage && !isMeter && !isIndeterminate;
+  const accessibilityProps: Pick<
+    AccessibilityProps,
+    'role' | 'label' | 'valueMax' | 'valueNow' | 'valueMin' | 'valueText'
+  > = {
+    role: 'progressbar',
+    label: accessibilityLabel ?? label,
+    valueNow: percentageProgressValue,
+    valueText: `${percentageProgressValue}%`,
+    valueMin: min,
+    valueMax: max,
+  };
+
+  if (isMeter) {
+    accessibilityProps.role = 'meter';
+    accessibilityProps.valueNow = progressValue;
+    accessibilityProps.valueText = `${progressValue}`;
+  }
+
+  if (isIndeterminate) {
+    accessibilityProps.valueNow = undefined;
+    accessibilityProps.valueMin = undefined;
+    accessibilityProps.valueMax = undefined;
+    accessibilityProps.valueText = undefined;
+  }
 
   return (
     <>
@@ -137,7 +163,7 @@ const ProgressBar = ({
             {label}
           </FormLabel>
         ) : null}
-        {!showPercentage || isMeter ? null : (
+        {shouldShowPercentage ? (
           <Box marginBottom="spacing.2">
             <Text
               type="subdued"
@@ -146,29 +172,36 @@ const ProgressBar = ({
               size="small"
             >{`${percentageProgressValue}%`}</Text>
           </Box>
-        )}
+        ) : null}
       </Box>
       <Box
         id={id}
         {...metaAttribute(MetaConstants.Component, MetaConstants.ProgressBar)}
         {...makeAccessible({
-          role: variant === 'meter' ? 'meter' : 'progressbar',
-          label: accessibilityLabel ?? label,
-          valueNow: isMeter ? progressValue : percentageProgressValue,
-          valueText: isMeter ? `${progressValue}` : `${percentageProgressValue}%`,
-          valueMin: min,
-          valueMax: max,
+          role: accessibilityProps.role,
+          label: accessibilityProps.label,
+          valueNow: accessibilityProps.valueNow,
+          valueText: accessibilityProps.valueText,
+          valueMin: accessibilityProps.valueMin,
+          valueMax: accessibilityProps.valueMax,
         })}
       >
-        <Box backgroundColor={unfilledBackgroundColor} height={makeSize(progressBarHeight[size])}>
+        <Box
+          backgroundColor={unfilledBackgroundColor}
+          height={makeSize(progressBarHeight[size])}
+          overflow="hidden"
+          position="relative"
+        >
           <ProgressBarFilled
             backgroundColor={filledBackgroundColor}
             progress={percentageProgressValue}
             fillMotionDuration="duration.2xgentle"
             pulseMotionDuration="duration.2xgentle"
+            indeterminateMotionDuration="duration.2xgentle"
             pulseMotionDelay="delay.long"
             motionEasing="easing.standard.revealing"
             variant={variant}
+            isIndeterminate={isIndeterminate}
           />
         </Box>
       </Box>

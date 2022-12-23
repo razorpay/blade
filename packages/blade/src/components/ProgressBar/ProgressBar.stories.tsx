@@ -159,3 +159,10 @@ ProgressBarMeterVariant.args = {
   label: 'Balance: ₹10,000',
   intent: 'notice',
 };
+
+export const ProgressBarIndeterminate = ProgressBarTemplate.bind({});
+ProgressBarIndeterminate.storyName = 'Indeterminate Progress Bar';
+ProgressBarIndeterminate.args = {
+  isIndeterminate: true,
+  label: 'Checking',
+};
