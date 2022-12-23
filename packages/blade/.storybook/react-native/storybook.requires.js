@@ -39,6 +39,7 @@ const getStories = () => {
     require('../../src/components/Input/TextInput/TextInput.stories.tsx'),
     require('../../src/components/Link/BaseLink/BaseLink.stories.tsx'),
     require('../../src/components/Link/Link/Link.stories.tsx'),
+    require('../../src/components/ProgressBar/ProgressBar.stories.tsx'),
     require('../../src/components/Radio/Radio.stories.tsx'),
     require('../../src/components/SkipNav/SkipNav.stories.tsx'),
     require('../../src/components/Spinner/BaseSpinner/BaseSpinner.stories.tsx'),
