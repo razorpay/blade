@@ -125,6 +125,34 @@ const ProgressBar = ({
   const progressValue = clamp(value, min, max);
   const percentageProgressValue = ((progressValue - min) * 100) / (max - min);
   const shouldShowPercentage = showPercentage && !isMeter && !isIndeterminate;
+  const accessibilityProps: {
+    role: 'progressbar' | 'meter';
+    label?: string;
+    valueNow?: number;
+    valueText?: string;
+    valueMin?: number;
+    valueMax?: number;
+  } = {
+    role: 'progressbar',
+    label: accessibilityLabel ?? label,
+    valueNow: percentageProgressValue,
+    valueText: `${percentageProgressValue}%`,
+    valueMin: min,
+    valueMax: max,
+  };
+
+  if (isMeter) {
+    accessibilityProps.role = 'meter';
+    accessibilityProps.valueNow = progressValue;
+    accessibilityProps.valueText = `${progressValue}`;
+  }
+
+  if (isIndeterminate) {
+    accessibilityProps.valueNow = undefined;
+    accessibilityProps.valueMin = undefined;
+    accessibilityProps.valueMax = undefined;
+    accessibilityProps.valueText = undefined;
+  }
 
   return (
     <>
@@ -153,16 +181,12 @@ const ProgressBar = ({
         id={id}
         {...metaAttribute(MetaConstants.Component, MetaConstants.ProgressBar)}
         {...makeAccessible({
-          role: variant === 'meter' ? 'meter' : 'progressbar',
-          label: accessibilityLabel ?? label,
-          valueNow: isIndeterminate ? undefined : isMeter ? progressValue : percentageProgressValue,
-          valueText: isIndeterminate
-            ? undefined
-            : isMeter
-            ? `${progressValue}`
-            : `${percentageProgressValue}%`,
-          valueMin: isIndeterminate ? undefined : min,
-          valueMax: isIndeterminate ? undefined : max,
+          role: accessibilityProps.role,
+          label: accessibilityProps.label,
+          valueNow: accessibilityProps.valueNow,
+          valueText: accessibilityProps.valueText,
+          valueMin: accessibilityProps.valueMin,
+          valueMax: accessibilityProps.valueMax,
         })}
       >
         <Box
