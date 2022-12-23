@@ -56,6 +56,7 @@ const getBoxStyles = ({
   right,
   bottom,
   background,
+  backgroundColor,
   zIndex,
   borderRadius,
 }: BoxProps & { theme: Theme }): CSSObject => ({
@@ -91,6 +92,7 @@ const getBoxStyles = ({
   maxWidth: maxWidth ? makeSize(maxWidth) : undefined,
   transform,
   background,
+  backgroundColor,
   zIndex,
   borderRadius: borderRadius ? makeSize(getIn(theme, `border.radius.${borderRadius}`)) : undefined,
 });
