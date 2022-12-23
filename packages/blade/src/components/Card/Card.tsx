@@ -40,7 +40,7 @@ export type CardProps = {
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-colors--page#-theme-tokens
    * - Figma: https://shorturl.at/fsvwK
    */
-  surfaceLevel: 2 | 3;
+  surfaceLevel?: 2 | 3;
 };
 
 const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => {
