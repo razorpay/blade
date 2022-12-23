@@ -40,6 +40,7 @@ export type AriaRoles =
   | 'menuitem'
   | 'menuitemcheckbox'
   | 'menuitemradio'
+  | 'meter'
   | 'navigation'
   | 'none'
   | 'note'
