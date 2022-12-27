@@ -2,6 +2,9 @@
 import { Alert } from '../';
 import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<Alert />', () => {
   it('should render Alert on server', () => {
     const { container } = renderWithSSR(
