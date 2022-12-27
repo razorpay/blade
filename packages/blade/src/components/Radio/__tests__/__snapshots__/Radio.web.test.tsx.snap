@@ -222,7 +222,9 @@ exports[`<Radio /> should render radio with label 1`] = `
               font-size="100"
               font-style="normal"
               font-weight="regular"
-            />
+            >
+              , 
+            </p>
           </div>
         </div>
       </div>
@@ -500,7 +502,9 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
               font-size="100"
               font-style="normal"
               font-weight="regular"
-            />
+            >
+              , 
+            </p>
           </div>
         </div>
       </div>

@@ -9,10 +9,11 @@ afterAll(() => jest.restoreAllMocks());
 describe('<Radio />', () => {
   it('should render with help text', () => {
     const labelText = 'Select fruit';
-    const helpText = 'This has to be checked';
+    const radioHelpText = 'Apple Help';
+    const radioGroupHelpText = 'Select One';
     const { container, getByText, getByRole } = renderWithSSR(
-      <RadioGroup label={labelText}>
-        <Radio value="apple" helpText={helpText}>
+      <RadioGroup label={labelText} helpText={radioGroupHelpText}>
+        <Radio value="apple" helpText={radioHelpText}>
           Apple
         </Radio>
         <Radio value="mango">Mango</Radio>
@@ -20,7 +21,8 @@ describe('<Radio />', () => {
     );
     //@TODO ask Anurag the reson behing that comma ","
     expect(getByRole('group', { name: labelText })).toBeInTheDocument();
-    expect(getByText(helpText)).toBeInTheDocument();
+    expect(getByText(radioHelpText)).toBeInTheDocument();
+    expect(getByText(radioGroupHelpText)).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 });
