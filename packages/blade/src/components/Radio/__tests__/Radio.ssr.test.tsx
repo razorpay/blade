@@ -19,10 +19,9 @@ describe('<Radio />', () => {
         <Radio value="mango">Mango</Radio>
       </RadioGroup>,
     );
-    //@TODO ask Anurag the reson behing that comma ","
-    expect(getByRole('group', { name: labelText })).toBeInTheDocument();
-    expect(getByText(/Apple Help/)).toBeInTheDocument();
-    expect(getByText(/Select One/)).toBeInTheDocument();
+    expect(getByRole('group')).toBeInTheDocument();
+    expect(getByText(radioHelpText)).toBeInTheDocument();
+    expect(getByText(radioGroupHelpText)).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 });

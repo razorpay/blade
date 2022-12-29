@@ -47,7 +47,9 @@ exports[`<Radio /> should render with help text 2`] = `
               font-size="100"
               font-style="normal"
               font-weight="regular"
-            />
+            >
+              ,Select One
+            </p>
           </div>
         </div>
       </div>
@@ -112,7 +114,7 @@ exports[`<Radio /> should render with help text 2`] = `
                   font-style="italic"
                   id="radio-1-helptext-2"
                 >
-                  This has to be checked
+                  Apple Help
                 </span>
               </div>
             </div>
@@ -166,6 +168,23 @@ exports[`<Radio /> should render with help text 2`] = `
             </div>
           </label>
         </div>
+      </div>
+      <div
+        class="Boxweb__Box-xvyj85-0 icyiiZ"
+      >
+        <span
+          style="display:flex;flex-direction:row;align-items:center;word-break:break-all"
+        >
+          <span
+            class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hLvFTc"
+            color="surface.text.muted.lowContrast"
+            font-family="text"
+            font-size="50"
+            font-style="italic"
+          >
+            Select One
+          </span>
+        </span>
       </div>
     </div>
   </div>
