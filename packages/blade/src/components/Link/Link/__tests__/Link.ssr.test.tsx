@@ -5,6 +5,7 @@ describe('<Link />', () => {
   it('should render link with a default rel set when target is _blank', () => {
     const linkText = 'Learn More';
     const { container, getByRole, getByText } = renderWithSSR(
+      // nosemgrep
       <Link href="https://www.google.com/" target="_blank">
         {linkText}
       </Link>,
