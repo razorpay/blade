@@ -110,7 +110,7 @@ const RadioGroup = ({
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
-  const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
+  const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
   const isReactNative = getPlatformType() === 'react-native';
   const gap = radioSizes.group.gap[size][matchedDeviceType];
   const childCount = React.Children.count(children);
@@ -128,7 +128,7 @@ const RadioGroup = ({
           necessityIndicator={necessityIndicator}
           position={labelPosition}
           id={ids.labelId}
-          accessibilityText={accessibilityText}
+          accessibilityText={accessibilityText && `,${accessibilityText}`}
         >
           {label}
         </FormLabel>

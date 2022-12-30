@@ -4,6 +4,9 @@ import { Alert } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<Alert />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(

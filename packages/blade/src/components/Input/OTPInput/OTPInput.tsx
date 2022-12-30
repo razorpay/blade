@@ -202,6 +202,7 @@ const OTPInput = ({
           id={inputId}
           name={name}
           value={inputValue ?? otpValue.join('') ?? ''}
+          readOnly
         />
       );
     }

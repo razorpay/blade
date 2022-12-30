@@ -4,6 +4,9 @@ import { ProgressBar } from '../ProgressBar';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<ProgressBar />', () => {
   it('should render ProgressBar with default props', () => {
     const { toJSON } = renderWithTheme(<ProgressBar label="Label" value={20} />);
