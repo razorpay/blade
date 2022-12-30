@@ -240,7 +240,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               font-style="normal"
               font-weight="regular"
             >
-              , Select one
+              ,Select one
             </p>
           </div>
         </div>
@@ -642,9 +642,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
               font-size="100"
               font-style="normal"
               font-weight="regular"
-            >
-              , 
-            </p>
+            />
           </div>
         </div>
       </div>

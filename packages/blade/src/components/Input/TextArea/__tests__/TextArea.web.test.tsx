@@ -137,7 +137,7 @@ describe('<TextArea />', () => {
     expect(input).toBeValid();
   });
 
-  it('should be focussed when autoFocus flag is passed', () => {
+  it.only('should be focussed when autoFocus flag is passed', () => {
     const label = 'Enter name';
     // eslint-disable-next-line jsx-a11y/no-autofocus
     const { getByLabelText } = renderWithTheme(<TextArea label={label} autoFocus />);

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Box /> should render Box component with the correct styles 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" overflow=\\"hidden\\" height=\\"auto\\" width=\\"auto\\" class=\\"Boxweb__Box-xvyj85-0 ikHczR\\"></div></div>"`;
+
+exports[`<Box /> should render Box component with the correct styles 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <div
+    class="Boxweb__Box-xvyj85-0 ikHczR"
+    display="flex"
+    height="auto"
+    overflow="hidden"
+    width="auto"
+  />
+</div>
+`;
