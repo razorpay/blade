@@ -36,6 +36,7 @@ const getStories = () => {
     require('../../src/components/Input/BaseInput/BaseInput.stories.tsx'),
     require('../../src/components/Input/OTPInput/OTPInput.stories.tsx'),
     require('../../src/components/Input/PasswordInput/PasswordInput.stories.tsx'),
+    require('../../src/components/Input/SelectInput/SelectInput.stories.tsx'),
     require('../../src/components/Input/TextArea/TextArea.stories.tsx'),
     require('../../src/components/Input/TextInput/TextInput.stories.tsx'),
     require('../../src/components/Link/BaseLink/BaseLink.stories.tsx'),
