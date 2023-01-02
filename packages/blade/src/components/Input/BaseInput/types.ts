@@ -28,6 +28,7 @@ export type StyledBaseInputProps = {
   | 'value'
   | 'isDisabled'
   | 'isRequired'
+  | 'isReadOnly'
   | 'validationState'
   | 'leadingIcon'
   | 'prefix'
@@ -40,5 +41,8 @@ export type StyledBaseInputProps = {
   | 'keyboardType'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
+  | 'hasPopup'
+  | 'popupId'
+  | 'isPopupExpanded'
 >;
 export { StyledBaseInput } from './StyledBaseInput.web';

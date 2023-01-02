@@ -61,6 +61,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
     {
       name,
       isDisabled,
+      isReadOnly,
       isRequired,
       maxCharacters,
       handleOnFocus,
@@ -75,6 +76,9 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
       setCurrentInteraction,
       numberOfLines,
       type,
+      hasPopup,
+      popupId,
+      isPopupExpanded = false,
       ...props
     },
     ref,
@@ -83,6 +87,11 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
       <StyledBaseNativeInput
         ref={ref}
         name={name}
+        role={hasPopup ? 'combobox' : undefined}
+        aria-haspopup={hasPopup ? 'listbox' : undefined}
+        aria-controls={popupId}
+        aria-expanded={isPopupExpanded}
+        readOnly={isReadOnly}
         type={type === 'telephone' ? 'tel' : type}
         disabled={isDisabled}
         required={isRequired}

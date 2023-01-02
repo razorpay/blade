@@ -32,7 +32,7 @@ export type BaseInputProps = FormInputLabelProps &
     /**
      * Determines if it needs to be rendered as input or textarea
      */
-    as?: 'input' | 'textarea' | 'button';
+    as?: 'input' | 'textarea';
     /**
      * ID that will be used for accessibility
      */
@@ -87,6 +87,12 @@ export type BaseInputProps = FormInputLabelProps &
      * Used to disable the input field
      */
     isDisabled?: boolean;
+    /**
+     * Set true when input is enabled but in the readonly state.
+     *
+     * E.g. can be used with select-only input where you don't want users to enter in the input
+     */
+    isReadOnly?: boolean;
     /**
      * If true, the input is marked as required, and `required` attribute will be added
      */
@@ -200,6 +206,18 @@ export type BaseInputProps = FormInputLabelProps &
      * for internal metric collection purposes
      */
     componentName?: string;
+    /**
+     * Input has a popup
+     */
+    hasPopup?: boolean;
+    /**
+     * id of the popup
+     */
+    popupId?: string;
+    /**
+     * true if popup is in expanded state
+     */
+    isPopupExpanded?: boolean;
   };
 
 const autoCompleteSuggestionTypeValues = [
@@ -415,6 +433,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onBlur,
       onKeyDown,
       isDisabled,
+      isReadOnly,
       necessityIndicator,
       validationState,
       errorText,
@@ -440,6 +459,9 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       accessibilityLabel,
       hideLabelText,
       hideFormHint,
+      hasPopup,
+      popupId,
+      isPopupExpanded,
     },
     ref,
   ) => {
@@ -543,6 +565,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               value={value}
               placeholder={placeholder}
               isDisabled={isDisabled}
+              isReadOnly={isReadOnly}
               validationState={validationState}
               isRequired={isRequired}
               handleOnFocus={handleOnFocus}
@@ -567,9 +590,10 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               setCurrentInteraction={setCurrentInteraction}
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
-            >
-              Select Option
-            </StyledBaseInput>
+              hasPopup={hasPopup}
+              popupId={popupId}
+              isPopupExpanded={isPopupExpanded}
+            />
             <BaseInputVisuals
               interactionElement={interactionElement}
               suffix={suffix}
