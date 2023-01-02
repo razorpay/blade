@@ -4,6 +4,7 @@ import { Highlight } from '@storybook/design-system';
 import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInput as BaseInputComponent } from './BaseInput';
+import BaseInputLayoutImage from './_decisions/base-inputfield-layout.png';
 import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
@@ -232,6 +233,7 @@ export default {
             The BaseInput component is a component that will be used as a base to build all the
             other input fields like TextInput, PasswordInput, CardInput, OTPInput
           </Subtitle>
+          <img src={BaseInputLayoutImage} alt="Base Input Layout" />
           <Title>Usage</Title>
           <Highlight language="tsx">{`import { BaseInput } from '@razorpay/blade/components' \nimport type { BaseInputProps } from '@razorpay/blade/components'`}</Highlight>
           <Title>Example</Title>

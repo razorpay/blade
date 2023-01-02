@@ -213,4 +213,27 @@ FullWidth.parameters = {
   },
 };
 
+export const FullWidthWithActions: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+  return (
+    <Box height={200} position="relative">
+      <Box position="absolute" width="100%">
+        <AlertComponent {...args} />
+      </Box>
+    </Box>
+  );
+};
+FullWidthWithActions.args = {
+  description: 'Currently you can only accept payments in international currencies using PayPal.',
+  intent: 'negative',
+  isFullWidth: true,
+};
+FullWidthWithActions.parameters = {
+  docs: {
+    description: {
+      story:
+        'A full width Alert with `actions` will render them inline if there is enough space and responsively wrap them to the next line in smaller displays.',
+    },
+  },
+};
+
 export default meta;

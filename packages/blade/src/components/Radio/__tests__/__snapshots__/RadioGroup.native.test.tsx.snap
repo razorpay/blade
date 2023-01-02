@@ -134,7 +134,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             ]
           }
         >
-          , Select one
+          ,Select one
         </Text>
       </View>
     </View>
@@ -804,7 +804,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             ]
           }
         >
-          , 
+          
         </Text>
       </View>
     </View>

@@ -100,6 +100,7 @@ export type Motion = Readonly<{
 
 export type EasingString = `easing.${DotNotationMotionStringToken<Easing>}`;
 export type DurationString = `duration.${keyof Duration}`;
+export type DelayString = `delay.${keyof Delay}`;
 
 const delay: Delay = {
   '2xshort': 70,

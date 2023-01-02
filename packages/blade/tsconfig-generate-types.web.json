@@ -1,5 +1,7 @@
+// tsconfig for generating web types
 {
   "extends": "./tsconfig-generate-types.json",
+  // excluding test, storie & .native files while generating types
   "exclude": [
     "**/**.test.ts",
     "**/**.test.tsx",

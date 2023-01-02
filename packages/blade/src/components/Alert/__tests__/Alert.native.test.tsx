@@ -1,7 +1,9 @@
 import { fireEvent } from '@testing-library/react-native';
-
 import { Alert } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
 
 describe('<Alert />', () => {
   it('should render', () => {
