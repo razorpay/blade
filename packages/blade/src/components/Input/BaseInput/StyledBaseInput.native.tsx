@@ -104,6 +104,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       handleOnBlur,
       handleOnInput,
       handleOnKeyDown,
+      onClick,
       keyboardType = 'text',
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
@@ -132,6 +133,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
           handleOnFocus?.({ name, value: event?.nativeEvent.text });
           setCurrentInteraction('active');
         }}
+        onPress={onClick}
         onBlur={(): void => {
           setCurrentInteraction('default');
         }}

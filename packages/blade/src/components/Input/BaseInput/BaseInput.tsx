@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import type { ReactNode } from 'react';
+import type { ReactNode, MouseEventHandler } from 'react';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -65,6 +65,10 @@ export type BaseInputProps = FormInputLabelProps &
      * The callback function to be invoked when the value of the input field changes
      */
     onChange?: FormInputOnEvent;
+    /**
+     * The callback function to be invoked when input is clicked
+     */
+    onClick?: MouseEventHandler<HTMLInputElement>;
     /**
      * The callback function to be invoked when the value of the input field has any input
      */
@@ -431,6 +435,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onChange,
       onInput,
       onBlur,
+      onClick,
       onKeyDown,
       isDisabled,
       isReadOnly,
@@ -577,6 +582,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               handleOnBlur={handleOnBlur}
               handleOnInput={handleOnInput}
               handleOnKeyDown={handleOnKeyDown}
+              onClick={onClick}
               leadingIcon={leadingIcon}
               prefix={prefix}
               interactionElement={interactionElement}

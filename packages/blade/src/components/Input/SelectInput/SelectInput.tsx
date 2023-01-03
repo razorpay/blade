@@ -41,6 +41,9 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       leadingIcon={icon}
       hasPopup
       isPopupExpanded={isPopupExpanded}
+      onClick={(e) => {
+        console.log(e);
+      }}
       /**
        * @TODO Pass the popup id by taking it from Dropdown
        */
