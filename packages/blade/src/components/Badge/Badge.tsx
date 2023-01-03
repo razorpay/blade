@@ -2,7 +2,6 @@ import type { ReactElement } from 'react';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
 import { iconPadding, iconSize, horizontalPadding, verticalPadding } from './badgeTokens';
-import { useTheme } from '~components/BladeProvider';
 import type { IconComponent, IconProps } from '~components/Icons';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
@@ -94,7 +93,6 @@ const Badge = ({
   if (!children?.trim()) {
     throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }
-  const { platform } = useTheme();
   const { backgroundColor, iconColor, textColor } = getColorProps({
     variant,
     contrast,
@@ -103,7 +101,6 @@ const Badge = ({
     <StyledBadge
       backgroundColor={backgroundColor}
       size={size}
-      platform={platform}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Badge)}
     >
       <Box
