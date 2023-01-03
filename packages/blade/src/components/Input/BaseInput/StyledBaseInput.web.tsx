@@ -69,6 +69,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
       handleOnBlur,
       handleOnInput,
       handleOnKeyDown,
+      onClick,
       keyboardType,
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
@@ -99,6 +100,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
             ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
             : undefined
         }
+        onClick={onClick}
         onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
           handleOnChange?.({ name, value: event })
         }

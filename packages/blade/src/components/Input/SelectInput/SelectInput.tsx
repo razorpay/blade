@@ -40,6 +40,9 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       leadingIcon={icon}
       hasPopup
       isPopupExpanded={isOpen}
+      onClick={() => {
+        setIsOpen(!isOpen);
+      }}
       onKeyDown={(e) => {
         if (e.code) {
           if (['ArrowDown', 'ArrowUp', 'Space'].includes(e.code)) {
