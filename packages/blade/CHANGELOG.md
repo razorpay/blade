@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.4.1
+
+### Patch Changes
+
+- 7eb6e4c: feat(Code): Use alpha 50 token in Code component's background
+
 ## 5.4.0
 
 ### Minor Changes
