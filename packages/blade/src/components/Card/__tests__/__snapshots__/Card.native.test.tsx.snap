@@ -834,7 +834,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
       >
         <View
           backgroundColor="feedback.background.neutral.lowContrast"
-          platform="onMobile"
           size="medium"
           style={
             Array [
@@ -844,7 +843,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 "borderRadius": 9999,
                 "display": "flex",
                 "flexWrap": "nowrap",
-                "maxWidth": 100,
               },
             ]
           }
