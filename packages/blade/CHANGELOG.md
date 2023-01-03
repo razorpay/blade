@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.4.2
+
+### Patch Changes
+
+- da470b0: fix: remove `maxWidth` from Badge
+
 ## 5.4.1
 
 ### Patch Changes
