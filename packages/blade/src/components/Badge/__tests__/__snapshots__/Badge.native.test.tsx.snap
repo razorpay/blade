@@ -1470,8 +1470,8 @@ exports[`<Badge /> should render small size Badge 1`] = `
     <Text
       color="feedback.text.neutral.lowContrast"
       fontFamily="text"
-      fontSize={50}
-      fontStyle="italic"
+      fontSize={25}
+      fontStyle="normal"
       fontWeight="regular"
       lineHeight="s"
       numberOfLines={1}
@@ -1481,7 +1481,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
             "fontSize": 11,
-            "fontStyle": "italic",
+            "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 16,
             "marginBottom": 0,
