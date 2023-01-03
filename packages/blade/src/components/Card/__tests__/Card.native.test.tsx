@@ -18,6 +18,7 @@ import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
+import Box from '~components/Box';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -176,7 +177,7 @@ describe('<Card />', () => {
     expect(() =>
       renderWithTheme(
         <Card>
-          <div>some random div</div>
+          <Box>some random Box</Box>
           <CardHeader />
           <CardBody>Plain Card</CardBody>
           <CardFooter />
@@ -193,7 +194,7 @@ describe('<Card />', () => {
         <Card>
           <CardHeader>
             <CardHeaderLeading title="" />
-            <div>some random children</div>
+            <Box>some random children</Box>
             <CardHeaderTrailing />
           </CardHeader>
           <CardBody>Plain Card</CardBody>
@@ -214,7 +215,7 @@ describe('<Card />', () => {
           <CardFooter>
             <CardFooterLeading />
             <CardFooterTrailing />
-            <div>some random children</div>
+            <Box>some random children</Box>
           </CardFooter>
         </Card>,
       ),

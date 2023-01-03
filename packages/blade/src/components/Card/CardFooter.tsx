@@ -3,7 +3,7 @@ import React from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import { Divider } from './Divider';
-import { useVerifyInsideCard, useVerifyOnlyAllowedComponents } from './CardContext';
+import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
 import Box from '~components/Box';
 import { Text } from '~components/Typography';
@@ -34,7 +34,7 @@ const useIsMobile = (): boolean => {
 const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
-  useVerifyOnlyAllowedComponents(children, 'CardFooter', [
+  useVerifyAllowedComponents(children, 'CardFooter', [
     ComponentIds.CardFooterLeading,
     ComponentIds.CardFooterTrailing,
   ]);

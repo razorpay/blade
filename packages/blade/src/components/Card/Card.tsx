@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardSurface } from './CardSurface';
-import { CardProvider, useVerifyInsideCard, useVerifyOnlyAllowedComponents } from './CardContext';
+import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import Box from '~components/Box';
 import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils';
@@ -44,7 +44,7 @@ export type CardProps = {
 };
 
 const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => {
-  useVerifyOnlyAllowedComponents(children, 'Card', [
+  useVerifyAllowedComponents(children, 'Card', [
     ComponentIds.CardHeader,
     ComponentIds.CardBody,
     ComponentIds.CardFooter,

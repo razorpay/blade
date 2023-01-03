@@ -7,7 +7,7 @@ import { Link } from '../Link';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import { Divider } from './Divider';
-import { useVerifyInsideCard, useVerifyOnlyAllowedComponents } from './CardContext';
+import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
 import Box from '~components/Box';
 import type { TextProps, TextVariant } from '~components/Typography';
@@ -84,7 +84,7 @@ type CardHeaderProps = {
 
 const CardHeader: WithComponentId<CardHeaderProps> = ({ children }) => {
   useVerifyInsideCard('CardHeader');
-  useVerifyOnlyAllowedComponents(children, 'CardHeader', [
+  useVerifyAllowedComponents(children, 'CardHeader', [
     ComponentIds.CardHeaderLeading,
     ComponentIds.CardHeaderTrailing,
   ]);

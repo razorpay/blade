@@ -15,7 +15,7 @@ const useVerifyInsideCard = (componentName: string): CardContextType => {
 /**
  * Verify if the passed childrens are only of allowedComponents list
  */
-const useVerifyOnlyAllowedComponents = (
+const useVerifyAllowedComponents = (
   children: React.ReactNode,
   componentName: string,
   allowedComponents: string[],
@@ -26,7 +26,7 @@ const useVerifyOnlyAllowedComponents = (
       throw new Error(
         `[Blade Card]: Only one of \`${allowedComponents.join(
           ', ',
-        )}\` component is accepted in ${componentName} children`,
+        )}\` component is accepted as ${componentName} children`,
       );
     }
   });
@@ -37,4 +37,4 @@ const CardProvider = ({ children }: CardProviderProps): React.ReactElement => {
   return <CardContext.Provider value={true}>{children}</CardContext.Provider>;
 };
 
-export { useVerifyInsideCard, useVerifyOnlyAllowedComponents, CardProvider };
+export { useVerifyInsideCard, useVerifyAllowedComponents, CardProvider };
