@@ -184,7 +184,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade Card]: Only one of `CardHeader, CardBody, CardFooter` component is accepted in Card children',
+      '[Blade Card]: Only one of `CardHeader, CardBody, CardFooter` component is accepted as Card children',
     );
   });
 
@@ -202,7 +202,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade Card]: Only one of `CardHeaderLeading, CardHeaderTrailing` component is accepted in CardHeader children',
+      '[Blade Card]: Only one of `CardHeaderLeading, CardHeaderTrailing` component is accepted as CardHeader children',
     );
   });
 
@@ -220,7 +220,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted in CardFooter children',
+      '[Blade Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted as CardFooter children',
     );
   });
 });
