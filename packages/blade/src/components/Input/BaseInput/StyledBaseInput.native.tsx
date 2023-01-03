@@ -112,6 +112,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       setCurrentInteraction,
       type,
       numberOfLines,
+      isReadOnly,
       isTextArea,
       ...props
     },
@@ -125,7 +126,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         multiline={isTextArea}
         numberOfLines={numberOfLines}
         isFocused={currentInteraction === 'active'}
-        editable={!isDisabled}
+        editable={!isDisabled && !isReadOnly}
         maxLength={maxCharacters}
         onFocus={(event): void => {
           handleOnFocus?.({ name, value: event?.nativeEvent.text });

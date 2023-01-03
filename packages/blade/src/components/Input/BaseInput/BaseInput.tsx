@@ -501,6 +501,10 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         helpTextId,
       }),
       label: accessibilityLabel,
+      hasPopup: hasPopup ? 'listbox' : undefined,
+      expanded: hasPopup ? isPopupExpanded : undefined,
+      controls: hasPopup ? popupId : undefined,
+      role: hasPopup ? 'combobox' : undefined,
     });
 
     const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);
@@ -590,9 +594,6 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               setCurrentInteraction={setCurrentInteraction}
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
-              hasPopup={hasPopup}
-              popupId={popupId}
-              isPopupExpanded={isPopupExpanded}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}

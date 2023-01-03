@@ -33,7 +33,11 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
   return (
     <BaseInput
       {...baseInputProps}
-      id="ip"
+      /**
+       * @TODO
+       * this will come from Dropdown component
+       */
+      id="input-123"
       leadingIcon={icon}
       hasPopup
       isPopupExpanded={isPopupExpanded}
