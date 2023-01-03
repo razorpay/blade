@@ -1,7 +1,9 @@
+import React from 'react';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
+import { DropdownContext } from '~components/Dropdown/Dropdown';
 type SelectInputProps = Pick<
   BaseInputProps,
   | 'label'
@@ -23,10 +25,7 @@ type SelectInputProps = Pick<
 };
 
 const SelectInput = (props: SelectInputProps): JSX.Element => {
-  /**
-   * @TODO handle expanded state with Dropdown
-   */
-  const isPopupExpanded = false;
+  const { isOpen, setIsOpen } = React.useContext(DropdownContext);
 
   const { icon, ...baseInputProps } = props;
 
@@ -40,15 +39,22 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       id="input-123"
       leadingIcon={icon}
       hasPopup
-      isPopupExpanded={isPopupExpanded}
+      isPopupExpanded={isOpen}
+      onKeyDown={(e) => {
+        if (e.code) {
+          if (['ArrowDown', 'ArrowUp', 'Space'].includes(e.code)) {
+            setIsOpen(!isOpen);
+          }
+        }
+      }}
       /**
        * @TODO Pass the popup id by taking it from Dropdown
        */
       popupId="123"
       isReadOnly
-      trailingIcon={isPopupExpanded ? ChevronUpIcon : ChevronDownIcon}
+      trailingIcon={isOpen ? ChevronUpIcon : ChevronDownIcon}
     />
   );
 };
 
-export default SelectInput;
+export { SelectInput, SelectInputProps };
