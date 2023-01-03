@@ -58,7 +58,7 @@ const getColor = ({
   } else if (contrast == 'low') {
     return getIn(theme.colors, 'brand.gray.700.lowContrast');
   } else {
-    return getIn(theme.colors, 'brand.gray.400.lowContrast');
+    return getIn(theme.colors, 'brand.gray.700.lowContrast');
   }
 };
 

@@ -77,7 +77,8 @@ const Counter = ({
 
   const textSizes = {
     small: {
-      variant: 'caption',
+      variant: 'body',
+      size: 'xsmall',
     },
     medium: {
       variant: 'body',
