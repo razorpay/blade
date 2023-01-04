@@ -1,8 +1,9 @@
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
+import { HiddenInput } from './HiddenInput';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
-import { getPlatformType } from '~utils';
+import Box from '~components/Box';
 type SelectInputProps = Pick<
   BaseInputProps,
   | 'label'
@@ -31,14 +32,15 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
 
   const { icon, ...baseInputProps } = props;
 
-  const platform = getPlatformType();
-
   return (
-    <>
-      {platform !== 'react-native' ? (
-        // @TODO Use this for form submissions
-        <input type="hidden" required={props.isRequired} value="selected-value-from-dropdown" />
-      ) : null}
+    <Box position="relative">
+      {/* @TODO Use this for form submissions */}
+      <HiddenInput
+        required={props.isRequired}
+        value=""
+        // Accessibility is covered in the select input itself so we hide this field from a11y tree
+        aria-hidden={true}
+      />
       <BaseInput
         {...baseInputProps}
         as="button"
@@ -60,7 +62,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         popupId="123"
         trailingIcon={isPopupExpanded ? ChevronUpIcon : ChevronDownIcon}
       />
-    </>
+    </Box>
   );
 };
 

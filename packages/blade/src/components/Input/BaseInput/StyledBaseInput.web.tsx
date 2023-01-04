@@ -114,6 +114,7 @@ export const StyledBaseInput = React.forwardRef<
         // @ts-expect-error: TS doesnt understand that this will always be `button`
         ref={ref}
         name={name}
+        type="button"
         disabled={isDisabled}
         required={isRequired}
         onClick={onClick}
