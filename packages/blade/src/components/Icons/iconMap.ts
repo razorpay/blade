@@ -29,6 +29,7 @@ import SlashIconComponent from './SlashIcon';
 import TrashIconComponent from './TrashIcon';
 import AlertTriangleIconComponent from './AlertTriangleIcon';
 import AlertOctagonIconComponent from './AlertOctagonIcon';
+import BookIconComponent from './BookIcon/BookIcon';
 import CheckIconComponent from './CheckIcon';
 import CheckCircleIconComponent from './CheckCircleIcon';
 import RefreshLeftIconComponent from './RefreshLeftIcon';
@@ -40,6 +41,8 @@ import HelpCircleIconComponent from './HelpCircleIcon';
 import ExternalLinkIconComponent from './ExternalLinkIcon';
 import MinusIconComponent from './MinusIcon';
 import MailIconComponent from './MailIcon';
+import SettlementsIconComponent from './SettlementsIcon';
+import ShuffleIconComponent from './ShuffleIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -51,6 +54,7 @@ const iconMap: Record<string, IconComponent> = {
   ArrowUpRightIcon: ArrowUpRightIconComponent,
   AlertTriangleIcon: AlertTriangleIconComponent,
   AlertOctagonIcon: AlertOctagonIconComponent,
+  BookIcon: BookIconComponent,
   CheckIcon: CheckIconComponent,
   CheckCircleIcon: CheckCircleIconComponent,
   ChevronDownIcon: ChevronDownIconComponent,
@@ -79,6 +83,8 @@ const iconMap: Record<string, IconComponent> = {
   RupeeIcon: RupeeIconComponent,
   SearchIcon: SearchIconComponent,
   SettingsIcon: SettingsIconComponent,
+  SettlementsIcon: SettlementsIconComponent,
+  ShuffleIcon: ShuffleIconComponent,
   SlashIcon: SlashIconComponent,
   TrashIcon: TrashIconComponent,
   RefreshLeftIcon: RefreshLeftIconComponent,
