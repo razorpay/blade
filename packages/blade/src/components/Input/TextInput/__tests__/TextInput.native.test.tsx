@@ -266,6 +266,26 @@ describe('<TextInput />', () => {
     expect(getByDisplayValue(valueInitial)).toBeTruthy();
   });
 
+  it('should not show clear button on initial render if showClearButton is false', () => {
+    const label = 'Enter name';
+    const valueInitial = '123';
+    const onClearButtonClick = jest.fn();
+
+    const { getByDisplayValue, queryByRole } = renderWithTheme(
+      <TextInput
+        label={label}
+        defaultValue={valueInitial}
+        showClearButton={false}
+        onClearButtonClick={onClearButtonClick}
+      />,
+    );
+    const input = getByDisplayValue(valueInitial);
+    expect(input).toBeTruthy();
+
+    const clearButton = queryByRole('button');
+    expect(clearButton).toBeFalsy();
+  });
+
   it('should pass a11y', () => {
     // todo: tests should be updated for improved a11y after https://github.com/razorpay/blade/issues/696
     const placeholder = 'First Last';
