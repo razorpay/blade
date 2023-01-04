@@ -125,6 +125,9 @@ export const StyledBaseInput = React.forwardRef<
           setCurrentInteraction('active');
           handleOnFocus?.({ name, value: event });
         }}
+        onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+          handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
+        }}
         {...props}
         {...accessibilityProps}
       >

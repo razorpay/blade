@@ -2,6 +2,7 @@ import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
+import { getPlatformType } from '~utils';
 type SelectInputProps = Pick<
   BaseInputProps,
   | 'label'
@@ -30,28 +31,36 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
 
   const { icon, ...baseInputProps } = props;
 
+  const platform = getPlatformType();
+
   return (
-    <BaseInput
-      {...baseInputProps}
-      as="button"
-      textAlign="left"
-      /**
-       * @TODO
-       * this will come from Dropdown component
-       */
-      id="input-123"
-      leadingIcon={icon}
-      hasPopup
-      isPopupExpanded={isPopupExpanded}
-      onClick={() => {
-        console.log('clickkk');
-      }}
-      /**
-       * @TODO Pass the popup id by taking it from Dropdown
-       */
-      popupId="123"
-      trailingIcon={isPopupExpanded ? ChevronUpIcon : ChevronDownIcon}
-    />
+    <>
+      {platform !== 'react-native' ? (
+        // @TODO Use this for form submissions
+        <input type="hidden" required={props.isRequired} value="selected-value-from-dropdown" />
+      ) : null}
+      <BaseInput
+        {...baseInputProps}
+        as="button"
+        textAlign="left"
+        /**
+         * @TODO
+         * this will come from Dropdown component
+         */
+        id="input-123"
+        leadingIcon={icon}
+        hasPopup
+        isPopupExpanded={isPopupExpanded}
+        onClick={() => {
+          console.log('clickkk');
+        }}
+        /**
+         * @TODO Pass the popup id by taking it from Dropdown
+         */
+        popupId="123"
+        trailingIcon={isPopupExpanded ? ChevronUpIcon : ChevronDownIcon}
+      />
+    </>
   );
 };
 
