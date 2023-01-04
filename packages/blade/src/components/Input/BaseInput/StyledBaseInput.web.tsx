@@ -1,41 +1,66 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { CSSObject, DefaultTheme, ThemeProps } from 'styled-components';
 import { getBaseInputStyles } from './baseInputStyles';
 
 import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 
+const getWebInputStyles = (
+  props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &
+    ThemeProps<DefaultTheme> &
+    (React.InputHTMLAttributes<HTMLInputElement> | React.ButtonHTMLAttributes<HTMLButtonElement>),
+): CSSObject => {
+  return {
+    ...getBaseInputStyles({
+      isDisabled: props.disabled,
+      theme: props.theme,
+      validationState: props.validationState,
+      leadingIcon: props.leadingIcon,
+      prefix: props.prefix,
+      interactionElement: props.interactionElement,
+      suffix: props.suffix,
+      trailingIcon: props.trailingIcon,
+      textAlign: props.textAlign,
+    }),
+    outline: 'none',
+    border: 'none',
+    '::placeholder': {
+      ...getTextStyles({
+        size: 'medium',
+        variant: 'body',
+        type: 'placeholder',
+        weight: 'regular',
+        contrast: 'low',
+        theme: props.theme,
+      }),
+      textAlign: props.textAlign,
+    },
+    ':focus': {
+      outline: 'none',
+    },
+    cursor: props.disabled ? 'not-allowed' : 'auto',
+  };
+};
+
 const StyledBaseNativeInput = styled.input<
   Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
+>(getWebInputStyles);
+
+const StyledBaseNativeButton = styled.button<
+  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
 >((props) => ({
-  ...getBaseInputStyles({
-    isDisabled: props.disabled,
+  ...getWebInputStyles(props),
+  // In button, we're styling the innerText like a placeholder to make it similar with other inputs
+  ...getTextStyles({
+    size: 'medium',
+    variant: 'body',
+    type: 'placeholder',
+    weight: 'regular',
+    contrast: 'low',
     theme: props.theme,
-    validationState: props.validationState,
-    leadingIcon: props.leadingIcon,
-    prefix: props.prefix,
-    interactionElement: props.interactionElement,
-    suffix: props.suffix,
-    trailingIcon: props.trailingIcon,
-    textAlign: props.textAlign,
   }),
-  outline: 'none',
-  border: 'none',
-  '::placeholder': {
-    ...getTextStyles({
-      size: 'medium',
-      variant: 'body',
-      type: 'placeholder',
-      weight: 'regular',
-      contrast: 'low',
-      theme: props.theme,
-    }),
-    textAlign: props.textAlign,
-  },
-  ':focus': {
-    outline: 'none',
-  },
-  cursor: props.disabled ? 'not-allowed' : 'auto',
+  textAlign: props.textAlign,
 }));
 
 const autoCompleteSuggestionTypeMap = {
@@ -56,12 +81,14 @@ const autoCompleteSuggestionTypeMap = {
   creditCardExpiryYear: 'cc-exp-year',
 };
 
-export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInputProps>(
+export const StyledBaseInput = React.forwardRef<
+  HTMLInputElement | HTMLButtonElement,
+  StyledBaseInputProps
+>(
   (
     {
       name,
       isDisabled,
-      isReadOnly,
       isRequired,
       maxCharacters,
       handleOnFocus,
@@ -82,12 +109,32 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
     },
     ref,
   ) => {
-    return (
-      <StyledBaseNativeInput
+    return props.as === 'button' ? (
+      <StyledBaseNativeButton
+        // @ts-expect-error: TS doesnt understand that this will always be `button`
         ref={ref}
         name={name}
-        role={hasPopup ? 'combobox' : undefined}
-        readOnly={isReadOnly}
+        disabled={isDisabled}
+        required={isRequired}
+        onClick={onClick}
+        onBlur={(event: React.ChangeEvent<HTMLInputElement>): void => {
+          setCurrentInteraction('default');
+          handleOnBlur?.({ name, value: event });
+        }}
+        onFocus={(event: React.ChangeEvent<HTMLInputElement>): void => {
+          setCurrentInteraction('active');
+          handleOnFocus?.({ name, value: event });
+        }}
+        {...props}
+        {...accessibilityProps}
+      >
+        {props.placeholder}
+      </StyledBaseNativeButton>
+    ) : (
+      <StyledBaseNativeInput
+        // @ts-expect-error: TS doesnt understand that this will always be `input`
+        ref={ref}
+        name={name}
         type={type === 'telephone' ? 'tel' : type}
         disabled={isDisabled}
         required={isRequired}
@@ -100,7 +147,6 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
             ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
             : undefined
         }
-        onClick={onClick}
         onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
           handleOnChange?.({ name, value: event })
         }

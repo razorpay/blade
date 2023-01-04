@@ -32,6 +32,8 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
   return (
     <BaseInput
       {...baseInputProps}
+      as="button"
+      textAlign="left"
       /**
        * @TODO
        * this will come from Dropdown component
@@ -41,7 +43,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       hasPopup
       isPopupExpanded={isOpen}
       onClick={() => {
-        setIsOpen(!isOpen);
+        console.log('clickkk');
       }}
       onKeyDown={(e) => {
         if (e.code) {
@@ -54,7 +56,6 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
        * @TODO Pass the popup id by taking it from Dropdown
        */
       popupId="123"
-      isReadOnly
       trailingIcon={isOpen ? ChevronUpIcon : ChevronDownIcon}
     />
   );

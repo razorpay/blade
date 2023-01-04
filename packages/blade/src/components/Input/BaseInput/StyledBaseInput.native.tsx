@@ -1,8 +1,15 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import type { TextInput } from 'react-native';
+import type { CSSObject, ThemeProps, DefaultTheme } from 'styled-components';
+import type {
+  TextInputProps,
+  TextInput,
+  TouchableHighlight,
+  TouchableHighlightProps,
+} from 'react-native';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
+import { Text } from '~components/Typography';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -64,35 +71,47 @@ const KeyboardTypeToNativeValuesMap = {
   decimal: 'decimal-pad',
 };
 
-const StyledNativeBaseInput = styled.TextInput<
-  Omit<
-    StyledBaseInputProps,
-    'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction'
-  > & {
-    isTextArea?: boolean;
-    isFocused: boolean;
-    autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
-  }
->((props) => ({
-  ...getBaseInputStyles({
-    theme: props.theme,
-    isFocused: props.isFocused,
-    isDisabled: !props.editable,
-    validationState: props.validationState,
-    leadingIcon: props.leadingIcon,
-    prefix: props.prefix,
-    interactionElement: props.interactionElement,
-    suffix: props.suffix,
-    trailingIcon: props.trailingIcon,
-  }),
-  lineHeight: undefined,
-  textAlignVertical: 'top',
-  height: props.isTextArea
-    ? `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`
-    : '36px',
-}));
+type StyledComponentInputProps = Omit<
+  StyledBaseInputProps,
+  'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction'
+> & {
+  isTextArea?: boolean;
+  isFocused: boolean;
+  autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
+};
 
-export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>(
+const getRNInputStyles = (
+  props: StyledComponentInputProps &
+    ThemeProps<DefaultTheme> &
+    (TextInputProps | TouchableHighlightProps),
+): CSSObject => {
+  return {
+    ...getBaseInputStyles({
+      theme: props.theme,
+      isFocused: props.isFocused,
+      isDisabled: 'editable' in props ? !props.editable : undefined,
+      validationState: props.validationState,
+      leadingIcon: props.leadingIcon,
+      prefix: props.prefix,
+      interactionElement: props.interactionElement,
+      suffix: props.suffix,
+      trailingIcon: props.trailingIcon,
+    }),
+    lineHeight: undefined,
+    textAlignVertical: 'top',
+    height: props.isTextArea
+      ? `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`
+      : '36px',
+  };
+};
+
+const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(getRNInputStyles);
+const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(getRNInputStyles);
+
+export const StyledBaseInput = React.forwardRef<
+  TextInput | TouchableHighlight,
+  StyledBaseInputProps
+>(
   (
     {
       name,
@@ -113,13 +132,33 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       setCurrentInteraction,
       type,
       numberOfLines,
-      isReadOnly,
       isTextArea,
+      hasPopup,
       ...props
     },
     ref,
   ) => {
-    return (
+    return hasPopup ? (
+      <StyledNativeBaseButton
+        // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={ref as any}
+        // @ts-expect-error: not able to type onClick for both web and native
+        onPress={onClick}
+        onFocus={(): void => {
+          setCurrentInteraction('active');
+        }}
+        onBlur={(): void => {
+          setCurrentInteraction('default');
+        }}
+        {...props}
+        {...accessibilityProps}
+      >
+        <Text size="medium" variant="body" type="placeholder" weight="regular">
+          {props.placeholder}
+        </Text>
+      </StyledNativeBaseButton>
+    ) : (
       <StyledNativeBaseInput
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -127,13 +166,12 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         multiline={isTextArea}
         numberOfLines={numberOfLines}
         isFocused={currentInteraction === 'active'}
-        editable={!isDisabled && !isReadOnly}
+        editable={!isDisabled}
         maxLength={maxCharacters}
         onFocus={(event): void => {
           handleOnFocus?.({ name, value: event?.nativeEvent.text });
           setCurrentInteraction('active');
         }}
-        onPress={onClick}
         onBlur={(): void => {
           setCurrentInteraction('default');
         }}

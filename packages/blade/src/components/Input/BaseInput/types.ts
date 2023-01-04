@@ -29,7 +29,6 @@ export type StyledBaseInputProps = {
   | 'value'
   | 'isDisabled'
   | 'isRequired'
-  | 'isReadOnly'
   | 'validationState'
   | 'leadingIcon'
   | 'prefix'

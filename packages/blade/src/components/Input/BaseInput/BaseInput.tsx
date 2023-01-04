@@ -32,7 +32,7 @@ export type BaseInputProps = FormInputLabelProps &
     /**
      * Determines if it needs to be rendered as input or textarea
      */
-    as?: 'input' | 'textarea';
+    as?: 'input' | 'textarea' | 'button';
     /**
      * ID that will be used for accessibility
      */
@@ -91,12 +91,6 @@ export type BaseInputProps = FormInputLabelProps &
      * Used to disable the input field
      */
     isDisabled?: boolean;
-    /**
-     * Set true when input is enabled but in the readonly state.
-     *
-     * E.g. can be used with select-only input where you don't want users to enter in the input
-     */
-    isReadOnly?: boolean;
     /**
      * If true, the input is marked as required, and `required` attribute will be added
      */
@@ -438,7 +432,6 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onClick,
       onKeyDown,
       isDisabled,
-      isReadOnly,
       necessityIndicator,
       validationState,
       errorText,
@@ -574,7 +567,6 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               value={value}
               placeholder={placeholder}
               isDisabled={isDisabled}
-              isReadOnly={isReadOnly}
               validationState={validationState}
               isRequired={isRequired}
               handleOnFocus={handleOnFocus}
@@ -600,6 +592,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               setCurrentInteraction={setCurrentInteraction}
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
+              hasPopup={hasPopup}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}
