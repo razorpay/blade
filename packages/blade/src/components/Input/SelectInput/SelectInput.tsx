@@ -33,6 +33,8 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
   return (
     <BaseInput
       {...baseInputProps}
+      as="button"
+      textAlign="left"
       /**
        * @TODO
        * this will come from Dropdown component
@@ -41,14 +43,13 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       leadingIcon={icon}
       hasPopup
       isPopupExpanded={isPopupExpanded}
-      onClick={(e) => {
-        console.log(e);
+      onClick={() => {
+        console.log('clickkk');
       }}
       /**
        * @TODO Pass the popup id by taking it from Dropdown
        */
       popupId="123"
-      isReadOnly
       trailingIcon={isPopupExpanded ? ChevronUpIcon : ChevronDownIcon}
     />
   );
