@@ -12,10 +12,5 @@ const SelectInputStoryMeta: Meta = {
   },
 };
 
-export const SelectInput = (): JSX.Element => (
-  <form>
-    <SelectInputComponent label="Select" placeholder="Enter" isRequired />
-    <button>Submit</button>
-  </form>
-);
+export const SelectInput = SelectInputComponent;
 export default SelectInputStoryMeta;

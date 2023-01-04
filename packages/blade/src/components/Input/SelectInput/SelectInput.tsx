@@ -41,6 +41,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       {platform !== 'react-native' ? (
         <VisuallyHidden>
           <input
+            tabIndex={-1}
             required={props.isRequired}
             value=""
             // Accessibility is covered in the select input itself so we hide this field from a11y tree
