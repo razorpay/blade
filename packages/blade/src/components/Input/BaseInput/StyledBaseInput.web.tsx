@@ -116,7 +116,6 @@ export const StyledBaseInput = React.forwardRef<
         name={name}
         type="button"
         disabled={isDisabled}
-        required={isRequired}
         onClick={onClick}
         onBlur={(event: React.ChangeEvent<HTMLInputElement>): void => {
           setCurrentInteraction('default');
