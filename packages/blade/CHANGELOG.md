@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.4.3
+
+### Patch Changes
+
+- e6c3ea9: fix(blade): restrict childrens in Card component
+
 ## 5.4.2
 
 ### Patch Changes
