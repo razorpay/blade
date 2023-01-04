@@ -105,8 +105,8 @@ const getRNInputStyles = (
   };
 };
 
-const StyledBaseNativeInput = styled.TextInput<StyledComponentInputProps>(getRNInputStyles);
-const StyledBaseNativeButton = styled.TouchableOpacity<StyledComponentInputProps>(getRNInputStyles);
+const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(getRNInputStyles);
+const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(getRNInputStyles);
 
 export const StyledBaseInput = React.forwardRef<
   TextInput | TouchableHighlight,
@@ -139,7 +139,7 @@ export const StyledBaseInput = React.forwardRef<
     ref,
   ) => {
     return hasPopup ? (
-      <StyledBaseNativeButton
+      <StyledNativeBaseButton
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
@@ -157,9 +157,9 @@ export const StyledBaseInput = React.forwardRef<
         <Text size="medium" variant="body" type="placeholder" weight="regular">
           {props.placeholder}
         </Text>
-      </StyledBaseNativeButton>
+      </StyledNativeBaseButton>
     ) : (
-      <StyledBaseNativeInput
+      <StyledNativeBaseInput
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}

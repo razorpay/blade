@@ -592,7 +592,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               setCurrentInteraction={setCurrentInteraction}
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
-              hasPopup
+              hasPopup={hasPopup}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}
