@@ -139,7 +139,7 @@ export const StyledBaseInput = React.forwardRef<
         disabled={isDisabled}
         required={isRequired}
         maxLength={maxCharacters}
-        rows={props.as === 'textarea' ?? numberOfLines}
+        rows={numberOfLines}
         inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
         enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
         autoComplete={
