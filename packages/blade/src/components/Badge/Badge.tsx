@@ -98,7 +98,7 @@ const Badge = ({
     contrast,
   });
 
-  const textSizes = {
+  const badgeTextSizes = {
     small: {
       variant: 'body',
       size: 'xsmall',
@@ -136,7 +136,7 @@ const Badge = ({
           </Box>
         ) : null}
         <Text
-          {...textSizes[size]}
+          {...badgeTextSizes[size]}
           type="normal"
           weight={fontWeight}
           truncateAfterLines={1}

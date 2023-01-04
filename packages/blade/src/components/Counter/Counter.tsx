@@ -75,7 +75,7 @@ const Counter = ({
     contrast,
   });
 
-  const textSizes = {
+  const counterTextSizes = {
     small: {
       variant: 'body',
       size: 'xsmall',
@@ -105,7 +105,7 @@ const Counter = ({
         {...metaAttribute(MetaConstants.Component, MetaConstants.Counter)}
       >
         <Text
-          {...textSizes[size]}
+          {...counterTextSizes[size]}
           type="normal"
           weight="regular"
           truncateAfterLines={1}
