@@ -44,8 +44,14 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       isPopupExpanded={isOpen}
       onClick={() => {
         console.log('clickkk');
+        setIsOpen(true);
       }}
       onKeyDown={(e) => {
+        console.log(e.code);
+        if (e.code === 'Escape') {
+          setIsOpen(false);
+        }
+
         if (e.code) {
           if (['ArrowDown', 'ArrowUp', 'Space'].includes(e.code)) {
             setIsOpen(!isOpen);
