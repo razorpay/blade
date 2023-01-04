@@ -43,11 +43,11 @@ const getWebInputStyles = (
   };
 };
 
-const StyledBaseHTMLInput = styled.input<
+const StyledBaseNativeInput = styled.input<
   Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
 >(getWebInputStyles);
 
-const StyledBaseHTMLButton = styled.button<
+const StyledBaseNativeButton = styled.button<
   Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
 >((props) => ({
   ...getWebInputStyles(props),
@@ -110,7 +110,7 @@ export const StyledBaseInput = React.forwardRef<
     ref,
   ) => {
     return props.as === 'button' ? (
-      <StyledBaseHTMLButton
+      <StyledBaseNativeButton
         // @ts-expect-error: TS doesnt understand that this will always be `button`
         ref={ref}
         name={name}
@@ -129,9 +129,9 @@ export const StyledBaseInput = React.forwardRef<
         {...accessibilityProps}
       >
         {props.placeholder}
-      </StyledBaseHTMLButton>
+      </StyledBaseNativeButton>
     ) : (
-      <StyledBaseHTMLInput
+      <StyledBaseNativeInput
         // @ts-expect-error: TS doesnt understand that this will always be `input`
         ref={ref}
         name={name}
