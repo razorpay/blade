@@ -12,6 +12,8 @@ const screenReaderStyles: CSSObject = {
   width: `1px`,
   whiteSpace: 'nowrap',
   wordWrap: 'normal',
+  top: '0px',
+  left: '0px',
 };
 
 export { screenReaderStyles };
