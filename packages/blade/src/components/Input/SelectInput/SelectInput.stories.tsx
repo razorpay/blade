@@ -8,6 +8,7 @@ const SelectInputStoryMeta: Meta = {
     label: 'Select Fruit',
     placeholder: 'Select your favorite fruit',
     helpText: 'Select only one',
+    isRequired: true,
   },
 };
 

@@ -114,6 +114,7 @@ export const StyledBaseInput = React.forwardRef<
         // @ts-expect-error: TS doesnt understand that this will always be `button`
         ref={ref}
         name={name}
+        type="button"
         disabled={isDisabled}
         required={isRequired}
         onClick={onClick}
@@ -124,6 +125,9 @@ export const StyledBaseInput = React.forwardRef<
         onFocus={(event: React.ChangeEvent<HTMLInputElement>): void => {
           setCurrentInteraction('active');
           handleOnFocus?.({ name, value: event });
+        }}
+        onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+          handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
         }}
         {...props}
         {...accessibilityProps}
