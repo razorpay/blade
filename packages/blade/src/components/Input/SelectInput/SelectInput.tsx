@@ -14,7 +14,6 @@ type SelectInputProps = Pick<
   | 'helpText'
   | 'errorText'
   | 'successText'
-  | 'placeholder'
   | 'name'
   | 'isDisabled'
   | 'isRequired'
@@ -30,6 +29,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
    * @TODO handle expanded state with Dropdown
    */
   const isPopupExpanded = false;
+  const value = '';
 
   const { icon, ...baseInputProps } = props;
 
@@ -43,7 +43,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
           <input
             tabIndex={-1}
             required={props.isRequired}
-            value=""
+            value={value}
             // Accessibility is covered in the select input itself so we hide this field from a11y tree
             aria-hidden={true}
           />
@@ -53,6 +53,8 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         {...baseInputProps}
         as="button"
         textAlign="left"
+        value={value}
+        defaultValue="Select Option"
         /**
          * @TODO
          * this will come from Dropdown component

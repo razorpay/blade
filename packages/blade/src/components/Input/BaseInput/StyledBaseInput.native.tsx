@@ -154,8 +154,8 @@ export const StyledBaseInput = React.forwardRef<
         {...props}
         {...accessibilityProps}
       >
-        <Text size="medium" variant="body" type="placeholder" weight="regular">
-          {props.placeholder}
+        <Text size="medium" variant="body" type="subtle" contrast="low" weight="regular">
+          {props.value ? props.value : props.defaultValue}
         </Text>
       </StyledNativeBaseButton>
     ) : (

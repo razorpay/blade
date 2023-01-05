@@ -6,7 +6,6 @@ const SelectInputStoryMeta: Meta = {
   component: SelectInputComponent,
   args: {
     label: 'Select Fruit',
-    placeholder: 'Select your favorite fruit',
     helpText: 'Select only one',
     isRequired: true,
   },

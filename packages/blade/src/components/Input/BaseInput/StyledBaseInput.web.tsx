@@ -51,11 +51,10 @@ const StyledBaseNativeButton = styled.button<
   Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
 >((props) => ({
   ...getWebInputStyles(props),
-  // In button, we're styling the innerText like a placeholder to make it similar with other inputs
   ...getTextStyles({
     size: 'medium',
     variant: 'body',
-    type: 'placeholder',
+    type: 'subtle',
     weight: 'regular',
     contrast: 'low',
     theme: props.theme,
@@ -131,7 +130,7 @@ export const StyledBaseInput = React.forwardRef<
         {...props}
         {...accessibilityProps}
       >
-        {props.placeholder}
+        {props.value ? props.value : props.defaultValue}
       </StyledBaseNativeButton>
     ) : (
       <StyledBaseNativeInput
