@@ -85,3 +85,8 @@ export { default as UsersIcon } from './UsersIcon';
 export { default as HelpCircleIcon } from './HelpCircleIcon';
 export { default as ExternalLinkIcon } from './ExternalLinkIcon';
 export { default as MailIcon } from './MailIcon';
+export { default as BookIcon } from './BookIcon';
+export { default as SettlementsIcon } from './SettlementsIcon';
+export { default as ShuffleIcon } from './ShuffleIcon';
+export { default as TagIcon } from './TagIcon';
+export { default as UserIcon } from './UserIcon';

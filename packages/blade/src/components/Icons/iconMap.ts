@@ -29,17 +29,22 @@ import SlashIconComponent from './SlashIcon';
 import TrashIconComponent from './TrashIcon';
 import AlertTriangleIconComponent from './AlertTriangleIcon';
 import AlertOctagonIconComponent from './AlertOctagonIcon';
+import BookIconComponent from './BookIcon/BookIcon';
 import CheckIconComponent from './CheckIcon';
 import CheckCircleIconComponent from './CheckCircleIcon';
 import RefreshLeftIconComponent from './RefreshLeftIcon';
 import RotateCounterClockWiseIconComponent from './RotateCounterClockWiseIcon';
 import TrendingUpIconComponent from './TrendingUpIcon';
 import TrendingDownIconComponent from './TrendingDownIcon';
+import UserIconComponent from './UserIcon';
 import UsersIconComponent from './UsersIcon';
 import HelpCircleIconComponent from './HelpCircleIcon';
 import ExternalLinkIconComponent from './ExternalLinkIcon';
 import MinusIconComponent from './MinusIcon';
 import MailIconComponent from './MailIcon';
+import SettlementsIconComponent from './SettlementsIcon';
+import ShuffleIconComponent from './ShuffleIcon';
+import TagIconComponent from './TagIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -51,6 +56,7 @@ const iconMap: Record<string, IconComponent> = {
   ArrowUpRightIcon: ArrowUpRightIconComponent,
   AlertTriangleIcon: AlertTriangleIconComponent,
   AlertOctagonIcon: AlertOctagonIconComponent,
+  BookIcon: BookIconComponent,
   CheckIcon: CheckIconComponent,
   CheckCircleIcon: CheckCircleIconComponent,
   ChevronDownIcon: ChevronDownIconComponent,
@@ -79,13 +85,16 @@ const iconMap: Record<string, IconComponent> = {
   RupeeIcon: RupeeIconComponent,
   SearchIcon: SearchIconComponent,
   SettingsIcon: SettingsIconComponent,
+  SettlementsIcon: SettlementsIconComponent,
+  ShuffleIcon: ShuffleIconComponent,
   SlashIcon: SlashIconComponent,
+  TagIcon: TagIconComponent,
   TrashIcon: TrashIconComponent,
   RefreshLeftIcon: RefreshLeftIconComponent,
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
-
+  UserIcon: UserIconComponent,
   UsersIcon: UsersIconComponent,
 };
 
