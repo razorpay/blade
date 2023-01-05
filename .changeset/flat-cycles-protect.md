@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': patch
+'@razorpay/blade': minor
 ---
 
-feat(Icons): add ClockIcon
+feat(blade): add ClockIcon
