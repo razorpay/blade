@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SmartCollectV2Icon /> should render CloseIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
+  >
+    <path
+      d="M5.105 10.429a1 1 0 0 0-1 1v5.333a1 1 0 0 0 1 1h1.158a1 1 0 0 0 1-1v-5.333a1 1 0 0 0-1-1H5.105Zm6.316 0a1 1 0 0 0-1 1v5.333a1 1 0 0 0 1 1h1.158a1 1 0 0 0 1-1v-5.333a1 1 0 0 0-1-1H11.42ZM2 22a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-1.143a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1V22Zm15.737-11.571a1 1 0 0 0-1 1v5.333a1 1 0 0 0 1 1h1.158a1 1 0 0 0 1-1v-5.333a1 1 0 0 0-1-1h-1.158Zm-5.273-9.186a1 1 0 0 0-.928 0l-9 4.714A1 1 0 0 0 2 6.843v.49a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-.49a1 1 0 0 0-.536-.886l-9-4.714Z"
+      fill="hsla(216, 27%, 36%, 1)"
+    />
+  </svg>
+</div>
+`;

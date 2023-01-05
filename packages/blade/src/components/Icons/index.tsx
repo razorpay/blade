@@ -72,6 +72,7 @@ export { default as RupeeIcon } from './RupeeIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as SettingsIcon } from './SettingsIcon';
 export { default as SlashIcon } from './SlashIcon';
+export { default as SmartCollectV2Icon } from './SmartCollectV2Icon';
 export { default as TrashIcon } from './TrashIcon';
 export { default as AlertTriangleIcon } from './AlertTriangleIcon';
 export { default as AlertOctagonIcon } from './AlertOctagonIcon';

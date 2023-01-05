@@ -26,6 +26,7 @@ import RupeeIconComponent from './RupeeIcon';
 import SearchIconComponent from './SearchIcon';
 import SettingsIconComponent from './SettingsIcon';
 import SlashIconComponent from './SlashIcon';
+import SmartCollectV2IconComponent from './SmartCollectV2Icon';
 import TrashIconComponent from './TrashIcon';
 import AlertTriangleIconComponent from './AlertTriangleIcon';
 import AlertOctagonIconComponent from './AlertOctagonIcon';
@@ -80,6 +81,7 @@ const iconMap: Record<string, IconComponent> = {
   SearchIcon: SearchIconComponent,
   SettingsIcon: SettingsIconComponent,
   SlashIcon: SlashIconComponent,
+  SmartCollectV2Icon: SmartCollectV2IconComponent,
   TrashIcon: TrashIconComponent,
   RefreshLeftIcon: RefreshLeftIconComponent,
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
