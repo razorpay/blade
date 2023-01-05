@@ -292,6 +292,27 @@ describe('<TextInput />', () => {
     expect(input).toHaveValue('');
   });
 
+  it('should not show clear button on initial render if showClearButton is false', () => {
+    const label = 'Enter name';
+    const onClearButtonClick = jest.fn();
+    const valueInitial = '123';
+
+    const { getByLabelText, queryByRole } = renderWithTheme(
+      <TextInput
+        label={label}
+        defaultValue={valueInitial}
+        showClearButton={false}
+        onClearButtonClick={onClearButtonClick}
+      />,
+    );
+
+    const input = getByLabelText(label);
+    expect(input).toHaveValue(valueInitial);
+
+    const clearButton = queryByRole('button');
+    expect(clearButton).not.toBeInTheDocument();
+  });
+
   it('should pass a11y', async () => {
     const { getByRole } = renderWithTheme(
       <TextInput

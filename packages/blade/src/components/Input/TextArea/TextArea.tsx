@@ -70,9 +70,11 @@ const TextArea = ({
 }: TextAreaProps): React.ReactElement => {
   const inputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
 
-  const [shouldShowClearButton, setShouldShowClearButton] = React.useState<boolean>(
-    Boolean(showClearButton && (value?.length || defaultValue?.length)),
-  );
+  const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
+
+  React.useEffect(() => {
+    setShouldShowClearButton(Boolean(showClearButton && (value?.length || defaultValue?.length)));
+  }, [showClearButton, defaultValue, value]);
 
   const renderInteractionElement = (): React.ReactNode => {
     if (shouldShowClearButton) {
