@@ -45,6 +45,7 @@ import MailIconComponent from './MailIcon';
 import SettlementsIconComponent from './SettlementsIcon';
 import ShuffleIconComponent from './ShuffleIcon';
 import TagIconComponent from './TagIcon';
+import ClockIconComponent from './ClockIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -63,6 +64,7 @@ const iconMap: Record<string, IconComponent> = {
   ChevronLeftIcon: ChevronLeftIconComponent,
   ChevronRightIcon: ChevronRightIconComponent,
   ChevronUpIcon: ChevronUpIconComponent,
+  ClockIcon: ClockIconComponent,
   CloseIcon: CloseIconComponent,
   CreditCardIcon: CreditCardIconComponent,
   DollarIcon: DollarIconComponent,
