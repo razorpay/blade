@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react';
 import { Dropdown, DropdownOverlay } from './Dropdown';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
+import { ActionList, ActionListItem } from '~components/ActionList/ActionList';
 
 const SelectInputStoryMeta: Meta = {
   title: 'Components/Dropdown',
@@ -15,13 +16,13 @@ const SelectInputStoryMeta: Meta = {
 export const WithSelect = (): JSX.Element => {
   return (
     <Dropdown>
-      <SelectInput label="Select" placeholder="Select Fruit" />
+      <SelectInput label="Select your favorite fruit" />
       <DropdownOverlay>
-        <ul>
-          <li>Hello</li>
-          <li>Hi</li>
-          <li>Yo</li>
-        </ul>
+        <ActionList>
+          <ActionListItem title="Mango" value="mango" />
+          <ActionListItem title="Banana" value="banana" />
+          <ActionListItem title="Orange" value="orange" />
+        </ActionList>
       </DropdownOverlay>
     </Dropdown>
   );

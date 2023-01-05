@@ -192,6 +192,10 @@ export type BaseInputProps = FormInputLabelProps &
      */
     accessibilityLabel?: string;
     /**
+     * Can be used in select to set the id of the active descendant from the listbox
+     */
+    activeDescendant?: string;
+    /**
      * Hides the label text
      */
     hideLabelText?: boolean;
@@ -455,6 +459,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       id,
       componentName,
       accessibilityLabel,
+      activeDescendant,
       hideLabelText,
       hideFormHint,
       hasPopup,
@@ -503,6 +508,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       expanded: hasPopup ? isPopupExpanded : undefined,
       controls: hasPopup ? popupId : undefined,
       role: hasPopup ? 'combobox' : undefined,
+      activeDescendant,
     });
 
     const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);

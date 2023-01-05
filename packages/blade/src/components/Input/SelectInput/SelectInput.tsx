@@ -3,7 +3,7 @@ import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
-import { DropdownContext } from '~components/Dropdown/Dropdown';
+import { useDropdown } from '~components/Dropdown/Dropdown';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { getPlatformType } from '~utils';
@@ -27,7 +27,15 @@ type SelectInputProps = Pick<
 };
 
 const SelectInput = (props: SelectInputProps): JSX.Element => {
-  const { isOpen, setIsOpen, value } = React.useContext(DropdownContext);
+  const {
+    isOpen,
+    value,
+    onSelectClick,
+    onSelectKeydown,
+    dropdownBaseId,
+    activeIndex,
+    selectInputRef,
+  } = useDropdown();
 
   const { icon, ...baseInputProps } = props;
 
@@ -50,6 +58,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       <BaseInput
         {...baseInputProps}
         as="button"
+        ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
         value={value}
         defaultValue="Select Option"
@@ -61,22 +70,9 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         leadingIcon={icon}
         hasPopup
         isPopupExpanded={isOpen}
-        onClick={() => {
-          console.log('clickkk');
-          setIsOpen(true);
-        }}
-        onKeyDown={(e) => {
-          console.log(e.code);
-          if (e.code === 'Escape') {
-            setIsOpen(false);
-          }
-
-          if (e.code) {
-            if (['ArrowDown', 'ArrowUp', 'Space'].includes(e.code)) {
-              setIsOpen(!isOpen);
-            }
-          }
-        }}
+        onClick={onSelectClick}
+        onKeyDown={onSelectKeydown}
+        activeDescendant={`${dropdownBaseId}-${activeIndex}`}
         /**
          * @TODO Pass the popup id by taking it from Dropdown
          */
