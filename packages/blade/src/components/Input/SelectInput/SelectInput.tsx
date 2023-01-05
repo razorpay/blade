@@ -1,11 +1,12 @@
 import React from 'react';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
-import { HiddenInput } from './HiddenInput';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { DropdownContext } from '~components/Dropdown/Dropdown';
 import Box from '~components/Box';
+import { VisuallyHidden } from '~components/VisuallyHidden';
+import { getPlatformType } from '~utils';
 type SelectInputProps = Pick<
   BaseInputProps,
   | 'label'
@@ -15,7 +16,6 @@ type SelectInputProps = Pick<
   | 'helpText'
   | 'errorText'
   | 'successText'
-  | 'placeholder'
   | 'name'
   | 'isDisabled'
   | 'isRequired'
@@ -27,23 +27,32 @@ type SelectInputProps = Pick<
 };
 
 const SelectInput = (props: SelectInputProps): JSX.Element => {
-  const { isOpen, setIsOpen } = React.useContext(DropdownContext);
+  const { isOpen, setIsOpen, value } = React.useContext(DropdownContext);
 
   const { icon, ...baseInputProps } = props;
+
+  const platform = getPlatformType();
 
   return (
     <Box position="relative">
       {/* @TODO Use this for form submissions */}
-      <HiddenInput
-        required={props.isRequired}
-        value=""
-        // Accessibility is covered in the select input itself so we hide this field from a11y tree
-        aria-hidden={true}
-      />
+      {platform !== 'react-native' ? (
+        <VisuallyHidden>
+          <input
+            tabIndex={-1}
+            required={props.isRequired}
+            value={value}
+            // Accessibility is covered in the select input itself so we hide this field from a11y tree
+            aria-hidden={true}
+          />
+        </VisuallyHidden>
+      ) : null}
       <BaseInput
         {...baseInputProps}
         as="button"
         textAlign="left"
+        value={value}
+        defaultValue="Select Option"
         /**
          * @TODO
          * this will come from Dropdown component
