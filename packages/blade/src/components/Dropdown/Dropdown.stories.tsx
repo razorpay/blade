@@ -22,6 +22,9 @@ export const WithSelect = (): JSX.Element => {
           <ActionListItem title="Mango" value="mango" />
           <ActionListItem title="Banana" value="banana" />
           <ActionListItem title="Orange" value="orange" />
+          <ActionListItem title="Mingo" value="mingo" />
+          <ActionListItem title="Watermelon" value="watermelon" />
+          <ActionListItem title="Strawberry" value="strawberry" />
         </ActionList>
       </DropdownOverlay>
     </Dropdown>

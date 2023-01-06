@@ -58,7 +58,7 @@ const ActionList = ({ children }: { children: React.ReactNode[] }): JSX.Element 
 
   return (
     // @TODO: put aria-labelledby if needed
-    <Box ref={actionListRef} as="div" role="listbox" tabIndex={-1}>
+    <Box ref={actionListRef} as="div" role="listbox" maxHeight={50} overflow="scroll">
       {childrenWithId}
     </Box>
   );

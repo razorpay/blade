@@ -140,7 +140,7 @@ export function getUpdatedIndex(currentIndex: number, maxIndex: number, action: 
 }
 
 // check if element is visible in browser view port
-export function isElementInView(element: HTMLElement): boolean {
+export function isElementVisibleOnScreen(element: HTMLElement): boolean {
   const bounding = element.getBoundingClientRect();
 
   return (
@@ -156,44 +156,38 @@ export function isScrollable(element: HTMLElement): boolean {
   return element && element.clientHeight < element.scrollHeight;
 }
 
-// ensure a given child element is within the parent's visible scroll area
-// if the child is not visible, scroll the parent
-export function maintainScrollVisibility(
-  activeElement: HTMLElement,
-  scrollParent: HTMLElement,
-): void {
-  const { offsetHeight, offsetTop } = activeElement;
-  const { offsetHeight: parentOffsetHeight, scrollTop } = scrollParent;
+// Copied from https://htmldom.dev/check-if-an-element-is-visible-in-a-scrollable-container/
+export const isElementVisibleInContainerBack = (
+  ele: HTMLElement,
+  container: HTMLElement,
+): boolean => {
+  const { bottom, height, top } = ele.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
 
-  const isAbove = offsetTop < scrollTop;
-  const isBelow = offsetTop + offsetHeight > scrollTop + parentOffsetHeight;
+  return top <= containerRect.top
+    ? containerRect.top - top <= height
+    : bottom - containerRect.bottom <= height;
+};
 
-  if (isAbove) {
-    scrollParent.scrollTo(0, offsetTop);
-  } else if (isBelow) {
-    scrollParent.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight);
-  }
-}
+export const isElementVisibleInContainer = (
+  element: HTMLElement,
+  container: HTMLElement,
+): boolean => {
+  //Get container properties
+  const cTop = container.scrollTop;
+  const cBottom = cTop + container.clientHeight;
 
-// const onComboType = (
-//   letter: string,
-//   searchString: string,
-//   setSearchString: (value: string) => void,
-// ) => {
-//   // find the index of the first matching option
-//   const searchString = getSearchString(letter);
-//   const searchIndex = getIndexByLetter(this.options, searchString, this.activeIndex + 1);
+  //Get element properties
+  const eTop = element.offsetTop;
+  const eBottom = eTop + element.clientHeight;
 
-//   // if a match was found, go to it
-//   if (searchIndex >= 0) {
-//     this.onOptionChange(searchIndex);
-//   }
-//   // if no matches, clear the timeout and search string
-//   else {
-//     window.clearTimeout(this.searchTimeout);
-//     this.searchString = '';
-//   }
-// };
+  //Check if in view
+  const isTotal = eTop >= cTop && eBottom <= cBottom;
+  const isPartial = (eTop < cTop && eBottom > cTop) || (eBottom > cBottom && eTop < cBottom);
+
+  //Return outcome
+  return isTotal || isPartial;
+};
 
 type ActionsType = {
   setIsOpen: DropdownContextType['setIsOpen'];
@@ -248,44 +242,6 @@ export const performAction = (
 //  * Select Component
 //  * Accepts a combobox element and an array of string options
 //  */
-// const Select = function (el, options = []) {
-//   // element refs
-//   this.el = el;
-//   this.comboEl = el.querySelector('[role=combobox]');
-//   this.listboxEl = el.querySelector('[role=listbox]');
-
-//   // data
-//   this.idBase = this.comboEl.id || 'combo';
-//   this.options = options;
-
-//   // state
-//   this.activeIndex = 0;
-//   this.open = false;
-//   this.searchString = '';
-//   this.searchTimeout = null;
-
-//   // init
-//   if (el && this.comboEl && this.listboxEl) {
-//     this.init();
-//   }
-// };
-
-// Select.prototype.init = function () {
-//   // select first option by default
-//   this.comboEl.innerHTML = this.options[0];
-
-//   // add event listeners
-//   this.comboEl.addEventListener('blur', this.onComboBlur.bind(this));
-//   this.comboEl.addEventListener('click', this.onComboClick.bind(this));
-//   this.comboEl.addEventListener('keydown', this.onComboKeyDown.bind(this));
-
-//   // @CHANGED
-//   // // create options
-//   // this.options.map((option, index) => {
-//   //   const optionEl = this.createOption(option, index);
-//   //   this.listboxEl.appendChild(optionEl);
-//   // });
-// };
 
 // Select.prototype.createOption = function (optionText, index) {
 //   const optionEl = document.createElement('div');
@@ -304,22 +260,6 @@ export const performAction = (
 //   return optionEl;
 // };
 
-// Select.prototype.getSearchString = function (char) {
-//   // reset typing timeout and start new timeout
-//   // this allows us to make multiple-letter matches, like a native select
-//   if (typeof this.searchTimeout === 'number') {
-//     window.clearTimeout(this.searchTimeout);
-//   }
-
-//   this.searchTimeout = window.setTimeout(() => {
-//     this.searchString = '';
-//   }, 500);
-
-//   // add most recent letter to saved search string
-//   this.searchString += char;
-//   return this.searchString;
-// };
-
 // Select.prototype.onComboBlur = function () {
 //   console.log('Blurrrr', this.ignoreBlur);
 //   // do not do blur action if ignoreBlur flag has been set
@@ -332,61 +272,6 @@ export const performAction = (
 //   if (this.open) {
 //     this.selectOption(this.activeIndex);
 //     this.updateMenuState(false, false);
-//   }
-// };
-
-// // Select.prototype.onComboClick = function () {
-// //   this.updateMenuState(!this.open, false);
-// // };
-
-// Select.prototype.onComboKeyDown = function (event) {
-//   const { key } = event;
-//   const max = this.options.length - 1;
-
-//   const action = getActionFromKey(event, this.open);
-
-//   switch (action) {
-//     case SelectActions.Last:
-//     case SelectActions.First:
-//       this.updateMenuState(true);
-//     // intentional fallthrough
-//     case SelectActions.Next:
-//     case SelectActions.Previous:
-//     case SelectActions.PageUp:
-//     case SelectActions.PageDown:
-//       event.preventDefault();
-//       return this.onOptionChange(getUpdatedIndex(this.activeIndex, max, action));
-//     case SelectActions.CloseSelect:
-//       event.preventDefault();
-//       this.selectOption(this.activeIndex);
-//     // intentional fallthrough
-//     case SelectActions.Close:
-//       event.preventDefault();
-//       return this.updateMenuState(false);
-//     case SelectActions.Type:
-//       return this.onComboType(key);
-//     case SelectActions.Open:
-//       event.preventDefault();
-//       return this.updateMenuState(true);
-//   }
-// };
-
-// Select.prototype.onComboType = function (letter) {
-//   // open the listbox if it is closed
-//   this.updateMenuState(true);
-
-//   // find the index of the first matching option
-//   const searchString = this.getSearchString(letter);
-//   const searchIndex = getIndexByLetter(this.options, searchString, this.activeIndex + 1);
-
-//   // if a match was found, go to it
-//   if (searchIndex >= 0) {
-//     this.onOptionChange(searchIndex);
-//   }
-//   // if no matches, clear the timeout and search string
-//   else {
-//     window.clearTimeout(this.searchTimeout);
-//     this.searchString = '';
 //   }
 // };
 
@@ -476,6 +361,6 @@ export const performAction = (
  * TODO:
  *
  * - Implement onOptionClick and other functions (also think of multiselect)
- * - Implement typeahead
+ * - [x] Implement typeahead
  * - Multiselect!!!!!
  */

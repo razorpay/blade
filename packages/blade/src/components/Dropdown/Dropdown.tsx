@@ -1,5 +1,13 @@
 import React from 'react';
-import { getActionFromKey, getIndexByLetter, getUpdatedIndex, performAction } from './w3Select';
+import {
+  getActionFromKey,
+  getIndexByLetter,
+  getUpdatedIndex,
+  isElementVisibleOnScreen,
+  isScrollable,
+  isElementVisibleInContainer,
+  performAction,
+} from './w3Select';
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 
 export type DropdownContextType = {
@@ -44,6 +52,33 @@ let searchTimeout: number;
 // eslint-disable-next-line one-var
 let searchString = '';
 
+const ensureScrollVisiblity = (
+  newActiveIndex: number,
+  containerElement: HTMLElement | null,
+  options: string[],
+): void => {
+  //   // ensure the new option is in view
+  if (containerElement) {
+    if (isScrollable(containerElement)) {
+      const optionEl = containerElement.querySelectorAll<HTMLElement>('[role="option"]');
+      // Making sure its the same element as the one from options state
+      if (
+        newActiveIndex >= 0 &&
+        optionEl[newActiveIndex].dataset.value === options[newActiveIndex]
+      ) {
+        const activeElement = optionEl[newActiveIndex];
+        if (!isElementVisibleInContainer(activeElement, containerElement)) {
+          activeElement.scrollIntoView({ block: 'start', inline: 'start' });
+        }
+
+        if (!isElementVisibleOnScreen(optionEl[newActiveIndex])) {
+          activeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    }
+  }
+};
+
 type UseDropdownReturnValue = DropdownContextType & {
   onSelectClick: React.MouseEventHandler<HTMLInputElement>;
   onSelectKeydown: FormInputHandleOnKeyDownEvent | undefined;
@@ -66,7 +101,9 @@ const useDropdown = (): UseDropdownReturnValue => {
 
   const onOptionChange = (actionType: number, index?: number): void => {
     const max = options.length - 1;
-    setActiveIndex(getUpdatedIndex(index ?? activeIndex, max, actionType));
+    const newIndex = index ?? activeIndex;
+    setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
+    ensureScrollVisiblity(newIndex, rest.actionListRef.current, options);
   };
 
   const onComboType = (letter: string, actionType: number): void => {
@@ -155,7 +192,11 @@ function Dropdown({ children }: { children: React.ReactNode[] }): JSX.Element {
 function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Element {
   const { isOpen } = useDropdown();
 
-  return <div style={{ display: isOpen ? 'block' : 'none' }}>{children}</div>;
+  return (
+    <div style={{ display: isOpen ? 'block' : 'none' }} tabIndex={-1}>
+      {children}
+    </div>
+  );
 }
 
 export { Dropdown, DropdownOverlay, DropdownContext, useDropdown };
