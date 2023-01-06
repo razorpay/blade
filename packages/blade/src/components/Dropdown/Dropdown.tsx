@@ -1,5 +1,5 @@
 import React from 'react';
-import { getActionFromKey, getUpdatedIndex, performAction } from './w3Select';
+import { getActionFromKey, getIndexByLetter, getUpdatedIndex, performAction } from './w3Select';
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 
 export type DropdownContextType = {
@@ -40,6 +40,10 @@ const DropdownContext = React.createContext<DropdownContextType>({
   },
 });
 
+let searchTimeout: number;
+// eslint-disable-next-line one-var
+let searchString = '';
+
 type UseDropdownReturnValue = DropdownContextType & {
   onSelectClick: React.MouseEventHandler<HTMLInputElement>;
   onSelectKeydown: FormInputHandleOnKeyDownEvent | undefined;
@@ -60,10 +64,35 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsOpen(!isOpen);
   };
 
-  const onOptionChange = (actionType: number): void => {
+  const onOptionChange = (actionType: number, index?: number): void => {
     const max = options.length - 1;
-    console.log({ max });
-    setActiveIndex(getUpdatedIndex(activeIndex, max, actionType));
+    setActiveIndex(getUpdatedIndex(index ?? activeIndex, max, actionType));
+  };
+
+  const onComboType = (letter: string, actionType: number): void => {
+    // open the listbox if it is closed
+    setIsOpen(true);
+
+    if (typeof searchTimeout === 'number') {
+      window.clearTimeout(searchTimeout);
+    }
+
+    searchTimeout = window.setTimeout(() => {
+      searchString = '';
+    }, 500);
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    searchString = searchString + letter;
+    const searchIndex = getIndexByLetter(options, searchString, activeIndex + 1);
+
+    // if a match was found, go to it
+    if (searchIndex >= 0) {
+      onOptionChange(actionType, searchIndex);
+    }
+    // if no matches, clear the timeout and search string
+    else {
+      window.clearTimeout(searchTimeout);
+      searchString = '';
+    }
   };
 
   const onSelectKeydown: FormInputHandleOnKeyDownEvent = (e) => {
@@ -72,9 +101,11 @@ const useDropdown = (): UseDropdownReturnValue => {
       performAction(actionType, e, {
         setIsOpen,
         onOptionChange,
+        onComboType,
       });
     }
   };
+
   return {
     isOpen,
     setIsOpen,

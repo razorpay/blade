@@ -175,9 +175,30 @@ export function maintainScrollVisibility(
   }
 }
 
+// const onComboType = (
+//   letter: string,
+//   searchString: string,
+//   setSearchString: (value: string) => void,
+// ) => {
+//   // find the index of the first matching option
+//   const searchString = getSearchString(letter);
+//   const searchIndex = getIndexByLetter(this.options, searchString, this.activeIndex + 1);
+
+//   // if a match was found, go to it
+//   if (searchIndex >= 0) {
+//     this.onOptionChange(searchIndex);
+//   }
+//   // if no matches, clear the timeout and search string
+//   else {
+//     window.clearTimeout(this.searchTimeout);
+//     this.searchString = '';
+//   }
+// };
+
 type ActionsType = {
   setIsOpen: DropdownContextType['setIsOpen'];
   onOptionChange: (action: number) => void;
+  onComboType: (letter: string, action: number) => void;
 };
 export const performAction = (
   action: number,
@@ -209,7 +230,7 @@ export const performAction = (
       actions.setIsOpen(false);
       return true;
     case SelectActions.Type:
-      // return this.onComboType(key);
+      actions.onComboType(event.key, action);
       return true;
     case SelectActions.Open:
       event.preventDefault();
@@ -449,3 +470,12 @@ export const performAction = (
 // };
 
 // export default Select;
+
+/**
+ *
+ * TODO:
+ *
+ * - Implement onOptionClick and other functions (also think of multiselect)
+ * - Implement typeahead
+ * - Multiselect!!!!!
+ */

@@ -21,7 +21,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       onClick={props.onClick}
       href={props.href}
       style={{
-        border: activeIndex === props.index ? '2px solid blue' : '',
+        border: activeIndex === props.index ? '2px solid red' : '',
         display: 'block',
         width: '100%',
       }}
