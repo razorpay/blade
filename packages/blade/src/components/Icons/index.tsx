@@ -91,4 +91,4 @@ export { default as SettlementsIcon } from './SettlementsIcon';
 export { default as ShuffleIcon } from './ShuffleIcon';
 export { default as TagIcon } from './TagIcon';
 export { default as UserIcon } from './UserIcon';
-export { default as TransactionIcon } from './TransactionIcon';
+export { default as TransactionsIcon } from './TransactionsIcon';

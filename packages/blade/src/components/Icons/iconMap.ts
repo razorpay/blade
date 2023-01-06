@@ -46,7 +46,7 @@ import SettlementsIconComponent from './SettlementsIcon';
 import ShuffleIconComponent from './ShuffleIcon';
 import TagIconComponent from './TagIcon';
 import ClockIconComponent from './ClockIcon';
-import TransactionIconComponent from './TransactionIcon';
+import TransactionsIconComponent from './TransactionsIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -92,7 +92,7 @@ const iconMap: Record<string, IconComponent> = {
   ShuffleIcon: ShuffleIconComponent,
   SlashIcon: SlashIconComponent,
   TagIcon: TagIconComponent,
-  TransactionIcon: TransactionIconComponent,
+  TransactionsIcon: TransactionsIconComponent,
   TrashIcon: TrashIconComponent,
   RefreshLeftIcon: RefreshLeftIconComponent,
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,

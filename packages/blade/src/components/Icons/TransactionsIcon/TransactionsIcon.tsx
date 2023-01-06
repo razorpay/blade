@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const TransactionIcon: IconComponent = ({ size, color }) => {
+const TransactionsIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -15,4 +15,4 @@ const TransactionIcon: IconComponent = ({ size, color }) => {
   );
 };
 
-export default TransactionIcon;
+export default TransactionsIcon;
