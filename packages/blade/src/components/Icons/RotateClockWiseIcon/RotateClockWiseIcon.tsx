@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const RotateCwIcon: IconComponent = ({ size, color }) => {
+const RotateClockWiseIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -15,4 +15,4 @@ const RotateCwIcon: IconComponent = ({ size, color }) => {
   );
 };
 
-export default RotateCwIcon;
+export default RotateClockWiseIcon;

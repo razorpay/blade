@@ -31,7 +31,6 @@ import AlertTriangleIconComponent from './AlertTriangleIcon';
 import AlertOctagonIconComponent from './AlertOctagonIcon';
 import CheckIconComponent from './CheckIcon';
 import CheckCircleIconComponent from './CheckCircleIcon';
-import RefreshLeftIconComponent from './RefreshLeftIcon';
 import RotateCounterClockWiseIconComponent from './RotateCounterClockWiseIcon';
 import TrendingUpIconComponent from './TrendingUpIcon';
 import TrendingDownIconComponent from './TrendingDownIcon';
@@ -82,11 +81,10 @@ import PlayCircleIconComponent from './PlayCircleIcon';
 import PlusCircleIconComponent from './PlusCircleIcon';
 import PlusSquareIconComponent from './PlusSquareIcon';
 import PowerIconComponent from './PowerIcon';
-import RefreshCwIconComponent from './RefreshCwIcon';
-import RefreshCcwIconComponent from './RefreshCcwIcon';
+import RefreshLeftIconComponent from './RefreshLeftIcon';
+import RefreshRightIconComponent from './RefreshRightIcon';
 import RepeatIconComponent from './RepeatIcon';
-import RotateCwIconComponent from './RotateCwIcon';
-import RotateCcwIconComponent from './RotateCcwIcon';
+import RotateClockWiseIconComponent from './RotateClockWiseIcon';
 import SaveIconComponent from './SaveIcon';
 import ShareIconComponent from './ShareIcon';
 import ShoppingCartIconComponent from './ShoppingCartIcon';
@@ -299,8 +297,6 @@ const iconMap: Record<string, IconComponent> = {
   SettingsIcon: SettingsIconComponent,
   SlashIcon: SlashIconComponent,
   TrashIcon: TrashIconComponent,
-  RefreshLeftIcon: RefreshLeftIconComponent,
-  RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
   UsersIcon: UsersIconComponent,
@@ -346,11 +342,11 @@ const iconMap: Record<string, IconComponent> = {
   PlusCircleIcon: PlusCircleIconComponent,
   PlusSquareIcon: PlusSquareIconComponent,
   PowerIcon: PowerIconComponent,
-  RefreshCwIcon: RefreshCwIconComponent,
-  RefreshCcwIcon: RefreshCcwIconComponent,
+  RefreshLeftIcon: RefreshLeftIconComponent,
+  RefreshRightIcon: RefreshRightIconComponent,
   RepeatIcon: RepeatIconComponent,
-  RotateCwIcon: RotateCwIconComponent,
-  RotateCcwIcon: RotateCcwIconComponent,
+  RotateClockWiseIcon: RotateClockWiseIconComponent,
+  RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
   SaveIcon: SaveIconComponent,
   ShareIcon: ShareIconComponent,
   ShoppingCartIcon: ShoppingCartIconComponent,

@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const RefreshCcwIcon: IconComponent = ({ size, color }) => {
+const RefreshRightIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -19,4 +19,4 @@ const RefreshCcwIcon: IconComponent = ({ size, color }) => {
   );
 };
 
-export default RefreshCcwIcon;
+export default RefreshRightIcon;
