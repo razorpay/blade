@@ -26,7 +26,7 @@ import RupeeIconComponent from './RupeeIcon';
 import SearchIconComponent from './SearchIcon';
 import SettingsIconComponent from './SettingsIcon';
 import SlashIconComponent from './SlashIcon';
-import SmartCollectV2IconComponent from './SmartCollectV2Icon';
+import BankIconComponent from './BankIcon';
 import TrashIconComponent from './TrashIcon';
 import AlertTriangleIconComponent from './AlertTriangleIcon';
 import AlertOctagonIconComponent from './AlertOctagonIcon';
@@ -91,7 +91,7 @@ const iconMap: Record<string, IconComponent> = {
   SettlementsIcon: SettlementsIconComponent,
   ShuffleIcon: ShuffleIconComponent,
   SlashIcon: SlashIconComponent,
-  SmartCollectV2Icon: SmartCollectV2IconComponent,
+  BankIcon: BankIconComponent,
   TagIcon: TagIconComponent,
   TrashIcon: TrashIconComponent,
   RefreshLeftIcon: RefreshLeftIconComponent,
