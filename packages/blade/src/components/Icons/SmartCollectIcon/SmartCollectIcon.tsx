@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const SmartCollectV1Icon: IconComponent = ({ size, color }) => {
+const SmartCollectIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -17,4 +17,4 @@ const SmartCollectV1Icon: IconComponent = ({ size, color }) => {
   );
 };
 
-export default SmartCollectV1Icon;
+export default SmartCollectIcon;

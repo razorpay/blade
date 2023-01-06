@@ -67,12 +67,10 @@ import HeartIconComponent from './HeartIcon';
 import LogInIconComponent from './LogInIcon';
 import LogOutIconComponent from './LogOutIcon';
 import MaximizeIconComponent from './MaximizeIcon';
-import Maximize2IconComponent from './Maximize2Icon';
 import MenuIconComponent from './MenuIcon';
 import MicIconComponent from './MicIcon';
 import MicOffIconComponent from './MicOffIcon';
 import MinimizeIconComponent from './MinimizeIcon';
-import Minimize2IconComponent from './Minimize2Icon';
 import MinusSquareIconComponent from './MinusSquareIcon';
 import MinusCircleIconComponent from './MinusCircleIcon';
 import MoreVerticalIconComponent from './MoreVerticalIcon';
@@ -91,14 +89,12 @@ import RotateCwIconComponent from './RotateCwIcon';
 import RotateCcwIconComponent from './RotateCcwIcon';
 import SaveIconComponent from './SaveIcon';
 import ShareIconComponent from './ShareIcon';
-import Share2IconComponent from './Share2Icon';
 import ShoppingCartIconComponent from './ShoppingCartIcon';
 import ShuffleIconComponent from './ShuffleIcon';
 import StopCircleIconComponent from './StopCircleIcon';
 import SunIconComponent from './SunIcon';
 import ToggleLeftIconComponent from './ToggleLeftIcon';
 import ToggleRightIconComponent from './ToggleRightIcon';
-import Trash2IconComponent from './Trash2Icon';
 import ListIconComponent from './ListIcon';
 import StarIconComponent from './StarIcon';
 import SlidersIconComponent from './SlidersIcon';
@@ -121,7 +117,6 @@ import AlignRightIconComponent from './AlignRightIcon';
 import AlignLeftIconComponent from './AlignLeftIcon';
 import AlignCenterIconComponent from './AlignCenterIcon';
 import AnchorIconComponent from './AnchorIcon';
-import Link2IconComponent from './Link2Icon';
 import BoldIconComponent from './BoldIcon';
 import ScissorsIconComponent from './ScissorsIcon';
 import DeleteIconComponent from './DeleteIcon';
@@ -238,35 +233,30 @@ import UserXIconComponent from './UserXIcon';
 import UserPlusIconComponent from './UserPlusIcon';
 import UserMinusIconComponent from './UserMinusIcon';
 import ActivityIconComponent from './ActivityIcon';
-import BarChart2IconComponent from './BarChart2Icon';
 import BarChartIconComponent from './BarChartIcon';
 import PieChartIconComponent from './PieChartIcon';
 import CompassIconComponent from './CompassIcon';
 import MapIconComponent from './MapIcon';
 import MapPinIconComponent from './MapPinIcon';
 import NavigationIconComponent from './NavigationIcon';
-import Navigation2IconComponent from './Navigation2Icon';
 import DollarsIconComponent from './DollarsIcon';
 import RupeesIconComponent from './RupeesIcon';
 import DashboardIconComponent from './DashboardIcon';
-import TransactionsV1IconComponent from './TransactionsV1Icon';
-import TransactionsV2IconComponent from './TransactionsV2Icon';
+import TransactionsIconComponent from './TransactionsIcon';
 import SettlementsIconComponent from './SettlementsIcon';
 import InvoicesIconComponent from './InvoicesIcon';
 import PaymentLinksIconComponent from './PaymentLinksIcon';
 import PaymentButtonsIconComponent from './PaymentButtonsIcon';
 import PaymentPagesIconComponent from './PaymentPagesIcon';
-import RoutesV1IconComponent from './RoutesV1Icon';
-import RoutesV2IconComponent from './RoutesV2Icon';
+import RoutesIconComponent from './RoutesIcon';
 import SubscriptionsIconComponent from './SubscriptionsIcon';
-import SmartCollectV1IconComponent from './SmartCollectV1Icon';
-import SmartCollectV2IconComponent from './SmartCollectV2Icon';
+import SmartCollectIconComponent from './SmartCollectIcon';
 import CustomersIconComponent from './CustomersIcon';
 import OffersIconComponent from './OffersIcon';
 import ReportsIconComponent from './ReportsIcon';
 import MyAccountIconComponent from './MyAccountIcon';
 import RazorpayIconComponent from './RazorpayIcon';
-import RazorpayxIconComponent from './RazorpayxIcon';
+import RazorpayXIconComponent from './RazorpayXIcon';
 // # append_icon_import
 import type { IconComponent } from '.';
 
@@ -341,12 +331,10 @@ const iconMap: Record<string, IconComponent> = {
   LogInIcon: LogInIconComponent,
   LogOutIcon: LogOutIconComponent,
   MaximizeIcon: MaximizeIconComponent,
-  Maximize2Icon: Maximize2IconComponent,
   MenuIcon: MenuIconComponent,
   MicIcon: MicIconComponent,
   MicOffIcon: MicOffIconComponent,
   MinimizeIcon: MinimizeIconComponent,
-  Minimize2Icon: Minimize2IconComponent,
   MinusSquareIcon: MinusSquareIconComponent,
   MinusCircleIcon: MinusCircleIconComponent,
   MoreVerticalIcon: MoreVerticalIconComponent,
@@ -365,14 +353,12 @@ const iconMap: Record<string, IconComponent> = {
   RotateCcwIcon: RotateCcwIconComponent,
   SaveIcon: SaveIconComponent,
   ShareIcon: ShareIconComponent,
-  Share2Icon: Share2IconComponent,
   ShoppingCartIcon: ShoppingCartIconComponent,
   ShuffleIcon: ShuffleIconComponent,
   StopCircleIcon: StopCircleIconComponent,
   SunIcon: SunIconComponent,
   ToggleLeftIcon: ToggleLeftIconComponent,
   ToggleRightIcon: ToggleRightIconComponent,
-  Trash2Icon: Trash2IconComponent,
   ListIcon: ListIconComponent,
   StarIcon: StarIconComponent,
   SlidersIcon: SlidersIconComponent,
@@ -395,7 +381,6 @@ const iconMap: Record<string, IconComponent> = {
   AlignLeftIcon: AlignLeftIconComponent,
   AlignCenterIcon: AlignCenterIconComponent,
   AnchorIcon: AnchorIconComponent,
-  Link2Icon: Link2IconComponent,
   BoldIcon: BoldIconComponent,
   ScissorsIcon: ScissorsIconComponent,
   DeleteIcon: DeleteIconComponent,
@@ -512,35 +497,30 @@ const iconMap: Record<string, IconComponent> = {
   UserPlusIcon: UserPlusIconComponent,
   UserMinusIcon: UserMinusIconComponent,
   ActivityIcon: ActivityIconComponent,
-  BarChart2Icon: BarChart2IconComponent,
   BarChartIcon: BarChartIconComponent,
   PieChartIcon: PieChartIconComponent,
   CompassIcon: CompassIconComponent,
   MapIcon: MapIconComponent,
   MapPinIcon: MapPinIconComponent,
   NavigationIcon: NavigationIconComponent,
-  Navigation2Icon: Navigation2IconComponent,
   DollarsIcon: DollarsIconComponent,
   RupeesIcon: RupeesIconComponent,
   DashboardIcon: DashboardIconComponent,
-  TransactionsV1Icon: TransactionsV1IconComponent,
-  TransactionsV2Icon: TransactionsV2IconComponent,
+  TransactionsIcon: TransactionsIconComponent,
   SettlementsIcon: SettlementsIconComponent,
   InvoicesIcon: InvoicesIconComponent,
   PaymentLinksIcon: PaymentLinksIconComponent,
   PaymentButtonsIcon: PaymentButtonsIconComponent,
   PaymentPagesIcon: PaymentPagesIconComponent,
-  RoutesV1Icon: RoutesV1IconComponent,
-  RoutesV2Icon: RoutesV2IconComponent,
+  RoutesIcon: RoutesIconComponent,
   SubscriptionsIcon: SubscriptionsIconComponent,
-  SmartCollectV1Icon: SmartCollectV1IconComponent,
-  SmartCollectV2Icon: SmartCollectV2IconComponent,
+  SmartCollectIcon: SmartCollectIconComponent,
   CustomersIcon: CustomersIconComponent,
   OffersIcon: OffersIconComponent,
   ReportsIcon: ReportsIconComponent,
   MyAccountIcon: MyAccountIconComponent,
   RazorpayIcon: RazorpayIconComponent,
-  RazorpayxIcon: RazorpayxIconComponent,
+  RazorpayXIcon: RazorpayXIconComponent,
   // # append_icon_map
 };
 

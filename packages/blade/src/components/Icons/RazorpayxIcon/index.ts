@@ -1,1 +1,1 @@
-export { default } from './RazorpayxIcon';
+export { default } from './RazorpayXIcon';

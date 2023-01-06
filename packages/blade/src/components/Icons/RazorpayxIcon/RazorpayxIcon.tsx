@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const RazorpayxIcon: IconComponent = ({ size, color }) => {
+const RazorpayXIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -17,4 +17,4 @@ const RazorpayxIcon: IconComponent = ({ size, color }) => {
   );
 };
 
-export default RazorpayxIcon;
+export default RazorpayXIcon;

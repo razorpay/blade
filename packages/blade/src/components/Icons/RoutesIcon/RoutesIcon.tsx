@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const RoutesV1Icon: IconComponent = ({ size, color }) => {
+const RoutesIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -15,4 +15,4 @@ const RoutesV1Icon: IconComponent = ({ size, color }) => {
   );
 };
 
-export default RoutesV1Icon;
+export default RoutesIcon;

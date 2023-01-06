@@ -1,10 +1,10 @@
-import RazorpayxIcon from './';
+import RazorpayXIcon from '.';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
-describe('<RazorpayxIcon />', () => {
-  it('should render RazorpayxIcon', () => {
+describe('<RazorpayXIcon />', () => {
+  it('should render RazorpayXIcon', () => {
     const { container } = renderWithTheme(
-      <RazorpayxIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <RazorpayXIcon color="feedback.icon.neutral.lowContrast" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });
