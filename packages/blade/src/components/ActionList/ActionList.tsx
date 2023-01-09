@@ -6,14 +6,17 @@ type ActionListItemProps = {
   title: string;
   value: string;
   href?: string;
-  index: number;
+  /**
+   * Internally passed from ActionList. No need to pass it explicitly
+   */
+  index?: number;
 };
 const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const {
     activeIndex,
     dropdownBaseId,
     onOptionClick,
-    selectedIndex,
+    selectedIndices,
     setShouldIgnoreBlur,
   } = useDropdown();
 
@@ -24,9 +27,11 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       role="option"
       data-value={props.value}
       data-index={props.index}
-      aria-selected={selectedIndex === props.index}
+      aria-selected={props.index ? selectedIndices.includes(props.index) : undefined}
       onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-        onOptionClick(e, props.index);
+        if (props.index) {
+          onOptionClick(e, props.index);
+        }
       }}
       onMouseDown={() => {
         setShouldIgnoreBlur(true);
@@ -43,8 +48,11 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   );
 };
 
-const ActionList = ({ children }: { children: React.ReactNode[] }): JSX.Element => {
-  const { setOptions, actionListRef } = useDropdown();
+type ActionListProps = {
+  children: React.ReactNode[];
+};
+const ActionList = ({ children }: ActionListProps): JSX.Element => {
+  const { setOptions, actionListRef, selectionType } = useDropdown();
   const actionListOptions: string[] = [];
   const childrenWithId = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -70,7 +78,12 @@ const ActionList = ({ children }: { children: React.ReactNode[] }): JSX.Element 
 
   return (
     // @TODO: put aria-labelledby if needed
-    <Box ref={actionListRef} as="div" role="listbox">
+    <Box
+      ref={actionListRef}
+      as="div"
+      role="listbox"
+      aria-multiselectable={selectionType === 'multiple'}
+    >
       {childrenWithId}
     </Box>
   );

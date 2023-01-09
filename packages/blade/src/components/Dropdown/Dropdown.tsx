@@ -15,8 +15,8 @@ import type {
 export type DropdownContextType = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  selectedIndex: number;
-  setSelectedIndex: (value: number) => void;
+  selectedIndices: number[];
+  setSelectedIndices: (value: number[]) => void;
   options: string[];
   setOptions: (value: string[]) => void;
   activeIndex: number;
@@ -30,6 +30,7 @@ export type DropdownContextType = {
   actionListRef: {
     current: HTMLDivElement | null;
   };
+  selectionType?: DropdownProps['selectionType'];
 };
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -37,8 +38,8 @@ const noop = (): void => {};
 const DropdownContext = React.createContext<DropdownContextType>({
   isOpen: false,
   setIsOpen: noop,
-  selectedIndex: -1,
-  setSelectedIndex: noop,
+  selectedIndices: [],
+  setSelectedIndices: noop,
   options: [],
   setOptions: noop,
   activeIndex: -1,
@@ -97,15 +98,48 @@ const useDropdown = (): UseDropdownReturnValue => {
   const {
     isOpen,
     setIsOpen,
-    selectedIndex,
-    setSelectedIndex,
+    selectedIndices,
+    setSelectedIndices,
     activeIndex,
     setActiveIndex,
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
     options,
+    selectionType,
     ...rest
   } = React.useContext(DropdownContext);
+
+  const selectOption = (
+    index: number,
+    options: {
+      closeOnSelection?: boolean;
+    } = {
+      closeOnSelection: true,
+    },
+  ): void => {
+    if (selectionType === 'multiple') {
+      if (selectedIndices.includes(index)) {
+        // remove existing item
+        const existingItemIndex = selectedIndices.indexOf(index);
+        setSelectedIndices([
+          ...selectedIndices.slice(0, existingItemIndex),
+          ...selectedIndices.slice(existingItemIndex + 1),
+        ]);
+      } else {
+        setSelectedIndices([...selectedIndices, index]);
+      }
+    } else {
+      setSelectedIndices([index]);
+    }
+
+    if (activeIndex !== index) {
+      setActiveIndex(index);
+    }
+
+    if (options?.closeOnSelection && selectionType !== 'multiple') {
+      setIsOpen(false);
+    }
+  };
 
   const onSelectClick: React.MouseEventHandler<HTMLInputElement> = (_e) => {
     setIsOpen(!isOpen);
@@ -118,8 +152,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
 
     if (isOpen) {
-      setSelectedIndex(activeIndex);
-      setIsOpen(false);
+      selectOption(activeIndex);
     }
   };
 
@@ -138,9 +171,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     if (typeof actionType === 'number') {
       onOptionChange(actionType, index);
     }
-    setSelectedIndex(index);
-    setActiveIndex(index);
-    setIsOpen(false);
+    selectOption(index);
   };
 
   const onComboType = (letter: string, actionType: number): void => {
@@ -177,7 +208,7 @@ const useDropdown = (): UseDropdownReturnValue => {
         onOptionChange,
         onComboType,
         selectCurrentOption: () => {
-          setSelectedIndex(activeIndex);
+          selectOption(activeIndex);
         },
       });
     }
@@ -186,8 +217,8 @@ const useDropdown = (): UseDropdownReturnValue => {
   return {
     isOpen,
     setIsOpen,
-    selectedIndex,
-    setSelectedIndex,
+    selectedIndices,
+    setSelectedIndices,
     onSelectClick,
     onSelectKeydown,
     onSelectBlur,
@@ -197,15 +228,20 @@ const useDropdown = (): UseDropdownReturnValue => {
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
     options,
-    value: options[selectedIndex],
+    value: selectedIndices.map((selectedIndex) => options[selectedIndex]).join(', '),
     ...rest,
   };
 };
 
-function Dropdown({ children }: { children: React.ReactNode[] }): JSX.Element {
+type DropdownProps = {
+  selectionType?: 'single' | 'multiple';
+  children: React.ReactNode[];
+};
+
+function Dropdown({ children, selectionType }: DropdownProps): JSX.Element {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<string[]>([]);
-  const [selectedIndex, setSelectedIndex] = React.useState(-1);
+  const [selectedIndices, setSelectedIndices] = React.useState<number[]>([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const selectInputRef = React.useRef<HTMLButtonElement>(null);
@@ -219,8 +255,8 @@ function Dropdown({ children }: { children: React.ReactNode[] }): JSX.Element {
       value={{
         isOpen,
         setIsOpen,
-        selectedIndex,
-        setSelectedIndex,
+        selectedIndices,
+        setSelectedIndices,
         options,
         setOptions,
         activeIndex,
@@ -230,6 +266,7 @@ function Dropdown({ children }: { children: React.ReactNode[] }): JSX.Element {
         dropdownBaseId,
         selectInputRef,
         actionListRef,
+        selectionType,
       }}
     >
       {children}

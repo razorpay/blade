@@ -30,4 +30,22 @@ export const WithSelect = (): JSX.Element => {
     </Dropdown>
   );
 };
+
+export const WithMultiSelect = (): JSX.Element => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Select your favorite fruit" />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Mango" value="mango" />
+          <ActionListItem title="Banana" value="banana" />
+          <ActionListItem title="Orange" value="orange" />
+          <ActionListItem title="Mingo" value="mingo" />
+          <ActionListItem title="Watermelon" value="watermelon" />
+          <ActionListItem title="Strawberry" value="strawberry" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
 export default SelectInputStoryMeta;

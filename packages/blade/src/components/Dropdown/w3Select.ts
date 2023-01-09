@@ -189,11 +189,10 @@ export const performAction = (
       event.preventDefault();
       actions.onOptionChange(action);
       return true;
-    // @ts-expect-error: intentional fallthrough, ignoring the warning
     case SelectActions.CloseSelect:
       event.preventDefault();
       actions.selectCurrentOption();
-    // intentional fallthrough
+      return true;
     case SelectActions.Close:
       event.preventDefault();
       actions.setIsOpen(false);
