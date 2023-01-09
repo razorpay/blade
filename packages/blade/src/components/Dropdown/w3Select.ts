@@ -156,39 +156,6 @@ export function isScrollable(element: HTMLElement): boolean {
   return element && element.clientHeight < element.scrollHeight;
 }
 
-// Copied from https://htmldom.dev/check-if-an-element-is-visible-in-a-scrollable-container/
-export const isElementVisibleInContainerBack = (
-  ele: HTMLElement,
-  container: HTMLElement,
-): boolean => {
-  const { bottom, height, top } = ele.getBoundingClientRect();
-  const containerRect = container.getBoundingClientRect();
-
-  return top <= containerRect.top
-    ? containerRect.top - top <= height
-    : bottom - containerRect.bottom <= height;
-};
-
-export const isElementVisibleInContainer = (
-  element: HTMLElement,
-  container: HTMLElement,
-): boolean => {
-  //Get container properties
-  const cTop = container.scrollTop;
-  const cBottom = cTop + container.clientHeight;
-
-  //Get element properties
-  const eTop = element.offsetTop;
-  const eBottom = eTop + element.clientHeight;
-
-  //Check if in view
-  const isTotal = eTop >= cTop && eBottom <= cBottom;
-  const isPartial = (eTop < cTop && eBottom > cTop) || (eBottom > cBottom && eTop < cBottom);
-
-  //Return outcome
-  return isTotal || isPartial;
-};
-
 type ActionsType = {
   setIsOpen: DropdownContextType['setIsOpen'];
   onOptionChange: (action: number) => void;

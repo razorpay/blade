@@ -5,7 +5,6 @@ import {
   getUpdatedIndex,
   isElementVisibleOnScreen,
   isScrollable,
-  isElementVisibleInContainer,
   performAction,
 } from './w3Select';
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
@@ -67,9 +66,7 @@ const ensureScrollVisiblity = (
         optionEl[newActiveIndex].dataset.value === options[newActiveIndex]
       ) {
         const activeElement = optionEl[newActiveIndex];
-        if (!isElementVisibleInContainer(activeElement, containerElement)) {
-          activeElement.scrollIntoView({ block: 'start', inline: 'start' });
-        }
+        activeElement.scrollIntoView({ block: 'start', inline: 'start' });
 
         if (!isElementVisibleOnScreen(optionEl[newActiveIndex])) {
           activeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
