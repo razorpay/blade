@@ -5,20 +5,32 @@ import { useDropdown } from '~components/Dropdown/Dropdown';
 type ActionListItemProps = {
   title: string;
   value: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   href?: string;
-  index?: number;
+  index: number;
 };
 const ActionListItem = (props: ActionListItemProps): JSX.Element => {
-  const { activeIndex, dropdownBaseId } = useDropdown();
+  const {
+    activeIndex,
+    dropdownBaseId,
+    onOptionClick,
+    selectedIndex,
+    setShouldIgnoreBlur,
+  } = useDropdown();
+
   return (
     <Box
       as={props.href ? 'a' : 'button'}
       id={`${dropdownBaseId}-${props.index}`}
       role="option"
       data-value={props.value}
-      aria-selected={false}
-      onClick={props.onClick}
+      data-index={props.index}
+      aria-selected={selectedIndex === props.index}
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+        onOptionClick(e, props.index);
+      }}
+      onMouseDown={() => {
+        setShouldIgnoreBlur(true);
+      }}
       href={props.href}
       style={{
         border: activeIndex === props.index ? '2px solid red' : '',

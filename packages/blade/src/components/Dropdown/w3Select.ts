@@ -45,8 +45,15 @@ export function filterOptions(
 }
 
 // map a key press to an action
-export function getActionFromKey(e: FormInputOnKeyDownEvent, isOpen: boolean): number | undefined {
-  const { key, altKey, ctrlKey, metaKey } = e.event;
+export function getActionFromKey(
+  e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  isOpen: boolean,
+): number | undefined {
+  const { altKey, ctrlKey, metaKey } = e;
+  let key = '';
+  if ('key' in e) {
+    key = e.key;
+  }
   const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
   if (!key) return undefined;
   // handle opening when closed
@@ -158,6 +165,7 @@ export function isScrollable(element: HTMLElement): boolean {
 
 type ActionsType = {
   setIsOpen: DropdownContextType['setIsOpen'];
+  selectCurrentOption: () => void;
   onOptionChange: (action: number) => void;
   onComboType: (letter: string, action: number) => void;
 };
@@ -184,7 +192,7 @@ export const performAction = (
     // @ts-expect-error: intentional fallthrough, ignoring the warning
     case SelectActions.CloseSelect:
       event.preventDefault();
-    // this.selectOption(this.activeIndex);
+      actions.selectCurrentOption();
     // intentional fallthrough
     case SelectActions.Close:
       event.preventDefault();

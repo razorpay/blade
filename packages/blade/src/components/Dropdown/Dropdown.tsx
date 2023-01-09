@@ -7,17 +7,22 @@ import {
   isScrollable,
   performAction,
 } from './w3Select';
-import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
+import type {
+  FormInputHandleOnEvent,
+  FormInputHandleOnKeyDownEvent,
+} from '~components/Form/FormTypes';
 
 export type DropdownContextType = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  value: string;
-  setValue: (value: string) => void;
+  selectedIndex: number;
+  setSelectedIndex: (value: number) => void;
   options: string[];
   setOptions: (value: string[]) => void;
   activeIndex: number;
   setActiveIndex: (value: number) => void;
+  shouldIgnoreBlur: boolean;
+  setShouldIgnoreBlur: (value: boolean) => void;
   dropdownBaseId: string;
   selectInputRef: {
     current: HTMLButtonElement | null;
@@ -32,12 +37,14 @@ const noop = (): void => {};
 const DropdownContext = React.createContext<DropdownContextType>({
   isOpen: false,
   setIsOpen: noop,
-  value: '',
-  setValue: noop,
+  selectedIndex: -1,
+  setSelectedIndex: noop,
   options: [],
   setOptions: noop,
   activeIndex: -1,
   setActiveIndex: noop,
+  shouldIgnoreBlur: false,
+  setShouldIgnoreBlur: noop,
   dropdownBaseId: '',
   actionListRef: {
     current: null,
@@ -79,15 +86,23 @@ const ensureScrollVisiblity = (
 type UseDropdownReturnValue = DropdownContextType & {
   onSelectClick: React.MouseEventHandler<HTMLInputElement>;
   onSelectKeydown: FormInputHandleOnKeyDownEvent | undefined;
+  onSelectBlur: FormInputHandleOnEvent | undefined;
+  onOptionClick: (
+    e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
+    index: number,
+  ) => void;
+  value: string;
 };
 const useDropdown = (): UseDropdownReturnValue => {
   const {
     isOpen,
     setIsOpen,
-    value,
-    setValue,
+    selectedIndex,
+    setSelectedIndex,
     activeIndex,
     setActiveIndex,
+    shouldIgnoreBlur,
+    setShouldIgnoreBlur,
     options,
     ...rest
   } = React.useContext(DropdownContext);
@@ -96,11 +111,36 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsOpen(!isOpen);
   };
 
+  const onSelectBlur = (): void => {
+    if (shouldIgnoreBlur) {
+      setShouldIgnoreBlur(false);
+      return;
+    }
+
+    if (isOpen) {
+      setSelectedIndex(activeIndex);
+      setIsOpen(false);
+    }
+  };
+
   const onOptionChange = (actionType: number, index?: number): void => {
     const max = options.length - 1;
     const newIndex = index ?? activeIndex;
     setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
     ensureScrollVisiblity(newIndex, rest.actionListRef.current, options);
+  };
+
+  const onOptionClick = (
+    e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
+    index: number,
+  ): void => {
+    const actionType = getActionFromKey(e, isOpen);
+    if (typeof actionType === 'number') {
+      onOptionChange(actionType, index);
+    }
+    setSelectedIndex(index);
+    setActiveIndex(index);
+    setIsOpen(false);
   };
 
   const onComboType = (letter: string, actionType: number): void => {
@@ -130,12 +170,15 @@ const useDropdown = (): UseDropdownReturnValue => {
   };
 
   const onSelectKeydown: FormInputHandleOnKeyDownEvent = (e) => {
-    const actionType = getActionFromKey(e, isOpen);
+    const actionType = getActionFromKey(e.event, isOpen);
     if (typeof actionType === 'number') {
       performAction(actionType, e, {
         setIsOpen,
         onOptionChange,
         onComboType,
+        selectCurrentOption: () => {
+          setSelectedIndex(activeIndex);
+        },
       });
     }
   };
@@ -143,22 +186,28 @@ const useDropdown = (): UseDropdownReturnValue => {
   return {
     isOpen,
     setIsOpen,
-    value,
-    setValue,
+    selectedIndex,
+    setSelectedIndex,
     onSelectClick,
     onSelectKeydown,
+    onSelectBlur,
+    onOptionClick,
     activeIndex,
     setActiveIndex,
+    shouldIgnoreBlur,
+    setShouldIgnoreBlur,
     options,
+    value: options[selectedIndex],
     ...rest,
   };
 };
 
 function Dropdown({ children }: { children: React.ReactNode[] }): JSX.Element {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [value, setValue] = React.useState('');
   const [options, setOptions] = React.useState<string[]>([]);
+  const [selectedIndex, setSelectedIndex] = React.useState(-1);
   const [activeIndex, setActiveIndex] = React.useState(-1);
+  const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const selectInputRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
 
@@ -170,12 +219,14 @@ function Dropdown({ children }: { children: React.ReactNode[] }): JSX.Element {
       value={{
         isOpen,
         setIsOpen,
-        value,
-        setValue,
+        selectedIndex,
+        setSelectedIndex,
         options,
         setOptions,
         activeIndex,
         setActiveIndex,
+        shouldIgnoreBlur,
+        setShouldIgnoreBlur,
         dropdownBaseId,
         selectInputRef,
         actionListRef,

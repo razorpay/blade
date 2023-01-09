@@ -32,6 +32,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
     value,
     onSelectClick,
     onSelectKeydown,
+    onSelectBlur,
     dropdownBaseId,
     activeIndex,
     selectInputRef,
@@ -60,8 +61,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         as="button"
         ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
-        value={value}
-        defaultValue="Select Option"
+        value={value ?? 'Select Option'}
         /**
          * @TODO
          * this will come from Dropdown component
@@ -72,6 +72,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         isPopupExpanded={isOpen}
         onClick={onSelectClick}
         onKeyDown={onSelectKeydown}
+        onBlur={onSelectBlur}
         activeDescendant={`${dropdownBaseId}-${activeIndex}`}
         /**
          * @TODO Pass the popup id by taking it from Dropdown
