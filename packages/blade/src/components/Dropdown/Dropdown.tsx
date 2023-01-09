@@ -12,13 +12,14 @@ import type {
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
 
+type OptionsType = { title: string; value: string }[];
 export type DropdownContextType = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   selectedIndices: number[];
   setSelectedIndices: (value: number[]) => void;
-  options: string[];
-  setOptions: (value: string[]) => void;
+  options: OptionsType;
+  setOptions: (value: OptionsType) => void;
   activeIndex: number;
   setActiveIndex: (value: number) => void;
   shouldIgnoreBlur: boolean;
@@ -64,7 +65,7 @@ const ensureScrollVisiblity = (
   containerElement: HTMLElement | null,
   options: string[],
 ): void => {
-  //   // ensure the new option is in view
+  // ensure the new option is in view
   if (containerElement) {
     if (isScrollable(containerElement)) {
       const optionEl = containerElement.querySelectorAll<HTMLElement>('[role="option"]');
@@ -93,6 +94,10 @@ type UseDropdownReturnValue = DropdownContextType & {
     index: number,
   ) => void;
   value: string;
+  /**
+   * This is the value that is displayed inside select after selection
+   */
+  displayValue: string;
 };
 const useDropdown = (): UseDropdownReturnValue => {
   const {
@@ -152,7 +157,10 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
 
     if (isOpen) {
-      selectOption(activeIndex);
+      if (selectionType !== 'multiple') {
+        selectOption(activeIndex);
+      }
+      setIsOpen(false);
     }
   };
 
@@ -160,7 +168,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     const max = options.length - 1;
     const newIndex = index ?? activeIndex;
     setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
-    ensureScrollVisiblity(newIndex, rest.actionListRef.current, options);
+    const optionValues = options.map((option) => option.value);
+    ensureScrollVisiblity(newIndex, rest.actionListRef.current, optionValues);
   };
 
   const onOptionClick = (
@@ -172,6 +181,7 @@ const useDropdown = (): UseDropdownReturnValue => {
       onOptionChange(actionType, index);
     }
     selectOption(index);
+    rest.selectInputRef.current?.focus();
   };
 
   const onComboType = (letter: string, actionType: number): void => {
@@ -187,7 +197,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     }, 500);
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     searchString = searchString + letter;
-    const searchIndex = getIndexByLetter(options, searchString, activeIndex + 1);
+    const optionTitles = options.map((option) => option.title);
+    const searchIndex = getIndexByLetter(optionTitles, searchString, activeIndex + 1);
 
     // if a match was found, go to it
     if (searchIndex >= 0) {
@@ -228,7 +239,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
     options,
-    value: selectedIndices.map((selectedIndex) => options[selectedIndex]).join(', '),
+    value: selectedIndices.map((selectedIndex) => options[selectedIndex].value).join(', '),
+    displayValue: selectedIndices.map((selectedIndex) => options[selectedIndex].title).join(', '),
     ...rest,
   };
 };
@@ -240,8 +252,10 @@ type DropdownProps = {
 
 function Dropdown({ children, selectionType }: DropdownProps): JSX.Element {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [options, setOptions] = React.useState<string[]>([]);
-  const [selectedIndices, setSelectedIndices] = React.useState<number[]>([]);
+  const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
+  const [selectedIndices, setSelectedIndices] = React.useState<
+    DropdownContextType['selectedIndices']
+  >([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const selectInputRef = React.useRef<HTMLButtonElement>(null);

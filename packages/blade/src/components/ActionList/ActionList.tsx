@@ -27,9 +27,11 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       role="option"
       data-value={props.value}
       data-index={props.index}
-      aria-selected={props.index ? selectedIndices.includes(props.index) : undefined}
+      aria-selected={
+        typeof props.index === 'number' ? selectedIndices.includes(props.index) : undefined
+      }
       onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-        if (props.index) {
+        if (typeof props.index === 'number') {
           onOptionClick(e, props.index);
         }
       }}
@@ -53,12 +55,18 @@ type ActionListProps = {
 };
 const ActionList = ({ children }: ActionListProps): JSX.Element => {
   const { setOptions, actionListRef, selectionType } = useDropdown();
-  const actionListOptions: string[] = [];
+  const actionListOptions: {
+    title: string;
+    value: string;
+  }[] = [];
   const childrenWithId = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       // @TODO: handle the scenario where ActionListItem is inside ActionListMenu
       if (child.type === ActionListItem) {
-        actionListOptions.push(child.props.value);
+        actionListOptions.push({
+          title: child.props.title,
+          value: child.props.value,
+        });
         const currentIndex = actionListOptions.length - 1;
         const clonedChild = React.cloneElement(child, {
           // @ts-expect-error: TS doesn't understand the child's props

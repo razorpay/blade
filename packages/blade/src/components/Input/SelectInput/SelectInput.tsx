@@ -30,6 +30,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
   const {
     isOpen,
     value,
+    displayValue,
     onSelectClick,
     onSelectKeydown,
     onSelectBlur,
@@ -61,7 +62,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         as="button"
         ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
-        value={value ? value : 'Select Option'}
+        value={displayValue ? displayValue : 'Select Option'}
         /**
          * @TODO
          * this will come from Dropdown component
