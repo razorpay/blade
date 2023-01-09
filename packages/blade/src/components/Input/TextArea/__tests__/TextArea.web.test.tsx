@@ -137,7 +137,7 @@ describe('<TextArea />', () => {
     expect(input).toBeValid();
   });
 
-  it.only('should be focussed when autoFocus flag is passed', () => {
+  it('should be focussed when autoFocus flag is passed', () => {
     const label = 'Enter name';
     // eslint-disable-next-line jsx-a11y/no-autofocus
     const { getByLabelText } = renderWithTheme(<TextArea label={label} autoFocus />);
@@ -170,6 +170,23 @@ describe('<TextArea />', () => {
     // should be called for each keystroke
     expect(onChange).toHaveBeenCalledTimes(userName.length);
     expect(onChange).toHaveBeenLastCalledWith({ name: 'name', value: userName });
+  });
+
+  it('should handle onFocus', async () => {
+    const user = userEvent.setup();
+    const label = 'Enter name';
+    const name = 'userName';
+    const userName = 'Kamlesh';
+    const onFocus = jest.fn();
+
+    renderWithTheme(
+      <TextArea label={label} name={name} defaultValue={userName} onFocus={onFocus} />,
+    );
+
+    // focus into textarea
+    await user.tab();
+    expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(onFocus).toHaveBeenCalledWith({ name, value: userName });
   });
 
   it('should handle onBlur', async () => {

@@ -149,6 +149,23 @@ describe('<TextInput />', () => {
     expect(onChange).toHaveBeenLastCalledWith({ name: 'name', value: userName });
   });
 
+  it('should handle onFocus', async () => {
+    const user = userEvent.setup();
+    const label = 'Enter name';
+    const name = 'userName';
+    const userName = 'Kamlesh';
+    const onFocus = jest.fn();
+
+    renderWithTheme(
+      <TextInput label={label} name={name} defaultValue={userName} onFocus={onFocus} />,
+    );
+
+    // focus into textarea
+    await user.tab();
+    expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(onFocus).toHaveBeenCalledWith({ name, value: userName });
+  });
+
   it('should handle onBlur', async () => {
     const user = userEvent.setup();
     const label = 'Enter name';
