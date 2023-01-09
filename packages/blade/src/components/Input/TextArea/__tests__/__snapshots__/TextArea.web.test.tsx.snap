@@ -608,7 +608,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
         display="flex"
       >
         <label
-          for="textarea-79-input-80"
+          for="textarea-91-input-92"
           style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
         >
           <div
@@ -657,7 +657,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
           aria-invalid="false"
           aria-required="false"
           class="c9"
-          id="textarea-79-input-80"
+          id="textarea-91-input-92"
           rows="3"
           type="text"
         />

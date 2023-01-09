@@ -22,6 +22,7 @@ type TextAreaProps = Pick<
   | 'defaultValue'
   | 'name'
   | 'onChange'
+  | 'onFocus'
   | 'onBlur'
   | 'value'
   | 'isDisabled'
@@ -58,8 +59,9 @@ const TextArea = ({
   isDisabled,
   isRequired,
   name,
-  onBlur,
   onChange,
+  onFocus,
+  onBlur,
   placeholder,
   value,
   maxCharacters,
@@ -125,7 +127,6 @@ const TextArea = ({
       isRequired={isRequired}
       name={name}
       maxCharacters={maxCharacters}
-      onBlur={onBlur}
       placeholder={placeholder}
       interactionElement={renderInteractionElement()}
       defaultValue={defaultValue}
@@ -144,6 +145,8 @@ const TextArea = ({
 
         onChange?.({ name, value });
       }}
+      onFocus={onFocus}
+      onBlur={onBlur}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
           <Box marginTop="spacing.2" marginRight="spacing.1">
