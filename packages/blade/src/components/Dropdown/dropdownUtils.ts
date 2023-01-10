@@ -7,7 +7,7 @@
  * Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang)
  */
 
-import type { DropdownContextType } from './useDropdown';
+import type { DropdownContextType, OptionsType } from './useDropdown';
 import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 // Save a list of named combobox actions, for future readability
@@ -233,4 +233,12 @@ export const ensureScrollVisiblity = (
       }
     }
   }
+};
+
+export const makeInputValue = (selectedIndices: number[], options: OptionsType): string => {
+  return selectedIndices.map((selectedIndex) => options[selectedIndex].value).join(', ');
+};
+
+export const makeInputDisplayValue = (selectedIndices: number[], options: OptionsType): string => {
+  return selectedIndices.map((selectedIndex) => options[selectedIndex].title).join(', ');
 };

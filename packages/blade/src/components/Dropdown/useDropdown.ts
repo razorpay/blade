@@ -5,6 +5,8 @@ import {
   getActionFromKey,
   getIndexByLetter,
   getUpdatedIndex,
+  makeInputDisplayValue,
+  makeInputValue,
   performAction,
 } from './dropdownUtils';
 import type { DropdownProps } from './Dropdown';
@@ -95,12 +97,16 @@ const useDropdown = (): UseDropdownReturnValue => {
 
   const selectOption = (
     index: number,
-    options: {
+    properties: {
       closeOnSelection?: boolean;
     } = {
       closeOnSelection: true,
     },
   ): void => {
+    if (index < 0 || index > options.length - 1) {
+      return;
+    }
+
     if (selectionType === 'multiple') {
       if (selectedIndices.includes(index)) {
         // remove existing item
@@ -120,7 +126,7 @@ const useDropdown = (): UseDropdownReturnValue => {
       setActiveIndex(index);
     }
 
-    if (options?.closeOnSelection && selectionType !== 'multiple') {
+    if (properties?.closeOnSelection && selectionType !== 'multiple') {
       setIsOpen(false);
     }
   };
@@ -218,10 +224,10 @@ const useDropdown = (): UseDropdownReturnValue => {
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
     options,
-    value: selectedIndices.map((selectedIndex) => options[selectedIndex].value).join(', '),
-    displayValue: selectedIndices.map((selectedIndex) => options[selectedIndex].title).join(', '),
+    value: makeInputValue(selectedIndices, options),
+    displayValue: makeInputDisplayValue(selectedIndices, options),
     ...rest,
   };
 };
 
-export { useDropdown, DropdownContext, DropdownContextType };
+export { useDropdown, DropdownContext, DropdownContextType, OptionsType };

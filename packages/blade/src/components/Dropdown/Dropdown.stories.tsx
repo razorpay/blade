@@ -3,14 +3,10 @@ import { Dropdown, DropdownOverlay } from './Dropdown';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList/ActionList';
 
-const SelectInputStoryMeta: Meta = {
+const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown',
   component: Dropdown,
-  args: {
-    // label: 'Select Fruit',
-    // placeholder: 'Select your favorite fruit',
-    // helpText: 'Select only one',
-  },
+  args: {},
 };
 
 export const WithSelect = (): JSX.Element => {
@@ -48,4 +44,4 @@ export const WithMultiSelect = (): JSX.Element => {
     </Dropdown>
   );
 };
-export default SelectInputStoryMeta;
+export default DropdownStoryMeta;

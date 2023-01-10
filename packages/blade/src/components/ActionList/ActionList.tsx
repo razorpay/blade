@@ -54,7 +54,7 @@ type ActionListProps = {
   children: React.ReactNode[];
 };
 const ActionList = ({ children }: ActionListProps): JSX.Element => {
-  const { setOptions, actionListRef, selectionType } = useDropdown();
+  const { setOptions, actionListRef, selectionType, dropdownBaseId } = useDropdown();
   const actionListOptions: {
     title: string;
     value: string;
@@ -85,11 +85,11 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
   }, [setOptions]);
 
   return (
-    // @TODO: put aria-labelledby if needed
     <Box
       ref={actionListRef}
       as="div"
       role="listbox"
+      id={`${dropdownBaseId}-listbox`}
       aria-multiselectable={selectionType === 'multiple'}
     >
       {childrenWithId}

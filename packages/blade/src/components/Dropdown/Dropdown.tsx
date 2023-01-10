@@ -1,6 +1,7 @@
 import React from 'react';
 import { DropdownContext, useDropdown } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
+import { useId } from '~src/hooks/useId';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
@@ -18,8 +19,7 @@ function Dropdown({ children, selectionType }: DropdownProps): JSX.Element {
   const selectInputRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
 
-  // @TODO: replace this with some id generation method
-  const dropdownBaseId = 'dropdown-1';
+  const dropdownBaseId = useId('dropdown');
 
   return (
     <DropdownContext.Provider

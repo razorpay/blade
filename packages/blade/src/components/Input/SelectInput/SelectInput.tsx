@@ -45,12 +45,12 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
 
   return (
     <Box position="relative">
-      {/* @TODO Use this for form submissions */}
       {platform !== 'react-native' ? (
         <VisuallyHidden>
           <input
             tabIndex={-1}
             required={props.isRequired}
+            name={props.name}
             value={value}
             // Accessibility is covered in the select input itself so we hide this field from a11y tree
             aria-hidden={true}
@@ -63,11 +63,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
         value={displayValue ? displayValue : 'Select Option'}
-        /**
-         * @TODO
-         * this will come from Dropdown component
-         */
-        id="input-123"
+        id={`${dropdownBaseId}-trigger`}
         leadingIcon={icon}
         hasPopup
         isPopupExpanded={isOpen}
@@ -75,10 +71,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         onKeyDown={onSelectKeydown}
         onBlur={onSelectBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
-        /**
-         * @TODO Pass the popup id by taking it from Dropdown
-         */
-        popupId="123"
+        popupId={`${dropdownBaseId}-listbox`}
         trailingIcon={isOpen ? ChevronUpIcon : ChevronDownIcon}
       />
     </Box>
