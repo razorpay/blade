@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '~components/Box';
-import { useDropdown } from '~components/Dropdown/Dropdown';
+import { useDropdown } from '~components/Dropdown/useDropdown';
 
 type ActionListItemProps = {
   title: string;

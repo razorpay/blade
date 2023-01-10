@@ -1,16 +1,14 @@
 /*
- *   This content is licensed according to the W3C Software License at
- *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- */
-
-import type { DropdownContextType } from './Dropdown';
-import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
-
-/**
+ * This content is licensed according to the W3C Software License at
+ * https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ *
  * This software or document includes material copied from or derived from
  * https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html.
  * Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang)
  */
+
+import type { DropdownContextType } from './useDropdown';
+import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 // Save a list of named combobox actions, for future readability
 const SelectActions = {
@@ -212,129 +210,27 @@ export const performAction = (
   return false;
 };
 
-// /*
-//  * Select Component
-//  * Accepts a combobox element and an array of string options
-//  */
+export const ensureScrollVisiblity = (
+  newActiveIndex: number,
+  containerElement: HTMLElement | null,
+  options: string[],
+): void => {
+  // ensure the new option is in view
+  if (containerElement) {
+    if (isScrollable(containerElement)) {
+      const optionEl = containerElement.querySelectorAll<HTMLElement>('[role="option"]');
+      // Making sure its the same element as the one from options state
+      if (
+        newActiveIndex >= 0 &&
+        optionEl[newActiveIndex].dataset.value === options[newActiveIndex]
+      ) {
+        const activeElement = optionEl[newActiveIndex];
+        activeElement.scrollIntoView({ block: 'start', inline: 'start' });
 
-// Select.prototype.createOption = function (optionText, index) {
-//   const optionEl = document.createElement('div');
-//   optionEl.setAttribute('role', 'option');
-//   optionEl.id = `${this.idBase}-${index}`;
-//   optionEl.className = index === 0 ? 'combo-option option-current' : 'combo-option';
-//   optionEl.setAttribute('aria-selected', `${index === 0}`);
-//   optionEl.innerText = optionText;
-
-//   // optionEl.addEventListener("click", (event) => {
-//   //   event.stopPropagation();
-//   //   this.onOptionClick(index);
-//   // });
-//   // optionEl.addEventListener("mousedown", this.onOptionMouseDown.bind(this));
-
-//   return optionEl;
-// };
-
-// Select.prototype.onComboBlur = function () {
-//   console.log('Blurrrr', this.ignoreBlur);
-//   // do not do blur action if ignoreBlur flag has been set
-//   if (this.ignoreBlur) {
-//     this.ignoreBlur = false;
-//     return;
-//   }
-
-//   // select current option and close
-//   if (this.open) {
-//     this.selectOption(this.activeIndex);
-//     this.updateMenuState(false, false);
-//   }
-// };
-
-// Select.prototype.onOptionChange = function (index) {
-//   // update state
-//   this.activeIndex = index;
-
-//   // update aria-activedescendant
-//   this.comboEl.setAttribute('aria-activedescendant', `${this.idBase}-${index}`);
-
-//   // update active option styles
-//   const options = this.el.querySelectorAll('[role=option]');
-//   [...options].forEach((optionEl) => {
-//     optionEl.classList.remove('option-current');
-//   });
-//   options[index].classList.add('option-current');
-
-//   // ensure the new option is in view
-//   if (isScrollable(this.listboxEl)) {
-//     maintainScrollVisibility(options[index], this.listboxEl);
-//   }
-
-//   // ensure the new option is visible on screen
-//   // ensure the new option is in view
-//   if (!isElementInView(options[index])) {
-//     options[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-//   }
-// };
-
-// Select.prototype.onOptionClick = function (index) {
-//   console.log('OPTION CLICKEDD', index);
-//   this.onOptionChange(index);
-//   this.selectOption(index);
-//   this.updateMenuState(false);
-// };
-
-// Select.prototype.onOptionMouseDown = function () {
-//   // Clicking an option will cause a blur event,
-//   // but we don't want to perform the default keyboard blur action
-//   this.ignoreBlur = true;
-// };
-
-// Select.prototype.selectOption = function (index) {
-//   // update state
-//   this.activeIndex = index;
-
-//   // update displayed value
-//   const selected = this.options[index];
-//   this.comboEl.innerHTML = selected;
-
-//   // update aria-selected
-//   const options = this.el.querySelectorAll('[role=option]');
-//   [...options].forEach((optionEl) => {
-//     optionEl.setAttribute('aria-selected', 'false');
-//   });
-//   options[index].setAttribute('aria-selected', 'true');
-// };
-
-// Select.prototype.updateMenuState = function (open, callFocus = true) {
-//   if (this.open === open) {
-//     return;
-//   }
-
-//   // update state
-//   this.open = open;
-
-//   // update aria-expanded and styles
-//   this.comboEl.setAttribute('aria-expanded', `${open}`);
-//   open ? this.el.classList.add('open') : this.el.classList.remove('open');
-
-//   // update activedescendant
-//   const activeID = open ? `${this.idBase}-${this.activeIndex}` : '';
-//   this.comboEl.setAttribute('aria-activedescendant', activeID);
-
-//   if (activeID === '' && !isElementInView(this.comboEl)) {
-//     this.comboEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-//   }
-
-//   // move focus back to the combobox, if needed
-//   callFocus && this.comboEl.focus();
-// };
-
-// export default Select;
-
-/**
- *
- * TODO:
- *
- * - Implement onOptionClick and other functions (also think of multiselect)
- * - [x] Implement typeahead
- * - Multiselect!!!!!
- */
+        if (!isElementVisibleOnScreen(optionEl[newActiveIndex])) {
+          activeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    }
+  }
+};

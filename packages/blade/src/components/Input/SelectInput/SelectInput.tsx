@@ -3,7 +3,7 @@ import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
-import { useDropdown } from '~components/Dropdown/Dropdown';
+import { useDropdown } from '~components/Dropdown/useDropdown';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { getPlatformType } from '~utils';
