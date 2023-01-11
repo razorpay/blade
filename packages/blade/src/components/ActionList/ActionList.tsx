@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '~components/Box';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
-import { getPlatformType } from '~utils';
+import { getPlatformType, makeAccessible } from '~utils';
 
 type ActionListItemProps = {
   title: string;
@@ -91,9 +91,12 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
 
   return (
     <Box
-      ref={actionListRef}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={actionListRef as any}
       // as="div"
-      role="listbox"
+      {...makeAccessible({
+        role: 'listbox',
+      })}
       id={`${dropdownBaseId}-listbox`}
       aria-multiselectable={selectionType === 'multiple'}
     >

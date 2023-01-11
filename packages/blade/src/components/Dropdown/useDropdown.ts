@@ -33,12 +33,8 @@ type DropdownContextType = {
   shouldIgnoreBlur: boolean;
   setShouldIgnoreBlur: (value: boolean) => void;
   dropdownBaseId: string;
-  selectInputRef: {
-    current: HTMLButtonElement | null;
-  };
-  actionListRef: {
-    current: HTMLDivElement | null;
-  };
+  selectInputRef: React.RefObject<HTMLButtonElement | null>;
+  actionListRef: React.RefObject<HTMLDivElement | null>;
   selectionType?: DropdownProps['selectionType'];
 };
 
