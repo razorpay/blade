@@ -8,6 +8,8 @@ import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { useController, useForm } from 'react-hook-form';
+import { Button } from '~components/Button';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -378,3 +380,45 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
   );
 };
 export const TextInputKitchenSink = TextInputKitchenSinkTemplate.bind({});
+
+const TextInputHookFormTemplate: ComponentStory<typeof TextInputComponent> = () => {
+  const { control, handleSubmit } = useForm<{ firstName: string }>({
+    defaultValues: { firstName: 'A' },
+  });
+
+  const { field, fieldState } = useController({
+    name: 'firstName',
+    control,
+    rules: {
+      required: true,
+      minLength: 3,
+    },
+  });
+
+  const { onChange, value, ref, ...rest } = field;
+
+  return (
+    <Box>
+      <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <TextInputComponent
+          onChange={({ value }) => onChange(value)}
+          value={value}
+          ref={ref}
+          label="First Name"
+          necessityIndicator="required"
+          validationState={fieldState.error ? 'error' : 'none'}
+          errorText={
+            fieldState.error?.type === 'minLength'
+              ? 'First name needs to be atleast 3 character long'
+              : 'First name is required'
+          }
+          {...rest}
+        />
+        <Box marginTop="spacing.3" />
+        <Button type="submit">submit</Button>
+      </form>
+    </Box>
+  );
+};
+
+export const TextInputHookFormUsage = TextInputHookFormTemplate.bind({});

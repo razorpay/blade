@@ -7,6 +7,9 @@ import type { PasswordInputProps } from './PasswordInput';
 import { PasswordInput } from './PasswordInput';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { useController, useForm } from 'react-hook-form';
+import Box from '~components/Box';
+import { Button } from '~components/Button';
 
 const Page = (): ReactElement => {
   return (
@@ -207,5 +210,50 @@ ControlledInput.parameters = {
     },
   },
 };
+
+const PasswordInputHookFormTemplate: ComponentStory<typeof PasswordInput> = () => {
+  const { control, handleSubmit } = useForm<{ password: string }>({
+    defaultValues: { password: '' },
+  });
+
+  const { field, fieldState } = useController({
+    name: 'password',
+    control,
+    rules: {
+      required: true,
+      minLength: 3,
+      maxLength: 10,
+    },
+  });
+
+  const { onChange, value, ref, ...rest } = field;
+
+  return (
+    <Box>
+      <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <PasswordInput
+          onChange={({ value }) => onChange(value)}
+          value={value}
+          ref={ref}
+          label="Password"
+          necessityIndicator="required"
+          validationState={fieldState.error ? 'error' : 'none'}
+          errorText={
+            fieldState.error?.type === 'minLength'
+              ? 'Password must be atleast 3 character long'
+              : fieldState.error?.type === 'maxLength'
+              ? 'Password is too long!'
+              : 'Password is required'
+          }
+          {...rest}
+        />
+        <Box marginTop="spacing.3" />
+        <Button type="submit">submit</Button>
+      </form>
+    </Box>
+  );
+};
+
+export const PasswordInputHookFormUsage = PasswordInputHookFormTemplate.bind({});
 
 export default meta;

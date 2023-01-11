@@ -1,11 +1,11 @@
-import type { ReactElement, ReactNode } from 'react';
-import { useState } from 'react';
+import React from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { EyeIcon, EyeOffIcon } from '~components/Icons';
 import Box from '~components/Box';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
+import { NativeHTMLInputRefProps, useExposeInputRef } from '~src/hooks/useExposeInputRef';
 
 type PasswordInputExtraProps = {
   /**
@@ -67,87 +67,96 @@ type PasswordInputProps = Pick<
 > &
   PasswordInputExtraProps;
 
-const PasswordInput = ({
-  label,
-  labelPosition = 'top',
-  showRevealButton = true,
-  maxCharacters,
-  validationState,
-  errorText,
-  successText,
-  helpText,
-  isDisabled = false,
-  defaultValue,
-  placeholder,
-  isRequired = false,
-  necessityIndicator = 'none',
-  value,
-  onChange,
-  onFocus,
-  onBlur,
-  name,
-  autoFocus = false,
-  keyboardReturnKeyType = 'done',
-  autoCompleteSuggestionType,
-}: PasswordInputProps): ReactElement => {
-  const [isRevealed, setIsRevealed] = useState(false);
-  const isEnabled = !isDisabled;
+const PasswordInput = React.forwardRef<NativeHTMLInputRefProps, PasswordInputProps>(
+  (
+    {
+      label,
+      labelPosition = 'top',
+      showRevealButton = true,
+      maxCharacters,
+      validationState,
+      errorText,
+      successText,
+      helpText,
+      isDisabled = false,
+      defaultValue,
+      placeholder,
+      isRequired = false,
+      necessityIndicator = 'none',
+      value,
+      onChange,
+      onFocus,
+      onBlur,
+      name,
+      autoFocus = false,
+      keyboardReturnKeyType = 'done',
+      autoCompleteSuggestionType,
+    },
+    ref,
+  ) => {
+    const inputRef = React.useRef<HTMLInputElement>(null);
+    const [isRevealed, setIsRevealed] = React.useState(false);
+    const isEnabled = !isDisabled;
 
-  // If input is disabled reveal button shouldn't be present and input should be masked
-  const isRevealedAndEnabled = isRevealed && isEnabled;
+    // If input is disabled reveal button shouldn't be present and input should be masked
+    const isRevealedAndEnabled = isRevealed && isEnabled;
 
-  const toggleIsRevealed = (): void => setIsRevealed((revealed) => !revealed);
-  const accessibilityLabel = isRevealedAndEnabled ? 'Hide password' : 'Show password';
-  const type = isRevealedAndEnabled ? 'text' : 'password';
+    const toggleIsRevealed = (): void => setIsRevealed((revealed) => !revealed);
+    const accessibilityLabel = isRevealedAndEnabled ? 'Hide password' : 'Show password';
+    const type = isRevealedAndEnabled ? 'text' : 'password';
 
-  const revealButtonIcon = isRevealedAndEnabled ? EyeOffIcon : EyeIcon;
-  const revealButton =
-    showRevealButton && !isDisabled ? (
-      <IconButton
-        size="medium"
-        icon={revealButtonIcon}
-        onClick={toggleIsRevealed}
-        accessibilityLabel={accessibilityLabel}
+    const revealButtonIcon = isRevealedAndEnabled ? EyeOffIcon : EyeIcon;
+    const revealButton =
+      showRevealButton && !isDisabled ? (
+        <IconButton
+          size="medium"
+          icon={revealButtonIcon}
+          onClick={toggleIsRevealed}
+          accessibilityLabel={accessibilityLabel}
+        />
+      ) : null;
+
+    const trailingFooterSlot = (value?: string): React.ReactNode =>
+      maxCharacters ? (
+        <Box marginTop="spacing.2" marginRight="spacing.1">
+          <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
+        </Box>
+      ) : null;
+
+    useExposeInputRef(ref, inputRef);
+
+    return (
+      <BaseInput
+        ref={inputRef}
+        componentName="password-input"
+        id="password-field"
+        label={label}
+        labelPosition={labelPosition}
+        type={type}
+        interactionElement={revealButton}
+        trailingFooterSlot={trailingFooterSlot}
+        maxCharacters={maxCharacters}
+        validationState={validationState}
+        errorText={errorText}
+        successText={successText}
+        helpText={helpText}
+        isDisabled={isDisabled}
+        defaultValue={defaultValue}
+        placeholder={placeholder}
+        isRequired={isRequired}
+        necessityIndicator={necessityIndicator}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        name={name}
+        // eslint-disable-next-line jsx-a11y/no-autofocus
+        autoFocus={autoFocus}
+        autoCompleteSuggestionType={autoCompleteSuggestionType}
+        keyboardReturnKeyType={keyboardReturnKeyType}
       />
-    ) : null;
-
-  const trailingFooterSlot = (value?: string): ReactNode =>
-    maxCharacters ? (
-      <Box marginTop="spacing.2" marginRight="spacing.1">
-        <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
-      </Box>
-    ) : null;
-
-  return (
-    <BaseInput
-      componentName="password-input"
-      id="password-field"
-      label={label}
-      labelPosition={labelPosition}
-      type={type}
-      interactionElement={revealButton}
-      trailingFooterSlot={trailingFooterSlot}
-      maxCharacters={maxCharacters}
-      validationState={validationState}
-      errorText={errorText}
-      successText={successText}
-      helpText={helpText}
-      isDisabled={isDisabled}
-      defaultValue={defaultValue}
-      placeholder={placeholder}
-      isRequired={isRequired}
-      necessityIndicator={necessityIndicator}
-      value={value}
-      onChange={onChange}
-      onBlur={onBlur}
-      onFocus={onFocus}
-      name={name}
-      // eslint-disable-next-line jsx-a11y/no-autofocus
-      autoFocus={autoFocus}
-      autoCompleteSuggestionType={autoCompleteSuggestionType}
-      keyboardReturnKeyType={keyboardReturnKeyType}
-    />
-  );
-};
+    );
+  },
+);
 
 export { PasswordInputProps, PasswordInput };

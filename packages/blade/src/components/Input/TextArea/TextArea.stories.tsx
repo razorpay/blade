@@ -6,6 +6,8 @@ import { TextArea as TextAreaComponent } from './TextArea';
 import Box from '~components/Box';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Button } from '~components/Button';
+import { useController, useForm } from 'react-hook-form';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -349,3 +351,48 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = ()
   );
 };
 export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});
+
+const TextAreaHookFormTemplate: ComponentStory<typeof TextAreaComponent> = () => {
+  const { control, handleSubmit } = useForm<{ report: string }>({
+    defaultValues: { report: 'A' },
+  });
+
+  const { field, fieldState } = useController({
+    name: 'report',
+    control,
+    rules: {
+      required: true,
+      validate: (value) => {
+        return !value.match('bug');
+      },
+    },
+  });
+
+  const { onChange, value, ref, ...rest } = field;
+
+  return (
+    <Box>
+      <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <TextAreaComponent
+          onChange={({ value }) => onChange(value)}
+          value={value}
+          ref={ref}
+          label="Bug Report"
+          helpText="Report must not contain the word 'bug'"
+          necessityIndicator="required"
+          validationState={fieldState.error ? 'error' : 'none'}
+          errorText={
+            fieldState.error?.type === 'validate'
+              ? "Report can't contain the word 'bug'"
+              : 'Please explain your problem in detail'
+          }
+          {...rest}
+        />
+        <Box marginTop="spacing.3" />
+        <Button type="submit">submit</Button>
+      </form>
+    </Box>
+  );
+};
+
+export const TextAreaHookFormUsage = TextAreaHookFormTemplate.bind({});
