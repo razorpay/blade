@@ -24,6 +24,7 @@ type SelectInputProps = Pick<
   | 'autoFocus'
 > & {
   icon?: IconComponent;
+  onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
 };
 
 const SelectInput = (props: SelectInputProps): JSX.Element => {
@@ -39,9 +40,13 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
     selectInputRef,
   } = useDropdown();
 
-  const { icon, ...baseInputProps } = props;
+  const { icon, onChange, ...baseInputProps } = props;
 
   const platform = getPlatformType();
+
+  React.useEffect(() => {
+    onChange?.({ name: props.name, values: value.split(', ') });
+  }, [value, onChange, props.name]);
 
   return (
     <Box position="relative">
@@ -52,6 +57,9 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
             required={props.isRequired}
             name={props.name}
             value={value}
+            // Adding onChange to surpass no onChange on controlled component warning
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
+            onChange={() => {}}
             // Accessibility is covered in the select input itself so we hide this field from a11y tree
             aria-hidden={true}
           />
