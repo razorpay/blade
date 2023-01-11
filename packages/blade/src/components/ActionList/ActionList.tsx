@@ -24,10 +24,11 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
 
   const platformType = getPlatformType();
   const renderOnWebAs = props.href ? 'a' : 'button';
+  const isReactNative = platformType === 'react-native';
 
   return (
     <Box
-      as={platformType !== 'react-native' ? renderOnWebAs : undefined}
+      as={!isReactNative ? renderOnWebAs : undefined}
       id={`${dropdownBaseId}-${props.index}`}
       role="option"
       data-value={props.value}
@@ -46,7 +47,6 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       href={props.href}
       style={{
         border: activeIndex === props.index ? '2px solid red' : '',
-        display: 'flex',
         width: '100%',
       }}
     >

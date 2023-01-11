@@ -11,6 +11,7 @@ type DropdownProps = {
 };
 
 const platformType = getPlatformType();
+const isReactNative = platformType === 'react-native';
 
 function Dropdown({ children, selectionType }: DropdownProps): JSX.Element {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -54,8 +55,8 @@ function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Eleme
 
   return (
     <Box
-      as={platformType !== 'react-native' ? 'div' : undefined}
-      style={{ display: isOpen ? 'flex' : 'none' }}
+      as={!isReactNative ? 'div' : undefined}
+      style={{ display: isOpen ? (isReactNative ? 'flex' : 'block') : 'none' }}
       tabIndex={-1}
     >
       {children}
