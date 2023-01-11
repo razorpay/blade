@@ -2,11 +2,15 @@ import React from 'react';
 import { DropdownContext, useDropdown } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
 import { useId } from '~src/hooks/useId';
+import Box from '~components/Box';
+import { getPlatformType } from '~utils';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
   children: React.ReactNode[];
 };
+
+const platformType = getPlatformType();
 
 function Dropdown({ children, selectionType }: DropdownProps): JSX.Element {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -49,9 +53,13 @@ function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Eleme
   const { isOpen } = useDropdown();
 
   return (
-    <div style={{ display: isOpen ? 'block' : 'none' }} tabIndex={-1}>
+    <Box
+      as={platformType !== 'react-native' ? 'div' : undefined}
+      style={{ display: isOpen ? 'flex' : 'none' }}
+      tabIndex={-1}
+    >
       {children}
-    </div>
+    </Box>
   );
 }
 

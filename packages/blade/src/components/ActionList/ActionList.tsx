@@ -1,6 +1,8 @@
 import React from 'react';
 import Box from '~components/Box';
 import { useDropdown } from '~components/Dropdown/useDropdown';
+import { Text } from '~components/Typography';
+import { getPlatformType } from '~utils';
 
 type ActionListItemProps = {
   title: string;
@@ -20,9 +22,12 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     setShouldIgnoreBlur,
   } = useDropdown();
 
+  const platformType = getPlatformType();
+  const renderOnWebAs = props.href ? 'a' : 'button';
+
   return (
     <Box
-      as={props.href ? 'a' : 'button'}
+      as={platformType !== 'react-native' ? renderOnWebAs : undefined}
       id={`${dropdownBaseId}-${props.index}`}
       role="option"
       data-value={props.value}
@@ -41,11 +46,11 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       href={props.href}
       style={{
         border: activeIndex === props.index ? '2px solid red' : '',
-        display: 'block',
+        display: 'flex',
         width: '100%',
       }}
     >
-      {props.title}
+      <Text>{props.title}</Text>
     </Box>
   );
 };
@@ -87,7 +92,7 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
   return (
     <Box
       ref={actionListRef}
-      as="div"
+      // as="div"
       role="listbox"
       id={`${dropdownBaseId}-listbox`}
       aria-multiselectable={selectionType === 'multiple'}
