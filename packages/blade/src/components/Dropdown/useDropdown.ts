@@ -222,6 +222,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     options,
     value: makeInputValue(selectedIndices, options),
     displayValue: makeInputDisplayValue(selectedIndices, options),
+    selectionType,
     ...rest,
   };
 };

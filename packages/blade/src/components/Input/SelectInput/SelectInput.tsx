@@ -72,6 +72,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         textAlign="left"
         value={displayValue ? displayValue : 'Select Option'}
         id={`${dropdownBaseId}-trigger`}
+        labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
         hasPopup
         isPopupExpanded={isOpen}

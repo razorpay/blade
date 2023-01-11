@@ -96,9 +96,10 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
       // as="div"
       {...makeAccessible({
         role: 'listbox',
+        multiSelectable: selectionType === 'multiple',
+        labelledBy: `${dropdownBaseId}-label`,
       })}
       id={`${dropdownBaseId}-listbox`}
-      aria-multiselectable={selectionType === 'multiple'}
     >
       {childrenWithId}
     </Box>

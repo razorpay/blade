@@ -192,6 +192,12 @@ export type BaseInputProps = FormInputLabelProps &
      */
     accessibilityLabel?: string;
     /**
+     * Sets the id of the label
+     *
+     * (Useful when assigning one label to multiple elements using aria-labelledby)
+     */
+    labelId?: string;
+    /**
      * Can be used in select to set the id of the active descendant from the listbox
      */
     activeDescendant?: string;
@@ -459,6 +465,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       id,
       componentName,
       accessibilityLabel,
+      labelId,
       activeDescendant,
       hideLabelText,
       hideFormHint,
@@ -548,6 +555,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
                 as="label"
                 necessityIndicator={necessityIndicator}
                 position={labelPosition}
+                id={labelId}
                 htmlFor={inputId}
               >
                 {label}
