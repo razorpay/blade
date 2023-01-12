@@ -1151,9 +1151,9 @@ exports[`<Counter /> should render small size Counter 1`] = `
 .c2 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
@@ -1207,8 +1207,8 @@ exports[`<Counter /> should render small size Counter 1`] = `
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
-        font-size="50"
-        font-style="italic"
+        font-size="25"
+        font-style="normal"
         font-weight="regular"
       >
         20
