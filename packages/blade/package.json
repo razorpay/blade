@@ -81,7 +81,6 @@
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",
-    "react-hook-form": "7.41.5",
     "use-presence": "1.1.0"
   },
   "devDependencies": {

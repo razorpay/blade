@@ -16,9 +16,7 @@ const useExposeInputRef = (
   React.useImperativeHandle(
     targetRef,
     (): NativeHTMLInputRefProps => {
-      const input = inputRef.current as HTMLInputElement & {
-        selectedOptions: HTMLSelectElement['selectedOptions'];
-      };
+      const input = inputRef.current as HTMLInputElement;
       return {
         focus: (opts) => input.focus(opts),
         scrollIntoView: (opts) => input.scrollIntoView(opts),
