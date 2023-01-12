@@ -97,6 +97,22 @@ const Badge = ({
     variant,
     contrast,
   });
+
+  const badgeTextSizes = {
+    small: {
+      variant: 'body',
+      size: 'xsmall',
+    },
+    medium: {
+      variant: 'body',
+      size: 'small',
+    },
+    large: {
+      variant: 'body',
+      size: 'small',
+    },
+  } as const;
+
   return (
     <StyledBadge
       backgroundColor={backgroundColor}
@@ -120,14 +136,7 @@ const Badge = ({
           </Box>
         ) : null}
         <Text
-          {...(size === 'small'
-            ? {
-                variant: 'caption',
-              }
-            : {
-                variant: 'body',
-                size: 'small',
-              })}
+          {...badgeTextSizes[size]}
           type="normal"
           weight={fontWeight}
           truncateAfterLines={1}
