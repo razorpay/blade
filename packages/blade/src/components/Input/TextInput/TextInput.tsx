@@ -10,7 +10,8 @@ import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import Box from '~components/Box';
 import { Spinner } from '~components/Spinner';
-import { NativeHTMLInputRefProps, useExposeInputRef } from '~src/hooks/useExposeInputRef';
+import type { NativeHTMLInputRefProps } from '~src/hooks/useExposeInputRef';
+import { useExposeInputRef } from '~src/hooks/useExposeInputRef';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -285,3 +286,5 @@ export const TextInput = React.forwardRef<NativeHTMLInputRefProps, TextInputProp
     );
   },
 );
+
+TextInput.displayName = 'TextInput';

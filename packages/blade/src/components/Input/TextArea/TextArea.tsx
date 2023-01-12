@@ -8,7 +8,8 @@ import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
-import { NativeHTMLInputRefProps, useExposeInputRef } from '~src/hooks/useExposeInputRef';
+import type { NativeHTMLInputRefProps } from '~src/hooks/useExposeInputRef';
+import { useExposeInputRef } from '~src/hooks/useExposeInputRef';
 
 type TextAreaProps = Pick<
   BaseInputProps,
@@ -165,5 +166,7 @@ const TextArea = React.forwardRef<NativeHTMLInputRefProps, TextAreaProps>(
     );
   },
 );
+
+TextArea.displayName = 'TextArea';
 
 export { TextArea, TextAreaProps };

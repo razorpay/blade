@@ -5,7 +5,8 @@ import { EyeIcon, EyeOffIcon } from '~components/Icons';
 import Box from '~components/Box';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
-import { NativeHTMLInputRefProps, useExposeInputRef } from '~src/hooks/useExposeInputRef';
+import type { NativeHTMLInputRefProps } from '~src/hooks/useExposeInputRef';
+import { useExposeInputRef } from '~src/hooks/useExposeInputRef';
 
 type PasswordInputExtraProps = {
   /**
@@ -158,5 +159,7 @@ const PasswordInput = React.forwardRef<NativeHTMLInputRefProps, PasswordInputPro
     );
   },
 );
+
+PasswordInput.displayName = 'PasswordInput';
 
 export { PasswordInputProps, PasswordInput };
