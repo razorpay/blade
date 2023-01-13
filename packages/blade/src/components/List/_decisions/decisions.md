@@ -1,0 +1,160 @@
+# List <!-- omit in toc -->
+Lists display a set of related items that are composed of text/links. Each list item begins with a bullet or a number.
+
+<img src="./list-thumbnail.png" width="380" />
+
+- [Design](#design)
+- [API](#api)
+  - [List Component](#list-component)
+  - [List.Item Component](#listitem-component)
+  - [List.Item.Link Component](#listitemlink-component)
+  - [Sample Usage](#sample-usage)
+  - [Alternative APIs](#alternative-apis)
+    - [Hierarchial without explicit nested `List` grouping](#hierarchial-without-explicit-nested-list-grouping)
+    - [Hierarchial with a `nested` prop](#hierarchial-with-a-nested-prop)
+    - [Non-Hierarchial with a `level` prop](#non-hierarchial-with-a-level-prop)
+- [Accessibility](#accessibility)
+- [Open Questions](#open-questions)
+- [References](#references)
+
+
+## Design
+- [Figma - List](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23205%3A446859&t=dT849yOxgX5WHgby-4)
+
+
+## API
+
+### List Component
+| Prop | Type | Default | Description | Required |
+|---|---|---|---|---|
+| children | `List.Item` | `undefined` | List items to render. | ✅ |
+| variant | `ordered`, `unordered` | `unordered` | Sets the list as ordered or unordered. |  |
+| isOrderedFilled | `boolean` | `false` | Sets whether the numbers in ordered list have a filled background.  |  |
+| icon | `BladeIcon` | `undefined` | Icon to be used for the items in the list. This can only be set when `variant` is `unordered`. |  |
+| size | `small`, `medium` | `medium` | Size of the list items. |  |
+
+### List.Item Component
+| Prop | Type | Default | Description | Required |
+|---|---|---|---|---|
+| children | `string`, `List.Item.Link`, `List` | `undefined` | String to render in the list item. You may also pass a `List.Item.Link` to render an inline link. You may also pass a `List` component which contains its own `List.Item` components to create a nested list.| ✅ |
+| icon | `BladeIcon` | `undefined` | Icon to be used for the items in the list. This can only be set when `variant` is `unordered`. |  |
+
+### List.Item.Link Component
+| Prop | Type | Default | Description | Required |
+|---|---|---|---|---|
+| children | `string` | `undefined` | The text to be rendered within the link.| ✅ |
+| onClick | `Function` | No | undefined | The function to be called when the link is clicked. |
+| href | `string` | No | undefined | The href for the link component. |
+| target | `string` | No | undefined | The target for the link component. |
+| rel | `string` | No | undefined | The rel for the link component.<br>-When `target` prop is set to `_blank`, `rel` will be automatically set to `noopener noreferrer` which can be overridden by passing the `rel` prop. |
+| accessibilityLabel | `string` | No | undefined | The `aria-label` (web) & `accessibilityLabel` (native) of the link component. |
+
+
+### Sample Usage
+```jsx
+import { List, InfoIcon, EditIcon } from '@razorpay/components';
+
+<List variant='ordered' icon={InfoIcon} size='medium'>
+  <List.Item icon={EditIcon}>
+    Item 1
+    <List variant='ordered'>
+      <List.Item>
+        Item 1.1
+        <List variant='ordered'>
+          <List.Item>
+            Item 1.1.1
+          <List.Item/>
+        <List/>
+      <List.Item/>
+    <List/>
+  <List.Item/>
+  <List.Item>
+    Item 2		
+  <List.Item/>
+</List>
+```
+
+### Alternative APIs
+#### Hierarchial without explicit nested `List` grouping
+```tsx
+<List variant='ordered'>
+  <List.Item>
+    Item 1
+    <List.Item>
+      Item 1.1		
+      <List.Item>
+        Item 1.1.1		
+      <List.Item/>
+    <List.Item>
+      Item 1.2		
+    <List.Item />		
+  <List.Item/>		
+  <List.Item/>
+  <List.Item>
+    Item 2		
+  <List.Item/>
+</List>
+```
+
+#### Hierarchial with a `nested` prop
+```tsx
+<List variant='ordered'>
+  <List.Item 
+    nested={
+      <List.Item
+        nested={
+          <List.Item>
+            Item 1.1.1
+          <List.Item/>
+        }
+      >
+        Item 1.1
+      <List.Item/>
+    }
+  >
+    Item 1
+  <List.Item/>
+  <List.Item>
+    Item 2		
+  <List.Item/>
+</List>
+```
+
+#### Non-Hierarchial with a `level` prop
+```tsx
+<List variant='ordered'>
+  <List.Item level='1'>
+    Item 1
+  <List.Item/>
+  <List.Item level='2'>
+    Item 1.1
+  <List.Item/>
+  <List.Item level='2'>
+    Item 1.2
+  <List.Item/>
+  <List.Item level='3'>
+    Item 1.2.1
+  <List.Item/>
+  <List.Item level='1'>
+    Item 2		
+  <List.Item/>
+</List>
+```
+
+## Accessibility
+- TODO
+
+## Open Questions
+- What should we call `isOrderedFilled` instead?
+- Do we allow ordered list within unordered list and vice versa?
+- Should we call it `List.Item.Link` or `List.Link` or `List.ItemLink`?
+- Discuss alternative APIs with the team
+
+## References
+- [Polaris](https://polaris.shopify.com/components/list#list-items)
+- [Chakra](https://chakra-ui.com/docs/components/list/)
+- [Skyscanner Backpack](https://backpack.github.io/components/list/?platform=web#usage)
+- [Mantine](https://mantine.dev/core/list/)
+- [Carbon](https://carbondesignsystem.com/components/list/usage/)
+- [PluralSight](https://design-system.pluralsight.com/components/text-list#lists)
+- [Twilio Pase](https://paste.twilio.design/components/list/)
