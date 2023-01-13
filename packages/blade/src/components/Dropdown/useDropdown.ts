@@ -9,6 +9,7 @@ import {
   makeInputValue,
   performAction,
 } from './dropdownUtils';
+import type { SelectActionsType } from './dropdownUtils';
 import type { DropdownProps } from './Dropdown';
 
 import type {
@@ -76,6 +77,12 @@ type UseDropdownReturnValue = DropdownContextType & {
    */
   displayValue: string;
 };
+/**
+ * Handles almost all the functionality of dropdown.
+ *
+ * Returns the values from DropdownContext along with some helper functions and event handlers
+ *
+ */
 const useDropdown = (): UseDropdownReturnValue => {
   const {
     isOpen,
@@ -91,6 +98,12 @@ const useDropdown = (): UseDropdownReturnValue => {
     ...rest
   } = React.useContext(DropdownContext);
 
+  /**
+   * Marks the given index as selected.
+   *
+   * In single select, it also closes the menu.
+   * In multiselect, it keeps the menu open for more selections
+   */
   const selectOption = (
     index: number,
     properties: {
@@ -127,10 +140,16 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
   };
 
+  /**
+   * Click listener for combobox (or any triggerer of the dropdown)
+   */
   const onSelectClick: React.MouseEventHandler<HTMLInputElement> = (_e) => {
     setIsOpen(!isOpen);
   };
 
+  /**
+   * Blur handler on combobox. Also handles the selection logic when user moves focus
+   */
   const onSelectBlur = (): void => {
     if (shouldIgnoreBlur) {
       setShouldIgnoreBlur(false);
@@ -145,7 +164,10 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
   };
 
-  const onOptionChange = (actionType: number, index?: number): void => {
+  /**
+   * Function that we call when we want to move focus from one option to other
+   */
+  const onOptionChange = (actionType: SelectActionsType, index?: number): void => {
     const max = options.length - 1;
     const newIndex = index ?? activeIndex;
     setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
@@ -153,6 +175,14 @@ const useDropdown = (): UseDropdownReturnValue => {
     ensureScrollVisiblity(newIndex, rest.actionListRef.current, optionValues);
   };
 
+  /**
+   * Click handler when user clicks on any particular option.
+   *
+   * It
+   * - changes the option focus
+   * - selects that option
+   * - moves focus to combobox
+   */
   const onOptionClick = (
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
@@ -165,7 +195,14 @@ const useDropdown = (): UseDropdownReturnValue => {
     rest.selectInputRef.current?.focus();
   };
 
-  const onComboType = (letter: string, actionType: number): void => {
+  /**
+   * Function we call to handle the typeahead.
+   *
+   * It takes a letter, stores that letter in searchString (and clears it after timeout) to maintain a word
+   *
+   * Then searches for that word in options and moves focus there.
+   */
+  const onComboType = (letter: string, actionType: SelectActionsType): void => {
     // open the listbox if it is closed
     setIsOpen(true);
 
@@ -192,9 +229,12 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
   };
 
+  /**
+   * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
+   */
   const onSelectKeydown: FormInputHandleOnKeyDownEvent = (e) => {
     const actionType = getActionFromKey(e.event, isOpen);
-    if (typeof actionType === 'number') {
+    if (actionType) {
       performAction(actionType, e, {
         setIsOpen,
         onOptionChange,

@@ -10,27 +10,39 @@
 import type { DropdownContextType, OptionsType } from './useDropdown';
 import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
+export type SelectActionsType =
+  | 'Close'
+  | 'CloseSelect'
+  | 'First'
+  | 'Last'
+  | 'Next'
+  | 'Open'
+  | 'PageDown'
+  | 'PageUp'
+  | 'Previous'
+  | 'Select'
+  | 'Type';
+
 // Save a list of named combobox actions, for future readability
-const SelectActions = {
-  Close: 0,
-  CloseSelect: 1,
-  First: 2,
-  Last: 3,
-  Next: 4,
-  Open: 5,
-  PageDown: 6,
-  PageUp: 7,
-  Previous: 8,
-  Select: 9,
-  Type: 10,
+const SelectActions: Record<SelectActionsType, SelectActionsType> = {
+  Close: 'Close',
+  CloseSelect: 'CloseSelect',
+  First: 'First',
+  Last: 'Last',
+  Next: 'Next',
+  Open: 'Open',
+  PageDown: 'PageDown',
+  PageUp: 'PageUp',
+  Previous: 'Previous',
+  Select: 'Select',
+  Type: 'Type',
 };
 
-/*
- * Helper functions
+/**
+ * Filter an array of options against an input string
+ * returns an array of options that begin with the filter string, case-independent
+ *
  */
-
-// filter an array of options against an input string
-// returns an array of options that begin with the filter string, case-independent
 export function filterOptions(
   options: string[] = [],
   filter: string,
@@ -42,11 +54,13 @@ export function filterOptions(
   });
 }
 
-// map a key press to an action
+/**
+ * Map a keypress to action
+ */
 export function getActionFromKey(
   e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   isOpen: boolean,
-): number | undefined {
+): SelectActionsType | undefined {
   const { altKey, ctrlKey, metaKey } = e;
   let key = '';
   if ('key' in e) {
@@ -98,8 +112,11 @@ export function getActionFromKey(
   return undefined;
 }
 
-// return the index of an option from an array of options, based on a search string
-// if the filter is multiple iterations of the same letter (e.g "aaa"), then cycle through first-letter matches
+/**
+ * Return the index of an option from an array of options, based on a search string
+ *
+ * if the filter is multiple iterations of the same letter (e.g "aaa"), then cycle through first-letter matches
+ **/
 export function getIndexByLetter(options: string[], filter: string, startIndex = 0): number {
   const orderedOptions = [...options.slice(startIndex), ...options.slice(0, startIndex)];
   const firstMatch = filterOptions(orderedOptions, filter)[0];
@@ -122,8 +139,14 @@ export function getIndexByLetter(options: string[], filter: string, startIndex =
   }
 }
 
-// get an updated option index after performing an action
-export function getUpdatedIndex(currentIndex: number, maxIndex: number, action: number): number {
+/**
+ * This functions makes sure the optionsIndex is not going out of possible options
+ */
+export function getUpdatedIndex(
+  currentIndex: number,
+  maxIndex: number,
+  action: SelectActionsType,
+): number {
   const pageSize = 10; // used for pageup/pagedown
 
   switch (action) {
@@ -144,7 +167,9 @@ export function getUpdatedIndex(currentIndex: number, maxIndex: number, action: 
   }
 }
 
-// check if element is visible in browser view port
+/**
+ * Checks if the given HTML element is visible on screen
+ */
 export function isElementVisibleOnScreen(element: HTMLElement): boolean {
   const bounding = element.getBoundingClientRect();
 
@@ -156,7 +181,9 @@ export function isElementVisibleOnScreen(element: HTMLElement): boolean {
   );
 }
 
-// check if an element is currently scrollable
+/**
+ * Checks if the dropdown is scrollable
+ */
 export function isScrollable(element: HTMLElement): boolean {
   return element && element.clientHeight < element.scrollHeight;
 }
@@ -164,11 +191,16 @@ export function isScrollable(element: HTMLElement): boolean {
 type ActionsType = {
   setIsOpen: DropdownContextType['setIsOpen'];
   selectCurrentOption: () => void;
-  onOptionChange: (action: number) => void;
-  onComboType: (letter: string, action: number) => void;
+  onOptionChange: (action: SelectActionsType) => void;
+  onComboType: (letter: string, action: SelectActionsType) => void;
 };
+/**
+ * Performs the action when actionType is passed
+ *
+ * This function handles all the keydown actions.
+ */
 export const performAction = (
-  action: number,
+  action: SelectActionsType,
   e: FormInputOnKeyDownEvent,
   actions: ActionsType,
 ): boolean => {
@@ -210,6 +242,11 @@ export const performAction = (
   return false;
 };
 
+/**
+ * When options list is large, it can have a scrollbar.
+ *
+ * This function ensures the active option is always in the viewport
+ */
 export const ensureScrollVisiblity = (
   newActiveIndex: number,
   containerElement: HTMLElement | null,
@@ -235,10 +272,16 @@ export const ensureScrollVisiblity = (
   }
 };
 
+/**
+ * value that is set in the actual form input
+ */
 export const makeInputValue = (selectedIndices: number[], options: OptionsType): string => {
   return selectedIndices.map((selectedIndex) => options[selectedIndex].value).join(', ');
 };
 
+/**
+ * Value that is displayed inside the select field
+ */
 export const makeInputDisplayValue = (selectedIndices: number[], options: OptionsType): string => {
   return selectedIndices.map((selectedIndex) => options[selectedIndex].title).join(', ');
 };

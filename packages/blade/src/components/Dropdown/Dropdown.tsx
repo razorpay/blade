@@ -13,6 +13,23 @@ type DropdownProps = {
 const platformType = getPlatformType();
 const isReactNative = platformType === 'react-native';
 
+/**
+ * **Dropdown component**
+ *
+ * **Usage**
+ *
+ * ```jsx
+ * <Dropdown selectionType="single">
+ *  <SelectInput />
+ *  <DropdownOverlay>
+ *    <ActionList>
+ *      <ActionListItem />
+ *      <ActionListItem />
+ *    </ActionList>
+ *  </DropdownOverlay>
+ * </Dropdown>
+ * ```
+ */
 function Dropdown({ children, selectionType }: DropdownProps): JSX.Element {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
@@ -50,6 +67,11 @@ function Dropdown({ children, selectionType }: DropdownProps): JSX.Element {
   );
 }
 
+/**
+ * Overlay for dropdown.
+ *
+ * Wrap your ActionList with this this component
+ */
 function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Element {
   const { isOpen } = useDropdown();
 

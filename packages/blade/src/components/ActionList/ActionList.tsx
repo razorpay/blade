@@ -64,6 +64,8 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
     title: string;
     value: string;
   }[] = [];
+
+  // Looping through ActionListItems to add index to them and get an options array for moving focus between items
   const childrenWithId = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       // @TODO: handle the scenario where ActionListItem is inside ActionListMenu
