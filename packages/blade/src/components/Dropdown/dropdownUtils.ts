@@ -278,12 +278,18 @@ export const ensureScrollVisiblity = (
  * value that is set in the actual form input
  */
 export const makeInputValue = (selectedIndices: number[], options: OptionsType): string => {
-  return selectedIndices.map((selectedIndex) => options[selectedIndex].value).join(', ');
+  if (options.length === 0) {
+    return '';
+  }
+  return selectedIndices.map((selectedIndex) => options[selectedIndex]?.value).join(', ');
 };
 
 /**
  * Value that is displayed inside the select field
  */
 export const makeInputDisplayValue = (selectedIndices: number[], options: OptionsType): string => {
-  return selectedIndices.map((selectedIndex) => options[selectedIndex].title).join(', ');
+  if (options.length === 0) {
+    return '';
+  }
+  return selectedIndices.map((selectedIndex) => options[selectedIndex]?.title).join(', ');
 };

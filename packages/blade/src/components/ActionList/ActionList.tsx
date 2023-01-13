@@ -20,6 +20,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     onOptionClick,
     selectedIndices,
     setShouldIgnoreBlur,
+    selectInputRef,
   } = useDropdown();
 
   const platformType = getPlatformType();
@@ -40,6 +41,10 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         if (typeof props.index === 'number') {
           onOptionClick(e, props.index);
         }
+      }}
+      onFocus={() => {
+        // We don't want to keep the browser's focus on option item. We move it to selectInput
+        selectInputRef.current?.focus();
       }}
       onMouseDown={() => {
         setShouldIgnoreBlur(true);
@@ -89,7 +94,7 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
   React.useEffect(() => {
     setOptions(actionListOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setOptions]);
+  }, [setOptions, children]);
 
   return (
     <Box

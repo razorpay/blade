@@ -6,7 +6,7 @@ import Box from '~components/Box';
 import { getPlatformType } from '~utils';
 
 type DropdownProps = {
-  selectionType: 'single' | 'multiple';
+  selectionType?: 'single' | 'multiple';
   children: React.ReactNode[];
 };
 
