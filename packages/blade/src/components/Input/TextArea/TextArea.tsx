@@ -49,124 +49,120 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
   return getPlatformType() === 'react-native';
 };
 
-const TextArea = React.forwardRef<NativeHTMLInputRefProps, TextAreaProps>(
-  (
-    {
-      label,
-      labelPosition,
-      necessityIndicator,
-      errorText,
-      helpText,
-      successText,
-      validationState,
-      defaultValue,
-      isDisabled,
-      isRequired,
-      name,
-      onChange,
-      onFocus,
-      onBlur,
-      placeholder,
-      value,
-      maxCharacters,
-      showClearButton,
-      onClearButtonClick,
-      autoFocus,
-      numberOfLines = 2,
-    },
-    ref,
-  ) => {
-    const inputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
-
-    const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
-
-    React.useEffect(() => {
-      setShouldShowClearButton(Boolean(showClearButton && (value?.length || defaultValue?.length)));
-    }, [showClearButton, defaultValue, value]);
-
-    const renderInteractionElement = (): React.ReactNode => {
-      if (shouldShowClearButton) {
-        return (
-          <Box paddingTop="spacing.3" marginTop="spacing.1">
-            <IconButton
-              icon={CloseIcon}
-              accessibilityLabel="Clear textarea content"
-              onClick={() => {
-                if (isEmpty(value) && inputRef.current) {
-                  // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
-                  if (isReactNative(inputRef.current)) {
-                    inputRef.current.clear();
-                    inputRef.current.focus();
-                  } else if (inputRef.current instanceof HTMLTextAreaElement) {
-                    inputRef.current.value = '';
-                    inputRef.current.focus();
-                  }
-                }
-                // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
-                onClearButtonClick?.();
-                inputRef?.current?.focus();
-                setShouldShowClearButton(false);
-              }}
-            />
-          </Box>
-        );
-      }
-
-      return null;
-    };
-
-    useExposeInputRef(ref, inputRef);
-
-    return (
-      <BaseInput
-        as="textarea"
-        id="textarea"
-        componentName="textarea"
-        autoFocus={autoFocus}
-        ref={inputRef as React.Ref<HTMLInputElement>}
-        label={label}
-        labelPosition={labelPosition}
-        necessityIndicator={necessityIndicator}
-        errorText={errorText}
-        helpText={helpText}
-        successText={successText}
-        validationState={validationState}
-        isDisabled={isDisabled}
-        isRequired={isRequired}
-        name={name}
-        maxCharacters={maxCharacters}
-        placeholder={placeholder}
-        interactionElement={renderInteractionElement()}
-        defaultValue={defaultValue}
-        value={value}
-        numberOfLines={numberOfLines}
-        onChange={({ name, value }) => {
-          if (showClearButton && value?.length) {
-            // show the clear button when the user starts typing in
-            setShouldShowClearButton(true);
-          }
-
-          if (shouldShowClearButton && !value?.length) {
-            // hide the clear button when the input field is empty
-            setShouldShowClearButton(false);
-          }
-
-          onChange?.({ name, value });
-        }}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        trailingFooterSlot={(value) => {
-          return maxCharacters ? (
-            <Box marginTop="spacing.2" marginRight="spacing.1">
-              <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
-            </Box>
-          ) : null;
-        }}
-      />
-    );
+const _TextArea: React.ForwardRefRenderFunction<NativeHTMLInputRefProps, TextAreaProps> = (
+  {
+    label,
+    labelPosition,
+    necessityIndicator,
+    errorText,
+    helpText,
+    successText,
+    validationState,
+    defaultValue,
+    isDisabled,
+    isRequired,
+    name,
+    onChange,
+    onFocus,
+    onBlur,
+    placeholder,
+    value,
+    maxCharacters,
+    showClearButton,
+    onClearButtonClick,
+    autoFocus,
+    numberOfLines = 2,
   },
-);
+  ref,
+) => {
+  const inputRef = useExposeInputRef(ref);
+  const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
 
+  React.useEffect(() => {
+    setShouldShowClearButton(Boolean(showClearButton && (value?.length || defaultValue?.length)));
+  }, [showClearButton, defaultValue, value]);
+
+  const renderInteractionElement = (): React.ReactNode => {
+    if (shouldShowClearButton) {
+      return (
+        <Box paddingTop="spacing.3" marginTop="spacing.1">
+          <IconButton
+            icon={CloseIcon}
+            accessibilityLabel="Clear textarea content"
+            onClick={() => {
+              if (isEmpty(value) && inputRef.current) {
+                // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
+                if (isReactNative(inputRef.current)) {
+                  inputRef.current.clear();
+                  inputRef.current.focus();
+                } else if (inputRef.current instanceof HTMLTextAreaElement) {
+                  inputRef.current.value = '';
+                  inputRef.current.focus();
+                }
+              }
+              // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
+              onClearButtonClick?.();
+              inputRef?.current?.focus();
+              setShouldShowClearButton(false);
+            }}
+          />
+        </Box>
+      );
+    }
+
+    return null;
+  };
+
+  return (
+    <BaseInput
+      as="textarea"
+      id="textarea"
+      componentName="textarea"
+      autoFocus={autoFocus}
+      ref={inputRef as React.Ref<HTMLInputElement>}
+      label={label}
+      labelPosition={labelPosition}
+      necessityIndicator={necessityIndicator}
+      errorText={errorText}
+      helpText={helpText}
+      successText={successText}
+      validationState={validationState}
+      isDisabled={isDisabled}
+      isRequired={isRequired}
+      name={name}
+      maxCharacters={maxCharacters}
+      placeholder={placeholder}
+      interactionElement={renderInteractionElement()}
+      defaultValue={defaultValue}
+      value={value}
+      numberOfLines={numberOfLines}
+      onChange={({ name, value }) => {
+        if (showClearButton && value?.length) {
+          // show the clear button when the user starts typing in
+          setShouldShowClearButton(true);
+        }
+
+        if (shouldShowClearButton && !value?.length) {
+          // hide the clear button when the input field is empty
+          setShouldShowClearButton(false);
+        }
+
+        onChange?.({ name, value });
+      }}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      trailingFooterSlot={(value) => {
+        return maxCharacters ? (
+          <Box marginTop="spacing.2" marginRight="spacing.1">
+            <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
+          </Box>
+        ) : null;
+      }}
+    />
+  );
+};
+
+const TextArea = React.forwardRef(_TextArea);
 TextArea.displayName = 'TextArea';
 
 export { TextArea, TextAreaProps };

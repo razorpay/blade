@@ -16,7 +16,7 @@ import { useExposeInputRef } from '~src/hooks/useExposeInputRef';
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
 
-export type TextInputProps = Pick<
+type TextInputProps = Pick<
   BaseInputProps,
   | 'label'
   | 'labelPosition'
@@ -154,137 +154,136 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
   return getPlatformType() === 'react-native';
 };
 
-export const TextInput = React.forwardRef<NativeHTMLInputRefProps, TextInputProps>(
-  (
-    {
-      label,
-      labelPosition = 'top',
-      placeholder,
-      type = 'text',
-      defaultValue,
-      name,
-      value,
-      maxCharacters,
-      onChange,
-      onFocus,
-      onBlur,
-      isDisabled,
-      necessityIndicator,
-      validationState,
-      errorText,
-      helpText,
-      successText,
-      isRequired,
-      icon,
-      prefix,
-      showClearButton,
-      onClearButtonClick,
-      isLoading,
-      suffix,
-      autoFocus,
-      keyboardReturnKeyType,
-      autoCompleteSuggestionType,
-    },
-    ref,
-  ): ReactElement => {
-    const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
-    const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
-
-    React.useEffect(() => {
-      setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
-    }, [showClearButton, defaultValue, value]);
-
-    const renderInteractionElement = (): ReactNode => {
-      if (isLoading) {
-        return <Spinner accessibilityLabel="Loading Content" />;
-      }
-
-      if (shouldShowClearButton) {
-        return (
-          <IconButton
-            size="medium"
-            icon={CloseIcon}
-            onClick={() => {
-              if (isEmpty(value) && textInputRef.current) {
-                // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
-                if (isReactNative(textInputRef.current)) {
-                  textInputRef.current.clear();
-                  textInputRef.current.focus();
-                } else if (textInputRef.current instanceof HTMLInputElement) {
-                  textInputRef.current.value = '';
-                  textInputRef.current.focus();
-                }
-              }
-              // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
-              onClearButtonClick?.();
-              textInputRef?.current?.focus();
-              setShouldShowClearButton(false);
-            }}
-            accessibilityLabel="Clear Input Content"
-          />
-        );
-      }
-
-      return null;
-    };
-
-    useExposeInputRef(ref, textInputRef);
-
-    return (
-      <BaseInput
-        id="textinput"
-        componentName="textinput"
-        ref={textInputRef as React.Ref<HTMLInputElement>}
-        label={label}
-        labelPosition={labelPosition}
-        placeholder={placeholder}
-        defaultValue={defaultValue}
-        value={value}
-        name={name}
-        maxCharacters={maxCharacters}
-        onChange={({ name, value }) => {
-          if (showClearButton && value?.length) {
-            // show the clear button when the user starts typing in
-            setShouldShowClearButton(true);
-          }
-
-          if (shouldShowClearButton && !value?.length) {
-            // hide the clear button when the input field is empty
-            setShouldShowClearButton(false);
-          }
-
-          onChange?.({ name, value });
-        }}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        isDisabled={isDisabled}
-        necessityIndicator={necessityIndicator}
-        isRequired={isRequired}
-        leadingIcon={icon}
-        prefix={prefix}
-        interactionElement={renderInteractionElement()}
-        suffix={suffix}
-        validationState={validationState}
-        errorText={errorText}
-        helpText={helpText}
-        successText={successText}
-        trailingFooterSlot={(value) => {
-          return maxCharacters ? (
-            <Box marginTop="spacing.2" marginRight="spacing.1">
-              <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
-            </Box>
-          ) : null;
-        }}
-        // eslint-disable-next-line jsx-a11y/no-autofocus
-        autoFocus={autoFocus}
-        {...getKeyboardAndAutocompleteProps({
-          type,
-          keyboardReturnKeyType,
-          autoCompleteSuggestionType,
-        })}
-      />
-    );
+const _TextInput: React.ForwardRefRenderFunction<NativeHTMLInputRefProps, TextInputProps> = (
+  {
+    label,
+    labelPosition = 'top',
+    placeholder,
+    type = 'text',
+    defaultValue,
+    name,
+    value,
+    maxCharacters,
+    onChange,
+    onFocus,
+    onBlur,
+    isDisabled,
+    necessityIndicator,
+    validationState,
+    errorText,
+    helpText,
+    successText,
+    isRequired,
+    icon,
+    prefix,
+    showClearButton,
+    onClearButtonClick,
+    isLoading,
+    suffix,
+    autoFocus,
+    keyboardReturnKeyType,
+    autoCompleteSuggestionType,
   },
-);
+  ref,
+): ReactElement => {
+  const textInputRef = useExposeInputRef(ref);
+  const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
 
+  React.useEffect(() => {
+    setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
+  }, [showClearButton, defaultValue, value]);
+
+  const renderInteractionElement = (): ReactNode => {
+    if (isLoading) {
+      return <Spinner accessibilityLabel="Loading Content" />;
+    }
+
+    if (shouldShowClearButton) {
+      return (
+        <IconButton
+          size="medium"
+          icon={CloseIcon}
+          onClick={() => {
+            if (isEmpty(value) && textInputRef.current) {
+              // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
+              if (isReactNative(textInputRef.current)) {
+                textInputRef.current.clear();
+                textInputRef.current.focus();
+              } else if (textInputRef.current instanceof HTMLInputElement) {
+                textInputRef.current.value = '';
+                textInputRef.current.focus();
+              }
+            }
+            // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
+            onClearButtonClick?.();
+            textInputRef?.current?.focus();
+            setShouldShowClearButton(false);
+          }}
+          accessibilityLabel="Clear Input Content"
+        />
+      );
+    }
+
+    return null;
+  };
+
+  return (
+    <BaseInput
+      id="textinput"
+      componentName="textinput"
+      ref={textInputRef as React.Ref<HTMLInputElement>}
+      label={label}
+      labelPosition={labelPosition}
+      placeholder={placeholder}
+      defaultValue={defaultValue}
+      value={value}
+      name={name}
+      maxCharacters={maxCharacters}
+      onChange={({ name, value }) => {
+        if (showClearButton && value?.length) {
+          // show the clear button when the user starts typing in
+          setShouldShowClearButton(true);
+        }
+
+        if (shouldShowClearButton && !value?.length) {
+          // hide the clear button when the input field is empty
+          setShouldShowClearButton(false);
+        }
+
+        onChange?.({ name, value });
+      }}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      isDisabled={isDisabled}
+      necessityIndicator={necessityIndicator}
+      isRequired={isRequired}
+      leadingIcon={icon}
+      prefix={prefix}
+      interactionElement={renderInteractionElement()}
+      suffix={suffix}
+      validationState={validationState}
+      errorText={errorText}
+      helpText={helpText}
+      successText={successText}
+      trailingFooterSlot={(value) => {
+        return maxCharacters ? (
+          <Box marginTop="spacing.2" marginRight="spacing.1">
+            <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
+          </Box>
+        ) : null;
+      }}
+      // eslint-disable-next-line jsx-a11y/no-autofocus
+      autoFocus={autoFocus}
+      {...getKeyboardAndAutocompleteProps({
+        type,
+        keyboardReturnKeyType,
+        autoCompleteSuggestionType,
+      })}
+    />
+  );
+};
+
+const TextInput = React.forwardRef(_TextInput);
 TextInput.displayName = 'TextInput';
+
+export { TextInput, TextInputProps };

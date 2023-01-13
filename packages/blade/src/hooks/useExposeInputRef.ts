@@ -11,19 +11,22 @@ type NativeHTMLInputRefProps = Pick<HTMLElement, 'focus' | 'scrollIntoView'>;
  */
 const useExposeInputRef = (
   targetRef: React.ForwardedRef<NativeHTMLInputRefProps>,
-  inputRef: React.RefObject<TextInputReactNative | HTMLInputElement>,
-): void => {
+): React.RefObject<TextInputReactNative | HTMLInputElement> => {
+  const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
+
   React.useImperativeHandle(
     targetRef,
     (): NativeHTMLInputRefProps => {
-      const input = inputRef.current as HTMLInputElement;
+      const input = textInputRef.current as HTMLInputElement;
       return {
         focus: (opts) => input.focus(opts),
         scrollIntoView: (opts) => input.scrollIntoView(opts),
       };
     },
-    [inputRef],
+    [textInputRef],
   );
+
+  return textInputRef;
 };
 
 export { useExposeInputRef, NativeHTMLInputRefProps };
