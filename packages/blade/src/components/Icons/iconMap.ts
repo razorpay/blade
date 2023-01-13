@@ -3,6 +3,7 @@ import ArrowLeftIconComponent from './ArrowLeftIcon';
 import ArrowRightIconComponent from './ArrowRightIcon';
 import ArrowUpIconComponent from './ArrowUpIcon';
 import ArrowUpRightIconComponent from './ArrowUpRightIcon';
+import AttachmentIconComponent from './AttachmentIcon';
 import ChevronDownIconComponent from './ChevronDownIcon';
 import ChevronLeftIconComponent from './ChevronLeftIcon';
 import ChevronRightIconComponent from './ChevronRightIcon';
@@ -235,6 +236,7 @@ import UserPlusIconComponent from './UserPlusIcon';
 import UserMinusIconComponent from './UserMinusIcon';
 import ActivityIconComponent from './ActivityIcon';
 import BarChartIconComponent from './BarChartIcon';
+import BarChartAltIconComponent from './BarChartAltIcon';
 import PieChartIconComponent from './PieChartIcon';
 import CompassIconComponent from './CompassIcon';
 import MapIconComponent from './MapIcon';
@@ -270,6 +272,7 @@ const iconMap: Record<string, IconComponent> = {
   ArrowUpRightIcon: ArrowUpRightIconComponent,
   AlertTriangleIcon: AlertTriangleIconComponent,
   AlertOctagonIcon: AlertOctagonIconComponent,
+  AttachmentIcon: AttachmentIconComponent,
   CheckIcon: CheckIconComponent,
   CheckCircleIcon: CheckCircleIconComponent,
   ChevronDownIcon: ChevronDownIconComponent,
@@ -500,6 +503,7 @@ const iconMap: Record<string, IconComponent> = {
   UserMinusIcon: UserMinusIconComponent,
   ActivityIcon: ActivityIconComponent,
   BarChartIcon: BarChartIconComponent,
+  BarChartAltIcon: BarChartAltIconComponent,
   PieChartIcon: PieChartIconComponent,
   CompassIcon: CompassIconComponent,
   MapIcon: MapIconComponent,
