@@ -89,6 +89,7 @@ import RepeatIconComponent from './RepeatIcon';
 import RotateClockWiseIconComponent from './RotateClockWiseIcon';
 import SaveIconComponent from './SaveIcon';
 import ShareIconComponent from './ShareIcon';
+import ExportIconComponent from './ExportIcon';
 import ShoppingCartIconComponent from './ShoppingCartIcon';
 import ShuffleIconComponent from './ShuffleIcon';
 import StopCircleIconComponent from './StopCircleIcon';
@@ -353,6 +354,7 @@ const iconMap: Record<string, IconComponent> = {
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
   SaveIcon: SaveIconComponent,
   ShareIcon: ShareIconComponent,
+  ExportIcon: ExportIconComponent,
   ShoppingCartIcon: ShoppingCartIconComponent,
   ShuffleIcon: ShuffleIconComponent,
   StopCircleIcon: StopCircleIconComponent,

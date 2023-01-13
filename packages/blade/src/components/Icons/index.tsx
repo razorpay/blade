@@ -135,6 +135,7 @@ export { default as RotateCwIcon } from './RotateClockWiseIcon';
 export { default as RotateCcwIcon } from './RotateCcwIcon';
 export { default as SaveIcon } from './SaveIcon';
 export { default as ShareIcon } from './ShareIcon';
+export { default as ExportIcon } from './ExportIcon';
 export { default as ShoppingCartIcon } from './ShoppingCartIcon';
 export { default as ShuffleIcon } from './ShuffleIcon';
 export { default as StopCircleIcon } from './StopCircleIcon';
