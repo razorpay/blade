@@ -6,7 +6,7 @@ import Box from '~components/Box';
 import { getPlatformType } from '~utils';
 
 type DropdownProps = {
-  selectionType?: 'single' | 'multiple';
+  selectionType: 'single' | 'multiple';
   children: React.ReactNode[];
 };
 
@@ -30,7 +30,7 @@ const isReactNative = platformType === 'react-native';
  * </Dropdown>
  * ```
  */
-function Dropdown({ children, selectionType }: DropdownProps): JSX.Element {
+function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.Element {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<

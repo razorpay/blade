@@ -95,7 +95,6 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
     <Box
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={actionListRef as any}
-      // as="div"
       {...makeAccessible({
         role: 'listbox',
         multiSelectable: selectionType === 'multiple',
