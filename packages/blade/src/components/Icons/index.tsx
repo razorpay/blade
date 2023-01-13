@@ -130,7 +130,6 @@ export { default as PlusCircleIcon } from './PlusCircleIcon';
 export { default as PlusSquareIcon } from './PlusSquareIcon';
 export { default as PowerIcon } from './PowerIcon';
 export { default as RefreshLeftIcon } from './RefreshLeftIcon';
-export { default as RefreshRightIcon } from './RefreshRightIcon';
 export { default as RepeatIcon } from './RepeatIcon';
 export { default as RotateCwIcon } from './RotateClockWiseIcon';
 export { default as RotateCcwIcon } from './RotateCcwIcon';
