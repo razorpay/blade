@@ -111,6 +111,8 @@ export { default as HeartIcon } from './HeartIcon';
 export { default as LogInIcon } from './LogInIcon';
 export { default as LogOutIcon } from './LogOutIcon';
 export { default as MaximizeIcon } from './MaximizeIcon';
+export { default as FullScreenEnterIcon } from './FullScreenEnterIcon';
+export { default as FullScreenExitIcon } from './FullScreenExitIcon';
 export { default as MenuIcon } from './MenuIcon';
 export { default as MicIcon } from './MicIcon';
 export { default as MicOffIcon } from './MicOffIcon';

@@ -66,6 +66,8 @@ import HeartIconComponent from './HeartIcon';
 import LogInIconComponent from './LogInIcon';
 import LogOutIconComponent from './LogOutIcon';
 import MaximizeIconComponent from './MaximizeIcon';
+import FullScreenEnterIconComponent from './FullScreenEnterIcon';
+import FullScreenExitIconComponent from './FullScreenExitIcon';
 import MenuIconComponent from './MenuIcon';
 import MicIconComponent from './MicIcon';
 import MicOffIconComponent from './MicOffIcon';
@@ -327,6 +329,8 @@ const iconMap: Record<string, IconComponent> = {
   LogInIcon: LogInIconComponent,
   LogOutIcon: LogOutIconComponent,
   MaximizeIcon: MaximizeIconComponent,
+  FullScreenEnterIcon: FullScreenEnterIconComponent,
+  FullScreenExitIcon: FullScreenExitIconComponent,
   MenuIcon: MenuIconComponent,
   MicIcon: MicIconComponent,
   MicOffIcon: MicOffIconComponent,
