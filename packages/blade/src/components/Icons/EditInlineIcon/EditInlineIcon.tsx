@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const Edit3Icon: IconComponent = ({ size, color }) => {
+const EditInlineIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -21,4 +21,4 @@ const Edit3Icon: IconComponent = ({ size, color }) => {
   );
 };
 
-export default Edit3Icon;
+export default EditInlineIcon;

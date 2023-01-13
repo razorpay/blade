@@ -52,8 +52,8 @@ import CopyIconComponent from './CopyIcon';
 import CropIconComponent from './CropIcon';
 import CutIconComponent from './CutIcon';
 import DownloadCloudIconComponent from './DownloadCloudIcon';
-import Edit3IconComponent from './Edit3Icon';
-import Edit2IconComponent from './Edit2Icon';
+import EditInlineIconComponent from './EditInlineIcon';
+import EditComposeIconComponent from './EditComposeIcon';
 import FileIconComponent from './FileIcon';
 import FilePlusIconComponent from './FilePlusIcon';
 import FileMinusIconComponent from './FileMinusIcon';
@@ -313,8 +313,8 @@ const iconMap: Record<string, IconComponent> = {
   CropIcon: CropIconComponent,
   CutIcon: CutIconComponent,
   DownloadCloudIcon: DownloadCloudIconComponent,
-  Edit3Icon: Edit3IconComponent,
-  Edit2Icon: Edit2IconComponent,
+  EditInlineIcon: EditInlineIconComponent,
+  EditComposeIcon: EditComposeIconComponent,
   FileIcon: FileIconComponent,
   FilePlusIcon: FilePlusIconComponent,
   FileMinusIcon: FileMinusIconComponent,
