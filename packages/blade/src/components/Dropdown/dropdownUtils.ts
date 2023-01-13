@@ -147,7 +147,9 @@ export function getUpdatedIndex(
   maxIndex: number,
   action: SelectActionsType,
 ): number {
-  const pageSize = 10; // used for pageup/pagedown
+  // On PageUP or PageDown, we jump focus by 10 items or to the first or last element
+  // Details: https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html#:~:text=PageUp,to%20last%20option).
+  const pageSize = 10;
 
   switch (action) {
     case SelectActions.First:
