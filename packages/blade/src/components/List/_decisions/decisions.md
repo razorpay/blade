@@ -43,11 +43,11 @@ Lists display a set of related items that are composed of text/links. Each list 
 | Prop | Type | Default | Description | Required |
 |---|---|---|---|---|
 | children | `string` | `undefined` | The text to be rendered within the link.| ✅ |
-| onClick | `Function` | No | undefined | The function to be called when the link is clicked. |
-| href | `string` | No | undefined | The href for the link component. |
-| target | `string` | No | undefined | The target for the link component. |
-| rel | `string` | No | undefined | The rel for the link component.<br>-When `target` prop is set to `_blank`, `rel` will be automatically set to `noopener noreferrer` which can be overridden by passing the `rel` prop. |
-| accessibilityLabel | `string` | No | undefined | The `aria-label` (web) & `accessibilityLabel` (native) of the link component. |
+| onClick | `Function` | `undefined` | The function to be called when the link is clicked. | |
+| href | `string` | `undefined` | The href for the link component. | |
+| target | `string` | `undefined` | The target for the link component. | |
+| rel | `string` | `undefined` | The rel for the link component.<br>-When `target` prop is set to `_blank`, `rel` will be automatically set to `noopener noreferrer` which can be overridden by passing the `rel` prop. | |
+| accessibilityLabel | `string` | `undefined` | The `aria-label` (web) & `accessibilityLabel` (native) of the link component. | |
 
 
 ### Sample Usage
