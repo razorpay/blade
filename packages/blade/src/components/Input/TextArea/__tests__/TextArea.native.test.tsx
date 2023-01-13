@@ -97,6 +97,50 @@ describe('<TextArea />', () => {
     expect(onChange).toHaveBeenCalledWith({ name: 'name', value: userName });
   });
 
+  it('should handle onFocus', () => {
+    const placeholder = 'First Last';
+    const onFocus = jest.fn();
+    const name = 'userName';
+    const userName = 'Kamlesh';
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <TextArea
+        label="Enter name"
+        placeholder={placeholder}
+        name={name}
+        defaultValue={userName}
+        onFocus={onFocus}
+      />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+    fireEvent(input, 'focus', { nativeEvent: { text: userName } });
+    expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(onFocus).toHaveBeenCalledWith({ name, value: userName });
+  });
+
+  it('should handle onBlur', () => {
+    const placeholder = 'First Last';
+    const onBlur = jest.fn();
+    const name = 'userName';
+    const userName = 'Kamlesh';
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <TextArea
+        label="Enter name"
+        placeholder={placeholder}
+        name={name}
+        defaultValue={userName}
+        onBlur={onBlur}
+      />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+    fireEvent(input, 'onEndEditing', { nativeEvent: { text: userName } });
+    expect(onBlur).toHaveBeenCalledTimes(1);
+    expect(onBlur).toHaveBeenCalledWith({ name, value: userName });
+  });
+
   /**
    * No tests for uncontrolled input because react-native-testing-library doesn't support it
    * https://github.com/callstack/react-native-testing-library/issues/978#issuecomment-1203256954

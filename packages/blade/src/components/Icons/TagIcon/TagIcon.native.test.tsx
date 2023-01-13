@@ -1,4 +1,4 @@
-import TagIcon from './';
+import TagIcon from '.';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<TagIcon />', () => {

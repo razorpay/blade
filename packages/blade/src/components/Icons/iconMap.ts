@@ -27,6 +27,7 @@ import RupeeIconComponent from './RupeeIcon';
 import SearchIconComponent from './SearchIcon';
 import SettingsIconComponent from './SettingsIcon';
 import SlashIconComponent from './SlashIcon';
+import BankIconComponent from './BankIcon';
 import TrashIconComponent from './TrashIcon';
 import AlertTriangleIconComponent from './AlertTriangleIcon';
 import AlertOctagonIconComponent from './AlertOctagonIcon';
@@ -91,7 +92,6 @@ import SaveIconComponent from './SaveIcon';
 import ShareIconComponent from './ShareIcon';
 import ExportIconComponent from './ExportIcon';
 import ShoppingCartIconComponent from './ShoppingCartIcon';
-import ShuffleIconComponent from './ShuffleIcon';
 import StopCircleIconComponent from './StopCircleIcon';
 import SunIconComponent from './SunIcon';
 import ToggleLeftIconComponent from './ToggleLeftIcon';
@@ -103,7 +103,6 @@ import PaperclipIconComponent from './PaperclipIcon';
 import UploadCloudIconComponent from './UploadCloudIcon';
 import TargetIconComponent from './TargetIcon';
 import UnlockIconComponent from './UnlockIcon';
-import TagIconComponent from './TagIcon';
 import ThumbsUpIconComponent from './ThumbsUpIcon';
 import ThumbsDownIconComponent from './ThumbsDownIcon';
 import UploadIconComponent from './UploadIcon';
@@ -198,7 +197,6 @@ import VolumeMuteIconComponent from './VolumeMuteIcon';
 import VolumeLowIconComponent from './VolumeLowIcon';
 import VolumeHighIconComponent from './VolumeHighIcon';
 import CalendarIconComponent from './CalendarIcon';
-import ClockIconComponent from './ClockIcon';
 import CloudIconComponent from './CloudIcon';
 import CloudDrizzleIconComponent from './CloudDrizzleIcon';
 import CloudSnowIconComponent from './CloudSnowIcon';
@@ -244,8 +242,6 @@ import NavigationIconComponent from './NavigationIcon';
 import DollarsIconComponent from './DollarsIcon';
 import RupeesIconComponent from './RupeesIcon';
 import DashboardIconComponent from './DashboardIcon';
-import TransactionsIconComponent from './TransactionsIcon';
-import SettlementsIconComponent from './SettlementsIcon';
 import InvoicesIconComponent from './InvoicesIcon';
 import PaymentLinksIconComponent from './PaymentLinksIcon';
 import PaymentButtonsIconComponent from './PaymentButtonsIcon';
@@ -259,8 +255,13 @@ import ReportsIconComponent from './ReportsIcon';
 import MyAccountIconComponent from './MyAccountIcon';
 import RazorpayIconComponent from './RazorpayIcon';
 import RazorpayXIconComponent from './RazorpayXIcon';
+import SettlementsIconComponent from './SettlementsIcon';
+import ShuffleIconComponent from './ShuffleIcon';
+import TagIconComponent from './TagIcon';
+import ClockIconComponent from './ClockIcon';
+import TransactionsIconComponent from './TransactionsIcon';
+import type { IconComponent } from './';
 // # append_icon_import
-import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
 const iconMap: Record<string, IconComponent> = {
@@ -272,12 +273,15 @@ const iconMap: Record<string, IconComponent> = {
   AlertTriangleIcon: AlertTriangleIconComponent,
   AlertOctagonIcon: AlertOctagonIconComponent,
   AttachmentIcon: AttachmentIconComponent,
+  BankIcon: BankIconComponent,
+  BookIcon: BookIconComponent,
   CheckIcon: CheckIconComponent,
   CheckCircleIcon: CheckCircleIconComponent,
   ChevronDownIcon: ChevronDownIconComponent,
   ChevronLeftIcon: ChevronLeftIconComponent,
   ChevronRightIcon: ChevronRightIconComponent,
   ChevronUpIcon: ChevronUpIconComponent,
+  ClockIcon: ClockIconComponent,
   CloseIcon: CloseIconComponent,
   CreditCardIcon: CreditCardIconComponent,
   DollarIcon: DollarIconComponent,
@@ -300,10 +304,15 @@ const iconMap: Record<string, IconComponent> = {
   RupeeIcon: RupeeIconComponent,
   SearchIcon: SearchIconComponent,
   SettingsIcon: SettingsIconComponent,
+  SettlementsIcon: SettlementsIconComponent,
+  ShuffleIcon: ShuffleIconComponent,
   SlashIcon: SlashIconComponent,
+  TagIcon: TagIconComponent,
+  TransactionsIcon: TransactionsIconComponent,
   TrashIcon: TrashIconComponent,
   TrendingUpIcon: TrendingUpIconComponent,
   TrendingDownIcon: TrendingDownIconComponent,
+  UserIcon: UserIconComponent,
   UsersIcon: UsersIconComponent,
   AlertCircleIcon: AlertCircleIconComponent,
   AlertOnlyIcon: AlertOnlyIconComponent,
@@ -357,7 +366,6 @@ const iconMap: Record<string, IconComponent> = {
   ShareIcon: ShareIconComponent,
   ExportIcon: ExportIconComponent,
   ShoppingCartIcon: ShoppingCartIconComponent,
-  ShuffleIcon: ShuffleIconComponent,
   StopCircleIcon: StopCircleIconComponent,
   SunIcon: SunIconComponent,
   ToggleLeftIcon: ToggleLeftIconComponent,
@@ -369,7 +377,6 @@ const iconMap: Record<string, IconComponent> = {
   UploadCloudIcon: UploadCloudIconComponent,
   TargetIcon: TargetIconComponent,
   UnlockIcon: UnlockIconComponent,
-  TagIcon: TagIconComponent,
   ThumbsUpIcon: ThumbsUpIconComponent,
   ThumbsDownIcon: ThumbsDownIconComponent,
   UploadIcon: UploadIconComponent,
@@ -416,7 +423,6 @@ const iconMap: Record<string, IconComponent> = {
   WifiOffIcon: WifiOffIconComponent,
   ApertureIcon: ApertureIconComponent,
   AwardIcon: AwardIconComponent,
-  BookIcon: BookIconComponent,
   BoxIcon: BoxIconComponent,
   BriefcaseIcon: BriefcaseIconComponent,
   ChromeIcon: ChromeIconComponent,
@@ -464,7 +470,6 @@ const iconMap: Record<string, IconComponent> = {
   VolumeLowIcon: VolumeLowIconComponent,
   VolumeHighIcon: VolumeHighIconComponent,
   CalendarIcon: CalendarIconComponent,
-  ClockIcon: ClockIconComponent,
   CloudIcon: CloudIconComponent,
   CloudDrizzleIcon: CloudDrizzleIconComponent,
   CloudSnowIcon: CloudSnowIconComponent,
@@ -495,7 +500,6 @@ const iconMap: Record<string, IconComponent> = {
   SlackIcon: SlackIconComponent,
   TwitterIcon: TwitterIconComponent,
   UserCheckIcon: UserCheckIconComponent,
-  UserIcon: UserIconComponent,
   UserXIcon: UserXIconComponent,
   UserPlusIcon: UserPlusIconComponent,
   UserMinusIcon: UserMinusIconComponent,
@@ -510,8 +514,6 @@ const iconMap: Record<string, IconComponent> = {
   DollarsIcon: DollarsIconComponent,
   RupeesIcon: RupeesIconComponent,
   DashboardIcon: DashboardIconComponent,
-  TransactionsIcon: TransactionsIconComponent,
-  SettlementsIcon: SettlementsIconComponent,
   InvoicesIcon: InvoicesIconComponent,
   PaymentLinksIcon: PaymentLinksIconComponent,
   PaymentButtonsIcon: PaymentButtonsIconComponent,

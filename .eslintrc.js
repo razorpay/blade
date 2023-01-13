@@ -109,7 +109,7 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:prettier/recommended',
       ],
-      plugins: ['@typescript-eslint', 'jsx-a11y'],
+      plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests'],
       rules: {
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
@@ -145,6 +145,7 @@ module.exports = {
         'react-native-a11y/has-valid-accessibility-live-region': 'off',
         '@typescript-eslint/no-shadow': ['off'],
         '@typescript-eslint/explicit-module-boundary-types': ['off'],
+        'no-only-tests/no-only-tests': 'error',
       },
     },
     {

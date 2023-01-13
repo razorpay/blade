@@ -27,6 +27,7 @@ export type TextInputProps = Pick<
   | 'defaultValue'
   | 'name'
   | 'onChange'
+  | 'onFocus'
   | 'onBlur'
   | 'value'
   | 'isDisabled'
@@ -161,6 +162,7 @@ export const TextInput = ({
   value,
   maxCharacters,
   onChange,
+  onFocus,
   onBlur,
   isDisabled,
   necessityIndicator,
@@ -180,9 +182,11 @@ export const TextInput = ({
   autoCompleteSuggestionType,
 }: TextInputProps): ReactElement => {
   const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
-  const [shouldShowClearButton, setShouldShowClearButton] = useState(
-    Boolean(defaultValue ?? value) ?? false,
-  );
+  const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
+
+  React.useEffect(() => {
+    setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
+  }, [showClearButton, defaultValue, value]);
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
@@ -243,6 +247,7 @@ export const TextInput = ({
 
         onChange?.({ name, value });
       }}
+      onFocus={onFocus}
       onBlur={onBlur}
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}

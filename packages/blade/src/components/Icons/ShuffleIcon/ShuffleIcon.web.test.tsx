@@ -1,4 +1,4 @@
-import ShuffleIcon from './';
+import ShuffleIcon from '.';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<ShuffleIcon />', () => {
