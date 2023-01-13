@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const VolumeXIcon: IconComponent = ({ size, color }) => {
+const VolumeMuteIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -21,4 +21,4 @@ const VolumeXIcon: IconComponent = ({ size, color }) => {
   );
 };
 
-export default VolumeXIcon;
+export default VolumeMuteIcon;

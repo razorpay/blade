@@ -191,9 +191,9 @@ import RewindIconComponent from './RewindIcon';
 import SkipBackIconComponent from './SkipBackIcon';
 import SkipForwardIconComponent from './SkipForwardIcon';
 import VolumeIconComponent from './VolumeIcon';
-import VolumeXIconComponent from './VolumeXIcon';
-import Volume1IconComponent from './Volume1Icon';
-import Volume2IconComponent from './Volume2Icon';
+import VolumeMuteIconComponent from './VolumeMuteIcon';
+import VolumeLowIconComponent from './VolumeLowIcon';
+import VolumeHighIconComponent from './VolumeHighIcon';
 import CalendarIconComponent from './CalendarIcon';
 import ClockIconComponent from './ClockIcon';
 import CloudIconComponent from './CloudIcon';
@@ -453,9 +453,9 @@ const iconMap: Record<string, IconComponent> = {
   SkipBackIcon: SkipBackIconComponent,
   SkipForwardIcon: SkipForwardIconComponent,
   VolumeIcon: VolumeIconComponent,
-  VolumeXIcon: VolumeXIconComponent,
-  Volume1Icon: Volume1IconComponent,
-  Volume2Icon: Volume2IconComponent,
+  VolumeMuteIcon: VolumeMuteIconComponent,
+  VolumeLowIcon: VolumeLowIconComponent,
+  VolumeHighIcon: VolumeHighIconComponent,
   CalendarIcon: CalendarIconComponent,
   ClockIcon: ClockIconComponent,
   CloudIcon: CloudIconComponent,
