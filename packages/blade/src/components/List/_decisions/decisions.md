@@ -176,7 +176,13 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 ```
 
 ## Accessibility
-- TODO
+- I will explore using `<ol>`,`<ul>` & `<li>` directly and see if it allows us to do all the customizations that we need for our use-cases instead of using `role` on a `<div>` for web since that's the recommended practice for lists.
+  - We will be able to hide default styling & icons using `list-style-type: none; padding: 0px, margin: 0px`
+  - [POC CodeSandbox Link](https://codesandbox.io/s/festive-sanne-2rb18j?file=/src/App.js)
+- Set `role` as `list` for the `List` component
+  - This does not work well with screen readers. It doesn't announce the total number of items in the list.
+- Set `role` as `listitem` for the `List.Item` component
+  - This does not work well with screen readers. It doesn't announce the item number, remaining number of items in the list and the current nesting level of the list.
 
 ## Open Questions
 - Discuss alternative APIs with the team
