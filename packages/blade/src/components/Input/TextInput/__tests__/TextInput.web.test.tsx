@@ -7,7 +7,6 @@ import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
-import Box from '~components/Box';
 import { Button } from '~components/Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -349,10 +348,7 @@ describe('<TextInput />', () => {
     expect(input).toBeValid();
     expect(input).toBeEnabled();
 
-    // There's some issue in jest-axe so we mock this function
-    window.getComputedStyle = jest.fn();
     await assertAccessible(input);
-    jest.clearAllMocks();
   });
 
   it(`type='text' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
@@ -440,8 +436,8 @@ describe('<TextInput />', () => {
       const ref = React.useRef<HTMLInputElement>(null);
 
       return (
-        <Box>
-          <TextInput ref={ref} label={label} type="search" />
+        <>
+          <TextInput ref={ref} label={label} />
           <Button
             onClick={() => {
               ref.current?.focus();
@@ -449,7 +445,7 @@ describe('<TextInput />', () => {
           >
             Focus
           </Button>
-        </Box>
+        </>
       );
     };
     const { getByLabelText, getByRole } = renderWithTheme(<Example />);

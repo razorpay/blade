@@ -4,6 +4,10 @@ import type { ReactElement } from 'react';
 import { TextArea } from '../TextArea';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import { Button } from '~components/Button';
+
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
 
 describe('<TextArea />', () => {
   it('should render', () => {
@@ -311,9 +315,36 @@ describe('<TextArea />', () => {
     expect(input).toBeValid();
     expect(input).toBeEnabled();
 
-    // There's some issue in jest-axe so we mock this function
-    window.getComputedStyle = jest.fn();
     await assertAccessible(input);
-    jest.clearAllMocks();
+  });
+
+  it(`should expose native element methods via ref`, async () => {
+    const label = 'Enter Text';
+
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+
+      return (
+        <>
+          <TextArea ref={ref} label={label} />
+          <Button
+            onClick={() => {
+              ref.current?.focus();
+            }}
+          >
+            Focus
+          </Button>
+        </>
+      );
+    };
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(label);
+    const button = getByRole('button');
+
+    expect(input).not.toHaveFocus();
+
+    await userEvent.click(button);
+    expect(input).toHaveFocus();
   });
 });
