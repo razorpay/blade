@@ -1,7 +1,7 @@
 import React from 'react';
-import type { TextInput as TextInputReactNative } from 'react-native';
+import type { TextInput as TextInputReactNative, View } from 'react-native';
 
-type BladeElementRef = Pick<HTMLElement, 'focus' | 'scrollIntoView'>;
+type BladeElementRef = Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View, 'focus'>;
 
 /**
  * A hook which only exposes the properties of html input element via imparative hook
@@ -17,16 +17,22 @@ const useBladeInnerRef = (
   React.useImperativeHandle(
     targetRef,
     (): BladeElementRef => {
-      const input = textInputRef.current as HTMLInputElement;
-      return {
-        focus: (opts) => input.focus(opts),
-        scrollIntoView: (opts) => input.scrollIntoView(opts),
-      };
+      const input = textInputRef.current;
+      if (input instanceof HTMLElement) {
+        return {
+          focus: (opts) => input.focus(opts),
+          scrollIntoView: (opts) => input.scrollIntoView(opts),
+        };
+      } else {
+        return {
+          focus: () => input?.focus(),
+        };
+      }
     },
     [textInputRef],
   );
 
-  return (textInputRef as unknown) as React.RefObject<BladeElementRef>;
+  return textInputRef;
 };
 
 export { useBladeInnerRef, BladeElementRef };
