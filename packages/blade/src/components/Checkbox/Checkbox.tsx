@@ -11,7 +11,7 @@ import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { NativeHTMLInputRefProps } from '~src/hooks/useBladeInnerRef';
+import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type OnChange = ({
@@ -99,7 +99,7 @@ type CheckboxProps = {
   size?: 'small' | 'medium';
 };
 
-const _Checkbox: React.ForwardRefRenderFunction<NativeHTMLInputRefProps, CheckboxProps> = (
+const _Checkbox: React.ForwardRefRenderFunction<BladeRefElement, CheckboxProps> = (
   {
     defaultChecked,
     validationState,

@@ -1,7 +1,10 @@
 import type { GestureResponderEvent } from 'react-native';
+import React from 'react';
 import BaseButton from '../BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
+import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -36,22 +39,28 @@ type ButtonWithIconProps = ButtonCommonProps & {
 
 export type ButtonProps = ButtonWithoutIconProps | ButtonWithIconProps;
 
-const Button = ({
-  children,
-  icon,
-  iconPosition = 'left',
-  isDisabled = false,
-  isFullWidth = false,
-  isLoading = false,
-  onClick,
-  size = 'medium',
-  type = 'button',
-  variant = 'primary',
-  accessibilityLabel,
-}: ButtonProps): React.ReactElement => {
+const _Button: React.ForwardRefRenderFunction<BladeRefElement, ButtonProps> = (
+  {
+    children,
+    icon,
+    iconPosition = 'left',
+    isDisabled = false,
+    isFullWidth = false,
+    isLoading = false,
+    onClick,
+    size = 'medium',
+    type = 'button',
+    variant = 'primary',
+    accessibilityLabel,
+  },
+  ref,
+) => {
+  const buttonRef = useBladeInnerRef(ref);
+
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
+      ref={buttonRef as React.RefObject<HTMLButtonElement>}
       accessibilityLabel={accessibilityLabel}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
@@ -64,5 +73,8 @@ const Button = ({
     />
   );
 };
+
+const Button = React.forwardRef(_Button);
+Button.displayName = 'Button';
 
 export default Button;

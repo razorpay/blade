@@ -11,7 +11,7 @@ import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getPlatformType } from '~utils';
-import type { NativeHTMLInputRefProps } from '~src/hooks/useBladeInnerRef';
+import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type RadioProps = {
@@ -42,7 +42,7 @@ type RadioProps = {
   size?: 'small' | 'medium';
 };
 
-const _Radio: React.ForwardRefRenderFunction<NativeHTMLInputRefProps, RadioProps> = (
+const _Radio: React.ForwardRefRenderFunction<BladeRefElement, RadioProps> = (
   { value, children, helpText, isDisabled, size = 'medium' },
   ref,
 ) => {

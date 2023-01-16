@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType, getIn, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
-import type { NativeHTMLInputRefProps } from '~src/hooks/useBladeInnerRef';
+import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
 
 type HoverProps = {
   isChecked?: boolean;
@@ -60,7 +60,7 @@ const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, ha
 }));
 
 const _SelectorInput: React.ForwardRefRenderFunction<
-  NativeHTMLInputRefProps,
+  BladeRefElement,
   HoverProps & { inputProps: any }
 > = ({ inputProps, isChecked, isDisabled, hasError }, ref) => {
   return (
