@@ -37,6 +37,8 @@ import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import Box from '~components/Box';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -273,7 +275,7 @@ const ButtonContent = styled(Box)<{ isHidden: boolean }>(({ isHidden }) => ({
   opacity: isHidden ? 0 : 1,
 }));
 
-const _BaseButton: React.ForwardRefRenderFunction<HTMLButtonElement, BaseButtonProps> = (
+const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonProps> = (
   {
     variant = 'primary',
     intent,
@@ -291,6 +293,7 @@ const _BaseButton: React.ForwardRefRenderFunction<HTMLButtonElement, BaseButtonP
   },
   ref,
 ) => {
+  const buttonRef = useBladeInnerRef(ref);
   const disabled = isLoading || isDisabled;
   const { theme } = useTheme();
   if (!Icon && !children?.trim()) {
@@ -348,7 +351,7 @@ const _BaseButton: React.ForwardRefRenderFunction<HTMLButtonElement, BaseButtonP
 
   return (
     <StyledBaseButton
-      ref={ref}
+      ref={buttonRef}
       accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
       isLoading={isLoading}
       disabled={disabled}

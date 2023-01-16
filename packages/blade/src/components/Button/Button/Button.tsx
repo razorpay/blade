@@ -4,7 +4,6 @@ import BaseButton from '../BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -55,12 +54,10 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   },
   ref,
 ) => {
-  const buttonRef = useBladeInnerRef(ref);
-
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
-      ref={buttonRef as React.RefObject<HTMLButtonElement>}
+      ref={ref}
       accessibilityLabel={accessibilityLabel}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
