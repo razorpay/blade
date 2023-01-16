@@ -110,7 +110,7 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 
 ### Alternative APIs
 #### Hierarchial without explicit nested `List` grouping
-```tsx
+```jsx
 <List variant='ordered'>
   <List.Item>
     Item 1
@@ -131,7 +131,7 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 ```
 
 #### Hierarchial with a `nested` prop
-```tsx
+```jsx
 <List variant='ordered'>
   <List.Item 
     nested={
@@ -155,7 +155,7 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 ```
 
 #### Non-Hierarchial with a `level` prop
-```tsx
+```jsx
 <List variant='ordered'>
   <List.Item level='1'>
     Item 1
