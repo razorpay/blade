@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 5.5.1
+
+### Patch Changes
+
+- 735e370: fix(blade): update peerDependencies to support react v18
+
 ## 5.5.0
 
 ### Minor Changes
