@@ -190,6 +190,12 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 - What should we call `isOrderedFilled` instead?
 - Do we allow ordered list within unordered list and vice versa?
 - Should we call it `List.Item.Link` or `List.Link` or `List.ItemLink`?
+- Supporting images, GIFs, videos, custom components, bold text, non-bulleted text, icons, and code text within list items.
+- Ordered list with custom numbers?
+- Bold ordered numbers?
+- Use-cases for List of level 1 with item that also contains list of level 1?
+- onHover support for list items?
+- H1, H2, etc. for list items?
 
 ## References
 - [Polaris](https://polaris.shopify.com/components/list#list-items)
