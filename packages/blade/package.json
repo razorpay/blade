@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "5.4.3",
+  "version": "5.5.1",
   "license": "MIT",
   "engines": {
     "node": ">=14.18.0"
@@ -168,8 +168,8 @@
     "tsconfig-paths-webpack-plugin": "3.5.2"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": ">=17",
+    "react-dom": ">=17",
     "react-native": "^0.66.5",
     "react-native-reanimated": "^2.6.0",
     "react-native-svg": "^12.3.0",
