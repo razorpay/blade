@@ -72,7 +72,13 @@ const _SelectorInput: React.ForwardRefRenderFunction<
       isDisabled={isDisabled}
       hasError={hasError}
       {...inputProps}
-      ref={inputRef}
+      // merging both refs because inputProps.ref needs to have access to indeterminate state
+      // to be able to set the mixed value via setMixed() function
+      // TODO: replace with a generic `mergeRefs()` util if we do this in other places
+      ref={(value) => {
+        inputProps.ref.current = value;
+        (inputRef as React.MutableRefObject<any>).current = value;
+      }}
     />
   );
 };
