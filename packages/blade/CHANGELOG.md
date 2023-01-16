@@ -1,5 +1,26 @@
 # @razorpay/blade
 
+## 5.5.1
+
+### Patch Changes
+
+- 735e370: fix(blade): update peerDependencies to support react v18
+
+## 5.5.0
+
+### Minor Changes
+
+- a094736: feat: expose `onFocus` on `TextInput` and `TextArea`
+- 2c2841a: added transaction icon
+- 46425d3: feat(blade): add ClockIcon
+- 1dd920e: feat(Icons): add BankIcon
+- 227be3d: added tag, shuffle, user, book, and settlements icons
+- e64d7cc: chore: design changes for Badge, Counter, Spinner
+
+### Patch Changes
+
+- ba16503: fix(blade): TextInput clear button state on initial render
+
 ## 5.4.3
 
 ### Patch Changes

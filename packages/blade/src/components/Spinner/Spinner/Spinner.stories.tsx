@@ -7,6 +7,7 @@ import Box from '~components/Box';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { useTheme } from '~components/BladeProvider';
 
 const Page = (): ReactElement => {
   return (
@@ -90,15 +91,31 @@ export const SpinnerSizes = SpinnerSizesTemplate.bind({});
 SpinnerSizes.storyName = 'Sizes';
 
 const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+  const { theme } = useTheme();
+
   return (
     <Box>
-      <Box marginBottom="spacing.3">
+      <Box
+        marginBottom="spacing.3"
+        marginTop="spacing.3"
+        paddingTop="spacing.3"
+        paddingBottom="spacing.3"
+        paddingLeft="spacing.3"
+        backgroundColor={theme.colors.surface.background.level2.lowContrast}
+      >
         <Text>Low Contrast</Text>
         <Box marginBottom="spacing.2" />
         <SpinnerComponent {...args} contrast="low" />
       </Box>
-      <Box marginBottom="spacing.3">
-        <Text>High Contrast</Text>
+      <Box
+        marginBottom="spacing.3"
+        marginTop="spacing.3"
+        paddingTop="spacing.3"
+        paddingBottom="spacing.3"
+        paddingLeft="spacing.3"
+        backgroundColor={theme.colors.surface.background.level1.highContrast}
+      >
+        <Text contrast="high">High Contrast</Text>
         <Box marginBottom="spacing.2" />
         <SpinnerComponent {...args} contrast="high" />
       </Box>
