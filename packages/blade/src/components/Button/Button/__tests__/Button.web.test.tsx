@@ -121,6 +121,7 @@ describe('<Button />', () => {
 
   it(`should expose native element methods via ref`, () => {
     const label = 'Hello';
+    const focusBtnLabel = 'Focus';
 
     const Example = (): React.ReactElement => {
       const ref = useRef<HTMLInputElement>(null);
@@ -133,7 +134,7 @@ describe('<Button />', () => {
               ref.current?.focus();
             }}
           >
-            Focus
+            {focusBtnLabel}
           </Button>
         </>
       );
@@ -141,7 +142,7 @@ describe('<Button />', () => {
     const { getByRole } = renderWithTheme(<Example />);
 
     const button = getByRole('button', { name: label });
-    const buttonTrigger = getByRole('button', { name: 'Focus' });
+    const buttonTrigger = getByRole('button', { name: focusBtnLabel });
 
     expect(button).not.toHaveFocus();
 
