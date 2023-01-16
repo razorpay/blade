@@ -4,6 +4,14 @@ Lists display a set of related items that are composed of text/links. Each list 
 <img src="./list-thumbnail.png" width="380" />
 
 - [Design](#design)
+  - [Unordered List](#unordered-list)
+    - [Unordered List with 3 levels of nesting](#unordered-list-with-3-levels-of-nesting)
+    - [Unordered List with custom icons for bullets](#unordered-list-with-custom-icons-for-bullets)
+    - [Unordered List with inline Link in items](#unordered-list-with-inline-link-in-items)
+  - [Ordered List](#ordered-list)
+    - [Ordered List with 3 levels of nesting](#ordered-list-with-3-levels-of-nesting)
+    - [Ordered List with 3 levels of nesting and _filled background_ numbers](#ordered-list-with-3-levels-of-nesting-and-filled-background-numbers)
+    - [Ordered List with inline Link in items](#ordered-list-with-inline-link-in-items)
 - [API](#api)
   - [List Component](#list-component)
   - [List.Item Component](#listitem-component)
@@ -20,6 +28,32 @@ Lists display a set of related items that are composed of text/links. Each list 
 
 ## Design
 - [Figma - List](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23205%3A446859&t=dT849yOxgX5WHgby-4)
+
+### Unordered List
+#### Unordered List with 3 levels of nesting
+
+<img src="./unordered-list.png" width="380" />
+
+#### Unordered List with custom icons for bullets
+
+<img src="./unordered-list-icon.png" width="380" />
+
+#### Unordered List with inline Link in items
+
+<img src="./unordered-list-link.png" width="380" />
+
+### Ordered List
+#### Ordered List with 3 levels of nesting
+
+<img src="./ordered-list.png" width="380" />
+
+#### Ordered List with 3 levels of nesting and _filled background_ numbers
+
+<img src="./ordered-list-filled.png" width="380" />
+
+#### Ordered List with inline Link in items
+
+<img src="./ordered-list-link.png" width="380" />
 
 
 ## API
@@ -145,10 +179,11 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 - TODO
 
 ## Open Questions
+- Discuss alternative APIs with the team
+- Would we allow different sizes within the same list?
 - What should we call `isOrderedFilled` instead?
 - Do we allow ordered list within unordered list and vice versa?
 - Should we call it `List.Item.Link` or `List.Link` or `List.ItemLink`?
-- Discuss alternative APIs with the team
 
 ## References
 - [Polaris](https://polaris.shopify.com/components/list#list-items)
