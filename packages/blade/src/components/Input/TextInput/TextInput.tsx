@@ -10,7 +10,7 @@ import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import Box from '~components/Box';
 import { Spinner } from '~components/Spinner';
-import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 // Users should use PasswordInput for input type password
@@ -154,7 +154,7 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
   return getPlatformType() === 'react-native';
 };
 
-const _TextInput: React.ForwardRefRenderFunction<BladeRefElement, TextInputProps> = (
+const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps> = (
   {
     label,
     labelPosition = 'top',

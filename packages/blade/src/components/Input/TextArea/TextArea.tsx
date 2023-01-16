@@ -8,7 +8,7 @@ import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
-import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type TextAreaProps = Pick<
@@ -49,7 +49,7 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
   return getPlatformType() === 'react-native';
 };
 
-const _TextArea: React.ForwardRefRenderFunction<BladeRefElement, TextAreaProps> = (
+const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> = (
   {
     label,
     labelPosition,

@@ -11,8 +11,7 @@ import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getPlatformType } from '~utils';
-import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 type RadioProps = {
   /**
@@ -42,11 +41,10 @@ type RadioProps = {
   size?: 'small' | 'medium';
 };
 
-const _Radio: React.ForwardRefRenderFunction<BladeRefElement, RadioProps> = (
+const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   { value, children, helpText, isDisabled, size = 'medium' },
   ref,
 ) => {
-  const inputRef = useBladeInnerRef(ref);
   const groupProps = useRadioGroupContext();
   const isInsideGroup = !isEmpty(groupProps);
 
@@ -94,7 +92,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeRefElement, RadioProps> = (
             isDisabled={_isDisabled}
             hasError={hasError}
             inputProps={inputProps}
-            ref={inputRef}
+            ref={ref}
           />
           <RadioIcon
             size={_size}

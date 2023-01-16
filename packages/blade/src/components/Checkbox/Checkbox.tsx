@@ -11,8 +11,7 @@ import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 type OnChange = ({
   isChecked,
@@ -99,7 +98,7 @@ type CheckboxProps = {
   size?: 'small' | 'medium';
 };
 
-const _Checkbox: React.ForwardRefRenderFunction<BladeRefElement, CheckboxProps> = (
+const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
   {
     defaultChecked,
     validationState,
@@ -117,7 +116,6 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeRefElement, CheckboxProps> 
   },
   ref,
 ) => {
-  const inputRef = useBladeInnerRef(ref);
   const groupProps = useCheckboxGroupContext();
 
   // ban certain props in checkbox while inside group
@@ -202,7 +200,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeRefElement, CheckboxProps> 
               isDisabled={_isDisabled}
               hasError={_hasError}
               inputProps={inputProps}
-              ref={inputRef}
+              ref={ref}
             />
             <CheckboxIcon
               size={_size}

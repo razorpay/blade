@@ -5,7 +5,7 @@ import { EyeIcon, EyeOffIcon } from '~components/Icons';
 import Box from '~components/Box';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
-import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type PasswordInputExtraProps = {
@@ -68,7 +68,7 @@ type PasswordInputProps = Pick<
 > &
   PasswordInputExtraProps;
 
-const _PasswordInput: React.ForwardRefRenderFunction<BladeRefElement, PasswordInputProps> = (
+const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordInputProps> = (
   {
     label,
     labelPosition = 'top',

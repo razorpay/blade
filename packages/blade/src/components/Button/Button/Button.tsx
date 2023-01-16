@@ -3,7 +3,7 @@ import React from 'react';
 import BaseButton from '../BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
-import type { BladeRefElement } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type ButtonCommonProps = {
@@ -39,7 +39,7 @@ type ButtonWithIconProps = ButtonCommonProps & {
 
 export type ButtonProps = ButtonWithoutIconProps | ButtonWithIconProps;
 
-const _Button: React.ForwardRefRenderFunction<BladeRefElement, ButtonProps> = (
+const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   {
     children,
     icon,
