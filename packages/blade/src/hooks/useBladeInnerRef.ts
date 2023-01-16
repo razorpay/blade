@@ -9,9 +9,9 @@ type NativeHTMLInputRefProps = Pick<HTMLElement, 'focus' | 'scrollIntoView'>;
  * It avoids exposing other native properties of HTMLElement
  * like `style` `classList` to avoid unintended usage of refs.
  */
-const useExposeInputRef = (
+const useBladeInnerRef = (
   targetRef: React.ForwardedRef<NativeHTMLInputRefProps>,
-): React.RefObject<TextInputReactNative | HTMLInputElement> => {
+): React.RefObject<NativeHTMLInputRefProps> => {
   const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
 
   React.useImperativeHandle(
@@ -26,7 +26,7 @@ const useExposeInputRef = (
     [textInputRef],
   );
 
-  return textInputRef;
+  return (textInputRef as unknown) as React.RefObject<NativeHTMLInputRefProps>;
 };
 
-export { useExposeInputRef, NativeHTMLInputRefProps };
+export { useBladeInnerRef, NativeHTMLInputRefProps };

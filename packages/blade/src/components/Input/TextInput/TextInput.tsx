@@ -10,8 +10,8 @@ import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import Box from '~components/Box';
 import { Spinner } from '~components/Spinner';
-import type { NativeHTMLInputRefProps } from '~src/hooks/useExposeInputRef';
-import { useExposeInputRef } from '~src/hooks/useExposeInputRef';
+import type { NativeHTMLInputRefProps } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -186,7 +186,7 @@ const _TextInput: React.ForwardRefRenderFunction<NativeHTMLInputRefProps, TextIn
   },
   ref,
 ): ReactElement => {
-  const textInputRef = useExposeInputRef(ref);
+  const textInputRef = useBladeInnerRef(ref);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
 
   React.useEffect(() => {

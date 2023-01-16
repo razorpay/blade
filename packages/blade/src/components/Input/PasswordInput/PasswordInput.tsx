@@ -5,8 +5,8 @@ import { EyeIcon, EyeOffIcon } from '~components/Icons';
 import Box from '~components/Box';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
-import type { NativeHTMLInputRefProps } from '~src/hooks/useExposeInputRef';
-import { useExposeInputRef } from '~src/hooks/useExposeInputRef';
+import type { NativeHTMLInputRefProps } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type PasswordInputExtraProps = {
   /**
@@ -97,7 +97,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<
   },
   ref,
 ) => {
-  const inputRef = useExposeInputRef(ref);
+  const inputRef = useBladeInnerRef(ref);
   const [isRevealed, setIsRevealed] = React.useState(false);
   const isEnabled = !isDisabled;
 

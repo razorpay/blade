@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
 import type { CSSObject } from 'styled-components';
+import React from 'react';
 import styled from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType, getIn, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
+import type { NativeHTMLInputRefProps } from '~src/hooks/useBladeInnerRef';
 
 type HoverProps = {
   isChecked?: boolean;
@@ -57,20 +59,22 @@ const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, ha
   },
 }));
 
-const SelectorInput = ({
-  inputProps,
-  isChecked,
-  isDisabled,
-  hasError,
-}: HoverProps & { inputProps: any }): React.ReactElement => {
+const _SelectorInput: React.ForwardRefRenderFunction<
+  NativeHTMLInputRefProps,
+  HoverProps & { inputProps: any }
+> = ({ inputProps, isChecked, isDisabled, hasError }, ref) => {
   return (
     <StyledInput
       isChecked={isChecked}
       isDisabled={isDisabled}
       hasError={hasError}
       {...inputProps}
+      ref={ref}
     />
   );
 };
+
+const SelectorInput = React.forwardRef(_SelectorInput);
+SelectorInput.displayName = 'SelectorInput';
 
 export { SelectorInput };

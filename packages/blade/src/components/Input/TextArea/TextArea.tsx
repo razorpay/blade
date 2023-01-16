@@ -8,8 +8,8 @@ import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
-import type { NativeHTMLInputRefProps } from '~src/hooks/useExposeInputRef';
-import { useExposeInputRef } from '~src/hooks/useExposeInputRef';
+import type { NativeHTMLInputRefProps } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type TextAreaProps = Pick<
   BaseInputProps,
@@ -75,7 +75,7 @@ const _TextArea: React.ForwardRefRenderFunction<NativeHTMLInputRefProps, TextAre
   },
   ref,
 ) => {
-  const inputRef = useExposeInputRef(ref);
+  const inputRef = useBladeInnerRef(ref);
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
 
   React.useEffect(() => {
