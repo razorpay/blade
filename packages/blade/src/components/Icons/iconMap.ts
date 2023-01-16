@@ -84,7 +84,7 @@ import PlayCircleIconComponent from './PlayCircleIcon';
 import PlusCircleIconComponent from './PlusCircleIcon';
 import PlusSquareIconComponent from './PlusSquareIcon';
 import PowerIconComponent from './PowerIcon';
-import RefreshLeftIconComponent from './RefreshLeftIcon';
+import RefreshClockWiseIconComponent from './RefreshClockWiseIcon';
 import RepeatIconComponent from './RepeatIcon';
 import RotateCounterClockWiseIconComponent from './RotateCounterClockWiseIcon';
 import RotateClockWiseIconComponent from './RotateClockWiseIcon';
@@ -358,7 +358,7 @@ const iconMap: Record<string, IconComponent> = {
   PlusCircleIcon: PlusCircleIconComponent,
   PlusSquareIcon: PlusSquareIconComponent,
   PowerIcon: PowerIconComponent,
-  RefreshLeftIcon: RefreshLeftIconComponent,
+  RefreshClockWiseIconIcon: RefreshClockWiseIconComponent,
   RepeatIcon: RepeatIconComponent,
   RotateClockWiseIcon: RotateClockWiseIconComponent,
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
