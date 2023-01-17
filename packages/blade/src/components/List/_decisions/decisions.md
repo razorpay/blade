@@ -130,6 +130,9 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 </List>
 ```
 
+**Reasons to not use this API:**
+- We cannot use this since we would need to support use-cases for Ordered List within Unordered List and vice-versa. This is why we would need a `List` component nested inside a `List.Item` component that can specify the variant of the list.
+
 #### Hierarchial with a `nested` prop
 ```jsx
 <List variant='ordered'>
@@ -154,6 +157,9 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 </List>
 ```
 
+**Reasons to not use this API:**
+- Not very readable and hence doesn't pass our API standards
+
 #### Non-Hierarchial with a `level` prop
 ```jsx
 <List variant='ordered'>
@@ -174,6 +180,11 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
   <List.Item/>
 </List>
 ```
+
+**Reasons to not use this API:**
+- Not very intuitive
+- Hard to decipher the nesting just by looking at the code
+- Could make looping through data (nested objects) dynamically to create a list component more difficult in this case
 
 ## Accessibility
 - I will explore using `<ol>`,`<ul>` & `<li>` directly and see if it allows us to do all the customizations that we need for our use-cases instead of using `role` on a `<div>` for web since that's the recommended practice for lists.
