@@ -23,6 +23,58 @@ const ActionListItemText = ({ children }: { children: string }): JSX.Element => 
 
 /**
  *
+ * ActionListHeader
+ *
+ *
+ */
+
+const StyledActionListHeader = styled(Box)((props) => {
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    padding: `${makeSize(props.theme.spacing[3])} ${makeSize(props.theme.spacing[5])}`,
+    backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
+    margin: `-${makeSize(props.theme.spacing[3])} -${makeSize(props.theme.spacing[3])} ${makeSize(
+      props.theme.spacing[3],
+    )}`,
+  };
+});
+
+const ActionListHeader = (props: { title: string; leading?: React.ReactNode }): JSX.Element => {
+  return (
+    <StyledActionListHeader>
+      <Box>{props.leading}</Box>
+      <Box paddingLeft="spacing.3" paddingRight="spacing.3">
+        <BaseText color="surface.text.subdued.lowContrast" fontStyle="italic" fontSize={50}>
+          {props.title}
+        </BaseText>
+      </Box>
+    </StyledActionListHeader>
+  );
+};
+
+const ActionListHeaderIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+  const Icon = icon;
+  return <Icon color="surface.text.muted.lowContrast" size="small" />;
+};
+
+/**
+ * @TODO for wednesday
+ *
+ * - [ ] Add Footer
+ * - [ ] Add Section
+ * - [ ] Handle a11y for Header and Footer 😭
+ *
+ */
+
+// const ActionListFooter = (props) => {
+//   return (
+
+//   )
+// }
+
+/**
+ *
  * ActionListItem
  *
  *
@@ -58,6 +110,7 @@ const StyledActionListItem = styled(Box)<{ selectionType: DropdownContextType['s
       // @TODO: ask designer for exact color here (couldn't figure out from figma)
       borderColor: props.theme.colors.brand.primary[300],
     },
+    // @TODO: ask designer what happens on selected item's hover
     '&[aria-selected=true]': {
       backgroundColor:
         props.selectionType === 'single' ? props.theme.colors.brand.primary[300] : undefined,
@@ -202,4 +255,11 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
   );
 };
 
-export { ActionList, ActionListItem, ActionListItemIcon, ActionListItemText };
+export {
+  ActionList,
+  ActionListItem,
+  ActionListItemIcon,
+  ActionListItemText,
+  ActionListHeader,
+  ActionListHeaderIcon,
+};

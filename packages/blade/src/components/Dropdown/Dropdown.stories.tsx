@@ -3,11 +3,20 @@ import { Dropdown, DropdownOverlay } from './Dropdown';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
 import {
   ActionList,
+  ActionListHeader,
+  ActionListHeaderIcon,
   ActionListItem,
   ActionListItemIcon,
   ActionListItemText,
 } from '~components/ActionList/ActionList';
-import { DownloadIcon, HomeIcon, SettingsIcon, InfoIcon, ArrowRightIcon } from '~components/Icons';
+import {
+  DownloadIcon,
+  HomeIcon,
+  SettingsIcon,
+  InfoIcon,
+  ArrowRightIcon,
+  HistoryIcon,
+} from '~components/Icons';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown',
@@ -27,6 +36,10 @@ export const WithSelect = (): JSX.Element => {
       />
       <DropdownOverlay>
         <ActionList>
+          <ActionListHeader
+            title="Recent Searches"
+            leading={<ActionListHeaderIcon icon={HistoryIcon} />}
+          />
           <ActionListItem
             leading={<ActionListItemIcon icon={HomeIcon} />}
             trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
