@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
+  >
+    <g
+      clip-path="url(#clip0_59_170)"
+    >
+      <path
+        d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"
+        stroke="hsla(216, 27%, 36%, 1)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+    </g>
+    <defs>
+      <clippath
+        id="clip0_59_170"
+      >
+        <rect
+          fill="hsla(216, 27%, 36%, 1)"
+          height="24"
+          width="24"
+        />
+      </clippath>
+    </defs>
+  </svg>
+</div>
+`;
