@@ -42,7 +42,7 @@ import MinusIconComponent from './MinusIcon';
 import MailIconComponent from './MailIcon';
 import AlertCircleIconComponent from './AlertCircleIcon';
 import AlertOnlyIconComponent from './AlertOnlyIcon';
-import ScanIconComponent from './ScanIcon';
+import QRCodeIconComponent from './QRCodeIcon';
 import BellIconComponent from './BellIcon';
 import BellOffIconComponent from './BellOffIcon';
 import BookmarkIconComponent from './BookmarkIcon';
@@ -260,6 +260,14 @@ import ShuffleIconComponent from './ShuffleIcon';
 import TagIconComponent from './TagIcon';
 import ClockIconComponent from './ClockIcon';
 import TransactionsIconComponent from './TransactionsIcon';
+import AnnouncementIconComponent from './AnnouncementIcon';
+import AppStoreIconComponent from './AppStoreIcon';
+import CoinsIconComponent from './CoinsIcon';
+import BillIconComponent from './BillIcon';
+import StampIconComponent from './StampIcon';
+import MenuDotsIconComponent from './MenuDotsIcon';
+import SendIconComponent from './SendIcon';
+import MailOpenIconComponent from './MailOpenIcon';
 import type { IconComponent } from './';
 // # append_icon_import
 
@@ -316,7 +324,7 @@ const iconMap: Record<string, IconComponent> = {
   UsersIcon: UsersIconComponent,
   AlertCircleIcon: AlertCircleIconComponent,
   AlertOnlyIcon: AlertOnlyIconComponent,
-  ScanIcon: ScanIconComponent,
+  QRCodeIcon: QRCodeIconComponent,
   BellIcon: BellIconComponent,
   BellOffIcon: BellOffIconComponent,
   BookmarkIcon: BookmarkIconComponent,
@@ -527,6 +535,14 @@ const iconMap: Record<string, IconComponent> = {
   MyAccountIcon: MyAccountIconComponent,
   RazorpayIcon: RazorpayIconComponent,
   RazorpayXIcon: RazorpayXIconComponent,
+  AnnouncementIcon: AnnouncementIconComponent,
+  AppStoreIcon: AppStoreIconComponent,
+  CoinsIcon: CoinsIconComponent,
+  BillIcon: BillIconComponent,
+  StampIcon: StampIconComponent,
+  MenuDotsIcon: MenuDotsIconComponent,
+  SendIcon: SendIconComponent,
+  MailOpenIcon: MailOpenIconComponent,
 };
 
 export default iconMap;
