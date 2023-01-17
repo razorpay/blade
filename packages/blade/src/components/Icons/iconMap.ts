@@ -269,7 +269,6 @@ import MenuDotsIconComponent from './MenuDotsIcon';
 import SendIconComponent from './SendIcon';
 import MailOpenIconComponent from './MailOpenIcon';
 import type { IconComponent } from './';
-// # append_icon_import
 
 // add new icons here to make them visible in storybook
 const iconMap: Record<string, IconComponent> = {

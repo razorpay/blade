@@ -313,4 +313,3 @@ export { default as StampIcon } from './StampIcon';
 export { default as MenuDotsIcon } from './MenuDotsIcon';
 export { default as SendIcon } from './SendIcon';
 export { default as MailOpenIcon } from './MailOpenIcon';
-// # append_icon_export
