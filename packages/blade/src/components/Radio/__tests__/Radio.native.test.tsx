@@ -71,7 +71,6 @@ describe('<Radio />', () => {
           <Radio
             value="apple"
             ref={(value) => {
-              console.log(value);
               // @ts-expect-error
               ref.current = value;
               refValue = value;

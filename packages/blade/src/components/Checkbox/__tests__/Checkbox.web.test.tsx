@@ -164,7 +164,7 @@ describe('<Checkbox />', () => {
 
   it(`should expose native element methods via ref`, async () => {
     const label = 'Accept';
-    const focusBtnLabel = 'Focus';
+    const focusButtonLabel = 'Focus';
 
     const Example = (): React.ReactElement => {
       const ref = React.useRef<HTMLInputElement>(null);
@@ -177,7 +177,7 @@ describe('<Checkbox />', () => {
               ref.current?.focus();
             }}
           >
-            {focusBtnLabel}
+            {focusButtonLabel}
           </Button>
         </>
       );
@@ -185,7 +185,7 @@ describe('<Checkbox />', () => {
     const { getByLabelText, getByRole } = renderWithTheme(<Example />);
 
     const input = getByLabelText(label);
-    const button = getByRole('button', { name: focusBtnLabel });
+    const button = getByRole('button', { name: focusButtonLabel });
 
     expect(input).not.toHaveFocus();
     expect(input).toHaveAttribute('type', 'checkbox');
