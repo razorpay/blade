@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
+import React from 'react';
 import Button from '../Button';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { CreditCardIcon } from '~components/Icons';
@@ -114,5 +115,26 @@ describe('<Button />', () => {
     const button = getByText(buttonText);
     fireEvent.press(button);
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should expose native element methods via ref', () => {
+    let refValue = null;
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+      return (
+        <Button
+          ref={(value) => {
+            // @ts-expect-error
+            ref.current = value;
+            refValue = value;
+          }}
+        >
+          Pay now
+        </Button>
+      );
+    };
+
+    renderWithTheme(<Example />);
+    expect(refValue).toHaveProperty('focus');
   });
 });

@@ -2,11 +2,12 @@
 import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import { Button } from '~components/Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -347,10 +348,7 @@ describe('<TextInput />', () => {
     expect(input).toBeValid();
     expect(input).toBeEnabled();
 
-    // There's some issue in jest-axe so we mock this function
-    window.getComputedStyle = jest.fn();
     await assertAccessible(input);
-    jest.clearAllMocks();
   });
 
   it(`type='text' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
@@ -429,5 +427,35 @@ describe('<TextInput />', () => {
     expect(input).toHaveAttribute('inputMode', 'search');
     expect(input).toHaveAttribute('enterKeyHint', 'search');
     expect(input).toHaveAttribute('autoComplete', 'off');
+  });
+
+  it(`should expose native element methods via ref`, async () => {
+    const label = 'Enter Name';
+
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+
+      return (
+        <>
+          <TextInput ref={ref} label={label} />
+          <Button
+            onClick={() => {
+              ref.current?.focus();
+            }}
+          >
+            Focus
+          </Button>
+        </>
+      );
+    };
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(label);
+    const button = getByRole('button');
+
+    expect(input).not.toHaveFocus();
+
+    await userEvent.click(button);
+    expect(input).toHaveFocus();
   });
 });

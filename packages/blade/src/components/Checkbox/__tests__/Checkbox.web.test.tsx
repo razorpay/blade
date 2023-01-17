@@ -5,6 +5,7 @@ import React from 'react';
 import { Checkbox } from '../Checkbox';
 import { Link } from '~components/Link';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import { Button } from '~components/Button';
 
 describe('<Checkbox />', () => {
   it('should render checkbox with label', () => {
@@ -159,5 +160,37 @@ describe('<Checkbox />', () => {
     expect(
       (getByRole('checkbox', { name: labelText }) as HTMLInputElement).indeterminate,
     ).toBeTruthy();
+  });
+
+  it(`should expose native element methods via ref`, async () => {
+    const label = 'Accept';
+    const focusButtonLabel = 'Focus';
+
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+
+      return (
+        <>
+          <Checkbox ref={ref}>{label}</Checkbox>
+          <Button
+            onClick={() => {
+              ref.current?.focus();
+            }}
+          >
+            {focusButtonLabel}
+          </Button>
+        </>
+      );
+    };
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(label);
+    const button = getByRole('button', { name: focusButtonLabel });
+
+    expect(input).not.toHaveFocus();
+    expect(input).toHaveAttribute('type', 'checkbox');
+
+    await userEvents.click(button);
+    expect(input).toHaveFocus();
   });
 });

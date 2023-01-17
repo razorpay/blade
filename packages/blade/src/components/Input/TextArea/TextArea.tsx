@@ -8,6 +8,8 @@ import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type TextAreaProps = Pick<
   BaseInputProps,
@@ -47,31 +49,33 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
   return getPlatformType() === 'react-native';
 };
 
-const TextArea = ({
-  label,
-  labelPosition,
-  necessityIndicator,
-  errorText,
-  helpText,
-  successText,
-  validationState,
-  defaultValue,
-  isDisabled,
-  isRequired,
-  name,
-  onChange,
-  onFocus,
-  onBlur,
-  placeholder,
-  value,
-  maxCharacters,
-  showClearButton,
-  onClearButtonClick,
-  autoFocus,
-  numberOfLines = 2,
-}: TextAreaProps): React.ReactElement => {
-  const inputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
-
+const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> = (
+  {
+    label,
+    labelPosition,
+    necessityIndicator,
+    errorText,
+    helpText,
+    successText,
+    validationState,
+    defaultValue,
+    isDisabled,
+    isRequired,
+    name,
+    onChange,
+    onFocus,
+    onBlur,
+    placeholder,
+    value,
+    maxCharacters,
+    showClearButton,
+    onClearButtonClick,
+    autoFocus,
+    numberOfLines = 2,
+  },
+  ref,
+) => {
+  const inputRef = useBladeInnerRef(ref);
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
 
   React.useEffect(() => {
@@ -157,5 +161,8 @@ const TextArea = ({
     />
   );
 };
+
+const TextArea = React.forwardRef(_TextArea);
+TextArea.displayName = 'TextArea';
 
 export { TextArea, TextAreaProps };
