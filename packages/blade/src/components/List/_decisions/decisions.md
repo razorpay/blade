@@ -185,16 +185,17 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
   - This does not work well with screen readers. It doesn't announce the item number, remaining number of items in the list and the current nesting level of the list.
 
 ## Open Questions
-- Discuss alternative APIs with the team
-- Would we allow different sizes within the same list?
+- ~Discuss alternative APIs with the team~
+- ~Would we allow different sizes within the same list?~ Nobody would use this but we also shouldn't add extra measures to restrict it
+- ~onHover support for list items?~ No
+- ~Do we allow ordered list within unordered list and vice versa?~ Yes, thats a valid use-case.
+- ~Do we allow inline Code component?~ Yes
 - What should we call `isOrderedFilled` instead?
-- Do we allow ordered list within unordered list and vice versa?
 - Should we call it `List.Item.Link` or `List.Link` or `List.ItemLink`?
-- Supporting images, GIFs, videos, custom components, bold text, non-bulleted text, icons, and code text within list items.
+- Supporting images, GIFs, videos, custom components, bold text, non-bulleted text, and icons within list items.
 - Ordered list with custom numbers?
 - Bold ordered numbers?
 - Use-cases for List of level 1 with item that also contains list of level 1?
-- onHover support for list items?
 - H1, H2, etc. for list items?
 
 ## References
