@@ -11,7 +11,7 @@ type BladeElementRef = Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View
  */
 const useBladeInnerRef = (
   targetRef: React.ForwardedRef<BladeElementRef>,
-): React.RefObject<BladeElementRef> => {
+): React.RefObject<HTMLInputElement | TextInputReactNative> => {
   const innerRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
 
   React.useImperativeHandle(
