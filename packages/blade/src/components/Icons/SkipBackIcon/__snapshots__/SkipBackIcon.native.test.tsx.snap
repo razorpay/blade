@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ClockIcon /> should render ClockIcon 1`] = `
+exports[`<SkipBackIcon /> should render SkipBackIcon 1`] = `
 <RNSVGSvgView
   accessibilityElementsHidden={true}
   align="xMidYMid"
@@ -39,23 +39,23 @@ exports[`<ClockIcon /> should render ClockIcon 1`] = `
     }
   >
     <RNSVGPath
-      d="M13 6a1 1 0 1 0-2 0v6a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V6Z"
-      fill={4282603381}
-      propList={
-        Array [
-          "fill",
-        ]
-      }
-    />
-    <RNSVGPath
       clipRule={0}
-      d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1ZM3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0Z"
+      d="M20 4.00001C20 3.6156 19.7797 3.26523 19.4332 3.09871C19.0867 2.93219 18.6755 2.979 18.3753 3.21914L8.37531 11.2191C8.13809 11.4089 8 11.6962 8 12C8 12.3038 8.13809 12.5911 8.37531 12.7809L18.3753 20.7809C18.6755 21.021 19.0867 21.0678 19.4332 20.9013C19.7797 20.7348 20 20.3844 20 20V4.00001ZM18 17.9194L10.6008 12L18 6.08063V17.9194Z"
       fill={4282603381}
       fillRule={0}
       propList={
         Array [
           "fill",
           "fillRule",
+        ]
+      }
+    />
+    <RNSVGPath
+      d="M6 5C6 4.44772 5.55228 4 5 4C4.44772 4 4 4.44772 4 5V19C4 19.5523 4.44772 20 5 20C5.55228 20 6 19.5523 6 19V5Z"
+      fill={4282603381}
+      propList={
+        Array [
+          "fill",
         ]
       }
     />
