@@ -6,4 +6,4 @@ feat(blade): added all icons from figma
 
 **Breaking Changes:**
 
-- Renamed `RefreshLeft` icon to `RefreshClockWise`
+- Renamed `RefreshLeft` icon to `Refresh`
