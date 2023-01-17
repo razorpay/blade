@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { PasswordInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
@@ -63,7 +64,6 @@ describe('<PasswordInput />', () => {
     const input = getByPlaceholderText(placeholder);
 
     // we assume auto focus is working with this prop in place, no simple way of asserting on focus otherwise
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('autoFocus', true);
   });
 
@@ -165,13 +165,11 @@ describe('<PasswordInput />', () => {
     const input = getByPlaceholderText(placeholder);
     const button = getByRole('button');
 
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('secureTextEntry', true);
     getByLabelText('Show password');
 
     fireEvent.press(button);
 
-    // @ts-expect-error TS typings not being picked from library
     expect(input).toHaveProp('secureTextEntry', false);
     getByLabelText('Hide password');
   });
@@ -192,5 +190,26 @@ describe('<PasswordInput />', () => {
 
     const input = getByPlaceholderText(placeholder);
     expect(input).toBeEnabled();
+  });
+
+  it('should expose native element methods via ref', () => {
+    let refValue = null;
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+      return (
+        <PasswordInput
+          label="ref test"
+          ref={(value) => {
+            console.log(value);
+            // @ts-expect-error
+            ref.current = value;
+            refValue = value;
+          }}
+        />
+      );
+    };
+
+    renderWithTheme(<Example />);
+    expect(refValue).toHaveProperty('focus');
   });
 });

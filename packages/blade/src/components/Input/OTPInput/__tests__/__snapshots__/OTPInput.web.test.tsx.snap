@@ -279,20 +279,20 @@ exports[`<OTPInput /> should render 1`] = `
               font-weight="bold"
             >
               Enter OTP
-              <div
-                class="c4"
-              >
-                <p
-                  class="c5 Text__StyledText-wkh56f-0"
-                  color="surface.text.normal.lowContrast"
-                  data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
-                />
-              </div>
             </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
           </div>
         </div>
       </label>
@@ -303,6 +303,7 @@ exports[`<OTPInput /> should render 1`] = `
         <input
           hidden=""
           id="otp-37-input-38"
+          readonly=""
           value=""
         />
         <div

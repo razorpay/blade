@@ -1,7 +1,9 @@
 import { fireEvent } from '@testing-library/react-native';
-
 import { Alert } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
 
 describe('<Alert />', () => {
   it('should render', () => {
@@ -18,18 +20,6 @@ describe('<Alert />', () => {
         description="Currently you can only accept payments in international currencies using PayPal."
         intent="positive"
         isFullWidth
-      />,
-    );
-
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render negative intent and borderless', () => {
-    const { toJSON } = renderWithTheme(
-      <Alert
-        description="Currently you can only accept payments in international currencies using PayPal."
-        intent="negative"
-        isBorderless
       />,
     );
 

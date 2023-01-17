@@ -12,8 +12,13 @@ export const MetaConstants = {
   Indicator: 'indicator',
   Link: 'link',
   OTPInput: 'otp-input',
+  ProgressBar: 'progress-bar',
   Radio: 'radio',
   RadioGroup: 'radio-group',
   SkipNav: 'skipnav',
   Spinner: 'spinner',
+  Card: 'card',
+  CardBody: 'card-body',
+  CardHeader: 'card-header',
+  CardFooter: 'card-footer',
 } as const;

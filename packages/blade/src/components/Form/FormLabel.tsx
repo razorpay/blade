@@ -5,6 +5,7 @@ import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType, makeSpace, useBreakpoint } from '~utils';
 import Box from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
+import type { ColorContrastTypes } from '~tokens/theme/theme';
 
 type CommonProps = {
   as: 'span' | 'label';
@@ -13,6 +14,7 @@ type CommonProps = {
   accessibilityText?: string;
   children: string;
   id?: string;
+  contrast?: ColorContrastTypes;
 };
 
 type LabelProps = CommonProps & {
@@ -50,6 +52,7 @@ const FormLabel = ({
   children,
   id,
   htmlFor,
+  contrast = 'low',
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -100,12 +103,13 @@ const FormLabel = ({
       <Text
         type="subdued"
         variant="body"
+        contrast={contrast}
         size={isLabelLeftPositioned ? 'medium' : 'small'}
         weight="bold"
       >
         {children}
-        {computedAccessibilityNode}
       </Text>
+      {computedAccessibilityNode}
       {/* TODO: Hide from screen readers to prevent double announcement */}
       {necessityLabel}
     </Box>

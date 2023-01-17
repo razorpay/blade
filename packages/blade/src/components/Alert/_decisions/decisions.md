@@ -40,17 +40,16 @@ import { Alert, Link } from '@razorpay/blade';
 
 We'll expose an `Alert` component with the following API:
 
-| Prop          | Type                                                        | Default       | Description                                                                                             | Required |
-| ------------- | ----------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------- | -------- |
-| description   | `string`, `JSX`                                             | `undefined`   | Body content                                                                                            | ✅       |
-| title         | `string`                                                    | `undefined`   | A brief heading                                                                                         |          |
-| isDismissible | `boolean`                                                   | `true`        | Shows a dismiss button                                                                                  |          |
-| onDismiss     | `function`                                                  | `undefined`   | Callback when the dismiss button is pressed                                                             |          |
-| contrast      | `high`, `low`                                               | `low`         | Can be set to `high` for more prominent look _(not related to a11y)_                                    |          |
-| isFullWidth   | `boolean`                                                   | `false`       | Spans the entire width of container, otherwise max width is restricted to 584px by default              |          |
-| intent        | `information`, `positive`, `notice`, `negative`             | `information` | Sets the color tone of entire alert. Icon is set automatically based on intent                          |          |
-| isBorderless  | `boolean`                                                   | `false`       | Removes borders and border radii, useful for creating a full bleed layout, sets `isFullWidth` to `true` |          |
-| actions       | `{ primary: PrimaryAction, secondary: SecondaryAction }` \* | `{}`          | Renders a primary action button and a secondary action link button                                      |          |
+| Prop          | Type                                                        | Default       | Description                                                                                                           | Required |
+| ------------- | ----------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------- | -------- |
+| description   | `string`, `JSX`                                             | `undefined`   | Body content                                                                                                          | ✅       |
+| title         | `string`                                                    | `undefined`   | A brief heading                                                                                                       |          |
+| isDismissible | `boolean`                                                   | `true`        | Shows a dismiss button                                                                                                |          |
+| onDismiss     | `function`                                                  | `undefined`   | Callback when the dismiss button is pressed                                                                           |          |
+| contrast      | `high`, `low`                                               | `low`         | Can be set to `high` for more prominent look _(not related to a11y)_                                                  |          |
+| isFullWidth   | `boolean`                                                   | `false`       | Spans the entire width of container and makes alert borderless, otherwise max width is restricted to 584px by default |          |
+| intent        | `information`, `positive`, `notice`, `negative`             | `information` | Sets the color tone of entire alert. Icon is set automatically based on intent                                        |          |
+| actions       | `{ primary: PrimaryAction, secondary: SecondaryAction }` \* | `{}`          | Renders a primary action button and a secondary action link button                                                    |          |
 
 `PrimaryAction` and `SecondaryAction` will accept objects with the following keys:
 
@@ -116,14 +115,14 @@ Some example usage patterns of `Alert`.
 >
 > Design update pending to remove all borders and border radii
 
-This full bleed layout works for all desktop, mobile and native when the `isBorderless` prop is passed. The alert behaves like `isFullWidth` set to `true` when `isBorderless` is enabled.
+This full bleed layout works for all desktop, mobile and native when the `isFullWidth` prop is passed. It also gets rid of all borders.
 
 <img src="./alert-mobile-full-bleed.png" alt="" width="520">
 
 ```jsx
 <Alert
   title="International Payments Only"
-  isBorderless
+  isFullWidth
   description={
     <>
       Use vendor payouts to quickly generate invoices.{' '}
@@ -155,7 +154,7 @@ This full bleed layout works for all desktop, mobile and native when the `isBord
 
 **A5.** To be taken up separately as an enhancement.
 
-**Q6.** Should `isFullWidth`, `isBorderless` be decoupled or not? Should borderless be a variant instead?
+**Q6.** Should `isFullWidth`, `isBorderless` be decoupled or not? Should borderless be a variant instead? _(Outdated)_
 
 **A6.** We would need both `isFullWidth` and `isBorderless` to exist, because there are usecases of alerts to span the full width of the container (which might be more than the default max-width of 584px). However, since `isBorderless` alert is only supposed to be used in full bleed layouts, it would automatically set `isFullWidth` to `true`. Also, since we can't think of future variants right now I'm leaning towards not making borderless as sole variant. Another alternative is to instead have a `variant` prop that can be `default` | `fullwidth` | `fullwidth-borderless` but so far we haven’t used variant in this sense.
 
@@ -197,6 +196,10 @@ However there are certain issues with this API:
 - The order of passing compound components doesn't has any impact on final rendering order
 - More error prone, users can pass unexpected wrappers in children or in between compound components
 - It's harder to define constraints for example - secondary action should only exist in the presence of a primary action
+
+## Changelog
+
+- Removed `isBorderless`. Now all borderless specific properties will be controlled by `isFullWidth`
 
 ## References
 

@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import type { ReactElement } from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
@@ -38,6 +37,8 @@ import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import Box from '~components/Box';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -274,21 +275,25 @@ const ButtonContent = styled(Box)<{ isHidden: boolean }>(({ isHidden }) => ({
   opacity: isHidden ? 0 : 1,
 }));
 
-const BaseButton = ({
-  variant = 'primary',
-  intent,
-  contrast = 'low',
-  size = 'medium',
-  icon: Icon,
-  iconPosition = 'left',
-  isDisabled = false,
-  isFullWidth = false,
-  isLoading = false,
-  onClick,
-  type = 'button',
-  children,
-  accessibilityLabel,
-}: BaseButtonProps): ReactElement => {
+const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonProps> = (
+  {
+    variant = 'primary',
+    intent,
+    contrast = 'low',
+    size = 'medium',
+    icon: Icon,
+    iconPosition = 'left',
+    isDisabled = false,
+    isFullWidth = false,
+    isLoading = false,
+    onClick,
+    type = 'button',
+    children,
+    accessibilityLabel,
+  },
+  ref,
+) => {
+  const buttonRef = useBladeInnerRef(ref);
   const disabled = isLoading || isDisabled;
   const { theme } = useTheme();
   if (!Icon && !children?.trim()) {
@@ -299,7 +304,7 @@ const BaseButton = ({
 
   const prevLoading = usePrevious(isLoading);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isLoading) announce('Started loading');
 
     if (!isLoading && prevLoading) announce('Stopped loading');
@@ -346,6 +351,7 @@ const BaseButton = ({
 
   return (
     <StyledBaseButton
+      ref={buttonRef}
       accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
       isLoading={isLoading}
       disabled={disabled}
@@ -429,5 +435,8 @@ const BaseButton = ({
     </StyledBaseButton>
   );
 };
+
+const BaseButton = React.forwardRef(_BaseButton);
+BaseButton.displayName = 'BaseButton';
 
 export default BaseButton;

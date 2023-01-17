@@ -4,6 +4,9 @@ import { Alert } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<Alert />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(
@@ -19,18 +22,6 @@ describe('<Alert />', () => {
         description="Currently you can only accept payments in international currencies using PayPal."
         intent="positive"
         isFullWidth
-      />,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render negative intent and borderless', () => {
-    const { container } = renderWithTheme(
-      <Alert
-        description="Currently you can only accept payments in international currencies using PayPal."
-        intent="negative"
-        isBorderless
       />,
     );
 

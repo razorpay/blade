@@ -2,11 +2,12 @@
 import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import { Button } from '~components/Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -147,6 +148,23 @@ describe('<TextInput />', () => {
     // should be called for each keystroke
     expect(onChange).toHaveBeenCalledTimes(userName.length);
     expect(onChange).toHaveBeenLastCalledWith({ name: 'name', value: userName });
+  });
+
+  it('should handle onFocus', async () => {
+    const user = userEvent.setup();
+    const label = 'Enter name';
+    const name = 'userName';
+    const userName = 'Kamlesh';
+    const onFocus = jest.fn();
+
+    renderWithTheme(
+      <TextInput label={label} name={name} defaultValue={userName} onFocus={onFocus} />,
+    );
+
+    // focus into textarea
+    await user.tab();
+    expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(onFocus).toHaveBeenCalledWith({ name, value: userName });
   });
 
   it('should handle onBlur', async () => {
@@ -292,6 +310,27 @@ describe('<TextInput />', () => {
     expect(input).toHaveValue('');
   });
 
+  it('should not show clear button on initial render if showClearButton is false', () => {
+    const label = 'Enter name';
+    const onClearButtonClick = jest.fn();
+    const valueInitial = '123';
+
+    const { getByLabelText, queryByRole } = renderWithTheme(
+      <TextInput
+        label={label}
+        defaultValue={valueInitial}
+        showClearButton={false}
+        onClearButtonClick={onClearButtonClick}
+      />,
+    );
+
+    const input = getByLabelText(label);
+    expect(input).toHaveValue(valueInitial);
+
+    const clearButton = queryByRole('button');
+    expect(clearButton).not.toBeInTheDocument();
+  });
+
   it('should pass a11y', async () => {
     const { getByRole } = renderWithTheme(
       <TextInput
@@ -309,10 +348,7 @@ describe('<TextInput />', () => {
     expect(input).toBeValid();
     expect(input).toBeEnabled();
 
-    // There's some issue in jest-axe so we mock this function
-    window.getComputedStyle = jest.fn();
     await assertAccessible(input);
-    jest.clearAllMocks();
   });
 
   it(`type='text' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
@@ -367,10 +403,10 @@ describe('<TextInput />', () => {
     expect(input).toHaveAttribute('autoComplete', 'off');
   });
 
-  it(`type='numeric' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
+  it(`type='number' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
     const label = 'Enter Monthly Income';
 
-    const { getByLabelText } = renderWithTheme(<TextInput label={label} type="numeric" />);
+    const { getByLabelText } = renderWithTheme(<TextInput label={label} type="number" />);
 
     const input = getByLabelText(label);
 
@@ -391,5 +427,35 @@ describe('<TextInput />', () => {
     expect(input).toHaveAttribute('inputMode', 'search');
     expect(input).toHaveAttribute('enterKeyHint', 'search');
     expect(input).toHaveAttribute('autoComplete', 'off');
+  });
+
+  it(`should expose native element methods via ref`, async () => {
+    const label = 'Enter Name';
+
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+
+      return (
+        <>
+          <TextInput ref={ref} label={label} />
+          <Button
+            onClick={() => {
+              ref.current?.focus();
+            }}
+          >
+            Focus
+          </Button>
+        </>
+      );
+    };
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(label);
+    const button = getByRole('button');
+
+    expect(input).not.toHaveFocus();
+
+    await userEvent.click(button);
+    expect(input).toHaveFocus();
   });
 });

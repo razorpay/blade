@@ -20,7 +20,7 @@ describe('<OTPInput />', () => {
     const { getAllByLabelText } = renderWithTheme(<OTPInput label={label} autoFocus />);
     const allInputs = getAllByLabelText(/character/);
     // we assume auto focus is working with this prop in place, no simple way of asserting on focus otherwise
-    // @ts-expect-error TS typings not being picked from library
+
     expect(allInputs[0]).toHaveProp('autoFocus', true);
   });
 
@@ -41,7 +41,7 @@ describe('<OTPInput />', () => {
     const allInputs = getAllByLabelText(/character/);
     allInputs.forEach((input) => {
       // we assume auto focus is working with this prop in place, no simple way of asserting on focus otherwise
-      // @ts-expect-error TS typings not being picked from library
+
       expect(input).toHaveProp('secureTextEntry', true);
     });
   });
@@ -91,7 +91,6 @@ describe('<OTPInput />', () => {
     const allInputs = getAllByLabelText(/character/);
     fireEvent.changeText(allInputs[0], otp);
     allInputs.forEach((input, index) => {
-      // @ts-expect-error TS typings not being picked from library
       expect(input).toHaveProp('value', Array.from(otp)[index]);
     });
   });
@@ -113,7 +112,6 @@ describe('<OTPInput />', () => {
     fireEvent.changeText(allInputs[0], otp);
 
     allInputs.forEach((input, index) => {
-      // @ts-expect-error TS typings not being picked from library
       expect(input).toHaveProp('value', Array.from(otp)[index]);
     });
   });
@@ -131,13 +129,9 @@ describe('<OTPInput />', () => {
 
     const allInputs = getAllByLabelText(/character/);
     allInputs.forEach((input) => {
-      // @ts-expect-error TS typings not being picked from library
       expect(input).toHaveProp('accessibilityInvalid', false);
-      // @ts-expect-error TS typings not being picked from library
       expect(input).toHaveProp('accessibilityRequired', true);
-      // @ts-expect-error TS typings not being picked from library
       expect(input).toHaveProp('accessibilityState', { disabled: false });
-      // @ts-expect-error TS typings not being picked from library
       expect(input).toHaveProp('textContentType', 'oneTimeCode');
     });
   });

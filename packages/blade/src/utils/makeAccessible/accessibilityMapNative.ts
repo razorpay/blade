@@ -97,4 +97,5 @@ export const accessibilityRoleMap = {
   keyboardkey: 'keyboardkey',
   label: 'label',
   text: 'text',
+  meter: 'progressbar',
 };

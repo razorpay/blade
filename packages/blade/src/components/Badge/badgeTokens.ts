@@ -1,9 +1,6 @@
 import type { BadgeProps } from './Badge';
-import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import type { IconProps } from '~components/Icons';
-
-type BadgeMaxWidth = 100 | 120;
 
 const verticalPadding: Record<NonNullable<BadgeProps['size']>, DotNotationSpacingStringToken> = {
   small: 'spacing.0',
@@ -29,9 +26,4 @@ const iconSize: Record<NonNullable<BadgeProps['size']>, IconProps['size']> = {
   large: 'small',
 };
 
-const maxWidth: Record<NonNullable<TypographyPlatforms>, BadgeMaxWidth> = {
-  onMobile: 100,
-  onDesktop: 120,
-};
-
-export { maxWidth, verticalPadding, horizontalPadding, iconPadding, iconSize };
+export { verticalPadding, horizontalPadding, iconPadding, iconSize };

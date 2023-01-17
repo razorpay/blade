@@ -4,6 +4,7 @@ import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 import ErrorBoundary from './ErrorBoundary';
+import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
 
 export const parameters = {
@@ -151,4 +152,8 @@ export const globalTypes = {
       showName: true,
     },
   },
+};
+
+export const globals = {
+  [INTERNAL_STORY_ADDON_PARAM]: false,
 };
