@@ -527,7 +527,6 @@ const iconMap: Record<string, IconComponent> = {
   MyAccountIcon: MyAccountIconComponent,
   RazorpayIcon: RazorpayIconComponent,
   RazorpayXIcon: RazorpayXIconComponent,
-  // # append_icon_map
 };
 
 export default iconMap;

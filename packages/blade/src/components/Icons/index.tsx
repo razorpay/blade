@@ -305,4 +305,3 @@ export { default as ShuffleIcon } from './ShuffleIcon';
 export { default as TagIcon } from './TagIcon';
 export { default as UserIcon } from './UserIcon';
 export { default as TransactionsIcon } from './TransactionsIcon';
-// # append_icon_export
