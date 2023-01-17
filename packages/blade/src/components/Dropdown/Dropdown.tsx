@@ -76,12 +76,16 @@ function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Eleme
   const { isOpen } = useDropdown();
 
   return (
-    <Box
-      as={!isReactNative ? 'div' : undefined}
-      style={{ display: isOpen ? (isReactNative ? 'flex' : 'block') : 'none' }}
-      tabIndex={-1}
-    >
-      {children}
+    <Box position="relative">
+      <Box
+        as={!isReactNative ? 'div' : undefined}
+        display={isOpen ? (isReactNative ? 'flex' : 'block') : 'none'}
+        position="absolute"
+        width="100%"
+        tabIndex={-1}
+      >
+        {children}
+      </Box>
     </Box>
   );
 }

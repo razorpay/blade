@@ -1,9 +1,32 @@
 import React from 'react';
+import styled from 'styled-components';
 import Box from '~components/Box';
+import type { IconComponent } from '~components/Icons';
+import type { DropdownContextType } from '~components/Dropdown/useDropdown';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
-import { getPlatformType, makeAccessible } from '~utils';
+import { getPlatformType, makeAccessible, makeSize } from '~utils';
+import { BaseText } from '~components/Typography/BaseText';
 
+const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+  const Icon = icon;
+  return <Icon color="surface.text.muted.lowContrast" size="medium" />;
+};
+
+const ActionListItemText = ({ children }: { children: string }): JSX.Element => {
+  return (
+    <BaseText fontStyle="italic" fontSize={50} color="surface.text.muted.lowContrast">
+      {children}
+    </BaseText>
+  );
+};
+
+/**
+ *
+ * ActionListItem
+ *
+ *
+ */
 type ActionListItemProps = {
   title: string;
   value: string;
@@ -12,7 +35,35 @@ type ActionListItemProps = {
    * Internally passed from ActionList. No need to pass it explicitly
    */
   index?: number;
+  leading?: React.ReactNode;
+  trailing?: React.ReactNode;
 };
+const StyledActionListItem = styled(Box)<{ selectionType: DropdownContextType['selectionType'] }>(
+  (props) => ({
+    // @TODO: use token for borderWidth (currently its not present)
+    borderWidth: makeSize(3),
+    borderColor: 'transparent',
+    textAlign: 'left',
+    backgroundColor: 'transparent',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: makeSize(props.theme.spacing[3]),
+    borderRadius: makeSize(props.theme.border.radius.medium),
+    width: '100%',
+    '&:hover': {
+      backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
+    },
+    '&.active-focus': {
+      // @TODO: ask designer for exact color here (couldn't figure out from figma)
+      borderColor: props.theme.colors.brand.primary[300],
+    },
+    '&[aria-selected=true]': {
+      backgroundColor:
+        props.selectionType === 'single' ? props.theme.colors.brand.primary[300] : undefined,
+    },
+  }),
+);
 const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const {
     activeIndex,
@@ -20,6 +71,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     onOptionClick,
     selectedIndices,
     setShouldIgnoreBlur,
+    selectionType,
     selectInputRef,
   } = useDropdown();
 
@@ -28,7 +80,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const isReactNative = platformType === 'react-native';
 
   return (
-    <Box
+    <StyledActionListItem
       as={!isReactNative ? renderOnWebAs : undefined}
       id={`${dropdownBaseId}-${props.index}`}
       role="option"
@@ -50,20 +102,57 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         setShouldIgnoreBlur(true);
       }}
       href={props.href}
-      style={{
-        border: activeIndex === props.index ? '2px solid red' : '',
-        width: '100%',
-      }}
+      className={activeIndex === props.index ? 'active-focus' : ''}
+      selectionType={selectionType}
     >
-      <Text>{props.title}</Text>
-    </Box>
+      <Box display="flex" alignItems="center">
+        {props.leading}
+      </Box>
+      <Box paddingLeft="spacing.3" paddingRight="spacing.3">
+        <Text color="surface.text.normal.lowContrast">{props.title}</Text>
+      </Box>
+      <Box display="flex" alignItems="center" marginLeft="auto">
+        {props.trailing}
+      </Box>
+    </StyledActionListItem>
   );
 };
 
+/**
+ *
+ * ActionList
+ *
+ */
+
 type ActionListProps = {
   children: React.ReactNode[];
+  surfaceLevel?: 2 | 3;
 };
-const ActionList = ({ children }: ActionListProps): JSX.Element => {
+
+const StyledActionList = styled(Box)<{ surfaceLevel: ActionListProps['surfaceLevel'] }>(
+  ({ theme, surfaceLevel = 2 }) => {
+    const offsetX = theme.shadows.offsetX.level[1];
+    const offsetY = theme.shadows.offsetY.level[2];
+    const blur = theme.shadows.blurRadius.level[2];
+    const shadowColor = theme.shadows.color.level[1];
+
+    const elevation200 = `${makeSize(offsetX)} ${makeSize(offsetY)} ${makeSize(
+      blur,
+    )} 0px ${shadowColor}`;
+    const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
+
+    return {
+      backgroundColor,
+      borderWidth: theme.border.width.thin,
+      borderColor: theme.colors.surface.border.normal.lowContrast,
+      borderRadius: makeSize(theme.border.radius.medium),
+      padding: makeSize(theme.spacing[3]),
+      boxShadow: elevation200,
+    };
+  },
+);
+
+const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Element => {
   const { setOptions, actionListRef, selectionType, dropdownBaseId } = useDropdown();
   const actionListOptions: {
     title: string;
@@ -97,7 +186,7 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
   }, [setOptions, children]);
 
   return (
-    <Box
+    <StyledActionList
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={actionListRef as any}
       {...makeAccessible({
@@ -106,10 +195,11 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
         labelledBy: `${dropdownBaseId}-label`,
       })}
       id={`${dropdownBaseId}-listbox`}
+      surfaceLevel={surfaceLevel}
     >
       {childrenWithId}
-    </Box>
+    </StyledActionList>
   );
 };
 
-export { ActionList, ActionListItem };
+export { ActionList, ActionListItem, ActionListItemIcon, ActionListItemText };
