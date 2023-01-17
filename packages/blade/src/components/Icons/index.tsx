@@ -129,7 +129,7 @@ export { default as PlayCircleIcon } from './PlayCircleIcon';
 export { default as PlusCircleIcon } from './PlusCircleIcon';
 export { default as PlusSquareIcon } from './PlusSquareIcon';
 export { default as PowerIcon } from './PowerIcon';
-export { default as RefreshClockWiseIcon } from './RefreshClockWiseIcon';
+export { default as RefreshIcon } from './RefreshIcon';
 export { default as RepeatIcon } from './RepeatIcon';
 export { default as RotateClockWiseIcon } from './RotateClockWiseIcon';
 export { default as RotateCounterClockWiseIcon } from './RotateCounterClockWiseIcon';
