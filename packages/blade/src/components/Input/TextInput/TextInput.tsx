@@ -10,11 +10,13 @@ import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import Box from '~components/Box';
 import { Spinner } from '~components/Spinner';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
 
-export type TextInputProps = Pick<
+type TextInputProps = Pick<
   BaseInputProps,
   | 'label'
   | 'labelPosition'
@@ -152,36 +154,39 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
   return getPlatformType() === 'react-native';
 };
 
-export const TextInput = ({
-  label,
-  labelPosition = 'top',
-  placeholder,
-  type = 'text',
-  defaultValue,
-  name,
-  value,
-  maxCharacters,
-  onChange,
-  onFocus,
-  onBlur,
-  isDisabled,
-  necessityIndicator,
-  validationState,
-  errorText,
-  helpText,
-  successText,
-  isRequired,
-  icon,
-  prefix,
-  showClearButton,
-  onClearButtonClick,
-  isLoading,
-  suffix,
-  autoFocus,
-  keyboardReturnKeyType,
-  autoCompleteSuggestionType,
-}: TextInputProps): ReactElement => {
-  const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
+const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps> = (
+  {
+    label,
+    labelPosition = 'top',
+    placeholder,
+    type = 'text',
+    defaultValue,
+    name,
+    value,
+    maxCharacters,
+    onChange,
+    onFocus,
+    onBlur,
+    isDisabled,
+    necessityIndicator,
+    validationState,
+    errorText,
+    helpText,
+    successText,
+    isRequired,
+    icon,
+    prefix,
+    showClearButton,
+    onClearButtonClick,
+    isLoading,
+    suffix,
+    autoFocus,
+    keyboardReturnKeyType,
+    autoCompleteSuggestionType,
+  },
+  ref,
+): ReactElement => {
+  const textInputRef = useBladeInnerRef(ref);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
 
   React.useEffect(() => {
@@ -277,3 +282,8 @@ export const TextInput = ({
     />
   );
 };
+
+const TextInput = React.forwardRef(_TextInput);
+TextInput.displayName = 'TextInput';
+
+export { TextInput, TextInputProps };

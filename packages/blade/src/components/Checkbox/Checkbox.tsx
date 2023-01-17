@@ -11,6 +11,7 @@ import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 type OnChange = ({
   isChecked,
@@ -97,21 +98,24 @@ type CheckboxProps = {
   size?: 'small' | 'medium';
 };
 
-const Checkbox = ({
-  defaultChecked,
-  validationState,
-  isChecked,
-  isDisabled,
-  isIndeterminate,
-  isRequired,
-  name,
-  onChange,
-  value,
-  children,
-  helpText,
-  errorText,
-  size = 'medium',
-}: CheckboxProps): React.ReactElement => {
+const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
+  {
+    defaultChecked,
+    validationState,
+    isChecked,
+    isDisabled,
+    isIndeterminate,
+    isRequired,
+    name,
+    onChange,
+    value,
+    children,
+    helpText,
+    errorText,
+    size = 'medium',
+  },
+  ref,
+) => {
   const groupProps = useCheckboxGroupContext();
 
   // ban certain props in checkbox while inside group
@@ -196,6 +200,7 @@ const Checkbox = ({
               isDisabled={_isDisabled}
               hasError={_hasError}
               inputProps={inputProps}
+              ref={ref}
             />
             <CheckboxIcon
               size={_size}
@@ -223,5 +228,8 @@ const Checkbox = ({
     </Box>
   );
 };
+
+const Checkbox = React.forwardRef(_Checkbox);
+Checkbox.displayName = 'Checkbox';
 
 export { Checkbox, CheckboxProps };
