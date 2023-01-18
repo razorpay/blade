@@ -1,10 +1,10 @@
-import ScanIcon from './';
+import BillIcon from './';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
-describe('<ScanIcon />', () => {
-  it('should render ScanIcon', () => {
+describe('<BillIcon />', () => {
+  it('should render BillIcon', () => {
     const renderTree = renderWithTheme(
-      <ScanIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <BillIcon color="feedback.icon.neutral.lowContrast" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });
