@@ -1700,8 +1700,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
     }
   }
   accessible={true}
-  activeBackgroundColor="hsla(216, 44%, 23%, 0.09)"
-  activeBorderColor="hsla(216, 44%, 23%, 0.32)"
+  activeBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+  activeBorderColor="hsla(216, 15%, 54%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
   buttonPaddingBottom="0px"
@@ -1709,14 +1709,14 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   buttonPaddingRight="20px"
   buttonPaddingTop="0px"
   collapsable={false}
-  defaultBackgroundColor="hsla(216, 44%, 23%, 0.09)"
-  defaultBorderColor="hsla(216, 44%, 23%, 0.32)"
-  focusBackgroundColor="hsla(216, 44%, 23%, 0.09)"
-  focusBorderColor="hsla(216, 44%, 23%, 0.32)"
+  defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+  defaultBorderColor="hsla(216, 15%, 54%, 0.32)"
+  focusBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+  focusBorderColor="hsla(216, 15%, 54%, 0.32)"
   focusRingColor="hsla(218, 89%, 51%, 0.18)"
   focusable={true}
-  hoverBackgroundColor="hsla(216, 44%, 23%, 0.09)"
-  hoverBorderColor="hsla(216, 44%, 23%, 0.32)"
+  hoverBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+  hoverBorderColor="hsla(216, 15%, 54%, 0.32)"
   isFullWidth={false}
   isLoading={false}
   minHeight="36px"
@@ -1735,8 +1735,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        "borderColor": "hsla(216, 15%, 54%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
@@ -1749,8 +1749,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
         "width": "auto",
       },
       Object {
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        "borderColor": "hsla(216, 15%, 54%, 0.32)",
       },
     ]
   }
@@ -1785,7 +1785,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       style={
         Array [
           Object {
-            "color": "hsla(216, 44%, 23%, 0.32)",
+            "color": "hsla(216, 15%, 54%, 0.32)",
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
@@ -3659,8 +3659,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
     }
   }
   accessible={true}
-  activeBackgroundColor="hsla(216, 44%, 23%, 0.32)"
-  activeBorderColor="hsla(216, 44%, 23%, 0.32)"
+  activeBackgroundColor="hsla(216, 15%, 54%, 0.32)"
+  activeBorderColor="hsla(216, 15%, 54%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
   buttonPaddingBottom="0px"
@@ -3668,14 +3668,14 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   buttonPaddingRight="20px"
   buttonPaddingTop="0px"
   collapsable={false}
-  defaultBackgroundColor="hsla(216, 44%, 23%, 0.09)"
-  defaultBorderColor="hsla(216, 44%, 23%, 0.32)"
-  focusBackgroundColor="hsla(216, 44%, 23%, 0.32)"
-  focusBorderColor="hsla(216, 44%, 23%, 0.32)"
+  defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+  defaultBorderColor="hsla(216, 15%, 54%, 0.32)"
+  focusBackgroundColor="hsla(216, 15%, 54%, 0.32)"
+  focusBorderColor="hsla(216, 15%, 54%, 0.32)"
   focusRingColor="hsla(218, 89%, 51%, 0.18)"
   focusable={true}
-  hoverBackgroundColor="hsla(216, 44%, 23%, 0.18)"
-  hoverBorderColor="hsla(216, 44%, 23%, 0.32)"
+  hoverBackgroundColor="hsla(216, 15%, 54%, 0.18)"
+  hoverBorderColor="hsla(216, 15%, 54%, 0.32)"
   isFullWidth={false}
   isLoading={false}
   minHeight="36px"
@@ -3694,8 +3694,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        "borderColor": "hsla(216, 15%, 54%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
@@ -3708,8 +3708,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
         "width": "auto",
       },
       Object {
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        "borderColor": "hsla(216, 15%, 54%, 0.32)",
       },
     ]
   }
