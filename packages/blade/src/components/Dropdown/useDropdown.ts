@@ -37,6 +37,8 @@ type DropdownContextType = {
   selectInputRef: React.RefObject<HTMLButtonElement | null>;
   actionListRef: React.RefObject<HTMLDivElement | null>;
   selectionType?: DropdownProps['selectionType'];
+  hasFooterAction: boolean;
+  setHasFooterAction: (value: boolean) => void;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -50,6 +52,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setActiveIndex: noop,
   shouldIgnoreBlur: false,
   setShouldIgnoreBlur: noop,
+  hasFooterAction: false,
+  setHasFooterAction: noop,
   dropdownBaseId: '',
   actionListRef: {
     current: null,
@@ -151,6 +155,12 @@ const useDropdown = (): UseDropdownReturnValue => {
    * Blur handler on combobox. Also handles the selection logic when user moves focus
    */
   const onSelectBlur = (): void => {
+    if (rest.hasFooterAction) {
+      // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onSelectKeyDown)
+      // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
+      setActiveIndex(-1);
+    }
+
     if (shouldIgnoreBlur) {
       setShouldIgnoreBlur(false);
       return;
@@ -232,7 +242,12 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
-  const onSelectKeydown: FormInputHandleOnKeyDownEvent = (e) => {
+  const onSelectKeydown = (e: { event: React.KeyboardEvent<HTMLInputElement> }): void => {
+    if (e.event.key === 'Tab' && rest.hasFooterAction) {
+      // When footer has Action Buttons, we ignore the blur event so that we can move focus to action item than bluring out of dropdown
+      setShouldIgnoreBlur(true);
+    }
+
     const actionType = getActionFromKey(e.event, isOpen);
     if (actionType) {
       performAction(actionType, e, {
@@ -241,6 +256,9 @@ const useDropdown = (): UseDropdownReturnValue => {
         onComboType,
         selectCurrentOption: () => {
           selectOption(activeIndex);
+          if (rest.hasFooterAction) {
+            rest.selectInputRef.current?.focus();
+          }
         },
       });
     }

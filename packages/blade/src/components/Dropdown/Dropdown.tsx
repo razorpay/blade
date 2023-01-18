@@ -40,6 +40,7 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const selectInputRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
+  const [hasFooterAction, setHasFooterAction] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
 
@@ -60,6 +61,8 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
         selectInputRef,
         actionListRef,
         selectionType,
+        hasFooterAction,
+        setHasFooterAction,
       }}
     >
       {children}
@@ -82,7 +85,6 @@ function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Eleme
         display={isOpen ? (isReactNative ? 'flex' : 'block') : 'none'}
         position="absolute"
         width="100%"
-        tabIndex={-1}
       >
         {children}
       </Box>

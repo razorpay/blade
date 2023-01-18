@@ -3,6 +3,8 @@ import { Dropdown, DropdownOverlay } from './Dropdown';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
 import {
   ActionList,
+  ActionListFooter,
+  ActionListFooterIcon,
   ActionListHeader,
   ActionListHeaderIcon,
   ActionListItem,
@@ -16,7 +18,9 @@ import {
   InfoIcon,
   ArrowRightIcon,
   HistoryIcon,
+  SearchIcon,
 } from '~components/Icons';
+import { Button } from '~components/Button';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown',
@@ -61,6 +65,11 @@ export const WithSelect = (): JSX.Element => {
             leading={<ActionListItemIcon icon={InfoIcon} />}
             title="Info"
             value="info"
+          />
+          <ActionListFooter
+            title="Search Tips"
+            leading={<ActionListFooterIcon icon={SearchIcon} />}
+            trailing={<Button onClick={console.log}>Apply</Button>}
           />
         </ActionList>
       </DropdownOverlay>
