@@ -510,7 +510,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
 .c15 {
   background-color: hsla(216,44%,23%,0.09);
   border-radius: 9999px;
-  max-width: 120px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

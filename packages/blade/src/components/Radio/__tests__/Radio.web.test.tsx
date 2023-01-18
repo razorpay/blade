@@ -5,6 +5,7 @@ import React from 'react';
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import { Button } from '~components/Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -13,12 +14,12 @@ describe('<Radio />', () => {
   it('should render radio with label', () => {
     const labelText = 'Select fruit';
     const { container, getByText, getByRole } = renderWithTheme(
-      <RadioGroup label="Radio group">
-        <Radio value="a">{labelText}</Radio>
+      <RadioGroup label={labelText}>
+        <Radio value="apple">Apple</Radio>
       </RadioGroup>,
     );
     expect(container).toMatchSnapshot();
-    expect(getByRole('radio', { name: labelText })).toBeInTheDocument();
+    expect(getByRole('radio', { name: 'Apple' })).toBeInTheDocument();
     expect(getByText(labelText)).toBeInTheDocument();
   });
 
@@ -26,9 +27,9 @@ describe('<Radio />', () => {
     const labelText = 'Select fruit';
     const helpText = 'This has to be checked';
     const { getByText } = renderWithTheme(
-      <RadioGroup label="Radio group">
-        <Radio value="a" helpText={helpText}>
-          {labelText}
+      <RadioGroup label={labelText}>
+        <Radio value="apple" helpText={helpText}>
+          Apple
         </Radio>
       </RadioGroup>,
     );
@@ -38,29 +39,65 @@ describe('<Radio />', () => {
   it('should set disabled state with isDisabled', () => {
     const labelText = 'Select fruit';
     const { container, getByRole } = renderWithTheme(
-      <RadioGroup label="Radio group">
-        <Radio value="a" isDisabled>
-          {labelText}
+      <RadioGroup label={labelText}>
+        <Radio value="apple" isDisabled>
+          Apple
         </Radio>
       </RadioGroup>,
     );
     expect(container).toMatchSnapshot();
-    expect(getByRole('radio', { name: labelText })).toBeDisabled();
+    expect(getByRole('radio', { name: 'Apple' })).toBeDisabled();
   });
 
-  test('user should be able set checked state', async () => {
+  it('user should be able set checked state', async () => {
     const user = userEvents.setup();
     const labelText = 'Select fruit';
+    const fruitApple = 'Apple';
     const { getByRole, getByLabelText } = renderWithTheme(
-      <RadioGroup label="Radio group">
-        <Radio value="a">{labelText}</Radio>
+      <RadioGroup label={labelText}>
+        <Radio value="apple">{fruitApple}</Radio>
       </RadioGroup>,
     );
 
-    expect(getByRole('radio', { name: labelText })).not.toBeChecked();
-    await user.click(getByLabelText(labelText));
-    expect(getByRole('radio', { name: labelText })).toBeChecked();
-    await user.click(getByLabelText(labelText));
-    expect(getByRole('radio', { name: labelText })).toBeChecked();
+    expect(getByRole('radio', { name: fruitApple })).not.toBeChecked();
+    await user.click(getByLabelText(fruitApple));
+    expect(getByRole('radio', { name: fruitApple })).toBeChecked();
+    await user.click(getByLabelText(fruitApple));
+    expect(getByRole('radio', { name: fruitApple })).toBeChecked();
+  });
+
+  it(`should expose native element methods via ref`, async () => {
+    const label = 'Accept';
+
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+
+      return (
+        <>
+          <RadioGroup label="focus test">
+            <Radio value="1" ref={ref}>
+              {label}
+            </Radio>
+          </RadioGroup>
+          <Button
+            onClick={() => {
+              ref.current?.focus();
+            }}
+          >
+            Focus
+          </Button>
+        </>
+      );
+    };
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(label);
+    const button = getByRole('button', { name: 'Focus' });
+
+    expect(input).not.toHaveFocus();
+    expect(input).toHaveAttribute('type', 'radio');
+
+    await userEvents.click(button);
+    expect(input).toHaveFocus();
   });
 });

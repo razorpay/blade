@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextArea /> should render TextArea on server and have autofocus on client 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"textarea\\" class=\\"Boxweb__Box-xvyj85-0\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 dvOHBs\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 fZncXr\\"><label for=\\"textarea-undefined-input-undefined\\" style=\\"width:auto;flex-shrink:0;margin-right:16px;word-break:break-all\\"><div class=\\"Boxweb__Box-xvyj85-0 iKchll\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 htCCsU\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Enter name</p><div class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jwPLEe\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\"></p></div></div></div></label></div><div display=\\"flex\\" width=\\"100%\\" class=\\"Boxweb__Box-xvyj85-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 UDZpe bIZujK\\"><textarea type=\\"text\\" rows=\\"2\\" id=\\"textarea-undefined-input-undefined\\" autofocus=\\"\\" aria-required=\\"false\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jQfoEc\\"></textarea></div><div class=\\"Boxweb__Box-xvyj85-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp\\"></div></div><div class=\\"Boxweb__Box-xvyj85-0 ehihIV\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 kXhCKG\\"></div></div></div></div>"`;
+
+exports[`<TextArea /> should render TextArea on server and have autofocus on client 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <div
+    class="Boxweb__Box-xvyj85-0"
+    data-blade-component="textarea"
+  >
+    <div
+      class="Boxweb__Box-xvyj85-0 dvOHBs"
+      display="flex"
+    >
+      <div
+        class="Boxweb__Box-xvyj85-0 fZncXr"
+        display="flex"
+      >
+        <label
+          for="textarea-1-input-2"
+          style="width:auto;flex-shrink:0;margin-right:16px;word-break:break-all"
+        >
+          <div
+            class="Boxweb__Box-xvyj85-0 iKchll"
+          >
+            <div
+              class="Boxweb__Box-xvyj85-0 htCCsU"
+              display="flex"
+            >
+              <p
+                class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0"
+                color="surface.text.subdued.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="75"
+                font-style="normal"
+                font-weight="bold"
+              >
+                Enter name
+              </p>
+              <div
+                class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jwPLEe"
+              >
+                <p
+                  class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="100"
+                  font-style="normal"
+                  font-weight="regular"
+                />
+              </div>
+            </div>
+          </div>
+        </label>
+      </div>
+      <div
+        class="Boxweb__Box-xvyj85-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 UDZpe bIZujK"
+        display="flex"
+        width="100%"
+      >
+        <textarea
+          aria-describedby=""
+          aria-disabled="false"
+          aria-invalid="false"
+          aria-required="false"
+          autofocus=""
+          class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jQfoEc"
+          id="textarea-1-input-2"
+          rows="2"
+          type="text"
+        />
+      </div>
+      <div
+        class="Boxweb__Box-xvyj85-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp"
+      />
+    </div>
+    <div
+      class="Boxweb__Box-xvyj85-0 ehihIV"
+    >
+      <div
+        class="Boxweb__Box-xvyj85-0 kXhCKG"
+        display="flex"
+      />
+    </div>
+  </div>
+</div>
+`;

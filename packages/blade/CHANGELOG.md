@@ -1,5 +1,76 @@
 # @razorpay/blade
 
+## 6.0.0
+
+### Major Changes
+
+- 980bc038: fix(Alert)!: fix typo in prop `isDismissible`
+
+  > **Warning**
+  >
+  > Breaking change. Update prop `isDismissable` to `isDismissible`.
+
+  ### Migration guide
+
+  Find and replace:
+
+  ```diff
+  <Alert
+  - isDismissable
+  + isDismissible
+  />
+  ```
+
+- 5f7e4876: feat(blade): added all icons from figma
+
+  **Breaking Changes:**
+
+  - Renamed `RefreshLeft` icon to `Refresh`
+
+### Minor Changes
+
+- 82d75b71: chore(blade): added new icons
+- 29238f1e: feat(blade): added ref support for input components
+
+## 5.5.1
+
+### Patch Changes
+
+- 735e370: fix(blade): update peerDependencies to support react v18
+
+## 5.5.0
+
+### Minor Changes
+
+- a094736: feat: expose `onFocus` on `TextInput` and `TextArea`
+- 2c2841a: added transaction icon
+- 46425d3: feat(blade): add ClockIcon
+- 1dd920e: feat(Icons): add BankIcon
+- 227be3d: added tag, shuffle, user, book, and settlements icons
+- e64d7cc: chore: design changes for Badge, Counter, Spinner
+
+### Patch Changes
+
+- ba16503: fix(blade): TextInput clear button state on initial render
+
+## 5.4.3
+
+### Patch Changes
+
+- e6c3ea9: fix(blade): restrict childrens in Card component
+
+## 5.4.2
+
+### Patch Changes
+
+- da470b0: fix: remove `maxWidth` from Badge
+
+## 5.4.1
+
+### Patch Changes
+
+- 7eb6e4c: feat(Code): Use alpha 50 token in Code component's background
+
 ## 5.4.0
 
 ### Minor Changes

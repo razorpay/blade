@@ -9974,6 +9974,11 @@ eslint-plugin-mdx@1.16.0:
     tslib "^2.3.1"
     vfile "^4.2.1"
 
+eslint-plugin-no-only-tests@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-no-only-tests/-/eslint-plugin-no-only-tests-3.1.0.tgz#f38e4935c6c6c4842bf158b64aaa20c366fe171b"
+  integrity sha512-Lf4YW/bL6Un1R6A76pRZyE1dl1vr31G/ev8UzIc/geCgFWyrKil8hVjYqWVKGB/UIGmb6Slzs9T0wNezdSVegw==
+
 eslint-plugin-prettier@3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.4.0.tgz#cdbad3bf1dbd2b177e9825737fe63b476a08f0c7"
@@ -13217,13 +13222,6 @@ jest-environment-node@^26.6.2:
     "@types/node" "*"
     jest-mock "^26.6.2"
     jest-util "^26.6.2"
-
-jest-fail-on-console@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/jest-fail-on-console/-/jest-fail-on-console-3.0.2.tgz#4ab3c5f1986702c1dfa099cbf303767818f6d916"
-  integrity sha512-8vpH03d9n41jKCF/rcQz/nf0ksK2hlnOXTY5VUMqliPHPfT9F7L9CYOyhFNSQ+o6Aszsuja0GAXt1jz6sfDM8w==
-  dependencies:
-    chalk "^4.1.0"
 
 jest-get-type@^26.3.0:
   version "26.3.0"

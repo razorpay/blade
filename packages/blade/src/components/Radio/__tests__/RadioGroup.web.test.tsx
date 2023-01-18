@@ -72,20 +72,20 @@ describe('<RadioGroup />', () => {
     const labelText = 'Select fruits';
     const helpText = 'Select one';
 
-    const { queryByText } = renderWithTheme(
+    const { getByText } = renderWithTheme(
       <RadioGroup helpText={helpText} label={labelText}>
-        <Radio helpText="Apple help" value="apple">
+        <Radio helpText="Apple Help" value="apple">
           Apple
         </Radio>
-        <Radio helpText="Mango help" value="mango">
+        <Radio helpText="Mango Help" value="mango">
           Mango
         </Radio>
       </RadioGroup>,
     );
 
-    expect(queryByText(helpText)).toBeInTheDocument();
-    expect(queryByText('Apple help')).toBeInTheDocument();
-    expect(queryByText('Mango help')).toBeInTheDocument();
+    expect(getByText(helpText)).toBeInTheDocument();
+    expect(getByText('Apple Help')).toBeInTheDocument();
+    expect(getByText('Mango Help')).toBeInTheDocument();
   });
 
   it('should render errorText when validationState is set to error', () => {

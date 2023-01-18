@@ -303,6 +303,7 @@ exports[`<OTPInput /> should render 1`] = `
         <input
           hidden=""
           id="otp-37-input-38"
+          readonly=""
           value=""
         />
         <div

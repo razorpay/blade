@@ -134,7 +134,7 @@ exports[`<Radio /> should render radio with label 1`] = `
             ]
           }
         >
-          , 
+          
         </Text>
       </View>
     </View>
@@ -449,7 +449,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
             ]
           }
         >
-          , 
+          
         </Text>
       </View>
     </View>
