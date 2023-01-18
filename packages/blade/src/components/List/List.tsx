@@ -1,22 +1,14 @@
-import styled from 'styled-components';
 import { ListItem } from './ListItem';
 import type { ListItemProps } from './ListItem';
 import { ListProvider, useListContext } from './ListContext';
+import { UnorderedList } from './UnorderedList';
+import { OrderedList } from './OrderedList';
+import { metaAttribute, MetaConstants } from '~utils';
 
 type ListProps = {
   variant?: 'unordered' | 'ordered';
   children: React.ReactElement<ListItemProps> | React.ReactElement<ListItemProps>[];
 };
-
-const removeNativeListStyles = {
-  listStyleType: 'none',
-  padding: '0px',
-  margin: '0px',
-};
-
-const UnorderedList = styled.ul(removeNativeListStyles);
-
-const OrderedList = styled.ol(removeNativeListStyles);
 
 const List = ({ variant = 'unordered', children }: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? UnorderedList : OrderedList;
@@ -24,9 +16,16 @@ const List = ({ variant = 'unordered', children }: ListProps): React.ReactElemen
   // console.log('🚀 ~ file: List.tsx:24 ~ List ~ level', level);
   return (
     <ListProvider value={{ level: level ? level + 1 : 1 }}>
-      <ListElement>{children}</ListElement>
+      <ListElement {...metaAttribute(MetaConstants.Component, MetaConstants.List)}>
+        {children}
+      </ListElement>
     </ListProvider>
   );
+};
+
+List.defaultProps = {
+  // eslint-disable-next-line react/default-props-match-prop-types
+  _displayName: 'List',
 };
 
 List.ListItem = ListItem;

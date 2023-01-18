@@ -1,11 +1,12 @@
 import React from 'react';
-import type { ListProps } from './List';
 
 export type ListContextType = {
-  level: number;
+  level?: number;
 };
 
-const ListContext = React.createContext<ListContextType>({});
+const ListContext = React.createContext<ListContextType>({
+  level: undefined,
+});
 const ListProvider = ListContext.Provider;
 
 const useListContext = (): ListContextType => {
