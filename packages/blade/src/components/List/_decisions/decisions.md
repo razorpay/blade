@@ -14,8 +14,8 @@ Lists display a set of related items that are composed of text/links. Each list 
     - [Ordered List with inline Link in items](#ordered-list-with-inline-link-in-items)
 - [API](#api)
   - [List Component](#list-component)
-  - [List.Item Component](#listitem-component)
-  - [List.Item.Link Component](#listitemlink-component)
+  - [ListItem Component](#listitem-component)
+  - [ListItemLink Component](#listitemlink-component)
   - [Sample Usage](#sample-usage)
   - [Alternative APIs](#alternative-apis)
     - [Hierarchial without explicit nested `List` grouping](#hierarchial-without-explicit-nested-list-grouping)
@@ -61,19 +61,19 @@ Lists display a set of related items that are composed of text/links. Each list 
 ### List Component
 | Prop | Type | Default | Description | Required |
 |---|---|---|---|---|
-| children | `List.Item` | `undefined` | List items to render. | ✅ |
+| children | `ListItem` | `undefined` | List items to render. | ✅ |
 | variant | `ordered`, `unordered` | `unordered` | Sets the list as ordered or unordered. |  |
 | isOrderedFilled | `boolean` | `false` | Sets whether the numbers in ordered list have a filled background.  |  |
 | icon | `BladeIcon` | `undefined` | Icon to be used for the items in the list. This can only be set when `variant` is `unordered`. |  |
 | size | `small`, `medium` | `medium` | Size of the list items. |  |
 
-### List.Item Component
+### ListItem Component
 | Prop | Type | Default | Description | Required |
 |---|---|---|---|---|
-| children | `string`, `List.Item.Link`, `List` | `undefined` | String to render in the list item. You may also pass a `List.Item.Link` to render an inline link. You may also pass a `List` component which contains its own `List.Item` components to create a nested list.| ✅ |
+| children | `string`, `ListItemLink`, `List` | `undefined` | String to render in the list item. You may also pass a `ListItemLink` to render an inline link. You may also pass a `List` component which contains its own `ListItem` components to create a nested list.| ✅ |
 | icon | `BladeIcon` | `undefined` | Icon to be used for the items in the list. This can only be set when `variant` is `unordered`. |  |
 
-### List.Item.Link Component
+### ListItemLink Component
 | Prop | Type | Default | Description | Required |
 |---|---|---|---|---|
 | children | `string` | `undefined` | The text to be rendered within the link.| ✅ |
@@ -88,23 +88,23 @@ Lists display a set of related items that are composed of text/links. Each list 
 ```jsx
 import { List, InfoIcon, EditIcon } from '@razorpay/components';
 
-<List variant='ordered' icon={InfoIcon} size='medium'>
-  <List.Item icon={EditIcon}>
+<List variant='unordered' icon={InfoIcon} size='medium'>
+  <ListItem icon={EditIcon}>
     Item 1
     <List variant='ordered'>
-      <List.Item>
+      <ListItem>
         Item 1.1
         <List variant='ordered'>
-          <List.Item>
+          <ListItem>
             Item 1.1.1
-          <List.Item/>
+          <ListItem/>
         <List/>
-      <List.Item/>
+      <ListItem/>
     <List/>
-  <List.Item/>
-  <List.Item>
+  <ListItem/>
+  <ListItem>
     Item 2		
-  <List.Item/>
+  <ListItem/>
 </List>
 ```
 
@@ -112,48 +112,48 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 #### Hierarchial without explicit nested `List` grouping
 ```jsx
 <List variant='ordered'>
-  <List.Item>
+  <ListItem>
     Item 1
-    <List.Item>
+    <ListItem>
       Item 1.1		
-      <List.Item>
+      <ListItem>
         Item 1.1.1		
-      <List.Item/>
-    <List.Item>
+      <ListItem/>
+    <ListItem>
       Item 1.2		
-    <List.Item />		
-  <List.Item/>		
-  <List.Item/>
-  <List.Item>
+    <ListItem />		
+  <ListItem/>		
+  <ListItem/>
+  <ListItem>
     Item 2		
-  <List.Item/>
+  <ListItem/>
 </List>
 ```
 
 **Reasons to not use this API:**
-- We cannot use this since we would need to support use-cases for Ordered List within Unordered List and vice-versa. This is why we would need a `List` component nested inside a `List.Item` component that can specify the variant of the list.
+- We cannot use this since we would need to support use-cases for Ordered List within Unordered List and vice-versa. This is why we would need a `List` component nested inside a `ListItem` component that can specify the variant of the list.
 
 #### Hierarchial with a `nested` prop
 ```jsx
 <List variant='ordered'>
-  <List.Item 
+  <ListItem 
     nested={
-      <List.Item
+      <ListItem
         nested={
-          <List.Item>
+          <ListItem>
             Item 1.1.1
-          <List.Item/>
+          <ListItem/>
         }
       >
         Item 1.1
-      <List.Item/>
+      <ListItem/>
     }
   >
     Item 1
-  <List.Item/>
-  <List.Item>
+  <ListItem/>
+  <ListItem>
     Item 2		
-  <List.Item/>
+  <ListItem/>
 </List>
 ```
 
@@ -163,21 +163,21 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 #### Non-Hierarchial with a `level` prop
 ```jsx
 <List variant='ordered'>
-  <List.Item level='1'>
+  <ListItem level='1'>
     Item 1
-  <List.Item/>
-  <List.Item level='2'>
+  <ListItem/>
+  <ListItem level='2'>
     Item 1.1
-  <List.Item/>
-  <List.Item level='2'>
+  <ListItem/>
+  <ListItem level='2'>
     Item 1.2
-  <List.Item/>
-  <List.Item level='3'>
+  <ListItem/>
+  <ListItem level='3'>
     Item 1.2.1
-  <List.Item/>
-  <List.Item level='1'>
+  <ListItem/>
+  <ListItem level='1'>
     Item 2		
-  <List.Item/>
+  <ListItem/>
 </List>
 ```
 
@@ -190,9 +190,9 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 - I will explore using `<ol>`,`<ul>` & `<li>` directly and see if it allows us to do all the customizations that we need for our use-cases instead of using `role` on a `<div>` for web since that's the recommended practice for lists.
   - We will be able to hide default styling & icons using `list-style-type: none; padding: 0px, margin: 0px`
   - [POC CodeSandbox Link](https://codesandbox.io/s/festive-sanne-2rb18j?file=/src/App.js)
-- Set `role` as `list` for the `List` component
+- Set `role` as `list` for the `List` component (only if we decided to not use `ol`, `ul` elements directly)
   - This does not work well with screen readers. It doesn't announce the total number of items in the list.
-- Set `role` as `listitem` for the `List.Item` component
+- Set `role` as `listitem` for the `ListItem` component (only if we decided to not use `ol`, `ul` elements directly)
   - This does not work well with screen readers. It doesn't announce the item number, remaining number of items in the list and the current nesting level of the list.
 
 ## Open Questions
@@ -202,7 +202,7 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 - ~Do we allow ordered list within unordered list and vice versa?~ Yes, thats a valid use-case.
 - ~Do we allow inline Code component?~ Yes
 - What should we call `isOrderedFilled` instead?
-- Should we call it `List.Item.Link` or `List.Link` or `List.ItemLink`?
+- Should we call it `ListItemLink` or `List.Link` or `ListItemLink`?
 - Supporting images, GIFs, videos, custom components, bold text, non-bulleted text, and icons within list items.
 - Ordered list with custom numbers?
 - Bold ordered numbers?
