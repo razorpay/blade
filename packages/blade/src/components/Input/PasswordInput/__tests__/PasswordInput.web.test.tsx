@@ -1,10 +1,13 @@
 import userEvent from '@testing-library/user-event';
-
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { PasswordInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import { Button } from '~components/Button';
+
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
 
 describe('<PasswordInput />', () => {
   it('should render', () => {
@@ -225,9 +228,36 @@ describe('<PasswordInput />', () => {
     // Reveal button
     getByRole('button');
 
-    // There's some issue in jest-axe so we mock this function
-    window.getComputedStyle = jest.fn();
     await assertAccessible(input);
-    jest.clearAllMocks();
+  });
+
+  it(`should expose native element methods via ref`, async () => {
+    const label = 'Enter Password';
+
+    const Example = (): React.ReactElement => {
+      const ref = useRef<HTMLInputElement>(null);
+
+      return (
+        <>
+          <PasswordInput ref={ref} label={label} />
+          <Button
+            onClick={() => {
+              ref.current?.focus();
+            }}
+          >
+            Focus
+          </Button>
+        </>
+      );
+    };
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(label);
+    const button = getByRole('button', { name: 'Focus' });
+
+    expect(input).not.toHaveFocus();
+
+    await userEvent.click(button);
+    expect(input).toHaveFocus();
   });
 });

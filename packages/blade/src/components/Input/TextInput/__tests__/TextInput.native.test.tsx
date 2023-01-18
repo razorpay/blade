@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ReactElement } from 'react';
 import { fireEvent } from '@testing-library/react-native';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
@@ -415,5 +416,26 @@ describe('<TextInput />', () => {
     expect(input).toHaveProp('returnKeyType', 'search');
     expect(input).toHaveProp('autoCompleteType', 'off');
     expect(input).toHaveProp('textContentType', 'none');
+  });
+
+  it('should expose native element methods via ref', () => {
+    let refValue = null;
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+      return (
+        <TextInput
+          label="ref test"
+          ref={(value) => {
+            console.log(value);
+            // @ts-expect-error
+            ref.current = value;
+            refValue = value;
+          }}
+        />
+      );
+    };
+
+    renderWithTheme(<Example />);
+    expect(refValue).toHaveProperty('focus');
   });
 });
