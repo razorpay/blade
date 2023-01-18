@@ -2,10 +2,10 @@
 
 exports[`<Alert /> should render 1`] = `
 .c0 {
-  background: hsla(216,44%,23%,0.09);
+  background: hsla(216,15%,54%,0.09);
   padding: 8px 8px 12px 8px;
   border-radius: 4px;
-  border-color: hsla(216,44%,23%,0.32);
+  border-color: hsla(216,15%,54%,0.32);
   border-width: 1px;
   border-style: solid;
   display: -webkit-box;
