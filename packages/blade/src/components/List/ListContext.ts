@@ -1,8 +1,10 @@
 import React from 'react';
+import type { IconComponent } from '../Icons';
 
 export type ListContextType = {
   level?: number;
   size: 'small' | 'medium';
+  icon?: IconComponent;
 };
 
 const ListContext = React.createContext<ListContextType>({

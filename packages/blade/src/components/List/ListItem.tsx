@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import { Text } from '../Typography';
+import type { IconComponent } from '../Icons';
 import { useListContext } from './ListContext';
 import { UnorderedItemIcon } from './ListItemIcons';
 import { ListItemElement } from './ListItemElement';
@@ -14,15 +15,17 @@ type ListItemProps = {
     | React.ReactElement<ListItemProps>[]
     | React.ReactNode;
   size?: 'small' | 'medium';
+  icon?: IconComponent;
 };
 
 const StyledListItem = styled(ListItemElement)<{ level?: number }>(({ level, theme }) => ({
   paddingLeft: level ? getIn(theme, listItemPaddingLeft[level]) : 0,
 }));
 
-const ListItem = ({ children, size }: ListItemProps): React.ReactElement => {
-  const { level, size: listContextSize } = useListContext();
+const ListItem = ({ children, size, icon: Icon }: ListItemProps): React.ReactElement => {
+  const { level, size: listContextSize, icon: ListContextIcon } = useListContext();
   const itemSize = size ?? listContextSize;
+  const ItemIcon = Icon ?? ListContextIcon;
 
   const childrenArray = React.Children.toArray(children);
 
@@ -42,7 +45,11 @@ const ListItem = ({ children, size }: ListItemProps): React.ReactElement => {
         paddingBottom={listItemPaddingBottom}
       >
         <Box paddingRight="spacing.3" display="flex">
-          <UnorderedItemIcon level={level} />
+          {ItemIcon ? (
+            <ItemIcon size={itemSize} color="surface.text.subdued.lowContrast" />
+          ) : (
+            <UnorderedItemIcon level={level} />
+          )}
         </Box>
         <Text variant="body" size={itemSize}>
           {childItem}

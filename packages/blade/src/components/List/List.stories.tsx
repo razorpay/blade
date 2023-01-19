@@ -60,10 +60,10 @@ const ListTemplate: ComponentStory<typeof List> = ({ ...args }) => {
     <List variant="unordered" {...args}>
       <ListItem>
         Item 1
-        <List variant="unordered">
+        <List variant="unordered" {...args}>
           <ListItem>
             Item 1.1
-            <List variant="unordered">
+            <List variant="unordered" {...args}>
               <ListItem>Item 1.1.1</ListItem>
             </List>
           </ListItem>
