@@ -4,6 +4,7 @@ import type { ReactElement } from 'react';
 import type { ListProps } from './List';
 import { List } from './List';
 import { ListItem } from './ListItem';
+import { ListItemLink } from './ListItemLink';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -59,7 +60,7 @@ const ListTemplate: ComponentStory<typeof List> = ({ ...args }) => {
   return (
     <List variant="unordered" {...args}>
       <ListItem>
-        Item 1
+        Item 1 <ListItemLink href="https://github.com/razorpay/blade">Click here</ListItemLink>
         <List variant="unordered" {...args}>
           <ListItem>
             Item 1.1
