@@ -6,16 +6,17 @@ import type { ListItemProps } from './ListItem';
 import { metaAttribute, MetaConstants } from '~utils';
 
 type ListProps = {
-  variant?: 'unordered' | 'ordered';
   children: React.ReactElement<ListItemProps> | React.ReactElement<ListItemProps>[];
+  variant?: 'unordered' | 'ordered';
+  size?: 'small' | 'medium';
 };
 
-const List = ({ variant = 'unordered', children }: ListProps): React.ReactElement => {
+const List = ({ variant = 'unordered', size, children }: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? UnorderedList : OrderedList;
-  const { level } = useListContext();
+  const { level, size: listContextSize } = useListContext();
 
   return (
-    <ListProvider value={{ level: level ? level + 1 : 1 }}>
+    <ListProvider value={{ level: level ? level + 1 : 1, size: size ?? listContextSize }}>
       <ListElement {...metaAttribute(MetaConstants.Component, MetaConstants.List)}>
         {children}
       </ListElement>

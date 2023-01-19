@@ -40,7 +40,6 @@ const Page = (): ReactElement => {
 export default {
   title: 'Components/List',
   component: List,
-  args: {},
   argTypes: {
     icon: {
       name: 'icon',
@@ -56,9 +55,9 @@ export default {
   },
 } as Meta<ListProps>;
 
-const ListTemplate: ComponentStory<typeof List> = () => {
+const ListTemplate: ComponentStory<typeof List> = ({ ...args }) => {
   return (
-    <List variant="unordered">
+    <List variant="unordered" {...args}>
       <ListItem>
         Item 1
         <List variant="unordered">
