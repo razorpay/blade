@@ -81,6 +81,7 @@ type UseDropdownReturnValue = DropdownContextType & {
    */
   displayValue: string;
 };
+
 /**
  * Handles almost all the functionality of dropdown.
  *
@@ -102,20 +103,24 @@ const useDropdown = (): UseDropdownReturnValue => {
     ...rest
   } = React.useContext(DropdownContext);
 
+  type SelectOptionType = (
+    index: number,
+    properties?: {
+      closeOnSelection?: boolean;
+    },
+  ) => void;
   /**
    * Marks the given index as selected.
    *
    * In single select, it also closes the menu.
    * In multiselect, it keeps the menu open for more selections
    */
-  const selectOption = (
-    index: number,
-    properties: {
-      closeOnSelection?: boolean;
-    } = {
+  const selectOption: SelectOptionType = (
+    index,
+    properties = {
       closeOnSelection: true,
     },
-  ): void => {
+  ) => {
     if (index < 0 || index > options.length - 1) {
       return;
     }

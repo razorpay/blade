@@ -10,7 +10,7 @@ import {
   ActionListItem,
   ActionListItemIcon,
   ActionListItemText,
-} from '~components/ActionList/ActionList';
+} from '~components/ActionList';
 import {
   DownloadIcon,
   HomeIcon,
