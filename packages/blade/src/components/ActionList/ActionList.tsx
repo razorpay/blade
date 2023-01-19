@@ -7,6 +7,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
 import { getPlatformType, makeAccessible, makeSize } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
+import { Checkbox } from '~components/Checkbox';
 
 const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   const Icon = icon;
@@ -88,7 +89,6 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
 
   React.useEffect(() => {
     if (footerRef.current?.querySelector('button, a')) {
-      console.log('has button');
       setHasFooterAction(true);
     }
   }, [setHasFooterAction, props.trailing]);
@@ -212,6 +212,8 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const platformType = getPlatformType();
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isReactNative = platformType === 'react-native';
+  const isSelected =
+    typeof props.index === 'number' ? selectedIndices.includes(props.index) : undefined;
 
   return (
     <StyledActionListItem
@@ -221,9 +223,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       tabIndex={-1}
       data-value={props.value}
       data-index={props.index}
-      aria-selected={
-        typeof props.index === 'number' ? selectedIndices.includes(props.index) : undefined
-      }
+      aria-selected={isSelected}
       onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
         if (typeof props.index === 'number') {
           onOptionClick(e, props.index);
@@ -241,11 +241,19 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       selectionType={selectionType}
     >
       <Box display="flex" alignItems="center">
-        {props.leading}
+        {selectionType === 'multiple' ? (
+          <Checkbox isChecked={isSelected} aria-hidden={true}>
+            {props.leading} {props.title}
+          </Checkbox>
+        ) : (
+          props.leading
+        )}
       </Box>
-      <Box paddingLeft="spacing.3" paddingRight="spacing.3">
-        <Text color="surface.text.normal.lowContrast">{props.title}</Text>
-      </Box>
+      {selectionType === 'single' ? (
+        <Box paddingLeft="spacing.3" paddingRight="spacing.3">
+          <Text color="surface.text.normal.lowContrast">{props.title}</Text>
+        </Box>
+      ) : null}
       <Box display="flex" alignItems="center" marginLeft="auto">
         {props.trailing}
       </Box>
