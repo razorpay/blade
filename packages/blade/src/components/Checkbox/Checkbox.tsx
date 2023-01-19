@@ -95,6 +95,11 @@ type CheckboxProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
+  /**
+   * Sets the tab-index property on checkbox element
+   *
+   */
+  tabIndex?: number;
 };
 
 const Checkbox = ({
@@ -111,6 +116,7 @@ const Checkbox = ({
   helpText,
   errorText,
   size = 'medium',
+  tabIndex,
 }: CheckboxProps): React.ReactElement => {
   const groupProps = useCheckboxGroupContext();
 
@@ -196,6 +202,7 @@ const Checkbox = ({
               isDisabled={_isDisabled}
               hasError={_hasError}
               inputProps={inputProps}
+              tabIndex={tabIndex}
             />
             <CheckboxIcon
               size={_size}

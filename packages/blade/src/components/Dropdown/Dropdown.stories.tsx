@@ -91,7 +91,11 @@ export const WithMultiSelect = (): JSX.Element => {
         <ActionList>
           <ActionListItem title="Mango" value="mango" />
           <ActionListItem title="Banana" value="banana" />
-          <ActionListItem title="Orange" value="orange" />
+          <ActionListItem
+            title="Orange"
+            value="orange"
+            trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
+          />
           <ActionListItem title="Mingo" value="mingo" />
           <ActionListItem title="Watermelon" value="watermelon" />
           <ActionListItem title="Strawberry" value="strawberry" />

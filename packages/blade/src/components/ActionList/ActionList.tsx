@@ -111,7 +111,8 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
         const nextItem = e.nativeEvent.relatedTarget;
         // @ts-expect-error: getAttribute does exist on relatedTarget
         const nextItemRole = nextItem?.getAttribute?.('role');
-        if (nextItemRole !== 'combobox') {
+        console.log(nextItem);
+        if (nextItemRole !== 'combobox' && nextItemRole !== 'option') {
           setIsOpen(false);
         }
       }}
@@ -242,18 +243,24 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     >
       <Box display="flex" alignItems="center">
         {selectionType === 'multiple' ? (
-          <Checkbox isChecked={isSelected} aria-hidden={true}>
-            {props.leading} {props.title}
+          // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+          <Checkbox isChecked={isSelected} aria-hidden={true} tabIndex={-1}>
+            {/* 
+              Checkbox requires children. Didn't want to make it optional because its helpful for consumers
+              But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
+            */}
+            {null}
           </Checkbox>
         ) : (
           props.leading
         )}
       </Box>
-      {selectionType === 'single' ? (
-        <Box paddingLeft="spacing.3" paddingRight="spacing.3">
-          <Text color="surface.text.normal.lowContrast">{props.title}</Text>
-        </Box>
-      ) : null}
+      <Box
+        paddingLeft={selectionType === 'multiple' ? 'spacing.1' : 'spacing.3'}
+        paddingRight="spacing.3"
+      >
+        <Text color="surface.text.normal.lowContrast">{props.title}</Text>
+      </Box>
       <Box display="flex" alignItems="center" marginLeft="auto">
         {props.trailing}
       </Box>

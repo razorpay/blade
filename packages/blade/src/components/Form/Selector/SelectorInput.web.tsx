@@ -62,12 +62,14 @@ const SelectorInput = ({
   isChecked,
   isDisabled,
   hasError,
-}: HoverProps & { inputProps: any }): React.ReactElement => {
+  tabIndex,
+}: HoverProps & { inputProps: any; tabIndex?: number }): React.ReactElement => {
   return (
     <StyledInput
       isChecked={isChecked}
       isDisabled={isDisabled}
       hasError={hasError}
+      tabIndex={tabIndex}
       {...inputProps}
     />
   );
