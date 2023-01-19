@@ -3,6 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { ListProps } from './List';
 import { List } from './List';
+import { ListItem } from './ListItem';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -58,19 +59,19 @@ export default {
 const ListTemplate: ComponentStory<typeof List> = () => {
   return (
     <List variant="unordered">
-      <List.ListItem>
+      <ListItem>
         Item 1
         <List variant="unordered">
-          <List.ListItem>
+          <ListItem>
             Item 1.1
             <List variant="unordered">
-              <List.ListItem>Item 1.1.1</List.ListItem>
+              <ListItem>Item 1.1.1</ListItem>
             </List>
-          </List.ListItem>
+          </ListItem>
         </List>
-      </List.ListItem>
-      <List.ListItem>Item 2</List.ListItem>
-      <List.ListItem>Item 3</List.ListItem>
+      </ListItem>
+      <ListItem>Item 2</ListItem>
+      <ListItem>Item 3</ListItem>
     </List>
   );
 };

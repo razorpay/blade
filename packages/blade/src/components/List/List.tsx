@@ -1,8 +1,8 @@
-import { ListItem } from './ListItem';
-import type { ListItemProps } from './ListItem';
 import { ListProvider, useListContext } from './ListContext';
 import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
+import { ComponentIds } from './listTokens';
+import type { ListItemProps } from './ListItem';
 import { metaAttribute, MetaConstants } from '~utils';
 
 type ListProps = {
@@ -13,7 +13,7 @@ type ListProps = {
 const List = ({ variant = 'unordered', children }: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? UnorderedList : OrderedList;
   const { level } = useListContext();
-  // console.log('🚀 ~ file: List.tsx:24 ~ List ~ level', level);
+
   return (
     <ListProvider value={{ level: level ? level + 1 : 1 }}>
       <ListElement {...metaAttribute(MetaConstants.Component, MetaConstants.List)}>
@@ -23,12 +23,7 @@ const List = ({ variant = 'unordered', children }: ListProps): React.ReactElemen
   );
 };
 
-List.defaultProps = {
-  // eslint-disable-next-line react/default-props-match-prop-types
-  _displayName: 'List',
-};
-
-List.ListItem = ListItem;
+List.componentId = ComponentIds.List;
 
 export { List };
-export type { ListProps, ListItemProps };
+export type { ListProps };

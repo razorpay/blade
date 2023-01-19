@@ -6,7 +6,7 @@ import { UnorderedItemIcon } from './ListItemIcons';
 import { ListItemElement } from './ListItemElement';
 import { bulletPadding } from './listTokens';
 import Box from '~components/Box';
-import { getIn } from '~utils';
+import { getIn, isValidAllowedChildren } from '~utils';
 
 type ListItemProps = {
   children:
@@ -23,22 +23,11 @@ const ListItem = ({ children }: ListItemProps): React.ReactElement => {
   const { level } = useListContext();
   const childrenArray = React.Children.toArray(children);
 
-  // const childItem = childrenArray.filter((child) =>
-  //   child?.type?.displayName !== 'List' ? child : null,
-  // );
-  // const childList = childrenArray.filter((child) =>
-  //   child?.type?.displayName === 'List' ? child : null,
-  // );
-
   const childItem = childrenArray.filter((child) =>
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-expect-error
-    child?.props?._displayName !== 'List' ? child : null,
+    isValidAllowedChildren(child, 'List') ? null : child,
   );
   const childList = childrenArray.filter((child) =>
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-expect-error
-    child?.props?._displayName === 'List' ? child : null,
+    isValidAllowedChildren(child, 'List') ? child : null,
   );
 
   return (

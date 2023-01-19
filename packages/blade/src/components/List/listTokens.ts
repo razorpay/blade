@@ -6,4 +6,9 @@ const bulletPadding: Record<number, DotNotationSpacingStringToken> = {
   3: 'spacing.5',
 };
 
-export { bulletPadding };
+const ComponentIds = {
+  List: 'List',
+  ListItem: 'ListItem',
+};
+
+export { bulletPadding, ComponentIds };
