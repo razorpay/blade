@@ -261,13 +261,13 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 - ~onHover support for list items?~ No
 - ~Do we allow ordered list within unordered list and vice versa?~ Yes, thats a valid use-case.
 - ~Do we allow inline Code component?~ Yes
-- What should we call `isOrderedFilled` instead?
-- Should we call it `ListItemLink` or `List.Link` or `ListItemLink`?
-- Supporting images, GIFs, videos, custom components, bold text, non-bulleted text, and icons within list items.
+- ~Should we call it `ListItemLink` or `List.Link` or `ListItemLink`?~ We will call it `ListItemLink` to maintain consistency across other components where we made similar decisions and aid tree-shaking via this approach
+- ~Bold ordered numbers?~ No bold numbers
+- ~H1, H2, etc. for list items?~ No H1, H2 support from design
+- ~Use-cases for List of level 1 with item that also contains list of level 1?~ No such support. The discovered use-cases in our product were incorrect usage.
 - Ordered list with custom numbers?
-- Bold ordered numbers?
-- Use-cases for List of level 1 with item that also contains list of level 1?
-- H1, H2, etc. for list items?
+- What should we call `isOrderedFilled` instead?
+- Supporting images, GIFs, videos, custom components, bold text, non-bulleted text, and icons within list items.
 
 ## References
 - [Polaris](https://polaris.shopify.com/components/list#list-items)
