@@ -19,6 +19,7 @@ Lists display a set of related items that are composed of text/links. Each list 
   - [Sample Usage](#sample-usage)
   - [Alternative APIs](#alternative-apis)
     - [Hierarchial with `variant` as `'ordered' | 'ordered-filled' | 'unordered'`](#hierarchial-with-variant-as-ordered--ordered-filled--unordered)
+    - [Originally proposed API](#originally-proposed-api)
     - [Hierarchial with separate OrderedList \& UnorderedList Components](#hierarchial-with-separate-orderedlist--unorderedlist-components)
     - [Hierarchial without explicit nested `List` grouping](#hierarchial-without-explicit-nested-list-grouping)
     - [Hierarchial with a `nested` prop](#hierarchial-with-a-nested-prop)
@@ -64,8 +65,7 @@ Lists display a set of related items that are composed of text/links. Each list 
 | Prop | Type | Default | Description | Required |
 |---|---|---|---|---|
 | children | `ListItem` | `undefined` | List items to render. | ✅ |
-| variant | `ordered`, `unordered` | `unordered` | Sets the list as ordered or unordered. |  |
-| isOrderedFilled | `boolean` | `false` | Sets whether the numbers in ordered list have a filled background.  |  |
+| variant | `ordered`, `ordered-filled`, `unordered` | `unordered` | Sets the list as ordered or unordered. |  |
 | icon | `BladeIcon` | `undefined` | Icon to be used for the items in the list. This can only be set when `variant` is `unordered`. |  |
 | size | `small`, `medium` | `medium` | Size of the list items. |  |
 
@@ -96,7 +96,7 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
     <List variant='ordered'>
       <ListItem>
         Item 1.1
-        <List variant='ordered'>
+        <List variant='ordered-filled'>
           <ListItem>
             Item 1.1.1
           <ListItem/>
@@ -112,6 +112,8 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 
 ### Alternative APIs
 #### Hierarchial with `variant` as `'ordered' | 'ordered-filled' | 'unordered'`
+>Note: This will be the final API we will be going ahead with
+
 ```jsx
 <List variant='unordered' icon={InfoIcon} size='medium'>
   <ListItem icon={EditIcon}>
@@ -139,6 +141,30 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 **Cons:**
 - Adds an additional variant which strays away from what native html offers (only ordered & unordered)
 
+#### Originally proposed API
+```jsx
+<List variant='unordered' icon={InfoIcon} size='medium'>
+  <ListItem icon={EditIcon}>
+    Item 1
+    <List variant='ordered'>
+      <ListItem>
+        Item 1.1
+        <List variant='ordered' isOrderedFilled={true}>
+          <ListItem>
+            Item 1.1.1
+          <ListItem/>
+        <List/>
+      <ListItem/>
+    <List/>
+  <ListItem/>
+  <ListItem>
+    Item 2		
+  <ListItem/>
+</List>
+```
+**Reasons not to use it:**
+- `isOrderedFilled` is specific to ordered list and would be more intuitive if its a separate variant in itself
+
 #### Hierarchial with separate OrderedList & UnorderedList Components
 ```jsx
 <UnorderedList icon={InfoIcon} size='medium'>
@@ -164,10 +190,10 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 - This allows us to use `variant= 'filled' | 'default'` on `OrderedList` instead of using `isOrderedFilled` as a boolean prop on `List` component
 - Much more closer to native html
 
-**Cons:**
+**Reasons not to use this API:**
 - Difficulty in discoverability of the `OrderedList` & `UnorderedList` components for consumers
   - Having a single `List` component is much more intuitive and easy to discover
-- Slight maintainance overhead since we would need a `BaseList` where most logical implementation would lie and branch out `OrderedList` & `UnorderedList` for their own specific logical needs
+- Slight maintenance overhead since we would need a `BaseList` where most logical implementation would lie and branch out `OrderedList` & `UnorderedList` for their own specific logical needs
 
 #### Hierarchial without explicit nested `List` grouping
 ```jsx
