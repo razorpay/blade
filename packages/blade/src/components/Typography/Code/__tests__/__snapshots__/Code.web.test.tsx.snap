@@ -16,7 +16,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
   line-height: 1rem;
@@ -55,7 +55,7 @@ exports[`<Code /> should render medium Code 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
   line-height: 1rem;
@@ -94,7 +94,7 @@ exports[`<Code /> should render small Code 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
   line-height: 1rem;

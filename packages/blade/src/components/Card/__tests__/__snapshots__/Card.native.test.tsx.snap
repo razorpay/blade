@@ -19,7 +19,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         "paddingLeft": 24,
         "paddingRight": 24,
         "paddingTop": 20,
-        "shadowColor": "hsla(216, 44%, 23%, 0.18)",
+        "shadowColor": "hsla(216, 15%, 54%, 0.18)",
         "shadowOffset": Object {
           "height": 1,
           "width": 0,
@@ -98,7 +98,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           Object {
             "borderBottomStyle": "solid",
             "borderBottomWidth": 1,
-            "borderColor": "hsla(216, 44%, 23%, 0.18)",
+            "borderColor": "hsla(216, 15%, 54%, 0.18)",
           },
         ]
       }
@@ -504,7 +504,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         "paddingLeft": 24,
         "paddingRight": 24,
         "paddingTop": 20,
-        "shadowColor": "hsla(216, 44%, 23%, 0.18)",
+        "shadowColor": "hsla(216, 15%, 54%, 0.18)",
         "shadowOffset": Object {
           "height": 1,
           "width": 0,
@@ -716,7 +716,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   Array [
                     Object {
                       "alignSelf": "center",
-                      "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+                      "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderRadius": 9999,
                       "display": "flex",
                       "flexWrap": "nowrap",
@@ -839,7 +839,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
             Array [
               Object {
                 "alignSelf": "center",
-                "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                 "borderRadius": 9999,
                 "display": "flex",
                 "flexWrap": "nowrap",
@@ -916,7 +916,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           Object {
             "borderBottomStyle": "solid",
             "borderBottomWidth": 1,
-            "borderColor": "hsla(216, 44%, 23%, 0.18)",
+            "borderColor": "hsla(216, 15%, 54%, 0.18)",
           },
         ]
       }
@@ -984,7 +984,7 @@ exports[`<Card /> should render a plain Card 1`] = `
         "paddingLeft": 24,
         "paddingRight": 24,
         "paddingTop": 20,
-        "shadowColor": "hsla(216, 44%, 23%, 0.18)",
+        "shadowColor": "hsla(216, 15%, 54%, 0.18)",
         "shadowOffset": Object {
           "height": 1,
           "width": 0,

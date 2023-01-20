@@ -92,7 +92,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: 0px 1px 2px 0px hsla(216,44%,23%,0.18),0px 0px 1px 0px hsla(216,44%,23%,0.18);
+  box-shadow: 0px 1px 2px 0px hsla(216,15%,54%,0.18),0px 0px 1px 0px hsla(216,15%,54%,0.18);
   background-color: hsla(0,0%,100%,1);
 }
 
@@ -266,7 +266,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c5 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-color: hsla(216,44%,23%,0.18);
+  border-color: hsla(216,15%,54%,0.18);
 }
 
 <div>
@@ -503,12 +503,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: 0px 1px 2px 0px hsla(216,44%,23%,0.18),0px 0px 1px 0px hsla(216,44%,23%,0.18);
+  box-shadow: 0px 1px 2px 0px hsla(216,15%,54%,0.18),0px 0px 1px 0px hsla(216,15%,54%,0.18);
   background-color: hsla(0,0%,100%,1);
 }
 
 .c15 {
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -585,11 +585,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
 .c16 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-color: hsla(216,44%,23%,0.18);
+  border-color: hsla(216,15%,54%,0.18);
 }
 
 .c9 {
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -776,7 +776,7 @@ exports[`<Card /> should render a plain Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: 0px 1px 2px 0px hsla(216,44%,23%,0.18),0px 0px 1px 0px hsla(216,44%,23%,0.18);
+  box-shadow: 0px 1px 2px 0px hsla(216,15%,54%,0.18),0px 0px 1px 0px hsla(216,15%,54%,0.18);
   background-color: hsla(0,0%,100%,1);
 }
 
