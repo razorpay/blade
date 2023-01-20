@@ -18,6 +18,8 @@ Lists display a set of related items that are composed of text/links. Each list 
   - [ListItemLink Component](#listitemlink-component)
   - [Sample Usage](#sample-usage)
   - [Alternative APIs](#alternative-apis)
+    - [Hierarchial with `variant` as `'ordered' | 'ordered-filled' | 'unordered'`](#hierarchial-with-variant-as-ordered--ordered-filled--unordered)
+    - [Hierarchial with separate OrderedList \& UnorderedList Components](#hierarchial-with-separate-orderedlist--unorderedlist-components)
     - [Hierarchial without explicit nested `List` grouping](#hierarchial-without-explicit-nested-list-grouping)
     - [Hierarchial with a `nested` prop](#hierarchial-with-a-nested-prop)
     - [Non-Hierarchial with a `level` prop](#non-hierarchial-with-a-level-prop)
@@ -109,6 +111,64 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 ```
 
 ### Alternative APIs
+#### Hierarchial with `variant` as `'ordered' | 'ordered-filled' | 'unordered'`
+```jsx
+<List variant='unordered' icon={InfoIcon} size='medium'>
+  <ListItem icon={EditIcon}>
+    Item 1
+    <List variant='ordered'>
+      <ListItem>
+        Item 1.1
+        <List variant='ordered-filled'>
+          <ListItem>
+            Item 1.1.1
+          <ListItem/>
+        <List/>
+      <ListItem/>
+    <List/>
+  <ListItem/>
+  <ListItem>
+    Item 2		
+  <ListItem/>
+</List>
+```
+
+**Pros:**
+- This allows us to use `variant= 'ordered-filled'` instead of using `isOrderedFilled` as a boolean prop on `List` component
+
+**Cons:**
+- Adds an additional variant which strays away from what native html offers (only ordered & unordered)
+
+#### Hierarchial with separate OrderedList & UnorderedList Components
+```jsx
+<UnorderedList icon={InfoIcon} size='medium'>
+  <ListItem icon={EditIcon}>
+    Item 1
+    <OrderedList variant='filled'>
+      <ListItem>
+        Item 1.1
+        <OrderedList>
+          <ListItem>
+            Item 1.1.1
+          <ListItem/>
+        <OrderedList />
+      <ListItem/>
+    <OrderedList />
+  <ListItem/>
+  <ListItem>
+    Item 2		
+  <ListItem/>
+</UnorderedList>
+```
+**Pros:**
+- This allows us to use `variant= 'filled' | 'default'` on `OrderedList` instead of using `isOrderedFilled` as a boolean prop on `List` component
+- Much more closer to native html
+
+**Cons:**
+- Difficulty in discoverability of the `OrderedList` & `UnorderedList` components for consumers
+  - Having a single `List` component is much more intuitive and easy to discover
+- Slight maintainance overhead since we would need a `BaseList` where most logical implementation would lie and branch out `OrderedList` & `UnorderedList` for their own specific logical needs
+
 #### Hierarchial without explicit nested `List` grouping
 ```jsx
 <List variant='ordered'>
