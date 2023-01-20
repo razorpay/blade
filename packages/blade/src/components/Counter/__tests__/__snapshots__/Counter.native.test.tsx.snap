@@ -9,7 +9,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -495,7 +495,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -738,7 +738,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -981,7 +981,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -1062,7 +1062,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",

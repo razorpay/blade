@@ -2,7 +2,7 @@
 
 exports[`<Counter /> should render Counter with default props 1`] = `
 .c0 {
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -524,7 +524,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
 
 exports[`<Counter /> should render large size Counter 1`] = `
 .c0 {
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -785,7 +785,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
 
 exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
 .c0 {
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -1046,7 +1046,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
 
 exports[`<Counter /> should render medium size Counter 1`] = `
 .c0 {
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -1133,7 +1133,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 
 exports[`<Counter /> should render small size Counter 1`] = `
 .c0 {
-  background-color: hsla(216,44%,23%,0.09);
+  background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
