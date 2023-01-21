@@ -28,8 +28,14 @@
   ],
   "exports": {
     "./components": {
-      "react-native": "./build/components/index.native.js",
-      "default": "./build/components/index.web.js"
+      "react-native": {
+        "import": "./build/components/index.native.js",
+        "types": "./build/components/index.native.d.ts"
+      },
+      "default": {
+        "import": "./build/components/index.web.js",
+        "types": "./build/components/index.d.ts"
+      }
     },
     "./tokens": {
       "react-native": "./build/tokens/index.native.js",
