@@ -41,6 +41,11 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
   const selectInputRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
+  const [optionsRecalculateToggle, setOptionsRecalculateToggle] = React.useState(false);
+
+  const recalculateOptions = (): void => {
+    setOptionsRecalculateToggle(!optionsRecalculateToggle);
+  };
 
   const dropdownBaseId = useId('dropdown');
 
@@ -63,6 +68,8 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
         selectionType,
         hasFooterAction,
         setHasFooterAction,
+        recalculateOptions,
+        optionsRecalculateToggle,
       }}
     >
       {children}

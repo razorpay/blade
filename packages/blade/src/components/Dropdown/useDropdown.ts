@@ -21,7 +21,7 @@ import { isReactNative } from '~utils';
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
 
-type OptionsType = { title: string; value: string; href: string }[];
+type OptionsType = { title: string; value: string; href?: string }[];
 
 type DropdownContextType = {
   isOpen: boolean;
@@ -40,6 +40,8 @@ type DropdownContextType = {
   selectionType?: DropdownProps['selectionType'];
   hasFooterAction: boolean;
   setHasFooterAction: (value: boolean) => void;
+  recalculateOptions: () => void;
+  optionsRecalculateToggle: boolean;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -55,6 +57,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setShouldIgnoreBlur: noop,
   hasFooterAction: false,
   setHasFooterAction: noop,
+  optionsRecalculateToggle: false,
+  recalculateOptions: noop,
   dropdownBaseId: '',
   actionListRef: {
     current: null,
@@ -203,6 +207,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
   ): void => {
+    console.log('option clck', index);
     const actionType = getActionFromKey(e, isOpen);
     if (typeof actionType === 'number') {
       onOptionChange(actionType, index);
@@ -268,10 +273,12 @@ const useDropdown = (): UseDropdownReturnValue => {
           if (rest.hasFooterAction) {
             rest.selectInputRef.current?.focus();
           }
-          if (options[activeIndex].href) {
-            window.location.href = options[activeIndex].href;
+
+          const anchorLink = options[activeIndex].href;
+          if (anchorLink) {
+            window.location.href = anchorLink;
             if (window.top) {
-              window.top.location.href = options[activeIndex].href;
+              window.top.location.href = anchorLink;
             }
           }
         },

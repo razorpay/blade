@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { componentIds } from './componentIds';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { makeSize } from '~utils';
@@ -30,6 +31,8 @@ const ActionListHeader = (props: { title: string; leading?: React.ReactNode }): 
     </StyledActionListHeader>
   );
 };
+
+ActionListHeader.componentId = componentIds.ActionListHeader;
 
 const ActionListHeaderIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   const Icon = icon;

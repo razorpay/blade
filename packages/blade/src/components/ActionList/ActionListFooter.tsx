@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { componentIds } from './componentIds';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -97,6 +98,8 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
     </StyledActionListFooter>
   );
 };
+
+ActionListFooter.componentId = componentIds.ActionListFooter;
 
 const ActionListFooterIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   const Icon = icon;

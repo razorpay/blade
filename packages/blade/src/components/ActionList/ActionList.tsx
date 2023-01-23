@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ActionListItem, ActionListSection } from './ActionListItem';
+import { componentIds } from './componentIds';
 import Box from '~components/Box';
 import type { OptionsType } from '~components/Dropdown/useDropdown';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { isReactNative, makeAccessible, makeSize } from '~utils';
-
-/**
- *
- * ActionList
- *
- */
+import {
+  getComponentId,
+  isReactNative,
+  isValidAllowedChildren,
+  makeAccessible,
+  makeSize,
+} from '~utils';
 
 type ActionListProps = {
   children: React.ReactNode[];
@@ -47,7 +47,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     selectionType,
     dropdownBaseId,
     setSelectedIndices,
-    // selectedIndices,
+    optionsRecalculateToggle,
   } = useDropdown();
   const actionListOptions: OptionsType = [];
 
@@ -76,24 +76,21 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     return child;
   };
 
-  const childDisplayNameArray = React.Children.toArray(children).map(
-    // @ts-expect-error: @TODO change this with componentId approach
-    (child) => child.type.displayName,
-  );
-  const lastActionListSectionIndex = childDisplayNameArray.lastIndexOf('ActionListSection');
+  const childCompIdArray = React.Children.toArray(children).map((child) => getComponentId(child));
+  const lastActionListSectionIndex = childCompIdArray.lastIndexOf(componentIds.ActionListSection);
 
-  const isActionListItemPresentAfterSection = childDisplayNameArray
+  const isActionListItemPresentAfterSection = childCompIdArray
     .slice(lastActionListSectionIndex)
-    .includes('ActionListItem');
+    .includes(componentIds.ActionListItem);
 
   // Looping through ActionListItems to add index to them and get an options array for moving focus between items
   const childrenWithId = React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
-      if (child.type === ActionListSection) {
+      if (isValidAllowedChildren(child, componentIds.ActionListSection)) {
         return React.cloneElement(child, {
           // @ts-expect-error: TS doesn't understand the child's props
           children: React.Children.map(child.props.children, (childInSection) => {
-            if (childInSection.type === ActionListItem) {
+            if (isValidAllowedChildren(childInSection, componentIds.ActionListItem)) {
               return getActionListItemChildWithId(childInSection);
             }
 
@@ -102,7 +99,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
           hideDivider: index === lastActionListSectionIndex && !isActionListItemPresentAfterSection,
         });
       }
-      if (child.type === ActionListItem) {
+      if (isValidAllowedChildren(child, componentIds.ActionListItem)) {
         return getActionListItemChildWithId(child);
       }
     }
@@ -112,7 +109,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
   React.useEffect(() => {
     setOptions(actionListOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setOptions, children]);
+  }, [optionsRecalculateToggle]);
 
   React.useEffect(() => {
     setSelectedIndices(defaultSelectedIndices);
@@ -136,4 +133,4 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
   );
 };
 
-export { ActionList, ActionListItem };
+export { ActionList };

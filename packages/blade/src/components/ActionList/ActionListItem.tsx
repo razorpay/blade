@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StyledActionListItem } from './StyledActionListItem';
+import { componentIds } from './componentIds';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -45,6 +46,8 @@ const ActionListSection = ({
     </Box>
   );
 };
+
+ActionListSection.componentId = componentIds.ActionListSection;
 
 const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   const Icon = icon;
@@ -100,6 +103,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     setShouldIgnoreBlur,
     selectionType,
     selectInputRef,
+    recalculateOptions,
   } = useDropdown();
 
   const renderOnWebAs = props.href ? 'a' : 'button';
@@ -107,6 +111,13 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     typeof props.index === 'number'
       ? selectedIndices.includes(props.index)
       : props.isDefaultSelected;
+
+  React.useEffect(() => {
+    if (!props.index) {
+      recalculateOptions();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent }}>
@@ -188,6 +199,8 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     </ActionListItemContext.Provider>
   );
 };
+
+ActionListItem.componentId = componentIds.ActionListItem;
 
 export {
   ActionListItem,
