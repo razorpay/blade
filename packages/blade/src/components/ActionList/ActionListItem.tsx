@@ -13,6 +13,39 @@ const ActionListItemContext = React.createContext<{
   intent?: ActionListItemProps['intent'];
 }>({});
 
+const SectionDivider = styled(Box)((props) => ({
+  height: makeSize(1),
+  backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
+  marginLeft: makeSize(props.theme.spacing[3]),
+  marginRight: makeSize(props.theme.spacing[3]),
+}));
+
+const StyledActionListSectionTitle = styled(Box)((props) => ({
+  padding: makeSize(props.theme.spacing[3]),
+}));
+
+const ActionListSection = ({
+  title,
+  children,
+  hideDivider,
+}: {
+  title: string;
+  children: React.ReactNode[] | React.ReactNode;
+  hideDivider?: boolean;
+}): JSX.Element => {
+  return (
+    <Box>
+      <StyledActionListSectionTitle>
+        <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
+          {title}
+        </Text>
+      </StyledActionListSectionTitle>
+      {children}
+      {hideDivider ? null : <SectionDivider />}
+    </Box>
+  );
+};
+
 const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   const Icon = icon;
   const { intent } = React.useContext(ActionListItemContext);
@@ -181,4 +214,10 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   );
 };
 
-export { ActionListItem, ActionListItemIcon, ActionListItemText, ActionListItemProps };
+export {
+  ActionListItem,
+  ActionListItemIcon,
+  ActionListItemText,
+  ActionListItemProps,
+  ActionListSection,
+};

@@ -11,5 +11,5 @@ export * from './ActionListFooter';
  * - [x] Add href support
  * - [x] Add intent
  * - [x] Add description to Footer, and Item
- * - [] Add section header
+ * - [x] Add section header
  */

@@ -10,6 +10,7 @@ import {
   ActionListItem,
   ActionListItemIcon,
   ActionListItemText,
+  ActionListSection,
 } from '~components/ActionList';
 import {
   DownloadIcon,
@@ -52,24 +53,26 @@ export const WithSelect = (): JSX.Element => {
             value="home"
             description="Home sweet home it is"
           />
-          <ActionListItem
-            leading={<ActionListItemIcon icon={SettingsIcon} />}
-            trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
-            title="Settings"
-            value="settings"
-            href="https://razorpay.com"
-          />
-          <ActionListItem
-            leading={<ActionListItemIcon icon={DownloadIcon} />}
-            title="Download"
-            value="download"
-            isDefaultSelected
-          />
-          <ActionListItem
-            leading={<ActionListItemIcon icon={InfoIcon} />}
-            title="Info"
-            value="info"
-          />
+          <ActionListSection title="Options">
+            <ActionListItem
+              leading={<ActionListItemIcon icon={SettingsIcon} />}
+              trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
+              title="Settings"
+              value="settings"
+              href="https://razorpay.com"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={DownloadIcon} />}
+              title="Download"
+              value="download"
+              isDefaultSelected
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={InfoIcon} />}
+              title="Info"
+              value="info"
+            />
+          </ActionListSection>
           <ActionListItem
             leading={<ActionListItemIcon icon={TrashIcon} />}
             title="Delete"

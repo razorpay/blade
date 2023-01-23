@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ActionListItem } from './ActionListItem';
+import { ActionListItem, ActionListSection } from './ActionListItem';
 import Box from '~components/Box';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { makeAccessible, makeSize } from '~utils';
@@ -55,29 +55,58 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
 
   const defaultSelectedIndices: number[] = [];
 
-  // Looping through ActionListItems to add index to them and get an options array for moving focus between items
-  const childrenWithId = React.Children.map(children, (child) => {
+  const getActionListItemChildWithId = (child: React.ReactNode): React.ReactNode => {
     if (React.isValidElement(child)) {
-      // @TODO: handle the scenario where ActionListItem is inside ActionListMenu
-      if (child.type === ActionListItem) {
-        actionListOptions.push({
-          title: child.props.title,
-          value: child.props.value,
-        });
-        const currentIndex = actionListOptions.length - 1;
+      actionListOptions.push({
+        title: child.props.title,
+        value: child.props.value,
+      });
+      const currentIndex = actionListOptions.length - 1;
 
-        if (child.props.isDefaultSelected) {
-          defaultSelectedIndices.push(currentIndex);
-        }
-
-        const clonedChild = React.cloneElement(child, {
-          // @ts-expect-error: TS doesn't understand the child's props
-          index: currentIndex,
-        });
-        return clonedChild;
+      if (child.props.isDefaultSelected) {
+        defaultSelectedIndices.push(currentIndex);
       }
+
+      const clonedChild = React.cloneElement(child, {
+        // @ts-expect-error: TS doesn't understand the child's props
+        index: currentIndex,
+      });
+      return clonedChild;
     }
 
+    return child;
+  };
+
+  const childDisplayNameArray = React.Children.toArray(children).map(
+    // @ts-expect-error: @TODO change this with componentId approach
+    (child) => child.type.displayName,
+  );
+  const lastActionListSectionIndex = childDisplayNameArray.lastIndexOf('ActionListSection');
+
+  const isActionListItemPresentAfterSection = childDisplayNameArray
+    .slice(lastActionListSectionIndex)
+    .includes('ActionListItem');
+
+  // Looping through ActionListItems to add index to them and get an options array for moving focus between items
+  const childrenWithId = React.Children.map(children, (child, index) => {
+    if (React.isValidElement(child)) {
+      if (child.type === ActionListSection) {
+        return React.cloneElement(child, {
+          // @ts-expect-error: TS doesn't understand the child's props
+          children: React.Children.map(child.props.children, (childInSection) => {
+            if (childInSection.type === ActionListItem) {
+              return getActionListItemChildWithId(childInSection);
+            }
+
+            return childInSection;
+          }),
+          hideDivider: index === lastActionListSectionIndex && !isActionListItemPresentAfterSection,
+        });
+      }
+      if (child.type === ActionListItem) {
+        return getActionListItemChildWithId(child);
+      }
+    }
     return child;
   });
 
