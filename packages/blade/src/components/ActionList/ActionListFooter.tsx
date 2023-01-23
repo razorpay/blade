@@ -40,6 +40,8 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
     }
   }, [setHasFooterAction, props.trailing]);
 
+  const isOnlyActionButton = !props.title && !props.leading && props.trailing;
+
   return (
     <StyledActionListFooter
       ref={footerRef}
@@ -64,21 +66,26 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
         }
       }}
     >
-      <Box>{props.leading}</Box>
-      <Box paddingLeft="spacing.3" paddingRight="spacing.3">
-        <BaseText color="surface.text.subdued.lowContrast" fontStyle="italic" fontSize={50}>
-          {props.title}
-        </BaseText>
-      </Box>
-      <Box
-        display="flex"
-        alignItems="center"
-        marginLeft="auto"
-        role="region"
-        aria-label="listbox footer"
-      >
-        {props.trailing}
-      </Box>
+      {props.leading ? <Box>{props.leading}</Box> : null}
+      {props.title ? (
+        <Box paddingLeft="spacing.3" paddingRight="spacing.3">
+          <BaseText color="surface.text.subdued.lowContrast" fontStyle="italic" fontSize={50}>
+            {props.title}
+          </BaseText>
+        </Box>
+      ) : null}
+      {props.trailing ? (
+        <Box
+          display="flex"
+          alignItems="center"
+          marginLeft={isOnlyActionButton ? undefined : 'auto'}
+          role="region"
+          width={isOnlyActionButton ? '100%' : undefined}
+          aria-label="listbox footer"
+        >
+          {props.trailing}
+        </Box>
+      ) : null}
     </StyledActionListFooter>
   );
 };

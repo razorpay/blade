@@ -71,7 +71,11 @@ export const WithSelect = (): JSX.Element => {
           <ActionListFooter
             title="Search Tips"
             leading={<ActionListFooterIcon icon={SearchIcon} />}
-            trailing={<Button onClick={console.log}>Apply</Button>}
+            trailing={
+              <Button isFullWidth onClick={console.log}>
+                Apply
+              </Button>
+            }
           />
         </ActionList>
       </DropdownOverlay>

@@ -11,6 +11,6 @@ export * from './ActionListFooter';
  * - [ ] Handle uncontrolled dropdown
  * - [ ] Add href support
  * - [ ] Add intent
- * - [ ] Add description to Footer, and Item
+ * - [x] Add description to Footer, and Item
  * - [ ] Check if options can be set on need-per basis (when we're reading the options)
  */

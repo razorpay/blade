@@ -172,7 +172,6 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
 
     if (isOpen) {
-      console.log('hereee');
       if (selectionType !== 'multiple') {
         selectOption(activeIndex);
       }
