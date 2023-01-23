@@ -6,7 +6,7 @@ import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { getPlatformType } from '~utils';
+import { getPlatformType, isReactNative } from '~utils';
 type SelectInputProps = Pick<
   BaseInputProps,
   | 'label'
@@ -74,7 +74,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
-        hasPopup
+        hasPopup={isReactNative() ? 'menu' : 'listbox'}
         isPopupExpanded={isOpen}
         onClick={onSelectClick}
         onKeyDown={onSelectKeydown}

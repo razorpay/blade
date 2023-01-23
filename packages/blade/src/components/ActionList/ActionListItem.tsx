@@ -160,7 +160,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         })}
         onFocus={() => {
           // We don't want to keep the browser's focus on option item. We move it to selectInput
-          if (!isReactNative) {
+          if (!isReactNative()) {
             selectInputRef.current?.focus();
           }
         }}

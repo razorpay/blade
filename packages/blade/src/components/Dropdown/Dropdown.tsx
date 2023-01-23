@@ -1,17 +1,12 @@
 import React from 'react';
-import { DropdownContext, useDropdown } from './useDropdown';
+import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
 import { useId } from '~src/hooks/useId';
-import Box from '~components/Box';
-import { getPlatformType } from '~utils';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
   children: React.ReactNode[];
 };
-
-const platformType = getPlatformType();
-const isReactNative = platformType === 'react-native';
 
 /**
  * **Dropdown component**
@@ -76,27 +71,4 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
     </DropdownContext.Provider>
   );
 }
-
-/**
- * Overlay for dropdown.
- *
- * Wrap your ActionList with this this component
- */
-function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Element {
-  const { isOpen } = useDropdown();
-
-  return (
-    <Box position="relative">
-      <Box
-        as={!isReactNative ? 'div' : undefined}
-        display={isOpen ? (isReactNative ? 'flex' : 'block') : 'none'}
-        position="absolute"
-        width="100%"
-      >
-        {children}
-      </Box>
-    </Box>
-  );
-}
-
-export { Dropdown, DropdownOverlay, DropdownProps };
+export { Dropdown, DropdownProps };
