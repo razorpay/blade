@@ -7,7 +7,9 @@ type HoverProps = {
   hasError?: boolean;
 };
 // noop in react-native
-const SelectorInput = (_props: HoverProps & { inputProps?: any }): React.ReactElement => {
+const SelectorInput = (
+  _props: HoverProps & { inputProps?: any; tabIndex?: number },
+): React.ReactElement => {
   return <></>;
 };
 

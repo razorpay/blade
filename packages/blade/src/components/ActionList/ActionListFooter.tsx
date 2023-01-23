@@ -44,10 +44,15 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
 
   return (
     <StyledActionListFooter
-      ref={footerRef}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={footerRef as any}
+      // eslint-disable-next-line
+      // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onMouseDown={() => {
         setShouldIgnoreBlur(true);
       }}
+      // eslint-disable-next-line
+      // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onKeyDown={(e) => {
         const nativeEvent = e.nativeEvent;
         if ((nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0) {
@@ -56,9 +61,12 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onSelectKeydown?.({ event: e.nativeEvent } as any);
       }}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+      // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onBlur={(e) => {
         const nextItem = e.nativeEvent.relatedTarget;
-        // @ts-expect-error: getAttribute does exist on relatedTarget
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+        // @ts-ignore: getAttribute does exist on relatedTarget
         const nextItemRole = nextItem?.getAttribute?.('role');
         console.log(nextItem);
         if (nextItemRole !== 'combobox' && nextItemRole !== 'option') {
@@ -79,7 +87,6 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
           display="flex"
           alignItems="center"
           marginLeft={isOnlyActionButton ? undefined : 'auto'}
-          role="region"
           width={isOnlyActionButton ? '100%' : undefined}
           aria-label="listbox footer"
         >
