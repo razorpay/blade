@@ -6,6 +6,7 @@ import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 
 export const parameters = {
   previewTabs: {
@@ -39,6 +40,27 @@ export const parameters = {
     },
   },
   docs: {
+    container: ({ children, context }) => {
+      const getThemeTokens = () => {
+        if (context.globals.themeTokenName === 'paymentTheme') {
+          return paymentTheme;
+        }
+        if (context.globals.themeTokenName === 'bankingTheme') {
+          return bankingTheme;
+        }
+      };
+      return (
+        <DocsContainer context={context}>
+          <BladeProvider
+            key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+            themeTokens={getThemeTokens()}
+            colorScheme={context.globals.colorScheme}
+          >
+            {children}
+          </BladeProvider>
+        </DocsContainer>
+      );
+    },
     theme,
     components: {
       summary: styled.summary`
