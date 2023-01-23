@@ -8,6 +8,7 @@ import { BaseText } from '~components/Typography/BaseText';
 const StyledActionListHeader = styled(Box)((props) => {
   return {
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
     padding: `${makeSize(props.theme.spacing[3])} ${makeSize(props.theme.spacing[5])}`,
     backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,

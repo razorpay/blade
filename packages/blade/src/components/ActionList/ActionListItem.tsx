@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StyledActionListItem } from './StyledActionListItem';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
-import type { DropdownContextType } from '~components/Dropdown/useDropdown';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
-import { getPlatformType, makeSize } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { Checkbox } from '~components/Checkbox';
 
@@ -90,41 +90,7 @@ type ActionListItemProps = {
   isDefaultSelected?: boolean;
   intent?: 'negative';
 };
-const StyledActionListItem = styled(Box)<{
-  selectionType: DropdownContextType['selectionType'];
-  hasDescription: boolean;
-  intent?: ActionListItemProps['intent'];
-}>((props) => ({
-  // @TODO: use token for borderWidth (currently its not present)
-  borderWidth: makeSize(3),
-  borderStyle: 'solid',
-  borderColor: 'transparent',
-  textAlign: 'left',
-  backgroundColor: 'transparent',
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: props.hasDescription ? 'start' : 'center',
-  padding: makeSize(props.theme.spacing[3]),
-  borderRadius: makeSize(props.theme.border.radius.medium),
-  textDecoration: 'none',
-  cursor: 'pointer',
-  width: '100%',
-  '&:hover': {
-    backgroundColor:
-      props.intent === 'negative'
-        ? props.theme.colors.feedback.background.negative.lowContrast
-        : props.theme.colors.brand.gray.a50.lowContrast,
-  },
-  '&.active-focus': {
-    // @TODO: ask designer for exact color here (couldn't figure out from figma)
-    borderColor: props.theme.colors.brand.primary[300],
-  },
-  // @TODO: ask designer what happens on selected item's hover
-  '&[aria-selected=true]': {
-    backgroundColor:
-      props.selectionType === 'single' ? props.theme.colors.brand.primary[300] : undefined,
-  },
-}));
+
 const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const {
     activeIndex,
@@ -136,9 +102,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     selectInputRef,
   } = useDropdown();
 
-  const platformType = getPlatformType();
   const renderOnWebAs = props.href ? 'a' : 'button';
-  const isReactNative = platformType === 'react-native';
   const isSelected =
     typeof props.index === 'number'
       ? selectedIndices.includes(props.index)
@@ -147,7 +111,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent }}>
       <StyledActionListItem
-        as={!isReactNative ? renderOnWebAs : undefined}
+        as={!isReactNative() ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props.index}`}
         role={props.href ? 'link' : 'option'}
         tabIndex={-1}
@@ -160,9 +124,17 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
           }
           props.onClick?.(e);
         }}
+        onPress={(e) => {
+          if (typeof props.index === 'number') {
+            // @ts-expect-error: can't type function differently for react native
+            onOptionClick(e, props.index);
+          }
+        }}
         onFocus={() => {
           // We don't want to keep the browser's focus on option item. We move it to selectInput
-          selectInputRef.current?.focus();
+          if (!isReactNative) {
+            selectInputRef.current?.focus();
+          }
         }}
         onMouseDown={() => {
           setShouldIgnoreBlur(true);
@@ -172,6 +144,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         selectionType={selectionType}
         hasDescription={!!props.description}
         intent={props.intent}
+        isSelected={isSelected}
       >
         <Box display="flex" marginTop={props.description ? 'spacing.2' : undefined}>
           {selectionType === 'multiple' ? (
@@ -201,9 +174,11 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
             >
               {props.title}
             </Text>
-            <Text color="surface.text.placeholder.lowContrast" size="small">
-              {props.description}
-            </Text>
+            {props.description ? (
+              <Text color="surface.text.placeholder.lowContrast" size="small">
+                {props.description}
+              </Text>
+            ) : null}
           </Box>
         </Box>
         <Box display="flex" marginLeft="auto">

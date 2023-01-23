@@ -16,6 +16,7 @@ import type {
   FormInputHandleOnEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
+import { isReactNative } from '~utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -207,7 +208,9 @@ const useDropdown = (): UseDropdownReturnValue => {
       onOptionChange(actionType, index);
     }
     selectOption(index);
-    rest.selectInputRef.current?.focus();
+    if (!isReactNative()) {
+      rest.selectInputRef.current?.focus();
+    }
   };
 
   /**

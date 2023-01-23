@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { makeSize } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 
 type ActionListFooterProps = {
@@ -15,6 +15,7 @@ type ActionListFooterProps = {
 const StyledActionListFooter = styled(Box)((props) => {
   return {
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
     padding: `${makeSize(props.theme.spacing[3])} ${makeSize(props.theme.spacing[5])}`,
     backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
@@ -35,7 +36,7 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
   } = useDropdown();
 
   React.useEffect(() => {
-    if (footerRef.current?.querySelector('button, a')) {
+    if (!isReactNative() && footerRef.current?.querySelector('button, a')) {
       setHasFooterAction(true);
     }
   }, [setHasFooterAction, props.trailing]);

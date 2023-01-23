@@ -4,7 +4,7 @@ import { ActionListItem, ActionListSection } from './ActionListItem';
 import Box from '~components/Box';
 import type { OptionsType } from '~components/Dropdown/useDropdown';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { makeAccessible, makeSize } from '~utils';
+import { isReactNative, makeAccessible, makeSize } from '~utils';
 
 /**
  *
@@ -35,7 +35,7 @@ const StyledActionList = styled(Box)<{ surfaceLevel: ActionListProps['surfaceLev
       borderColor: theme.colors.surface.border.normal.lowContrast,
       borderRadius: makeSize(theme.border.radius.medium),
       padding: makeSize(theme.spacing[3]),
-      boxShadow: elevation200,
+      boxShadow: isReactNative() ? undefined : elevation200,
     };
   },
 );
@@ -124,7 +124,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={actionListRef as any}
       {...makeAccessible({
-        role: 'listbox',
+        role: isReactNative() ? 'menu' : 'listbox',
         multiSelectable: selectionType === 'multiple',
         labelledBy: `${dropdownBaseId}-label`,
       })}
