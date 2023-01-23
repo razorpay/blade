@@ -46,7 +46,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     selectionType,
     dropdownBaseId,
     setSelectedIndices,
-    selectedIndices,
+    // selectedIndices,
   } = useDropdown();
   const actionListOptions: {
     title: string;
@@ -83,10 +83,13 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
 
   React.useEffect(() => {
     setOptions(actionListOptions);
-    // Removing duplicates with Set
-    setSelectedIndices(Array.from(new Set([...selectedIndices, ...defaultSelectedIndices])));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setOptions, children]);
+
+  React.useEffect(() => {
+    setSelectedIndices(defaultSelectedIndices);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <StyledActionList

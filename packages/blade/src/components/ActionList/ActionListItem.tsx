@@ -48,6 +48,7 @@ const StyledActionListItem = styled(Box)<{
 }>((props) => ({
   // @TODO: use token for borderWidth (currently its not present)
   borderWidth: makeSize(3),
+  borderStyle: 'solid',
   borderColor: 'transparent',
   textAlign: 'left',
   backgroundColor: 'transparent',
@@ -56,6 +57,8 @@ const StyledActionListItem = styled(Box)<{
   alignItems: props.hasDescription ? 'start' : 'center',
   padding: makeSize(props.theme.spacing[3]),
   borderRadius: makeSize(props.theme.border.radius.medium),
+  textDecoration: 'none',
+  cursor: 'pointer',
   width: '100%',
   '&:hover': {
     backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,

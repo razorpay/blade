@@ -56,6 +56,7 @@ export const WithSelect = (): JSX.Element => {
             trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
             title="Settings"
             value="settings"
+            href="https://razorpay.com"
           />
           <ActionListItem
             leading={<ActionListItemIcon icon={DownloadIcon} />}
