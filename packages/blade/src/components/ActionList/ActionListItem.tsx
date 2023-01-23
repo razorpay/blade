@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { StyledActionListItem } from './StyledActionListItem';
 import { componentIds } from './componentIds';
+import type { StyledActionListItemProps } from './getBaseActionListItemStyles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
-import { isReactNative, makeSize } from '~utils';
+import { isReactNative, makeAccessible, makeSize } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { Checkbox } from '~components/Checkbox';
 
@@ -72,6 +73,18 @@ const ActionListItemText = ({ children }: { children: string }): JSX.Element => 
   );
 };
 
+const getActionListItemRole = (href?: string): 'link' | 'menuitem' | 'option' => {
+  if (href) {
+    return 'link';
+  }
+
+  if (isReactNative()) {
+    return 'menuitem';
+  }
+
+  return 'option';
+};
+
 /**
  *
  * ActionListItem
@@ -94,6 +107,22 @@ type ActionListItemProps = {
   intent?: 'negative';
 };
 
+type ClickHandlerType = (e: React.MouseEvent<HTMLButtonElement>) => void;
+
+const makeActionListItemClickable = (
+  clickHandler: ClickHandlerType,
+): { onPress?: StyledActionListItemProps['onPress']; onClick?: ClickHandlerType } => {
+  if (isReactNative()) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+    // @ts-ignore: ignoring ReactNative press type for the peace of mind
+    return { onPress: clickHandler };
+  }
+
+  return {
+    onClick: clickHandler,
+  };
+};
+
 const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const {
     activeIndex,
@@ -103,7 +132,6 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     setShouldIgnoreBlur,
     selectionType,
     selectInputRef,
-    recalculateOptions,
   } = useDropdown();
 
   const renderOnWebAs = props.href ? 'a' : 'button';
@@ -112,35 +140,24 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       ? selectedIndices.includes(props.index)
       : props.isDefaultSelected;
 
-  React.useEffect(() => {
-    if (!props.index) {
-      recalculateOptions();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent }}>
       <StyledActionListItem
         as={!isReactNative() ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props.index}`}
-        role={props.href ? 'link' : 'option'}
         tabIndex={-1}
-        data-value={props.value}
-        data-index={props.index}
-        aria-selected={isSelected}
-        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+        href={props.href}
+        className={activeIndex === props.index ? 'active-focus' : ''}
+        {...makeAccessible({
+          selected: isSelected,
+          role: getActionListItemRole(props.href),
+        })}
+        {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
           if (typeof props.index === 'number') {
             onOptionClick(e, props.index);
           }
           props.onClick?.(e);
-        }}
-        onPress={(e) => {
-          if (typeof props.index === 'number') {
-            // @ts-expect-error: can't type function differently for react native
-            onOptionClick(e, props.index);
-          }
-        }}
+        })}
         onFocus={() => {
           // We don't want to keep the browser's focus on option item. We move it to selectInput
           if (!isReactNative) {
@@ -150,8 +167,9 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         onMouseDown={() => {
           setShouldIgnoreBlur(true);
         }}
-        href={props.href}
-        className={activeIndex === props.index ? 'active-focus' : ''}
+        data-value={props.value}
+        data-index={props.index}
+        // Custom props for changes in styles
         selectionType={selectionType}
         hasDescription={!!props.description}
         intent={props.intent}
@@ -160,7 +178,13 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         <Box display="flex" marginTop={props.description ? 'spacing.2' : undefined}>
           {selectionType === 'multiple' ? (
             // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-            <Checkbox isChecked={isSelected} aria-hidden={true} tabIndex={-1}>
+            <Checkbox
+              isChecked={isSelected}
+              tabIndex={-1}
+              {...makeAccessible({
+                hidden: true,
+              })}
+            >
               {/* 
               Checkbox requires children. Didn't want to make it optional because its helpful for consumers
               But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns

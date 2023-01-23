@@ -10,7 +10,7 @@ type StyledActionListItemProps = {
   selectionType: DropdownContextType['selectionType'];
   hasDescription: boolean;
   intent?: ActionListItemProps['intent'];
-  onPress: (e: React.TouchEvent<TouchableOpacity>) => void;
+  onPress?: (e: React.TouchEvent<TouchableOpacity>) => void;
   isSelected?: boolean;
 };
 
@@ -18,7 +18,6 @@ const getBaseActionListItemStyles = (
   props: StyledActionListItemProps & { theme: Theme },
 ): CSSObject => {
   return {
-    // @TODO: use token for borderWidth (currently its not present)
     borderWidth: makeSize(3),
     borderStyle: 'solid',
     borderColor: 'transparent',

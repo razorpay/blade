@@ -57,6 +57,7 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onKeyDown={(e) => {
         const nativeEvent = e.nativeEvent;
+        // We ignore the selection keydowns on footer to let users click on items
         if ((nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0) {
           return;
         }
@@ -70,7 +71,6 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
         // @ts-ignore: getAttribute does exist on relatedTarget
         const nextItemRole = nextItem?.getAttribute?.('role');
-        console.log(nextItem);
         if (nextItemRole !== 'combobox' && nextItemRole !== 'option') {
           setIsOpen(false);
         }
@@ -90,7 +90,6 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
           alignItems="center"
           marginLeft={isOnlyActionButton ? undefined : 'auto'}
           width={isOnlyActionButton ? '100%' : undefined}
-          aria-label="listbox footer"
         >
           {props.trailing}
         </Box>

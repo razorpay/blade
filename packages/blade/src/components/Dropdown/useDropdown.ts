@@ -207,7 +207,6 @@ const useDropdown = (): UseDropdownReturnValue => {
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
   ): void => {
-    console.log('option clck', index);
     const actionType = getActionFromKey(e, isOpen);
     if (typeof actionType === 'number') {
       onOptionChange(actionType, index);
