@@ -14,7 +14,6 @@ type ListItemProps = {
     | React.ReactElement<ListItemProps>
     | React.ReactElement<ListItemProps>[]
     | React.ReactNode;
-  size?: 'small' | 'medium';
   icon?: IconComponent;
 };
 
@@ -22,9 +21,8 @@ const StyledListItem = styled(ListItemElement)<{ level?: number }>(({ level, the
   paddingLeft: level ? getIn(theme, listItemPaddingLeft[level]) : 0,
 }));
 
-const ListItem = ({ children, size, icon: Icon }: ListItemProps): React.ReactElement => {
-  const { level, size: listContextSize, icon: ListContextIcon } = useListContext();
-  const itemSize = size ?? listContextSize;
+const ListItem = ({ children, icon: Icon }: ListItemProps): React.ReactElement => {
+  const { level, size, icon: ListContextIcon } = useListContext();
   const ItemIcon = Icon ?? ListContextIcon;
 
   const childrenArray = React.Children.toArray(children);
@@ -46,12 +44,12 @@ const ListItem = ({ children, size, icon: Icon }: ListItemProps): React.ReactEle
       >
         <Box paddingRight="spacing.3" display="flex">
           {ItemIcon ? (
-            <ItemIcon size={itemSize} color="surface.text.subdued.lowContrast" />
+            <ItemIcon size={size} color="surface.text.subdued.lowContrast" />
           ) : (
             <UnorderedItemIcon level={level} />
           )}
         </Box>
-        <Text variant="body" size={itemSize}>
+        <Text variant="body" size={size}>
           {childItem}
         </Text>
       </Box>
