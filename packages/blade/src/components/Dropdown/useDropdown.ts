@@ -20,7 +20,7 @@ import type {
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
 
-type OptionsType = { title: string; value: string }[];
+type OptionsType = { title: string; value: string; href: string }[];
 
 type DropdownContextType = {
   isOpen: boolean;
@@ -264,6 +264,12 @@ const useDropdown = (): UseDropdownReturnValue => {
           selectOption(activeIndex);
           if (rest.hasFooterAction) {
             rest.selectInputRef.current?.focus();
+          }
+          if (options[activeIndex].href) {
+            window.location.href = options[activeIndex].href;
+            if (window.top) {
+              window.top.location.href = options[activeIndex].href;
+            }
           }
         },
       });

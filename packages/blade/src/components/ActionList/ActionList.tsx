@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ActionListItem, ActionListSection } from './ActionListItem';
 import Box from '~components/Box';
+import type { OptionsType } from '~components/Dropdown/useDropdown';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { makeAccessible, makeSize } from '~utils';
 
@@ -48,10 +49,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     setSelectedIndices,
     // selectedIndices,
   } = useDropdown();
-  const actionListOptions: {
-    title: string;
-    value: string;
-  }[] = [];
+  const actionListOptions: OptionsType = [];
 
   const defaultSelectedIndices: number[] = [];
 
@@ -60,6 +58,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
       actionListOptions.push({
         title: child.props.title,
         value: child.props.value,
+        href: child.props.href,
       });
       const currentIndex = actionListOptions.length - 1;
 

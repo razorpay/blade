@@ -149,7 +149,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       <StyledActionListItem
         as={!isReactNative ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props.index}`}
-        role="option"
+        role={props.href ? 'link' : 'option'}
         tabIndex={-1}
         data-value={props.value}
         data-index={props.index}
