@@ -19,6 +19,7 @@ import {
   ArrowRightIcon,
   HistoryIcon,
   SearchIcon,
+  TrashIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 
@@ -68,6 +69,12 @@ export const WithSelect = (): JSX.Element => {
             leading={<ActionListItemIcon icon={InfoIcon} />}
             title="Info"
             value="info"
+          />
+          <ActionListItem
+            leading={<ActionListItemIcon icon={TrashIcon} />}
+            title="Delete"
+            value="Delete"
+            intent="negative"
           />
           <ActionListFooter
             title="Search Tips"

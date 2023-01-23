@@ -7,8 +7,9 @@ export * from './ActionListFooter';
  *
  * TODO
  *
- * - [ ] Add onChange to Dropdown
+ * - [x] Add onChange to SelectInput
  * - [x] Add href support
- * - [ ] Add intent
+ * - [x] Add intent
  * - [x] Add description to Footer, and Item
+ * - [] Add section header
  */

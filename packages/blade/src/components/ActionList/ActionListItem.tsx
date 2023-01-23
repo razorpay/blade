@@ -9,9 +9,23 @@ import { getPlatformType, makeSize } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { Checkbox } from '~components/Checkbox';
 
+const ActionListItemContext = React.createContext<{
+  intent?: ActionListItemProps['intent'];
+}>({});
+
 const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   const Icon = icon;
-  return <Icon color="surface.text.muted.lowContrast" size="medium" />;
+  const { intent } = React.useContext(ActionListItemContext);
+  return (
+    <Icon
+      color={
+        intent === 'negative'
+          ? 'feedback.icon.negative.lowContrast'
+          : 'surface.text.muted.lowContrast'
+      }
+      size="medium"
+    />
+  );
 };
 
 const ActionListItemText = ({ children }: { children: string }): JSX.Element => {
@@ -41,10 +55,12 @@ type ActionListItemProps = {
   leading?: React.ReactNode;
   trailing?: React.ReactNode;
   isDefaultSelected?: boolean;
+  intent?: 'negative';
 };
 const StyledActionListItem = styled(Box)<{
   selectionType: DropdownContextType['selectionType'];
   hasDescription: boolean;
+  intent?: ActionListItemProps['intent'];
 }>((props) => ({
   // @TODO: use token for borderWidth (currently its not present)
   borderWidth: makeSize(3),
@@ -61,7 +77,10 @@ const StyledActionListItem = styled(Box)<{
   cursor: 'pointer',
   width: '100%',
   '&:hover': {
-    backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
+    backgroundColor:
+      props.intent === 'negative'
+        ? props.theme.colors.feedback.background.negative.lowContrast
+        : props.theme.colors.brand.gray.a50.lowContrast,
   },
   '&.active-focus': {
     // @TODO: ask designer for exact color here (couldn't figure out from figma)
@@ -93,61 +112,72 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       : props.isDefaultSelected;
 
   return (
-    <StyledActionListItem
-      as={!isReactNative ? renderOnWebAs : undefined}
-      id={`${dropdownBaseId}-${props.index}`}
-      role="option"
-      tabIndex={-1}
-      data-value={props.value}
-      data-index={props.index}
-      aria-selected={isSelected}
-      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-        if (typeof props.index === 'number') {
-          onOptionClick(e, props.index);
-        }
-        props.onClick?.(e);
-      }}
-      onFocus={() => {
-        // We don't want to keep the browser's focus on option item. We move it to selectInput
-        selectInputRef.current?.focus();
-      }}
-      onMouseDown={() => {
-        setShouldIgnoreBlur(true);
-      }}
-      href={props.href}
-      className={activeIndex === props.index ? 'active-focus' : ''}
-      selectionType={selectionType}
-      hasDescription={!!props.description}
-    >
-      <Box display="flex" marginTop={props.description ? 'spacing.2' : undefined}>
-        {selectionType === 'multiple' ? (
-          // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-          <Checkbox isChecked={isSelected} aria-hidden={true} tabIndex={-1}>
-            {/* 
+    <ActionListItemContext.Provider value={{ intent: props.intent }}>
+      <StyledActionListItem
+        as={!isReactNative ? renderOnWebAs : undefined}
+        id={`${dropdownBaseId}-${props.index}`}
+        role="option"
+        tabIndex={-1}
+        data-value={props.value}
+        data-index={props.index}
+        aria-selected={isSelected}
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+          if (typeof props.index === 'number') {
+            onOptionClick(e, props.index);
+          }
+          props.onClick?.(e);
+        }}
+        onFocus={() => {
+          // We don't want to keep the browser's focus on option item. We move it to selectInput
+          selectInputRef.current?.focus();
+        }}
+        onMouseDown={() => {
+          setShouldIgnoreBlur(true);
+        }}
+        href={props.href}
+        className={activeIndex === props.index ? 'active-focus' : ''}
+        selectionType={selectionType}
+        hasDescription={!!props.description}
+        intent={props.intent}
+      >
+        <Box display="flex" marginTop={props.description ? 'spacing.2' : undefined}>
+          {selectionType === 'multiple' ? (
+            // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+            <Checkbox isChecked={isSelected} aria-hidden={true} tabIndex={-1}>
+              {/* 
               Checkbox requires children. Didn't want to make it optional because its helpful for consumers
               But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
             */}
-            {null}
-          </Checkbox>
-        ) : (
-          props.leading
-        )}
-      </Box>
-      <Box
-        paddingLeft={selectionType === 'multiple' ? 'spacing.1' : 'spacing.3'}
-        paddingRight="spacing.3"
-      >
-        <Box display="flex" justifyContent="center" flexDirection="column">
-          <Text color="surface.text.normal.lowContrast">{props.title}</Text>
-          <Text color="surface.text.placeholder.lowContrast" size="small">
-            {props.description}
-          </Text>
+              {null}
+            </Checkbox>
+          ) : (
+            props.leading
+          )}
         </Box>
-      </Box>
-      <Box display="flex" marginLeft="auto">
-        {props.trailing}
-      </Box>
-    </StyledActionListItem>
+        <Box
+          paddingLeft={selectionType === 'multiple' ? 'spacing.1' : 'spacing.3'}
+          paddingRight="spacing.3"
+        >
+          <Box display="flex" justifyContent="center" flexDirection="column">
+            <Text
+              color={
+                props.intent === 'negative'
+                  ? 'feedback.text.negative.lowContrast'
+                  : 'surface.text.normal.lowContrast'
+              }
+            >
+              {props.title}
+            </Text>
+            <Text color="surface.text.placeholder.lowContrast" size="small">
+              {props.description}
+            </Text>
+          </Box>
+        </Box>
+        <Box display="flex" marginLeft="auto">
+          {props.trailing}
+        </Box>
+      </StyledActionListItem>
+    </ActionListItemContext.Provider>
   );
 };
 
