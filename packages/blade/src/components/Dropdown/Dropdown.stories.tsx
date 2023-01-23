@@ -49,6 +49,7 @@ export const WithSelect = (): JSX.Element => {
             trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
             title="Home"
             value="home"
+            description="Home sweet home it is"
           />
           <ActionListItem
             leading={<ActionListItemIcon icon={SettingsIcon} />}
@@ -60,6 +61,7 @@ export const WithSelect = (): JSX.Element => {
             leading={<ActionListItemIcon icon={DownloadIcon} />}
             title="Download"
             value="download"
+            isDefaultSelected
           />
           <ActionListItem
             leading={<ActionListItemIcon icon={InfoIcon} />}

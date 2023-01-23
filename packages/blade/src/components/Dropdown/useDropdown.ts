@@ -172,6 +172,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
 
     if (isOpen) {
+      console.log('hereee');
       if (selectionType !== 'multiple') {
         selectOption(activeIndex);
       }
@@ -254,6 +255,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
 
     const actionType = getActionFromKey(e.event, isOpen);
+
     if (actionType) {
       performAction(actionType, e, {
         setIsOpen,
