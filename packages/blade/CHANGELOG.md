@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 6.0.1
+
+### Patch Changes
+
+- 62a98bb1: fix(blade): update BaseInput background color
+
 ## 6.0.0
 
 ### Major Changes
