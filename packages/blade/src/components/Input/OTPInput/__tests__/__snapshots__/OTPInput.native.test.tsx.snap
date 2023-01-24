@@ -200,8 +200,8 @@ exports[`<OTPInput /> should render 1`] = `
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
+                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -337,8 +337,8 @@ exports[`<OTPInput /> should render 1`] = `
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
+                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -474,8 +474,8 @@ exports[`<OTPInput /> should render 1`] = `
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
+                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -611,8 +611,8 @@ exports[`<OTPInput /> should render 1`] = `
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
+                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -748,8 +748,8 @@ exports[`<OTPInput /> should render 1`] = `
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
+                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -885,8 +885,8 @@ exports[`<OTPInput /> should render 1`] = `
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderBottomColor": "hsla(216, 19%, 89%, 1)",
+                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,

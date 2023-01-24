@@ -10,11 +10,13 @@ import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import Box from '~components/Box';
 import { Spinner } from '~components/Spinner';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
 
-export type TextInputProps = Pick<
+type TextInputProps = Pick<
   BaseInputProps,
   | 'label'
   | 'labelPosition'
@@ -27,6 +29,7 @@ export type TextInputProps = Pick<
   | 'defaultValue'
   | 'name'
   | 'onChange'
+  | 'onFocus'
   | 'onBlur'
   | 'value'
   | 'isDisabled'
@@ -151,38 +154,44 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
   return getPlatformType() === 'react-native';
 };
 
-export const TextInput = ({
-  label,
-  labelPosition = 'top',
-  placeholder,
-  type = 'text',
-  defaultValue,
-  name,
-  value,
-  maxCharacters,
-  onChange,
-  onBlur,
-  isDisabled,
-  necessityIndicator,
-  validationState,
-  errorText,
-  helpText,
-  successText,
-  isRequired,
-  icon,
-  prefix,
-  showClearButton,
-  onClearButtonClick,
-  isLoading,
-  suffix,
-  autoFocus,
-  keyboardReturnKeyType,
-  autoCompleteSuggestionType,
-}: TextInputProps): ReactElement => {
-  const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
-  const [shouldShowClearButton, setShouldShowClearButton] = useState(
-    Boolean(defaultValue ?? value) ?? false,
-  );
+const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps> = (
+  {
+    label,
+    labelPosition = 'top',
+    placeholder,
+    type = 'text',
+    defaultValue,
+    name,
+    value,
+    maxCharacters,
+    onChange,
+    onFocus,
+    onBlur,
+    isDisabled,
+    necessityIndicator,
+    validationState,
+    errorText,
+    helpText,
+    successText,
+    isRequired,
+    icon,
+    prefix,
+    showClearButton,
+    onClearButtonClick,
+    isLoading,
+    suffix,
+    autoFocus,
+    keyboardReturnKeyType,
+    autoCompleteSuggestionType,
+  },
+  ref,
+): ReactElement => {
+  const textInputRef = useBladeInnerRef(ref);
+  const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
+
+  React.useEffect(() => {
+    setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
+  }, [showClearButton, defaultValue, value]);
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
@@ -243,6 +252,7 @@ export const TextInput = ({
 
         onChange?.({ name, value });
       }}
+      onFocus={onFocus}
       onBlur={onBlur}
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
@@ -272,3 +282,8 @@ export const TextInput = ({
     />
   );
 };
+
+const TextInput = React.forwardRef(_TextInput);
+TextInput.displayName = 'TextInput';
+
+export { TextInput, TextInputProps };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { getComponentId } from '~utils';
 
 type CardContextType = true | null;
 const CardContext = React.createContext<CardContextType>(null);
@@ -11,9 +12,29 @@ const useVerifyInsideCard = (componentName: string): CardContextType => {
   return true;
 };
 
+/**
+ * Verify if the passed childrens are only of allowedComponents list
+ */
+const useVerifyAllowedComponents = (
+  children: React.ReactNode,
+  componentName: string,
+  allowedComponents: string[],
+): void => {
+  React.Children.forEach(children, (child) => {
+    const isValidChild = child && allowedComponents.includes(getComponentId(child)!);
+    if (!isValidChild) {
+      throw new Error(
+        `[Blade Card]: Only one of \`${allowedComponents.join(
+          ', ',
+        )}\` component is accepted as ${componentName} children`,
+      );
+    }
+  });
+};
+
 type CardProviderProps = { children: React.ReactNode };
 const CardProvider = ({ children }: CardProviderProps): React.ReactElement => {
   return <CardContext.Provider value={true}>{children}</CardContext.Provider>;
 };
 
-export { useVerifyInsideCard, CardProvider };
+export { useVerifyInsideCard, useVerifyAllowedComponents, CardProvider };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
 import type { ReactElement } from 'react';
 import React from 'react';
@@ -95,6 +96,50 @@ describe('<TextArea />', () => {
     // changeText changes entire text at once
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith({ name: 'name', value: userName });
+  });
+
+  it('should handle onFocus', () => {
+    const placeholder = 'First Last';
+    const onFocus = jest.fn();
+    const name = 'userName';
+    const userName = 'Kamlesh';
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <TextArea
+        label="Enter name"
+        placeholder={placeholder}
+        name={name}
+        defaultValue={userName}
+        onFocus={onFocus}
+      />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+    fireEvent(input, 'focus', { nativeEvent: { text: userName } });
+    expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(onFocus).toHaveBeenCalledWith({ name, value: userName });
+  });
+
+  it('should handle onBlur', () => {
+    const placeholder = 'First Last';
+    const onBlur = jest.fn();
+    const name = 'userName';
+    const userName = 'Kamlesh';
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <TextArea
+        label="Enter name"
+        placeholder={placeholder}
+        name={name}
+        defaultValue={userName}
+        onBlur={onBlur}
+      />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+    fireEvent(input, 'onEndEditing', { nativeEvent: { text: userName } });
+    expect(onBlur).toHaveBeenCalledTimes(1);
+    expect(onBlur).toHaveBeenCalledWith({ name, value: userName });
   });
 
   /**
@@ -218,5 +263,26 @@ describe('<TextArea />', () => {
 
     const input = getByPlaceholderText(placeholder);
     expect(input).toBeEnabled();
+  });
+
+  it('should expose native element methods via ref', () => {
+    let refValue = null;
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+      return (
+        <TextArea
+          label="ref test"
+          ref={(value) => {
+            console.log(value);
+            // @ts-expect-error
+            ref.current = value;
+            refValue = value;
+          }}
+        />
+      );
+    };
+
+    renderWithTheme(<Example />);
+    expect(refValue).toHaveProperty('focus');
   });
 });

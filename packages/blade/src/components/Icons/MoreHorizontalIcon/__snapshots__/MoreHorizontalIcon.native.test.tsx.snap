@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MoreHorizontalIcon /> should render MoreHorizontalIcon 1`] = `
+<RNSVGSvgView
+  accessibilityElementsHidden={true}
+  align="xMidYMid"
+  bbHeight="20px"
+  bbWidth="20px"
+  fill="none"
+  focusable={false}
+  height="20px"
+  importantForAccessibility="no-hide-descendants"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Object {
+        "flex": 0,
+        "height": 20,
+        "width": 20,
+      },
+    ]
+  }
+  vbHeight={24}
+  vbWidth={24}
+  width="20px"
+>
+  <RNSVGGroup
+    fill={null}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
+  >
+    <RNSVGPath
+      clipRule={0}
+      d="M9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12Z"
+      fill={4282603381}
+      fillRule={0}
+      propList={
+        Array [
+          "fill",
+          "fillRule",
+        ]
+      }
+    />
+    <RNSVGPath
+      clipRule={0}
+      d="M17 12C17 10.3431 18.3431 9 20 9C21.6569 9 23 10.3431 23 12C23 13.6569 21.6569 15 20 15C18.3431 15 17 13.6569 17 12Z"
+      fill={4282603381}
+      fillRule={0}
+      propList={
+        Array [
+          "fill",
+          "fillRule",
+        ]
+      }
+    />
+    <RNSVGPath
+      clipRule={0}
+      d="M1 12C1 10.3431 2.34315 9 4 9C5.65685 9 7 10.3431 7 12C7 13.6569 5.65685 15 4 15C2.34315 15 1 13.6569 1 12Z"
+      fill={4282603381}
+      fillRule={0}
+      propList={
+        Array [
+          "fill",
+          "fillRule",
+        ]
+      }
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;

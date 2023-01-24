@@ -225,7 +225,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
-                "borderColor": "hsla(216, 44%, 23%, 0.18)",
+                "borderColor": "hsla(216, 15%, 54%, 0.18)",
                 "borderRadius": 2,
                 "borderStyle": "solid",
                 "borderWidth": 1.5,

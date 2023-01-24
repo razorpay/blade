@@ -41,7 +41,7 @@ const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
   const padding = `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`;
   return {
     padding,
-    backgroundColor: props.theme.colors.brand.gray[400].lowContrast,
+    backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
     borderRadius: props.theme.border.radius.medium,
     display: isPlatformWeb ? 'inline-block' : undefined,
     // Removing the line height of container to remove extra surrounding space in background
