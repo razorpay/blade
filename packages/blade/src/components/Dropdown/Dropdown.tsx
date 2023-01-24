@@ -40,8 +40,28 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const selectInputRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
-
   const dropdownBaseId = useId('dropdown');
+
+  const contextValue = React.useMemo<DropdownContextType>(
+    () => ({
+      isOpen,
+      setIsOpen,
+      selectedIndices,
+      setSelectedIndices,
+      options,
+      setOptions,
+      activeIndex,
+      setActiveIndex,
+      shouldIgnoreBlur,
+      setShouldIgnoreBlur,
+      dropdownBaseId,
+      selectInputRef,
+      actionListRef,
+      selectionType,
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isOpen, selectedIndices, options, activeIndex, shouldIgnoreBlur, selectionType],
+  );
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -56,28 +76,7 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
     }
   });
 
-  return (
-    <DropdownContext.Provider
-      value={{
-        isOpen,
-        setIsOpen,
-        selectedIndices,
-        setSelectedIndices,
-        options,
-        setOptions,
-        activeIndex,
-        setActiveIndex,
-        shouldIgnoreBlur,
-        setShouldIgnoreBlur,
-        dropdownBaseId,
-        selectInputRef,
-        actionListRef,
-        selectionType,
-      }}
-    >
-      {children}
-    </DropdownContext.Provider>
-  );
+  return <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>;
 }
 
 /**

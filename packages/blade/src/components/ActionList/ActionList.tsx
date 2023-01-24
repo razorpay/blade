@@ -72,6 +72,8 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
     value: string;
   }[] = [];
 
+  console.count('ActionList');
+
   // Looping through ActionListItems to add index to them and get an options array for moving focus between items
   const childrenWithId = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
