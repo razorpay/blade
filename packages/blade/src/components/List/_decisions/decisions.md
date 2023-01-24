@@ -279,13 +279,14 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 - Could make looping through data (nested objects) dynamically to create a list component more difficult in this case
 
 ## Accessibility
-- I will explore using `<ol>`,`<ul>` & `<li>` directly and see if it allows us to do all the customizations that we need for our use-cases instead of using `role` on a `<div>` for web since that's the recommended practice for lists.
+- We will be using `<ol>`,`<ul>` & `<li>` directly instead of using `role` on a `<div>` for web since that's the recommended practice for lists and encompasses all the a11y needs.
   - We will be able to hide default styling & icons using `list-style-type: none; padding: 0px, margin: 0px`
   - [POC CodeSandbox Link](https://codesandbox.io/s/festive-sanne-2rb18j?file=/src/App.js)
-- Set `role` as `list` for the `List` component (only if we decided to not use `ol`, `ul` elements directly)
-  - This does not work well with screen readers. It doesn't announce the total number of items in the list.
-- Set `role` as `listitem` for the `ListItem` component (only if we decided to not use `ol`, `ul` elements directly)
-  - This does not work well with screen readers. It doesn't announce the item number, remaining number of items in the list and the current nesting level of the list.
+- A11y for react-native is limited for lists and only a role of `list` is available which we will set on the `List` component
+- ~Set `role` as `list` for the `List` component (only if we decided to not use `ol`, `ul` elements directly)~
+  - ~This does not work well with screen readers. It doesn't announce the total number of items in the list.~
+- ~Set `role` as `listitem` for the `ListItem` component (only if we decided to not use `ol`, `ul` elements directly)~
+  - ~This does not work well with screen readers. It doesn't announce the item number, remaining number of items in the list and the current nesting level of the list.~
 
 ## Open Questions
 - ~Discuss alternative APIs with the team~
@@ -297,9 +298,9 @@ import { List, InfoIcon, EditIcon } from '@razorpay/components';
 - ~Bold ordered numbers?~ No bold numbers
 - ~H1, H2, etc. for list items?~ No H1, H2 support from design
 - ~Use-cases for List of level 1 with item that also contains list of level 1?~ No such support. The discovered use-cases in our product were incorrect usage.
-- Ordered list with custom numbers?
-- What should we call `isOrderedFilled` instead?
-- Supporting images, GIFs, videos, custom components, bold text, non-bulleted text, and icons within list items.
+- ~Ordered list with custom numbers?~ This won't be allowed
+- ~What should we call `isOrderedFilled` instead?~ We will be using `variant='ordered-filled'` to satisfy this use-case
+- ~Supporting images, GIFs, videos, custom components, bold text, non-bulleted text, and icons within list items.~ This is out of scope for now and might come in as an enhancement later on as per design decisions
 
 ## References
 - [Polaris](https://polaris.shopify.com/components/list#list-items)
