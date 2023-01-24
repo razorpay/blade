@@ -5,6 +5,7 @@ import React from 'react';
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import { Button } from '~components/Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -63,5 +64,40 @@ describe('<Radio />', () => {
     expect(getByRole('radio', { name: fruitApple })).toBeChecked();
     await user.click(getByLabelText(fruitApple));
     expect(getByRole('radio', { name: fruitApple })).toBeChecked();
+  });
+
+  it(`should expose native element methods via ref`, async () => {
+    const label = 'Accept';
+
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+
+      return (
+        <>
+          <RadioGroup label="focus test">
+            <Radio value="1" ref={ref}>
+              {label}
+            </Radio>
+          </RadioGroup>
+          <Button
+            onClick={() => {
+              ref.current?.focus();
+            }}
+          >
+            Focus
+          </Button>
+        </>
+      );
+    };
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(label);
+    const button = getByRole('button', { name: 'Focus' });
+
+    expect(input).not.toHaveFocus();
+    expect(input).toHaveAttribute('type', 'radio');
+
+    await userEvents.click(button);
+    expect(input).toHaveFocus();
   });
 });

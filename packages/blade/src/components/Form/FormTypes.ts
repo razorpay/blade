@@ -24,6 +24,13 @@ export type FormInputOnKeyDownEvent = {
   event: KeyboardEvent<HTMLInputElement>;
 };
 
+export type FormInputOnClickEvent = {
+  name?: string;
+  value?: React.MouseEvent<HTMLInputElement> | string;
+};
+
+export type FormInputHandleOnClickEvent = ({ name, value }: FormInputOnClickEvent) => void;
+
 export type FormInputValidationProps = {
   /**
    * Help text for the input

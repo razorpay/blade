@@ -172,6 +172,57 @@ describe('<Card />', () => {
     );
   });
 
+  it('should restrict childrens & only allow CardHeader, CardBody & CardFooter in Card', () => {
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <div>some random div</div>
+          <CardHeader />
+          <CardBody>Plain Card</CardBody>
+          <CardFooter />
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade Card]: Only one of `CardHeader, CardBody, CardFooter` component is accepted as Card children',
+    );
+  });
+
+  it('should restrict childrens in CardHeader', () => {
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <CardHeader>
+            <CardHeaderLeading title="" />
+            <div>some random children</div>
+            <CardHeaderTrailing />
+          </CardHeader>
+          <CardBody>Plain Card</CardBody>
+          <CardFooter />
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade Card]: Only one of `CardHeaderLeading, CardHeaderTrailing` component is accepted as CardHeader children',
+    );
+  });
+
+  it('should restrict childrens in CardFooter', () => {
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <CardHeader />
+          <CardBody>Plain Card</CardBody>
+          <CardFooter>
+            <CardFooterLeading />
+            <CardFooterTrailing />
+            <div>some random children</div>
+          </CardFooter>
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted as CardFooter children',
+    );
+  });
+
   it('should not have accessibility violations', async () => {
     const cardTitle = 'Card Header';
     const cardSubtitle = 'Card subtitle';

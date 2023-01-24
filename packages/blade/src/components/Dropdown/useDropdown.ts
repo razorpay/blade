@@ -64,7 +64,7 @@ let searchTimeout: number;
 let searchString = '';
 
 type UseDropdownReturnValue = DropdownContextType & {
-  onSelectClick: React.MouseEventHandler<HTMLInputElement>;
+  onSelectClick: () => void;
   onSelectKeydown: FormInputHandleOnKeyDownEvent | undefined;
   onSelectBlur: FormInputHandleOnEvent | undefined;
   onOptionClick: (
@@ -143,7 +143,7 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Click listener for combobox (or any triggerer of the dropdown)
    */
-  const onSelectClick: React.MouseEventHandler<HTMLInputElement> = (_e) => {
+  const onSelectClick = (): void => {
     setIsOpen(!isOpen);
   };
 

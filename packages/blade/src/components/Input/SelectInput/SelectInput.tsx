@@ -1,12 +1,14 @@
 import React from 'react';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
-import type { IconComponent } from '~components/Icons';
+import { SelectChevronIcon } from './SelectChevronIcon';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
+import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { getPlatformType } from '~utils';
+import { getPlatformType, isReactNative } from '~utils';
+
 type SelectInputProps = Pick<
   BaseInputProps,
   | 'label'
@@ -22,6 +24,9 @@ type SelectInputProps = Pick<
   | 'prefix'
   | 'suffix'
   | 'autoFocus'
+  | 'onClick'
+  | 'onFocus'
+  | 'onBlur'
 > & {
   icon?: IconComponent;
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
@@ -81,7 +86,18 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         onBlur={onSelectBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-listbox`}
-        trailingIcon={isOpen ? ChevronUpIcon : ChevronDownIcon}
+        interactionElement={
+          <SelectChevronIcon
+            onClick={() => {
+              // Icon onClicks to the SelectInput itself
+              if (!isReactNative()) {
+                selectInputRef.current?.focus();
+              }
+              onSelectClick();
+            }}
+            icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
+          />
+        }
       />
     </Box>
   );

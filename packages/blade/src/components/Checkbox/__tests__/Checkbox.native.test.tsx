@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
@@ -135,5 +136,27 @@ describe('<Checkbox />', () => {
     expect(getByTestId('state').children[0]).toBe('checked');
     fireEvent.press(checkbox);
     expect(getByTestId('state').children[0]).toBe('unchecked');
+  });
+
+  it('should expose native element methods via ref', () => {
+    let refValue = null;
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+      return (
+        <Checkbox
+          ref={(value) => {
+            console.log(value);
+            // @ts-expect-error
+            ref.current = value;
+            refValue = value;
+          }}
+        >
+          Agree
+        </Checkbox>
+      );
+    };
+
+    renderWithTheme(<Example />);
+    expect(refValue).toBeNull();
   });
 });

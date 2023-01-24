@@ -18,6 +18,7 @@ import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
+import Box from '~components/Box';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -169,6 +170,57 @@ describe('<Card />', () => {
     );
     expect(() => renderWithTheme(<CardFooterTrailing />)).toThrow(
       '[Blade Card]: CardFooterTrailing cannot be used outside of Card component',
+    );
+  });
+
+  it('should restrict childrens & only allow CardHeader, CardBody & CardFooter in Card', () => {
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <Box>some random Box</Box>
+          <CardHeader />
+          <CardBody>Plain Card</CardBody>
+          <CardFooter />
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade Card]: Only one of `CardHeader, CardBody, CardFooter` component is accepted as Card children',
+    );
+  });
+
+  it('should restrict childrens in CardHeader', () => {
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <CardHeader>
+            <CardHeaderLeading title="" />
+            <Box>some random children</Box>
+            <CardHeaderTrailing />
+          </CardHeader>
+          <CardBody>Plain Card</CardBody>
+          <CardFooter />
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade Card]: Only one of `CardHeaderLeading, CardHeaderTrailing` component is accepted as CardHeader children',
+    );
+  });
+
+  it('should restrict childrens in CardFooter', () => {
+    expect(() =>
+      renderWithTheme(
+        <Card>
+          <CardHeader />
+          <CardBody>Plain Card</CardBody>
+          <CardFooter>
+            <CardFooterLeading />
+            <CardFooterTrailing />
+            <Box>some random children</Box>
+          </CardFooter>
+        </Card>,
+      ),
+    ).toThrow(
+      '[Blade Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted as CardFooter children',
     );
   });
 });
