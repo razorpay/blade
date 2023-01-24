@@ -5,6 +5,7 @@ import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { getPlatformType } from '~utils';
+import React from 'react';
 type SelectInputProps = Pick<
   BaseInputProps,
   | 'label'
@@ -33,7 +34,29 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
 
   const { icon, ...baseInputProps } = props;
 
+  const selectInputRef = React.useRef<HTMLDivElement>(null);
+
   const platform = getPlatformType();
+
+  const SelectChevronIcon = () => {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        onClick={() => {
+          // Icon onClicks to the SelectInput itself
+          selectInputRef.current?.focus();
+          selectInputRef.current?.click();
+        }}
+      >
+        {isPopupExpanded ? (
+          <ChevronUpIcon color="surface.text.normal.lowContrast" size="medium" />
+        ) : (
+          <ChevronDownIcon color="surface.text.normal.lowContrast" size="medium" />
+        )}
+      </Box>
+    );
+  };
 
   return (
     <Box position="relative">
@@ -52,6 +75,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       <BaseInput
         {...baseInputProps}
         as="button"
+        ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
         value={value}
         defaultValue="Select Option"
@@ -70,7 +94,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
          * @TODO Pass the popup id by taking it from Dropdown
          */
         popupId="123"
-        trailingIcon={isPopupExpanded ? ChevronUpIcon : ChevronDownIcon}
+        interactionElement={<SelectChevronIcon />}
       />
     </Box>
   );

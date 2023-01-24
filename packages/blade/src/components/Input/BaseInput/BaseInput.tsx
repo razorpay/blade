@@ -30,7 +30,7 @@ import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 export type BaseInputProps = FormInputLabelProps &
   FormInputValidationProps & {
     /**
-     * Determines if it needs to be rendered as input or textarea
+     * Determines if it needs to be rendered as input, textarea or button
      */
     as?: 'input' | 'textarea' | 'button';
     /**
@@ -205,7 +205,7 @@ export type BaseInputProps = FormInputLabelProps &
      */
     componentName?: string;
     /**
-     * Input has a popup
+     * whether the input has a popup
      */
     hasPopup?: boolean;
     /**
