@@ -10,7 +10,7 @@ Lists display a set of related items that are composed of text/links. Each list 
     - [Unordered List with inline Link in items](#unordered-list-with-inline-link-in-items)
   - [Ordered List](#ordered-list)
     - [Ordered List with 3 levels of nesting](#ordered-list-with-3-levels-of-nesting)
-    - [Ordered List with 3 levels of nesting and _filled background_ numbers](#ordered-list-with-3-levels-of-nesting-and-filled-background-numbers)
+    - [Ordered List with _filled background_ numbers](#ordered-list-with-filled-background-numbers)
     - [Ordered List with inline Link in items](#ordered-list-with-inline-link-in-items)
 - [API](#api)
   - [List Component](#list-component)
@@ -47,10 +47,14 @@ Lists display a set of related items that are composed of text/links. Each list 
 
 ### Ordered List
 #### Ordered List with 3 levels of nesting
+> Level 1 will be 1, 2, 3,...
+> Level 2 will be a, b, c,...
+> Level 3 will be i, ii, iii,...
 
 <img src="./ordered-list.png" width="380" />
 
-#### Ordered List with 3 levels of nesting and _filled background_ numbers
+#### Ordered List with _filled background_ numbers
+> No nesting will be allowed on this
 
 <img src="./ordered-list-filled.png" width="380" />
 
