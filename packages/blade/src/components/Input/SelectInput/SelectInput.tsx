@@ -103,4 +103,6 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
   );
 };
 
+SelectInput.componentId = 'SelectInput';
+
 export { SelectInput, SelectInputProps };

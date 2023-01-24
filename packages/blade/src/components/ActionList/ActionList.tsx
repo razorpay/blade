@@ -10,8 +10,10 @@ type ActionListItemProps = {
   href?: string;
   /**
    * Internally passed from ActionList. No need to pass it explicitly
+   *
+   * @private
    */
-  index?: number;
+  _index?: number;
 };
 const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const {
@@ -30,16 +32,16 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   return (
     <Box
       as={!isReactNative ? renderOnWebAs : undefined}
-      id={`${dropdownBaseId}-${props.index}`}
+      id={`${dropdownBaseId}-${props._index}`}
       role="option"
       data-value={props.value}
-      data-index={props.index}
+      data-index={props._index}
       aria-selected={
-        typeof props.index === 'number' ? selectedIndices.includes(props.index) : undefined
+        typeof props._index === 'number' ? selectedIndices.includes(props._index) : undefined
       }
       onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-        if (typeof props.index === 'number') {
-          onOptionClick(e, props.index);
+        if (typeof props._index === 'number') {
+          onOptionClick(e, props._index);
         }
       }}
       onFocus={() => {
@@ -51,7 +53,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
       }}
       href={props.href}
       style={{
-        border: activeIndex === props.index ? '2px solid red' : '',
+        border: activeIndex === props._index ? '2px solid red' : '',
         width: '100%',
       }}
     >
@@ -82,7 +84,7 @@ const ActionList = ({ children }: ActionListProps): JSX.Element => {
         const currentIndex = actionListOptions.length - 1;
         const clonedChild = React.cloneElement(child, {
           // @ts-expect-error: TS doesn't understand the child's props
-          index: currentIndex,
+          _index: currentIndex,
         });
         return clonedChild;
       }
