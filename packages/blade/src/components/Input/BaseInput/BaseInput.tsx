@@ -295,7 +295,7 @@ const useInput = ({
         _value = value;
       } else if (typeof value !== 'string') {
         // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
-        _value = value?.currentTarget.innerText ?? '';
+        _value = value?.currentTarget.value ?? '';
       }
 
       onClick?.({

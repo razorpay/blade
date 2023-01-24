@@ -22,6 +22,9 @@ type SelectInputProps = Pick<
   | 'prefix'
   | 'suffix'
   | 'autoFocus'
+  | 'onClick'
+  | 'onFocus'
+  | 'onBlur'
 > & {
   icon?: IconComponent;
 };

@@ -135,6 +135,7 @@ export const StyledBaseInput = React.forwardRef<
         {...commonEventHandlers}
         {...props}
         {...accessibilityProps}
+        value={props.value ? props.value : props.defaultValue}
       >
         {props.value ? props.value : props.defaultValue}
       </StyledBaseNativeButton>
