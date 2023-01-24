@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import type { IconComponent } from '../../components/Icons';
 import {
-  AlertCircleIcon,
   EditIcon,
   CheckIcon,
   ClockIcon,
   LoaderIcon,
+  AlertCircleIcon,
 } from '../../components/Icons';
+import { LinkToStorybook } from './LinkToStorybook';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
 import Box from '~components/Box';
@@ -27,6 +28,7 @@ type ComponentStatusData = {
   name: string;
   status: ComponentStatuses;
   releasedIn?: string;
+  storybookLink: string;
 }[];
 
 const componentData: ComponentStatusData = [
@@ -34,116 +36,146 @@ const componentData: ComponentStatusData = [
     name: 'Alert',
     status: 'released',
     releasedIn: '1.1.0',
+    storybookLink: 'Components/Alert',
   },
   {
     name: 'Badge',
     status: 'released',
     releasedIn: '1.0.0',
+    storybookLink: 'Components/Badge',
   },
   {
     name: 'Button',
     status: 'released',
     releasedIn: '0.11.0',
+    storybookLink: 'Components/Button',
   },
   {
     name: 'Card',
     status: 'released',
     releasedIn: '5.3.0',
+    storybookLink: 'Components/Card',
   },
   {
     name: 'Checkbox',
     status: 'released',
     releasedIn: '0.13.0',
+    storybookLink: 'Components/Checkbox/Checkbox',
   },
   {
-    name: 'Code',
+    name: 'CheckboxGroup',
     status: 'released',
-    releasedIn: '3.0.0',
+    releasedIn: '0.13.0',
+    storybookLink: 'Components/Checkbox/CheckboxGroup',
   },
   {
     name: 'Counter',
     status: 'released',
     releasedIn: '3.6.0',
-  },
-  {
-    name: 'Heading',
-    status: 'released',
-    releasedIn: '0.6.0',
+    storybookLink: 'Components/Counter',
   },
   {
     name: 'IconButton',
     status: 'released',
     releasedIn: '3.6.2',
+    storybookLink: 'Components/IconButton',
   },
   {
     name: 'Indicator',
     status: 'released',
     releasedIn: '3.7.0',
+    storybookLink: 'Components/Indicator',
   },
   {
     name: 'Link',
     status: 'released',
     releasedIn: '0.13.0',
+    storybookLink: 'Components/Link',
   },
-  {
-    name: 'OTPInput',
-    status: 'released',
-    releasedIn: '3.1.0',
-  },
-  {
-    name: 'PasswordInput',
-    status: 'released',
-    releasedIn: '2.5.0',
-  },
+
   {
     name: 'ProgressBar',
     status: 'released',
     releasedIn: '5.4.0',
-  },
-  {
-    name: 'Radio',
-    status: 'released',
-    releasedIn: '1.0.0',
-  },
-  {
-    name: 'RadioGroup',
-    status: 'released',
-    releasedIn: '1.0.0',
-  },
-  {
-    name: 'SkipNav',
-    status: 'released',
-    releasedIn: '0.9.0',
+    storybookLink: 'Components/ProgressBar',
   },
   {
     name: 'Spinner',
     status: 'released',
     releasedIn: '2.2.0',
-  },
-  {
-    name: 'Text',
-    status: 'released',
-    releasedIn: '0.4.0',
-  },
-  {
-    name: 'TextArea',
-    status: 'released',
-    releasedIn: '2.3.0',
+    storybookLink: 'Components/Spinner',
   },
   {
     name: 'TextInput',
     status: 'released',
     releasedIn: '2.1.0',
+    storybookLink: 'Components/Input/TextInput',
+  },
+  {
+    name: 'TextArea',
+    status: 'released',
+    releasedIn: '2.3.0',
+    storybookLink: 'Components/Input/TextArea',
+  },
+  {
+    name: 'OTPInput',
+    status: 'released',
+    releasedIn: '3.1.0',
+    storybookLink: 'Components/Input/OTPInput',
+  },
+  {
+    name: 'PasswordInput',
+    status: 'released',
+    releasedIn: '2.5.0',
+    storybookLink: 'Components/Input/PasswordInput',
+  },
+  {
+    name: 'Radio',
+    status: 'released',
+    releasedIn: '1.0.0',
+    storybookLink: 'Components/Radio & RadioGroup',
+  },
+  {
+    name: 'RadioGroup',
+    status: 'released',
+    releasedIn: '1.0.0',
+    storybookLink: 'Components/Radio & RadioGroup',
+  },
+  {
+    name: 'Text',
+    status: 'released',
+    releasedIn: '0.4.0',
+    storybookLink: 'Components/Typography/Text',
+  },
+  {
+    name: 'Heading',
+    status: 'released',
+    releasedIn: '0.6.0',
+    storybookLink: 'Components/Typography/Heading',
   },
   {
     name: 'Title',
     status: 'released',
     releasedIn: '0.5.0',
+    storybookLink: 'Components/Typography/Title',
+  },
+  {
+    name: 'Code',
+    status: 'released',
+    releasedIn: '3.0.0',
+    storybookLink: 'Components/Typography/Code',
+  },
+  {
+    name: 'SkipNav',
+    status: 'released',
+    releasedIn: '0.9.0',
+    storybookLink: 'Components/Accessibility/SkipNav',
   },
   {
     name: 'VisuallyHidden',
     status: 'released',
     releasedIn: '0.9.0',
+    storybookLink: 'Components/Accessibility/VisuallyHidden',
   },
 ];
 
@@ -192,14 +224,14 @@ const ComponentStatusBadge = ({ status }: { status: ComponentStatuses }): React.
 
 const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement => {
   const ghUrl = 'https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40';
-  return version ? <Link href={`${ghUrl}${version}`}>{`v${version}`}</Link> : <Text>-</Text>;
+  return version ? (
+    <Link href={`${ghUrl}${version}`} target="_blank">{`v${version}`}</Link>
+  ) : (
+    <Text>-</Text>
+  );
 };
 
 const ComponentStatusTable = (): React.ReactElement => {
-  const sortedComponentData = componentData.sort((prev, next) => {
-    return prev.name.localeCompare(next.name);
-  });
-
   return (
     <Box>
       <Table>
@@ -217,11 +249,17 @@ const ComponentStatusTable = (): React.ReactElement => {
           </tr>
         </thead>
         <tbody>
-          {sortedComponentData.map((data) => {
+          {componentData.map((data) => {
+            const [category, folder, storyName] = data.storybookLink.split('/');
+            const kind = storyName === undefined ? category : `${category}/${folder}`;
+            const story = storyName === undefined ? folder : storyName;
+
             return (
               <tr key={data.name}>
                 <td align="left">
-                  <Text>{data.name}</Text>
+                  <LinkToStorybook kind={kind} story={story}>
+                    {data.name}
+                  </LinkToStorybook>
                 </td>
                 <td align="left">
                   <ComponentStatusBadge status={data.status} />
