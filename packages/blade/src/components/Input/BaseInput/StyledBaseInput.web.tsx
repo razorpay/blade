@@ -95,7 +95,7 @@ export const StyledBaseInput = React.forwardRef<
       handleOnBlur,
       handleOnInput,
       handleOnKeyDown,
-      onClick,
+      handleOnClick,
       keyboardType,
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
@@ -129,7 +129,9 @@ export const StyledBaseInput = React.forwardRef<
         name={name}
         type="button"
         disabled={isDisabled}
-        onClick={onClick}
+        onClick={(event: React.MouseEvent<HTMLInputElement>): void => {
+          handleOnClick?.({ name, value: event });
+        }}
         {...commonEventHandlers}
         {...props}
         {...accessibilityProps}
