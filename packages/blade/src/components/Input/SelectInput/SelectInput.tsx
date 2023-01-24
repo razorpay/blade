@@ -1,11 +1,12 @@
+import React from 'react';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
-import { ChevronDownIcon, ChevronUpIcon, IconComponent } from '~components/Icons';
+import { SelectChevronIcon } from './SelectChevronIcon';
+import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
+import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { getPlatformType, isReactNative } from '~utils';
-import React from 'react';
-import { SelectChevronIcon } from './SelectChevronIcon';
 
 type SelectInputProps = Pick<
   BaseInputProps,

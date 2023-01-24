@@ -1,12 +1,12 @@
 import Box from '~components/Box';
-import { IconComponent } from '~components/Icons';
+import type { IconComponent } from '~components/Icons';
 
 export type SelectChevronIconProps = {
   onClick: () => void;
   icon: IconComponent;
 };
 
-const SelectChevronIcon = (props: SelectChevronIconProps) => {
+const SelectChevronIcon = (props: SelectChevronIconProps): JSX.Element => {
   const Icon = props.icon;
   return (
     <Box as="div" display="flex" justifyContent="center" onClick={props.onClick}>

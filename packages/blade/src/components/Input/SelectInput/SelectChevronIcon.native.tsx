@@ -7,7 +7,7 @@ const StyledChevronIconContainer = styled(TouchableOpacity)((_props) => ({
   justifyContent: 'center',
 }));
 
-const SelectChevronIcon = (props: SelectChevronIconProps) => {
+const SelectChevronIcon = (props: SelectChevronIconProps): JSX.Element => {
   const Icon = props.icon;
   return (
     <StyledChevronIconContainer accessibilityLabel="Chevron Icon" onPress={props.onClick}>
