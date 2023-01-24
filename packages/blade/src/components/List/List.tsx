@@ -1,10 +1,11 @@
+import React from 'react';
 import type { IconComponent } from '..';
 import { ListProvider, useListContext } from './ListContext';
 import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
 import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
-import { metaAttribute, MetaConstants } from '~utils';
+import { isValidAllowedChildren, metaAttribute, MetaConstants } from '~utils';
 
 type ListProps = {
   children: React.ReactElement<ListItemProps> | React.ReactElement<ListItemProps>[];
@@ -16,6 +17,11 @@ type ListProps = {
 const List = ({ variant = 'unordered', size, children, icon }: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? UnorderedList : OrderedList;
   const { level, size: listContextSize } = useListContext();
+  const childrenArray = React.Children.toArray(children);
+
+  const childListItems = childrenArray.filter((child) =>
+    isValidAllowedChildren(child, 'ListItem') ? child : null,
+  );
 
   return (
     <ListProvider
@@ -23,10 +29,15 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
         level: level ? level + 1 : 1,
         size: size ?? listContextSize,
         icon,
+        variant,
       }}
     >
       <ListElement {...metaAttribute(MetaConstants.Component, MetaConstants.List)}>
-        {children}
+        {variant == 'ordered'
+          ? childListItems.map((child, index) =>
+              React.cloneElement(child as React.ReactElement, { _itemNumber: ++index }),
+            )
+          : childListItems}
       </ListElement>
     </ListProvider>
   );
