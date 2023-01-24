@@ -48,7 +48,9 @@ Lists display a set of related items that are composed of text/links. Each list 
 ### Ordered List
 #### Ordered List with 3 levels of nesting
 > Level 1 will be 1, 2, 3,...
+
 > Level 2 will be a, b, c,...
+
 > Level 3 will be i, ii, iii,...
 
 <img src="./ordered-list.png" width="380" />
