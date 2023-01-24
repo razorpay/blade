@@ -5,7 +5,12 @@ import type { IconComponent } from '../Icons';
 import { useListContext } from './ListContext';
 import { UnorderedItemIcon } from './ListItemIcons';
 import { ListItemElement } from './ListItemElement';
-import { listItemPaddingBottom, listItemPaddingLeft } from './listTokens';
+import {
+  listItemBulletPaddingRight,
+  listItemPaddingBottom,
+  listItemPaddingLeft,
+} from './listTokens';
+import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
 import Box from '~components/Box';
 import { getIn, isValidAllowedChildren } from '~utils';
@@ -19,8 +24,11 @@ type ListItemProps = {
   _itemNumber?: number;
 };
 
-const StyledListItem = styled(ListItemElement)<{ level?: number }>(({ level, theme }) => ({
-  paddingLeft: level ? getIn(theme, listItemPaddingLeft[level]) : 0,
+const StyledListItem = styled(ListItemElement)<{
+  level?: number;
+  variant: NonNullable<ListProps['variant']>;
+}>(({ level, theme, variant }) => ({
+  paddingLeft: level ? getIn(theme, listItemPaddingLeft[variant][level]) : 0,
 }));
 
 const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.ReactElement => {
@@ -37,7 +45,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
   );
 
   return (
-    <StyledListItem level={level}>
+    <StyledListItem level={level} variant={variant}>
       <Box
         display="flex"
         flexDirection="row"
@@ -45,7 +53,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
         paddingBottom={listItemPaddingBottom}
       >
         {variant === 'unordered' ? (
-          <Box paddingRight="spacing.3" display="flex">
+          <Box paddingRight={listItemBulletPaddingRight[variant]} display="flex">
             {ItemIcon ? (
               <ItemIcon size={size} color="surface.text.subdued.lowContrast" />
             ) : (
@@ -53,7 +61,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
             )}
           </Box>
         ) : (
-          <Box paddingRight="spacing.2" display="flex">
+          <Box paddingRight={listItemBulletPaddingRight[variant]} display="flex">
             <Text variant="body" type="subtle" size={size}>
               {`${getOrderedListItemBullet({
                 itemNumber: _itemNumber ?? 1,
