@@ -40,6 +40,23 @@ export type OTPInputProps = Pick<
    * Masks input characters in all the fields
    */
   isMasked?: boolean;
+  /**
+   * Determines what autoComplete suggestion type to show. Defaults to `oneTimeCode`.
+   *
+   * It's not recommended to turn this off in favor of otp input practices.
+   *
+   *
+   * Internally it'll render platform specific attributes:
+   *
+   * - web: `autocomplete`
+   * - iOS: `textContentType`
+   * - android: `autoComplete`
+   *
+   */
+  autoCompleteSuggestionType?: Extract<
+    BaseInputProps['autoCompleteSuggestionType'],
+    'none' | 'oneTimeCode'
+  >;
 };
 
 const isReactNative = getPlatformType() === 'react-native';
@@ -81,6 +98,7 @@ const OTPInput = ({
   validationState,
   value: inputValue,
   isMasked,
+  autoCompleteSuggestionType = 'oneTimeCode',
 }: OTPInputProps): React.ReactElement => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
@@ -241,7 +259,7 @@ const OTPInput = ({
             isDisabled={isDisabled}
             placeholder={Array.from(placeholder ?? '')[index] ?? ''}
             isRequired={true}
-            autoCompleteSuggestionType="oneTimeCode"
+            autoCompleteSuggestionType={autoCompleteSuggestionType}
             keyboardType={keyboardType}
             keyboardReturnKeyType={keyboardReturnKeyType}
             validationState={validationState}
