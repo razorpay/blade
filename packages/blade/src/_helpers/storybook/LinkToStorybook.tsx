@@ -44,7 +44,7 @@ const LinkToStorybook = ({
 
   return (
     // eslint-disable-next-line
-    <Link href={href} onClick={(e) => cancelled(e as any, handleClick)}>
+    <Link href={href} rel="noopener noreferrer" onClick={(e) => cancelled(e as any, handleClick)}>
       {children}
     </Link>
   );

@@ -225,7 +225,11 @@ const ComponentStatusBadge = ({ status }: { status: ComponentStatuses }): React.
 const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement => {
   const ghUrl = 'https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40';
   return version ? (
-    <Link href={`${ghUrl}${version}`} target="_blank">{`v${version}`}</Link>
+    <Link
+      href={`${ghUrl}${version}`}
+      rel="noopener noreferrer"
+      target="_blank"
+    >{`v${version}`}</Link>
   ) : (
     <Text>-</Text>
   );
