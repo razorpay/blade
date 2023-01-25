@@ -27,13 +27,15 @@ const listItemBulletPaddingRight: Record<
 };
 
 const listItemBulletPaddingTop: Record<
-  NonNullable<ListProps['variant']>,
+  NonNullable<
+    Exclude<ListProps['variant'], 'unordered'> | 'unorderedWithIcon' | 'unorderedWithoutIcon'
+  >,
   Record<
     TypographyPlatforms,
     Record<NonNullable<ListProps['size']>, number | DotNotationSpacingStringToken>
   >
 > = {
-  unordered: {
+  unorderedWithoutIcon: {
     onDesktop: {
       small: 6,
       medium: 'spacing.3',
@@ -41,6 +43,16 @@ const listItemBulletPaddingTop: Record<
     onMobile: {
       small: 6,
       medium: 10,
+    },
+  },
+  unorderedWithIcon: {
+    onDesktop: {
+      small: 'spacing.2',
+      medium: 'spacing.1',
+    },
+    onMobile: {
+      small: 'spacing.2',
+      medium: 6,
     },
   },
   ordered: {

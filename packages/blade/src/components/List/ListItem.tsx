@@ -61,7 +61,11 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
             display="flex"
             alignSelf="flex-start"
             //@ts-expect-error needs hard-coded spacing thats not part of our tokens
-            paddingTop={listItemBulletPaddingTop[variant][platform][size]}
+            paddingTop={
+              listItemBulletPaddingTop[`${variant}${ItemIcon ? 'WithIcon' : 'WithoutIcon'}`][
+                platform
+              ][size]
+            }
           >
             {ItemIcon ? (
               <ItemIcon size={size} color="surface.text.subdued.lowContrast" />
