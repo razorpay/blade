@@ -57,7 +57,6 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
   const childList = childrenArray.filter((child) =>
     isValidAllowedChildren(child, 'List') ? child : null,
   );
-
   const hasIcon = Boolean(ItemIcon);
 
   return (

@@ -1,11 +1,12 @@
 import React from 'react';
-import type { IconComponent } from '..';
+import type { IconComponent } from '../Icons';
+import { useTheme } from '../BladeProvider';
 import { ListProvider, useListContext } from './ListContext';
 import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
 import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
-import { isValidAllowedChildren, metaAttribute, MetaConstants } from '~utils';
+import { getIn, isValidAllowedChildren, makeSpace, metaAttribute, MetaConstants } from '~utils';
 
 type ListProps = {
   children: React.ReactElement<ListItemProps> | React.ReactElement<ListItemProps>[];
@@ -17,6 +18,7 @@ type ListProps = {
 const List = ({ variant = 'unordered', size, children, icon }: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? UnorderedList : OrderedList;
   const { level, size: listContextSize } = useListContext();
+  const { theme } = useTheme();
   const childrenArray = React.Children.toArray(children);
 
   const childListItems = childrenArray.filter((child) =>
@@ -32,7 +34,12 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
         variant,
       }}
     >
-      <ListElement {...metaAttribute(MetaConstants.Component, MetaConstants.List)}>
+      <ListElement
+        style={{
+          marginTop: level === undefined ? makeSpace(getIn(theme, 'spacing.3')) : undefined,
+        }}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.List)}
+      >
         {variant === 'unordered'
           ? childListItems
           : childListItems.map((child, index) =>
