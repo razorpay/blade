@@ -8,7 +8,7 @@ const listItemPaddingLeft: Record<
 > = {
   unordered: {
     1: 'spacing.2',
-    2: 'spacing.4',
+    2: 'spacing.5',
     3: 'spacing.5',
   },
   ordered: {
