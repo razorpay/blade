@@ -2,11 +2,13 @@ import styled from 'styled-components';
 import React from 'react';
 import { Text } from '../Typography';
 import type { IconComponent } from '../Icons';
+import { useTheme } from '../BladeProvider';
 import { useListContext } from './ListContext';
 import { UnorderedItemIcon } from './ListItemIcons';
 import { ListItemElement } from './ListItemElement';
 import {
   listItemBulletPaddingRight,
+  listItemBulletPaddingTop,
   listItemPaddingBottom,
   listItemPaddingLeft,
 } from './listTokens';
@@ -33,6 +35,7 @@ const StyledListItem = styled(ListItemElement)<{
 
 const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.ReactElement => {
   const { level, size, icon: ListContextIcon, variant } = useListContext();
+  const { platform } = useTheme();
   const ItemIcon = Icon ?? ListContextIcon;
 
   const childrenArray = React.Children.toArray(children);
@@ -53,7 +56,13 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
         paddingBottom={listItemPaddingBottom}
       >
         {variant === 'unordered' ? (
-          <Box paddingRight={listItemBulletPaddingRight[variant]} display="flex">
+          <Box
+            paddingRight={listItemBulletPaddingRight[variant]}
+            display="flex"
+            alignSelf="flex-start"
+            //@ts-expect-error needs hard-coded spacing thats not part of our tokens
+            paddingTop={listItemBulletPaddingTop[variant][platform][size]}
+          >
             {ItemIcon ? (
               <ItemIcon size={size} color="surface.text.subdued.lowContrast" />
             ) : (

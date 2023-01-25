@@ -1,4 +1,5 @@
 import type { ListProps } from './List';
+import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 const listItemPaddingLeft: Record<
@@ -25,6 +26,50 @@ const listItemBulletPaddingRight: Record<
   ordered: 'spacing.2',
 };
 
+const listItemBulletPaddingTop: Record<
+  NonNullable<ListProps['variant']>,
+  Record<
+    TypographyPlatforms,
+    Record<NonNullable<ListProps['size']>, number | DotNotationSpacingStringToken>
+  >
+> = {
+  unordered: {
+    onDesktop: {
+      small: 6,
+      medium: 'spacing.3',
+    },
+    onMobile: {
+      small: 6,
+      medium: 10,
+    },
+  },
+  ordered: {
+    // TODO: fix these
+    onDesktop: {
+      small: 0,
+      medium: 0,
+    },
+    onMobile: {
+      small: 0,
+      medium: 0,
+    },
+  },
+};
+
+const listItemUnorderedBulletSize: Record<
+  TypographyPlatforms,
+  Record<NonNullable<ListProps['size']>, string>
+> = {
+  onDesktop: {
+    small: '6px',
+    medium: '6px',
+  },
+  onMobile: {
+    small: '5px',
+    medium: '6px',
+  },
+};
+
 const listItemPaddingBottom: DotNotationSpacingStringToken = 'spacing.3';
 
 const ComponentIds = {
@@ -32,4 +77,11 @@ const ComponentIds = {
   ListItem: 'ListItem',
 };
 
-export { listItemPaddingLeft, ComponentIds, listItemPaddingBottom, listItemBulletPaddingRight };
+export {
+  listItemPaddingLeft,
+  ComponentIds,
+  listItemPaddingBottom,
+  listItemBulletPaddingRight,
+  listItemBulletPaddingTop,
+  listItemUnorderedBulletSize,
+};
