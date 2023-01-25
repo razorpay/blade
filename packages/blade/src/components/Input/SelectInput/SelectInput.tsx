@@ -8,6 +8,8 @@ import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { getPlatformType, isReactNative } from '~utils';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -32,7 +34,10 @@ type SelectInputProps = Pick<
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
 };
 
-const SelectInput = (props: SelectInputProps): JSX.Element => {
+const _SelectInput = (
+  props: SelectInputProps,
+  ref: React.ForwardedRef<BladeElementRef>,
+): JSX.Element => {
   const {
     isOpen,
     value,
@@ -44,6 +49,8 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
     activeIndex,
     selectInputRef,
   } = useDropdown();
+
+  const inputRef = useBladeInnerRef(ref);
 
   const { icon, onChange, ...baseInputProps } = props;
 
@@ -58,6 +65,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       {platform !== 'react-native' ? (
         <VisuallyHidden>
           <input
+            ref={inputRef as React.Ref<HTMLInputElement>}
             tabIndex={-1}
             required={props.isRequired}
             name={props.name}
@@ -103,6 +111,8 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
   );
 };
 
+const SelectInput = React.forwardRef(_SelectInput);
+// @ts-expect-error: componentId is our custom attribute
 SelectInput.componentId = 'SelectInput';
 
 export { SelectInput, SelectInputProps };
