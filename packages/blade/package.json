@@ -175,6 +175,14 @@
     "react-native-svg": "^12.3.0",
     "styled-components": "^5"
   },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "react-native-reanimated": {
+      "optional": true
+    }
+  },
   "resolutions": {
     "@storybook/**/react-dom": "17.0.2",
     "@storybook/**/react": "17.0.2",
