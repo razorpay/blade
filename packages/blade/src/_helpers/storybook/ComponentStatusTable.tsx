@@ -186,6 +186,10 @@ const componentData: ComponentStatusData = [
     status: 'in-development',
   },
   {
+    name: 'Select',
+    status: 'in-development',
+  },
+  {
     name: 'Layout',
     status: 'in-api-spec',
   },
