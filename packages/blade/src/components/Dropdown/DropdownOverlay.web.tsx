@@ -78,9 +78,7 @@ function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Eleme
         onAnimationEnd={() => {
           if (isOpen) {
             setDisplay('block');
-          }
-
-          if (!isOpen) {
+          } else {
             setDisplay('none');
           }
         }}

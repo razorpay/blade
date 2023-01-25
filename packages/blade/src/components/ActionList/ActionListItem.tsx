@@ -8,7 +8,6 @@ import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize } from '~utils';
-import { BaseText } from '~components/Typography/BaseText';
 import { Checkbox } from '~components/Checkbox';
 
 const ActionListItemContext = React.createContext<{
@@ -16,6 +15,7 @@ const ActionListItemContext = React.createContext<{
 }>({});
 
 const SectionDivider = styled(Box)((props) => ({
+  // @TODO: replace this with token value if we add 1px token
   height: makeSize(1),
   backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
   margin: `${makeSize(props.theme.spacing[1])} ${makeSize(props.theme.spacing[3])}`,
@@ -66,9 +66,9 @@ const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
 
 const ActionListItemText = ({ children }: { children: string }): JSX.Element => {
   return (
-    <BaseText fontStyle="italic" fontSize={50} color="surface.text.muted.lowContrast">
+    <Text variant="caption" color="surface.text.muted.lowContrast">
       {children}
-    </BaseText>
+    </Text>
   );
 };
 
