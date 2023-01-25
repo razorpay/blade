@@ -30,8 +30,18 @@ type ListItemProps = {
 const StyledListItem = styled(ListItemElement)<{
   level?: number;
   variant: NonNullable<ListProps['variant']>;
-}>(({ level, theme, variant }) => ({
-  paddingLeft: level ? getIn(theme, listItemPaddingLeft[variant][level]) : 0,
+  hasIcon: boolean;
+}>(({ level, theme, variant, hasIcon }) => ({
+  paddingLeft: level
+    ? getIn(
+        theme,
+        listItemPaddingLeft[
+          `${variant}${variant === 'unordered' && hasIcon ? 'WithIcon' : ''}` as NonNullable<
+            ListProps['variant'] | 'unorderedWithIcon'
+          >
+        ][level],
+      )
+    : 0,
 }));
 
 const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.ReactElement => {
@@ -48,8 +58,10 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
     isValidAllowedChildren(child, 'List') ? child : null,
   );
 
+  const hasIcon = Boolean(ItemIcon);
+
   return (
-    <StyledListItem level={level} variant={variant}>
+    <StyledListItem level={level} variant={variant} hasIcon={hasIcon}>
       <Box
         display="flex"
         flexDirection="row"
@@ -63,9 +75,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
             alignSelf="flex-start"
             //@ts-expect-error needs hard-coded spacing thats not part of our tokens
             paddingTop={
-              listItemBulletPaddingTop[`${variant}${ItemIcon ? 'WithIcon' : 'WithoutIcon'}`][
-                platform
-              ][size]
+              listItemBulletPaddingTop[`${variant}${hasIcon ? 'WithIcon' : ''}`][platform][size]
             }
           >
             {ItemIcon ? (

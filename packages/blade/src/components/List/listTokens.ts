@@ -3,7 +3,7 @@ import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 const listItemPaddingLeft: Record<
-  NonNullable<ListProps['variant']>,
+  NonNullable<ListProps['variant'] | 'unorderedWithIcon'>,
   Record<number, DotNotationSpacingStringToken>
 > = {
   unordered: {
@@ -11,15 +11,20 @@ const listItemPaddingLeft: Record<
     2: 'spacing.5',
     3: 'spacing.5',
   },
-  ordered: {
+  unorderedWithIcon: {
     1: 'spacing.0',
     2: 'spacing.5',
     3: 'spacing.5',
   },
+  ordered: {
+    1: 'spacing.0',
+    2: 'spacing.6',
+    3: 'spacing.6',
+  },
   'ordered-filled': {
     1: 'spacing.0',
-    2: 'spacing.5',
-    3: 'spacing.5',
+    2: 'spacing.6',
+    3: 'spacing.6',
   },
 };
 
@@ -33,15 +38,13 @@ const listItemBulletPaddingRight: Record<
 };
 
 const listItemBulletPaddingTop: Record<
-  NonNullable<
-    Exclude<ListProps['variant'], 'unordered'> | 'unorderedWithIcon' | 'unorderedWithoutIcon'
-  >,
+  NonNullable<ListProps['variant'] | 'unorderedWithIcon'>,
   Record<
     TypographyPlatforms,
     Record<NonNullable<ListProps['size']>, number | DotNotationSpacingStringToken>
   >
 > = {
-  unorderedWithoutIcon: {
+  unordered: {
     onDesktop: {
       small: 6,
       medium: 'spacing.3',
