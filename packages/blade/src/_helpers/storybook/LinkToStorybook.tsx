@@ -18,14 +18,16 @@ const cancelled = (e: React.MouseEvent<HTMLAnchorElement>, cb = (_e: unknown) =>
 };
 
 const LinkToStorybook = ({
-  kind,
-  story,
+  url,
   children,
 }: {
-  kind: string;
-  story: string;
+  url: string;
   children: string;
 }): React.ReactElement => {
+  const [category, folder, storyName] = url.split('/');
+  const kind = storyName === undefined ? category : `${category}/${folder}`;
+  const story = storyName === undefined ? folder : storyName;
+
   const [href, setHref] = React.useState('');
 
   const updateHref = async (): Promise<void> => {
@@ -40,7 +42,7 @@ const LinkToStorybook = ({
   React.useEffect(() => {
     void updateHref();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [kind, story]);
+  }, [kind, story, url]);
 
   return (
     // eslint-disable-next-line

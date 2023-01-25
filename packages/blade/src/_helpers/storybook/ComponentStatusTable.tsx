@@ -28,7 +28,7 @@ type ComponentStatusData = {
   name: string;
   status: ComponentStatuses;
   releasedIn?: string;
-  storybookLink: string;
+  storybookLink?: string;
 }[];
 
 const componentData: ComponentStatusData = [
@@ -177,6 +177,46 @@ const componentData: ComponentStatusData = [
     releasedIn: '0.9.0',
     storybookLink: 'Components/Accessibility/VisuallyHidden',
   },
+  {
+    name: 'ListView',
+    status: 'in-development',
+  },
+  {
+    name: 'DropDown',
+    status: 'in-development',
+  },
+  {
+    name: 'Layout',
+    status: 'in-api-spec',
+  },
+  {
+    name: 'BottomSheet',
+    status: 'planned-Q4',
+  },
+  {
+    name: 'Tags',
+    status: 'planned-Q4',
+  },
+  {
+    name: 'Toggle',
+    status: 'planned-Q4',
+  },
+  {
+    name: 'Amount',
+    status: 'planned-Q4',
+  },
+  {
+    name: 'Accordion',
+    status: 'planned-Q4',
+  },
+  {
+    name: 'Modal',
+    status: 'planned-Q4',
+  },
+  {
+    name: 'Tooltip',
+    status: 'planned-Q4',
+  },
 ];
 
 const Table = styled.table`
@@ -254,16 +294,14 @@ const ComponentStatusTable = (): React.ReactElement => {
         </thead>
         <tbody>
           {componentData.map((data) => {
-            const [category, folder, storyName] = data.storybookLink.split('/');
-            const kind = storyName === undefined ? category : `${category}/${folder}`;
-            const story = storyName === undefined ? folder : storyName;
-
             return (
               <tr key={data.name}>
                 <td align="left">
-                  <LinkToStorybook kind={kind} story={story}>
-                    {data.name}
-                  </LinkToStorybook>
+                  {data.storybookLink ? (
+                    <LinkToStorybook url={data.storybookLink}>{data.name}</LinkToStorybook>
+                  ) : (
+                    <Text>{data.name}</Text>
+                  )}
                 </td>
                 <td align="left">
                   <ComponentStatusBadge status={data.status} />
