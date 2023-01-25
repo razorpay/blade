@@ -89,6 +89,20 @@ const ComponentIds = {
   ListItem: 'ListItem',
 };
 
+const listItemOrderedBulletBoxSize = {
+  ordered: {
+    onDesktop: {
+      small: '16px',
+      medium: '20px',
+    },
+    onMobile: {
+      small: '16px',
+      medium: '24px',
+    },
+  },
+  'ordered-filled': {},
+};
+
 export {
   listItemPaddingLeft,
   ComponentIds,
@@ -96,4 +110,5 @@ export {
   listItemBulletPaddingRight,
   listItemBulletPaddingTop,
   listItemUnorderedBulletSize,
+  listItemOrderedBulletBoxSize,
 };

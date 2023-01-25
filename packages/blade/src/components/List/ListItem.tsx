@@ -9,6 +9,7 @@ import { ListItemElement } from './ListItemElement';
 import {
   listItemBulletPaddingRight,
   listItemBulletPaddingTop,
+  listItemOrderedBulletBoxSize,
   listItemPaddingBottom,
   listItemPaddingLeft,
 } from './listTokens';
@@ -53,7 +54,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
         display="flex"
         flexDirection="row"
         alignItems="center"
-        paddingBottom={listItemPaddingBottom}
+        marginBottom={listItemPaddingBottom}
       >
         {variant === 'unordered' ? (
           <Box
@@ -74,7 +75,14 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
             )}
           </Box>
         ) : (
-          <Box paddingRight={listItemBulletPaddingRight[variant]} display="flex">
+          <Box
+            width={listItemOrderedBulletBoxSize[variant][platform][size]}
+            height={listItemOrderedBulletBoxSize[variant][platform][size]}
+            marginRight={listItemBulletPaddingRight[variant]}
+            display="flex"
+            justifyContent="center"
+            alignSelf="flex-start"
+          >
             <Text variant="body" type="subtle" size={size}>
               {`${getOrderedListItemBullet({
                 itemNumber: _itemNumber ?? 1,
