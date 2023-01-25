@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CloudOffIcon /> should render CloudOffIcon 1`] = `
+<RNSVGSvgView
+  accessibilityElementsHidden={true}
+  align="xMidYMid"
+  bbHeight="20px"
+  bbWidth="20px"
+  fill="none"
+  focusable={false}
+  height="20px"
+  importantForAccessibility="no-hide-descendants"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Object {
+        "flex": 0,
+        "height": 20,
+        "width": 20,
+      },
+    ]
+  }
+  vbHeight={24}
+  vbWidth={24}
+  width="20px"
+>
+  <RNSVGGroup
+    fill={null}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
+  >
+    <RNSVGGroup
+      clipPath="clip0_60_392"
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M1.70717 0.292893C1.31664 -0.0976311 0.683479 -0.0976311 0.292954 0.292893C-0.0975701 0.683417 -0.0975701 1.31658 0.292954 1.70711L3.42436 4.83851C0.559704 7.03184 -0.639719 10.7779 0.304853 14.32C1.36866 18.3093 5.01019 21.0628 9.13769 21H19.5858L22.293 23.7071C22.6835 24.0976 23.3166 24.0976 23.7072 23.7071C24.0977 23.3166 24.0977 22.6834 23.7072 22.2929L20.713 19.2988C20.7092 19.2948 20.7053 19.2909 20.7014 19.2871L5.72258 4.3083C5.71228 4.29754 5.70178 4.28703 5.69107 4.2768L1.70717 0.292893ZM4.85502 6.26918C2.50677 7.92678 1.46739 10.9174 2.23732 13.8047C3.06528 16.9095 5.90082 19.0519 9.11375 19.0001L9.1218 19H17.5858L4.85502 6.26918ZM8.82364 3.91201C8.87224 3.36187 9.35761 2.95528 9.90775 3.00388C13.4586 3.31753 16.4632 5.69089 17.617 9.01355C19.5976 9.09144 21.7249 9.55646 23.1357 11.6834C24.2488 13.3614 24.4459 15.4859 23.6606 17.34C23.4452 17.8486 22.8583 18.0862 22.3498 17.8708C21.8412 17.6554 21.6036 17.0686 21.8189 16.56C22.3425 15.3239 22.2111 13.9076 21.469 12.7889C20.4819 11.3008 18.9488 11 16.8698 11H16.092L15.9005 10.2461C15.1685 7.36328 12.6946 5.25783 9.73177 4.99612C9.18163 4.94753 8.77505 4.46215 8.82364 3.91201Z"
+        fill={4282603381}
+        fillRule={0}
+        propList={
+          Array [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+    <RNSVGDefs>
+      <RNSVGClipPath
+        name="clip0_60_392"
+      >
+        <RNSVGRect
+          height="24"
+          width="24"
+          x={0}
+          y={0}
+        />
+      </RNSVGClipPath>
+    </RNSVGDefs>
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;

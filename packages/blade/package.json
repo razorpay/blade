@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "5.5.0",
+  "version": "6.0.1",
   "license": "MIT",
   "engines": {
     "node": ">=14.18.0"
@@ -168,12 +168,20 @@
     "tsconfig-paths-webpack-plugin": "3.5.2"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": ">=17",
+    "react-dom": ">=17",
     "react-native": "^0.66.5",
     "react-native-reanimated": "^2.6.0",
     "react-native-svg": "^12.3.0",
     "styled-components": "^5"
+  },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "react-native-reanimated": {
+      "optional": true
+    }
   },
   "resolutions": {
     "@storybook/**/react-dom": "17.0.2",

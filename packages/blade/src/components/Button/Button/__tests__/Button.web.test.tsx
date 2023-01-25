@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react';
+import { useRef } from 'react';
 import Button from '../Button';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { CreditCardIcon } from '~components/Icons';
@@ -116,5 +117,36 @@ describe('<Button />', () => {
     const button = getByRole('button');
     fireEvent.click(button);
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it(`should expose native element methods via ref`, () => {
+    const label = 'Hello';
+    const focusButtonLabel = 'Focus';
+
+    const Example = (): React.ReactElement => {
+      const ref = useRef<HTMLInputElement>(null);
+
+      return (
+        <>
+          <Button ref={ref}>{label}</Button>
+          <Button
+            onClick={() => {
+              ref.current?.focus();
+            }}
+          >
+            {focusButtonLabel}
+          </Button>
+        </>
+      );
+    };
+    const { getByRole } = renderWithTheme(<Example />);
+
+    const button = getByRole('button', { name: label });
+    const buttonTrigger = getByRole('button', { name: focusButtonLabel });
+
+    expect(button).not.toHaveFocus();
+
+    fireEvent.click(buttonTrigger);
+    expect(button).toHaveFocus();
   });
 });

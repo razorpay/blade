@@ -1,5 +1,49 @@
 # @razorpay/blade
 
+## 6.0.1
+
+### Patch Changes
+
+- 62a98bb1: fix(blade): update BaseInput background color
+
+## 6.0.0
+
+### Major Changes
+
+- 980bc038: fix(Alert)!: fix typo in prop `isDismissible`
+
+  > **Warning**
+  >
+  > Breaking change. Update prop `isDismissable` to `isDismissible`.
+
+  ### Migration guide
+
+  Find and replace:
+
+  ```diff
+  <Alert
+  - isDismissable
+  + isDismissible
+  />
+  ```
+
+- 5f7e4876: feat(blade): added all icons from figma
+
+  **Breaking Changes:**
+
+  - Renamed `RefreshLeft` icon to `Refresh`
+
+### Minor Changes
+
+- 82d75b71: chore(blade): added new icons
+- 29238f1e: feat(blade): added ref support for input components
+
+## 5.5.1
+
+### Patch Changes
+
+- 735e370: fix(blade): update peerDependencies to support react v18
+
 ## 5.5.0
 
 ### Minor Changes
