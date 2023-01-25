@@ -36,7 +36,7 @@ const StyledListItem = styled(ListItemElement)<{
 
 const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.ReactElement => {
   const { level, size, icon: ListContextIcon, variant } = useListContext();
-  const { platform } = useTheme();
+  const { theme, platform } = useTheme();
   const ItemIcon = Icon ?? ListContextIcon;
 
   const childrenArray = React.Children.toArray(children);
@@ -80,15 +80,32 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
             height={listItemOrderedBulletBoxSize[variant][platform][size]}
             marginRight={listItemBulletPaddingRight[variant]}
             display="flex"
+            flexShrink={0}
             justifyContent="center"
             alignSelf="flex-start"
+            alignItems="center"
+            borderRadius={variant === 'ordered-filled' ? 'round' : undefined}
+            backgroundColor={
+              variant === 'ordered-filled'
+                ? getIn(theme, 'colors.brand.gray.a100.lowContrast')
+                : undefined
+            }
           >
-            <Text variant="body" type="subtle" size={size}>
-              {`${getOrderedListItemBullet({
-                itemNumber: _itemNumber ?? 1,
-                level: level ?? 1,
-              })}`}
-            </Text>
+            {variant === 'ordered' ? (
+              <Text variant="body" type="subtle" size={size}>
+                {`${getOrderedListItemBullet({
+                  itemNumber: _itemNumber ?? 1,
+                  level: level ?? 1,
+                })}.`}
+              </Text>
+            ) : (
+              <Text variant="body" type="subtle" size="xsmall">
+                {`${getOrderedListItemBullet({
+                  itemNumber: _itemNumber ?? 1,
+                  level: level ?? 1,
+                })}`}
+              </Text>
+            )}
           </Box>
         )}
         <Text variant="body" size={size}>

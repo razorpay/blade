@@ -9,7 +9,7 @@ import { isValidAllowedChildren, metaAttribute, MetaConstants } from '~utils';
 
 type ListProps = {
   children: React.ReactElement<ListItemProps> | React.ReactElement<ListItemProps>[];
-  variant?: 'unordered' | 'ordered';
+  variant?: 'unordered' | 'ordered' | 'ordered-filled';
   size?: 'small' | 'medium';
   icon?: IconComponent;
 };
@@ -33,11 +33,11 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
       }}
     >
       <ListElement {...metaAttribute(MetaConstants.Component, MetaConstants.List)}>
-        {variant == 'ordered'
-          ? childListItems.map((child, index) =>
+        {variant === 'unordered'
+          ? childListItems
+          : childListItems.map((child, index) =>
               React.cloneElement(child as React.ReactElement, { _itemNumber: ++index }),
-            )
-          : childListItems}
+            )}
       </ListElement>
     </ListProvider>
   );

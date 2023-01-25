@@ -41,6 +41,10 @@ const Page = (): ReactElement => {
 export default {
   title: 'Components/List',
   component: List,
+  args: {
+    size: 'medium',
+    variant: 'unordered',
+  },
   argTypes: {
     icon: {
       name: 'icon',

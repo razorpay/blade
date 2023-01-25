@@ -22,6 +22,21 @@ const getSpacingValue = <SpacingValue extends string | number | undefined>({
   return value ? makeSpace(getIn(theme, value)) : undefined;
 };
 
+const getBorderRadiusValue = <RadiusValue extends string | undefined>({
+  value,
+  theme,
+}: {
+  value: RadiusValue;
+  theme: Theme;
+}): string | undefined => {
+  if (value) {
+    const radius = getIn(theme, `border.radius.${value}`);
+    if (radius.includes('%')) return radius;
+    return makeSpace(radius);
+  }
+  return undefined;
+};
+
 const getBoxStyles = ({
   theme,
   display,
@@ -29,6 +44,7 @@ const getBoxStyles = ({
   flexWrap,
   flexDirection,
   flexGrow,
+  flexShrink,
   alignItems,
   alignContent,
   justifyContent,
@@ -64,6 +80,7 @@ const getBoxStyles = ({
   flex,
   flexWrap,
   flexGrow,
+  flexShrink,
   flexDirection,
   alignItems,
   alignContent,
@@ -94,7 +111,7 @@ const getBoxStyles = ({
   background,
   backgroundColor,
   zIndex,
-  borderRadius: borderRadius ? makeSize(getIn(theme, `border.radius.${borderRadius}`)) : undefined,
+  borderRadius: getBorderRadiusValue({ value: borderRadius, theme }),
 });
 
 export default getBoxStyles;

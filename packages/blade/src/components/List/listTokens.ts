@@ -12,7 +12,12 @@ const listItemPaddingLeft: Record<
     3: 'spacing.5',
   },
   ordered: {
-    1: 'spacing.2',
+    1: 'spacing.0',
+    2: 'spacing.5',
+    3: 'spacing.5',
+  },
+  'ordered-filled': {
+    1: 'spacing.0',
     2: 'spacing.5',
     3: 'spacing.5',
   },
@@ -24,6 +29,7 @@ const listItemBulletPaddingRight: Record<
 > = {
   unordered: 'spacing.3',
   ordered: 'spacing.2',
+  'ordered-filled': 'spacing.3',
 };
 
 const listItemBulletPaddingTop: Record<
@@ -56,6 +62,16 @@ const listItemBulletPaddingTop: Record<
     },
   },
   ordered: {
+    onDesktop: {
+      small: 0,
+      medium: 0,
+    },
+    onMobile: {
+      small: 0,
+      medium: 0,
+    },
+  },
+  'ordered-filled': {
     // TODO: fix these
     onDesktop: {
       small: 0,
@@ -100,7 +116,16 @@ const listItemOrderedBulletBoxSize = {
       medium: '24px',
     },
   },
-  'ordered-filled': {},
+  'ordered-filled': {
+    onDesktop: {
+      small: '18px',
+      medium: '20px',
+    },
+    onMobile: {
+      small: '16px',
+      medium: '20px',
+    },
+  },
 };
 
 export {

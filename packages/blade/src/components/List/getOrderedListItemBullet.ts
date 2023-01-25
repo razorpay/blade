@@ -41,13 +41,13 @@ const getOrderedListItemBullet = ({
   if (isNaN(itemNumber)) return '';
   switch (level) {
     case 1:
-      return `${itemNumber}.`;
+      return `${itemNumber}`;
     case 2:
-      return `${alphabetize(--itemNumber)}.`;
+      return `${alphabetize(--itemNumber)}`;
     case 3:
-      return `${romanize(itemNumber)}.`;
+      return `${romanize(itemNumber)}`;
     default:
-      return `${itemNumber}.`;
+      return `${itemNumber}`;
   }
 };
 
