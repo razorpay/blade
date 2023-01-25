@@ -10,35 +10,44 @@ import {
   isValidAllowedChildren,
   makeAccessible,
   makeSize,
+  isAndroid,
 } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 type ActionListProps = {
   children: React.ReactNode[];
   surfaceLevel?: 2 | 3;
 };
 
-const StyledActionList = styled(Box)<{ surfaceLevel: ActionListProps['surfaceLevel'] }>(
-  ({ theme, surfaceLevel = 2 }) => {
-    const offsetX = theme.shadows.offsetX.level[1];
-    const offsetY = theme.shadows.offsetY.level[2];
-    const blur = theme.shadows.blurRadius.level[2];
-    const shadowColor = theme.shadows.color.level[1];
+const StyledActionList = styled(Box)<{
+  surfaceLevel: ActionListProps['surfaceLevel'];
+  elevation?: number;
+}>(({ theme, surfaceLevel = 2 }) => {
+  const offsetX = theme.shadows.offsetX.level[1];
+  const offsetY = theme.shadows.offsetY.level[2];
+  const blur = theme.shadows.blurRadius.level[2];
+  const shadowColor = theme.shadows.color.level[1];
 
-    const elevation200 = `${makeSize(offsetX)} ${makeSize(offsetY)} ${makeSize(
-      blur,
-    )} 0px ${shadowColor}`;
-    const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
+  const elevation200 = `${makeSize(offsetX)} ${makeSize(offsetY)} ${makeSize(
+    blur,
+  )} 0px ${shadowColor}`;
+  const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
 
-    return {
-      backgroundColor,
-      borderWidth: theme.border.width.thin,
-      borderColor: theme.colors.surface.border.normal.lowContrast,
-      borderRadius: makeSize(theme.border.radius.medium),
-      padding: makeSize(theme.spacing[3]),
-      boxShadow: isReactNative() ? undefined : elevation200,
-    };
-  },
-);
+  return {
+    backgroundColor,
+    borderWidth: theme.border.width.thin,
+    borderColor: theme.colors.surface.border.normal.lowContrast,
+    borderRadius: makeSize(theme.border.radius.medium),
+    padding: makeSize(theme.spacing[3]),
+    boxShadow: isReactNative() ? undefined : elevation200,
+
+    // For react native. Ignored in web
+    shadowOpacity: '1',
+    shadowRadius: blur,
+    shadowColor: isAndroid() ? undefined : shadowColor,
+    shadowOffset: `${makeSize(offsetX)} ${makeSize(offsetY)}`,
+  };
+});
 
 const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Element => {
   const {
@@ -50,6 +59,8 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     optionsRecalculateToggle,
   } = useDropdown();
   const actionListOptions: OptionsType = [];
+
+  const { theme } = useTheme();
 
   const defaultSelectedIndices: number[] = [];
 
@@ -128,6 +139,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
       })}
       id={`${dropdownBaseId}-listbox`}
       surfaceLevel={surfaceLevel}
+      elevation={theme.shadows.androidElevation.level[2]}
     >
       {childrenWithId}
     </StyledActionList>

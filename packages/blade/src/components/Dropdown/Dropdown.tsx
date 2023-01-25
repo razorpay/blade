@@ -1,6 +1,7 @@
 import React from 'react';
 import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
+import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
 import { isValidAllowedChildren } from '~utils';
 
@@ -82,7 +83,7 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
     if (React.isValidElement(child)) {
       if (
         !isValidAllowedChildren(child, 'SelectInput') &&
-        !isValidAllowedChildren(child, 'DropdownOverlay')
+        !isValidAllowedChildren(child, componentIds.DropdownOverlay)
       ) {
         throw new Error(
           `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
@@ -93,4 +94,7 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
 
   return <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>;
 }
+
+Dropdown.componentId = componentIds.Dropdown;
+
 export { Dropdown, DropdownProps };

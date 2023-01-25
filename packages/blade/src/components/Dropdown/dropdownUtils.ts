@@ -23,6 +23,11 @@ export type SelectActionsType =
   | 'Select'
   | 'Type';
 
+export const componentIds = {
+  DropdownOverlay: 'DropdownOverlay',
+  Dropdown: 'Dropdown',
+};
+
 // Save a list of named combobox actions, for future readability
 const SelectActions: Record<SelectActionsType, SelectActionsType> = {
   Close: 'Close',

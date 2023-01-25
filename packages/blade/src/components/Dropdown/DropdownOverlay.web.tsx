@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
+import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import Box from '~components/Box';
 import { makeMotionTime } from '~utils';
@@ -91,6 +92,6 @@ function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Eleme
   );
 }
 
-DropdownOverlay.componentId = 'DropdownOverlay';
+DropdownOverlay.componentId = componentIds.DropdownOverlay;
 
 export { DropdownOverlay };
