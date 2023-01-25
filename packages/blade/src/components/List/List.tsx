@@ -1,12 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import type { IconComponent } from '../Icons';
-import { useTheme } from '../BladeProvider';
 import { ListProvider, useListContext } from './ListContext';
 import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
 import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
 import { getIn, isValidAllowedChildren, makeSpace, metaAttribute, MetaConstants } from '~utils';
+import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type ListProps = {
   children: React.ReactElement<ListItemProps> | React.ReactElement<ListItemProps>[];
@@ -15,10 +16,21 @@ type ListProps = {
   icon?: IconComponent;
 };
 
+const StyledOrderedList = styled(OrderedList)<{ marginTop?: DotNotationSpacingStringToken }>(
+  ({ marginTop, theme }) => ({
+    marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
+  }),
+);
+
+const StyledUnorderedList = styled(UnorderedList)<{ marginTop?: DotNotationSpacingStringToken }>(
+  ({ marginTop, theme }) => ({
+    marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
+  }),
+);
+
 const List = ({ variant = 'unordered', size, children, icon }: ListProps): React.ReactElement => {
-  const ListElement = variant === 'unordered' ? UnorderedList : OrderedList;
+  const ListElement = variant === 'unordered' ? StyledUnorderedList : StyledOrderedList;
   const { level, size: listContextSize } = useListContext();
-  const { theme } = useTheme();
   const childrenArray = React.Children.toArray(children);
 
   const childListItems = childrenArray.filter((child) =>
@@ -35,9 +47,7 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
       }}
     >
       <ListElement
-        style={{
-          marginTop: level === undefined ? makeSpace(getIn(theme, 'spacing.3')) : undefined,
-        }}
+        marginTop={!level ? 'spacing.3' : undefined}
         {...metaAttribute(MetaConstants.Component, MetaConstants.List)}
       >
         {variant === 'unordered'
