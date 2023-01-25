@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { StyledActionListItem } from './StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './getBaseActionListItemStyles';
+import { getActionListItemRole, isRoleMenu } from './getA11yRoles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -42,7 +43,7 @@ const ActionListSection = ({
         </Text>
       </StyledActionListSectionTitle>
       {children}
-      {hideDivider ? null : <SectionDivider />}
+      {hideDivider ? null : <SectionDivider role="separator" />}
     </Box>
   );
 };
@@ -75,18 +76,6 @@ const ActionListItemText = ({ children }: { children: string }): JSX.Element => 
 const ActionListCheckboxWrapper = styled(Box)((_props) => ({
   pointerEvents: 'none',
 }));
-
-const getActionListItemRole = (href?: string): 'link' | 'menuitem' | 'option' => {
-  if (href) {
-    return 'link';
-  }
-
-  if (isReactNative()) {
-    return 'menuitem';
-  }
-
-  return 'option';
-};
 
 /**
  *
@@ -137,6 +126,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     setShouldIgnoreBlur,
     selectionType,
     selectInputRef,
+    dropdownTriggerer,
   } = useDropdown();
 
   const renderOnWebAs = props.href ? 'a' : 'button';
@@ -155,7 +145,8 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         className={activeIndex === props._index ? 'active-focus' : ''}
         {...makeAccessible({
           selected: isSelected,
-          role: getActionListItemRole(props.href),
+          current: isRoleMenu(dropdownTriggerer) ? isSelected : undefined,
+          role: getActionListItemRole(dropdownTriggerer, props.href),
         })}
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
           if (typeof props._index === 'number') {

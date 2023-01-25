@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { componentIds } from './componentIds';
+import { getActionListRole } from './getA11yRoles';
 import Box from '~components/Box';
 import type { OptionsType } from '~components/Dropdown/useDropdown';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -57,7 +58,9 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     dropdownBaseId,
     setSelectedIndices,
     optionsRecalculateToggle,
+    dropdownTriggerer,
   } = useDropdown();
+
   const actionListOptions: OptionsType = [];
 
   const { theme } = useTheme();
@@ -133,11 +136,11 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={actionListRef as any}
       {...makeAccessible({
-        role: isReactNative() ? 'menu' : 'listbox',
+        role: getActionListRole(dropdownTriggerer),
         multiSelectable: selectionType === 'multiple',
         labelledBy: `${dropdownBaseId}-label`,
       })}
-      id={`${dropdownBaseId}-listbox`}
+      id={`${dropdownBaseId}-actionlist`}
       surfaceLevel={surfaceLevel}
       elevation={theme.shadows.androidElevation.level[2]}
     >

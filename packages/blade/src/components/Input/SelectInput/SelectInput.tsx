@@ -10,6 +10,7 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { getPlatformType, isReactNative } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { getActionListRole } from '~components/ActionList/getA11yRoles';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -87,13 +88,13 @@ const _SelectInput = (
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
-        hasPopup={isReactNative() ? 'menu' : 'listbox'}
+        hasPopup={getActionListRole('SelectInput')}
         isPopupExpanded={isOpen}
         onClick={onSelectClick}
         onKeyDown={onSelectKeydown}
         onBlur={onSelectBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
-        popupId={`${dropdownBaseId}-listbox`}
+        popupId={`${dropdownBaseId}-actionlist`}
         interactionElement={
           <SelectChevronIcon
             onClick={() => {
