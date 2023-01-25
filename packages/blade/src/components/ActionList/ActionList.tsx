@@ -68,7 +68,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
 
       const clonedChild = React.cloneElement(child, {
         // @ts-expect-error: TS doesn't understand the child's props
-        index: currentIndex,
+        _index: currentIndex,
       });
       return clonedChild;
     }
@@ -99,6 +99,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
           hideDivider: index === lastActionListSectionIndex && !isActionListItemPresentAfterSection,
         });
       }
+
       if (isValidAllowedChildren(child, componentIds.ActionListItem)) {
         return getActionListItemChildWithId(child);
       }

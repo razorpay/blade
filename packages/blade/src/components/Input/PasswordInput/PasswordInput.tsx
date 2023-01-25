@@ -1,11 +1,12 @@
-import type { ReactElement, ReactNode } from 'react';
-import { useState } from 'react';
+import React from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { EyeIcon, EyeOffIcon } from '~components/Icons';
 import Box from '~components/Box';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type PasswordInputExtraProps = {
   /**
@@ -67,30 +68,34 @@ type PasswordInputProps = Pick<
 > &
   PasswordInputExtraProps;
 
-const PasswordInput = ({
-  label,
-  labelPosition = 'top',
-  showRevealButton = true,
-  maxCharacters,
-  validationState,
-  errorText,
-  successText,
-  helpText,
-  isDisabled = false,
-  defaultValue,
-  placeholder,
-  isRequired = false,
-  necessityIndicator = 'none',
-  value,
-  onChange,
-  onFocus,
-  onBlur,
-  name,
-  autoFocus = false,
-  keyboardReturnKeyType = 'done',
-  autoCompleteSuggestionType,
-}: PasswordInputProps): ReactElement => {
-  const [isRevealed, setIsRevealed] = useState(false);
+const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordInputProps> = (
+  {
+    label,
+    labelPosition = 'top',
+    showRevealButton = true,
+    maxCharacters,
+    validationState,
+    errorText,
+    successText,
+    helpText,
+    isDisabled = false,
+    defaultValue,
+    placeholder,
+    isRequired = false,
+    necessityIndicator = 'none',
+    value,
+    onChange,
+    onFocus,
+    onBlur,
+    name,
+    autoFocus = false,
+    keyboardReturnKeyType = 'done',
+    autoCompleteSuggestionType,
+  },
+  ref,
+) => {
+  const inputRef = useBladeInnerRef(ref);
+  const [isRevealed, setIsRevealed] = React.useState(false);
   const isEnabled = !isDisabled;
 
   // If input is disabled reveal button shouldn't be present and input should be masked
@@ -111,7 +116,7 @@ const PasswordInput = ({
       />
     ) : null;
 
-  const trailingFooterSlot = (value?: string): ReactNode =>
+  const trailingFooterSlot = (value?: string): React.ReactNode =>
     maxCharacters ? (
       <Box marginTop="spacing.2" marginRight="spacing.1">
         <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
@@ -120,6 +125,7 @@ const PasswordInput = ({
 
   return (
     <BaseInput
+      ref={inputRef as React.Ref<HTMLInputElement>}
       componentName="password-input"
       id="password-field"
       label={label}
@@ -149,5 +155,9 @@ const PasswordInput = ({
     />
   );
 };
+
+const PasswordInput = React.forwardRef(_PasswordInput);
+// nosemgrep
+PasswordInput.displayName = 'PasswordInput';
 
 export { PasswordInputProps, PasswordInput };

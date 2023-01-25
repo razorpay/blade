@@ -1,8 +1,11 @@
-import type { Dispatch, SetStateAction, MouseEventHandler } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
 import type { ActionStates } from '~tokens/theme/theme';
-import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
+import type {
+  FormInputHandleOnClickEvent,
+  FormInputHandleOnKeyDownEvent,
+} from '~components/Form/FormTypes';
 
 export type StyledBaseInputProps = {
   handleOnFocus?: FormInputHandleOnEvent;
@@ -10,7 +13,7 @@ export type StyledBaseInputProps = {
   handleOnBlur?: FormInputHandleOnEvent;
   handleOnKeyDown?: FormInputHandleOnKeyDownEvent;
   handleOnInput?: FormInputHandleOnEvent;
-  onClick?: MouseEventHandler<HTMLInputElement>;
+  handleOnClick?: FormInputHandleOnClickEvent;
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   accessibilityProps: Record<string, unknown>;

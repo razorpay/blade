@@ -73,13 +73,38 @@ let searchTimeout: number;
 let searchString = '';
 
 type UseDropdownReturnValue = DropdownContextType & {
-  onSelectClick: React.MouseEventHandler<HTMLInputElement>;
+  /**
+   * Click event on combobox. Toggles the dropdown
+   */
+  onSelectClick: () => void;
+
+  /**
+   * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
+   */
   onSelectKeydown: FormInputHandleOnKeyDownEvent | undefined;
+
+  /**
+   * Handles blur events like
+   * - closing the navbar when someone clicks outside
+   * - ignoring the blur for certain cases like clicks on footer
+   * - selecting the option before closing if Tab is pressed
+   * - ..etc
+   */
   onSelectBlur: FormInputHandleOnEvent | undefined;
+
+  /**
+   * Handles the click even on option.
+   *
+   * Contains the logic that selects the option, moves the focus, etc
+   */
   onOptionClick: (
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
   ) => void;
+
+  /**
+   * value that is used during form submissions
+   */
   value: string;
   /**
    * This is the value that is displayed inside select after selection
@@ -157,7 +182,7 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Click listener for combobox (or any triggerer of the dropdown)
    */
-  const onSelectClick: React.MouseEventHandler<HTMLInputElement> = (_e) => {
+  const onSelectClick = (): void => {
     setIsOpen(!isOpen);
   };
 

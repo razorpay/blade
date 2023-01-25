@@ -6,6 +6,7 @@ import type {
   TextInput,
   TouchableHighlight,
   TouchableHighlightProps,
+  GestureResponderEvent,
 } from 'react-native';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
@@ -78,6 +79,7 @@ type StyledComponentInputProps = Omit<
   isTextArea?: boolean;
   isFocused: boolean;
   autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
+  onPress?: (event: GestureResponderEvent) => void;
 };
 
 const getRNInputStyles = (
@@ -123,7 +125,7 @@ export const StyledBaseInput = React.forwardRef<
       handleOnBlur,
       handleOnInput,
       handleOnKeyDown,
-      onClick,
+      handleOnClick,
       keyboardType = 'text',
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
@@ -138,14 +140,19 @@ export const StyledBaseInput = React.forwardRef<
     },
     ref,
   ) => {
+    const buttonValue = props.value ? props.value : props.defaultValue;
+
     return hasPopup ? (
       <StyledNativeBaseButton
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
-        // @ts-expect-error: not able to type onClick for both web and native
-        onPress={onClick}
+        onPress={(): void => {
+          handleOnClick?.({ name, value: buttonValue });
+        }}
+        isFocused={currentInteraction === 'active'}
         onFocus={(): void => {
+          handleOnFocus?.({ name, value: buttonValue });
           setCurrentInteraction('active');
         }}
         onBlur={(): void => {
@@ -155,7 +162,7 @@ export const StyledBaseInput = React.forwardRef<
         {...accessibilityProps}
       >
         <Text size="medium" variant="body" type="subtle" contrast="low" weight="regular">
-          {props.value ? props.value : props.defaultValue}
+          {buttonValue}
         </Text>
       </StyledNativeBaseButton>
     ) : (

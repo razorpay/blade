@@ -95,7 +95,7 @@ export const StyledBaseInput = React.forwardRef<
       handleOnBlur,
       handleOnInput,
       handleOnKeyDown,
-      onClick,
+      handleOnClick,
       keyboardType,
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
@@ -108,6 +108,20 @@ export const StyledBaseInput = React.forwardRef<
     },
     ref,
   ) => {
+    const commonEventHandlers = {
+      onBlur: (event: React.ChangeEvent<HTMLInputElement>): void => {
+        setCurrentInteraction('default');
+        handleOnBlur?.({ name, value: event });
+      },
+      onFocus: (event: React.ChangeEvent<HTMLInputElement>): void => {
+        setCurrentInteraction('active');
+        handleOnFocus?.({ name, value: event });
+      },
+      onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
+        handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
+      },
+    };
+
     return props.as === 'button' ? (
       <StyledBaseNativeButton
         // @ts-expect-error: TS doesnt understand that this will always be `button`
@@ -115,20 +129,13 @@ export const StyledBaseInput = React.forwardRef<
         name={name}
         type="button"
         disabled={isDisabled}
-        onClick={onClick}
-        onBlur={(event: React.ChangeEvent<HTMLInputElement>): void => {
-          setCurrentInteraction('default');
-          handleOnBlur?.({ name, value: event });
+        onClick={(event: React.MouseEvent<HTMLInputElement>): void => {
+          handleOnClick?.({ name, value: event });
         }}
-        onFocus={(event: React.ChangeEvent<HTMLInputElement>): void => {
-          setCurrentInteraction('active');
-          handleOnFocus?.({ name, value: event });
-        }}
-        onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
-          handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
-        }}
+        {...commonEventHandlers}
         {...props}
         {...accessibilityProps}
+        value={props.value ? props.value : props.defaultValue}
       >
         {props.value ? props.value : props.defaultValue}
       </StyledBaseNativeButton>
@@ -152,20 +159,10 @@ export const StyledBaseInput = React.forwardRef<
         onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
           handleOnChange?.({ name, value: event })
         }
-        onBlur={(event: React.ChangeEvent<HTMLInputElement>): void => {
-          setCurrentInteraction('default');
-          handleOnBlur?.({ name, value: event });
-        }}
-        onFocus={(event: React.ChangeEvent<HTMLInputElement>): void => {
-          setCurrentInteraction('active');
-          handleOnFocus?.({ name, value: event });
-        }}
         onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
           handleOnInput?.({ name, value: event });
         }}
-        onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
-          handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
-        }}
+        {...commonEventHandlers}
         {...props}
         {...accessibilityProps}
       />

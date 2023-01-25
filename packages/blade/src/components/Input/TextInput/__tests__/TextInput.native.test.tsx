@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ReactElement } from 'react';
 import { fireEvent } from '@testing-library/react-native';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
@@ -132,6 +133,29 @@ describe('<TextInput />', () => {
     // changeText changes entire text at once so should be called once
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenLastCalledWith({ name: 'name', value: userName });
+  });
+
+  it('should handle onFocus', () => {
+    const placeholder = 'First Last';
+    const name = 'userName';
+    const userName = 'Kamlesh';
+    const onFocus = jest.fn();
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <TextInput
+        label="Enter name"
+        placeholder={placeholder}
+        name={name}
+        defaultValue={userName}
+        onFocus={onFocus}
+      />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+    fireEvent(input, 'focus', { nativeEvent: { text: userName } });
+
+    expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(onFocus).toHaveBeenCalledWith({ name, value: userName });
   });
 
   it('should handle onBlur', () => {
@@ -266,6 +290,26 @@ describe('<TextInput />', () => {
     expect(getByDisplayValue(valueInitial)).toBeTruthy();
   });
 
+  it('should not show clear button on initial render if showClearButton is false', () => {
+    const label = 'Enter name';
+    const valueInitial = '123';
+    const onClearButtonClick = jest.fn();
+
+    const { getByDisplayValue, queryByRole } = renderWithTheme(
+      <TextInput
+        label={label}
+        defaultValue={valueInitial}
+        showClearButton={false}
+        onClearButtonClick={onClearButtonClick}
+      />,
+    );
+    const input = getByDisplayValue(valueInitial);
+    expect(input).toBeTruthy();
+
+    const clearButton = queryByRole('button');
+    expect(clearButton).toBeFalsy();
+  });
+
   it('should pass a11y', () => {
     // todo: tests should be updated for improved a11y after https://github.com/razorpay/blade/issues/696
     const placeholder = 'First Last';
@@ -372,5 +416,26 @@ describe('<TextInput />', () => {
     expect(input).toHaveProp('returnKeyType', 'search');
     expect(input).toHaveProp('autoCompleteType', 'off');
     expect(input).toHaveProp('textContentType', 'none');
+  });
+
+  it('should expose native element methods via ref', () => {
+    let refValue = null;
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+      return (
+        <TextInput
+          label="ref test"
+          ref={(value) => {
+            console.log(value);
+            // @ts-expect-error
+            ref.current = value;
+            refValue = value;
+          }}
+        />
+      );
+    };
+
+    renderWithTheme(<Example />);
+    expect(refValue).toHaveProperty('focus');
   });
 });

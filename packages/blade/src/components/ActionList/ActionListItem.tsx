@@ -99,8 +99,10 @@ type ActionListItemProps = {
   href?: string;
   /**
    * Internally passed from ActionList. No need to pass it explicitly
+   *
+   * @private
    */
-  index?: number;
+  _index?: number;
   leading?: React.ReactNode;
   trailing?: React.ReactNode;
   isDefaultSelected?: boolean;
@@ -136,25 +138,25 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
 
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
-    typeof props.index === 'number'
-      ? selectedIndices.includes(props.index)
+    typeof props._index === 'number'
+      ? selectedIndices.includes(props._index)
       : props.isDefaultSelected;
 
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent }}>
       <StyledActionListItem
         as={!isReactNative() ? renderOnWebAs : undefined}
-        id={`${dropdownBaseId}-${props.index}`}
+        id={`${dropdownBaseId}-${props._index}`}
         tabIndex={-1}
         href={props.href}
-        className={activeIndex === props.index ? 'active-focus' : ''}
+        className={activeIndex === props._index ? 'active-focus' : ''}
         {...makeAccessible({
           selected: isSelected,
           role: getActionListItemRole(props.href),
         })}
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
-          if (typeof props.index === 'number') {
-            onOptionClick(e, props.index);
+          if (typeof props._index === 'number') {
+            onOptionClick(e, props._index);
           }
           props.onClick?.(e);
         })}
@@ -168,7 +170,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
           setShouldIgnoreBlur(true);
         }}
         data-value={props.value}
-        data-index={props.index}
+        data-index={props._index}
         // Custom props for changes in styles
         selectionType={selectionType}
         hasDescription={!!props.description}
