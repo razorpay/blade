@@ -298,7 +298,7 @@ const useDropdown = (): UseDropdownReturnValue => {
             rest.selectInputRef.current?.focus();
           }
 
-          const anchorLink = options[activeIndex].href;
+          const anchorLink = options[activeIndex]?.href;
           if (anchorLink) {
             window.location.href = anchorLink;
             if (window.top) {

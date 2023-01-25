@@ -73,6 +73,10 @@ const ActionListItemText = ({ children }: { children: string }): JSX.Element => 
   );
 };
 
+const ActionListCheckboxWrapper = styled(Box)((_props) => ({
+  pointerEvents: 'none',
+}));
+
 const getActionListItemRole = (href?: string): 'link' | 'menuitem' | 'option' => {
   if (href) {
     return 'link';
@@ -180,19 +184,19 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         <Box display="flex" marginTop={props.description ? 'spacing.2' : undefined}>
           {selectionType === 'multiple' ? (
             // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-            <Checkbox
-              isChecked={isSelected}
-              tabIndex={-1}
+            <ActionListCheckboxWrapper
               {...makeAccessible({
                 hidden: true,
               })}
             >
-              {/* 
-              Checkbox requires children. Didn't want to make it optional because its helpful for consumers
-              But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
-            */}
-              {null}
-            </Checkbox>
+              <Checkbox isChecked={isSelected} tabIndex={-1}>
+                {/* 
+                  Checkbox requires children. Didn't want to make it optional because its helpful for consumers
+                  But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
+                */}
+                {null}
+              </Checkbox>
+            </ActionListCheckboxWrapper>
           ) : (
             props.leading
           )}

@@ -91,4 +91,6 @@ function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Eleme
   );
 }
 
+DropdownOverlay.componentId = 'DropdownOverlay';
+
 export { DropdownOverlay };
