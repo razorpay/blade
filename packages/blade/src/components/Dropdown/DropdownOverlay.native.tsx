@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import Box from '~components/Box';
 import { makeSize } from '~utils';
@@ -24,5 +25,7 @@ function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Eleme
     </Box>
   );
 }
+
+DropdownOverlay.componentId = componentIds.DropdownOverlay;
 
 export { DropdownOverlay };

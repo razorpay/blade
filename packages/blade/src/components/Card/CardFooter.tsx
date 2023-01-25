@@ -1,11 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+import React from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import { Divider } from './Divider';
-import { useVerifyInsideCard } from './CardContext';
+import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import { ComponentIds } from './Card';
 import Box from '~components/Box';
 import { Text } from '~components/Typography';
+import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
+
 import { useTheme } from '~components/BladeProvider';
 
 export type CardFooterAction = Pick<
@@ -27,9 +31,13 @@ const useIsMobile = (): boolean => {
   return matchedDeviceType === 'mobile';
 };
 
-const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
+const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
+  useVerifyAllowedComponents(children, 'CardFooter', [
+    ComponentIds.CardFooterLeading,
+    ComponentIds.CardFooterTrailing,
+  ]);
 
   return (
     <Box marginTop="auto" {...metaAttribute(MetaConstants.Component, MetaConstants.CardFooter)}>
@@ -47,12 +55,13 @@ const CardFooter = ({ children }: CardFooterProps): React.ReactElement => {
     </Box>
   );
 };
+CardFooter.componentId = ComponentIds.CardFooter;
 
 type CardFooterLeadingProps = {
   title?: string;
   subtitle?: string;
 };
-const CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.ReactElement => {
+const CardFooterLeading: WithComponentId<CardFooterLeadingProps> = ({ title, subtitle }) => {
   useVerifyInsideCard('CardFooterLeading');
 
   return (
@@ -70,6 +79,7 @@ const CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.R
     </Box>
   );
 };
+CardFooterLeading.componentId = ComponentIds.CardFooterLeading;
 
 type CardFooterTrailingProps = {
   actions?: {
@@ -77,7 +87,7 @@ type CardFooterTrailingProps = {
     secondary?: CardFooterAction;
   };
 };
-const CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactElement => {
+const CardFooterTrailing: WithComponentId<CardFooterTrailingProps> = ({ actions }) => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooterTrailing');
 
@@ -107,5 +117,6 @@ const CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactEl
     </Box>
   );
 };
+CardFooterTrailing.componentId = ComponentIds.CardFooterTrailing;
 
 export { CardFooter, CardFooterLeading, CardFooterTrailing };

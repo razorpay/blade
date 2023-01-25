@@ -34,6 +34,9 @@ export default {
     onChange: ({ name, value }): void => {
       console.log(`input field ${name} content changed to ${value}`);
     },
+    onFocus: ({ name, value }): void => {
+      console.log(`input field ${name} received focus. The value is ${value}`);
+    },
     onBlur: ({ name, value }): void => {
       console.log(`input field ${name} content lost focus. The value is ${value}`);
     },
@@ -100,6 +103,11 @@ export default {
       },
     },
     onChange: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onFocus: {
       table: {
         category: propsCategory.BASE_PROPS,
       },

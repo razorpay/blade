@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react';
 import { Dropdown, DropdownOverlay } from './';
 import type { DropdownProps } from './';
-import { SelectInput } from '~components/Input/SelectInput/SelectInput';
+import { SelectInput } from '~components/Input/SelectInput';
 import {
   ActionList,
   ActionListFooter,

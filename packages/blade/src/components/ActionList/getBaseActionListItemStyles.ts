@@ -18,6 +18,7 @@ const getBaseActionListItemStyles = (
   props: StyledActionListItemProps & { theme: Theme },
 ): CSSObject => {
   return {
+    // @TODO: replace this with outline token when we add
     borderWidth: makeSize(3),
     borderStyle: 'solid',
     borderColor: 'transparent',

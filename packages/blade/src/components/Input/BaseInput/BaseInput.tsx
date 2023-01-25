@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import type { ReactNode, MouseEventHandler } from 'react';
+import type { ReactNode } from 'react';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -26,12 +26,15 @@ import {
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~src/hooks/useInteraction';
-import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
+import type {
+  FormInputHandleOnClickEvent,
+  FormInputHandleOnKeyDownEvent,
+} from '~components/Form/FormTypes';
 
 export type BaseInputProps = FormInputLabelProps &
   FormInputValidationProps & {
     /**
-     * Determines if it needs to be rendered as input or textarea
+     * Determines if it needs to be rendered as input, textarea or button
      */
     as?: 'input' | 'textarea' | 'button';
     /**
@@ -69,7 +72,7 @@ export type BaseInputProps = FormInputLabelProps &
     /**
      * The callback function to be invoked when input is clicked
      */
-    onClick?: MouseEventHandler<HTMLInputElement>;
+    onClick?: FormInputOnEvent;
     /**
      * The callback function to be invoked when the value of the input field has any input
      */
@@ -216,7 +219,7 @@ export type BaseInputProps = FormInputLabelProps &
      */
     componentName?: string;
     /**
-     * Input has a popup
+     * whether the input has a popup
      */
     hasPopup?: AriaAttributes['hasPopup'];
     /**
@@ -250,6 +253,7 @@ const autoCompleteSuggestionTypeValues = [
 const useInput = ({
   value,
   defaultValue,
+  onClick,
   onFocus,
   onChange,
   onBlur,
@@ -257,9 +261,10 @@ const useInput = ({
   onKeyDown,
 }: Pick<
   BaseInputProps,
-  'value' | 'defaultValue' | 'onFocus' | 'onChange' | 'onBlur' | 'onInput' | 'onKeyDown'
+  'value' | 'defaultValue' | 'onFocus' | 'onChange' | 'onBlur' | 'onInput' | 'onKeyDown' | 'onClick'
 >): {
   handleOnFocus: FormInputHandleOnEvent;
+  handleOnClick: FormInputHandleOnClickEvent;
   handleOnChange: FormInputHandleOnEvent;
   handleOnBlur: FormInputHandleOnEvent;
   handleOnInput: FormInputHandleOnEvent;
@@ -291,6 +296,25 @@ const useInput = ({
       });
     },
     [onFocus],
+  );
+
+  const handleOnClick: FormInputHandleOnClickEvent = React.useCallback(
+    ({ name, value }) => {
+      let _value = '';
+
+      if (getPlatformType() === 'react-native' && typeof value === 'string') {
+        _value = value;
+      } else if (typeof value !== 'string') {
+        // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
+        _value = value?.currentTarget.value ?? '';
+      }
+
+      onClick?.({
+        name,
+        value: _value,
+      });
+    },
+    [onClick],
   );
 
   const handleOnChange: FormInputHandleOnEvent = React.useCallback(
@@ -363,6 +387,7 @@ const useInput = ({
 
   return {
     handleOnFocus,
+    handleOnClick,
     handleOnChange,
     handleOnBlur,
     handleOnInput,
@@ -480,6 +505,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const {
       handleOnFocus,
       handleOnChange,
+      handleOnClick,
       handleOnBlur,
       handleOnInput,
       handleOnKeyDown,
@@ -488,6 +514,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       defaultValue,
       value,
       onFocus,
+      onClick,
       onChange,
       onBlur,
       onInput,
@@ -589,7 +616,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               handleOnBlur={handleOnBlur}
               handleOnInput={handleOnInput}
               handleOnKeyDown={handleOnKeyDown}
-              onClick={onClick}
+              handleOnClick={handleOnClick}
               leadingIcon={leadingIcon}
               prefix={prefix}
               interactionElement={interactionElement}

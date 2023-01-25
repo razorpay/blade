@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import React from 'react';
 import styled from 'styled-components';
 import { componentIds } from './componentIds';
@@ -5,7 +8,7 @@ import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { isReactNative, makeSize } from '~utils';
-import { BaseText } from '~components/Typography/BaseText';
+import { Text } from '~components/Typography';
 
 type ActionListFooterProps = {
   title?: string;
@@ -48,12 +51,10 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
     <StyledActionListFooter
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={footerRef as any}
-      // eslint-disable-next-line
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onMouseDown={() => {
         setShouldIgnoreBlur(true);
       }}
-      // eslint-disable-next-line
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onKeyDown={(e) => {
         const nativeEvent = e.nativeEvent;
@@ -64,13 +65,10 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onSelectKeydown?.({ event: e.nativeEvent } as any);
       }}
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onBlur={(e) => {
-        const nextItem = e.nativeEvent.relatedTarget;
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
-        // @ts-ignore: getAttribute does exist on relatedTarget
-        const nextItemRole = nextItem?.getAttribute?.('role');
+        const nextItem = e.relatedTarget;
+        const nextItemRole = nextItem?.getAttribute('role');
         if (nextItemRole !== 'combobox' && nextItemRole !== 'option') {
           setIsOpen(false);
         }
@@ -79,9 +77,9 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
       {props.leading ? <Box>{props.leading}</Box> : null}
       {props.title ? (
         <Box paddingLeft="spacing.3" paddingRight="spacing.3">
-          <BaseText color="surface.text.subdued.lowContrast" fontStyle="italic" fontSize={50}>
+          <Text variant="caption" color="surface.text.subdued.lowContrast">
             {props.title}
-          </BaseText>
+          </Text>
         </Box>
       ) : null}
       {props.trailing ? (

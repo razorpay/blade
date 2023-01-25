@@ -4,7 +4,7 @@ import { componentIds } from './componentIds';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { makeSize } from '~utils';
-import { BaseText } from '~components/Typography/BaseText';
+import { Text } from '~components/Typography';
 
 const StyledActionListHeader = styled(Box)((props) => {
   return {
@@ -24,9 +24,9 @@ const ActionListHeader = (props: { title: string; leading?: React.ReactNode }): 
     <StyledActionListHeader>
       <Box>{props.leading}</Box>
       <Box paddingLeft="spacing.3" paddingRight="spacing.3">
-        <BaseText color="surface.text.subdued.lowContrast" fontStyle="italic" fontSize={50}>
+        <Text variant="caption" color="surface.text.subdued.lowContrast">
           {props.title}
-        </BaseText>
+        </Text>
       </Box>
     </StyledActionListHeader>
   );

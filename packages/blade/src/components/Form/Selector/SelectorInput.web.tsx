@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
 import type { CSSObject } from 'styled-components';
+import React from 'react';
 import styled from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType, getIn, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type HoverProps = {
   isChecked?: boolean;
@@ -57,13 +60,12 @@ const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, ha
   },
 }));
 
-const SelectorInput = ({
-  inputProps,
-  isChecked,
-  isDisabled,
-  hasError,
-  tabIndex,
-}: HoverProps & { inputProps: any; tabIndex?: number }): React.ReactElement => {
+const _SelectorInput: React.ForwardRefRenderFunction<
+  BladeElementRef,
+  HoverProps & { inputProps: any; tabIndex?: number }
+> = ({ inputProps, isChecked, isDisabled, hasError, tabIndex }, ref) => {
+  const inputRef = useBladeInnerRef(ref);
+
   return (
     <StyledInput
       isChecked={isChecked}
@@ -71,8 +73,18 @@ const SelectorInput = ({
       hasError={hasError}
       tabIndex={tabIndex}
       {...inputProps}
+      // merging both refs because inputProps.ref needs to have access to indeterminate state
+      // to be able to set the mixed value via setMixed() function
+      // TODO: replace with a generic `mergeRefs()` util if we do this in other places
+      ref={(value) => {
+        inputProps.ref.current = value;
+        (inputRef as React.MutableRefObject<any>).current = value;
+      }}
     />
   );
 };
+
+const SelectorInput = React.forwardRef(_SelectorInput);
+SelectorInput.displayName = 'SelectorInput';
 
 export { SelectorInput };

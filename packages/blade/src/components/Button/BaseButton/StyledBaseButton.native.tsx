@@ -1,10 +1,13 @@
 import { Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
+import React from 'react';
+import type { TextInput } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
 import { getIn } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
@@ -13,32 +16,35 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   alignSelf: 'center',
 }));
 
-const StyledBaseButton = ({
-  onClick,
-  children,
-  minHeight,
-  buttonPaddingTop,
-  buttonPaddingBottom,
-  buttonPaddingLeft,
-  buttonPaddingRight,
-  isFullWidth,
-  disabled,
-  defaultBackgroundColor,
-  defaultBorderColor,
-  hoverBackgroundColor,
-  activeBackgroundColor,
-  focusBackgroundColor,
-  focusRingColor,
-  hoverBorderColor,
-  activeBorderColor,
-  focusBorderColor,
-  borderWidth,
-  borderRadius,
-  motionDuration,
-  motionEasing,
-  isLoading,
-  accessibilityProps,
-}: StyledBaseButtonProps): React.ReactElement => {
+const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledBaseButtonProps> = (
+  {
+    onClick,
+    children,
+    minHeight,
+    buttonPaddingTop,
+    buttonPaddingBottom,
+    buttonPaddingLeft,
+    buttonPaddingRight,
+    isFullWidth,
+    disabled,
+    defaultBackgroundColor,
+    defaultBorderColor,
+    hoverBackgroundColor,
+    activeBackgroundColor,
+    focusBackgroundColor,
+    focusRingColor,
+    hoverBorderColor,
+    activeBorderColor,
+    focusBorderColor,
+    borderWidth,
+    borderRadius,
+    motionDuration,
+    motionEasing,
+    isLoading,
+    accessibilityProps,
+  },
+  ref,
+) => {
   const { theme } = useTheme();
   const isPressed = useSharedValue(false);
   const duration = getIn(theme.motion, motionDuration);
@@ -62,6 +68,7 @@ const StyledBaseButton = ({
   return (
     <StyledPressable
       {...accessibilityProps}
+      ref={ref as React.RefObject<TextInput>}
       isLoading={isLoading}
       onPress={onClick}
       style={animatedStyles}
@@ -93,5 +100,8 @@ const StyledBaseButton = ({
     </StyledPressable>
   );
 };
+
+const StyledBaseButton = React.forwardRef(_StyledBaseButton);
+StyledBaseButton.displayName = 'StyledBaseButton';
 
 export default StyledBaseButton;

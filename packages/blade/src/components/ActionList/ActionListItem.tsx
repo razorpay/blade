@@ -8,7 +8,6 @@ import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize } from '~utils';
-import { BaseText } from '~components/Typography/BaseText';
 import { Checkbox } from '~components/Checkbox';
 
 const ActionListItemContext = React.createContext<{
@@ -16,10 +15,10 @@ const ActionListItemContext = React.createContext<{
 }>({});
 
 const SectionDivider = styled(Box)((props) => ({
+  // @TODO: replace this with token value if we add 1px token
   height: makeSize(1),
   backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
-  marginLeft: makeSize(props.theme.spacing[3]),
-  marginRight: makeSize(props.theme.spacing[3]),
+  margin: `${makeSize(props.theme.spacing[1])} ${makeSize(props.theme.spacing[3])}`,
 }));
 
 const StyledActionListSectionTitle = styled(Box)((props) => ({
@@ -67,11 +66,15 @@ const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
 
 const ActionListItemText = ({ children }: { children: string }): JSX.Element => {
   return (
-    <BaseText fontStyle="italic" fontSize={50} color="surface.text.muted.lowContrast">
+    <Text variant="caption" color="surface.text.muted.lowContrast">
       {children}
-    </BaseText>
+    </Text>
   );
 };
+
+const ActionListCheckboxWrapper = styled(Box)((_props) => ({
+  pointerEvents: 'none',
+}));
 
 const getActionListItemRole = (href?: string): 'link' | 'menuitem' | 'option' => {
   if (href) {
@@ -99,8 +102,10 @@ type ActionListItemProps = {
   href?: string;
   /**
    * Internally passed from ActionList. No need to pass it explicitly
+   *
+   * @private
    */
-  index?: number;
+  _index?: number;
   leading?: React.ReactNode;
   trailing?: React.ReactNode;
   isDefaultSelected?: boolean;
@@ -136,25 +141,25 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
 
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
-    typeof props.index === 'number'
-      ? selectedIndices.includes(props.index)
+    typeof props._index === 'number'
+      ? selectedIndices.includes(props._index)
       : props.isDefaultSelected;
 
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent }}>
       <StyledActionListItem
         as={!isReactNative() ? renderOnWebAs : undefined}
-        id={`${dropdownBaseId}-${props.index}`}
+        id={`${dropdownBaseId}-${props._index}`}
         tabIndex={-1}
         href={props.href}
-        className={activeIndex === props.index ? 'active-focus' : ''}
+        className={activeIndex === props._index ? 'active-focus' : ''}
         {...makeAccessible({
           selected: isSelected,
           role: getActionListItemRole(props.href),
         })}
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
-          if (typeof props.index === 'number') {
-            onOptionClick(e, props.index);
+          if (typeof props._index === 'number') {
+            onOptionClick(e, props._index);
           }
           props.onClick?.(e);
         })}
@@ -168,7 +173,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
           setShouldIgnoreBlur(true);
         }}
         data-value={props.value}
-        data-index={props.index}
+        data-index={props._index}
         // Custom props for changes in styles
         selectionType={selectionType}
         hasDescription={!!props.description}
@@ -178,19 +183,19 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         <Box display="flex" marginTop={props.description ? 'spacing.2' : undefined}>
           {selectionType === 'multiple' ? (
             // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-            <Checkbox
-              isChecked={isSelected}
-              tabIndex={-1}
+            <ActionListCheckboxWrapper
               {...makeAccessible({
                 hidden: true,
               })}
             >
-              {/* 
-              Checkbox requires children. Didn't want to make it optional because its helpful for consumers
-              But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
-            */}
-              {null}
-            </Checkbox>
+              <Checkbox isChecked={isSelected} tabIndex={-1}>
+                {/* 
+                  Checkbox requires children. Didn't want to make it optional because its helpful for consumers
+                  But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
+                */}
+                {null}
+              </Checkbox>
+            </ActionListCheckboxWrapper>
           ) : (
             props.leading
           )}
