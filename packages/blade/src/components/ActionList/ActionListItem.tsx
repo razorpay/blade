@@ -18,8 +18,7 @@ const ActionListItemContext = React.createContext<{
 const SectionDivider = styled(Box)((props) => ({
   height: makeSize(1),
   backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
-  marginLeft: makeSize(props.theme.spacing[3]),
-  marginRight: makeSize(props.theme.spacing[3]),
+  margin: `${makeSize(props.theme.spacing[1])} ${makeSize(props.theme.spacing[3])}`,
 }));
 
 const StyledActionListSectionTitle = styled(Box)((props) => ({
