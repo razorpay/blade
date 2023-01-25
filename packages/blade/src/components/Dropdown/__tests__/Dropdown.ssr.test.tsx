@@ -1,4 +1,5 @@
 import React from 'react';
+import { fireEvent } from '@testing-library/react';
 import { Dropdown, DropdownOverlay } from '../index';
 import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
@@ -6,9 +7,7 @@ import { ActionList, ActionListItem } from '~components/ActionList';
 
 describe('<Checkbox />', () => {
   it('should render checkbox with error validationState', () => {
-    const labelText = 'Remember password';
-    const errorText = 'This has to be checked';
-    const { container, getByRole, getByText } = renderWithSSR(
+    const { container, getByRole } = renderWithSSR(
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -19,8 +18,14 @@ describe('<Checkbox />', () => {
         </DropdownOverlay>
       </Dropdown>,
     );
-    expect(getByRole('combobox', { name: labelText })).toBeInvalid();
-    expect(getByRole('checkbox', { name: labelText })).toBeChecked();
+
+    const selectInput = getByRole('combobox', { name: 'Fruits' });
+    const dropdownMenu = getByRole('listbox', { name: 'Fruits' });
+
+    expect(selectInput).toBeInTheDocument();
+    expect(dropdownMenu).not.toBeVisible();
+    fireEvent.click(selectInput);
+    expect(dropdownMenu).toBeVisible();
     expect(container).toMatchSnapshot();
   });
 });
