@@ -120,6 +120,48 @@ export const Default = ListTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {};
 
+const ListMixNestedTemplate: ComponentStory<typeof List> = ({ ...args }) => {
+  return (
+    <List variant="ordered">
+      <ListItem>
+        Debit Card
+        <List variant="unordered">
+          <ListItem>
+            HDFC
+            <List variant="ordered">
+              <ListItem>Domestic</ListItem>
+              <ListItem>International</ListItem>
+            </List>
+          </ListItem>
+        </List>
+      </ListItem>
+      <ListItem>
+        Credit Card
+        <List variant="unordered">
+          <ListItem>
+            ICICI
+            <List variant="ordered">
+              <ListItem>Domestic</ListItem>
+              <ListItem>International</ListItem>
+            </List>
+          </ListItem>
+        </List>
+      </ListItem>
+      <ListItem>
+        Netbanking
+        <List variant="unordered">
+          <ListItem>HDFC</ListItem>
+          <ListItem>ICICI</ListItem>
+        </List>
+      </ListItem>
+    </List>
+  );
+};
+
+export const ListMixNested = ListMixNestedTemplate.bind({});
+// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
+ListMixNested.storyName = 'Unordered & Ordered Mix';
+
 const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
   return (
     <Box>
@@ -228,51 +270,3 @@ const ListWithLinkAndIconTemplate: ComponentStory<typeof List> = () => {
 
 export const ListWithLinkAndIcon = ListWithLinkAndIconTemplate.bind({});
 ListWithLinkAndIcon.storyName = 'Link & Icon';
-
-const LongListLevel1Template: ComponentStory<typeof List> = () => {
-  const items = Array.from(Array(30).keys());
-
-  return (
-    <List variant="ordered">
-      {items.map((e, index) => (
-        <ListItem key={index}>{`Item ${++index}`}</ListItem>
-      ))}
-    </List>
-  );
-};
-
-export const LongListLevel1 = LongListLevel1Template.bind({});
-LongListLevel1.storyName = 'Long Ordered List - Level 1';
-
-const LongListLevel2Template: ComponentStory<typeof List> = ({ ...args }) => {
-  return (
-    <List variant="ordered" {...args}>
-      <ListItem>
-        Level 2:
-        <LongListLevel1Template {...args} />
-      </ListItem>
-    </List>
-  );
-};
-
-export const LongListLevel2 = LongListLevel2Template.bind({});
-LongListLevel2.storyName = 'Long Ordered List - Level 2';
-
-const LongListLevel3Template: ComponentStory<typeof List> = ({ ...args }) => {
-  return (
-    <List variant="ordered" {...args}>
-      <ListItem>
-        Level 2:
-        <List variant="ordered" {...args}>
-          <ListItem>
-            Level 3:
-            <LongListLevel1Template {...args} />
-          </ListItem>
-        </List>
-      </ListItem>
-    </List>
-  );
-};
-
-export const LongListLevel3 = LongListLevel3Template.bind({});
-LongListLevel3.storyName = 'Long Ordered List - Level 3';
