@@ -8,7 +8,7 @@ import { UnorderedItemIcon } from './ListItemIcons';
 import { ListItemElement } from './ListItemElement';
 import {
   listItemBulletPaddingRight,
-  listItemBulletPaddingTop,
+  listItemBulletMarginTop,
   listItemOrderedBulletBoxSize,
   listItemPaddingBottom,
   listItemPaddingLeft,
@@ -70,12 +70,11 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
         {variant === 'unordered' ? (
           <Box
             paddingRight={listItemBulletPaddingRight[variant]}
+            marginTop={
+              listItemBulletMarginTop[`${variant}${hasIcon ? 'WithIcon' : ''}`][platform][size]
+            }
             display="flex"
             alignSelf="flex-start"
-            //@ts-expect-error needs hard-coded spacing thats not part of our tokens
-            paddingTop={
-              listItemBulletPaddingTop[`${variant}${hasIcon ? 'WithIcon' : ''}`][platform][size]
-            }
           >
             {ItemIcon ? (
               <ItemIcon size={size} color="surface.text.subdued.lowContrast" />
@@ -88,6 +87,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
             width={listItemOrderedBulletBoxSize[variant][platform][size]}
             height={listItemOrderedBulletBoxSize[variant][platform][size]}
             marginRight={listItemBulletPaddingRight[variant]}
+            marginTop={listItemBulletMarginTop[variant][platform][size]}
             display="flex"
             flexShrink={0}
             justifyContent="center"

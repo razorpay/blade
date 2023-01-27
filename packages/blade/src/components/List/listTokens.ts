@@ -37,7 +37,7 @@ const listItemBulletPaddingRight: Record<
   'ordered-filled': 'spacing.3',
 };
 
-const listItemBulletPaddingTop: Record<
+const listItemBulletMarginTop: Record<
   NonNullable<ListProps['variant'] | 'unorderedWithIcon'>,
   Record<
     TypographyPlatforms,
@@ -82,7 +82,7 @@ const listItemBulletPaddingTop: Record<
     },
     onMobile: {
       small: 0,
-      medium: 0,
+      medium: 'spacing.1',
     },
   },
 };
@@ -136,7 +136,7 @@ export {
   ComponentIds,
   listItemPaddingBottom,
   listItemBulletPaddingRight,
-  listItemBulletPaddingTop,
+  listItemBulletMarginTop,
   listItemUnorderedBulletSize,
   listItemOrderedBulletBoxSize,
 };
