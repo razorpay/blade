@@ -280,6 +280,13 @@ const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement =
 };
 
 const ComponentStatusTable = (): React.ReactElement => {
+  const sortedData = componentData.sort((a, b) => {
+    if (!a.releasedIn || !b.releasedIn) {
+      return a.status.localeCompare(b.status);
+    }
+    return a.name.localeCompare(b.name);
+  });
+
   return (
     <Box>
       <Table>
@@ -297,7 +304,7 @@ const ComponentStatusTable = (): React.ReactElement => {
           </tr>
         </thead>
         <tbody>
-          {componentData.map((data) => {
+          {sortedData.map((data) => {
             return (
               <tr key={data.name}>
                 <td align="left">
