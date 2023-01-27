@@ -180,11 +180,11 @@ const Alert = ({
   const _title = title ? (
     <Box marginBottom="spacing.2">
       {isFullWidth ? (
-        <Heading size="small" contrast={contrast}>
+        <Heading type="subtle" size="small" contrast={contrast}>
           {title}
         </Heading>
       ) : (
-        <Text weight="bold" contrast={contrast}>
+        <Text type="subtle" weight="bold" contrast={contrast}>
           {title}
         </Text>
       )}
@@ -193,7 +193,7 @@ const Alert = ({
 
   const _description = (
     <Box marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
-      <Text size={textSize} contrast={contrast}>
+      <Text type="subtle" size={textSize} contrast={contrast}>
         {description}
       </Text>
     </Box>
