@@ -1,0 +1,149 @@
+import { List } from '../List';
+import { ListItem } from '../ListItem';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
+
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
+describe('<List />', () => {
+  it('should render List with default properties', () => {
+    const { toJSON, queryAllByRole, getByText } = renderWithTheme(
+      <List>
+        <ListItem>
+          Level 1
+          <List>
+            <ListItem>
+              Level 2
+              <List>
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+    expect(queryAllByRole('list')).toHaveLength(3);
+    expect(getByText('Level 1')).toBeTruthy();
+    expect(getByText('Level 2')).toBeTruthy();
+    expect(getByText('Level 3')).toBeTruthy();
+  });
+
+  it('should render unordered List of small size', () => {
+    const { toJSON } = renderWithTheme(
+      <List variant="unordered" size="small">
+        <ListItem>
+          Level 1
+          <List>
+            <ListItem>
+              Level 2
+              <List>
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render small unordered List with icon', () => {
+    const { toJSON } = renderWithTheme(
+      <List variant="unordered" size="small" icon={ArrowRightIcon}>
+        <ListItem>
+          Level 1
+          <List>
+            <ListItem icon={ArrowUpIcon}>
+              Level 2
+              <List>
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render medium unordered List with icon', () => {
+    const { toJSON } = renderWithTheme(
+      <List variant="unordered" size="medium" icon={ArrowRightIcon}>
+        <ListItem>
+          Level 1
+          <List>
+            <ListItem icon={ArrowUpIcon}>
+              Level 2
+              <List>
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render small ordered List', () => {
+    const { toJSON } = renderWithTheme(
+      <List variant="ordered" size="small">
+        <ListItem>
+          Level 1
+          <List>
+            <ListItem>
+              Level 2
+              <List>
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render medium ordered List', () => {
+    const { toJSON } = renderWithTheme(
+      <List variant="ordered" size="medium">
+        <ListItem>
+          Level 1
+          <List>
+            <ListItem>
+              Level 2
+              <List>
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render small ordered-filled List', () => {
+    const { toJSON } = renderWithTheme(
+      <List variant="ordered-filled" size="small">
+        <ListItem>Level 1</ListItem>
+        <ListItem>Level 2</ListItem>
+        <ListItem>Level 3</ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render medium ordered-filled List', () => {
+    const { toJSON } = renderWithTheme(
+      <List variant="ordered-filled" size="medium">
+        <ListItem>Level 1</ListItem>
+        <ListItem>Level 2</ListItem>
+        <ListItem>Level 3</ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+});

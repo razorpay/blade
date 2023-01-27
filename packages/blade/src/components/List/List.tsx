@@ -6,7 +6,14 @@ import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
 import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
-import { getIn, isValidAllowedChildren, makeSpace, metaAttribute, MetaConstants } from '~utils';
+import {
+  getIn,
+  isValidAllowedChildren,
+  makeAccessible,
+  makeSpace,
+  metaAttribute,
+  MetaConstants,
+} from '~utils';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type ListProps = {
@@ -49,6 +56,7 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
       <ListElement
         marginTop={!level ? 'spacing.3' : undefined}
         {...metaAttribute(MetaConstants.Component, MetaConstants.List)}
+        {...makeAccessible({ role: 'list' })} // Needed for react-native
       >
         {variant === 'unordered'
           ? childListItems

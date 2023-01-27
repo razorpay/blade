@@ -72,6 +72,7 @@ export const accessibilityRoleMap = {
   combobox: 'combobox',
   image: 'image',
   link: 'link',
+  list: 'list',
   menu: 'menu',
   menubar: 'menubar',
   menuitem: 'menuitem',
