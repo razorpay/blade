@@ -22,7 +22,7 @@ type ComponentStatuses =
   | 'in-development'
   | 'in-design'
   | 'deprecated'
-  | `planned-Q${1 | 2 | 3 | 4}`;
+  | `planned-Q${1 | 2 | 3 | 4}-${'dev' | 'design'}`;
 
 type ComponentStatusData = {
   name: string;
@@ -249,41 +249,41 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'BottomSheet',
-    status: 'planned-Q4',
+    status: 'planned-Q4-dev',
     description:
       'Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.',
   },
   {
     name: 'Tags',
-    status: 'planned-Q4',
+    status: 'planned-Q4-design',
     description: 'A tag labels UI objects for quick recognition and navigation.',
   },
   {
     name: 'Toggle',
-    status: 'planned-Q4',
+    status: 'planned-Q4-dev',
     description:
       'Toggle component is used as an alternative for the checkbox component, It can be used to switch between two states: often on or off.',
   },
   {
     name: 'Amount',
-    status: 'planned-Q4',
+    status: 'planned-Q4-dev',
     description: 'Amount component is used to display & format various currencies',
   },
   {
     name: 'Accordion',
-    status: 'planned-Q4',
+    status: 'planned-Q4-design',
     description:
       'Accordion component allows the user to show and hide sections of related content on a page',
   },
   {
     name: 'Modal',
-    status: 'planned-Q4',
+    status: 'planned-Q4-design',
     description:
       "Modal is a dialog that focuses the user's attention exclusively on an information via a window that is overlaid on primary content.",
   },
   {
     name: 'Tooltip',
-    status: 'planned-Q4',
+    status: 'planned-Q4-design',
     description:
       'Tooltip is a brief, informative message that appears when a user interacts with an element.',
   },
@@ -320,10 +320,14 @@ const ComponentStatusBadge = ({ status }: { status: ComponentStatuses }): React.
     'in-design': { label: 'In Design', variant: 'notice', icon: LoaderIcon },
     'in-api-spec': { label: 'API In Progress', variant: 'notice', icon: EditIcon },
     'in-development': { label: 'In Development', variant: 'notice', icon: LoaderIcon },
-    'planned-Q1': { label: 'Planned: Q1', variant: 'information', icon: ClockIcon },
-    'planned-Q2': { label: 'Planned: Q2', variant: 'information', icon: ClockIcon },
-    'planned-Q3': { label: 'Planned: Q3', variant: 'information', icon: ClockIcon },
-    'planned-Q4': { label: 'Planned: Q4', variant: 'information', icon: ClockIcon },
+    'planned-Q1-dev': { label: 'Planned: Q1 Dev', variant: 'information', icon: ClockIcon },
+    'planned-Q2-dev': { label: 'Planned: Q2 Dev', variant: 'information', icon: ClockIcon },
+    'planned-Q3-dev': { label: 'Planned: Q3 Dev', variant: 'information', icon: ClockIcon },
+    'planned-Q4-dev': { label: 'Planned: Q4 Dev', variant: 'information', icon: ClockIcon },
+    'planned-Q1-design': { label: 'Planned: Q1 Design', variant: 'information', icon: ClockIcon },
+    'planned-Q2-design': { label: 'Planned: Q2 Design', variant: 'information', icon: ClockIcon },
+    'planned-Q3-design': { label: 'Planned: Q3 Design', variant: 'information', icon: ClockIcon },
+    'planned-Q4-design': { label: 'Planned: Q4 Design', variant: 'information', icon: ClockIcon },
   };
 
   return (
