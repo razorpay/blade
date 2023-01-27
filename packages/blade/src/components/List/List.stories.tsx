@@ -1,6 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
+import { BookmarkIcon, Heading } from '..';
 import type { ListProps } from './List';
 import { List } from './List';
 import { ListItem } from './ListItem';
@@ -8,6 +9,7 @@ import { ListItemLink } from './ListItemLink';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import Box from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -15,18 +17,33 @@ const Page = (): ReactElement => {
       componentDescription="This is the List component"
       componentName="List"
       figmaURL={{
-        paymentTheme: '',
-        bankingTheme: '',
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23205%3A446859&t=itEw2V8u5Q0PPGJq-4',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=13864%3A436458&t=nNhw3mY86j85bYfl-4',
       }}
     >
       <Title>Usage</Title>
       <Sandbox>
         {`
-          import { List } from '@razorpay/blade/components';
+          import { List, ListItem } from '@razorpay/blade/components';
 
           function App(): JSX.Element {
             return (
               <List>
+                <ListItem>
+                  Level 1
+                  <List>
+                    <ListItem>
+                      Level 2
+                      <List>
+                        <ListItem>
+                          Level 3
+                        </ListItem>
+                      </List>
+                    </ListItem>
+                  </List>
+                </ListItem>
               </List>
             )
           }
@@ -64,35 +81,36 @@ const ListTemplate: ComponentStory<typeof List> = ({ ...args }) => {
   return (
     <List variant="unordered" {...args}>
       <ListItem>
-        Item 1 <ListItemLink href="https://github.com/razorpay/blade">Click here</ListItemLink>
+        Debit Card
         <List variant="unordered" {...args}>
           <ListItem>
-            Item 1.1
+            HDFC
             <List variant="unordered" {...args}>
-              <ListItem>Item 1.1.1</ListItem>
+              <ListItem>Domestic</ListItem>
+              <ListItem>International</ListItem>
             </List>
           </ListItem>
         </List>
       </ListItem>
       <ListItem>
-        Item 2Item 2Item 2Item 2Item 2Item 2Item 2Item 2Item 2Item 2Item 2Item 2Item 2Item 2Item
-        2Item 2Item 2
+        Credit Card
+        <List variant="unordered" {...args}>
+          <ListItem>
+            ICICI
+            <List variant="unordered" {...args}>
+              <ListItem>Domestic</ListItem>
+              <ListItem>International</ListItem>
+            </List>
+          </ListItem>
+        </List>
       </ListItem>
-      <ListItem>Item 3</ListItem>
-      <ListItem>Item 2</ListItem>
-      <ListItem>Item 3</ListItem>
-      <ListItem>Item 2</ListItem>
-      <ListItem>Item 3</ListItem>
-      <ListItem>Item 2</ListItem>
-      <ListItem>Item 3</ListItem>
-      <ListItem>Item 2</ListItem>
-      <ListItem>Item 3</ListItem>
-      <ListItem>Item 2</ListItem>
-      <ListItem>Item 3</ListItem>
-      <ListItem>Item 2</ListItem>
-      <ListItem>Item 3</ListItem>
-      <ListItem>Item 2</ListItem>
-      <ListItem>Item 3</ListItem>
+      <ListItem>
+        Netbanking
+        <List variant="unordered" {...args}>
+          <ListItem>HDFC</ListItem>
+          <ListItem>ICICI</ListItem>
+        </List>
+      </ListItem>
     </List>
   );
 };
@@ -101,3 +119,160 @@ export const Default = ListTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
 Default.args = {};
+
+const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
+  return (
+    <Box>
+      <Heading>Small Size:</Heading>
+      <List {...args} size="small">
+        <ListItem>
+          Level 1
+          <List {...args} size="small">
+            <ListItem>
+              Level 2
+              <List {...args} size="small">
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>
+      <Heading>Medium Size:</Heading>
+      <List {...args} size="medium">
+        <ListItem>
+          Level 1
+          <List {...args} size="medium">
+            <ListItem>
+              Level 2
+              <List {...args} size="medium">
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>
+    </Box>
+  );
+};
+
+export const UnorderedListWithSizes = ListWithSizesTemplate.bind({});
+UnorderedListWithSizes.storyName = 'Unordered - Sizes';
+UnorderedListWithSizes.args = {
+  variant: 'unordered',
+};
+
+export const OrderedListWithSizes = ListWithSizesTemplate.bind({});
+OrderedListWithSizes.storyName = 'Ordered - Sizes';
+OrderedListWithSizes.args = {
+  variant: 'ordered',
+};
+
+const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
+  return (
+    <Box>
+      <Heading>Small Size:</Heading>
+      <List {...args} variant="ordered-filled" size="small">
+        <ListItem>
+          <ListItemLink>Build Integration:</ListItemLink> Use the sample codes to integrate the
+          Razorpay Web Standard Checkout on your website.
+        </ListItem>
+        <ListItem>
+          <ListItemLink>Test Integration:</ListItemLink> Test the integration to ensure it was
+          successful.
+        </ListItem>
+        <ListItem>
+          <ListItemLink>Go-live Checklist:</ListItemLink> Check the go-live checklist before taking
+          the integration live.
+        </ListItem>
+      </List>
+      <Heading>Medium Size:</Heading>
+      <List {...args} variant="ordered-filled" size="medium">
+        <ListItem>
+          <ListItemLink>Build Integration:</ListItemLink> Use the sample codes to integrate the
+          Razorpay Web Standard Checkout on your website.
+        </ListItem>
+        <ListItem>
+          <ListItemLink>Test Integration:</ListItemLink> Test the integration to ensure it was
+          successful.
+        </ListItem>
+        <ListItem>
+          <ListItemLink>Go-live Checklist:</ListItemLink> Check the go-live checklist before taking
+          the integration live.
+        </ListItem>
+      </List>
+    </Box>
+  );
+};
+
+export const OrderedFilledListWithSizes = OrderedFilledListWithSizesTemplate.bind({});
+OrderedFilledListWithSizes.storyName = 'OrderedFilled - Sizes';
+
+const ListWithLinkAndIconTemplate: ComponentStory<typeof List> = () => {
+  return (
+    <List variant="unordered" icon={BookmarkIcon}>
+      <ListItem>
+        <ListItemLink>Troubleshooting and FAQs</ListItemLink>
+      </ListItem>
+      <ListItem>
+        <ListItemLink>Payment Methods</ListItemLink>
+      </ListItem>
+      <ListItem>
+        <ListItemLink>International Currency Support</ListItemLink>
+      </ListItem>
+      <ListItem>
+        <ListItemLink>Bank Downtime</ListItemLink>
+      </ListItem>
+    </List>
+  );
+};
+
+export const ListWithLinkAndIcon = ListWithLinkAndIconTemplate.bind({});
+ListWithLinkAndIcon.storyName = 'Link & Icon';
+
+const LongListLevel1Template: ComponentStory<typeof List> = () => {
+  const items = Array.from(Array(30).keys());
+
+  return (
+    <List variant="ordered">
+      {items.map((e, index) => (
+        <ListItem key={index}>{`Item ${++index}`}</ListItem>
+      ))}
+    </List>
+  );
+};
+
+export const LongListLevel1 = LongListLevel1Template.bind({});
+LongListLevel1.storyName = 'Long Ordered List - Level 1';
+
+const LongListLevel2Template: ComponentStory<typeof List> = ({ ...args }) => {
+  return (
+    <List variant="ordered" {...args}>
+      <ListItem>
+        Level 2:
+        <LongListLevel1Template {...args} />
+      </ListItem>
+    </List>
+  );
+};
+
+export const LongListLevel2 = LongListLevel2Template.bind({});
+LongListLevel2.storyName = 'Long Ordered List - Level 2';
+
+const LongListLevel3Template: ComponentStory<typeof List> = ({ ...args }) => {
+  return (
+    <List variant="ordered" {...args}>
+      <ListItem>
+        Level 2:
+        <List variant="ordered" {...args}>
+          <ListItem>
+            Level 3:
+            <LongListLevel1Template {...args} />
+          </ListItem>
+        </List>
+      </ListItem>
+    </List>
+  );
+};
+
+export const LongListLevel3 = LongListLevel3Template.bind({});
+LongListLevel3.storyName = 'Long Ordered List - Level 3';
