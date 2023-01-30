@@ -66,7 +66,6 @@ const DropdownContext = React.createContext<DropdownContextType>({
 });
 
 let searchTimeout: number;
-// eslint-disable-next-line one-var
 let searchString = '';
 
 type UseDropdownReturnValue = DropdownContextType & {

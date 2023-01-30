@@ -79,6 +79,7 @@ const getActionListProperties = (
   let isActionListItemPresentAfterSection: boolean;
   // eslint-disable-next-line one-var
   let lastActionListSectionIndex: number;
+
   if (isReactNative()) {
     // We're reading this so that we can decide whether to show the divider or not.
     // If ActionListSection is final item and no ActionListItem is present after that, we hide the divider
