@@ -72,12 +72,12 @@ type UseDropdownReturnValue = DropdownContextType & {
   /**
    * Click event on combobox. Toggles the dropdown
    */
-  onSelectClick: () => void;
+  onTriggerClick: () => void;
 
   /**
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
-  onSelectKeydown: FormInputHandleOnKeyDownEvent | undefined;
+  onTriggerKeydown: FormInputHandleOnKeyDownEvent | undefined;
 
   /**
    * Handles blur events like
@@ -86,7 +86,7 @@ type UseDropdownReturnValue = DropdownContextType & {
    * - selecting the option before closing if Tab is pressed
    * - ..etc
    */
-  onSelectBlur: FormInputHandleOnEvent | undefined;
+  onTriggerBlur: FormInputHandleOnEvent | undefined;
 
   /**
    * Handles the click even on option.
@@ -178,16 +178,16 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Click listener for combobox (or any triggerer of the dropdown)
    */
-  const onSelectClick = (): void => {
+  const onTriggerClick = (): void => {
     setIsOpen(!isOpen);
   };
 
   /**
    * Blur handler on combobox. Also handles the selection logic when user moves focus
    */
-  const onSelectBlur = (): void => {
+  const onTriggerBlur = (): void => {
     if (rest.hasFooterAction) {
-      // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onSelectKeyDown)
+      // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
       // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
       setActiveIndex(-1);
     }
@@ -275,7 +275,7 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
-  const onSelectKeydown = (e: { event: React.KeyboardEvent<HTMLInputElement> }): void => {
+  const onTriggerKeydown = (e: { event: React.KeyboardEvent<HTMLInputElement> }): void => {
     if (e.event.key === 'Tab' && rest.hasFooterAction) {
       // When footer has Action Buttons, we ignore the blur event so that we can move focus to action item than bluring out of dropdown
       setShouldIgnoreBlur(true);
@@ -311,9 +311,9 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsOpen,
     selectedIndices,
     setSelectedIndices,
-    onSelectClick,
-    onSelectKeydown,
-    onSelectBlur,
+    onTriggerClick,
+    onTriggerKeydown,
+    onTriggerBlur,
     onOptionClick,
     activeIndex,
     setActiveIndex,

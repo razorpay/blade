@@ -43,9 +43,9 @@ const _SelectInput = (
     isOpen,
     value,
     displayValue,
-    onSelectClick,
-    onSelectKeydown,
-    onSelectBlur,
+    onTriggerClick,
+    onTriggerKeydown,
+    onTriggerBlur,
     dropdownBaseId,
     activeIndex,
     selectInputRef,
@@ -92,9 +92,9 @@ const _SelectInput = (
         leadingIcon={icon}
         hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
         isPopupExpanded={isOpen}
-        onClick={onSelectClick}
-        onKeyDown={onSelectKeydown}
-        onBlur={onSelectBlur}
+        onClick={onTriggerClick}
+        onKeyDown={onTriggerKeydown}
+        onBlur={onTriggerBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
         interactionElement={
@@ -104,7 +104,7 @@ const _SelectInput = (
               if (!isReactNative()) {
                 selectInputRef.current?.focus();
               }
-              onSelectClick();
+              onTriggerClick();
             }}
             icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />

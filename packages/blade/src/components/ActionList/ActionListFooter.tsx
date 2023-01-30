@@ -36,7 +36,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
   const {
     setShouldIgnoreBlur,
     setHasFooterAction,
-    onSelectKeydown,
+    onTriggerKeydown,
     activeIndex,
     setIsOpen,
   } = useDropdown();
@@ -65,7 +65,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
           return;
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        onSelectKeydown?.({ event: e.nativeEvent } as any);
+        onTriggerKeydown?.({ event: e.nativeEvent } as any);
       }}
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onBlur={(e) => {
