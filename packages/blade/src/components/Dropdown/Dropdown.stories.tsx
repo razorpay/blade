@@ -85,7 +85,7 @@ export const WithSelect = (args: DropdownProps): JSX.Element => {
                 intent="negative"
               />
             </ActionListSection>
-            <ActionListFooter
+            {/* <ActionListFooter
               title="Search Tips"
               leading={<ActionListFooterIcon icon={SearchIcon} />}
               trailing={
@@ -93,7 +93,7 @@ export const WithSelect = (args: DropdownProps): JSX.Element => {
                   Apply
                 </Button>
               }
-            />
+            /> */}
           </ActionList>
         </DropdownOverlay>
       </Dropdown>

@@ -10,7 +10,7 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { getPlatformType, isReactNative } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
-import { getActionListRole } from '~components/ActionList/getA11yRoles';
+import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -49,6 +49,8 @@ const _SelectInput = (
     dropdownBaseId,
     activeIndex,
     selectInputRef,
+    hasFooterAction,
+    dropdownTriggerer,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref);
@@ -88,7 +90,7 @@ const _SelectInput = (
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
-        hasPopup={getActionListRole('SelectInput')}
+        hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
         isPopupExpanded={isOpen}
         onClick={onSelectClick}
         onKeyDown={onSelectKeydown}

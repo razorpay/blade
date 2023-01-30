@@ -12,14 +12,43 @@ export const isRoleMenu = (
   return isReactNative() || dropdownTriggerer !== 'SelectInput';
 };
 
-export const getActionListRole = (
+/**
+ * We switch between accessibility of `dialog` with `listbox` and buttons as a child and just `listbox` when there are action items on footer
+ *
+ * Not announcing `dialog` helps not throw users off for simple dropdowns.
+ *
+ * and having `dialog` is neccessary when there are buttons on footer
+ *
+ * `menu` role is required for react native.
+ */
+export const getActionListContainerRole = (
+  hasFooterAction: boolean,
   dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
-): 'menu' | 'listbox' => {
+): 'dialog' | 'listbox' | 'menu' => {
+  if (hasFooterAction) {
+    return 'dialog';
+  }
+
   if (isRoleMenu(dropdownTriggerer)) {
     return 'menu';
   }
 
   return 'listbox';
+};
+
+export const getActionListItemWrapperRole = (
+  hasFooterAction: boolean,
+  dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
+): 'listbox' | 'menu' | undefined => {
+  if (isRoleMenu(dropdownTriggerer)) {
+    return 'menu';
+  }
+
+  if (hasFooterAction) {
+    return 'listbox';
+  }
+
+  return undefined;
 };
 
 export const getActionListItemRole = (

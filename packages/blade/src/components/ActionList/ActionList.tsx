@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { componentIds } from './componentIds';
-import { getActionListRole } from './getA11yRoles';
+import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import Box from '~components/Box';
 import type { OptionsType } from '~components/Dropdown/useDropdown';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -29,6 +29,7 @@ const StyledActionList = styled(Box)<{
   const blur = theme.shadows.blurRadius.level[2];
   const shadowColor = theme.shadows.color.level[1];
 
+  // @TODO: tokenize shadows and replace the logic here
   const elevation200 = `${makeSize(offsetX)} ${makeSize(offsetY)} ${makeSize(
     blur,
   )} 0px ${shadowColor}`;
@@ -59,6 +60,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     setSelectedIndices,
     optionsRecalculateToggle,
     dropdownTriggerer,
+    hasFooterAction,
   } = useDropdown();
 
   const actionListOptions: OptionsType = [];
@@ -67,7 +69,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
 
   const defaultSelectedIndices: number[] = [];
 
-  const getActionListItemChildWithId = (child: React.ReactNode): React.ReactNode => {
+  const getActionListItemWithId = (child: React.ReactNode): React.ReactNode => {
     if (React.isValidElement(child)) {
       actionListOptions.push({
         title: child.props.title,
@@ -97,15 +99,27 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     .slice(lastActionListSectionIndex)
     .includes(componentIds.ActionListItem);
 
+  let actionListHeaderChild: React.ReactElement | null = null;
+  let actionListFooterChild: React.ReactElement | null = null;
   // Looping through ActionListItems to add index to them and get an options array for moving focus between items
   const childrenWithId = React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
+      if (isValidAllowedChildren(child, componentIds.ActionListHeader)) {
+        actionListHeaderChild = child;
+        return null;
+      }
+
+      if (isValidAllowedChildren(child, componentIds.ActionListFooter)) {
+        actionListFooterChild = child;
+        return null;
+      }
+
       if (isValidAllowedChildren(child, componentIds.ActionListSection)) {
         return React.cloneElement(child, {
           // @ts-expect-error: TS doesn't understand the child's props
           children: React.Children.map(child.props.children, (childInSection) => {
             if (isValidAllowedChildren(childInSection, componentIds.ActionListItem)) {
-              return getActionListItemChildWithId(childInSection);
+              return getActionListItemWithId(childInSection);
             }
 
             return childInSection;
@@ -115,7 +129,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
       }
 
       if (isValidAllowedChildren(child, componentIds.ActionListItem)) {
-        return getActionListItemChildWithId(child);
+        return getActionListItemWithId(child);
       }
     }
     return child;
@@ -131,20 +145,36 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const actionListContainerRole = getActionListContainerRole(hasFooterAction, dropdownTriggerer);
+  const actionListItemWrapperRole = getActionListItemWrapperRole(
+    hasFooterAction,
+    dropdownTriggerer,
+  );
+  const isMultiSelectable = selectionType === 'multiple';
+
   return (
     <StyledActionList
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={actionListRef as any}
-      {...makeAccessible({
-        role: getActionListRole(dropdownTriggerer),
-        multiSelectable: selectionType === 'multiple',
-        labelledBy: `${dropdownBaseId}-label`,
-      })}
-      id={`${dropdownBaseId}-actionlist`}
       surfaceLevel={surfaceLevel}
       elevation={theme.shadows.androidElevation.level[2]}
+      id={`${dropdownBaseId}-actionlist`}
+      {...makeAccessible({
+        role: actionListContainerRole,
+        multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
+        labelledBy: `${dropdownBaseId}-label`,
+      })}
     >
-      {childrenWithId}
+      {actionListHeaderChild}
+      <Box
+        {...makeAccessible({
+          role: actionListItemWrapperRole,
+          multiSelectable: actionListItemWrapperRole === 'listbox' ? isMultiSelectable : undefined,
+        })}
+      >
+        {childrenWithId}
+      </Box>
+      {actionListFooterChild}
     </StyledActionList>
   );
 };
