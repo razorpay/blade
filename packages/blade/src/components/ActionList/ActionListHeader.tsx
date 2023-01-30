@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { componentIds } from './componentIds';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
+import type { WithComponentId } from '~utils';
 import { makeSize } from '~utils';
 import { Text } from '~components/Typography';
 
@@ -19,7 +20,11 @@ const StyledActionListHeader = styled(Box)((props) => {
   };
 });
 
-const ActionListHeader = (props: { title: string; leading?: React.ReactNode }): JSX.Element => {
+type ActionListHeaderProps = {
+  title: string;
+  leading?: React.ReactNode;
+};
+const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.Element => {
   return (
     <StyledActionListHeader>
       <Box>{props.leading}</Box>
@@ -39,4 +44,4 @@ const ActionListHeaderIcon = ({ icon }: { icon: IconComponent }): JSX.Element =>
   return <Icon color="surface.text.muted.lowContrast" size="small" />;
 };
 
-export { ActionListHeader, ActionListHeaderIcon };
+export { ActionListHeader, ActionListHeaderIcon, ActionListHeaderProps };

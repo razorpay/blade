@@ -3,6 +3,7 @@ import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
+import type { WithComponentId } from '~utils';
 import { isValidAllowedChildren } from '~utils';
 
 type DropdownProps = {
@@ -27,7 +28,10 @@ type DropdownProps = {
  * </Dropdown>
  * ```
  */
-function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.Element {
+const Dropdown: WithComponentId<DropdownProps> = ({
+  children,
+  selectionType = 'single',
+}): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
@@ -101,7 +105,7 @@ function Dropdown({ children, selectionType = 'single' }: DropdownProps): JSX.El
   );
 
   return <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>;
-}
+};
 
 Dropdown.componentId = componentIds.Dropdown;
 

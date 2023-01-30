@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { componentIds } from './dropdownUtils';
+import type { DropdownOverlayProps } from './DropdownOverlay.web';
 import { useDropdown } from './useDropdown';
 import Box from '~components/Box';
 import { makeSize } from '~utils';
+import type { WithComponentId } from '~utils';
 
 const StyledDropdownOverlay = styled(Box)((props) => ({
   transform: `translateY(${makeSize(props.theme.spacing[3])})`,
@@ -14,7 +16,7 @@ const StyledDropdownOverlay = styled(Box)((props) => ({
  *
  * Wrap your ActionList with this this component
  */
-function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Element {
+const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): JSX.Element => {
   const { isOpen } = useDropdown();
 
   return (
@@ -24,8 +26,8 @@ function DropdownOverlay({ children }: { children: React.ReactNode }): JSX.Eleme
       </StyledDropdownOverlay>
     </Box>
   );
-}
+};
 
 DropdownOverlay.componentId = componentIds.DropdownOverlay;
 
-export { DropdownOverlay };
+export { DropdownOverlay, DropdownOverlayProps };

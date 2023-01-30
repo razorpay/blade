@@ -8,6 +8,7 @@ import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
+import type { WithComponentId } from '~utils';
 import { isReactNative, makeAccessible, makeSize } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 
@@ -26,23 +27,38 @@ const StyledActionListSectionTitle = styled(Box)((props) => ({
   padding: makeSize(props.theme.spacing[3]),
 }));
 
-const ActionListSection = ({
-  title,
-  children,
-  hideDivider,
-}: {
+type ActionListSectionProps = {
   title: string;
   children: React.ReactNode[] | React.ReactNode;
   hideDivider?: boolean;
+};
+const ActionListSection: WithComponentId<ActionListSectionProps> = ({
+  title,
+  children,
+  hideDivider,
 }): JSX.Element => {
   return (
-    <Box>
-      <StyledActionListSectionTitle>
+    <Box
+      {...makeAccessible({
+        role: 'group',
+        label: title,
+      })}
+    >
+      {/* We're announcing title as group label so we can hide this */}
+      <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
         <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
           {title}
         </Text>
       </StyledActionListSectionTitle>
-      {children}
+      <Box
+        {...makeAccessible({
+          // On web, we just wrap it in another listbox to announce item count properly for particular group.
+          // On React Native, we ignore it since `menu` + `group` role will take care of accessibility
+          role: isReactNative() ? undefined : 'listbox',
+        })}
+      >
+        {children}
+      </Box>
       {hideDivider ? null : (
         <SectionDivider
           {...makeAccessible({
@@ -123,7 +139,7 @@ const makeActionListItemClickable = (
   };
 };
 
-const ActionListItem = (props: ActionListItemProps): JSX.Element => {
+const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Element => {
   const {
     activeIndex,
     dropdownBaseId,
@@ -230,8 +246,9 @@ ActionListItem.componentId = componentIds.ActionListItem;
 
 export {
   ActionListItem,
+  ActionListItemProps,
   ActionListItemIcon,
   ActionListItemText,
-  ActionListItemProps,
   ActionListSection,
+  ActionListSectionProps,
 };
