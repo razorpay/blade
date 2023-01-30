@@ -43,7 +43,13 @@ const ActionListSection = ({
         </Text>
       </StyledActionListSectionTitle>
       {children}
-      {hideDivider ? null : <SectionDivider role="separator" />}
+      {hideDivider ? null : (
+        <SectionDivider
+          {...makeAccessible({
+            role: 'separator',
+          })}
+        />
+      )}
     </Box>
   );
 };
