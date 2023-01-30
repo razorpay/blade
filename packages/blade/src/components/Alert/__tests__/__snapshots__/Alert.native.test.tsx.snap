@@ -356,7 +356,13 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
             name="clip0_60_208"
           >
             <RNSVGRect
+              fill={4294967295}
               height="24"
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
               width="24"
               x={0}
               y={0}
