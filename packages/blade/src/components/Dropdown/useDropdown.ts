@@ -41,8 +41,6 @@ type DropdownContextType = {
   selectionType?: DropdownProps['selectionType'];
   hasFooterAction: boolean;
   setHasFooterAction: (value: boolean) => void;
-  recalculateOptions: () => void;
-  optionsRecalculateToggle: boolean;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -58,8 +56,6 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setShouldIgnoreBlur: noop,
   hasFooterAction: false,
   setHasFooterAction: noop,
-  optionsRecalculateToggle: false,
-  recalculateOptions: noop,
   dropdownBaseId: '',
   actionListRef: {
     current: null,

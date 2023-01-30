@@ -4,6 +4,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { componentIds } from './componentIds';
+import { getActionListFooterRole } from './getA11yRoles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -75,7 +76,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
         }
       }}
       {...makeAccessible({
-        role: 'group',
+        role: getActionListFooterRole(),
         label: props.title,
       })}
     >

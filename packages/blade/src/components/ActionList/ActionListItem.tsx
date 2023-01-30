@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import { StyledActionListItem } from './StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './getBaseActionListItemStyles';
-import { getActionListItemRole, isRoleMenu } from './getA11yRoles';
+import {
+  getActionListItemRole,
+  getActionListSectionRole,
+  getSeparatorRole,
+  isRoleMenu,
+} from './getA11yRoles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -16,12 +21,20 @@ const ActionListItemContext = React.createContext<{
   intent?: ActionListItemProps['intent'];
 }>({});
 
-const SectionDivider = styled(Box)((props) => ({
+const StyledSectionDivider = styled(Box)((props) => ({
   // @TODO: replace this with token value if we add 1px token
   height: makeSize(1),
   backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
   margin: `${makeSize(props.theme.spacing[1])} ${makeSize(props.theme.spacing[3])}`,
 }));
+
+const ActionListSectionDivider = (): JSX.Element => (
+  <StyledSectionDivider
+    {...makeAccessible({
+      role: getSeparatorRole(),
+    })}
+  />
+);
 
 const StyledActionListSectionTitle = styled(Box)((props) => ({
   padding: makeSize(props.theme.spacing[3]),
@@ -30,17 +43,24 @@ const StyledActionListSectionTitle = styled(Box)((props) => ({
 type ActionListSectionProps = {
   title: string;
   children: React.ReactNode[] | React.ReactNode;
-  hideDivider?: boolean;
+  /**
+   * Internally used to hide the divider on final item in React Native.
+   *
+   * Should not be used by consumers (also won't work on web)
+   *
+   * @private
+   */
+  _hideDivider?: boolean;
 };
 const ActionListSection: WithComponentId<ActionListSectionProps> = ({
   title,
   children,
-  hideDivider,
+  _hideDivider,
 }): JSX.Element => {
   return (
     <Box
       {...makeAccessible({
-        role: 'group',
+        role: getActionListSectionRole(),
         label: title,
       })}
     >
@@ -59,13 +79,7 @@ const ActionListSection: WithComponentId<ActionListSectionProps> = ({
       >
         {children}
       </Box>
-      {hideDivider ? null : (
-        <SectionDivider
-          {...makeAccessible({
-            role: 'separator',
-          })}
-        />
-      )}
+      {_hideDivider && isReactNative() ? null : <ActionListSectionDivider />}
     </Box>
   );
 };
@@ -251,4 +265,5 @@ export {
   ActionListItemText,
   ActionListSection,
   ActionListSectionProps,
+  ActionListSectionDivider,
 };

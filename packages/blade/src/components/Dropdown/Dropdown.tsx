@@ -42,11 +42,6 @@ const Dropdown: WithComponentId<DropdownProps> = ({
   const selectInputRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
-  const [optionsRecalculateToggle, setOptionsRecalculateToggle] = React.useState(false);
-
-  const recalculateOptions = (): void => {
-    setOptionsRecalculateToggle(!optionsRecalculateToggle);
-  };
 
   const dropdownBaseId = useId('dropdown');
 
@@ -87,8 +82,6 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       selectionType,
       hasFooterAction,
       setHasFooterAction,
-      recalculateOptions,
-      optionsRecalculateToggle,
       dropdownTriggerer,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -99,7 +92,6 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       activeIndex,
       shouldIgnoreBlur,
       selectionType,
-      optionsRecalculateToggle,
       hasFooterAction,
     ],
   );
