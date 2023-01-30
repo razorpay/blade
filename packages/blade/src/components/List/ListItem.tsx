@@ -93,7 +93,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
             justifyContent="center"
             alignSelf="flex-start"
             alignItems="center"
-            borderRadius={variant === 'ordered-filled' ? 'round' : undefined}
+            borderRadius={variant === 'ordered-filled' ? 'max' : undefined}
             backgroundColor={
               variant === 'ordered-filled'
                 ? getIn(theme, 'colors.brand.gray.a100.lowContrast')

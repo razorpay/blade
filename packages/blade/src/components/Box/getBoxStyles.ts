@@ -31,7 +31,7 @@ const getBorderRadiusValue = <RadiusValue extends string | undefined>({
 }): string | undefined => {
   if (value) {
     const radius = getIn(theme, `border.radius.${value}`);
-    if (radius.includes('%')) return radius;
+    if (radius.toString().includes('%')) return radius;
     return makeSpace(radius);
   }
   return undefined;

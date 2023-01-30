@@ -880,7 +880,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         alignItems="center"
         alignSelf="flex-start"
         backgroundColor="hsla(216, 44%, 23%, 0.18)"
-        borderRadius="round"
+        borderRadius="max"
         display="flex"
         flexShrink={0}
         height="20px"
@@ -893,7 +893,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               "alignItems": "center",
               "alignSelf": "flex-start",
               "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
-              "borderRadius": "50%",
+              "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
               "height": 20,
@@ -1005,7 +1005,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         alignItems="center"
         alignSelf="flex-start"
         backgroundColor="hsla(216, 44%, 23%, 0.18)"
-        borderRadius="round"
+        borderRadius="max"
         display="flex"
         flexShrink={0}
         height="20px"
@@ -1018,7 +1018,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               "alignItems": "center",
               "alignSelf": "flex-start",
               "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
-              "borderRadius": "50%",
+              "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
               "height": 20,
@@ -1130,7 +1130,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         alignItems="center"
         alignSelf="flex-start"
         backgroundColor="hsla(216, 44%, 23%, 0.18)"
-        borderRadius="round"
+        borderRadius="max"
         display="flex"
         flexShrink={0}
         height="20px"
@@ -1143,7 +1143,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               "alignItems": "center",
               "alignSelf": "flex-start",
               "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
-              "borderRadius": "50%",
+              "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
               "height": 20,
@@ -2102,7 +2102,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         alignItems="center"
         alignSelf="flex-start"
         backgroundColor="hsla(216, 44%, 23%, 0.18)"
-        borderRadius="round"
+        borderRadius="max"
         display="flex"
         flexShrink={0}
         height="16px"
@@ -2115,7 +2115,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               "alignItems": "center",
               "alignSelf": "flex-start",
               "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
-              "borderRadius": "50%",
+              "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
               "height": 16,
@@ -2227,7 +2227,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         alignItems="center"
         alignSelf="flex-start"
         backgroundColor="hsla(216, 44%, 23%, 0.18)"
-        borderRadius="round"
+        borderRadius="max"
         display="flex"
         flexShrink={0}
         height="16px"
@@ -2240,7 +2240,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               "alignItems": "center",
               "alignSelf": "flex-start",
               "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
-              "borderRadius": "50%",
+              "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
               "height": 16,
@@ -2352,7 +2352,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         alignItems="center"
         alignSelf="flex-start"
         backgroundColor="hsla(216, 44%, 23%, 0.18)"
-        borderRadius="round"
+        borderRadius="max"
         display="flex"
         flexShrink={0}
         height="16px"
@@ -2365,7 +2365,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               "alignItems": "center",
               "alignSelf": "flex-start",
               "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
-              "borderRadius": "50%",
+              "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
               "height": 16,
