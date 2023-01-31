@@ -4,7 +4,7 @@ import { componentIds } from './dropdownUtils';
 import type { DropdownOverlayProps } from './DropdownOverlay.web';
 import { useDropdown } from './useDropdown';
 import Box from '~components/Box';
-import { makeSize } from '~utils';
+import { makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 
 const StyledDropdownOverlay = styled(Box)((props) => ({
@@ -21,7 +21,12 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
 
   return (
     <Box position="relative">
-      <StyledDropdownOverlay display={isOpen ? 'flex' : 'none'} position="absolute" width="100%">
+      <StyledDropdownOverlay
+        display={isOpen ? 'flex' : 'none'}
+        position="absolute"
+        width="100%"
+        {...metaAttribute(MetaConstants.Component, MetaConstants.DropdownOverlay)}
+      >
         {children}
       </StyledDropdownOverlay>
     </Box>

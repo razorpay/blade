@@ -12,7 +12,7 @@ export const MetaConstants = {
   Code: 'code',
   Component: 'blade-component',
   Counter: 'counter',
-  Dropdown: 'dropdown',
+  DropdownOverlay: 'dropdown-overlay',
   Icon: 'icon',
   IconButton: 'icon-button',
   Indicator: 'indicator',

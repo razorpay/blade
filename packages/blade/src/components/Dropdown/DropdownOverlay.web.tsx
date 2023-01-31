@@ -4,7 +4,7 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import Box from '~components/Box';
-import { makeMotionTime, makeSize } from '~utils';
+import { makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
@@ -89,6 +89,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
           }
         }}
         width="100%"
+        {...metaAttribute(MetaConstants.Component, MetaConstants.DropdownOverlay)}
       >
         {children}
       </StyledDropdownOverlay>
