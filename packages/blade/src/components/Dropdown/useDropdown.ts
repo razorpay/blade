@@ -36,7 +36,7 @@ type DropdownContextType = {
   setShouldIgnoreBlur: (value: boolean) => void;
   dropdownBaseId: string;
   dropdownTriggerer?: 'SelectInput';
-  selectInputRef: React.RefObject<HTMLButtonElement | null>;
+  triggererRef: React.RefObject<HTMLButtonElement | null>;
   actionListRef: React.RefObject<HTMLDivElement | null>;
   selectionType?: DropdownProps['selectionType'];
   hasFooterAction: boolean;
@@ -60,7 +60,7 @@ const DropdownContext = React.createContext<DropdownContextType>({
   actionListRef: {
     current: null,
   },
-  selectInputRef: {
+  triggererRef: {
     current: null,
   },
 });
@@ -234,7 +234,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
     selectOption(index);
     if (!isReactNative()) {
-      rest.selectInputRef.current?.focus();
+      rest.triggererRef.current?.focus();
     }
   };
 
@@ -291,7 +291,7 @@ const useDropdown = (): UseDropdownReturnValue => {
         selectCurrentOption: () => {
           selectOption(activeIndex);
           if (rest.hasFooterAction) {
-            rest.selectInputRef.current?.focus();
+            rest.triggererRef.current?.focus();
           }
 
           const anchorLink = options[activeIndex]?.href;

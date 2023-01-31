@@ -48,7 +48,7 @@ const _SelectInput = (
     onTriggerBlur,
     dropdownBaseId,
     activeIndex,
-    selectInputRef,
+    triggererRef,
     hasFooterAction,
     dropdownTriggerer,
   } = useDropdown();
@@ -85,7 +85,7 @@ const _SelectInput = (
         {...baseInputProps}
         as="button"
         componentName={MetaConstants.SelectInput}
-        ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
+        ref={triggererRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
         value={displayValue ? displayValue : 'Select Option'}
         id={`${dropdownBaseId}-trigger`}
@@ -103,7 +103,7 @@ const _SelectInput = (
             onClick={() => {
               // Icon onClicks to the SelectInput itself
               if (!isReactNative()) {
-                selectInputRef.current?.focus();
+                triggererRef.current?.focus();
               }
               onTriggerClick();
             }}

@@ -163,7 +163,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     selectedIndices,
     setShouldIgnoreBlur,
     selectionType,
-    selectInputRef,
+    triggererRef,
     dropdownTriggerer,
   } = useDropdown();
 
@@ -207,10 +207,11 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
           }
           props.onClick?.({ name: props.value, value: isSelected });
         })}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListItem)}
         onFocus={() => {
           // We don't want to keep the browser's focus on option item. We move it to selectInput
           if (!isReactNative()) {
-            selectInputRef.current?.focus();
+            triggererRef.current?.focus();
           }
         }}
         onMouseDown={() => {
@@ -223,7 +224,6 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         hasDescription={Boolean(props.description)}
         intent={props.intent}
         isSelected={isSelected}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListItem)}
       >
         <Box display="flex" marginTop={props.description ? 'spacing.2' : undefined}>
           {selectionType === 'multiple' ? (

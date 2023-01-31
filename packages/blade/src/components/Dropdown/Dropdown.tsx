@@ -39,7 +39,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
   >([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
-  const selectInputRef = React.useRef<HTMLButtonElement>(null);
+  const triggererRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
 
@@ -77,7 +77,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       shouldIgnoreBlur,
       setShouldIgnoreBlur,
       dropdownBaseId,
-      selectInputRef,
+      triggererRef,
       actionListRef,
       selectionType,
       hasFooterAction,
