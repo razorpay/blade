@@ -43,6 +43,7 @@ const StyledDropdownOverlay = styled(Box)<{
       ${props.transition}
       transform: translateY(${makeSize(props.theme.spacing[3])});
       opacity: 0;
+      z-index: 99;
     `,
 );
 
