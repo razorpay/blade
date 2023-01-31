@@ -293,8 +293,13 @@ export const makeInputValue = (selectedIndices: number[], options: OptionsType):
  * Value that is displayed inside the select field
  */
 export const makeInputDisplayValue = (selectedIndices: number[], options: OptionsType): string => {
-  if (options.length === 0) {
+  if (options.length === 0 || selectedIndices.length === 0) {
     return '';
   }
-  return selectedIndices.map((selectedIndex) => options[selectedIndex]?.title).join(', ');
+
+  if (selectedIndices.length === 1) {
+    return options[selectedIndices[0]].title;
+  }
+
+  return `${selectedIndices.length} items selected`;
 };
