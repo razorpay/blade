@@ -12,6 +12,7 @@ import {
 } from './getA11yRoles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
+import type { Feedback } from '~tokens/theme/theme';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
@@ -33,7 +34,7 @@ type ActionListItemProps = {
   leading?: React.ReactNode;
   trailing?: React.ReactNode;
   isDefaultSelected?: boolean;
-  intent?: 'negative';
+  intent?: Extract<Feedback, 'negative'>;
 };
 
 const ActionListItemContext = React.createContext<{
