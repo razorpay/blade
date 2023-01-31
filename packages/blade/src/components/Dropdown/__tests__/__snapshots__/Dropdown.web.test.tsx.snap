@@ -116,19 +116,19 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   justify-content: flex-end;
 }
 
-.c21 {
+.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c22 {
+.c23 {
   padding-left: 8px;
   padding-right: 8px;
 }
 
-.c23 {
+.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -142,7 +142,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   justify-content: center;
 }
 
-.c24 {
+.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -163,6 +163,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -ms-transform: translateY(8px);
   transform: translateY(8px);
   opacity: 0;
+  z-index: 99;
 }
 
 .c6 {
@@ -354,7 +355,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   shadow-offset: 0px 3px;
 }
 
-.c20 {
+.c20 [role=group]:last-child > [role=separator]:last-child {
+  display: none;
+}
+
+.c21 {
   border-width: 3px;
   border-style: solid;
   border-color: transparent;
@@ -379,15 +384,15 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   width: 100%;
 }
 
-.c20:hover {
+.c21:hover {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c20.active-focus {
+.c21.active-focus {
   border-color: hsla(218,89%,51%,0.09);
 }
 
-.c20[aria-selected=true] {
+.c21[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
@@ -406,6 +411,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
     </div>
     <div
       class=""
+      data-blade-component="select-input"
     >
       <div
         class="c2"
@@ -461,7 +467,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           width="100%"
         >
           <button
-            aria-controls="dropdown-7-listbox"
+            aria-controls="dropdown-7-actionlist"
             aria-describedby=""
             aria-disabled="false"
             aria-expanded="true"
@@ -526,6 +532,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   >
     <div
       class="c17 c18"
+      data-blade-component="dropdown-overlay"
       display="block"
       style="opacity: 1;"
       width="100%"
@@ -534,86 +541,93 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
         aria-labelledby="dropdown-7-label"
         aria-multiselectable="false"
         class=" c19"
+        data-blade-component="action-list"
         elevation="5"
-        id="dropdown-7-listbox"
+        id="dropdown-7-actionlist"
         role="listbox"
       >
-        <button
-          aria-selected="false"
+        <div
           class=" c20"
-          data-index="0"
-          data-value="apple"
-          id="dropdown-7-0"
-          role="option"
-          tabindex="-1"
         >
-          <div
-            class="c21"
-            display="flex"
-          />
-          <div
-            class="c22"
+          <button
+            aria-selected="false"
+            class=" c21"
+            data-blade-component="action-list-item"
+            data-index="0"
+            data-value="apple"
+            id="dropdown-7-0"
+            role="option"
+            tabindex="-1"
           >
             <div
-              class="c23"
+              class="c22"
               display="flex"
-            >
-              <p
-                class="c7 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
-              >
-                Apple
-              </p>
-            </div>
-          </div>
-          <div
-            class="c24"
-            display="flex"
-          />
-        </button>
-        <button
-          aria-selected="false"
-          class=" c20"
-          data-index="1"
-          data-value="mango"
-          id="dropdown-7-1"
-          role="option"
-          tabindex="-1"
-        >
-          <div
-            class="c21"
-            display="flex"
-          />
-          <div
-            class="c22"
-          >
+            />
             <div
               class="c23"
-              display="flex"
             >
-              <p
-                class="c7 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
+              <div
+                class="c24"
+                display="flex"
               >
-                Mango
-              </p>
+                <p
+                  class="c7 Text__StyledText-wkh56f-0"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="100"
+                  font-style="normal"
+                  font-weight="regular"
+                >
+                  Apple
+                </p>
+              </div>
             </div>
-          </div>
-          <div
-            class="c24"
-            display="flex"
-          />
-        </button>
+            <div
+              class="c25"
+              display="flex"
+            />
+          </button>
+          <button
+            aria-selected="false"
+            class=" c21"
+            data-blade-component="action-list-item"
+            data-index="1"
+            data-value="mango"
+            id="dropdown-7-1"
+            role="option"
+            tabindex="-1"
+          >
+            <div
+              class="c22"
+              display="flex"
+            />
+            <div
+              class="c23"
+            >
+              <div
+                class="c24"
+                display="flex"
+              >
+                <p
+                  class="c7 Text__StyledText-wkh56f-0"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="100"
+                  font-style="normal"
+                  font-weight="regular"
+                >
+                  Mango
+                </p>
+              </div>
+            </div>
+            <div
+              class="c25"
+              display="flex"
+            />
+          </button>
+        </div>
       </div>
     </div>
   </div>

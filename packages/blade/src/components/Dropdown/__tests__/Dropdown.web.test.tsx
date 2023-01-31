@@ -90,7 +90,7 @@ describe('<Dropdown />', () => {
     expect(getByRole('option', { name: 'Apple' }).getAttribute('aria-selected')).toBe('true');
 
     await user.click(getByRole('option', { name: 'Mango' }));
-    expect(selectInput.textContent).toBe('Apple, Mango');
+    expect(selectInput.textContent).toBe('2 items selected');
     expect(getByRole('option', { name: 'Mango' }).getAttribute('aria-selected')).toBe('true');
   });
 
@@ -166,6 +166,8 @@ describe('<Dropdown />', () => {
     expect(selectInput.textContent).toBe('Mango');
   });
 
+  // change
+
   it('should move focus between items with arrow key in multiselect', async () => {
     const user = userEvent.setup();
     const { container, getByRole } = renderWithTheme(
@@ -217,7 +219,7 @@ describe('<Dropdown />', () => {
     expect(getActiveDescendant()).toBe('Orange');
     await user.keyboard('[Space]');
 
-    expect(selectInput.textContent).toBe('Mango, Orange');
+    expect(selectInput.textContent).toBe('2 items selected');
     expect(getByRole('option', { name: 'Apple' }).getAttribute('aria-selected')).toBe('false');
     expect(getByRole('option', { name: 'Mango' }).getAttribute('aria-selected')).toBe('true');
     expect(getByRole('option', { name: 'Orange' }).getAttribute('aria-selected')).toBe('true');
@@ -309,10 +311,10 @@ describe('<Dropdown />', () => {
     const selectInput = getByRole('combobox', { name: 'Fruits' });
 
     expect(selectInput).toBeInTheDocument();
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    expect(container.querySelector('[role=dialog]')).not.toBeVisible();
 
     await user.click(selectInput);
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
+    expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible();
 
     // Check focus
     await user.keyboard('{ArrowDown}');
@@ -320,7 +322,7 @@ describe('<Dropdown />', () => {
 
     // Move focus to footer button
     await user.keyboard('{Tab}');
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
+    expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible();
     expect(getByRole('button', { name: 'Apply' })).toHaveFocus();
 
     // Press footer button
