@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { componentIds } from './componentIds';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
+import { makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
-import { makeSize } from '~utils';
 import { Text } from '~components/Typography';
 
 const StyledActionListHeader = styled(Box)((props) => {
@@ -26,7 +26,9 @@ type ActionListHeaderProps = {
 };
 const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.Element => {
   return (
-    <StyledActionListHeader>
+    <StyledActionListHeader
+      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListHeader)}
+    >
       <Box>{props.leading}</Box>
       <Box paddingLeft="spacing.3" paddingRight="spacing.3">
         <Text variant="caption" color="surface.text.subdued.lowContrast">

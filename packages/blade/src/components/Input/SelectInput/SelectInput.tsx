@@ -7,7 +7,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { getPlatformType, isReactNative } from '~utils';
+import { getPlatformType, isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
@@ -84,6 +84,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
+        componentName={MetaConstants.SelectInput}
         ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
         value={displayValue ? displayValue : 'Select Option'}

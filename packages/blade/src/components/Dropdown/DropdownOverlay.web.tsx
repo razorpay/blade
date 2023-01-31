@@ -4,30 +4,32 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import Box from '~components/Box';
+import { makeMotionTime, makeSize } from '~utils';
 import type { WithComponentId } from '~utils';
-import { makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+// Reading directly because its not possible to get theme object on top level to be used in keyframes
+import spacing from '~tokens/global/spacing';
 
 const dropdownFadeIn = keyframes`
 from {
-  transform: translateY(0px);
+  transform: translateY(${makeSize(spacing[0])});
   opacity: 0;
 }
 
 to {
-  transform: translateY(8px);
+  transform: translateY(${makeSize(spacing[3])});
   opacity: 1;
 }
 `;
 
 const dropdownFadeOut = keyframes`
 from {
-  transform: translateY(8px);
+  transform: translateY(${makeSize(spacing[3])});
   opacity: 1;
 }
 
 to {
-  transform: translateY(0px);
+  transform: translateY(${makeSize(spacing[0])});
   opacity: 0;
 }
 `;
@@ -39,7 +41,7 @@ const StyledDropdownOverlay = styled(Box)<{
   (props) =>
     css`
       ${props.transition}
-      transform: translateY(8px);
+      transform: translateY(${makeSize(props.theme.spacing[3])});
       opacity: 0;
     `,
 );

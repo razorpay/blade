@@ -4,7 +4,14 @@ import { getActionListContainerRole, getActionListItemWrapperRole } from './getA
 import { getActionListProperties } from './actionListUtils';
 import Box from '~components/Box';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { isReactNative, makeAccessible, makeSize, isAndroid } from '~utils';
+import {
+  isReactNative,
+  makeAccessible,
+  makeSize,
+  isAndroid,
+  metaAttribute,
+  MetaConstants,
+} from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 type ActionListProps = {
@@ -105,6 +112,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
         multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
         labelledBy: `${dropdownBaseId}-label`,
       })}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionList)}
     >
       {actionListHeaderChild}
       <StyledListBoxWrapper

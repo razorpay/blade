@@ -13,8 +13,8 @@ import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { Text } from '~components/Typography';
+import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
-import { isReactNative, makeAccessible, makeSize } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 
 const ActionListItemContext = React.createContext<{
@@ -63,6 +63,7 @@ const ActionListSection: WithComponentId<ActionListSectionProps> = ({
         role: getActionListSectionRole(),
         label: title,
       })}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListSection)}
     >
       {/* We're announcing title as group label so we can hide this */}
       <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
@@ -203,9 +204,10 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         data-index={props._index}
         // Custom props for changes in styles
         selectionType={selectionType}
-        hasDescription={!!props.description}
+        hasDescription={Boolean(props.description)}
         intent={props.intent}
         isSelected={isSelected}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListItem)}
       >
         <Box display="flex" marginTop={props.description ? 'spacing.2' : undefined}>
           {selectionType === 'multiple' ? (

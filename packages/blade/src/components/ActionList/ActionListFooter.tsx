@@ -8,8 +8,8 @@ import { getActionListFooterRole } from './getA11yRoles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
+import { isReactNative, makeSize, makeAccessible, MetaConstants, metaAttribute } from '~utils';
 import type { WithComponentId } from '~utils';
-import { isReactNative, makeSize, makeAccessible } from '~utils';
 import { Text } from '~components/Typography';
 
 type ActionListFooterProps = {
@@ -79,6 +79,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
         role: getActionListFooterRole(),
         label: props.title,
       })}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListFooter)}
     >
       {props.leading ? <Box>{props.leading}</Box> : null}
       {props.title ? (
