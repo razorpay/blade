@@ -3,53 +3,112 @@ import styled from 'styled-components';
 import { StyledActionListItem } from './StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './getBaseActionListItemStyles';
+import { validateActionListItemProps } from './actionListUtils';
+import {
+  getActionListItemRole,
+  getActionListSectionRole,
+  getSeparatorRole,
+  isRoleMenu,
+} from './getA11yRoles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
+import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
-import { isReactNative, makeAccessible, makeSize } from '~utils';
+import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
+import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
+
+type ActionListItemProps = {
+  title: string;
+  description?: string;
+  onClick?: (clickProps: { name: string; value?: boolean }) => void;
+  value: string;
+  href?: string;
+  /**
+   * Internally passed from ActionList. No need to pass it explicitly
+   *
+   * @private
+   */
+  _index?: number;
+  leading?: React.ReactNode;
+  trailing?: React.ReactNode;
+  isDefaultSelected?: boolean;
+  intent?: Extract<Feedback, 'negative'>;
+};
 
 const ActionListItemContext = React.createContext<{
   intent?: ActionListItemProps['intent'];
 }>({});
 
-const SectionDivider = styled(Box)((props) => ({
+const StyledSectionDivider = styled(Box)((props) => ({
   // @TODO: replace this with token value if we add 1px token
   height: makeSize(1),
   backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
   margin: `${makeSize(props.theme.spacing[1])} ${makeSize(props.theme.spacing[3])}`,
 }));
 
+const ActionListSectionDivider = (): JSX.Element => (
+  <StyledSectionDivider
+    {...makeAccessible({
+      role: getSeparatorRole(),
+    })}
+  />
+);
+
 const StyledActionListSectionTitle = styled(Box)((props) => ({
+  // @TODO: replace this styled-component with new layout box when we have padding shorthand
   padding: makeSize(props.theme.spacing[3]),
 }));
 
-const ActionListSection = ({
-  title,
-  children,
-  hideDivider,
-}: {
+type ActionListSectionProps = {
   title: string;
   children: React.ReactNode[] | React.ReactNode;
-  hideDivider?: boolean;
+  /**
+   * Internally used to hide the divider on final item in React Native.
+   *
+   * Should not be used by consumers (also won't work on web)
+   *
+   * @private
+   */
+  _hideDivider?: boolean;
+};
+const ActionListSection: WithComponentId<ActionListSectionProps> = ({
+  title,
+  children,
+  _hideDivider,
 }): JSX.Element => {
   return (
-    <Box>
-      <StyledActionListSectionTitle>
+    <Box
+      {...makeAccessible({
+        role: getActionListSectionRole(),
+        label: title,
+      })}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListSection)}
+    >
+      {/* We're announcing title as group label so we can hide this */}
+      <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
         <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
           {title}
         </Text>
       </StyledActionListSectionTitle>
-      {children}
-      {hideDivider ? null : <SectionDivider />}
+      <Box
+        {...makeAccessible({
+          // On web, we just wrap it in another listbox to announce item count properly for particular group.
+          // On React Native, we ignore it since `menu` + `group` role will take care of accessibility
+          role: isReactNative() ? undefined : 'listbox',
+        })}
+      >
+        {children}
+      </Box>
+      {_hideDivider && isReactNative() ? null : <ActionListSectionDivider />}
     </Box>
   );
 };
 
 ActionListSection.componentId = componentIds.ActionListSection;
 
-const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const ActionListItemIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }): JSX.Element => {
   const Icon = icon;
   const { intent } = React.useContext(ActionListItemContext);
   return (
@@ -64,7 +123,9 @@ const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   );
 };
 
-const ActionListItemText = ({ children }: { children: string }): JSX.Element => {
+ActionListItemIcon.componentId = componentIds.ActionListItemIcon;
+
+const ActionListItemText: WithComponentId<{ children: string }> = ({ children }) => {
   return (
     <Text variant="caption" color="surface.text.muted.lowContrast">
       {children}
@@ -72,45 +133,11 @@ const ActionListItemText = ({ children }: { children: string }): JSX.Element => 
   );
 };
 
+ActionListItemText.componentId = componentIds.ActionListItemText;
+
 const ActionListCheckboxWrapper = styled(Box)((_props) => ({
   pointerEvents: 'none',
 }));
-
-const getActionListItemRole = (href?: string): 'link' | 'menuitem' | 'option' => {
-  if (href) {
-    return 'link';
-  }
-
-  if (isReactNative()) {
-    return 'menuitem';
-  }
-
-  return 'option';
-};
-
-/**
- *
- * ActionListItem
- *
- *
- */
-type ActionListItemProps = {
-  title: string;
-  description?: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  value: string;
-  href?: string;
-  /**
-   * Internally passed from ActionList. No need to pass it explicitly
-   *
-   * @private
-   */
-  _index?: number;
-  leading?: React.ReactNode;
-  trailing?: React.ReactNode;
-  isDefaultSelected?: boolean;
-  intent?: 'negative';
-};
 
 type ClickHandlerType = (e: React.MouseEvent<HTMLButtonElement>) => void;
 
@@ -128,7 +155,7 @@ const makeActionListItemClickable = (
   };
 };
 
-const ActionListItem = (props: ActionListItemProps): JSX.Element => {
+const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Element => {
   const {
     activeIndex,
     dropdownBaseId,
@@ -136,7 +163,8 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     selectedIndices,
     setShouldIgnoreBlur,
     selectionType,
-    selectInputRef,
+    triggererRef,
+    dropdownTriggerer,
   } = useDropdown();
 
   const renderOnWebAs = props.href ? 'a' : 'button';
@@ -144,6 +172,21 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
     typeof props._index === 'number'
       ? selectedIndices.includes(props._index)
       : props.isDefaultSelected;
+
+  React.useEffect(() => {
+    validateActionListItemProps({
+      leading: props.leading,
+      trailing: props.trailing,
+    });
+  }, [props.leading, props.trailing]);
+
+  React.useEffect(() => {
+    if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
+      throw new Error(
+        '[ActionListItem]: negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
+      );
+    }
+  }, [props.intent, dropdownTriggerer]);
 
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent }}>
@@ -155,18 +198,20 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         className={activeIndex === props._index ? 'active-focus' : ''}
         {...makeAccessible({
           selected: isSelected,
-          role: getActionListItemRole(props.href),
+          current: isRoleMenu(dropdownTriggerer) ? isSelected : undefined,
+          role: getActionListItemRole(dropdownTriggerer, props.href),
         })}
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
           if (typeof props._index === 'number') {
             onOptionClick(e, props._index);
           }
-          props.onClick?.(e);
+          props.onClick?.({ name: props.value, value: isSelected });
         })}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListItem)}
         onFocus={() => {
           // We don't want to keep the browser's focus on option item. We move it to selectInput
           if (!isReactNative()) {
-            selectInputRef.current?.focus();
+            triggererRef.current?.focus();
           }
         }}
         onMouseDown={() => {
@@ -176,7 +221,7 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
         data-index={props._index}
         // Custom props for changes in styles
         selectionType={selectionType}
-        hasDescription={!!props.description}
+        hasDescription={Boolean(props.description)}
         intent={props.intent}
         isSelected={isSelected}
       >
@@ -221,7 +266,11 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
             ) : null}
           </Box>
         </Box>
-        <Box display="flex" marginLeft="auto">
+        <Box
+          display="flex"
+          marginLeft="auto"
+          marginTop={props.description ? 'spacing.2' : undefined}
+        >
           {props.trailing}
         </Box>
       </StyledActionListItem>
@@ -233,8 +282,10 @@ ActionListItem.componentId = componentIds.ActionListItem;
 
 export {
   ActionListItem,
+  ActionListItemProps,
   ActionListItemIcon,
   ActionListItemText,
-  ActionListItemProps,
   ActionListSection,
+  ActionListSectionProps,
+  ActionListSectionDivider,
 };

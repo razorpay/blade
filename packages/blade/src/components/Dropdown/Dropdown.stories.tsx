@@ -21,7 +21,6 @@ import {
   ArrowRightIcon,
   HistoryIcon,
   SearchIcon,
-  TrashIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 import Box from '~components/Box';
@@ -77,16 +76,8 @@ export const WithSelect = (args: DropdownProps): JSX.Element => {
                 value="info"
               />
             </ActionListSection>
-            <ActionListSection title="Danger">
-              <ActionListItem
-                leading={<ActionListItemIcon icon={TrashIcon} />}
-                title="Delete"
-                value="Delete"
-                intent="negative"
-              />
-            </ActionListSection>
             <ActionListFooter
-              title="Search Tips"
+              title="Search"
               leading={<ActionListFooterIcon icon={SearchIcon} />}
               trailing={
                 <Button isFullWidth onClick={console.log}>

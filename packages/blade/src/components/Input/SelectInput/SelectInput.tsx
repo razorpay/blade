@@ -7,9 +7,10 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { getPlatformType, isReactNative } from '~utils';
+import { getPlatformType, isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -42,12 +43,14 @@ const _SelectInput = (
     isOpen,
     value,
     displayValue,
-    onSelectClick,
-    onSelectKeydown,
-    onSelectBlur,
+    onTriggerClick,
+    onTriggerKeydown,
+    onTriggerBlur,
     dropdownBaseId,
     activeIndex,
-    selectInputRef,
+    triggererRef,
+    hasFooterAction,
+    dropdownTriggerer,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref);
@@ -81,27 +84,28 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
+        componentName={MetaConstants.SelectInput}
+        ref={triggererRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
         value={displayValue ? displayValue : 'Select Option'}
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
-        hasPopup={isReactNative() ? 'menu' : 'listbox'}
+        hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
         isPopupExpanded={isOpen}
-        onClick={onSelectClick}
-        onKeyDown={onSelectKeydown}
-        onBlur={onSelectBlur}
+        onClick={onTriggerClick}
+        onKeyDown={onTriggerKeydown}
+        onBlur={onTriggerBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
-        popupId={`${dropdownBaseId}-listbox`}
+        popupId={`${dropdownBaseId}-actionlist`}
         interactionElement={
           <SelectChevronIcon
             onClick={() => {
               // Icon onClicks to the SelectInput itself
               if (!isReactNative()) {
-                selectInputRef.current?.focus();
+                triggererRef.current?.focus();
               }
-              onSelectClick();
+              onTriggerClick();
             }}
             icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />

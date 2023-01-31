@@ -1,4 +1,4 @@
 export { isReactNative } from './isReactNative';
-export { isAndroid } from './isAndroid';
+export * from './getNativePlatform';
 export { Platform } from './platform.native';
 export * from './castUtils';

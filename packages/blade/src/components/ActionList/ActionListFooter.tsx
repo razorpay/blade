@@ -4,10 +4,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { componentIds } from './componentIds';
+import { getActionListFooterRole } from './getA11yRoles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { isReactNative, makeSize } from '~utils';
+import {
+  isReactNative,
+  makeSize,
+  makeAccessible,
+  MetaConstants,
+  metaAttribute,
+  isValidAllowedChildren,
+} from '~utils';
+import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
 
 type ActionListFooterProps = {
@@ -29,17 +38,29 @@ const StyledActionListFooter = styled(Box)((props) => {
   };
 });
 
-const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
+const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.Element => {
   const footerRef = React.useRef<HTMLDivElement | null>(null);
   const {
     setShouldIgnoreBlur,
     setHasFooterAction,
-    onSelectKeydown,
+    onTriggerKeydown,
     activeIndex,
     setIsOpen,
+    selectionType,
   } = useDropdown();
 
   React.useEffect(() => {
+    React.Children.map(props.leading, (child) => {
+      if (!isValidAllowedChildren(child, componentIds.ActionListFooterIcon)) {
+        throw new Error(
+          `[ActionListFooter]: Only ${componentIds.ActionListFooterIcon} is allowed in leading prop`,
+        );
+      }
+    });
+  }, [props.leading]);
+
+  React.useEffect(() => {
+    // We only need this in web to handle some keydown events
     if (!isReactNative() && footerRef.current?.querySelector('button, a')) {
       setHasFooterAction(true);
     }
@@ -53,17 +74,25 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
       ref={footerRef as any}
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onMouseDown={() => {
-        setShouldIgnoreBlur(true);
+        if (selectionType === 'multiple') {
+          setShouldIgnoreBlur(true);
+        }
       }}
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onKeyDown={(e) => {
         const nativeEvent = e.nativeEvent;
-        // We ignore the selection keydowns on footer to let users click on items
-        if ((nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0) {
+        const shouldIgnoreDropdownKeydown =
+          (nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0;
+        // We ignore the selection keydowns on footer to let users click on items on the footer
+        if (shouldIgnoreDropdownKeydown) {
+          if (selectionType === 'single') {
+            // We close the dropdown on clicks in single select
+            setIsOpen(false);
+          }
           return;
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        onSelectKeydown?.({ event: e.nativeEvent } as any);
+        onTriggerKeydown?.({ event: e.nativeEvent } as any);
       }}
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onBlur={(e) => {
@@ -73,10 +102,15 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
           setIsOpen(false);
         }
       }}
+      {...makeAccessible({
+        role: getActionListFooterRole(),
+        label: props.title,
+      })}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListFooter)}
     >
       {props.leading ? <Box>{props.leading}</Box> : null}
       {props.title ? (
-        <Box paddingLeft="spacing.3" paddingRight="spacing.3">
+        <Box flex="1" paddingLeft="spacing.3" paddingRight="spacing.3">
           <Text variant="caption" color="surface.text.subdued.lowContrast">
             {props.title}
           </Text>
@@ -98,9 +132,11 @@ const ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
 
 ActionListFooter.componentId = componentIds.ActionListFooter;
 
-const ActionListFooterIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const ActionListFooterIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }) => {
   const Icon = icon;
   return <Icon color="surface.text.muted.lowContrast" size="small" />;
 };
+
+ActionListFooterIcon.componentId = componentIds.ActionListFooterIcon;
 
 export { ActionListFooter, ActionListFooterIcon, ActionListFooterProps };
