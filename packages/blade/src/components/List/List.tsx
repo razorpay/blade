@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import type { IconComponent } from '../Icons';
 import { ListProvider, useListContext } from './ListContext';
@@ -35,28 +35,50 @@ const StyledUnorderedList = styled(UnorderedList)<{ marginTop?: DotNotationSpaci
   }),
 );
 
+/**
+ * List Component is used to display a set of related items that are composed of text/links. Each list item begins with a bullet or a number.
+ *
+ * ## Usage
+ *
+ * ```tsx
+ *   <List
+ *     variant='unordered'
+ *     size='medium'
+ *   >
+ *    <ListItem>
+ *      Item 1
+ *      <List>
+ *        <ListItem>Item 1.1</ListItem>
+ *      </List>
+ *    </ListItem>
+ *    <ListItem>Item 2</ListItem>
+ *  <List />
+ * ```
+ */
 const List = ({ variant = 'unordered', size, children, icon }: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? StyledUnorderedList : StyledOrderedList;
   const { level, size: listContextSize } = useListContext();
-  const childrenArray = React.Children.toArray(children);
+  const listContextValue = useMemo(
+    () => ({
+      level: level ? level + 1 : 1,
+      size: size ?? listContextSize,
+      icon,
+      variant,
+    }),
+    [icon, level, listContextSize, size, variant],
+  );
 
+  const childrenArray = React.Children.toArray(children);
   const childListItems = childrenArray.filter((child) =>
     isValidAllowedChildren(child, 'ListItem') ? child : null,
   );
 
   return (
-    <ListProvider
-      value={{
-        level: level ? level + 1 : 1,
-        size: size ?? listContextSize,
-        icon,
-        variant,
-      }}
-    >
+    <ListProvider value={listContextValue}>
       <ListElement
         marginTop={!level ? 'spacing.3' : undefined}
         {...metaAttribute(MetaConstants.Component, MetaConstants.List)}
-        {...makeAccessible({ role: 'list' })} // Needed for react-native
+        {...makeAccessible({ role: 'list' })} // Role needed for react-native
       >
         {variant === 'unordered'
           ? childListItems

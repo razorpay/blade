@@ -120,7 +120,7 @@ export const Default = ListTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {};
 
-const ListMixNestedTemplate: ComponentStory<typeof List> = ({ ...args }) => {
+const ListMixNestedTemplate: ComponentStory<typeof List> = () => {
   return (
     <List variant="ordered">
       <ListItem>
