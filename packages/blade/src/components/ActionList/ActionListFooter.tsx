@@ -8,7 +8,14 @@ import { getActionListFooterRole } from './getA11yRoles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { isReactNative, makeSize, makeAccessible, MetaConstants, metaAttribute } from '~utils';
+import {
+  isReactNative,
+  makeSize,
+  makeAccessible,
+  MetaConstants,
+  metaAttribute,
+  isValidAllowedChildren,
+} from '~utils';
 import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
 
@@ -42,6 +49,17 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
   } = useDropdown();
 
   React.useEffect(() => {
+    React.Children.map(props.leading, (child) => {
+      if (!isValidAllowedChildren(child, componentIds.ActionListFooterIcon)) {
+        throw new Error(
+          `[ActionListFooter]: Only ${componentIds.ActionListFooterIcon} is allowed in leading prop`,
+        );
+      }
+    });
+  }, [props.leading]);
+
+  React.useEffect(() => {
+    // We only need this in web to handle some keydown events
     if (!isReactNative() && footerRef.current?.querySelector('button, a')) {
       setHasFooterAction(true);
     }
@@ -105,9 +123,11 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
 
 ActionListFooter.componentId = componentIds.ActionListFooter;
 
-const ActionListFooterIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const ActionListFooterIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }) => {
   const Icon = icon;
   return <Icon color="surface.text.muted.lowContrast" size="small" />;
 };
+
+ActionListFooterIcon.componentId = componentIds.ActionListFooterIcon;
 
 export { ActionListFooter, ActionListFooterIcon, ActionListFooterProps };

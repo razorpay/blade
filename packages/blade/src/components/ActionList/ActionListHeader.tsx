@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { componentIds } from './componentIds';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
-import { makeSize, metaAttribute, MetaConstants } from '~utils';
+import { isValidAllowedChildren, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
 
@@ -25,6 +25,16 @@ type ActionListHeaderProps = {
   leading?: React.ReactNode;
 };
 const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.Element => {
+  React.useEffect(() => {
+    React.Children.map(props.leading, (child) => {
+      if (!isValidAllowedChildren(child, componentIds.ActionListHeaderIcon)) {
+        throw new Error(
+          `[ActionListHeader]: Only ${componentIds.ActionListHeaderIcon} is allowed in leading prop`,
+        );
+      }
+    });
+  }, [props.leading]);
+
   return (
     <StyledActionListHeader
       {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListHeader)}
@@ -41,9 +51,11 @@ const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.El
 
 ActionListHeader.componentId = componentIds.ActionListHeader;
 
-const ActionListHeaderIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const ActionListHeaderIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }) => {
   const Icon = icon;
   return <Icon color="surface.text.muted.lowContrast" size="small" />;
 };
+
+ActionListHeaderIcon.componentId = componentIds.ActionListHeaderIcon;
 
 export { ActionListHeader, ActionListHeaderIcon, ActionListHeaderProps };

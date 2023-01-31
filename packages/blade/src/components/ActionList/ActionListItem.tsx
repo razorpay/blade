@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { StyledActionListItem } from './StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './getBaseActionListItemStyles';
+import { validateActionListItemProps } from './actionListUtils';
 import {
   getActionListItemRole,
   getActionListSectionRole,
@@ -16,6 +17,24 @@ import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
+
+type ActionListItemProps = {
+  title: string;
+  description?: string;
+  onClick?: (clickProps: { name: string; value?: boolean }) => void;
+  value: string;
+  href?: string;
+  /**
+   * Internally passed from ActionList. No need to pass it explicitly
+   *
+   * @private
+   */
+  _index?: number;
+  leading?: React.ReactNode;
+  trailing?: React.ReactNode;
+  isDefaultSelected?: boolean;
+  intent?: 'negative';
+};
 
 const ActionListItemContext = React.createContext<{
   intent?: ActionListItemProps['intent'];
@@ -37,6 +56,7 @@ const ActionListSectionDivider = (): JSX.Element => (
 );
 
 const StyledActionListSectionTitle = styled(Box)((props) => ({
+  // @TODO: replace this styled-component with new layout box when we have padding shorthand
   padding: makeSize(props.theme.spacing[3]),
 }));
 
@@ -87,7 +107,7 @@ const ActionListSection: WithComponentId<ActionListSectionProps> = ({
 
 ActionListSection.componentId = componentIds.ActionListSection;
 
-const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const ActionListItemIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }): JSX.Element => {
   const Icon = icon;
   const { intent } = React.useContext(ActionListItemContext);
   return (
@@ -102,7 +122,9 @@ const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   );
 };
 
-const ActionListItemText = ({ children }: { children: string }): JSX.Element => {
+ActionListItemIcon.componentId = componentIds.ActionListItemIcon;
+
+const ActionListItemText: WithComponentId<{ children: string }> = ({ children }) => {
   return (
     <Text variant="caption" color="surface.text.muted.lowContrast">
       {children}
@@ -110,33 +132,11 @@ const ActionListItemText = ({ children }: { children: string }): JSX.Element => 
   );
 };
 
+ActionListItemText.componentId = componentIds.ActionListItemText;
+
 const ActionListCheckboxWrapper = styled(Box)((_props) => ({
   pointerEvents: 'none',
 }));
-
-/**
- *
- * ActionListItem
- *
- *
- */
-type ActionListItemProps = {
-  title: string;
-  description?: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  value: string;
-  href?: string;
-  /**
-   * Internally passed from ActionList. No need to pass it explicitly
-   *
-   * @private
-   */
-  _index?: number;
-  leading?: React.ReactNode;
-  trailing?: React.ReactNode;
-  isDefaultSelected?: boolean;
-  intent?: 'negative';
-};
 
 type ClickHandlerType = (e: React.MouseEvent<HTMLButtonElement>) => void;
 
@@ -172,6 +172,13 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
       ? selectedIndices.includes(props._index)
       : props.isDefaultSelected;
 
+  React.useEffect(() => {
+    validateActionListItemProps({
+      leading: props.leading,
+      trailing: props.trailing,
+    });
+  }, [props.leading, props.trailing]);
+
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent }}>
       <StyledActionListItem
@@ -189,7 +196,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
           if (typeof props._index === 'number') {
             onOptionClick(e, props._index);
           }
-          props.onClick?.(e);
+          props.onClick?.({ name: props.value, value: isSelected });
         })}
         onFocus={() => {
           // We don't want to keep the browser's focus on option item. We move it to selectInput

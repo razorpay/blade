@@ -1,5 +1,6 @@
 import React from 'react';
 import { componentIds } from './componentIds';
+import type { ActionListItemProps } from './ActionListItem';
 import type { OptionsType } from '~components/Dropdown/useDropdown';
 import { getComponentId, isReactNative, isValidAllowedChildren } from '~utils';
 
@@ -35,6 +36,13 @@ const getActionListSectionPosition = (
     lastActionListSectionIndex,
   };
 };
+
+const actionListAllowedChildren = [
+  componentIds.ActionListFooter,
+  componentIds.ActionListHeader,
+  componentIds.ActionListItem,
+  componentIds.ActionListSection,
+];
 
 /**
  * Loops over action list items and returns different properties from children like option values, header and footer child, etc
@@ -124,6 +132,10 @@ const getActionListProperties = (
       if (isValidAllowedChildren(child, componentIds.ActionListItem)) {
         return getActionListItemWithId(child);
       }
+
+      throw new Error(
+        `[ActionList]: Only ${actionListAllowedChildren.join(', ')} supported inside ActionList`,
+      );
     }
     return child;
   });
@@ -137,4 +149,34 @@ const getActionListProperties = (
   };
 };
 
-export { getActionListProperties };
+const validateActionListItemProps = ({
+  leading,
+  trailing,
+}: {
+  leading: ActionListItemProps['leading'];
+  trailing: ActionListItemProps['trailing'];
+}): void => {
+  React.Children.map(trailing, (child) => {
+    if (
+      !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
+      !isValidAllowedChildren(child, componentIds.ActionListItemText)
+    ) {
+      throw new Error(
+        `[ActionListItem]: Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
+      );
+    }
+  });
+
+  React.Children.map(leading, (child) => {
+    if (
+      !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
+      !isValidAllowedChildren(child, componentIds.ActionListItemText)
+    ) {
+      throw new Error(
+        `[ActionListItem]: Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in leading prop`,
+      );
+    }
+  });
+};
+
+export { getActionListProperties, validateActionListItemProps };
