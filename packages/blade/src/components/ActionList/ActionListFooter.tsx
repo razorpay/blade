@@ -46,6 +46,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
     onTriggerKeydown,
     activeIndex,
     setIsOpen,
+    selectionType,
   } = useDropdown();
 
   React.useEffect(() => {
@@ -73,13 +74,21 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
       ref={footerRef as any}
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onMouseDown={() => {
-        setShouldIgnoreBlur(true);
+        if (selectionType === 'multiple') {
+          setShouldIgnoreBlur(true);
+        }
       }}
       // @ts-ignore: Ignoring because the TS fails for React Native and works for web
       onKeyDown={(e) => {
         const nativeEvent = e.nativeEvent;
-        // We ignore the selection keydowns on footer to let users click on items
-        if ((nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0) {
+        const shouldIgnoreDropdownKeydown =
+          (nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0;
+        // We ignore the selection keydowns on footer to let users click on items on the footer
+        if (shouldIgnoreDropdownKeydown) {
+          if (selectionType === 'single') {
+            // We close the dropdown on clicks in single select
+            setIsOpen(false);
+          }
           return;
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -101,7 +110,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
     >
       {props.leading ? <Box>{props.leading}</Box> : null}
       {props.title ? (
-        <Box paddingLeft="spacing.3" paddingRight="spacing.3">
+        <Box flex="1" paddingLeft="spacing.3" paddingRight="spacing.3">
           <Text variant="caption" color="surface.text.subdued.lowContrast">
             {props.title}
           </Text>

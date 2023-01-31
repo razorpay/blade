@@ -12,8 +12,8 @@ import {
 } from './getA11yRoles';
 import Box from '~components/Box';
 import type { IconComponent } from '~components/Icons';
-import type { Feedback } from '~tokens/theme/theme';
 import { useDropdown } from '~components/Dropdown/useDropdown';
+import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
@@ -180,6 +180,14 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     });
   }, [props.leading, props.trailing]);
 
+  React.useEffect(() => {
+    if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
+      throw new Error(
+        '[ActionListItem]: negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
+      );
+    }
+  }, [props.intent, dropdownTriggerer]);
+
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent }}>
       <StyledActionListItem
@@ -258,7 +266,11 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
             ) : null}
           </Box>
         </Box>
-        <Box display="flex" marginLeft="auto">
+        <Box
+          display="flex"
+          marginLeft="auto"
+          marginTop={props.description ? 'spacing.2' : undefined}
+        >
           {props.trailing}
         </Box>
       </StyledActionListItem>
