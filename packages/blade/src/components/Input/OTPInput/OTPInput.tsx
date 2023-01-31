@@ -102,6 +102,7 @@ const OTPInput = ({
 }: OTPInputProps): React.ReactElement => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
+  const [inputType, setInputType] = useState<'password'[] | undefined[]>([]);
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
   const { platform } = useTheme();
@@ -155,6 +156,9 @@ const OTPInput = ({
       return;
     }
 
+    const newInputType = inputType;
+    newInputType[currentOtpIndex] = isMasked ? 'password' : undefined;
+    setInputType(newInputType);
     if (inputValue && inputValue.length > 0) {
       // When OTPInput is controlled, set the otpValue as the consumer passed `inputValue` and append the value on current index based on user's input.
       // User's input will not reflect on the otp but will trigger `onChange` callback with the user's input appended so that the consumer can take appropriate action.
@@ -200,6 +204,9 @@ const OTPInput = ({
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
       event.preventDefault?.();
       handleOnChange({ value: '', currentOtpIndex });
+      const newInputType = inputType;
+      newInputType[currentOtpIndex] = undefined;
+      setInputType(newInputType);
       focusOnOtpByIndex(--currentOtpIndex);
     } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
       event.preventDefault?.();
@@ -267,7 +274,7 @@ const OTPInput = ({
             errorText={errorText}
             helpText={helpText}
             hideFormHint={true}
-            type={isMasked ? 'password' : undefined}
+            type={inputType[index]}
           />
         </Box>,
       );
