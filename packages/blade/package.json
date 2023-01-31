@@ -75,7 +75,9 @@
     "start:native": "run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
     "start:web": "yarn react",
     "start:all": "run-p start:native start:web",
-    "watch:test": "yarn test:react --watch --onlyChanged",
+    "watch:test": "run-p watch:test:*",
+    "watch:test:react": "yarn test:react --watch --onlyChanged",
+    "watch:test:react-native": "yarn test:react-native --watch --onlyChanged",
     "chromatic": "npx chromatic",
     "publish-npm": "node ./scripts/publishToNpm.js",
     "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js"

@@ -290,7 +290,7 @@ const useDropdown = (): UseDropdownReturnValue => {
         onComboType,
         selectCurrentOption: () => {
           selectOption(activeIndex);
-          if (rest.hasFooterAction) {
+          if (rest.hasFooterAction && !isReactNative()) {
             rest.triggererRef.current?.focus();
           }
 

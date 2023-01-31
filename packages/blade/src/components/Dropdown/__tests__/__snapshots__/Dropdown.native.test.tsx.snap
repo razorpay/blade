@@ -1,0 +1,760 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dropdown /> should render dropdown 1`] = `
+Array [
+  <View
+    position="relative"
+    style={
+      Array [
+        Object {
+          "position": "relative",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <View
+        display="flex"
+        flexDirection="column"
+        position="relative"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "flexDirection": "column",
+              "position": "relative",
+            },
+          ]
+        }
+      >
+        <View
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          marginBottom="spacing.0"
+          marginTop="spacing.0"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 0,
+                "marginTop": 0,
+              },
+            ]
+          }
+        >
+          <View
+            marginBottom="spacing.2"
+            marginRight="spacing.5"
+            style={
+              Array [
+                Object {
+                  "marginBottom": 4,
+                  "marginRight": 16,
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="center"
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              gap="spacing.0"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 0,
+                  },
+                ]
+              }
+            >
+              <Text
+                color="surface.text.subdued.lowContrast"
+                fontFamily="text"
+                fontSize={75}
+                fontStyle="normal"
+                fontWeight="bold"
+                lineHeight="s"
+                style={
+                  Array [
+                    Object {
+                      "color": "hsla(217, 18%, 45%, 1)",
+                      "fontFamily": "Lato",
+                      "fontSize": 12,
+                      "fontStyle": "normal",
+                      "fontWeight": "700",
+                      "lineHeight": 16,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                Select Fruit
+              </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "borderColor": "black",
+                      "borderStyle": "solid",
+                      "borderWidth": 0,
+                      "clip": "rect(0 0 0 0)",
+                      "clipPath": "inset(50%)",
+                      "height": 1,
+                      "marginBottom": -1,
+                      "marginLeft": 0,
+                      "marginRight": -1,
+                      "marginTop": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                      "wordWrap": "normal",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  color="surface.text.normal.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(217, 56%, 17%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                      Object {},
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          currentInteraction="default"
+          display="flex"
+          flexDirection="row"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "display": "flex",
+                "flexDirection": "row",
+                "width": "100%",
+              },
+            ]
+          }
+          width="100%"
+        >
+          <View
+            accessibilityRole="combobox"
+            accessibilityState={
+              Object {
+                "disabled": false,
+                "expanded": false,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "color": "hsla(216, 27%, 36%, 1)",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "fontFamily": "Lato",
+                "fontSize": 15,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "height": 36,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "opacity": 1,
+                "paddingBottom": 8,
+                "paddingLeft": 12,
+                "paddingRight": 8,
+                "paddingTop": 8,
+                "textAlignVertical": "top",
+                "textDecorationLine": "none",
+                "width": "100%",
+              }
+            }
+          >
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              Select Option
+            </Text>
+          </View>
+          <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                },
+              ]
+            }
+          >
+            <View
+              display="flex"
+              paddingRight="spacing.4"
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                    "paddingRight": 12,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Chevron Icon"
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                  }
+                }
+              >
+                <RNSVGSvgView
+                  accessibilityElementsHidden={true}
+                  align="xMidYMid"
+                  bbHeight="16px"
+                  bbWidth="16px"
+                  fill="none"
+                  focusable={false}
+                  height="16px"
+                  importantForAccessibility="no-hide-descendants"
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
+                    ]
+                  }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width="16px"
+                >
+                  <RNSVGGroup
+                    fill={null}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      clipRule={0}
+                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                      fill={4279445060}
+                      fillRule={0}
+                      propList={
+                        Array [
+                          "fill",
+                          "fillRule",
+                        ]
+                      }
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "hsla(213, 89%, 56%, 1)",
+                "bottom": 0,
+                "height": 1,
+                "left": 0,
+                "opacity": 1,
+                "position": "absolute",
+                "right": 0,
+              },
+              Object {
+                "opacity": undefined,
+                "width": "undefined%",
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        marginLeft={0}
+        style={
+          Array [
+            Object {
+              "marginLeft": 0,
+            },
+          ]
+        }
+      >
+        <View
+          display="flex"
+          flexDirection="row"
+          justifyContent="flex-end"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+  <View
+    position="relative"
+    style={
+      Array [
+        Object {
+          "position": "relative",
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      collapsable={false}
+      display="none"
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "display": "none",
+            "height": "100%",
+            "position": "static",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        display="none"
+        position="absolute"
+        style={
+          Array [
+            Object {
+              "display": "none",
+              "position": "absolute",
+              "transform": Array [
+                Object {
+                  "translateY": 8,
+                },
+              ],
+              "width": "100%",
+            },
+          ]
+        }
+        width="100%"
+      >
+        <View
+          accessibilityLabelledBy="dropdown-7-label"
+          accessibilityRole="menu"
+          elevation={5}
+          id="dropdown-7-actionlist"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                "borderRadius": 4,
+                "borderWidth": 1,
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+                "shadowColor": "hsla(216, 15%, 54%, 0.18)",
+                "shadowOffset": Object {
+                  "height": 3,
+                  "width": 0,
+                },
+                "shadowOpacity": 1,
+                "shadowRadius": 8,
+              },
+            ]
+          }
+          surfaceLevel={2}
+        >
+          <View
+            accessibilityRole="menu"
+            style={
+              Array [
+                Object {},
+              ]
+            }
+          >
+            <View
+              accessibilityRole="menuitem"
+              accessibilityState={
+                Object {
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "borderColor": "transparent",
+                  "borderRadius": 4,
+                  "borderStyle": "solid",
+                  "borderWidth": 3,
+                  "cursor": "pointer",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "textDecorationColor": "black",
+                  "textDecorationLine": "none",
+                  "textDecorationStyle": "solid",
+                  "width": "100%",
+                }
+              }
+            >
+              <View
+                display="flex"
+                style={
+                  Array [
+                    Object {
+                      "display": "flex",
+                    },
+                  ]
+                }
+              />
+              <View
+                paddingLeft="spacing.3"
+                paddingRight="spacing.3"
+                style={
+                  Array [
+                    Object {
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  style={
+                    Array [
+                      Object {
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="surface.text.normal.lowContrast"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="regular"
+                    lineHeight="l"
+                    style={
+                      Array [
+                        Object {
+                          "color": "hsla(217, 56%, 17%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 15,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "lineHeight": 24,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                        Object {},
+                      ]
+                    }
+                  >
+                    Mango
+                  </Text>
+                </View>
+              </View>
+              <View
+                display="flex"
+                marginLeft="auto"
+                style={
+                  Array [
+                    Object {
+                      "display": "flex",
+                      "marginLeft": "auto",
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              accessibilityRole="menuitem"
+              accessibilityState={
+                Object {
+                  "selected": false,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "borderColor": "transparent",
+                  "borderRadius": 4,
+                  "borderStyle": "solid",
+                  "borderWidth": 3,
+                  "cursor": "pointer",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                  "textDecorationColor": "black",
+                  "textDecorationLine": "none",
+                  "textDecorationStyle": "solid",
+                  "width": "100%",
+                }
+              }
+            >
+              <View
+                display="flex"
+                style={
+                  Array [
+                    Object {
+                      "display": "flex",
+                    },
+                  ]
+                }
+              />
+              <View
+                paddingLeft="spacing.3"
+                paddingRight="spacing.3"
+                style={
+                  Array [
+                    Object {
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  style={
+                    Array [
+                      Object {
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="surface.text.normal.lowContrast"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="regular"
+                    lineHeight="l"
+                    style={
+                      Array [
+                        Object {
+                          "color": "hsla(217, 56%, 17%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 15,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "lineHeight": 24,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                        Object {},
+                      ]
+                    }
+                  >
+                    Apple
+                  </Text>
+                </View>
+              </View>
+              <View
+                display="flex"
+                marginLeft="auto"
+                style={
+                  Array [
+                    Object {
+                      "display": "flex",
+                      "marginLeft": "auto",
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>,
+]
+`;
