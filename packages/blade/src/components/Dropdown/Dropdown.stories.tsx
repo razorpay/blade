@@ -1,7 +1,8 @@
-import type { Meta } from '@storybook/react';
-import { Dropdown, DropdownOverlay } from './';
-import type { DropdownProps } from './';
-import { SelectInput } from '~components/Input/SelectInput';
+import type { ComponentStory, Meta } from '@storybook/react';
+import { Title } from '@storybook/addon-docs';
+import type { ReactElement } from 'react';
+import { Dropdown, DropdownOverlay } from '.';
+import type { DropdownProps } from '.';
 import {
   ActionList,
   ActionListFooter,
@@ -22,8 +23,109 @@ import {
   HistoryIcon,
   SearchIcon,
 } from '~components/Icons';
-import { Button } from '~components/Button';
+
 import Box from '~components/Box';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { SelectInput } from '~components/Input/SelectInput';
+import { Button } from '~components/Button';
+
+const Page = (): ReactElement => {
+  return (
+    <StoryPageWrapper
+      componentDescription="Dropdown component is generic component that controls the dropdown functionality. It can be used with multiple triggers and mostly contains ActionList component inside it"
+      componentName="Dropdown"
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189840',
+      }}
+    >
+      <Title>Usage</Title>
+      <Sandbox editorHeight={600}>
+        {`
+          import { 
+            Dropdown, 
+            DropdownOverlay,
+            SelectInput,
+            ActionList,
+            ActionListHeader,
+            ActionListHeaderIcon,
+            ActionListItem,
+            ActionListItemIcon,
+            ActionListItemText,
+            ActionListSection,
+            ActionListFooter,
+            ActionListFooterIcon,
+            HistoryIcon,
+            HomeIcon,
+            ArrowRightIcon,
+            SettingsIcon,
+            DownloadIcon,
+            InfoIcon,
+            SearchIcon,
+            Button
+          } from '@razorpay/blade/components';
+
+          function App(): JSX.Element {
+            return (
+              <Dropdown selectionType="multiple">
+                <SelectInput
+                  label="Select Action"
+                  name="action"
+                  onChange={({ name, values }) => {
+                    console.log(name, values);
+                  }}
+                />
+                <DropdownOverlay>
+                  <ActionList>
+                    <ActionListHeader
+                      title="Recent Searches"
+                      leading={<ActionListHeaderIcon icon={HistoryIcon} />}
+                    />
+                    <ActionListItem
+                      leading={<ActionListItemIcon icon={HomeIcon} />}
+                      trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+                      title="Home"
+                      value="home"
+                      description="Home sweet home it is"
+                    />
+                    <ActionListSection title="Options">
+                      <ActionListItem
+                        leading={<ActionListItemIcon icon={SettingsIcon} />}
+                        trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
+                        title="Settings"
+                        value="settings"
+                      />
+                      <ActionListItem
+                        leading={<ActionListItemIcon icon={DownloadIcon} />}
+                        title="Download"
+                        value="download"
+                      />
+                    </ActionListSection>
+                    <ActionListItem
+                      leading={<ActionListItemIcon icon={InfoIcon} />}
+                      title="Info"
+                      value="info"
+                    />
+                    <ActionListFooter
+                      title="Search"
+                      leading={<ActionListFooterIcon icon={SearchIcon} />}
+                      trailing={<Button onClick={console.log}>Apply</Button>}
+                    />
+                  </ActionList>
+                </DropdownOverlay>
+              </Dropdown>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
+  );
+};
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown',
@@ -31,11 +133,25 @@ const DropdownStoryMeta: Meta = {
   args: {
     selectionType: 'single',
   } as DropdownProps,
+  argTypes: {
+    selectionType: {
+      name: 'selectionType',
+      control: { type: 'radio' },
+      options: ['single', 'multiple'],
+      description: 'decides whether to render multiselect dropdown or single select dropdown',
+      defaultValue: '"single"',
+    },
+  },
+  parameters: {
+    docs: {
+      page: () => <Page />,
+    },
+  },
 };
 
-export const WithSelect = (args: DropdownProps): JSX.Element => {
+const DropdownTemplate: ComponentStory<typeof Dropdown> = (args) => {
   return (
-    <Box minHeight={400}>
+    <Box minHeight={200}>
       <Dropdown {...args}>
         <SelectInput
           label="Select Action"
@@ -46,44 +162,21 @@ export const WithSelect = (args: DropdownProps): JSX.Element => {
         />
         <DropdownOverlay>
           <ActionList>
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
             <ActionListItem
               leading={<ActionListItemIcon icon={HomeIcon} />}
-              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
               title="Home"
               value="home"
-              description="Home sweet home it is"
             />
-            <ActionListSection title="Options">
-              <ActionListItem
-                leading={<ActionListItemIcon icon={SettingsIcon} />}
-                trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
-                title="Settings"
-                value="settings"
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={DownloadIcon} />}
-                title="Download"
-                value="download"
-                isDefaultSelected
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={InfoIcon} />}
-                title="Info"
-                value="info"
-              />
-            </ActionListSection>
-            <ActionListFooter
-              title="Search"
-              leading={<ActionListFooterIcon icon={SearchIcon} />}
-              trailing={
-                <Button isFullWidth onClick={console.log}>
-                  Apply
-                </Button>
-              }
+            <ActionListItem
+              leading={<ActionListItemIcon icon={SettingsIcon} />}
+              trailing={<ActionListItemText>⌘ + S</ActionListItemText>}
+              title="Settings"
+              value="settings"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={InfoIcon} />}
+              title="Info"
+              value="info"
             />
           </ActionList>
         </DropdownOverlay>
@@ -92,31 +185,71 @@ export const WithSelect = (args: DropdownProps): JSX.Element => {
   );
 };
 
-export const WithMultiSelect = (): JSX.Element => {
-  return (
+const WithHeaderFooter = (): JSX.Element => (
+  <Box minHeight={400}>
     <Dropdown selectionType="multiple">
       <SelectInput
-        label="Select your favorite fruit"
-        name="fruits"
+        label="Select Action"
+        name="action"
         onChange={({ name, values }) => {
           console.log(name, values);
         }}
       />
       <DropdownOverlay>
         <ActionList>
-          <ActionListItem title="Mango" value="mango" />
-          <ActionListItem title="Banana" value="banana" />
-          <ActionListItem
-            title="Orange"
-            value="orange"
-            trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
+          <ActionListHeader
+            title="Recent Searches"
+            leading={<ActionListHeaderIcon icon={HistoryIcon} />}
           />
-          <ActionListItem title="Mingo" value="mingo" />
-          <ActionListItem title="Watermelon" value="watermelon" />
-          <ActionListItem title="Strawberry" value="strawberry" />
+          <ActionListItem
+            leading={<ActionListItemIcon icon={HomeIcon} />}
+            trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+            title="Home"
+            value="home"
+            description="Home sweet home it is"
+          />
+          <ActionListSection title="Options">
+            <ActionListItem
+              leading={<ActionListItemIcon icon={SettingsIcon} />}
+              trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
+              title="Settings"
+              value="settings"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={DownloadIcon} />}
+              title="Download"
+              value="download"
+            />
+          </ActionListSection>
+          <ActionListItem
+            leading={<ActionListItemIcon icon={InfoIcon} />}
+            title="Info"
+            value="info"
+          />
+          <ActionListFooter
+            title="Search"
+            leading={<ActionListFooterIcon icon={SearchIcon} />}
+            trailing={<Button onClick={console.log}>Apply</Button>}
+          />
         </ActionList>
       </DropdownOverlay>
     </Dropdown>
-  );
+  </Box>
+);
+
+const WithSingleSelect = DropdownTemplate.bind({});
+const WithMultiSelect = DropdownTemplate.bind({});
+WithMultiSelect.args = {
+  selectionType: 'multiple',
+};
+WithMultiSelect.parameters = {
+  docs: {
+    description: {
+      story:
+        'Add `selectionType="multiple"` to `<Dropdown />` component to make it multi-selectable',
+    },
+  },
 };
 export default DropdownStoryMeta;
+
+export { WithSingleSelect, WithMultiSelect, WithHeaderFooter };

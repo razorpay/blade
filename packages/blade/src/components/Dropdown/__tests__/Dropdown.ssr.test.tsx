@@ -1,14 +1,12 @@
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Dropdown, DropdownOverlay } from '../index';
 import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 
-//
-
 describe('<Dropdown />', () => {
-  it('should render dropdown and make it visible on click', () => {
+  it('should render dropdown and make it visible on click', async () => {
     const { container, getByRole } = renderWithSSR(
       <Dropdown>
         <SelectInput label="Fruits" />
@@ -26,7 +24,7 @@ describe('<Dropdown />', () => {
 
     expect(selectInput).toBeInTheDocument();
     expect(dropdownMenu).not.toBeVisible();
-    fireEvent.click(selectInput);
+    await userEvent.click(selectInput);
     expect(dropdownMenu).toBeVisible();
     expect(container).toMatchSnapshot();
   });

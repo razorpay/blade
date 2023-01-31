@@ -72,7 +72,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
           </label>
         </div>
         <div
-          class="Boxweb__Box-xvyj85-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 hbnFdr iWQtne"
+          class="Boxweb__Box-xvyj85-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 hbnFdr hChMrI"
           display="flex"
           width="100%"
         >
@@ -124,7 +124,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
           </div>
         </div>
         <div
-          class="Boxweb__Box-xvyj85-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp"
+          class="Boxweb__Box-xvyj85-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  TcejM"
         />
       </div>
       <div

@@ -166,8 +166,6 @@ describe('<Dropdown />', () => {
     expect(selectInput.textContent).toBe('Mango');
   });
 
-  // change
-
   it('should move focus between items with arrow key in multiselect', async () => {
     const user = userEvent.setup();
     const { container, getByRole } = renderWithTheme(
