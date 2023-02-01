@@ -108,7 +108,7 @@ export const StyledBaseInput = React.forwardRef<
     },
     ref,
   ) => {
-    const commonEventHandlers = {
+    const commonProps = {
       onBlur: (event: React.ChangeEvent<HTMLInputElement>): void => {
         setCurrentInteraction('default');
         handleOnBlur?.({ name, value: event });
@@ -120,6 +120,11 @@ export const StyledBaseInput = React.forwardRef<
       onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
         handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
       },
+      disabled: isDisabled,
+      enterKeyHint: keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType,
+      autoComplete: autoCompleteSuggestionType
+        ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
+        : undefined,
     };
 
     return props.as === 'button' ? (
@@ -128,12 +133,10 @@ export const StyledBaseInput = React.forwardRef<
         ref={ref}
         name={name}
         type="button"
-        autoComplete="off"
-        disabled={isDisabled}
         onClick={(event: React.MouseEvent<HTMLInputElement>): void => {
           handleOnClick?.({ name, value: event });
         }}
-        {...commonEventHandlers}
+        {...commonProps}
         {...props}
         {...accessibilityProps}
         value={props.value ? props.value : props.defaultValue}
@@ -146,24 +149,17 @@ export const StyledBaseInput = React.forwardRef<
         ref={ref}
         name={name}
         type={type === 'telephone' ? 'tel' : type}
-        disabled={isDisabled}
         required={isRequired}
         maxLength={maxCharacters}
         rows={numberOfLines}
         inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
-        enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
-        autoComplete={
-          autoCompleteSuggestionType
-            ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
-            : undefined
-        }
         onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
           handleOnChange?.({ name, value: event })
         }
         onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
           handleOnInput?.({ name, value: event });
         }}
-        {...commonEventHandlers}
+        {...commonProps}
         {...props}
         {...accessibilityProps}
       />
