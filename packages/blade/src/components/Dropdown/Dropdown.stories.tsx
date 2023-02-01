@@ -157,7 +157,7 @@ const Page = (): ReactElement => {
 };
 
 const DropdownStoryMeta: Meta = {
-  title: 'Components/Dropdown/WithSelect',
+  title: 'Components/Dropdown/With Select',
   component: Dropdown,
   args: {
     selectionType: 'single',
