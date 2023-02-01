@@ -1,6 +1,7 @@
+import React from 'react';
+import type { ReactElement } from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import type { ReactElement } from 'react';
 import { Dropdown, DropdownOverlay } from '.';
 import type { DropdownProps } from '.';
 import {
@@ -29,6 +30,8 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { SelectInput } from '~components/Input/SelectInput';
 import { Button } from '~components/Button';
+import { Text } from '~components/Typography';
+import { isReactNative } from '~utils';
 
 const Page = (): ReactElement => {
   return (
@@ -207,7 +210,7 @@ const DropdownTemplate: ComponentStory<typeof Dropdown> = (args) => {
 
 const WithHeaderFooter = (): JSX.Element => (
   <Box minHeight={400}>
-    <Dropdown selectionType="multiple">
+    <Dropdown>
       <SelectInput
         label="Select Action"
         name="action"
@@ -257,6 +260,84 @@ const WithHeaderFooter = (): JSX.Element => (
   </Box>
 );
 
+const WithValueDisplay = (): JSX.Element => {
+  const [dropdownValues, setDropdownValues] = React.useState('');
+
+  return (
+    <Box minHeight={400}>
+      <Text>Selected Values: {dropdownValues}</Text>
+      <Box marginTop="spacing.5" />
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="Select Action"
+          name="action"
+          onChange={({ values }) => {
+            setDropdownValues(values.join(', '));
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem
+              leading={<ActionListItemIcon icon={HomeIcon} />}
+              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+              title="Home"
+              value="home"
+              description="Home sweet home it is"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={SettingsIcon} />}
+              trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
+              title="Settings"
+              value="settings"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={DownloadIcon} />}
+              title="Download"
+              value="download"
+            />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+const WithHTMLFormSubmission = (): JSX.Element => {
+  const [submissionValues, setSubmissionValues] = React.useState('');
+
+  if (isReactNative()) {
+    return <Text>Not available on React Native Story</Text>;
+  }
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        const data = new FormData(e.currentTarget);
+        const formData: Record<string, string> = {};
+        for (const [name, value] of data) {
+          formData[name] = String(value);
+        }
+        setSubmissionValues(JSON.stringify(formData));
+      }}
+    >
+      <Dropdown>
+        <SelectInput label="Design Systems" name="design-systems" isRequired />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Blade" value="blade" />
+            <ActionListItem title="Primer" value="primer" />
+            <ActionListItem title="MUI" value="mui" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Box marginBottom="spacing.8" />
+      <Button type="submit">Submit</Button>
+      <Box marginBottom="spacing.4" />
+      <Text>Form Submitted with {submissionValues}</Text>
+    </form>
+  );
+};
+
 const WithSingleSelect = DropdownTemplate.bind({});
 const WithMultiSelect = DropdownTemplate.bind({});
 WithMultiSelect.args = {
@@ -272,4 +353,10 @@ WithMultiSelect.parameters = {
 };
 export default DropdownStoryMeta;
 
-export { WithSingleSelect, WithMultiSelect, WithHeaderFooter };
+export {
+  WithSingleSelect,
+  WithMultiSelect,
+  WithHeaderFooter,
+  WithHTMLFormSubmission,
+  WithValueDisplay,
+};

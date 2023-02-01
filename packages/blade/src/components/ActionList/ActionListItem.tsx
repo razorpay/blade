@@ -193,6 +193,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
       <StyledActionListItem
         as={!isReactNative() ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props._index}`}
+        type="button"
         tabIndex={-1}
         href={props.href}
         className={activeIndex === props._index ? 'active-focus' : ''}
