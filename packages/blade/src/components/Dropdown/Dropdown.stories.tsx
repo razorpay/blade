@@ -157,7 +157,7 @@ const Page = (): ReactElement => {
 };
 
 const DropdownStoryMeta: Meta = {
-  title: 'Components/Dropdown',
+  title: 'Components/Dropdown/WithSelect',
   component: Dropdown,
   args: {
     selectionType: 'single',
@@ -214,7 +214,21 @@ const DropdownTemplate: ComponentStory<typeof Dropdown> = (args) => {
   );
 };
 
-const WithHeaderFooter = (): JSX.Element => (
+export const WithSingleSelect = DropdownTemplate.bind({});
+export const WithMultiSelect = DropdownTemplate.bind({});
+WithMultiSelect.args = {
+  selectionType: 'multiple',
+};
+WithMultiSelect.parameters = {
+  docs: {
+    description: {
+      story:
+        'Add `selectionType="multiple"` to `<Dropdown />` component to make it multi-selectable',
+    },
+  },
+};
+
+export const WithHeaderFooter = (): JSX.Element => (
   <Box minHeight={400}>
     <Dropdown>
       <SelectInput
@@ -266,11 +280,11 @@ const WithHeaderFooter = (): JSX.Element => (
   </Box>
 );
 
-const WithValueDisplay = (): JSX.Element => {
+export const WithValueDisplay = (): JSX.Element => {
   const [dropdownValues, setDropdownValues] = React.useState('');
 
   return (
-    <Box minHeight={400}>
+    <Box minHeight={300}>
       <Text>Selected Values: {dropdownValues}</Text>
       <Box marginTop="spacing.5" />
       <Dropdown selectionType="multiple">
@@ -308,61 +322,42 @@ const WithValueDisplay = (): JSX.Element => {
   );
 };
 
-const WithHTMLFormSubmission = (): JSX.Element => {
+export const WithHTMLFormSubmission = (): JSX.Element => {
   const [submissionValues, setSubmissionValues] = React.useState('');
 
   if (isReactNative()) {
     return <Text>Not available on React Native Story</Text>;
   }
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        const data = new FormData(e.currentTarget);
-        const formData: Record<string, string> = {};
-        for (const [name, value] of data) {
-          formData[name] = String(value);
-        }
-        setSubmissionValues(JSON.stringify(formData));
-      }}
-    >
-      <Dropdown>
-        <SelectInput label="Design Systems" name="design-systems" isRequired />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Blade" value="blade" />
-            <ActionListItem title="Primer" value="primer" />
-            <ActionListItem title="MUI" value="mui" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-      <Box marginBottom="spacing.8" />
-      <Button type="submit">Submit</Button>
-      <Box marginBottom="spacing.4" />
-      <Text>Form Submitted with {submissionValues}</Text>
-    </form>
+    <Box minHeight={200}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const data = new FormData(e.currentTarget);
+          const formData: Record<string, string> = {};
+          for (const [name, value] of data) {
+            formData[name] = String(value);
+          }
+          setSubmissionValues(JSON.stringify(formData));
+        }}
+      >
+        <Dropdown>
+          <SelectInput label="Design Systems" name="design-systems" isRequired />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Blade" value="blade" />
+              <ActionListItem title="Primer" value="primer" />
+              <ActionListItem title="MUI" value="mui" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+        <Box marginBottom="spacing.8" />
+        <Button type="submit">Submit</Button>
+        <Box marginBottom="spacing.4" />
+        <Text>Form Submitted with {submissionValues}</Text>
+      </form>
+    </Box>
   );
 };
 
-const WithSingleSelect = DropdownTemplate.bind({});
-const WithMultiSelect = DropdownTemplate.bind({});
-WithMultiSelect.args = {
-  selectionType: 'multiple',
-};
-WithMultiSelect.parameters = {
-  docs: {
-    description: {
-      story:
-        'Add `selectionType="multiple"` to `<Dropdown />` component to make it multi-selectable',
-    },
-  },
-};
 export default DropdownStoryMeta;
-
-export {
-  WithSingleSelect,
-  WithMultiSelect,
-  WithHeaderFooter,
-  WithHTMLFormSubmission,
-  WithValueDisplay,
-};
