@@ -91,6 +91,12 @@ Lists display a set of related items that are composed of text/links. Each list 
 | rel | `string` | `undefined` | The rel for the link component.<br>-When `target` prop is set to `_blank`, `rel` will be automatically set to `noopener noreferrer` which can be overridden by passing the `rel` prop. | |
 | accessibilityLabel | `string` | `undefined` | The `aria-label` (web) & `accessibilityLabel` (native) of the link component. | |
 
+Eg)
+```jsx
+<ListItem>
+    For more information <ListItemLink href=''>Click here</ListItemLink>
+</ListItem>
+```
 
 ### Sample Usage
 ```jsx
