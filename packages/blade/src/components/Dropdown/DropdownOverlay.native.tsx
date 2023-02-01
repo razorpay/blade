@@ -8,11 +8,11 @@ import Box from '~components/Box';
 import { makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 
-const StyledDropdownOverlay = styled(Box)((props) => ({
+const StyledDropdownOverlay = styled(Box)<{ testID: 'dropdown-overlay' }>((props) => ({
   transform: `translateY(${makeSize(props.theme.spacing[3])})`,
 }));
 
-const StyledClosableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((props) => ({
+const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((props) => ({
   position: 'static',
   height: '100%',
   width: '100%',
@@ -29,21 +29,23 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
 
   return (
     <Box position="relative">
-      <StyledClosableArea
+      <StyledCloseableArea
         display={isOpen ? 'flex' : 'none'}
         onPress={() => {
           setIsOpen(false);
         }}
+        testID="closeable-area"
       >
         <StyledDropdownOverlay
           display={isOpen ? 'flex' : 'none'}
           position="absolute"
           width="100%"
+          testID="dropdown-overlay"
           {...metaAttribute(MetaConstants.Component, MetaConstants.DropdownOverlay)}
         >
           {children}
         </StyledDropdownOverlay>
-      </StyledClosableArea>
+      </StyledCloseableArea>
     </Box>
   );
 };

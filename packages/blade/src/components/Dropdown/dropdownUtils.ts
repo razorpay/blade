@@ -66,6 +66,10 @@ export function getActionFromKey(
   e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   isOpen: boolean,
 ): SelectActionsType | undefined {
+  if (!e) {
+    return undefined;
+  }
+
   const { altKey, ctrlKey, metaKey } = e;
   let key = '';
   if ('key' in e) {

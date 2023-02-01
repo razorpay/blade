@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"Boxweb__Box-xvyj85-0 eTXJvg\\"><div class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jwPLEe\\"><input tabindex=\\"-1\\" value=\\"\\" aria-hidden=\\"true\\"/></div><div data-blade-component=\\"select-input\\" class=\\"Boxweb__Box-xvyj85-0\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 dvOHBs\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 kUDSlg\\"><label for=\\"dropdown-undefined-trigger-undefined-input-undefined\\" style=\\"width:auto;flex-shrink:0;margin-right:16px;word-break:break-all\\" id=\\"dropdown-undefined-label\\"><div class=\\"Boxweb__Box-xvyj85-0 iKchll\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 htCCsU\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Fruits</p><div class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jwPLEe\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\"></p></div></div></div></label></div><div display=\\"flex\\" width=\\"100%\\" class=\\"Boxweb__Box-xvyj85-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 hbnFdr iWQtne\\"><button type=\\"button\\" id=\\"dropdown-undefined-trigger-undefined-input-undefined\\" value=\\"Select Option\\" aria-required=\\"false\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-haspopup=\\"listbox\\" aria-expanded=\\"false\\" aria-controls=\\"dropdown-undefined-actionlist\\" role=\\"combobox\\" class=\\"StyledBaseInputweb__StyledBaseNativeButton-hsusrk-1 eMzwTC\\">Select Option</button><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 mRSrU\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 kgzXCm\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 hMhwRE\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(217, 56%, 17%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div></div></div></div><div class=\\"Boxweb__Box-xvyj85-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp\\"></div></div><div class=\\"Boxweb__Box-xvyj85-0 ehihIV\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 kXhCKG\\"></div></div></div></div><div class=\\"Boxweb__Box-xvyj85-0 eTXJvg\\"><div style=\\"opacity:0\\" display=\\"none\\" width=\\"100%\\" data-blade-component=\\"dropdown-overlay\\" class=\\"Boxweb__Box-xvyj85-0 DropdownOverlayweb__StyledDropdownOverlay-sc-9pwxtx-0 KvQfx inUiBH\\"><div elevation=\\"5\\" id=\\"dropdown-undefined-actionlist\\" role=\\"listbox\\" aria-multiselectable=\\"false\\" aria-labelledby=\\"dropdown-undefined-label\\" data-blade-component=\\"action-list\\" class=\\"Boxweb__Box-xvyj85-0 ActionList__StyledActionList-sc-1hlb3gu-0  gfDOrd\\"><div class=\\"Boxweb__Box-xvyj85-0 ActionList__StyledListBoxWrapper-sc-1hlb3gu-1  kRavEs\\"><button id=\\"dropdown-undefined-0\\" tabindex=\\"-1\\" class=\\"Boxweb__Box-xvyj85-0 StyledActionListItemweb__StyledActionListItem-w2b4w5-0  hoJPVh\\" aria-selected=\\"false\\" role=\\"option\\" data-blade-component=\\"action-list-item\\" data-value=\\"apple\\" data-index=\\"0\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 dtQszg\\"></div><div class=\\"Boxweb__Box-xvyj85-0 fqpMrz\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 iSzrHo\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Apple</p></div></div><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 gyOEzi\\"></div></button><button id=\\"dropdown-undefined-1\\" tabindex=\\"-1\\" class=\\"Boxweb__Box-xvyj85-0 StyledActionListItemweb__StyledActionListItem-w2b4w5-0  hoJPVh\\" aria-selected=\\"false\\" role=\\"option\\" data-blade-component=\\"action-list-item\\" data-value=\\"mango\\" data-index=\\"1\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 dtQszg\\"></div><div class=\\"Boxweb__Box-xvyj85-0 fqpMrz\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 iSzrHo\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Mango</p></div></div><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 gyOEzi\\"></div></button></div></div></div></div></div>"`;
+exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"Boxweb__Box-xvyj85-0 eTXJvg\\"><div class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jwPLEe\\"><input tabindex=\\"-1\\" value=\\"\\" aria-hidden=\\"true\\"/></div><div data-blade-component=\\"select-input\\" class=\\"Boxweb__Box-xvyj85-0\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 dvOHBs\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 kUDSlg\\"><label for=\\"dropdown-undefined-trigger-undefined-input-undefined\\" style=\\"width:auto;flex-shrink:0;margin-right:16px;word-break:break-all\\" id=\\"dropdown-undefined-label\\"><div class=\\"Boxweb__Box-xvyj85-0 iKchll\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 htCCsU\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Fruits</p><div class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jwPLEe\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\"></p></div></div></div></label></div><div display=\\"flex\\" width=\\"100%\\" class=\\"Boxweb__Box-xvyj85-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 hbnFdr iWQtne\\"><button type=\\"button\\" id=\\"dropdown-undefined-trigger-undefined-input-undefined\\" value=\\"Select Option\\" aria-required=\\"false\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-haspopup=\\"listbox\\" aria-expanded=\\"false\\" aria-controls=\\"dropdown-undefined-actionlist\\" role=\\"combobox\\" class=\\"StyledBaseInputweb__StyledBaseNativeButton-hsusrk-1 eMzwTC\\">Select Option</button><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 mRSrU\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 kgzXCm\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 hMhwRE\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(217, 56%, 17%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div></div></div></div><div class=\\"Boxweb__Box-xvyj85-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp\\"></div></div><div class=\\"Boxweb__Box-xvyj85-0 ehihIV\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 kXhCKG\\"></div></div></div></div><div class=\\"Boxweb__Box-xvyj85-0 eTXJvg\\"><div style=\\"opacity:0\\" display=\\"none\\" width=\\"100%\\" data-blade-component=\\"dropdown-overlay\\" class=\\"Boxweb__Box-xvyj85-0 DropdownOverlayweb__StyledDropdownOverlay-sc-9pwxtx-0 KvQfx inUiBH\\"><div elevation=\\"5\\" id=\\"dropdown-undefined-actionlist\\" role=\\"listbox\\" aria-multiselectable=\\"false\\" aria-labelledby=\\"dropdown-undefined-label\\" data-blade-component=\\"action-list\\" class=\\"Boxweb__Box-xvyj85-0 ActionList__StyledActionList-sc-1hlb3gu-0  gfDOrd\\"><div data-blade-component=\\"action-list-header\\" class=\\"Boxweb__Box-xvyj85-0 ActionListHeader__StyledActionListHeader-x9xazr-0  gFBYjo\\"><div class=\\"Boxweb__Box-xvyj85-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 24 24\\" width=\\"12px\\" fill=\\"none\\"><path d=\\"M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(216, 16%, 60%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div class=\\"Boxweb__Box-xvyj85-0 fqpMrz\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"50\\" font-weight=\\"regular\\" font-style=\\"italic\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 byfa-DA Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Recent Searches</p></div></div><div class=\\"Boxweb__Box-xvyj85-0 ActionList__StyledListBoxWrapper-sc-1hlb3gu-1  kRavEs\\"><button id=\\"dropdown-undefined-0\\" tabindex=\\"-1\\" class=\\"Boxweb__Box-xvyj85-0 StyledActionListItemweb__StyledActionListItem-w2b4w5-0  hoJPVh\\" aria-selected=\\"false\\" role=\\"option\\" data-blade-component=\\"action-list-item\\" data-value=\\"apple\\" data-index=\\"0\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 dtQszg\\"></div><div class=\\"Boxweb__Box-xvyj85-0 fqpMrz\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 iSzrHo\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Apple</p></div></div><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 gyOEzi\\"></div></button><button id=\\"dropdown-undefined-1\\" tabindex=\\"-1\\" class=\\"Boxweb__Box-xvyj85-0 StyledActionListItemweb__StyledActionListItem-w2b4w5-0  hoJPVh\\" aria-selected=\\"false\\" role=\\"option\\" data-blade-component=\\"action-list-item\\" data-value=\\"mango\\" data-index=\\"1\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 dtQszg\\"></div><div class=\\"Boxweb__Box-xvyj85-0 fqpMrz\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 iSzrHo\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Mango</p></div></div><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 gyOEzi\\"></div></button></div><div role=\\"group\\" aria-label=\\"Search Tips\\" data-blade-component=\\"action-list-footer\\" class=\\"Boxweb__Box-xvyj85-0 ActionListFooter__StyledActionListFooter-px4gxj-0  kOMnvN\\"><div class=\\"Boxweb__Box-xvyj85-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 24 24\\" width=\\"12px\\" fill=\\"none\\"><path d=\\"M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(216, 16%, 60%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div class=\\"Boxweb__Box-xvyj85-0 gwRqEY\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"50\\" font-weight=\\"regular\\" font-style=\\"italic\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 byfa-DA Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Search Tips</p></div><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 fWolbm\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fbGQuk\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 BaseButton__ButtonContent-zf1huq-0 gdsYjr NIPoA\\"><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD\\">Apply</div></div></button></div></div></div></div></div></div>"`;
 
 exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = `
 <div
@@ -81,7 +81,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
             aria-describedby=""
             aria-disabled="false"
             aria-expanded="true"
-            aria-haspopup="listbox"
+            aria-haspopup="dialog"
             aria-invalid="false"
             aria-required="false"
             class="StyledBaseInputweb__StyledBaseNativeButton-hsusrk-1 eMzwTC"
@@ -149,15 +149,55 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
     >
       <div
         aria-labelledby="dropdown-7-label"
-        aria-multiselectable="false"
         class="Boxweb__Box-xvyj85-0 ActionList__StyledActionList-sc-1hlb3gu-0  gfDOrd"
         data-blade-component="action-list"
         elevation="5"
         id="dropdown-7-actionlist"
-        role="listbox"
+        role="dialog"
       >
         <div
+          class="Boxweb__Box-xvyj85-0 ActionListHeader__StyledActionListHeader-x9xazr-0  gFBYjo"
+          data-blade-component="action-list-header"
+        >
+          <div
+            class="Boxweb__Box-xvyj85-0"
+          >
+            <svg
+              aria-hidden="true"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
+                fill="hsla(216, 16%, 60%, 1)"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <div
+            class="Boxweb__Box-xvyj85-0 fqpMrz"
+          >
+            <p
+              class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 byfa-DA Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="50"
+              font-style="italic"
+              font-weight="regular"
+            >
+              Recent Searches
+            </p>
+          </div>
+        </div>
+        <div
+          aria-multiselectable="false"
           class="Boxweb__Box-xvyj85-0 ActionList__StyledListBoxWrapper-sc-1hlb3gu-1  kRavEs"
+          role="listbox"
         >
           <button
             aria-selected="false"
@@ -237,6 +277,72 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               display="flex"
             />
           </button>
+        </div>
+        <div
+          aria-label="Search Tips"
+          class="Boxweb__Box-xvyj85-0 ActionListFooter__StyledActionListFooter-px4gxj-0  kOMnvN"
+          data-blade-component="action-list-footer"
+          role="group"
+        >
+          <div
+            class="Boxweb__Box-xvyj85-0"
+          >
+            <svg
+              aria-hidden="true"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+                fill="hsla(216, 16%, 60%, 1)"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <div
+            class="Boxweb__Box-xvyj85-0 gwRqEY"
+          >
+            <p
+              class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 byfa-DA Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="50"
+              font-style="italic"
+              font-weight="regular"
+            >
+              Search Tips
+            </p>
+          </div>
+          <div
+            class="Boxweb__Box-xvyj85-0 fWolbm"
+            display="flex"
+          >
+            <button
+              class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fbGQuk"
+              data-blade-component="button"
+              role="button"
+              type="button"
+            >
+              <div
+                class="Boxweb__Box-xvyj85-0 BaseButton__ButtonContent-zf1huq-0 gdsYjr NIPoA"
+                display="flex"
+              >
+                <div
+                  class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD"
+                  color="action.text.primary.default"
+                  font-size="100"
+                  font-weight="bold"
+                >
+                  Apply
+                </div>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>

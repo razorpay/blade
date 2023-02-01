@@ -3,8 +3,16 @@ import userEvent from '@testing-library/user-event';
 import { Dropdown, DropdownOverlay } from '../index';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
-import { ActionList, ActionListFooter, ActionListItem } from '~components/ActionList';
+import {
+  ActionList,
+  ActionListFooter,
+  ActionListFooterIcon,
+  ActionListHeader,
+  ActionListHeaderIcon,
+  ActionListItem,
+} from '~components/ActionList';
 import { Button } from '~components/Button';
+import { HistoryIcon, SearchIcon } from '~components/Icons';
 
 describe('<Dropdown />', () => {
   it('should render dropdown and make it visible on click', async () => {
@@ -15,8 +23,17 @@ describe('<Dropdown />', () => {
         <SelectInput label="Fruits" />
         <DropdownOverlay>
           <ActionList>
+            <ActionListHeader
+              title="Recent Searches"
+              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
+            />
             <ActionListItem title="Apple" value="apple" />
             <ActionListItem title="Mango" value="mango" />
+            <ActionListFooter
+              title="Search Tips"
+              leading={<ActionListFooterIcon icon={SearchIcon} />}
+              trailing={<Button>Apply</Button>}
+            />
           </ActionList>
         </DropdownOverlay>
       </Dropdown>,
@@ -27,9 +44,9 @@ describe('<Dropdown />', () => {
     expect(selectInput).toBeInTheDocument();
     // testing library ignores the nodes because they are set to display none so using querySelector to select from dom instead.
     // the node becomes accessible after click on selectInput
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    expect(container.querySelector('[role=dialog]')).not.toBeVisible();
     await user.click(selectInput);
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
+    expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible();
     expect(container).toMatchSnapshot();
   });
 
