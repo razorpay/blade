@@ -19,19 +19,49 @@ type ActionListProps = {
   surfaceLevel?: 2 | 3;
 };
 
+const getReactNativeShadow = ({
+  offsetX,
+  offsetY,
+  shadowColor,
+  blur,
+}: {
+  offsetX: number;
+  offsetY: number;
+  shadowColor: string;
+  blur: number;
+}): {
+  shadowOpacity?: '1';
+  shadowRadius?: number;
+  shadowColor?: string;
+  shadowOffset?: string;
+} => {
+  if (isReactNative()) {
+    return {
+      shadowOpacity: '1',
+      shadowRadius: isReactNative() ? undefined : blur,
+      shadowColor: isAndroid() ? undefined : shadowColor,
+      shadowOffset: `${makeSize(offsetX)} ${makeSize(offsetY)}`,
+    };
+  }
+
+  return {};
+};
+
 const StyledActionList = styled(Box)<{
   surfaceLevel: ActionListProps['surfaceLevel'];
   elevation?: number;
-}>(({ theme, surfaceLevel = 2 }) => {
-  const offsetX = theme.shadows.offsetX.level[1];
-  const offsetY = theme.shadows.offsetY.level[2];
-  const blur = theme.shadows.blurRadius.level[2];
+}>((props) => {
+  const { theme, surfaceLevel = 2 } = props;
+
   const shadowColor = theme.shadows.color.level[1];
 
   // @TODO: tokenize shadows and replace the logic here
-  const elevation200 = `${makeSize(offsetX)} ${makeSize(offsetY)} ${makeSize(
-    blur,
-  )} 0px ${shadowColor}`;
+  const elevation200 = `${makeSize(theme.shadows.offsetX.level[1])} ${makeSize(0)} ${makeSize(
+    theme.shadows.blurRadius.level[1],
+  )} 0px ${shadowColor}, ${makeSize(theme.shadows.offsetX.level[1])} ${makeSize(
+    theme.shadows.offsetY.level[2],
+  )} ${makeSize(theme.shadows.blurRadius.level[2])} 0px ${shadowColor}`;
+
   const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
 
   return {
@@ -43,10 +73,12 @@ const StyledActionList = styled(Box)<{
     boxShadow: isReactNative() ? undefined : elevation200,
 
     // For react native. Ignored in web
-    shadowOpacity: '1',
-    shadowRadius: blur,
-    shadowColor: isAndroid() ? undefined : shadowColor,
-    shadowOffset: `${makeSize(offsetX)} ${makeSize(offsetY)}`,
+    ...getReactNativeShadow({
+      offsetX: theme.shadows.offsetX.level[1],
+      offsetY: 0,
+      shadowColor,
+      blur: theme.shadows.blurRadius.level[1],
+    }),
   };
 });
 

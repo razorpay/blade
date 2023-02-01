@@ -110,7 +110,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
     >
       {props.leading ? <Box>{props.leading}</Box> : null}
       {props.title ? (
-        <Box flex="1" paddingLeft="spacing.3" paddingRight="spacing.3">
+        <Box flex={1} paddingLeft="spacing.3" paddingRight="spacing.3">
           <Text variant="caption" color="surface.text.subdued.lowContrast">
             {props.title}
           </Text>
