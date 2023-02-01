@@ -16,6 +16,9 @@ import { useTheme } from '~components/BladeProvider';
 
 type ActionListProps = {
   children: React.ReactNode[];
+  /**
+   * Decides the backgroundColor of ActionList
+   */
   surfaceLevel?: 2 | 3;
 };
 
@@ -94,6 +97,50 @@ const StyledListBoxWrapper = styled(Box)((_props) => {
   return {};
 });
 
+/**
+ * ### ActionList
+ *
+ * List of multiple actionable items. Can be used as menu items inside `Dropdown`,
+ * `BottomSheet` and as selectable items when combined with `SelectInput`
+ *
+ * #### Usage
+ *
+ * ```jsx
+ * <Dropdown>
+ *  <SelectInput label="Select Action" />
+ *  <DropdownOverlay>
+ *    <ActionList>
+ *      <ActionListHeader
+ *        title="Recent Searches"
+ *        leading={<ActionListHeaderIcon icon={HistoryIcon} />}
+ *      />
+ *      <ActionListItem
+ *        title="Home"
+ *        value="home"
+ *        leading={<ActionListItemIcon icon={HomeIcon} />}
+ *      />
+ *      <ActionListItem
+ *        title="Settings"
+ *        value="settings"
+ *        leading={<ActionListItemIcon icon={GearIcon} />}
+ *      />
+ *      <ActionListHeader
+ *        title="Search Tips"
+ *        leading={<ActionListFooterIcon icon={SearchIcon} />}
+ *        trailing={
+ *          <Button
+ *            onClick={() => console.log('clicked')}
+ *          >
+ *            Apply
+ *          </Button>
+ *        }
+ *      />
+ *    </ActionList>
+ *  </DropdownOverlay>
+ * </Dropdown>
+ * ```
+ *
+ */
 const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Element => {
   const {
     setOptions,

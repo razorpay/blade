@@ -113,6 +113,33 @@ const _SelectInput = (
   );
 };
 
+/**
+ * ### SelectInput
+ *
+ * Our equivalent of `<select>` tag. Lets you select items from given options.
+ *
+ * To be used in combination of `Dropdown` and `ActionList` component
+ *
+ * ---
+ *
+ * #### Usage
+ *
+ * ```diff
+ * <Dropdown>
+ * + <SelectInput label="Select Fruits" />
+ *   <DropdownOverlay>
+ *     <ActionList>
+ *       <ActionListItem title="Mango" value="mango" />
+ *       <ActionListItem title="Apple" value="apple" />
+ *     </ActionList>
+ *   </DropdownOverlay>
+ * </Dropdown>
+ * ```
+ *
+ * ---
+ *
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-select--with-single-select SelectInput Documentation}.
+ */
 const SelectInput = React.forwardRef(_SelectInput);
 // @ts-expect-error: componentId is our custom attribute
 SelectInput.componentId = 'SelectInput';

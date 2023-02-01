@@ -26,19 +26,34 @@ type OptionsType = { title: string; value: string; href?: string }[];
 type DropdownContextType = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  /**
+   * contains the indexes of selected items
+   */
   selectedIndices: number[];
   setSelectedIndices: (value: number[]) => void;
+  /**
+   * contains information about all the options inside actionlist
+   */
   options: OptionsType;
   setOptions: (value: OptionsType) => void;
+  /** Currently active (focussed) index  */
   activeIndex: number;
   setActiveIndex: (value: number) => void;
+  /** Used to ignore blur on certains events. E.g. to ignore blur of dropdown when click is inside the dropdown */
   shouldIgnoreBlur: boolean;
   setShouldIgnoreBlur: (value: boolean) => void;
+  /** common baseId which is prepended to multiple other ids inside this dropdown  */
   dropdownBaseId: string;
+  /** Which element has triggered the dropdown */
   dropdownTriggerer?: 'SelectInput';
+  /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
   actionListRef: React.RefObject<HTMLDivElement | null>;
   selectionType?: DropdownProps['selectionType'];
+  /** whether footer has an action item.
+   * certain a11y behaviour changes happen here
+   * E.g. tabbing moves focus to that action instead of outside
+   */
   hasFooterAction: boolean;
   setHasFooterAction: (value: boolean) => void;
 };

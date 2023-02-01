@@ -12,9 +12,14 @@ type DropdownProps = {
 };
 
 /**
- * **Dropdown component**
+ * ### Dropdown component
  *
- * **Usage**
+ * Dropdown component is generic component that controls the dropdown functionality.
+ * It can be used with multiple triggers and mostly contains ActionList component inside it
+ *
+ * ---
+ *
+ * #### Usage
  *
  * ```jsx
  * <Dropdown selectionType="single">
@@ -28,7 +33,9 @@ type DropdownProps = {
  * </Dropdown>
  * ```
  *
- * @see https://blade.razorpay.com/?path=/docs/components-dropdown--with-single-select
+ * ---
+ *
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-select--with-single-select Dropdown Documentation}
  */
 const Dropdown: WithComponentId<DropdownProps> = ({
   children,

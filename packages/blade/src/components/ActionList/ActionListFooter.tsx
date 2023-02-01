@@ -21,7 +21,17 @@ import { Text } from '~components/Typography';
 
 type ActionListFooterProps = {
   title?: string;
+  /**
+   * Asset to be added on left side of Footer.
+   *
+   * Valid children - `ActionListFooterIcon`
+   */
   leading?: React.ReactNode;
+  /**
+   * Elements to be added on right side of Footer.
+   *
+   * Anything can be passed here but maybe don't? Should ideally have Button or Tick Icon Buttons.
+   */
   trailing?: React.ReactNode;
 };
 
@@ -38,6 +48,27 @@ const StyledActionListFooter = styled(Box)((props) => {
   };
 });
 
+/**
+ * ### ActionListFooter
+ *
+ * To be used inside `ActionList`
+ *
+ * #### Usage
+ *
+ * ```jsx
+ * <ActionListFooter
+ *  title="Search Tips"
+ *  leading={<ActionListFooterIcon icon={SearchIcon} />}
+ *  trailing={
+ *    <Button
+ *      onClick={() => { console.log('click') }}
+ *    >
+ *      Apply
+ *    </Button>
+ *  }
+ * />
+ * ```
+ */
 const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.Element => {
   const footerRef = React.useRef<HTMLDivElement | null>(null);
   const {

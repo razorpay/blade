@@ -22,8 +22,32 @@ const StyledActionListHeader = styled(Box)((props) => {
 
 type ActionListHeaderProps = {
   title: string;
+  /**
+   * Asset to be added on left side of Header.
+   *
+   * Valid children - `ActionListHeaderIcon`
+   */
   leading?: React.ReactNode;
 };
+/**
+ * ### ActionListHeader
+ *
+ * To be used inside `ActionList`
+ *
+ * #### Usage
+ *
+ * ```jsx
+ * <ActionListHeader
+ *  title="Search Tips"
+ *  leading={
+ *    <ActionListHeaderIcon
+ *      title="Recent Searches"
+ *      icon={HistoryIcon}
+ *    />
+ *  }
+ * />
+ * ```
+ */
 const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.Element => {
   React.useEffect(() => {
     React.Children.map(props.leading, (child) => {
