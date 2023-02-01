@@ -27,6 +27,8 @@ type DropdownProps = {
  *  </DropdownOverlay>
  * </Dropdown>
  * ```
+ *
+ * @see https://blade.razorpay.com/?path=/docs/components-dropdown--with-single-select
  */
 const Dropdown: WithComponentId<DropdownProps> = ({
   children,

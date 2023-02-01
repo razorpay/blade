@@ -35,11 +35,33 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="Dropdown component is generic component that controls the dropdown functionality. It can be used with multiple triggers and mostly contains ActionList component inside it"
       componentName="Dropdown"
+      imports={`
+      import { 
+        Dropdown, 
+        DropdownOverlay,
+        SelectInput,
+        ActionList,
+        ActionListHeader,
+        ActionListHeaderIcon,
+        ActionListItem,
+        ActionListItemIcon,
+        ActionListItemText,
+        ActionListSection,
+        ActionListFooter,
+        ActionListFooterIcon,
+      } from '@razorpay/blade/components';
+      
+      import type {
+        DropdownProps,
+        SelectInputProps,
+        ActionListProps
+      } from '@razorpay/blade/components';
+      `}
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=21342%3A380662&t=J5jLUzTZrBQ1FLDq-0',
         bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189840',
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=13175%3A368930&t=MlqqfKTt89tIgEr3-0',
       }}
     >
       <Title>Usage</Title>
@@ -70,7 +92,10 @@ const Page = (): ReactElement => {
 
           function App(): JSX.Element {
             return (
-              <Dropdown selectionType="multiple">
+              <Dropdown 
+                // Uncomment next line to make it multiselectable
+                // selectionType="multiple"
+              >
                 <SelectInput
                   label="Select Action"
                   name="action"
@@ -104,11 +129,6 @@ const Page = (): ReactElement => {
                         value="download"
                       />
                     </ActionListSection>
-                    <ActionListItem
-                      leading={<ActionListItemIcon icon={InfoIcon} />}
-                      title="Info"
-                      value="info"
-                    />
                     <ActionListFooter
                       title="Search"
                       leading={<ActionListFooterIcon icon={SearchIcon} />}
