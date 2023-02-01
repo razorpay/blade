@@ -135,7 +135,13 @@ const Page = (): ReactElement => {
                     <ActionListFooter
                       title="Search"
                       leading={<ActionListFooterIcon icon={SearchIcon} />}
-                      trailing={<Button onClick={console.log}>Apply</Button>}
+                      trailing={
+                        <Button onClick={() => {
+                          console.log('Apply button clicked')
+                        }}>
+                          Apply
+                        </Button>
+                      }
                     />
                   </ActionList>
                 </DropdownOverlay>
