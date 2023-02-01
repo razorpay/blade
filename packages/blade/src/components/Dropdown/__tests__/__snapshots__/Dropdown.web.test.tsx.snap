@@ -752,6 +752,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             id="dropdown-7-0"
             role="option"
             tabindex="-1"
+            type="button"
           >
             <div
               class="c25"
@@ -791,6 +792,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             id="dropdown-7-1"
             role="option"
             tabindex="-1"
+            type="button"
           >
             <div
               class="c25"
