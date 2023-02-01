@@ -128,6 +128,7 @@ export const StyledBaseInput = React.forwardRef<
         ref={ref}
         name={name}
         type="button"
+        autoComplete="off"
         disabled={isDisabled}
         onClick={(event: React.MouseEvent<HTMLInputElement>): void => {
           handleOnClick?.({ name, value: event });
