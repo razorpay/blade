@@ -9,7 +9,7 @@ import { isValidAllowedChildren } from '~utils';
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
   children: React.ReactNode[];
-}; //
+};
 
 /**
  * ### Dropdown component
