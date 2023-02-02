@@ -170,10 +170,11 @@ const validateActionListItemProps = ({
   React.Children.map(leading, (child) => {
     if (
       !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
-      !isValidAllowedChildren(child, componentIds.ActionListItemText)
+      !isValidAllowedChildren(child, componentIds.ActionListItemText) &&
+      !isValidAllowedChildren(child, componentIds.ActionListItemAsset)
     ) {
       throw new Error(
-        `[ActionListItem]: Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in leading prop`,
+        `[ActionListItem]: Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
       );
     }
   });
