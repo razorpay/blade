@@ -5,6 +5,7 @@ export const componentIds = {
   ActionListFooter: 'ActionListFooter',
   ActionListFooterIcon: 'ActionListFooterIcon',
   ActionListItem: 'ActionListItem',
+  ActionListItemAsset: 'ActionListItemAsset',
   ActionListItemIcon: 'ActionListItemIcon',
   ActionListItemText: 'ActionListItemText',
   ActionListSection: 'ActionListSection',
