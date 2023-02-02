@@ -251,6 +251,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       "marginLeft": 2,
                       "marginRight": 2,
                       "marginTop": 2,
+                      "position": "relative",
                       "width": 16,
                     },
                   ]
@@ -403,6 +404,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       "marginLeft": 2,
                       "marginRight": 2,
                       "marginTop": 2,
+                      "position": "relative",
                       "width": 16,
                     },
                   ]
@@ -555,6 +557,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       "marginLeft": 2,
                       "marginRight": 2,
                       "marginTop": 2,
+                      "position": "relative",
                       "width": 16,
                     },
                   ]
@@ -921,6 +924,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       "marginLeft": 2,
                       "marginRight": 2,
                       "marginTop": 2,
+                      "position": "relative",
                       "width": 16,
                     },
                   ]
@@ -1073,6 +1077,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       "marginLeft": 2,
                       "marginRight": 2,
                       "marginTop": 2,
+                      "position": "relative",
                       "width": 16,
                     },
                   ]
@@ -1225,6 +1230,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       "marginLeft": 2,
                       "marginRight": 2,
                       "marginTop": 2,
+                      "position": "relative",
                       "width": 16,
                     },
                   ]
