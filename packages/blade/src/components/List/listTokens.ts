@@ -44,6 +44,7 @@ const listItemBulletMarginTop: Record<
     Record<NonNullable<ListProps['size']>, number | DotNotationSpacingStringToken>
   >
 > = {
+  // We need hard-coded non-tokenized spacing for bullet alignment in List
   unordered: {
     onDesktop: {
       small: 6,
@@ -91,6 +92,7 @@ const listItemUnorderedBulletSize: Record<
   TypographyPlatforms,
   Record<NonNullable<ListProps['size']>, string>
 > = {
+  // We need hard-coded non-tokenized spacing for bullet alignment in List
   onDesktop: {
     small: '6px',
     medium: '6px',
@@ -109,6 +111,7 @@ const ComponentIds = {
 };
 
 const listItemOrderedBulletBoxSize = {
+  // We need hard-coded non-tokenized box sizes for bullet alignment in List
   ordered: {
     onDesktop: {
       small: '16px',
