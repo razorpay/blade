@@ -11,6 +11,7 @@ import {
   ActionListHeader,
   ActionListHeaderIcon,
   ActionListItem,
+  ActionListItemAsset,
   ActionListItemIcon,
   ActionListItemText,
   ActionListSection,
@@ -265,9 +266,9 @@ export const WithHeaderFooter = (): JSX.Element => (
             />
           </ActionListSection>
           <ActionListItem
-            leading={<ActionListItemIcon icon={InfoIcon} />}
-            title="Info"
-            value="info"
+            leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+            title="Pricing"
+            value="pricing"
           />
           <ActionListFooter
             title="Search"

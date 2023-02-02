@@ -493,11 +493,10 @@ Array [
                 "paddingTop": 8,
                 "shadowColor": "hsla(216, 15%, 54%, 0.18)",
                 "shadowOffset": Object {
-                  "height": 3,
+                  "height": 0,
                   "width": 0,
                 },
                 "shadowOpacity": 1,
-                "shadowRadius": 8,
               },
             ]
           }
