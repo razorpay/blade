@@ -19,7 +19,7 @@ const getBaseActionListItemStyles = (
 ): CSSObject => {
   return {
     // @TODO: replace this with outline token when we add
-    borderWidth: makeSize(3),
+    borderWidth: makeSize(props.theme.spacing[2]),
     borderStyle: 'solid',
     borderColor: 'transparent',
     textAlign: isReactNative() ? undefined : 'left',
@@ -27,7 +27,7 @@ const getBaseActionListItemStyles = (
     display: 'flex',
     flexDirection: 'row',
     alignItems: props.hasDescription ? 'flex-start' : 'center',
-    padding: makeSize(props.theme.spacing[3]),
+    padding: makeSize(props.theme.spacing[2]),
     borderRadius: makeSize(props.theme.border.radius.medium),
     textDecoration: 'none',
     cursor: 'pointer',
