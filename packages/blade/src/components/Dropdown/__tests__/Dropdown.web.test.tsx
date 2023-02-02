@@ -157,6 +157,16 @@ describe('<Dropdown />', () => {
           <ActionList>
             <ActionListItem title="Apple" value="apple" />
             <ActionListItem title="Mango" value="mango" />
+            <ActionListItem title="Orange" value="orange" />
+            <ActionListItem title="Banana" value="banana" />
+            <ActionListItem title="Guava" value="guava" />
+            <ActionListItem title="Watermelon" value="watermelon" />
+            <ActionListItem title="Strawberry" value="strawberry" />
+            <ActionListItem title="Green Apple" value="green-apple" />
+            <ActionListItem title="Peach" value="peach" />
+            <ActionListItem title="Pineapple" value="pineapple" />
+            <ActionListItem title="Grape" value="grape" />
+            <ActionListItem title="Cherry" value="cherry" />
           </ActionList>
         </DropdownOverlay>
       </Dropdown>,
@@ -181,9 +191,27 @@ describe('<Dropdown />', () => {
     await user.keyboard('{ArrowDown}');
     expect(getActiveDescendant(selectInput, container)).toBe('Mango');
 
+    // Pressing 'Home' should jump us to first item
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{Home}');
+    expect(getActiveDescendant(selectInput, container)).toBe('Apple');
+
+    // PageDown press should jump us 10 items ahead
+    await user.keyboard('{PageDown}');
+    expect(getActiveDescendant(selectInput, container)).toBe('Grape');
+
+    // PageUp press should jump us 10 items back
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{PageUp}');
+    expect(getActiveDescendant(selectInput, container)).toBe('Mango');
+
+    // 'End' should jump us to last item
+    await user.keyboard('{End}');
+    expect(getActiveDescendant(selectInput, container)).toBe('Cherry');
+
     // Select option
     await user.keyboard('[Space]');
-    expect(selectInput.textContent).toBe('Mango');
+    expect(selectInput.textContent).toBe('Cherry');
   });
 
   it('should move focus between items with arrow key in multiselect', async () => {
