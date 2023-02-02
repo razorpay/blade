@@ -16,7 +16,7 @@ import {
 import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
 import Box from '~components/Box';
-import { getIn, isValidAllowedChildren } from '~utils';
+import { getIn, isValidAllowedChildren, metaAttribute, MetaConstants } from '~utils';
 
 type ListItemProps = {
   /**
@@ -69,7 +69,12 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
   const hasIcon = Boolean(ItemIcon);
 
   return (
-    <StyledListItem level={level} variant={variant} hasIcon={hasIcon}>
+    <StyledListItem
+      level={level}
+      variant={variant}
+      hasIcon={hasIcon}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.ListItem)}
+    >
       <Box
         display="flex"
         flexDirection="row"
