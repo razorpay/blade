@@ -48,6 +48,7 @@ const Page = (): ReactElement => {
         ActionListHeader,
         ActionListHeaderIcon,
         ActionListItem,
+        ActionListItemAsset,
         ActionListItemIcon,
         ActionListItemText,
         ActionListSection,
@@ -58,7 +59,8 @@ const Page = (): ReactElement => {
       import type {
         DropdownProps,
         SelectInputProps,
-        ActionListProps
+        ActionListProps,
+        // ... and more
       } from '@razorpay/blade/components';
       `}
       figmaURL={{
