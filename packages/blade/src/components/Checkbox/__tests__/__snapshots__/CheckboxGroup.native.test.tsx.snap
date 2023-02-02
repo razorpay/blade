@@ -254,6 +254,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         "marginLeft": 2,
                         "marginRight": 2,
                         "marginTop": 2,
+                        "position": "relative",
                         "width": 16,
                       },
                     ]
@@ -411,6 +412,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         "marginLeft": 2,
                         "marginRight": 2,
                         "marginTop": 2,
+                        "position": "relative",
                         "width": 16,
                       },
                     ]
@@ -568,6 +570,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         "marginLeft": 2,
                         "marginRight": 2,
                         "marginTop": 2,
+                        "position": "relative",
                         "width": 16,
                       },
                     ]
@@ -887,6 +890,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                         "marginLeft": 2,
                         "marginRight": 2,
                         "marginTop": 2,
+                        "position": "relative",
                         "width": 16,
                       },
                     ]
@@ -1044,6 +1048,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                         "marginLeft": 2,
                         "marginRight": 2,
                         "marginTop": 2,
+                        "position": "relative",
                         "width": 16,
                       },
                     ]
@@ -1201,6 +1206,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                         "marginLeft": 2,
                         "marginRight": 2,
                         "marginTop": 2,
+                        "position": "relative",
                         "width": 16,
                       },
                     ]
