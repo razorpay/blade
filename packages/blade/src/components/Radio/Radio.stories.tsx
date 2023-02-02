@@ -8,6 +8,7 @@ import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import Box from '~components/Box';
 
 const Page = (): React.ReactElement => {
   return (
@@ -238,6 +239,20 @@ export const KitchenSink = (): React.ReactElement => {
         <RadioComponent value="mango">Mango</RadioComponent>
         <RadioComponent value="orange">Orange</RadioComponent>
       </RadioGroupComponent>
+      <Box height={50} overflow="scroll" marginTop="spacing.4">
+        <RadioGroupComponent
+          labelPosition="left"
+          necessityIndicator="optional"
+          validationState="error"
+          errorText="This is invalid"
+          helpText="Select atleast one"
+          label="Overflow Scroll"
+        >
+          <RadioComponent value="apple">Apple</RadioComponent>
+          <RadioComponent value="mango">Mango</RadioComponent>
+          <RadioComponent value="orange">Orange</RadioComponent>
+        </RadioGroupComponent>
+      </Box>
     </>
   );
 };
