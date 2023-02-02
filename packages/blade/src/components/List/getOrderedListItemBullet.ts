@@ -63,7 +63,7 @@ const getOrderedListItemBullet = ({
     case 1:
       return `${itemNumber}`;
     case 2:
-      return `${alphabetize(--itemNumber)}`;
+      return `${alphabetize(itemNumber)}`;
     case 3:
       return `${romanize(itemNumber)}`;
     default:

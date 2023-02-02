@@ -114,21 +114,12 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
                 : undefined
             }
           >
-            {variant === 'ordered' ? (
-              <Text variant="body" type="subtle" size={size}>
-                {`${getOrderedListItemBullet({
-                  itemNumber: _itemNumber ?? 1,
-                  level: level ?? 1,
-                })}.`}
-              </Text>
-            ) : (
-              <Text variant="body" type="subtle" size="xsmall">
-                {`${getOrderedListItemBullet({
-                  itemNumber: _itemNumber ?? 1,
-                  level: level ?? 1,
-                })}`}
-              </Text>
-            )}
+            <Text variant="body" type="subtle" size={variant === 'ordered' ? size : 'xsmall'}>
+              {`${getOrderedListItemBullet({
+                itemNumber: _itemNumber ?? 1,
+                level: level ?? 1,
+              })}${variant === 'ordered' ? '.' : ''}`}
+            </Text>
           </Box>
         )}
         <Text variant="body" size={size}>
