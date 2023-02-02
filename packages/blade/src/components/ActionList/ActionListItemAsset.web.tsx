@@ -3,7 +3,17 @@ import { useTheme } from '~components/BladeProvider';
 import type { WithComponentId } from '~utils';
 import { makeSize } from '~utils';
 
-const ActionListItemAsset: WithComponentId<{ src: string; alt: string }> = (props) => {
+type ActionListItemAssetProps = {
+  /**
+   * Source of the image.
+   */
+  src: string;
+  /**
+   * Alt tag for the image
+   */
+  alt: string;
+};
+const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) => {
   const { theme } = useTheme();
   return (
     <img
@@ -17,4 +27,4 @@ const ActionListItemAsset: WithComponentId<{ src: string; alt: string }> = (prop
 
 ActionListItemAsset.componentId = componentIds.ActionListItemAsset;
 
-export { ActionListItemAsset };
+export { ActionListItemAsset, ActionListItemAssetProps };

@@ -120,9 +120,9 @@ const StyledListBoxWrapper = styled(Box)((_props) => {
  *        leading={<ActionListItemIcon icon={HomeIcon} />}
  *      />
  *      <ActionListItem
- *        title="Settings"
- *        value="settings"
- *        leading={<ActionListItemIcon icon={GearIcon} />}
+ *        title="Pricing"
+ *        value="pricing"
+ *        leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="India Flag" />}
  *      />
  *      <ActionListHeader
  *        title="Search Tips"

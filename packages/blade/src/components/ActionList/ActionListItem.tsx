@@ -35,7 +35,7 @@ type ActionListItemProps = {
   /**
    * Item that goes on left-side of item.
    *
-   * Valid elements - `<ActionListItemIcon />`
+   * Valid elements - `<ActionListItemIcon />`, `<ActionListItemAsset />`
    *
    * Will be overriden in multiselect
    */
