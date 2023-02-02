@@ -14,6 +14,15 @@ import {
 import { Button } from '~components/Button';
 import { HistoryIcon, SearchIcon } from '~components/Icons';
 
+const getActiveDescendant = (
+  selectInput: HTMLElement,
+  container: HTMLElement,
+): string | null | undefined => {
+  const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
+  const activeDescendantElement = container.querySelector(`#${activeDescendantId}`);
+  return activeDescendantElement?.textContent;
+};
+
 describe('<Dropdown />', () => {
   it('should render dropdown and make it visible on click', async () => {
     const user = userEvent.setup();
@@ -159,12 +168,6 @@ describe('<Dropdown />', () => {
     expect(selectInput.textContent).toBe('Select Option');
     expect(container.querySelector('[role=listbox]')).not.toBeVisible();
 
-    const getActiveDescendant = (): string | null | undefined => {
-      const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
-      const activeDescendantElement = container.querySelector(`#${activeDescendantId}`);
-      return activeDescendantElement?.textContent;
-    };
-
     // Dropdown open
     selectInput.focus();
     await user.keyboard('{ArrowDown}');
@@ -172,11 +175,11 @@ describe('<Dropdown />', () => {
 
     // Move to first item
     await user.keyboard('{ArrowDown}');
-    expect(getActiveDescendant()).toBe('Apple');
+    expect(getActiveDescendant(selectInput, container)).toBe('Apple');
 
     // Move to second item
     await user.keyboard('{ArrowDown}');
-    expect(getActiveDescendant()).toBe('Mango');
+    expect(getActiveDescendant(selectInput, container)).toBe('Mango');
 
     // Select option
     await user.keyboard('[Space]');
@@ -204,12 +207,6 @@ describe('<Dropdown />', () => {
     expect(selectInput.textContent).toBe('Select Option');
     expect(container.querySelector('[role=listbox]')).not.toBeVisible();
 
-    const getActiveDescendant = (): string | null | undefined => {
-      const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
-      const activeDescendantElement = container.querySelector(`#${activeDescendantId}`);
-      return activeDescendantElement?.textContent;
-    };
-
     // Dropdown open
     selectInput.focus();
     await user.keyboard('{ArrowDown}');
@@ -217,11 +214,11 @@ describe('<Dropdown />', () => {
 
     // Move to first item
     await user.keyboard('{ArrowDown}');
-    expect(getActiveDescendant()).toBe('Apple');
+    expect(getActiveDescendant(selectInput, container)).toBe('Apple');
 
     // Move to second item and select
     await user.keyboard('{ArrowDown}');
-    expect(getActiveDescendant()).toBe('Mango');
+    expect(getActiveDescendant(selectInput, container)).toBe('Mango');
     await user.keyboard('[Space]');
 
     expect(selectInput.textContent).toBe('Mango');
@@ -231,7 +228,7 @@ describe('<Dropdown />', () => {
 
     // Move to third item and select
     await user.keyboard('{ArrowDown}');
-    expect(getActiveDescendant()).toBe('Orange');
+    expect(getActiveDescendant(selectInput, container)).toBe('Orange');
     await user.keyboard('[Space]');
 
     expect(selectInput.textContent).toBe('2 items selected');
