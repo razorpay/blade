@@ -653,19 +653,16 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
                   "borderColor": "transparent",
                   "borderRadius": 4,
                   "borderStyle": "solid",
-                  "borderWidth": 3,
+                  "borderWidth": 4,
                   "cursor": "pointer",
-                  "display": "flex",
-                  "flexDirection": "row",
                   "opacity": 1,
-                  "paddingBottom": 8,
-                  "paddingLeft": 8,
-                  "paddingRight": 8,
-                  "paddingTop": 8,
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
                   "textDecorationColor": "black",
                   "textDecorationLine": "none",
                   "textDecorationStyle": "solid",
@@ -674,37 +671,43 @@ Array [
               }
             >
               <View
+                alignItems="center"
                 display="flex"
+                flexDirection="row"
+                justifyContent="center"
                 style={
                   Array [
                     Object {
+                      "alignItems": "center",
                       "display": "flex",
-                    },
-                  ]
-                }
-              />
-              <View
-                paddingLeft="spacing.3"
-                paddingRight="spacing.3"
-                style={
-                  Array [
-                    Object {
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
                 <View
+                  alignItems="center"
                   display="flex"
-                  flexDirection="column"
                   justifyContent="center"
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "display": "flex",
-                        "flexDirection": "column",
                         "justifyContent": "center",
+                      },
+                    ]
+                  }
+                />
+                <View
+                  paddingLeft="spacing.3"
+                  paddingRight="spacing.3"
+                  style={
+                    Array [
+                      Object {
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
                       },
                     ]
                   }
@@ -716,6 +719,7 @@ Array [
                     fontStyle="normal"
                     fontWeight="regular"
                     lineHeight="l"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
@@ -742,16 +746,21 @@ Array [
                     Apple
                   </Text>
                 </View>
+                <View
+                  marginLeft="auto"
+                  style={
+                    Array [
+                      Object {
+                        "marginLeft": "auto",
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
-                display="flex"
-                marginLeft="auto"
                 style={
                   Array [
-                    Object {
-                      "display": "flex",
-                      "marginLeft": "auto",
-                    },
+                    Object {},
                   ]
                 }
               />
@@ -774,19 +783,16 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
                   "borderColor": "transparent",
                   "borderRadius": 4,
                   "borderStyle": "solid",
-                  "borderWidth": 3,
+                  "borderWidth": 4,
                   "cursor": "pointer",
-                  "display": "flex",
-                  "flexDirection": "row",
                   "opacity": 1,
-                  "paddingBottom": 8,
-                  "paddingLeft": 8,
-                  "paddingRight": 8,
-                  "paddingTop": 8,
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
                   "textDecorationColor": "black",
                   "textDecorationLine": "none",
                   "textDecorationStyle": "solid",
@@ -795,37 +801,43 @@ Array [
               }
             >
               <View
+                alignItems="center"
                 display="flex"
+                flexDirection="row"
+                justifyContent="center"
                 style={
                   Array [
                     Object {
+                      "alignItems": "center",
                       "display": "flex",
-                    },
-                  ]
-                }
-              />
-              <View
-                paddingLeft="spacing.3"
-                paddingRight="spacing.3"
-                style={
-                  Array [
-                    Object {
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
                 <View
+                  alignItems="center"
                   display="flex"
-                  flexDirection="column"
                   justifyContent="center"
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "display": "flex",
-                        "flexDirection": "column",
                         "justifyContent": "center",
+                      },
+                    ]
+                  }
+                />
+                <View
+                  paddingLeft="spacing.3"
+                  paddingRight="spacing.3"
+                  style={
+                    Array [
+                      Object {
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
                       },
                     ]
                   }
@@ -837,6 +849,7 @@ Array [
                     fontStyle="normal"
                     fontWeight="regular"
                     lineHeight="l"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
@@ -863,16 +876,21 @@ Array [
                     Mango
                   </Text>
                 </View>
+                <View
+                  marginLeft="auto"
+                  style={
+                    Array [
+                      Object {
+                        "marginLeft": "auto",
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
-                display="flex"
-                marginLeft="auto"
                 style={
                   Array [
-                    Object {
-                      "display": "flex",
-                      "marginLeft": "auto",
-                    },
+                    Object {},
                   ]
                 }
               />
