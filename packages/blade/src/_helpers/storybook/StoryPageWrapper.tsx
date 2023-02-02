@@ -43,7 +43,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
 
   return (
     <>
-      <Title />
+      <Title>{props.componentName}</Title>
       <Subtitle>{props.componentDescription}</Subtitle>
       {props.note ? <Description markdown={`> **Note** <br/>${props.note}`} /> : null}
       {figmaURL !== '#' ? (
