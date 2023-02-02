@@ -210,7 +210,7 @@ OrderedListWithSizes.args = {
   variant: 'ordered',
 };
 
-const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
+const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = ({ icon, ...args }) => {
   return (
     <Box>
       <Heading>Small Size:</Heading>

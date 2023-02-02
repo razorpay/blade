@@ -19,12 +19,21 @@ import Box from '~components/Box';
 import { getIn, isValidAllowedChildren } from '~utils';
 
 type ListItemProps = {
-  children:
-    | React.ReactElement<ListItemProps>
-    | React.ReactElement<ListItemProps>[]
-    | React.ReactNode;
+  /**
+   * Children to be rendered for ListItem. This can be a text, ListItemLink or another List.
+   *
+   */
+  children: React.ReactNode;
+  /**
+   * Icon to be rendered for a ListItem's bullet.
+   *
+   */
   icon?: IconComponent;
-  _itemNumber?: number;
+  /**
+   * This is a private prop to be used only for internal logic purposes.
+   *
+   */
+  _itemNumber?: undefined;
 };
 
 const StyledListItem = styled(ListItemElement)<{

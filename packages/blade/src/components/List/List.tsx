@@ -16,12 +16,42 @@ import {
 } from '~utils';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
-type ListProps = {
+type ListCommonProps = {
+  /**
+   * ListItem to be rendered for the List.
+   *
+   */
   children: React.ReactElement<ListItemProps> | React.ReactElement<ListItemProps>[];
+  /**
+   * Sets the variant to to be rendered for the List.
+   *
+   * @default 'unordered'
+   */
   variant?: 'unordered' | 'ordered' | 'ordered-filled';
+  /**
+   * Sets the size for the List.
+   *
+   * @default 'medium'
+   */
   size?: 'small' | 'medium';
+};
+
+type ListUnorderedProps = ListCommonProps & {
+  variant?: 'unordered';
   icon?: IconComponent;
 };
+
+type ListOrderedProps = ListCommonProps & {
+  variant?: 'ordered';
+  icon?: undefined;
+};
+
+type ListOrderedFilledProps = ListCommonProps & {
+  variant?: 'ordered-filled';
+  icon?: undefined;
+};
+
+type ListProps = ListUnorderedProps | ListOrderedProps | ListOrderedFilledProps;
 
 const StyledOrderedList = styled(OrderedList)<{ marginTop?: DotNotationSpacingStringToken }>(
   ({ marginTop, theme }) => ({
@@ -82,8 +112,9 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
       >
         {variant === 'unordered'
           ? childListItems
-          : childListItems.map((child, index) =>
-              React.cloneElement(child as React.ReactElement, { _itemNumber: ++index }),
+          : childListItems.map(
+              (child, index) =>
+                React.cloneElement(child as React.ReactElement, { _itemNumber: ++index }), // adds _itemNumber for rendering ordered list bullets
             )}
       </ListElement>
     </ListProvider>
