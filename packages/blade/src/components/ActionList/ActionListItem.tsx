@@ -18,6 +18,7 @@ import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
+import { useTheme } from '~components/BladeProvider';
 
 type ActionListItemProps = {
   title: string;
@@ -135,7 +136,7 @@ const ActionListItemText: WithComponentId<{ children: string }> = ({ children })
 
 ActionListItemText.componentId = componentIds.ActionListItemText;
 
-const ActionListCheckboxWrapper = styled(Box)((_props) => ({
+const ActionListCheckboxWrapper = styled(Box)<{ hasDescription: boolean }>((_props) => ({
   pointerEvents: 'none',
 }));
 
@@ -166,6 +167,8 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     triggererRef,
     dropdownTriggerer,
   } = useDropdown();
+
+  const { theme } = useTheme();
 
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
@@ -225,32 +228,40 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         intent={props.intent}
         isSelected={isSelected}
       >
-        <Box display="flex" marginTop={props.description ? 'spacing.2' : undefined}>
-          {selectionType === 'multiple' ? (
-            // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-            <ActionListCheckboxWrapper
-              {...makeAccessible({
-                hidden: true,
-              })}
-            >
-              <Checkbox isChecked={isSelected} tabIndex={-1}>
-                {/* 
-                  Checkbox requires children. Didn't want to make it optional because its helpful for consumers
-                  But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
-                */}
-                {null}
-              </Checkbox>
-            </ActionListCheckboxWrapper>
-          ) : (
-            props.leading
-          )}
-        </Box>
         <Box
-          paddingLeft={selectionType === 'multiple' ? 'spacing.1' : 'spacing.3'}
-          paddingRight="spacing.3"
+          display="flex"
+          justifyContent="center"
+          flexDirection="row"
+          alignItems="center"
+          maxHeight={isReactNative() ? undefined : theme.spacing[6]}
         >
-          <Box display="flex" justifyContent="center" flexDirection="column">
+          <Box display="flex" justifyContent="center" alignItems="center">
+            {selectionType === 'multiple' ? (
+              // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+              <ActionListCheckboxWrapper
+                hasDescription={Boolean(props.description)}
+                {...makeAccessible({
+                  hidden: true,
+                })}
+              >
+                <Checkbox isChecked={isSelected} tabIndex={-1}>
+                  {/* 
+                      Checkbox requires children. Didn't want to make it optional because its helpful for consumers
+                      But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
+                    */}
+                  {null}
+                </Checkbox>
+              </ActionListCheckboxWrapper>
+            ) : (
+              props.leading
+            )}
+          </Box>
+          <Box
+            paddingLeft={selectionType === 'multiple' ? 'spacing.0' : 'spacing.3'}
+            paddingRight="spacing.3"
+          >
             <Text
+              truncateAfterLines={1}
               color={
                 props.intent === 'negative'
                   ? 'feedback.text.negative.lowContrast'
@@ -259,19 +270,15 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
             >
               {props.title}
             </Text>
-            {props.description ? (
-              <Text color="surface.text.placeholder.lowContrast" size="small">
-                {props.description}
-              </Text>
-            ) : null}
           </Box>
+          <Box marginLeft="auto">{props.trailing}</Box>
         </Box>
-        <Box
-          display="flex"
-          marginLeft="auto"
-          marginTop={props.description ? 'spacing.2' : undefined}
-        >
-          {props.trailing}
+        <Box paddingLeft={props.leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
+          {props.description ? (
+            <Text color="surface.text.placeholder.lowContrast" size="small">
+              {props.description}
+            </Text>
+          ) : null}
         </Box>
       </StyledActionListItem>
     </ActionListItemContext.Provider>
