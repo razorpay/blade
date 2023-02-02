@@ -7,6 +7,7 @@ import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent 
 import type { CheckboxGroupProps } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import Box from '~components/Box';
 
 const Page = (): React.ReactElement => {
   return (
@@ -278,6 +279,20 @@ export const KitchenSink = (): React.ReactElement => {
         <CheckboxComponent value="mango">Mango</CheckboxComponent>
         <CheckboxComponent value="orange">Orange</CheckboxComponent>
       </CheckboxGroupComponent>
+      <Box height={50} overflow="scroll" marginTop="spacing.4">
+        <CheckboxGroupComponent
+          labelPosition="left"
+          necessityIndicator="optional"
+          validationState="error"
+          errorText="This is invalid"
+          helpText="Select atleast one"
+          label="Overflow Scroll"
+        >
+          <CheckboxComponent value="apple">Apple</CheckboxComponent>
+          <CheckboxComponent value="mango">Mango</CheckboxComponent>
+          <CheckboxComponent value="orange">Orange</CheckboxComponent>
+        </CheckboxGroupComponent>
+      </Box>
     </>
   );
 };
