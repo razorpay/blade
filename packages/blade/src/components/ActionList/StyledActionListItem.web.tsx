@@ -13,7 +13,7 @@ const StyledActionListItem = styled(Box)<StyledActionListItemProps>((props) => {
           ? props.theme.colors.feedback.background.negative.lowContrast
           : props.theme.colors.brand.gray.a50.lowContrast,
     },
-    '&.active-focus': {
+    '&.active-focus:not([aria-selected=true])': {
       // @TODO: ask designer for exact color here (couldn't figure out from figma)
       borderColor: props.theme.colors.brand.primary[300],
     },
