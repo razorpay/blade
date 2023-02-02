@@ -8,7 +8,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -169,7 +169,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -248,7 +248,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -801,7 +801,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -1117,7 +1117,7 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -1354,7 +1354,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",
@@ -1433,7 +1433,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 9999,
         "display": "flex",
         "flexWrap": "nowrap",

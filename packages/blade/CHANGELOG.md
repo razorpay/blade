@@ -1,5 +1,21 @@
 # @razorpay/blade
 
+## 6.0.2
+
+### Patch Changes
+
+- ba5ec1ac: fix: mark react-native peerDependencies as optional
+- 4a178a79: fix(Alert): color of title and description
+
+  - The color of title and description will look slightly subtle now to match the current designs.
+  - Internally uses the `subtle` type correctly now to fix a discrepancy in color for title and description.
+
+## 6.0.1
+
+### Patch Changes
+
+- 62a98bb1: fix(blade): update BaseInput background color
+
 ## 6.0.0
 
 ### Major Changes

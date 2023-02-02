@@ -519,7 +519,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   margin-right: 8px;
   width: 20px;
   height: 20px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
   border-radius: 9999px;
 }
 
@@ -1178,7 +1178,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   margin-right: 8px;
   width: 18px;
   height: 18px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
   border-radius: 9999px;
 }
 

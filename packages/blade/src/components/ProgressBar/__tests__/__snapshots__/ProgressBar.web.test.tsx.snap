@@ -41,7 +41,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c8 {
@@ -242,7 +242,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c2 {
@@ -1081,7 +1081,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c4 {
@@ -1205,7 +1205,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c4 {
@@ -1329,7 +1329,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c4 {
@@ -1453,7 +1453,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c4 {
@@ -1577,7 +1577,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c4 {
@@ -1719,7 +1719,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   overflow: hidden;
   position: relative;
   height: 4px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c8 {
@@ -1920,7 +1920,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c2 {
@@ -2022,7 +2022,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c8 {
@@ -2266,7 +2266,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c12 {
@@ -2596,7 +2596,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(216,44%,23%,0.18);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
 .c12 {

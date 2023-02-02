@@ -11,8 +11,8 @@ exports[`<Alert /> should render 1`] = `
     Array [
       Object {
         "alignItems": "flex-start",
-        "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
+        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        "borderColor": "hsla(216, 15%, 54%, 0.32)",
         "borderRadius": 4,
         "borderStyle": "solid",
         "borderWidth": 1,
@@ -136,7 +136,7 @@ exports[`<Alert /> should render 1`] = `
       }
     >
       <Text
-        color="surface.text.normal.lowContrast"
+        color="surface.text.subtle.lowContrast"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -145,7 +145,7 @@ exports[`<Alert /> should render 1`] = `
         style={
           Array [
             Object {
-              "color": "hsla(217, 56%, 17%, 1)",
+              "color": "hsla(216, 27%, 36%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
@@ -399,7 +399,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       }
     >
       <Text
-        color="surface.text.normal.lowContrast"
+        color="surface.text.subtle.lowContrast"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -408,7 +408,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         style={
           Array [
             Object {
-              "color": "hsla(217, 56%, 17%, 1)",
+              "color": "hsla(216, 27%, 36%, 1)",
               "fontFamily": "Lato",
               "fontSize": 15,
               "fontStyle": "normal",

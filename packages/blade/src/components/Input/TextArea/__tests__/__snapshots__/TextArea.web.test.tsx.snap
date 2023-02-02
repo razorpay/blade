@@ -207,8 +207,8 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8 {
-  background-color: hsla(220,27%,98%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -216,8 +216,8 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8:hover {
-  background-color: hsla(220,30%,96%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -231,8 +231,8 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8:focus-within {
-  background-color: hsla(220,27%,98%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -546,8 +546,8 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8 {
-  background-color: hsla(220,27%,98%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -555,8 +555,8 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8:hover {
-  background-color: hsla(220,30%,96%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -570,8 +570,8 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8:focus-within {
-  background-color: hsla(220,27%,98%,1);
-  border-bottom-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;

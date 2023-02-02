@@ -879,7 +879,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       <View
         alignItems="center"
         alignSelf="flex-start"
-        backgroundColor="hsla(216, 44%, 23%, 0.18)"
+        backgroundColor="hsla(216, 15%, 54%, 0.18)"
         borderRadius="max"
         display="flex"
         flexShrink={0}
@@ -892,7 +892,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             Object {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
               "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
@@ -1004,7 +1004,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       <View
         alignItems="center"
         alignSelf="flex-start"
-        backgroundColor="hsla(216, 44%, 23%, 0.18)"
+        backgroundColor="hsla(216, 15%, 54%, 0.18)"
         borderRadius="max"
         display="flex"
         flexShrink={0}
@@ -1017,7 +1017,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             Object {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
               "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
@@ -1129,7 +1129,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       <View
         alignItems="center"
         alignSelf="flex-start"
-        backgroundColor="hsla(216, 44%, 23%, 0.18)"
+        backgroundColor="hsla(216, 15%, 54%, 0.18)"
         borderRadius="max"
         display="flex"
         flexShrink={0}
@@ -1142,7 +1142,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             Object {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
               "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
@@ -2101,7 +2101,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       <View
         alignItems="center"
         alignSelf="flex-start"
-        backgroundColor="hsla(216, 44%, 23%, 0.18)"
+        backgroundColor="hsla(216, 15%, 54%, 0.18)"
         borderRadius="max"
         display="flex"
         flexShrink={0}
@@ -2114,7 +2114,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             Object {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
               "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
@@ -2226,7 +2226,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       <View
         alignItems="center"
         alignSelf="flex-start"
-        backgroundColor="hsla(216, 44%, 23%, 0.18)"
+        backgroundColor="hsla(216, 15%, 54%, 0.18)"
         borderRadius="max"
         display="flex"
         flexShrink={0}
@@ -2239,7 +2239,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             Object {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
               "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
@@ -2351,7 +2351,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       <View
         alignItems="center"
         alignSelf="flex-start"
-        backgroundColor="hsla(216, 44%, 23%, 0.18)"
+        backgroundColor="hsla(216, 15%, 54%, 0.18)"
         borderRadius="max"
         display="flex"
         flexShrink={0}
@@ -2364,7 +2364,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             Object {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "hsla(216, 44%, 23%, 0.18)",
+              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
               "borderRadius": 9999,
               "display": "flex",
               "flexShrink": 0,
