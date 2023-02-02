@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<List /> should render List with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF\\"><li class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  exghJH\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 jlsgap\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 iUXmmj\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"3px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 1</p></div><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  fALcyE\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 jlsgap\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 iUXmmj\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"2.5px\\" stroke=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 2</p></div><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  fALcyE\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 jlsgap\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 iUXmmj\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\"><rect height=\\"6px\\" width=\\"6px\\" rx=\\"1px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></rect></svg></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 3</p></div></li></ul></li></ul></li></ul></div>"`;
+
+exports[`<List /> should render List with default properties 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <ul
+    class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF"
+    data-blade-component="list"
+    role="list"
+  >
+    <li
+      class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  exghJH"
+    >
+      <div
+        class="Boxweb__Box-xvyj85-0 jlsgap"
+        display="flex"
+      >
+        <div
+          class="Boxweb__Box-xvyj85-0 iUXmmj"
+          display="flex"
+        >
+          <svg
+            aria-hidden="true"
+            data-blade-component="icon"
+            fill="none"
+            height="6px"
+            viewBox="0 0 6 6"
+            width="6px"
+          >
+            <circle
+              cx="3px"
+              cy="3px"
+              fill="hsla(214, 18%, 69%, 1)"
+              r="3px"
+            />
+          </svg>
+        </div>
+        <p
+          class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
+          color="surface.text.normal.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="100"
+          font-style="normal"
+          font-weight="regular"
+        >
+          Level 1
+        </p>
+      </div>
+      <ul
+        class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
+        data-blade-component="list"
+        role="list"
+      >
+        <li
+          class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  fALcyE"
+        >
+          <div
+            class="Boxweb__Box-xvyj85-0 jlsgap"
+            display="flex"
+          >
+            <div
+              class="Boxweb__Box-xvyj85-0 iUXmmj"
+              display="flex"
+            >
+              <svg
+                aria-hidden="true"
+                data-blade-component="icon"
+                fill="none"
+                height="6px"
+                viewBox="0 0 6 6"
+                width="6px"
+              >
+                <circle
+                  cx="3px"
+                  cy="3px"
+                  r="2.5px"
+                  stroke="hsla(214, 18%, 69%, 1)"
+                />
+              </svg>
+            </div>
+            <p
+              class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="100"
+              font-style="normal"
+              font-weight="regular"
+            >
+              Level 2
+            </p>
+          </div>
+          <ul
+            class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
+            data-blade-component="list"
+            role="list"
+          >
+            <li
+              class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  fALcyE"
+            >
+              <div
+                class="Boxweb__Box-xvyj85-0 jlsgap"
+                display="flex"
+              >
+                <div
+                  class="Boxweb__Box-xvyj85-0 iUXmmj"
+                  display="flex"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="6px"
+                    viewBox="0 0 6 6"
+                    width="6px"
+                  >
+                    <rect
+                      fill="hsla(214, 18%, 69%, 1)"
+                      height="6px"
+                      rx="1px"
+                      width="6px"
+                    />
+                  </svg>
+                </div>
+                <p
+                  class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="100"
+                  font-style="normal"
+                  font-weight="regular"
+                >
+                  Level 3
+                </p>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+`;

@@ -23,7 +23,6 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
-    require('../../src/components/List/List.stories.tsx'),
     require('../../src/components/Alert/Alert.stories.tsx'),
     require('../../src/components/Badge/Badge.stories.tsx'),
     require('../../src/components/Button/Button/Button.stories.tsx'),
@@ -41,6 +40,7 @@ const getStories = () => {
     require('../../src/components/Input/TextInput/TextInput.stories.tsx'),
     require('../../src/components/Link/BaseLink/BaseLink.stories.tsx'),
     require('../../src/components/Link/Link/Link.stories.tsx'),
+    require('../../src/components/List/List.stories.tsx'),
     require('../../src/components/ProgressBar/ProgressBar.stories.tsx'),
     require('../../src/components/Radio/Radio.stories.tsx'),
     require('../../src/components/SkipNav/SkipNav.stories.tsx'),
