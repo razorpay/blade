@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-const ListItemElement = styled.li``;
+const ListItemElement = styled.li({});
 
 export { ListItemElement };

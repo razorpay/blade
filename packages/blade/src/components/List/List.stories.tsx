@@ -1,7 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { BookmarkIcon, Heading } from '..';
+import { BookmarkIcon } from '../Icons';
+import { Heading } from '../Typography';
 import type { ListProps } from './List';
 import { List } from './List';
 import { ListItem } from './ListItem';
@@ -14,7 +15,7 @@ import Box from '~components/Box';
 const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
-      componentDescription="This is the List component"
+      componentDescription="List displays a set of related items that are composed of text/links."
       componentName="List"
       figmaURL={{
         paymentTheme:
