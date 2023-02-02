@@ -1,8 +1,6 @@
 /**
  * Converts number to roman number
  *
- * @param {number} number
- * @returns {string} roman number
  */
 const romanize = (number: number): string => {
   const romanKeys: Record<string, number> = {
@@ -33,8 +31,6 @@ const romanize = (number: number): string => {
 /**
  * Converts number to alphabet. After 26 letters, the output will contain 2 alphabets eg) aa, ab, ac,...
  *
- * @param {number} number
- * @returns {string} alphabet
  */
 const alphabetize = (number: number): string => {
   // Decrement the input number since array starts with 0. Eg) 'a' will be at 0th position and not 1st position in the array.
@@ -48,8 +44,6 @@ const alphabetize = (number: number): string => {
 /**
  * Get the list item bullet number/roman number/alphabet for the passed level and list item number
  *
- * @param {{itemNumber: number, level: number}} { itemNumber, level }
- * @returns {string} OrderedList bullet
  */
 const getOrderedListItemBullet = ({
   itemNumber,

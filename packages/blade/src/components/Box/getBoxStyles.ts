@@ -29,6 +29,7 @@ const getBorderRadiusValue = <RadiusValue extends string | undefined>({
   value: RadiusValue;
   theme: Theme;
 }): string | undefined => {
+  // converts token value to pixel value. In case of percentage tokens, it returns it as is.
   if (value) {
     const radius = getIn(theme, `border.radius.${value}`);
     if (radius.toString().includes('%')) return radius;
