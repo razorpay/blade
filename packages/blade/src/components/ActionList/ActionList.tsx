@@ -85,6 +85,7 @@ const StyledActionList = styled(Box)<{
 const StyledListBoxWrapper = styled(Box)((_props) => {
   if (!isReactNative()) {
     return {
+      // Hides the last Divider (we don't want divider on last section)
       [`& [role=group]:last-child > [role=separator]:last-child`]: {
         display: 'none',
       },
