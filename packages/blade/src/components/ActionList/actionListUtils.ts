@@ -183,7 +183,7 @@ const validateActionListItemProps = ({
 
 const getNormalTextColor = (
   isDisabled: boolean | undefined,
-  { isIcon }: { isIcon?: boolean } = {},
+  { isMuted }: { isMuted?: boolean } = {},
 ): Extract<
   BaseTextProps['color'],
   | 'surface.text.placeholder.lowContrast'
@@ -194,7 +194,7 @@ const getNormalTextColor = (
     return 'surface.text.placeholder.lowContrast';
   }
 
-  if (isIcon) {
+  if (isMuted) {
     return 'surface.text.muted.lowContrast';
   }
 

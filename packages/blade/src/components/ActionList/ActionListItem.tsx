@@ -140,7 +140,7 @@ const ActionListItemIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }):
       color={
         intent === 'negative'
           ? 'feedback.icon.negative.lowContrast'
-          : getNormalTextColor(isDisabled, { isIcon: true })
+          : getNormalTextColor(isDisabled, { isMuted: true })
       }
       size="medium"
     />
@@ -322,7 +322,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         </Box>
         <Box paddingLeft={props.leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
           {props.description ? (
-            <Text color={getNormalTextColor(props.isDisabled)} size="small">
+            <Text color={getNormalTextColor(props.isDisabled, { isMuted: true })} size="small">
               {props.description}
             </Text>
           ) : null}

@@ -7,7 +7,7 @@ const StyledActionListItem = styled(Box)<StyledActionListItemProps>((props) => {
   return {
     ...getBaseActionListItemStyles(props),
     // Web-specific styles
-    '&:hover': {
+    '&:hover:not([aria-disabled=true])': {
       backgroundColor:
         props.intent === 'negative'
           ? props.theme.colors.feedback.background.negative.lowContrast
