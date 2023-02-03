@@ -24,18 +24,39 @@ type ActionListItemProps = {
   title: string;
   description?: string;
   onClick?: (clickProps: { name: string; value?: boolean }) => void;
+  /**
+   * value that you get from `onChange` event on SelectInput or in form submissions.
+   */
   value: string;
+  /**
+   * Link to open when item is clicked.
+   */
   href?: string;
+  /**
+   * Item that goes on left-side of item.
+   *
+   * Valid elements - `<ActionListItemIcon />`, `<ActionListItemAsset />`
+   *
+   * Will be overriden in multiselect
+   */
+  leading?: React.ReactNode;
+  /**
+   * Item that goes on right-side of item.
+   *
+   * Valid elements - `<ActionListItemText />`, `<ActionListItemIcon />`
+   */
+  trailing?: React.ReactNode;
+  /**
+   * If item is selected on page load
+   */
+  isDefaultSelected?: boolean;
+  intent?: Extract<Feedback, 'negative'>;
   /**
    * Internally passed from ActionList. No need to pass it explicitly
    *
    * @private
    */
   _index?: number;
-  leading?: React.ReactNode;
-  trailing?: React.ReactNode;
-  isDefaultSelected?: boolean;
-  intent?: Extract<Feedback, 'negative'>;
 };
 
 const ActionListItemContext = React.createContext<{
@@ -156,6 +177,24 @@ const makeActionListItemClickable = (
   };
 };
 
+/**
+ * ### ActionListItem
+ *
+ * Creates option inside `ActionList`.
+ *
+ * #### Usage
+ *
+ * ```jsx
+ * <ActionList>
+ *  <ActionListItem
+ *    title="Home"
+ *    value="home"
+ *    leading={<ActionListItemIcon icon={HomeIcon} />}
+ *    trailing={<ActionListItemText>⌘ + S</ActionListItemText>}
+ *  />
+ * </ActionList>
+ * ```
+ */
 const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Element => {
   const {
     activeIndex,
@@ -166,6 +205,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     selectionType,
     triggererRef,
     dropdownTriggerer,
+    isKeydownPressed,
   } = useDropdown();
 
   const { theme } = useTheme();
@@ -196,6 +236,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
       <StyledActionListItem
         as={!isReactNative() ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props._index}`}
+        type="button"
         tabIndex={-1}
         href={props.href}
         className={activeIndex === props._index ? 'active-focus' : ''}
@@ -227,6 +268,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         hasDescription={Boolean(props.description)}
         intent={props.intent}
         isSelected={isSelected}
+        isKeydownPressed={isKeydownPressed}
       >
         <Box
           display="flex"

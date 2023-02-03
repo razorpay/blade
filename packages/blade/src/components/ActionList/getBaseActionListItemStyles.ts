@@ -12,6 +12,7 @@ type StyledActionListItemProps = {
   intent?: ActionListItemProps['intent'];
   onPress?: (e: React.TouchEvent<TouchableOpacity>) => void;
   isSelected?: boolean;
+  isKeydownPressed: boolean;
 };
 
 const getBaseActionListItemStyles = (
@@ -19,7 +20,7 @@ const getBaseActionListItemStyles = (
 ): CSSObject => {
   return {
     // @TODO: replace this with outline token when we add
-    borderWidth: makeSize(3),
+    borderWidth: makeSize(props.theme.spacing[2]),
     borderStyle: 'solid',
     borderColor: 'transparent',
     textAlign: isReactNative() ? undefined : 'left',

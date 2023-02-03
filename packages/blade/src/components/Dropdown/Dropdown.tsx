@@ -12,9 +12,14 @@ type DropdownProps = {
 };
 
 /**
- * **Dropdown component**
+ * ### Dropdown component
  *
- * **Usage**
+ * Dropdown component is generic component that controls the dropdown functionality.
+ * It can be used with multiple triggers and mostly contains ActionList component inside it
+ *
+ * ---
+ *
+ * #### Usage
  *
  * ```jsx
  * <Dropdown selectionType="single">
@@ -27,6 +32,10 @@ type DropdownProps = {
  *  </DropdownOverlay>
  * </Dropdown>
  * ```
+ *
+ * ---
+ *
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-select--with-single-select Dropdown Documentation}
  */
 const Dropdown: WithComponentId<DropdownProps> = ({
   children,
@@ -42,6 +51,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
   const triggererRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
+  const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
 
@@ -76,6 +86,8 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       setActiveIndex,
       shouldIgnoreBlur,
       setShouldIgnoreBlur,
+      isKeydownPressed,
+      setIsKeydownPressed,
       dropdownBaseId,
       triggererRef,
       actionListRef,
@@ -93,6 +105,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       shouldIgnoreBlur,
       selectionType,
       hasFooterAction,
+      isKeydownPressed,
     ],
   );
 

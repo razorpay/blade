@@ -1,0 +1,903 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = `
+.c0 {
+  position: relative;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.c4 {
+  margin-bottom: 4px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 12px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c15 {
+  margin-left: 0px;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c21 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.c25 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  max-height: 20px;
+}
+
+.c26 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c28 {
+  margin-left: auto;
+}
+
+.c30 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.c31 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: auto;
+}
+
+.c33 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c17 {
+  display: block;
+  position: absolute;
+  width: 100%;
+}
+
+.c18 {
+  -webkit-animation: hEZwlf 200ms cubic-bezier(0,0,0,1);
+  animation: hEZwlf 200ms cubic-bezier(0,0,0,1);
+  -webkit-transform: translateY(8px);
+  -ms-transform: translateY(8px);
+  transform: translateY(8px);
+  opacity: 0;
+  z-index: 99;
+}
+
+.c6 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c22 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.6875rem;
+  font-weight: 400;
+  font-style: italic;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c35 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c27 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c10 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: transparent;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 8px;
+  width: 100%;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c10::-webkit-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c10::-moz-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c10:-ms-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c10::placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c10:focus {
+  outline: none;
+}
+
+.c14 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  margin-left: 0;
+  background-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  height: 1px;
+  -webkit-animation: cAlpMa 250ms cubic-bezier(0.3,0,0.2,1) forwards;
+  animation: cAlpMa 250ms cubic-bezier(0.3,0,0.2,1) forwards;
+}
+
+.c9 {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.c9:hover {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9:focus-within {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.c1 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c19 {
+  background-color: hsla(0,0%,100%,1);
+  border-width: 1px;
+  border-color: hsla(216,15%,54%,0.18);
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0px 0px 2px 0px hsla(216,15%,54%,0.18),0px 3px 8px 0px hsla(216,15%,54%,0.18);
+}
+
+.c23 [role=group]:last-child > [role=separator]:last-child {
+  display: none;
+}
+
+.c24 {
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+  text-align: left;
+  background-color: transparent;
+  padding: 4px;
+  border-radius: 4px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.c24:hover {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c24.active-focus:not([aria-selected=true]) {
+  border-color: hsla(218,89%,51%,0.09);
+}
+
+.c24[aria-selected=true] {
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: hsla(216,15%,54%,0.09);
+  margin: -8px -8px 8px;
+}
+
+.c29 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: hsla(216,15%,54%,0.09);
+  margin: 8px -8px -8px;
+}
+
+.c32 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c32:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c32:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c32:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c32 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c34 {
+  opacity: 1;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <input
+        aria-hidden="true"
+        tabindex="-1"
+        value=""
+      />
+    </div>
+    <div
+      class=""
+      data-blade-component="select-input"
+    >
+      <div
+        class="c2"
+        display="flex"
+      >
+        <div
+          class="c3"
+          display="flex"
+        >
+          <label
+            for="dropdown-7-trigger-1-input-2"
+            id="dropdown-7-label"
+            style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+          >
+            <div
+              class="c4"
+            >
+              <div
+                class="c5"
+                display="flex"
+              >
+                <p
+                  class="c6 "
+                  color="surface.text.subdued.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="75"
+                  font-style="normal"
+                  font-weight="bold"
+                >
+                  Fruits
+                </p>
+                <div
+                  class="c1"
+                >
+                  <p
+                    class="c7 "
+                    color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
+                    font-family="text"
+                    font-size="100"
+                    font-style="normal"
+                    font-weight="regular"
+                  />
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div
+          class="c8 c9"
+          display="flex"
+          width="100%"
+        >
+          <button
+            aria-controls="dropdown-7-actionlist"
+            aria-describedby=""
+            aria-disabled="false"
+            aria-expanded="true"
+            aria-haspopup="dialog"
+            aria-invalid="false"
+            aria-required="false"
+            class="c10"
+            id="dropdown-7-trigger-1-input-2"
+            role="combobox"
+            type="button"
+            value="Select Option"
+          >
+            Select Option
+          </button>
+          <div
+            class="c11"
+            display="flex"
+          >
+            <div
+              class="c12"
+              display="flex"
+            >
+              <div
+                class="c13"
+                display="flex"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                    fill="hsla(217, 56%, 17%, 1)"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class=" c14"
+        />
+      </div>
+      <div
+        class="c15"
+      >
+        <div
+          class="c16"
+          display="flex"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c17 c18"
+      data-blade-component="dropdown-overlay"
+      display="block"
+      style="opacity: 1;"
+      width="100%"
+    >
+      <div
+        aria-labelledby="dropdown-7-label"
+        class=" c19"
+        data-blade-component="action-list"
+        elevation="5"
+        id="dropdown-7-actionlist"
+        role="dialog"
+      >
+        <div
+          class=" c20"
+          data-blade-component="action-list-header"
+        >
+          <div
+            class=""
+          >
+            <svg
+              aria-hidden="true"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
+                fill="hsla(216, 16%, 60%, 1)"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <div
+            class="c21"
+          >
+            <p
+              class="c22 "
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="50"
+              font-style="italic"
+              font-weight="regular"
+            >
+              Recent Searches
+            </p>
+          </div>
+        </div>
+        <div
+          aria-multiselectable="false"
+          class=" c23"
+          role="listbox"
+        >
+          <button
+            aria-selected="false"
+            class=" c24"
+            data-blade-component="action-list-item"
+            data-index="0"
+            data-value="apple"
+            id="dropdown-7-0"
+            role="option"
+            tabindex="-1"
+            type="button"
+          >
+            <div
+              class="c25"
+              display="flex"
+            >
+              <div
+                class="c26"
+                display="flex"
+              />
+              <div
+                class="c21"
+              >
+                <p
+                  class="c7 c27"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="100"
+                  font-style="normal"
+                  font-weight="regular"
+                >
+                  Apple
+                </p>
+              </div>
+              <div
+                class="c28"
+              />
+            </div>
+            <div
+              class=""
+            />
+          </button>
+          <button
+            aria-selected="false"
+            class=" c24"
+            data-blade-component="action-list-item"
+            data-index="1"
+            data-value="mango"
+            id="dropdown-7-1"
+            role="option"
+            tabindex="-1"
+            type="button"
+          >
+            <div
+              class="c25"
+              display="flex"
+            >
+              <div
+                class="c26"
+                display="flex"
+              />
+              <div
+                class="c21"
+              >
+                <p
+                  class="c7 c27"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="100"
+                  font-style="normal"
+                  font-weight="regular"
+                >
+                  Mango
+                </p>
+              </div>
+              <div
+                class="c28"
+              />
+            </div>
+            <div
+              class=""
+            />
+          </button>
+        </div>
+        <div
+          aria-label="Search Tips"
+          class=" c29"
+          data-blade-component="action-list-footer"
+          role="group"
+        >
+          <div
+            class=""
+          >
+            <svg
+              aria-hidden="true"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+                fill="hsla(216, 16%, 60%, 1)"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <div
+            class="c30"
+          >
+            <p
+              class="c22 "
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="50"
+              font-style="italic"
+              font-weight="regular"
+            >
+              Search Tips
+            </p>
+          </div>
+          <div
+            class="c31"
+            display="flex"
+          >
+            <button
+              class="c32"
+              data-blade-component="button"
+              role="button"
+              type="button"
+            >
+              <div
+                class="c33 c34"
+                display="flex"
+              >
+                <div
+                  class="c35"
+                  color="action.text.primary.default"
+                  font-size="100"
+                  font-weight="bold"
+                >
+                  Apply
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

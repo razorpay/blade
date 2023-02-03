@@ -7,7 +7,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { getPlatformType, isReactNative, MetaConstants } from '~utils';
+import { isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
@@ -57,15 +57,13 @@ const _SelectInput = (
 
   const { icon, onChange, ...baseInputProps } = props;
 
-  const platform = getPlatformType();
-
   React.useEffect(() => {
     onChange?.({ name: props.name, values: value.split(', ') });
   }, [value, onChange, props.name]);
 
   return (
     <Box position="relative">
-      {platform !== 'react-native' ? (
+      {!isReactNative() ? (
         <VisuallyHidden>
           <input
             ref={inputRef as React.Ref<HTMLInputElement>}
@@ -85,7 +83,7 @@ const _SelectInput = (
         {...baseInputProps}
         as="button"
         componentName={MetaConstants.SelectInput}
-        ref={triggererRef as React.MutableRefObject<HTMLInputElement>}
+        ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
         textAlign="left"
         value={displayValue ? displayValue : 'Select Option'}
         id={`${dropdownBaseId}-trigger`}
@@ -115,6 +113,33 @@ const _SelectInput = (
   );
 };
 
+/**
+ * ### SelectInput
+ *
+ * Our equivalent of `<select>` tag. Lets you select items from given options.
+ *
+ * To be used in combination of `Dropdown` and `ActionList` component
+ *
+ * ---
+ *
+ * #### Usage
+ *
+ * ```diff
+ * <Dropdown>
+ * + <SelectInput label="Select Fruits" />
+ *   <DropdownOverlay>
+ *     <ActionList>
+ *       <ActionListItem title="Mango" value="mango" />
+ *       <ActionListItem title="Apple" value="apple" />
+ *     </ActionList>
+ *   </DropdownOverlay>
+ * </Dropdown>
+ * ```
+ *
+ * ---
+ *
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-select--with-single-select SelectInput Documentation}.
+ */
 const SelectInput = React.forwardRef(_SelectInput);
 // @ts-expect-error: componentId is our custom attribute
 SelectInput.componentId = 'SelectInput';
