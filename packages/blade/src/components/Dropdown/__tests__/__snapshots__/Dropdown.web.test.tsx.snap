@@ -458,10 +458,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c24.active-focus:not([aria-selected=true]) {
-  border-color: hsla(218,89%,51%,0.09);
-}
-
 .c24[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
