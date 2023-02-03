@@ -79,6 +79,7 @@ type StyledComponentInputProps = Omit<
   isTextArea?: boolean;
   isFocused: boolean;
   autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
+  editable?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
 };
 
@@ -91,7 +92,7 @@ const getRNInputStyles = (
     ...getBaseInputStyles({
       theme: props.theme,
       isFocused: props.isFocused,
-      isDisabled: 'editable' in props ? !props.editable : undefined,
+      isDisabled: !props.editable,
       validationState: props.validationState,
       leadingIcon: props.leadingIcon,
       prefix: props.prefix,
