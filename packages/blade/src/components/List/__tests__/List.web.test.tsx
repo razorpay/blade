@@ -1,5 +1,7 @@
 import { List } from '../List';
 import { ListItem } from '../ListItem';
+import { ListItemLink } from '../ListItemLink';
+import { ListItemCode } from '../ListItemCode';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
@@ -30,6 +32,38 @@ describe('<List />', () => {
     expect(getByText('Level 1')).toBeInTheDocument();
     expect(getByText('Level 2')).toBeInTheDocument();
     expect(getByText('Level 3')).toBeInTheDocument();
+  });
+
+  it('should render List with inline ListItemLink', () => {
+    const linkText = 'Google';
+    const { getByRole, getByText } = renderWithTheme(
+      <List>
+        <ListItem>
+          Level 1
+          <ListItemLink href="https://www.google.com/" target="_blank" rel="noreferrer noopener">
+            {linkText}
+          </ListItemLink>
+        </ListItem>
+        <ListItem>Level 2</ListItem>
+      </List>,
+    );
+    expect(getByText(linkText)).toBeInTheDocument();
+    expect(getByRole('link')).toHaveAttribute('href', 'https://www.google.com/');
+    expect(getByRole('link')).toHaveAttribute('target', '_blank');
+    expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer noopener');
+  });
+
+  it('should render List with inline ListItemCode', () => {
+    const codeText = 'Google';
+    const { container } = renderWithTheme(
+      <List>
+        <ListItem>
+          Level 1 <ListItemCode>{codeText}</ListItemCode>
+        </ListItem>
+        <ListItem>Level 2</ListItem>
+      </List>,
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should render unordered List of small size', () => {

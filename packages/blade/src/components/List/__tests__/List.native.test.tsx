@@ -1,5 +1,7 @@
 import { List } from '../List';
 import { ListItem } from '../ListItem';
+import { ListItemLink } from '../ListItemLink';
+import { ListItemCode } from '../ListItemCode';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
 
@@ -28,6 +30,36 @@ describe('<List />', () => {
     expect(getByText('Level 1')).toBeTruthy();
     expect(getByText('Level 2')).toBeTruthy();
     expect(getByText('Level 3')).toBeTruthy();
+  });
+
+  it('should render List with inline ListItemLink', () => {
+    const linkText = 'Google';
+    const { toJSON, getByText } = renderWithTheme(
+      <List>
+        <ListItem>
+          Level 1
+          <ListItemLink href="https://www.google.com/" target="_blank" rel="noreferrer noopener">
+            {linkText}
+          </ListItemLink>
+        </ListItem>
+        <ListItem>Level 2</ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+    expect(getByText(linkText)).toBeTruthy();
+  });
+
+  it('should render List with inline ListItemCode', () => {
+    const codeText = 'Google';
+    const { toJSON } = renderWithTheme(
+      <List>
+        <ListItem>
+          Level 1 <ListItemCode>{codeText}</ListItemCode>
+        </ListItem>
+        <ListItem>Level 2</ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render unordered List of small size', () => {

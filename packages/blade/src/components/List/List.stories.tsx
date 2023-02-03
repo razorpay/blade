@@ -7,6 +7,7 @@ import type { ListProps } from './List';
 import { List } from './List';
 import { ListItem } from './ListItem';
 import { ListItemLink } from './ListItemLink';
+import { ListItemCode } from './ListItemCode';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -271,3 +272,38 @@ const ListWithLinkAndIconTemplate: ComponentStory<typeof List> = () => {
 
 export const ListWithLinkAndIcon = ListWithLinkAndIconTemplate.bind({});
 ListWithLinkAndIcon.storyName = 'Link & Icon';
+
+const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
+  return (
+    <Box>
+      <Heading>Small Size:</Heading>
+      <List variant="ordered" size="small">
+        <ListItem>
+          Bump blade version to <ListItemCode>v6.0.0</ListItemCode>
+        </ListItem>
+        <ListItem>
+          Run <ListItemCode>yarn install</ListItemCode>
+        </ListItem>
+
+        <ListItem>
+          Run <ListItemCode>yarn start</ListItemCode>
+        </ListItem>
+      </List>
+      <Heading>Medium Size:</Heading>
+      <List variant="ordered" size="medium">
+        <ListItem>
+          Bump blade version to <ListItemCode>v6.0.0</ListItemCode>
+        </ListItem>
+        <ListItem>
+          Run <ListItemCode>yarn install</ListItemCode>
+        </ListItem>
+
+        <ListItem>
+          Run <ListItemCode>yarn start</ListItemCode>
+        </ListItem>
+      </List>
+    </Box>
+  );
+};
+export const ListWithCodeAndIcon = ListWithCodeTemplate.bind({});
+ListWithCodeAndIcon.storyName = 'With Inline Code';

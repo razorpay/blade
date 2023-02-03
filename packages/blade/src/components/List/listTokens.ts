@@ -1,3 +1,4 @@
+import type { CodeProps } from '../Typography';
 import type { ListProps } from './List';
 import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
@@ -134,6 +135,11 @@ const listItemOrderedBulletBoxSize = {
   },
 };
 
+const listItemCodeSize: Record<NonNullable<ListProps['size']>, NonNullable<CodeProps['size']>> = {
+  small: 'small',
+  medium: 'small',
+};
+
 export {
   listItemPaddingLeft,
   ComponentIds,
@@ -142,4 +148,5 @@ export {
   listItemBulletMarginTop,
   listItemUnorderedBulletSize,
   listItemOrderedBulletBoxSize,
+  listItemCodeSize,
 };

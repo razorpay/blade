@@ -4,3 +4,5 @@ export { ListItem } from './ListItem';
 export type { ListItemProps } from './ListItem';
 export { ListItemLink } from './ListItemLink';
 export type { ListItemLinkProps } from './ListItemLink';
+export { ListItemCode } from './ListItemCode';
+export type { ListItemCodeProps } from './ListItemCode';
