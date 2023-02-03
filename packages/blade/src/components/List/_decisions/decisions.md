@@ -16,6 +16,7 @@ Lists display a set of related items that are composed of text/links. Each list 
   - [List Component](#list-component)
   - [ListItem Component](#listitem-component)
   - [ListItemLink Component](#listitemlink-component)
+  - [ListItemCode Component](#listitemcode-component)
   - [Sample Usage](#sample-usage)
   - [Alternative APIs](#alternative-apis)
     - [Hierarchial with `variant` as `'ordered' | 'ordered-filled' | 'unordered'`](#hierarchial-with-variant-as-ordered--ordered-filled--unordered)
@@ -95,6 +96,18 @@ Eg)
 ```jsx
 <ListItem>
     For more information <ListItemLink href=''>Click here</ListItemLink>
+</ListItem>
+```
+
+### ListItemCode Component
+| Prop | Type | Default | Description | Required |
+|---|---|---|---|---|
+| children | `string` | `undefined` | The text to be rendered as code.| ✅ |
+
+Eg)
+```jsx
+<ListItem>
+    Finally run <ListItemCode>yarn install</ListItemCode>
 </ListItem>
 ```
 
