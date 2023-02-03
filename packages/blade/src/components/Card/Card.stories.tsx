@@ -57,6 +57,7 @@ const Page = (): React.ReactElement => {
           CardHeaderBadge,
           CardHeaderIconButton,
           InfoIcon,
+          Text
         } from '@razorpay/blade/components';
 
         function App() {
