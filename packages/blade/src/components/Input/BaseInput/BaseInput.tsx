@@ -13,6 +13,7 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
+import type { AriaAttributes } from '~utils';
 import Box from '~components/Box';
 
 import {
@@ -220,7 +221,7 @@ export type BaseInputProps = FormInputLabelProps &
     /**
      * whether the input has a popup
      */
-    hasPopup?: boolean;
+    hasPopup?: AriaAttributes['hasPopup'];
     /**
      * id of the popup
      */
@@ -538,7 +539,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         helpTextId,
       }),
       label: accessibilityLabel,
-      hasPopup: hasPopup ? 'listbox' : undefined,
+      hasPopup,
       expanded: hasPopup ? isPopupExpanded : undefined,
       controls: hasPopup ? popupId : undefined,
       role: hasPopup ? 'combobox' : undefined,

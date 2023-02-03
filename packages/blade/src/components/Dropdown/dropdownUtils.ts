@@ -23,6 +23,11 @@ export type SelectActionsType =
   | 'Select'
   | 'Type';
 
+export const componentIds = {
+  DropdownOverlay: 'DropdownOverlay',
+  Dropdown: 'Dropdown',
+};
+
 // Save a list of named combobox actions, for future readability
 const SelectActions: Record<SelectActionsType, SelectActionsType> = {
   Close: 'Close',
@@ -288,8 +293,16 @@ export const makeInputValue = (selectedIndices: number[], options: OptionsType):
  * Value that is displayed inside the select field
  */
 export const makeInputDisplayValue = (selectedIndices: number[], options: OptionsType): string => {
-  if (options.length === 0) {
+  // When no item is selected or no item is present
+  if (options.length === 0 || selectedIndices.length === 0) {
     return '';
   }
-  return selectedIndices.map((selectedIndex) => options[selectedIndex]?.title).join(', ');
+
+  // When one item is selected, we display that item's title in input
+  if (selectedIndices.length === 1) {
+    return options[selectedIndices[0]].title;
+  }
+
+  // When more than one item is selected, we display the count of items
+  return `${selectedIndices.length} items selected`;
 };

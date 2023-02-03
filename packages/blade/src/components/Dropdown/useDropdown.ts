@@ -16,11 +16,12 @@ import type {
   FormInputHandleOnEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
+import { isReactNative } from '~utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
 
-type OptionsType = { title: string; value: string }[];
+type OptionsType = { title: string; value: string; href?: string }[];
 
 type DropdownContextType = {
   isOpen: boolean;
@@ -34,9 +35,12 @@ type DropdownContextType = {
   shouldIgnoreBlur: boolean;
   setShouldIgnoreBlur: (value: boolean) => void;
   dropdownBaseId: string;
-  selectInputRef: React.RefObject<HTMLButtonElement | null>;
+  dropdownTriggerer?: 'SelectInput';
+  triggererRef: React.RefObject<HTMLButtonElement | null>;
   actionListRef: React.RefObject<HTMLDivElement | null>;
   selectionType?: DropdownProps['selectionType'];
+  hasFooterAction: boolean;
+  setHasFooterAction: (value: boolean) => void;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -50,29 +54,30 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setActiveIndex: noop,
   shouldIgnoreBlur: false,
   setShouldIgnoreBlur: noop,
+  hasFooterAction: false,
+  setHasFooterAction: noop,
   dropdownBaseId: '',
   actionListRef: {
     current: null,
   },
-  selectInputRef: {
+  triggererRef: {
     current: null,
   },
 });
 
 let searchTimeout: number;
-// eslint-disable-next-line one-var
 let searchString = '';
 
 type UseDropdownReturnValue = DropdownContextType & {
   /**
    * Click event on combobox. Toggles the dropdown
    */
-  onSelectClick: () => void;
+  onTriggerClick: () => void;
 
   /**
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
-  onSelectKeydown: FormInputHandleOnKeyDownEvent | undefined;
+  onTriggerKeydown: FormInputHandleOnKeyDownEvent | undefined;
 
   /**
    * Handles blur events like
@@ -81,7 +86,7 @@ type UseDropdownReturnValue = DropdownContextType & {
    * - selecting the option before closing if Tab is pressed
    * - ..etc
    */
-  onSelectBlur: FormInputHandleOnEvent | undefined;
+  onTriggerBlur: FormInputHandleOnEvent | undefined;
 
   /**
    * Handles the click even on option.
@@ -124,20 +129,24 @@ const useDropdown = (): UseDropdownReturnValue => {
     ...rest
   } = React.useContext(DropdownContext);
 
+  type SelectOptionType = (
+    index: number,
+    properties?: {
+      closeOnSelection?: boolean;
+    },
+  ) => void;
   /**
    * Marks the given index as selected.
    *
    * In single select, it also closes the menu.
    * In multiselect, it keeps the menu open for more selections
    */
-  const selectOption = (
-    index: number,
-    properties: {
-      closeOnSelection?: boolean;
-    } = {
+  const selectOption: SelectOptionType = (
+    index,
+    properties = {
       closeOnSelection: true,
     },
-  ): void => {
+  ) => {
     if (index < 0 || index > options.length - 1) {
       return;
     }
@@ -169,14 +178,20 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Click listener for combobox (or any triggerer of the dropdown)
    */
-  const onSelectClick = (): void => {
+  const onTriggerClick = (): void => {
     setIsOpen(!isOpen);
   };
 
   /**
    * Blur handler on combobox. Also handles the selection logic when user moves focus
    */
-  const onSelectBlur = (): void => {
+  const onTriggerBlur = (): void => {
+    if (rest.hasFooterAction) {
+      // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
+      // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
+      setActiveIndex(-1);
+    }
+
     if (shouldIgnoreBlur) {
       setShouldIgnoreBlur(false);
       return;
@@ -218,7 +233,9 @@ const useDropdown = (): UseDropdownReturnValue => {
       onOptionChange(actionType, index);
     }
     selectOption(index);
-    rest.selectInputRef.current?.focus();
+    if (!isReactNative()) {
+      rest.triggererRef.current?.focus();
+    }
   };
 
   /**
@@ -258,8 +275,14 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
-  const onSelectKeydown: FormInputHandleOnKeyDownEvent = (e) => {
+  const onTriggerKeydown = (e: { event: React.KeyboardEvent<HTMLInputElement> }): void => {
+    if (e.event.key === 'Tab' && rest.hasFooterAction) {
+      // When footer has Action Buttons, we ignore the blur event so that we can move focus to action item than bluring out of dropdown
+      setShouldIgnoreBlur(true);
+    }
+
     const actionType = getActionFromKey(e.event, isOpen);
+
     if (actionType) {
       performAction(actionType, e, {
         setIsOpen,
@@ -267,6 +290,17 @@ const useDropdown = (): UseDropdownReturnValue => {
         onComboType,
         selectCurrentOption: () => {
           selectOption(activeIndex);
+          if (rest.hasFooterAction) {
+            rest.triggererRef.current?.focus();
+          }
+
+          const anchorLink = options[activeIndex]?.href;
+          if (anchorLink) {
+            window.location.href = anchorLink;
+            if (window.top) {
+              window.top.location.href = anchorLink;
+            }
+          }
         },
       });
     }
@@ -277,9 +311,9 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsOpen,
     selectedIndices,
     setSelectedIndices,
-    onSelectClick,
-    onSelectKeydown,
-    onSelectBlur,
+    onTriggerClick,
+    onTriggerKeydown,
+    onTriggerBlur,
     onOptionClick,
     activeIndex,
     setActiveIndex,

@@ -1,119 +1,164 @@
 import React from 'react';
+import styled from 'styled-components';
+import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
+import { getActionListProperties } from './actionListUtils';
 import Box from '~components/Box';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { Text } from '~components/Typography';
-import { getPlatformType, makeAccessible } from '~utils';
-
-type ActionListItemProps = {
-  title: string;
-  value: string;
-  href?: string;
-  /**
-   * Internally passed from ActionList. No need to pass it explicitly
-   *
-   * @private
-   */
-  _index?: number;
-};
-const ActionListItem = (props: ActionListItemProps): JSX.Element => {
-  const {
-    activeIndex,
-    dropdownBaseId,
-    onOptionClick,
-    selectedIndices,
-    setShouldIgnoreBlur,
-    selectInputRef,
-  } = useDropdown();
-
-  const platformType = getPlatformType();
-  const renderOnWebAs = props.href ? 'a' : 'button';
-  const isReactNative = platformType === 'react-native';
-
-  return (
-    <Box
-      as={!isReactNative ? renderOnWebAs : undefined}
-      id={`${dropdownBaseId}-${props._index}`}
-      role="option"
-      data-value={props.value}
-      data-index={props._index}
-      aria-selected={
-        typeof props._index === 'number' ? selectedIndices.includes(props._index) : undefined
-      }
-      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-        if (typeof props._index === 'number') {
-          onOptionClick(e, props._index);
-        }
-      }}
-      onFocus={() => {
-        // We don't want to keep the browser's focus on option item. We move it to selectInput
-        selectInputRef.current?.focus();
-      }}
-      onMouseDown={() => {
-        setShouldIgnoreBlur(true);
-      }}
-      href={props.href}
-      style={{
-        border: activeIndex === props._index ? '2px solid red' : '',
-        width: '100%',
-      }}
-    >
-      <Text>{props.title}</Text>
-    </Box>
-  );
-};
+import {
+  isReactNative,
+  makeAccessible,
+  makeSize,
+  isAndroid,
+  metaAttribute,
+  MetaConstants,
+} from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 type ActionListProps = {
   children: React.ReactNode[];
+  surfaceLevel?: 2 | 3;
 };
-const ActionList = ({ children }: ActionListProps): JSX.Element => {
-  const { setOptions, actionListRef, selectionType, dropdownBaseId } = useDropdown();
-  const actionListOptions: {
-    title: string;
-    value: string;
-  }[] = [];
 
-  console.count('ActionList');
+const getReactNativeShadow = ({
+  offsetX,
+  offsetY,
+  shadowColor,
+  blur,
+}: {
+  offsetX: number;
+  offsetY: number;
+  shadowColor: string;
+  blur: number;
+}): {
+  shadowOpacity?: '1';
+  shadowRadius?: number;
+  shadowColor?: string;
+  shadowOffset?: string;
+} => {
+  if (isReactNative()) {
+    return {
+      shadowOpacity: '1',
+      shadowRadius: isReactNative() ? undefined : blur,
+      shadowColor: isAndroid() ? undefined : shadowColor,
+      shadowOffset: `${makeSize(offsetX)} ${makeSize(offsetY)}`,
+    };
+  }
 
-  // Looping through ActionListItems to add index to them and get an options array for moving focus between items
-  const childrenWithId = React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      // @TODO: handle the scenario where ActionListItem is inside ActionListMenu
-      if (child.type === ActionListItem) {
-        actionListOptions.push({
-          title: child.props.title,
-          value: child.props.value,
-        });
-        const currentIndex = actionListOptions.length - 1;
-        const clonedChild = React.cloneElement(child, {
-          // @ts-expect-error: TS doesn't understand the child's props
-          _index: currentIndex,
-        });
-        return clonedChild;
-      }
-    }
+  return {};
+};
 
-    return child;
-  });
+const StyledActionList = styled(Box)<{
+  surfaceLevel: ActionListProps['surfaceLevel'];
+  elevation?: number;
+}>((props) => {
+  const { theme, surfaceLevel = 2 } = props;
+
+  const shadowColor = theme.shadows.color.level[1];
+
+  // @TODO: tokenize shadows and replace the logic here
+  const elevation200 = `${makeSize(theme.shadows.offsetX.level[1])} ${makeSize(0)} ${makeSize(
+    theme.shadows.blurRadius.level[1],
+  )} 0px ${shadowColor}, ${makeSize(theme.shadows.offsetX.level[1])} ${makeSize(
+    theme.shadows.offsetY.level[2],
+  )} ${makeSize(theme.shadows.blurRadius.level[2])} 0px ${shadowColor}`;
+
+  const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
+
+  return {
+    backgroundColor,
+    borderWidth: theme.border.width.thin,
+    borderColor: theme.colors.surface.border.normal.lowContrast,
+    borderRadius: makeSize(theme.border.radius.medium),
+    padding: makeSize(theme.spacing[3]),
+    boxShadow: isReactNative() ? undefined : elevation200,
+
+    // For react native. Ignored in web
+    ...getReactNativeShadow({
+      offsetX: theme.shadows.offsetX.level[1],
+      offsetY: 0,
+      shadowColor,
+      blur: theme.shadows.blurRadius.level[1],
+    }),
+  };
+});
+
+const StyledListBoxWrapper = styled(Box)((_props) => {
+  if (!isReactNative()) {
+    return {
+      // Hides the last Divider (we don't want divider on last section)
+      [`& [role=group]:last-child > [role=separator]:last-child`]: {
+        display: 'none',
+      },
+    };
+  }
+
+  return {};
+});
+
+const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Element => {
+  const {
+    setOptions,
+    actionListRef,
+    selectionType,
+    dropdownBaseId,
+    setSelectedIndices,
+    dropdownTriggerer,
+    hasFooterAction,
+  } = useDropdown();
+
+  const { theme } = useTheme();
+
+  const {
+    childrenWithId,
+    actionListOptions,
+    defaultSelectedIndices,
+    actionListHeaderChild,
+    actionListFooterChild,
+  } = React.useMemo(() => getActionListProperties(children), [children]);
 
   React.useEffect(() => {
     setOptions(actionListOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setOptions, children]);
+  }, [actionListOptions]);
+
+  React.useEffect(() => {
+    setSelectedIndices(defaultSelectedIndices);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const actionListContainerRole = getActionListContainerRole(hasFooterAction, dropdownTriggerer);
+  const actionListItemWrapperRole = getActionListItemWrapperRole(
+    hasFooterAction,
+    dropdownTriggerer,
+  );
+  const isMultiSelectable = selectionType === 'multiple';
 
   return (
-    <Box
+    <StyledActionList
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={actionListRef as any}
+      surfaceLevel={surfaceLevel}
+      elevation={theme.shadows.androidElevation.level[2]}
+      id={`${dropdownBaseId}-actionlist`}
       {...makeAccessible({
-        role: 'listbox',
-        multiSelectable: selectionType === 'multiple',
+        role: actionListContainerRole,
+        multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
         labelledBy: `${dropdownBaseId}-label`,
       })}
-      id={`${dropdownBaseId}-listbox`}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionList)}
     >
-      {childrenWithId}
-    </Box>
+      {actionListHeaderChild}
+      <StyledListBoxWrapper
+        {...makeAccessible({
+          role: actionListItemWrapperRole,
+          multiSelectable: actionListItemWrapperRole === 'listbox' ? isMultiSelectable : undefined,
+        })}
+      >
+        {childrenWithId}
+      </StyledListBoxWrapper>
+      {actionListFooterChild}
+    </StyledActionList>
   );
 };
 
-export { ActionList, ActionListItem };
+export { ActionList };

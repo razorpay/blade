@@ -7,7 +7,10 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { getPlatformType, isReactNative } from '~utils';
+import { getPlatformType, isReactNative, MetaConstants } from '~utils';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -32,18 +35,25 @@ type SelectInputProps = Pick<
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
 };
 
-const SelectInput = (props: SelectInputProps): JSX.Element => {
+const _SelectInput = (
+  props: SelectInputProps,
+  ref: React.ForwardedRef<BladeElementRef>,
+): JSX.Element => {
   const {
     isOpen,
     value,
     displayValue,
-    onSelectClick,
-    onSelectKeydown,
-    onSelectBlur,
+    onTriggerClick,
+    onTriggerKeydown,
+    onTriggerBlur,
     dropdownBaseId,
     activeIndex,
-    selectInputRef,
+    triggererRef,
+    hasFooterAction,
+    dropdownTriggerer,
   } = useDropdown();
+
+  const inputRef = useBladeInnerRef(ref);
 
   const { icon, onChange, ...baseInputProps } = props;
 
@@ -58,6 +68,7 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       {platform !== 'react-native' ? (
         <VisuallyHidden>
           <input
+            ref={inputRef as React.Ref<HTMLInputElement>}
             tabIndex={-1}
             required={props.isRequired}
             name={props.name}
@@ -73,27 +84,28 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
       <BaseInput
         {...baseInputProps}
         as="button"
-        ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
+        componentName={MetaConstants.SelectInput}
+        ref={triggererRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
         value={displayValue ? displayValue : 'Select Option'}
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
-        hasPopup
+        hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
         isPopupExpanded={isOpen}
-        onClick={onSelectClick}
-        onKeyDown={onSelectKeydown}
-        onBlur={onSelectBlur}
+        onClick={onTriggerClick}
+        onKeyDown={onTriggerKeydown}
+        onBlur={onTriggerBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
-        popupId={`${dropdownBaseId}-listbox`}
+        popupId={`${dropdownBaseId}-actionlist`}
         interactionElement={
           <SelectChevronIcon
             onClick={() => {
               // Icon onClicks to the SelectInput itself
               if (!isReactNative()) {
-                selectInputRef.current?.focus();
+                triggererRef.current?.focus();
               }
-              onSelectClick();
+              onTriggerClick();
             }}
             icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />
@@ -103,6 +115,8 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
   );
 };
 
+const SelectInput = React.forwardRef(_SelectInput);
+// @ts-expect-error: componentId is our custom attribute
 SelectInput.componentId = 'SelectInput';
 
 export { SelectInput, SelectInputProps };
