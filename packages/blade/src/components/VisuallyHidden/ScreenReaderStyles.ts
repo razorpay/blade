@@ -10,6 +10,7 @@ const screenReaderStyles: CSSObject = {
   padding: 0,
   position: 'absolute',
   width: `1px`,
+  left: '-10000px',
   whiteSpace: 'nowrap',
   wordWrap: 'normal',
 };
