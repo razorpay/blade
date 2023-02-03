@@ -6,16 +6,13 @@ import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 
 export const parameters = {
   previewTabs: {
     'storybook/docs/panel': { index: 0 },
     canvas: { title: 'Stories', index: 1 },
   },
-  // setting default view mode to story when development
-  // otherwise while changing component code storybook resets view to story mode
-  // which hampers productivity
-  viewMode: process.env.NODE_ENV === 'development' ? 'story' : 'docs',
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
@@ -39,6 +36,27 @@ export const parameters = {
     },
   },
   docs: {
+    container: ({ children, context }) => {
+      const getThemeTokens = () => {
+        if (context.globals.themeTokenName === 'paymentTheme') {
+          return paymentTheme;
+        }
+        if (context.globals.themeTokenName === 'bankingTheme') {
+          return bankingTheme;
+        }
+      };
+      return (
+        <DocsContainer context={context}>
+          <BladeProvider
+            key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+            themeTokens={getThemeTokens()}
+            colorScheme={context.globals.colorScheme}
+          >
+            {children}
+          </BladeProvider>
+        </DocsContainer>
+      );
+    },
     theme,
     components: {
       summary: styled.summary`

@@ -25,6 +25,7 @@ const getCheckboxIconWrapperStyles = ({
   const borderColor = border === 'transparent' ? border : getIn(theme, border);
 
   return {
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
