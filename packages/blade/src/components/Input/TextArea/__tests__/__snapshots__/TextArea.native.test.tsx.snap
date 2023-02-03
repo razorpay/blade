@@ -195,6 +195,7 @@ exports[`<TextArea /> should render 1`] = `
         accessibilityState={
           Object {
             "disabled": false,
+            "expanded": undefined,
           }
         }
         editable={true}

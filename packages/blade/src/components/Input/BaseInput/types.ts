@@ -2,7 +2,10 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
 import type { ActionStates } from '~tokens/theme/theme';
-import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
+import type {
+  FormInputHandleOnClickEvent,
+  FormInputHandleOnKeyDownEvent,
+} from '~components/Form/FormTypes';
 
 export type StyledBaseInputProps = {
   handleOnFocus?: FormInputHandleOnEvent;
@@ -10,6 +13,7 @@ export type StyledBaseInputProps = {
   handleOnBlur?: FormInputHandleOnEvent;
   handleOnKeyDown?: FormInputHandleOnKeyDownEvent;
   handleOnInput?: FormInputHandleOnEvent;
+  handleOnClick?: FormInputHandleOnClickEvent;
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   accessibilityProps: Record<string, unknown>;
@@ -40,5 +44,8 @@ export type StyledBaseInputProps = {
   | 'keyboardType'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
+  | 'hasPopup'
+  | 'popupId'
+  | 'isPopupExpanded'
 >;
 export { StyledBaseInput } from './StyledBaseInput.web';

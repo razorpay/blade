@@ -222,6 +222,7 @@ exports[`<OTPInput /> should render 1`] = `
                 accessibilityState={
                   Object {
                     "disabled": false,
+                    "expanded": undefined,
                   }
                 }
                 autoCompleteType="sms-otp"
@@ -358,6 +359,7 @@ exports[`<OTPInput /> should render 1`] = `
                 accessibilityState={
                   Object {
                     "disabled": false,
+                    "expanded": undefined,
                   }
                 }
                 autoCompleteType="sms-otp"
@@ -494,6 +496,7 @@ exports[`<OTPInput /> should render 1`] = `
                 accessibilityState={
                   Object {
                     "disabled": false,
+                    "expanded": undefined,
                   }
                 }
                 autoCompleteType="sms-otp"
@@ -630,6 +633,7 @@ exports[`<OTPInput /> should render 1`] = `
                 accessibilityState={
                   Object {
                     "disabled": false,
+                    "expanded": undefined,
                   }
                 }
                 autoCompleteType="sms-otp"
@@ -766,6 +770,7 @@ exports[`<OTPInput /> should render 1`] = `
                 accessibilityState={
                   Object {
                     "disabled": false,
+                    "expanded": undefined,
                   }
                 }
                 autoCompleteType="sms-otp"
@@ -902,6 +907,7 @@ exports[`<OTPInput /> should render 1`] = `
                 accessibilityState={
                   Object {
                     "disabled": false,
+                    "expanded": undefined,
                   }
                 }
                 autoCompleteType="sms-otp"
