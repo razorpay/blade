@@ -4,7 +4,7 @@ import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 
 type SandboxProps = {
   children: string;

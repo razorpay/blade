@@ -6,7 +6,7 @@ import type { ProgressBarProps } from './ProgressBar';
 import { ProgressBar as ProgressBarComponent } from './ProgressBar';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 
 const Page = (): ReactElement => {
   return (

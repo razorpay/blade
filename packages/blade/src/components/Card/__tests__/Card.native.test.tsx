@@ -18,7 +18,7 @@ import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

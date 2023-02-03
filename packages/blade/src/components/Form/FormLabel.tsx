@@ -3,7 +3,7 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType, makeSpace, useBreakpoint } from '~utils';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 

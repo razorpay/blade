@@ -9,7 +9,7 @@ import { Button } from '../Button';
 import { Divider } from './Divider';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import type { TextProps, TextVariant } from '~components/Typography';
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';

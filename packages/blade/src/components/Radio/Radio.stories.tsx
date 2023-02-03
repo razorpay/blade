@@ -8,7 +8,7 @@ import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { Button } from '~components/Button';
 

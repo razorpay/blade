@@ -8,7 +8,7 @@ import { Checkbox as CheckboxComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 
 const Page = (): React.ReactElement => {

@@ -1,7 +1,7 @@
-import Box from '../Box';
+import Box from '../BaseBox';
 import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
 
-describe('<Box />', () => {
+describe('<BaseBox />', () => {
   it('should render Box component with the correct styles', () => {
     const { container } = renderWithSSR(
       <Box

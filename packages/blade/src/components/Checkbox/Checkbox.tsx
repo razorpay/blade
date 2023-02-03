@@ -5,7 +5,7 @@ import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
 import { metaAttribute, isEmpty, MetaConstants } from '~utils';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';

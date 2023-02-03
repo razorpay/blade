@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 
 const CardSurface = styled(Box)<{ surfaceLevel: 2 | 3 }>(({ surfaceLevel, theme }) => {
   const offsetX = theme.shadows.offsetX.level[1];

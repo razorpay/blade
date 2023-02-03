@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
 import { Code as CodeComponent } from './Code';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 

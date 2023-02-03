@@ -8,7 +8,7 @@ import useInteraction from '~src/hooks/useInteraction';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';

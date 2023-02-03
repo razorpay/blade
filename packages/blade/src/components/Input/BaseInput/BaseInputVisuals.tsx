@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { BoxProps } from '~components/Box/types';
+import type { BoxProps } from '~components/Box/BaseBox/types';
 
 type InputVisuals = Pick<
   BaseInputProps,

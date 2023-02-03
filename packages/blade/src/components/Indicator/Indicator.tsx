@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
 import { useTheme } from '~components/BladeProvider';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';

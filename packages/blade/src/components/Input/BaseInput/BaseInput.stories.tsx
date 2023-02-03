@@ -6,7 +6,7 @@ import type { BaseInputProps } from './BaseInput';
 import { BaseInput as BaseInputComponent } from './BaseInput';
 import BaseInputLayoutImage from './_decisions/base-inputfield-layout.png';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 
 const propsCategory = {

@@ -3,7 +3,7 @@ import type { StyledCounterProps } from './types';
 import { horizontalPadding, verticalPadding } from './counterTokens';
 import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { metaAttribute, MetaConstants } from '~utils';

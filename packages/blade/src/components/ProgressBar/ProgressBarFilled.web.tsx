@@ -3,7 +3,7 @@ import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
 import type { ProgressBarFilledProps } from './types';
 import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { castWebType, getIn, makeMotionTime } from '~utils';
 
 const pulseKeyframes = keyframes`

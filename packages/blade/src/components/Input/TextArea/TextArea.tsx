@@ -5,7 +5,7 @@ import { CloseIcon } from '../../Icons';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { IconButton } from '~components/Button/IconButton';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';

@@ -6,7 +6,7 @@ import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, getIn, makeAccessible, makeSize, MetaConstants } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 
 type BaseSpinnerProps = {

@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { TextAreaProps } from './TextArea';
 import { TextArea as TextAreaComponent } from './TextArea';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';

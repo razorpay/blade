@@ -6,7 +6,7 @@ import type { FormInputOnEvent } from '../../Form';
 import { FormHint, FormLabel } from '../../Form';
 import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { metaAttribute, getPlatformType, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 

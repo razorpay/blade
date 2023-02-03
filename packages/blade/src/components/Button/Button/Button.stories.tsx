@@ -10,7 +10,7 @@ import { BaseText } from '~components/Typography/BaseText';
 import { CreditCardIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';

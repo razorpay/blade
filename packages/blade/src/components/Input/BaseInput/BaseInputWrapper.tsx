@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { castWebType, getPlatformType, makeMotionTime } from '~utils';
 import type { ActionStates } from '~tokens/theme/theme';
 

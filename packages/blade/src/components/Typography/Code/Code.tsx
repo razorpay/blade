@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import {
   metaAttribute,
   getPlatformType,

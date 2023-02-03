@@ -13,7 +13,7 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 
 import {
   metaAttribute,

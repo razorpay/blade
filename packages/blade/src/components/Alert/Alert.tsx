@@ -17,7 +17,7 @@ import {
   useBreakpoint,
 } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';

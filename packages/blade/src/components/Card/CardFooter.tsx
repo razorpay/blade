@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Divider } from './Divider';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';

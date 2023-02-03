@@ -1,7 +1,7 @@
-import Box from '../Box';
+import Box from '../BaseBox';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
-describe('<Box />', () => {
+describe('<BaseBox />', () => {
   it('should render Box component with the correct styles', () => {
     const renderTree = renderWithTheme(
       <Box

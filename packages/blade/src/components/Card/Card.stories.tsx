@@ -25,7 +25,7 @@ import { UsersIcon, TrashIcon } from '~components/Icons';
 
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 
 const Page = (): React.ReactElement => {

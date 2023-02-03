@@ -7,7 +7,7 @@ import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
 type ProgressBarCommonProps = {

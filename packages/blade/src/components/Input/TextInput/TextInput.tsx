@@ -8,7 +8,7 @@ import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';

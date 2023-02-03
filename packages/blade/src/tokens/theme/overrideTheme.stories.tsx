@@ -8,7 +8,7 @@ import paymentTheme from './paymentTheme';
 import { Button } from '~components/Button';
 import { BladeProvider } from '~components/BladeProvider';
 import { Checkbox, CheckboxGroup } from '~components/Checkbox';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Text, Title as BladeTitle } from '~components/Typography';
 
 const Page = (): ReactElement => {

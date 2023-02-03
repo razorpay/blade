@@ -1,7 +1,7 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
 import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import type { AriaRoles } from '~utils';
 
 type SelectorGroupFieldProps = {

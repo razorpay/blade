@@ -2,7 +2,7 @@ import React from 'react';
 import { radioSizes } from '../radioTokens';
 import { RadioGroupProvider } from './RadioContext';
 import { useRadioGroup } from './useRadioGroup';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getPlatformType, useBreakpoint } from '~utils';

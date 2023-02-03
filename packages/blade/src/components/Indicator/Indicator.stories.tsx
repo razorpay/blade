@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 
 import type { IndicatorProps } from './Indicator';
 import { Indicator as IndicatorComponent } from './Indicator';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { getPlatformType } from '~utils';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';

@@ -5,7 +5,7 @@ import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';

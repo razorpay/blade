@@ -2,7 +2,7 @@ import React from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { EyeIcon, EyeOffIcon } from '~components/Icons';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';

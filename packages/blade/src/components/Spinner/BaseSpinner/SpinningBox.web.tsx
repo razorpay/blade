@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { motion as spinnerMotion } from './spinnerTokens';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { getIn, makeMotionTime } from '~utils';
 
 const rotate = keyframes`

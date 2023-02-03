@@ -7,7 +7,7 @@ import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent 
 import type { CheckboxGroupProps } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 
 const Page = (): React.ReactElement => {
   return (

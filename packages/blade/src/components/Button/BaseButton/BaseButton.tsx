@@ -34,7 +34,7 @@ import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';

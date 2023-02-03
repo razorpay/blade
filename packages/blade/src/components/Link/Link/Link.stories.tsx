@@ -6,7 +6,7 @@ import LinkComponent from './Link';
 import iconMap from '~components/Icons/iconMap';
 import { DownloadIcon, InfoIcon } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';

@@ -5,7 +5,7 @@ import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
 import { InfoIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';

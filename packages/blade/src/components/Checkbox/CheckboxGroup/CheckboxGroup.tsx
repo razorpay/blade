@@ -3,7 +3,7 @@ import { checkboxSizes } from '../checkboxTokens';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabel, FormHint } from '~components/Form';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';

@@ -1,4 +1,4 @@
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
 
 const SelectorTitle = ({

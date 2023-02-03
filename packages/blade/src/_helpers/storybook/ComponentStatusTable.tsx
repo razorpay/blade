@@ -11,7 +11,7 @@ import {
 import { LinkToStorybook } from './LinkToStorybook';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';

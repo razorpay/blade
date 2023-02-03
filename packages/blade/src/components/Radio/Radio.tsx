@@ -6,7 +6,7 @@ import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon/RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';

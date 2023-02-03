@@ -2,8 +2,8 @@ import React from 'react';
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { useTheme } from '~components/BladeProvider';
-import Box from '~components/Box';
-import type { BoxProps } from '~components/Box/types';
+import Box from '~components/Box/BaseBox';
+import type { BoxProps } from '~components/Box/BaseBox/types';
 
 const isAndroid = Platform.OS === 'android';
 // TODO: Temporary workaround to make android shadows look as close as iOS

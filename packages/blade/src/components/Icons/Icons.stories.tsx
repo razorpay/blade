@@ -4,7 +4,7 @@ import { Title, Description } from '@storybook/addon-docs';
 import iconMap from './iconMap';
 import type { IconProps } from '.';
 import { CreditCardIcon } from '.';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 

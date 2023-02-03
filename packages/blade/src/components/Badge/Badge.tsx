@@ -3,7 +3,7 @@ import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
 import { iconPadding, iconSize, horizontalPadding, verticalPadding } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
-import Box from '~components/Box';
+import Box from '~components/Box/BaseBox';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
