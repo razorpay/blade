@@ -6,6 +6,8 @@ import { TextArea as TextAreaComponent } from './TextArea';
 import Box from '~components/Box';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Button } from '~components/Button';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -349,3 +351,32 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = ()
   );
 };
 export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});
+
+export const inputRef: ComponentStory<typeof TextAreaComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const inputRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <Box gap="spacing.3" display="flex" alignItems="end">
+      <TextAreaComponent ref={inputRef} label="Message" />
+      <Button
+        onClick={() => {
+          inputRef?.current?.focus();
+          console.log(inputRef);
+        }}
+      >
+        Click to focus the input
+      </Button>
+    </Box>
+  );
+};
+
+inputRef.storyName = 'Text Area Ref';
+inputRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'TextArea component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
+    },
+  },
+};

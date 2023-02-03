@@ -8,6 +8,8 @@ import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { Button } from '~components/Button';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -378,3 +380,32 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
   );
 };
 export const TextInputKitchenSink = TextInputKitchenSinkTemplate.bind({});
+
+export const inputRef: ComponentStory<typeof TextInputComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const inputRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <Box gap="spacing.3" display="flex" alignItems="end">
+      <TextInputComponent ref={inputRef} label="First Name" name="fullName" />
+      <Button
+        onClick={() => {
+          inputRef?.current?.focus();
+          console.log(inputRef);
+        }}
+      >
+        Click to focus the input
+      </Button>
+    </Box>
+  );
+};
+
+inputRef.storyName = 'Text Input Ref';
+inputRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'TextInput component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
+    },
+  },
+};

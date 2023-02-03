@@ -9,6 +9,8 @@ import { Radio as RadioComponent } from './Radio';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import Box from '~components/Box';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { Button } from '~components/Button';
 
 const Page = (): React.ReactElement => {
   return (
@@ -255,4 +257,30 @@ export const KitchenSink = (): React.ReactElement => {
       </Box>
     </>
   );
+};
+
+export const radioRef: ComponentStory<typeof RadioComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const radioRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <Box gap="spacing.3" display="flex" alignItems="center">
+      <RadioGroupComponent label="Radio ref example">
+        <RadioComponent ref={radioRef} value="1">
+          Radio
+        </RadioComponent>
+      </RadioGroupComponent>
+      <Button onClick={() => radioRef?.current?.focus()}>Click to focus the Radio</Button>
+    </Box>
+  );
+};
+
+radioRef.storyName = 'Radio Ref';
+radioRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'Radio component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
+    },
+  },
 };
