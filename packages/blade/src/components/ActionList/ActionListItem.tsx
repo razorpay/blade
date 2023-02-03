@@ -153,7 +153,7 @@ const ActionListItemText: WithComponentId<{ children: string }> = ({ children })
   const { isDisabled } = React.useContext(ActionListItemContext);
 
   return (
-    <Text variant="caption" color={getNormalTextColor(isDisabled)}>
+    <Text variant="caption" color={getNormalTextColor(isDisabled, { isMuted: true })}>
       {children}
     </Text>
   );
