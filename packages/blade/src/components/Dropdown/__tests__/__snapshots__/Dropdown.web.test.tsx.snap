@@ -454,7 +454,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   width: 100%;
 }
 
-.c24:hover {
+.c24:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
