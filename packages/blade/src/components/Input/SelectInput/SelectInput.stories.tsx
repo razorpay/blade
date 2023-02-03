@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import SelectInputComponent from './SelectInput';
+import { SelectInput as SelectInputComponent } from './SelectInput';
 
 const SelectInputStoryMeta: Meta = {
   title: 'Components/Input/SelectInput',

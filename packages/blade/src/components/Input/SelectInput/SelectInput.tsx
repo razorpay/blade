@@ -3,6 +3,7 @@ import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import { SelectChevronIcon } from './SelectChevronIcon';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
+import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import Box from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden';
@@ -28,30 +29,42 @@ type SelectInputProps = Pick<
   | 'onBlur'
 > & {
   icon?: IconComponent;
+  onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
 };
 
 const SelectInput = (props: SelectInputProps): JSX.Element => {
-  /**
-   * @TODO handle expanded state with Dropdown
-   */
-  const isPopupExpanded = false;
-  const value = '';
+  const {
+    isOpen,
+    value,
+    displayValue,
+    onSelectClick,
+    onSelectKeydown,
+    onSelectBlur,
+    dropdownBaseId,
+    activeIndex,
+    selectInputRef,
+  } = useDropdown();
 
-  const { icon, ...baseInputProps } = props;
-
-  const selectInputRef = React.useRef<HTMLDivElement>(null);
+  const { icon, onChange, ...baseInputProps } = props;
 
   const platform = getPlatformType();
 
+  React.useEffect(() => {
+    onChange?.({ name: props.name, values: value.split(', ') });
+  }, [value, onChange, props.name]);
+
   return (
     <Box position="relative">
-      {/* @TODO Use this for form submissions */}
       {platform !== 'react-native' ? (
         <VisuallyHidden>
           <input
             tabIndex={-1}
             required={props.isRequired}
+            name={props.name}
             value={value}
+            // Adding onChange to surpass no onChange on controlled component warning
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
+            onChange={() => {}}
             // Accessibility is covered in the select input itself so we hide this field from a11y tree
             aria-hidden={true}
           />
@@ -62,23 +75,17 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
         as="button"
         ref={selectInputRef as React.MutableRefObject<HTMLInputElement>}
         textAlign="left"
-        value={value}
-        defaultValue="Select Option"
-        /**
-         * @TODO
-         * this will come from Dropdown component
-         */
-        id="input-123"
+        value={displayValue ? displayValue : 'Select Option'}
+        id={`${dropdownBaseId}-trigger`}
+        labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
         hasPopup
-        isPopupExpanded={isPopupExpanded}
-        onClick={({ name, value }) => {
-          console.log('clickkk', name, value);
-        }}
-        /**
-         * @TODO Pass the popup id by taking it from Dropdown
-         */
-        popupId="123"
+        isPopupExpanded={isOpen}
+        onClick={onSelectClick}
+        onKeyDown={onSelectKeydown}
+        onBlur={onSelectBlur}
+        activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
+        popupId={`${dropdownBaseId}-listbox`}
         interactionElement={
           <SelectChevronIcon
             onClick={() => {
@@ -86,9 +93,9 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
               if (!isReactNative()) {
                 selectInputRef.current?.focus();
               }
-              // @todo call select's onClick here as well
+              onSelectClick();
             }}
-            icon={isPopupExpanded ? ChevronUpIcon : ChevronDownIcon}
+            icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />
         }
       />
@@ -96,4 +103,6 @@ const SelectInput = (props: SelectInputProps): JSX.Element => {
   );
 };
 
-export default SelectInput;
+SelectInput.componentId = 'SelectInput';
+
+export { SelectInput, SelectInputProps };
