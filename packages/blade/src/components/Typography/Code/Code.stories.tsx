@@ -10,7 +10,7 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
-      componentDescription="Code component can be used for displaying token, variable names, or inlined code snippet."
+      componentDescription="Code component can be used for displaying token, variable names, or inlined code snippets."
       componentName="Code"
       figmaURL={{
         paymentTheme:
