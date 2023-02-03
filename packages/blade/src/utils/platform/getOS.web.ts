@@ -1,6 +1,6 @@
 import type { Platform } from 'react-native';
 
-export const getNativePlatform = (): typeof Platform.OS => {
+export const getOS = (): typeof Platform.OS => {
   return 'web';
 };
 
