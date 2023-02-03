@@ -13,11 +13,9 @@ const StyledActionListItem = styled(Box)<StyledActionListItemProps>((props) => {
           ? props.theme.colors.feedback.background.negative.lowContrast
           : props.theme.colors.brand.gray.a50.lowContrast,
     },
-    '&.active-focus:not([aria-selected=true])': {
-      // @TODO: ask designer for exact color here (couldn't figure out from figma)
-      borderColor: props.theme.colors.brand.primary[300],
+    '&.active-focus': {
+      borderColor: props.isKeydownPressed ? props.theme.colors.brand.primary[300] : undefined,
     },
-    // @TODO: ask designer what happens on selected item's hover
     '&[aria-selected=true]': {
       backgroundColor:
         props.selectionType === 'single' ? props.theme.colors.brand.primary[300] : undefined,

@@ -42,6 +42,9 @@ type DropdownContextType = {
   /** Used to ignore blur on certains events. E.g. to ignore blur of dropdown when click is inside the dropdown */
   shouldIgnoreBlur: boolean;
   setShouldIgnoreBlur: (value: boolean) => void;
+  /** Tells you if keyboard was used. Its false by default and turns into true when keydown is called  */
+  isKeydownPressed: boolean;
+  setIsKeydownPressed: (value: boolean) => void;
   /** common baseId which is prepended to multiple other ids inside this dropdown  */
   dropdownBaseId: string;
   /** Which element has triggered the dropdown */
@@ -71,6 +74,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setShouldIgnoreBlur: noop,
   hasFooterAction: false,
   setHasFooterAction: noop,
+  isKeydownPressed: false,
+  setIsKeydownPressed: noop,
   dropdownBaseId: '',
   actionListRef: {
     current: null,
@@ -139,6 +144,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     setActiveIndex,
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
+    isKeydownPressed,
+    setIsKeydownPressed,
     options,
     selectionType,
     ...rest
@@ -296,6 +303,11 @@ const useDropdown = (): UseDropdownReturnValue => {
       setShouldIgnoreBlur(true);
     }
 
+    if (!isKeydownPressed && ![' ', 'Enter', 'Escape'].includes(e.event.key)) {
+      // When keydown is not already pressed and its not Enter, Space, or Escape key (those are generic keys and we only want to handle arrow keys or home buttons etc)
+      setIsKeydownPressed(true);
+    }
+
     const actionType = getActionFromKey(e.event, isOpen);
 
     if (actionType) {
@@ -334,6 +346,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     setActiveIndex,
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
+    isKeydownPressed,
+    setIsKeydownPressed,
     options,
     value: makeInputValue(selectedIndices, options),
     displayValue: makeInputDisplayValue(selectedIndices, options),

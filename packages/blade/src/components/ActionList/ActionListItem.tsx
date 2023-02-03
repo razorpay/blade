@@ -205,6 +205,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     selectionType,
     triggererRef,
     dropdownTriggerer,
+    isKeydownPressed,
   } = useDropdown();
 
   const { theme } = useTheme();
@@ -267,6 +268,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         hasDescription={Boolean(props.description)}
         intent={props.intent}
         isSelected={isSelected}
+        isKeydownPressed={isKeydownPressed}
       >
         <Box
           display="flex"

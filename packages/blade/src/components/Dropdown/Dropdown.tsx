@@ -51,6 +51,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
   const triggererRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
+  const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
 
@@ -85,6 +86,8 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       setActiveIndex,
       shouldIgnoreBlur,
       setShouldIgnoreBlur,
+      isKeydownPressed,
+      setIsKeydownPressed,
       dropdownBaseId,
       triggererRef,
       actionListRef,
@@ -102,6 +105,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       shouldIgnoreBlur,
       selectionType,
       hasFooterAction,
+      isKeydownPressed,
     ],
   );
 

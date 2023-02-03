@@ -12,6 +12,7 @@ type StyledActionListItemProps = {
   intent?: ActionListItemProps['intent'];
   onPress?: (e: React.TouchEvent<TouchableOpacity>) => void;
   isSelected?: boolean;
+  isKeydownPressed: boolean;
 };
 
 const getBaseActionListItemStyles = (
