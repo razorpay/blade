@@ -2,6 +2,7 @@
 
 exports[`<Checkbox /> should render checkbox with label 1`] = `
 .c4 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -270,6 +271,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 
 exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 .c4 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -455,6 +457,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 
 exports[`<Checkbox /> should set error state with validationState 1`] = `
 .c4 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -705,6 +708,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 
 exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 .c4 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

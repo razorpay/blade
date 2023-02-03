@@ -2,6 +2,7 @@
 
 exports[`<RadioGroup /> should render with help text 1`] = `
 .c9 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -422,6 +423,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 
 exports[`<RadioGroup /> should render with label 1`] = `
 .c9 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
