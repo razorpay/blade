@@ -1,7 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Description, Heading } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Highlight } from '@storybook/design-system';
 import styled from 'styled-components';
 import type { ButtonProps } from './Button';
@@ -13,6 +13,7 @@ import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 const Page = (): ReactElement => {
   return (
@@ -308,6 +309,29 @@ FullWidthButton.parameters = {
   docs: {
     description: {
       story: 'Primary, Secondary & Tertiary buttons with full width',
+    },
+  },
+};
+
+export const ButtonRef: ComponentStory<typeof ButtonComponent> = () => {
+  const buttonRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <Box gap="spacing.3" display="flex">
+      <ButtonComponent ref={buttonRef}>Button</ButtonComponent>
+      <ButtonComponent onClick={() => buttonRef?.current?.focus()}>
+        Click to focus other button
+      </ButtonComponent>
+    </Box>
+  );
+};
+
+ButtonRef.storyName = 'Button Ref';
+ButtonRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'Button component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
 };

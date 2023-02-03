@@ -7,6 +7,9 @@ import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import Box from '~components/Box';
+import { Button } from '~components/Button';
 
 const Page = (): React.ReactElement => {
   return (
@@ -132,3 +135,25 @@ const _ControlledAndUncontrolled: ComponentStory<typeof CheckboxComponent> = () 
   return <ControlledAndUncontrolledComp />;
 };
 export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
+
+export const checkboxRef: ComponentStory<typeof CheckboxComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const checkboxRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <Box gap="spacing.3" display="flex" alignItems="center">
+      <CheckboxComponent ref={checkboxRef}>Checkbox</CheckboxComponent>
+      <Button onClick={() => checkboxRef?.current?.focus()}>Click to focus the checkbox</Button>
+    </Box>
+  );
+};
+
+checkboxRef.storyName = 'Checkbox Ref';
+checkboxRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'Checkbox component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
+    },
+  },
+};
