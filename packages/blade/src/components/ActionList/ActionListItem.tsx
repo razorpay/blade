@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { StyledActionListItem } from './StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './getBaseActionListItemStyles';
-import { validateActionListItemProps } from './actionListUtils';
+import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
 import {
   getActionListItemRole,
   getActionListSectionRole,
@@ -50,6 +50,7 @@ type ActionListItemProps = {
    * If item is selected on page load
    */
   isDefaultSelected?: boolean;
+  isDisabled?: boolean;
   intent?: Extract<Feedback, 'negative'>;
   /**
    * Internally passed from ActionList. No need to pass it explicitly
@@ -61,6 +62,7 @@ type ActionListItemProps = {
 
 const ActionListItemContext = React.createContext<{
   intent?: ActionListItemProps['intent'];
+  isDisabled?: ActionListItemProps['isDisabled'];
 }>({});
 
 const StyledSectionDivider = styled(Box)((props) => ({
@@ -132,13 +134,13 @@ ActionListSection.componentId = componentIds.ActionListSection;
 
 const ActionListItemIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }): JSX.Element => {
   const Icon = icon;
-  const { intent } = React.useContext(ActionListItemContext);
+  const { intent, isDisabled } = React.useContext(ActionListItemContext);
   return (
     <Icon
       color={
         intent === 'negative'
           ? 'feedback.icon.negative.lowContrast'
-          : 'surface.text.muted.lowContrast'
+          : getNormalTextColor(isDisabled, { isIcon: true })
       }
       size="medium"
     />
@@ -148,8 +150,10 @@ const ActionListItemIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }):
 ActionListItemIcon.componentId = componentIds.ActionListItemIcon;
 
 const ActionListItemText: WithComponentId<{ children: string }> = ({ children }) => {
+  const { isDisabled } = React.useContext(ActionListItemContext);
+
   return (
-    <Text variant="caption" color="surface.text.muted.lowContrast">
+    <Text variant="caption" color={getNormalTextColor(isDisabled)}>
       {children}
     </Text>
   );
@@ -232,7 +236,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
   }, [props.intent, dropdownTriggerer]);
 
   return (
-    <ActionListItemContext.Provider value={{ intent: props.intent }}>
+    <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
       <StyledActionListItem
         as={!isReactNative() ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props._index}`}
@@ -244,6 +248,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
           selected: isSelected,
           current: isRoleMenu(dropdownTriggerer) ? isSelected : undefined,
           role: getActionListItemRole(dropdownTriggerer, props.href),
+          disabled: props.isDisabled,
         })}
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
           if (typeof props._index === 'number') {
@@ -286,7 +291,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
                   hidden: true,
                 })}
               >
-                <Checkbox isChecked={isSelected} tabIndex={-1}>
+                <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={props.isDisabled}>
                   {/* 
                       Checkbox requires children. Didn't want to make it optional because its helpful for consumers
                       But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
@@ -307,7 +312,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
               color={
                 props.intent === 'negative'
                   ? 'feedback.text.negative.lowContrast'
-                  : 'surface.text.normal.lowContrast'
+                  : getNormalTextColor(props.isDisabled)
               }
             >
               {props.title}
@@ -317,7 +322,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         </Box>
         <Box paddingLeft={props.leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
           {props.description ? (
-            <Text color="surface.text.placeholder.lowContrast" size="small">
+            <Text color={getNormalTextColor(props.isDisabled)} size="small">
               {props.description}
             </Text>
           ) : null}

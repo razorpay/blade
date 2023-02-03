@@ -3,6 +3,7 @@ import { componentIds } from './componentIds';
 import type { ActionListItemProps } from './ActionListItem';
 import type { OptionsType } from '~components/Dropdown/useDropdown';
 import { getComponentId, isReactNative, isValidAllowedChildren } from '~utils';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 /**
  * Returns if there is ActionListItem after ActionListSection
@@ -62,7 +63,7 @@ const getActionListProperties = (
   let actionListFooterChild: React.ReactElement | null = null;
 
   const getActionListItemWithId = (child: React.ReactNode): React.ReactNode => {
-    if (React.isValidElement(child)) {
+    if (React.isValidElement(child) && !child.props.isDisabled) {
       actionListOptions.push({
         title: child.props.title,
         value: child.props.value,
@@ -180,4 +181,24 @@ const validateActionListItemProps = ({
   });
 };
 
-export { getActionListProperties, validateActionListItemProps };
+const getNormalTextColor = (
+  isDisabled: boolean | undefined,
+  { isIcon }: { isIcon?: boolean } = {},
+): Extract<
+  BaseTextProps['color'],
+  | 'surface.text.placeholder.lowContrast'
+  | 'surface.text.muted.lowContrast'
+  | 'surface.text.normal.lowContrast'
+> => {
+  if (isDisabled) {
+    return 'surface.text.placeholder.lowContrast';
+  }
+
+  if (isIcon) {
+    return 'surface.text.muted.lowContrast';
+  }
+
+  return 'surface.text.normal.lowContrast';
+};
+
+export { getActionListProperties, validateActionListItemProps, getNormalTextColor };

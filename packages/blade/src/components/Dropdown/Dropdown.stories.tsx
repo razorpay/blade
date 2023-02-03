@@ -260,6 +260,7 @@ export const WithHeaderFooter = (): JSX.Element => (
               trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
               title="Settings"
               value="settings"
+              isDisabled={true}
             />
             <ActionListItem
               leading={<ActionListItemIcon icon={DownloadIcon} />}
