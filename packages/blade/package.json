@@ -28,16 +28,34 @@
   ],
   "exports": {
     "./components": {
-      "react-native": "./build/components/index.native.js",
-      "default": "./build/components/index.web.js"
+      "react-native": {
+        "import": "./build/components/index.native.js",
+        "types": "./build/components/index.native.d.ts"
+      },
+      "default": {
+        "import": "./build/components/index.web.js",
+        "types": "./build/components/index.d.ts"
+      }
     },
     "./tokens": {
-      "react-native": "./build/tokens/index.native.js",
-      "default": "./build/tokens/index.web.js"
+      "react-native": {
+        "import": "./build/tokens/index.native.js",
+        "types": "./build/tokens/index.native.d.ts"
+      },
+      "default": {
+        "import": "./build/tokens/index.web.js",
+        "types": "./build/tokens/index.d.ts"
+      }
     },
     "./utils": {
-      "react-native": "./build/utils/index.native.js",
-      "default": "./build/utils/index.web.js"
+      "react-native": {
+        "import": "./build/utils/index.native.js",
+        "types": "./build/utils/index.native.d.ts"
+      },
+      "default": {
+        "import": "./build/utils/index.web.js",
+        "types": "./build/utils/index.d.ts"
+      }
     }
   },
   "scripts": {
