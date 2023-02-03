@@ -30,8 +30,10 @@ import Box from '~components/Box';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { SelectInput } from '~components/Input/SelectInput';
+import type { SelectInputProps } from '~components/Input/SelectInput';
 import { Button } from '~components/Button';
-import { Text } from '~components/Typography';
+import { Alert } from '~components/Alert';
+import { Code, Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 
 const Page = (): ReactElement => {
@@ -351,7 +353,7 @@ export const WithHTMLFormSubmission = (): JSX.Element => {
             <ActionList>
               <ActionListItem title="Blade" value="blade" />
               <ActionListItem title="Primer" value="primer" />
-              <ActionListItem title="MUI" value="mui" />
+              <ActionListItem title="MUI" value="mui" isDisabled />
             </ActionList>
           </DropdownOverlay>
         </Dropdown>
@@ -360,6 +362,94 @@ export const WithHTMLFormSubmission = (): JSX.Element => {
         <Box marginBottom="spacing.4" />
         <Text>Form Submitted with {submissionValues}</Text>
       </form>
+    </Box>
+  );
+};
+
+const SpaceBetweenSmall = (): JSX.Element => <Box height="18px" />;
+
+export const WithValidationState = (): JSX.Element => {
+  const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>(
+    'none',
+  );
+
+  return (
+    <Box minHeight={300} paddingBottom="spacing.5">
+      <Alert
+        intent="information"
+        description="Select more than 2 options to see error state"
+        isFullWidth
+        isDismissible={false}
+      />
+      <SpaceBetweenSmall />
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="Top 2 design systems"
+          name="design-systems"
+          isRequired
+          validationState={validationState}
+          errorText="You selected more than 2 options"
+          successText="Yay! Nice choice"
+          helpText="Select only two"
+          onChange={({ values }) => {
+            if (values.length === 2) {
+              setValidationState('success');
+            } else if (values.length > 2) {
+              setValidationState('error');
+            } else {
+              setValidationState('none');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Blade" value="blade" />
+            <ActionListItem title="Primer" value="primer" />
+            <ActionListItem title="Geist" description="by Vercel" value="geist" />
+            <ActionListItem title="Airbnb Design" value="airbnb" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+export const WithRefUsage = (): JSX.Element => {
+  const selectRef = React.useRef<HTMLElement>(null);
+
+  return (
+    <Box
+      maxHeight={200}
+      overflow="scroll"
+      background="white"
+      paddingRight="spacing.5"
+      paddingLeft="spacing.5"
+      paddingTop="spacing.5"
+      paddingBottom="spacing.5"
+    >
+      <Button
+        onClick={() => {
+          selectRef.current?.scrollIntoView();
+        }}
+      >
+        Click to scroll till select
+      </Button>
+      <SpaceBetweenSmall />
+      <Text>
+        We are using <Code>selectRef.current?.scrollIntoView()</Code> here to show ref usage
+      </Text>
+      <Box height="300px" />
+      <Dropdown selectionType="multiple">
+        <SelectInput ref={selectRef} label="Top 2 design systems" name="design-systems" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Blade" value="blade" />
+            <ActionListItem title="Primer" value="primer" />
+            <ActionListItem title="Geist" description="by Vercel" value="geist" />
+            <ActionListItem title="Airbnb Design" value="airbnb" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
     </Box>
   );
 };
