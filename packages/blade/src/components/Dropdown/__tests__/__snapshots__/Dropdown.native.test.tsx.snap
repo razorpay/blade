@@ -639,6 +639,7 @@ Array [
               accessibilityRole="menuitem"
               accessibilityState={
                 Object {
+                  "disabled": undefined,
                   "selected": false,
                 }
               }
@@ -769,6 +770,7 @@ Array [
               accessibilityRole="menuitem"
               accessibilityState={
                 Object {
+                  "disabled": undefined,
                   "selected": false,
                 }
               }
