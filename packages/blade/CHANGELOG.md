@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 6.0.4
+
+### Patch Changes
+
+- 26ffc564: fix: add types field to package exports for ESM TypeScript projects
+
 ## 6.0.3
 
 ### Patch Changes
