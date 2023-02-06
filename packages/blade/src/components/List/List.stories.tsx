@@ -201,21 +201,31 @@ const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
 
 export const UnorderedListWithSizes = ListWithSizesTemplate.bind({});
 UnorderedListWithSizes.storyName = 'Unordered - Sizes';
+UnorderedListWithSizes.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 UnorderedListWithSizes.args = {
   variant: 'unordered',
 };
 
 export const OrderedListWithSizes = ListWithSizesTemplate.bind({});
 OrderedListWithSizes.storyName = 'Ordered - Sizes';
+OrderedListWithSizes.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 OrderedListWithSizes.args = {
   variant: 'ordered',
 };
 
-const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = ({ icon, ...args }) => {
+const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
   return (
     <Box>
       <Heading>Small Size:</Heading>
-      <List {...args} variant="ordered-filled" size="small">
+      <List variant="ordered-filled" size="small">
         <ListItem>
           <ListItemLink>Build Integration:</ListItemLink> Use the sample codes to integrate the
           Razorpay Web Standard Checkout on your website.
@@ -230,7 +240,7 @@ const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = ({ icon,
         </ListItem>
       </List>
       <Heading>Medium Size:</Heading>
-      <List {...args} variant="ordered-filled" size="medium">
+      <List variant="ordered-filled" size="medium">
         <ListItem>
           <ListItemLink>Build Integration:</ListItemLink> Use the sample codes to integrate the
           Razorpay Web Standard Checkout on your website.
