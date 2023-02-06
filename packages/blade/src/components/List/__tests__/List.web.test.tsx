@@ -183,6 +183,31 @@ describe('<List />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should throw error on nesting more than 3 levels', () => {
+    expect(() =>
+      renderWithTheme(
+        <List>
+          <ListItem>
+            Level 1
+            <List>
+              <ListItem>
+                Level 2
+                <List>
+                  <ListItem>
+                    Level 3
+                    <List>
+                      <ListItem>Level 4</ListItem>
+                    </List>
+                  </ListItem>
+                </List>
+              </ListItem>
+            </List>
+          </ListItem>
+        </List>,
+      ),
+    ).toThrow('[Blade List]: List Nesting is allowed only upto 3 levels.');
+  });
+
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(
       <List>

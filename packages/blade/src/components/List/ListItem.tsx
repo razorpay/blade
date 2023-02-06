@@ -58,6 +58,10 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
   const { theme, platform } = useTheme();
   const ItemIcon = Icon ?? ListContextIcon;
 
+  if (level && level > 3) {
+    throw new Error('[Blade List]: List Nesting is allowed only upto 3 levels.');
+  }
+
   const childrenArray = React.Children.toArray(children);
 
   const childItem = childrenArray.filter((child) =>
