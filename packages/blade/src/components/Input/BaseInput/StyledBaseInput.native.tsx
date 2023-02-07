@@ -144,6 +144,16 @@ export const StyledBaseInput = React.forwardRef<
     ref,
   ) => {
     const buttonValue = props.value ? props.value : props.defaultValue;
+    const commonProps = {
+      onBlur: (): void => {
+        if (shouldIgnoreBlurAnimation && setShouldIgnoreBlurAnimation) {
+          setShouldIgnoreBlurAnimation(false);
+          return;
+        }
+        setCurrentInteraction('default');
+      },
+      isFocused: currentInteraction === 'active',
+    };
 
     return hasPopup ? (
       <StyledNativeBaseButton
@@ -153,18 +163,11 @@ export const StyledBaseInput = React.forwardRef<
         onPress={(): void => {
           handleOnClick?.({ name, value: buttonValue });
         }}
-        isFocused={currentInteraction === 'active'}
         onFocus={(): void => {
           handleOnFocus?.({ name, value: buttonValue });
           setCurrentInteraction('active');
         }}
-        onBlur={(): void => {
-          if (shouldIgnoreBlurAnimation && setShouldIgnoreBlurAnimation) {
-            setShouldIgnoreBlurAnimation(false);
-            return;
-          }
-          setCurrentInteraction('default');
-        }}
+        {...commonProps}
         {...props}
         {...accessibilityProps}
       >
@@ -179,19 +182,11 @@ export const StyledBaseInput = React.forwardRef<
         ref={ref as any}
         multiline={isTextArea}
         numberOfLines={numberOfLines}
-        isFocused={currentInteraction === 'active'}
         editable={!isDisabled}
         maxLength={maxCharacters}
         onFocus={(event): void => {
           handleOnFocus?.({ name, value: event?.nativeEvent.text });
           setCurrentInteraction('active');
-        }}
-        onBlur={(): void => {
-          if (shouldIgnoreBlurAnimation && setShouldIgnoreBlurAnimation) {
-            setShouldIgnoreBlurAnimation(false);
-            return;
-          }
-          setCurrentInteraction('default');
         }}
         onChangeText={(text): void => {
           handleOnChange?.({ name, value: text });
@@ -223,6 +218,7 @@ export const StyledBaseInput = React.forwardRef<
             ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
             : undefined
         }
+        {...commonProps}
         {...props}
         {...accessibilityProps}
       />
