@@ -38,7 +38,7 @@ function App(): JSX.Element {
     rules: {
       required: true,
       validate: (value) => {
-        return !value.match('bug');
+        return !/bug/.exec(value);
       },
     },
   });
