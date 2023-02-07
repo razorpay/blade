@@ -92,14 +92,18 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
   );
 
   const childrenArray = React.Children.toArray(children);
-  const childListItems = childrenArray.filter((child) =>
-    isValidAllowedChildren(child, 'ListItem') ? child : null,
-  );
+  const childListItems = childrenArray.filter((child) => {
+    if (isValidAllowedChildren(child, 'ListItem')) {
+      return child;
+    } else {
+      throw new Error('[Blade List]: You can only pass a ListItem as a child to List.');
+    }
+  });
 
   return (
     <ListProvider value={listContextValue}>
       <ListElement
-        marginTop={!level ? 'spacing.3' : undefined}
+        marginTop={level ? undefined : 'spacing.3'}
         {...metaAttribute(MetaConstants.Component, MetaConstants.List)}
         {...makeAccessible({ role: 'list' })} // Role needed for react-native
       >
@@ -107,7 +111,7 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
           ? childListItems
           : childListItems.map(
               (child, index) =>
-                React.cloneElement(child as React.ReactElement, { _itemNumber: ++index }), // adds _itemNumber for rendering ordered list bullets
+                React.cloneElement(child as React.ReactElement, { _itemNumber: index + 1 }), // adds _itemNumber for rendering ordered list bullets
             )}
       </ListElement>
     </ListProvider>

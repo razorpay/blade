@@ -223,6 +223,16 @@ describe('<List />', () => {
     );
   });
 
+  it('should throw error on using a non-valid component in List', () => {
+    expect(() =>
+      renderWithTheme(
+        <List>
+          <Heading>Incorrect component</Heading>
+        </List>,
+      ),
+    ).toThrow('[Blade List]: You can only pass a ListItem as a child to List.');
+  });
+
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(
       <List>
