@@ -208,4 +208,4 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
   );
 };
 
-export { ActionList };
+export { ActionList, ActionListProps };
