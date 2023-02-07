@@ -11,4 +11,6 @@ const ListItemCode = ({ children }: ListItemCodeProps): React.ReactElement => {
   return <Code size={listItemCodeSize[size]} children={children} />;
 };
 
+ListItemCode.componentId = 'ListItemCode';
+
 export { ListItemCode, ListItemCodeProps };

@@ -31,4 +31,6 @@ const ListItemLink = ({
   );
 };
 
+ListItemLink.componentId = 'ListItemLink';
+
 export { ListItemLink, ListItemLinkProps };

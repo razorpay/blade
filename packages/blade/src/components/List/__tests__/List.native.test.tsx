@@ -4,6 +4,7 @@ import { ListItemLink } from '../ListItemLink';
 import { ListItemCode } from '../ListItemCode';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
+import { Heading } from '~components/Typography';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -177,5 +178,44 @@ describe('<List />', () => {
       </List>,
     );
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should throw error on nesting more than 3 levels', () => {
+    expect(() =>
+      renderWithTheme(
+        <List>
+          <ListItem>
+            Level 1
+            <List>
+              <ListItem>
+                Level 2
+                <List>
+                  <ListItem>
+                    Level 3
+                    <List>
+                      <ListItem>Level 4</ListItem>
+                    </List>
+                  </ListItem>
+                </List>
+              </ListItem>
+            </List>
+          </ListItem>
+        </List>,
+      ),
+    ).toThrow('[Blade List]: List Nesting is allowed only upto 3 levels.');
+  });
+
+  it('should throw error on using a non-valid component in ListItem', () => {
+    expect(() =>
+      renderWithTheme(
+        <List>
+          <ListItem>
+            Level 1<Heading>Incorrect component</Heading>
+          </ListItem>
+        </List>,
+      ),
+    ).toThrow(
+      '[Blade List]: You can only pass a List, ListItemLink, ListItemCode or a string as a child to ListItem.',
+    );
   });
 });

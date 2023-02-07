@@ -5,6 +5,7 @@ import { ListItemCode } from '../ListItemCode';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
+import { Heading } from '~components/Typography';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -206,6 +207,20 @@ describe('<List />', () => {
         </List>,
       ),
     ).toThrow('[Blade List]: List Nesting is allowed only upto 3 levels.');
+  });
+
+  it('should throw error on using a non-valid component in ListItem', () => {
+    expect(() =>
+      renderWithTheme(
+        <List>
+          <ListItem>
+            Level 1<Heading>Incorrect component</Heading>
+          </ListItem>
+        </List>,
+      ),
+    ).toThrow(
+      '[Blade List]: You can only pass a List, ListItemLink, ListItemCode or a string as a child to ListItem.',
+    );
   });
 
   it('should not have accessibility violations', async () => {

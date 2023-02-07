@@ -16,7 +16,13 @@ import {
 import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
 import Box from '~components/Box';
-import { getComponentId, getIn, metaAttribute, MetaConstants } from '~utils';
+import {
+  getComponentId,
+  getIn,
+  isValidAllowedChildren,
+  metaAttribute,
+  MetaConstants,
+} from '~utils';
 
 type ListItemProps = {
   /**
@@ -68,6 +74,19 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
   const childItem = childrenArray.filter((child) =>
     getComponentId(child) !== 'List' ? child : null,
   );
+  const validChildItem = childItem.filter((child) => {
+    if (
+      typeof child === 'string' ||
+      isValidAllowedChildren(child, 'ListItemLink') ||
+      isValidAllowedChildren(child, 'ListItemCode')
+    ) {
+      return child;
+    } else {
+      throw new Error(
+        '[Blade List]: You can only pass a List, ListItemLink, ListItemCode or a string as a child to ListItem.',
+      );
+    }
+  });
   // Get child that is a List component
   const childList = childrenArray.filter((child) =>
     getComponentId(child) === 'List' ? child : null,
@@ -129,7 +148,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
           </Box>
         )}
         <Text variant="body" size={size}>
-          {childItem}
+          {validChildItem}
         </Text>
       </Box>
       {childList}
