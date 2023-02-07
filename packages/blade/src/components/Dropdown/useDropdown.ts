@@ -16,6 +16,7 @@ import type {
   FormInputHandleOnEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
+import { isReactNative } from '~utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -254,6 +255,9 @@ const useDropdown = (): UseDropdownReturnValue => {
       onOptionChange(actionType, index);
     }
     selectOption(index);
+    if (!isReactNative()) {
+      rest.triggererRef.current?.focus();
+    }
   };
 
   /**
@@ -313,6 +317,10 @@ const useDropdown = (): UseDropdownReturnValue => {
         onComboType,
         selectCurrentOption: () => {
           selectOption(activeIndex);
+          if (rest.hasFooterAction && !isReactNative()) {
+            rest.triggererRef.current?.focus();
+          }
+
           const anchorLink = options[activeIndex]?.href;
           if (anchorLink) {
             window.location.href = anchorLink;

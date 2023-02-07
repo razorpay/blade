@@ -47,7 +47,7 @@ export type StyledBaseInputProps = {
   | 'hasPopup'
   | 'popupId'
   | 'isPopupExpanded'
-  | 'shouldIgnoreBlur'
-  | 'setShouldIgnoreBlur'
+  | 'shouldIgnoreBlurAnimation'
+  | 'setShouldIgnoreBlurAnimation'
 >;
 export { StyledBaseInput } from './StyledBaseInput.web';
