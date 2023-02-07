@@ -7,7 +7,7 @@ import { FormHint, FormLabel } from '../../Form';
 import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import Box from '~components/Box';
-import { metaAttribute, getPlatformType, MetaConstants } from '~utils';
+import { metaAttribute, getPlatformType, MetaConstants, isEmpty } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 export type OTPInputProps = Pick<
@@ -40,6 +40,23 @@ export type OTPInputProps = Pick<
    * Masks input characters in all the fields
    */
   isMasked?: boolean;
+  /**
+   * Determines what autoComplete suggestion type to show. Defaults to `oneTimeCode`.
+   *
+   * It's not recommended to turn this off in favor of otp input practices.
+   *
+   *
+   * Internally it'll render platform specific attributes:
+   *
+   * - web: `autocomplete`
+   * - iOS: `textContentType`
+   * - android: `autoComplete`
+   *
+   */
+  autoCompleteSuggestionType?: Extract<
+    BaseInputProps['autoCompleteSuggestionType'],
+    'none' | 'oneTimeCode'
+  >;
 };
 
 const isReactNative = getPlatformType() === 'react-native';
@@ -81,9 +98,11 @@ const OTPInput = ({
   validationState,
   value: inputValue,
   isMasked,
+  autoCompleteSuggestionType = 'oneTimeCode',
 }: OTPInputProps): React.ReactElement => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
+  const [inputType, setInputType] = useState<('password' | undefined)[]>([]);
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
   const { platform } = useTheme();
@@ -98,6 +117,23 @@ const OTPInput = ({
       onOTPFilled?.({ value: otpValue.slice(0, otpLength).join(''), name });
     }
   }, [otpValue, otpLength, name, inputValue, onOTPFilled]);
+
+  useEffect(() => {
+    otpValue.forEach((otp, index) => {
+      // Set inputType as 'password' only when a value is entered when isMasked is set
+      if (!isEmpty(otp) && !inputType[index] && isMasked) {
+        const newInputType = Array.from(inputType);
+        newInputType[index] = 'password';
+        setInputType(newInputType);
+      }
+      // Cleanup the inputType array whenever the value is empty but inputType[index] is set
+      if (isEmpty(otp) && inputType[index]) {
+        const newInputType = Array.from(inputType);
+        newInputType[index] = undefined;
+        setInputType(newInputType);
+      }
+    });
+  }, [otpValue, inputType, isMasked]);
 
   /**
    * Changes the value of the otp at a given index and updates the otpValue stored in state
@@ -136,7 +172,6 @@ const OTPInput = ({
       // React native doesn't support `event.preventDefault()` hence have to add this check to ensure that empty space is not allowed
       return;
     }
-
     if (inputValue && inputValue.length > 0) {
       // When OTPInput is controlled, set the otpValue as the consumer passed `inputValue` and append the value on current index based on user's input.
       // User's input will not reflect on the otp but will trigger `onChange` callback with the user's input appended so that the consumer can take appropriate action.
@@ -214,6 +249,9 @@ const OTPInput = ({
     for (let index = 0; index < otpLength; index++) {
       const currentValue = inputValue ? otpToArray(inputValue)[index] || '' : otpValue[index] || '';
       const ref = React.createRef<HTMLInputElement>();
+      // if an inputValue is passed (controlled) and isMasked is set, inputType will always be password
+      const currentInputType =
+        inputValue && isMasked ? 'password' : isMasked ? inputType[index] : undefined;
       inputRefs.push(ref);
       inputs.push(
         <Box
@@ -241,7 +279,7 @@ const OTPInput = ({
             isDisabled={isDisabled}
             placeholder={Array.from(placeholder ?? '')[index] ?? ''}
             isRequired={true}
-            autoCompleteSuggestionType="oneTimeCode"
+            autoCompleteSuggestionType={autoCompleteSuggestionType}
             keyboardType={keyboardType}
             keyboardReturnKeyType={keyboardReturnKeyType}
             validationState={validationState}
@@ -249,7 +287,7 @@ const OTPInput = ({
             errorText={errorText}
             helpText={helpText}
             hideFormHint={true}
-            type={isMasked ? 'password' : undefined}
+            type={currentInputType}
           />
         </Box>,
       );
