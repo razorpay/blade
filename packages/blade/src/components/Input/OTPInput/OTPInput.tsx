@@ -119,6 +119,10 @@ const OTPInput = ({
   }, [otpValue, otpLength, name, inputValue, onOTPFilled]);
 
   useEffect(() => {
+    /* We want to disable the password managers for OTPInput when isMasked is set.
+       The issue with only setting autocomplete='off' is that its not an enforcement but a suggestion to the browser to follow.
+       This workaround unsets type on first render and sets it to `password` only once a value is entered by the user.
+    */
     otpValue.forEach((otp, index) => {
       // Set inputType as 'password' only when a value is entered when isMasked is set
       if (!isEmpty(otp) && !inputType[index] && isMasked) {
@@ -250,8 +254,11 @@ const OTPInput = ({
       const currentValue = inputValue ? otpToArray(inputValue)[index] || '' : otpValue[index] || '';
       const ref = React.createRef<HTMLInputElement>();
       // if an inputValue is passed (controlled) and isMasked is set, inputType will always be password
-      const currentInputType =
-        inputValue && isMasked ? 'password' : isMasked ? inputType[index] : undefined;
+      let currentInputType: 'password' | undefined;
+      if (isMasked) {
+        // if inputValue is passed (controlled component) then the inputType will always be password
+        currentInputType = inputValue ? 'password' : inputType[index];
+      }
       inputRefs.push(ref);
       inputs.push(
         <Box
