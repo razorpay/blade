@@ -36,12 +36,13 @@ describe('<OTPInput />', () => {
 
   it('should mask all fields when isMasked is true', () => {
     const label = 'Enter OTP';
+    const otp = '123456';
     const { getAllByLabelText } = renderWithTheme(<OTPInput label={label} isMasked />);
 
     const allInputs = getAllByLabelText(/character/);
-    allInputs.forEach((input) => {
+    allInputs.forEach((input, index) => {
       // we assume auto focus is working with this prop in place, no simple way of asserting on focus otherwise
-
+      fireEvent.changeText(input, Array.from(otp)[index]);
       expect(input).toHaveProp('secureTextEntry', true);
     });
   });

@@ -48,6 +48,7 @@ This doc talks about the API decisions for `OTPInput`.
 | keyboardReturnKeyType. [Check this table for full reference](#keyboard-return-key-types-for-web-and-native) | `default`, `go`, `done`, `next`, `search`, `send` | No | Closest based on the `type` attribute | Determines how the return key should look on the keyboard on mobile devices or virtual keyboard |
 | keyboardType | `text`, `search`, `telephone`, `email`, `url`, `decimal` | No | `decimal` | Keyboard to be shown for specific input types |
 | isMasked | `boolean` | No | `undefined` | Masks input characters in all the fields |
+| autoCompleteSuggestionType | `oneTimeCode` ,`none`| No | `oneTimeCode` | Specifies autocomplete attribute for using a password manager or browser autofill |
 
 ## Keyboard return key types for web and native
 
