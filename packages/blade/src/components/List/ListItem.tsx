@@ -16,7 +16,7 @@ import {
 import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
 import Box from '~components/Box';
-import { getIn, isValidAllowedChildren, metaAttribute, MetaConstants } from '~utils';
+import { getComponentId, getIn, metaAttribute, MetaConstants } from '~utils';
 
 type ListItemProps = {
   /**
@@ -64,11 +64,13 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
 
   const childrenArray = React.Children.toArray(children);
 
+  // Get children that are not a List component
   const childItem = childrenArray.filter((child) =>
-    isValidAllowedChildren(child, 'List') ? null : child,
+    getComponentId(child) !== 'List' ? child : null,
   );
+  // Get child that is a List component
   const childList = childrenArray.filter((child) =>
-    isValidAllowedChildren(child, 'List') ? child : null,
+    getComponentId(child) === 'List' ? child : null,
   );
   const hasIcon = Boolean(ItemIcon);
 
