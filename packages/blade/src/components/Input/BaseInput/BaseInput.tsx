@@ -88,6 +88,14 @@ export type BaseInputProps = FormInputLabelProps &
      */
     onBlur?: FormInputOnEvent;
     /**
+     * Ignores the next blur event
+     */
+    shouldIgnoreBlur?: boolean;
+    /**
+     * Used to set the shouldIgnoreBlur flag back to false after blur is ignored
+     */
+    setShouldIgnoreBlur?: (shouldIgnoreBlur: boolean) => void;
+    /**
      * Used to turn the input field to controlled so user can control the value
      */
     value?: string;
@@ -498,6 +506,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       hasPopup,
       popupId,
       isPopupExpanded,
+      shouldIgnoreBlur,
+      setShouldIgnoreBlur,
     },
     ref,
   ) => {
@@ -635,6 +645,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
               hasPopup={hasPopup}
+              shouldIgnoreBlur={shouldIgnoreBlur}
+              setShouldIgnoreBlur={setShouldIgnoreBlur}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}

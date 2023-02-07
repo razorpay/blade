@@ -48,12 +48,14 @@ const _SelectInput = (
     onTriggerBlur,
     dropdownBaseId,
     activeIndex,
-    triggererRef,
     hasFooterAction,
     dropdownTriggerer,
+    shouldIgnoreBlur,
+    setShouldIgnoreBlur,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref);
+  const triggerRef = React.useRef<HTMLInputElement>(null);
 
   const { icon, onChange, ...baseInputProps } = props;
 
@@ -83,7 +85,7 @@ const _SelectInput = (
         {...baseInputProps}
         as="button"
         componentName={MetaConstants.SelectInput}
-        ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
+        ref={!isReactNative() ? triggerRef : null}
         textAlign="left"
         value={displayValue ? displayValue : 'Select Option'}
         id={`${dropdownBaseId}-trigger`}
@@ -96,12 +98,14 @@ const _SelectInput = (
         onBlur={onTriggerBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
+        shouldIgnoreBlur={shouldIgnoreBlur}
+        setShouldIgnoreBlur={setShouldIgnoreBlur}
         interactionElement={
           <SelectChevronIcon
             onClick={() => {
               // Icon onClicks to the SelectInput itself
               if (!isReactNative()) {
-                triggererRef.current?.focus();
+                triggerRef.current?.focus();
               }
               onTriggerClick();
             }}

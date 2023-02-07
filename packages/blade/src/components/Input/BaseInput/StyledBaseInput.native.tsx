@@ -137,6 +137,8 @@ export const StyledBaseInput = React.forwardRef<
       numberOfLines,
       isTextArea,
       hasPopup,
+      shouldIgnoreBlur,
+      setShouldIgnoreBlur,
       ...props
     },
     ref,
@@ -157,6 +159,10 @@ export const StyledBaseInput = React.forwardRef<
           setCurrentInteraction('active');
         }}
         onBlur={(): void => {
+          if (shouldIgnoreBlur && setShouldIgnoreBlur) {
+            setShouldIgnoreBlur(false);
+            return;
+          }
           setCurrentInteraction('default');
         }}
         {...props}
@@ -181,6 +187,10 @@ export const StyledBaseInput = React.forwardRef<
           setCurrentInteraction('active');
         }}
         onBlur={(): void => {
+          if (shouldIgnoreBlur && setShouldIgnoreBlur) {
+            setShouldIgnoreBlur(false);
+            return;
+          }
           setCurrentInteraction('default');
         }}
         onChangeText={(text): void => {

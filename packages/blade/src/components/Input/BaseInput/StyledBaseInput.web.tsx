@@ -104,12 +104,18 @@ export const StyledBaseInput = React.forwardRef<
       numberOfLines,
       type,
       hasPopup,
+      shouldIgnoreBlur,
+      setShouldIgnoreBlur,
       ...props
     },
     ref,
   ) => {
     const commonProps = {
       onBlur: (event: React.ChangeEvent<HTMLInputElement>): void => {
+        if (shouldIgnoreBlur && setShouldIgnoreBlur) {
+          setShouldIgnoreBlur(false);
+          return;
+        }
         setCurrentInteraction('default');
         handleOnBlur?.({ name, value: event });
       },
