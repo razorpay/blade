@@ -96,9 +96,6 @@ const _SelectInput = (
         onClick={onTriggerClick}
         onKeyDown={onTriggerKeydown}
         onBlur={onTriggerBlur}
-        onFocus={() => {
-          setShouldIgnoreBlur(false);
-        }}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
         shouldIgnoreBlurAnimation={shouldIgnoreBlur}
