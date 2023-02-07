@@ -146,6 +146,8 @@ export const StyledBaseInput = React.forwardRef<
     const buttonValue = props.value ? props.value : props.defaultValue;
     const commonProps = {
       onBlur: (): void => {
+        // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
+        // The selectinput should always look like it is in focus otherwise it triggers blur + focus again which can cause flicker
         if (shouldIgnoreBlurAnimation && setShouldIgnoreBlurAnimation) {
           setShouldIgnoreBlurAnimation(false);
           return;

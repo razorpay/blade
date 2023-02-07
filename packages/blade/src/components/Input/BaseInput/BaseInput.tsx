@@ -88,11 +88,11 @@ export type BaseInputProps = FormInputLabelProps &
      */
     onBlur?: FormInputOnEvent;
     /**
-     * Ignores the next blur event
+     * Ignores the blur event animation (Used in Select to ignore blur animation when item in option is clicked)
      */
     shouldIgnoreBlurAnimation?: boolean;
     /**
-     * Used to set the shouldIgnoreBlurAnimation flag back to false after blur is ignored
+     * Used to set the shouldIgnoreBlurAnimation flag back to false after blur is ignored so we only ignore 1 event
      */
     setShouldIgnoreBlurAnimation?: (shouldIgnoreBlurAnimation: boolean) => void;
     /**
