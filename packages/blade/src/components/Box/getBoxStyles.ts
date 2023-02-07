@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components';
 import type { BoxProps } from './types';
-import { getIn, makeSize, makeSpace } from '~utils';
+import { getIn, makeBorderSize, makeSize, makeSpace } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 
 // allows 'auto' as spacing value
@@ -20,22 +20,6 @@ const getSpacingValue = <SpacingValue extends string | number | undefined>({
     return makeSpace(value);
   }
   return value ? makeSpace(getIn(theme, value)) : undefined;
-};
-
-const getBorderRadiusValue = <RadiusValue extends string | undefined>({
-  value,
-  theme,
-}: {
-  value: RadiusValue;
-  theme: Theme;
-}): string | undefined => {
-  // converts token value to pixel value. In case of percentage tokens, it returns it as is.
-  if (value) {
-    const radius = getIn(theme, `border.radius.${value}`);
-    if (radius.toString().includes('%')) return radius;
-    return makeSpace(radius);
-  }
-  return undefined;
 };
 
 const getBoxStyles = ({
@@ -112,7 +96,7 @@ const getBoxStyles = ({
   background,
   backgroundColor,
   zIndex,
-  borderRadius: getBorderRadiusValue({ value: borderRadius, theme }),
+  borderRadius: makeBorderSize(getIn(theme, `border.radius.${borderRadius}`)),
 });
 
 export default getBoxStyles;
