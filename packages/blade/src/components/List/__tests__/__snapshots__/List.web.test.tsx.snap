@@ -47,16 +47,16 @@ exports[`<List /> should render List with default properties 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  padding-right: 8px;
   margin-top: 8px;
+  margin-right: 8px;
 }
 
 .c2 {
-  padding-left: 4px;
+  margin-left: 4px;
 }
 
 .c6 {
-  padding-left: 16px;
+  margin-left: 16px;
 }
 
 <div>
@@ -264,8 +264,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  padding-right: 8px;
   margin-top: 8px;
+  margin-right: 8px;
 }
 
 .c6 {
@@ -277,7 +277,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 }
 
 .c2 {
-  padding-left: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -476,16 +476,16 @@ exports[`<List /> should render medium ordered List 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  padding-right: 8px;
   margin-top: 8px;
+  margin-right: 8px;
 }
 
 .c2 {
-  padding-left: 0;
+  margin-left: 0;
 }
 
 .c8 {
-  padding-left: 16px;
+  margin-left: 16px;
 }
 
 <div>
@@ -711,7 +711,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
 }
 
 .c2 {
-  padding-left: 0;
+  margin-left: 0;
 }
 
 <div>
@@ -888,8 +888,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  padding-right: 8px;
   margin-top: 2px;
+  margin-right: 8px;
 }
 
 .c7 {
@@ -900,16 +900,16 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  padding-right: 8px;
   margin-top: 8px;
+  margin-right: 8px;
 }
 
 .c2 {
-  padding-left: 0;
+  margin-left: 0;
 }
 
 .c6 {
-  padding-left: 16px;
+  margin-left: 16px;
 }
 
 <div>
@@ -1144,16 +1144,16 @@ exports[`<List /> should render small ordered List 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  padding-right: 8px;
   margin-top: 6px;
+  margin-right: 8px;
 }
 
 .c2 {
-  padding-left: 0;
+  margin-left: 0;
 }
 
 .c8 {
-  padding-left: 16px;
+  margin-left: 16px;
 }
 
 <div>
@@ -1379,7 +1379,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
 }
 
 .c2 {
-  padding-left: 0;
+  margin-left: 0;
 }
 
 <div>
@@ -1556,8 +1556,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  padding-right: 8px;
   margin-top: 4px;
+  margin-right: 8px;
 }
 
 .c7 {
@@ -1568,16 +1568,16 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  padding-right: 8px;
   margin-top: 6px;
+  margin-right: 8px;
 }
 
 .c2 {
-  padding-left: 0;
+  margin-left: 0;
 }
 
 .c6 {
-  padding-left: 16px;
+  margin-left: 16px;
 }
 
 <div>
@@ -1768,16 +1768,16 @@ exports[`<List /> should render unordered List of small size 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  padding-right: 8px;
   margin-top: 6px;
+  margin-right: 8px;
 }
 
 .c2 {
-  padding-left: 4px;
+  margin-left: 4px;
 }
 
 .c6 {
-  padding-left: 16px;
+  margin-left: 16px;
 }
 
 <div>

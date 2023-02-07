@@ -18,7 +18,7 @@ exports[`<List /> should render List with default properties 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 4,
+          "marginLeft": 4,
         },
       ]
     }
@@ -43,15 +43,15 @@ exports[`<List /> should render List with default properties 1`] = `
       <View
         alignSelf="flex-start"
         display="flex"
+        marginRight="spacing.3"
         marginTop={10}
-        paddingRight="spacing.3"
         style={
           Array [
             Object {
               "alignSelf": "flex-start",
               "display": "flex",
+              "marginRight": 8,
               "marginTop": 10,
-              "paddingRight": 8,
             },
           ]
         }
@@ -154,7 +154,7 @@ exports[`<List /> should render List with default properties 1`] = `
         style={
           Array [
             Object {
-              "paddingLeft": 16,
+              "marginLeft": 16,
             },
           ]
         }
@@ -179,15 +179,15 @@ exports[`<List /> should render List with default properties 1`] = `
           <View
             alignSelf="flex-start"
             display="flex"
+            marginRight="spacing.3"
             marginTop={10}
-            paddingRight="spacing.3"
             style={
               Array [
                 Object {
                   "alignSelf": "flex-start",
                   "display": "flex",
+                  "marginRight": 8,
                   "marginTop": 10,
-                  "paddingRight": 8,
                 },
               ]
             }
@@ -290,7 +290,7 @@ exports[`<List /> should render List with default properties 1`] = `
             style={
               Array [
                 Object {
-                  "paddingLeft": 16,
+                  "marginLeft": 16,
                 },
               ]
             }
@@ -315,15 +315,15 @@ exports[`<List /> should render List with default properties 1`] = `
               <View
                 alignSelf="flex-start"
                 display="flex"
+                marginRight="spacing.3"
                 marginTop={10}
-                paddingRight="spacing.3"
                 style={
                   Array [
                     Object {
                       "alignSelf": "flex-start",
                       "display": "flex",
+                      "marginRight": 8,
                       "marginTop": 10,
-                      "paddingRight": 8,
                     },
                   ]
                 }
@@ -440,7 +440,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 4,
+          "marginLeft": 4,
         },
       ]
     }
@@ -465,15 +465,15 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       <View
         alignSelf="flex-start"
         display="flex"
+        marginRight="spacing.3"
         marginTop={10}
-        paddingRight="spacing.3"
         style={
           Array [
             Object {
               "alignSelf": "flex-start",
               "display": "flex",
+              "marginRight": 8,
               "marginTop": 10,
-              "paddingRight": 8,
             },
           ]
         }
@@ -614,7 +614,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 4,
+          "marginLeft": 4,
         },
       ]
     }
@@ -639,15 +639,15 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       <View
         alignSelf="flex-start"
         display="flex"
+        marginRight="spacing.3"
         marginTop={10}
-        paddingRight="spacing.3"
         style={
           Array [
             Object {
               "alignSelf": "flex-start",
               "display": "flex",
+              "marginRight": 8,
               "marginTop": 10,
-              "paddingRight": 8,
             },
           ]
         }
@@ -758,7 +758,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 4,
+          "marginLeft": 4,
         },
       ]
     }
@@ -783,15 +783,15 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
       <View
         alignSelf="flex-start"
         display="flex"
+        marginRight="spacing.3"
         marginTop={10}
-        paddingRight="spacing.3"
         style={
           Array [
             Object {
               "alignSelf": "flex-start",
               "display": "flex",
+              "marginRight": 8,
               "marginTop": 10,
-              "paddingRight": 8,
             },
           ]
         }
@@ -975,7 +975,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 4,
+          "marginLeft": 4,
         },
       ]
     }
@@ -1000,15 +1000,15 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
       <View
         alignSelf="flex-start"
         display="flex"
+        marginRight="spacing.3"
         marginTop={10}
-        paddingRight="spacing.3"
         style={
           Array [
             Object {
               "alignSelf": "flex-start",
               "display": "flex",
+              "marginRight": 8,
               "marginTop": 10,
-              "paddingRight": 8,
             },
           ]
         }
@@ -1119,7 +1119,7 @@ exports[`<List /> should render medium ordered List 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -1247,7 +1247,7 @@ exports[`<List /> should render medium ordered List 1`] = `
         style={
           Array [
             Object {
-              "paddingLeft": 16,
+              "marginLeft": 16,
             },
           ]
         }
@@ -1272,15 +1272,15 @@ exports[`<List /> should render medium ordered List 1`] = `
           <View
             alignSelf="flex-start"
             display="flex"
+            marginRight="spacing.3"
             marginTop={10}
-            paddingRight="spacing.3"
             style={
               Array [
                 Object {
                   "alignSelf": "flex-start",
                   "display": "flex",
+                  "marginRight": 8,
                   "marginTop": 10,
-                  "paddingRight": 8,
                 },
               ]
             }
@@ -1383,7 +1383,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             style={
               Array [
                 Object {
-                  "paddingLeft": 16,
+                  "marginLeft": 16,
                 },
               ]
             }
@@ -1408,15 +1408,15 @@ exports[`<List /> should render medium ordered List 1`] = `
               <View
                 alignSelf="flex-start"
                 display="flex"
+                marginRight="spacing.3"
                 marginTop={10}
-                paddingRight="spacing.3"
                 style={
                   Array [
                     Object {
                       "alignSelf": "flex-start",
                       "display": "flex",
+                      "marginRight": 8,
                       "marginTop": 10,
-                      "paddingRight": 8,
                     },
                   ]
                 }
@@ -1533,7 +1533,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -1658,7 +1658,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -1783,7 +1783,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -1923,7 +1923,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -1948,15 +1948,15 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
       <View
         alignSelf="flex-start"
         display="flex"
+        marginRight="spacing.3"
         marginTop={6}
-        paddingRight="spacing.3"
         style={
           Array [
             Object {
               "alignSelf": "flex-start",
               "display": "flex",
+              "marginRight": 8,
               "marginTop": 6,
-              "paddingRight": 8,
             },
           ]
         }
@@ -2057,7 +2057,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         style={
           Array [
             Object {
-              "paddingLeft": 16,
+              "marginLeft": 16,
             },
           ]
         }
@@ -2082,15 +2082,15 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           <View
             alignSelf="flex-start"
             display="flex"
+            marginRight="spacing.3"
             marginTop={6}
-            paddingRight="spacing.3"
             style={
               Array [
                 Object {
                   "alignSelf": "flex-start",
                   "display": "flex",
+                  "marginRight": 8,
                   "marginTop": 6,
-                  "paddingRight": 8,
                 },
               ]
             }
@@ -2191,7 +2191,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             style={
               Array [
                 Object {
-                  "paddingLeft": 16,
+                  "marginLeft": 16,
                 },
               ]
             }
@@ -2216,15 +2216,15 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               <View
                 alignSelf="flex-start"
                 display="flex"
+                marginRight="spacing.3"
                 marginTop={10}
-                paddingRight="spacing.3"
                 style={
                   Array [
                     Object {
                       "alignSelf": "flex-start",
                       "display": "flex",
+                      "marginRight": 8,
                       "marginTop": 10,
-                      "paddingRight": 8,
                     },
                   ]
                 }
@@ -2341,7 +2341,7 @@ exports[`<List /> should render small ordered List 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -2469,7 +2469,7 @@ exports[`<List /> should render small ordered List 1`] = `
         style={
           Array [
             Object {
-              "paddingLeft": 16,
+              "marginLeft": 16,
             },
           ]
         }
@@ -2494,15 +2494,15 @@ exports[`<List /> should render small ordered List 1`] = `
           <View
             alignSelf="flex-start"
             display="flex"
+            marginRight="spacing.3"
             marginTop={6}
-            paddingRight="spacing.3"
             style={
               Array [
                 Object {
                   "alignSelf": "flex-start",
                   "display": "flex",
+                  "marginRight": 8,
                   "marginTop": 6,
-                  "paddingRight": 8,
                 },
               ]
             }
@@ -2605,7 +2605,7 @@ exports[`<List /> should render small ordered List 1`] = `
             style={
               Array [
                 Object {
-                  "paddingLeft": 16,
+                  "marginLeft": 16,
                 },
               ]
             }
@@ -2630,15 +2630,15 @@ exports[`<List /> should render small ordered List 1`] = `
               <View
                 alignSelf="flex-start"
                 display="flex"
+                marginRight="spacing.3"
                 marginTop={6}
-                paddingRight="spacing.3"
                 style={
                   Array [
                     Object {
                       "alignSelf": "flex-start",
                       "display": "flex",
+                      "marginRight": 8,
                       "marginTop": 6,
-                      "paddingRight": 8,
                     },
                   ]
                 }
@@ -2755,7 +2755,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -2880,7 +2880,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -3005,7 +3005,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -3145,7 +3145,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 0,
+          "marginLeft": 0,
         },
       ]
     }
@@ -3170,15 +3170,15 @@ exports[`<List /> should render small unordered List with icon 1`] = `
       <View
         alignSelf="flex-start"
         display="flex"
+        marginRight="spacing.3"
         marginTop="spacing.2"
-        paddingRight="spacing.3"
         style={
           Array [
             Object {
               "alignSelf": "flex-start",
               "display": "flex",
+              "marginRight": 8,
               "marginTop": 4,
-              "paddingRight": 8,
             },
           ]
         }
@@ -3279,7 +3279,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         style={
           Array [
             Object {
-              "paddingLeft": 16,
+              "marginLeft": 16,
             },
           ]
         }
@@ -3304,15 +3304,15 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           <View
             alignSelf="flex-start"
             display="flex"
+            marginRight="spacing.3"
             marginTop="spacing.2"
-            paddingRight="spacing.3"
             style={
               Array [
                 Object {
                   "alignSelf": "flex-start",
                   "display": "flex",
+                  "marginRight": 8,
                   "marginTop": 4,
-                  "paddingRight": 8,
                 },
               ]
             }
@@ -3413,7 +3413,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             style={
               Array [
                 Object {
-                  "paddingLeft": 16,
+                  "marginLeft": 16,
                 },
               ]
             }
@@ -3438,15 +3438,15 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               <View
                 alignSelf="flex-start"
                 display="flex"
+                marginRight="spacing.3"
                 marginTop={6}
-                paddingRight="spacing.3"
                 style={
                   Array [
                     Object {
                       "alignSelf": "flex-start",
                       "display": "flex",
+                      "marginRight": 8,
                       "marginTop": 6,
-                      "paddingRight": 8,
                     },
                   ]
                 }
@@ -3563,7 +3563,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
     style={
       Array [
         Object {
-          "paddingLeft": 4,
+          "marginLeft": 4,
         },
       ]
     }
@@ -3588,15 +3588,15 @@ exports[`<List /> should render unordered List of small size 1`] = `
       <View
         alignSelf="flex-start"
         display="flex"
+        marginRight="spacing.3"
         marginTop={6}
-        paddingRight="spacing.3"
         style={
           Array [
             Object {
               "alignSelf": "flex-start",
               "display": "flex",
+              "marginRight": 8,
               "marginTop": 6,
-              "paddingRight": 8,
             },
           ]
         }
@@ -3699,7 +3699,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
         style={
           Array [
             Object {
-              "paddingLeft": 16,
+              "marginLeft": 16,
             },
           ]
         }
@@ -3724,15 +3724,15 @@ exports[`<List /> should render unordered List of small size 1`] = `
           <View
             alignSelf="flex-start"
             display="flex"
+            marginRight="spacing.3"
             marginTop={6}
-            paddingRight="spacing.3"
             style={
               Array [
                 Object {
                   "alignSelf": "flex-start",
                   "display": "flex",
+                  "marginRight": 8,
                   "marginTop": 6,
-                  "paddingRight": 8,
                 },
               ]
             }
@@ -3835,7 +3835,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             style={
               Array [
                 Object {
-                  "paddingLeft": 16,
+                  "marginLeft": 16,
                 },
               ]
             }
@@ -3860,15 +3860,15 @@ exports[`<List /> should render unordered List of small size 1`] = `
               <View
                 alignSelf="flex-start"
                 display="flex"
+                marginRight="spacing.3"
                 marginTop={6}
-                paddingRight="spacing.3"
                 style={
                   Array [
                     Object {
                       "alignSelf": "flex-start",
                       "display": "flex",
+                      "marginRight": 8,
                       "marginTop": 6,
-                      "paddingRight": 8,
                     },
                   ]
                 }

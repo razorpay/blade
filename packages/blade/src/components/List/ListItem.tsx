@@ -7,11 +7,11 @@ import { useListContext } from './ListContext';
 import { UnorderedItemIcon } from './ListItemIcons';
 import { ListItemElement } from './ListItemElement';
 import {
-  listItemBulletPaddingRight,
+  listItemBulletMarginRight,
   listItemBulletMarginTop,
   listItemOrderedBulletBoxSize,
-  listItemPaddingBottom,
-  listItemPaddingLeft,
+  listItemMarginBottom,
+  listItemMarginLeft,
 } from './listTokens';
 import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
@@ -47,10 +47,10 @@ const StyledListItem = styled(ListItemElement)<{
   variant: NonNullable<ListProps['variant']>;
   hasIcon: boolean;
 }>(({ level, theme, variant, hasIcon }) => ({
-  paddingLeft: level
+  marginLeft: level
     ? getIn(
         theme,
-        listItemPaddingLeft[
+        listItemMarginLeft[
           `${variant}${variant === 'unordered' && hasIcon ? 'WithIcon' : ''}` as NonNullable<
             ListProps['variant'] | 'unorderedWithIcon'
           >
@@ -104,11 +104,11 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
         display="flex"
         flexDirection="row"
         alignItems="center"
-        marginBottom={listItemPaddingBottom}
+        marginBottom={listItemMarginBottom}
       >
         {variant === 'unordered' ? (
           <Box
-            paddingRight={listItemBulletPaddingRight[variant]}
+            marginRight={listItemBulletMarginRight[variant]}
             marginTop={
               listItemBulletMarginTop[`${variant}${hasIcon ? 'WithIcon' : ''}`][platform][size]
             }
@@ -125,7 +125,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
           <Box
             width={listItemOrderedBulletBoxSize[variant][platform][size]}
             height={listItemOrderedBulletBoxSize[variant][platform][size]}
-            marginRight={listItemBulletPaddingRight[variant]}
+            marginRight={listItemBulletMarginRight[variant]}
             marginTop={listItemBulletMarginTop[variant][platform][size]}
             display="flex"
             flexShrink={0}

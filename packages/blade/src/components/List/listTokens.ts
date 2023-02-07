@@ -3,7 +3,7 @@ import type { ListProps } from './List';
 import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
-const listItemPaddingLeft: Record<
+const listItemMarginLeft: Record<
   NonNullable<ListProps['variant'] | 'unorderedWithIcon'>,
   Record<number, DotNotationSpacingStringToken>
 > = {
@@ -29,7 +29,7 @@ const listItemPaddingLeft: Record<
   },
 };
 
-const listItemBulletPaddingRight: Record<
+const listItemBulletMarginRight: Record<
   NonNullable<ListProps['variant']>,
   DotNotationSpacingStringToken
 > = {
@@ -104,7 +104,7 @@ const listItemUnorderedBulletSize: Record<
   },
 };
 
-const listItemPaddingBottom: DotNotationSpacingStringToken = 'spacing.3';
+const listItemMarginBottom: DotNotationSpacingStringToken = 'spacing.3';
 
 const ComponentIds = {
   List: 'List',
@@ -141,10 +141,10 @@ const listItemCodeSize: Record<NonNullable<ListProps['size']>, NonNullable<CodeP
 };
 
 export {
-  listItemPaddingLeft,
+  listItemMarginLeft,
   ComponentIds,
-  listItemPaddingBottom,
-  listItemBulletPaddingRight,
+  listItemMarginBottom,
+  listItemBulletMarginRight,
   listItemBulletMarginTop,
   listItemUnorderedBulletSize,
   listItemOrderedBulletBoxSize,
