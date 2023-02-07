@@ -23,7 +23,7 @@ type ListCommonProps = {
    */
   children: React.ReactElement<ListItemProps> | React.ReactElement<ListItemProps>[];
   /**
-   * Sets the variant to to be rendered for the List.
+   * Sets the variant to be rendered for the List.
    *
    * @default 'unordered'
    */
@@ -36,22 +36,15 @@ type ListCommonProps = {
   size?: 'small' | 'medium';
 };
 
-type ListUnorderedProps = ListCommonProps & {
+type ListWithIconProps = ListCommonProps & {
   variant?: 'unordered';
   icon?: IconComponent;
 };
-
-type ListOrderedProps = ListCommonProps & {
-  variant?: 'ordered';
+type ListWithoutIconProps = ListCommonProps & {
+  variant?: 'ordered' | 'ordered-filled';
   icon?: undefined;
 };
-
-type ListOrderedFilledProps = ListCommonProps & {
-  variant?: 'ordered-filled';
-  icon?: undefined;
-};
-
-type ListProps = ListUnorderedProps | ListOrderedProps | ListOrderedFilledProps;
+type ListProps = ListWithIconProps | ListWithoutIconProps;
 
 const StyledOrderedList = styled(OrderedList)<{ marginTop?: DotNotationSpacingStringToken }>(
   ({ marginTop, theme }) => ({
