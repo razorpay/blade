@@ -229,7 +229,7 @@ const makeArgTypes = (argTable: ArgsTable): Meta['argTypes'] => {
         name: newKey,
         control: { type: getControlType() },
         table: { category: getCategory(key) },
-        options: value,
+        options: Array.isArray(value) ? value : undefined,
         defaultValue: Array.isArray(value) ? value[0] : undefined,
       },
     ];

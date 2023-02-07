@@ -59,6 +59,12 @@ type DropdownContextType = {
    */
   hasFooterAction: boolean;
   setHasFooterAction: (value: boolean) => void;
+  /**
+   * We need to know the label's position because when it is on left, the overlay takes the width of input.
+   * Rest of the times, we can set 100% width
+   */
+  hasLabelOnLeft: boolean;
+  setHasLabelOnLeft: (value: boolean) => void;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -74,6 +80,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setShouldIgnoreBlur: noop,
   hasFooterAction: false,
   setHasFooterAction: noop,
+  hasLabelOnLeft: false,
+  setHasLabelOnLeft: noop,
   isKeydownPressed: false,
   setIsKeydownPressed: noop,
   dropdownBaseId: '',

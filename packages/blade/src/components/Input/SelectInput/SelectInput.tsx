@@ -51,6 +51,7 @@ const _SelectInput = (
     triggererRef,
     hasFooterAction,
     dropdownTriggerer,
+    setHasLabelOnLeft,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref);
@@ -60,6 +61,10 @@ const _SelectInput = (
   React.useEffect(() => {
     onChange?.({ name: props.name, values: value.split(', ') });
   }, [value, onChange, props.name]);
+
+  React.useEffect(() => {
+    setHasLabelOnLeft(props.labelPosition === 'left');
+  }, [props.labelPosition, setHasLabelOnLeft]);
 
   return (
     <Box position="relative">

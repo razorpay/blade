@@ -51,6 +51,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
   const triggererRef = React.useRef<HTMLButtonElement>(null);
   const actionListRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
+  const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
@@ -94,6 +95,8 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       selectionType,
       hasFooterAction,
       setHasFooterAction,
+      hasLabelOnLeft,
+      setHasLabelOnLeft,
       dropdownTriggerer,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,6 +108,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       shouldIgnoreBlur,
       selectionType,
       hasFooterAction,
+      hasLabelOnLeft,
       isKeydownPressed,
     ],
   );
