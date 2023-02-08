@@ -6,7 +6,7 @@ import type { FormInputOnEvent } from '../../Form';
 import { FormHint, FormLabel } from '../../Form';
 import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, getPlatformType, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
@@ -216,7 +216,7 @@ const OTPInput = ({
       const ref = React.createRef<HTMLInputElement>();
       inputRefs.push(ref);
       inputs.push(
-        <Box
+        <BaseBox
           flex={1}
           marginLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
           key={`${inputId}-${index}`}
@@ -251,15 +251,15 @@ const OTPInput = ({
             hideFormHint={true}
             type={isMasked ? 'password' : undefined}
           />
-        </Box>,
+        </BaseBox>,
       );
     }
     return inputs;
   };
 
   return (
-    <Box {...metaAttribute(MetaConstants.Component, MetaConstants.OTPInput)}>
-      <Box
+    <BaseBox {...metaAttribute(MetaConstants.Component, MetaConstants.OTPInput)}>
+      <BaseBox
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
@@ -268,14 +268,14 @@ const OTPInput = ({
         <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
           {label}
         </FormLabel>
-        <Box display="flex" flexDirection="row">
+        <BaseBox display="flex" flexDirection="row">
           {getHiddenInput()}
           {getOTPInputFields()}
-        </Box>
-      </Box>
+        </BaseBox>
+      </BaseBox>
       {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
       {/*Refer `BaseInput`'s implementation of FormHint which uses similar logic */}
-      <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
+      <BaseBox marginLeft={isLabelLeftPositioned ? 136 : 0}>
         <FormHint
           type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
           helpText={helpText}
@@ -285,8 +285,8 @@ const OTPInput = ({
           errorTextId={errorTextId}
           successTextId={successTextId}
         />
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 

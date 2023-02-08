@@ -8,7 +8,7 @@ import { Checkbox as CheckboxComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 
 const Page = (): React.ReactElement => {
@@ -141,10 +141,10 @@ export const checkboxRef: ComponentStory<typeof CheckboxComponent> = () => {
   const checkboxRef = React.useRef<BladeElementRef>(null);
 
   return (
-    <Box gap="spacing.3" display="flex" alignItems="center">
+    <BaseBox gap="spacing.3" display="flex" alignItems="center">
       <CheckboxComponent ref={checkboxRef}>Checkbox</CheckboxComponent>
       <Button onClick={() => checkboxRef?.current?.focus()}>Click to focus the checkbox</Button>
-    </Box>
+    </BaseBox>
   );
 };
 

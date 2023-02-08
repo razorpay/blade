@@ -6,7 +6,7 @@ import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon/RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
@@ -85,8 +85,8 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
 
   return (
     <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
-      <Box display="flex" flexDirection="column">
-        <Box display="flex" alignItems="center" flexDirection="row">
+      <BaseBox display="flex" flexDirection="column">
+        <BaseBox display="flex" alignItems="center" flexDirection="row">
           <SelectorInput
             isChecked={state.isChecked}
             isDisabled={_isDisabled}
@@ -103,13 +103,13 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
           <SelectorTitle size={_size} isDisabled={_isDisabled}>
             {children}
           </SelectorTitle>
-        </Box>
-        <Box marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
+        </BaseBox>
+        <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
           {showHelpText && (
             <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
           )}
-        </Box>
-      </Box>
+        </BaseBox>
+      </BaseBox>
     </SelectorLabel>
   );
 };

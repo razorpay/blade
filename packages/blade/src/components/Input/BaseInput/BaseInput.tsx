@@ -13,7 +13,7 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 
 import {
   metaAttribute,
@@ -497,8 +497,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
     return (
-      <Box {...metaAttribute(MetaConstants.Component, componentName!)}>
-        <Box
+      <BaseBox {...metaAttribute(MetaConstants.Component, componentName!)}>
+        <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
           justifyContent={isLabelLeftPositioned ? 'center' : undefined}
@@ -506,7 +506,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
           position="relative"
         >
           {!hideLabelText && (
-            <Box
+            <BaseBox
               display="flex"
               flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
               justifyContent="space-between"
@@ -523,7 +523,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
                 {label}
               </FormLabel>
               {trailingHeaderSlot?.(inputValue)}
-            </Box>
+            </BaseBox>
           )}
           <BaseInputWrapper
             isTextArea={isTextArea}
@@ -575,11 +575,11 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               isDisabled={isDisabled}
             />
           </BaseInputWrapper>
-        </Box>
+        </BaseBox>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
         {!hideFormHint && (
-          <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
-            <Box
+          <BaseBox marginLeft={isLabelLeftPositioned ? 136 : 0}>
+            <BaseBox
               display="flex"
               flexDirection="row"
               justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
@@ -594,10 +594,10 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
                 successTextId={successTextId}
               />
               {trailingFooterSlot?.(inputValue)}
-            </Box>
-          </Box>
+            </BaseBox>
+          </BaseBox>
         )}
-      </Box>
+      </BaseBox>
     );
   },
 );

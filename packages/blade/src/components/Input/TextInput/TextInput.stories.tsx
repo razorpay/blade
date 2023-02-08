@@ -5,7 +5,7 @@ import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
@@ -306,7 +306,7 @@ export const TextInputControlled = TextInputControlledTemplate.bind({});
 const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = () => {
   return (
     <>
-      <Box display="flex" gap="spacing.5">
+      <BaseBox display="flex" gap="spacing.5">
         <TextInput
           showClearButton
           label="First Name"
@@ -338,8 +338,8 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
           defaultValue="Anurag"
           successText="Name is valid"
         />
-      </Box>
-      <Box display="flex" flexDirection="column" gap="spacing.5">
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="column" gap="spacing.5">
         <TextInput
           label="First Name"
           placeholder="Enter your first"
@@ -375,7 +375,7 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
           validationState="none"
           helpText="Write your message"
         />
-      </Box>
+      </BaseBox>
     </>
   );
 };
@@ -386,7 +386,7 @@ export const inputRef: ComponentStory<typeof TextInputComponent> = () => {
   const inputRef = React.useRef<BladeElementRef>(null);
 
   return (
-    <Box gap="spacing.3" display="flex" alignItems="end">
+    <BaseBox gap="spacing.3" display="flex" alignItems="end">
       <TextInputComponent ref={inputRef} label="First Name" name="fullName" />
       <Button
         onClick={() => {
@@ -396,7 +396,7 @@ export const inputRef: ComponentStory<typeof TextInputComponent> = () => {
       >
         Click to focus the input
       </Button>
-    </Box>
+    </BaseBox>
   );
 };
 

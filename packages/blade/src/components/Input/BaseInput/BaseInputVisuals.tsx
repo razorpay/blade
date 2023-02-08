@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { BoxProps } from '~components/Box/BaseBox/types';
+import type { BaseBoxProps } from '~components/Box/BaseBox/types';
 
 type InputVisuals = Pick<
   BaseInputProps,
   'leadingIcon' | 'prefix' | 'interactionElement' | 'suffix' | 'trailingIcon' | 'isDisabled'
 >;
 
-const getVisualContainerStyles = (): BoxProps => ({
+const getVisualContainerStyles = (): BaseBoxProps => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -22,7 +22,7 @@ const getPrefixStyles = ({
 }: {
   hasLeadingIcon: boolean;
   hasPrefix: boolean;
-}): BoxProps => {
+}): BaseBoxProps => {
   if (hasPrefix && hasLeadingIcon) {
     return {
       paddingLeft: 'spacing.2',
@@ -48,7 +48,7 @@ const getInteractionElementStyles = ({
   hasTrailingIcon: boolean;
   hasInteractionElement: boolean;
   hasSuffix: boolean;
-}): BoxProps => {
+}): BaseBoxProps => {
   if (hasInteractionElement && (hasSuffix || hasTrailingIcon)) {
     return {
       paddingRight: 'spacing.2',
@@ -72,7 +72,7 @@ const getSuffixStyles = ({
 }: {
   hasTrailingIcon: boolean;
   hasSuffix: boolean;
-}): BoxProps => {
+}): BaseBoxProps => {
   if (hasSuffix && hasTrailingIcon) {
     return {
       paddingRight: 'spacing.2',
@@ -131,9 +131,9 @@ export const BaseInputVisuals = ({
 
   if (hasLeadingVisuals) {
     return (
-      <Box {...getVisualContainerStyles()}>
+      <BaseBox {...getVisualContainerStyles()}>
         {LeadingIcon ? (
-          <Box paddingLeft="spacing.4" display="flex">
+          <BaseBox paddingLeft="spacing.4" display="flex">
             <LeadingIcon
               size="medium"
               color={
@@ -142,10 +142,10 @@ export const BaseInputVisuals = ({
                   : 'surface.text.subtle.lowContrast'
               }
             />
-          </Box>
+          </BaseBox>
         ) : null}
         {hasPrefix ? (
-          <Box {...getPrefixStyles({ hasLeadingIcon, hasPrefix })}>
+          <BaseBox {...getPrefixStyles({ hasLeadingIcon, hasPrefix })}>
             <Text
               size="medium"
               variant="body"
@@ -155,25 +155,25 @@ export const BaseInputVisuals = ({
             >
               {prefix}
             </Text>
-          </Box>
+          </BaseBox>
         ) : null}
-      </Box>
+      </BaseBox>
     );
   }
 
   if (hasTrailingVisuals) {
     return (
-      <Box {...getVisualContainerStyles()}>
+      <BaseBox {...getVisualContainerStyles()}>
         {hasInteractionElement ? (
-          <Box
+          <BaseBox
             {...getInteractionElementStyles({ hasTrailingIcon, hasInteractionElement, hasSuffix })}
             display="flex"
           >
             {interactionElement}
-          </Box>
+          </BaseBox>
         ) : null}
         {hasSuffix ? (
-          <Box {...getSuffixStyles({ hasTrailingIcon, hasSuffix })}>
+          <BaseBox {...getSuffixStyles({ hasTrailingIcon, hasSuffix })}>
             <Text
               size="medium"
               variant="body"
@@ -183,10 +183,10 @@ export const BaseInputVisuals = ({
             >
               {suffix}
             </Text>
-          </Box>
+          </BaseBox>
         ) : null}
         {TrailingIcon ? (
-          <Box paddingRight="spacing.4" display="flex">
+          <BaseBox paddingRight="spacing.4" display="flex">
             {
               <TrailingIcon
                 size="medium"
@@ -197,9 +197,9 @@ export const BaseInputVisuals = ({
                 }
               />
             }
-          </Box>
+          </BaseBox>
         ) : null}
-      </Box>
+      </BaseBox>
     );
   }
 

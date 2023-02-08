@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { CounterProps } from './Counter';
 import { Counter as CounterComponent } from './Counter';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -74,9 +74,9 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
   const intents = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
 
   return (
-    <Box display="flex" flexDirection="column">
+    <BaseBox display="flex" flexDirection="column">
       <BladeText>Low Contrast</BladeText>
-      <Box
+      <BaseBox
         display="flex"
         flexDirection="row"
         paddingTop="spacing.3"
@@ -84,13 +84,13 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         flexWrap="wrap"
       >
         {intents.map((intent) => (
-          <Box key={intent} paddingRight="spacing.3" paddingTop="spacing.2">
+          <BaseBox key={intent} paddingRight="spacing.3" paddingTop="spacing.2">
             <CounterComponent {...args} intent={intent} contrast="low" />
-          </Box>
+          </BaseBox>
         ))}
-      </Box>
+      </BaseBox>
       <BladeText>High Contrast</BladeText>
-      <Box
+      <BaseBox
         display="flex"
         flexDirection="row"
         paddingTop="spacing.3"
@@ -98,12 +98,12 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         flexWrap="wrap"
       >
         {intents.map((intent) => (
-          <Box key={intent} paddingRight="spacing.3" paddingTop="spacing.2">
+          <BaseBox key={intent} paddingRight="spacing.3" paddingTop="spacing.2">
             <CounterComponent {...args} intent={intent} contrast="high" />
-          </Box>
+          </BaseBox>
         ))}
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 

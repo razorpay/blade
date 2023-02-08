@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { motion as spinnerMotion } from './spinnerTokens';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { getIn, makeMotionTime } from '~utils';
 
 const rotate = keyframes`
@@ -12,7 +12,7 @@ const rotate = keyframes`
   }
 `;
 
-const SpinningBox = styled(Box)(({ theme }) => {
+const SpinningBox = styled(BaseBox)(({ theme }) => {
   return css`
     padding: 1px;
     width: max-content;

@@ -11,7 +11,7 @@ import {
 import { LinkToStorybook } from './LinkToStorybook';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
@@ -359,7 +359,7 @@ const ComponentStatusTable = (): React.ReactElement => {
   });
 
   return (
-    <Box>
+    <BaseBox>
       <Table>
         <thead>
           <tr>
@@ -404,7 +404,7 @@ const ComponentStatusTable = (): React.ReactElement => {
           })}
         </tbody>
       </Table>
-    </Box>
+    </BaseBox>
   );
 };
 

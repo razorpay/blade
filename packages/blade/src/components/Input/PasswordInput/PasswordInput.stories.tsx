@@ -8,7 +8,7 @@ import { PasswordInput } from './PasswordInput';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 
 const Page = (): ReactElement => {
@@ -216,7 +216,7 @@ export const inputRef: ComponentStory<typeof PasswordInput> = () => {
   const inputRef = React.useRef<BladeElementRef>(null);
 
   return (
-    <Box gap="spacing.3" display="flex" alignItems="end">
+    <BaseBox gap="spacing.3" display="flex" alignItems="end">
       <PasswordInput ref={inputRef} label="Message" />
       <Button
         onClick={() => {
@@ -226,7 +226,7 @@ export const inputRef: ComponentStory<typeof PasswordInput> = () => {
       >
         Click to focus the input
       </Button>
-    </Box>
+    </BaseBox>
   );
 };
 

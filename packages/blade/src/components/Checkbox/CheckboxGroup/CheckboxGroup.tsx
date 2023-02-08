@@ -3,7 +3,7 @@ import { checkboxSizes } from '../checkboxTokens';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabel, FormHint } from '~components/Form';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -130,22 +130,22 @@ const CheckboxGroup = ({
         >
           {label}
         </FormLabel>
-        <Box>
-          <Box display="flex" flexDirection="column">
+        <BaseBox>
+          <BaseBox display="flex" flexDirection="column">
             {React.Children.map(children, (child, index) => {
               return (
-                <Box key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
+                <BaseBox key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
                   {child}
-                </Box>
+                </BaseBox>
               );
             })}
-          </Box>
+          </BaseBox>
           <FormHint
             errorText={errorText}
             helpText={helpText}
             type={validationState === 'error' ? 'error' : 'help'}
           />
-        </Box>
+        </BaseBox>
       </SelectorGroupField>
     </CheckboxGroupProvider>
   );

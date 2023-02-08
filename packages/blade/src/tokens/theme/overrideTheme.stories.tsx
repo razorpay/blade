@@ -8,7 +8,7 @@ import paymentTheme from './paymentTheme';
 import { Button } from '~components/Button';
 import { BladeProvider } from '~components/BladeProvider';
 import { Checkbox, CheckboxGroup } from '~components/Checkbox';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { Text, Title as BladeTitle } from '~components/Typography';
 
 const Page = (): ReactElement => {
@@ -183,13 +183,13 @@ const OverrideThemeExample = (props: { hue: number }): React.ReactElement => {
       <BladeTitle>Blade OverrideTheme Example</BladeTitle>
       <Text>By using overrideTheme() function we can customize blade theme.</Text>
 
-      <Box marginBottom="spacing.5" marginTop="spacing.5" display="flex" alignItems="center">
+      <BaseBox marginBottom="spacing.5" marginTop="spacing.5" display="flex" alignItems="center">
         <Button variant="primary">Primary</Button>
-        <Box marginLeft="spacing.3" />
+        <BaseBox marginLeft="spacing.3" />
         <Button variant="secondary">Secondary</Button>
-        <Box marginLeft="spacing.3" />
+        <BaseBox marginLeft="spacing.3" />
         <Button variant="tertiary">Tertiary</Button>
-      </Box>
+      </BaseBox>
 
       <CheckboxGroup label="Select fruit" defaultValue={['apple']}>
         <Checkbox value="apple">Apple</Checkbox>

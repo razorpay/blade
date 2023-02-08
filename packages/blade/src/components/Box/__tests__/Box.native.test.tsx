@@ -1,10 +1,10 @@
-import Box from '../BaseBox';
+import BaseBox from '../BaseBox';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<BaseBox />', () => {
-  it('should render Box component with the correct styles', () => {
+  it('should render BaseBox component with the correct styles', () => {
     const renderTree = renderWithTheme(
-      <Box
+      <BaseBox
         display="flex"
         justifyContent="center"
         alignItems="center"

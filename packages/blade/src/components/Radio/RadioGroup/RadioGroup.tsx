@@ -2,7 +2,7 @@ import React from 'react';
 import { radioSizes } from '../radioTokens';
 import { RadioGroupProvider } from './RadioContext';
 import { useRadioGroup } from './useRadioGroup';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getPlatformType, useBreakpoint } from '~utils';
@@ -132,22 +132,22 @@ const RadioGroup = ({
         >
           {label}
         </FormLabel>
-        <Box>
-          <Box display="flex" flexDirection="column">
+        <BaseBox>
+          <BaseBox display="flex" flexDirection="column">
             {React.Children.map(children, (child, index) => {
               return (
-                <Box key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
+                <BaseBox key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
                   {child}
-                </Box>
+                </BaseBox>
               );
             })}
-          </Box>
+          </BaseBox>
           <FormHint
             type={validationState === 'error' ? 'error' : 'help'}
             errorText={errorText}
             helpText={helpText}
           />
-        </Box>
+        </BaseBox>
       </SelectorGroupField>
     </RadioGroupProvider>
   );

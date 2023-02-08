@@ -6,7 +6,7 @@ import type { BaseInputProps } from './BaseInput';
 import { BaseInput as BaseInputComponent } from './BaseInput';
 import BaseInputLayoutImage from './_decisions/base-inputfield-layout.png';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 
 const propsCategory = {
@@ -297,9 +297,9 @@ const BaseInputMaxCharactersTemplate: ComponentStory<typeof BaseInputComponent> 
       name="fullName"
       maxCharacters={maxCharacters}
       trailingFooterSlot={(value) => (
-        <Box marginTop="spacing.2">
+        <BaseBox marginTop="spacing.2">
           <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters ?? 0} />
-        </Box>
+        </BaseBox>
       )}
       onChange={({ name, value }): void => console.log({ name, value })}
     />

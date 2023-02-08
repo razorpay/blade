@@ -4,7 +4,7 @@ import React from 'react';
 import { FormHintWrapper } from './FormHintWrapper';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { CheckIcon, InfoIcon } from '~components/Icons';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
@@ -19,7 +19,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElem
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <Box marginTop="spacing.2">
+    <BaseBox marginTop="spacing.2">
       <FormHintWrapper>
         {Icon ? <Icon /> : null}
         <BaseText
@@ -34,7 +34,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElem
           {children}
         </BaseText>
       </FormHintWrapper>
-    </Box>
+    </BaseBox>
   );
 };
 
@@ -77,13 +77,13 @@ const Icons = {
   error: (): ReactElement => (
     <>
       <InfoIcon color="feedback.icon.negative.lowContrast" size="small" />
-      <Box marginRight="spacing.2" />
+      <BaseBox marginRight="spacing.2" />
     </>
   ),
   success: (): ReactElement => (
     <>
       <CheckIcon color="feedback.icon.positive.lowContrast" size="small" />
-      <Box marginRight="spacing.2" />
+      <BaseBox marginRight="spacing.2" />
     </>
   ),
 };

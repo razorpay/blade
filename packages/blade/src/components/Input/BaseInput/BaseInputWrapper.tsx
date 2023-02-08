@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { castWebType, getPlatformType, makeMotionTime } from '~utils';
 import type { ActionStates } from '~tokens/theme/theme';
 
@@ -14,7 +14,7 @@ type BaseInputWrapperProps = Pick<BaseInputProps, 'isDisabled' | 'validationStat
   isTextArea?: boolean;
 };
 
-const StyledBaseInputWrapper = styled(Box)<BaseInputWrapperProps>((props) => ({
+const StyledBaseInputWrapper = styled(BaseBox)<BaseInputWrapperProps>((props) => ({
   ...getInputBackgroundAndBorderStyles({
     theme: props.theme,
     isFocused: props.currentInteraction === 'active',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils';
 
@@ -74,7 +74,11 @@ type CardBodyProps = {
 const CardBody: WithComponentId<CardBodyProps> = ({ children }) => {
   useVerifyInsideCard('CardBody');
 
-  return <Box {...metaAttribute(MetaConstants.Component, MetaConstants.CardBody)}>{children}</Box>;
+  return (
+    <BaseBox {...metaAttribute(MetaConstants.Component, MetaConstants.CardBody)}>
+      {children}
+    </BaseBox>
+  );
 };
 CardBody.componentId = ComponentIds.CardBody;
 

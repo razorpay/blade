@@ -17,7 +17,7 @@ import {
   useBreakpoint,
 } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
@@ -114,7 +114,7 @@ type AlertProps = {
 const isReactNative = getPlatformType() === 'react-native';
 
 // Need extra wrappers on React Native only for alignment
-const CloseButtonWrapper = isReactNative ? Box : Fragment;
+const CloseButtonWrapper = isReactNative ? BaseBox : Fragment;
 
 const intentIconMap = {
   positive: CheckCircleIcon,
@@ -172,13 +172,13 @@ const Alert = ({
   }
 
   const icon = (
-    <Box marginTop={iconOffset} display="flex">
+    <BaseBox marginTop={iconOffset} display="flex">
       <Icon color={`feedback.icon.${intent}.${contrastType}`} size={iconSize} />
-    </Box>
+    </BaseBox>
   );
 
   const _title = title ? (
-    <Box marginBottom="spacing.2">
+    <BaseBox marginBottom="spacing.2">
       {isFullWidth ? (
         <Heading type="subtle" size="small" contrast={contrast}>
           {title}
@@ -188,19 +188,19 @@ const Alert = ({
           {title}
         </Text>
       )}
-    </Box>
+    </BaseBox>
   ) : null;
 
   const _description = (
-    <Box marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
+    <BaseBox marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
       <Text type="subtle" size={textSize} contrast={contrast}>
         {description}
       </Text>
-    </Box>
+    </BaseBox>
   );
 
   const primaryAction = actions?.primary ? (
-    <Box marginRight="spacing.5" display={isReactNative ? 'flex' : 'inline-flex'}>
+    <BaseBox marginRight="spacing.5" display={isReactNative ? 'flex' : 'inline-flex'}>
       <BaseButton
         size={textSize}
         onClick={actions.primary.onClick}
@@ -209,7 +209,7 @@ const Alert = ({
       >
         {actions.primary.text}
       </BaseButton>
-    </Box>
+    </BaseBox>
   ) : null;
 
   const secondaryActionParams: Nullable<Partial<SecondaryActionLinkButton>> = actions?.secondary
@@ -230,11 +230,11 @@ const Alert = ({
     secondaryActionParams.rel = actions.secondary.rel;
   }
   const secondaryAction = actions?.secondary ? (
-    <Box marginRight="spacing.4" display={isReactNative ? 'flex' : 'inline-flex'}>
+    <BaseBox marginRight="spacing.4" display={isReactNative ? 'flex' : 'inline-flex'}>
       <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
         {actions.secondary.text}
       </BaseLink>
-    </Box>
+    </BaseBox>
   ) : null;
 
   // For certain cases we wish to render actions inline with text content
@@ -242,18 +242,18 @@ const Alert = ({
 
   const actionsHorizontal =
     showActionsHorizontal && (primaryAction || secondaryAction) ? (
-      <Box flexDirection="row" alignItems="center">
+      <BaseBox flexDirection="row" alignItems="center">
         {primaryAction}
         {secondaryAction}
-      </Box>
+      </BaseBox>
     ) : null;
 
   const actionsVertical =
     !showActionsHorizontal && (primaryAction || secondaryAction) ? (
-      <Box marginTop="spacing.4" flexDirection="row" alignItems="center">
+      <BaseBox marginTop="spacing.4" flexDirection="row" alignItems="center">
         {primaryAction}
         {secondaryAction}
-      </Box>
+      </BaseBox>
     ) : null;
 
   const onClickDismiss = (): void => {
@@ -295,7 +295,7 @@ const Alert = ({
       {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
     >
       {icon}
-      <Box
+      <BaseBox
         flex={1}
         paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
         paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
@@ -303,7 +303,7 @@ const Alert = ({
         {_title}
         {_description}
         {actionsVertical}
-      </Box>
+      </BaseBox>
       {actionsHorizontal}
       {closeButton}
     </StyledAlert>

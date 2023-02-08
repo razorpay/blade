@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import {
   metaAttribute,
   getPlatformType,
@@ -37,7 +37,7 @@ const getCodeFontSize = (size: CodeProps['size']): keyof FontSize => {
   }
 };
 
-const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
+const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
   const padding = `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`;
   return {
     padding,
@@ -69,11 +69,11 @@ const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
  * In React Native, you would have to align it using flex to make sure the Code and the surrounding text is correctly aligned
  *
  * ```tsx
- *  <Box flexWrap="wrap" flexDirection="row" alignItems="flex-start">
+ *  <BaseBox flexWrap="wrap" flexDirection="row" alignItems="flex-start">
  *   <Text>Lorem ipsum </Text>
  *   <Code>SENTRY_TOKEN</Code>
  *   <Text> normal text</Text>
- * </Box>
+ * </BaseBox>
  * ```
  */
 const Code = ({ children, size = 'small' }: CodeProps): JSX.Element => {

@@ -5,7 +5,7 @@ import { CloseIcon } from '../../Icons';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { IconButton } from '~components/Button/IconButton';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
@@ -85,7 +85,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   const renderInteractionElement = (): React.ReactNode => {
     if (shouldShowClearButton) {
       return (
-        <Box paddingTop="spacing.3" marginTop="spacing.1">
+        <BaseBox paddingTop="spacing.3" marginTop="spacing.1">
           <IconButton
             icon={CloseIcon}
             accessibilityLabel="Clear textarea content"
@@ -106,7 +106,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
               setShouldShowClearButton(false);
             }}
           />
-        </Box>
+        </BaseBox>
       );
     }
 
@@ -153,9 +153,9 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       onBlur={onBlur}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <Box marginTop="spacing.2" marginRight="spacing.1">
+          <BaseBox marginTop="spacing.2" marginRight="spacing.1">
             <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
-          </Box>
+          </BaseBox>
         ) : null;
       }}
     />

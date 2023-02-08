@@ -1,10 +1,10 @@
-import Box from '../BaseBox';
+import BaseBox from '../BaseBox';
 import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
 
 describe('<BaseBox />', () => {
-  it('should render Box component with the correct styles', () => {
+  it('should render BaseBox component with the correct styles', () => {
     const { container } = renderWithSSR(
-      <Box
+      <BaseBox
         display="flex"
         justifyContent="center"
         alignItems="center"

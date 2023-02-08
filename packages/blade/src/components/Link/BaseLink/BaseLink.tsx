@@ -8,7 +8,7 @@ import useInteraction from '~src/hooks/useInteraction';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
@@ -280,11 +280,11 @@ const BaseLink = ({
       className={className}
       style={style}
     >
-      <Box display="flex" flexDirection="row" className="content-container" alignItems="center">
+      <BaseBox display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (
-          <Box paddingRight={iconPadding} display="flex" alignItems="center">
+          <BaseBox paddingRight={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size={iconSize} />
-          </Box>
+          </BaseBox>
         ) : null}
         <BaseText
           textDecorationLine={textDecorationLine}
@@ -296,11 +296,11 @@ const BaseLink = ({
           {children}
         </BaseText>
         {Icon && iconPosition == 'right' ? (
-          <Box paddingLeft={iconPadding} display="flex" alignItems="center">
+          <BaseBox paddingLeft={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size={iconSize} />
-          </Box>
+          </BaseBox>
         ) : null}
-      </Box>
+      </BaseBox>
     </StyledBaseLink>
   );
 };

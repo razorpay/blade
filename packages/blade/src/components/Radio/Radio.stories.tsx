@@ -8,7 +8,7 @@ import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { Button } from '~components/Button';
 
@@ -241,7 +241,7 @@ export const KitchenSink = (): React.ReactElement => {
         <RadioComponent value="mango">Mango</RadioComponent>
         <RadioComponent value="orange">Orange</RadioComponent>
       </RadioGroupComponent>
-      <Box height={50} overflow="scroll" marginTop="spacing.4">
+      <BaseBox height={50} overflow="scroll" marginTop="spacing.4">
         <RadioGroupComponent
           labelPosition="left"
           necessityIndicator="optional"
@@ -254,7 +254,7 @@ export const KitchenSink = (): React.ReactElement => {
           <RadioComponent value="mango">Mango</RadioComponent>
           <RadioComponent value="orange">Orange</RadioComponent>
         </RadioGroupComponent>
-      </Box>
+      </BaseBox>
     </>
   );
 };
@@ -264,14 +264,14 @@ export const radioRef: ComponentStory<typeof RadioComponent> = () => {
   const radioRef = React.useRef<BladeElementRef>(null);
 
   return (
-    <Box gap="spacing.3" display="flex" alignItems="center">
+    <BaseBox gap="spacing.3" display="flex" alignItems="center">
       <RadioGroupComponent label="Radio ref example">
         <RadioComponent ref={radioRef} value="1">
           Radio
         </RadioComponent>
       </RadioGroupComponent>
       <Button onClick={() => radioRef?.current?.focus()}>Click to focus the Radio</Button>
-    </Box>
+    </BaseBox>
   );
 };
 

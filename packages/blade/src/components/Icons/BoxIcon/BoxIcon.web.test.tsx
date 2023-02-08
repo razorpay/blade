@@ -1,10 +1,10 @@
-import BoxIcon from './';
+import BaseBoxIcon from './';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
-describe('<BoxIcon />', () => {
+describe('<BaseBoxIcon />', () => {
   it('should render BoxIcon', () => {
     const { container } = renderWithTheme(
-      <BoxIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <BaseBoxIcon color="feedback.icon.neutral.lowContrast" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

@@ -8,7 +8,7 @@ import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
@@ -267,9 +267,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       successText={successText}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <Box marginTop="spacing.2" marginRight="spacing.1">
+          <BaseBox marginTop="spacing.2" marginRight="spacing.1">
             <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
-          </Box>
+          </BaseBox>
         ) : null;
       }}
       // eslint-disable-next-line jsx-a11y/no-autofocus

@@ -150,7 +150,7 @@ import WifiOffIconComponent from './WifiOffIcon';
 import ApertureIconComponent from './ApertureIcon';
 import AwardIconComponent from './AwardIcon';
 import BookIconComponent from './BookIcon';
-import BoxIconComponent from './BoxIcon';
+import BaseBoxIconComponent from './BoxIcon';
 import BriefcaseIconComponent from './BriefcaseIcon';
 import ChromeIconComponent from './ChromeIcon';
 import CircleIconComponent from './CircleIcon';

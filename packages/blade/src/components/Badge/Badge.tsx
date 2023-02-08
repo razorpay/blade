@@ -3,7 +3,7 @@ import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
 import { iconPadding, iconSize, horizontalPadding, verticalPadding } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
@@ -119,7 +119,7 @@ const Badge = ({
       size={size}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Badge)}
     >
-      <Box
+      <BaseBox
         paddingRight={horizontalPadding[size]}
         paddingLeft={horizontalPadding[size]}
         paddingTop={verticalPadding[size]}
@@ -131,9 +131,9 @@ const Badge = ({
         overflow="hidden"
       >
         {Icon ? (
-          <Box paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
+          <BaseBox paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
             <Icon color={iconColor} size={iconSize[size]} />
-          </Box>
+          </BaseBox>
         ) : null}
         <Text
           {...badgeTextSizes[size]}
@@ -144,7 +144,7 @@ const Badge = ({
         >
           {children}
         </Text>
-      </Box>
+      </BaseBox>
     </StyledBadge>
   );
 };

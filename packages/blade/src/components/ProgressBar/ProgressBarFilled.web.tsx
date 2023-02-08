@@ -3,7 +3,7 @@ import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
 import type { ProgressBarFilledProps } from './types';
 import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { castWebType, getIn, makeMotionTime } from '~utils';
 
 const pulseKeyframes = keyframes`
@@ -50,7 +50,7 @@ const getPulseAnimationStyles = ({
   animation-delay: ${delay};
 `;
 
-const BoxWithIndeterminateAnimation = styled(Box)<
+const BoxWithIndeterminateAnimation = styled(BaseBox)<
   Pick<ProgressBarFilledProps, 'fillMotionDuration' | 'indeterminateMotionDuration'>
 >(({ theme, indeterminateMotionDuration }) => {
   const duration = castWebType(makeMotionTime(getIn(theme.motion, indeterminateMotionDuration)));
@@ -83,7 +83,7 @@ const IndeterminatePulseAnimation = styled(BoxWithIndeterminateAnimation)<
   return variant === 'progress' ? getPulseAnimationStyles({ duration, easing, delay }) : '';
 });
 
-const BoxWithProgressFillTransition = styled(Box)<
+const BoxWithProgressFillTransition = styled(BaseBox)<
   Pick<ProgressBarFilledProps, 'fillMotionDuration' | 'motionEasing'>
 >(({ theme, fillMotionDuration, motionEasing }) => ({
   transitionProperty: 'width',

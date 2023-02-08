@@ -1,4 +1,4 @@
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
 
 const SelectorTitle = ({
@@ -21,7 +21,7 @@ const SelectorTitle = ({
 
   return (
     <>
-      <Box marginLeft="spacing.2" />
+      <BaseBox marginLeft="spacing.2" />
       <BaseText
         lineHeight={lineHeight[size]}
         fontFamily="text"

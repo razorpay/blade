@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
@@ -190,11 +190,11 @@ PrimaryActionOnly.parameters = {
 
 export const FullWidth: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
-    <Box height={200} position="relative">
-      <Box position="absolute" width="100%">
+    <BaseBox height={200} position="relative">
+      <BaseBox position="absolute" width="100%">
         <AlertComponent {...args} />
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 FullWidth.args = {
@@ -215,11 +215,11 @@ FullWidth.parameters = {
 
 export const FullWidthWithActions: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
-    <Box height={200} position="relative">
-      <Box position="absolute" width="100%">
+    <BaseBox height={200} position="relative">
+      <BaseBox position="absolute" width="100%">
         <AlertComponent {...args} />
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 FullWidthWithActions.args = {

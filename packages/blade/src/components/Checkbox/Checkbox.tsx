@@ -5,7 +5,7 @@ import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
 import { metaAttribute, isEmpty, MetaConstants } from '~utils';
-import Box from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
@@ -191,10 +191,10 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   });
 
   return (
-    <Box {...metaAttribute(MetaConstants.Component, MetaConstants.Checkbox)}>
+    <BaseBox {...metaAttribute(MetaConstants.Component, MetaConstants.Checkbox)}>
       <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
-        <Box display="flex" flexDirection="column">
-          <Box display="flex" alignItems="center" flexDirection="row">
+        <BaseBox display="flex" flexDirection="column">
+          <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
               isChecked={state.isChecked || Boolean(isIndeterminate)}
               isDisabled={_isDisabled}
@@ -212,20 +212,20 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
             <SelectorTitle size={_size} isDisabled={_isDisabled}>
               {children}
             </SelectorTitle>
-          </Box>
-          <Box marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
+          </BaseBox>
+          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
             {showSupportingText && (
               <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
             )}
-          </Box>
-        </Box>
+          </BaseBox>
+        </BaseBox>
       </SelectorLabel>
       <FormHint
         errorText={errorText}
         errorTextId={ids?.errorTextId}
         type={validationState === 'error' ? 'error' : 'help'}
       />
-    </Box>
+    </BaseBox>
   );
 };
 

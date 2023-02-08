@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BoxIcon /> should render BoxIcon 1`] = `
+exports[`<BaseBoxIcon /> should render BoxIcon 1`] = `
 <div>
   <svg
     aria-hidden="true"
