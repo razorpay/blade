@@ -8,6 +8,7 @@ export type BoxProps = {
   flexWrap?: CSSObject['flexWrap'];
   flexDirection?: CSSObject['flexDirection'];
   flexGrow?: CSSObject['flexGrow'];
+  flexShrink?: CSSObject['flexShrink'];
   alignItems?: CSSObject['alignItems'];
   alignContent?: CSSObject['alignContent'];
   justifyContent?: CSSObject['justifyContent'];

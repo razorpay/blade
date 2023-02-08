@@ -71,7 +71,13 @@ exports[`<CpuIcon /> should render CpuIcon 1`] = `
         name="clip0_83_745"
       >
         <RNSVGRect
+          fill={4282603381}
           height="24"
+          propList={
+            Array [
+              "fill",
+            ]
+          }
           width="24"
           x={0}
           y={0}
