@@ -47,11 +47,15 @@ describe('<OTPInput />', () => {
     });
   });
 
-  it('should mask all fields when isMasked is true', () => {
+  it('should mask all fields when isMasked is true', async () => {
     const label = 'Enter OTP';
+    const user = userEvent.setup();
+    const otp = '123456';
     const { getAllByLabelText } = renderWithTheme(<OTPInput label={label} isMasked />);
 
     const allInputs = getAllByLabelText(/character/);
+    await user.type(allInputs[0], otp);
+
     allInputs.forEach((input) => {
       expect(input).toHaveAttribute('type', 'password');
     });
