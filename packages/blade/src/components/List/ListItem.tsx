@@ -70,11 +70,10 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
 
   const childrenArray = React.Children.toArray(children);
 
-  // Get children that are not a List component
-  const childItem = childrenArray.filter((child) =>
-    getComponentId(child) !== 'List' ? child : null,
-  );
-  const validChildItem = childItem.filter((child) => {
+  // Get children that are not a List component and are valid allowed children
+  const validChildItem = childrenArray.filter((child) => {
+    if (getComponentId(child) === 'List') return null;
+
     if (
       typeof child === 'string' ||
       isValidAllowedChildren(child, 'ListItemLink') ||
