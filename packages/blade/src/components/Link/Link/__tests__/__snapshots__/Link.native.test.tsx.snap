@@ -59,6 +59,7 @@ exports[`<Link /> should render button variant of link 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -67,7 +68,7 @@ exports[`<Link /> should render button variant of link 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 18,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -149,6 +150,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
       color="action.text.link.disabled"
       fontSize={100}
       fontWeight="bold"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -157,7 +159,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 18,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -239,6 +241,7 @@ exports[`<Link /> should render link with default properties 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -247,7 +250,7 @@ exports[`<Link /> should render link with default properties 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 18,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -413,6 +416,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -421,7 +425,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 18,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -587,6 +591,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -595,7 +600,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 18,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -677,6 +682,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -685,7 +691,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 18,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -935,6 +941,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -943,7 +950,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 18,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1107,6 +1114,7 @@ exports[`<Link /> should render with small size 1`] = `
       color="action.text.link.default"
       fontSize={75}
       fontWeight="bold"
+      lineHeight="s"
       style={
         Array [
           Object {
@@ -1115,7 +1123,7 @@ exports[`<Link /> should render with small size 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,

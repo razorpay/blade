@@ -96,6 +96,7 @@ type BaseLinkStyleProps = {
   defaultRel: BaseLinkProps['rel'];
   type?: 'button';
   fontSize: BaseTextProps['fontSize'];
+  lineHeight: BaseTextProps['lineHeight'];
 };
 
 const getColorToken = ({
@@ -167,6 +168,7 @@ const getProps = ({
       isVisited,
     }) as IconProps['color'],
     fontSize: size === 'medium' ? 100 : 75,
+    lineHeight: size === 'medium' ? 'm' : 's',
     iconSize: size,
     iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
@@ -234,6 +236,7 @@ const BaseLink = ({
     role,
     defaultRel,
     type,
+    lineHeight,
   } = getProps({
     theme,
     variant,
@@ -290,6 +293,7 @@ const BaseLink = ({
           textDecorationLine={textDecorationLine}
           color={textColor}
           fontSize={fontSize}
+          lineHeight={lineHeight}
           textAlign="center"
           fontWeight="bold"
         >

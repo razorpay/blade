@@ -56,7 +56,13 @@ exports[`<TrendingDownIcon /> should render TrendingDownIcon 1`] = `
         name="clip0_60_218"
       >
         <RNSVGRect
+          fill={4294967295}
           height="24"
+          propList={
+            Array [
+              "fill",
+            ]
+          }
           width="24"
           x={0}
           y={0}

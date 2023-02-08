@@ -13,6 +13,7 @@ export * from './Input/TextArea';
 export * from './Input/OTPInput';
 export * from './Indicator';
 export * from './Link';
+export * from './List';
 export * from './LiveAnnouncer';
 export * from './ProgressBar';
 export * from './Radio';
