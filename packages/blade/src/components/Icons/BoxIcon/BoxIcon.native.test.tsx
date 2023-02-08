@@ -1,10 +1,10 @@
-import BaseBoxIcon from './';
+import BoxIcon from './';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
-describe('<BaseBoxIcon />', () => {
+describe('<BoxIcon />', () => {
   it('should render BoxIcon', () => {
     const renderTree = renderWithTheme(
-      <BaseBoxIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <BoxIcon color="feedback.icon.neutral.lowContrast" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });
