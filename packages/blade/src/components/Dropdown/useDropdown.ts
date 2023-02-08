@@ -311,8 +311,8 @@ const useDropdown = (): UseDropdownReturnValue => {
       setShouldIgnoreBlur(true);
     }
 
-    if (!isKeydownPressed && ![' ', 'Enter', 'Escape'].includes(e.event.key)) {
-      // When keydown is not already pressed and its not Enter, Space, or Escape key (those are generic keys and we only want to handle arrow keys or home buttons etc)
+    if (!isKeydownPressed && ![' ', 'Enter', 'Escape', 'Meta'].includes(e.event.key)) {
+      // When keydown is not already pressed and its not Enter, Space, Command, or Escape key (those are generic keys and we only want to handle arrow keys or home buttons etc)
       setIsKeydownPressed(true);
     }
 

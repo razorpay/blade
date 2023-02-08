@@ -13,7 +13,6 @@ import {
   ActionListItemAsset,
   ActionListItem,
   ActionListItemIcon,
-  ActionListItemText,
   ActionListSection,
 } from '~components/ActionList';
 import type { ActionListProps, ActionListItemProps } from '~components/ActionList';
@@ -84,7 +83,6 @@ const Page = (): ReactElement => {
             ActionListHeaderIcon,
             ActionListItem,
             ActionListItemIcon,
-            ActionListItemText,
             ActionListSection,
             ActionListFooter,
             ActionListFooterIcon,
@@ -127,7 +125,6 @@ const Page = (): ReactElement => {
                     <ActionListSection title="Options">
                       <ActionListItem
                         leading={<ActionListItemIcon icon={SettingsIcon} />}
-                        trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
                         title="Settings"
                         value="settings"
                       />
@@ -300,7 +297,6 @@ const DropdownTemplate: ComponentStory<typeof CombinedProps> = (args) => {
             />
             <ActionListItem
               leading={<ActionListItemIcon icon={SettingsIcon} />}
-              trailing={<ActionListItemText>⌘ + S</ActionListItemText>}
               title="Settings"
               value="settings"
             />
@@ -367,7 +363,6 @@ export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
             <ActionListSection title="Options">
               <ActionListItem
                 leading={<ActionListItemIcon icon={SettingsIcon} />}
-                trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
                 title="Settings"
                 value="settings"
                 isDisabled={true}
@@ -434,7 +429,6 @@ export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
             />
             <ActionListItem
               leading={<ActionListItemIcon icon={SettingsIcon} />}
-              trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
               title="Settings"
               value="settings"
             />
@@ -534,6 +528,7 @@ export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Top 2 design systems"
+          {...selectInputArgs}
           validationState={validationState}
           onChange={({ values }) => {
             if (values.length === 2) {
@@ -544,7 +539,6 @@ export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
               setValidationState('none');
             }
           }}
-          {...selectInputArgs}
         />
         <DropdownOverlay>
           <ActionList surfaceLevel={surfaceLevel}>
@@ -586,7 +580,6 @@ export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
     <Box
       maxHeight={200}
       overflow="scroll"
-      background="white"
       paddingRight="spacing.5"
       paddingLeft="spacing.5"
       paddingTop="spacing.5"
