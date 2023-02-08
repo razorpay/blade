@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 6.1.0
+
+### Minor Changes
+
+- aff735ba: feat: add `List`, `ListItem`, `ListItemLink` & `ListItemCode` components
+
 ## 6.0.5
 
 ### Patch Changes
