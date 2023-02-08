@@ -65,6 +65,12 @@ type DropdownContextType = {
    */
   hasFooterAction: boolean;
   setHasFooterAction: (value: boolean) => void;
+  /**
+   * We need to know the label's position because when it is on left, the overlay takes the width of input.
+   * Rest of the times, we can set 100% width
+   */
+  hasLabelOnLeft: boolean;
+  setHasLabelOnLeft: (value: boolean) => void;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -82,6 +88,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setShouldIgnoreBlurAnimation: noop,
   hasFooterAction: false,
   setHasFooterAction: noop,
+  hasLabelOnLeft: false,
+  setHasLabelOnLeft: noop,
   isKeydownPressed: false,
   setIsKeydownPressed: noop,
   dropdownBaseId: '',
@@ -311,8 +319,8 @@ const useDropdown = (): UseDropdownReturnValue => {
       setShouldIgnoreBlur(true);
     }
 
-    if (!isKeydownPressed && ![' ', 'Enter', 'Escape'].includes(e.event.key)) {
-      // When keydown is not already pressed and its not Enter, Space, or Escape key (those are generic keys and we only want to handle arrow keys or home buttons etc)
+    if (!isKeydownPressed && ![' ', 'Enter', 'Escape', 'Meta'].includes(e.event.key)) {
+      // When keydown is not already pressed and its not Enter, Space, Command, or Escape key (those are generic keys and we only want to handle arrow keys or home buttons etc)
       setIsKeydownPressed(true);
     }
 

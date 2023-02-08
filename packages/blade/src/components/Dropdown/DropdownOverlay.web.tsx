@@ -1,4 +1,5 @@
 import React from 'react';
+import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import { componentIds } from './dropdownUtils';
@@ -55,9 +56,10 @@ type DropdownOverlayProps = { children: React.ReactNode };
  * Wrap your ActionList within this component
  */
 const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): JSX.Element => {
-  const { isOpen } = useDropdown();
+  const { isOpen, triggererRef, hasLabelOnLeft } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
+  const [width, setWidth] = React.useState<number | string>('100%');
 
   const fadeIn = css`
     animation: ${dropdownFadeIn} ${makeMotionTime(theme.motion.duration.quick)}
@@ -75,11 +77,38 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
     }
   }, [isOpen]);
 
+  // We want to set width of overlay as per width of the SelectInput
+  React.useEffect(() => {
+    const setOverlayWidth = throttle((): void => {
+      if (triggererRef.current?.clientWidth && hasLabelOnLeft) {
+        const svgWidth: number = theme.spacing[5];
+        const interactionElementPadding: number = theme.spacing[4];
+        const offset = svgWidth + interactionElementPadding;
+        // SelectInput is -> Button + InteractionElement on right (the chevron icon)
+        // So we add the interactionElement offset with Button's width.
+        setWidth(triggererRef.current?.clientWidth + offset);
+      } else {
+        // We don't have to worry about setting the custom width when label is on top since we can just 100% width of parent div
+        setWidth('100%');
+        window.removeEventListener('resize', setOverlayWidth);
+      }
+    }, 1000);
+
+    setOverlayWidth();
+    window.addEventListener('resize', setOverlayWidth);
+    return () => {
+      window.removeEventListener('resize', setOverlayWidth);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setWidth, triggererRef, hasLabelOnLeft]);
+
   return (
     <Box position="relative">
       <StyledDropdownOverlay
+        width={width}
         style={{ opacity: isOpen ? 1 : 0 }}
         display={display}
+        right="0"
         position="absolute"
         transition={isOpen ? fadeIn : fadeOut}
         onAnimationEnd={() => {
@@ -89,7 +118,6 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
             setDisplay('none');
           }
         }}
-        width="100%"
         {...metaAttribute(MetaConstants.Component, MetaConstants.DropdownOverlay)}
       >
         {children}

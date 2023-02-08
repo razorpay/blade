@@ -10,22 +10,20 @@ import {
   ActionListFooterIcon,
   ActionListHeader,
   ActionListHeaderIcon,
-  ActionListItem,
   ActionListItemAsset,
+  ActionListItem,
   ActionListItemIcon,
-  ActionListItemText,
   ActionListSection,
 } from '~components/ActionList';
+import type { ActionListProps, ActionListItemProps } from '~components/ActionList';
 import {
   DownloadIcon,
-  HomeIcon,
   SettingsIcon,
   InfoIcon,
   ArrowRightIcon,
   HistoryIcon,
   SearchIcon,
 } from '~components/Icons';
-
 import Box from '~components/Box';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -35,6 +33,7 @@ import { Button } from '~components/Button';
 import { Alert } from '~components/Alert';
 import { Code, Text } from '~components/Typography';
 import { isReactNative } from '~utils';
+import iconMap from '~components/Icons/iconMap';
 
 const Page = (): ReactElement => {
   return (
@@ -84,7 +83,6 @@ const Page = (): ReactElement => {
             ActionListHeaderIcon,
             ActionListItem,
             ActionListItemIcon,
-            ActionListItemText,
             ActionListSection,
             ActionListFooter,
             ActionListFooterIcon,
@@ -127,7 +125,6 @@ const Page = (): ReactElement => {
                     <ActionListSection title="Options">
                       <ActionListItem
                         leading={<ActionListItemIcon icon={SettingsIcon} />}
-                        trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
                         title="Settings"
                         value="settings"
                       />
@@ -161,21 +158,107 @@ const Page = (): ReactElement => {
   );
 };
 
+type AllDropdownProps = Partial<DropdownProps> &
+  Partial<ActionListProps> &
+  Partial<SelectInputProps> &
+  Partial<ActionListItemProps> & {
+    actionListItemIcon: string;
+  };
+
+const CombinedProps = (_args: AllDropdownProps): JSX.Element => {
+  return <Box>{null}</Box>;
+};
+
+type DefaultPropTypes = string | number | boolean;
+type CategoryTypes = 'Dropdown' | 'ActionList' | 'SelectInput' | 'ActionListItem1';
+
+type ArgsTable = Partial<
+  Record<
+    keyof AllDropdownProps | `${CategoryTypes}/${keyof AllDropdownProps}`,
+    DefaultPropTypes[] | DefaultPropTypes
+  >
+>;
+
+const getCategory = (key: string): string => {
+  if (key.includes('/')) {
+    return key.slice(0, key.indexOf('/'));
+  }
+
+  return 'SelectInput';
+};
+
+const argsTable: ArgsTable = {
+  'Dropdown/selectionType': ['single', 'multiple'],
+  'ActionList/surfaceLevel': [2, 3],
+  'ActionListItem1/title': 'Home',
+  'ActionListItem1/description': '',
+  'ActionListItem1/value': 'home',
+  validationState: ['none', 'error', 'success'],
+  label: 'Select Action',
+  labelPosition: ['top', 'left'],
+  helpText: '',
+  errorText: 'Ops. What did you do human?',
+  successText: 'Yay! Nice choice',
+  autoFocus: true,
+  name: 'action',
+  isRequired: false,
+};
+
+const makeArgTypes = (argTable: ArgsTable): Meta['argTypes'] => {
+  const argTableArray = Object.entries(argTable).map(([key, value]) => {
+    const newKey = key.includes('/') ? key.slice(key.lastIndexOf('/') + 1) : key;
+
+    const getControlType = (): string => {
+      if (Array.isArray(value)) {
+        return 'radio';
+      }
+
+      if (typeof value === 'boolean') {
+        return 'boolean';
+      }
+
+      return 'text';
+    };
+
+    return [
+      newKey,
+      {
+        name: newKey,
+        control: { type: getControlType() },
+        table: { category: getCategory(key) },
+        options: Array.isArray(value) ? value : undefined,
+        defaultValue: Array.isArray(value) ? value[0] : undefined,
+      },
+    ];
+  });
+
+  return Object.fromEntries(argTableArray);
+};
+
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/With Select',
-  component: Dropdown,
+  component: CombinedProps,
   args: {
     selectionType: 'single',
-  } as DropdownProps,
+    surfaceLevel: 2,
+    label: 'Select Action',
+    name: 'action',
+    title: 'Home',
+    value: 'home',
+    actionListItemIcon: 'HomeIcon',
+  } as AllDropdownProps,
   argTypes: {
-    selectionType: {
-      name: 'selectionType',
-      control: { type: 'radio' },
-      options: ['single', 'multiple'],
-      description: 'decides whether to render multiselect dropdown or single select dropdown',
-      defaultValue: '"single"',
+    ...makeArgTypes(argsTable),
+    actionListItemIcon: {
+      table: { category: 'ActionListItem1' },
+      control: { type: 'select' },
+      description:
+        'Usage should be as `<ActionListItem leading={<ActionListItemIcon icon={HomeIcon}>} />`',
+      options: Object.keys(iconMap),
+      mapping: iconMap,
     },
-  },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } as Record<keyof AllDropdownProps, any>,
   parameters: {
     docs: {
       page: () => <Page />,
@@ -183,27 +266,37 @@ const DropdownStoryMeta: Meta = {
   },
 };
 
-const DropdownTemplate: ComponentStory<typeof Dropdown> = (args) => {
+const DropdownTemplate: ComponentStory<typeof CombinedProps> = (args) => {
+  const {
+    selectionType,
+    surfaceLevel,
+    title = 'Home',
+    description = '',
+    value = 'home',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
   return (
     <Box minHeight={200}>
-      <Dropdown {...args}>
+      <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
-          name="action"
           onChange={({ name, values }) => {
             console.log(name, values);
           }}
+          {...selectInputArgs}
         />
         <DropdownOverlay>
-          <ActionList>
+          <ActionList surfaceLevel={surfaceLevel}>
             <ActionListItem
-              leading={<ActionListItemIcon icon={HomeIcon} />}
-              title="Home"
-              value="home"
+              // @ts-expect-error: for storybook we're typing icon as sting but its actually IconComponent
+              leading={<ActionListItemIcon icon={actionListItemIcon} />}
+              title={title}
+              description={description}
+              value={value}
             />
             <ActionListItem
               leading={<ActionListItemIcon icon={SettingsIcon} />}
-              trailing={<ActionListItemText>⌘ + S</ActionListItemText>}
               title="Settings"
               value="settings"
             />
@@ -233,86 +326,109 @@ WithMultiSelect.parameters = {
   },
 };
 
-export const WithHeaderFooter = (): JSX.Element => (
-  <Box minHeight={400}>
-    <Dropdown>
-      <SelectInput
-        label="Select Action"
-        name="action"
-        onChange={({ name, values }) => {
-          console.log(name, values);
-        }}
-      />
-      <DropdownOverlay>
-        <ActionList>
-          <ActionListHeader
-            title="Recent Searches"
-            leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-          />
-          <ActionListItem
-            leading={<ActionListItemIcon icon={HomeIcon} />}
-            trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
-            title="Home"
-            value="home"
-            description="Home sweet home it is"
-          />
-          <ActionListSection title="Options">
-            <ActionListItem
-              leading={<ActionListItemIcon icon={SettingsIcon} />}
-              trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
-              title="Settings"
-              value="settings"
-              isDisabled={true}
+export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
+  return (
+    <Box minHeight={400}>
+      <Dropdown selectionType={selectionType}>
+        <SelectInput
+          label="Select Action"
+          onChange={({ name, values }) => {
+            console.log(name, values);
+          }}
+          {...selectInputArgs}
+        />
+        <DropdownOverlay>
+          <ActionList surfaceLevel={surfaceLevel}>
+            <ActionListHeader
+              title="Recent Searches"
+              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
             />
             <ActionListItem
-              leading={<ActionListItemIcon icon={DownloadIcon} />}
-              title="Download"
-              value="download"
+              // @ts-expect-error: for storybook we're typing icon as sting but its actually IconComponent
+              leading={<ActionListItemIcon icon={actionListItemIcon} />}
+              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+              title={title}
+              value={value}
+              description={description}
             />
-          </ActionListSection>
-          <ActionListItem
-            leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
-            title="Pricing"
-            value="pricing"
-          />
-          <ActionListFooter
-            title="Search"
-            leading={<ActionListFooterIcon icon={SearchIcon} />}
-            trailing={<Button onClick={console.log}>Apply</Button>}
-          />
-        </ActionList>
-      </DropdownOverlay>
-    </Dropdown>
-  </Box>
-);
+            <ActionListSection title="Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings"
+                isDisabled={true}
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download"
+              />
+            </ActionListSection>
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing"
+            />
+            <ActionListFooter
+              title="Search"
+              leading={<ActionListFooterIcon icon={SearchIcon} />}
+              trailing={<Button onClick={console.log}>Apply</Button>}
+            />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+WithHeaderFooter.args = {
+  description: 'Home sweet home it is',
+};
 
-export const WithValueDisplay = (): JSX.Element => {
+export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
   const [dropdownValues, setDropdownValues] = React.useState('');
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
 
   return (
     <Box minHeight={300}>
       <Text>Selected Values: {dropdownValues}</Text>
       <Box marginTop="spacing.5" />
-      <Dropdown selectionType="multiple">
+      <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
-          name="action"
           onChange={({ values }) => {
             setDropdownValues(values.join(', '));
           }}
+          {...selectInputArgs}
         />
         <DropdownOverlay>
-          <ActionList>
+          <ActionList surfaceLevel={surfaceLevel}>
             <ActionListItem
-              leading={<ActionListItemIcon icon={HomeIcon} />}
+              // @ts-expect-error: for storybook we're typing icon as sting but its actually IconComponent
+              leading={<ActionListItemIcon icon={actionListItemIcon} />}
               trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
-              title="Home"
-              value="home"
-              description="Home sweet home it is"
+              title={title}
+              value={value}
+              description={description}
             />
             <ActionListItem
               leading={<ActionListItemIcon icon={SettingsIcon} />}
-              trailing={<ActionListItemText>⌘ ⌥ Space</ActionListItemText>}
               title="Settings"
               value="settings"
             />
@@ -327,9 +443,22 @@ export const WithValueDisplay = (): JSX.Element => {
     </Box>
   );
 };
+WithValueDisplay.args = {
+  selectionType: 'multiple',
+  description: 'Home sweet home it is',
+};
 
-export const WithHTMLFormSubmission = (): JSX.Element => {
+export const WithHTMLFormSubmission = (args: AllDropdownProps): JSX.Element => {
   const [submissionValues, setSubmissionValues] = React.useState('');
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
 
   if (isReactNative()) {
     return <Text>Not available on React Native Story</Text>;
@@ -347,11 +476,11 @@ export const WithHTMLFormSubmission = (): JSX.Element => {
           setSubmissionValues(JSON.stringify(formData));
         }}
       >
-        <Dropdown>
-          <SelectInput label="Design Systems" name="design-systems" isRequired />
+        <Dropdown selectionType={selectionType}>
+          <SelectInput label="Design Systems" {...selectInputArgs} />
           <DropdownOverlay>
-            <ActionList>
-              <ActionListItem title="Blade" value="blade" />
+            <ActionList surfaceLevel={surfaceLevel}>
+              <ActionListItem title={title} value={value} />
               <ActionListItem title="Primer" value="primer" />
               <ActionListItem title="MUI" value="mui" isDisabled />
             </ActionList>
@@ -365,13 +494,27 @@ export const WithHTMLFormSubmission = (): JSX.Element => {
     </Box>
   );
 };
+WithHTMLFormSubmission.args = {
+  title: 'Blade',
+  value: 'blade',
+  isRequired: true,
+};
 
 const SpaceBetweenSmall = (): JSX.Element => <Box height="18px" />;
 
-export const WithValidationState = (): JSX.Element => {
+export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
   const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>(
     'none',
   );
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
 
   return (
     <Box minHeight={300} paddingBottom="spacing.5">
@@ -382,15 +525,11 @@ export const WithValidationState = (): JSX.Element => {
         isDismissible={false}
       />
       <SpaceBetweenSmall />
-      <Dropdown selectionType="multiple">
+      <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Top 2 design systems"
-          name="design-systems"
-          isRequired
+          {...selectInputArgs}
           validationState={validationState}
-          errorText="You selected more than 2 options"
-          successText="Yay! Nice choice"
-          helpText="Select only two"
           onChange={({ values }) => {
             if (values.length === 2) {
               setValidationState('success');
@@ -402,8 +541,8 @@ export const WithValidationState = (): JSX.Element => {
           }}
         />
         <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Blade" value="blade" />
+          <ActionList surfaceLevel={surfaceLevel}>
+            <ActionListItem title={title} value={value} />
             <ActionListItem title="Primer" value="primer" />
             <ActionListItem title="Geist" description="by Vercel" value="geist" />
             <ActionListItem title="Airbnb Design" value="airbnb" />
@@ -413,15 +552,34 @@ export const WithValidationState = (): JSX.Element => {
     </Box>
   );
 };
+WithValidationState.args = {
+  selectionType: 'multiple',
+  title: 'Blade',
+  value: 'blade',
+  isRequired: true,
+  errorText: 'You selected more than 2 options',
+  successText: 'Yay! Nice choice',
+  helpText: 'Select only two',
+  label: 'Top 2 design systems',
+  name: 'design-systems',
+};
 
-export const WithRefUsage = (): JSX.Element => {
+export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
   const selectRef = React.useRef<HTMLElement>(null);
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
 
   return (
     <Box
       maxHeight={200}
       overflow="scroll"
-      background="white"
       paddingRight="spacing.5"
       paddingLeft="spacing.5"
       paddingTop="spacing.5"
@@ -439,11 +597,11 @@ export const WithRefUsage = (): JSX.Element => {
         We are using <Code>selectRef.current?.scrollIntoView()</Code> here to show ref usage
       </Text>
       <Box height="300px" />
-      <Dropdown selectionType="multiple">
-        <SelectInput ref={selectRef} label="Top 2 design systems" name="design-systems" />
+      <Dropdown selectionType={selectionType}>
+        <SelectInput ref={selectRef} label="Top 2 design systems" {...selectInputArgs} />
         <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Blade" value="blade" />
+          <ActionList surfaceLevel={surfaceLevel}>
+            <ActionListItem title={title} value={value} />
             <ActionListItem title="Primer" value="primer" />
             <ActionListItem title="Geist" description="by Vercel" value="geist" />
             <ActionListItem title="Airbnb Design" value="airbnb" />
@@ -452,6 +610,12 @@ export const WithRefUsage = (): JSX.Element => {
       </Dropdown>
     </Box>
   );
+};
+
+WithRefUsage.args = {
+  selectionType: 'single',
+  label: 'Top 2 design systems',
+  name: 'design-system',
 };
 
 export default DropdownStoryMeta;
