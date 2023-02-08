@@ -138,7 +138,6 @@ export const StyledBaseInput = React.forwardRef<
       isTextArea,
       hasPopup,
       shouldIgnoreBlurAnimation,
-      setShouldIgnoreBlurAnimation,
       ...props
     },
     ref,
@@ -148,11 +147,9 @@ export const StyledBaseInput = React.forwardRef<
       onBlur: (): void => {
         // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
         // The selectinput should always look like it is in focus otherwise it triggers blur + focus again which can cause flicker
-        if (shouldIgnoreBlurAnimation && setShouldIgnoreBlurAnimation) {
-          setShouldIgnoreBlurAnimation(false);
-          return;
+        if (!shouldIgnoreBlurAnimation) {
+          setCurrentInteraction('default');
         }
-        setCurrentInteraction('default');
       },
       isFocused: currentInteraction === 'active',
     };

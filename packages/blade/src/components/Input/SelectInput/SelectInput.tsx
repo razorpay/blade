@@ -51,8 +51,7 @@ const _SelectInput = (
     triggererRef,
     hasFooterAction,
     dropdownTriggerer,
-    shouldIgnoreBlur,
-    setShouldIgnoreBlur,
+    shouldIgnoreBlurAnimation,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref);
@@ -98,8 +97,7 @@ const _SelectInput = (
         onBlur={onTriggerBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
-        shouldIgnoreBlurAnimation={shouldIgnoreBlur}
-        setShouldIgnoreBlurAnimation={setShouldIgnoreBlur}
+        shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
         interactionElement={
           <SelectChevronIcon
             onClick={() => {

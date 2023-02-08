@@ -206,6 +206,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     onOptionClick,
     selectedIndices,
     setShouldIgnoreBlur,
+    setShouldIgnoreBlurAnimation,
     selectionType,
     dropdownTriggerer,
     isKeydownPressed,
@@ -258,6 +259,10 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListItem)}
         onMouseDown={() => {
           setShouldIgnoreBlur(true);
+          setShouldIgnoreBlurAnimation(true);
+        }}
+        onMouseUp={() => {
+          setShouldIgnoreBlurAnimation(false);
         }}
         data-value={props.value}
         data-index={props._index}

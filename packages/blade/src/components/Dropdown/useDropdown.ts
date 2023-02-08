@@ -42,6 +42,12 @@ type DropdownContextType = {
   /** Used to ignore blur on certains events. E.g. to ignore blur of dropdown when click is inside the dropdown */
   shouldIgnoreBlur: boolean;
   setShouldIgnoreBlur: (value: boolean) => void;
+  /**
+   * Sometimes we want to ignore the blur event to keep dropdown open but not ignore the blur animation from selectinput
+   * E.g. When someone clicks on Footer, we just want to ignore the blur event and not the blur animation
+   */
+  shouldIgnoreBlurAnimation: boolean;
+  setShouldIgnoreBlurAnimation: (value: boolean) => void;
   /** Tells you if keyboard was used. Its false by default and turns into true when keydown is called  */
   isKeydownPressed: boolean;
   setIsKeydownPressed: (value: boolean) => void;
@@ -72,6 +78,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setActiveIndex: noop,
   shouldIgnoreBlur: false,
   setShouldIgnoreBlur: noop,
+  shouldIgnoreBlurAnimation: false,
+  setShouldIgnoreBlurAnimation: noop,
   hasFooterAction: false,
   setHasFooterAction: noop,
   isKeydownPressed: false,
