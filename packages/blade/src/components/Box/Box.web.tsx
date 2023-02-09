@@ -121,7 +121,7 @@ type BoxProps = Partial<
 // @TODO: confirm about the breakpoints. Normally I've seen libraries only define breakpoints on min-width and be mobile-first
 const getMediaQuery = ({ max, min }: { max?: number; min?: number }): string =>
   `@media screen${max ? ` and (max-width: ${makeSize(max)})` : ''}${
-    min ? ` and (min-width: ${makeSize(min + 1)})` : ''
+    min ? ` and (min-width: ${makeSize(min)})` : ''
   }`;
 
 const getValue = <T extends string>(
@@ -149,27 +149,33 @@ const getValue = <T extends string>(
 //   });
 // };
 
-const getCSSObject = (props: BoxProps): CSSObject => {
+const getProps = (props: BoxProps, size?: keyof Breakpoints): CSSObject => {
   return {
-    backgroundColor: getValue(props.backgroundColor),
+    backgroundColor: getValue(props.backgroundColor, size),
+  };
+};
 
+const getCSSObject = (props: BoxProps): CSSObject => {
+  console.count('getCSSObject');
+  return {
+    ...getProps(props),
     [getMediaQuery({ max: breakpoints.xs })]: {
-      backgroundColor: getValue(props.backgroundColor, 'xs'),
+      ...getProps(props, 'xs'),
     },
     [getMediaQuery({ max: breakpoints.s, min: breakpoints.xs })]: {
-      backgroundColor: getValue(props.backgroundColor, 's'),
+      ...getProps(props, 's'),
     },
     [getMediaQuery({ max: breakpoints.m, min: breakpoints.s })]: {
-      backgroundColor: getValue(props.backgroundColor, 'm'),
+      ...getProps(props, 'm'),
     },
     [getMediaQuery({ max: breakpoints.l, min: breakpoints.m })]: {
-      backgroundColor: getValue(props.backgroundColor, 'l'),
+      ...getProps(props, 'l'),
     },
     [getMediaQuery({ max: breakpoints.xl, min: breakpoints.l })]: {
-      backgroundColor: getValue(props.backgroundColor, 'xl'),
+      ...getProps(props, 'xl'),
     },
     [getMediaQuery({ min: breakpoints.max })]: {
-      backgroundColor: getValue(props.backgroundColor, 'max'),
+      ...getProps(props, 'max'),
     },
   };
 };

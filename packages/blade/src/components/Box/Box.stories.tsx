@@ -9,12 +9,11 @@ export const Render = (): JSX.Element => (
   <Box
     backgroundColor={{
       base: 'red',
-      xs: 'orange',
-      s: 'green',
-      m: 'yellow',
-      l: 'blue',
+      // xs: 'orange',
+      // s: 'green',
+      // m: 'yellow',
+      // l: 'blue',
       xl: 'purple',
-      max: 'black',
     }}
   >
     hi
