@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { getPlatformType } from '../getPlatformType';
+import { getMediaQuery } from '../getMediaQuery';
 import type { Breakpoints } from '~tokens/global';
 
 const deviceType = {
@@ -30,17 +31,10 @@ export const useBreakpoint = ({
     () =>
       (supportsMatchMedia
         ? Object.entries(breakpoints).map(([token, screenSize], index, breakpointsArray) => {
-            let mediaQuery = '';
-
-            if (token === 'max') {
-              mediaQuery = `screen and (min-width: ${screenSize}px)`;
-            } else if (breakpointsArray[index - 1]) {
-              mediaQuery = `screen and (min-width: ${
-                breakpointsArray[index - 1][1] + 1
-              }px) and (max-width: ${screenSize}px)`;
-            } else {
-              mediaQuery = `screen and (max-width: ${screenSize}px)`;
-            }
+            const mediaQuery = getMediaQuery(
+              breakpointsArray as [keyof Breakpoint, number][],
+              index,
+            );
 
             return { token, screenSize, mediaQuery };
           })
