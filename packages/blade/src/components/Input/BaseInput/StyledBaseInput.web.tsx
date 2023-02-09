@@ -104,13 +104,18 @@ export const StyledBaseInput = React.forwardRef<
       numberOfLines,
       type,
       hasPopup,
+      shouldIgnoreBlurAnimation,
       ...props
     },
     ref,
   ) => {
     const commonProps = {
       onBlur: (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setCurrentInteraction('default');
+        // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
+        // The selectinput should always look like it is in focus otherwise it triggers blur + focus again which can cause flicker
+        if (!shouldIgnoreBlurAnimation) {
+          setCurrentInteraction('default');
+        }
         handleOnBlur?.({ name, value: event });
       },
       onFocus: (event: React.ChangeEvent<HTMLInputElement>): void => {

@@ -51,6 +51,7 @@ const _SelectInput = (
     triggererRef,
     hasFooterAction,
     dropdownTriggerer,
+    shouldIgnoreBlurAnimation,
     setHasLabelOnLeft,
   } = useDropdown();
 
@@ -101,6 +102,7 @@ const _SelectInput = (
         onBlur={onTriggerBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
+        shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
         interactionElement={
           <SelectChevronIcon
             onClick={() => {

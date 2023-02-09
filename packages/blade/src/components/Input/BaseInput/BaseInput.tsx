@@ -88,6 +88,10 @@ export type BaseInputProps = FormInputLabelProps &
      */
     onBlur?: FormInputOnEvent;
     /**
+     * Ignores the blur event animation (Used in Select to ignore blur animation when item in option is clicked)
+     */
+    shouldIgnoreBlurAnimation?: boolean;
+    /**
      * Used to turn the input field to controlled so user can control the value
      */
     value?: string;
@@ -498,6 +502,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       hasPopup,
       popupId,
       isPopupExpanded,
+      shouldIgnoreBlurAnimation,
     },
     ref,
   ) => {
@@ -635,6 +640,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               numberOfLines={numberOfLines}
               isTextArea={isTextArea}
               hasPopup={hasPopup}
+              shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}

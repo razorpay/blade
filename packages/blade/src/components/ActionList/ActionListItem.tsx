@@ -206,8 +206,8 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     onOptionClick,
     selectedIndices,
     setShouldIgnoreBlur,
+    setShouldIgnoreBlurAnimation,
     selectionType,
-    triggererRef,
     dropdownTriggerer,
     isKeydownPressed,
   } = useDropdown();
@@ -257,14 +257,15 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
           props.onClick?.({ name: props.value, value: isSelected });
         })}
         {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListItem)}
-        onFocus={() => {
-          // We don't want to keep the browser's focus on option item. We move it to selectInput
-          if (!isReactNative()) {
-            triggererRef.current?.focus();
-          }
-        }}
         onMouseDown={() => {
           setShouldIgnoreBlur(true);
+          // We want to keep focus on Dropdown's trigger while option is being clicked
+          // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
+          setShouldIgnoreBlurAnimation(true);
+        }}
+        onMouseUp={() => {
+          // (Contd from above comment...) We set this flag back to false since blur of SelectInput is done calling by this time
+          setShouldIgnoreBlurAnimation(false);
         }}
         data-value={props.value}
         data-index={props._index}
