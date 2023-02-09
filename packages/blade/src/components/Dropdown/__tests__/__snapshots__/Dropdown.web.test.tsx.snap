@@ -203,6 +203,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c17 {
   display: block;
   position: absolute;
+  right: 0;
   width: 100%;
 }
 

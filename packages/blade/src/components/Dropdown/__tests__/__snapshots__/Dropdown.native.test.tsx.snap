@@ -215,7 +215,7 @@ Array [
             style={
               Object {
                 "backgroundColor": "transparent",
-                "color": "hsla(216, 27%, 36%, 1)",
+                "color": "hsla(214, 18%, 69%, 1)",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
