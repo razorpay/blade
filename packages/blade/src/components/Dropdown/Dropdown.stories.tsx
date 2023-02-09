@@ -498,6 +498,8 @@ WithHTMLFormSubmission.args = {
   title: 'Blade',
   value: 'blade',
   isRequired: true,
+  label: 'Design Systems',
+  name: 'design-system',
 };
 
 const SpaceBetweenSmall = (): JSX.Element => <Box height="18px" />;
