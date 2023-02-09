@@ -1,24 +1,26 @@
-import { Box } from './BoxCustom';
+import { BaseBox } from './NewBaseBox/BaseBox';
 
 const BoxStoryMeta = {
-  title: 'Components/Box',
-  component: Box,
+  title: 'Components/BaseBox',
+  component: BaseBox,
 };
 
-export const Render = (): JSX.Element => (
-  <Box
-    backgroundColor={{
-      base: 'red',
-      xs: 'orange',
-      s: 'green',
-      m: 'yellow',
-      l: 'blue',
-      xl: 'purple',
-      max: 'black',
-    }}
-  >
-    hi
-  </Box>
-);
+export const Render = (): JSX.Element => {
+  return (
+    <BaseBox
+      backgroundColor={{
+        base: 'red',
+        xs: 'orange',
+        s: 'green',
+        m: 'yellow',
+        l: 'blue',
+        // xl: 'purple',
+        // max: 'black',
+      }}
+    >
+      hi
+    </BaseBox>
+  );
+};
 
 export default BoxStoryMeta;

@@ -13,11 +13,9 @@ export const getMediaQuery = (
   if (breakpointKey === 'max') {
     mediaQuery = `screen and (min-width: ${breakpointValue}px)`;
   } else if (breakpointsEntryArray[index - 1]) {
-    mediaQuery = `screen and (min-width: ${
-      breakpointsEntryArray[index - 1][1] + 1
-    }px) and (max-width: ${breakpointValue}px)`;
+    mediaQuery = `screen and (min-width: ${breakpointValue}px)`;
   } else {
-    mediaQuery = `screen and (max-width: ${breakpointValue}px)`;
+    mediaQuery = `screen and (min-width: ${breakpointValue}px)`;
   }
 
   return mediaQuery;

@@ -22,13 +22,4 @@ const breakpoints: Breakpoints = {
   max: 1201,
 };
 
-// const breakpointsForStyledSystem = {
-//   xs: '320px',
-//   s: '480px',
-//   m: '768px',
-//   l: '1024px',
-//   xl: '1200px',
-//   // max: '1201px',
-// };
-
 export default breakpoints;

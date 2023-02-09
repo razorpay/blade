@@ -1,10 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
 import type { CSSObject } from 'styled-components';
 import type { Spacing } from '~tokens/global';
 import type { Breakpoints } from '~tokens/global/breakpoints';
-import breakpoints from '~tokens/global/breakpoints';
-import { getMediaQuery } from '~src/utils/getMediaQuery';
 
 type MakeValueResponsive<T> = T | Partial<Record<keyof Breakpoints | 'base', T>>;
 type MakeObjectResponsive<T> = { [P in keyof T]: MakeValueResponsive<T[P]> };
@@ -49,8 +45,12 @@ type MarginProps = MakeObjectResponsive<{
 
 type LayoutProps = MakeObjectResponsive<
   {
-    width: SpacingValueType;
     height: SpacingValueType;
+    minHeight: SpacingValueType;
+    maxHeight: SpacingValueType;
+    width: SpacingValueType;
+    minWidth: SpacingValueType;
+    maxWidth: SpacingValueType;
   } & Pick<CSSObject, 'display' | 'overflow'>
 >;
 
@@ -102,75 +102,26 @@ type GridProps = MakeObjectResponsive<
     | 'gridTemplateAreas'
     | 'gridTemplateColumns'
     | 'gridTemplateRows'
-    // @TODO: added for testing, remove later
-    | 'backgroundColor'
   >
 >;
 
-type BoxProps = Partial<
+type VisualProps = MakeObjectResponsive<
+  Pick<
+    CSSObject,
+    'backgroundColor' | 'borderRadius' | 'className' | 'id' | 'background' | 'transform'
+  >
+>;
+
+type BaseBoxProps = Partial<
   PaddingProps &
     MarginProps &
     LayoutProps &
     FlexboxProps &
     PositionProps &
-    GridProps & {
+    GridProps &
+    VisualProps & {
       children: React.ReactNode | React.ReactNode[];
     }
 >;
 
-const getValue = <T extends string>(
-  value: MakeValueResponsive<T> | undefined,
-  size?: keyof Breakpoints,
-): T | undefined => {
-  if (!value) {
-    return undefined;
-  }
-
-  if (typeof value === 'string') {
-    return value;
-  }
-
-  return value[size ?? 'base'];
-};
-
-const getAllProps = (props: BoxProps, size?: keyof Breakpoints): CSSObject => {
-  return {
-    backgroundColor: getValue(props.backgroundColor, size),
-  };
-};
-
-const getAllMediaQueries = (props: BoxProps): CSSObject => {
-  return Object.fromEntries(
-    Object.entries(breakpoints).map((_val, index, breakpointsArray) => {
-      const mediaQuery = `@media ${getMediaQuery(
-        breakpointsArray as [keyof Breakpoints, number][],
-        index,
-      )}`;
-      return [
-        mediaQuery,
-        {
-          ...getAllProps(props, breakpointsArray[index][0] as keyof Breakpoints),
-        },
-      ];
-    }),
-  );
-};
-
-const getCSSObject = (props: BoxProps): CSSObject => {
-  console.count('getCSSObject');
-  return {
-    ...getAllProps(props),
-    ...getAllMediaQueries(props),
-  };
-};
-
-const Box = styled.div<BoxProps>(
-  (props): CSSObject => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const cssObject = React.useMemo(() => getCSSObject(props), [props.backgroundColor]);
-    console.log(cssObject);
-    return cssObject;
-  },
-);
-
-export { Box };
+export { BaseBoxProps, MakeValueResponsive };
