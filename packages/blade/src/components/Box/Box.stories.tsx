@@ -1,4 +1,4 @@
-import { Box } from './Box.web';
+import { Box } from './BoxCustom';
 
 const BoxStoryMeta = {
   title: 'Components/Box',

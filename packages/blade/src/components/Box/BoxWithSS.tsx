@@ -1,7 +1,8 @@
 import { system } from 'styled-system';
+import type { Config } from 'styled-system';
 import styled from 'styled-components';
 
-const config = {
+const config: Config = {
   backgroundColor: {
     property: 'backgroundColor',
     scale: 'colors',
