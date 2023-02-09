@@ -1,7 +1,10 @@
+import React from 'react';
 import styled from 'styled-components';
 import type { CSSObject } from 'styled-components';
 import type { Spacing } from '~tokens/global';
 import type { Breakpoints } from '~tokens/global/breakpoints';
+import { makeSize } from '~utils';
+import breakpoints from '~tokens/global/breakpoints';
 
 type MakeValueResponsive<T> = T | Partial<Record<keyof Breakpoints | 'base', T>>;
 type MakeObjectResponsive<T> = { [P in keyof T]: MakeValueResponsive<T[P]> };
@@ -99,6 +102,8 @@ type GridProps = MakeObjectResponsive<
     | 'gridTemplateAreas'
     | 'gridTemplateColumns'
     | 'gridTemplateRows'
+    // @TODO: added for testing, remove later
+    | 'backgroundColor'
   >
 >;
 
@@ -113,26 +118,68 @@ type BoxProps = Partial<
     }
 >;
 
-export const StyledBox = styled.div<BoxProps>((_props) => {
-  return {
-    display: 'block',
-  };
-});
+// @TODO: confirm about the breakpoints. Normally I've seen libraries only define breakpoints on min-width and be mobile-first
+const getMediaQuery = ({ max, min }: { max?: number; min?: number }): string =>
+  `@media screen${max ? ` and (max-width: ${makeSize(max)})` : ''}${
+    min ? ` and (min-width: ${makeSize(min + 1)})` : ''
+  }`;
 
-/**
- *
- * Padding
- * @param {SpacingValueType} padding
- */
-const Box = (props: BoxProps) => {
-  return <div>hi</div>;
+const getValue = <T extends string>(
+  value: MakeValueResponsive<T> | undefined,
+  size?: keyof Breakpoints,
+): T | undefined => {
+  if (!value) {
+    return undefined;
+  }
+
+  if (typeof value === 'string') {
+    return value;
+  }
+
+  return value[size ?? 'base'];
 };
 
-export const Render = (): JSX.Element => (
-  <Box
-    display={{ base: 'block', l: 'none' }}
-    padding={['spacing.0', 'spacing.1', 'spacing.0', 'spacing.11']}
-  >
-    hi
-  </Box>
+// const getAllMediaQueries = (): Record<string, CSSObject> => {
+//   return Object.entries(
+//     breakpoints,
+//   ).map(([breakpointKey, breakpointValue], index, breakpointsArray) => {
+//     return [getMediaQuery({ max: breakpointsArray[index][1], min: breakpointsArray[index - 1][1] })]: {
+
+//     }
+//   });
+// };
+
+const getCSSObject = (props: BoxProps): CSSObject => {
+  return {
+    backgroundColor: getValue(props.backgroundColor),
+
+    [getMediaQuery({ max: breakpoints.xs })]: {
+      backgroundColor: getValue(props.backgroundColor, 'xs'),
+    },
+    [getMediaQuery({ max: breakpoints.s, min: breakpoints.xs })]: {
+      backgroundColor: getValue(props.backgroundColor, 's'),
+    },
+    [getMediaQuery({ max: breakpoints.m, min: breakpoints.s })]: {
+      backgroundColor: getValue(props.backgroundColor, 'm'),
+    },
+    [getMediaQuery({ max: breakpoints.l, min: breakpoints.m })]: {
+      backgroundColor: getValue(props.backgroundColor, 'l'),
+    },
+    [getMediaQuery({ max: breakpoints.xl, min: breakpoints.l })]: {
+      backgroundColor: getValue(props.backgroundColor, 'xl'),
+    },
+    [getMediaQuery({ min: breakpoints.max })]: {
+      backgroundColor: getValue(props.backgroundColor, 'max'),
+    },
+  };
+};
+
+const Box = styled.div<BoxProps>(
+  (props): CSSObject => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const cssObject = React.useMemo(() => getCSSObject(props), [props.backgroundColor]);
+    return cssObject;
+  },
 );
+
+export { Box };
