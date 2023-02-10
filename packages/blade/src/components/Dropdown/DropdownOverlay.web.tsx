@@ -73,8 +73,10 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
 
   React.useEffect(() => {
     if (isOpen) {
+      triggererRef.current?.focus();
       setDisplay('block');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   // We want to set width of overlay as per width of the SelectInput
