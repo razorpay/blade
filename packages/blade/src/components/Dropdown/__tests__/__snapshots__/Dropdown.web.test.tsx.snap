@@ -435,6 +435,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   border-radius: 4px;
   padding: 8px;
   box-shadow: 0px 0px 2px 0px hsla(216,15%,54%,0.18),0px 3px 8px 0px hsla(216,15%,54%,0.18);
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .c23 [role=group]:last-child > [role=separator]:last-child {

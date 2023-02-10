@@ -273,7 +273,14 @@ export const ensureScrollVisiblity = (
         optionEl[newActiveIndex].dataset.value === options[newActiveIndex]
       ) {
         const activeElement = optionEl[newActiveIndex];
-        activeElement.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        const bodyRect = containerElement.getBoundingClientRect().top;
+        const elementRect = activeElement.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition;
+
+        containerElement.scrollTo({
+          top: offsetPosition,
+        });
 
         if (!isElementVisibleOnScreen(optionEl[newActiveIndex])) {
           activeElement.scrollIntoView({ behavior: 'smooth' });
