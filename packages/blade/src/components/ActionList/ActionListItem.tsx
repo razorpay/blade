@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StyledActionListItem } from './StyledActionListItem';
+import { StyledActionListItem } from './styles/StyledActionListItem';
 import { componentIds } from './componentIds';
-import type { StyledActionListItemProps } from './getBaseActionListItemStyles';
+import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
 import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
 import {
   getActionListItemRole,

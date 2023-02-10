@@ -42,9 +42,9 @@ const StyledActionListFooter = styled(Box)((props) => {
     alignItems: 'center',
     padding: `${makeSize(props.theme.spacing[3])} ${makeSize(props.theme.spacing[5])}`,
     backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
-    margin: `${makeSize(props.theme.spacing[3])} -${makeSize(props.theme.spacing[3])} -${makeSize(
-      props.theme.spacing[3],
-    )}`,
+    // margin: `${makeSize(props.theme.spacing[3])} -${makeSize(props.theme.spacing[3])} -${makeSize(
+    //   props.theme.spacing[3],
+    // )}`,
   };
 });
 

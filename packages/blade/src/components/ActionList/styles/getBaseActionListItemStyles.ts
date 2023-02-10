@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { CSSObject } from 'styled-components';
 import type { TouchableOpacity } from 'react-native';
-import type { ActionListItemProps } from './ActionListItem';
+import type { ActionListItemProps } from '../ActionListItem';
 import type { Theme } from '~components/BladeProvider';
 import type { DropdownContextType } from '~components/Dropdown/useDropdown';
 import { isReactNative, makeSize } from '~utils';

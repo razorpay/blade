@@ -1,10 +1,10 @@
-import { ScrollView } from 'react-native';
 import styled from 'styled-components';
 import { getBaseActionListStyles } from './getBaseActionListStyles';
 import type { StyledActionListProps } from './getBaseActionListStyles';
 import { makeSize, isAndroid } from '~utils';
+import Box from '~components/Box';
 
-const StyledActionList = styled(ScrollView)<StyledActionListProps>((props) => {
+const StyledActionList = styled(Box)<StyledActionListProps>((props) => {
   return {
     ...getBaseActionListStyles(props),
     shadowOpacity: '1',

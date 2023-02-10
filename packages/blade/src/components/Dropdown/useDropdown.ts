@@ -57,7 +57,7 @@ type DropdownContextType = {
   dropdownTriggerer?: 'SelectInput';
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
-  actionListRef: React.RefObject<HTMLDivElement | null>;
+  actionListItemRef: React.RefObject<HTMLDivElement | null>;
   selectionType?: DropdownProps['selectionType'];
   /** whether footer has an action item.
    * certain a11y behaviour changes happen here
@@ -93,7 +93,7 @@ const DropdownContext = React.createContext<DropdownContextType>({
   isKeydownPressed: false,
   setIsKeydownPressed: noop,
   dropdownBaseId: '',
-  actionListRef: {
+  actionListItemRef: {
     current: null,
   },
   triggererRef: {
@@ -251,7 +251,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     const newIndex = index ?? activeIndex;
     setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
     const optionValues = options.map((option) => option.value);
-    ensureScrollVisiblity(newIndex, rest.actionListRef.current, optionValues);
+    ensureScrollVisiblity(newIndex, rest.actionListItemRef.current, optionValues);
   };
 
   /**

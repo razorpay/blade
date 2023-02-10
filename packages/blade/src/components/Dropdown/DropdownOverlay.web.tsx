@@ -56,7 +56,8 @@ type DropdownOverlayProps = { children: React.ReactNode };
  * Wrap your ActionList within this component
  */
 const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): JSX.Element => {
-  const { isOpen, triggererRef, hasLabelOnLeft } = useDropdown();
+  const { triggererRef, hasLabelOnLeft } = useDropdown();
+  const isOpen = true;
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<number | string>('100%');

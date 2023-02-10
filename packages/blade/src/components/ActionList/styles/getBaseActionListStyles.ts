@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import type { ActionListProps } from './ActionList';
+import type { ActionListProps } from '../ActionList';
 import type { Theme } from '~components/BladeProvider';
 import { isReactNative, makeSize } from '~utils';
 
@@ -28,10 +28,7 @@ const getBaseActionListStyles = (props: StyledActionListProps & { theme: Theme }
     borderWidth: theme.border.width.thin,
     borderColor: theme.colors.surface.border.normal.lowContrast,
     borderRadius: makeSize(theme.border.radius.medium),
-    padding: makeSize(theme.spacing[3]),
     boxShadow: isReactNative() ? undefined : elevation200,
-    maxHeight: makeSize(400),
-    overflowY: 'auto',
   };
 };
 
