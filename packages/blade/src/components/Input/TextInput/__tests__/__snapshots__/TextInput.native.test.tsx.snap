@@ -192,6 +192,7 @@ exports[`<TextInput /> should render 1`] = `
         accessibilityState={
           Object {
             "disabled": false,
+            "expanded": undefined,
           }
         }
         autoCompleteType="off"
@@ -619,6 +620,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         accessibilityState={
           Object {
             "disabled": false,
+            "expanded": undefined,
           }
         }
         autoCompleteType="off"

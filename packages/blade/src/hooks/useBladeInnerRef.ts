@@ -11,6 +11,11 @@ type BladeElementRef = Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View
  */
 const useBladeInnerRef = (
   targetRef: React.ForwardedRef<BladeElementRef>,
+  handlers?: {
+    // In some scenarios, your native HTML element might have a different ref compared to visible element.
+    // In those cases, you can call your visible element's focus
+    onFocus?: (opts?: FocusOptions) => void;
+  },
 ): React.RefObject<HTMLInputElement | TextInputReactNative> => {
   const innerRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
 
@@ -20,7 +25,7 @@ const useBladeInnerRef = (
       const element = innerRef.current;
       if (element instanceof HTMLElement) {
         return {
-          focus: (opts) => element.focus(opts),
+          focus: (opts) => (handlers?.onFocus ? handlers.onFocus(opts) : element.focus(opts)),
           scrollIntoView: (opts) => element.scrollIntoView(opts),
         };
       } else {
@@ -29,7 +34,7 @@ const useBladeInnerRef = (
         };
       }
     },
-    [innerRef],
+    [innerRef, handlers],
   );
 
   return innerRef;

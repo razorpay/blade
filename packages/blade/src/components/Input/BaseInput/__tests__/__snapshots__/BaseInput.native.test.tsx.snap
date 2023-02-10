@@ -192,6 +192,7 @@ exports[`<BaseInput /> should render 1`] = `
         accessibilityState={
           Object {
             "disabled": false,
+            "expanded": undefined,
           }
         }
         editable={true}
@@ -566,6 +567,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         accessibilityState={
           Object {
             "disabled": false,
+            "expanded": undefined,
           }
         }
         editable={true}

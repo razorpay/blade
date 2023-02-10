@@ -96,6 +96,11 @@ type CheckboxProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
+  /**
+   * Sets the tab-index property on checkbox element
+   *
+   */
+  tabIndex?: number;
 };
 
 const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
@@ -113,6 +118,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     helpText,
     errorText,
     size = 'medium',
+    tabIndex,
   },
   ref,
 ) => {
@@ -200,6 +206,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               isDisabled={_isDisabled}
               hasError={_hasError}
               inputProps={inputProps}
+              tabIndex={tabIndex}
               ref={ref}
             />
             <CheckboxIcon
