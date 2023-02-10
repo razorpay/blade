@@ -14,8 +14,7 @@ export const Render = (): JSX.Element => {
         s: 'green',
         m: 'yellow',
         l: 'blue',
-        // xl: 'purple',
-        // max: 'black',
+        xl: 'purple',
       }}
     >
       hi

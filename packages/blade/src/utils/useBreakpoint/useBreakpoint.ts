@@ -30,12 +30,8 @@ export const useBreakpoint = ({
   const breakpointsTokenAndQueryCollection = useMemo(
     () =>
       (supportsMatchMedia
-        ? Object.entries(breakpoints).map(([token, screenSize], index, breakpointsArray) => {
-            const mediaQuery = getMediaQuery(
-              breakpointsArray as [keyof Breakpoint, number][],
-              index,
-            );
-
+        ? Object.entries(breakpoints).map(([token, screenSize]) => {
+            const mediaQuery = getMediaQuery(screenSize);
             return { token, screenSize, mediaQuery };
           })
         : []) as {
@@ -52,6 +48,9 @@ export const useBreakpoint = ({
     if (platform === 'react-native') {
       matchedDeviceType = deviceType.mobile;
     } else if (platform === 'browser') {
+      // @TODO: In earlier logic, tablets were not considered as "mobile" here. Although the comment said "tablets are considered as mobile"
+      // Now that we've changed the tokens to `min-width`, it will start considering tab as mobile.
+      // Check if that is expected or not
       if (matchedBreakpoint && ['xs', 's', 'm'].includes(matchedBreakpoint)) {
         // tablet is also categorised as mobile
         matchedDeviceType = deviceType.mobile;

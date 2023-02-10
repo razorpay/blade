@@ -28,7 +28,7 @@ const getValue = <T extends string | number>(
     // In React Native, we map the value `m` token on priority (since it maps to mobiles in desktop).
     // We further look into smaller sizes, then we check base size, then we check large and extra large sizes.
     // Then we return the first non-undefined value in this priority
-    const priorityArray = [value.m, value.s, value.xs, value.base, value.l, value.xl, value.max];
+    const priorityArray = [value.m, value.s, value.xs, value.base, value.l, value.xl];
     return priorityArray.find((val) => val !== undefined);
   }
 
@@ -119,15 +119,12 @@ const getAllProps = (
 
 const getAllMediaQueries = (props: BaseBoxProps): CSSObject => {
   return Object.fromEntries(
-    Object.entries(breakpoints).map((_val, index, breakpointsArray) => {
-      const mediaQuery = `@media ${getMediaQuery(
-        breakpointsArray as [keyof Breakpoints, number][],
-        index,
-      )}`;
+    Object.entries(breakpoints).map(([breakpointKey, breakpointValue]) => {
+      const mediaQuery = `@media ${getMediaQuery(breakpointValue)}`;
       return [
         mediaQuery,
         {
-          ...getAllProps(props, breakpointsArray[index][0] as keyof Breakpoints),
+          ...getAllProps(props, breakpointKey as keyof Breakpoints),
         },
       ];
     }),

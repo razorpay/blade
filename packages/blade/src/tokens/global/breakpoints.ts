@@ -9,17 +9,14 @@ export type Breakpoints = Readonly<{
   l: number;
   /** min width: 1025 and max width: 1200px */
   xl: number;
-  /** min width: 1201px  */
-  max: number;
 }>;
 
 const breakpoints: Breakpoints = {
-  xs: 320,
-  s: 480,
-  m: 768,
-  l: 1024,
-  xl: 1200,
-  max: 1201,
+  xs: 320, // small mobile
+  s: 480, // mobile
+  m: 768, // tab, ipad - mini
+  l: 1024, // desktop
+  xl: 1200, // HD desktop
 };
 
 export default breakpoints;
