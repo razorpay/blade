@@ -6,6 +6,7 @@ import { isReactNative, makeSize } from '~utils';
 type StyledActionListProps = {
   surfaceLevel: ActionListProps['surfaceLevel'];
   elevation?: number;
+  id?: string;
 };
 
 const getBaseActionListStyles = (props: StyledActionListProps & { theme: Theme }): CSSObject => {
