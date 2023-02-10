@@ -1,5 +1,19 @@
 # @razorpay/blade
 
+## 6.2.0
+
+### Minor Changes
+
+- bb2f1561: feat(Dropdown): Add `Dropdown`, `Select`, `ActionList`.
+
+  Check out [Dropdown Story](https://blade.razorpay.com/?path=/docs/components-dropdown-with-select) for usage
+
+### Patch Changes
+
+- 505ca975: fix(checkbox): fixed screen reader styles
+
+  Fixed a bug where if we have lots of checkboxes in a small overflowed container the browser is trying to jump to the hidden inputs which is causing unexpected jumps in the scroll.
+
 ## 6.1.0
 
 ### Minor Changes
