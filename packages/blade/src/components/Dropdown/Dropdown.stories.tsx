@@ -393,6 +393,96 @@ WithHeaderFooter.args = {
   description: 'Home sweet home it is',
 };
 
+export const WithScrollbar = (args: AllDropdownProps): JSX.Element => {
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
+  return (
+    <Box minHeight={500}>
+      <Dropdown selectionType={selectionType}>
+        <SelectInput
+          label="Select Action"
+          onChange={({ name, values }) => {
+            console.log(name, values);
+          }}
+          {...selectInputArgs}
+        />
+        <DropdownOverlay>
+          <ActionList surfaceLevel={surfaceLevel}>
+            <ActionListHeader
+              title="Recent Searches"
+              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
+            />
+            <ActionListItem
+              // @ts-expect-error: for storybook we're typing icon as sting but its actually IconComponent
+              leading={<ActionListItemIcon icon={actionListItemIcon} />}
+              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+              title={title}
+              value={value}
+              description={description}
+            />
+            <ActionListSection title="Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download"
+              />
+            </ActionListSection>
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing"
+            />
+            <ActionListSection title="Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download"
+              />
+            </ActionListSection>
+            <ActionListSection title="Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download"
+              />
+            </ActionListSection>
+            <ActionListFooter
+              title="Search"
+              leading={<ActionListFooterIcon icon={SearchIcon} />}
+              trailing={<Button onClick={console.log}>Apply</Button>}
+            />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+WithScrollbar.args = {
+  description: 'Home sweet home it is',
+};
+
 export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
   const [dropdownValues, setDropdownValues] = React.useState('');
   const {
