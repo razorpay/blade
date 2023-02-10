@@ -59,7 +59,13 @@ exports[`<EyeOffIcon /> should render EyeOffIcon 1`] = `
         name="clip0_60_186"
       >
         <RNSVGRect
+          fill={null}
           height="100%"
+          propList={
+            Array [
+              "fill",
+            ]
+          }
           width="100%"
           x={0}
           y={0}

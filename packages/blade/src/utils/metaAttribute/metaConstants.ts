@@ -17,6 +17,8 @@ export const MetaConstants = {
   IconButton: 'icon-button',
   Indicator: 'indicator',
   Link: 'link',
+  List: 'list',
+  ListItem: 'list-item',
   OTPInput: 'otp-input',
   ProgressBar: 'progress-bar',
   Radio: 'radio',

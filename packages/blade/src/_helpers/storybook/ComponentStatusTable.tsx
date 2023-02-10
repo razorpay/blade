@@ -114,6 +114,13 @@ const componentData: ComponentStatusData = [
       'Link component can be used for showing external or internal Links to the user. The Link component can also be used as an inline button in certain cases with the `button` variant.',
   },
   {
+    name: 'List',
+    status: 'released',
+    releasedIn: '6.1.0',
+    description:
+      'Lists display a set of related items that are composed of text/links. Each list item begins with a bullet or a number.',
+  },
+  {
     name: 'ProgressBar',
     status: 'released',
     releasedIn: '5.4.0',
@@ -223,12 +230,6 @@ const componentData: ComponentStatusData = [
     storybookLink: 'Components/Accessibility/VisuallyHidden',
     description:
       'VisuallyHidden component makes content hidden from sighted users but available for screen reader users.',
-  },
-  {
-    name: 'ListView',
-    status: 'in-development',
-    description:
-      'Lists display a set of related items that are composed of text/links. Each list item begins with a bullet or a number.',
   },
   {
     name: 'DropDown',

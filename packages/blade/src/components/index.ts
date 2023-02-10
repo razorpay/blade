@@ -16,6 +16,7 @@ export * from './Input/OTPInput';
 export * from './Input/SelectInput';
 export * from './Indicator';
 export * from './Link';
+export * from './List';
 export * from './LiveAnnouncer';
 export * from './ProgressBar';
 export * from './Radio';

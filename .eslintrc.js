@@ -31,6 +31,7 @@ module.exports = {
         },
       },
     ],
+    'import/extensions': ['error', 'never', { css: 'always' }],
   },
   env: {
     browser: true,
