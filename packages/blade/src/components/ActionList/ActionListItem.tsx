@@ -305,7 +305,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
             )}
           </Box>
           <Box
-            paddingLeft={selectionType === 'multiple' ? 'spacing.0' : 'spacing.3'}
+            paddingLeft={selectionType === 'multiple' || !props.leading ? 'spacing.0' : 'spacing.3'}
             paddingRight="spacing.3"
           >
             <Text
