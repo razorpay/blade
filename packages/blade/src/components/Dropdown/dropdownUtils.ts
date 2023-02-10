@@ -273,10 +273,10 @@ export const ensureScrollVisiblity = (
         optionEl[newActiveIndex].dataset.value === options[newActiveIndex]
       ) {
         const activeElement = optionEl[newActiveIndex];
-        activeElement.scrollIntoView({ block: 'center' });
+        activeElement.scrollIntoView({ block: 'center', behavior: 'smooth' });
 
         if (!isElementVisibleOnScreen(optionEl[newActiveIndex])) {
-          activeElement.scrollIntoView();
+          activeElement.scrollIntoView({ behavior: 'smooth' });
         }
       }
     }

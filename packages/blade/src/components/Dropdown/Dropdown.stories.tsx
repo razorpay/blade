@@ -468,6 +468,16 @@ export const WithScrollbar = (args: AllDropdownProps): JSX.Element => {
                 value="download"
               />
             </ActionListSection>
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing"
+            />
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing"
+            />
             <ActionListFooter
               title="Search"
               leading={<ActionListFooterIcon icon={SearchIcon} />}
