@@ -679,26 +679,7 @@ export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <Box
-      maxHeight={200}
-      overflow="scroll"
-      paddingRight="spacing.5"
-      paddingLeft="spacing.5"
-      paddingTop="spacing.5"
-      paddingBottom="spacing.5"
-    >
-      <Button
-        onClick={() => {
-          selectRef.current?.scrollIntoView();
-        }}
-      >
-        Click to scroll till select
-      </Button>
-      <SpaceBetweenSmall />
-      <Text>
-        We are using <Code>selectRef.current?.scrollIntoView()</Code> here to show ref usage
-      </Text>
-      <Box height="300px" />
+    <Box minHeight={300}>
       <Dropdown selectionType={selectionType}>
         <SelectInput ref={selectRef} label="Top 2 design systems" {...selectInputArgs} />
         <DropdownOverlay>
@@ -710,6 +691,20 @@ export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
+      <Box paddingTop="spacing.3">
+        <Button
+          onClick={() => {
+            selectRef.current?.focus();
+          }}
+        >
+          Click to focus
+        </Button>
+      </Box>
+      <Box paddingTop="spacing.3">
+        <Text>
+          We are using <Code>selectRef.current.focus()</Code> here to focus on input
+        </Text>
+      </Box>
     </Box>
   );
 };

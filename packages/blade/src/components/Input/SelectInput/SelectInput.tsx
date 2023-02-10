@@ -55,7 +55,11 @@ const _SelectInput = (
     setHasLabelOnLeft,
   } = useDropdown();
 
-  const inputRef = useBladeInnerRef(ref);
+  const inputRef = useBladeInnerRef(ref, {
+    onFocus: (opts) => {
+      triggererRef.current?.focus(opts);
+    },
+  });
 
   const { icon, onChange, ...baseInputProps } = props;
 
