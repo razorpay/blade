@@ -142,7 +142,7 @@ export const StyledBaseInput = React.forwardRef<
     },
     ref,
   ) => {
-    const buttonValue = props.value ? props.value : props.defaultValue;
+    const buttonValue = props.value ? props.value : props.placeholder;
     const commonProps = {
       onBlur: (): void => {
         // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
@@ -160,17 +160,23 @@ export const StyledBaseInput = React.forwardRef<
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         onPress={(): void => {
-          handleOnClick?.({ name, value: buttonValue });
+          handleOnClick?.({ name, value: props.value });
         }}
         onFocus={(): void => {
-          handleOnFocus?.({ name, value: buttonValue });
+          handleOnFocus?.({ name, value: props.value });
           setCurrentInteraction('active');
         }}
         {...commonProps}
         {...props}
         {...accessibilityProps}
       >
-        <Text size="medium" variant="body" type="subtle" contrast="low" weight="regular">
+        <Text
+          size="medium"
+          variant="body"
+          type={props.value ? 'subtle' : 'placeholder'}
+          contrast="low"
+          weight="regular"
+        >
           {buttonValue}
         </Text>
       </StyledNativeBaseButton>

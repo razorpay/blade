@@ -54,7 +54,7 @@ const StyledBaseNativeButton = styled.button<
   ...getTextStyles({
     size: 'medium',
     variant: 'body',
-    type: 'subtle',
+    type: props.value ? 'subtle' : 'placeholder',
     weight: 'regular',
     contrast: 'low',
     theme: props.theme,
@@ -144,9 +144,9 @@ export const StyledBaseInput = React.forwardRef<
         {...commonProps}
         {...props}
         {...accessibilityProps}
-        value={props.value ? props.value : props.defaultValue}
+        value={props.value}
       >
-        {props.value ? props.value : props.defaultValue}
+        {props.value ? props.value : props.placeholder}
       </StyledBaseNativeButton>
     ) : (
       <StyledBaseNativeInput

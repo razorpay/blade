@@ -30,6 +30,7 @@ type SelectInputProps = Pick<
   | 'onClick'
   | 'onFocus'
   | 'onBlur'
+  | 'placeholder'
 > & {
   icon?: IconComponent;
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
@@ -61,7 +62,7 @@ const _SelectInput = (
     },
   });
 
-  const { icon, onChange, ...baseInputProps } = props;
+  const { icon, onChange, placeholder = 'Select Option', ...baseInputProps } = props;
 
   React.useEffect(() => {
     onChange?.({ name: props.name, values: value.split(', ') });
@@ -95,7 +96,8 @@ const _SelectInput = (
         componentName={MetaConstants.SelectInput}
         ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
         textAlign="left"
-        value={displayValue ? displayValue : 'Select Option'}
+        value={displayValue}
+        placeholder={placeholder}
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}

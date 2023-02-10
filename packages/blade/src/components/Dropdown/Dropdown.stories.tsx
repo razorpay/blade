@@ -104,6 +104,7 @@ const Page = (): ReactElement => {
               >
                 <SelectInput
                   label="Select Action"
+                  placeholder="Select Option"
                   name="action"
                   onChange={({ name, values }) => {
                     console.log(name, values);
@@ -202,6 +203,7 @@ const argsTable: ArgsTable = {
   autoFocus: true,
   name: 'action',
   isRequired: false,
+  placeholder: 'Select Option',
 };
 
 const makeArgTypes = (argTable: ArgsTable): Meta['argTypes'] => {
@@ -246,6 +248,7 @@ const DropdownStoryMeta: Meta = {
     title: 'Home',
     value: 'home',
     actionListItemIcon: 'HomeIcon',
+    placeholder: 'Select Option',
   } as AllDropdownProps,
   argTypes: {
     ...makeArgTypes(argsTable),
@@ -600,6 +603,7 @@ WithHTMLFormSubmission.args = {
   isRequired: true,
   label: 'Design Systems',
   name: 'design-system',
+  placeholder: 'Select Design System',
 };
 
 const SpaceBetweenSmall = (): JSX.Element => <Box height="18px" />;
@@ -664,6 +668,7 @@ WithValidationState.args = {
   helpText: 'Select only two',
   label: 'Top 2 design systems',
   name: 'design-systems',
+  placeholder: 'Select Multiple Options',
 };
 
 export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
