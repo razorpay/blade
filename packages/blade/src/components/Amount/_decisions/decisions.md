@@ -10,17 +10,16 @@ Amount component is a UI element that displays and formats various currency valu
 
 ## API
 
-| Prop           | Type                                                               | Default     | Description                                                                    | Required |
-| -------------- | ------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------ | -------- |
-| children       | `string`                                                           | `undefined` | The value to be rendered within the component                                  | ✅       |
-| intent         | `default`, `positive`, `negative`, `notice`, `information`, `blue` | `default`   | The variant of the amount to be rendered                                       |          |
-| contrast       | `low`, `high`                                                      | `low`       | The contrast of the amount to be rendered                                      |          |
-| fontWeight     | `bold`, `regular`                                                  | `bold`      | The weight of the amount to be rendered                                        |          |
-| hasDecimals    | `true`, `false`                                                    | `true`      | Indicates whether the amount has or can have decimals                          |          |
-| hasTextPostfix | `true`, `false`                                                    | `true`      | Indicates whether a text postfix should be used                                |          |
-| size           | `3xl`, `2xl`, `xl`, `large`, `medium`, `small`                     | `3xl`       | The size of the amount to be rendered                                          |          |
-| isStyled       | `true`, `false`                                                    | `true`      | Highlight the main amount by making the prefix symbol and decimal digits small |          |
-| screenSize     | `desktop`, `mobile`                                                | `desktop`   | Provides the size of the component based on the platform                       |          |
+| Prop                | Type                                                       | Default     | Description                                                                    | Required |
+| ------------------- | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------ | -------- |
+| children            | `number`                                                   | `undefined` | The value to be rendered within the component                                  | ✅       |
+| variant             | `positive`, `negative`, `notice`, `information`, `blue`    | `undefined` | The variant of the amount to be rendered                                       |          |
+| contrast            | `low`, `high`                                              | `low`       | The contrast of the amount to be rendered                                      |          |
+| fontWeight          | `bold`, `regular`                                          | `bold`      | The weight of the amount to be rendered                                        |          |
+| hasDecimals         | `true`, `false`                                            | `true`      | Indicates whether the amount has or can have decimals                          |          |
+| showCurrencyPostfix | `true`, `false`                                            | `false`     | Indicates whether a text postfix should be used                                |          |
+| size                | `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small` | `3xlarge`   | The size of the amount to be rendered                                          |          |
+| isStyled            | `true`, `false`                                            | `true`      | Highlight the main amount by making the prefix symbol and decimal digits small |          |
 
 ### Sample Usage
 
@@ -28,12 +27,12 @@ Amount component is a UI element that displays and formats various currency valu
 import { Amount } from '@razorpay/components';
 
 <Amount
-  size="2XL"
-  isStyled="true"
+  size="2xlarge"
+  isStyled={true}
   fontWeight="regular"
-  hasDecimals="true"
-  hasTextPostfix="true"
-  intent="information"
+  hasDecimals={true}
+  showCurrencyPostfix={false}
+  variant="information"
   contrast="high"
 >
   1000.27
@@ -47,6 +46,7 @@ import { Amount } from '@razorpay/components';
 - Should we call it `variant` or `intent`, `isStyled` or something more apt?
 - Should we separate the amount with commas based on the Indian currency format?
 - What should be the default `intent`? Kept it as `default` for now, but `neutral` seems more apt.
+- We currently use amount value in paise in backend, so how should we convert it to rupee here?
 - Scope of A11y?
 
 #### Design
@@ -54,6 +54,10 @@ import { Amount } from '@razorpay/components';
 - Do we need to support more currency types?
 
 ## Discussions
+
+### Should we separate the amount with commas based on the Indian currency format?
+
+- For now, we will be supporting only INR. Going forward we will add more currencies. One of the major problems right now is we use ₹ and INR interchangeably. But in Malaysia we only have RM and there is no symbol associated with it. Hence we are staying away from this. Will solve this once the use-case arrives.
 
 ## References
 
