@@ -34,6 +34,14 @@ type ComponentStatusData = {
 
 const componentData: ComponentStatusData = [
   {
+    name: 'ActionList',
+    status: 'released',
+    releasedIn: '2.6.0',
+    storybookLink: 'Components/Dropdown',
+    description:
+      'List of multiple actionable items. Can be used as menu items inside `Dropdown`, `BottomSheet` and as selectable items when combined with `SelectInput`',
+  },
+  {
     name: 'Alert',
     status: 'released',
     releasedIn: '1.1.0',
@@ -232,14 +240,18 @@ const componentData: ComponentStatusData = [
       'VisuallyHidden component makes content hidden from sighted users but available for screen reader users.',
   },
   {
-    name: 'DropDown',
-    status: 'in-development',
+    name: 'Dropdown',
+    status: 'released',
+    releasedIn: '2.6.0',
+    storybookLink: 'Components/Dropdown',
     description:
       'Dropdown Menu displays a list of choices on temporary surfaces. They allow users to make a selection from multiple options. They appear when users interact with a button, action, or other control.',
   },
   {
-    name: 'Select',
-    status: 'in-development',
+    name: 'SelectInput',
+    status: 'released',
+    releasedIn: '2.6.0',
+    storybookLink: 'Components/Dropdown/WithSelect',
     description:
       'Select displays a list of choices on temporary surfaces. They allows users pick a value from predefined options',
   },
