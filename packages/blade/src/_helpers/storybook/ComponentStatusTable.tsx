@@ -117,6 +117,7 @@ const componentData: ComponentStatusData = [
     name: 'List',
     status: 'released',
     releasedIn: '6.1.0',
+    storybookLink: 'Components/List',
     description:
       'Lists display a set of related items that are composed of text/links. Each list item begins with a bullet or a number.',
   },
