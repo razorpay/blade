@@ -37,7 +37,7 @@ const componentData: ComponentStatusData = [
     name: 'ActionList',
     status: 'released',
     releasedIn: '6.2.0',
-    storybookLink: 'Components/Dropdown',
+    storybookLink: 'Components/Dropdown/With Select',
     description:
       'List of multiple actionable items. Can be used as menu items inside `Dropdown`, `BottomSheet` and as selectable items when combined with `SelectInput`',
   },
@@ -243,7 +243,7 @@ const componentData: ComponentStatusData = [
     name: 'Dropdown',
     status: 'released',
     releasedIn: '6.2.0',
-    storybookLink: 'Components/Dropdown',
+    storybookLink: 'Components/Dropdown/With Select',
     description:
       'Dropdown Menu displays a list of choices on temporary surfaces. They allow users to make a selection from multiple options. They appear when users interact with a button, action, or other control.',
   },
@@ -251,7 +251,7 @@ const componentData: ComponentStatusData = [
     name: 'SelectInput',
     status: 'released',
     releasedIn: '6.2.0',
-    storybookLink: 'Components/Dropdown/WithSelect',
+    storybookLink: 'Components/Dropdown/With Select',
     description:
       'Select displays a list of choices on temporary surfaces. They allows users pick a value from predefined options',
   },
