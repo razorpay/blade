@@ -17,9 +17,9 @@ Amount component is a UI element that displays and formats various currency valu
 | contrast            | `low`, `high`                                              | `low`       | The contrast of the amount to be rendered                                      |          |
 | fontWeight          | `bold`, `regular`                                          | `bold`      | The weight of the amount to be rendered                                        |          |
 | hasDecimals         | `true`, `false`                                            | `true`      | Indicates whether the amount has or can have decimals                          |          |
-| showCurrencyPostfix | `true`, `false`                                            | `false`     | Indicates whether a text postfix should be used                                |          |
+| showCurrencySuffix  | `true`, `false`                                            | `false`     | Indicates whether a text suffix should be used                                 |          |
 | size                | `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small` | `3xlarge`   | The size of the amount to be rendered                                          |          |
-| isStyled            | `true`, `false`                                            | `true`      | Highlight the main amount by making the prefix symbol and decimal digits small |          |
+| isAmountHighlighted | `true`, `false`                                            | `true`      | Highlight the main amount by making the prefix symbol and decimal digits small |          |
 
 ### Sample Usage
 
@@ -28,10 +28,10 @@ import { Amount } from '@razorpay/components';
 
 <Amount
   size="2xlarge"
-  isStyled={true}
+  isAmountHighlighted={true}
   fontWeight="regular"
   hasDecimals={true}
-  showCurrencyPostfix={false}
+  showCurrencySuffix={false}
   variant="information"
   contrast="high"
 >
