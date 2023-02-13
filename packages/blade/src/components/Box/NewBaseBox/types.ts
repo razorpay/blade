@@ -124,4 +124,11 @@ type BaseBoxProps = Partial<
     }
 >;
 
-export { BaseBoxProps, MakeValueResponsive };
+export {
+  BaseBoxProps,
+  MakeValueResponsive,
+  PaddingProps,
+  MarginProps,
+  SpacingValueType,
+  ArrayOfMaxLength4,
+};

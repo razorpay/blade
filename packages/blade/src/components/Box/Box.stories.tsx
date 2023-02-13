@@ -6,20 +6,7 @@ const BoxStoryMeta = {
 };
 
 export const Render = (): JSX.Element => {
-  return (
-    <BaseBox
-      backgroundColor={{
-        base: 'red',
-        xs: 'orange',
-        s: 'green',
-        m: 'yellow',
-        l: 'blue',
-        xl: 'purple',
-      }}
-    >
-      hi
-    </BaseBox>
-  );
+  return <BaseBox padding="spacing.1">hi</BaseBox>;
 };
 
 export default BoxStoryMeta;

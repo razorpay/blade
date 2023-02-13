@@ -1,13 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { CSSObject } from 'styled-components';
-import type { BaseBoxProps, MakeValueResponsive } from './types';
+import type {
+  BaseBoxProps,
+  MakeValueResponsive,
+  PaddingProps,
+  MarginProps,
+  SpacingValueType,
+} from './types';
 import type { Breakpoints } from '~tokens/global/breakpoints';
 import breakpoints from '~tokens/global/breakpoints';
 import { getMediaQuery } from '~src/utils/getMediaQuery';
-import { isReactNative, isEmpty } from '~utils';
+import { isReactNative, isEmpty, getIn, makeSpace } from '~utils';
+import type { Theme } from '~components/BladeProvider';
 
-const getValue = <T extends string | number>(
+const getValue = <T extends string | number | string[]>(
   value: MakeValueResponsive<T> | undefined,
   size?: keyof Breakpoints,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,7 +23,7 @@ const getValue = <T extends string | number>(
     return undefined;
   }
 
-  if (typeof value === 'string' || typeof value === 'number') {
+  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value)) {
     return value;
   }
 
@@ -35,13 +42,75 @@ const getValue = <T extends string | number>(
   return value[size ?? 'base'];
 };
 
+const getSpacingValue = (
+  spacingValue: SpacingValueType | SpacingValueType[] | undefined,
+  theme: Theme,
+  size?: keyof Breakpoints,
+): string | undefined => {
+  if (!spacingValue) {
+    return undefined;
+  }
+
+  const responsiveSpacingValue: SpacingValueType | SpacingValueType[] = getValue(
+    spacingValue,
+    size,
+  );
+
+  if (responsiveSpacingValue === 'auto') {
+    return responsiveSpacingValue;
+  }
+
+  if (Array.isArray(responsiveSpacingValue)) {
+    return responsiveSpacingValue.map((value) => getSpacingValue(value, theme)).join(' ');
+  }
+
+  if (responsiveSpacingValue.startsWith('spacing.')) {
+    const spacingReturnValue = getIn(theme, responsiveSpacingValue);
+    return spacingReturnValue ? makeSpace(spacingReturnValue) : undefined;
+  }
+
+  // pixel or with unit values
+  return responsiveSpacingValue;
+};
+
+// const getSpacingCSSProps = (
+//   spacingProps: Partial<PaddingProps & MarginProps>,
+//   theme: Theme,
+// ): Required<
+//   Pick<
+//     CSSObject,
+//     | 'padding'
+//     | 'paddingTop'
+//     | 'paddingBottom'
+//     | 'paddingLeft'
+//     | 'paddingRight'
+//     | 'margin'
+//     | 'marginTop'
+//     | 'marginBottom'
+//     | 'marginLeft'
+//     | 'marginRight'
+//   >
+// > => {
+//   const spacingReturnValue: CSSObject = {};
+//   if (spacingProps.padding) {
+//     if (Array.isArray(spacingProps.padding)) {
+//       spacingReturnValue.padding = spacingProps.padding
+//         .map((paddingValue) => getIn(theme, paddingValue))
+//         .join(' ');
+//     } else {
+//       spacingReturnValue.padding = getIn(theme, spacingProps.padding);
+//     }
+//   }
+//   return {};
+// };
+
 type AllBaseBoxPropsCSSKeys = keyof Omit<
   BaseBoxProps,
   'className' | 'id' | 'children' | 'paddingX' | 'paddingY' | 'marginX' | 'marginY'
 >;
 
 const getAllProps = (
-  props: BaseBoxProps,
+  props: BaseBoxProps & { theme: Theme },
   size?: keyof Breakpoints,
   // Ideally return type is `CSSObject`. But I am keeping the keys of object requrired as BasBoxProps keys so we don't miss out on any key
 ): Required<Pick<CSSObject, AllBaseBoxPropsCSSKeys>> => {
@@ -85,22 +154,31 @@ const getAllProps = (
     borderRadius: getValue(props.borderRadius, size),
     background: getValue(props.background, size),
     transform: getValue(props.transform, size),
-
-    // Spacing props
-    padding: 2,
-    // paddingX: getValue(props.paddingX, size),
-    // paddingY: getValue(props.paddingY, size),
-    paddingTop: getValue(props.paddingTop, size),
-    paddingRight: getValue(props.paddingRight, size),
-    paddingBottom: getValue(props.paddingBottom, size),
-    paddingLeft: getValue(props.paddingLeft, size),
-    margin: 2,
-    // marginX: getValue(props.marginX, size),
-    // marginY: getValue(props.marginY, size),
-    marginTop: getValue(props.marginTop, size),
-    marginRight: getValue(props.marginRight, size),
-    marginBottom: getValue(props.marginBottom, size),
-    marginLeft: getValue(props.marginLeft, size),
+    padding: getSpacingValue(props.padding, props.theme),
+    // ...getSpacingCSSProps(
+    //   {
+    //     padding: props.padding,
+    //     paddingX: props.paddingX,
+    //     paddingY: props.paddingY,
+    //     paddingTop: props.paddingTop,
+    //     paddingBottom: props.paddingBottom,
+    //     paddingLeft: props.paddingLeft,
+    //     paddingRight: props.paddingRight,
+    //   },
+    //   props.theme,
+    // ),
+    // ...getSpacingCSSProps(
+    //   {
+    //     margin: props.margin,
+    //     marginX: props.marginX,
+    //     marginY: props.marginY,
+    //     marginTop: props.marginTop,
+    //     marginBottom: props.marginBottom,
+    //     marginLeft: props.marginLeft,
+    //     marginRight: props.marginRight,
+    //   },
+    //   props.theme,
+    // ),
     height: getValue(props.height, size),
     minHeight: getValue(props.minHeight, size),
     maxHeight: getValue(props.maxHeight, size),
@@ -117,7 +195,7 @@ const getAllProps = (
   };
 };
 
-const getAllMediaQueries = (props: BaseBoxProps): CSSObject => {
+const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject => {
   return Object.fromEntries(
     Object.entries(breakpoints).map(([breakpointKey, breakpointValue]) => {
       const mediaQuery = `@media ${getMediaQuery(breakpointValue)}`;
@@ -131,7 +209,7 @@ const getAllMediaQueries = (props: BaseBoxProps): CSSObject => {
   );
 };
 
-const getCSSObject = (props: BaseBoxProps): CSSObject => {
+const getCSSObject = (props: BaseBoxProps & { theme: Theme }): CSSObject => {
   console.count('getCSSObject');
   return {
     ...getAllProps(props),
