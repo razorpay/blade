@@ -368,7 +368,7 @@ const ComponentStatusTable = (): React.ReactElement => {
     if (!a.releasedIn || !b.releasedIn) {
       return a.status.localeCompare(b.status);
     }
-    return a.name.localeCompare(b.name);
+    return b.releasedIn.localeCompare(a.releasedIn);
   });
 
   return (
