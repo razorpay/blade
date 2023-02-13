@@ -11,14 +11,14 @@ import {
   // ActionListHeaderIcon,
   // ActionListSection,
   // ActionListItemAsset,
-  ActionListItemIcon,
+  // ActionListItemIcon,
   // Button,
   // HistoryIcon,
-  ArrowRightIcon,
-  SettingsIcon,
+  // ArrowRightIcon,
+  // SettingsIcon,
   // DownloadIcon,
   // SearchIcon,
-  HomeIcon,
+  // HomeIcon,
 } from '@razorpay/blade/components';
 import { paymentTheme } from '@razorpay/blade/tokens';
 import '@fontsource/lato/400.css';
@@ -43,14 +43,14 @@ function App(): JSX.Element {
               leading={<ActionListHeaderIcon icon={HistoryIcon} />}
             /> */}
             <ActionListItem
-              leading={<ActionListItemIcon icon={HomeIcon} />}
-              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+              // leading={<ActionListItemIcon icon={HomeIcon} />}
+              // trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
               title="Home"
               value="home"
               description="Home sweet home"
             />
             <ActionListItem
-              leading={<ActionListItemIcon icon={SettingsIcon} />}
+              // leading={<ActionListItemIcon icon={SettingsIcon} />}
               title="Settings"
               value="settings"
               isDisabled={true}
