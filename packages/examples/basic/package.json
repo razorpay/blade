@@ -1,10 +1,13 @@
 {
   "private": "true",
   "scripts": {
-    "start": "react-scripts start"
+    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
+    "analyze": "source-map-explorer 'build/static/js/*.js' --gzip",
+    "build:blade": "cd ../../blade && yarn build",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build"
   },
   "dependencies": {
-    "@razorpay/blade": "../../packages/blade/build/",
+    "@razorpay/blade": "../../blade/build/",
     "@fontsource/lato": "^4.5.10",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
@@ -12,6 +15,9 @@
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
     "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "source-map-explorer": "2.5.3"
   },
   "browserslist": {
     "production": [
