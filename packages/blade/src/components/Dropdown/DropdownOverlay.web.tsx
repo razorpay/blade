@@ -73,6 +73,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
 
   React.useEffect(() => {
     if (isOpen) {
+      // On Safari clicking on a non input element doesn't focuses it https://bugs.webkit.org/show_bug.cgi?id=22261
       triggererRef.current?.focus();
       setDisplay('block');
     }
