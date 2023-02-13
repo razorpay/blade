@@ -22,7 +22,7 @@ import {
   InfoIcon,
   ArrowRightIcon,
   HistoryIcon,
-  SearchIcon,
+  FileTextIcon,
 } from '~components/Icons';
 import Box from '~components/Box';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
@@ -72,7 +72,7 @@ const Page = (): ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox editorHeight={600}>
+      <Sandbox showConsole editorHeight={600}>
         {`
           import { 
             Dropdown, 
@@ -92,7 +92,7 @@ const Page = (): ReactElement => {
             SettingsIcon,
             DownloadIcon,
             InfoIcon,
-            SearchIcon,
+            FileTextIcon,
             Button
           } from '@razorpay/blade/components';
 
@@ -136,8 +136,8 @@ const Page = (): ReactElement => {
                       />
                     </ActionListSection>
                     <ActionListFooter
-                      title="Search"
-                      leading={<ActionListFooterIcon icon={SearchIcon} />}
+                      title="Search Tips"
+                      leading={<ActionListFooterIcon icon={FileTextIcon} />}
                       trailing={
                         <Button onClick={() => {
                           console.log('Apply button clicked')
@@ -382,8 +382,8 @@ export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
               value="pricing"
             />
             <ActionListFooter
-              title="Search"
-              leading={<ActionListFooterIcon icon={SearchIcon} />}
+              title="Search Tips"
+              leading={<ActionListFooterIcon icon={FileTextIcon} />}
               trailing={<Button onClick={console.log}>Apply</Button>}
             />
           </ActionList>
@@ -482,8 +482,8 @@ export const WithScrollbar = (args: AllDropdownProps): JSX.Element => {
               value="pricing"
             />
             <ActionListFooter
-              title="Search"
-              leading={<ActionListFooterIcon icon={SearchIcon} />}
+              title="Search Tips"
+              leading={<ActionListFooterIcon icon={FileTextIcon} />}
               trailing={<Button onClick={console.log}>Apply</Button>}
             />
           </ActionList>
