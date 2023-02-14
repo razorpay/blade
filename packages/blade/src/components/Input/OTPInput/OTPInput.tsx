@@ -7,7 +7,7 @@ import { FormHint, FormLabel } from '../../Form';
 import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, getPlatformType, MetaConstants, isEmpty } from '~utils';
+import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 export type OTPInputProps = Pick<
@@ -265,7 +265,7 @@ const OTPInput = ({
           flex={1}
           marginLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
           key={`${inputId}-${index}`}
-          maxWidth={platform === 'onDesktop' ? 36 : 40} // TODO: use size tokens
+          maxWidth={platform === 'onDesktop' ? makeSize(36) : makeSize(40)} // TODO: use size tokens
         >
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -320,7 +320,7 @@ const OTPInput = ({
       </BaseBox>
       {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
       {/*Refer `BaseInput`'s implementation of FormHint which uses similar logic */}
-      <BaseBox marginLeft={isLabelLeftPositioned ? 136 : 0}>
+      <BaseBox marginLeft={makeSize(isLabelLeftPositioned ? 136 : 0)}>
         <FormHint
           type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
           helpText={helpText}

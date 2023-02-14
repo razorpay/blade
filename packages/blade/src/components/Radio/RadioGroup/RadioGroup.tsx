@@ -5,7 +5,7 @@ import { useRadioGroup } from './useRadioGroup';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
-import { getPlatformType, useBreakpoint } from '~utils';
+import { getPlatformType, makeSize, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 type RadioGroupProps = {
@@ -136,7 +136,10 @@ const RadioGroup = ({
           <BaseBox display="flex" flexDirection="column">
             {React.Children.map(children, (child, index) => {
               return (
-                <BaseBox key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
+                <BaseBox
+                  key={index}
+                  {...{ marginBottom: index === childCount - 1 ? makeSize(0) : gap }}
+                >
                   {child}
                 </BaseBox>
               );

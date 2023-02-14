@@ -384,10 +384,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           justifyContent="center"
           alignItems="center"
           position="absolute"
-          top={0}
-          left={0}
-          bottom={0}
-          right={0}
+          top="0px"
+          left="0px"
+          bottom="0px"
+          right="0px"
         >
           <BaseSpinner
             accessibilityLabel="Loading"

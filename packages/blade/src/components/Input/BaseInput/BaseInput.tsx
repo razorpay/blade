@@ -21,6 +21,7 @@ import {
   makeAccessible,
   useBreakpoint,
   MetaConstants,
+  makeSize,
 } from '~utils';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
@@ -578,7 +579,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         </BaseBox>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
         {!hideFormHint && (
-          <BaseBox marginLeft={isLabelLeftPositioned ? 136 : 0}>
+          <BaseBox marginLeft={makeSize(isLabelLeftPositioned ? 136 : 0)}>
             <BaseBox
               display="flex"
               flexDirection="row"
