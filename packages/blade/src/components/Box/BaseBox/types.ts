@@ -2,7 +2,12 @@ import type { CSSObject } from 'styled-components';
 import type { Border, Spacing } from '~tokens/global';
 import type { Breakpoints } from '~tokens/global/breakpoints';
 
-type MakeValueResponsive<T> = T | Partial<Record<keyof Breakpoints, T>>;
+type MakeValueResponsive<T> =
+  | T
+  | {
+      // Using this instead of Record to maintain the jsdoc from breakpoints.ts
+      [P in keyof Breakpoints]?: T;
+    };
 type MakeObjectResponsive<T> = { [P in keyof T]: MakeValueResponsive<T[P]> };
 type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
 

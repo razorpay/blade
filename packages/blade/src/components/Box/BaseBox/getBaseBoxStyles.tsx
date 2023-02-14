@@ -159,8 +159,10 @@ const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject =
     return {};
   }
 
+  const { base, ...breakpointsWithoutBase } = breakpoints;
+
   return Object.fromEntries(
-    Object.entries(breakpoints).map(([breakpointKey, breakpointValue]) => {
+    Object.entries(breakpointsWithoutBase).map(([breakpointKey, breakpointValue]) => {
       const mediaQuery = `@media ${getMediaQuery({ min: breakpointValue })}`;
       return [
         mediaQuery,
