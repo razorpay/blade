@@ -12,7 +12,7 @@ type HoverProps = {
 // noop in react-native
 const _SelectorInput: React.ForwardRefRenderFunction<
   BladeElementRef,
-  HoverProps & { inputProps: any }
+  HoverProps & { inputProps: any; tabIndex?: number }
 > = (_props, _ref): React.ReactElement => {
   return <></>;
 };

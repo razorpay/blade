@@ -1,3 +1,4 @@
+import dedent from 'dedent';
 import {
   ArgsTable,
   Primary,
@@ -42,7 +43,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
 
   return (
     <>
-      <Title />
+      <Title>{props.componentName}</Title>
       <Subtitle>{props.componentDescription}</Subtitle>
       {props.note ? <Description markdown={`> **Note** <br/>${props.note}`} /> : null}
       {figmaURL !== '#' ? (
@@ -54,7 +55,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           <Title>Imports</Title>
           <Highlight language="tsx">
             {props.imports
-              ? props.imports
+              ? dedent(props.imports)
               : `import { ${props.componentName} } from '@razorpay/blade/components';\nimport type { ${props.componentName}Props } from '@razorpay/blade/components';`}
           </Highlight>
           <br />
