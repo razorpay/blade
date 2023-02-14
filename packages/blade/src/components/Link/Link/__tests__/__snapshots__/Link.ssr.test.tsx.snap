@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-<<<<<<< HEAD
-exports[`<Link /> should render link with a default rel set when target is _blank 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a data-blade-component=\\"link\\" href=\\"https://www.google.com/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" cursor=\\"pointer\\" class=\\"StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf\\" role=\\"link\\" aria-disabled=\\"false\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf content-container\\"><div color=\\"action.text.link.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bWvucQ\\">Learn More</div></div></a></div>"`;
-=======
-exports[`<Link /> should render link with a default rel set when target is _blank 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a data-blade-component=\\"link\\" href=\\"https://www.google.com/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" cursor=\\"pointer\\" class=\\"StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf\\" role=\\"link\\" aria-disabled=\\"false\\"><div display=\\"flex\\" class=\\"Boxweb__Box-xvyj85-0 mRSrU content-container\\"><div color=\\"action.text.link.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 cqtXx\\">Learn More</div></div></a></div>"`;
->>>>>>> 96357fc16de44f2e251630df719ff41103f297e0
+exports[`<Link /> should render link with a default rel set when target is _blank 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a data-blade-component=\\"link\\" href=\\"https://www.google.com/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" cursor=\\"pointer\\" class=\\"StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf\\" role=\\"link\\" aria-disabled=\\"false\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf content-container\\"><div color=\\"action.text.link.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 cqtXx\\">Learn More</div></div></a></div>"`;
 
 exports[`<Link /> should render link with a default rel set when target is _blank 2`] = `
 <div
