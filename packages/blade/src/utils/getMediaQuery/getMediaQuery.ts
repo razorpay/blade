@@ -1,3 +1,3 @@
-export const getMediaQuery = (breakpointValue: number): string => {
-  return `screen and (min-width: ${breakpointValue}px)`;
+export const getMediaQuery = ({ min, max }: { min: number; max?: number }): string => {
+  return `screen and (min-width: ${min}px)${max ? ` and (max-width: ${max}px)` : ''}`;
 };

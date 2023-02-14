@@ -13,7 +13,7 @@ import type { Theme } from '~components/BladeProvider';
 
 const getResponsiveValue = <T extends string | number | string[]>(
   value: MakeValueResponsive<T> | undefined,
-  size?: keyof Breakpoints,
+  size: keyof Breakpoints = 'base',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any | undefined => {
   if (value === undefined || value === null) {
@@ -36,7 +36,7 @@ const getResponsiveValue = <T extends string | number | string[]>(
     return priorityArray.find((val) => val !== undefined);
   }
 
-  return value[size ?? 'base'];
+  return value[size];
 };
 
 const getSpacingValue = (
@@ -161,7 +161,7 @@ const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject =
 
   return Object.fromEntries(
     Object.entries(breakpoints).map(([breakpointKey, breakpointValue]) => {
-      const mediaQuery = `@media ${getMediaQuery(breakpointValue)}`;
+      const mediaQuery = `@media ${getMediaQuery({ min: breakpointValue })}`;
       return [
         mediaQuery,
         {
@@ -180,7 +180,8 @@ const getBaseBoxStyles = (props: BaseBoxProps & { theme: Theme }): CSSObject => 
 };
 
 const getDependencyProps = (props: BaseBoxProps & { theme: Theme }): string | BaseBoxProps => {
-  const { theme, ...rest } = props;
+  // These are the props that change nothing in the getBaseBoxStyles calculations
+  const { theme, children, className, id, ...rest } = props;
   let dependencyPropString: string | BaseBoxProps = '';
   try {
     dependencyPropString = JSON.stringify(rest);

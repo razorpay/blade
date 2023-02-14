@@ -1,4 +1,5 @@
 export type Breakpoints = Readonly<{
+  base: number;
   /** max width: 320px  */
   xs: number;
   /** min width: 321px and max width: 480px */
@@ -12,6 +13,7 @@ export type Breakpoints = Readonly<{
 }>;
 
 const breakpoints: Breakpoints = {
+  base: 0, // Used for base mobile styles
   xs: 320, // small mobile
   s: 480, // mobile
   m: 768, // tab, ipad - mini

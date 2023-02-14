@@ -30,8 +30,10 @@ export const useBreakpoint = ({
   const breakpointsTokenAndQueryCollection = useMemo(
     () =>
       (supportsMatchMedia
-        ? Object.entries(breakpoints).map(([token, screenSize]) => {
-            const mediaQuery = getMediaQuery(screenSize);
+        ? Object.entries(breakpoints).map(([token, screenSize], index, breakpointsArray) => {
+            const min = screenSize;
+            const maxValue = breakpointsArray[index + 1]?.[1];
+            const mediaQuery = getMediaQuery({ min, max: maxValue ? maxValue - 1 : undefined });
             return { token, screenSize, mediaQuery };
           })
         : []) as {
@@ -51,7 +53,7 @@ export const useBreakpoint = ({
       // @TODO: In earlier logic, tablets were not considered as "mobile" here. Although the comment said "tablets are considered as mobile"
       // Now that we've changed the tokens to `min-width`, it will start considering tab as mobile.
       // Check if that is expected or not
-      if (matchedBreakpoint && ['xs', 's', 'm'].includes(matchedBreakpoint)) {
+      if (matchedBreakpoint && ['base', 'xs', 's'].includes(matchedBreakpoint)) {
         // tablet is also categorised as mobile
         matchedDeviceType = deviceType.mobile;
       } else {
@@ -67,8 +69,7 @@ export const useBreakpoint = ({
   const getMatchedBreakpoint = useCallback(
     (event?: MediaQueryListEvent): Breakpoint => {
       const matchedBreakpoint =
-        // .reverse() because we want to find the last matching breakpoint (e.g. We want to match `xl`s media query if screenSize is beyond xl)
-        breakpointsTokenAndQueryCollection.reverse().find(({ mediaQuery = '' }) => {
+        breakpointsTokenAndQueryCollection.find(({ mediaQuery = '' }) => {
           // this will run whenever mediaQuery change event is triggered
           if (event?.media === mediaQuery) {
             return true;
