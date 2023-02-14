@@ -18,7 +18,6 @@ import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
-import { useTheme } from '~components/BladeProvider';
 
 type ActionListItemProps = {
   title: string;
@@ -212,8 +211,6 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     isKeydownPressed,
   } = useDropdown();
 
-  const { theme } = useTheme();
-
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
     typeof props._index === 'number'
@@ -281,7 +278,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
           justifyContent="center"
           flexDirection="row"
           alignItems="center"
-          maxHeight={isReactNative() ? undefined : theme.spacing[6]}
+          maxHeight={isReactNative() ? undefined : 'spacing.6'}
         >
           <BaseBox display="flex" justifyContent="center" alignItems="center">
             {selectionType === 'multiple' ? (
