@@ -67,7 +67,8 @@ export const useBreakpoint = ({
   const getMatchedBreakpoint = useCallback(
     (event?: MediaQueryListEvent): Breakpoint => {
       const matchedBreakpoint =
-        breakpointsTokenAndQueryCollection.find(({ mediaQuery = '' }) => {
+        // .reverse() because we want to find the last matching breakpoint (e.g. We want to match `xl`s media query if screenSize is beyond xl)
+        breakpointsTokenAndQueryCollection.reverse().find(({ mediaQuery = '' }) => {
           // this will run whenever mediaQuery change event is triggered
           if (event?.media === mediaQuery) {
             return true;
