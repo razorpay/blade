@@ -67,7 +67,7 @@ const getSpacingValue = (
     return responsiveSpacingValue.map((value) => getSpacingValue(value, theme)).join(' ');
   }
 
-  if (responsiveSpacingValue.startsWith('spacing.')) {
+  if (typeof responsiveSpacingValue === 'string' && responsiveSpacingValue.startsWith('spacing.')) {
     const spacingReturnValue = getIn(theme, responsiveSpacingValue);
     return spacingReturnValue ? makeSpace(spacingReturnValue) : undefined;
   }
