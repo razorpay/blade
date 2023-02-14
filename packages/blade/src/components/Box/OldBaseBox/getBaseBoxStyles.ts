@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components';
 import type { BaseBoxProps } from './types';
-import { getIn, makeSize, makeSpace } from '~utils';
+import { getIn, makeBorderSize, makeSize, makeSpace } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 
 // allows 'auto' as spacing value
@@ -29,6 +29,7 @@ const getBaseBoxStyles = ({
   flexWrap,
   flexDirection,
   flexGrow,
+  flexShrink,
   alignItems,
   alignContent,
   justifyContent,
@@ -64,6 +65,7 @@ const getBaseBoxStyles = ({
   flex,
   flexWrap,
   flexGrow,
+  flexShrink,
   flexDirection,
   alignItems,
   alignContent,
@@ -94,7 +96,7 @@ const getBaseBoxStyles = ({
   background,
   backgroundColor,
   zIndex,
-  borderRadius: borderRadius ? makeSize(getIn(theme, `border.radius.${borderRadius}`)) : undefined,
+  borderRadius: makeBorderSize(getIn(theme, `border.radius.${borderRadius}`)),
 });
 
 export default getBaseBoxStyles;
