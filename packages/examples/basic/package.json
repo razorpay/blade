@@ -6,7 +6,7 @@
     "build:blade": "cd ../../blade && yarn build",
     "build:app": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "analyze:only": "source-map-explorer 'build/static/js/*.js' --gzip",
-    "analyze": "yarn build:app && yarn analyze:only"
+    "analyze": "yarn build && yarn analyze:only"
   },
   "dependencies": {
     "@razorpay/blade": "../../blade/build/",
