@@ -20,7 +20,7 @@ import { BottomSheet } from '@razorpay/blade';
 <BottomSheet open={boolean} snapPoints={[]}>
   <BottomSheetHeader>
     <BottomSheetHeaderLeading title="Payments Links" prefix={BladeIcon} />
-    <BottomSheetHeaderTrailing visual={Link|Action|Icon} />
+    <BottomSheetHeaderTrailing visual={Link | Action | Icon} />
   </BottomSheetHeader>
   <BottomSheetBody>Body Content</BottomSheetBody>
   <BottomSheet>
@@ -35,19 +35,21 @@ import { BottomSheet } from '@razorpay/blade';
 </BottomSheet>;
 ```
 
-**Design Constraints** 
+**Design Constraints**
 
 - BottomSheetHeader:
-  - Leading: 
+
+  - Leading:
     - Title
     - Prefix
-  - Trailing:  
+  - Trailing:
     - empty
     - icon
     - link
     - action
 
 - BottomSheetFooter:
+
   - Leading
     - title
     - prefix
@@ -62,40 +64,38 @@ import { BottomSheet } from '@razorpay/blade';
 
 We'll expose an `BottomSheeet` component with the following API:
 
-| Prop       | Type       | Default                 | Description                                        | Required |
-| ---------- | ---------- | ----------------------- | -------------------------------------------------- | -------- |
-| open       | `boolean`  | `false`                 | toggles bottom sheet state content                 |       |
-| snapPoints | `string[]` | `['25%', '50%', '85%']` | snappoints in which the bottom sheeet will rest on |        |
-| onDismiss | `Callback` | `undefined` | called when the bottom sheet is closed, either by user state, hitting `esc` or tapping backdrop |        |
-| initialFocusRef | `React.Ref` | `undefined` | ref element you want to get keyboard focus when opening the sheet |   |
+| Prop            | Type        | Default                 | Description                                                                                     | Required |
+| --------------- | ----------- | ----------------------- | ----------------------------------------------------------------------------------------------- | -------- |
+| open            | `boolean`   | `false`                 | toggles bottom sheet state content                                                              |          |
+| snapPoints      | `string[]`  | `['25%', '50%', '85%']` | snappoints in which the bottom sheeet will rest on                                              |          |
+| onDismiss       | `Callback`  | `undefined`             | called when the bottom sheet is closed, either by user state, hitting `esc` or tapping backdrop |          |
+| initialFocusRef | `React.Ref` | `undefined`             | ref element you want to get keyboard focus when opening the sheet                               |          |
 
 ### `BottomSheetBody`
 
-| Prop       | Type              | Default     | Description                                                               | Required |
-| ---------- | ----------------- | ----------- | ------------------------------------------------------------------------- | -------- |
-| `children`    | `React.ReactNode` | `undefined` | Contents of the BottomSheet    | ✅        |
-
+| Prop       | Type              | Default     | Description                 | Required |
+| ---------- | ----------------- | ----------- | --------------------------- | -------- |
+| `children` | `React.ReactNode` | `undefined` | Contents of the BottomSheet | ✅       |
 
 ### `BottomSheetHeaderLeading` API
 
-
-| Prop       | Type              | Default     | Description                                                               | Required |
-| ---------- | ----------------- | ----------- | ------------------------------------------------------------------------- | -------- |
-| `title`    | `string`          | `undefined` | Title of the Card                                                         | ✅        |
-| `prefix`   | `IconComponent` | `undefined` | Prefix icon placed before title text   |          |
+| Prop     | Type            | Default     | Description                          | Required |
+| -------- | --------------- | ----------- | ------------------------------------ | -------- |
+| `title`  | `string`        | `undefined` | Title of the Card                    | ✅       |
+| `prefix` | `IconComponent` | `undefined` | Prefix icon placed before title text |          |
 
 ### `BottomSheetHeaderTrailing` API
 
-| Prop     | Type              | Default     | Description                                                                                                                                     | Required |
-| -------- | ----------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Prop     | Type                 | Default     | Description                                                | Required |
+| -------- | -------------------- | ----------- | ---------------------------------------------------------- | -------- |
 | `visual` | `Link, Action, Icon` | `undefined` | Trailing visual element placed on right side of the header |          |
 
 ### `BottomSheetFooterLeading` API
 
-| Prop       | Type     | Default     | Description          | Required |
-| ---------- | -------- | ----------- | -------------------- | -------- |
-| `title`    | `string` | `undefined` | Title of the BottomSheet footer    | ✅        |
-| `prefix`   | `IconComponent` | `undefined` | Prefix icon placed before title text   |          |
+| Prop     | Type            | Default     | Description                          | Required |
+| -------- | --------------- | ----------- | ------------------------------------ | -------- |
+| `title`  | `string`        | `undefined` | Title of the BottomSheet footer      | ✅       |
+| `prefix` | `IconComponent` | `undefined` | Prefix icon placed before title text |          |
 
 ### `BottomSheetFooterTrailing` API
 
@@ -112,51 +112,101 @@ type Action = {
   isLoading: boolean;
   isDisabled: boolean;
   icon: React.ReactNode;
-  iconPosition: "left" | "right"
-}
+  iconPosition: 'left' | 'right';
+};
 ```
 
-## Composition with DropDown 
+## Composition with DropDown
 
-We will export `BottomSheet` component separately as an independant component but generally the pattern will be to use it with SelectInput, where in mobile devices the Select's dropdown will be replaced by the BottomSheet. 
+We will export `BottomSheet` component separately as an independant component but generally the pattern will be to use it with SelectInput, where in mobile devices the Select's dropdown will be replaced by the BottomSheet.
 
-There are two approaches to doing it: 
+There are two approaches to doing it:
 
 1. We coupled the BottomSheet & SelectInput tightly and internally conditionally switch the components
 
-Pros: 
+Pros:
 
 - Easy implementation for user's end
 - User's don't have to think about breakpoints, conditional rendering etc
 - From blade side, we will have greater control over the pattern
 
-Cons: 
+Cons:
 
 - Bundle size will be impacted, even if users are desktop they will get the bundle of BottomSheet (vice versa)
 
-
 2. We expose BottomSheet indepandantly and let users lazy load the component as needed
 
-Pros: 
+Pros:
 
 - No uneccesary bundle size impact for any of the platforms
 
-Cons: 
+Cons:
 
 - Not trivial to implement from user's end, they will have to compose the BottomSheet & Select as per their needs.
 
-### Composition Example 
 
+Considering the bundle size downside to approach 1, we decided to go ahead with approach 2.
 
+### Composition Example
 
+```jsx
+const BottomSheet = React.lazy();
+const DropdownOverlay = React.lazy();
+
+const SelectContent = () => {
+  return (
+    <>
+      <ActionListItem
+        leading={<ActionListItemIcon icon={SettingsIcon} />}
+        title="Settings"
+        value="settings"
+      />
+      <ActionListItem leading={<ActionListItemIcon icon={InfoIcon} />} title="Info" value="info" />
+    </>
+  );
+};
+
+const App = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Dropdown selectionType={selectionType}>
+      <SelectInput label="Select Action" onClick={() => setOpen(true)} />
+      {isMobile ? (
+        <BottomSheet open={open} onDismiss={() => setOpen(false)}>
+          <BottomSheetHeader>
+            <BottomSheetHeaderLeading title="Payments Links" prefix={PayIcon} />
+          </BottomSheetHeader>
+          <BottomSheetBody>
+            <SelectContent />
+          </BottomSheetBody>
+          <BottomSheet>
+            <BottomSheetLeading title="Footer Title" prefix={icon} />
+            <BottomSheetTrailing
+              actions={{
+                primaryAction: { text: 'Confirm' },
+                secondaryAction: { text: 'Close' },
+              }}
+            />
+          </BottomSheet>
+        </BottomSheet>
+      ) : (
+        <DropdownOverlay>
+          <SelectContent />
+        </DropdownOverlay>
+      )}
+    </Dropdown>
+  );
+};
+```
 
 ## Accessibility
 
-The bottom sheet will follow the accessibility charechtaristics of a Modal. 
+The bottom sheet will follow the accessibility charechtaristics of a Modal.
 
 [APG Guidelines for Modal](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)
 
-Behaviours: 
+Behaviours:
 
 - Tab, Shift+Tab should cycle the focused elements
 - The focus should be trapped inside the bottom sheet
@@ -166,8 +216,7 @@ Behaviours:
 ## Open questions
 
 1. What is `action` in the header trailing visual?
-2. In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component? 
-
+2. In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component?
 
 ## References
 
