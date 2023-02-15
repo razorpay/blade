@@ -82,13 +82,8 @@ const getBackgroundValue = (
   size?: keyof Breakpoints,
 ): string => {
   const responsiveBackgroundValue = getResponsiveValue(backgroundColor, size);
-  if (responsiveBackgroundValue?.includes('.')) {
-    const val = getIn(theme, `colors.${responsiveBackgroundValue}`);
-    console.log({ val });
-    return val;
-  }
-
-  return responsiveBackgroundValue;
+  const tokenValue = getIn(theme, `colors.${responsiveBackgroundValue}`);
+  return tokenValue ?? responsiveBackgroundValue;
 };
 
 const getAllProps = (
