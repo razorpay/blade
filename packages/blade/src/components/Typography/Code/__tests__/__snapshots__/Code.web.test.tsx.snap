@@ -22,9 +22,29 @@ exports[`<Code /> should render Code with default properties 1`] = `
   line-height: 1rem;
 }
 
+@media screen and (min-width:320px) {
+
+}
+
+@media screen and (min-width:480px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
 <div>
   <span
-    class=" c0"
+    class="c0"
     data-blade-component="code"
   >
     <code
@@ -61,9 +81,29 @@ exports[`<Code /> should render medium Code 1`] = `
   line-height: 1rem;
 }
 
+@media screen and (min-width:320px) {
+
+}
+
+@media screen and (min-width:480px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
 <div>
   <span
-    class=" c0"
+    class="c0"
     data-blade-component="code"
   >
     <code
@@ -100,9 +140,29 @@ exports[`<Code /> should render small Code 1`] = `
   line-height: 1rem;
 }
 
+@media screen and (min-width:320px) {
+
+}
+
+@media screen and (min-width:480px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
 <div>
   <span
-    class=" c0"
+    class="c0"
     data-blade-component="code"
   >
     <code

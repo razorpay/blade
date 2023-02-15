@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<List /> should render List with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  bALAZM\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 cYBkHe\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bHjZqr\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"3px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 1</p></div><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 cYBkHe\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bHjZqr\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"2.5px\\" stroke=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 2</p></div><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 cYBkHe\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bHjZqr\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\"><rect height=\\"6px\\" width=\\"6px\\" rx=\\"1px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></rect></svg></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 3</p></div></li></ul></li></ul></li></ul></div>"`;
+exports[`<List /> should render List with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  bALAZM\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fkpCrs\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 iyyDeM\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"3px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 1</p></div><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fkpCrs\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 iyyDeM\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"2.5px\\" stroke=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 2</p></div><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fkpCrs\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 iyyDeM\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\"><rect height=\\"6px\\" width=\\"6px\\" rx=\\"1px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></rect></svg></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 3</p></div></li></ul></li></ul></li></ul></div>"`;
 
 exports[`<List /> should render List with default properties 2`] = `
 <div
@@ -17,11 +17,11 @@ exports[`<List /> should render List with default properties 2`] = `
       data-blade-component="list-item"
     >
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 cYBkHe"
+        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fkpCrs"
         display="flex"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bHjZqr"
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 iyyDeM"
           display="flex"
         >
           <svg
@@ -62,11 +62,11 @@ exports[`<List /> should render List with default properties 2`] = `
           data-blade-component="list-item"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 cYBkHe"
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fkpCrs"
             display="flex"
           >
             <div
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bHjZqr"
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 iyyDeM"
               display="flex"
             >
               <svg
@@ -107,11 +107,11 @@ exports[`<List /> should render List with default properties 2`] = `
               data-blade-component="list-item"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 cYBkHe"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fkpCrs"
                 display="flex"
               >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bHjZqr"
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 iyyDeM"
                   display="flex"
                 >
                   <svg

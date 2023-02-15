@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"card\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 CardSurfaceweb__CardSurface-sc-1pgxikk-0 kAwrg koQeuE\\"><div data-blade-component=\\"card-header\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bKGY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hWnStg\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hOpCtc\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 pzopn\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"24px\\" viewBox=\\"0 0 24 24\\" width=\\"24px\\" fill=\\"none\\"><path d=\\"M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z\\" fill=\\"hsla(217, 56%, 17%, 1)\\"></path><path d=\\"M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z\\" fill=\\"hsla(217, 56%, 17%, 1)\\"></path><path d=\\"M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(217, 56%, 17%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gRGQKE\\"><h6 color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"200\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 evDBOX\\" data-blade-component=\\"heading\\">Card Header</h6><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fEIqmi\\"><div class=\\"StyledCounterweb__StyledCounter-sc-1itt9w6-0 dTYmGd\\"><div display=\\"flex\\" overflow=\\"hidden\\" data-blade-component=\\"counter\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gicEBb\\"><p color=\\"feedback.text.neutral.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 iisOWq Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">12</p></div></div></div></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 fRWnfa Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Card subtitle</p></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ktrYMF\\"><div data-blade-component=\\"badge\\" class=\\"StyledBadgeweb__StyledBadge-sc-1svn4tv-0 dnvyGQ\\"><div display=\\"flex\\" overflow=\\"hidden\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gicEBb\\"><p color=\\"feedback.text.neutral.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 iisOWq Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">NEW</p></div></div></div></div><div class=\\"Dividerweb__Divider-sc-11gx34j-0 hCmUnz\\"></div></div><div data-blade-component=\\"card-body\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Plain Card</p></div><div data-blade-component=\\"card-footer\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dJHPpB\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gjJyyw\\"></div><div class=\\"Dividerweb__Divider-sc-11gx34j-0 hCmUnz\\"></div><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 eVjtrg\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 jueNxQ Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Card Footer</p><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 fRWnfa Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Card footer subtitle</p></div><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bSrqkG\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 icZlVk\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eMDyDk\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA\\"><div color=\\"action.text.secondary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bWvucQ\\">Delete</div></div></button></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 drsEPZ\\"></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 icZlVk\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 ckLAWH\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA\\"><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD\\">Save</div></div></button></div></div></div></div></div></div>"`;
+exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"card\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 CardSurfaceweb__CardSurface-sc-1pgxikk-0 drTQuw koQeuE\\"><div data-blade-component=\\"card-header\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hUCXVQ\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hhqyZQ\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bLFgew\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kSZLtA\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"24px\\" viewBox=\\"0 0 24 24\\" width=\\"24px\\" fill=\\"none\\"><path d=\\"M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z\\" fill=\\"hsla(217, 56%, 17%, 1)\\"></path><path d=\\"M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z\\" fill=\\"hsla(217, 56%, 17%, 1)\\"></path><path d=\\"M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(217, 56%, 17%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 IAoMo\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 klVIVA\\"><h6 color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"200\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 evDBOX\\" data-blade-component=\\"heading\\">Card Header</h6><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bZGPrc\\"><div class=\\"StyledCounterweb__StyledCounter-sc-1itt9w6-0 dTYmGd\\"><div display=\\"flex\\" overflow=\\"hidden\\" data-blade-component=\\"counter\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gFBqZQ\\"><p color=\\"feedback.text.neutral.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 iisOWq Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">12</p></div></div></div></div><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 fRWnfa Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Card subtitle</p></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 llvoPs\\"><div data-blade-component=\\"badge\\" class=\\"StyledBadgeweb__StyledBadge-sc-1svn4tv-0 dnvyGQ\\"><div display=\\"flex\\" overflow=\\"hidden\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gFBqZQ\\"><p color=\\"feedback.text.neutral.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 iisOWq Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">NEW</p></div></div></div></div><div class=\\"Dividerweb__Divider-sc-11gx34j-0 hCmUnz\\"></div></div><div data-blade-component=\\"card-body\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 IAoMo\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Plain Card</p></div><div data-blade-component=\\"card-footer\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 EDsrY\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fHpdNQ\\"></div><div class=\\"Dividerweb__Divider-sc-11gx34j-0 hCmUnz\\"></div><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 eOTboE\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 IAoMo\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 jueNxQ Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Card Footer</p><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 fRWnfa Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Card footer subtitle</p></div><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 evGYjs\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 eMVVCM\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eMDyDk\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 gTXSwo NIPoA\\"><div color=\\"action.text.secondary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bWvucQ\\">Delete</div></div></button></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 vVElk\\"></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 eMVVCM\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 ckLAWH\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 gTXSwo NIPoA\\"><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD\\">Save</div></div></button></div></div></div></div></div></div>"`;
 
 exports[`<Card /> should render a Card with Header & Footer 2`] = `
 <div
@@ -8,23 +8,23 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   id="root"
 >
   <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 CardSurfaceweb__CardSurface-sc-1pgxikk-0 kAwrg koQeuE"
+    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 CardSurfaceweb__CardSurface-sc-1pgxikk-0 drTQuw koQeuE"
     data-blade-component="card"
   >
     <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bKGY"
+      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hUCXVQ"
       data-blade-component="card-header"
     >
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hWnStg"
+        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hhqyZQ"
         display="flex"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hOpCtc"
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bLFgew"
           display="flex"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 pzopn"
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kSZLtA"
             display="flex"
           >
             <svg
@@ -52,10 +52,10 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             </svg>
           </div>
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 IAoMo"
           >
             <div
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gRGQKE"
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 klVIVA"
               display="flex"
             >
               <h6
@@ -70,13 +70,13 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                 Card Header
               </h6>
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fEIqmi"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bZGPrc"
               >
                 <div
                   class="StyledCounterweb__StyledCounter-sc-1itt9w6-0 dTYmGd"
                 >
                   <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gicEBb"
+                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gFBqZQ"
                     data-blade-component="counter"
                     display="flex"
                     overflow="hidden"
@@ -110,14 +110,14 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
           </div>
         </div>
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ktrYMF"
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 llvoPs"
         >
           <div
             class="StyledBadgeweb__StyledBadge-sc-1svn4tv-0 dnvyGQ"
             data-blade-component="badge"
           >
             <div
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gicEBb"
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gFBqZQ"
               display="flex"
               overflow="hidden"
             >
@@ -141,7 +141,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
       />
     </div>
     <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 IAoMo"
       data-blade-component="card-body"
     >
       <p
@@ -157,21 +157,21 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
       </p>
     </div>
     <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 dJHPpB"
+      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 EDsrY"
       data-blade-component="card-footer"
     >
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gjJyyw"
+        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fHpdNQ"
       />
       <div
         class="Dividerweb__Divider-sc-11gx34j-0 hCmUnz"
       />
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 eVjtrg"
+        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 eOTboE"
         display="flex"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 IAoMo"
         >
           <p
             class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 jueNxQ Text__StyledText-wkh56f-0"
@@ -197,11 +197,11 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
           </p>
         </div>
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bSrqkG"
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 evGYjs"
           display="flex"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 icZlVk"
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 eMVVCM"
           >
             <button
               class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eMDyDk"
@@ -210,7 +210,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               type="button"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 gTXSwo NIPoA"
                 display="flex"
               >
                 <div
@@ -225,10 +225,10 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             </button>
           </div>
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 drsEPZ"
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 vVElk"
           />
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 icZlVk"
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 eMVVCM"
           >
             <button
               class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 ckLAWH"
@@ -237,7 +237,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               type="button"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 gTXSwo NIPoA"
                 display="flex"
               >
                 <div

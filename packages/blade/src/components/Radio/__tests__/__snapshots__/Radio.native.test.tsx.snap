@@ -16,8 +16,6 @@ exports[`<Radio /> should render radio with label 1`] = `
   }
 >
   <View
-    marginBottom="spacing.2"
-    marginRight="spacing.5"
     style={
       Array [
         Object {
@@ -40,7 +38,6 @@ exports[`<Radio /> should render radio with label 1`] = `
             "display": "flex",
             "flexDirection": "row",
             "flexWrap": "wrap",
-            "gap": 0,
           },
         ]
       }
@@ -160,7 +157,6 @@ exports[`<Radio /> should render radio with label 1`] = `
       }
     >
       <View
-        marginBottom={0}
         style={
           Array [
             Object {
@@ -259,7 +255,6 @@ exports[`<Radio /> should render radio with label 1`] = `
                 }
               />
               <View
-                marginLeft="spacing.2"
                 style={
                   Array [
                     Object {
@@ -300,7 +295,6 @@ exports[`<Radio /> should render radio with label 1`] = `
               </Text>
             </View>
             <View
-              marginLeft="spacing.7"
               style={
                 Array [
                   Object {
@@ -333,8 +327,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   }
 >
   <View
-    marginBottom="spacing.2"
-    marginRight="spacing.5"
     style={
       Array [
         Object {
@@ -357,7 +349,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
             "display": "flex",
             "flexDirection": "row",
             "flexWrap": "wrap",
-            "gap": 0,
           },
         ]
       }
@@ -477,7 +468,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       }
     >
       <View
-        marginBottom={0}
         style={
           Array [
             Object {
@@ -576,7 +566,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 }
               />
               <View
-                marginLeft="spacing.2"
                 style={
                   Array [
                     Object {
@@ -617,7 +606,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
               </Text>
             </View>
             <View
-              marginLeft="spacing.7"
               style={
                 Array [
                   Object {

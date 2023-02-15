@@ -29,12 +29,10 @@ exports[`<Alert /> should render 1`] = `
 >
   <View
     display="flex"
-    marginTop="spacing.0"
     style={
       Array [
         Object {
           "display": "flex",
-          "marginTop": 0,
         },
       ]
     }
@@ -110,9 +108,6 @@ exports[`<Alert /> should render 1`] = `
     </RNSVGSvgView>
   </View>
   <View
-    flex={1}
-    paddingLeft="spacing.3"
-    paddingRight="spacing.2"
     style={
       Array [
         Object {
@@ -126,12 +121,9 @@ exports[`<Alert /> should render 1`] = `
     }
   >
     <View
-      marginTop="spacing.0"
       style={
         Array [
-          Object {
-            "marginTop": 0,
-          },
+          Object {},
         ]
       }
     >
@@ -282,7 +274,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
 >
   <View
     display="flex"
-    marginTop="spacing.1"
     style={
       Array [
         Object {
@@ -373,9 +364,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     </RNSVGSvgView>
   </View>
   <View
-    flex={1}
-    paddingLeft="spacing.4"
-    paddingRight="spacing.2"
     style={
       Array [
         Object {
@@ -389,12 +377,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     }
   >
     <View
-      marginTop="spacing.0"
       style={
         Array [
-          Object {
-            "marginTop": 0,
-          },
+          Object {},
         ]
       }
     >
