@@ -57,43 +57,44 @@ const AmountTemplate: ComponentStory<typeof AmountComponent> = ({ children, ...a
 
 export const Amount = AmountTemplate.bind({});
 Amount.args = {
-  children: '12000.231',
+  children: '120322.231',
   variant: 'neutral',
-  fontWeight: 'regular',
+  fontWeight: 'bold',
   size: 'small',
 };
 Amount.storyName = 'Default';
 
-const AmountsWithVariantTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
-  const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
+// const AmountsWithVariantTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
+//   const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
 
-  const getLabel = (label: string): string => {
-    return args.fontWeight === 'bold' ? label.toUpperCase() : capitalize(label);
-  };
+//   const getLabel = (label: string): string => {
+//     return args.fontWeight === 'bold' ? label.toUpperCase() : capitalize(label);
+//   };
 
-  return (
-    <Box display="flex" flexDirection="column">
-      <Box
-        display="flex"
-        flexDirection="row"
-        paddingTop="spacing.3"
-        paddingBottom="spacing.5"
-        flexWrap="wrap"
-      >
-        {variants.map((variant) => (
-          <Box key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
-            <AmountComponent {...args} variant={variant}>
-              {getLabel(variant)}
-            </AmountComponent>
-          </Box>
-        ))}
-      </Box>
-    </Box>
-  );
-};
+//   return (
+//     <Box display="flex" flexDirection="column">
+//       <Box
+//         display="flex"
+//         flexDirection="row"
+//         paddingTop="spacing.3"
+//         paddingBottom="spacing.5"
+//         flexWrap="wrap"
+//       >
+//         {variants.map((variant) => (
+//           <Box key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
+//             <AmountComponent {...args} variant={variant}>
+//               {getLabel(variant)}
+//             </AmountComponent>
+//           </Box>
+//         ))}
+//       </Box>
+//     </Box>
+//   );
+// };
 
-export const AmountSmallSize = AmountsWithVariantTemplate.bind({});
-AmountSmallSize.args = {
-  size: 'large',
-};
-AmountSmallSize.storyName = 'Small Size';
+// export const AmountSmallSize = AmountsWithVariantTemplate.bind({});
+// AmountSmallSize.args = {
+//   size: 'large',
+//   variant: 'negative',
+// };
+// AmountSmallSize.storyName = 'Small Size';

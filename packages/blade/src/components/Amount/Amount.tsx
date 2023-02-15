@@ -1,10 +1,10 @@
-import { Children, ReactElement, useState } from 'react';
+import type { ReactElement } from 'react';
 import { BaseText } from '../Typography/BaseText/BaseText.web';
 import { horizontalPadding, verticalPadding } from './amountTokens';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import { metaAttribute, MetaConstants } from '~utils';
+// import { metaAttribute, MetaConstants } from '~utils';
 
 type AmountProps = {
   /**
@@ -17,7 +17,7 @@ type AmountProps = {
    *
    * @default 'neutral'
    */
-  variant?: Feedback | 'blue';
+  variant?: Feedback | 'blue' | 'none';
   /**
    * Sets the size of the amount.
    *
@@ -30,12 +30,6 @@ type AmountProps = {
    * @default 'regular'
    */
   fontWeight?: 'regular' | 'bold';
-  /**
-   * Indicates whether the amount has or can have decimals
-   *
-   * @default 'regular'
-   */
-  hasDecimals?: true | false;
   /**
    * Indicates whether a text suffix should be used
    *
@@ -59,6 +53,7 @@ const isFeedbackVariant = (variant: string): variant is Feedback => {
 
 type ColorProps = {
   textColor: BaseTextProps['color'];
+  prefixSuffixColor: BaseTextProps['color'];
 };
 
 const getColorProps = ({
@@ -68,88 +63,118 @@ const getColorProps = ({
 }): ColorProps => {
   const props: ColorProps = {
     textColor: 'feedback.text.neutral.lowContrast',
+    prefixSuffixColor: 'feedback.text.neutral.lowContrast',
   };
   if (isFeedbackVariant(variant)) {
     props.textColor = `feedback.text.${variant}.lowContrast`;
+    props.prefixSuffixColor = `feedback.text.${variant}.lowContrast`;
+    if (variant === 'neutral') {
+      props.prefixSuffixColor = `surface.text.muted.lowContrast`;
+    }
   } else {
     props.textColor = `badge.text.${variant}.lowContrast`;
+    props.prefixSuffixColor = `badge.text.${variant}.lowContrast`;
   }
   return props;
 };
 
-const addCommas = (num) => {
+const addCommas = (num: string): string => {
   return Number(num).toLocaleString('en-IN');
 };
 
-const getFormattedAmountWithSuffixSymbol = (num) => {
-  if (num < 1000) {
-    return num.toFixed(2);
+const getFormattedAmountWithSuffixSymbol = (num: number): string => {
+  let suffix = '';
+  if (num >= 10000000) {
+    num = (num / 10000000).toFixed(2);
+    suffix = 'Cr';
+  } else if (num >= 100000) {
+    num = (num / 100000).toFixed(2);
+    suffix = 'l';
+  } else if (num >= 1000) {
+    num = (num / 1000).toFixed(2);
+    suffix = 'k';
+  } else {
+    num = num.toFixed(2);
   }
-  if (num >= 1000 && num < 100000) {
-    return (num / 1000).toFixed(0) + ' k';
-  }
-  if (num >= 100000 && num < 10000000) {
-    return (num / 100000).toFixed(0) + ' l';
-  }
-  return (num / 10000000).toFixed(0) + ' Cr';
+  return addCommas(num) + suffix;
 };
 
-const formatAmountWithSuffix = (suffix, num) => {
+const formatAmountWithSuffix = (suffix: string, num: number): string => {
   switch (suffix) {
     case 'Decimals': {
-      return addCommas(parseFloat(num).toFixed(2));
+      return addCommas(num.toFixed(2));
     }
     case 'Humanise': {
       return getFormattedAmountWithSuffixSymbol(num);
     }
     default:
-      return num;
+      return num.toFixed(0);
   }
+};
+
+const prefixSuffixTextSizes = {
+  small: 50,
+  medium: 50,
+  large: 200,
+  xlarge: 75,
+  '2xlarge': 200,
+  '3xlarge': 300,
+} as const;
+
+const amountTextSizes = {
+  small: {
+    fontSize: 50,
+  },
+  medium: {
+    fontSize: 75,
+  },
+  large: {
+    fontSize: 100,
+  },
+  xlarge: {
+    fontSize: 300,
+  },
+  '2xlarge': {
+    fontSize: 500,
+  },
+  '3xlarge': {
+    fontSize: 700,
+  },
+} as const;
+
+const getRupeeFontSize = (
+  isSuffixPrefixHighlighted: NonNullable<AmountProps['isSuffixPrefixHighlighted']>,
+  size: NonNullable<AmountProps['size']>,
+): number => {
+  if (isSuffixPrefixHighlighted) return prefixSuffixTextSizes[size];
+  return amountTextSizes[size].fontSize;
+};
+
+const getRupeeFontWeight = (
+  isSuffixPrefixHighlighted: true | false,
+  fontWeight: 'regular' | 'bold',
+): 'regular' | 'bold' => {
+  if (!isSuffixPrefixHighlighted && fontWeight === 'regular') return 'regular';
+  return 'bold';
 };
 
 const Amount = ({
   children,
-  suffix = 'Humanise',
+  suffix = 'Decimals',
   fontWeight = 'regular',
   size = 'medium',
   isSuffixPrefixHighlighted = true,
   variant = 'neutral',
 }: AmountProps): ReactElement => {
-  if (!children?.trim()) {
-    throw new Error('[Blade: Badge]: Text as children is required for Badge.');
+  if (!children?.trim() && typeof children !== 'string') {
+    throw new Error('[Blade: Badge]: Text as children is required for Amount.');
   }
 
-  const value = formatAmountWithSuffix(suffix, Number(children));
-  const { textColor } = getColorProps({
+  const num = Number(children);
+  const value = formatAmountWithSuffix(suffix, num);
+  const { textColor, prefixSuffixColor } = getColorProps({
     variant,
   });
-
-  const amountTextSizes = {
-    small: {
-      variant: 'body',
-      size: 'xsmall',
-    },
-    medium: {
-      variant: 'body',
-      size: 'small',
-    },
-    large: {
-      variant: 'body',
-      size: 200,
-    },
-    xlarge: {
-      variant: 'body',
-      size: 200,
-    },
-    '2xlarge': {
-      variant: 'body',
-      size: 'small',
-    },
-    '3xlarge': {
-      variant: 'body',
-      size: 'small',
-    },
-  } as const;
 
   return (
     <Box
@@ -160,20 +185,69 @@ const Amount = ({
       display="flex"
       flexDirection="row"
       justifyContent="center"
-      alignItems="center"
+      alignItems="baseline"
       overflow="hidden"
     >
       <BaseText
-        {...amountTextSizes[size]}
-        type="normal"
-        weight={fontWeight}
-        truncateAfterLines={1}
-        color={textColor}
+        fontWeight={getRupeeFontWeight(size, fontWeight)}
+        fontSize={getRupeeFontSize(isSuffixPrefixHighlighted, size)}
+        color={prefixSuffixColor}
       >
         {RUPEE_SYMBOL}
-        {value}
       </BaseText>
+      {/* <BaseText {...amountTextSizes[size]} fontWeight={fontWeight} color={textColor}>
+        {value}
+      </BaseText> */}
+      <BaseAmount
+        value={value}
+        fontWeight={fontWeight}
+        textColor={textColor}
+        size={size}
+        isSuffixPrefixHighlighted={isSuffixPrefixHighlighted}
+        suffix={suffix}
+        prefixSuffixColor={prefixSuffixColor}
+      />
     </Box>
+  );
+};
+
+const getDecimalFontWeight = (isSuffixPrefixHighlighted: true | false): 'regular' | 'bold' => {
+  if (isSuffixPrefixHighlighted) return 'regular';
+  return 'bold';
+};
+
+const BaseAmount = ({
+  value,
+  size,
+  fontWeight,
+  textColor,
+  isSuffixPrefixHighlighted,
+  suffix,
+  prefixSuffixColor,
+}) => {
+  if (suffix === 'Decimals' && isSuffixPrefixHighlighted) {
+    const integer = value.split('.')[0];
+    const decimal = value.split('.')[1];
+    return (
+      <>
+        <BaseText {...amountTextSizes[size]} fontWeight={fontWeight} color={textColor}>
+          {integer}.
+        </BaseText>
+        <BaseText
+          {...amountTextSizes[size]}
+          fontWeight={getDecimalFontWeight(isSuffixPrefixHighlighted, fontWeight)}
+          fontSize={getRupeeFontSize(isSuffixPrefixHighlighted, size)}
+          color={prefixSuffixColor}
+        >
+          {decimal}
+        </BaseText>
+      </>
+    );
+  }
+  return (
+    <BaseText {...amountTextSizes[size]} fontWeight={fontWeight} color={textColor}>
+      {value}
+    </BaseText>
   );
 };
 
