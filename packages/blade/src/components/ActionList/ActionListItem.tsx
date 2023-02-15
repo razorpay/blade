@@ -10,7 +10,7 @@ import {
   getSeparatorRole,
   isRoleMenu,
 } from './getA11yRoles';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { Feedback } from '~tokens/theme/theme';
@@ -65,7 +65,7 @@ const ActionListItemContext = React.createContext<{
   isDisabled?: ActionListItemProps['isDisabled'];
 }>({});
 
-const StyledSectionDivider = styled(Box)((props) => ({
+const StyledSectionDivider = styled(BaseBox)((props) => ({
   // @TODO: replace this with token value if we add 1px token
   height: makeSize(1),
   backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
@@ -80,7 +80,7 @@ const ActionListSectionDivider = (): JSX.Element => (
   />
 );
 
-const StyledActionListSectionTitle = styled(Box)((props) => ({
+const StyledActionListSectionTitle = styled(BaseBox)((props) => ({
   // @TODO: replace this styled-component with new layout box when we have padding shorthand
   padding: makeSize(props.theme.spacing[3]),
 }));
@@ -103,7 +103,7 @@ const ActionListSection: WithComponentId<ActionListSectionProps> = ({
   _hideDivider,
 }): JSX.Element => {
   return (
-    <Box
+    <BaseBox
       {...makeAccessible({
         role: getActionListSectionRole(),
         label: title,
@@ -116,7 +116,7 @@ const ActionListSection: WithComponentId<ActionListSectionProps> = ({
           {title}
         </Text>
       </StyledActionListSectionTitle>
-      <Box
+      <BaseBox
         {...makeAccessible({
           // On web, we just wrap it in another listbox to announce item count properly for particular group.
           // On React Native, we ignore it since `menu` + `group` role will take care of accessibility
@@ -124,9 +124,9 @@ const ActionListSection: WithComponentId<ActionListSectionProps> = ({
         })}
       >
         {children}
-      </Box>
+      </BaseBox>
       {_hideDivider && isReactNative() ? null : <ActionListSectionDivider />}
-    </Box>
+    </BaseBox>
   );
 };
 
@@ -161,7 +161,7 @@ const ActionListItemText: WithComponentId<{ children: string }> = ({ children })
 
 ActionListItemText.componentId = componentIds.ActionListItemText;
 
-const ActionListCheckboxWrapper = styled(Box)<{ hasDescription: boolean }>((_props) => ({
+const ActionListCheckboxWrapper = styled(BaseBox)<{ hasDescription: boolean }>((_props) => ({
   pointerEvents: 'none',
 }));
 
@@ -276,14 +276,14 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         isSelected={isSelected}
         isKeydownPressed={isKeydownPressed}
       >
-        <Box
+        <BaseBox
           display="flex"
           justifyContent="center"
           flexDirection="row"
           alignItems="center"
           maxHeight={isReactNative() ? undefined : theme.spacing[6]}
         >
-          <Box display="flex" justifyContent="center" alignItems="center">
+          <BaseBox display="flex" justifyContent="center" alignItems="center">
             {selectionType === 'multiple' ? (
               // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
               <ActionListCheckboxWrapper
@@ -303,8 +303,8 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
             ) : (
               props.leading
             )}
-          </Box>
-          <Box
+          </BaseBox>
+          <BaseBox
             paddingLeft={selectionType === 'multiple' || !props.leading ? 'spacing.0' : 'spacing.3'}
             paddingRight="spacing.3"
           >
@@ -318,16 +318,18 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
             >
               {props.title}
             </Text>
-          </Box>
-          <Box marginLeft="auto">{props.trailing}</Box>
-        </Box>
-        <Box paddingLeft={props.leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
+          </BaseBox>
+          <BaseBox marginLeft="auto">{props.trailing}</BaseBox>
+        </BaseBox>
+        <BaseBox
+          paddingLeft={props.leading || selectionType === 'multiple' ? 'spacing.7' : undefined}
+        >
           {props.description ? (
             <Text color={getNormalTextColor(props.isDisabled, { isMuted: true })} size="small">
               {props.description}
             </Text>
           ) : null}
-        </Box>
+        </BaseBox>
       </StyledActionListItem>
     </ActionListItemContext.Provider>
   );

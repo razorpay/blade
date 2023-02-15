@@ -34,7 +34,7 @@ import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
@@ -271,7 +271,7 @@ const getProps = ({
   return props;
 };
 
-const ButtonContent = styled(Box)<{ isHidden: boolean }>(({ isHidden }) => ({
+const ButtonContent = styled(BaseBox)<{ isHidden: boolean }>(({ isHidden }) => ({
   opacity: isHidden ? 0 : 1,
 }));
 
@@ -379,7 +379,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...metaAttribute(MetaConstants.Component, MetaConstants.Button)}
     >
       {isLoading ? (
-        <Box
+        <BaseBox
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -395,7 +395,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             intent={intent}
             contrast={contrast}
           />
-        </Box>
+        </BaseBox>
       ) : null}
       <ButtonContent
         display="flex"
@@ -406,14 +406,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         isHidden={isLoading}
       >
         {Icon && iconPosition == 'left' ? (
-          <Box
+          <BaseBox
             paddingRight={iconPadding}
             display="flex"
             justifyContent="center"
             alignItems="center"
           >
             <Icon size={iconSize} color={iconColor} />
-          </Box>
+          </BaseBox>
         ) : null}
         {text ? (
           <BaseText
@@ -427,9 +427,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           </BaseText>
         ) : null}
         {Icon && iconPosition == 'right' ? (
-          <Box paddingLeft={iconPadding} display="flex" justifyContent="center" alignItems="center">
+          <BaseBox
+            paddingLeft={iconPadding}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
             <Icon size={iconSize} color={iconColor} />
-          </Box>
+          </BaseBox>
         ) : null}
       </ButtonContent>
     </StyledBaseButton>

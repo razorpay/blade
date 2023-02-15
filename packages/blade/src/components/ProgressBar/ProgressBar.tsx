@@ -7,7 +7,7 @@ import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
 type ProgressBarCommonProps = {
@@ -153,7 +153,7 @@ const ProgressBar = ({
 
   return (
     <>
-      <Box
+      <BaseBox
         display="flex"
         flexDirection="row"
         justifyContent={hasLabel ? 'space-between' : 'flex-end'}
@@ -164,17 +164,17 @@ const ProgressBar = ({
           </FormLabel>
         ) : null}
         {shouldShowPercentage ? (
-          <Box marginBottom="spacing.2">
+          <BaseBox marginBottom="spacing.2">
             <Text
               type="subdued"
               variant="body"
               contrast={contrast}
               size="small"
             >{`${percentageProgressValue}%`}</Text>
-          </Box>
+          </BaseBox>
         ) : null}
-      </Box>
-      <Box
+      </BaseBox>
+      <BaseBox
         id={id}
         {...metaAttribute(MetaConstants.Component, MetaConstants.ProgressBar)}
         {...makeAccessible({
@@ -186,7 +186,7 @@ const ProgressBar = ({
           valueMax: accessibilityProps.valueMax,
         })}
       >
-        <Box
+        <BaseBox
           backgroundColor={unfilledBackgroundColor}
           height={makeSize(progressBarHeight[size])}
           overflow="hidden"
@@ -203,8 +203,8 @@ const ProgressBar = ({
             variant={variant}
             isIndeterminate={isIndeterminate}
           />
-        </Box>
-      </Box>
+        </BaseBox>
+      </BaseBox>
     </>
   );
 };

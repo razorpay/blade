@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import type { BoxProps } from './types';
+import type { BaseBoxProps } from './types';
 import { getIn, makeBorderSize, makeSize, makeSpace } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 
@@ -22,7 +22,7 @@ const getSpacingValue = <SpacingValue extends string | number | undefined>({
   return value ? makeSpace(getIn(theme, value)) : undefined;
 };
 
-const getBoxStyles = ({
+const getBaseBoxStyles = ({
   theme,
   display,
   flex,
@@ -60,7 +60,7 @@ const getBoxStyles = ({
   backgroundColor,
   zIndex,
   borderRadius,
-}: BoxProps & { theme: Theme }): CSSObject => ({
+}: BaseBoxProps & { theme: Theme }): CSSObject => ({
   display,
   flex,
   flexWrap,
@@ -99,4 +99,4 @@ const getBoxStyles = ({
   borderRadius: makeBorderSize(getIn(theme, `border.radius.${borderRadius}`)),
 });
 
-export default getBoxStyles;
+export default getBaseBoxStyles;

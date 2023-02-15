@@ -1,7 +1,7 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
 import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { AriaRoles } from '~utils';
 
 type SelectorGroupFieldProps = {
@@ -25,7 +25,7 @@ const SelectorGroupField = ({
   const role = accessibilityRole === 'group' && isReactNative ? undefined : accessibilityRole;
 
   return (
-    <Box
+    <BaseBox
       display="flex"
       flexDirection={labelPosition}
       {...makeAccessible({
@@ -35,7 +35,7 @@ const SelectorGroupField = ({
       {...metaAttribute(MetaConstants.Component, componentName)}
     >
       {children}
-    </Box>
+    </BaseBox>
   );
 };
 

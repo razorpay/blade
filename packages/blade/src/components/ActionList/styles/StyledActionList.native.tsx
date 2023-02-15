@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { getBaseActionListStyles } from './getBaseActionListStyles';
 import type { StyledActionListProps } from './getBaseActionListStyles';
 import { makeSize, isAndroid } from '~utils';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
-const StyledActionList = styled(Box)<StyledActionListProps>((props) => {
+const StyledActionList = styled(BaseBox)<StyledActionListProps>((props) => {
   return {
     ...getBaseActionListStyles(props),
     shadowOpacity: '1',

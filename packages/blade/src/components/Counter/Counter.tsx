@@ -3,7 +3,7 @@ import type { StyledCounterProps } from './types';
 import { horizontalPadding, verticalPadding } from './counterTokens';
 import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { metaAttribute, MetaConstants } from '~utils';
@@ -92,7 +92,7 @@ const Counter = ({
 
   return (
     <StyledCounter backgroundColor={backgroundColor} size={size} platform={platform}>
-      <Box
+      <BaseBox
         paddingRight={horizontalPadding[size]}
         paddingLeft={horizontalPadding[size]}
         paddingTop={verticalPadding[size]}
@@ -113,7 +113,7 @@ const Counter = ({
         >
           {content}
         </Text>
-      </Box>
+      </BaseBox>
     </StyledCounter>
   );
 };

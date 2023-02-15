@@ -5,7 +5,7 @@ import { Button } from '~components/Button';
 import { Link } from '~components/Link';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav';
 import { Text } from '~components/Typography';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
@@ -86,23 +86,23 @@ const SkipNavTemplate: ComponentStory<typeof SkipNavLink> = () => {
           </li>
         </ul>
       </nav>
-      <Box>
+      <BaseBox>
         <SkipNavContent />
         <Text>Main content of the page</Text>
-        <Box marginTop="spacing.2" />
-        <Box gap="spacing.2" display="flex">
+        <BaseBox marginTop="spacing.2" />
+        <BaseBox gap="spacing.2" display="flex">
           <Button size="small">Button 1</Button>
           <Button size="small">Button 2</Button>
-        </Box>
+        </BaseBox>
         <SkipNavContent id="second" />
-        <Box marginTop="spacing.2" />
+        <BaseBox marginTop="spacing.2" />
         <Text>Second Main content of the page</Text>
-        <Box marginTop="spacing.2" />
-        <Box gap="spacing.2" display="flex">
+        <BaseBox marginTop="spacing.2" />
+        <BaseBox gap="spacing.2" display="flex">
           <Button size="small">Button 3</Button>
           <Button size="small">Button 4</Button>
-        </Box>
-      </Box>
+        </BaseBox>
+      </BaseBox>
     </>
   );
 };

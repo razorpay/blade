@@ -6,7 +6,7 @@ import LinkComponent from './Link';
 import iconMap from '~components/Icons/iconMap';
 import { DownloadIcon, InfoIcon } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -177,12 +177,12 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
   const onClick = (): void => console.log('Never gonna give you up');
 
   return (
-    <Box display="flex" flexDirection="row">
-      <Box display="flex" flexDirection="column" marginRight="spacing.5">
-        <Box marginBottom="spacing.3">
+    <BaseBox display="flex" flexDirection="row">
+      <BaseBox display="flex" flexDirection="column" marginRight="spacing.5">
+        <BaseBox marginBottom="spacing.3">
           <Heading>Anchor variant</Heading>
-        </Box>
-        <Box marginBottom="spacing.2">
+        </BaseBox>
+        <BaseBox marginBottom="spacing.2">
           <LinkComponent
             variant="anchor"
             href={href}
@@ -193,7 +193,7 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
           >
             Small anchor link
           </LinkComponent>
-        </Box>
+        </BaseBox>
         <LinkComponent
           variant="anchor"
           href={href}
@@ -204,21 +204,21 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
         >
           Medium anchor link
         </LinkComponent>
-      </Box>
-      <Box display="flex" flexDirection="column">
-        <Box marginBottom="spacing.3">
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="column">
+        <BaseBox marginBottom="spacing.3">
           <Heading>Button variant</Heading>
-        </Box>
-        <Box marginBottom="spacing.2">
+        </BaseBox>
+        <BaseBox marginBottom="spacing.2">
           <LinkComponent size="small" variant="button" onClick={onClick} icon={DownloadIcon}>
             Small link button
           </LinkComponent>
-        </Box>
+        </BaseBox>
         <LinkComponent size="medium" variant="button" onClick={onClick} icon={DownloadIcon}>
           Medium link button
         </LinkComponent>
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 LinkSizes.parameters = {
@@ -237,9 +237,9 @@ const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
 }) => {
   return (
     <>
-      <Box paddingBottom="spacing.3">
+      <BaseBox paddingBottom="spacing.3">
         <BaseText fontWeight="bold">Anchor</BaseText>
-      </Box>
+      </BaseBox>
       <LinkComponent
         icon={icon}
         iconPosition={iconPosition}
@@ -250,9 +250,9 @@ const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
       >
         {children}
       </LinkComponent>
-      <Box paddingTop="spacing.4" paddingBottom="spacing.3">
+      <BaseBox paddingTop="spacing.4" paddingBottom="spacing.3">
         <BaseText fontWeight="bold">Button</BaseText>
-      </Box>
+      </BaseBox>
       <LinkComponent icon={icon} iconPosition={iconPosition} variant="button">
         {children}
       </LinkComponent>

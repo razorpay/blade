@@ -15,7 +15,7 @@ import {
 } from './listTokens';
 import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import {
   getComponentId,
   getIn,
@@ -99,14 +99,14 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
       hasIcon={hasIcon}
       {...metaAttribute(MetaConstants.Component, MetaConstants.ListItem)}
     >
-      <Box
+      <BaseBox
         display="flex"
         flexDirection="row"
         alignItems="center"
         marginBottom={listItemMarginBottom}
       >
         {variant === 'unordered' ? (
-          <Box
+          <BaseBox
             marginRight={listItemBulletMarginRight[variant]}
             marginTop={
               listItemBulletMarginTop[`${variant}${hasIcon ? 'WithIcon' : ''}`][platform][size]
@@ -119,9 +119,9 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
             ) : (
               <UnorderedItemIcon level={level} />
             )}
-          </Box>
+          </BaseBox>
         ) : (
-          <Box
+          <BaseBox
             width={listItemOrderedBulletBoxSize[variant][platform][size]}
             height={listItemOrderedBulletBoxSize[variant][platform][size]}
             marginRight={listItemBulletMarginRight[variant]}
@@ -144,12 +144,12 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
                 level: level ?? 1,
               })}${variant === 'ordered' ? '.' : ''}`}
             </Text>
-          </Box>
+          </BaseBox>
         )}
         <Text variant="body" size={size}>
           {validChildItem}
         </Text>
-      </Box>
+      </BaseBox>
       {childList}
     </StyledListItem>
   );

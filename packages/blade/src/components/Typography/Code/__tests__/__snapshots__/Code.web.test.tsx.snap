@@ -24,7 +24,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 <div>
   <span
-    class="Boxweb__Box-xvyj85-0  c0"
+    class=" c0"
     data-blade-component="code"
   >
     <code
@@ -63,7 +63,7 @@ exports[`<Code /> should render medium Code 1`] = `
 
 <div>
   <span
-    class="Boxweb__Box-xvyj85-0  c0"
+    class=" c0"
     data-blade-component="code"
   >
     <code
@@ -102,7 +102,7 @@ exports[`<Code /> should render small Code 1`] = `
 
 <div>
   <span
-    class="Boxweb__Box-xvyj85-0  c0"
+    class=" c0"
     data-blade-component="code"
   >
     <code

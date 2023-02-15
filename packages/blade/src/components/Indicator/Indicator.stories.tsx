@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 
 import type { IndicatorProps } from './Indicator';
 import { Indicator as IndicatorComponent } from './Indicator';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { getPlatformType } from '~utils';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
@@ -85,12 +85,16 @@ WithoutLabel.parameters = {
 export const Composition: ComponentStory<typeof IndicatorComponent> = ({ ...args }) => {
   const isReactNative = getPlatformType() === 'react-native';
   return (
-    <Box position="relative" display={isReactNative ? 'flex' : 'inline-flex'} alignSelf="center">
-      <Box position="absolute" top={isReactNative ? -8 : -4} right={-8} zIndex={10}>
+    <BaseBox
+      position="relative"
+      display={isReactNative ? 'flex' : 'inline-flex'}
+      alignSelf="center"
+    >
+      <BaseBox position="absolute" top={isReactNative ? -8 : -4} right={-8} zIndex={10}>
         <IndicatorComponent {...args} />
-      </Box>
+      </BaseBox>
       <Button>Get started</Button>
-    </Box>
+    </BaseBox>
   );
 };
 Composition.args = {

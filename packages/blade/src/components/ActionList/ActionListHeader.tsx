@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { componentIds } from './componentIds';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { isValidAllowedChildren, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
 
-const StyledActionListHeader = styled(Box)((props) => {
+const StyledActionListHeader = styled(BaseBox)((props) => {
   return {
     display: 'flex',
     flexDirection: 'row',
@@ -60,12 +60,12 @@ const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.El
     <StyledActionListHeader
       {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListHeader)}
     >
-      <Box>{props.leading}</Box>
-      <Box paddingLeft="spacing.3" paddingRight="spacing.3">
+      <BaseBox>{props.leading}</BaseBox>
+      <BaseBox paddingLeft="spacing.3" paddingRight="spacing.3">
         <Text variant="caption" color="surface.text.subdued.lowContrast">
           {props.title}
         </Text>
-      </Box>
+      </BaseBox>
     </StyledActionListHeader>
   );
 };
