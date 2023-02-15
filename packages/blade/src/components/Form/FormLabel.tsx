@@ -3,7 +3,7 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType, makeSpace, useBreakpoint } from '~utils';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 
@@ -93,7 +93,7 @@ const FormLabel = ({
   );
 
   const textNode = (
-    <Box
+    <BaseBox
       gap={necessityIndicator === 'optional' ? 'spacing.2' : 'spacing.0'}
       display="flex"
       flexDirection="row"
@@ -112,15 +112,15 @@ const FormLabel = ({
       {computedAccessibilityNode}
       {/* TODO: Hide from screen readers to prevent double announcement */}
       {necessityLabel}
-    </Box>
+    </BaseBox>
   );
 
   // What harm can it do?
   if (isReactNative) {
     return (
-      <Box marginRight="spacing.5" marginBottom="spacing.2">
+      <BaseBox marginRight="spacing.5" marginBottom="spacing.2">
         {textNode}
-      </Box>
+      </BaseBox>
     );
   }
 
@@ -139,7 +139,7 @@ const FormLabel = ({
       }}
       id={id}
     >
-      <Box marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.2'}>{textNode}</Box>
+      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.2'}>{textNode}</BaseBox>
     </Component>
   );
 };

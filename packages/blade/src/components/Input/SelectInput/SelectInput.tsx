@@ -5,7 +5,7 @@ import { SelectChevronIcon } from './SelectChevronIcon';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
@@ -73,7 +73,7 @@ const _SelectInput = (
   }, [props.labelPosition, setHasLabelOnLeft]);
 
   return (
-    <Box position="relative">
+    <BaseBox position="relative">
       {!isReactNative() ? (
         <VisuallyHidden>
           <input
@@ -122,7 +122,7 @@ const _SelectInput = (
           />
         }
       />
-    </Box>
+    </BaseBox>
   );
 };
 

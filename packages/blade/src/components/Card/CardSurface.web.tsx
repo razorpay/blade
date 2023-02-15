@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
-const CardSurface = styled(Box)<{ surfaceLevel: 2 | 3 }>(({ surfaceLevel, theme }) => {
+const CardSurface = styled(BaseBox)<{ surfaceLevel: 2 | 3 }>(({ surfaceLevel, theme }) => {
   const offsetX = theme.shadows.offsetX.level[1];
   const offsetY = theme.shadows.offsetY.level[1];
   const blur = theme.shadows.blurRadius.level[1];

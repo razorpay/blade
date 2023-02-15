@@ -11,7 +11,7 @@ import { ListItemCode } from './ListItemCode';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
 const Page = (): ReactElement => {
   return (
@@ -166,7 +166,7 @@ ListMixNested.storyName = 'Unordered & Ordered Mix';
 
 const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
   return (
-    <Box>
+    <BaseBox>
       <Heading>Small Size:</Heading>
       <List {...args} size="small">
         <ListItem>
@@ -195,7 +195,7 @@ const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
           </List>
         </ListItem>
       </List>
-    </Box>
+    </BaseBox>
   );
 };
 
@@ -223,7 +223,7 @@ OrderedListWithSizes.args = {
 
 const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
   return (
-    <Box>
+    <BaseBox>
       <Heading>Small Size:</Heading>
       <List variant="ordered-filled" size="small">
         <ListItem>
@@ -254,7 +254,7 @@ const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
           the integration live.
         </ListItem>
       </List>
-    </Box>
+    </BaseBox>
   );
 };
 
@@ -285,7 +285,7 @@ ListWithLinkAndIcon.storyName = 'Link & Icon';
 
 const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
   return (
-    <Box>
+    <BaseBox>
       <Heading>Small Size:</Heading>
       <List variant="ordered" size="small">
         <ListItem>
@@ -312,7 +312,7 @@ const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
           Run <ListItemCode>yarn start</ListItemCode>
         </ListItem>
       </List>
-    </Box>
+    </BaseBox>
   );
 };
 export const ListWithCodeAndIcon = ListWithCodeTemplate.bind({});

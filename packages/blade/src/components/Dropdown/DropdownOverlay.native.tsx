@@ -4,11 +4,11 @@ import styled from 'styled-components/native';
 import { componentIds } from './dropdownUtils';
 import type { DropdownOverlayProps } from './DropdownOverlay.web';
 import { useDropdown } from './useDropdown';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 
-const StyledDropdownOverlay = styled(Box)<{ testID: 'dropdown-overlay' }>((props) => ({
+const StyledDropdownOverlay = styled(BaseBox)<{ testID: 'dropdown-overlay' }>((props) => ({
   transform: `translateY(${makeSize(props.theme.spacing[3])})`,
 }));
 
@@ -28,7 +28,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
   const { isOpen, setIsOpen } = useDropdown();
 
   return (
-    <Box position="relative">
+    <BaseBox position="relative">
       <StyledCloseableArea
         display={isOpen ? 'flex' : 'none'}
         onPress={() => {
@@ -46,7 +46,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
           {children}
         </StyledDropdownOverlay>
       </StyledCloseableArea>
-    </Box>
+    </BaseBox>
   );
 };
 

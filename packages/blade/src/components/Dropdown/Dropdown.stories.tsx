@@ -24,7 +24,7 @@ import {
   HistoryIcon,
   FileTextIcon,
 } from '~components/Icons';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { SelectInput } from '~components/Input/SelectInput';
@@ -167,7 +167,7 @@ type AllDropdownProps = Partial<DropdownProps> &
   };
 
 const CombinedProps = (_args: AllDropdownProps): JSX.Element => {
-  return <Box>{null}</Box>;
+  return <BaseBox>{null}</BaseBox>;
 };
 
 type DefaultPropTypes = string | number | boolean;
@@ -280,7 +280,7 @@ const DropdownTemplate: ComponentStory<typeof CombinedProps> = (args) => {
     ...selectInputArgs
   } = args;
   return (
-    <Box minHeight={200}>
+    <BaseBox minHeight={200}>
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
@@ -311,7 +311,7 @@ const DropdownTemplate: ComponentStory<typeof CombinedProps> = (args) => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </Box>
+    </BaseBox>
   );
 };
 
@@ -340,7 +340,7 @@ export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
     ...selectInputArgs
   } = args;
   return (
-    <Box minHeight={400}>
+    <BaseBox minHeight={400}>
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
@@ -389,7 +389,7 @@ export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </Box>
+    </BaseBox>
   );
 };
 WithHeaderFooter.args = {
@@ -407,7 +407,7 @@ export const WithScrollbar = (args: AllDropdownProps): JSX.Element => {
     ...selectInputArgs
   } = args;
   return (
-    <Box minHeight={500}>
+    <BaseBox minHeight={500}>
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
@@ -489,7 +489,7 @@ export const WithScrollbar = (args: AllDropdownProps): JSX.Element => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </Box>
+    </BaseBox>
   );
 };
 WithScrollbar.args = {
@@ -509,9 +509,9 @@ export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <Box minHeight={300}>
+    <BaseBox minHeight={300}>
       <Text>Selected Values: {dropdownValues}</Text>
-      <Box marginTop="spacing.5" />
+      <BaseBox marginTop="spacing.5" />
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
@@ -543,7 +543,7 @@ export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </Box>
+    </BaseBox>
   );
 };
 WithValueDisplay.args = {
@@ -567,7 +567,7 @@ export const WithHTMLFormSubmission = (args: AllDropdownProps): JSX.Element => {
     return <Text>Not available on React Native Story</Text>;
   }
   return (
-    <Box minHeight={200}>
+    <BaseBox minHeight={200}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -589,12 +589,12 @@ export const WithHTMLFormSubmission = (args: AllDropdownProps): JSX.Element => {
             </ActionList>
           </DropdownOverlay>
         </Dropdown>
-        <Box marginBottom="spacing.8" />
+        <BaseBox marginBottom="spacing.8" />
         <Button type="submit">Submit</Button>
-        <Box marginBottom="spacing.4" />
+        <BaseBox marginBottom="spacing.4" />
         <Text>Form Submitted with {submissionValues}</Text>
       </form>
-    </Box>
+    </BaseBox>
   );
 };
 WithHTMLFormSubmission.args = {
@@ -606,7 +606,7 @@ WithHTMLFormSubmission.args = {
   placeholder: 'Select Design System',
 };
 
-const SpaceBetweenSmall = (): JSX.Element => <Box height="18px" />;
+const SpaceBetweenSmall = (): JSX.Element => <BaseBox height="18px" />;
 
 export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
   const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>(
@@ -623,7 +623,7 @@ export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <Box minHeight={300} paddingBottom="spacing.5">
+    <BaseBox minHeight={300} paddingBottom="spacing.5">
       <Alert
         intent="information"
         description="Select more than 2 options to see error state"
@@ -655,7 +655,7 @@ export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </Box>
+    </BaseBox>
   );
 };
 WithValidationState.args = {
@@ -684,7 +684,7 @@ export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <Box minHeight={300}>
+    <BaseBox minHeight={300}>
       <Dropdown selectionType={selectionType}>
         <SelectInput ref={selectRef} label="Top 2 design systems" {...selectInputArgs} />
         <DropdownOverlay>
@@ -696,7 +696,7 @@ export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-      <Box paddingTop="spacing.3">
+      <BaseBox paddingTop="spacing.3">
         <Button
           onClick={() => {
             selectRef.current?.focus();
@@ -704,13 +704,13 @@ export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
         >
           Click to focus
         </Button>
-      </Box>
-      <Box paddingTop="spacing.3">
+      </BaseBox>
+      <BaseBox paddingTop="spacing.3">
         <Text>
           We are using <Code>selectRef.current.focus()</Code> here to focus on input
         </Text>
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 

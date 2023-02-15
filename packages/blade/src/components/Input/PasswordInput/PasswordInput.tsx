@@ -2,7 +2,7 @@ import React from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { EyeIcon, EyeOffIcon } from '~components/Icons';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
@@ -118,9 +118,9 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
 
   const trailingFooterSlot = (value?: string): React.ReactNode =>
     maxCharacters ? (
-      <Box marginTop="spacing.2" marginRight="spacing.1">
+      <BaseBox marginTop="spacing.2" marginRight="spacing.1">
         <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
-      </Box>
+      </BaseBox>
     ) : null;
 
   return (

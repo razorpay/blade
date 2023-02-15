@@ -2,7 +2,7 @@ import type { CSSObject } from 'styled-components';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import type { Border } from '~tokens/global';
 
-export type BoxProps = {
+export type BaseBoxProps = {
   display?: CSSObject['display'];
   flex?: CSSObject['flex'];
   flexWrap?: CSSObject['flexWrap'];

@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
 import { Code as CodeComponent } from './Code';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
@@ -73,16 +73,16 @@ export const SizeSmall = (): JSX.Element => {
 export const ParagraphUse = (): JSX.Element => {
   return (
     <>
-      <Box>
+      <BaseBox>
         <Text>
           Lorem ipsum normal text <CodeComponent>CODE</CodeComponent> component
         </Text>
-      </Box>
-      <Box>
+      </BaseBox>
+      <BaseBox>
         <Text>
           Blade is Super Cool DS <CodeComponent>CODE</CodeComponent> component
         </Text>
-      </Box>
+      </BaseBox>
     </>
   );
 };

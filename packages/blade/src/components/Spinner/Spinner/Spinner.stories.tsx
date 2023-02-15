@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { SpinnerProps } from './Spinner';
 import { Spinner as SpinnerComponent } from './Spinner';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -67,23 +67,23 @@ Spinner.storyName = 'Default';
 
 const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
   return (
-    <Box>
-      <Box marginBottom="spacing.3">
+    <BaseBox>
+      <BaseBox marginBottom="spacing.3">
         <Text>Medium</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <SpinnerComponent {...args} size="medium" />
-      </Box>
-      <Box marginBottom="spacing.3">
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
         <Text>Large</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <SpinnerComponent {...args} size="large" />
-      </Box>
-      <Box marginBottom="spacing.3">
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
         <Text>Extra Large</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <SpinnerComponent {...args} size="xlarge" />
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 
@@ -94,8 +94,8 @@ const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...a
   const { theme } = useTheme();
 
   return (
-    <Box>
-      <Box
+    <BaseBox>
+      <BaseBox
         marginBottom="spacing.3"
         marginTop="spacing.3"
         paddingTop="spacing.3"
@@ -104,10 +104,10 @@ const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...a
         backgroundColor={theme.colors.surface.background.level2.lowContrast}
       >
         <Text>Low Contrast</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <SpinnerComponent {...args} contrast="low" />
-      </Box>
-      <Box
+      </BaseBox>
+      <BaseBox
         marginBottom="spacing.3"
         marginTop="spacing.3"
         paddingTop="spacing.3"
@@ -116,10 +116,10 @@ const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...a
         backgroundColor={theme.colors.surface.background.level1.highContrast}
       >
         <Text contrast="high">High Contrast</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <SpinnerComponent {...args} contrast="high" />
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 

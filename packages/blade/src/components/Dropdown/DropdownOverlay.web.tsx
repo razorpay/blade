@@ -4,7 +4,7 @@ import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -35,7 +35,7 @@ to {
 }
 `;
 
-const StyledDropdownOverlay = styled(Box)<{
+const StyledDropdownOverlay = styled(BaseBox)<{
   transition: FlattenSimpleInterpolation;
   onAnimationEnd: () => void;
 }>(
@@ -106,7 +106,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
   }, [setWidth, triggererRef, hasLabelOnLeft]);
 
   return (
-    <Box position="relative">
+    <BaseBox position="relative">
       <StyledDropdownOverlay
         width={width}
         style={{ opacity: isOpen ? 1 : 0 }}
@@ -125,7 +125,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
       >
         {children}
       </StyledDropdownOverlay>
-    </Box>
+    </BaseBox>
   );
 };
 

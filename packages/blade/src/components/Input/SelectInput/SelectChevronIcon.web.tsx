@@ -1,4 +1,4 @@
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 
 export type SelectChevronIconProps = {
@@ -9,9 +9,9 @@ export type SelectChevronIconProps = {
 const SelectChevronIcon = (props: SelectChevronIconProps): JSX.Element => {
   const Icon = props.icon;
   return (
-    <Box as="div" display="flex" justifyContent="center" onClick={props.onClick}>
+    <BaseBox as="div" display="flex" justifyContent="center" onClick={props.onClick}>
       <Icon color="surface.text.normal.lowContrast" size="medium" />
-    </Box>
+    </BaseBox>
   );
 };
 

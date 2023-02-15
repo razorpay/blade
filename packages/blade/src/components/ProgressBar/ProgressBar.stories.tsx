@@ -6,7 +6,7 @@ import type { ProgressBarProps } from './ProgressBar';
 import { ProgressBar as ProgressBarComponent } from './ProgressBar';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
 const Page = (): ReactElement => {
   return (
@@ -107,7 +107,7 @@ const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent
   const intents = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
 
   return (
-    <Box
+    <BaseBox
       display="flex"
       flexDirection="column"
       marginTop="spacing.3"
@@ -115,11 +115,11 @@ const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent
       width="100%"
     >
       {intents.map((intent) => (
-        <Box key={intent} paddingTop="spacing.4">
+        <BaseBox key={intent} paddingTop="spacing.4">
           <ProgressBarComponent {...args} intent={intent} value={value} />
-        </Box>
+        </BaseBox>
       ))}
-    </Box>
+    </BaseBox>
   );
 };
 

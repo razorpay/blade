@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { getBaseListBoxWrapperStyles } from './getBaseListBoxWrapperStyles';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
-const StyledListBoxWrapper = styled(Box)((props) => {
+const StyledListBoxWrapper = styled(BaseBox)((props) => {
   return {
     // Hides the last Divider (we don't want divider on last section)
     [`& [role=group]:last-child > [role=separator]:last-child`]: {

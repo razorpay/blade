@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { TextAreaProps } from './TextArea';
 import { TextArea as TextAreaComponent } from './TextArea';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
@@ -271,7 +271,7 @@ export const TextAreaControlled = TextAreaControlledTemplate.bind({});
 const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = () => {
   return (
     <>
-      <Box display="flex" gap="spacing.5">
+      <BaseBox display="flex" gap="spacing.5">
         <TextArea
           showClearButton
           label="Description"
@@ -303,8 +303,8 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = ()
           defaultValue="Anurag"
           successText="Name is valid"
         />
-      </Box>
-      <Box display="flex" flexDirection="column" gap="spacing.5">
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="column" gap="spacing.5">
         <TextArea
           label="Description"
           placeholder="Enter Description"
@@ -346,7 +346,7 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = ()
           validationState="none"
           helpText="Write your message"
         />
-      </Box>
+      </BaseBox>
     </>
   );
 };
@@ -357,7 +357,7 @@ export const inputRef: ComponentStory<typeof TextAreaComponent> = () => {
   const inputRef = React.useRef<BladeElementRef>(null);
 
   return (
-    <Box gap="spacing.3" display="flex" alignItems="end">
+    <BaseBox gap="spacing.3" display="flex" alignItems="end">
       <TextAreaComponent ref={inputRef} label="Message" />
       <Button
         onClick={() => {
@@ -367,7 +367,7 @@ export const inputRef: ComponentStory<typeof TextAreaComponent> = () => {
       >
         Click to focus the input
       </Button>
-    </Box>
+    </BaseBox>
   );
 };
 

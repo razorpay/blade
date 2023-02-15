@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import type { StyledActionListItemProps } from './getBaseActionListItemStyles';
 import { getBaseActionListItemStyles } from './getBaseActionListItemStyles';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
-const StyledActionListItem = styled(Box)<StyledActionListItemProps>((props) => {
+const StyledActionListItem = styled(BaseBox)<StyledActionListItemProps>((props) => {
   return {
     ...getBaseActionListItemStyles(props),
     // Web-specific styles

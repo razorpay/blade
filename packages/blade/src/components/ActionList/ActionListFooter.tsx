@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { componentIds } from './componentIds';
 import { getActionListFooterRole } from './getA11yRoles';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import {
@@ -35,7 +35,7 @@ type ActionListFooterProps = {
   trailing?: React.ReactNode;
 };
 
-const StyledActionListFooter = styled(Box)((props) => {
+const StyledActionListFooter = styled(BaseBox)((props) => {
   return {
     display: 'flex',
     flexDirection: 'row',
@@ -136,23 +136,23 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
       })}
       {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListFooter)}
     >
-      {props.leading ? <Box>{props.leading}</Box> : null}
+      {props.leading ? <BaseBox>{props.leading}</BaseBox> : null}
       {props.title ? (
-        <Box flex={1} paddingLeft="spacing.3" paddingRight="spacing.3">
+        <BaseBox flex={1} paddingLeft="spacing.3" paddingRight="spacing.3">
           <Text variant="caption" color="surface.text.subdued.lowContrast">
             {props.title}
           </Text>
-        </Box>
+        </BaseBox>
       ) : null}
       {props.trailing ? (
-        <Box
+        <BaseBox
           display="flex"
           alignItems="center"
           marginLeft={isOnlyActionButton ? undefined : 'auto'}
           width={isOnlyActionButton ? '100%' : undefined}
         >
           {props.trailing}
-        </Box>
+        </BaseBox>
       ) : null}
     </StyledActionListFooter>
   );

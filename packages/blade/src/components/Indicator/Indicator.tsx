@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
 import { useTheme } from '~components/BladeProvider';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
@@ -86,7 +86,7 @@ const Indicator = ({
   });
 
   return (
-    <Box
+    <BaseBox
       display="flex"
       flexDirection="row"
       alignItems="center"
@@ -97,12 +97,12 @@ const Indicator = ({
         <Circle cx="5" cy="5" r="5" fill={fillColor} />
         <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
       </Svg>
-      <Box marginLeft="spacing.2">
+      <BaseBox marginLeft="spacing.2">
         <Text contrast="low" type="subtle" size={dimensions.textSize}>
           {children}
         </Text>
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 

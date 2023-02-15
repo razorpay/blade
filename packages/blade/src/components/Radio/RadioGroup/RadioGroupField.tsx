@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRadioGroupContext } from './RadioContext';
 import { makeAccessible } from '~utils';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
 type RadioGroupFieldProps = {
   children: React.ReactNode;
@@ -12,13 +12,13 @@ const RadioGroupField = ({ children, labelledBy }: RadioGroupFieldProps): React.
   const { labelPosition } = useRadioGroupContext();
 
   return (
-    <Box
+    <BaseBox
       display="flex"
       flexDirection={labelPosition === 'top' ? 'column' : 'row'}
       {...makeAccessible({ role: 'group', labelledBy })}
     >
       {children}
-    </Box>
+    </BaseBox>
   );
 };
 

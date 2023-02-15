@@ -10,7 +10,7 @@ import Animated, {
 import { motion as spinnerMotion } from './spinnerTokens';
 import { useTheme } from '~components/BladeProvider';
 import { castNativeType, getIn, makeMotionTime } from '~utils';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
 const SpinningBox = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { theme } = useTheme();
@@ -42,9 +42,9 @@ const SpinningBox = ({ children }: { children: React.ReactNode }): React.ReactEl
   }, [duration, easing, rotation]);
 
   return (
-    <Box alignSelf="center">
+    <BaseBox alignSelf="center">
       <Animated.View style={animatedStyles}>{children}</Animated.View>
-    </Box>
+    </BaseBox>
   );
 };
 

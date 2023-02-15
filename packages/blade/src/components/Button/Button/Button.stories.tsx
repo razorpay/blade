@@ -10,7 +10,7 @@ import { BaseText } from '~components/Typography/BaseText';
 import { CreditCardIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
@@ -274,9 +274,9 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   return (
     <>
       <ButtonComponent {...args} isLoading={loading} />
-      <Box marginTop="spacing.3" />
+      <BaseBox marginTop="spacing.3" />
       <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
-      <Box marginTop="spacing.3" />
+      <BaseBox marginTop="spacing.3" />
       <ButtonComponent size="small" variant="secondary" onClick={toggle}>
         Toggle loading
       </ButtonComponent>
@@ -317,12 +317,12 @@ export const ButtonRef: ComponentStory<typeof ButtonComponent> = () => {
   const buttonRef = React.useRef<BladeElementRef>(null);
 
   return (
-    <Box gap="spacing.3" display="flex">
+    <BaseBox gap="spacing.3" display="flex">
       <ButtonComponent ref={buttonRef}>Button</ButtonComponent>
       <ButtonComponent onClick={() => buttonRef?.current?.focus()}>
         Click to focus other button
       </ButtonComponent>
-    </Box>
+    </BaseBox>
   );
 };
 
