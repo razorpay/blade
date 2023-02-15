@@ -12,10 +12,10 @@ Amount component is a UI element that displays and formats various currency valu
 
 | Prop                      | Type                                                       | Default     | Description                                                                    | Required |
 | ------------------------- | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------ | -------- |
-| children                  | `number`                                                   | `undefined` | The value to be rendered within the component                                  | ✅       |
-| intent                    | `positive`, `negative`, `notice`, `information`, `blue`    | `undefined` | The variant of the amount to be rendered                                       |          |
+| children                  | `string`                                                   | `undefined` | The value to be rendered within the component                                  | ✅       |
+| variant                   | `positive`, `negative`, `notice`, `information`, `blue`    | `undefined` | The variant of the amount to be rendered                                       |          |
 | fontWeight                | `bold`, `regular`                                          | `bold`      | The weight of the amount to be rendered                                        |          |
-| suffix                    | `true`, `false`                                            | `false`     | Indicates whether a suffix should be used                                      |          |
+| hasSuffix                 | `true`, `false`                                            | `false`     | Indicates whether a suffix should be used                                      |          |
 | size                      | `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small` | `3xlarge`   | The size of the amount to be rendered                                          |          |
 | isSuffixPrefixHighlighted | `true`, `false`                                            | `true`      | Highlight the main amount by making the prefix symbol and decimal digits small |          |
 
@@ -28,8 +28,8 @@ import { Amount } from '@razorpay/components';
   size="2xlarge"
   isSuffixPrefixHighlighted={true}
   fontWeight="regular"
-  suffix={false}
-  intent="information"
+  hasSuffix={false}
+  variant="information"
 >
   1000.27
 </Amount>;
@@ -59,7 +59,6 @@ import { Amount } from '@razorpay/components';
 
 - [Ant](https://ant.design/components/input)
 - [Primeng](https://primeng.org/inputnumber)
-- [Blueprint](https://blueprintjs.com/docs/#core/components/file-input)
 - [Backbase](https://designsystem.backbase.com/v1/components/amount/web)
 - [Mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
 - [Salesforce](https://developer.salesforce.com/docs/component-library/bundle/ui:inputCurrency)
