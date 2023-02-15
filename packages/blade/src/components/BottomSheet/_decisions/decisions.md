@@ -4,7 +4,7 @@ Bottom sheet is a container that presents additional information to a user in an
 
 This document outlines the API of `BottomSheet` component.
 
-<img src="./bottom-sheet-thumbnail.png" width="380" alt="" />
+<img src="./bottom-sheet-thumbnail.png" width="380" alt="Thumbnail of bottom sheet" />
 
 - [Bottom Sheet](#bottom-sheet)
   - [Design](#design)
