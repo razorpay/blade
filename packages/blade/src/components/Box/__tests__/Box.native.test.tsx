@@ -23,7 +23,6 @@ describe('<BaseBox />', () => {
         bottom="0px"
         left="0px"
         overflow="hidden"
-        background="hotpink"
         height="auto"
         width="auto"
       />,

@@ -1,6 +1,8 @@
 import type { CSSObject } from 'styled-components';
+import type { Theme } from '~components/BladeProvider';
 import type { Border, Spacing } from '~tokens/global';
 import type { Breakpoints } from '~tokens/global/breakpoints';
+import type { DotNotationColorStringToken } from '~src/_helpers/types';
 
 type MakeValueResponsive<T> =
   | T
@@ -110,10 +112,23 @@ type GridProps = MakeObjectResponsive<
   >
 >;
 
+type ColorObjects = 'feedback' | 'surface' | 'action';
+type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationColorStringToken<
+  Theme['colors'][T]['background']
+>}`;
+
+type BackgroundColorType =
+  | BackgroundColorString<'feedback'>
+  | BackgroundColorString<'surface'>
+  | BackgroundColorString<'action'>
+  | (string & Record<never, never>);
+
 type VisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
-  } & Pick<CSSObject, 'backgroundColor' | 'background' | 'transform'>
+    backgroundColor: BackgroundColorType;
+    background: BackgroundColorType;
+  } & Pick<CSSObject, 'transform'>
 >;
 
 type BaseBoxProps = Partial<

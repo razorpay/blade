@@ -76,6 +76,21 @@ const getSpacingValue = (
   return responsiveSpacingValue;
 };
 
+const getBackgroundValue = (
+  backgroundColor: BaseBoxProps['backgroundColor'],
+  theme: Theme,
+  size?: keyof Breakpoints,
+): string => {
+  const responsiveBackgroundValue = getResponsiveValue(backgroundColor, size);
+  if (responsiveBackgroundValue?.includes('.')) {
+    const val = getIn(theme, `colors.${responsiveBackgroundValue}`);
+    console.log({ val });
+    return val;
+  }
+
+  return responsiveBackgroundValue;
+};
+
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   size?: keyof Breakpoints,
@@ -143,13 +158,12 @@ const getAllProps = (
     left: getSpacingValue(props.left, props.theme, size),
 
     // Visual props
-    backgroundColor: getResponsiveValue(props.backgroundColor, size),
+    backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, size),
     borderRadius: props.borderRadius
       ? makeSize(
           getIn(props.theme, `border.radius.${getResponsiveValue(props.borderRadius, size)}`),
         )
       : undefined,
-    background: getResponsiveValue(props.background, size),
     transform: getResponsiveValue(props.transform, size),
   };
 };
