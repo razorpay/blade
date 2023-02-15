@@ -6,9 +6,38 @@ This document outlines the API of `BottomSheet` component.
 
 <img src="./bottom-sheet-thumbnail.png" width="380" alt="" />
 
+- [Bottom Sheet](#bottom-sheet)
+  - [Design](#design)
+  - [Anatomy](#anatomy)
+  - [API](#api)
+    - [`BottomSheet`](#bottomsheet)
+    - [`BottomSheetBody`](#bottomsheetbody)
+    - [`BottomSheetHeaderLeading` API](#bottomsheetheaderleading-api)
+    - [`BottomSheetHeaderTrailing` API](#bottomsheetheadertrailing-api)
+    - [`BottomSheetFooterLeading` API](#bottomsheetfooterleading-api)
+    - [`BottomSheetFooterTrailing` API](#bottomsheetfootertrailing-api)
+  - [Composition with DropDown](#composition-with-dropdown)
+    - [Composition Example](#composition-example)
+  - [Accessibility](#accessibility)
+  - [Open questions](#open-questions)
+  - [References](#references)
+
 ## Design
 
 - [Figma - BottomSheet](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=26477%3A578228&t=1RMqjs99P33Udj0C-0)
+
+## Anatomy
+
+Components:
+
+- BottomSheet
+  - BottomSheetHeader
+    - BottomSheetHeaderLeading
+    - BottomSheetHeaderTrailing
+  - BottomSheetBody
+  - BottomSheetFooter
+    - BottomSheetFooterLeading
+    - BottomSheetFooterTrailing
 
 ## API
 
@@ -38,7 +67,6 @@ import { BottomSheet } from '@razorpay/blade';
 **Design Constraints**
 
 - BottomSheetHeader:
-
   - Leading:
     - Title
     - Prefix
@@ -49,7 +77,6 @@ import { BottomSheet } from '@razorpay/blade';
     - action
 
 - BottomSheetFooter:
-
   - Leading
     - title
     - prefix
@@ -217,6 +244,7 @@ Behaviours:
 
 1. What is `action` in the header trailing visual?
 2. In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component?
+3. In BottomSheetBody will we only have ActionList or users can add any of their own components too? 
 
 ## References
 
