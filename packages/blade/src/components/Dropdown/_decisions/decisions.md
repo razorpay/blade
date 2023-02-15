@@ -10,13 +10,20 @@ Dropdown Menu displays a list of choices on temporary surfaces. They allow users
 <Dropdown>
   <SelectInput label="Item Selection" />
   <DropdownOverlay>
-    <ActionList>
-      <ActionListItem title="Item Value" value="item-one" />
-      <ActionListItem title="Item Value" value="item-two" />
-    </ActionList>
   </DropdownOverlay>
 </Dropdown>
+
+<BottomSheet open={open} onDismiss={() => !open}>
+  <Backdrop />
+  <ActionList>
+    <ActionListItem title="Item Value" value="item-one" />
+    <ActionListItem title="Item Value" value="item-two" />
+  </ActionList>
+</BottomSheet>
 ```
+
+BottomSheet -> body
+BottomScrim 
 
 <br/>
 

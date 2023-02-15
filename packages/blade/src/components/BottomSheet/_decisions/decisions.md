@@ -19,8 +19,8 @@ import { BottomSheet } from '@razorpay/blade';
 
 <BottomSheet open={boolean} snapPoints={[]}>
   <BottomSheetHeader>
-    <BottomSheetHeaderLeading title="Payments Links" prefix={} />
-    <BottomSheetHeaderTrailing visual={} />
+    <BottomSheetHeaderLeading title="Payments Links" prefix={BladeIcon} />
+    <BottomSheetHeaderTrailing visual={Link|Action|Icon} />
   </BottomSheetHeader>
   <BottomSheetBody>Body Content</BottomSheetBody>
   <BottomSheet>
@@ -35,6 +35,29 @@ import { BottomSheet } from '@razorpay/blade';
 </BottomSheet>;
 ```
 
+**Design Constraints** 
+
+- BottomSheetHeader:
+  - Leading: 
+    - Title
+    - Prefix (Icon, will this only be icon?)
+  - Trailing:  
+    - empty
+    - icon
+    - link
+    - action
+
+- BottomSheetFooter:
+  - Leading
+    - title
+    - prefix (Icon, will this only be icon?)
+  - Trailing
+    - Primary action button
+    - Secondary action button
+
+- The BottomSheetFooter will behave similar to Card's footer.
+- The Header, Footer can be individually omitted
+
 ### `BottomSheet`
 
 We'll expose an `BottomSheeet` component with the following API:
@@ -43,12 +66,8 @@ We'll expose an `BottomSheeet` component with the following API:
 | ---------- | ---------- | ----------------------- | -------------------------------------------------- | -------- |
 | open       | `boolean`  | `false`                 | toggles bottom sheet state content                 |       |
 | snapPoints | `string[]` | `['25%', '50%', '85%']` | snappoints in which the bottom sheeet will rest on |        |
-| snapPoints | `string[]` | `['25%', '50%', '85%']` | snappoints in which the bottom sheeet will rest on |        |
 | onDismiss | `Callback` | `undefined` | called when the bottom sheet is closed, either by user state, hitting `esc` or tapping backdrop |        |
 | initialFocusRef | `React.Ref` | `undefined` | ref element you want to get keyboard focus when opening the sheet |   |
-
-`PrimaryAction` and `SecondaryAction` will accept objects with the following keys:
-
 
 ### `BottomSheetBody`
 
@@ -69,7 +88,7 @@ We'll expose an `BottomSheeet` component with the following API:
 
 | Prop     | Type              | Default     | Description                                                                                                                                     | Required |
 | -------- | ----------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `visual` | `React.ReactNode` | `undefined` | Trailing visual element placed on right side of the header |          |
+| `visual` | `Link, Action, Icon` | `undefined` | Trailing visual element placed on right side of the header |          |
 
 ### `BottomSheetFooterLeading` API
 
@@ -97,14 +116,26 @@ type Action = {
 }
 ```
 
-## a11y
+## Accessibility
 
-Web: tbd
+The bottom sheet will follow the accessibility charechtaristics of a Modal. 
 
-Native: tbd
+[APG Guidelines for Modal](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)
 
-## Usage
+Behaviours: 
+
+- Tab, Shift+Tab should cycle the focused elements
+- The focus should be trapped inside the bottom sheet
+- Escape closes the bottom sheet, after closing the focus will go to the triggered element
+- When opening the bottom sheet it should either focus on the first focusable element on the sheet or element provided by the user via `initialFocusRef` prop
 
 ## Open questions
 
+- 1. What is `action` in the header trailing visual? 
+
+
 ## References
+
+- https://github.com/stipsan/react-spring-bottom-sheet
+- https://github.com/gorhom/react-native-bottom-sheet
+- https://m2.material.io/components/sheets-bottom
