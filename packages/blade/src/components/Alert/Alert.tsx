@@ -24,6 +24,8 @@ import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import { getStyleProps } from '~components/Box/getStyleProps';
+import type { StyleProps } from '~components/Box/BaseBox/types';
 
 type Nullable<Type> = Type | null;
 
@@ -109,7 +111,7 @@ type AlertProps = {
      */
     secondary?: SecondaryAction;
   };
-};
+} & StyleProps;
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -124,16 +126,17 @@ const intentIconMap = {
   notice: AlertTriangleIcon,
 };
 
-const Alert = ({
-  description,
-  title,
-  isDismissible = true,
-  onDismiss,
-  contrast = 'low',
-  isFullWidth = false,
-  intent = 'neutral',
-  actions,
-}: AlertProps): ReactElement | null => {
+const Alert = (props: AlertProps): ReactElement | null => {
+  const {
+    description,
+    title,
+    isDismissible = true,
+    onDismiss,
+    contrast = 'low',
+    isFullWidth = false,
+    intent = 'neutral',
+    actions,
+  } = props;
   if (!actions?.primary && actions?.secondary) {
     throw new Error(
       '[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.',
@@ -293,6 +296,7 @@ const Alert = ({
       isDesktop={isDesktop}
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
+      {...getStyleProps(props)}
     >
       {icon}
       <BaseBox

@@ -131,21 +131,37 @@ type VisualProps = MakeObjectResponsive<
   } & Pick<CSSObject, 'transform'>
 >;
 
-type BaseBoxProps = Partial<
+type StyleProps = Partial<
+  // @todo: add placeSelf
+  MarginProps &
+    Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'order'> &
+    PositionProps &
+    // @todo add column start, column end
+    Pick<GridProps, 'gridColumn' | 'gridRow' | 'gridRowStart' | 'gridRowEnd' | 'gridArea'> & {
+      children?: React.ReactNode | React.ReactNode[];
+    }
+>;
+
+type BoxProps = Partial<
   PaddingProps &
     MarginProps &
     LayoutProps &
     FlexboxProps &
     PositionProps &
-    GridProps &
+    GridProps & { children?: React.ReactNode | React.ReactNode[] }
+>;
+
+type BaseBoxProps = BoxProps &
+  Partial<
     VisualProps & {
-      children: React.ReactNode | React.ReactNode[];
       className?: string;
       id?: string;
     }
->;
+  >;
 
 export {
+  BoxProps,
+  StyleProps,
   BaseBoxProps,
   MakeValueResponsive,
   PaddingProps,
