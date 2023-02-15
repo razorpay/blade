@@ -37,7 +37,15 @@ const BoxStoryMeta = {
 
           function App(): JSX.Element {
             return (
-              <BaseBox backgroundColor="red"><p>Hi there!</p></BaseBox>
+              <BaseBox 
+                padding={{ base: ['spacing.1', '9px'], m: 'spacing.3' }}
+                backgroundColor="feedback.background.positive.lowContrast"
+                display="flex"
+                flexDirection={{ base: 'column', m: 'row' }}
+              >
+                <BaseBox flex="1" backgroundColor="yellow" minHeight="spacing.10" minWidth="spacing.10" />
+                <BaseBox flex="1" backgroundColor="red" minHeight="spacing.10" minWidth="spacing.10" />
+              </BaseBox>
             )
           }
 
