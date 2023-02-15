@@ -33,7 +33,7 @@ const BoxStoryMeta = {
         >
           <Sandbox>
             {`
-          import BaseBox from '@razorpay/blade/src/components/Box/BaseBox'
+          import { InternalDontUsePleaseWillBeRemovedSoonBaseBox as BaseBox } from '@razorpay/blade/components'
 
           function App(): JSX.Element {
             return (
