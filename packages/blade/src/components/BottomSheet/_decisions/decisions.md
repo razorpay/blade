@@ -40,7 +40,7 @@ import { BottomSheet } from '@razorpay/blade';
 - BottomSheetHeader:
   - Leading: 
     - Title
-    - Prefix (Icon, will this only be icon?)
+    - Prefix
   - Trailing:  
     - empty
     - icon
@@ -50,7 +50,7 @@ import { BottomSheet } from '@razorpay/blade';
 - BottomSheetFooter:
   - Leading
     - title
-    - prefix (Icon, will this only be icon?)
+    - prefix
   - Trailing
     - Primary action button
     - Secondary action button
@@ -116,6 +116,40 @@ type Action = {
 }
 ```
 
+## Composition with DropDown 
+
+We will export `BottomSheet` component separately as an independant component but generally the pattern will be to use it with SelectInput, where in mobile devices the Select's dropdown will be replaced by the BottomSheet. 
+
+There are two approaches to doing it: 
+
+1. We coupled the BottomSheet & SelectInput tightly and internally conditionally switch the components
+
+Pros: 
+
+- Easy implementation for user's end
+- User's don't have to think about breakpoints, conditional rendering etc
+- From blade side, we will have greater control over the pattern
+
+Cons: 
+
+- Bundle size will be impacted, even if users are desktop they will get the bundle of BottomSheet (vice versa)
+
+
+2. We expose BottomSheet indepandantly and let users lazy load the component as needed
+
+Pros: 
+
+- No uneccesary bundle size impact for any of the platforms
+
+Cons: 
+
+- Not trivial to implement from user's end, they will have to compose the BottomSheet & Select as per their needs.
+
+### Composition Example 
+
+
+
+
 ## Accessibility
 
 The bottom sheet will follow the accessibility charechtaristics of a Modal. 
@@ -131,7 +165,8 @@ Behaviours:
 
 ## Open questions
 
-- 1. What is `action` in the header trailing visual? 
+1. What is `action` in the header trailing visual?
+2. In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component? 
 
 
 ## References
