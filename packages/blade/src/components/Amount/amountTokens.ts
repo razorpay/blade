@@ -28,4 +28,34 @@ const iconPadding: Record<NonNullable<AmountProps['size']>, DotNotationSpacingSt
   '3xlarge': 'spacing.2',
 };
 
-export { verticalPadding, horizontalPadding, iconPadding };
+const prefixSuffixTextSizes = {
+  small: 50,
+  medium: 50,
+  large: 200,
+  xlarge: 75,
+  '2xlarge': 200,
+  '3xlarge': 300,
+} as const;
+
+const amountTextSizes = {
+  small: {
+    fontSize: 50,
+  },
+  medium: {
+    fontSize: 75,
+  },
+  large: {
+    fontSize: 100,
+  },
+  xlarge: {
+    fontSize: 300,
+  },
+  '2xlarge': {
+    fontSize: 500,
+  },
+  '3xlarge': {
+    fontSize: 700,
+  },
+} as const;
+
+export { verticalPadding, horizontalPadding, iconPadding, amountTextSizes, prefixSuffixTextSizes };

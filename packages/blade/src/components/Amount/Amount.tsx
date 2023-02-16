@@ -1,9 +1,11 @@
 import type { ReactElement } from 'react';
 import { BaseText } from '../Typography/BaseText/BaseText.web';
 import { horizontalPadding, verticalPadding } from './amountTokens';
+import BaseAmount, { getSuffixPrefixFontSize } from './BaseAmount';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+
 // import { metaAttribute, MetaConstants } from '~utils';
 
 type AmountProps = {
@@ -112,44 +114,6 @@ const formatAmountWithSuffix = (suffix: string, num: number): string => {
   }
 };
 
-const prefixSuffixTextSizes = {
-  small: 50,
-  medium: 50,
-  large: 200,
-  xlarge: 75,
-  '2xlarge': 200,
-  '3xlarge': 300,
-} as const;
-
-const amountTextSizes = {
-  small: {
-    fontSize: 50,
-  },
-  medium: {
-    fontSize: 75,
-  },
-  large: {
-    fontSize: 100,
-  },
-  xlarge: {
-    fontSize: 300,
-  },
-  '2xlarge': {
-    fontSize: 500,
-  },
-  '3xlarge': {
-    fontSize: 700,
-  },
-} as const;
-
-const getRupeeFontSize = (
-  isSuffixPrefixHighlighted: NonNullable<AmountProps['isSuffixPrefixHighlighted']>,
-  size: NonNullable<AmountProps['size']>,
-): number => {
-  if (isSuffixPrefixHighlighted) return prefixSuffixTextSizes[size];
-  return amountTextSizes[size].fontSize;
-};
-
 const getRupeeFontWeight = (
   isSuffixPrefixHighlighted: true | false,
   fontWeight: 'regular' | 'bold',
@@ -166,8 +130,8 @@ const Amount = ({
   isSuffixPrefixHighlighted = true,
   variant = 'neutral',
 }: AmountProps): ReactElement => {
-  if (!children?.trim() && typeof children !== 'string') {
-    throw new Error('[Blade: Badge]: Text as children is required for Amount.');
+  if (!children?.trim() && typeof children !== 'string' && !isNaN(children)) {
+    throw new Error('[Blade: Badge]: Number as children is required for Amount.');
   }
 
   const num = Number(children);
@@ -190,14 +154,11 @@ const Amount = ({
     >
       <BaseText
         fontWeight={getRupeeFontWeight(size, fontWeight)}
-        fontSize={getRupeeFontSize(isSuffixPrefixHighlighted, size)}
+        fontSize={getSuffixPrefixFontSize(isSuffixPrefixHighlighted, size)}
         color={prefixSuffixColor}
       >
         {RUPEE_SYMBOL}
       </BaseText>
-      {/* <BaseText {...amountTextSizes[size]} fontWeight={fontWeight} color={textColor}>
-        {value}
-      </BaseText> */}
       <BaseAmount
         value={value}
         fontWeight={fontWeight}
@@ -208,46 +169,6 @@ const Amount = ({
         prefixSuffixColor={prefixSuffixColor}
       />
     </Box>
-  );
-};
-
-const getDecimalFontWeight = (isSuffixPrefixHighlighted: true | false): 'regular' | 'bold' => {
-  if (isSuffixPrefixHighlighted) return 'regular';
-  return 'bold';
-};
-
-const BaseAmount = ({
-  value,
-  size,
-  fontWeight,
-  textColor,
-  isSuffixPrefixHighlighted,
-  suffix,
-  prefixSuffixColor,
-}) => {
-  if (suffix === 'Decimals' && isSuffixPrefixHighlighted) {
-    const integer = value.split('.')[0];
-    const decimal = value.split('.')[1];
-    return (
-      <>
-        <BaseText {...amountTextSizes[size]} fontWeight={fontWeight} color={textColor}>
-          {integer}.
-        </BaseText>
-        <BaseText
-          {...amountTextSizes[size]}
-          fontWeight={getDecimalFontWeight(isSuffixPrefixHighlighted, fontWeight)}
-          fontSize={getRupeeFontSize(isSuffixPrefixHighlighted, size)}
-          color={prefixSuffixColor}
-        >
-          {decimal}
-        </BaseText>
-      </>
-    );
-  }
-  return (
-    <BaseText {...amountTextSizes[size]} fontWeight={fontWeight} color={textColor}>
-      {value}
-    </BaseText>
   );
 };
 
