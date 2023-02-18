@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import type { BottomSheetProps } from './BottomSheet';
@@ -24,6 +25,7 @@ import {
 } from '~components/Icons';
 import { ActionListItem, ActionListItemIcon, ActionListSection } from '~components/ActionList';
 import BaseBox from '~components/Box/BaseBox';
+import { Button } from '~components/Button';
 
 export default {
   title: 'Components/BottomSheet',
@@ -31,58 +33,166 @@ export default {
 } as Meta<BottomSheetProps>;
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
+  const sheet = React.useRef<any>();
+
   return (
-    <BottomSheetComponent {...args}>
-      <BottomSheetHeader>
-        <BottomSheetHeaderLeading
-          title="Select Account"
-          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
-        <BottomSheetHeaderTrailing
-          visual={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
-      </BottomSheetHeader>
-      <BottomSheetBody>
-        <BaseBox>
-          <ActionListSection title="Section Heading">
-            <ActionListItem
-              leading={<ActionListItemIcon icon={UserIcon} />}
-              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
-              title="View Profile"
-              value="view-profile"
-            />
-            <ActionListItem
-              leading={<ActionListItemIcon icon={SettingsIcon} />}
-              title="Settings"
-              value="settings"
-            />
-            <ActionListItem
-              leading={<ActionListItemIcon icon={DownloadIcon} />}
-              title="Download"
-              value="download"
-            />
-          </ActionListSection>
-          <ActionListItem
-            intent="negative"
-            leading={<ActionListItemIcon icon={LogOutIcon} />}
-            title="Sign Out"
-            value="sign-out"
+    <BaseBox>
+      <Button onClick={() => sheet?.current?.open?.()}>Open</Button>
+      <BottomSheetComponent {...args} ref={sheet}>
+        <BottomSheetHeader>
+          <BottomSheetHeaderLeading
+            title="Select Account"
+            prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
           />
-        </BaseBox>
-      </BottomSheetBody>
-      <BottomSheetFooter>
-        <BottomSheetFooterLeading
-          title="Search Tips"
-          prefix={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
-        <BottomSheetFooterTrailing
-          actions={{
-            primary: { text: 'Apply' },
-            secondary: { text: 'Cancel' },
-          }}
-        />
-      </BottomSheetFooter>
-    </BottomSheetComponent>
+          <BottomSheetHeaderTrailing
+            visual={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          />
+        </BottomSheetHeader>
+        <BottomSheetBody>
+          <BaseBox>
+            <ActionListSection title="Section Heading">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={UserIcon} />}
+                trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+                title="View Profile"
+                value="view-profile"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download"
+              />
+            </ActionListSection>
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              intent="negative"
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Sign Out"
+              value="sign-out"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={LogOutIcon} />}
+              title="Done"
+              value="done"
+            />
+          </BaseBox>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <BottomSheetFooterLeading
+            title="Search Tips"
+            prefix={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
+          />
+          <BottomSheetFooterTrailing
+            actions={{
+              primary: { text: 'Apply' },
+              // secondary: { text: 'Cancel' },
+            }}
+          />
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </BaseBox>
   );
 };
 

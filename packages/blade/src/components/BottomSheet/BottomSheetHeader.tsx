@@ -1,13 +1,15 @@
 import styled from 'styled-components';
+import React from 'react';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
+import { useBottomSheetContext } from './BottomSheet';
 import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
-import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import type { WithComponentId } from '~utils';
 import { makeSpace } from '~utils';
+import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
 type BottomSheetHeaderLeadingProps = {
   title: string;
@@ -38,6 +40,8 @@ type BottomSheetHeaderTrailingProps = {
 };
 
 const BottomSheetHeaderTrailing: WithComponentId<BottomSheetHeaderTrailingProps> = ({ visual }) => {
+  const { close } = useBottomSheetContext();
+
   return (
     <BaseBox display="flex" flexDirection="row" alignItems="center">
       <BaseBox marginRight="spacing.4" alignSelf="center" display="flex">
@@ -46,7 +50,7 @@ const BottomSheetHeaderTrailing: WithComponentId<BottomSheetHeaderTrailingProps>
       <BaseBox>
         <IconButton
           onClick={() => {
-            console.log(1);
+            close();
           }}
           icon={CloseIcon}
           accessibilityLabel="Close BottomSheet"
@@ -64,9 +68,19 @@ type BottomSheetHeaderProps = {
 const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
   children,
 }): React.ReactElement => {
+  const { setHeaderHeight, isOpen, bind } = useBottomSheetContext();
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  useIsomorphicLayoutEffect(() => {
+    if (!ref.current) return;
+    setHeaderHeight(ref.current.getBoundingClientRect().height);
+    console.log('set');
+  }, [ref, isOpen]);
+
   return (
-    <BaseBox>
+    <BaseBox ref={ref} overflow="auto" flexShrink={0}>
       <BaseBox
+        data-header
         overflow="auto"
         marginTop="spacing.5"
         marginBottom="spacing.5"
@@ -75,6 +89,8 @@ const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
+        touchAction="none"
+        {...bind?.()}
       >
         {children}
       </BaseBox>
@@ -86,6 +102,7 @@ BottomSheetHeader.componentId = ComponentIds.BottomSheetHeader;
 
 const BottomSheetGrabHandle = styled.div(({ theme }) => {
   return {
+    flexShrink: 0,
     backgroundColor: theme.colors.brand.gray.a100.lowContrast,
     // TODO: we do not have 16px radius token
     borderRadius: makeSpace(theme.spacing[5]),
@@ -94,6 +111,7 @@ const BottomSheetGrabHandle = styled.div(({ theme }) => {
     height: makeSpace(4),
     margin: 'auto',
     marginTop: makeSpace(theme.spacing[5]),
+    touchAction: 'none',
   };
 });
 

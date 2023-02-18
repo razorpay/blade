@@ -2,12 +2,15 @@
 import React from 'react';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
+import { useBottomSheetContext } from './BottomSheet';
 import BaseBox from '~components/Box/BaseBox';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import type { WithComponentId } from '~utils';
 import { getComponentId } from '~utils';
+import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { useTheme } from '~components/BladeProvider';
 
 const BottomSheetFooterContext = React.createContext({ hasLeading: false, hasTrailing: false });
 
@@ -92,22 +95,43 @@ const BottomSheetFooterTrailing: WithComponentId<BottomSheetFooterTrailingProps>
 BottomSheetFooterTrailing.componentId = ComponentIds.BottomSheetFooterTrailing;
 
 const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactElement => {
-  let hasLeading = false;
-  let hasTrailing = false;
+  const hasLeading = React.useRef(false);
+  const hasTrailing = React.useRef(false);
+  const { theme } = useTheme();
+  const { setFooterHeight, isOpen, bind } = useBottomSheetContext();
+  const ref = React.useRef<HTMLDivElement>(null);
 
-  React.Children.forEach(children, (child) => {
-    const componentId = Boolean(child) && getComponentId(child)!;
-    if (componentId === ComponentIds.BottomSheetFooterLeading) {
-      hasLeading = true;
-    }
-    if (componentId === ComponentIds.BottomSheetFooterTrailing) {
-      hasTrailing = true;
-    }
-  });
+  useIsomorphicLayoutEffect(() => {
+    if (!ref.current) return;
+    setFooterHeight(ref.current.getBoundingClientRect().height);
+  }, [ref, isOpen]);
+
+  React.useEffect(() => {
+    React.Children.forEach(children, (child) => {
+      const componentId = Boolean(child) && getComponentId(child)!;
+      if (componentId === ComponentIds.BottomSheetFooterLeading) {
+        hasLeading.current = true;
+      }
+      if (componentId === ComponentIds.BottomSheetFooterTrailing) {
+        hasTrailing.current = true;
+      }
+    });
+  }, [children]);
 
   return (
-    <BottomSheetFooterContext.Provider value={{ hasLeading, hasTrailing }}>
-      <BaseBox overflow="auto" marginTop="auto">
+    <BottomSheetFooterContext.Provider
+      value={{ hasLeading: hasLeading.current, hasTrailing: hasTrailing.current }}
+    >
+      <BaseBox
+        data-footer
+        width="100%"
+        flexShrink={0}
+        ref={ref}
+        marginTop="auto"
+        backgroundColor={theme.colors.surface.background.level2.lowContrast}
+        touchAction="none"
+        {...bind?.()}
+      >
         <Divider />
         <BaseBox
           marginLeft="spacing.6"

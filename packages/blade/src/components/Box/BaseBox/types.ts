@@ -41,4 +41,5 @@ export type BaseBoxProps = {
   backgroundColor?: CSSObject['backgroundColor'];
   zIndex?: CSSObject['zIndex'];
   id?: string;
+  touchAction?: CSSObject['touchAction'];
 };
