@@ -48,7 +48,7 @@ const BottomSheetSurface = styled.div<{
     transitionDuration: isDragging
       ? undefined
       : `${makeMotionTime(theme.motion.duration.moderate)}`,
-    transitionTimingFunction: 'cubic-bezier(.15,0,.24,.97)',
+    transitionTimingFunction: theme.motion.easing.standard.revealing,
     willChange: 'transform, opacity, height',
     transitionProperty: 'transform, opacity, height',
 
@@ -272,13 +272,15 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         }
       };
 
+      // https://www.bram.us/2016/05/02/prevent-overscroll-bounce-in-ios-mobilesafari-pure-css/
       const preventSafariOverscroll = (e: Event) => {
         if (elem.scrollTop < 0) {
-          requestAnimationFrame(() => {
-            elem.style.overflow = 'hidden';
-            elem.scrollTop = 0;
-            elem.style.removeProperty('overflow');
-          });
+          // TODO: figure this out, it doesn't seem to work >iOS12
+          // requestAnimationFrame(() => {
+          //   elem.style.overflow = 'hidden';
+          //   elem.scrollTop = 0;
+          //   elem.style.removeProperty('overflow');
+          // });
           e.preventDefault();
         }
       };
