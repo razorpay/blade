@@ -15,7 +15,7 @@ Amount component is a UI element that displays and formats various currency valu
 | value                     | `number`                                                   | `undefined` | The value to be rendered within the component                                                                                                                                                     | ✅       |
 | variant                   | `positive`, `negative`, `notice`, `information`, `blue`    | `undefined` | The variant of the amount to be rendered                                                                                                                                                          |          |
 | fontWeight                | `bold`, `regular`                                          | `bold`      | The weight of the amount to be rendered                                                                                                                                                           |          |
-| showSuffix                | `none`, `decimals` , `humanise`                            | `decimals`  | The type of affix to be displayed with the currency value, (none, decimals, and humanise) that respectively indicate no affix, the number of decimal places, and the scale of the currency value. |          |
+| suffix                    | `none`, `decimals` , `humanize`                            | `decimals`  | The type of affix to be displayed with the currency value, (none, decimals, and humanize) that respectively indicate no affix, the number of decimal places, and the scale of the currency value. |          |
 | size                      | `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small` | `3xlarge`   | The size of the amount to be rendered                                                                                                                                                             |          |
 | isSuffixPrefixHighlighted | `true`, `false`                                            | `true`      | Highlight the main amount by making the prefix symbol and decimal digits small                                                                                                                    |          |
 
@@ -25,7 +25,7 @@ Amount component is a UI element that displays and formats various currency valu
 import { Amount } from '@razorpay/components';
 
 <Amount
-  showSuffix="decimals"
+  suffix="decimals"
   size="2xlarge"
   isSuffixPrefixHighlighted={true}
   fontWeight="regular"
@@ -35,6 +35,8 @@ import { Amount } from '@razorpay/components';
 ```
 
 ## Open Questions
+
+- Should we call `isSuffixPrefixHighlighted` or `isHighlighted` or `isAffixHighligted`, considering when this value is true the value will be highligted and not the affix.
 
 #### Dev
 
