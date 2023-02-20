@@ -32,7 +32,7 @@ const getResponsiveValue = <T extends string | number | string[]>(
     // In React Native, we map the value `s` token on priority (since the breakpoint maps to mobiles in useBreakpoint hook).
     // We further look into smaller sizes, then we check base size, then we check medium, large and extra large sizes.
     // Then we return the first non-undefined value in this priority
-    const priorityArray = [value.s, value.xs, value.base, value.m, value.l, value.xl];
+    const priorityArray = [value.s, value.xs, value.base];
     return priorityArray.find((val) => val !== undefined);
   }
 
