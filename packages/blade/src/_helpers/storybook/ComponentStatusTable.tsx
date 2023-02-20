@@ -9,7 +9,7 @@ import {
   AlertCircleIcon,
 } from '../../components/Icons';
 import { LinkToStorybook } from './LinkToStorybook';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { BadgeProps } from '~components/Badge';
@@ -373,52 +373,81 @@ const ComponentStatusTable = (): React.ReactElement => {
   });
 
   return (
-    <BaseBox>
-      <Table>
-        <thead>
-          <tr>
-            <th align="left">
-              <Text weight="bold">Component</Text>
-            </th>
-            <th align="left">
-              <Text weight="bold">Status</Text>
-            </th>
-            <th style={{ width: '50%' }} align="left">
-              <Text weight="bold">Description</Text>
-            </th>
-            <th align="right">
-              <Text weight="bold">Released In</Text>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedData.map((data) => {
-            return (
-              <tr key={data.name}>
-                <td align="left">
-                  {data.storybookLink ? (
-                    <LinkToStorybook url={data.storybookLink}>{data.name}</LinkToStorybook>
-                  ) : (
-                    <Text>{data.name}</Text>
-                  )}
-                </td>
-                <td align="left">
-                  <ComponentStatusBadge status={data.status} />
-                </td>
-                <td align="left">
-                  <Text size="medium" color="surface.text.subtle.lowContrast">
-                    {data.description}
-                  </Text>
-                </td>
-                <td align="right">
-                  <ReleasedInLink version={data.releasedIn} />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    </BaseBox>
+    <>
+      <Heading variant="regular">Lifecycle of a component</Heading>
+      <br />
+      <BaseBox display="flex" flexDirection="row" marginBottom="spacing.7" gap="spacing.2">
+        <Badge variant="information" icon={ClockIcon}>
+          Planned: Qn Design
+        </Badge>
+        ➡️
+        <Badge variant="information" icon={ClockIcon}>
+          Planned: Qn Dev
+        </Badge>
+        ➡️
+        <Badge variant="notice" icon={LoaderIcon}>
+          In Design
+        </Badge>
+        ➡️
+        <Badge variant="notice" icon={EditIcon}>
+          API In Progress
+        </Badge>
+        ➡️
+        <Badge variant="notice" icon={LoaderIcon}>
+          In Development
+        </Badge>
+        ➡️
+        <Badge variant="positive" icon={CheckIcon}>
+          Released
+        </Badge>
+      </BaseBox>
+      <BaseBox>
+        <Table>
+          <thead>
+            <tr>
+              <th align="left">
+                <Text weight="bold">Component</Text>
+              </th>
+              <th align="left">
+                <Text weight="bold">Status</Text>
+              </th>
+              <th style={{ width: '50%' }} align="left">
+                <Text weight="bold">Description</Text>
+              </th>
+              <th align="right">
+                <Text weight="bold">Released In</Text>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedData.map((data) => {
+              return (
+                <tr key={data.name}>
+                  <td align="left">
+                    {data.storybookLink ? (
+                      <LinkToStorybook url={data.storybookLink}>{data.name}</LinkToStorybook>
+                    ) : (
+                      <Text>{data.name}</Text>
+                    )}
+                  </td>
+                  <td align="left">
+                    <ComponentStatusBadge status={data.status} />
+                  </td>
+                  <td align="left">
+                    <Text size="medium" color="surface.text.subtle.lowContrast">
+                      {data.description}
+                    </Text>
+                  </td>
+                  <td align="right">
+                    <ReleasedInLink version={data.releasedIn} />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      </BaseBox>
+    </>
   );
 };
 
