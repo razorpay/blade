@@ -103,15 +103,22 @@ BottomSheetHeader.componentId = ComponentIds.BottomSheetHeader;
 const BottomSheetGrabHandle = styled.div(({ theme }) => {
   return {
     flexShrink: 0,
-    backgroundColor: theme.colors.brand.gray.a100.lowContrast,
-    // TODO: we do not have 16px radius token
-    borderRadius: makeSpace(theme.spacing[5]),
-    // TODO: refactor to size tokens
-    width: makeSpace(60),
-    height: makeSpace(4),
-    margin: 'auto',
-    marginTop: makeSpace(theme.spacing[5]),
+    paddingTop: makeSpace(theme.spacing[5]),
     touchAction: 'none',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ':after': {
+      margin: 'auto',
+      content: "''",
+      // TODO: refactor to size tokens
+      width: makeSpace(60),
+      height: makeSpace(4),
+      backgroundColor: theme.colors.brand.gray.a100.lowContrast,
+      // TODO: we do not have 16px radius token
+      borderRadius: makeSpace(theme.spacing[5]),
+    },
   };
 });
 
