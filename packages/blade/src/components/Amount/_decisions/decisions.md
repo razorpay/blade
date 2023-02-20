@@ -54,7 +54,7 @@ import { Amount } from '@razorpay/components';
 
 ### Should we have a seperate prop for decimals and another for affix symbols?
 
-- We initially considered using two different props, but then realized that only one of them would be shown at a time. So in that case, we decided to use a single prop called 'showSuffix'. We ultimately settled on using a prop with three possible values: 'none', 'decimals', and 'humanize'.
+- We initially considered using two different props, but then realized that only one of them would be shown at a time. So in that case, we decided to use a single prop called 'suffix'. We ultimately settled on using a prop with three possible values: 'none', 'decimals', and 'humanize'.
 
 ### Should we separate the amount with commas based on the Indian currency format?
 
