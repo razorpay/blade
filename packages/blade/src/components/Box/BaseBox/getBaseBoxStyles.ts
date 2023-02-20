@@ -61,6 +61,7 @@ const getBaseBoxStyles = ({
   zIndex,
   borderRadius,
   touchAction,
+  userSelect,
 }: BaseBoxProps & { theme: Theme }): CSSObject => ({
   display,
   flex,
@@ -99,6 +100,7 @@ const getBaseBoxStyles = ({
   zIndex,
   borderRadius: makeBorderSize(getIn(theme, `border.radius.${borderRadius}`)),
   touchAction,
+  userSelect,
 });
 
 export default getBaseBoxStyles;

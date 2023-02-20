@@ -21,7 +21,7 @@ const BottomSheetHeaderLeading: WithComponentId<BottomSheetHeaderLeadingProps> =
   prefix,
 }) => {
   return (
-    <BaseBox flex={1} display="flex" flexDirection="row" alignItems="center">
+    <BaseBox flex={1} display="flex" flexDirection="row" alignItems="center" userSelect="none">
       <BaseBox marginRight="spacing.4" alignSelf="center" display="flex">
         {prefix}
       </BaseBox>

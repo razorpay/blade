@@ -35,7 +35,7 @@ const BottomSheetFooterLeading: WithComponentId<BottomSheetFooterLeadingProps> =
   prefix,
 }) => {
   return (
-    <BaseBox display="flex" alignItems="center" flexDirection="row">
+    <BaseBox display="flex" alignItems="center" flexDirection="row" userSelect="none">
       {prefix && (
         <BaseBox marginRight="spacing.4" display="flex" alignSelf="center">
           {prefix}

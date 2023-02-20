@@ -42,4 +42,5 @@ export type BaseBoxProps = {
   zIndex?: CSSObject['zIndex'];
   id?: string;
   touchAction?: CSSObject['touchAction'];
+  userSelect?: CSSObject['userSelect'];
 };
