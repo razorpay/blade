@@ -4,8 +4,6 @@ import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/sr
 import React from 'react';
 
 type BottomSheetContextProps = {
-  maxContent: number;
-  minContent: number;
   headerHeight: number;
   contentHeight: number;
   footerHeight: number;
@@ -20,8 +18,6 @@ type BottomSheetContextProps = {
 };
 
 const BottomSheetContext = React.createContext<BottomSheetContextProps>({
-  maxContent: 0,
-  minContent: 0,
   headerHeight: 0,
   contentHeight: 0,
   footerHeight: 0,

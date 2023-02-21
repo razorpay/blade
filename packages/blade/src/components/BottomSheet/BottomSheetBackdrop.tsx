@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useBottomSheetContext } from './BottomSheet';
+import { useBottomSheetContext } from './BottomSheetContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';

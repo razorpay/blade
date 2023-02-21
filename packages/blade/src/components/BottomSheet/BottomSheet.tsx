@@ -87,14 +87,14 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
     const canSafelyHideSheet = isAnimationFinished && !isOpen;
 
     const setPosY = React.useCallback(
-      (value: number) => {
+      (value: number, limit = true) => {
         const maxValue = computeMaxContent({
-          contentHeight: contentHeight + 16, // TODO: 16px padding of content
+          contentHeight,
           footerHeight,
           headerHeight,
           maxHeight: value,
         });
-        _setPosY(maxValue);
+        _setPosY(limit ? maxValue : value);
       },
       [contentHeight, footerHeight, headerHeight],
     );
@@ -112,17 +112,6 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         return prev + grabHandleRef.current.getBoundingClientRect().height;
       });
     }, [grabHandleRef, isOpen]);
-
-    // useIsomorphicLayoutEffect(() => {
-    //   if (posY > 0) {
-    //     setIsOpen(true);
-    //     scrollLockRef.current.activate();
-    //   } else {
-    //     setIsOpen(false);
-    //     scrollLockRef.current.deactivate();
-    //   }
-    //   // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [posY]);
 
     const close = React.useCallback(() => {
       setIsOpen(false);
@@ -180,11 +169,18 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         );
 
         let newY = rawY;
+
         if (down) {
-          // Ensure that users aren't able to drag the sheet more than the upperSnapPoint
+          // Ensure that users aren't able to drag the sheet
+          // more than the upperSnapPoint or maximum height of the sheet
           // this is basically a clamp() function but creates a nice rubberband effect
           const dampening = 0.55;
-          newY = rubberbandIfOutOfBounds(rawY, 0, upperSnapPoint, dampening);
+          const totalHeight = headerHeight + footerHeight + contentHeight;
+          if (totalHeight < upperSnapPoint) {
+            newY = rubberbandIfOutOfBounds(rawY, 0, totalHeight, dampening);
+          } else {
+            newY = rubberbandIfOutOfBounds(rawY, 0, upperSnapPoint, dampening);
+          }
         } else {
           newY = predictedY;
         }
@@ -229,7 +225,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           }
         }
 
-        setPosY(newY);
+        setPosY(newY, !down);
       },
       {
         from: [0, posY],
@@ -270,24 +266,37 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       };
     }, [scrollRef]);
 
+    const contextValue = React.useMemo(
+      () => ({
+        isOpen,
+        close,
+        posY,
+        headerHeight,
+        contentHeight,
+        footerHeight,
+        setContentHeight,
+        setFooterHeight,
+        setHeaderHeight,
+        scrollRef,
+        bind,
+      }),
+      [
+        isOpen,
+        close,
+        posY,
+        headerHeight,
+        contentHeight,
+        footerHeight,
+        setContentHeight,
+        setFooterHeight,
+        setHeaderHeight,
+        scrollRef,
+        bind,
+      ],
+    );
+
     return (
-      <BottomSheetContext.Provider
-        value={{
-          isOpen,
-          close,
-          posY,
-          maxContent: 0,
-          minContent: 0,
-          headerHeight,
-          contentHeight,
-          footerHeight,
-          setContentHeight,
-          setFooterHeight,
-          setHeaderHeight,
-          scrollRef,
-          bind,
-        }}
-      >
+      <BottomSheetContext.Provider value={contextValue}>
         <BottomSheetBackdrop />
         <BottomSheetSurface
           data-surface

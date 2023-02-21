@@ -102,8 +102,13 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
   const ref = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
-    if (!ref.current) return;
-    setFooterHeight(ref.current.getBoundingClientRect().height);
+    // for some reason the calculated footer height is changing when user drags the sheet
+    // although i don't see a reason why, thus putting it in a setTimeout so that
+    // we calculate the height on the next browser paint
+    window.setTimeout(() => {
+      if (!ref.current) return;
+      setFooterHeight(ref.current.offsetHeight);
+    });
   }, [ref, isOpen]);
 
   React.useEffect(() => {
@@ -124,9 +129,9 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
     >
       <BaseBox
         data-footer
+        ref={ref}
         width="100%"
         flexShrink={0}
-        ref={ref}
         marginTop="auto"
         backgroundColor={theme.colors.surface.background.level2.lowContrast}
         touchAction="none"

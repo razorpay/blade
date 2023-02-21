@@ -35,8 +35,8 @@ const BottomSheetBody: WithComponentId<{ children: React.ReactNode }> = ({ child
       <BaseBox
         marginLeft="spacing.3"
         marginRight="spacing.3"
-        marginTop="spacing.3"
-        marginBottom="spacing.3"
+        paddingTop="spacing.3"
+        paddingBottom="spacing.3"
         data-content
         ref={contentRef}
         overflow="hidden"
