@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheet';
@@ -118,7 +119,10 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
     });
   }, [children]);
 
-  return (
+  // Portaling the footer to the body so that we can
+  // keep it fixed at bottom instead of the bottom of the sheet
+  // since sheet's height is animating it's causing the footer to jump and jitter
+  return ReactDOM.createPortal(
     <BottomSheetFooterContext.Provider
       value={{ hasLeading: hasLeading.current, hasTrailing: hasTrailing.current }}
     >
@@ -127,6 +131,9 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
         width="100%"
         flexShrink={0}
         ref={ref}
+        position="fixed"
+        left={0}
+        bottom={0}
         marginTop="auto"
         backgroundColor={theme.colors.surface.background.level2.lowContrast}
         touchAction="none"
@@ -146,7 +153,8 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
           {children}
         </BaseBox>
       </BaseBox>
-    </BottomSheetFooterContext.Provider>
+    </BottomSheetFooterContext.Provider>,
+    document.body,
   );
 };
 

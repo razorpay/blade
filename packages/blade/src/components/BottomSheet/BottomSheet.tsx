@@ -333,6 +333,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           isDragging={isDragging}
           style={{
             height: posY,
+            paddingBottom: footerHeight,
             transform: `translate3d(0, ${posY * -1}px, 0)`,
           }}
         >
