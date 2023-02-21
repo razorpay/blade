@@ -497,7 +497,7 @@ WithScrollbar.args = {
 };
 
 export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
-  const [dropdownValues, setDropdownValues] = React.useState('');
+  const [dropdownValues, setDropdownValues] = React.useState<Record<string, string[]>>({});
   const {
     selectionType,
     surfaceLevel,
@@ -510,13 +510,16 @@ export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
 
   return (
     <BaseBox minHeight={300}>
-      <Text>Selected Values: {dropdownValues}</Text>
+      <Text>Selected Values: {JSON.stringify(dropdownValues)}</Text>
       <BaseBox marginTop="spacing.5" />
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
-          onChange={({ values }) => {
-            setDropdownValues(values.join(', '));
+          onChange={({ name, values }) => {
+            console.log(name, values);
+            if (name) {
+              setDropdownValues({ [name]: values });
+            }
           }}
           {...selectInputArgs}
         />
