@@ -148,7 +148,7 @@ type VisualProps = MakeObjectResponsive<
   } & Pick<CSSObject, 'transform'>
 >;
 
-type StyleProps = Partial<
+type StyledProps = Partial<
   // @todo: add placeSelf
   MarginProps &
     Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'order'> &
@@ -178,7 +178,7 @@ type BaseBoxProps = BoxProps &
 
 export {
   BoxProps,
-  StyleProps,
+  StyledProps,
   BaseBoxProps,
   MakeValueResponsive,
   PaddingProps,

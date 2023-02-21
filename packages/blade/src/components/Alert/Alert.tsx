@@ -24,8 +24,8 @@ import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-import { getStyleProps } from '~components/Box/getStyleProps';
-import type { StyleProps } from '~components/Box/BaseBox/types';
+import { getStyledProps } from '~components/Box/getStyledProps';
+import type { StyledProps } from '~components/Box/BaseBox/types';
 
 type Nullable<Type> = Type | null;
 
@@ -111,7 +111,7 @@ type AlertProps = {
      */
     secondary?: SecondaryAction;
   };
-} & StyleProps;
+} & StyledProps;
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -296,7 +296,7 @@ const Alert = (props: AlertProps): ReactElement | null => {
       isDesktop={isDesktop}
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
-      {...getStyleProps(props)}
+      {...getStyledProps(props)}
     >
       {icon}
       <BaseBox

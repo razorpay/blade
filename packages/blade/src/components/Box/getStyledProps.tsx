@@ -1,11 +1,11 @@
-import type { StyleProps } from './BaseBox/types';
+import type { StyledProps } from './BaseBox/types';
 
 /**
  * StylePropsBox is a container that we wrap all our components with to give them styled properties
  */
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getStyleProps = (props: Record<string, any>): StyleProps => {
+const getStyledProps = (props: Record<string, any>): StyledProps => {
   return {
     alignSelf: props.alignSelf,
     justifySelf: props.justifySelf,
@@ -29,4 +29,4 @@ const getStyleProps = (props: Record<string, any>): StyleProps => {
   };
 };
 
-export { getStyleProps };
+export { getStyledProps };
