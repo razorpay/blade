@@ -6,23 +6,88 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 
+const baseBoxStoryArgs = {
+  padding: [
+    'Can be',
+    '- an absolute value like `"10px"`',
+    '- token `"spacing.5"`',
+    '- an array shorthand `["spacing.2", "10px", "spacing.5", "spacing.9"]',
+    '- responsive object with combinatation of all previous values `{ base: "spacing.3", l: ["spacing.10", "spacing.5"]}`',
+  ].join('\n\n'),
+  margin: [
+    'Can be',
+    '- an absolute value like `"10px"`',
+    '- token `"spacing.5"`',
+    '- an array shorthand `["spacing.2", "10px", "spacing.5", "spacing.9"]',
+    '- responsive object with combinatation of all previous values `{ base: "spacing.3", l: ["spacing.10", "spacing.5"]}`',
+  ].join('\n\n'),
+
+  backgroundColor:
+    '<i>Only available in BaseBox</i>\n\n Value can be a color token, absolute values or responsive object with token and absolute values',
+  display:
+    'CSS `display` property. Can be  \n\n - string like `block`, `flex`, `none`, etc\n\n- Responsive object `{ base: "block", m: "none" }`',
+  overflow: '',
+  flex: '',
+  flexWrap: '',
+  flexDirection: '',
+  flexGrow: '',
+  flexShrink: '',
+  flexBasis: '',
+  alignItems: '',
+  alignContent: '',
+  alignSelf: '',
+  justifyItems: '',
+  justifyContent: '',
+  justifySelf: '',
+  order: '',
+  position: '',
+  zIndex: '',
+  grid: '',
+  gridColumn: '',
+  gridRow: '',
+  gridRowStart: '',
+  gridRowEnd: '',
+  gridArea: '',
+  gridAutoFlow: '',
+  gridAutoRows: '',
+  gridAutoColumns: '',
+  gridTemplate: '',
+  gridTemplateAreas: '',
+  gridTemplateColumns: '',
+  gridTemplateRows: '',
+  transform: '',
+};
+
+const getBaseBoxArgTypes = (): Record<
+  string,
+  { name: string; description: string; control: { type: 'object' } }
+> => {
+  return Object.fromEntries(
+    Object.entries(baseBoxStoryArgs).map(([argName, argDescription]) => {
+      let description = argDescription;
+      const cssPropertyName = argName.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
+
+      if (!description) {
+        description = `CSS property \`${cssPropertyName}\`. \n\nCan be it's CSS Value or Responsive Object with CSS Value.\n\nCheckout: https://developer.mozilla.org/en-US/docs/Web/CSS/${cssPropertyName}`;
+      }
+
+      return [
+        argName,
+        {
+          name: argName,
+          description,
+          table: { category: argDescription === 'SPACING' ? 'SpacingProps' : undefined },
+          control: { type: 'object' },
+        },
+      ];
+    }),
+  );
+};
+
 const BoxStoryMeta = {
   title: 'Components/Box/BaseBox (Internal)',
   component: BaseBox,
-  argTypes: {
-    padding: {
-      name: 'padding',
-      description:
-        'Can be \n\n - an absolute value like `10px` \n\n - token `"spacing.5"`\n\n - an array shorthand `["spacing.2", "10px", "spacing.5", "spacing.9"]`\n\n - responsive object with combinatation of all previous values `{ base: "spacing.3", l: ["spacing.10", "spacing.5"]}`',
-      control: { type: 'object' },
-    },
-    backgroundColor: {
-      name: 'backgroundColor',
-      control: { type: 'object' },
-      description:
-        '<i>Only available in BaseBox</i>\n\n Value can be a token, absolute values or responsive object with token and absolute values',
-    },
-  },
+  argTypes: getBaseBoxArgTypes(),
   parameters: {
     docs: {
       page: () => (

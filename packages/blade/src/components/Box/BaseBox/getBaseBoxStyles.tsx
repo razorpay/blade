@@ -21,7 +21,12 @@ const getResponsiveValue = <T extends string | number | string[]>(
   }
 
   if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value)) {
-    return value;
+    if (size === 'base') {
+      return value;
+    }
+
+    // Plain values will already get added in base styles so we don't have to repeat them in media queries
+    return undefined;
   }
 
   if (isEmpty(value)) {
@@ -30,9 +35,9 @@ const getResponsiveValue = <T extends string | number | string[]>(
 
   if (isReactNative()) {
     // In React Native, we map the value `s` token on priority (since the breakpoint maps to mobiles in useBreakpoint hook).
-    // We further look into smaller sizes, then we check base size, then we check medium, large and extra large sizes.
+    // We further look into smaller sizes, then we check base size.
     // Then we return the first non-undefined value in this priority
-    const priorityArray = [value.s, value.xs, value.base, value.m, value.l, value.xl];
+    const priorityArray = [value.s, value.xs, value.base];
     return priorityArray.find((val) => val !== undefined);
   }
 
@@ -46,7 +51,7 @@ const getSpacingValue = (
   theme: Theme,
   size?: keyof Breakpoints,
 ): string | undefined => {
-  if (!spacingValue) {
+  if (isEmpty(spacingValue)) {
     return undefined;
   }
 
@@ -55,7 +60,7 @@ const getSpacingValue = (
     size,
   );
 
-  if (!responsiveSpacingValue) {
+  if (isEmpty(responsiveSpacingValue)) {
     return undefined;
   }
 
@@ -69,7 +74,7 @@ const getSpacingValue = (
 
   if (typeof responsiveSpacingValue === 'string' && responsiveSpacingValue.startsWith('spacing.')) {
     const spacingReturnValue = getIn(theme, responsiveSpacingValue);
-    return spacingReturnValue ? makeSpace(spacingReturnValue) : undefined;
+    return isEmpty(spacingReturnValue) ? makeSpace(spacingReturnValue) : undefined;
   }
 
   // pixel or with unit values
@@ -86,10 +91,20 @@ const getBackgroundValue = (
   return tokenValue ?? responsiveBackgroundValue;
 };
 
+const getBorderRadiusValue = (
+  borderRadius: BaseBoxProps['borderRadius'],
+  theme: Theme,
+  size?: keyof Breakpoints,
+): string | undefined => {
+  const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, size);
+  return isEmpty(responsiveBorderRadiusValue)
+    ? undefined
+    : makeSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
+};
+
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   size?: keyof Breakpoints,
-  // Ideally return type is `CSSObject`. But I am keeping the keys of object requrired as BasBoxProps keys so we don't miss out on any key
 ): CSSObject => {
   return {
     display: getResponsiveValue(props.display, size),
@@ -154,13 +169,18 @@ const getAllProps = (
 
     // Visual props
     backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, size),
-    borderRadius: props.borderRadius
-      ? makeSize(
-          getIn(props.theme, `border.radius.${getResponsiveValue(props.borderRadius, size)}`),
-        )
-      : undefined,
+    borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, size),
     transform: getResponsiveValue(props.transform, size),
   };
+};
+
+/** We only add breakpoint if at least one of the value is defined */
+const shouldAddBreakpoint = (cssProps: CSSObject): boolean => {
+  const firstDefinedValue = Object.values(cssProps).find(
+    (cssValue) => cssValue !== undefined && cssValue !== null,
+  );
+
+  return firstDefinedValue !== undefined;
 };
 
 const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject => {
@@ -173,12 +193,12 @@ const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject =
   return Object.fromEntries(
     Object.entries(breakpointsWithoutBase).map(([breakpointKey, breakpointValue]) => {
       const mediaQuery = `@media ${getMediaQuery({ min: breakpointValue })}`;
-      return [
-        mediaQuery,
-        {
-          ...getAllProps(props, breakpointKey as keyof Breakpoints),
-        },
-      ];
+      const cssPropsForCurrentBreakpoint = getAllProps(props, breakpointKey as keyof Breakpoints);
+      if (!shouldAddBreakpoint(cssPropsForCurrentBreakpoint)) {
+        return [];
+      }
+
+      return [mediaQuery, cssPropsForCurrentBreakpoint];
     }),
   );
 };
@@ -208,4 +228,12 @@ const getDependencyProps = (props: BaseBoxProps & { theme: Theme }): string | Ba
   return dependencyPropString;
 };
 
-export { getDependencyProps, getBaseBoxStyles, getResponsiveValue, getSpacingValue };
+export {
+  getDependencyProps,
+  getBaseBoxStyles,
+  getResponsiveValue,
+  getSpacingValue,
+  getBackgroundValue,
+  getBorderRadiusValue,
+  shouldAddBreakpoint,
+};

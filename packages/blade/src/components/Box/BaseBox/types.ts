@@ -63,8 +63,26 @@ type LayoutProps = MakeObjectResponsive<
 
 type FlexboxProps = MakeObjectResponsive<
   {
+    /**
+     * This uses the native gap property which might not work on older browsers.
+     * If you want to support older browsers, you might want to use `margin` instead.
+     *
+     * @see https://caniuse.com/?search=gap
+     */
     gap: SpacingValueType;
+    /**
+     * This uses the native row-gap property which might not work on older browsers.
+     * If you want to support older browsers, you might want to use `margin` instead.
+     *
+     * @see https://caniuse.com/?search=row-gap
+     */
     rowGap: SpacingValueType;
+    /**
+     * This uses the native column-gap property which might not work on older browsers.
+     * If you want to support older browsers, you might want to use `margin` instead.
+     *
+     * @see https://caniuse.com/?search=column-gap
+     */
     columnGap: SpacingValueType;
   } & Pick<
     CSSObject,
@@ -127,7 +145,6 @@ type VisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
     backgroundColor: BackgroundColorType;
-    background: BackgroundColorType;
   } & Pick<CSSObject, 'transform'>
 >;
 

@@ -241,7 +241,7 @@ export const KitchenSink = (): React.ReactElement => {
         <RadioComponent value="mango">Mango</RadioComponent>
         <RadioComponent value="orange">Orange</RadioComponent>
       </RadioGroupComponent>
-      <BaseBox height={50} overflow="scroll" marginTop="spacing.4">
+      <BaseBox height="50px" overflow="scroll" marginTop="spacing.4">
         <RadioGroupComponent
           labelPosition="left"
           necessityIndicator="optional"
