@@ -62,7 +62,7 @@ import { BottomSheet } from '@razorpay/blade';
 
 ### `BottomSheet`
 
-We'll expose an `BottomSheeet` component with the following API:
+We'll expose a `BottomSheet` component with the following API:
 
 | Prop            | Type        | Default                 | Description                                                                                     | Required |
 | --------------- | ----------- | ----------------------- | ----------------------------------------------------------------------------------------------- | -------- |
