@@ -164,14 +164,15 @@ type AllDropdownProps = Partial<DropdownProps> &
   Partial<SelectInputProps> &
   Partial<ActionListItemProps> & {
     actionListItemIcon: string;
+    actionListItemIsDisabled: boolean;
   };
 
-const CombinedProps = (_args: AllDropdownProps): JSX.Element => {
+const Playground = (_args: AllDropdownProps): JSX.Element => {
   return <BaseBox>{null}</BaseBox>;
 };
 
-type DefaultPropTypes = string | number | boolean;
-type CategoryTypes = 'Dropdown' | 'ActionList' | 'SelectInput' | 'ActionListItem1';
+type DefaultPropTypes = string | number | boolean | (() => void) | Record<string, string>;
+type CategoryTypes = 'Dropdown' | 'ActionList' | 'SelectInput' | 'ActionListItem[0]';
 
 type ArgsTable = Partial<
   Record<
@@ -191,9 +192,13 @@ const getCategory = (key: string): string => {
 const argsTable: ArgsTable = {
   'Dropdown/selectionType': ['single', 'multiple'],
   'ActionList/surfaceLevel': [2, 3],
-  'ActionListItem1/title': 'Home',
-  'ActionListItem1/description': '',
-  'ActionListItem1/value': 'home',
+  'ActionListItem[0]/title': 'Home',
+  'ActionListItem[0]/description': '',
+  'ActionListItem[0]/value': 'home',
+  'ActionListItem[0]/isDefaultSelected': false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  'ActionListItem[0]/onClick': () => {},
+  'ActionListItem[0]/trailing': {},
   validationState: ['none', 'error', 'success'],
   label: 'Select Action',
   labelPosition: ['top', 'left'],
@@ -204,6 +209,15 @@ const argsTable: ArgsTable = {
   name: 'action',
   isRequired: false,
   placeholder: 'Select Option',
+  isDisabled: false,
+  prefix: {},
+  suffix: {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onFocus: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onBlur: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onChange: () => {},
 };
 
 const makeArgTypes = (argTable: ArgsTable): Meta['argTypes'] => {
@@ -219,7 +233,11 @@ const makeArgTypes = (argTable: ArgsTable): Meta['argTypes'] => {
         return 'boolean';
       }
 
-      return 'text';
+      if (typeof value === 'string') {
+        return 'text';
+      }
+
+      return 'object';
     };
 
     return [
@@ -239,7 +257,8 @@ const makeArgTypes = (argTable: ArgsTable): Meta['argTypes'] => {
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/With Select',
-  component: CombinedProps,
+  component: Playground,
+  subcomponents: { SelectInputReference: SelectInput },
   args: {
     selectionType: 'single',
     surfaceLevel: 2,
@@ -252,8 +271,12 @@ const DropdownStoryMeta: Meta = {
   } as AllDropdownProps,
   argTypes: {
     ...makeArgTypes(argsTable),
+    actionListItemIsDisabled: {
+      table: { category: 'ActionListItem[0]' },
+      control: { type: 'boolean' },
+    },
     actionListItemIcon: {
-      table: { category: 'ActionListItem1' },
+      table: { category: 'ActionListItem[0]' },
       control: { type: 'select' },
       description:
         'Usage should be as `<ActionListItem leading={<ActionListItemIcon icon={HomeIcon}>} />`',
@@ -269,14 +292,16 @@ const DropdownStoryMeta: Meta = {
   },
 };
 
-const DropdownTemplate: ComponentStory<typeof CombinedProps> = (args) => {
+const DropdownTemplate: ComponentStory<typeof Playground> = (args) => {
   const {
     selectionType,
     surfaceLevel,
     title = 'Home',
     description = '',
     value = 'home',
+    isDefaultSelected,
     actionListItemIcon,
+    actionListItemIsDisabled,
     ...selectInputArgs
   } = args;
   return (
@@ -297,6 +322,8 @@ const DropdownTemplate: ComponentStory<typeof CombinedProps> = (args) => {
               title={title}
               description={description}
               value={value}
+              isDefaultSelected={isDefaultSelected}
+              isDisabled={actionListItemIsDisabled}
             />
             <ActionListItem
               leading={<ActionListItemIcon icon={SettingsIcon} />}
