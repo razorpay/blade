@@ -516,7 +516,6 @@ export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
         <SelectInput
           label="Select Action"
           onChange={({ name, values }) => {
-            console.log(name, values);
             if (name) {
               setDropdownValues({ [name]: values });
             }
