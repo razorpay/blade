@@ -43,4 +43,5 @@ export type BaseBoxProps = {
   id?: string;
   touchAction?: CSSObject['touchAction'];
   userSelect?: CSSObject['userSelect'];
+  opacity?: CSSObject['opacity'];
 };

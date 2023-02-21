@@ -23,6 +23,8 @@ type BottomSheetProps = {
   snapPoints: SnapPoints;
 };
 
+export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
+
 const BottomSheetSurface = styled.div<{
   windowHeight: number;
   isOpen: boolean;
@@ -49,7 +51,7 @@ const BottomSheetSurface = styled.div<{
     transitionDuration: isDragging
       ? undefined
       : `${makeMotionTime(theme.motion.duration.moderate)}`,
-    transitionTimingFunction: 'cubic-bezier(.15,0,.24,.97)',
+    transitionTimingFunction: BOTTOM_SHEET_EASING,
     willChange: 'transform, opacity, height',
     transitionProperty: 'transform, opacity, height',
 
@@ -115,11 +117,13 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
 
     const [posY, _setPosY] = React.useState(0);
     const [isOpen, setIsOpen] = React.useState(false);
+    const [isAnimationFinished, setIsAnimationFinished] = React.useState(false);
     const [isDragging, setIsDragging] = React.useState(false);
 
     const preventScrollingRef = React.useRef(false);
     const scrollRef = React.useRef<HTMLDivElement>(null);
     const grabHandleRef = React.useRef<HTMLDivElement>(null);
+    const canSafelyHideSheet = isAnimationFinished && !isOpen;
 
     const setPosY = React.useCallback(
       (value: number) => {
@@ -252,6 +256,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           // if we stop dragging assign snap to the nearest point
           if (!active) {
             newY = nearest;
+            setIsAnimationFinished(false);
           }
 
           // because predictedY is velocity drive, it's quite easy to accidentally
@@ -331,7 +336,12 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           windowHeight={dimensions.height}
           isOpen={isOpen}
           isDragging={isDragging}
+          onTransitionEnd={() => {
+            setIsAnimationFinished(true);
+          }}
           style={{
+            opacity: canSafelyHideSheet ? 0 : 1,
+            pointerEvents: canSafelyHideSheet ? 'none' : 'all',
             height: posY,
             paddingBottom: footerHeight,
             transform: `translate3d(0, ${posY * -1}px, 0)`,
