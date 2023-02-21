@@ -11,6 +11,7 @@ import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
+import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSpace } from '~utils';
 
@@ -65,6 +66,7 @@ const BottomSheetSurface = styled.div<{
     alignItems: 'center',
     touchAction: 'none',
     overflow: 'hidden',
+    zIndex: 2,
   };
 });
 
@@ -331,6 +333,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           bind,
         }}
       >
+        <BottomSheetBackdrop />
         <BottomSheetSurface
           data-surface
           windowHeight={dimensions.height}

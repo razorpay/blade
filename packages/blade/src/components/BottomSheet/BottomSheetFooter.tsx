@@ -147,6 +147,7 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
         marginTop="auto"
         backgroundColor={theme.colors.surface.background.level2.lowContrast}
         touchAction="none"
+        zIndex={2}
         {...bind?.()}
       >
         <Divider />
