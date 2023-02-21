@@ -1337,6 +1337,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
           Object {
             "alignItems": "center",
             "display": "flex",
+            "paddingRight": 0,
           },
         ]
       }

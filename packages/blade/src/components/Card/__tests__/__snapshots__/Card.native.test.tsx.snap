@@ -196,6 +196,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               "alignSelf": "auto",
               "display": "flex",
               "flexDirection": "row",
+              "marginLeft": 0,
               "marginTop": 16,
             },
           ]

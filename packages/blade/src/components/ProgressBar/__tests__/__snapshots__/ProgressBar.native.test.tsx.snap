@@ -39,6 +39,7 @@ Array [
               "display": "flex",
               "flexDirection": "row",
               "flexWrap": "wrap",
+              "gap": 0,
             },
           ]
         }
@@ -1794,6 +1795,7 @@ Array [
               "display": "flex",
               "flexDirection": "row",
               "flexWrap": "wrap",
+              "gap": 0,
             },
           ]
         }
@@ -2130,6 +2132,7 @@ Array [
               "display": "flex",
               "flexDirection": "row",
               "flexWrap": "wrap",
+              "gap": 0,
             },
           ]
         }
@@ -2497,6 +2500,7 @@ Array [
               "display": "flex",
               "flexDirection": "row",
               "flexWrap": "wrap",
+              "gap": 0,
             },
           ]
         }
@@ -2864,6 +2868,7 @@ Array [
               "display": "flex",
               "flexDirection": "row",
               "flexWrap": "wrap",
+              "gap": 0,
             },
           ]
         }

@@ -33,6 +33,7 @@ exports[`<Alert /> should render 1`] = `
       Array [
         Object {
           "display": "flex",
+          "marginTop": 0,
         },
       ]
     }
@@ -123,7 +124,9 @@ exports[`<Alert /> should render 1`] = `
     <View
       style={
         Array [
-          Object {},
+          Object {
+            "marginTop": 0,
+          },
         ]
       }
     >
@@ -379,7 +382,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     <View
       style={
         Array [
-          Object {},
+          Object {
+            "marginTop": 0,
+          },
         ]
       }
     >

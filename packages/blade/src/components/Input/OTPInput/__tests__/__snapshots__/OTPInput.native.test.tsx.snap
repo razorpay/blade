@@ -45,6 +45,7 @@ exports[`<OTPInput /> should render 1`] = `
               "display": "flex",
               "flexDirection": "row",
               "flexWrap": "wrap",
+              "gap": 0,
             },
           ]
         }
@@ -162,6 +163,7 @@ exports[`<OTPInput /> should render 1`] = `
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
+              "marginLeft": 0,
               "maxWidth": 40,
             },
           ]

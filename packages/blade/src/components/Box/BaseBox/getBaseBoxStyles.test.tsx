@@ -146,16 +146,7 @@ describe('getBaseBoxStyles', () => {
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
       Object {
-        "@media screen and (min-width: 1200px)": Object {
-          "margin": "auto",
-        },
-        "@media screen and (min-width: 480px)": Object {
-          "margin": "2px 12px 100%",
-        },
-        "@media screen and (min-width: 768px)": Object {
-          "margin": "22px",
-        },
-        "margin": "2px",
+        "margin": "2px 12px 100%",
       }
     `);
   });

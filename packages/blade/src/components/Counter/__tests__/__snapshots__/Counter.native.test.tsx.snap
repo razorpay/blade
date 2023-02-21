@@ -1033,8 +1033,10 @@ exports[`<Counter /> should render small size Counter 1`] = `
           "flexDirection": "row",
           "justifyContent": "center",
           "overflow": "hidden",
+          "paddingBottom": 0,
           "paddingLeft": 4,
           "paddingRight": 4,
+          "paddingTop": 0,
         },
       ]
     }

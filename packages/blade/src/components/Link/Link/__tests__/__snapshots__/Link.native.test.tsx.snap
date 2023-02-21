@@ -858,6 +858,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
           Object {
             "alignItems": "center",
             "display": "flex",
+            "paddingRight": 0,
           },
         ]
       }

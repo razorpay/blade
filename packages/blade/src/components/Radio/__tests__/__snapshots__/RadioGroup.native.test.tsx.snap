@@ -38,6 +38,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             "display": "flex",
             "flexDirection": "row",
             "flexWrap": "wrap",
+            "gap": 0,
           },
         ]
       }
@@ -699,6 +700,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             "display": "flex",
             "flexDirection": "row",
             "flexWrap": "wrap",
+            "gap": 0,
           },
         ]
       }

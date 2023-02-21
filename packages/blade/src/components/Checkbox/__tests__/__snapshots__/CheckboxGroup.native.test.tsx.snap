@@ -37,6 +37,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             "display": "flex",
             "flexDirection": "row",
             "flexWrap": "wrap",
+            "gap": 0,
           },
         ]
       }
@@ -662,6 +663,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             "display": "flex",
             "flexDirection": "row",
             "flexWrap": "wrap",
+            "gap": 0,
           },
         ]
       }

@@ -32,6 +32,8 @@ exports[`<TextInput /> should render 1`] = `
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "space-between",
+            "marginBottom": 0,
+            "marginTop": 0,
           },
         ]
       }
@@ -59,6 +61,7 @@ exports[`<TextInput /> should render 1`] = `
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "gap": 0,
               },
             ]
           }
@@ -312,6 +315,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "space-between",
+            "marginBottom": 0,
+            "marginTop": 0,
           },
         ]
       }
@@ -339,6 +344,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "gap": 0,
               },
             ]
           }
