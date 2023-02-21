@@ -94,7 +94,7 @@ const getBackgroundValue = (
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   size?: keyof Breakpoints,
-  // Ideally return type is `CSSObject`. But I am keeping the keys of object requrired as BasBoxProps keys so we don't miss out on any key
+  // Ideally return type is `CSSObject`. But I am keeping the keys of object required as BasBoxProps keys so we don't miss out on any key
 ): CSSObject => {
   return {
     display: getResponsiveValue(props.display, size),
