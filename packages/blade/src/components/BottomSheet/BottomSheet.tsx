@@ -249,6 +249,12 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         }
 
         if (last) {
+          const shouldClose = newY === lowerSnapPoint;
+          if (shouldClose) {
+            close();
+            return;
+          }
+
           // calculate the nearest snapPoint
           const [nearest] = computeSnapPointBounds(
             newY,
@@ -260,18 +266,6 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
             newY = nearest;
             setIsAnimationFinished(false);
           }
-
-          // because predictedY is velocity drive, it's quite easy to accidentally
-          // swipe down resulting in users unexpectedly closing the sheet,
-          // to prevent accidental closing we compare the lowerSnapPoint with lastOffsetY
-          // so that even when predictedY is less than lowerSnapPoint, it won't close on the first try
-          // instead it will stop at the lowerSnapPoint (because of the newY=nearest above)
-          // (this works because only on the second try lastOffsetY will get updated)
-          const shouldClose = lastOffsetY === lowerSnapPoint && lastOffsetY === newY;
-          if (shouldClose) {
-            close();
-            return;
-          }
         }
 
         setPosY(newY);
@@ -282,7 +276,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       },
     );
 
-    React.useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       const elem = scrollRef.current;
       if (!elem) return;
 
@@ -343,8 +337,8 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
             setIsAnimationFinished(true);
           }}
           style={{
-            opacity: canSafelyHideSheet ? 0 : 1,
-            pointerEvents: canSafelyHideSheet ? 'none' : 'all',
+            opacity: !isOpen ? 0 : 1,
+            pointerEvents: !isOpen ? 'none' : 'all',
             height: posY,
             bottom: 0,
             top: 'auto',
