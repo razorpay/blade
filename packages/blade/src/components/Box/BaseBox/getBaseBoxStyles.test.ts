@@ -1,28 +1,10 @@
 import {
   getSpacingValue,
   getBackgroundValue,
-  getDependencyProps,
   getBaseBoxStyles,
-  shouldAddBreakpoint,
   getBorderRadiusValue,
 } from './getBaseBoxStyles';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme';
-
-describe('getDependencyProp', () => {
-  it('should return react usememo dependency prop', () => {
-    expect(
-      getDependencyProps({
-        paddingLeft: '12px',
-        display: 'block',
-        id: 'yo',
-        className: 'hi',
-        children: 'wuuhuuu',
-        // @ts-expect-error: we don't have to care about actual theme object. It is ignored in this function
-        theme: { something: 'something' },
-      }),
-    ).toMatchInlineSnapshot(`"{\\"paddingLeft\\":\\"12px\\",\\"display\\":\\"block\\"}"`);
-  });
-});
 
 describe('getBackgroundValue', () => {
   it('should return correct background color value', () => {
@@ -43,20 +25,6 @@ describe('getBorderRadiusValue', () => {
     expect(getBorderRadiusValue({ base: 'medium', s: 'max' }, paymentLightTheme, 's')).toBe(
       '9999px',
     );
-  });
-});
-
-describe('shouldAddBreakpoint', () => {
-  it('should return false if all values in props are undefined', () => {
-    expect(shouldAddBreakpoint({ display: undefined, position: undefined })).toBe(false);
-  });
-
-  it('should return false for empty object', () => {
-    expect(shouldAddBreakpoint({})).toBe(false);
-  });
-
-  it('should return true if one of the value is not undefined', () => {
-    expect(shouldAddBreakpoint({ display: '', position: undefined })).toBe(true);
   });
 });
 
