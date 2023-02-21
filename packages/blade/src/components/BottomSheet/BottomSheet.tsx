@@ -49,7 +49,7 @@ const BottomSheetSurface = styled.div<{
     transitionDuration: isDragging
       ? undefined
       : `${makeMotionTime(theme.motion.duration.moderate)}`,
-    transitionTimingFunction: theme.motion.easing.standard.revealing,
+    transitionTimingFunction: 'cubic-bezier(.15,0,.24,.97)',
     willChange: 'transform, opacity, height',
     transitionProperty: 'transform, opacity, height',
 
