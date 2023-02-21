@@ -91,10 +91,20 @@ const getBackgroundValue = (
   return tokenValue ?? responsiveBackgroundValue;
 };
 
+const getBorderRadiusValue = (
+  borderRadius: BaseBoxProps['borderRadius'],
+  theme: Theme,
+  size?: keyof Breakpoints,
+): string | undefined => {
+  const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, size);
+  return isEmpty(responsiveBorderRadiusValue)
+    ? undefined
+    : makeSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
+};
+
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   size?: keyof Breakpoints,
-  // Ideally return type is `CSSObject`. But I am keeping the keys of object required as BasBoxProps keys so we don't miss out on any key
 ): CSSObject => {
   return {
     display: getResponsiveValue(props.display, size),
@@ -159,13 +169,18 @@ const getAllProps = (
 
     // Visual props
     backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, size),
-    borderRadius: props.borderRadius
-      ? makeSize(
-          getIn(props.theme, `border.radius.${getResponsiveValue(props.borderRadius, size)}`),
-        )
-      : undefined,
+    borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, size),
     transform: getResponsiveValue(props.transform, size),
   };
+};
+
+const shouldAddBreakpoint = (cssProps: CSSObject): boolean => {
+  const hasDefinedValue = Object.values(cssProps).find(
+    (cssValue) => cssValue !== undefined && cssValue !== null,
+  );
+
+  // We only add breakpoint if at least one of the value is defined
+  return Boolean(hasDefinedValue);
 };
 
 const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject => {
@@ -179,6 +194,10 @@ const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject =
     Object.entries(breakpointsWithoutBase).map(([breakpointKey, breakpointValue]) => {
       const mediaQuery = `@media ${getMediaQuery({ min: breakpointValue })}`;
       const cssPropsForCurrentBreakpoint = getAllProps(props, breakpointKey as keyof Breakpoints);
+      if (!shouldAddBreakpoint(cssPropsForCurrentBreakpoint)) {
+        return [];
+      }
+
       return [mediaQuery, cssPropsForCurrentBreakpoint];
     }),
   );

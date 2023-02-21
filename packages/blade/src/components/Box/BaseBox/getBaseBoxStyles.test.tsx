@@ -101,11 +101,6 @@ describe('getBaseBoxStyles', () => {
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
       Object {
-        "@media screen and (min-width: 1024px)": Object {},
-        "@media screen and (min-width: 1200px)": Object {},
-        "@media screen and (min-width: 320px)": Object {},
-        "@media screen and (min-width: 480px)": Object {},
-        "@media screen and (min-width: 768px)": Object {},
         "backgroundColor": "red",
       }
     `);
@@ -124,11 +119,9 @@ describe('getBaseBoxStyles', () => {
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
       Object {
-        "@media screen and (min-width: 1024px)": Object {},
         "@media screen and (min-width: 1200px)": Object {
           "margin": "auto",
         },
-        "@media screen and (min-width: 320px)": Object {},
         "@media screen and (min-width: 480px)": Object {
           "margin": "2px 12px 100%",
         },
@@ -145,14 +138,6 @@ describe('getBaseBoxStyles', () => {
       theme: paymentLightTheme,
     });
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
-    expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
-      Object {
-        "@media screen and (min-width: 1024px)": Object {},
-        "@media screen and (min-width: 1200px)": Object {},
-        "@media screen and (min-width: 320px)": Object {},
-        "@media screen and (min-width: 480px)": Object {},
-        "@media screen and (min-width: 768px)": Object {},
-      }
-    `);
+    expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`Object {}`);
   });
 });
