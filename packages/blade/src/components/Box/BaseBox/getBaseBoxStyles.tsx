@@ -21,7 +21,12 @@ const getResponsiveValue = <T extends string | number | string[]>(
   }
 
   if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value)) {
-    return value;
+    if (size === 'base') {
+      return value;
+    }
+
+    // Plain values will already get added in base styles so we don't have to repeat them in media queries
+    return undefined;
   }
 
   if (isEmpty(value)) {
@@ -30,7 +35,7 @@ const getResponsiveValue = <T extends string | number | string[]>(
 
   if (isReactNative()) {
     // In React Native, we map the value `s` token on priority (since the breakpoint maps to mobiles in useBreakpoint hook).
-    // We further look into smaller sizes, then we check base size, then we check medium, large and extra large sizes.
+    // We further look into smaller sizes, then we check base size.
     // Then we return the first non-undefined value in this priority
     const priorityArray = [value.s, value.xs, value.base];
     return priorityArray.find((val) => val !== undefined);
@@ -46,7 +51,7 @@ const getSpacingValue = (
   theme: Theme,
   size?: keyof Breakpoints,
 ): string | undefined => {
-  if (!spacingValue) {
+  if (isEmpty(spacingValue)) {
     return undefined;
   }
 
@@ -55,7 +60,7 @@ const getSpacingValue = (
     size,
   );
 
-  if (!responsiveSpacingValue) {
+  if (isEmpty(responsiveSpacingValue)) {
     return undefined;
   }
 
@@ -69,7 +74,7 @@ const getSpacingValue = (
 
   if (typeof responsiveSpacingValue === 'string' && responsiveSpacingValue.startsWith('spacing.')) {
     const spacingReturnValue = getIn(theme, responsiveSpacingValue);
-    return spacingReturnValue ? makeSpace(spacingReturnValue) : undefined;
+    return isEmpty(spacingReturnValue) ? makeSpace(spacingReturnValue) : undefined;
   }
 
   // pixel or with unit values
@@ -173,12 +178,8 @@ const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject =
   return Object.fromEntries(
     Object.entries(breakpointsWithoutBase).map(([breakpointKey, breakpointValue]) => {
       const mediaQuery = `@media ${getMediaQuery({ min: breakpointValue })}`;
-      return [
-        mediaQuery,
-        {
-          ...getAllProps(props, breakpointKey as keyof Breakpoints),
-        },
-      ];
+      const cssPropsForCurrentBreakpoint = getAllProps(props, breakpointKey as keyof Breakpoints);
+      return [mediaQuery, cssPropsForCurrentBreakpoint];
     }),
   );
 };
@@ -208,4 +209,10 @@ const getDependencyProps = (props: BaseBoxProps & { theme: Theme }): string | Ba
   return dependencyPropString;
 };
 
-export { getDependencyProps, getBaseBoxStyles, getResponsiveValue, getSpacingValue };
+export {
+  getDependencyProps,
+  getBaseBoxStyles,
+  getResponsiveValue,
+  getSpacingValue,
+  getBackgroundValue,
+};
