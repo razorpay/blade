@@ -722,4 +722,52 @@ WithRefUsage.args = {
   name: 'design-system',
 };
 
+export const WithMultipleDropdowns = (args: AllDropdownProps): JSX.Element => {
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
+
+  return (
+    <BaseBox display="flex" flexDirection="row" minHeight={300}>
+      <BaseBox flex={1}>
+        <Dropdown selectionType={selectionType}>
+          <SelectInput label="Top 2 design systems" {...selectInputArgs} />
+          <DropdownOverlay>
+            <ActionList surfaceLevel={surfaceLevel}>
+              <ActionListItem title={title} value={value} />
+              <ActionListItem title="Primer" value="primer" />
+              <ActionListItem title="Geist" description="by Vercel" value="geist" />
+              <ActionListItem title="Airbnb Design" value="airbnb" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </BaseBox>
+      <BaseBox flex={1}>
+        <Dropdown selectionType={selectionType}>
+          <SelectInput {...selectInputArgs} label="Top 2 Languages" />
+          <DropdownOverlay>
+            <ActionList surfaceLevel={surfaceLevel}>
+              <ActionListItem title="HTML" value="html" />
+              <ActionListItem title="CSS" value="css" />
+              <ActionListItem title="JavaScript" value="javascript" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+WithMultipleDropdowns.args = {
+  selectionType: 'single',
+  label: 'Top 2 design systems',
+  name: 'design-system',
+};
+
 export default DropdownStoryMeta;
