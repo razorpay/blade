@@ -190,7 +190,7 @@ PrimaryActionOnly.parameters = {
 
 export const FullWidth: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
-    <BaseBox height={200} position="relative">
+    <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">
         <AlertComponent {...args} />
       </BaseBox>
@@ -215,7 +215,7 @@ FullWidth.parameters = {
 
 export const FullWidthWithActions: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
-    <BaseBox height={200} position="relative">
+    <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">
         <AlertComponent {...args} />
       </BaseBox>

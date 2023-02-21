@@ -50,9 +50,6 @@ export const useBreakpoint = ({
     if (platform === 'react-native') {
       matchedDeviceType = deviceType.mobile;
     } else if (platform === 'browser') {
-      // @TODO: In earlier logic, tablets were not considered as "mobile" here. Although the comment said "tablets are considered as mobile"
-      // Now that we've changed the tokens to `min-width`, it will start considering tab as mobile.
-      // Check if that is expected or not
       if (matchedBreakpoint && ['base', 'xs', 's'].includes(matchedBreakpoint)) {
         // tablet is also categorised as mobile
         matchedDeviceType = deviceType.mobile;

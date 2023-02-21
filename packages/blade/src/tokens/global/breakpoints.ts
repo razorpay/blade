@@ -1,6 +1,6 @@
 export type Breakpoints = Readonly<{
   /**
-   * `base` is used for base styling. It starts from 0px till the next existing token
+   * `base` is used for base styling following a **mobile first** approach. It starts from 0px till the next existing token
    *
    * Think of this as styles without any media query.
    *
@@ -13,15 +13,16 @@ export type Breakpoints = Readonly<{
    *
    * This roughly translates into -
    *
-   * ```js
-   * styled.div(() => ({
-   *   margin: 'spacing.1',
-   *   [`@media screen and (min-width: 768px)`]: {
-   *     Box: {
-   *       margin: 'spacing.2'
-   *     }
-   *   }
-   * }))
+   * ```
+   * .Box {
+   *  margin: 'spacing.1';
+   * }
+   *
+   * ＠media screen and (min-width: 768px) {
+   *  .Box {
+   *    margin: 'spacing.2';
+   *  }
+   * }
    * ```
    */
   base: number;
@@ -40,7 +41,17 @@ export type Breakpoints = Readonly<{
   /**
    * `@media screen and (min-width: 768px)`
    *
-   * Medium and Large Tablets. Would be ideal to use this as breakpoint while writing desktop css
+   * Medium and Large Tablets.
+   *
+   * Dimentions above m can be treated as desktop in mobile-first approach (with min-width).
+   * Hence this breakpoint can be used for desktop styling.
+   *
+   * E.g. next example will keep flexDirection `row` on mobiles and `column` on large tablets, desktop, and larger screens
+   *
+   * ```jsx
+   * <Box display="flex" flexDirection={{ base: 'row', m: 'column' }} />
+   * ```
+   *
    */
   m: number;
   /**
