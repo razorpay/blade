@@ -1,17 +1,16 @@
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
-import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
+import { BottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSpace } from '~utils';
 
@@ -70,46 +69,6 @@ const BottomSheetSurface = styled.div<{
   };
 });
 
-const BottomSheetContext = React.createContext<{
-  maxContent: number;
-  minContent: number;
-  headerHeight: number;
-  contentHeight: number;
-  footerHeight: number;
-  setContentHeight: React.Dispatch<React.SetStateAction<number>>;
-  setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
-  setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
-  close: () => void;
-  scrollRef: React.Ref<any>;
-  bind: ((...args: any[]) => ReactDOMAttributes) | null;
-  isOpen: boolean;
-  posY: number;
-}>({
-  maxContent: 0,
-  minContent: 0,
-  headerHeight: 0,
-  contentHeight: 0,
-  footerHeight: 0,
-  setContentHeight: () => {},
-  setHeaderHeight: () => {},
-  setFooterHeight: () => {},
-  close: () => {},
-  scrollRef: null,
-  bind: null,
-  isOpen: false,
-  posY: 0,
-});
-
-export const useBottomSheetContext = () => {
-  const state = React.useContext(BottomSheetContext);
-
-  if (!state) {
-    throw new Error('[Blade BottomSheet]: useBottomSheet must be used within BottomSheet');
-  }
-
-  return state;
-};
-
 const BottomSheet = React.forwardRef<any, BottomSheetProps>(
   ({ children, snapPoints = [0.35, 0.6, 0.85] }, ref): React.ReactElement => {
     const dimensions = useWindowSize();
@@ -122,7 +81,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
     const [isAnimationFinished, setIsAnimationFinished] = React.useState(false);
     const [isDragging, setIsDragging] = React.useState(false);
 
-    const preventScrollingRef = React.useRef(false);
+    const preventScrollingRef = React.useRef(true);
     const scrollRef = React.useRef<HTMLDivElement>(null);
     const grabHandleRef = React.useRef<HTMLDivElement>(null);
     const canSafelyHideSheet = isAnimationFinished && !isOpen;
@@ -154,26 +113,28 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       });
     }, [grabHandleRef, isOpen]);
 
-    useIsomorphicLayoutEffect(() => {
-      if (posY > 0) {
-        setIsOpen(true);
-        scrollLockRef.current.activate();
-      } else {
-        setIsOpen(false);
-        scrollLockRef.current.deactivate();
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [posY]);
+    // useIsomorphicLayoutEffect(() => {
+    //   if (posY > 0) {
+    //     setIsOpen(true);
+    //     scrollLockRef.current.activate();
+    //   } else {
+    //     setIsOpen(false);
+    //     scrollLockRef.current.deactivate();
+    //   }
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [posY]);
 
     const close = React.useCallback(() => {
       setIsOpen(false);
       setPosY(0);
-    }, [setPosY]);
+      scrollLockRef.current.deactivate();
+    }, [scrollLockRef, setPosY]);
 
     const open = React.useCallback(() => {
       setIsOpen(true);
       setPosY(dimensions.height * 0.5);
-    }, [dimensions.height, setPosY]);
+      scrollLockRef.current.activate();
+    }, [dimensions.height, scrollLockRef, setPosY]);
 
     React.useImperativeHandle(
       ref,
@@ -212,7 +173,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         // predictedY is used to create velocity driven swipe
         // the faster you swipe the more distance you cover
         // this enables users to reach upper & lower snappoint with a single swipe
-        const predictedDistance = my * (vy / 2);
+        const predictedDistance = (my / 2) * (vy / 2);
         const predictedY = Math.max(
           lowerSnapPoint,
           Math.min(upperSnapPoint, rawY - predictedDistance * 2),

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { useBottomSheetContext } from './BottomSheet';
 import { ComponentIds } from './componentIds';
+import { useBottomSheetContext } from './BottomSheetContext';
 import type { WithComponentId } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';

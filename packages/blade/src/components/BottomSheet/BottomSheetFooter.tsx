@@ -2,7 +2,7 @@
 import React from 'react';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
-import { useBottomSheetContext } from './BottomSheet';
+import { useBottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
@@ -118,9 +118,6 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
     });
   }, [children]);
 
-  // Portaling the footer to the body so that we can
-  // keep it fixed at bottom instead of the bottom of the sheet
-  // since sheet's height is animating it's causing the footer to jump and jitter
   return (
     <BottomSheetFooterContext.Provider
       value={{ hasLeading: hasLeading.current, hasTrailing: hasTrailing.current }}

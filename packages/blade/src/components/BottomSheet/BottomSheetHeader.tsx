@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
-import { useBottomSheetContext } from './BottomSheet';
+import { useBottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
