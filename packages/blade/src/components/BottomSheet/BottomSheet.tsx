@@ -16,6 +16,7 @@ import { makeMotionTime, makeSpace } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
+import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
 type BottomSheetProps = {
   children: React.ReactNode;
@@ -111,26 +112,26 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
     const [contentHeight, setContentHeight] = React.useState(0);
     const [headerHeight, setHeaderHeight] = React.useState(0);
     const [footerHeight, setFooterHeight] = React.useState(0);
-    const grabHandleHeight = 4 + 16; // TODO Fix
-    // const totalHeight = grabHandleHeight + headerHeight + (contentHeight + 16) + footerHeight;
 
     const [posY, _setPosY] = React.useState(0);
-    const [isDragging, setIsDragging] = React.useState(false);
-    const scrollRef = React.useRef<HTMLDivElement>(null);
-    const preventScrollingRef = React.useRef(false);
     const [isOpen, setIsOpen] = React.useState(false);
+    const [isDragging, setIsDragging] = React.useState(false);
+
+    const preventScrollingRef = React.useRef(false);
+    const scrollRef = React.useRef<HTMLDivElement>(null);
+    const grabHandleRef = React.useRef<HTMLDivElement>(null);
 
     const setPosY = React.useCallback(
       (value: number) => {
         const maxValue = computeMaxContent({
           contentHeight: contentHeight + 16, // TODO: 16px padding of content
           footerHeight,
-          headerHeight: headerHeight + grabHandleHeight,
+          headerHeight,
           maxHeight: value,
         });
         _setPosY(maxValue);
       },
-      [contentHeight, footerHeight, grabHandleHeight, headerHeight],
+      [contentHeight, footerHeight, headerHeight],
     );
 
     const scrollLockRef = useScrollLock({
@@ -138,6 +139,14 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       reserveScrollBarGap: true,
       targetRef: scrollRef,
     });
+
+    // take the grabHandle's height into headerHeight too
+    useIsomorphicLayoutEffect(() => {
+      setHeaderHeight((prev) => {
+        if (!grabHandleRef.current) return prev;
+        return prev + grabHandleRef.current.getBoundingClientRect().height;
+      });
+    }, [grabHandleRef, isOpen]);
 
     React.useEffect(() => {
       if (posY > 0) {
@@ -171,18 +180,13 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       [close, open],
     );
 
-    // 1. The content should not be scrollable on lower or middle snapPoints
-    // 2. If we reach the top snappoint we make the content scrolalble
-    // 3. scrolling down the content will work as usual
-    // 4. but if the scroll position is at top and then we drag down on the content body
-    //    the bottom-sheet will start the dragging and we will set the scroll to 'none'
-
-    // snap point note:
-    // when user sets isOpen={true} we should open the bs at the minimum content height or 50% of vh
-    // also: if the height of the bs content is small then the snap points can either be computed in two ways
-    //       1. compute the snappoints relative to the minHeight (minHeight * 0.25, minHeight * 0.5)
-    //       2. or can be computed freely with any value eg: innerHeight.
-    //          in this case even if the height of the content small the bs will show whitespace
+    /*
+      1. The content should not be scrollable on lower or middle snapPoints
+      2. If we reach the top snapPoint we make the content scrollable
+      3. scrolling down the content will work as usual
+      4. but if the scroll position is at top and then we drag down on the content body
+         the bottom-sheet will start the dragging and we will set the scroll to 'none'
+    */
     const bind = useDrag(
       ({
         active,
@@ -197,9 +201,11 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         const rawY = lastOffsetY - my;
 
         const lowerSnapPoint = dimensions.height * snapPoints[0];
-        // const middleSnapPoint = dimensions.height * snapPoints[Math.ceil(snapPoints.length / 2)];
         const upperSnapPoint = dimensions.height * snapPoints[snapPoints.length - 1];
 
+        // predictedY is used to create velocity driven swipe
+        // the faster you swipe the more distance you cover
+        // this enables users to reach upper & lower snappoint with a single swipe
         const predictedDistance = my * (vy / 2);
         const predictedY = Math.max(
           lowerSnapPoint,
@@ -208,29 +214,28 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
 
         let newY = rawY;
         if (down) {
-          // swipe rubber banding
+          // Ensure that users aren't able to drag the sheet more than the upperSnapPoint
+          // this is basically a clamp() function but creates a nice rubberband effect
           const dampening = 0.55;
-          newY = rubberbandIfOutOfBounds(rawY, lowerSnapPoint /* 0 */, upperSnapPoint, dampening);
+          newY = rubberbandIfOutOfBounds(rawY, 0, upperSnapPoint, dampening);
         } else {
           newY = predictedY;
         }
 
-        const isPosLessThanLowerSnapPoint = newY <= lowerSnapPoint;
         const isPosAtUpperSnapPoint = newY >= upperSnapPoint;
 
         if (isContentDragging) {
-          const isContentScrolledAtTop = scrollRef.current?.scrollTop! <= 0;
-
           if (isPosAtUpperSnapPoint) {
             newY = upperSnapPoint;
           }
 
           // keep the newY at upper snap point
           // until the scrollable content is not at top
-          // and previously saved Y position is equal to upper snap point
-          // note how using newY won't work here since we need the previous value of the newY
-          // because we always keep updating the newY,
+          // and previously saved Y position is greater than or equal to upper snap point
+          // Note: how using newY won't work here since we need the previous value of the newY
+          // since we always keep updating the newY,
           // this is cruicial in making the scroll feel natural
+          const isContentScrolledAtTop = scrollRef.current?.scrollTop! <= 0;
           if (lastOffsetY === upperSnapPoint && !isContentScrolledAtTop) {
             newY = upperSnapPoint;
           }
@@ -238,19 +243,27 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         }
 
         if (last) {
-          // close bottomsheet
-          if (isPosLessThanLowerSnapPoint) {
-            newY = 0;
-          }
-
-          // calculate snappoints
+          // calculate the nearest snapPoint
           const [nearest] = computeSnapPointBounds(
             newY,
             snapPoints.map((point) => dimensions.height * point) as SnapPoints,
           );
 
+          // if we stop dragging assign snap to the nearest point
           if (!active) {
             newY = nearest;
+          }
+
+          // because predictedY is velocity drive, it's quite easy to accidentally
+          // swipe down resulting in users unexpectedly closing the sheet,
+          // to prevent accidental closing we compare the lowerSnapPoint with lastOffsetY
+          // so that even when predictedY is less than lowerSnapPoint, it won't close on the first try
+          // instead it will stop at the lowerSnapPoint (because of the newY=nearest above)
+          // (this works because only on the second try lastOffsetY will get updated)
+          const shouldClose = lastOffsetY === lowerSnapPoint && lastOffsetY === newY;
+          if (shouldClose) {
+            close();
+            return;
           }
         }
 
@@ -324,7 +337,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           }}
         >
           <BaseBox height="100%" display="flex" flexDirection="column">
-            <BottomSheetGrabHandle {...bind()} />
+            <BottomSheetGrabHandle ref={grabHandleRef} {...bind()} />
             {children}
           </BaseBox>
         </BottomSheetSurface>
