@@ -10,14 +10,14 @@ Amount component is a UI element that displays and formats various currency valu
 
 ## API
 
-| Prop                      | Type                                                       | Default     | Description                                                                                                                                                                                       | Required |
-| ------------------------- | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| value                     | `number`                                                   | `undefined` | The value to be rendered within the component                                                                                                                                                     | ✅       |
-| variant                   | `positive`, `negative`, `notice`, `information`, `blue`    | `undefined` | The variant of the amount to be rendered                                                                                                                                                          |          |
-| fontWeight                | `bold`, `regular`                                          | `bold`      | The weight of the amount to be rendered                                                                                                                                                           |          |
-| suffix                    | `none`, `decimals` , `humanize`                            | `decimals`  | The type of affix to be displayed with the currency value, (none, decimals, and humanize) that respectively indicate no affix, the number of decimal places, and the scale of the currency value. |          |
-| size                      | `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small` | `3xlarge`   | The size of the amount to be rendered                                                                                                                                                             |          |
-| isSuffixPrefixHighlighted | `true`, `false`                                            | `true`      | Highlight the main amount by making the prefix symbol and decimal digits small                                                                                                                    |          |
+| Prop          | Type                                                       | Default     | Description                                                                                                                                                                                       | Required |
+| ------------- | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| value         | `number`                                                   | `undefined` | The value to be rendered within the component                                                                                                                                                     | ✅       |
+| variant       | `positive`, `negative`, `notice`, `information`, `blue`    | `undefined` | The variant of the amount to be rendered                                                                                                                                                          |          |
+| fontWeight    | `bold`, `regular`                                          | `bold`      | The weight of the amount to be rendered                                                                                                                                                           |          |
+| suffix        | `none`, `decimals` , `humanize`                            | `decimals`  | The type of affix to be displayed with the currency value, (none, decimals, and humanize) that respectively indicate no affix, the number of decimal places, and the scale of the currency value. |          |
+| size          | `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small` | `3xlarge`   | The size of the amount to be rendered                                                                                                                                                             |          |
+| isAffixSubtle | `true`, `false`                                            | `true`      | Highlight the main amount by making the prefix symbol and decimal digits small and faded                                                                                                          |          |
 
 ### Sample Usage
 
@@ -27,7 +27,7 @@ import { Amount } from '@razorpay/components';
 <Amount
   suffix="decimals"
   size="2xlarge"
-  isSuffixPrefixHighlighted={true}
+  isAffixSubtle={true}
   fontWeight="regular"
   variant="information"
   value={1000}
