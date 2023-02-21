@@ -154,7 +154,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       });
     }, [grabHandleRef, isOpen]);
 
-    React.useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       if (posY > 0) {
         setIsOpen(true);
         scrollLockRef.current.activate();
@@ -346,8 +346,8 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
             opacity: canSafelyHideSheet ? 0 : 1,
             pointerEvents: canSafelyHideSheet ? 'none' : 'all',
             height: posY,
-            paddingBottom: footerHeight,
-            transform: `translate3d(0, ${posY * -1}px, 0)`,
+            bottom: 0,
+            top: 'auto',
           }}
         >
           <BaseBox height="100%" display="flex" flexDirection="column">

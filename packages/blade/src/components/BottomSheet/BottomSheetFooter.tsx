@@ -1,16 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
-import { BOTTOM_SHEET_EASING, useBottomSheetContext } from './BottomSheet';
+import { useBottomSheetContext } from './BottomSheet';
 import BaseBox from '~components/Box/BaseBox';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import type { WithComponentId } from '~utils';
-import { makeMotionTime, getComponentId } from '~utils';
+import { getComponentId } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
 
@@ -96,18 +94,11 @@ const BottomSheetFooterTrailing: WithComponentId<BottomSheetFooterTrailingProps>
 };
 BottomSheetFooterTrailing.componentId = ComponentIds.BottomSheetFooterTrailing;
 
-const StyledBottomSheetFooter = styled(BaseBox)(({ theme }) => {
-  return {
-    transitionDuration: `${makeMotionTime(theme.motion.duration.moderate)}`,
-    transitionTimingFunction: BOTTOM_SHEET_EASING,
-  };
-});
-
 const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactElement => {
   const hasLeading = React.useRef(false);
   const hasTrailing = React.useRef(false);
   const { theme } = useTheme();
-  const { setFooterHeight, isOpen, footerHeight, bind } = useBottomSheetContext();
+  const { setFooterHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -130,20 +121,15 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
   // Portaling the footer to the body so that we can
   // keep it fixed at bottom instead of the bottom of the sheet
   // since sheet's height is animating it's causing the footer to jump and jitter
-  return ReactDOM.createPortal(
+  return (
     <BottomSheetFooterContext.Provider
       value={{ hasLeading: hasLeading.current, hasTrailing: hasTrailing.current }}
     >
-      <StyledBottomSheetFooter
+      <BaseBox
         data-footer
         width="100%"
         flexShrink={0}
         ref={ref}
-        position="fixed"
-        left={0}
-        // TODO: make footer non-interactive if it's closed
-        bottom={isOpen ? 0 : -footerHeight}
-        opacity={isOpen ? 1 : 0}
         marginTop="auto"
         backgroundColor={theme.colors.surface.background.level2.lowContrast}
         touchAction="none"
@@ -163,9 +149,8 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
         >
           {children}
         </BaseBox>
-      </StyledBottomSheetFooter>
-    </BottomSheetFooterContext.Provider>,
-    document.body,
+      </BaseBox>
+    </BottomSheetFooterContext.Provider>
   );
 };
 
