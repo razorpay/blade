@@ -174,13 +174,13 @@ const getAllProps = (
   };
 };
 
+/** We only add breakpoint if at least one of the value is defined */
 const shouldAddBreakpoint = (cssProps: CSSObject): boolean => {
-  const hasDefinedValue = Object.values(cssProps).find(
+  const firstDefinedValue = Object.values(cssProps).find(
     (cssValue) => cssValue !== undefined && cssValue !== null,
   );
 
-  // We only add breakpoint if at least one of the value is defined
-  return Boolean(hasDefinedValue);
+  return firstDefinedValue !== undefined;
 };
 
 const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject => {
@@ -234,4 +234,6 @@ export {
   getResponsiveValue,
   getSpacingValue,
   getBackgroundValue,
+  getBorderRadiusValue,
+  shouldAddBreakpoint,
 };

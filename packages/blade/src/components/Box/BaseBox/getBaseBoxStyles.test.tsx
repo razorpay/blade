@@ -4,6 +4,8 @@ import {
   getBackgroundValue,
   getDependencyProps,
   getBaseBoxStyles,
+  shouldAddBreakpoint,
+  getBorderRadiusValue,
 } from './getBaseBoxStyles';
 import type { BaseBoxProps } from './types';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme';
@@ -56,6 +58,31 @@ describe('getBackgroundValue', () => {
     expect(getBackgroundValue('red', paymentLightTheme, 'base')).toBe('red');
     expect(getBackgroundValue('red', paymentLightTheme, 'm')).toBe(undefined);
     expect(getBackgroundValue({ base: 'red', m: '#f30' }, paymentLightTheme, 'm')).toBe('#f30');
+  });
+});
+
+describe('getBorderRadiusValue', () => {
+  it('should return correct border-radius value', () => {
+    expect(getBorderRadiusValue('max', paymentLightTheme, 'base')).toBe('9999px');
+    expect(getBorderRadiusValue('small', paymentLightTheme, 'base')).toBe('2px');
+    expect(getBorderRadiusValue(undefined, paymentLightTheme, 'm')).toBe(undefined);
+    expect(getBorderRadiusValue({ base: 'medium', m: 'max' }, paymentLightTheme, 'm')).toBe(
+      '9999px',
+    );
+  });
+});
+
+describe('shouldAddBreakpoint', () => {
+  it('should return false if all values in props are undefined', () => {
+    expect(shouldAddBreakpoint({ display: undefined, position: undefined })).toBe(false);
+  });
+
+  it('should return false for empty object', () => {
+    expect(shouldAddBreakpoint({})).toBe(false);
+  });
+
+  it('should return true if one of the value is not undefined', () => {
+    expect(shouldAddBreakpoint({ display: '', position: undefined })).toBe(true);
   });
 });
 
