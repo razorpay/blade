@@ -74,7 +74,6 @@ const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
   useIsomorphicLayoutEffect(() => {
     if (!ref.current) return;
     setHeaderHeight(ref.current.getBoundingClientRect().height);
-    console.log('set');
   }, [ref, isOpen]);
 
   return (

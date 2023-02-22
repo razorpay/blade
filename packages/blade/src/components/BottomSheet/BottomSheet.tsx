@@ -70,7 +70,7 @@ const BottomSheetSurface = styled.div<{
 });
 
 const BottomSheet = React.forwardRef<any, BottomSheetProps>(
-  ({ children, snapPoints = [0.35, 0.6, 0.85] }, ref): React.ReactElement => {
+  ({ children, snapPoints = [0.35, 0.5, 0.85] }, ref): React.ReactElement => {
     const dimensions = useWindowSize();
     const [contentHeight, setContentHeight] = React.useState(0);
     const [headerHeight, setHeaderHeight] = React.useState(0);
@@ -147,6 +147,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       ({
         active,
         last,
+        cancel,
         movement: [_mx, my],
         velocity: [_vx, vy],
         lastOffset: [_, lastOffsetY],
@@ -162,7 +163,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         // predictedY is used to create velocity driven swipe
         // the faster you swipe the more distance you cover
         // this enables users to reach upper & lower snappoint with a single swipe
-        const predictedDistance = (my / 2) * (vy / 2);
+        const predictedDistance = my * (vy / 2);
         const predictedY = Math.max(
           lowerSnapPoint,
           Math.min(upperSnapPoint, rawY - predictedDistance * 2),
@@ -205,13 +206,16 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           preventScrollingRef.current = newY < upperSnapPoint;
         }
 
-        if (last) {
-          const shouldClose = newY === lowerSnapPoint;
-          if (shouldClose) {
-            close();
-            return;
-          }
+        const shouldClose = newY < lowerSnapPoint;
+        if (shouldClose) {
+          setIsDragging(false);
+          setIsAnimationFinished(false);
+          close();
+          cancel();
+          return;
+        }
 
+        if (last) {
           // calculate the nearest snapPoint
           const [nearest] = computeSnapPointBounds(
             newY,
