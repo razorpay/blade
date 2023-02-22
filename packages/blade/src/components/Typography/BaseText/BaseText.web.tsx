@@ -50,7 +50,7 @@ export const BaseText = ({
   ...styledProps
 }: BaseTextProps): ReactElement => {
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
+    <BaseBox display={as === 'span' ? 'inline' : 'inline-block'} {...getStyledProps(styledProps)}>
       <StyledBaseText
         color={color}
         fontFamily={fontFamily}
