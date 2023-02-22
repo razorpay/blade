@@ -98,6 +98,7 @@ type FlexboxProps = MakeObjectResponsive<
     | 'justifyItems'
     | 'justifyContent'
     | 'justifySelf'
+    | 'placeSelf'
     | 'order'
   >
 >;
@@ -119,6 +120,8 @@ type GridProps = MakeObjectResponsive<
     | 'gridRow'
     | 'gridRowStart'
     | 'gridRowEnd'
+    | 'gridColumnStart'
+    | 'gridColumnEnd'
     | 'gridArea'
     | 'gridAutoFlow'
     | 'gridAutoRows'
