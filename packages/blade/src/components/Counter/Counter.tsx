@@ -6,7 +6,8 @@ import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import { metaAttribute, MetaConstants } from '~utils';
+import type { StyledProps } from '~utils';
+import { getStyledProps, metaAttribute, MetaConstants } from '~utils';
 
 export type CounterProps = {
   /**
@@ -36,7 +37,7 @@ export type CounterProps = {
    * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
-};
+} & StyledProps;
 
 type ColorProps = {
   textColor: BaseTextProps['color'];
@@ -63,6 +64,7 @@ const Counter = ({
   intent = 'neutral',
   contrast = 'low',
   size = 'medium',
+  ...styledProps
 }: CounterProps): React.ReactElement => {
   let content = `${value}`;
   if (max && value > max) {
@@ -91,7 +93,12 @@ const Counter = ({
   } as const;
 
   return (
-    <StyledCounter backgroundColor={backgroundColor} size={size} platform={platform}>
+    <StyledCounter
+      {...getStyledProps(styledProps)}
+      backgroundColor={backgroundColor}
+      size={size}
+      platform={platform}
+    >
       <BaseBox
         paddingRight={horizontalPadding[size]}
         paddingLeft={horizontalPadding[size]}

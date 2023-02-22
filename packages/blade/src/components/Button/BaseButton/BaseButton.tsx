@@ -17,7 +17,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
-import type { Platform } from '~utils';
+import type { Platform, StyledProps } from '~utils';
 import {
   MetaConstants,
   metaAttribute,
@@ -27,6 +27,8 @@ import {
   makeSpace,
   makeBorderSize,
   getIn,
+  getStyledProps,
+  isReactNative,
 } from '~utils';
 
 import { BaseText } from '~components/Typography/BaseText';
@@ -55,7 +57,7 @@ type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-};
+} & StyledProps;
 
 /*
 Mandatory children prop when icon is not provided
@@ -290,6 +292,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     type = 'button',
     children,
     accessibilityLabel,
+    ...styledProps
   },
   ref,
 ) => {
@@ -350,94 +353,100 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   });
 
   return (
-    <StyledBaseButton
-      ref={buttonRef}
-      accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
-      isLoading={isLoading}
-      disabled={disabled}
-      activeBorderColor={activeBorderColor}
-      activeBackgroundColor={activeBackgroundColor}
-      defaultBorderColor={defaultBorderColor}
-      minHeight={minHeight}
-      buttonPaddingTop={buttonPaddingTop}
-      buttonPaddingBottom={buttonPaddingBottom}
-      buttonPaddingLeft={buttonPaddingLeft}
-      buttonPaddingRight={buttonPaddingRight}
-      defaultBackgroundColor={defaultBackgroundColor}
-      focusBorderColor={focusBorderColor}
-      focusBackgroundColor={focusBackgroundColor}
-      focusRingColor={focusRingColor}
-      hoverBorderColor={hoverBorderColor}
-      hoverBackgroundColor={hoverBackgroundColor}
-      isFullWidth={isFullWidth}
-      onClick={onClick}
-      type={type}
-      borderWidth={borderWidth}
-      borderRadius={borderRadius}
-      motionDuration={motionDuration}
-      motionEasing={motionEasing}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Button)}
+    // Marking this inline-block because button is an inline-block element and we don't want to give it styles of Box
+    <BaseBox
+      display={isReactNative() ? undefined : 'inline-block'}
+      {...getStyledProps(styledProps)}
     >
-      {isLoading ? (
-        <BaseBox
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          position="absolute"
-          top="0px"
-          left="0px"
-          bottom="0px"
-          right="0px"
-        >
-          <BaseSpinner
-            accessibilityLabel="Loading"
-            size={spinnerSize}
-            intent={intent}
-            contrast={contrast}
-          />
-        </BaseBox>
-      ) : null}
-      <ButtonContent
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        flex={1}
-        isHidden={isLoading}
+      <StyledBaseButton
+        ref={buttonRef}
+        accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
+        isLoading={isLoading}
+        disabled={disabled}
+        activeBorderColor={activeBorderColor}
+        activeBackgroundColor={activeBackgroundColor}
+        defaultBorderColor={defaultBorderColor}
+        minHeight={minHeight}
+        buttonPaddingTop={buttonPaddingTop}
+        buttonPaddingBottom={buttonPaddingBottom}
+        buttonPaddingLeft={buttonPaddingLeft}
+        buttonPaddingRight={buttonPaddingRight}
+        defaultBackgroundColor={defaultBackgroundColor}
+        focusBorderColor={focusBorderColor}
+        focusBackgroundColor={focusBackgroundColor}
+        focusRingColor={focusRingColor}
+        hoverBorderColor={hoverBorderColor}
+        hoverBackgroundColor={hoverBackgroundColor}
+        isFullWidth={isFullWidth}
+        onClick={onClick}
+        type={type}
+        borderWidth={borderWidth}
+        borderRadius={borderRadius}
+        motionDuration={motionDuration}
+        motionEasing={motionEasing}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.Button)}
       >
-        {Icon && iconPosition == 'left' ? (
+        {isLoading ? (
           <BaseBox
-            paddingRight={iconPadding}
             display="flex"
             justifyContent="center"
             alignItems="center"
+            position="absolute"
+            top="0px"
+            left="0px"
+            bottom="0px"
+            right="0px"
           >
-            <Icon size={iconSize} color={iconColor} />
+            <BaseSpinner
+              accessibilityLabel="Loading"
+              size={spinnerSize}
+              intent={intent}
+              contrast={contrast}
+            />
           </BaseBox>
         ) : null}
-        {text ? (
-          <BaseText
-            lineHeight={lineHeight}
-            fontSize={fontSize}
-            fontWeight="bold"
-            textAlign="center"
-            color={textColor}
-          >
-            {text}
-          </BaseText>
-        ) : null}
-        {Icon && iconPosition == 'right' ? (
-          <BaseBox
-            paddingLeft={iconPadding}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Icon size={iconSize} color={iconColor} />
-          </BaseBox>
-        ) : null}
-      </ButtonContent>
-    </StyledBaseButton>
+        <ButtonContent
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+          flex={1}
+          isHidden={isLoading}
+        >
+          {Icon && iconPosition == 'left' ? (
+            <BaseBox
+              paddingRight={iconPadding}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon size={iconSize} color={iconColor} />
+            </BaseBox>
+          ) : null}
+          {text ? (
+            <BaseText
+              lineHeight={lineHeight}
+              fontSize={fontSize}
+              fontWeight="bold"
+              textAlign="center"
+              color={textColor}
+            >
+              {text}
+            </BaseText>
+          ) : null}
+          {Icon && iconPosition == 'right' ? (
+            <BaseBox
+              paddingLeft={iconPadding}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon size={iconSize} color={iconColor} />
+            </BaseBox>
+          ) : null}
+        </ButtonContent>
+      </StyledBaseButton>
+    </BaseBox>
   );
 };
 

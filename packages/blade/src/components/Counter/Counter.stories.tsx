@@ -84,9 +84,14 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         flexWrap="wrap"
       >
         {intents.map((intent) => (
-          <BaseBox key={intent} paddingRight="spacing.3" paddingTop="spacing.2">
-            <CounterComponent {...args} intent={intent} contrast="low" />
-          </BaseBox>
+          <CounterComponent
+            {...args}
+            key={intent}
+            marginRight="spacing.3"
+            marginTop="spacing.2"
+            intent={intent}
+            contrast="low"
+          />
         ))}
       </BaseBox>
       <BladeText>High Contrast</BladeText>
@@ -98,9 +103,14 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         flexWrap="wrap"
       >
         {intents.map((intent) => (
-          <BaseBox key={intent} paddingRight="spacing.3" paddingTop="spacing.2">
-            <CounterComponent {...args} intent={intent} contrast="high" />
-          </BaseBox>
+          <CounterComponent
+            {...args}
+            key={intent}
+            marginRight="spacing.3"
+            marginTop="spacing.2"
+            intent={intent}
+            contrast="high"
+          />
         ))}
       </BaseBox>
     </BaseBox>

@@ -2,8 +2,8 @@ import React from 'react';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import BaseBox from '~components/Box/BaseBox';
-import type { WithComponentId } from '~utils';
-import { metaAttribute, MetaConstants } from '~utils';
+import type { StyledProps, WithComponentId } from '~utils';
+import { getStyledProps, metaAttribute, MetaConstants } from '~utils';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -41,9 +41,9 @@ export type CardProps = {
    * - Figma: https://shorturl.at/fsvwK
    */
   surfaceLevel?: 2 | 3;
-};
+} & StyledProps;
 
-const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => {
+const Card = ({ children, surfaceLevel = 3, ...styledProps }: CardProps): React.ReactElement => {
   useVerifyAllowedComponents(children, 'Card', [
     ComponentIds.CardHeader,
     ComponentIds.CardBody,
@@ -54,6 +54,7 @@ const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => 
     <CardProvider>
       <CardSurface
         {...metaAttribute(MetaConstants.Component, MetaConstants.Card)}
+        {...getStyledProps(styledProps)}
         paddingLeft="spacing.7"
         paddingRight="spacing.7"
         paddingTop="spacing.6"

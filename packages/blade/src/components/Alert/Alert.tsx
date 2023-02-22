@@ -290,13 +290,13 @@ const Alert = (props: AlertProps): ReactElement | null => {
 
   return (
     <StyledAlert
+      {...getStyledProps(props)}
       intent={intent}
       contrastType={contrastType}
       isFullWidth={isFullWidth}
       isDesktop={isDesktop}
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
-      {...getStyledProps(props)}
     >
       {icon}
       <BaseBox

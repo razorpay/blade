@@ -2,7 +2,7 @@ import type { GestureResponderEvent } from 'react-native';
 import React from 'react';
 import BaseButton from '../BaseButton';
 import type { IconComponent } from '~components/Icons';
-import type { Platform } from '~utils';
+import type { Platform, StyledProps } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 type ButtonCommonProps = {
@@ -18,7 +18,7 @@ type ButtonCommonProps = {
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
-};
+} & StyledProps;
 
 /*
   Mandatory children prop when icon is not provided
@@ -51,12 +51,14 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     type = 'button',
     variant = 'primary',
     accessibilityLabel,
+    ...styledProps
   },
   ref,
 ) => {
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
+      {...styledProps}
       ref={ref}
       accessibilityLabel={accessibilityLabel}
       iconPosition={iconPosition}
