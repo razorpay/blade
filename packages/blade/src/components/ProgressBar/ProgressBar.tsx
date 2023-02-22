@@ -2,8 +2,8 @@ import type { ReactElement } from 'react';
 import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { FormLabel } from '~components/Form';
-import type { AccessibilityProps } from '~utils';
-import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
+import type { AccessibilityProps, StyledProps } from '~utils';
+import { getStyledProps, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
@@ -48,7 +48,7 @@ type ProgressBarCommonProps = {
    * @default 100
    */
   max?: number;
-};
+} & StyledProps;
 
 type ProgressBarVariant = 'progress' | 'meter';
 
@@ -107,6 +107,7 @@ const ProgressBar = ({
   variant = 'progress',
   min = 0,
   max = 100,
+  ...styledProps
 }: ProgressBarProps): ReactElement => {
   const { theme } = useTheme();
   const id = useId(variant);
@@ -152,7 +153,7 @@ const ProgressBar = ({
   }
 
   return (
-    <>
+    <BaseBox {...getStyledProps(styledProps)}>
       <BaseBox
         display="flex"
         flexDirection="row"
@@ -205,7 +206,7 @@ const ProgressBar = ({
           />
         </BaseBox>
       </BaseBox>
-    </>
+    </BaseBox>
   );
 };
 

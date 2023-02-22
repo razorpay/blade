@@ -1,6 +1,7 @@
 import type { ReactElement, SyntheticEvent } from 'react';
 import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
+import type { StyledProps } from '~utils';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
@@ -18,7 +19,7 @@ type LinkCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium';
-};
+} & StyledProps;
 
 /*
   Mandatory children prop when icon is not provided
@@ -80,9 +81,11 @@ const Link = ({
   rel,
   accessibilityLabel,
   size = 'medium',
+  ...styledProps
 }: LinkProps): ReactElement => {
   return (
     <BaseLink
+      {...styledProps}
       {...(icon ? { icon, children } : { children })}
       {...(variant === 'anchor' ? { variant, href, target, rel } : { variant, isDisabled })}
       iconPosition={iconPosition}

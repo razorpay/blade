@@ -7,7 +7,14 @@ import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 
 import type { Feedback } from '~tokens/theme/theme';
-import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
+import type { StyledProps } from '~utils';
+import {
+  metaAttribute,
+  getPlatformType,
+  makeAccessible,
+  MetaConstants,
+  getStyledProps,
+} from '~utils';
 
 type IndicatorCommonProps = {
   /**
@@ -23,7 +30,7 @@ type IndicatorCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-};
+} & StyledProps;
 
 type IndicatorWithoutA11yLabel = {
   /**
@@ -61,6 +68,7 @@ const Indicator = ({
   children,
   size = 'medium',
   intent = 'neutral',
+  ...styledProps
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
 
@@ -87,6 +95,7 @@ const Indicator = ({
 
   return (
     <BaseBox
+      {...getStyledProps(styledProps)}
       display="flex"
       flexDirection="row"
       alignItems="center"

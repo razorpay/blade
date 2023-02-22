@@ -6,6 +6,7 @@ import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
+import type { StyledProps } from '~utils';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
@@ -41,7 +42,7 @@ type TextAreaProps = Pick<
    * Event handler to handle the onClick event for clear button.
    */
   onClearButtonClick?: () => void;
-};
+} & StyledProps;
 
 // need to do this to tell TS to infer type as TextInput of React Native and make it believe that `ref.current.clear()` exists
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -72,6 +73,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     onClearButtonClick,
     autoFocus,
     numberOfLines = 2,
+    ...styledProps
   },
   ref,
 ) => {
@@ -115,6 +117,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
 
   return (
     <BaseInput
+      {...styledProps}
       as="textarea"
       id="textarea"
       componentName="textarea"

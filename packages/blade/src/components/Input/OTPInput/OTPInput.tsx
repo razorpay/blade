@@ -7,7 +7,15 @@ import { FormHint, FormLabel } from '../../Form';
 import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from '~utils';
+import type { StyledProps } from '~utils';
+import {
+  metaAttribute,
+  getPlatformType,
+  MetaConstants,
+  isEmpty,
+  makeSize,
+  getStyledProps,
+} from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 export type OTPInputProps = Pick<
@@ -57,7 +65,7 @@ export type OTPInputProps = Pick<
     BaseInputProps['autoCompleteSuggestionType'],
     'none' | 'oneTimeCode'
   >;
-};
+} & StyledProps;
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -99,6 +107,7 @@ const OTPInput = ({
   value: inputValue,
   isMasked,
   autoCompleteSuggestionType = 'oneTimeCode',
+  ...styledProps
 }: OTPInputProps): React.ReactElement => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
@@ -303,7 +312,10 @@ const OTPInput = ({
   };
 
   return (
-    <BaseBox {...metaAttribute(MetaConstants.Component, MetaConstants.OTPInput)}>
+    <BaseBox
+      {...metaAttribute(MetaConstants.Component, MetaConstants.OTPInput)}
+      {...getStyledProps(styledProps)}
+    >
       <BaseBox
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}

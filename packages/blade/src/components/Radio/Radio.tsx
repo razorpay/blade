@@ -10,7 +10,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import { getPlatformType } from '~utils';
+import type { StyledProps } from '~utils';
+import { getPlatformType, getStyledProps } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 type RadioProps = {
@@ -39,10 +40,10 @@ type RadioProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-};
+} & StyledProps;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
-  { value, children, helpText, isDisabled, size = 'medium' },
+  { value, children, helpText, isDisabled, size = 'medium', ...styledProps },
   ref,
 ) => {
   const groupProps = useRadioGroupContext();
@@ -84,33 +85,35 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   });
 
   return (
-    <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
-      <BaseBox display="flex" flexDirection="column">
-        <BaseBox display="flex" alignItems="center" flexDirection="row">
-          <SelectorInput
-            isChecked={state.isChecked}
-            isDisabled={_isDisabled}
-            hasError={hasError}
-            inputProps={inputProps}
-            ref={ref}
-          />
-          <RadioIcon
-            size={_size}
-            isChecked={state.isChecked}
-            isDisabled={_isDisabled}
-            isNegative={hasError}
-          />
-          <SelectorTitle size={_size} isDisabled={_isDisabled}>
-            {children}
-          </SelectorTitle>
+    <BaseBox {...getStyledProps(styledProps)}>
+      <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
+        <BaseBox display="flex" flexDirection="column">
+          <BaseBox display="flex" alignItems="center" flexDirection="row">
+            <SelectorInput
+              isChecked={state.isChecked}
+              isDisabled={_isDisabled}
+              hasError={hasError}
+              inputProps={inputProps}
+              ref={ref}
+            />
+            <RadioIcon
+              size={_size}
+              isChecked={state.isChecked}
+              isDisabled={_isDisabled}
+              isNegative={hasError}
+            />
+            <SelectorTitle size={_size} isDisabled={_isDisabled}>
+              {children}
+            </SelectorTitle>
+          </BaseBox>
+          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
+            {showHelpText && (
+              <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
+            )}
+          </BaseBox>
         </BaseBox>
-        <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-          {showHelpText && (
-            <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-          )}
-        </BaseBox>
-      </BaseBox>
-    </SelectorLabel>
+      </SelectorLabel>
+    </BaseBox>
   );
 };
 

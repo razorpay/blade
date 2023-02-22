@@ -6,6 +6,7 @@ import { BaseInput } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
+import type { StyledProps } from '~utils';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
@@ -67,7 +68,7 @@ type TextInputProps = Pick<
    * @default text
    */
   type?: Type;
-};
+} & StyledProps;
 
 type TextInputKeyboardAndAutoComplete = Pick<
   BaseInputProps,
@@ -183,6 +184,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     autoFocus,
     keyboardReturnKeyType,
     autoCompleteSuggestionType,
+    ...styledProps
   },
   ref,
 ): ReactElement => {
@@ -229,6 +231,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
   return (
     <BaseInput
+      {...styledProps}
       id="textinput"
       componentName="textinput"
       ref={textInputRef as React.Ref<HTMLInputElement>}

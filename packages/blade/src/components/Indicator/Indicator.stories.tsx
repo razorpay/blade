@@ -90,9 +90,13 @@ export const Composition: ComponentStory<typeof IndicatorComponent> = ({ ...args
       display={isReactNative ? 'flex' : 'inline-flex'}
       alignSelf="center"
     >
-      <BaseBox position="absolute" top={isReactNative ? '-8px' : '-4px'} right="-8px" zIndex={10}>
-        <IndicatorComponent {...args} />
-      </BaseBox>
+      <IndicatorComponent
+        {...args}
+        position="absolute"
+        top={isReactNative ? '-8px' : '-4px'}
+        right="-8px"
+        zIndex={10}
+      />
       <Button>Get started</Button>
     </BaseBox>
   );

@@ -11,7 +11,7 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
+import { makeAccessible, getIn, metaAttribute, MetaConstants, getStyledProps } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -211,6 +211,7 @@ const BaseLink = ({
   // @ts-expect-error avoiding exposing to public
   style,
   size = 'medium',
+  ...styledProps
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
@@ -262,50 +263,57 @@ const BaseLink = ({
   };
 
   return (
-    <StyledBaseLink
-      {...syntheticEvents}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Link)}
-      accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
-      variant={variant}
-      as={as}
-      href={href}
-      target={target}
-      rel={rel ?? defaultRel}
-      onClick={handleOnClick}
-      disabled={disabled}
-      type={type}
-      cursor={cursor}
-      focusRingColor={focusRingColor}
-      motionDuration={motionDuration}
-      motionEasing={motionEasing}
-      setCurrentInteraction={setCurrentInteraction}
-      // @ts-ignore Because we avoided exposing className to public
-      className={className}
-      style={style}
-    >
-      <BaseBox display="flex" flexDirection="row" className="content-container" alignItems="center">
-        {Icon && iconPosition == 'left' ? (
-          <BaseBox paddingRight={iconPadding} display="flex" alignItems="center">
-            <Icon color={iconColor} size={iconSize} />
-          </BaseBox>
-        ) : null}
-        <BaseText
-          textDecorationLine={textDecorationLine}
-          color={textColor}
-          fontSize={fontSize}
-          lineHeight={lineHeight}
-          textAlign="center"
-          fontWeight="bold"
+    <BaseBox {...getStyledProps(styledProps)}>
+      <StyledBaseLink
+        {...syntheticEvents}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.Link)}
+        accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
+        variant={variant}
+        as={as}
+        href={href}
+        target={target}
+        rel={rel ?? defaultRel}
+        onClick={handleOnClick}
+        disabled={disabled}
+        type={type}
+        cursor={cursor}
+        focusRingColor={focusRingColor}
+        motionDuration={motionDuration}
+        motionEasing={motionEasing}
+        setCurrentInteraction={setCurrentInteraction}
+        // @ts-ignore Because we avoided exposing className to public
+        className={className}
+        style={style}
+      >
+        <BaseBox
+          display="flex"
+          flexDirection="row"
+          className="content-container"
+          alignItems="center"
         >
-          {children}
-        </BaseText>
-        {Icon && iconPosition == 'right' ? (
-          <BaseBox paddingLeft={iconPadding} display="flex" alignItems="center">
-            <Icon color={iconColor} size={iconSize} />
-          </BaseBox>
-        ) : null}
-      </BaseBox>
-    </StyledBaseLink>
+          {Icon && iconPosition == 'left' ? (
+            <BaseBox paddingRight={iconPadding} display="flex" alignItems="center">
+              <Icon color={iconColor} size={iconSize} />
+            </BaseBox>
+          ) : null}
+          <BaseText
+            textDecorationLine={textDecorationLine}
+            color={textColor}
+            fontSize={fontSize}
+            lineHeight={lineHeight}
+            textAlign="center"
+            fontWeight="bold"
+          >
+            {children}
+          </BaseText>
+          {Icon && iconPosition == 'right' ? (
+            <BaseBox paddingLeft={iconPadding} display="flex" alignItems="center">
+              <Icon color={iconColor} size={iconSize} />
+            </BaseBox>
+          ) : null}
+        </BaseBox>
+      </StyledBaseLink>
+    </BaseBox>
   );
 };
 

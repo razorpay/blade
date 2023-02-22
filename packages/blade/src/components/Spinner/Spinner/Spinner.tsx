@@ -9,9 +9,11 @@ const Spinner = ({
   accessibilityLabel,
   contrast = 'low',
   size = 'medium',
+  ...styledProps
 }: SpinnerProps): React.ReactElement => {
   return (
     <BaseSpinner
+      {...styledProps}
       label={label}
       labelPosition={labelPosition}
       accessibilityLabel={accessibilityLabel ?? label ?? 'Loading'}

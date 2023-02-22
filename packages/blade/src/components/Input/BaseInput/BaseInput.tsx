@@ -14,9 +14,9 @@ import { BaseInputWrapper } from './BaseInputWrapper';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
-import type { AriaAttributes } from '~utils';
-
+import type { AriaAttributes, StyledProps } from '~utils';
 import {
+  getStyledProps,
   metaAttribute,
   getPlatformType,
   makeAccessible,
@@ -235,7 +235,7 @@ export type BaseInputProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
-  };
+  } & StyledProps;
 
 const autoCompleteSuggestionTypeValues = [
   'none',
@@ -504,6 +504,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       popupId,
       isPopupExpanded,
       shouldIgnoreBlurAnimation,
+      ...styledProps
     },
     ref,
   ) => {
@@ -568,7 +569,10 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
     return (
-      <BaseBox {...metaAttribute(MetaConstants.Component, componentName!)}>
+      <BaseBox
+        {...metaAttribute(MetaConstants.Component, componentName!)}
+        {...getStyledProps(styledProps)}
+      >
         <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
