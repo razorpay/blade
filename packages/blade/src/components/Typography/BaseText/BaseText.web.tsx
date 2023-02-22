@@ -2,8 +2,7 @@ import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute, makeAccessible, MetaConstants, getStyledProps } from '~utils';
-import BaseBox from '~components/Box/BaseBox';
+import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
 
 const StyledBaseText = styled.div<StyledBaseTextProps>(
   ({
@@ -47,29 +46,26 @@ export const BaseText = ({
   style,
   accessibilityProps = {},
   componentName,
-  ...styledProps
 }: BaseTextProps): ReactElement => {
   return (
-    <BaseBox display={as === 'span' ? 'inline' : 'inline-block'} {...getStyledProps(styledProps)}>
-      <StyledBaseText
-        color={color}
-        fontFamily={fontFamily}
-        fontSize={fontSize}
-        fontWeight={fontWeight}
-        fontStyle={fontStyle}
-        textDecorationLine={textDecorationLine}
-        lineHeight={lineHeight}
-        as={as}
-        textAlign={textAlign}
-        numberOfLines={truncateAfterLines}
-        className={className}
-        style={style}
-        id={id}
-        {...makeAccessible(accessibilityProps)}
-        {...metaAttribute(MetaConstants.Component, componentName)}
-      >
-        {children}
-      </StyledBaseText>
-    </BaseBox>
+    <StyledBaseText
+      color={color}
+      fontFamily={fontFamily}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      fontStyle={fontStyle}
+      textDecorationLine={textDecorationLine}
+      lineHeight={lineHeight}
+      as={as}
+      textAlign={textAlign}
+      numberOfLines={truncateAfterLines}
+      className={className}
+      style={style}
+      id={id}
+      {...makeAccessible(accessibilityProps)}
+      {...metaAttribute(MetaConstants.Component, componentName)}
+    >
+      {children}
+    </StyledBaseText>
   );
 };

@@ -53,29 +53,26 @@ export const BaseText = ({
   style,
   accessibilityProps = {},
   componentName,
-  ...styledProps
 }: BaseTextProps): ReactElement => {
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
-      <StyledBaseText
-        color={color}
-        fontFamily={fontFamily}
-        fontSize={fontSize}
-        fontWeight={fontWeight}
-        fontStyle={fontStyle}
-        textDecorationLine={textDecorationLine}
-        lineHeight={lineHeight}
-        as={as}
-        textAlign={textAlign}
-        numberOfLines={truncateAfterLines}
-        className={className}
-        style={style}
-        id={id}
-        {...makeAccessible(accessibilityProps)}
-        {...metaAttribute(MetaConstants.Component, componentName!)}
-      >
-        {children}
-      </StyledBaseText>
-    </BaseBox>
+    <StyledBaseText
+      color={color}
+      fontFamily={fontFamily}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      fontStyle={fontStyle}
+      textDecorationLine={textDecorationLine}
+      lineHeight={lineHeight}
+      as={as}
+      textAlign={textAlign}
+      numberOfLines={truncateAfterLines}
+      className={className}
+      style={style}
+      id={id}
+      {...makeAccessible(accessibilityProps)}
+      {...metaAttribute(MetaConstants.Component, componentName!)}
+    >
+      {children}
+    </StyledBaseText>
   );
 };
