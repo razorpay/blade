@@ -84,6 +84,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
     const preventScrollingRef = React.useRef(true);
     const scrollRef = React.useRef<HTMLDivElement>(null);
     const grabHandleRef = React.useRef<HTMLDivElement>(null);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const canSafelyHideSheet = isAnimationFinished && !isOpen;
 
     const setPosY = React.useCallback(
