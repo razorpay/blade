@@ -734,7 +734,7 @@ export const WithMultipleDropdowns = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <BaseBox display="flex" flexDirection="row" minHeight={300}>
+    <BaseBox display="flex" flexDirection="row" minHeight={300} gap="spacing.2">
       <BaseBox flex={1}>
         <Dropdown selectionType={selectionType}>
           <SelectInput label="Top 2 design systems" {...selectInputArgs} />
