@@ -8,7 +8,6 @@ import type { StyledProps } from '~utils';
 import { getStyledProps, getPlatformType } from '~utils';
 
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import BaseBox from '~components/Box/BaseBox';
 
 type TextCommonProps = {
   type?: TextTypes;
@@ -133,9 +132,9 @@ const Text = <T extends { variant: TextVariant }>({
     ...(color ? { color } : {}),
   };
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
-      <StyledText {...props}>{children}</StyledText>
-    </BaseBox>
+    <StyledText {...getStyledProps(styledProps)} {...props}>
+      {children}
+    </StyledText>
   );
 };
 

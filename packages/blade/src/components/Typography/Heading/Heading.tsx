@@ -7,7 +7,6 @@ import type { StyledProps } from '~utils';
 import { getStyledProps, getPlatformType } from '~utils';
 
 import type { Theme } from '~components/BladeProvider';
-import BaseBox from '~components/Box/BaseBox';
 
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
@@ -116,8 +115,8 @@ export const Heading = <T extends { variant: HeadingVariant }>({
 }: HeadingProps<T>): ReactElement => {
   const props = getProps({ variant, size, type, weight, contrast });
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
-      <BaseText {...props}>{children}</BaseText>
-    </BaseBox>
+    <BaseText {...getStyledProps(styledProps)} {...props}>
+      {children}
+    </BaseText>
   );
 };

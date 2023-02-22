@@ -5,8 +5,6 @@ import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme
 import type { StyledProps } from '~utils';
 import { getStyledProps, getPlatformType } from '~utils';
 
-import BaseBox from '~components/Box/BaseBox';
-
 export type TitleProps = {
   size?: 'small' | 'medium' | 'large';
   contrast?: ColorContrastTypes;
@@ -58,8 +56,8 @@ export const Title = ({
 }: TitleProps): ReactElement => {
   const props = getProps({ size, type, contrast });
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
-      <BaseText {...props}>{children}</BaseText>
-    </BaseBox>
+    <BaseText {...getStyledProps(styledProps)} {...props}>
+      {children}
+    </BaseText>
   );
 };

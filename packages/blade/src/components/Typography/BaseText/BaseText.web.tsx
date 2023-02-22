@@ -1,8 +1,10 @@
+import React from 'react';
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
+import { metaAttribute, makeAccessible, MetaConstants, getStyledProps } from '~utils';
+import { getBaseBoxStyles, getDependencyProps } from '~components/Box/BaseBox/getBaseBoxStyles';
 
 const StyledBaseText = styled.div<StyledBaseTextProps>(
   ({
@@ -15,18 +17,30 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
     lineHeight,
     textAlign,
     ...props
-  }) =>
-    getBaseTextStyles({
-      color,
-      fontFamily,
-      fontSize,
-      fontWeight,
-      fontStyle,
-      textDecorationLine,
-      lineHeight,
-      textAlign,
-      theme: props.theme,
-    }),
+  }) => {
+    const styledPropsStyles = getStyledProps(props);
+    const styledPropsMemoDependency = getDependencyProps(styledPropsStyles);
+    const styledPropsCSSObject = React.useMemo(
+      () => getBaseBoxStyles({ ...styledPropsStyles, theme: props.theme }),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [styledPropsMemoDependency],
+    );
+
+    return {
+      ...styledPropsCSSObject,
+      ...getBaseTextStyles({
+        color,
+        fontFamily,
+        fontSize,
+        fontWeight,
+        fontStyle,
+        textDecorationLine,
+        lineHeight,
+        textAlign,
+        theme: props.theme,
+      }),
+    };
+  },
 );
 
 export const BaseText = ({
@@ -46,9 +60,11 @@ export const BaseText = ({
   style,
   accessibilityProps = {},
   componentName,
+  ...styledProps
 }: BaseTextProps): ReactElement => {
   return (
     <StyledBaseText
+      {...styledProps}
       color={color}
       fontFamily={fontFamily}
       fontSize={fontSize}
