@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import BaseBox from '~components/Box/BaseBox';
+import type { StyledProps } from '~utils';
 import {
   metaAttribute,
   getPlatformType,
   makeSpace,
   makeTypographySize,
   MetaConstants,
+  getStyledProps,
 } from '~utils';
 import type { FontSize } from '~tokens/global/typography';
 
@@ -18,7 +20,7 @@ export type CodeProps = {
    * @default small
    */
   size?: 'small' | 'medium';
-};
+} & StyledProps;
 
 type CodeContainerProps = {
   size: CodeProps['size'];
@@ -76,9 +78,10 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * </BaseBox>
  * ```
  */
-const Code = ({ children, size = 'small' }: CodeProps): JSX.Element => {
+const Code = ({ children, size = 'small', ...styledProps }: CodeProps): JSX.Element => {
   return (
     <CodeContainer
+      {...getStyledProps(styledProps)}
       size={size}
       as={isPlatformWeb ? 'span' : undefined}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Code)}

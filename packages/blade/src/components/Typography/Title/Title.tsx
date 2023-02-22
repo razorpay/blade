@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
+import type { StyledProps } from '~utils';
 import { getPlatformType } from '~utils';
 
 export type TitleProps = {
@@ -9,7 +10,7 @@ export type TitleProps = {
   contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: string;
-};
+} & StyledProps;
 
 const getProps = ({
   size,
@@ -51,7 +52,12 @@ export const Title = ({
   type = 'normal',
   contrast = 'low',
   children,
+  ...styledProps
 }: TitleProps): ReactElement => {
   const props = getProps({ size, type, contrast });
-  return <BaseText {...props}>{children}</BaseText>;
+  return (
+    <BaseText {...styledProps} {...props}>
+      {children}
+    </BaseText>
+  );
 };

@@ -3,6 +3,7 @@ import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
+import type { StyledProps } from '~utils';
 import { getPlatformType } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 
@@ -13,7 +14,7 @@ type HeadingCommonProps = {
   type?: TextTypes;
   contrast?: ColorContrastTypes;
   children: string;
-};
+} & StyledProps;
 
 type HeadingNormalVariant = HeadingCommonProps & {
   variant?: Exclude<HeadingVariant, 'subheading'>;
@@ -109,7 +110,12 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   weight = 'bold',
   contrast = 'low',
   children,
+  ...styledProps
 }: HeadingProps<T>): ReactElement => {
   const props = getProps({ variant, size, type, weight, contrast });
-  return <BaseText {...props}>{children}</BaseText>;
+  return (
+    <BaseText {...styledProps} {...props}>
+      {children}
+    </BaseText>
+  );
 };

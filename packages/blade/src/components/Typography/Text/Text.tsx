@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { Theme } from '~components/BladeProvider';
+import type { StyledProps } from '~utils';
 import { getPlatformType } from '~utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 
@@ -17,7 +18,7 @@ type TextCommonProps = {
    * **For Internal use only**:  Sets the color of the Text component
    */
   color?: BaseTextProps['color'];
-};
+} & StyledProps;
 
 export type TextVariant = 'body' | 'caption';
 
@@ -122,13 +123,18 @@ const Text = <T extends { variant: TextVariant }>({
   truncateAfterLines,
   children,
   color,
+  ...styledProps
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
     ...getTextProps({ variant, type, weight, size, contrast }),
     ...(color ? { color } : {}),
   };
-  return <StyledText {...props}>{children}</StyledText>;
+  return (
+    <StyledText {...styledProps} {...props}>
+      {children}
+    </StyledText>
+  );
 };
 
 export { Text, getTextProps };
