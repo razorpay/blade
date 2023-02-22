@@ -78,14 +78,11 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
 
     const [posY, _setPosY] = React.useState(0);
     const [isOpen, setIsOpen] = React.useState(false);
-    const [isAnimationFinished, setIsAnimationFinished] = React.useState(false);
     const [isDragging, setIsDragging] = React.useState(false);
 
     const preventScrollingRef = React.useRef(true);
     const scrollRef = React.useRef<HTMLDivElement>(null);
     const grabHandleRef = React.useRef<HTMLDivElement>(null);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const canSafelyHideSheet = isAnimationFinished && !isOpen;
 
     const setPosY = React.useCallback(
       (value: number, limit = true) => {
@@ -210,7 +207,6 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         const shouldClose = newY < lowerSnapPoint;
         if (shouldClose) {
           setIsDragging(false);
-          setIsAnimationFinished(false);
           close();
           cancel();
           return;
@@ -226,7 +222,6 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           // if we stop dragging assign snap to the nearest point
           if (!active) {
             newY = nearest;
-            setIsAnimationFinished(false);
           }
         }
 
@@ -308,9 +303,6 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           windowHeight={dimensions.height}
           isOpen={isOpen}
           isDragging={isDragging}
-          onTransitionEnd={() => {
-            setIsAnimationFinished(true);
-          }}
           style={{
             opacity: !isOpen ? 0 : 1,
             pointerEvents: !isOpen ? 'none' : 'all',
