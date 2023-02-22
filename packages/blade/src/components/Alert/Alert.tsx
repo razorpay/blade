@@ -25,7 +25,7 @@ import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import { getStyledProps } from '~components/Box/getStyledProps';
-import type { StyledProps } from '~components/Box/BaseBox/types';
+import type { StyledProps } from '~components/Box/BaseBox';
 
 type Nullable<Type> = Type | null;
 

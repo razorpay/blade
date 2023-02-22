@@ -152,12 +152,19 @@ type VisualProps = MakeObjectResponsive<
 >;
 
 type StyledProps = Partial<
-  // @todo: add placeSelf
   MarginProps &
-    Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'order'> &
+    Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
     PositionProps &
-    // @todo add column start, column end
-    Pick<GridProps, 'gridColumn' | 'gridRow' | 'gridRowStart' | 'gridRowEnd' | 'gridArea'>
+    Pick<
+      GridProps,
+      | 'gridColumn'
+      | 'gridRow'
+      | 'gridRowStart'
+      | 'gridRowEnd'
+      | 'gridColumnStart'
+      | 'gridColumnEnd'
+      | 'gridArea'
+    >
 >;
 
 type BoxProps = Partial<
@@ -182,8 +189,6 @@ export {
   StyledProps,
   BaseBoxProps,
   MakeValueResponsive,
-  PaddingProps,
-  MarginProps,
   SpacingValueType,
   ArrayOfMaxLength4,
 };

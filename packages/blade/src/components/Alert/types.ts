@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { BaseBoxProps } from '~components/Box/BaseBox/types';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 import type { ColorContrast, Feedback } from '~tokens/theme/theme';
 
