@@ -2,12 +2,18 @@ import type { ReactElement } from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { Linking } from 'react-native';
 import styled from 'styled-components/native';
-import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
+import getStyledLinkStyles from './getStyledLinkStyles';
+import { getBaseBoxStyles } from '~components/Box/BaseBox/getBaseBoxStyles';
+import { getStyledProps } from '~utils';
 
-const StyledNativeLink = styled.Pressable({
-  ...getStyledLinkStyles({}),
-  alignSelf: 'flex-start',
+const StyledNativeLink = styled.Pressable((props) => {
+  const styledPropsCSSObject = getBaseBoxStyles({ ...getStyledProps(props), theme: props.theme });
+  return {
+    ...styledPropsCSSObject,
+    ...getStyledLinkStyles({}),
+    alignSelf: 'flex-start',
+  };
 });
 
 const openURL = async (href: string): Promise<void> => {

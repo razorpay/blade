@@ -210,7 +210,7 @@ const getBaseBoxStyles = (props: BaseBoxProps & { theme: Theme }): CSSObject => 
   };
 };
 
-const getDependencyProps = (props: BaseBoxProps & { theme: Theme }): string | BaseBoxProps => {
+const getDependencyProps = (props: BaseBoxProps & { theme?: Theme }): string | BaseBoxProps => {
   // These are the props that change nothing in the getBaseBoxStyles calculations
   const { theme, children, className, id, ...rest } = props;
   let dependencyPropString: string | BaseBoxProps = '';
