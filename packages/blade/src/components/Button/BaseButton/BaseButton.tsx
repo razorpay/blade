@@ -356,6 +356,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     // Marking this inline-block because button is an inline-block element and we don't want to give it styles of Box
     <BaseBox
       display={isReactNative() ? undefined : 'inline-block'}
+      width={isFullWidth ? '100%' : 'auto'}
       {...getStyledProps(styledProps)}
     >
       <StyledBaseButton

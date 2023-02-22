@@ -190,7 +190,7 @@ export const FullWidth: ComponentStory<typeof AlertComponent> = ({ ...args }) =>
   return (
     <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">
-        <AlertComponent position="absolute" {...args} />
+        <AlertComponent {...args} />
       </BaseBox>
     </BaseBox>
   );
