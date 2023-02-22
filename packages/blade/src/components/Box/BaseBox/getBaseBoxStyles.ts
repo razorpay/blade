@@ -56,7 +56,7 @@ const getSpacingValue = (
   }
 
   const responsiveSpacingValue: SpacingValueType | SpacingValueType[] = getResponsiveValue(
-    spacingValue as SpacingValueType[] | SpacingValueType,
+    spacingValue as MakeValueResponsive<string | string[]>,
     size,
   );
 
