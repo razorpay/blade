@@ -1,9 +1,8 @@
 import type { StyledProps } from './BaseBox/types';
 
 /**
- * StylePropsBox is a container that we wrap all our components with to give them styled properties
+ * This utility takes all your props and returns only the styled props that are to be used on components
  */
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getStyledProps = (props: Record<string, any>): StyledProps => {
   return {
@@ -18,6 +17,8 @@ const getStyledProps = (props: Record<string, any>): StyledProps => {
     gridRowEnd: props.gridRowEnd,
     gridArea: props.gridArea,
     margin: props.margin,
+    marginX: props.marginX,
+    marginY: props.marginY,
     marginBottom: props.marginBottom,
     marginTop: props.marginTop,
     marginRight: props.marginRight,

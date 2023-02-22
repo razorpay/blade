@@ -154,9 +154,7 @@ type StyledProps = Partial<
     Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'order'> &
     PositionProps &
     // @todo add column start, column end
-    Pick<GridProps, 'gridColumn' | 'gridRow' | 'gridRowStart' | 'gridRowEnd' | 'gridArea'> & {
-      children?: React.ReactNode | React.ReactNode[];
-    }
+    Pick<GridProps, 'gridColumn' | 'gridRow' | 'gridRowStart' | 'gridRowEnd' | 'gridArea'>
 >;
 
 type BoxProps = Partial<
