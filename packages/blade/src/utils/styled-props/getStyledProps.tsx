@@ -1,4 +1,4 @@
-import type { StyledProps } from './BaseBox';
+import type { StyledProps } from '../../components/Box/BaseBox/types';
 
 /**
  * This utility takes all your props and returns only the styled props that are to be used on components
@@ -6,8 +6,8 @@ import type { StyledProps } from './BaseBox';
  * ### Usage
  *
  * ```tsx
- * import type { StyledProps } from '~src/components/Box/BaseBox';
- * import { getStyledProps } from '~src/components/Box/BaseBox';
+ * import type { StyledProps } from '~utils';
+ * import { getStyledProps } from '~utils';
  *
  * const MyComponent = (props: MyComponentProps & StyledProps) => {
  *  return (
@@ -48,4 +48,4 @@ const getStyledProps = (props: Record<string, any>): Required<StyledProps> => {
   };
 };
 
-export { getStyledProps };
+export { getStyledProps, StyledProps };

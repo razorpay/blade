@@ -15,7 +15,9 @@ import {
   metaAttribute,
   MetaConstants,
   useBreakpoint,
+  getStyledProps,
 } from '~utils';
+import type { StyledProps } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
@@ -24,8 +26,6 @@ import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-import { getStyledProps } from '~components/Box/getStyledProps';
-import type { StyledProps } from '~components/Box/BaseBox';
 
 type Nullable<Type> = Type | null;
 
