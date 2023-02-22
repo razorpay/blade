@@ -1,6 +1,6 @@
 export type Breakpoints = Readonly<{
   /**
-   * `base` is used for base styling following a **mobile first** approach. It starts from 0px till the next existing token
+   * `base` is used for responsive styling following a **mobile first** approach. It starts from 0px till the next existing token
    *
    * Think of this as styles without any media query.
    *
