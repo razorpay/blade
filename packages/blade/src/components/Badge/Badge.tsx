@@ -7,7 +7,8 @@ import BaseBox from '~components/Box/BaseBox';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
-import { metaAttribute, MetaConstants } from '~utils';
+import { getStyledProps, metaAttribute, MetaConstants } from '~utils';
+import type { StyledProps } from '~utils';
 
 type BadgeProps = {
   /**
@@ -45,7 +46,7 @@ type BadgeProps = {
    * @default 'regular'
    */
   fontWeight?: 'regular' | 'bold';
-};
+} & StyledProps;
 
 const isFeedbackVariant = (variant: string): variant is Feedback => {
   const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
@@ -82,14 +83,16 @@ const getColorProps = ({
   return props;
 };
 
-const Badge = ({
-  children,
-  contrast = 'low',
-  fontWeight = 'regular',
-  icon: Icon,
-  size = 'medium',
-  variant = 'neutral',
-}: BadgeProps): ReactElement => {
+const Badge = (props: BadgeProps): ReactElement => {
+  const {
+    children,
+    contrast = 'low',
+    fontWeight = 'regular',
+    icon: Icon,
+    size = 'medium',
+    variant = 'neutral',
+  } = props;
+
   if (!children?.trim()) {
     throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }
@@ -118,6 +121,7 @@ const Badge = ({
       backgroundColor={backgroundColor}
       size={size}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Badge)}
+      {...getStyledProps(props)}
     >
       <BaseBox
         paddingRight={horizontalPadding[size]}

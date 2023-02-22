@@ -92,11 +92,16 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
         flexWrap="wrap"
       >
         {variants.map((variant) => (
-          <BaseBox key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
-            <BadgeComponent {...args} variant={variant} contrast="low">
-              {getLabel(variant)}
-            </BadgeComponent>
-          </BaseBox>
+          <BadgeComponent
+            {...args}
+            variant={variant}
+            contrast="low"
+            key={variant}
+            marginRight="spacing.3"
+            marginTop="spacing.2"
+          >
+            {getLabel(variant)}
+          </BadgeComponent>
         ))}
       </BaseBox>
       <BladeText>High Contrast</BladeText>
@@ -108,11 +113,16 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
         flexWrap="wrap"
       >
         {variants.map((variant) => (
-          <BaseBox key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
-            <BadgeComponent {...args} variant={variant} contrast="high">
-              {getLabel(variant)}
-            </BadgeComponent>
-          </BaseBox>
+          <BadgeComponent
+            {...args}
+            variant={variant}
+            contrast="high"
+            key={variant}
+            marginRight="spacing.3"
+            marginTop="spacing.2"
+          >
+            {getLabel(variant)}
+          </BadgeComponent>
         ))}
       </BaseBox>
     </BaseBox>
