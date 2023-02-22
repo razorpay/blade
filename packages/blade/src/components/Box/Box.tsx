@@ -6,8 +6,17 @@ import type { BoxProps } from './BaseBox/types';
  */
 const getOnlyBoxProps = (props: BoxProps): BoxProps => {
   return {
+    // Layout
     display: props.display,
     overflow: props.overflow,
+    height: props.height,
+    minHeight: props.minHeight,
+    maxHeight: props.maxHeight,
+    width: props.width,
+    minWidth: props.minWidth,
+    maxWidth: props.maxWidth,
+
+    // Flex
     flex: props.flex,
     flexWrap: props.flexWrap,
     flexDirection: props.flexDirection,
@@ -20,14 +29,17 @@ const getOnlyBoxProps = (props: BoxProps): BoxProps => {
     justifyItems: props.justifyItems,
     justifyContent: props.justifyContent,
     justifySelf: props.justifySelf,
+    placeSelf: props.placeSelf,
     order: props.order,
-    position: props.position,
-    zIndex: props.zIndex,
+
+    // Grid
     grid: props.grid,
     gridColumn: props.gridColumn,
     gridRow: props.gridRow,
     gridRowStart: props.gridRowStart,
     gridRowEnd: props.gridRowEnd,
+    gridColumnStart: props.gridColumnStart,
+    gridColumnEnd: props.gridColumnEnd,
     gridArea: props.gridArea,
     gridAutoFlow: props.gridAutoFlow,
     gridAutoRows: props.gridAutoRows,
@@ -36,6 +48,8 @@ const getOnlyBoxProps = (props: BoxProps): BoxProps => {
     gridTemplateAreas: props.gridTemplateAreas,
     gridTemplateColumns: props.gridTemplateColumns,
     gridTemplateRows: props.gridTemplateRows,
+
+    // Spacing
     padding: props.padding,
     paddingTop: props.paddingTop,
     paddingBottom: props.paddingBottom,
@@ -50,15 +64,13 @@ const getOnlyBoxProps = (props: BoxProps): BoxProps => {
     marginLeft: props.marginLeft,
     marginX: props.marginX,
     marginY: props.marginY,
-    height: props.height,
-    minHeight: props.minHeight,
-    maxHeight: props.maxHeight,
-    width: props.width,
-    minWidth: props.minWidth,
-    maxWidth: props.maxWidth,
     gap: props.gap,
     rowGap: props.rowGap,
     columnGap: props.columnGap,
+
+    // Position
+    position: props.position,
+    zIndex: props.zIndex,
     top: props.top,
     right: props.right,
     bottom: props.bottom,
