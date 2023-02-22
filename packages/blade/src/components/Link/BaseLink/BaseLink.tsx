@@ -11,7 +11,14 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-import { makeAccessible, getIn, metaAttribute, MetaConstants, getStyledProps } from '~utils';
+import {
+  makeAccessible,
+  getIn,
+  metaAttribute,
+  MetaConstants,
+  getStyledProps,
+  isReactNative,
+} from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -263,7 +270,10 @@ const BaseLink = ({
   };
 
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
+    <BaseBox
+      display={isReactNative() ? undefined : 'inline-block'}
+      {...getStyledProps(styledProps)}
+    >
       <StyledBaseLink
         {...syntheticEvents}
         {...metaAttribute(MetaConstants.Component, MetaConstants.Link)}
