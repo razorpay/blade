@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseBox /> should render BaseBox component with the correct styles 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" overflow=\\"hidden\\" height=\\"auto\\" width=\\"auto\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jhnFiy\\"></div></div>"`;
+exports[`<BaseBox /> should render BaseBox component with the correct styles 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" overflow=\\"hidden\\" height=\\"auto\\" width=\\"auto\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bbAWnK\\"></div></div>"`;
 
 exports[`<BaseBox /> should render BaseBox component with the correct styles 2`] = `
 <div
@@ -8,7 +8,7 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 2`]
   id="root"
 >
   <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jhnFiy"
+    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bbAWnK"
     display="flex"
     height="auto"
     overflow="hidden"

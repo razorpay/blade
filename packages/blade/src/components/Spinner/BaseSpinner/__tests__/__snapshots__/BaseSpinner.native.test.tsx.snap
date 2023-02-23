@@ -363,8 +363,6 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
       </View>
     </View>
     <View
-      marginLeft="spacing.0"
-      marginTop="spacing.3"
       style={
         Array [
           Object {
@@ -1384,8 +1382,6 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
       </View>
     </View>
     <View
-      marginLeft="spacing.3"
-      marginTop="spacing.0"
       style={
         Array [
           Object {

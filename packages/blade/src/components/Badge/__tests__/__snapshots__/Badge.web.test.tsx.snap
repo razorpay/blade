@@ -21,6 +21,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -32,11 +33,10 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -143,6 +143,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -154,11 +155,10 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -229,6 +229,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -240,11 +241,10 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -315,6 +315,7 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -326,11 +327,10 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -401,6 +401,7 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -412,11 +413,10 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -487,6 +487,7 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -498,11 +499,10 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -573,6 +573,7 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -584,11 +585,10 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -659,6 +659,7 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -670,11 +671,10 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -745,6 +745,7 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -756,11 +757,10 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -831,6 +831,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -842,11 +843,10 @@ exports[`<Badge /> should render large size Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-left: 12px;
   padding-right: 12px;
+  padding-left: 12px;
 }
 
 .c2 {
@@ -917,6 +917,7 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -928,11 +929,10 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -1003,6 +1003,7 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1014,11 +1015,10 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -1089,6 +1089,7 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1100,11 +1101,10 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -1175,6 +1175,7 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1186,11 +1187,10 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -1261,6 +1261,7 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1272,11 +1273,10 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -1347,6 +1347,7 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1358,11 +1359,10 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -1433,6 +1433,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1444,11 +1445,10 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
@@ -1519,6 +1519,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1530,11 +1531,10 @@ exports[`<Badge /> should render small size Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2 {
