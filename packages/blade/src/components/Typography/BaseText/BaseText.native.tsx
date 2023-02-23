@@ -77,7 +77,7 @@ export const BaseText = ({
       style={style}
       id={id}
       {...makeAccessible(accessibilityProps)}
-      {...metaAttribute(MetaConstants.Component, componentName!)}
+      {...metaAttribute(MetaConstants.Component, componentName)}
     >
       {children}
     </StyledBaseText>
