@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const PhoneCallIcon: IconComponent = ({ size, color }) => {
+const PhoneCallIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M13.0561 1.88955C13.1171 1.34065 13.6115 0.945101 14.1604 1.00608C18.8043 1.52198 22.472 5.18501 22.9937 9.8283C23.0554 10.3771 22.6605 10.872 22.1116 10.9337C21.5628 10.9954 21.0679 10.6005 21.0062 10.0516C20.5888 6.337 17.6547 3.40658 13.9396 2.99385C13.3907 2.93287 12.9951 2.43846 13.0561 1.88955Z"
         fill={iconColor}

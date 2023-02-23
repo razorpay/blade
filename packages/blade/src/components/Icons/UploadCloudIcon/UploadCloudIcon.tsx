@@ -2,11 +2,11 @@ import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const UploadCloudIcon: IconComponent = ({ size, color }) => {
+const UploadCloudIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_60_143)">
         <Path
           d="M1.01328 6.84348C2.73489 3.53956 6.31417 1.63791 10.0157 2.06055C13.4557 2.45333 16.3404 4.77817 17.4793 7.99999H18C20.7422 8.0018 23.1349 9.86253 23.8113 12.52C24.4877 15.1775 23.2764 17.9554 20.8687 19.268C20.3838 19.5323 19.7764 19.3536 19.512 18.8687C19.2477 18.3837 19.4265 17.7763 19.9114 17.512C21.5165 16.6369 22.3241 14.785 21.8731 13.0133C21.4222 11.2417 19.8275 10.0012 17.9994 9.99999H16.74C16.2841 9.99999 15.886 9.69167 15.7719 9.2503C15.0466 6.44488 12.6677 4.37635 9.78879 4.04764C6.90984 3.71892 4.12596 5.19798 2.78693 7.76769C1.4479 10.3374 1.83056 13.4665 3.74936 15.6378C4.11508 16.0516 4.07607 16.6836 3.66222 17.0493C3.24838 17.415 2.61641 17.376 2.2507 16.9622C-0.216341 14.1705 -0.708325 10.1474 1.01328 6.84348Z"

@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const AirplayIcon: IconComponent = ({ size, color }) => {
+const AirplayIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M3 4C3 3.44772 3.44772 3 4 3H20C20.5523 3 21 3.44772 21 4V14C21 14.5523 20.5523 15 20 15H19C18.4477 15 18 15.4477 18 16C18 16.5523 18.4477 17 19 17H20C21.6569 17 23 15.6569 23 14V4C23 2.34315 21.6569 1 20 1H4C2.34315 1 1 2.34315 1 4V14C1 15.6569 2.34315 17 4 17H5C5.55228 17 6 16.5523 6 16C6 15.4477 5.55228 15 5 15H4C3.44772 15 3 14.5523 3 14V4Z"
         fill={iconColor}
