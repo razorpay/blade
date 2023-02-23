@@ -66,7 +66,8 @@ const _SelectInput = (
 
   React.useEffect(() => {
     onChange?.({ name: props.name, values: value.split(', ') });
-  }, [value, onChange, props.name]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, props.name]);
 
   React.useEffect(() => {
     setHasLabelOnLeft(props.labelPosition === 'left');
