@@ -80,7 +80,6 @@ exports[`<Indicator /> should render 1`] = `
     </RNSVGGroup>
   </RNSVGSvgView>
   <View
-    marginLeft="spacing.2"
     style={
       Array [
         Object {
@@ -204,7 +203,6 @@ Array [
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      marginLeft="spacing.2"
       style={
         Array [
           Object {
@@ -324,7 +322,6 @@ Array [
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      marginLeft="spacing.2"
       style={
         Array [
           Object {
@@ -444,7 +441,6 @@ Array [
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      marginLeft="spacing.2"
       style={
         Array [
           Object {
@@ -564,7 +560,6 @@ Array [
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      marginLeft="spacing.2"
       style={
         Array [
           Object {

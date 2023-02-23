@@ -37,8 +37,6 @@ Array [
           display="flex"
           flexDirection="row"
           justifyContent="space-between"
-          marginBottom="spacing.0"
-          marginTop="spacing.0"
           style={
             Array [
               Object {
@@ -52,8 +50,6 @@ Array [
           }
         >
           <View
-            marginBottom="spacing.2"
-            marginRight="spacing.5"
             style={
               Array [
                 Object {
@@ -289,7 +285,6 @@ Array [
           >
             <View
               display="flex"
-              paddingRight="spacing.4"
               style={
                 Array [
                   Object {
@@ -394,7 +389,6 @@ Array [
         />
       </View>
       <View
-        marginLeft={0}
         style={
           Array [
             Object {
@@ -575,8 +569,6 @@ Array [
               </RNSVGSvgView>
             </View>
             <View
-              paddingLeft="spacing.3"
-              paddingRight="spacing.3"
               style={
                 Array [
                   Object {
@@ -702,8 +694,6 @@ Array [
                     }
                   />
                   <View
-                    paddingLeft="spacing.0"
-                    paddingRight="spacing.3"
                     style={
                       Array [
                         Object {
@@ -748,7 +738,6 @@ Array [
                     </Text>
                   </View>
                   <View
-                    marginLeft="auto"
                     style={
                       Array [
                         Object {
@@ -833,8 +822,6 @@ Array [
                     }
                   />
                   <View
-                    paddingLeft="spacing.0"
-                    paddingRight="spacing.3"
                     style={
                       Array [
                         Object {
@@ -879,7 +866,6 @@ Array [
                     </Text>
                   </View>
                   <View
-                    marginLeft="auto"
                     style={
                       Array [
                         Object {
@@ -979,9 +965,6 @@ Array [
               </RNSVGSvgView>
             </View>
             <View
-              flex={1}
-              paddingLeft="spacing.3"
-              paddingRight="spacing.3"
               style={
                 Array [
                   Object {
@@ -1030,7 +1013,6 @@ Array [
             <View
               alignItems="center"
               display="flex"
-              marginLeft="auto"
               style={
                 Array [
                   Object {
@@ -1107,7 +1089,6 @@ Array [
                 <View
                   alignItems="center"
                   display="flex"
-                  flex={1}
                   flexDirection="row"
                   isHidden={false}
                   justifyContent="center"

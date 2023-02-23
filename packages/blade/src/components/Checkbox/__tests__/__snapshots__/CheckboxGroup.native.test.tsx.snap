@@ -15,8 +15,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   }
 >
   <View
-    marginBottom="spacing.2"
-    marginRight="spacing.5"
     style={
       Array [
         Object {
@@ -159,7 +157,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       }
     >
       <View
-        marginBottom="spacing.3"
         style={
           Array [
             Object {
@@ -262,7 +259,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   }
                 />
                 <View
-                  marginLeft="spacing.2"
                   style={
                     Array [
                       Object {
@@ -303,7 +299,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </Text>
               </View>
               <View
-                marginLeft="spacing.7"
                 style={
                   Array [
                     Object {
@@ -317,7 +312,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         </View>
       </View>
       <View
-        marginBottom="spacing.3"
         style={
           Array [
             Object {
@@ -420,7 +414,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   }
                 />
                 <View
-                  marginLeft="spacing.2"
                   style={
                     Array [
                       Object {
@@ -461,7 +454,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </Text>
               </View>
               <View
-                marginLeft="spacing.7"
                 style={
                   Array [
                     Object {
@@ -475,7 +467,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         </View>
       </View>
       <View
-        marginBottom={0}
         style={
           Array [
             Object {
@@ -578,7 +569,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   }
                 />
                 <View
-                  marginLeft="spacing.2"
                   style={
                     Array [
                       Object {
@@ -619,7 +609,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </Text>
               </View>
               <View
-                marginLeft="spacing.7"
                 style={
                   Array [
                     Object {
@@ -652,8 +641,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
   }
 >
   <View
-    marginBottom="spacing.2"
-    marginRight="spacing.5"
     style={
       Array [
         Object {
@@ -796,7 +783,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       }
     >
       <View
-        marginBottom="spacing.3"
         style={
           Array [
             Object {
@@ -899,7 +885,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   }
                 />
                 <View
-                  marginLeft="spacing.2"
                   style={
                     Array [
                       Object {
@@ -940,7 +925,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 </Text>
               </View>
               <View
-                marginLeft="spacing.7"
                 style={
                   Array [
                     Object {
@@ -954,7 +938,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         </View>
       </View>
       <View
-        marginBottom="spacing.3"
         style={
           Array [
             Object {
@@ -1057,7 +1040,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   }
                 />
                 <View
-                  marginLeft="spacing.2"
                   style={
                     Array [
                       Object {
@@ -1098,7 +1080,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 </Text>
               </View>
               <View
-                marginLeft="spacing.7"
                 style={
                   Array [
                     Object {
@@ -1112,7 +1093,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         </View>
       </View>
       <View
-        marginBottom={0}
         style={
           Array [
             Object {
@@ -1215,7 +1195,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   }
                 />
                 <View
-                  marginLeft="spacing.2"
                   style={
                     Array [
                       Object {
@@ -1256,7 +1235,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 </Text>
               </View>
               <View
-                marginLeft="spacing.7"
                 style={
                   Array [
                     Object {
@@ -1271,7 +1249,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       </View>
     </View>
     <View
-      marginTop="spacing.2"
       style={
         Array [
           Object {
