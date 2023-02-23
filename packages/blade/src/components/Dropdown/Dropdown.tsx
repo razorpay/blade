@@ -3,14 +3,15 @@ import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
-import type { WithComponentId } from '~utils';
-import { isValidAllowedChildren } from '~utils';
+import type { StyledProps, WithComponentId } from '~utils';
+import { getStyledProps, isValidAllowedChildren } from '~utils';
+
 import BaseBox from '~components/Box/BaseBox';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
   children: React.ReactNode[];
-};
+} & StyledProps;
 
 /**
  * ### Dropdown component
@@ -41,6 +42,7 @@ type DropdownProps = {
 const Dropdown: WithComponentId<DropdownProps> = ({
   children,
   selectionType = 'single',
+  ...styledProps
 }): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
@@ -120,7 +122,9 @@ const Dropdown: WithComponentId<DropdownProps> = ({
 
   return (
     <DropdownContext.Provider value={contextValue}>
-      <BaseBox position="relative">{children}</BaseBox>
+      <BaseBox {...getStyledProps(styledProps)} position="relative">
+        {children}
+      </BaseBox>
     </DropdownContext.Provider>
   );
 };
