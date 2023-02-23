@@ -2,14 +2,15 @@ import get from 'lodash/get';
 import type { IconProps } from '..';
 import { useTheme } from '~components/BladeProvider';
 import { makeSize } from '~utils';
+import sizes from '~tokens/global/sizes';
 
 const iconSize = {
-  xsmall: 8,
-  small: 12,
-  medium: 16,
-  large: 20,
-  xlarge: 24,
-  '2xlarge': 32,
+  xsmall: sizes[200],
+  small: sizes[300],
+  medium: sizes[400],
+  large: sizes[500],
+  xlarge: sizes[600],
+  '2xlarge': sizes[800],
 } as const;
 
 function useIconProps({

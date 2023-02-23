@@ -1,7 +1,6 @@
 import { componentIds } from './componentIds';
-import { useTheme } from '~components/BladeProvider';
 import type { WithComponentId } from '~utils';
-import { makeSize } from '~utils';
+import sizes from '~tokens/global/sizes';
 
 type ActionListItemAssetProps = {
   /**
@@ -14,15 +13,7 @@ type ActionListItemAssetProps = {
   alt: string;
 };
 const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) => {
-  const { theme } = useTheme();
-  return (
-    <img
-      src={props.src}
-      alt={props.alt}
-      width={makeSize(theme.spacing[5])}
-      height={makeSize(theme.spacing[4])}
-    />
-  );
+  return <img src={props.src} alt={props.alt} width={sizes[400]} height={sizes[300]} />;
 };
 
 ActionListItemAsset.componentId = componentIds.ActionListItemAsset;

@@ -2,8 +2,10 @@ import type { BaseButtonProps } from './BaseButton';
 import type { Theme } from '~components/BladeProvider';
 import type { IconProps } from '~components/Icons';
 import type { SpinnerProps } from '~components/Spinner';
+import { Sizes } from '~tokens/global';
+import sizes from '~tokens/global/sizes';
 
-export type ButtonMinHeight = 28 | 32 | 36 | 48;
+export type ButtonMinHeight = Sizes[700] | Sizes[800] | Sizes[900] | Sizes[1200];
 
 export type ButtonTypography = {
   fonts: {
@@ -33,10 +35,10 @@ const typography: ButtonTypography = {
 };
 
 const minHeight: Record<NonNullable<BaseButtonProps['size']>, ButtonMinHeight> = {
-  xsmall: 28,
-  small: 32,
-  medium: 36,
-  large: 48,
+  xsmall: sizes[700],
+  small: sizes[800],
+  medium: sizes[900],
+  large: sizes[1200],
 };
 
 const buttonPadding: Record<

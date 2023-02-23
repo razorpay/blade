@@ -2,6 +2,8 @@ import type { CodeProps } from '../Typography';
 import type { ListProps } from './List';
 import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import { makeSize } from '~utils';
+import sizes from '~tokens/global/sizes';
 
 const listItemMarginLeft: Record<
   NonNullable<ListProps['variant'] | 'unorderedWithIcon'>,
@@ -93,14 +95,13 @@ const listItemUnorderedBulletSize: Record<
   TypographyPlatforms,
   Record<NonNullable<ListProps['size']>, string>
 > = {
-  // We need hard-coded non-tokenized spacing for bullet alignment in List
   onDesktop: {
-    small: '6px',
-    medium: '6px',
+    small: makeSize(sizes[150]),
+    medium: makeSize(sizes[150]),
   },
   onMobile: {
-    small: '5px',
-    medium: '6px',
+    small: makeSize(sizes[125]),
+    medium: makeSize(sizes[150]),
   },
 };
 
@@ -112,25 +113,24 @@ const ComponentIds = {
 };
 
 const listItemOrderedBulletBoxSize = {
-  // We need hard-coded non-tokenized box sizes for bullet alignment in List
   ordered: {
     onDesktop: {
-      small: '16px',
-      medium: '20px',
+      small: makeSize(sizes[400]),
+      medium: makeSize(sizes[500]),
     },
     onMobile: {
-      small: '16px',
-      medium: '24px',
+      small: makeSize(sizes[400]),
+      medium: makeSize(sizes[600]),
     },
   },
   'ordered-filled': {
     onDesktop: {
-      small: '18px',
-      medium: '20px',
+      small: makeSize(sizes[450]),
+      medium: makeSize(sizes[500]),
     },
     onMobile: {
-      small: '16px',
-      medium: '20px',
+      small: makeSize(sizes[400]),
+      medium: makeSize(sizes[500]),
     },
   },
 };

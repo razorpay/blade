@@ -2,10 +2,11 @@ import React from 'react';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType, makeSpace, useBreakpoint } from '~utils';
+import { getPlatformType, makeSize, makeSpace, useBreakpoint } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
+import sizes from '~tokens/global/sizes';
 
 type CommonProps = {
   as: 'span' | 'label';
@@ -126,7 +127,7 @@ const FormLabel = ({
 
   const Component = as;
   // only set 120px label when device is desktop
-  const width = isLabelLeftPositioned && isDesktop ? '120px' : 'auto';
+  const width = isLabelLeftPositioned && isDesktop ? makeSize(sizes[2050]) : 'auto';
 
   return (
     <Component

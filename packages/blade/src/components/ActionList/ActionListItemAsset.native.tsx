@@ -1,8 +1,8 @@
 import { Image } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { componentIds } from './componentIds';
-import { useTheme } from '~components/BladeProvider';
 import type { WithComponentId } from '~utils';
+import sizes from '~tokens/global/sizes';
 
 type ActionListItemAssetProps = {
   /**
@@ -20,13 +20,12 @@ type ActionListItemAssetProps = {
  *
  */
 const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) => {
-  const { theme } = useTheme();
   const source = typeof props.src === 'string' ? { uri: props.src } : props.src;
 
   return (
     <Image
       source={source}
-      style={{ width: theme.spacing[5], height: theme.spacing[4] }}
+      style={{ width: sizes[400], height: sizes[300] }}
       accessibilityIgnoresInvertColors
       // @ts-expect-error: alt does exist on React Native Image https://reactnative.dev/docs/image#alt
       alt={props.alt}
