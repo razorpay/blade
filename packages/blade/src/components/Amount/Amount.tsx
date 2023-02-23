@@ -25,7 +25,7 @@ type AmountProps = {
    *
    * @default 'low'
    */
-  size?: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
+  size: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
   /**
    * Sets the fontWeight of the label.
    *
@@ -80,31 +80,31 @@ const getColorProps = ({
   return props;
 };
 
-const addCommas = (num: string): string => {
-  return Number(num).toLocaleString('en-IN');
+const addCommas = (num: number): string => {
+  return num.toLocaleString('en-IN');
 };
 
 const getFormattedAmountWithSuffixSymbol = (num: number): string => {
-  let suffix = '';
-  if (num >= 10000000) {
-    num = (num / 10000000).toFixed(2);
-    suffix = 'Cr';
-  } else if (num >= 100000) {
-    num = (num / 100000).toFixed(2);
-    suffix = 'l';
-  } else if (num >= 1000) {
-    num = (num / 1000).toFixed(2);
-    suffix = 'k';
+  const abbreviations = [
+    { value: 1e9, symbol: 'cr' },
+    { value: 1e5, symbol: 'l' },
+    { value: 1e3, symbol: 'k' },
+  ];
+
+  const abbreviation = abbreviations.find((abbr) => num >= abbr.value);
+  if (abbreviation) {
+    num = Number((num / abbreviation.value).toFixed());
+    return addCommas(num) + abbreviation.symbol;
   } else {
-    num = num.toFixed(2);
+    return num.toFixed();
   }
-  return addCommas(num) + suffix;
 };
 
 const formatAmountWithSuffix = (suffix: string, num: number): string => {
   switch (suffix) {
     case 'Decimals': {
-      return addCommas(num.toFixed(2));
+      const decimalNum = Number(num.toFixed(2));
+      return addCommas(decimalNum);
     }
     case 'Humanise': {
       return getFormattedAmountWithSuffixSymbol(num);
@@ -139,6 +139,8 @@ const Amount = ({
   const { textColor, prefixSuffixColor } = getColorProps({
     variant,
   });
+  const rupeeFontWeight = getRupeeFontWeight(isSuffixPrefixHighlighted, fontWeight);
+  const rupeeFontSize = getSuffixPrefixFontSize(isSuffixPrefixHighlighted, size);
 
   return (
     <Box
@@ -152,11 +154,7 @@ const Amount = ({
       alignItems="baseline"
       overflow="hidden"
     >
-      <BaseText
-        fontWeight={getRupeeFontWeight(size, fontWeight)}
-        fontSize={getSuffixPrefixFontSize(isSuffixPrefixHighlighted, size)}
-        color={prefixSuffixColor}
-      >
+      <BaseText fontWeight={rupeeFontWeight} fontSize={rupeeFontSize} color={prefixSuffixColor}>
         {RUPEE_SYMBOL}
       </BaseText>
       <BaseAmount

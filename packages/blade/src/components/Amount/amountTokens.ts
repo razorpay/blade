@@ -31,7 +31,7 @@ const iconPadding: Record<NonNullable<AmountProps['size']>, DotNotationSpacingSt
 const prefixSuffixTextSizes = {
   small: 50,
   medium: 50,
-  large: 200,
+  large: 50,
   xlarge: 75,
   '2xlarge': 200,
   '3xlarge': 300,

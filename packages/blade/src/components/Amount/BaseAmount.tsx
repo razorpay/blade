@@ -1,4 +1,7 @@
+import type { ReactElement } from 'react';
 import { BaseText } from '../Typography/BaseText/BaseText.web';
+import type { FontSize } from '../../tokens/global/typography';
+import type { BaseTextProps } from '../Typography/BaseText/types';
 import { amountTextSizes, prefixSuffixTextSizes } from './amountTokens';
 import type { AmountProps } from './Amount';
 
@@ -10,10 +13,16 @@ const getDecimalFontWeight = (isSuffixPrefixHighlighted: true | false): 'regular
 export const getSuffixPrefixFontSize = (
   isSuffixPrefixHighlighted: NonNullable<AmountProps['isSuffixPrefixHighlighted']>,
   size: NonNullable<AmountProps['size']>,
-): number => {
+): keyof FontSize | undefined => {
   if (isSuffixPrefixHighlighted) return prefixSuffixTextSizes[size];
   return amountTextSizes[size].fontSize;
 };
+
+interface BaseAmount extends AmountProps {
+  prefixSuffixColor: BaseTextProps['color'];
+  textColor: BaseTextProps['color'];
+  value: string;
+}
 
 const BaseAmount = ({
   value,
@@ -23,21 +32,22 @@ const BaseAmount = ({
   isSuffixPrefixHighlighted,
   suffix,
   prefixSuffixColor,
-}) => {
+}: BaseAmount): ReactElement => {
   if (suffix === 'Decimals' && isSuffixPrefixHighlighted) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
+    const affixFontWeight = getDecimalFontWeight(isSuffixPrefixHighlighted);
+    const affixFontSize = getSuffixPrefixFontSize(isSuffixPrefixHighlighted, size);
     return (
       <>
-        <BaseText {...amountTextSizes[size]} fontWeight={fontWeight} color={textColor}>
+        <BaseText
+          fontSize={amountTextSizes[size].fontSize}
+          fontWeight={fontWeight}
+          color={textColor}
+        >
           {integer}.
         </BaseText>
-        <BaseText
-          {...amountTextSizes[size]}
-          fontWeight={getDecimalFontWeight(isSuffixPrefixHighlighted, fontWeight)}
-          fontSize={getSuffixPrefixFontSize(isSuffixPrefixHighlighted, size)}
-          color={prefixSuffixColor}
-        >
+        <BaseText fontWeight={affixFontWeight} fontSize={affixFontSize} color={prefixSuffixColor}>
           {decimal}
         </BaseText>
       </>
