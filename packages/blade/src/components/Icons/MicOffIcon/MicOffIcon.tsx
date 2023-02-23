@@ -2,11 +2,11 @@ import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const MicOffIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const MicOffIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_59_171)">
         <Path
           d="M12.3535 0.0126975C13.8025 0.0334948 14.7788 0.713743 15.3459 1.598C15.876 2.42454 16.0189 3.37324 16 4.01597V9.50006C16 10.0523 15.5523 10.5001 15 10.5001C14.4477 10.5001 14 10.0523 14 9.50006V4.00006C14 3.98851 14.0002 3.97697 14.0006 3.96543C14.0127 3.61648 13.9246 3.0866 13.6624 2.6777C13.4382 2.32811 13.0632 2.01557 12.2972 2.01223C12.2651 2.01209 12.233 2.01041 12.2011 2.00718C11.1788 1.90392 10.2445 2.59211 10.0401 3.59907C9.93016 4.1403 9.4023 4.48997 8.86106 4.38007C8.31982 4.27017 7.97016 3.74231 8.08006 3.20107C8.48576 1.20311 10.3279 -0.167383 12.3535 0.0126975Z"

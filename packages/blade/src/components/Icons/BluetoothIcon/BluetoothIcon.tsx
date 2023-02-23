@@ -2,11 +2,11 @@ import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const BluetoothIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const BluetoothIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_59_170)">
         <Path
           d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"

@@ -3,11 +3,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconProps } from '..';
 import useIconProps from '../useIconProps';
 
-const TrashIcon = ({ size, color, ...styledProps }: IconProps): ReactElement => {
+const TrashIcon = ({ size, color }: IconProps): ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1ZM15 11a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Z"
         fill={iconColor}

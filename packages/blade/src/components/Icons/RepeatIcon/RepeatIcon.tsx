@@ -2,11 +2,11 @@ import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const RepeatIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const RepeatIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_60_1233)">
         <Path
           d="M17.7071 0.292893C17.3166 -0.0976311 16.6834 -0.0976311 16.2929 0.292893C15.9024 0.683417 15.9024 1.31658 16.2929 1.70711L18.5858 4H7C4.23858 4 2 6.23858 2 9V11C2 11.5523 2.44772 12 3 12C3.55228 12 4 11.5523 4 11V9C4 7.34315 5.34315 6 7 6H18.5858L16.2929 8.29289C15.9024 8.68342 15.9024 9.31658 16.2929 9.70711C16.6834 10.0976 17.3166 10.0976 17.7071 9.70711L21.7071 5.70711C22.0976 5.31658 22.0976 4.68342 21.7071 4.29289L17.7071 0.292893Z"

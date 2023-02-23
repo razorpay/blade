@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const ZoomOutIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const ZoomOutIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M8 10C7.44772 10 7 10.4477 7 11C7 11.5523 7.44772 12 8 12H14C14.5523 12 15 11.5523 15 11C15 10.4477 14.5523 10 14 10H8Z"
         fill={iconColor}

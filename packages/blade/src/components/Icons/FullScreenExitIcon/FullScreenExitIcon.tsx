@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const FullScreenExitIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const FullScreenExitIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={height} height={width} viewBox="0 0 24 24" fill="none">
+    <Svg width={height} height={width} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const CreditCardIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const CreditCardIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} height={height} width={width} viewBox="0 0 24 24" fill="none">
+    <Svg height={height} width={width} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -2,10 +2,10 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { Path, Svg } from '../_Svg';
 
-const SlashIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const SlashIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

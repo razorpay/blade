@@ -2,11 +2,11 @@ import { Svg, Path, G, ClipPath, Defs, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const EyeOffIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const EyeOffIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_60_186)">
         <Path
           fillRule="evenodd"

@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const VolumeHighIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const VolumeHighIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M19.7773 4.22318C19.3868 3.83259 18.7536 3.8325 18.363 4.22296C17.9725 4.61343 17.9724 5.24659 18.3628 5.63718C21.8763 9.15167 21.8763 14.8487 18.3628 18.3632C17.9724 18.7538 17.9725 19.3869 18.363 19.7774C18.7536 20.1679 19.3868 20.1678 19.7773 19.7772C24.0715 15.4817 24.0715 8.51867 19.7773 4.22318Z"
         fill={iconColor}

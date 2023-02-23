@@ -2,11 +2,11 @@ import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const WifiIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const WifiIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_59_173)">
         <Path
           d="M1.66126 10.7475C7.32983 5.75083 15.8302 5.75083 21.4988 10.7475C21.9131 11.1127 22.545 11.0729 22.9102 10.6586C23.2754 10.2443 23.2356 9.61238 22.8213 9.24718C16.3969 3.58427 6.76314 3.58427 0.338762 9.24718C-0.0755428 9.61238 -0.115352 10.2443 0.249847 10.6586C0.615045 11.0729 1.24696 11.1127 1.66126 10.7475Z"

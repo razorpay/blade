@@ -3,11 +3,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconProps } from '..';
 import useIconProps from '../useIconProps';
 
-const AlertTriangleIcon = ({ size, color, ...styledProps }: IconProps): ReactElement => {
+const AlertTriangleIcon = ({ size, color }: IconProps): ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M12 8.10275C12.5523 8.10275 13 8.55047 13 9.10275V13.1028C13 13.655 12.5523 14.1028 12 14.1028C11.4477 14.1028 11 13.655 11 13.1028V9.10275C11 8.55047 11.4477 8.10275 12 8.10275Z"
         fill={iconColor}

@@ -2,11 +2,11 @@ import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const CloudDrizzleIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const CloudDrizzleIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_60_395)">
         <Path
           d="M9.50019 0.0145815C5.59012 -0.205596 1.9865 2.12799 0.587786 5.78596C-0.810924 9.44392 0.316386 13.5865 3.37582 16.0313C3.80727 16.376 4.43653 16.3058 4.7813 15.8743C5.12607 15.4429 5.0558 14.8136 4.62435 14.4688C2.24479 12.5673 1.36799 9.34535 2.45588 6.50026C3.54376 3.65518 6.34658 1.84017 9.38774 2.01142C12.4289 2.18267 15.0102 4.30086 15.7718 7.25009C15.8859 7.69159 16.2841 8.00006 16.7401 8.00006H17.9993C19.8914 8.00247 21.5231 9.33036 21.9098 11.1826C22.2965 13.035 21.3323 14.9049 19.5989 15.6641C19.093 15.8856 18.8625 16.4753 19.0841 16.9812C19.3056 17.4871 19.8954 17.7176 20.4013 17.4961C23.0013 16.3573 24.4476 13.5524 23.8676 10.7739C23.2875 7.99532 20.8397 6.0034 18.0013 6.00006H17.4796C16.2801 2.60323 13.1473 0.219954 9.50019 0.0145815Z"

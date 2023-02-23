@@ -2,10 +2,10 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { Path, Svg } from '../_Svg';
 
-const LockIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const LockIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
   return (
-    <Svg {...styledProps} height={height} width={width} viewBox="0 0 24 24" fill="none">
+    <Svg height={height} width={width} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

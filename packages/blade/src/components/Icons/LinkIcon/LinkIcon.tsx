@@ -2,10 +2,10 @@ import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 import { Path, Svg } from '../_Svg';
 
-const LinkIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const LinkIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
   return (
-    <Svg {...styledProps} height={height} width={width} viewBox="0 0 22 22" fill="none">
+    <Svg height={height} width={width} viewBox="0 0 22 22" fill="none">
       <Path
         d="M20.1863 1.82377C17.8719 -0.490636 14.1296 -0.523155 11.7753 1.75068L11.765 1.7608L10.045 3.4708C9.65336 3.86019 9.65151 4.49335 10.0409 4.88501C10.4303 5.27667 11.0634 5.27852 11.4551 4.88913L13.1697 3.18451C14.7395 1.67341 17.2307 1.69666 18.772 3.23798C20.313 4.77898 20.3366 7.26948 18.8265 8.83934L15.833 11.8329C15.0124 12.6537 13.8758 13.0778 12.7181 12.9949C11.5605 12.9119 10.496 12.3303 9.80083 11.401C9.47002 10.9587 8.84333 10.8684 8.40108 11.1992C7.95883 11.53 7.86849 12.1567 8.1993 12.5989C9.24204 13.993 10.8388 14.8654 12.5753 14.9897C14.3117 15.1141 16.0165 14.4782 17.2473 13.2469L20.2472 10.2471L20.2593 10.2347C22.5332 7.8804 22.5007 4.13817 20.1863 1.82377Z"
         fill={iconColor}

@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const ChevronsDownIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const ChevronsDownIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M7.70711 5.29289C7.31658 4.90237 6.68342 4.90237 6.29289 5.29289C5.90237 5.68342 5.90237 6.31658 6.29289 6.70711L11.2929 11.7071C11.6834 12.0976 12.3166 12.0976 12.7071 11.7071L17.7071 6.70711C18.0976 6.31658 18.0976 5.68342 17.7071 5.29289C17.3166 4.90237 16.6834 4.90237 16.2929 5.29289L12 9.58579L7.70711 5.29289Z"
         fill={iconColor}
