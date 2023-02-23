@@ -4,8 +4,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c0 {
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 24px;
   padding-right: 24px;
+  padding-left: 24px;
   border-radius: 4px;
 }
 
@@ -396,8 +396,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
 .c0 {
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 24px;
   padding-right: 24px;
+  padding-left: 24px;
   border-radius: 4px;
 }
 
@@ -470,6 +470,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -481,11 +482,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c14 {
@@ -762,8 +762,8 @@ exports[`<Card /> should render a plain Card 1`] = `
 .c0 {
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 24px;
   padding-right: 24px;
+  padding-left: 24px;
   border-radius: 4px;
 }
 

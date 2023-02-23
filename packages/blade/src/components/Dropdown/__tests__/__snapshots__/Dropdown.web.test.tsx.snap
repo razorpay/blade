@@ -28,8 +28,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-top: 0px;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .c4 {
@@ -117,8 +117,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c21 {
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c25 {
@@ -156,8 +156,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c27 {
-  padding-left: 0px;
   padding-right: 8px;
+  padding-left: 0px;
 }
 
 .c29 {
@@ -168,8 +168,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c32 {
@@ -208,8 +208,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c17 {
   display: block;
   position: absolute;
-  right: 0;
   width: 100%;
+  right: 0px;
 }
 
 .c18 {

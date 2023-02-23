@@ -1332,7 +1332,6 @@ exports[`<BaseLink /> should render icon only link 1`] = `
     <View
       alignItems="center"
       display="flex"
-      paddingRight="spacing.0"
       style={
         Array [
           Object {
@@ -1778,7 +1777,6 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
     <View
       alignItems="center"
       display="flex"
-      paddingRight="spacing.2"
       style={
         Array [
           Object {
@@ -1953,7 +1951,6 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
     <View
       alignItems="center"
       display="flex"
-      paddingRight="spacing.2"
       style={
         Array [
           Object {
@@ -2160,7 +2157,6 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
     <View
       alignItems="center"
       display="flex"
-      paddingLeft="spacing.2"
       style={
         Array [
           Object {

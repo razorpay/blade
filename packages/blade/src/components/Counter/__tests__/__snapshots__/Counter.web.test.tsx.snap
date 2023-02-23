@@ -43,6 +43,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -54,11 +55,10 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -130,6 +130,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -141,11 +142,10 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -217,6 +217,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -228,11 +229,10 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -304,6 +304,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -315,11 +316,10 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -391,6 +391,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -402,11 +403,10 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -478,6 +478,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -489,11 +490,10 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -565,6 +565,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -576,11 +577,10 @@ exports[`<Counter /> should render large size Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -652,6 +652,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -663,11 +664,10 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -739,6 +739,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -750,11 +751,10 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -826,6 +826,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -837,11 +838,10 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -913,6 +913,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -924,11 +925,10 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -1000,6 +1000,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1011,11 +1012,10 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -1087,6 +1087,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1098,11 +1099,10 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 
 <div>
@@ -1174,6 +1174,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1185,11 +1186,10 @@ exports[`<Counter /> should render small size Counter 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 4px;
   padding-right: 4px;
+  padding-left: 4px;
 }
 
 <div>
