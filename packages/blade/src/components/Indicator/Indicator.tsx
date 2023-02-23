@@ -9,6 +9,7 @@ import { Text } from '~components/Typography';
 import type { Feedback } from '~tokens/theme/theme';
 import type { StyledProps } from '~utils';
 import {
+  makeSpace,
   metaAttribute,
   getPlatformType,
   makeAccessible,
@@ -59,7 +60,7 @@ type IndicatorWithA11yLabel = {
 type IndicatorProps = IndicatorCommonProps & (IndicatorWithA11yLabel | IndicatorWithoutA11yLabel);
 
 type Dimensions = {
-  svgSize: string;
+  svgSize: `${string}px`;
   textSize: 'small' | 'medium';
 };
 
@@ -77,11 +78,11 @@ const Indicator = ({
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':
-        return { svgSize: '6', textSize: 'small' };
+        return { svgSize: makeSpace(6), textSize: 'small' };
       case 'large':
-        return { svgSize: '10', textSize: 'medium' };
+        return { svgSize: makeSpace(10), textSize: 'medium' };
       default:
-        return { svgSize: '8', textSize: 'medium' };
+        return { svgSize: makeSpace(8), textSize: 'medium' };
     }
   }, [size]);
   const dimensions = getDimension();

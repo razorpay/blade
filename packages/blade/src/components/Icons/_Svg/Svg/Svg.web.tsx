@@ -12,7 +12,7 @@ const Svg = ({
   ...styledProps
 }: SvgProps): ReactElement => {
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
+    <BaseBox height={height} width={width} display="inline" {...getStyledProps(styledProps)}>
       <svg
         {...makeAccessible({ hidden: true })}
         {...metaAttribute(MetaConstants.Component, MetaConstants.Icon)}
