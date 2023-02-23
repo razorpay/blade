@@ -184,7 +184,12 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   margin-left: auto;
 }
 
-.c34 {
+.c33 {
+  display: inline-block;
+  width: auto;
+}
+
+.c35 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -223,6 +228,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c6 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -231,11 +238,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c7 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -244,11 +251,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c22 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -257,11 +264,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c36 {
+.c37 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -271,8 +278,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 .c28 {
@@ -506,7 +511,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c33 {
+.c34 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -528,24 +533,24 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   position: relative;
 }
 
-.c33:hover {
+.c34:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c33:active {
+.c34:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c33:focus {
+.c34:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c33 * {
+.c34 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -554,7 +559,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c35 {
+.c36 {
   opacity: 1;
 }
 
@@ -881,26 +886,32 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             class="c32"
             display="flex"
           >
-            <button
+            <div
               class="c33"
-              data-blade-component="button"
-              role="button"
-              type="button"
+              display="inline-block"
+              width="auto"
             >
-              <div
-                class="c34 c35"
-                display="flex"
+              <button
+                class="c34"
+                data-blade-component="button"
+                role="button"
+                type="button"
               >
                 <div
-                  class="c36"
-                  color="action.text.primary.default"
-                  font-size="100"
-                  font-weight="bold"
+                  class="c35 c36"
+                  display="flex"
                 >
-                  Apply
+                  <div
+                    class="c37"
+                    color="action.text.primary.default"
+                    font-size="100"
+                    font-weight="bold"
+                  >
+                    Apply
+                  </div>
                 </div>
-              </div>
-            </button>
+              </button>
+            </div>
           </div>
         </div>
       </div>

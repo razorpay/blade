@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -23,24 +23,24 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -49,7 +49,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4 {
+.c5 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -71,24 +71,24 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   position: relative;
 }
 
-.c4:hover {
+.c5:hover {
   background-color: hsla(216,19%,89%,1);
   border-color: hsla(216,19%,89%,1);
 }
 
-.c4:active {
+.c5:active {
   background-color: hsla(216,19%,89%,1);
   border-color: hsla(216,19%,89%,1);
 }
 
-.c4:focus {
+.c5:focus {
   background-color: hsla(216,19%,89%,1);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c4 * {
+.c5 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -97,7 +97,9 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -107,11 +109,11 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c10 {
+.c11 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -121,11 +123,830 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c9 {
+  padding: 1px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+}
+
+.c3 {
+  opacity: 1;
+}
+
+.c10 {
+  opacity: 0;
+}
+
+<div>
+  <div
+    class="c0"
+    display="inline-block"
+    width="auto"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class="c2 c3"
+        display="flex"
+      >
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Toggle loading
+        </div>
+      </div>
+    </button>
+  </div>
+  <div
+    class="c0"
+    display="inline-block"
+    width="auto"
+  >
+    <button
+      class="c5"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
+    >
+      <div
+        class="c6"
+        display="flex"
+      >
+        <div
+          class="c7"
+          data-blade-component="spinner"
+          display="flex"
+        >
+          <div
+            aria-label="Loading"
+            class="c8"
+            display="flex"
+            role="progressbar"
+          >
+            <div
+              class=" c9"
+            >
+              <svg
+                aria-hidden="true"
+                data-blade-component="icon"
+                fill="none"
+                height="20px"
+                viewBox="0 0 24 24"
+                width="20px"
+              >
+                <path
+                  d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                  fill="hsla(217, 18%, 45%, 1)"
+                  fill-opacity="0.2"
+                />
+                <path
+                  d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                  fill="hsla(217, 18%, 45%, 1)"
+                />
+                <path
+                  d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                  fill="hsla(217, 18%, 45%, 1)"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c2 c10"
+        display="flex"
+      >
+        <div
+          class="c11"
+          color="action.text.primary.disabled"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<BaseButton /> should render button with default properties 1`] = `
 .c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c1:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c1:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c1 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4 {
+  padding: 0;
+  margin: 0;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 {
+  opacity: 1;
+}
+
+<div>
+  <div
+    class="c0"
+    display="inline-block"
+    width="auto"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class="c2 c3"
+        display="flex"
+      >
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<BaseButton /> should render button with full width 1`] = `
+.c1 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c1:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c1:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c1 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4 {
+  padding: 0;
+  margin: 0;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: inline-block;
+  width: 100%;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 {
+  opacity: 1;
+}
+
+<div>
+  <div
+    class="c0"
+    display="inline-block"
+    width="100%"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class="c2 c3"
+        display="flex"
+      >
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<BaseButton /> should render button with icon with default iconPosition 1`] = `
+.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c1:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c1:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c1 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5 {
+  padding: 0;
+  margin: 0;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 8px;
+}
+
+.c3 {
+  opacity: 1;
+}
+
+<div>
+  <div
+    class="c0"
+    display="inline-block"
+    width="auto"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class="c2 c3"
+        display="flex"
+      >
+        <div
+          class="c4"
+          display="flex"
+        >
+          <svg
+            aria-hidden="true"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+              fill="hsla(0, 0%, 100%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <div
+          class="c5"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `
+.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c1:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c1:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c1 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5 {
+  padding: 0;
+  margin: 0;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 8px;
+}
+
+.c3 {
+  opacity: 1;
+}
+
+<div>
+  <div
+    class="c0"
+    display="inline-block"
+    width="auto"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class="c2 c3"
+        display="flex"
+      >
+        <div
+          class="c4"
+          display="flex"
+        >
+          <svg
+            aria-hidden="true"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+              fill="hsla(0, 0%, 100%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <div
+          class="c5"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<BaseButton /> should render button with icon with right iconPosition 1`] = `
+.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c1:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c1:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c1 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4 {
+  padding: 0;
+  margin: 0;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -159,814 +980,65 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c8 {
-  padding: 1px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-}
-
-.c2 {
-  opacity: 1;
-}
-
-.c9 {
-  opacity: 0;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      display="flex"
-    >
-      <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
-      >
-        Toggle loading
-      </div>
-    </div>
-  </button>
-  <button
-    class="c4"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
-  >
-    <div
-      class="c5"
-      display="flex"
-    >
-      <div
-        class="c6"
-        data-blade-component="spinner"
-        display="flex"
-      >
-        <div
-          aria-label="Loading"
-          class="c7"
-          display="flex"
-          role="progressbar"
-        >
-          <div
-            class=" c8"
-          >
-            <svg
-              aria-hidden="true"
-              data-blade-component="icon"
-              fill="none"
-              height="20px"
-              viewBox="0 0 24 24"
-              width="20px"
-            >
-              <path
-                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-                fill="hsla(217, 18%, 45%, 1)"
-                fill-opacity="0.2"
-              />
-              <path
-                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-                fill="hsla(217, 18%, 45%, 1)"
-              />
-              <path
-                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-                fill="hsla(217, 18%, 45%, 1)"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="c1 c9"
-      display="flex"
-    >
-      <div
-        class="c10"
-        color="action.text.primary.disabled"
-        font-size="100"
-        font-weight="bold"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render button with default properties 1`] = `
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-}
-
-.c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-}
-
-.c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      display="flex"
-    >
-      <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render button with full width 1`] = `
-.c0 {
-  min-height: 36px;
-  width: 100%;
-  cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-}
-
-.c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-}
-
-.c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      display="flex"
-    >
-      <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render button with icon with default iconPosition 1`] = `
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-}
-
-.c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-}
-
-.c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c4 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-right: 8px;
-}
-
-.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      display="flex"
-    >
-      <div
-        class="c3"
-        display="flex"
-      >
-        <svg
-          aria-hidden="true"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
-        >
-          <path
-            clip-rule="evenodd"
-            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-            fill="hsla(0, 0%, 100%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </div>
-      <div
-        class="c4"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-}
-
-.c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-}
-
-.c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c4 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-right: 8px;
-}
-
-.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      display="flex"
-    >
-      <div
-        class="c3"
-        display="flex"
-      >
-        <svg
-          aria-hidden="true"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
-        >
-          <path
-            clip-rule="evenodd"
-            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-            fill="hsla(0, 0%, 100%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </div>
-      <div
-        class="c4"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render button with icon with right iconPosition 1`] = `
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-}
-
-.c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-}
-
-.c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   padding-left: 8px;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
-      >
-        Pay Now
-      </div>
-      <div
-        class="c4"
+        class="c2 c3"
         display="flex"
       >
-        <svg
-          aria-hidden="true"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
         >
-          <path
-            clip-rule="evenodd"
-            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-            fill="hsla(0, 0%, 100%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
+          Pay Now
+        </div>
+        <div
+          class="c5"
+          display="flex"
+        >
+          <svg
+            aria-hidden="true"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+              fill="hsla(0, 0%, 100%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render button with icon without text 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -988,24 +1060,24 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1014,7 +1086,12 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1035,7 +1112,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   justify-content: center;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1050,48 +1127,54 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
+        class="c2 c3"
         display="flex"
       >
-        <svg
-          aria-hidden="true"
-          data-blade-component="icon"
-          fill="none"
-          height="20px"
-          viewBox="0 0 24 24"
-          width="20px"
+        <div
+          class="c4"
+          display="flex"
         >
-          <path
-            clip-rule="evenodd"
-            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-            fill="hsla(0, 0%, 100%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
+          <svg
+            aria-hidden="true"
+            data-blade-component="icon"
+            fill="none"
+            height="20px"
+            viewBox="0 0 24 24"
+            width="20px"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+              fill="hsla(0, 0%, 100%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1113,24 +1196,24 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(216,19%,89%,1);
   border-color: hsla(216,19%,89%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(216,19%,89%,1);
   border-color: hsla(216,19%,89%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(216,19%,89%,1);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1139,7 +1222,9 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1149,11 +1234,14 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1174,37 +1262,43 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.primary.disabled"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="action.text.primary.disabled"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled information intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1226,24 +1320,24 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(193,100%,35%,1);
   border-color: hsla(187,68%,52%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(193,100%,35%,1);
   border-color: hsla(187,68%,52%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(193,100%,35%,1);
   border-color: hsla(187,68%,52%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1252,7 +1346,9 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(187,68%,52%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1262,11 +1358,14 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1287,37 +1386,43 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.information.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.information.action.text.primary.disabled.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled information intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1339,24 +1444,24 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(193,100%,35%,0.09);
   border-color: hsla(193,100%,35%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(193,100%,35%,0.09);
   border-color: hsla(193,100%,35%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(193,100%,35%,0.09);
   border-color: hsla(193,100%,35%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1365,7 +1470,9 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(193,100%,35%,0.32);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1375,11 +1482,14 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1400,37 +1510,43 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.information.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.information.action.text.primary.disabled.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled negative intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1452,24 +1568,24 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(8,73%,47%,1);
   border-color: hsla(8,99%,65%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(8,73%,47%,1);
   border-color: hsla(8,99%,65%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(8,73%,47%,1);
   border-color: hsla(8,99%,65%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1478,7 +1594,9 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(8,99%,65%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1488,11 +1606,14 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1513,37 +1634,43 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.negative.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.negative.action.text.primary.disabled.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled negative intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1565,24 +1692,24 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(9,91%,56%,0.09);
   border-color: hsla(9,91%,56%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(9,91%,56%,0.09);
   border-color: hsla(9,91%,56%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(9,91%,56%,0.09);
   border-color: hsla(9,91%,56%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1591,7 +1718,9 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(9,91%,56%,0.32);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1601,11 +1730,14 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1626,37 +1758,43 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.negative.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.negative.action.text.primary.disabled.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled neutral intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1678,24 +1816,24 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(216,33%,29%,1);
   border-color: hsla(216,15%,54%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(216,33%,29%,1);
   border-color: hsla(216,15%,54%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(216,33%,29%,1);
   border-color: hsla(216,15%,54%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1704,7 +1842,9 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,15%,54%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1714,11 +1854,14 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1739,37 +1882,43 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.neutral.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.neutral.action.text.primary.disabled.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled neutral intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1791,24 +1940,24 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,15%,54%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,15%,54%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,15%,54%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1817,7 +1966,9 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,15%,54%,0.32);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1827,11 +1978,14 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1852,37 +2006,43 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.neutral.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.neutral.action.text.primary.disabled.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled notice intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1904,24 +2064,24 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(38,97%,38%,1);
   border-color: hsla(35,84%,54%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(38,97%,38%,1);
   border-color: hsla(35,84%,54%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(38,97%,38%,1);
   border-color: hsla(35,84%,54%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1930,7 +2090,9 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(35,84%,54%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1940,11 +2102,14 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1965,37 +2130,43 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.notice.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.notice.action.text.primary.disabled.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled notice intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -2017,24 +2188,24 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(36,100%,44%,0.09);
   border-color: hsla(36,100%,44%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(36,100%,44%,0.09);
   border-color: hsla(36,100%,44%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(36,100%,44%,0.09);
   border-color: hsla(36,100%,44%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2043,7 +2214,9 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(36,100%,44%,0.32);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2053,11 +2226,14 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2078,37 +2254,43 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.notice.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.notice.action.text.primary.disabled.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled positive intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -2130,24 +2312,24 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(160,100%,26%,1);
   border-color: hsla(149,99%,35%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(160,100%,26%,1);
   border-color: hsla(149,99%,35%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(160,100%,26%,1);
   border-color: hsla(149,99%,35%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2156,7 +2338,9 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(149,99%,35%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2166,11 +2350,14 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2191,37 +2378,43 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.positive.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.positive.action.text.primary.disabled.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled positive intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -2243,24 +2436,24 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(155,100%,31%,0.09);
   border-color: hsla(155,100%,31%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(155,100%,31%,0.09);
   border-color: hsla(155,100%,31%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(155,100%,31%,0.09);
   border-color: hsla(155,100%,31%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2269,7 +2462,9 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(155,100%,31%,0.32);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2279,11 +2474,14 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2304,37 +2502,43 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.positive.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.positive.action.text.primary.disabled.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -2356,24 +2560,24 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(216,44%,23%,0);
   border-color: hsla(218,19%,81%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(216,44%,23%,0);
   border-color: hsla(218,19%,81%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(216,44%,23%,0);
   border-color: hsla(218,19%,81%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2382,7 +2586,9 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2392,11 +2598,14 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2417,37 +2626,43 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.secondary.disabled"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="action.text.secondary.disabled"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -2469,24 +2684,24 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(0,0%,100%,1);
   border-color: hsla(216,19%,89%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(0,0%,100%,1);
   border-color: hsla(216,19%,89%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(0,0%,100%,1);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2495,7 +2710,9 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2505,11 +2722,14 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2530,37 +2750,43 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      disabled=""
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.tertiary.disabled"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="action.text.tertiary.disabled"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render information intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -2582,24 +2808,24 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(195,100%,31%,1);
   border-color: hsla(180,100%,97%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(196,100%,27%,1);
   border-color: hsla(180,100%,97%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(196,100%,27%,1);
   border-color: hsla(180,100%,97%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2608,7 +2834,9 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(180,100%,97%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2618,11 +2846,14 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2643,36 +2874,42 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.information.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.information.action.text.primary.default.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render information intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -2694,24 +2931,24 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(193,100%,35%,0.18);
   border-color: hsla(193,100%,35%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(193,100%,35%,0.32);
   border-color: hsla(193,100%,35%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(193,100%,35%,0.32);
   border-color: hsla(193,100%,35%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2720,7 +2957,9 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(195,100%,31%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2730,11 +2969,14 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2755,36 +2997,42 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.information.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.information.action.text.primary.default.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render large size button 1`] = `
-.c0 {
+.c1 {
   min-height: 48px;
   width: auto;
   cursor: pointer;
@@ -2806,24 +3054,24 @@ exports[`<BaseButton /> should render large size button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2832,7 +3080,9 @@ exports[`<BaseButton /> should render large size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -2842,11 +3092,14 @@ exports[`<BaseButton /> should render large size button 1`] = `
   text-decoration-line: none;
   line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2867,36 +3120,42 @@ exports[`<BaseButton /> should render large size button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="200"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="200"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render medium size button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -2918,24 +3177,24 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2944,7 +3203,9 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2954,11 +3215,14 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2979,36 +3243,42 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render negative intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3030,24 +3300,24 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(7,72%,40%,1);
   border-color: hsla(0,100%,97%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(5,69%,32%,1);
   border-color: hsla(0,100%,97%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(5,69%,32%,1);
   border-color: hsla(0,100%,97%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3056,7 +3326,9 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,100%,97%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3066,11 +3338,14 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3091,36 +3366,42 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.negative.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.negative.action.text.primary.default.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render negative intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3142,24 +3423,24 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(9,91%,56%,0.18);
   border-color: hsla(9,91%,56%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(9,91%,56%,0.32);
   border-color: hsla(9,91%,56%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(9,91%,56%,0.32);
   border-color: hsla(9,91%,56%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3168,7 +3449,9 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3178,11 +3461,14 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3203,36 +3489,42 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.negative.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.negative.action.text.primary.default.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render neutral intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3254,24 +3546,24 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(216,44%,23%,1);
   border-color: hsla(214,18%,69%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(217,56%,17%,1);
   border-color: hsla(214,18%,69%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(217,56%,17%,1);
   border-color: hsla(214,18%,69%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3280,7 +3572,9 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(220,27%,98%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3290,11 +3584,14 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3315,36 +3612,42 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.neutral.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.neutral.action.text.primary.default.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3366,24 +3669,24 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-color: hsla(216,15%,54%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(216,15%,54%,0.32);
   border-color: hsla(216,15%,54%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(216,15%,54%,0.32);
   border-color: hsla(216,15%,54%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3392,7 +3695,9 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3402,11 +3707,14 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3427,36 +3735,42 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.neutral.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.neutral.action.text.primary.default.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3478,24 +3792,24 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(40,90%,32%,1);
   border-color: hsla(32,100%,94%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(41,82%,26%,1);
   border-color: hsla(32,100%,94%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(41,82%,26%,1);
   border-color: hsla(32,100%,94%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3504,7 +3818,9 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(32,100%,94%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3514,11 +3830,14 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3539,36 +3858,42 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.notice.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.notice.action.text.primary.default.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3590,24 +3915,24 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(36,100%,44%,0.18);
   border-color: hsla(36,100%,44%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(36,100%,44%,0.32);
   border-color: hsla(36,100%,44%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(36,100%,44%,0.32);
   border-color: hsla(36,100%,44%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3616,7 +3941,9 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(38,97%,38%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3626,11 +3953,14 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3651,36 +3981,42 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.notice.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.notice.action.text.primary.default.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render positive intent high contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3702,24 +4038,24 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(163,100%,22%,1);
   border-color: hsla(107,100%,96%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(164,100%,17%,1);
   border-color: hsla(107,100%,96%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(164,100%,17%,1);
   border-color: hsla(107,100%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3728,7 +4064,9 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(107,100%,96%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3738,11 +4076,14 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3763,36 +4104,42 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.positive.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.positive.action.text.primary.default.highContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render positive intent low contrast button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3814,24 +4161,24 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(155,100%,31%,0.18);
   border-color: hsla(155,100%,31%,0.32);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(155,100%,31%,0.32);
   border-color: hsla(155,100%,31%,0.32);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(155,100%,31%,0.32);
   border-color: hsla(155,100%,31%,0.32);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3840,7 +4187,9 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3850,11 +4199,14 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3875,36 +4227,42 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="feedback.positive.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="feedback.positive.action.text.primary.default.lowContrast"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render secondary variant button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3926,24 +4284,24 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(213,89%,56%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(213,89%,56%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(213,89%,56%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3952,7 +4310,9 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3962,11 +4322,14 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3987,36 +4350,42 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.secondary.default"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="action.text.secondary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render small size button 1`] = `
-.c0 {
+.c1 {
   min-height: 32px;
   width: auto;
   cursor: pointer;
@@ -4038,24 +4407,24 @@ exports[`<BaseButton /> should render small size button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -4064,7 +4433,9 @@ exports[`<BaseButton /> should render small size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -4074,11 +4445,14 @@ exports[`<BaseButton /> should render small size button 1`] = `
   text-decoration-line: none;
   line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4099,36 +4473,42 @@ exports[`<BaseButton /> should render small size button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="75"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="75"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render tertiary variant button 1`] = `
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -4150,24 +4530,24 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(220,27%,98%,1);
   border-color: hsla(216,19%,89%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(214,21%,94%,1);
   border-color: hsla(216,19%,89%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(220,30%,96%,1);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -4176,7 +4556,9 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,33%,29%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -4186,11 +4568,14 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4211,36 +4596,42 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.tertiary.default"
-        font-size="100"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        Pay Now
+        <div
+          class="c4"
+          color="action.text.tertiary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Pay Now
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<BaseButton /> should render xsmall size button 1`] = `
-.c0 {
+.c1 {
   min-height: 28px;
   width: auto;
   cursor: pointer;
@@ -4262,24 +4653,24 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -4288,7 +4679,9 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -4298,11 +4691,14 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   text-decoration-line: none;
   line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4323,30 +4719,36 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   justify-content: center;
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
   >
-    <div
-      class="c1 c2"
-      display="flex"
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="75"
-        font-weight="bold"
+        class="c2 c3"
+        display="flex"
       >
-        PAY NOW
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="75"
+          font-weight="bold"
+        >
+          PAY NOW
+        </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
 </div>
 `;

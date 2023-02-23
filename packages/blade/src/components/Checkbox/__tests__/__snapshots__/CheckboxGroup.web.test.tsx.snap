@@ -93,6 +93,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -101,11 +103,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c5 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -114,11 +116,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c12 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -127,11 +129,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c16 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -140,8 +142,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c4 {
@@ -204,316 +204,320 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 
 <div>
   <div
-    aria-labelledby="checkbox-group-49-label-54"
-    class="c0"
-    data-blade-component="checkbox-group"
-    display="flex"
-    role="group"
+    class=""
   >
-    <span
-      id="checkbox-group-49-label-54"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      aria-labelledby="checkbox-group-49-label-54"
+      class="c0"
+      data-blade-component="checkbox-group"
+      display="flex"
+      role="group"
     >
-      <div
-        class="c1"
+      <span
+        id="checkbox-group-49-label-54"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
-          class="c2"
-          display="flex"
+          class="c1"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Select fruits
-          </p>
           <div
-            class="c4"
+            class="c2"
+            display="flex"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
-              font-size="100"
+              font-size="75"
               font-style="normal"
-              font-weight="regular"
+              font-weight="bold"
             >
-              , Select one
+              Select fruits
             </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                , Select one
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </span>
-    <div
-      class=""
-    >
+      </span>
       <div
-        class="c0"
-        display="flex"
+        class=""
       >
         <div
-          class="c1"
+          class="c0"
+          display="flex"
         >
           <div
-            class=""
-            data-blade-component="checkbox"
+            class="c1"
           >
-            <label
-              class="c6"
+            <div
+              class=""
+              data-blade-component="checkbox"
             >
-              <div
-                class="c0"
-                display="flex"
+              <label
+                class="c6"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   display="flex"
                 >
-                  <input
-                    aria-checked="false"
-                    aria-disabled="false"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="c8"
-                    role="checkbox"
-                    type="checkbox"
-                    value="apple"
-                  />
                   <div
-                    class="c9"
+                    class="c7"
+                    display="flex"
                   >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      role="checkbox"
+                      type="checkbox"
+                      value="apple"
+                    />
                     <div
-                      class=""
-                      style="opacity: 0; position: absolute; display: flex;"
+                      class="c9"
                     >
-                      <svg
-                        aria-hidden="true"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="12px"
-                        viewBox="0 0 8 8"
-                        width="12px"
+                      <div
+                        class=""
+                        style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                          fill="hsla(220, 27%, 98%, 1)"
-                          fill-rule="evenodd"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="0.5"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 8 8"
+                          width="12px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            fill="hsla(220, 27%, 98%, 1)"
+                            fill-rule="evenodd"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="0.5"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="c10"
+                        style="opacity: 0; position: absolute; display: flex;"
+                      />
                     </div>
                     <div
-                      class="c10"
-                      style="opacity: 0; position: absolute; display: flex;"
+                      class="c11"
                     />
+                    <div
+                      class="c12"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Apple
+                    </div>
                   </div>
                   <div
-                    class="c11"
+                    class="c13"
                   />
-                  <div
-                    class="c12"
-                    color="surface.text.subtle.lowContrast"
-                    font-family="text"
-                    font-size="100"
-                    font-weight="regular"
-                  >
-                    Apple
-                  </div>
                 </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="c1"
+          >
+            <div
+              class=""
+              data-blade-component="checkbox"
+            >
+              <label
+                class="c6"
+              >
                 <div
-                  class="c13"
-                />
-              </div>
-            </label>
+                  class="c0"
+                  display="flex"
+                >
+                  <div
+                    class="c7"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      role="checkbox"
+                      type="checkbox"
+                      value="mango"
+                    />
+                    <div
+                      class="c9"
+                    >
+                      <div
+                        class=""
+                        style="opacity: 0; position: absolute; display: flex;"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 8 8"
+                          width="12px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            fill="hsla(220, 27%, 98%, 1)"
+                            fill-rule="evenodd"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="0.5"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="c10"
+                        style="opacity: 0; position: absolute; display: flex;"
+                      />
+                    </div>
+                    <div
+                      class="c11"
+                    />
+                    <div
+                      class="c12"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Mango
+                    </div>
+                  </div>
+                  <div
+                    class="c13"
+                  />
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="c14"
+          >
+            <div
+              class=""
+              data-blade-component="checkbox"
+            >
+              <label
+                class="c6"
+              >
+                <div
+                  class="c0"
+                  display="flex"
+                >
+                  <div
+                    class="c7"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      role="checkbox"
+                      type="checkbox"
+                      value="orange"
+                    />
+                    <div
+                      class="c9"
+                    >
+                      <div
+                        class=""
+                        style="opacity: 0; position: absolute; display: flex;"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 8 8"
+                          width="12px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            fill="hsla(220, 27%, 98%, 1)"
+                            fill-rule="evenodd"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="0.5"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="c10"
+                        style="opacity: 0; position: absolute; display: flex;"
+                      />
+                    </div>
+                    <div
+                      class="c11"
+                    />
+                    <div
+                      class="c12"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Orange
+                    </div>
+                  </div>
+                  <div
+                    class="c13"
+                  />
+                </div>
+              </label>
+            </div>
           </div>
         </div>
         <div
-          class="c1"
-        >
-          <div
-            class=""
-            data-blade-component="checkbox"
-          >
-            <label
-              class="c6"
-            >
-              <div
-                class="c0"
-                display="flex"
-              >
-                <div
-                  class="c7"
-                  display="flex"
-                >
-                  <input
-                    aria-checked="false"
-                    aria-disabled="false"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="c8"
-                    role="checkbox"
-                    type="checkbox"
-                    value="mango"
-                  />
-                  <div
-                    class="c9"
-                  >
-                    <div
-                      class=""
-                      style="opacity: 0; position: absolute; display: flex;"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="12px"
-                        viewBox="0 0 8 8"
-                        width="12px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                          fill="hsla(220, 27%, 98%, 1)"
-                          fill-rule="evenodd"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="0.5"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="c10"
-                      style="opacity: 0; position: absolute; display: flex;"
-                    />
-                  </div>
-                  <div
-                    class="c11"
-                  />
-                  <div
-                    class="c12"
-                    color="surface.text.subtle.lowContrast"
-                    font-family="text"
-                    font-size="100"
-                    font-weight="regular"
-                  >
-                    Mango
-                  </div>
-                </div>
-                <div
-                  class="c13"
-                />
-              </div>
-            </label>
-          </div>
-        </div>
-        <div
-          class="c14"
-        >
-          <div
-            class=""
-            data-blade-component="checkbox"
-          >
-            <label
-              class="c6"
-            >
-              <div
-                class="c0"
-                display="flex"
-              >
-                <div
-                  class="c7"
-                  display="flex"
-                >
-                  <input
-                    aria-checked="false"
-                    aria-disabled="false"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="c8"
-                    role="checkbox"
-                    type="checkbox"
-                    value="orange"
-                  />
-                  <div
-                    class="c9"
-                  >
-                    <div
-                      class=""
-                      style="opacity: 0; position: absolute; display: flex;"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="12px"
-                        viewBox="0 0 8 8"
-                        width="12px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                          fill="hsla(220, 27%, 98%, 1)"
-                          fill-rule="evenodd"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="0.5"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="c10"
-                      style="opacity: 0; position: absolute; display: flex;"
-                    />
-                  </div>
-                  <div
-                    class="c11"
-                  />
-                  <div
-                    class="c12"
-                    color="surface.text.subtle.lowContrast"
-                    font-family="text"
-                    font-size="100"
-                    font-weight="regular"
-                  >
-                    Orange
-                  </div>
-                </div>
-                <div
-                  class="c13"
-                />
-              </div>
-            </label>
-          </div>
-        </div>
-      </div>
-      <div
-        class="c15"
-      >
-        <span
-          style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
+          class="c15"
         >
           <span
-            class="c16"
-            color="surface.text.muted.lowContrast"
-            font-family="text"
-            font-size="50"
-            font-style="italic"
+            style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
           >
-            Select one
+            <span
+              class="c16"
+              color="surface.text.muted.lowContrast"
+              font-family="text"
+              font-size="50"
+              font-style="italic"
+            >
+              Select one
+            </span>
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -609,6 +613,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -617,11 +623,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c5 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -630,11 +636,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c12 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -643,8 +649,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c4 {
@@ -707,297 +711,301 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 
 <div>
   <div
-    aria-labelledby="checkbox-group-19-label-24"
-    class="c0"
-    data-blade-component="checkbox-group"
-    display="flex"
-    role="group"
+    class=""
   >
-    <span
-      id="checkbox-group-19-label-24"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      aria-labelledby="checkbox-group-19-label-24"
+      class="c0"
+      data-blade-component="checkbox-group"
+      display="flex"
+      role="group"
     >
-      <div
-        class="c1"
+      <span
+        id="checkbox-group-19-label-24"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
-          class="c2"
-          display="flex"
+          class="c1"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Select fruits
-          </p>
           <div
-            class="c4"
+            class="c2"
+            display="flex"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
-              font-size="100"
+              font-size="75"
               font-style="normal"
-              font-weight="regular"
+              font-weight="bold"
             >
-              , 
+              Select fruits
             </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                , 
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </span>
-    <div
-      class=""
-    >
+      </span>
       <div
-        class="c0"
-        display="flex"
+        class=""
       >
         <div
-          class="c1"
+          class="c0"
+          display="flex"
         >
           <div
-            class=""
-            data-blade-component="checkbox"
+            class="c1"
           >
-            <label
-              class="c6"
+            <div
+              class=""
+              data-blade-component="checkbox"
             >
-              <div
-                class="c0"
-                display="flex"
+              <label
+                class="c6"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   display="flex"
                 >
-                  <input
-                    aria-checked="false"
-                    aria-disabled="false"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="c8"
-                    role="checkbox"
-                    type="checkbox"
-                    value="apple"
-                  />
                   <div
-                    class="c9"
+                    class="c7"
+                    display="flex"
                   >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      role="checkbox"
+                      type="checkbox"
+                      value="apple"
+                    />
                     <div
-                      class=""
-                      style="opacity: 0; position: absolute; display: flex;"
+                      class="c9"
                     >
-                      <svg
-                        aria-hidden="true"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="12px"
-                        viewBox="0 0 8 8"
-                        width="12px"
+                      <div
+                        class=""
+                        style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                          fill="hsla(220, 27%, 98%, 1)"
-                          fill-rule="evenodd"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="0.5"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 8 8"
+                          width="12px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            fill="hsla(220, 27%, 98%, 1)"
+                            fill-rule="evenodd"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="0.5"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="c10"
+                        style="opacity: 0; position: absolute; display: flex;"
+                      />
                     </div>
                     <div
-                      class="c10"
-                      style="opacity: 0; position: absolute; display: flex;"
+                      class="c11"
                     />
+                    <div
+                      class="c12"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Apple
+                    </div>
                   </div>
                   <div
-                    class="c11"
+                    class="c13"
                   />
-                  <div
-                    class="c12"
-                    color="surface.text.subtle.lowContrast"
-                    font-family="text"
-                    font-size="100"
-                    font-weight="regular"
-                  >
-                    Apple
-                  </div>
                 </div>
-                <div
-                  class="c13"
-                />
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
-        </div>
-        <div
-          class="c1"
-        >
           <div
-            class=""
-            data-blade-component="checkbox"
+            class="c1"
           >
-            <label
-              class="c6"
+            <div
+              class=""
+              data-blade-component="checkbox"
             >
-              <div
-                class="c0"
-                display="flex"
+              <label
+                class="c6"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   display="flex"
                 >
-                  <input
-                    aria-checked="false"
-                    aria-disabled="false"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="c8"
-                    role="checkbox"
-                    type="checkbox"
-                    value="mango"
-                  />
                   <div
-                    class="c9"
+                    class="c7"
+                    display="flex"
                   >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      role="checkbox"
+                      type="checkbox"
+                      value="mango"
+                    />
                     <div
-                      class=""
-                      style="opacity: 0; position: absolute; display: flex;"
+                      class="c9"
                     >
-                      <svg
-                        aria-hidden="true"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="12px"
-                        viewBox="0 0 8 8"
-                        width="12px"
+                      <div
+                        class=""
+                        style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                          fill="hsla(220, 27%, 98%, 1)"
-                          fill-rule="evenodd"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="0.5"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 8 8"
+                          width="12px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            fill="hsla(220, 27%, 98%, 1)"
+                            fill-rule="evenodd"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="0.5"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="c10"
+                        style="opacity: 0; position: absolute; display: flex;"
+                      />
                     </div>
                     <div
-                      class="c10"
-                      style="opacity: 0; position: absolute; display: flex;"
+                      class="c11"
                     />
+                    <div
+                      class="c12"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Mango
+                    </div>
                   </div>
                   <div
-                    class="c11"
+                    class="c13"
                   />
-                  <div
-                    class="c12"
-                    color="surface.text.subtle.lowContrast"
-                    font-family="text"
-                    font-size="100"
-                    font-weight="regular"
-                  >
-                    Mango
-                  </div>
                 </div>
-                <div
-                  class="c13"
-                />
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
-        </div>
-        <div
-          class="c14"
-        >
           <div
-            class=""
-            data-blade-component="checkbox"
+            class="c14"
           >
-            <label
-              class="c6"
+            <div
+              class=""
+              data-blade-component="checkbox"
             >
-              <div
-                class="c0"
-                display="flex"
+              <label
+                class="c6"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   display="flex"
                 >
-                  <input
-                    aria-checked="false"
-                    aria-disabled="false"
-                    aria-invalid="false"
-                    aria-required="false"
-                    class="c8"
-                    role="checkbox"
-                    type="checkbox"
-                    value="orange"
-                  />
                   <div
-                    class="c9"
+                    class="c7"
+                    display="flex"
                   >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      role="checkbox"
+                      type="checkbox"
+                      value="orange"
+                    />
                     <div
-                      class=""
-                      style="opacity: 0; position: absolute; display: flex;"
+                      class="c9"
                     >
-                      <svg
-                        aria-hidden="true"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="12px"
-                        viewBox="0 0 8 8"
-                        width="12px"
+                      <div
+                        class=""
+                        style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                          fill="hsla(220, 27%, 98%, 1)"
-                          fill-rule="evenodd"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="0.5"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 8 8"
+                          width="12px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            fill="hsla(220, 27%, 98%, 1)"
+                            fill-rule="evenodd"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="0.5"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="c10"
+                        style="opacity: 0; position: absolute; display: flex;"
+                      />
                     </div>
                     <div
-                      class="c10"
-                      style="opacity: 0; position: absolute; display: flex;"
+                      class="c11"
                     />
+                    <div
+                      class="c12"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Orange
+                    </div>
                   </div>
                   <div
-                    class="c11"
+                    class="c13"
                   />
-                  <div
-                    class="c12"
-                    color="surface.text.subtle.lowContrast"
-                    font-family="text"
-                    font-size="100"
-                    font-weight="regular"
-                  >
-                    Orange
-                  </div>
                 </div>
-                <div
-                  class="c13"
-                />
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
         </div>
       </div>

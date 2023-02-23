@@ -3,20 +3,9 @@
 exports[`<Badge /> should render Badge with Icon 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39,7 +28,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -47,7 +36,24 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   padding-right: 4px;
 }
 
-.c3 {
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -56,11 +62,9 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c4 {
+.c5 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -70,16 +74,16 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <div
-        class="c2"
+        class="c3"
         display="flex"
       >
         <svg
@@ -107,7 +111,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
         </svg>
       </div>
       <p
-        class="c3 c4"
+        class="c4 c5"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -125,20 +129,9 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 exports[`<Badge /> should render Badge with bold font 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -161,7 +154,24 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -170,11 +180,9 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -184,16 +192,16 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -211,20 +219,9 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 exports[`<Badge /> should render Badge with default props 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -247,7 +244,24 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -256,11 +270,9 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -270,16 +282,16 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -297,20 +309,9 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 .c0 {
   background-color: hsla(218,89%,51%,1);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -333,7 +334,24 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(218,89%,51%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -342,11 +360,9 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -356,16 +372,16 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="badge.text.blue.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -383,20 +399,9 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 .c0 {
   background-color: hsla(193,100%,35%,1);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -419,7 +424,24 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(193,100%,35%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -428,11 +450,9 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -442,16 +462,16 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.information.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -469,20 +489,9 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 .c0 {
   background-color: hsla(8,73%,47%,1);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -505,7 +514,24 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(8,73%,47%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -514,11 +540,9 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -528,16 +552,16 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.negative.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -555,20 +579,9 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 .c0 {
   background-color: hsla(216,33%,29%,1);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -591,7 +604,24 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(216,33%,29%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -600,11 +630,9 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -614,16 +642,16 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -641,20 +669,9 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 .c0 {
   background-color: hsla(38,97%,38%,1);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -677,7 +694,24 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(38,97%,38%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -686,11 +720,9 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -700,16 +732,16 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.notice.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -727,20 +759,9 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 .c0 {
   background-color: hsla(160,100%,26%,1);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -763,7 +784,24 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(160,100%,26%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -772,11 +810,9 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -786,16 +822,16 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.positive.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -813,20 +849,9 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render large size Badge 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -849,7 +874,24 @@ exports[`<Badge /> should render large size Badge 1`] = `
   padding-left: 12px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -858,11 +900,9 @@ exports[`<Badge /> should render large size Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -872,16 +912,16 @@ exports[`<Badge /> should render large size Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -899,20 +939,9 @@ exports[`<Badge /> should render large size Badge 1`] = `
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 .c0 {
   background-color: hsla(218,89%,51%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -935,7 +964,24 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(218,89%,51%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -944,11 +990,9 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -958,16 +1002,16 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="badge.text.blue.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -985,20 +1029,9 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 .c0 {
   background-color: hsla(193,100%,35%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1021,7 +1054,24 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(193,100%,35%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(193,100%,35%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1030,11 +1080,9 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -1044,16 +1092,16 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.information.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -1071,20 +1119,9 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 .c0 {
   background-color: hsla(9,91%,56%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1107,7 +1144,24 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(9,91%,56%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1116,11 +1170,9 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -1130,16 +1182,16 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.negative.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -1157,20 +1209,9 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1193,7 +1234,24 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1202,11 +1260,9 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -1216,16 +1272,16 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -1243,20 +1299,9 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 .c0 {
   background-color: hsla(36,100%,44%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1279,7 +1324,24 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(36,100%,44%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(38,97%,38%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1288,11 +1350,9 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -1302,16 +1362,16 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.notice.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -1329,20 +1389,9 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 .c0 {
   background-color: hsla(155,100%,31%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1365,7 +1414,24 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(155,100%,31%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1374,11 +1440,9 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -1388,16 +1452,16 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.positive.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -1415,20 +1479,9 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render medium size Badge 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1451,7 +1504,24 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1460,11 +1530,9 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -1474,16 +1542,16 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -1501,20 +1569,9 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 exports[`<Badge /> should render small size Badge 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1537,7 +1594,24 @@ exports[`<Badge /> should render small size Badge 1`] = `
   padding-left: 8px;
 }
 
-.c2 {
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.625rem;
@@ -1546,11 +1620,9 @@ exports[`<Badge /> should render small size Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c3 {
+.c4 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -1560,16 +1632,16 @@ exports[`<Badge /> should render small size Badge 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="badge"
   >
     <div
-      class="c1"
+      class="c2"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"

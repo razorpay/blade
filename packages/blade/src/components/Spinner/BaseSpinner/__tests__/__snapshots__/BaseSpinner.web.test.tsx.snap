@@ -197,6 +197,8 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
 }
 
 .c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -205,8 +207,6 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -854,6 +854,8 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
 }
 
 .c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -862,8 +864,6 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>

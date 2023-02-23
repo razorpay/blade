@@ -82,6 +82,8 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -90,11 +92,11 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c5 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -103,11 +105,11 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c6 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -116,8 +118,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c4 {
@@ -139,85 +139,89 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
+    class=""
   >
-    <label
-      for="progress-1"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      class="c0"
+      display="flex"
     >
+      <label
+        for="progress-1"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      >
+        <div
+          class="c1"
+        >
+          <div
+            class="c2"
+            display="flex"
+          >
+            <p
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="75"
+              font-style="normal"
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </div>
+        </div>
+      </label>
       <div
         class="c1"
       >
-        <div
-          class="c2"
-          display="flex"
+        <p
+          class="c6 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
-          <div
-            class="c4"
-          >
-            <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
+          20%
+        </p>
       </div>
-    </label>
-    <div
-      class="c1"
-    >
-      <p
-        class="c6 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-1"
-    role="progressbar"
-  >
     <div
-      class="c7"
-      height="2px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-1"
+      role="progressbar"
     >
       <div
-        class="c8 c9 c10"
+        class="c7"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c11 c12"
-        />
+          class="c8 c9 c10"
+        >
+          <div
+            class=" c11 c12"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -285,30 +289,34 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  />
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="50"
-    aria-valuetext="50%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-7"
-    role="progressbar"
   >
     <div
-      class="c1"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
+    />
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="50"
+      aria-valuetext="50%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-7"
+      role="progressbar"
     >
       <div
-        class="c2 c3 c4"
+        class="c1"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c5 c6"
-        />
+          class="c2 c3 c4"
+        >
+          <div
+            class=" c5 c6"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -379,6 +387,8 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -387,52 +397,54 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-9"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-9"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -503,6 +515,8 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -511,52 +525,54 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-17"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-17"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -627,6 +643,8 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -635,52 +653,54 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-13"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-13"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -751,6 +771,8 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -759,52 +781,54 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-19"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-19"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -875,6 +899,8 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -883,52 +909,54 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-15"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-15"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -999,6 +1027,8 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1007,52 +1037,54 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-11"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-11"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1123,6 +1155,8 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1131,52 +1165,54 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-16"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-16"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1247,6 +1283,8 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1255,52 +1293,54 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-12"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-12"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1371,6 +1411,8 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1379,52 +1421,54 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-18"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-18"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1495,6 +1539,8 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1503,52 +1549,54 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-14"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-14"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1619,6 +1667,8 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1627,52 +1677,54 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-10"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-10"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1761,6 +1813,8 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1769,11 +1823,11 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c5 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1782,11 +1836,11 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c6 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1795,8 +1849,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c4 {
@@ -1818,85 +1870,89 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
+    class=""
   >
-    <label
-      for="progress-6"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      class="c0"
+      display="flex"
     >
+      <label
+        for="progress-6"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      >
+        <div
+          class="c1"
+        >
+          <div
+            class="c2"
+            display="flex"
+          >
+            <p
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="75"
+              font-style="normal"
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </div>
+        </div>
+      </label>
       <div
         class="c1"
       >
-        <div
-          class="c2"
-          display="flex"
+        <p
+          class="c6 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
-          <div
-            class="c4"
-          >
-            <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
+          20%
+        </p>
       </div>
-    </label>
-    <div
-      class="c1"
-    >
-      <p
-        class="c6 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-6"
-    role="progressbar"
-  >
     <div
-      class="c7"
-      height="4px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-6"
+      role="progressbar"
     >
       <div
-        class="c8 c9 c10"
+        class="c7"
+        height="4px"
+        overflow="hidden"
       >
         <div
-          class=" c11 c12"
-        />
+          class="c8 c9 c10"
+        >
+          <div
+            class=" c11 c12"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1953,30 +2009,34 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  />
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="70"
-    aria-valuetext="70"
     class=""
-    data-blade-component="progress-bar"
-    id="meter-8"
-    role="meter"
   >
     <div
-      class="c1"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
+    />
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="70"
+      aria-valuetext="70"
+      class=""
+      data-blade-component="progress-bar"
+      id="meter-8"
+      role="meter"
     >
       <div
-        class="c2 c3 c4"
+        class="c1"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c5"
-        />
+          class="c2 c3 c4"
+        >
+          <div
+            class=" c5"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -2065,6 +2125,8 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2073,11 +2135,11 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c5 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2086,11 +2148,11 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c6 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2099,8 +2161,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c4 {
@@ -2122,85 +2182,89 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
+    class=""
   >
-    <label
-      for="progress-5"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      class="c0"
+      display="flex"
     >
+      <label
+        for="progress-5"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      >
+        <div
+          class="c1"
+        >
+          <div
+            class="c2"
+            display="flex"
+          >
+            <p
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="75"
+              font-style="normal"
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </div>
+        </div>
+      </label>
       <div
         class="c1"
       >
-        <div
-          class="c2"
-          display="flex"
+        <p
+          class="c6 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
-          <div
-            class="c4"
-          >
-            <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
+          20%
+        </p>
       </div>
-    </label>
-    <div
-      class="c1"
-    >
-      <p
-        class="c6 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-5"
-    role="progressbar"
-  >
     <div
-      class="c7"
-      height="2px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-5"
+      role="progressbar"
     >
       <div
-        class="c8 c9 c10"
+        class="c7"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c11 c12"
-        />
+          class="c8 c9 c10"
+        >
+          <div
+            class=" c11 c12"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -2208,7 +2272,12 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2229,7 +2298,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2243,11 +2312,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   justify-content: space-between;
 }
 
-.c5 {
+.c6 {
   margin-bottom: 4px;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2265,25 +2334,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   gap: 0px;
 }
 
-.c11 {
+.c12 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c12 {
+.c13 {
   background-color: hsla(213,89%,56%,1);
 }
 
-.c13 {
+.c14 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c15 {
+.c16 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2292,13 +2361,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c14 {
+.c15 {
   background-color: hsla(213,89%,56%,1);
   height: 100%;
   width: 0%;
 }
 
-.c16 {
+.c17 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2309,7 +2378,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2319,11 +2390,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c7 {
+.c8 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2332,11 +2403,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c9 {
+.c10 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2345,11 +2416,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c10 {
+.c11 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2358,11 +2429,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c8 {
+.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2379,7 +2448,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   word-wrap: normal;
 }
 
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -2401,24 +2470,24 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2427,111 +2496,121 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class="c2 c3"
+        display="flex"
+      >
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Update Progress
+        </div>
+      </div>
+    </button>
+  </div>
+  <div
+    class=""
   >
     <div
-      class="c1 c2"
+      class="c5"
       display="flex"
     >
-      <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
-      >
-        Update Progress
-      </div>
-    </div>
-  </button>
-  <div
-    class="c4"
-    display="flex"
-  >
-    <label
-      for="progress-3"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
-    >
-      <div
-        class="c5"
+      <label
+        for="progress-3"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
           class="c6"
-          display="flex"
         >
-          <p
-            class="c7 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
           <div
-            class="c8"
+            class="c7"
+            display="flex"
           >
             <p
-              class="c9 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c8 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
-              font-size="100"
+              font-size="75"
               font-style="normal"
-              font-weight="regular"
-            />
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c9"
+            >
+              <p
+                class="c10 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </label>
-    <div
-      class="c5"
-    >
-      <p
-        class="c10 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
+      </label>
+      <div
+        class="c6"
       >
-        0%
-      </p>
+        <p
+          class="c11 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          0%
+        </p>
+      </div>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
-    aria-valuetext="0%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-3"
-    role="progressbar"
-  >
     <div
-      class="c11"
-      height="2px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="0"
+      aria-valuetext="0%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-3"
+      role="progressbar"
     >
       <div
-        class="c12 c13 c14"
+        class="c12"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c15 c16"
-        />
+          class="c13 c14 c15"
+        >
+          <div
+            class=" c16 c17"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -2539,7 +2618,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
-.c1 {
+.c0 {
+  display: inline-block;
+  width: auto;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2560,7 +2644,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   justify-content: center;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2574,11 +2658,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   justify-content: space-between;
 }
 
-.c5 {
+.c6 {
   margin-bottom: 4px;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2596,25 +2680,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   gap: 0px;
 }
 
-.c11 {
+.c12 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c12 {
+.c13 {
   background-color: hsla(213,89%,56%,1);
 }
 
-.c13 {
+.c14 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c15 {
+.c16 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2623,13 +2707,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c14 {
+.c15 {
   background-color: hsla(213,89%,56%,1);
   height: 100%;
   width: 60%;
 }
 
-.c16 {
+.c17 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2640,7 +2724,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c4 {
+  padding: 0;
+  margin: 0;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2650,11 +2736,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-.c7 {
+.c8 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2663,11 +2749,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c9 {
+.c10 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2676,11 +2762,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c10 {
+.c11 {
+  padding: 0;
+  margin: 0;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2689,11 +2775,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.c8 {
+.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2710,7 +2794,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   word-wrap: normal;
 }
 
-.c0 {
+.c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -2732,24 +2816,24 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   position: relative;
 }
 
-.c0:hover {
+.c1:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c0:active {
+.c1:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c0:focus {
+.c1:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c0 * {
+.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2758,111 +2842,121 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c3 {
   opacity: 1;
 }
 
 <div>
-  <button
+  <div
     class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
+    display="inline-block"
+    width="auto"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class="c2 c3"
+        display="flex"
+      >
+        <div
+          class="c4"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          Update Progress
+        </div>
+      </div>
+    </button>
+  </div>
+  <div
+    class=""
   >
     <div
-      class="c1 c2"
+      class="c5"
       display="flex"
     >
-      <div
-        class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
-      >
-        Update Progress
-      </div>
-    </div>
-  </button>
-  <div
-    class="c4"
-    display="flex"
-  >
-    <label
-      for="progress-3"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
-    >
-      <div
-        class="c5"
+      <label
+        for="progress-3"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
           class="c6"
-          display="flex"
         >
-          <p
-            class="c7 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
           <div
-            class="c8"
+            class="c7"
+            display="flex"
           >
             <p
-              class="c9 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c8 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
-              font-size="100"
+              font-size="75"
               font-style="normal"
-              font-weight="regular"
-            />
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c9"
+            >
+              <p
+                class="c10 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </label>
-    <div
-      class="c5"
-    >
-      <p
-        class="c10 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
+      </label>
+      <div
+        class="c6"
       >
-        60%
-      </p>
+        <p
+          class="c11 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          60%
+        </p>
+      </div>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="60"
-    aria-valuetext="60%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-3"
-    role="progressbar"
-  >
     <div
-      class="c11"
-      height="2px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="60"
+      aria-valuetext="60%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-3"
+      role="progressbar"
     >
       <div
-        class="c12 c13 c14"
+        class="c12"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c15 c16"
-        />
+          class="c13 c14 c15"
+        >
+          <div
+            class=" c16 c17"
+          />
+        </div>
       </div>
     </div>
   </div>
