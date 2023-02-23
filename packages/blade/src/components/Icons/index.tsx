@@ -1,6 +1,7 @@
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
 import type { Feedback } from '~tokens/theme/theme';
+import type { StyledProps } from '~utils';
 
 type FeedbackIconColors = `feedback.icon.${DotNotationColorStringToken<
   Theme['colors']['feedback']['icon']
@@ -40,7 +41,7 @@ export type IconProps = {
     | BadgeIconColors
     | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
   size: IconSize;
-};
+} & StyledProps;
 export type IconComponent = React.ComponentType<IconProps>;
 
 export { default as ArrowDownIcon } from './ArrowDownIcon';
