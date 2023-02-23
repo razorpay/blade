@@ -5,6 +5,7 @@ import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
 import type { WithComponentId } from '~utils';
 import { isValidAllowedChildren } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
@@ -117,7 +118,11 @@ const Dropdown: WithComponentId<DropdownProps> = ({
     ],
   );
 
-  return <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>;
+  return (
+    <DropdownContext.Provider value={contextValue}>
+      <BaseBox position="relative">{children}</BaseBox>
+    </DropdownContext.Provider>
+  );
 };
 
 Dropdown.componentId = componentIds.Dropdown;

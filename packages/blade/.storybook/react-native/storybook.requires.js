@@ -54,7 +54,6 @@ const getStories = () => {
     require('../../src/components/Typography/Title/Title.stories.tsx'),
     require('../../src/components/VisuallyHidden/VisuallyHidden.stories.tsx'),
     require('../../src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.stories.tsx'),
-    require('../../src/storybook-recipes/SimpleCardWithTokens/CardWithTokens.stories.tsx'),
     require('../../src/storybook-recipes/SimpleDashboard.stories.tsx'),
     require('../../src/storybook-recipes/SimpleForm.stories.tsx'),
     require('../../src/tokens/theme/overrideTheme.stories.tsx'),
