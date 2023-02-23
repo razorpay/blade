@@ -1,7 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Dropdown /> should render dropdown 1`] = `
-Array [
+<View
+  position="relative"
+  style={
+    Array [
+      Object {
+        "position": "relative",
+      },
+    ]
+  }
+>
   <View
     position="relative"
     style={
@@ -419,7 +428,7 @@ Array [
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     position="relative"
     style={
@@ -1164,6 +1173,6 @@ Array [
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
