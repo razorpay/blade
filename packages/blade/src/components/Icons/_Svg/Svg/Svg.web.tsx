@@ -12,7 +12,8 @@ const Svg = ({
   ...styledProps
 }: SvgProps): ReactElement => {
   return (
-    <BaseBox height={height} width={width} display="inline" {...getStyledProps(styledProps)}>
+    // line-height adds some extra spacing in div around svg so removing it
+    <BaseBox lineHeight="spacing.0" {...getStyledProps(styledProps)}>
       <svg
         {...makeAccessible({ hidden: true })}
         {...metaAttribute(MetaConstants.Component, MetaConstants.Icon)}
