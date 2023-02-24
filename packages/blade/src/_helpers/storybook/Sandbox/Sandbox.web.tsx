@@ -4,6 +4,7 @@ import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 
 type SandboxProps = {
@@ -12,6 +13,7 @@ type SandboxProps = {
   showConsole?: boolean;
   editorHeight?: number;
   editorWidthPercentage?: number;
+  padding?: BaseBoxProps['padding'];
 };
 
 const getBladeVersion = (): string => {
@@ -34,6 +36,7 @@ function Sandbox({
   showConsole = false,
   editorHeight = 300,
   editorWidthPercentage = 50,
+  padding = ['spacing.5', 'spacing.0', 'spacing.8'],
 }: SandboxProps): JSX.Element {
   const {
     // @ts-expect-error globals is available but the typings in storybook are properly defined hence, ignoring it
@@ -41,8 +44,7 @@ function Sandbox({
   } = React.useContext(DocsContext);
 
   return (
-    <BaseBox>
-      <br />
+    <BaseBox padding={padding}>
       <Sandpack
         template="react-ts"
         files={{
@@ -115,8 +117,6 @@ function Sandbox({
           editorWidthPercentage,
         }}
       />
-      <br />
-      <br />
     </BaseBox>
   );
 }

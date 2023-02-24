@@ -11,6 +11,7 @@ import {
 import { Highlight } from '@storybook/design-system';
 import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
+import BaseBox from '~components/Box/BaseBox';
 
 type StoryPageWrapperTypes = {
   figmaURL?: {
@@ -68,7 +69,9 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         {`This is the default ${props.componentName}. You can change the properties using the controls below.`}
       </Subtitle>
       <Primary />
-      <Title>Properties</Title>
+      <BaseBox id="properties-ref">
+        <Title>Properties</Title>
+      </BaseBox>
       <ArgsTable story={PRIMARY_STORY} />
       <Stories />
     </>

@@ -75,6 +75,8 @@ const getOnlyBoxProps = (props: BoxProps): BoxProps => {
     right: props.right,
     bottom: props.bottom,
     left: props.left,
+
+    children: props.children,
   };
 };
 

@@ -5,7 +5,6 @@ import { getBaseBoxArgTypes } from './storybookArgTypes';
 import { BaseBox } from '.';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Text } from '~components/Typography';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 
 const BoxStoryMeta = {
   title: 'Components/Box/BaseBox (Internal)',
@@ -18,29 +17,7 @@ const BoxStoryMeta = {
           componentDescription="This is the BaseBox component. It is only for internal Blade usage. Use Box instead."
           componentName="BaseBox"
           imports=""
-        >
-          <Sandbox>
-            {`
-          import { InternalDontUsePleaseWillBeRemovedSoonBaseBox as BaseBox } from '@razorpay/blade/components'
-
-          function App(): JSX.Element {
-            return (
-              <BaseBox 
-                padding={{ base: ['spacing.1', '9px'], m: 'spacing.3' }}
-                backgroundColor="feedback.background.positive.lowContrast"
-                display="flex"
-                flexDirection={{ base: 'column', m: 'row' }}
-              >
-                <BaseBox flex="1" backgroundColor="yellow" minHeight="spacing.10" minWidth="spacing.10" />
-                <BaseBox flex="1" backgroundColor="red" minHeight="spacing.10" minWidth="spacing.10" />
-              </BaseBox>
-            )
-          }
-
-          export default App;
-          `}
-          </Sandbox>
-        </StoryPageWrapper>
+        />
       ),
     },
   },
