@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 6.2.1
+
+### Patch Changes
+
+- 7016c215: fix(Dropdown): infinite render onChange, positioning in flex container
+
 ## 6.2.0
 
 ### Minor Changes
