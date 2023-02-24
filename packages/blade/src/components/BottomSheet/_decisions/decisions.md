@@ -51,16 +51,18 @@ import { BottomSheet } from '@razorpay/blade';
     <BottomSheetHeaderLeading title="Payments Links" prefix={BladeIcon} />
     <BottomSheetHeaderTrailing visual={Link | Action | Icon} />
   </BottomSheetHeader>
-  <BottomSheetBody>Body Content</BottomSheetBody>
-  <BottomSheet>
-    <BottomSheetLeading title="Footer Title" prefix={icon} />
-    <BottomSheetTrailing
+  <BottomSheetBody>
+    <Text>Body Content<Text>
+  </BottomSheetBody>
+  <BottomSheetFooter>
+    <BottomSheetFooterLeading title="Footer Title" prefix={icon} />
+    <BottomSheetFooterTrailing
       actions={{
         primaryAction: { text: 'Know more', onClick: () => {} },
         secondaryAction: { text: 'Read Docs', onClick: () => {} },
       }}
     />
-  </BottomSheet>
+  </BottomSheetFooter>
 </BottomSheet>;
 ```
 
@@ -94,7 +96,7 @@ We'll expose a `BottomSheet` component with the following API:
 | Prop            | Type        | Default                 | Description                                                                                     | Required |
 | --------------- | ----------- | ----------------------- | ----------------------------------------------------------------------------------------------- | -------- |
 | open            | `boolean`   | `false`                 | toggles bottom sheet state content                                                              |          |
-| snapPoints      | `string[]`  | `['25%', '50%', '85%']` | snappoints in which the bottom sheeet will rest on                                              |          |
+| snapPoints      | `[number, number, number]`  | `[0.35, 0.5, 0.85]` | Snappoints in which the bottom sheeet will rest on, this accepts a number between 0 & 1 which maps to the total view height of the screen. 0.5 means 50% of screen height.                                              |          |
 | onDismiss       | `Callback`  | `undefined`             | called when the bottom sheet is closed, either by user state, hitting `esc` or tapping backdrop |          |
 | initialFocusRef | `React.Ref` | `undefined`             | ref element you want to get keyboard focus when opening the sheet                               |          |
 
@@ -108,7 +110,7 @@ We'll expose a `BottomSheet` component with the following API:
 
 | Prop     | Type            | Default     | Description                          | Required |
 | -------- | --------------- | ----------- | ------------------------------------ | -------- |
-| `title`  | `string`        | `undefined` | Title of the Card                    | ✅       |
+| `title`  | `string`        | `undefined` | Title of the Header                    | ✅       |
 | `prefix` | `IconComponent` | `undefined` | Prefix icon placed before title text |          |
 
 ### `BottomSheetHeaderTrailing` API
@@ -198,9 +200,9 @@ const App = () => {
 
   return (
     <Dropdown selectionType={selectionType}>
-      <SelectInput label="Select Action" onClick={() => setOpen(true)} />
+      <SelectInput label="Select Action" />
       {isMobile ? (
-        <BottomSheet open={open} onDismiss={() => setOpen(false)}>
+        <BottomSheet>
           <BottomSheetHeader>
             <BottomSheetHeaderLeading title="Payments Links" prefix={PayIcon} />
           </BottomSheetHeader>
@@ -226,6 +228,16 @@ const App = () => {
   );
 };
 ```
+
+**Q.** Why can't we lazy load from blade side? 
+
+There are two major reasons: 
+
+
+1. It's generally not feasible to lazy load components from library side, We can't possibly know where & how a blade component can be used or imported in the user's codebase. Even if we know that it will also require changes in how we bundle blade, since right now blade distributes the bundle in single index.js chunks, introducing lazy loading will create more fragmented chunks. 
+
+2. There are multiple ways to lazy load react components and it depends on the app's architecture. For example, React.lazy only does client side lazy loading while loadable support SSR too, thus the descision needs to be handed over to the consumers to import & integrate the components as they fit on their stack.
+
 
 ## Accessibility
 
