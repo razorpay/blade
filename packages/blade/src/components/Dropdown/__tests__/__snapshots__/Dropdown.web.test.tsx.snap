@@ -563,344 +563,348 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
     class="c0"
   >
     <div
-      class="c1"
-    >
-      <input
-        aria-hidden="true"
-        tabindex="-1"
-        value=""
-      />
-    </div>
-    <div
-      class=""
-      data-blade-component="select-input"
+      class="c0"
     >
       <div
-        class="c2"
-        display="flex"
+        class="c1"
+      >
+        <input
+          aria-hidden="true"
+          tabindex="-1"
+          value=""
+        />
+      </div>
+      <div
+        class=""
+        data-blade-component="select-input"
       >
         <div
-          class="c3"
+          class="c2"
           display="flex"
         >
-          <label
-            for="dropdown-7-trigger-1-input-2"
-            id="dropdown-7-label"
-            style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+          <div
+            class="c3"
+            display="flex"
           >
-            <div
-              class="c4"
+            <label
+              for="dropdown-7-trigger-1-input-2"
+              id="dropdown-7-label"
+              style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
             >
               <div
-                class="c5"
-                display="flex"
+                class="c4"
               >
-                <p
-                  class="c6 "
-                  color="surface.text.subdued.lowContrast"
-                  data-blade-component="text"
-                  font-family="text"
-                  font-size="75"
-                  font-style="normal"
-                  font-weight="bold"
-                >
-                  Fruits
-                </p>
                 <div
-                  class="c1"
+                  class="c5"
+                  display="flex"
                 >
                   <p
-                    class="c7 "
+                    class="c6 "
+                    color="surface.text.subdued.lowContrast"
+                    data-blade-component="text"
+                    font-family="text"
+                    font-size="75"
+                    font-style="normal"
+                    font-weight="bold"
+                  >
+                    Fruits
+                  </p>
+                  <div
+                    class="c1"
+                  >
+                    <p
+                      class="c7 "
+                      color="surface.text.normal.lowContrast"
+                      data-blade-component="text"
+                      font-family="text"
+                      font-size="100"
+                      font-style="normal"
+                      font-weight="regular"
+                    />
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="c8 c9"
+            display="flex"
+            width="100%"
+          >
+            <button
+              aria-controls="dropdown-7-actionlist"
+              aria-describedby=""
+              aria-disabled="false"
+              aria-expanded="true"
+              aria-haspopup="dialog"
+              aria-invalid="false"
+              aria-required="false"
+              class="c10"
+              id="dropdown-7-trigger-1-input-2"
+              placeholder="Select Option"
+              role="combobox"
+              type="button"
+              value=""
+            >
+              Select Option
+            </button>
+            <div
+              class="c11"
+              display="flex"
+            >
+              <div
+                class="c12"
+                display="flex"
+              >
+                <div
+                  class="c13"
+                  display="flex"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="16px"
+                    viewBox="0 0 24 24"
+                    width="16px"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                      fill="hsla(217, 56%, 17%, 1)"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=" c14"
+          />
+        </div>
+        <div
+          class="c15"
+        >
+          <div
+            class="c16"
+            display="flex"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="c0"
+    >
+      <div
+        class="c17 c18"
+        data-blade-component="dropdown-overlay"
+        display="block"
+        style="opacity: 1;"
+        width="100%"
+      >
+        <div
+          aria-labelledby="dropdown-7-label"
+          class=" c19"
+          data-blade-component="action-list"
+          elevation="5"
+          id="dropdown-7-actionlist"
+          role="dialog"
+        >
+          <div
+            class=" c20"
+            data-blade-component="action-list-header"
+          >
+            <div
+              class=""
+            >
+              <svg
+                aria-hidden="true"
+                data-blade-component="icon"
+                fill="none"
+                height="12px"
+                viewBox="0 0 24 24"
+                width="12px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
+                  fill="hsla(216, 16%, 60%, 1)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <div
+              class="c21"
+            >
+              <p
+                class="c22 "
+                color="surface.text.subdued.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="50"
+                font-style="italic"
+                font-weight="regular"
+              >
+                Recent Searches
+              </p>
+            </div>
+          </div>
+          <div
+            aria-multiselectable="false"
+            class=" c23"
+            role="listbox"
+          >
+            <button
+              aria-selected="false"
+              class=" c24"
+              data-blade-component="action-list-item"
+              data-index="0"
+              data-value="apple"
+              id="dropdown-7-0"
+              role="option"
+              tabindex="-1"
+              type="button"
+            >
+              <div
+                class="c25"
+                display="flex"
+              >
+                <div
+                  class="c26"
+                  display="flex"
+                />
+                <div
+                  class="c27"
+                >
+                  <p
+                    class="c7 c28"
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     font-family="text"
                     font-size="100"
                     font-style="normal"
                     font-weight="regular"
-                  />
+                  >
+                    Apple
+                  </p>
                 </div>
-              </div>
-            </div>
-          </label>
-        </div>
-        <div
-          class="c8 c9"
-          display="flex"
-          width="100%"
-        >
-          <button
-            aria-controls="dropdown-7-actionlist"
-            aria-describedby=""
-            aria-disabled="false"
-            aria-expanded="true"
-            aria-haspopup="dialog"
-            aria-invalid="false"
-            aria-required="false"
-            class="c10"
-            id="dropdown-7-trigger-1-input-2"
-            placeholder="Select Option"
-            role="combobox"
-            type="button"
-            value=""
-          >
-            Select Option
-          </button>
-          <div
-            class="c11"
-            display="flex"
-          >
-            <div
-              class="c12"
-              display="flex"
-            >
-              <div
-                class="c13"
-                display="flex"
-              >
-                <svg
-                  aria-hidden="true"
-                  data-blade-component="icon"
-                  fill="none"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  width="16px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                    fill="hsla(217, 56%, 17%, 1)"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=" c14"
-        />
-      </div>
-      <div
-        class="c15"
-      >
-        <div
-          class="c16"
-          display="flex"
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    class="c0"
-  >
-    <div
-      class="c17 c18"
-      data-blade-component="dropdown-overlay"
-      display="block"
-      style="opacity: 1;"
-      width="100%"
-    >
-      <div
-        aria-labelledby="dropdown-7-label"
-        class=" c19"
-        data-blade-component="action-list"
-        elevation="5"
-        id="dropdown-7-actionlist"
-        role="dialog"
-      >
-        <div
-          class=" c20"
-          data-blade-component="action-list-header"
-        >
-          <div
-            class=""
-          >
-            <svg
-              aria-hidden="true"
-              data-blade-component="icon"
-              fill="none"
-              height="12px"
-              viewBox="0 0 24 24"
-              width="12px"
-            >
-              <path
-                clip-rule="evenodd"
-                d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
-                fill="hsla(216, 16%, 60%, 1)"
-                fill-rule="evenodd"
-              />
-            </svg>
-          </div>
-          <div
-            class="c21"
-          >
-            <p
-              class="c22 "
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="50"
-              font-style="italic"
-              font-weight="regular"
-            >
-              Recent Searches
-            </p>
-          </div>
-        </div>
-        <div
-          aria-multiselectable="false"
-          class=" c23"
-          role="listbox"
-        >
-          <button
-            aria-selected="false"
-            class=" c24"
-            data-blade-component="action-list-item"
-            data-index="0"
-            data-value="apple"
-            id="dropdown-7-0"
-            role="option"
-            tabindex="-1"
-            type="button"
-          >
-            <div
-              class="c25"
-              display="flex"
-            >
-              <div
-                class="c26"
-                display="flex"
-              />
-              <div
-                class="c27"
-              >
-                <p
-                  class="c7 c28"
-                  color="surface.text.normal.lowContrast"
-                  data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
-                >
-                  Apple
-                </p>
+                <div
+                  class="c29"
+                />
               </div>
               <div
-                class="c29"
+                class=""
               />
-            </div>
-            <div
-              class=""
-            />
-          </button>
-          <button
-            aria-selected="false"
-            class=" c24"
-            data-blade-component="action-list-item"
-            data-index="1"
-            data-value="mango"
-            id="dropdown-7-1"
-            role="option"
-            tabindex="-1"
-            type="button"
-          >
-            <div
-              class="c25"
-              display="flex"
-            >
-              <div
-                class="c26"
-                display="flex"
-              />
-              <div
-                class="c27"
-              >
-                <p
-                  class="c7 c28"
-                  color="surface.text.normal.lowContrast"
-                  data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
-                >
-                  Mango
-                </p>
-              </div>
-              <div
-                class="c29"
-              />
-            </div>
-            <div
-              class=""
-            />
-          </button>
-        </div>
-        <div
-          aria-label="Search Tips"
-          class=" c30"
-          data-blade-component="action-list-footer"
-          role="group"
-        >
-          <div
-            class=""
-          >
-            <svg
-              aria-hidden="true"
-              data-blade-component="icon"
-              fill="none"
-              height="12px"
-              viewBox="0 0 24 24"
-              width="12px"
-            >
-              <path
-                clip-rule="evenodd"
-                d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
-                fill="hsla(216, 16%, 60%, 1)"
-                fill-rule="evenodd"
-              />
-            </svg>
-          </div>
-          <div
-            class="c31"
-          >
-            <p
-              class="c22 "
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="50"
-              font-style="italic"
-              font-weight="regular"
-            >
-              Search Tips
-            </p>
-          </div>
-          <div
-            class="c32"
-            display="flex"
-          >
+            </button>
             <button
-              class="c33"
-              data-blade-component="button"
-              role="button"
+              aria-selected="false"
+              class=" c24"
+              data-blade-component="action-list-item"
+              data-index="1"
+              data-value="mango"
+              id="dropdown-7-1"
+              role="option"
+              tabindex="-1"
               type="button"
             >
               <div
-                class="c34 c35"
+                class="c25"
                 display="flex"
               >
                 <div
-                  class="c36"
-                  color="action.text.primary.default"
-                  font-size="100"
-                  font-weight="bold"
+                  class="c26"
+                  display="flex"
+                />
+                <div
+                  class="c27"
                 >
-                  Apply
+                  <p
+                    class="c7 c28"
+                    color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
+                    font-family="text"
+                    font-size="100"
+                    font-style="normal"
+                    font-weight="regular"
+                  >
+                    Mango
+                  </p>
                 </div>
+                <div
+                  class="c29"
+                />
               </div>
+              <div
+                class=""
+              />
             </button>
+          </div>
+          <div
+            aria-label="Search Tips"
+            class=" c30"
+            data-blade-component="action-list-footer"
+            role="group"
+          >
+            <div
+              class=""
+            >
+              <svg
+                aria-hidden="true"
+                data-blade-component="icon"
+                fill="none"
+                height="12px"
+                viewBox="0 0 24 24"
+                width="12px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+                  fill="hsla(216, 16%, 60%, 1)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <div
+              class="c31"
+            >
+              <p
+                class="c22 "
+                color="surface.text.subdued.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="50"
+                font-style="italic"
+                font-weight="regular"
+              >
+                Search Tips
+              </p>
+            </div>
+            <div
+              class="c32"
+              display="flex"
+            >
+              <button
+                class="c33"
+                data-blade-component="button"
+                role="button"
+                type="button"
+              >
+                <div
+                  class="c34 c35"
+                  display="flex"
+                >
+                  <div
+                    class="c36"
+                    color="action.text.primary.default"
+                    font-size="100"
+                    font-weight="bold"
+                  >
+                    Apply
+                  </div>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

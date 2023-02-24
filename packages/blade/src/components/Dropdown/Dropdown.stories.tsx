@@ -497,7 +497,7 @@ WithScrollbar.args = {
 };
 
 export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
-  const [dropdownValues, setDropdownValues] = React.useState('');
+  const [dropdownValues, setDropdownValues] = React.useState<Record<string, string[]>>({});
   const {
     selectionType,
     surfaceLevel,
@@ -510,13 +510,15 @@ export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
 
   return (
     <BaseBox minHeight="300px">
-      <Text>Selected Values: {dropdownValues}</Text>
+      <Text>Selected Values: {JSON.stringify(dropdownValues)}</Text>
       <BaseBox marginTop="spacing.5" />
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
-          onChange={({ values }) => {
-            setDropdownValues(values.join(', '));
+          onChange={({ name, values }) => {
+            if (name) {
+              setDropdownValues({ [name]: values });
+            }
           }}
           {...selectInputArgs}
         />
@@ -715,6 +717,54 @@ export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
 };
 
 WithRefUsage.args = {
+  selectionType: 'single',
+  label: 'Top 2 design systems',
+  name: 'design-system',
+};
+
+export const WithMultipleDropdowns = (args: AllDropdownProps): JSX.Element => {
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
+
+  return (
+    <BaseBox display="flex" flexDirection="row" minHeight="300px" gap="spacing.2">
+      <BaseBox flex={1}>
+        <Dropdown selectionType={selectionType}>
+          <SelectInput label="Top 2 design systems" {...selectInputArgs} />
+          <DropdownOverlay>
+            <ActionList surfaceLevel={surfaceLevel}>
+              <ActionListItem title={title} value={value} />
+              <ActionListItem title="Primer" value="primer" />
+              <ActionListItem title="Geist" description="by Vercel" value="geist" />
+              <ActionListItem title="Airbnb Design" value="airbnb" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </BaseBox>
+      <BaseBox flex={1}>
+        <Dropdown selectionType={selectionType}>
+          <SelectInput {...selectInputArgs} label="Top 2 Languages" />
+          <DropdownOverlay>
+            <ActionList surfaceLevel={surfaceLevel}>
+              <ActionListItem title="HTML" value="html" />
+              <ActionListItem title="CSS" value="css" />
+              <ActionListItem title="JavaScript" value="javascript" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+WithMultipleDropdowns.args = {
   selectionType: 'single',
   label: 'Top 2 design systems',
   name: 'design-system',
