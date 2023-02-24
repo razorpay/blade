@@ -1,19 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ArrowDownIcon /> should render ArrowDownIcon 1`] = `
+.c0 {
+  display: inline-block;
+  line-height: 0px;
+}
+
 <div>
-  <svg
-    aria-hidden="true"
-    data-blade-component="icon"
-    fill="none"
-    height="20px"
-    viewBox="0 0 24 24"
-    width="20px"
+  <div
+    class="c0"
+    display="inline-block"
   >
-    <path
-      d="M13 4a1 1 0 1 0-2 0v13.586l-4.293-4.293a1 1 0 0 0-1.414 1.414l6 6a1 1 0 0 0 1.414 0l6-6a1 1 0 0 0-1.414-1.414L13 17.586V4Z"
-      fill="hsla(216, 27%, 36%, 1)"
-    />
-  </svg>
+    <svg
+      aria-hidden="true"
+      data-blade-component="icon"
+      fill="none"
+      height="20px"
+      viewBox="0 0 24 24"
+      width="20px"
+    >
+      <path
+        d="M13 4a1 1 0 1 0-2 0v13.586l-4.293-4.293a1 1 0 0 0-1.414 1.414l6 6a1 1 0 0 0 1.414 0l6-6a1 1 0 0 0-1.414-1.414L13 17.586V4Z"
+        fill="hsla(216, 27%, 36%, 1)"
+      />
+    </svg>
+  </div>
 </div>
 `;

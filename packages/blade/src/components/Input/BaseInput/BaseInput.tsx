@@ -570,7 +570,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isReactNative = getPlatformType() === 'react-native';
     return (
       <BaseBox
-        {...metaAttribute(MetaConstants.Component, componentName!)}
+        {...metaAttribute(MetaConstants.Component, componentName)}
         {...getStyledProps(styledProps)}
       >
         <BaseBox

@@ -3,11 +3,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconProps } from '..';
 import useIconProps from '../useIconProps';
 
-const Attachment = ({ size, color }: IconProps): ReactElement => {
+const Attachment = ({ size, color, ...styledProps }: IconProps): ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M2 12C2 9.79086 3.79086 8 6 8H9C9.55229 8 10 7.55228 10 7C10 6.44772 9.55229 6 9 6H6C2.68629 6 0 8.68629 0 12C0 13.5913 0.632141 15.1174 1.75736 16.2426C2.88258 17.3679 4.4087 18 6 18H9C9.55229 18 10 17.5523 10 17C10 16.4477 9.55229 16 9 16H6C4.93913 16 3.92172 15.5786 3.17157 14.8284C2.42143 14.0783 2 13.0609 2 12Z"
         fill={iconColor}

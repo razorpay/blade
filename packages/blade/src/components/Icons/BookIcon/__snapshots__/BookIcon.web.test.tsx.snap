@@ -1,21 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BookIcon /> should render BookIcon 1`] = `
+.c0 {
+  display: inline-block;
+  line-height: 0px;
+}
+
 <div>
-  <svg
-    aria-hidden="true"
-    data-blade-component="icon"
-    fill="none"
-    height="20px"
-    viewBox="0 0 24 24"
-    width="20px"
+  <div
+    class="c0"
+    display="inline-block"
   >
-    <path
-      clip-rule="evenodd"
-      d="M21 2a1 1 0 0 0-1-1H6.5A3.5 3.5 0 0 0 3 4.5v15A3.5 3.5 0 0 0 6.5 23H20a1 1 0 0 0 1-1V2ZM5 4.5A1.5 1.5 0 0 1 6.5 3H19v13H6.5c-.537 0-1.045.12-1.5.337V4.5Zm0 15A1.5 1.5 0 0 0 6.5 21H19v-3H6.5A1.5 1.5 0 0 0 5 19.5Z"
-      fill="hsla(216, 27%, 36%, 1)"
-      fill-rule="evenodd"
-    />
-  </svg>
+    <svg
+      aria-hidden="true"
+      data-blade-component="icon"
+      fill="none"
+      height="20px"
+      viewBox="0 0 24 24"
+      width="20px"
+    >
+      <path
+        clip-rule="evenodd"
+        d="M21 2a1 1 0 0 0-1-1H6.5A3.5 3.5 0 0 0 3 4.5v15A3.5 3.5 0 0 0 6.5 23H20a1 1 0 0 0 1-1V2ZM5 4.5A1.5 1.5 0 0 1 6.5 3H19v13H6.5c-.537 0-1.045.12-1.5.337V4.5Zm0 15A1.5 1.5 0 0 0 6.5 21H19v-3H6.5A1.5 1.5 0 0 0 5 19.5Z"
+        fill="hsla(216, 27%, 36%, 1)"
+        fill-rule="evenodd"
+      />
+    </svg>
+  </div>
 </div>
 `;

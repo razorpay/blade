@@ -16,69 +16,77 @@ exports[`<Indicator /> should render 1`] = `
     ]
   }
 >
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="8"
-    bbWidth="8"
-    fill="none"
-    focusable={false}
-    height="8"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
+  <View
     style={
       Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 8,
-          "width": 8,
-        },
+        Object {},
       ]
     }
-    vbHeight={10}
-    vbWidth={10}
-    width="8"
   >
-    <RNSVGGroup
-      fill={null}
-      propList={
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      align="xMidYMid"
+      bbHeight="8px"
+      bbWidth="8px"
+      fill="none"
+      focusable={false}
+      height="8px"
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
         Array [
-          "fill",
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": 8,
+            "width": 8,
+          },
         ]
       }
+      vbHeight={10}
+      vbWidth={10}
+      width="8px"
     >
-      <RNSVGCircle
-        cx="5"
-        cy="5"
-        fill={4281484642}
+      <RNSVGGroup
+        fill={null}
         propList={
           Array [
             "fill",
           ]
         }
-        r="5"
-      />
-      <RNSVGCircle
-        cx="5"
-        cy="5"
-        propList={
-          Array [
-            "stroke",
-            "strokeWidth",
-          ]
-        }
-        r="4.75"
-        stroke={787279859}
-        strokeWidth="0.5"
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
+      >
+        <RNSVGCircle
+          cx="5"
+          cy="5"
+          fill={4281484642}
+          propList={
+            Array [
+              "fill",
+            ]
+          }
+          r="5"
+        />
+        <RNSVGCircle
+          cx="5"
+          cy="5"
+          propList={
+            Array [
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          r="4.75"
+          stroke={787279859}
+          strokeWidth="0.5"
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
   <View
     style={
       Array [
@@ -139,69 +147,77 @@ Array [
       ]
     }
   >
-    <RNSVGSvgView
-      accessibilityElementsHidden={true}
-      align="xMidYMid"
-      bbHeight="6"
-      bbWidth="6"
-      fill="none"
-      focusable={false}
-      height="6"
-      importantForAccessibility="no-hide-descendants"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
+    <View
       style={
         Array [
-          Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": 6,
-            "width": 6,
-          },
+          Object {},
         ]
       }
-      vbHeight={10}
-      vbWidth={10}
-      width="6"
     >
-      <RNSVGGroup
-        fill={null}
-        propList={
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        align="xMidYMid"
+        bbHeight="6px"
+        bbWidth="6px"
+        fill="none"
+        focusable={false}
+        height="6px"
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
           Array [
-            "fill",
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 6,
+              "width": 6,
+            },
           ]
         }
+        vbHeight={10}
+        vbWidth={10}
+        width="6px"
       >
-        <RNSVGCircle
-          cx="5"
-          cy="5"
-          fill={4290738691}
+        <RNSVGGroup
+          fill={null}
           propList={
             Array [
               "fill",
             ]
           }
-          r="5"
-        />
-        <RNSVGCircle
-          cx="5"
-          cy="5"
-          propList={
-            Array [
-              "stroke",
-              "strokeWidth",
-            ]
-          }
-          r="4.75"
-          stroke={787279859}
-          strokeWidth="0.5"
-        />
-      </RNSVGGroup>
-    </RNSVGSvgView>
+        >
+          <RNSVGCircle
+            cx="5"
+            cy="5"
+            fill={4290738691}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            r="5"
+          />
+          <RNSVGCircle
+            cx="5"
+            cy="5"
+            propList={
+              Array [
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            r="4.75"
+            stroke={787279859}
+            strokeWidth="0.5"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         Array [
@@ -258,69 +274,77 @@ Array [
       ]
     }
   >
-    <RNSVGSvgView
-      accessibilityElementsHidden={true}
-      align="xMidYMid"
-      bbHeight="8"
-      bbWidth="8"
-      fill="none"
-      focusable={false}
-      height="8"
-      importantForAccessibility="no-hide-descendants"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
+    <View
       style={
         Array [
-          Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": 8,
-            "width": 8,
-          },
+          Object {},
         ]
       }
-      vbHeight={10}
-      vbWidth={10}
-      width="8"
     >
-      <RNSVGGroup
-        fill={null}
-        propList={
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        align="xMidYMid"
+        bbHeight="8px"
+        bbWidth="8px"
+        fill="none"
+        focusable={false}
+        height="8px"
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
           Array [
-            "fill",
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 8,
+              "width": 8,
+            },
           ]
         }
+        vbHeight={10}
+        vbWidth={10}
+        width="8px"
       >
-        <RNSVGCircle
-          cx="5"
-          cy="5"
-          fill={4278224216}
+        <RNSVGGroup
+          fill={null}
           propList={
             Array [
               "fill",
             ]
           }
-          r="5"
-        />
-        <RNSVGCircle
-          cx="5"
-          cy="5"
-          propList={
-            Array [
-              "stroke",
-              "strokeWidth",
-            ]
-          }
-          r="4.75"
-          stroke={787279859}
-          strokeWidth="0.5"
-        />
-      </RNSVGGroup>
-    </RNSVGSvgView>
+        >
+          <RNSVGCircle
+            cx="5"
+            cy="5"
+            fill={4278224216}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            r="5"
+          />
+          <RNSVGCircle
+            cx="5"
+            cy="5"
+            propList={
+              Array [
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            r="4.75"
+            stroke={787279859}
+            strokeWidth="0.5"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         Array [
@@ -377,69 +401,77 @@ Array [
       ]
     }
   >
-    <RNSVGSvgView
-      accessibilityElementsHidden={true}
-      align="xMidYMid"
-      bbHeight="10"
-      bbWidth="10"
-      fill="none"
-      focusable={false}
-      height="10"
-      importantForAccessibility="no-hide-descendants"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
+    <View
       style={
         Array [
-          Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": 10,
-            "width": 10,
-          },
+          Object {},
         ]
       }
-      vbHeight={10}
-      vbWidth={10}
-      width="10"
     >
-      <RNSVGGroup
-        fill={null}
-        propList={
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        align="xMidYMid"
+        bbHeight="10px"
+        bbWidth="10px"
+        fill="none"
+        focusable={false}
+        height="10px"
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
           Array [
-            "fill",
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 10,
+              "width": 10,
+            },
           ]
         }
+        vbHeight={10}
+        vbWidth={10}
+        width="10px"
       >
-        <RNSVGCircle
-          cx="5"
-          cy="5"
-          fill={4291770400}
+        <RNSVGGroup
+          fill={null}
           propList={
             Array [
               "fill",
             ]
           }
-          r="5"
-        />
-        <RNSVGCircle
-          cx="5"
-          cy="5"
-          propList={
-            Array [
-              "stroke",
-              "strokeWidth",
-            ]
-          }
-          r="4.75"
-          stroke={787279859}
-          strokeWidth="0.5"
-        />
-      </RNSVGGroup>
-    </RNSVGSvgView>
+        >
+          <RNSVGCircle
+            cx="5"
+            cy="5"
+            fill={4291770400}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            r="5"
+          />
+          <RNSVGCircle
+            cx="5"
+            cy="5"
+            propList={
+              Array [
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            r="4.75"
+            stroke={787279859}
+            strokeWidth="0.5"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         Array [
@@ -496,69 +528,77 @@ Array [
       ]
     }
   >
-    <RNSVGSvgView
-      accessibilityElementsHidden={true}
-      align="xMidYMid"
-      bbHeight="8"
-      bbWidth="8"
-      fill="none"
-      focusable={false}
-      height="8"
-      importantForAccessibility="no-hide-descendants"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
+    <View
       style={
         Array [
-          Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": 8,
-            "width": 8,
-          },
+          Object {},
         ]
       }
-      vbHeight={10}
-      vbWidth={10}
-      width="8"
     >
-      <RNSVGGroup
-        fill={null}
-        propList={
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        align="xMidYMid"
+        bbHeight="8px"
+        bbWidth="8px"
+        fill="none"
+        focusable={false}
+        height="8px"
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
           Array [
-            "fill",
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 8,
+              "width": 8,
+            },
           ]
         }
+        vbHeight={10}
+        vbWidth={10}
+        width="8px"
       >
-        <RNSVGCircle
-          cx="5"
-          cy="5"
-          fill={4278226099}
+        <RNSVGGroup
+          fill={null}
           propList={
             Array [
               "fill",
             ]
           }
-          r="5"
-        />
-        <RNSVGCircle
-          cx="5"
-          cy="5"
-          propList={
-            Array [
-              "stroke",
-              "strokeWidth",
-            ]
-          }
-          r="4.75"
-          stroke={787279859}
-          strokeWidth="0.5"
-        />
-      </RNSVGGroup>
-    </RNSVGSvgView>
+        >
+          <RNSVGCircle
+            cx="5"
+            cy="5"
+            fill={4278226099}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            r="5"
+          />
+          <RNSVGCircle
+            cx="5"
+            cy="5"
+            propList={
+              Array [
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            r="4.75"
+            stroke={787279859}
+            strokeWidth="0.5"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         Array [

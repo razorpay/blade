@@ -1,23 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ClipPath /> should render html clipPath component 1`] = `
+.c0 {
+  display: inline-block;
+  line-height: 0px;
+}
+
 <div>
-  <svg
-    aria-hidden="true"
-    data-blade-component="icon"
-    fill="none"
-    height="40px"
-    viewBox="0 0 6 6"
-    width="40px"
+  <div
+    class="c0"
+    display="inline-block"
   >
-    <clippath
-      id="clip0"
+    <svg
+      aria-hidden="true"
+      data-blade-component="icon"
+      fill="none"
+      height="40px"
+      viewBox="0 0 6 6"
+      width="40px"
     >
-      <path
-        d="M2 2h2v2H2V2"
-        fill="#000"
-      />
-    </clippath>
-  </svg>
+      <clippath
+        id="clip0"
+      >
+        <path
+          d="M2 2h2v2H2V2"
+          fill="#000"
+        />
+      </clippath>
+    </svg>
+  </div>
 </div>
 `;

@@ -1,55 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BoxIcon /> should render BoxIcon 1`] = `
-<RNSVGSvgView
-  accessibilityElementsHidden={true}
-  align="xMidYMid"
-  bbHeight="20px"
-  bbWidth="20px"
-  fill="none"
-  focusable={false}
-  height="20px"
-  importantForAccessibility="no-hide-descendants"
-  meetOrSlice={0}
-  minX={0}
-  minY={0}
+<View
   style={
     Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderWidth": 0,
-      },
-      Object {
-        "flex": 0,
-        "height": 20,
-        "width": 20,
-      },
+      Object {},
     ]
   }
-  vbHeight={24}
-  vbWidth={24}
-  width="20px"
 >
-  <RNSVGGroup
-    fill={null}
-    propList={
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="20px"
+    bbWidth="20px"
+    fill="none"
+    focusable={false}
+    height="20px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
       Array [
-        "fill",
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Object {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
       ]
     }
+    vbHeight={24}
+    vbWidth={24}
+    width="20px"
   >
-    <RNSVGPath
-      clipRule={0}
-      d="M10.665 0.554375C11.5059 0.136497 12.494 0.136497 13.335 0.554375L13.3372 0.555476L21.335 4.55438L21.3364 4.55506C22.3551 5.06191 22.9994 6.10147 23 7.23938V16.7699C22.9994 17.9079 22.3549 18.9482 21.336 19.4549L21.335 19.4554L13.3375 23.4542C12.4924 23.8771 11.4975 23.8771 10.6525 23.4542L2.65277 19.4543L2.65001 19.4529C1.63264 18.9403 0.993506 17.8958 0.999988 16.7568V7.23992C0.999978 5.76032 1.97162 4.88819 2.55877 4.60249L10.665 0.554375ZM11.555 2.34544L4.23655 6.00015L12 9.88187L19.7589 6.0024L12.445 2.34544L12.4441 2.34499C12.1642 2.20627 11.8348 2.20666 11.555 2.34544ZM2.99999 16.7669V7.61794L11 11.6179V21.3919L3.54914 17.6665C3.21012 17.4952 2.99734 17.1467 2.99999 16.7669ZM13 21.3869L20.4428 17.6655L20.445 17.6644C20.7848 17.4955 20.9998 17.1488 21 16.7694V7.61794L13 11.6179V21.3869Z"
-      fill={4282603381}
-      fillRule={0}
+    <RNSVGGroup
+      fill={null}
       propList={
         Array [
           "fill",
-          "fillRule",
         ]
       }
-    />
-  </RNSVGGroup>
-</RNSVGSvgView>
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M10.665 0.554375C11.5059 0.136497 12.494 0.136497 13.335 0.554375L13.3372 0.555476L21.335 4.55438L21.3364 4.55506C22.3551 5.06191 22.9994 6.10147 23 7.23938V16.7699C22.9994 17.9079 22.3549 18.9482 21.336 19.4549L21.335 19.4554L13.3375 23.4542C12.4924 23.8771 11.4975 23.8771 10.6525 23.4542L2.65277 19.4543L2.65001 19.4529C1.63264 18.9403 0.993506 17.8958 0.999988 16.7568V7.23992C0.999978 5.76032 1.97162 4.88819 2.55877 4.60249L10.665 0.554375ZM11.555 2.34544L4.23655 6.00015L12 9.88187L19.7589 6.0024L12.445 2.34544L12.4441 2.34499C12.1642 2.20627 11.8348 2.20666 11.555 2.34544ZM2.99999 16.7669V7.61794L11 11.6179V21.3919L3.54914 17.6665C3.21012 17.4952 2.99734 17.1467 2.99999 16.7669ZM13 21.3869L20.4428 17.6655L20.445 17.6644C20.7848 17.4955 20.9998 17.1488 21 16.7694V7.61794L13 11.6179V21.3869Z"
+        fill={4282603381}
+        fillRule={0}
+        propList={
+          Array [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;

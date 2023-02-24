@@ -148,6 +148,7 @@ type VisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
     backgroundColor: BackgroundColorType;
+    lineHeight: SpacingValueType;
   } & Pick<CSSObject, 'transform'>
 >;
 

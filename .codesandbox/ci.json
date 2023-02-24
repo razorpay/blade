@@ -3,6 +3,5 @@
   "packages": ["packages/blade"],
   "//": "we don't want to build since post install and prepublish our build automatically runs",
   "buildCommand": false,
-  "//": "it's weird that the react sandbox name is 'new'😅",
-  "sandboxes": ["/examples/basic/"]
+  "sandboxes": ["/packages/examples/basic/"]
 }

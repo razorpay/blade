@@ -52,6 +52,7 @@ exports[`<Button /> should render button with default properties 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -59,7 +60,6 @@ exports[`<Button /> should render button with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -175,6 +175,7 @@ exports[`<Button /> should render button with full width 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -182,7 +183,6 @@ exports[`<Button /> should render button with full width 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -295,9 +295,10 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c5 {
+.c6 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -305,7 +306,6 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -351,6 +351,11 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   padding-right: 8px;
 }
 
+.c5 {
+  display: inline-block;
+  line-height: 0px;
+}
+
 .c3 {
   opacity: 1;
 }
@@ -375,24 +380,29 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           class="c4"
           display="flex"
         >
-          <svg
-            aria-hidden="true"
-            data-blade-component="icon"
-            fill="none"
-            height="16px"
-            viewBox="0 0 24 24"
-            width="16px"
+          <div
+            class="c5"
+            display="inline-block"
           >
-            <path
-              clip-rule="evenodd"
-              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-              fill="hsla(0, 0%, 100%, 1)"
-              fill-rule="evenodd"
-            />
-          </svg>
+            <svg
+              aria-hidden="true"
+              data-blade-component="icon"
+              fill="none"
+              height="16px"
+              viewBox="0 0 24 24"
+              width="16px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+                fill="hsla(0, 0%, 100%, 1)"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
         </div>
         <div
-          class="c5"
+          class="c6"
           color="action.text.primary.default"
           font-size="100"
           font-weight="bold"
@@ -457,6 +467,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -464,7 +475,6 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -510,6 +520,11 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   padding-left: 8px;
 }
 
+.c6 {
+  display: inline-block;
+  line-height: 0px;
+}
+
 .c3 {
   opacity: 1;
 }
@@ -542,21 +557,26 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           class="c5"
           display="flex"
         >
-          <svg
-            aria-hidden="true"
-            data-blade-component="icon"
-            fill="none"
-            height="16px"
-            viewBox="0 0 24 24"
-            width="16px"
+          <div
+            class="c6"
+            display="inline-block"
           >
-            <path
-              clip-rule="evenodd"
-              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-              fill="hsla(0, 0%, 100%, 1)"
-              fill-rule="evenodd"
-            />
-          </svg>
+            <svg
+              aria-hidden="true"
+              data-blade-component="icon"
+              fill="none"
+              height="16px"
+              viewBox="0 0 24 24"
+              width="16px"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+                fill="hsla(0, 0%, 100%, 1)"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </button>
@@ -616,6 +636,7 @@ exports[`<Button /> should render disabled button 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -623,7 +644,6 @@ exports[`<Button /> should render disabled button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -740,6 +760,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -747,7 +768,6 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -864,6 +884,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -871,7 +892,6 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -988,6 +1008,7 @@ exports[`<Button /> should render large size button 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -995,7 +1016,6 @@ exports[`<Button /> should render large size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
 }
 
@@ -1111,6 +1131,7 @@ exports[`<Button /> should render medium size button 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1118,7 +1139,6 @@ exports[`<Button /> should render medium size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -1234,6 +1254,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1241,7 +1262,6 @@ exports[`<Button /> should render secondary variant button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -1357,6 +1377,7 @@ exports[`<Button /> should render small size button 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1364,7 +1385,6 @@ exports[`<Button /> should render small size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
 }
 
@@ -1480,6 +1500,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,33%,29%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1487,7 +1508,6 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -1603,6 +1623,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
 .c4 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1610,7 +1631,6 @@ exports[`<Button /> should render xsmall size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
 }
 

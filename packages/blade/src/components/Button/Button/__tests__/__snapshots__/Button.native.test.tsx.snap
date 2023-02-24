@@ -372,57 +372,65 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
             Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
+              Object {},
             ]
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              clipRule={0}
-              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-              fill={4294967295}
-              fillRule={0}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
-                  "fillRule",
                 ]
               }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+                fill={4294967295}
+                fillRule={0}
+                propList={
+                  Array [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
       <Text
         color="action.text.primary.default"
@@ -601,57 +609,65 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
             Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
+              Object {},
             ]
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              clipRule={0}
-              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-              fill={4294967295}
-              fillRule={0}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
-                  "fillRule",
                 ]
               }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+                fill={4294967295}
+                fillRule={0}
+                propList={
+                  Array [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>

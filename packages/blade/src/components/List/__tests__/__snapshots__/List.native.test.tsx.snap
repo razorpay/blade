@@ -60,56 +60,64 @@ exports[`<List /> should render List with default properties 1`] = `
             ]
           }
         >
-          <RNSVGSvgView
-            accessibilityElementsHidden={true}
-            align="xMidYMid"
-            bbHeight="6px"
-            bbWidth="6px"
-            fill="none"
-            focusable={false}
-            height="6px"
-            importantForAccessibility="no-hide-descendants"
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
+          <View
             style={
               Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Object {
-                  "flex": 0,
-                  "height": 6,
-                  "width": 6,
-                },
+                Object {},
               ]
             }
-            vbHeight={6}
-            vbWidth={6}
-            width="6px"
           >
-            <RNSVGGroup
-              fill={null}
-              propList={
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="6px"
+              bbWidth="6px"
+              fill="none"
+              focusable={false}
+              height="6px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
                 Array [
-                  "fill",
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 6,
+                    "width": 6,
+                  },
                 ]
               }
+              vbHeight={6}
+              vbWidth={6}
+              width="6px"
             >
-              <RNSVGCircle
-                cx="3px"
-                cy="3px"
-                fill={4288851646}
+              <RNSVGGroup
+                fill={null}
                 propList={
                   Array [
                     "fill",
                   ]
                 }
-                r="3px"
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
+              >
+                <RNSVGCircle
+                  cx="3px"
+                  cy="3px"
+                  fill={4288851646}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  r="3px"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
         </View>
         <Text
           color="surface.text.normal.lowContrast"
@@ -200,56 +208,64 @@ exports[`<List /> should render List with default properties 1`] = `
                   ]
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="6px"
-                  bbWidth="6px"
-                  fill="none"
-                  focusable={false}
-                  height="6px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
                   style={
                     Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 6,
-                        "width": 6,
-                      },
+                      Object {},
                     ]
                   }
-                  vbHeight={6}
-                  vbWidth={6}
-                  width="6px"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="6px"
+                    bbWidth="6px"
+                    fill="none"
+                    focusable={false}
+                    height="6px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
                       Array [
-                        "fill",
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        Object {
+                          "flex": 0,
+                          "height": 6,
+                          "width": 6,
+                        },
                       ]
                     }
+                    vbHeight={6}
+                    vbWidth={6}
+                    width="6px"
                   >
-                    <RNSVGCircle
-                      cx="3px"
-                      cy="3px"
+                    <RNSVGGroup
+                      fill={null}
                       propList={
                         Array [
-                          "stroke",
+                          "fill",
                         ]
                       }
-                      r="2.5px"
-                      stroke={4288851646}
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <RNSVGCircle
+                        cx="3px"
+                        cy="3px"
+                        propList={
+                          Array [
+                            "stroke",
+                          ]
+                        }
+                        r="2.5px"
+                        stroke={4288851646}
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
               </View>
               <Text
                 color="surface.text.normal.lowContrast"
@@ -340,58 +356,66 @@ exports[`<List /> should render List with default properties 1`] = `
                         ]
                       }
                     >
-                      <RNSVGSvgView
-                        accessibilityElementsHidden={true}
-                        align="xMidYMid"
-                        bbHeight="6px"
-                        bbWidth="6px"
-                        fill="none"
-                        focusable={false}
-                        height="6px"
-                        importantForAccessibility="no-hide-descendants"
-                        meetOrSlice={0}
-                        minX={0}
-                        minY={0}
+                      <View
                         style={
                           Array [
-                            Object {
-                              "backgroundColor": "transparent",
-                              "borderWidth": 0,
-                            },
-                            Object {
-                              "flex": 0,
-                              "height": 6,
-                              "width": 6,
-                            },
+                            Object {},
                           ]
                         }
-                        vbHeight={6}
-                        vbWidth={6}
-                        width="6px"
                       >
-                        <RNSVGGroup
-                          fill={null}
-                          propList={
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="6px"
+                          bbWidth="6px"
+                          fill="none"
+                          focusable={false}
+                          height="6px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
                             Array [
-                              "fill",
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              Object {
+                                "flex": 0,
+                                "height": 6,
+                                "width": 6,
+                              },
                             ]
                           }
+                          vbHeight={6}
+                          vbWidth={6}
+                          width="6px"
                         >
-                          <RNSVGRect
-                            fill={4288851646}
-                            height="6px"
+                          <RNSVGGroup
+                            fill={null}
                             propList={
                               Array [
                                 "fill",
                               ]
                             }
-                            rx="1px"
-                            width="6px"
-                            x={0}
-                            y={0}
-                          />
-                        </RNSVGGroup>
-                      </RNSVGSvgView>
+                          >
+                            <RNSVGRect
+                              fill={4288851646}
+                              height="6px"
+                              propList={
+                                Array [
+                                  "fill",
+                                ]
+                              }
+                              rx="1px"
+                              width="6px"
+                              x={0}
+                              y={0}
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
                     </View>
                     <Text
                       color="surface.text.normal.lowContrast"
@@ -497,56 +521,64 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             ]
           }
         >
-          <RNSVGSvgView
-            accessibilityElementsHidden={true}
-            align="xMidYMid"
-            bbHeight="6px"
-            bbWidth="6px"
-            fill="none"
-            focusable={false}
-            height="6px"
-            importantForAccessibility="no-hide-descendants"
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
+          <View
             style={
               Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Object {
-                  "flex": 0,
-                  "height": 6,
-                  "width": 6,
-                },
+                Object {},
               ]
             }
-            vbHeight={6}
-            vbWidth={6}
-            width="6px"
           >
-            <RNSVGGroup
-              fill={null}
-              propList={
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="6px"
+              bbWidth="6px"
+              fill="none"
+              focusable={false}
+              height="6px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
                 Array [
-                  "fill",
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 6,
+                    "width": 6,
+                  },
                 ]
               }
+              vbHeight={6}
+              vbWidth={6}
+              width="6px"
             >
-              <RNSVGCircle
-                cx="3px"
-                cy="3px"
-                fill={4288851646}
+              <RNSVGGroup
+                fill={null}
                 propList={
                   Array [
                     "fill",
                   ]
                 }
-                r="3px"
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
+              >
+                <RNSVGCircle
+                  cx="3px"
+                  cy="3px"
+                  fill={4288851646}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  r="3px"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
         </View>
         <Text
           color="surface.text.normal.lowContrast"
@@ -668,56 +700,64 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             ]
           }
         >
-          <RNSVGSvgView
-            accessibilityElementsHidden={true}
-            align="xMidYMid"
-            bbHeight="6px"
-            bbWidth="6px"
-            fill="none"
-            focusable={false}
-            height="6px"
-            importantForAccessibility="no-hide-descendants"
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
+          <View
             style={
               Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Object {
-                  "flex": 0,
-                  "height": 6,
-                  "width": 6,
-                },
+                Object {},
               ]
             }
-            vbHeight={6}
-            vbWidth={6}
-            width="6px"
           >
-            <RNSVGGroup
-              fill={null}
-              propList={
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="6px"
+              bbWidth="6px"
+              fill="none"
+              focusable={false}
+              height="6px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
                 Array [
-                  "fill",
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 6,
+                    "width": 6,
+                  },
                 ]
               }
+              vbHeight={6}
+              vbWidth={6}
+              width="6px"
             >
-              <RNSVGCircle
-                cx="3px"
-                cy="3px"
-                fill={4288851646}
+              <RNSVGGroup
+                fill={null}
                 propList={
                   Array [
                     "fill",
                   ]
                 }
-                r="3px"
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
+              >
+                <RNSVGCircle
+                  cx="3px"
+                  cy="3px"
+                  fill={4288851646}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  r="3px"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
         </View>
         <Text
           color="surface.text.normal.lowContrast"
@@ -817,56 +857,64 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             ]
           }
         >
-          <RNSVGSvgView
-            accessibilityElementsHidden={true}
-            align="xMidYMid"
-            bbHeight="6px"
-            bbWidth="6px"
-            fill="none"
-            focusable={false}
-            height="6px"
-            importantForAccessibility="no-hide-descendants"
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
+          <View
             style={
               Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Object {
-                  "flex": 0,
-                  "height": 6,
-                  "width": 6,
-                },
+                Object {},
               ]
             }
-            vbHeight={6}
-            vbWidth={6}
-            width="6px"
           >
-            <RNSVGGroup
-              fill={null}
-              propList={
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="6px"
+              bbWidth="6px"
+              fill="none"
+              focusable={false}
+              height="6px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
                 Array [
-                  "fill",
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 6,
+                    "width": 6,
+                  },
                 ]
               }
+              vbHeight={6}
+              vbWidth={6}
+              width="6px"
             >
-              <RNSVGCircle
-                cx="3px"
-                cy="3px"
-                fill={4288851646}
+              <RNSVGGroup
+                fill={null}
                 propList={
                   Array [
                     "fill",
                   ]
                 }
-                r="3px"
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
+              >
+                <RNSVGCircle
+                  cx="3px"
+                  cy="3px"
+                  fill={4288851646}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  r="3px"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
         </View>
         <Text
           color="surface.text.normal.lowContrast"
@@ -1031,56 +1079,64 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             ]
           }
         >
-          <RNSVGSvgView
-            accessibilityElementsHidden={true}
-            align="xMidYMid"
-            bbHeight="6px"
-            bbWidth="6px"
-            fill="none"
-            focusable={false}
-            height="6px"
-            importantForAccessibility="no-hide-descendants"
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
+          <View
             style={
               Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Object {
-                  "flex": 0,
-                  "height": 6,
-                  "width": 6,
-                },
+                Object {},
               ]
             }
-            vbHeight={6}
-            vbWidth={6}
-            width="6px"
           >
-            <RNSVGGroup
-              fill={null}
-              propList={
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="6px"
+              bbWidth="6px"
+              fill="none"
+              focusable={false}
+              height="6px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
                 Array [
-                  "fill",
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 6,
+                    "width": 6,
+                  },
                 ]
               }
+              vbHeight={6}
+              vbWidth={6}
+              width="6px"
             >
-              <RNSVGCircle
-                cx="3px"
-                cy="3px"
-                fill={4288851646}
+              <RNSVGGroup
+                fill={null}
                 propList={
                   Array [
                     "fill",
                   ]
                 }
-                r="3px"
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
+              >
+                <RNSVGCircle
+                  cx="3px"
+                  cy="3px"
+                  fill={4288851646}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  r="3px"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
         </View>
         <Text
           color="surface.text.normal.lowContrast"
@@ -1312,56 +1368,64 @@ exports[`<List /> should render medium ordered List 1`] = `
                   ]
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="6px"
-                  bbWidth="6px"
-                  fill="none"
-                  focusable={false}
-                  height="6px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
                   style={
                     Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 6,
-                        "width": 6,
-                      },
+                      Object {},
                     ]
                   }
-                  vbHeight={6}
-                  vbWidth={6}
-                  width="6px"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="6px"
+                    bbWidth="6px"
+                    fill="none"
+                    focusable={false}
+                    height="6px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
                       Array [
-                        "fill",
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        Object {
+                          "flex": 0,
+                          "height": 6,
+                          "width": 6,
+                        },
                       ]
                     }
+                    vbHeight={6}
+                    vbWidth={6}
+                    width="6px"
                   >
-                    <RNSVGCircle
-                      cx="3px"
-                      cy="3px"
+                    <RNSVGGroup
+                      fill={null}
                       propList={
                         Array [
-                          "stroke",
+                          "fill",
                         ]
                       }
-                      r="2.5px"
-                      stroke={4288851646}
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <RNSVGCircle
+                        cx="3px"
+                        cy="3px"
+                        propList={
+                          Array [
+                            "stroke",
+                          ]
+                        }
+                        r="2.5px"
+                        stroke={4288851646}
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
               </View>
               <Text
                 color="surface.text.normal.lowContrast"
@@ -1452,58 +1516,66 @@ exports[`<List /> should render medium ordered List 1`] = `
                         ]
                       }
                     >
-                      <RNSVGSvgView
-                        accessibilityElementsHidden={true}
-                        align="xMidYMid"
-                        bbHeight="6px"
-                        bbWidth="6px"
-                        fill="none"
-                        focusable={false}
-                        height="6px"
-                        importantForAccessibility="no-hide-descendants"
-                        meetOrSlice={0}
-                        minX={0}
-                        minY={0}
+                      <View
                         style={
                           Array [
-                            Object {
-                              "backgroundColor": "transparent",
-                              "borderWidth": 0,
-                            },
-                            Object {
-                              "flex": 0,
-                              "height": 6,
-                              "width": 6,
-                            },
+                            Object {},
                           ]
                         }
-                        vbHeight={6}
-                        vbWidth={6}
-                        width="6px"
                       >
-                        <RNSVGGroup
-                          fill={null}
-                          propList={
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="6px"
+                          bbWidth="6px"
+                          fill="none"
+                          focusable={false}
+                          height="6px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
                             Array [
-                              "fill",
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              Object {
+                                "flex": 0,
+                                "height": 6,
+                                "width": 6,
+                              },
                             ]
                           }
+                          vbHeight={6}
+                          vbWidth={6}
+                          width="6px"
                         >
-                          <RNSVGRect
-                            fill={4288851646}
-                            height="6px"
+                          <RNSVGGroup
+                            fill={null}
                             propList={
                               Array [
                                 "fill",
                               ]
                             }
-                            rx="1px"
-                            width="6px"
-                            x={0}
-                            y={0}
-                          />
-                        </RNSVGGroup>
-                      </RNSVGSvgView>
+                          >
+                            <RNSVGRect
+                              fill={4288851646}
+                              height="6px"
+                              propList={
+                                Array [
+                                  "fill",
+                                ]
+                              }
+                              rx="1px"
+                              width="6px"
+                              x={0}
+                              y={0}
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
                     </View>
                     <Text
                       color="surface.text.normal.lowContrast"
@@ -1998,54 +2070,62 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             ]
           }
         >
-          <RNSVGSvgView
-            accessibilityElementsHidden={true}
-            align="xMidYMid"
-            bbHeight="16px"
-            bbWidth="16px"
-            fill="none"
-            focusable={false}
-            height="16px"
-            importantForAccessibility="no-hide-descendants"
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
+          <View
             style={
               Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Object {
-                  "flex": 0,
-                  "height": 16,
-                  "width": 16,
-                },
+                Object {},
               ]
             }
-            vbHeight={24}
-            vbWidth={24}
-            width="16px"
           >
-            <RNSVGGroup
-              fill={null}
-              propList={
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="16px"
+              bbWidth="16px"
+              fill="none"
+              focusable={false}
+              height="16px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
                 Array [
-                  "fill",
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 16,
+                    "width": 16,
+                  },
                 ]
               }
+              vbHeight={24}
+              vbWidth={24}
+              width="16px"
             >
-              <RNSVGPath
-                d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
-                fill={4284378759}
+              <RNSVGGroup
+                fill={null}
                 propList={
                   Array [
                     "fill",
                   ]
                 }
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
+              >
+                <RNSVGPath
+                  d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
+                  fill={4284378759}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
         </View>
         <Text
           color="surface.text.normal.lowContrast"
@@ -2136,54 +2216,62 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   ]
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="16px"
-                  bbWidth="16px"
-                  fill="none"
-                  focusable={false}
-                  height="16px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
                   style={
                     Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 16,
-                        "width": 16,
-                      },
+                      Object {},
                     ]
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="16px"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="16px"
+                    bbWidth="16px"
+                    fill="none"
+                    focusable={false}
+                    height="16px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
                       Array [
-                        "fill",
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        Object {
+                          "flex": 0,
+                          "height": 16,
+                          "width": 16,
+                        },
                       ]
                     }
+                    vbHeight={24}
+                    vbWidth={24}
+                    width="16px"
                   >
-                    <RNSVGPath
-                      d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
-                      fill={4284378759}
+                    <RNSVGGroup
+                      fill={null}
                       propList={
                         Array [
                           "fill",
                         ]
                       }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <RNSVGPath
+                        d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
+                        fill={4284378759}
+                        propList={
+                          Array [
+                            "fill",
+                          ]
+                        }
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
               </View>
               <Text
                 color="surface.text.normal.lowContrast"
@@ -2274,58 +2362,66 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         ]
                       }
                     >
-                      <RNSVGSvgView
-                        accessibilityElementsHidden={true}
-                        align="xMidYMid"
-                        bbHeight="6px"
-                        bbWidth="6px"
-                        fill="none"
-                        focusable={false}
-                        height="6px"
-                        importantForAccessibility="no-hide-descendants"
-                        meetOrSlice={0}
-                        minX={0}
-                        minY={0}
+                      <View
                         style={
                           Array [
-                            Object {
-                              "backgroundColor": "transparent",
-                              "borderWidth": 0,
-                            },
-                            Object {
-                              "flex": 0,
-                              "height": 6,
-                              "width": 6,
-                            },
+                            Object {},
                           ]
                         }
-                        vbHeight={6}
-                        vbWidth={6}
-                        width="6px"
                       >
-                        <RNSVGGroup
-                          fill={null}
-                          propList={
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="6px"
+                          bbWidth="6px"
+                          fill="none"
+                          focusable={false}
+                          height="6px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
                             Array [
-                              "fill",
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              Object {
+                                "flex": 0,
+                                "height": 6,
+                                "width": 6,
+                              },
                             ]
                           }
+                          vbHeight={6}
+                          vbWidth={6}
+                          width="6px"
                         >
-                          <RNSVGRect
-                            fill={4288851646}
-                            height="6px"
+                          <RNSVGGroup
+                            fill={null}
                             propList={
                               Array [
                                 "fill",
                               ]
                             }
-                            rx="1px"
-                            width="6px"
-                            x={0}
-                            y={0}
-                          />
-                        </RNSVGGroup>
-                      </RNSVGSvgView>
+                          >
+                            <RNSVGRect
+                              fill={4288851646}
+                              height="6px"
+                              propList={
+                                Array [
+                                  "fill",
+                                ]
+                              }
+                              rx="1px"
+                              width="6px"
+                              x={0}
+                              y={0}
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
                     </View>
                     <Text
                       color="surface.text.normal.lowContrast"
@@ -2563,56 +2659,64 @@ exports[`<List /> should render small ordered List 1`] = `
                   ]
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="5px"
-                  bbWidth="5px"
-                  fill="none"
-                  focusable={false}
-                  height="5px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
                   style={
                     Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 5,
-                        "width": 5,
-                      },
+                      Object {},
                     ]
                   }
-                  vbHeight={6}
-                  vbWidth={6}
-                  width="5px"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="5px"
+                    bbWidth="5px"
+                    fill="none"
+                    focusable={false}
+                    height="5px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
                       Array [
-                        "fill",
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        Object {
+                          "flex": 0,
+                          "height": 5,
+                          "width": 5,
+                        },
                       ]
                     }
+                    vbHeight={6}
+                    vbWidth={6}
+                    width="5px"
                   >
-                    <RNSVGCircle
-                      cx="3px"
-                      cy="3px"
+                    <RNSVGGroup
+                      fill={null}
                       propList={
                         Array [
-                          "stroke",
+                          "fill",
                         ]
                       }
-                      r="2.5px"
-                      stroke={4288851646}
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <RNSVGCircle
+                        cx="3px"
+                        cy="3px"
+                        propList={
+                          Array [
+                            "stroke",
+                          ]
+                        }
+                        r="2.5px"
+                        stroke={4288851646}
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
               </View>
               <Text
                 color="surface.text.normal.lowContrast"
@@ -2703,58 +2807,66 @@ exports[`<List /> should render small ordered List 1`] = `
                         ]
                       }
                     >
-                      <RNSVGSvgView
-                        accessibilityElementsHidden={true}
-                        align="xMidYMid"
-                        bbHeight="5px"
-                        bbWidth="5px"
-                        fill="none"
-                        focusable={false}
-                        height="5px"
-                        importantForAccessibility="no-hide-descendants"
-                        meetOrSlice={0}
-                        minX={0}
-                        minY={0}
+                      <View
                         style={
                           Array [
-                            Object {
-                              "backgroundColor": "transparent",
-                              "borderWidth": 0,
-                            },
-                            Object {
-                              "flex": 0,
-                              "height": 5,
-                              "width": 5,
-                            },
+                            Object {},
                           ]
                         }
-                        vbHeight={6}
-                        vbWidth={6}
-                        width="5px"
                       >
-                        <RNSVGGroup
-                          fill={null}
-                          propList={
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="5px"
+                          bbWidth="5px"
+                          fill="none"
+                          focusable={false}
+                          height="5px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
                             Array [
-                              "fill",
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              Object {
+                                "flex": 0,
+                                "height": 5,
+                                "width": 5,
+                              },
                             ]
                           }
+                          vbHeight={6}
+                          vbWidth={6}
+                          width="5px"
                         >
-                          <RNSVGRect
-                            fill={4288851646}
-                            height="5px"
+                          <RNSVGGroup
+                            fill={null}
                             propList={
                               Array [
                                 "fill",
                               ]
                             }
-                            rx="1px"
-                            width="5px"
-                            x={0}
-                            y={0}
-                          />
-                        </RNSVGGroup>
-                      </RNSVGSvgView>
+                          >
+                            <RNSVGRect
+                              fill={4288851646}
+                              height="5px"
+                              propList={
+                                Array [
+                                  "fill",
+                                ]
+                              }
+                              rx="1px"
+                              width="5px"
+                              x={0}
+                              y={0}
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
                     </View>
                     <Text
                       color="surface.text.normal.lowContrast"
@@ -3249,54 +3361,62 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             ]
           }
         >
-          <RNSVGSvgView
-            accessibilityElementsHidden={true}
-            align="xMidYMid"
-            bbHeight="12px"
-            bbWidth="12px"
-            fill="none"
-            focusable={false}
-            height="12px"
-            importantForAccessibility="no-hide-descendants"
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
+          <View
             style={
               Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Object {
-                  "flex": 0,
-                  "height": 12,
-                  "width": 12,
-                },
+                Object {},
               ]
             }
-            vbHeight={24}
-            vbWidth={24}
-            width="12px"
           >
-            <RNSVGGroup
-              fill={null}
-              propList={
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="12px"
+              bbWidth="12px"
+              fill="none"
+              focusable={false}
+              height="12px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
                 Array [
-                  "fill",
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 12,
+                    "width": 12,
+                  },
                 ]
               }
+              vbHeight={24}
+              vbWidth={24}
+              width="12px"
             >
-              <RNSVGPath
-                d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
-                fill={4284378759}
+              <RNSVGGroup
+                fill={null}
                 propList={
                   Array [
                     "fill",
                   ]
                 }
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
+              >
+                <RNSVGPath
+                  d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
+                  fill={4284378759}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
         </View>
         <Text
           color="surface.text.normal.lowContrast"
@@ -3387,54 +3507,62 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   ]
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="12px"
-                  bbWidth="12px"
-                  fill="none"
-                  focusable={false}
-                  height="12px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
                   style={
                     Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 12,
-                        "width": 12,
-                      },
+                      Object {},
                     ]
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="12px"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="12px"
+                    bbWidth="12px"
+                    fill="none"
+                    focusable={false}
+                    height="12px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
                       Array [
-                        "fill",
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        Object {
+                          "flex": 0,
+                          "height": 12,
+                          "width": 12,
+                        },
                       ]
                     }
+                    vbHeight={24}
+                    vbWidth={24}
+                    width="12px"
                   >
-                    <RNSVGPath
-                      d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
-                      fill={4284378759}
+                    <RNSVGGroup
+                      fill={null}
                       propList={
                         Array [
                           "fill",
                         ]
                       }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <RNSVGPath
+                        d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
+                        fill={4284378759}
+                        propList={
+                          Array [
+                            "fill",
+                          ]
+                        }
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
               </View>
               <Text
                 color="surface.text.normal.lowContrast"
@@ -3525,58 +3653,66 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         ]
                       }
                     >
-                      <RNSVGSvgView
-                        accessibilityElementsHidden={true}
-                        align="xMidYMid"
-                        bbHeight="5px"
-                        bbWidth="5px"
-                        fill="none"
-                        focusable={false}
-                        height="5px"
-                        importantForAccessibility="no-hide-descendants"
-                        meetOrSlice={0}
-                        minX={0}
-                        minY={0}
+                      <View
                         style={
                           Array [
-                            Object {
-                              "backgroundColor": "transparent",
-                              "borderWidth": 0,
-                            },
-                            Object {
-                              "flex": 0,
-                              "height": 5,
-                              "width": 5,
-                            },
+                            Object {},
                           ]
                         }
-                        vbHeight={6}
-                        vbWidth={6}
-                        width="5px"
                       >
-                        <RNSVGGroup
-                          fill={null}
-                          propList={
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="5px"
+                          bbWidth="5px"
+                          fill="none"
+                          focusable={false}
+                          height="5px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
                             Array [
-                              "fill",
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              Object {
+                                "flex": 0,
+                                "height": 5,
+                                "width": 5,
+                              },
                             ]
                           }
+                          vbHeight={6}
+                          vbWidth={6}
+                          width="5px"
                         >
-                          <RNSVGRect
-                            fill={4288851646}
-                            height="5px"
+                          <RNSVGGroup
+                            fill={null}
                             propList={
                               Array [
                                 "fill",
                               ]
                             }
-                            rx="1px"
-                            width="5px"
-                            x={0}
-                            y={0}
-                          />
-                        </RNSVGGroup>
-                      </RNSVGSvgView>
+                          >
+                            <RNSVGRect
+                              fill={4288851646}
+                              height="5px"
+                              propList={
+                                Array [
+                                  "fill",
+                                ]
+                              }
+                              rx="1px"
+                              width="5px"
+                              x={0}
+                              y={0}
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
                     </View>
                     <Text
                       color="surface.text.normal.lowContrast"
@@ -3682,56 +3818,64 @@ exports[`<List /> should render unordered List of small size 1`] = `
             ]
           }
         >
-          <RNSVGSvgView
-            accessibilityElementsHidden={true}
-            align="xMidYMid"
-            bbHeight="5px"
-            bbWidth="5px"
-            fill="none"
-            focusable={false}
-            height="5px"
-            importantForAccessibility="no-hide-descendants"
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
+          <View
             style={
               Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Object {
-                  "flex": 0,
-                  "height": 5,
-                  "width": 5,
-                },
+                Object {},
               ]
             }
-            vbHeight={6}
-            vbWidth={6}
-            width="5px"
           >
-            <RNSVGGroup
-              fill={null}
-              propList={
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="5px"
+              bbWidth="5px"
+              fill="none"
+              focusable={false}
+              height="5px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
                 Array [
-                  "fill",
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 5,
+                    "width": 5,
+                  },
                 ]
               }
+              vbHeight={6}
+              vbWidth={6}
+              width="5px"
             >
-              <RNSVGCircle
-                cx="3px"
-                cy="3px"
-                fill={4288851646}
+              <RNSVGGroup
+                fill={null}
                 propList={
                   Array [
                     "fill",
                   ]
                 }
-                r="3px"
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
+              >
+                <RNSVGCircle
+                  cx="3px"
+                  cy="3px"
+                  fill={4288851646}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  r="3px"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
         </View>
         <Text
           color="surface.text.normal.lowContrast"
@@ -3822,56 +3966,64 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   ]
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="5px"
-                  bbWidth="5px"
-                  fill="none"
-                  focusable={false}
-                  height="5px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
                   style={
                     Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 5,
-                        "width": 5,
-                      },
+                      Object {},
                     ]
                   }
-                  vbHeight={6}
-                  vbWidth={6}
-                  width="5px"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="5px"
+                    bbWidth="5px"
+                    fill="none"
+                    focusable={false}
+                    height="5px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
                       Array [
-                        "fill",
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        Object {
+                          "flex": 0,
+                          "height": 5,
+                          "width": 5,
+                        },
                       ]
                     }
+                    vbHeight={6}
+                    vbWidth={6}
+                    width="5px"
                   >
-                    <RNSVGCircle
-                      cx="3px"
-                      cy="3px"
+                    <RNSVGGroup
+                      fill={null}
                       propList={
                         Array [
-                          "stroke",
+                          "fill",
                         ]
                       }
-                      r="2.5px"
-                      stroke={4288851646}
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <RNSVGCircle
+                        cx="3px"
+                        cy="3px"
+                        propList={
+                          Array [
+                            "stroke",
+                          ]
+                        }
+                        r="2.5px"
+                        stroke={4288851646}
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
               </View>
               <Text
                 color="surface.text.normal.lowContrast"
@@ -3962,58 +4114,66 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         ]
                       }
                     >
-                      <RNSVGSvgView
-                        accessibilityElementsHidden={true}
-                        align="xMidYMid"
-                        bbHeight="5px"
-                        bbWidth="5px"
-                        fill="none"
-                        focusable={false}
-                        height="5px"
-                        importantForAccessibility="no-hide-descendants"
-                        meetOrSlice={0}
-                        minX={0}
-                        minY={0}
+                      <View
                         style={
                           Array [
-                            Object {
-                              "backgroundColor": "transparent",
-                              "borderWidth": 0,
-                            },
-                            Object {
-                              "flex": 0,
-                              "height": 5,
-                              "width": 5,
-                            },
+                            Object {},
                           ]
                         }
-                        vbHeight={6}
-                        vbWidth={6}
-                        width="5px"
                       >
-                        <RNSVGGroup
-                          fill={null}
-                          propList={
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="5px"
+                          bbWidth="5px"
+                          fill="none"
+                          focusable={false}
+                          height="5px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
                             Array [
-                              "fill",
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              Object {
+                                "flex": 0,
+                                "height": 5,
+                                "width": 5,
+                              },
                             ]
                           }
+                          vbHeight={6}
+                          vbWidth={6}
+                          width="5px"
                         >
-                          <RNSVGRect
-                            fill={4288851646}
-                            height="5px"
+                          <RNSVGGroup
+                            fill={null}
                             propList={
                               Array [
                                 "fill",
                               ]
                             }
-                            rx="1px"
-                            width="5px"
-                            x={0}
-                            y={0}
-                          />
-                        </RNSVGGroup>
-                      </RNSVGSvgView>
+                          >
+                            <RNSVGRect
+                              fill={4288851646}
+                              height="5px"
+                              propList={
+                                Array [
+                                  "fill",
+                                ]
+                              }
+                              rx="1px"
+                              width="5px"
+                              x={0}
+                              y={0}
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
                     </View>
                     <Text
                       color="surface.text.normal.lowContrast"

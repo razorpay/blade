@@ -1,52 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PaymentLinksIcon /> should render PaymentLinksIcon 1`] = `
-<RNSVGSvgView
-  accessibilityElementsHidden={true}
-  align="xMidYMid"
-  bbHeight="20px"
-  bbWidth="20px"
-  fill="none"
-  focusable={false}
-  height="20px"
-  importantForAccessibility="no-hide-descendants"
-  meetOrSlice={0}
-  minX={0}
-  minY={0}
+<View
   style={
     Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderWidth": 0,
-      },
-      Object {
-        "flex": 0,
-        "height": 20,
-        "width": 20,
-      },
+      Object {},
     ]
   }
-  vbHeight={24}
-  vbWidth={24}
-  width="20px"
 >
-  <RNSVGGroup
-    fill={null}
-    propList={
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="20px"
+    bbWidth="20px"
+    fill="none"
+    focusable={false}
+    height="20px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
       Array [
-        "fill",
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Object {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
       ]
     }
+    vbHeight={24}
+    vbWidth={24}
+    width="20px"
   >
-    <RNSVGPath
-      d="M3.9 12C3.9 10.29 5.29 8.9 7 8.9H11V7H7C4.24 7 2 9.24 2 12C2 14.76 4.24 17 7 17H11V15.1H7C5.29 15.1 3.9 13.71 3.9 12ZM8 13H16V11H8V13ZM17 7H13V8.9H17C18.71 8.9 20.1 10.29 20.1 12C20.1 13.71 18.71 15.1 17 15.1H13V17H17C19.76 17 22 14.76 22 12C22 9.24 19.76 7 17 7Z"
-      fill={4282603381}
+    <RNSVGGroup
+      fill={null}
       propList={
         Array [
           "fill",
         ]
       }
-    />
-  </RNSVGGroup>
-</RNSVGSvgView>
+    >
+      <RNSVGPath
+        d="M3.9 12C3.9 10.29 5.29 8.9 7 8.9H11V7H7C4.24 7 2 9.24 2 12C2 14.76 4.24 17 7 17H11V15.1H7C5.29 15.1 3.9 13.71 3.9 12ZM8 13H16V11H8V13ZM17 7H13V8.9H17C18.71 8.9 20.1 10.29 20.1 12C20.1 13.71 18.71 15.1 17 15.1H13V17H17C19.76 17 22 14.76 22 12C22 9.24 19.76 7 17 7Z"
+        fill={4282603381}
+        propList={
+          Array [
+            "fill",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;

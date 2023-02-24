@@ -4,6 +4,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 .c1 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: monospace;
   font-size: 0.75rem;
@@ -11,7 +12,6 @@ exports[`<Code /> should render Code with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
 .c0 {
@@ -43,6 +43,7 @@ exports[`<Code /> should render medium Code 1`] = `
 .c1 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: monospace;
   font-size: 0.875rem;
@@ -50,7 +51,6 @@ exports[`<Code /> should render medium Code 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
 .c0 {
@@ -82,6 +82,7 @@ exports[`<Code /> should render small Code 1`] = `
 .c1 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: monospace;
   font-size: 0.75rem;
@@ -89,7 +90,6 @@ exports[`<Code /> should render small Code 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
 .c0 {

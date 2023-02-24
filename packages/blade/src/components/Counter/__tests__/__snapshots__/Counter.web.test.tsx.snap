@@ -47,6 +47,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -54,7 +55,6 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -138,6 +138,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -145,7 +146,6 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -229,6 +229,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -236,7 +237,6 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -320,6 +320,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -327,7 +328,6 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -411,6 +411,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -418,7 +419,6 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -502,6 +502,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -509,7 +510,6 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -593,6 +593,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -600,7 +601,6 @@ exports[`<Counter /> should render large size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
 .c4 {
@@ -684,6 +684,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(193,100%,35%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -691,7 +692,6 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -775,6 +775,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -782,7 +783,6 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -866,6 +866,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -873,7 +874,6 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -957,6 +957,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(38,97%,38%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -964,7 +965,6 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -1048,6 +1048,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1055,7 +1056,6 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -1139,6 +1139,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1146,7 +1147,6 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -1230,6 +1230,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.625rem;
@@ -1237,7 +1238,6 @@ exports[`<Counter /> should render small size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {

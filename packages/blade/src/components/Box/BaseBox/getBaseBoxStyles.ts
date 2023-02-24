@@ -171,6 +171,7 @@ const getAllProps = (
     backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, size),
     borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, size),
     transform: getResponsiveValue(props.transform, size),
+    lineHeight: getSpacingValue(props.lineHeight, props.theme, size),
   };
 };
 

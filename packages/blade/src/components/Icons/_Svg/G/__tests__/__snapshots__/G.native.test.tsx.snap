@@ -1,56 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<G /> should render react-native-svg G component 1`] = `
-<RNSVGSvgView
-  accessibilityElementsHidden={true}
-  align="xMidYMid"
-  bbHeight="40px"
-  bbWidth="40px"
-  fill="none"
-  focusable={false}
-  height="40px"
-  importantForAccessibility="no-hide-descendants"
-  meetOrSlice={0}
-  minX={0}
-  minY={0}
+<View
   style={
     Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderWidth": 0,
-      },
-      Object {
-        "flex": 0,
-        "height": 40,
-        "width": 40,
-      },
+      Object {},
     ]
   }
-  vbHeight={6}
-  vbWidth={6}
-  width="40px"
 >
-  <RNSVGGroup
-    fill={null}
-    propList={
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="40px"
+    bbWidth="40px"
+    fill="none"
+    focusable={false}
+    height="40px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
       Array [
-        "fill",
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Object {
+          "flex": 0,
+          "height": 40,
+          "width": 40,
+        },
       ]
     }
+    vbHeight={6}
+    vbWidth={6}
+    width="40px"
   >
     <RNSVGGroup
-      clipPath="prefix__clip0"
+      fill={null}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
     >
-      <RNSVGPath
-        d="M2 2h2v2H2V2"
-        fill={4278190080}
-        propList={
-          Array [
-            "fill",
-          ]
-        }
-      />
+      <RNSVGGroup
+        clipPath="prefix__clip0"
+      >
+        <RNSVGPath
+          d="M2 2h2v2H2V2"
+          fill={4278190080}
+          propList={
+            Array [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
     </RNSVGGroup>
-  </RNSVGGroup>
-</RNSVGSvgView>
+  </RNSVGSvgView>
+</View>
 `;

@@ -25,7 +25,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   border-color: hsla(214,18%,69%,1);
 }
 
-.c10 {
+.c11 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
@@ -76,25 +76,31 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   align-items: center;
 }
 
-.c11 {
+.c10 {
+  display: inline-block;
+  line-height: 0px;
+}
+
+.c12 {
   margin-left: 4px;
 }
 
-.c13 {
+.c14 {
   margin-left: 24px;
 }
 
-.c14 {
+.c15 {
   margin-bottom: 0px;
 }
 
-.c15 {
+.c16 {
   margin-top: 4px;
 }
 
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -102,12 +108,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c5 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -115,12 +121,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
-.c12 {
+.c13 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -128,12 +134,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
-.c16 {
+.c17 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -141,7 +147,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   font-style: italic;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -295,36 +300,41 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                         class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="12px"
-                          viewBox="0 0 8 8"
-                          width="12px"
+                        <div
+                          class="c10"
+                          display="inline-block"
                         >
-                          <path
-                            clip-rule="evenodd"
-                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                            fill="hsla(220, 27%, 98%, 1)"
-                            fill-rule="evenodd"
-                            stroke="white"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0.5"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-blade-component="icon"
+                            fill="none"
+                            height="12px"
+                            viewBox="0 0 8 8"
+                            width="12px"
+                          >
+                            <path
+                              clip-rule="evenodd"
+                              d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                              fill="hsla(220, 27%, 98%, 1)"
+                              fill-rule="evenodd"
+                              stroke="white"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="0.5"
+                            />
+                          </svg>
+                        </div>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       color="surface.text.subtle.lowContrast"
                       font-family="text"
                       font-size="100"
@@ -334,7 +344,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     </div>
                   </div>
                   <div
-                    class="c13"
+                    class="c14"
                   />
                 </div>
               </label>
@@ -375,36 +385,41 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                         class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="12px"
-                          viewBox="0 0 8 8"
-                          width="12px"
+                        <div
+                          class="c10"
+                          display="inline-block"
                         >
-                          <path
-                            clip-rule="evenodd"
-                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                            fill="hsla(220, 27%, 98%, 1)"
-                            fill-rule="evenodd"
-                            stroke="white"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0.5"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-blade-component="icon"
+                            fill="none"
+                            height="12px"
+                            viewBox="0 0 8 8"
+                            width="12px"
+                          >
+                            <path
+                              clip-rule="evenodd"
+                              d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                              fill="hsla(220, 27%, 98%, 1)"
+                              fill-rule="evenodd"
+                              stroke="white"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="0.5"
+                            />
+                          </svg>
+                        </div>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       color="surface.text.subtle.lowContrast"
                       font-family="text"
                       font-size="100"
@@ -414,14 +429,14 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     </div>
                   </div>
                   <div
-                    class="c13"
+                    class="c14"
                   />
                 </div>
               </label>
             </div>
           </div>
           <div
-            class="c14"
+            class="c15"
           >
             <div
               class=""
@@ -455,36 +470,41 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                         class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="12px"
-                          viewBox="0 0 8 8"
-                          width="12px"
+                        <div
+                          class="c10"
+                          display="inline-block"
                         >
-                          <path
-                            clip-rule="evenodd"
-                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                            fill="hsla(220, 27%, 98%, 1)"
-                            fill-rule="evenodd"
-                            stroke="white"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0.5"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-blade-component="icon"
+                            fill="none"
+                            height="12px"
+                            viewBox="0 0 8 8"
+                            width="12px"
+                          >
+                            <path
+                              clip-rule="evenodd"
+                              d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                              fill="hsla(220, 27%, 98%, 1)"
+                              fill-rule="evenodd"
+                              stroke="white"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="0.5"
+                            />
+                          </svg>
+                        </div>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       color="surface.text.subtle.lowContrast"
                       font-family="text"
                       font-size="100"
@@ -494,7 +514,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     </div>
                   </div>
                   <div
-                    class="c13"
+                    class="c14"
                   />
                 </div>
               </label>
@@ -502,13 +522,13 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           </div>
         </div>
         <div
-          class="c15"
+          class="c16"
         >
           <span
             style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
           >
             <span
-              class="c16"
+              class="c17"
               color="surface.text.muted.lowContrast"
               font-family="text"
               font-size="50"
@@ -549,7 +569,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   border-color: hsla(214,18%,69%,1);
 }
 
-.c10 {
+.c11 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
@@ -600,21 +620,27 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   align-items: center;
 }
 
-.c11 {
+.c10 {
+  display: inline-block;
+  line-height: 0px;
+}
+
+.c12 {
   margin-left: 4px;
 }
 
-.c13 {
+.c14 {
   margin-left: 24px;
 }
 
-.c14 {
+.c15 {
   margin-bottom: 0px;
 }
 
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -622,12 +648,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c5 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -635,12 +661,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
-.c12 {
+.c13 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -648,7 +674,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
 .c4 {
@@ -802,36 +827,41 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="12px"
-                          viewBox="0 0 8 8"
-                          width="12px"
+                        <div
+                          class="c10"
+                          display="inline-block"
                         >
-                          <path
-                            clip-rule="evenodd"
-                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                            fill="hsla(220, 27%, 98%, 1)"
-                            fill-rule="evenodd"
-                            stroke="white"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0.5"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-blade-component="icon"
+                            fill="none"
+                            height="12px"
+                            viewBox="0 0 8 8"
+                            width="12px"
+                          >
+                            <path
+                              clip-rule="evenodd"
+                              d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                              fill="hsla(220, 27%, 98%, 1)"
+                              fill-rule="evenodd"
+                              stroke="white"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="0.5"
+                            />
+                          </svg>
+                        </div>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       color="surface.text.subtle.lowContrast"
                       font-family="text"
                       font-size="100"
@@ -841,7 +871,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     </div>
                   </div>
                   <div
-                    class="c13"
+                    class="c14"
                   />
                 </div>
               </label>
@@ -882,36 +912,41 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="12px"
-                          viewBox="0 0 8 8"
-                          width="12px"
+                        <div
+                          class="c10"
+                          display="inline-block"
                         >
-                          <path
-                            clip-rule="evenodd"
-                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                            fill="hsla(220, 27%, 98%, 1)"
-                            fill-rule="evenodd"
-                            stroke="white"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0.5"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-blade-component="icon"
+                            fill="none"
+                            height="12px"
+                            viewBox="0 0 8 8"
+                            width="12px"
+                          >
+                            <path
+                              clip-rule="evenodd"
+                              d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                              fill="hsla(220, 27%, 98%, 1)"
+                              fill-rule="evenodd"
+                              stroke="white"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="0.5"
+                            />
+                          </svg>
+                        </div>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       color="surface.text.subtle.lowContrast"
                       font-family="text"
                       font-size="100"
@@ -921,14 +956,14 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     </div>
                   </div>
                   <div
-                    class="c13"
+                    class="c14"
                   />
                 </div>
               </label>
             </div>
           </div>
           <div
-            class="c14"
+            class="c15"
           >
             <div
               class=""
@@ -962,36 +997,41 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="12px"
-                          viewBox="0 0 8 8"
-                          width="12px"
+                        <div
+                          class="c10"
+                          display="inline-block"
                         >
-                          <path
-                            clip-rule="evenodd"
-                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                            fill="hsla(220, 27%, 98%, 1)"
-                            fill-rule="evenodd"
-                            stroke="white"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="0.5"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-blade-component="icon"
+                            fill="none"
+                            height="12px"
+                            viewBox="0 0 8 8"
+                            width="12px"
+                          >
+                            <path
+                              clip-rule="evenodd"
+                              d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                              fill="hsla(220, 27%, 98%, 1)"
+                              fill-rule="evenodd"
+                              stroke="white"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="0.5"
+                            />
+                          </svg>
+                        </div>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       color="surface.text.subtle.lowContrast"
                       font-family="text"
                       font-size="100"
@@ -1001,7 +1041,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     </div>
                   </div>
                   <div
-                    class="c13"
+                    class="c14"
                   />
                 </div>
               </label>

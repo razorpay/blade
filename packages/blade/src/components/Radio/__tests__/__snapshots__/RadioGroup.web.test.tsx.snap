@@ -29,15 +29,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -100,9 +91,19 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   margin-top: 4px;
 }
 
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -110,12 +111,12 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c5 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -123,12 +124,12 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
 .c11 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -136,12 +137,12 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
 .c15 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -149,7 +150,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   font-style: italic;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c4 {
@@ -468,15 +468,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
   transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -535,9 +526,19 @@ exports[`<RadioGroup /> should render with label 1`] = `
   margin-bottom: 0px;
 }
 
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .c3 {
   padding: 0;
   margin: 0;
+  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -545,12 +546,12 @@ exports[`<RadioGroup /> should render with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
 }
 
 .c5 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -558,12 +559,12 @@ exports[`<RadioGroup /> should render with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
 .c11 {
   padding: 0;
   margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -571,7 +572,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
 }
 
 .c4 {

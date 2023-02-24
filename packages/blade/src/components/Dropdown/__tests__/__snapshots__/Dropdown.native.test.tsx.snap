@@ -1,7 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Dropdown /> should render dropdown 1`] = `
-Array [
+<View
+  position="relative"
+  style={
+    Array [
+      Object {
+        "position": "relative",
+      },
+    ]
+  }
+>
   <View
     position="relative"
     style={
@@ -313,57 +322,65 @@ Array [
                   }
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="16px"
-                  bbWidth="16px"
-                  fill="none"
-                  focusable={false}
-                  height="16px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
                   style={
                     Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 16,
-                        "width": 16,
-                      },
+                      Object {},
                     ]
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="16px"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="16px"
+                    bbWidth="16px"
+                    fill="none"
+                    focusable={false}
+                    height="16px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
                       Array [
-                        "fill",
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        Object {
+                          "flex": 0,
+                          "height": 16,
+                          "width": 16,
+                        },
                       ]
                     }
+                    vbHeight={24}
+                    vbWidth={24}
+                    width="16px"
                   >
-                    <RNSVGPath
-                      clipRule={0}
-                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                      fill={4279445060}
-                      fillRule={0}
+                    <RNSVGGroup
+                      fill={null}
                       propList={
                         Array [
                           "fill",
-                          "fillRule",
                         ]
                       }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <RNSVGPath
+                        clipRule={0}
+                        d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                        fill={4279445060}
+                        fillRule={0}
+                        propList={
+                          Array [
+                            "fill",
+                            "fillRule",
+                          ]
+                        }
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
               </View>
             </View>
           </View>
@@ -413,7 +430,7 @@ Array [
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     position="relative"
     style={
@@ -516,57 +533,65 @@ Array [
                 ]
               }
             >
-              <RNSVGSvgView
-                accessibilityElementsHidden={true}
-                align="xMidYMid"
-                bbHeight="12px"
-                bbWidth="12px"
-                fill="none"
-                focusable={false}
-                height="12px"
-                importantForAccessibility="no-hide-descendants"
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 12,
-                      "width": 12,
-                    },
+                    Object {},
                   ]
                 }
-                vbHeight={24}
-                vbWidth={24}
-                width="12px"
               >
-                <RNSVGGroup
-                  fill={null}
-                  propList={
+                <RNSVGSvgView
+                  accessibilityElementsHidden={true}
+                  align="xMidYMid"
+                  bbHeight="12px"
+                  bbWidth="12px"
+                  fill="none"
+                  focusable={false}
+                  height="12px"
+                  importantForAccessibility="no-hide-descendants"
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 12,
+                        "width": 12,
+                      },
                     ]
                   }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width="12px"
                 >
-                  <RNSVGPath
-                    clipRule={0}
-                    d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
-                    fill={4287207081}
-                    fillRule={0}
+                  <RNSVGGroup
+                    fill={null}
                     propList={
                       Array [
                         "fill",
-                        "fillRule",
                       ]
                     }
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
+                  >
+                    <RNSVGPath
+                      clipRule={0}
+                      d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
+                      fill={4287207081}
+                      fillRule={0}
+                      propList={
+                        Array [
+                          "fill",
+                          "fillRule",
+                        ]
+                      }
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
             </View>
             <View
               style={
@@ -912,57 +937,65 @@ Array [
                 ]
               }
             >
-              <RNSVGSvgView
-                accessibilityElementsHidden={true}
-                align="xMidYMid"
-                bbHeight="12px"
-                bbWidth="12px"
-                fill="none"
-                focusable={false}
-                height="12px"
-                importantForAccessibility="no-hide-descendants"
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 12,
-                      "width": 12,
-                    },
+                    Object {},
                   ]
                 }
-                vbHeight={24}
-                vbWidth={24}
-                width="12px"
               >
-                <RNSVGGroup
-                  fill={null}
-                  propList={
+                <RNSVGSvgView
+                  accessibilityElementsHidden={true}
+                  align="xMidYMid"
+                  bbHeight="12px"
+                  bbWidth="12px"
+                  fill="none"
+                  focusable={false}
+                  height="12px"
+                  importantForAccessibility="no-hide-descendants"
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 12,
+                        "width": 12,
+                      },
                     ]
                   }
+                  vbHeight={24}
+                  vbWidth={24}
+                  width="12px"
                 >
-                  <RNSVGPath
-                    clipRule={0}
-                    d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
-                    fill={4287207081}
-                    fillRule={0}
+                  <RNSVGGroup
+                    fill={null}
                     propList={
                       Array [
                         "fill",
-                        "fillRule",
                       ]
                     }
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
+                  >
+                    <RNSVGPath
+                      clipRule={0}
+                      d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+                      fill={4287207081}
+                      fillRule={0}
+                      propList={
+                        Array [
+                          "fill",
+                          "fillRule",
+                        ]
+                      }
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
             </View>
             <View
               style={
@@ -1156,6 +1189,6 @@ Array [
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

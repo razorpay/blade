@@ -1,22 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Circle /> should render html circle component 1`] = `
+.c0 {
+  display: inline-block;
+  line-height: 0px;
+}
+
 <div>
-  <svg
-    aria-hidden="true"
-    data-blade-component="icon"
-    height="110"
-    viewBox="0 0 100 100"
-    width="400"
+  <div
+    class="c0"
+    display="inline-block"
   >
-    <circle
-      cx="200"
-      cy="100"
-      r="4"
-      stroke-width="1"
-      x="10"
-      y="10"
-    />
-  </svg>
+    <svg
+      aria-hidden="true"
+      data-blade-component="icon"
+      height="110px"
+      viewBox="0 0 100 100"
+      width="400px"
+    >
+      <circle
+        cx="200"
+        cy="100"
+        r="4"
+        stroke-width="1"
+        x="10"
+        y="10"
+      />
+    </svg>
+  </div>
 </div>
 `;
