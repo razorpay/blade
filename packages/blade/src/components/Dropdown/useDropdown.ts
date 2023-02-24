@@ -232,6 +232,11 @@ const useDropdown = (): UseDropdownReturnValue => {
       setActiveIndex(-1);
     }
 
+    if (bottomSheetContext?.hasBottomSheet) {
+      setShouldIgnoreBlur(true);
+      return;
+    }
+
     if (shouldIgnoreBlur) {
       setShouldIgnoreBlur(false);
       return;
