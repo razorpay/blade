@@ -145,7 +145,7 @@ type Action = {
 };
 ```
 
-## Composition with DropDown
+## Composition with Dropdown
 
 We will export `BottomSheet` component separately as an independant component but generally the pattern will be to use it with SelectInput, where in mobile devices the Select's dropdown will be replaced by the BottomSheet.
 
@@ -179,54 +179,62 @@ Considering the bundle size downside to approach 1, we decided to go ahead with 
 ### Composition Example
 
 ```jsx
+import { Spinner, useTheme, useBreakpoint } from "@razorpay/blade";
+
 const BottomSheet = React.lazy();
 const DropdownOverlay = React.lazy();
 
+const App = () => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isMobile = matchedDeviceType === 'mobile';
+
+  return (
+    <Dropdown selectionType={selectionType}>
+      <SelectInput label="Select Action" />
+      {/* We can either put a fallback spinner or show skeleton loaders */}
+      <React.Suspense fallback={<Spinner />}>
+        {isMobile ? (
+          <BottomSheet>
+            <BottomSheetHeader>
+              <BottomSheetHeaderLeading title="Payments Links" prefix={PayIcon} />
+            </BottomSheetHeader>
+            <BottomSheetBody>
+              <SelectContent />
+            </BottomSheetBody>
+            <BottomSheet>
+              <BottomSheetLeading title="Footer Title" prefix={icon} />
+              <BottomSheetTrailing
+                actions={{
+                  primaryAction: { text: 'Confirm' },
+                  secondaryAction: { text: 'Close' },
+                }}
+              />
+            </BottomSheet>
+          </BottomSheet>
+        ) : (
+          <DropdownOverlay>
+            <SelectContent />
+          </DropdownOverlay>
+        )}
+      </React.Suspense>
+    </Dropdown>
+  );
+};
+
 const SelectContent = () => {
   return (
-    <>
+    <ActionList>
       <ActionListItem
         leading={<ActionListItemIcon icon={SettingsIcon} />}
         title="Settings"
         value="settings"
       />
       <ActionListItem leading={<ActionListItemIcon icon={InfoIcon} />} title="Info" value="info" />
-    </>
+    </ActionList>
   );
 };
 
-const App = () => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <Dropdown selectionType={selectionType}>
-      <SelectInput label="Select Action" />
-      {isMobile ? (
-        <BottomSheet>
-          <BottomSheetHeader>
-            <BottomSheetHeaderLeading title="Payments Links" prefix={PayIcon} />
-          </BottomSheetHeader>
-          <BottomSheetBody>
-            <SelectContent />
-          </BottomSheetBody>
-          <BottomSheet>
-            <BottomSheetLeading title="Footer Title" prefix={icon} />
-            <BottomSheetTrailing
-              actions={{
-                primaryAction: { text: 'Confirm' },
-                secondaryAction: { text: 'Close' },
-              }}
-            />
-          </BottomSheet>
-        </BottomSheet>
-      ) : (
-        <DropdownOverlay>
-          <SelectContent />
-        </DropdownOverlay>
-      )}
-    </Dropdown>
-  );
-};
 ```
 
 **Q.** Why can't we lazy load from blade side? 
