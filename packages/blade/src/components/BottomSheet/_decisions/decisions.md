@@ -28,6 +28,9 @@ This document outlines the API of `BottomSheet` component.
 
 ## Anatomy
 
+<img src="./bottomsheet-anatomy.png" alt="BottomSheet Anatomy" width="100%" />
+
+
 Components:
 
 - BottomSheet
