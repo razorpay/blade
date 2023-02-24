@@ -25,4 +25,31 @@ type DotNotationMotionStringToken<TokenType> = {
 
 type DotNotationSpacingStringToken = `spacing.${keyof Spacing}`;
 
-export { DotNotationColorStringToken, DotNotationMotionStringToken, DotNotationSpacingStringToken };
+/**
+ * Use this when you want children to be string.
+ *
+ * This covers scenarios like
+ * ```jsx
+ * <Title>Hi</Title>
+ * <Title>{dynamicVariable} something</Title>
+ * ```
+ *
+ *
+ * ### Usage
+ *
+ * ```ts
+ * import type { StringChildrenType } from '~helpers/types';
+ *
+ * type MyProps = {
+ *  children: StringChildrenType;
+ * }
+ * ```
+ */
+type StringChildrenType = string | string[];
+
+export {
+  DotNotationColorStringToken,
+  DotNotationMotionStringToken,
+  DotNotationSpacingStringToken,
+  StringChildrenType,
+};

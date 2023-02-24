@@ -8,13 +8,15 @@ import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils';
+import type { StringChildrenType } from '~src/_helpers/types';
+import { getStringChildrenFromArray } from '~src/utils/getStringChildren';
 
 type BadgeProps = {
   /**
    * Sets the label for the badge.
    *
    */
-  children: string;
+  children: StringChildrenType;
   /**
    * Sets the variant of the badge.
    *
@@ -90,7 +92,8 @@ const Badge = ({
   size = 'medium',
   variant = 'neutral',
 }: BadgeProps): ReactElement => {
-  if (!children?.trim()) {
+  const childrenString = getStringChildrenFromArray(children);
+  if (!childrenString?.trim()) {
     throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }
   const { backgroundColor, iconColor, textColor } = getColorProps({

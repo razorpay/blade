@@ -5,6 +5,7 @@ import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
 import type { Theme } from '~components/BladeProvider';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
@@ -12,7 +13,7 @@ type HeadingSize = 'small' | 'medium' | 'large';
 type HeadingCommonProps = {
   type?: TextTypes;
   contrast?: ColorContrastTypes;
-  children: string;
+  children: StringChildrenType;
 };
 
 type HeadingNormalVariant = HeadingCommonProps & {
