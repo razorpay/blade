@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { Spacing } from '~tokens/global';
 import type { EasingFunctionFactory } from '~tokens/global/motion';
 
@@ -45,7 +46,7 @@ type DotNotationSpacingStringToken = `spacing.${keyof Spacing}`;
  * }
  * ```
  */
-type StringChildrenType = string | string[];
+type StringChildrenType = React.ReactText | React.ReactText[];
 
 export {
   DotNotationColorStringToken,

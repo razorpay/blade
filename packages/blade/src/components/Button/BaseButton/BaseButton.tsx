@@ -39,7 +39,7 @@ import type { DotNotationSpacingStringToken, StringChildrenType } from '~src/_he
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
-import { getStringChildrenFromArray } from '~src/utils/getStringChildren';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -294,7 +294,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   },
   ref,
 ) => {
-  const childrenString = getStringChildrenFromArray(children);
+  const childrenString = getStringFromReactText(children);
   const buttonRef = useBladeInnerRef(ref);
   const disabled = isLoading || isDisabled;
   const { theme } = useTheme();

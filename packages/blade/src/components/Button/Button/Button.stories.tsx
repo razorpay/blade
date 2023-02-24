@@ -93,6 +93,8 @@ const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({
   return <ButtonComponent {...args}>{children}</ButtonComponent>;
 };
 
+const count = 1;
+
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
 const ButtonWithSizeTemplate: ComponentStory<typeof ButtonComponent> = ({
   children = 'Button',

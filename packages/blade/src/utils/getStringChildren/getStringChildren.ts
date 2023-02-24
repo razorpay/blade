@@ -1,13 +1,17 @@
 import type { StringChildrenType } from '~src/_helpers/types';
 
-const getStringChildrenFromArray = (
-  childrenArray: StringChildrenType | undefined,
+const getStringFromReactText = (
+  childReactText: StringChildrenType | undefined,
 ): string | undefined => {
-  if (Array.isArray(childrenArray)) {
-    return childrenArray.join('');
+  if (!childReactText) {
+    return undefined;
   }
 
-  return childrenArray;
+  if (Array.isArray(childReactText)) {
+    return childReactText.join('');
+  }
+
+  return String(childReactText);
 };
 
-export { getStringChildrenFromArray };
+export { getStringFromReactText };

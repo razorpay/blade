@@ -5,7 +5,7 @@ import BaseBox from '~components/Box/BaseBox';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
-import { getStringChildrenFromArray } from '~src/utils/getStringChildren';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StringChildrenType } from '~src/_helpers/types';
 
 import type { Feedback } from '~tokens/theme/theme';
@@ -65,7 +65,7 @@ const Indicator = ({
   intent = 'neutral',
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
-  const childrenString = getStringChildrenFromArray(children);
+  const childrenString = getStringFromReactText(children);
 
   const fillColor = theme.colors.feedback.background[intent].highContrast;
   const strokeColor = theme.colors.brand.gray.a100.highContrast;

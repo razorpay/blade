@@ -9,7 +9,7 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils';
 import type { StringChildrenType } from '~src/_helpers/types';
-import { getStringChildrenFromArray } from '~src/utils/getStringChildren';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
 
 type BadgeProps = {
   /**
@@ -92,7 +92,7 @@ const Badge = ({
   size = 'medium',
   variant = 'neutral',
 }: BadgeProps): ReactElement => {
-  const childrenString = getStringChildrenFromArray(children);
+  const childrenString = getStringFromReactText(children);
   if (!childrenString?.trim()) {
     throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }

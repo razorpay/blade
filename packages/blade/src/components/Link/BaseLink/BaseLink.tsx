@@ -15,7 +15,7 @@ import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import { getStringChildrenFromArray } from '~src/utils/getStringChildren';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -214,7 +214,7 @@ const BaseLink = ({
   size = 'medium',
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
-  const childrenString = getStringChildrenFromArray(children);
+  const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
   if (!Icon && !childrenString?.trim()) {
