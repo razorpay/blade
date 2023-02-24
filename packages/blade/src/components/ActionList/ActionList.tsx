@@ -6,6 +6,7 @@ import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 
 type ActionListProps = {
   children: React.ReactNode[];
@@ -71,6 +72,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
   } = useDropdown();
 
   const { theme } = useTheme();
+  const { isInBottomSheet } = useBottomSheetContext();
 
   const {
     childrenWithId,
@@ -99,6 +101,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
 
   return (
     <StyledActionList
+      isInBottomSheet={isInBottomSheet}
       surfaceLevel={surfaceLevel}
       elevation={theme.shadows.androidElevation.level[2]}
       id={`${dropdownBaseId}-actionlist`}
@@ -111,6 +114,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     >
       {actionListHeaderChild}
       <StyledListBoxWrapper
+        isInBottomSheet={isInBottomSheet}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={actionListItemRef as any}
         {...makeAccessible({

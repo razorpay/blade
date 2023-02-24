@@ -103,7 +103,10 @@ const _SelectInput = (
         leadingIcon={icon}
         hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
         isPopupExpanded={isOpen}
-        onClick={onTriggerClick}
+        onClick={(e) => {
+          onTriggerClick();
+          props?.onClick?.(e);
+        }}
         onKeyDown={onTriggerKeydown}
         onBlur={onTriggerBlur}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}

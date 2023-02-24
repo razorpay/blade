@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
@@ -10,7 +11,8 @@ import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
-import { BottomSheetContext } from './BottomSheetContext';
+import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
+import { ComponentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSpace } from '~utils';
 
@@ -76,8 +78,9 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
     const [headerHeight, setHeaderHeight] = React.useState(0);
     const [footerHeight, setFooterHeight] = React.useState(0);
 
+    const dropdownBottomSheetProps = useDropdownBottomSheetContext();
     const [posY, _setPosY] = React.useState(0);
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = React.useState(dropdownBottomSheetProps?.isOpen || false);
     const [isDragging, setIsDragging] = React.useState(false);
 
     const preventScrollingRef = React.useRef(true);
@@ -133,6 +136,21 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       },
       [close, open],
     );
+
+    React.useEffect(() => {
+      if (!dropdownBottomSheetProps) return;
+
+      // this will let the Dropdown component know that it's rendering a bottomsheet
+      dropdownBottomSheetProps.setHasBottomSheet(true);
+
+      if (dropdownBottomSheetProps.isOpen) {
+        open();
+      }
+
+      if (!dropdownBottomSheetProps.isOpen && dropdownBottomSheetProps.selectionType === 'single') {
+        close();
+      }
+    }, [close, open, dropdownBottomSheetProps]);
 
     /*
       1. The content should not be scrollable on lower or middle snapPoints
@@ -268,6 +286,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
 
     const contextValue = React.useMemo(
       () => ({
+        isInBottomSheet: true,
         isOpen,
         close,
         posY,
@@ -320,5 +339,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
     );
   },
 );
+
+(BottomSheet as any).componentId = ComponentIds.BottomSheet;
 
 export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetProps };

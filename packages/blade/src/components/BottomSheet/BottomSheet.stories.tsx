@@ -23,9 +23,16 @@ import {
   SettingsIcon,
   UserIcon,
 } from '~components/Icons';
-import { ActionListItem, ActionListItemIcon, ActionListSection } from '~components/ActionList';
+import {
+  ActionList,
+  ActionListItem,
+  ActionListItemIcon,
+  ActionListSection,
+} from '~components/ActionList';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { SelectInput } from '~components/Input/SelectInput';
 
 export default {
   title: 'Components/BottomSheet',
@@ -199,3 +206,85 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
 export const Default = BottomSheetTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
+
+const SelectContent = (): React.ReactElement => {
+  return (
+    <ActionList>
+      <ActionListItem
+        leading={<ActionListItemIcon icon={SettingsIcon} />}
+        title="Settings"
+        value="settings"
+      />
+      <ActionListItem leading={<ActionListItemIcon icon={ClockIcon} />} title="Info" value="info" />
+      <ActionListItem
+        leading={<ActionListItemIcon icon={ClockIcon} />}
+        title="Price"
+        value="Price"
+      />
+      <ActionListItem
+        leading={<ActionListItemIcon icon={ClockIcon} />}
+        title="Contact"
+        value="Contact"
+      />
+      <ActionListItem leading={<ActionListItemIcon icon={ClockIcon} />} title="Nice" value="Nice" />
+      <ActionListItem leading={<ActionListItemIcon icon={ClockIcon} />} title="Call" value="Call" />
+    </ActionList>
+  );
+};
+
+const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent> = ({
+  ...args
+}) => {
+  // const sheet = React.useRef<any>();
+  const isMobile = true;
+
+  return (
+    <BaseBox>
+      <Dropdown selectionType="single">
+        <SelectInput
+          label="Select Action"
+          // onChange={() => {
+          //   sheet?.current?.close?.();
+          // }}
+          // onClick={() => {
+          //   sheet?.current?.open?.();
+          //   console.log(sheet);
+          // }}
+        />
+        {isMobile ? (
+          <BottomSheetComponent {...args}>
+            <BottomSheetHeader>
+              <BottomSheetHeaderLeading
+                title="Select Account"
+                prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              />
+              <BottomSheetHeaderTrailing
+                visual={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              />
+            </BottomSheetHeader>
+            <BottomSheetBody>
+              <SelectContent />
+            </BottomSheetBody>
+            <BottomSheetFooter>
+              <BottomSheetFooterLeading title="Footer Title" />
+              <BottomSheetFooterTrailing
+                actions={{
+                  primary: { text: 'Confirm' },
+                  secondary: { text: 'Close' },
+                }}
+              />
+            </BottomSheetFooter>
+          </BottomSheetComponent>
+        ) : (
+          <DropdownOverlay>
+            <SelectContent />
+          </DropdownOverlay>
+        )}
+      </Dropdown>
+    </BaseBox>
+  );
+};
+
+export const WithSelect = BottomSheetWithSelectTemplate.bind({});
+// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
+WithSelect.storyName = 'WithSelect';

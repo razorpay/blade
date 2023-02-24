@@ -17,6 +17,7 @@ import type {
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
+import { useDropdownBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -166,6 +167,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     selectionType,
     ...rest
   } = React.useContext(DropdownContext);
+  const bottomSheetContext = useDropdownBottomSheetContext();
 
   type SelectOptionType = (
     index: number,
@@ -239,7 +241,9 @@ const useDropdown = (): UseDropdownReturnValue => {
       if (selectionType !== 'multiple') {
         selectOption(activeIndex);
       }
-      setIsOpen(false);
+      if (!bottomSheetContext?.hasBottomSheet) {
+        setIsOpen(false);
+      }
     }
   };
 
@@ -316,6 +320,11 @@ const useDropdown = (): UseDropdownReturnValue => {
   const onTriggerKeydown = (e: { event: React.KeyboardEvent<HTMLInputElement> }): void => {
     if (e.event.key === 'Tab' && rest.hasFooterAction) {
       // When footer has Action Buttons, we ignore the blur event so that we can move focus to action item than bluring out of dropdown
+      setShouldIgnoreBlur(true);
+    }
+
+    // disable closing the select on blur events if we are using a bottomsheet
+    if (bottomSheetContext?.hasBottomSheet) {
       setShouldIgnoreBlur(true);
     }
 

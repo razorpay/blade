@@ -1,4 +1,5 @@
 const ComponentIds = {
+  BottomSheet: 'BottomSheet',
   BottomSheetHeader: 'BottomSheetHeader',
   BottomSheetHeaderTrailing: 'BottomSheetHeaderTrailing',
   BottomSheetHeaderLeading: 'BottomSheetHeaderLeading',

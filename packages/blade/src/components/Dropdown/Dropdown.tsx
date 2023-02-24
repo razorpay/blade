@@ -5,6 +5,8 @@ import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
 import type { WithComponentId } from '~utils';
 import { isValidAllowedChildren } from '~utils';
+import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
+import { DropdownBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
@@ -54,6 +56,8 @@ const Dropdown: WithComponentId<DropdownProps> = ({
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
+  // keep track if dropdown contains bottomsheet
+  const [hasBottomSheet, setHasBottomSheet] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
 
@@ -63,7 +67,8 @@ const Dropdown: WithComponentId<DropdownProps> = ({
     if (React.isValidElement(child)) {
       if (
         !isValidAllowedChildren(child, 'SelectInput') &&
-        !isValidAllowedChildren(child, componentIds.DropdownOverlay)
+        !isValidAllowedChildren(child, componentIds.DropdownOverlay) &&
+        !isValidAllowedChildren(child, bottomSheetComponentIds.BottomSheet)
       ) {
         throw new Error(
           `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
@@ -117,7 +122,13 @@ const Dropdown: WithComponentId<DropdownProps> = ({
     ],
   );
 
-  return <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>;
+  return (
+    <DropdownBottomSheetContext.Provider
+      value={{ isOpen, selectionType, hasBottomSheet, setHasBottomSheet }}
+    >
+      <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>
+    </DropdownBottomSheetContext.Provider>
+  );
 };
 
 Dropdown.componentId = componentIds.Dropdown;

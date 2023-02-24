@@ -15,6 +15,7 @@ type BottomSheetContextProps = {
   bind: ((...args: any[]) => ReactDOMAttributes) | null;
   isOpen: boolean;
   posY: number;
+  isInBottomSheet: boolean;
 };
 
 const BottomSheetContext = React.createContext<BottomSheetContextProps>({
@@ -29,18 +30,32 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   bind: null,
   isOpen: false,
   posY: 0,
+  isInBottomSheet: false,
 });
+
+type DropdownBottomSheetContexProps = {
+  isOpen: boolean;
+  selectionType: 'single' | 'multiple';
+  hasBottomSheet: boolean;
+  setHasBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
+} | null;
+const DropdownBottomSheetContext = React.createContext<DropdownBottomSheetContexProps>(null);
 
 const useBottomSheetContext = (): BottomSheetContextProps => {
   const state = React.useContext(BottomSheetContext);
+  return state;
+};
 
-  if (!state) {
-    throw new Error(
-      '[Blade BottomSheet]: useBottomSheetContext must be used within <BottomSheet />',
-    );
-  }
+const useDropdownBottomSheetContext = (): DropdownBottomSheetContexProps => {
+  const state = React.useContext(DropdownBottomSheetContext);
 
   return state;
 };
 
-export { BottomSheetContext, BottomSheetContextProps, useBottomSheetContext };
+export {
+  BottomSheetContext,
+  BottomSheetContextProps,
+  useBottomSheetContext,
+  DropdownBottomSheetContext,
+  useDropdownBottomSheetContext,
+};

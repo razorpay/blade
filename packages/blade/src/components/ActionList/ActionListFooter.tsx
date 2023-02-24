@@ -18,6 +18,7 @@ import {
 } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
+import { useDropdownBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 
 type ActionListFooterProps = {
   title?: string;
@@ -76,6 +77,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
     setIsOpen,
     selectionType,
   } = useDropdown();
+  const bottomSheetContext = useDropdownBottomSheetContext();
 
   React.useEffect(() => {
     React.Children.map(props.leading, (child) => {
@@ -113,7 +115,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
           (nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0;
         // We ignore the selection keydowns on footer to let users click on items on the footer
         if (shouldIgnoreDropdownKeydown) {
-          if (selectionType === 'single') {
+          if (selectionType === 'single' && !bottomSheetContext?.hasBottomSheet) {
             // We close the dropdown on clicks in single select
             setIsOpen(false);
           }
@@ -126,7 +128,11 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
       onBlur={(e) => {
         const nextItem = e.relatedTarget;
         const nextItemRole = nextItem?.getAttribute('role');
-        if (nextItemRole !== 'combobox' && nextItemRole !== 'option') {
+        if (
+          nextItemRole !== 'combobox' &&
+          nextItemRole !== 'option' &&
+          !bottomSheetContext?.hasBottomSheet
+        ) {
           setIsOpen(false);
         }
       }}

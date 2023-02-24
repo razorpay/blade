@@ -7,10 +7,11 @@ type StyledActionListProps = {
   surfaceLevel: ActionListProps['surfaceLevel'];
   elevation?: number;
   id?: string;
+  isInBottomSheet?: boolean;
 };
 
 const getBaseActionListStyles = (props: StyledActionListProps & { theme: Theme }): CSSObject => {
-  const { theme, surfaceLevel = 2 } = props;
+  const { theme, surfaceLevel = 2, isInBottomSheet } = props;
 
   const shadowColor = theme.shadows.color.level[1];
 
@@ -28,7 +29,7 @@ const getBaseActionListStyles = (props: StyledActionListProps & { theme: Theme }
     borderWidth: theme.border.width.thin,
     borderColor: theme.colors.surface.border.normal.lowContrast,
     borderRadius: makeSize(theme.border.radius.medium),
-    boxShadow: isReactNative() ? undefined : elevation200,
+    boxShadow: isInBottomSheet ? undefined : isReactNative() ? undefined : elevation200,
   };
 };
 
