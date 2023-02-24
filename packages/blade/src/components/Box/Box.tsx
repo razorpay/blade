@@ -117,4 +117,4 @@ const Box = (props: BoxProps): JSX.Element => {
   return <BaseBox {...getOnlyBoxProps(props)} />;
 };
 
-export { Box };
+export { Box, getOnlyBoxProps };

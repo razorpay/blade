@@ -9,7 +9,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { styledPropsStorybookArgTypes } from '~src/utils/styled-props/storybookArgTypes';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -47,7 +47,9 @@ export default {
   title: 'Components/Badge',
   component: BadgeComponent,
   argTypes: {
-    ...styledPropsStorybookArgTypes,
+    ...getStyledPropsArgTypes({
+      category: 'StyledProps',
+    }),
     icon: {
       name: 'icon',
       type: 'select',
