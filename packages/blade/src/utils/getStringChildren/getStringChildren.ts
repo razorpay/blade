@@ -1,9 +1,10 @@
+import { isEmpty } from 'lodash';
 import type { StringChildrenType } from '~src/_helpers/types';
 
 const getStringFromReactText = (
   childReactText: StringChildrenType | undefined,
 ): string | undefined => {
-  if (!childReactText) {
+  if (isEmpty(childReactText)) {
     return undefined;
   }
 
