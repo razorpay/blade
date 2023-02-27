@@ -92,7 +92,7 @@ const BoxStoryMeta = {
             <Text>Uncomment the commented code below to see things in action ✨</Text>
             <Sandbox padding={['spacing.5', 'spacing.0', 'spacing.5']} editorHeight={500}>
               {`
-              import { Box } from '@razorpay/blade/components'
+              import { Box, Text } from '@razorpay/blade/components'
 
               function App(): JSX.Element {
                 return (

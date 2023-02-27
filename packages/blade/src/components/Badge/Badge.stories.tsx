@@ -47,9 +47,7 @@ export default {
   title: 'Components/Badge',
   component: BadgeComponent,
   argTypes: {
-    ...getStyledPropsArgTypes({
-      category: 'StyledProps',
-    }),
+    ...getStyledPropsArgTypes(),
     icon: {
       name: 'icon',
       type: 'select',
