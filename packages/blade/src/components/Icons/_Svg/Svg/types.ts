@@ -6,4 +6,4 @@ export type SvgProps = {
   height: `${string}px`;
   viewBox: string;
   width: `${string}px`;
-} & StyledProps;
+} & Omit<StyledProps, 'order'>; // Order prop on SVG has different meaning so removing this prop from styled-props

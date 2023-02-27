@@ -19,24 +19,17 @@ import type { StyledProps } from '../../components/Box/BaseBox/types';
  * ```
  *
  *
- * Or if you absolutely don't want to wrap component in BaseBox,
+ * Or if you don't want to wrap component in BaseBox, checkout [useStyledProps](./useStyledProps.web.tsx)
  *
  * ```tsx
+ * import { useStyledProps } from '~utils';
+ *
  * const TextComponentWithStyledProps = styled.p((props) => {
- *  const styledPropsStyles = getStyledProps(props);
- *  const styledPropsMemoDependency =
- *    getDependencyProps(styledPropsStyles);
- *  const styledPropsCSSObject = React.useMemo(() =>
- *      getBaseBoxStyles({
- *        ...styledPropsStyles,
- *        theme: props.theme
- *      }),
- *      [styledPropsMemoDependency],
- *  );
+ *  const styledPropsCSSObject = useStyledProps(props)
  *
  *  return {
+ *    ...styledPropsCSSObject,
  *    ...your other CSS,
- *    ...styledPropsCSSObject
  *  }
  * })
  * ```

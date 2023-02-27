@@ -2,8 +2,7 @@ import type { ReactElement } from 'react';
 import styled from 'styled-components/native';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute, makeAccessible, MetaConstants, getStyledProps } from '~utils';
-import { getBaseBoxStyles } from '~components/Box/BaseBox/getBaseBoxStyles';
+import { metaAttribute, makeAccessible, MetaConstants, useStyledProps } from '~utils';
 
 const StyledBaseText = styled.Text<StyledBaseTextProps>(
   ({
@@ -18,8 +17,7 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
     as,
     ...props
   }) => {
-    const styledPropsCSSObject = getBaseBoxStyles({ ...getStyledProps(props), theme: props.theme });
-
+    const styledPropsCSSObject = useStyledProps(props);
     if (as) {
       throw new Error(`[Blade: BaseText]: "as" prop is not supported for BaseText on React Native`);
     } else {
