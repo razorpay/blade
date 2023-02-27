@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 6.2.2
+
+### Patch Changes
+
+- 559d97d9: feat: support string array in children
+
+  Users can now use dynamic variables inside children and don't have to wrap it around with string literals
+
+  ```jsx
+  <Button onClick={}>{someVariable} hello</Button>
+  ```
+
 ## 6.2.1
 
 ### Patch Changes
