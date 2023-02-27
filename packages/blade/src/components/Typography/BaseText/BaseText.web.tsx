@@ -3,8 +3,7 @@ import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute, makeAccessible, MetaConstants, getStyledProps } from '~utils';
-import { getBaseBoxStyles, getDependencyProps } from '~components/Box/BaseBox/getBaseBoxStyles';
+import { metaAttribute, makeAccessible, MetaConstants, useStyledProps } from '~utils';
 
 const StyledBaseText = styled.div<StyledBaseTextProps>(
   ({
@@ -18,14 +17,7 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
     textAlign,
     ...props
   }) => {
-    const styledPropsStyles = getStyledProps(props);
-    const styledPropsMemoDependency = getDependencyProps(styledPropsStyles);
-    const styledPropsCSSObject = React.useMemo(
-      () => getBaseBoxStyles({ ...styledPropsStyles, theme: props.theme }),
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [styledPropsMemoDependency],
-    );
-
+    const styledPropsCSSObject = useStyledProps(props);
     return {
       ...styledPropsCSSObject,
       ...getBaseTextStyles({
