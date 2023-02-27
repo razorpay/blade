@@ -18,7 +18,6 @@ import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
-import { useTheme } from '~components/BladeProvider';
 import sizes from '~tokens/global/sizes';
 
 type ActionListItemProps = {
@@ -211,9 +210,6 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     dropdownTriggerer,
     isKeydownPressed,
   } = useDropdown();
-
-  const { theme } = useTheme();
-
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
     typeof props._index === 'number'

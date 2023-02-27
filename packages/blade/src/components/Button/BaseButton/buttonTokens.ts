@@ -2,7 +2,7 @@ import type { BaseButtonProps } from './BaseButton';
 import type { Theme } from '~components/BladeProvider';
 import type { IconProps } from '~components/Icons';
 import type { SpinnerProps } from '~components/Spinner';
-import { Sizes } from '~tokens/global';
+import type { Sizes } from '~tokens/global';
 import sizes from '~tokens/global/sizes';
 
 export type ButtonMinHeight = Sizes[700] | Sizes[800] | Sizes[900] | Sizes[1200];
