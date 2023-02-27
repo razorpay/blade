@@ -10,11 +10,12 @@ import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, StringChildrenType } from '~src/_helpers/types';
 import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -37,7 +38,7 @@ type BaseLinkCommonProps = {
 */
 type BaseLinkWithoutIconProps = BaseLinkCommonProps & {
   icon?: undefined;
-  children: string;
+  children: StringChildrenType;
 };
 
 /*
@@ -45,7 +46,7 @@ type BaseLinkWithoutIconProps = BaseLinkCommonProps & {
 */
 type BaseLinkWithIconProps = BaseLinkCommonProps & {
   icon: IconComponent;
-  children?: string;
+  children?: StringChildrenType;
 };
 
 /*
@@ -213,9 +214,10 @@ const BaseLink = ({
   size = 'medium',
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
+  const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
-  if (!Icon && !children?.trim()) {
+  if (!Icon && !childrenString?.trim()) {
     throw new Error(
       `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
     );
@@ -241,7 +243,7 @@ const BaseLink = ({
     theme,
     variant,
     currentInteraction,
-    children,
+    children: childrenString,
     isDisabled,
     intent,
     contrast,
