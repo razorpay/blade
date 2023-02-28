@@ -29,32 +29,32 @@
   "exports": {
     "./components": {
       "react-native": {
-        "import": "./build/components/index.native.js",
-        "types": "./build/components/index.native.d.ts"
+        "types": "./build/components/index.native.d.ts",
+        "default": "./build/components/index.native.js"
       },
       "default": {
-        "import": "./build/components/index.web.js",
-        "types": "./build/components/index.d.ts"
+        "types": "./build/components/index.d.ts",
+        "default": "./build/components/index.web.js"
       }
     },
     "./tokens": {
       "react-native": {
-        "import": "./build/tokens/index.native.js",
-        "types": "./build/tokens/index.native.d.ts"
+        "types": "./build/tokens/index.native.d.ts",
+        "default": "./build/tokens/index.native.js"
       },
       "default": {
-        "import": "./build/tokens/index.web.js",
-        "types": "./build/tokens/index.d.ts"
+        "types": "./build/tokens/index.d.ts",
+        "default": "./build/tokens/index.web.js"
       }
     },
     "./utils": {
       "react-native": {
-        "import": "./build/utils/index.native.js",
-        "types": "./build/utils/index.native.d.ts"
+        "types": "./build/utils/index.native.d.ts",
+        "default": "./build/utils/index.native.js"
       },
       "default": {
-        "import": "./build/utils/index.web.js",
-        "types": "./build/utils/index.d.ts"
+        "types": "./build/utils/index.d.ts",
+        "default": "./build/utils/index.web.js"
       }
     }
   },
