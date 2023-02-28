@@ -1,10 +1,11 @@
 import BaseBox from './BaseBox';
 import type { BoxProps } from './BaseBox/types';
+import type { KeysRequired } from '~src/_helpers/types';
 
 /**
  * This function is to filter out any unexpected props passed by the user
  */
-const getOnlyBoxProps = (props: BoxProps): BoxProps => {
+const getValidatedBoxProps = (props: BoxProps): Omit<KeysRequired<BoxProps>, 'children'> => {
   return {
     // Layout
     display: props.display,
@@ -114,7 +115,7 @@ const getOnlyBoxProps = (props: BoxProps): BoxProps => {
  * 
  */
 const Box = (props: BoxProps): JSX.Element => {
-  return <BaseBox {...getOnlyBoxProps(props)} />;
+  return <BaseBox {...getValidatedBoxProps(props)} />;
 };
 
 export { Box };

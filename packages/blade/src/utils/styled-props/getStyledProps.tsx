@@ -1,4 +1,5 @@
 import type { StyledProps } from '../../components/Box/BaseBox/types';
+import type { KeysRequired } from '~src/_helpers/types';
 
 /**
  * This utility takes all your props and returns only the styled props that are to be used on components
@@ -40,7 +41,7 @@ import type { StyledProps } from '../../components/Box/BaseBox/types';
  * - Native: [`BaseText.native.tsx`](../../components/Typography/BaseText/BaseText.native.tsx)
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getStyledProps = (props: Record<string, any>): StyledProps => {
+const getStyledProps = (props: Record<string, any>): KeysRequired<StyledProps> => {
   return {
     alignSelf: props.alignSelf,
     justifySelf: props.justifySelf,
