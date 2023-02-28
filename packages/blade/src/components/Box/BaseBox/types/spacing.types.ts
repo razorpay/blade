@@ -5,7 +5,17 @@ type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
 type SpaceUnits = 'px' | 'fr' | '%' | 'rem' | 'em';
 type SpacingValueType = DotNotationSpacingStringToken | `${string}${SpaceUnits}` | 'auto';
 
-// I wish there was better way to re-use jsdoc but I checked and there isn't so we have to explicitly add docs to each prop
+/**
+ * @IMPORTANT
+ *
+ * I wish there was better way to re-use jsdoc but I checked and there isn't so we have to explicitly add docs to each prop.
+ *
+ * When you want to change a specific token value, you can select the entire block of spacing value mapping and do find and replace on it
+ *
+ * Checkout example of find and replace query-
+ * {@link https://user-images.githubusercontent.com/30949385/221802507-40c7adbc-484a-47b3-9035-ae1e97080b51.png}
+ *
+ */
 
 type PaddingProps = MakeObjectResponsive<{
   /**
