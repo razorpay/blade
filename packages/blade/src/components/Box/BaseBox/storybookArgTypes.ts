@@ -21,14 +21,14 @@ const spacingTypeShorthandDescription = [
   '- an absolute value like `"10px"`',
   '- token `"spacing.5"`',
   '- an array shorthand `["spacing.2", "10px", "spacing.5", "spacing.9"]` (Similar to CSS shorthands)',
-  '- responsive object with combinatation of all previous values `{ base: "spacing.3", l: ["spacing.10", "20px"]}`',
+  '- responsive object with combinatation of all previous values `{ "base": "spacing.3", "l": ["spacing.10", "20px"]}`',
 ].join('\n\n');
 
 const spacingTypeDescription = [
   'Can be',
   '- an absolute value like `"10px"`',
   '- token `"spacing.5"`',
-  '- responsive object with combinatation of all previous values `{ base: "spacing.3", l: "20px"}`',
+  '- responsive object with combinatation of all previous values `{ "base": "spacing.3", "l": "20px"}`',
 ].join('\n\n');
 
 const defaultStyledPropsObject = getStyledProps({});
