@@ -21,11 +21,30 @@ const getResponsiveValue = <T extends string | number | string[]>(
   }
 
   if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value)) {
+    /**
+     * Flat values like string or number should only be added in `base` styles.
+     *
+     * E.g. if you pass `display="block"`, it should only put that style in base style and not in media queries
+     * ```js
+     * // Output should be just this-
+     * display: block;
+     *
+     * // And not this-
+     * display: block;
+     * media (min-width: s) {
+     *   display: block;
+     * }
+     *
+     * media (min-width: m) {
+     *   display: block
+     * }
+     * //  and more ...
+     * ```
+     */
     if (size === 'base') {
       return value;
     }
 
-    // Plain values will already get added in base styles so we don't have to repeat them in media queries
     return undefined;
   }
 

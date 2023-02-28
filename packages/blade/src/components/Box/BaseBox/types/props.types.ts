@@ -1,57 +1,9 @@
 import type { CSSObject } from 'styled-components';
+import type { MarginProps, PaddingProps, SpacingValueType } from './spacing.types';
+import type { MakeObjectResponsive } from './responsive.types';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
-import type { Breakpoints } from '~tokens/global/breakpoints';
-import type {
-  DotNotationColorStringToken,
-  DotNotationSpacingStringToken,
-} from '~src/_helpers/types';
-
-type MakeValueResponsive<T> =
-  | T
-  | {
-      // Using this instead of Record to maintain the jsdoc from breakpoints.ts
-      [P in keyof Breakpoints]?: T;
-    };
-type MakeObjectResponsive<T> = { [P in keyof T]: MakeValueResponsive<T[P]> };
-type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
-
-type SpaceUnits = 'px' | 'fr' | '%' | 'rem' | 'em';
-type SpacingValueType = DotNotationSpacingStringToken | `${string}${SpaceUnits}` | 'auto';
-
-type PaddingProps = MakeObjectResponsive<{
-  /**
-   * Padding shorthand
-   *
-   * For token to pixel conversion, checkout -
-   *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
-   */
-  padding: SpacingValueType | ArrayOfMaxLength4<SpacingValueType>;
-  paddingX: SpacingValueType;
-  paddingY: SpacingValueType;
-  paddingTop: SpacingValueType;
-  paddingRight: SpacingValueType;
-  paddingBottom: SpacingValueType;
-  paddingLeft: SpacingValueType;
-}>;
-
-type MarginProps = MakeObjectResponsive<{
-  /**
-   * Margin shorthand
-   *
-   * For token to pixel conversion, checkout -
-   *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
-   */
-  margin: SpacingValueType | ArrayOfMaxLength4<SpacingValueType>;
-  marginX: SpacingValueType;
-  marginY: SpacingValueType;
-  marginTop: SpacingValueType;
-  marginRight: SpacingValueType;
-  marginBottom: SpacingValueType;
-  marginLeft: SpacingValueType;
-}>;
+import type { DotNotationColorStringToken } from '~src/_helpers/types';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -168,11 +120,4 @@ type BaseBoxProps = Partial<
     }
 >;
 
-export {
-  BaseBoxProps,
-  MakeValueResponsive,
-  PaddingProps,
-  MarginProps,
-  SpacingValueType,
-  ArrayOfMaxLength4,
-};
+export { BaseBoxProps };
