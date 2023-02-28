@@ -2,9 +2,10 @@ import React from 'react';
 import type { CSSObject } from 'styled-components';
 import { getStyledProps } from './getStyledProps';
 import { getBaseBoxStyles, getDependencyProps } from '~components/Box/BaseBox/getBaseBoxStyles';
+import type { Theme } from '~components/BladeProvider';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const useStyledProps = (props: Record<string, any>): CSSObject => {
+const useStyledProps = (props: Record<string, any> & { theme: Theme }): CSSObject => {
   const styledPropsStyles = getStyledProps(props);
   const styledPropsMemoDependency = getDependencyProps(styledPropsStyles);
   const styledPropsCSSObject = React.useMemo(

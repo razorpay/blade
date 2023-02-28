@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 import type { ColorContrast, Feedback } from '~tokens/theme/theme';
+import type { StyledProps } from '~utils';
 
 export type StyledAlertProps = {
   children: ReactNode;
@@ -9,4 +9,4 @@ export type StyledAlertProps = {
   intent: Feedback;
   isFullWidth: boolean;
   isDesktop: boolean;
-} & BaseBoxProps;
+} & StyledProps;

@@ -126,17 +126,17 @@ const intentIconMap = {
   notice: AlertTriangleIcon,
 };
 
-const Alert = (props: AlertProps): ReactElement | null => {
-  const {
-    description,
-    title,
-    isDismissible = true,
-    onDismiss,
-    contrast = 'low',
-    isFullWidth = false,
-    intent = 'neutral',
-    actions,
-  } = props;
+const Alert = ({
+  description,
+  title,
+  isDismissible = true,
+  onDismiss,
+  contrast = 'low',
+  isFullWidth = false,
+  intent = 'neutral',
+  actions,
+  ...styledProps
+}: AlertProps): ReactElement | null => {
   if (!actions?.primary && actions?.secondary) {
     throw new Error(
       '[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.',
@@ -290,7 +290,7 @@ const Alert = (props: AlertProps): ReactElement | null => {
 
   return (
     <StyledAlert
-      {...getStyledProps(props)}
+      {...getStyledProps(styledProps)}
       intent={intent}
       contrastType={contrastType}
       isFullWidth={isFullWidth}
