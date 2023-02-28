@@ -2,4 +2,6 @@
 '@razorpay/blade': patch
 ---
 
-revert: remove types field from package exports
+fix: jest cannot import Blade
+
+Jest does not support the "import" condition in exports. Changed "import" to "default".
