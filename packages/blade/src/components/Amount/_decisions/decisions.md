@@ -13,7 +13,7 @@ Amount component is a UI element that displays and formats various currency valu
 | Prop          | Type                                                       | Default     | Description                                                | Required |
 | ------------- | ---------------------------------------------------------- | ----------- | ---------------------------------------------------------- | -------- |
 | value         | `number`                                                   | `undefined` | The value to be rendered within the component              | ✅       |
-| variant       | `positive`, `negative`, `notice`, `information`, `blue`    | `undefined` | The variant of the amount to be rendered                   |          |
+| variant       | `positive`, `negative`, `notice`, `information`            | `undefined` | The variant of the amount to be rendered                   |          |
 | weight        | `bold`, `regular`                                          | `bold`      | The weight of the amount to be rendered                    |          |
 | hasDecimals   | `true`, `false`                                            | `true`      | Indicates whether a given value has decimal places or not. |          |
 | humanize      | `true`, `false`                                            | `false`     | This will humanize the value based on the currency system  |          |
