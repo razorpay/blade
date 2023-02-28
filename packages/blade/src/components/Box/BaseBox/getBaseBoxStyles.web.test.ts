@@ -61,7 +61,7 @@ describe('shouldAddBreakpoint', () => {
     expect(shouldAddBreakpoint({})).toBe(false);
   });
 
-  it('should return true if one of the value is not undefined', () => {
+  it('should return true if one of the value is defined', () => {
     expect(shouldAddBreakpoint({ display: '', position: undefined })).toBe(true);
   });
 });
