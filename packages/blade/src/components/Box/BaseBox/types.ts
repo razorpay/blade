@@ -1,8 +1,11 @@
 import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import type { Border, Spacing } from '~tokens/global';
+import type { Border } from '~tokens/global';
 import type { Breakpoints } from '~tokens/global/breakpoints';
-import type { DotNotationColorStringToken } from '~src/_helpers/types';
+import type {
+  DotNotationColorStringToken,
+  DotNotationSpacingStringToken,
+} from '~src/_helpers/types';
 
 type MakeValueResponsive<T> =
   | T
@@ -14,7 +17,7 @@ type MakeObjectResponsive<T> = { [P in keyof T]: MakeValueResponsive<T[P]> };
 type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
 
 type SpaceUnits = 'px' | 'fr' | '%' | 'rem' | 'em';
-type SpacingValueType = `spacing.${keyof Spacing}` | `${string}${SpaceUnits}` | 'auto';
+type SpacingValueType = DotNotationSpacingStringToken | `${string}${SpaceUnits}` | 'auto';
 
 type PaddingProps = MakeObjectResponsive<{
   /**

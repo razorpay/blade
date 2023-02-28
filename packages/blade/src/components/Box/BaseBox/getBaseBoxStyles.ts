@@ -192,12 +192,12 @@ const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject =
 
   return Object.fromEntries(
     Object.entries(breakpointsWithoutBase).map(([breakpointKey, breakpointValue]) => {
-      const mediaQuery = `@media ${getMediaQuery({ min: breakpointValue })}`;
       const cssPropsForCurrentBreakpoint = getAllProps(props, breakpointKey as keyof Breakpoints);
       if (!shouldAddBreakpoint(cssPropsForCurrentBreakpoint)) {
         return [];
       }
 
+      const mediaQuery = `@media ${getMediaQuery({ min: breakpointValue })}`;
       return [mediaQuery, cssPropsForCurrentBreakpoint];
     }),
   );
@@ -236,4 +236,6 @@ export {
   getBackgroundValue,
   getBorderRadiusValue,
   shouldAddBreakpoint,
+  getAllMediaQueries,
+  getAllProps,
 };

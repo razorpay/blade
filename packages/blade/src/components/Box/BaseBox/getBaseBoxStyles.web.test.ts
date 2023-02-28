@@ -4,9 +4,13 @@ import {
   getResponsiveValue,
   getSpacingValue,
   shouldAddBreakpoint,
+  getAllMediaQueries,
+  getAllProps,
 } from './getBaseBoxStyles';
 import type { BaseBoxProps } from './types';
+import { removeUndefinedValues } from './getBaseBoxStyles.test';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme/paymentLightTheme';
+import type { Theme } from '~components/BladeProvider';
 
 describe('getResponsiveValue', () => {
   it('should return correctly for plain values', () => {
@@ -93,18 +97,76 @@ describe('getBaseBoxStyles', () => {
     });
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
-    Object {
-      "@media screen and (min-width: 1200px)": Object {
-        "margin": "auto",
-      },
-      "@media screen and (min-width: 480px)": Object {
-        "margin": "2px 12px 100%",
-      },
-      "@media screen and (min-width: 768px)": Object {
-        "margin": "22px",
-      },
-      "margin": "2px",
-    }
-  `);
+          Object {
+            "@media screen and (min-width: 1200px)": Object {
+              "margin": "auto",
+            },
+            "@media screen and (min-width: 480px)": Object {
+              "margin": "2px 12px 100%",
+            },
+            "@media screen and (min-width: 768px)": Object {
+              "margin": "22px",
+            },
+            "margin": "2px",
+          }
+      `);
+  });
+});
+
+describe('getAllMediaQueries', () => {
+  it('should return empty object', () => {
+    expect(
+      removeUndefinedValues(getAllMediaQueries({ display: 'block', theme: paymentLightTheme })),
+    ).toMatchInlineSnapshot(`Object {}`);
+  });
+
+  it('should return the media queries', () => {
+    expect(
+      removeUndefinedValues(
+        getAllMediaQueries({
+          display: { base: 'block', m: 'none', xl: 'flex' },
+          theme: paymentLightTheme,
+        }),
+      ),
+    ).toMatchInlineSnapshot(`
+      Object {
+        "@media screen and (min-width: 1200px)": Object {
+          "display": "flex",
+        },
+        "@media screen and (min-width: 768px)": Object {
+          "display": "none",
+        },
+      }
+    `);
+  });
+});
+
+describe('getAllProps', () => {
+  it('should return all values for given screen size', () => {
+    const baseBoxProps: BaseBoxProps & { theme: Theme } = {
+      display: 'block',
+      padding: { base: 'spacing.1', l: '20px' },
+      margin: { m: 'spacing.1' },
+      theme: paymentLightTheme,
+    };
+
+    expect(removeUndefinedValues(getAllProps(baseBoxProps))).toMatchInlineSnapshot(`
+      Object {
+        "display": "block",
+        "padding": "2px",
+      }
+    `);
+
+    expect(removeUndefinedValues(getAllProps(baseBoxProps, 'm'))).toMatchInlineSnapshot(`
+      Object {
+        "margin": "2px",
+      }
+    `);
+
+    expect(removeUndefinedValues(getAllProps(baseBoxProps, 'l'))).toMatchInlineSnapshot(`
+      Object {
+        "padding": "20px",
+      }
+    `);
   });
 });
