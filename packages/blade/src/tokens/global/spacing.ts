@@ -1,5 +1,5 @@
 /**
- * When any of the values are changed here, do change the jsdoc comments in BaseBox/types.ts as well
+ * When any of the values are changed here, do change the jsdoc comments in BaseBox/types/spacing.types.ts as well
  *
  * {@link ../../components/Box/BaseBox/types/spacing.types.ts}
  */
