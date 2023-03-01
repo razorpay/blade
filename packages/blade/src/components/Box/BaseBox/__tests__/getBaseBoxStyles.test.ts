@@ -4,7 +4,7 @@ import {
   getBackgroundValue,
   getBaseBoxStyles,
   getBorderRadiusValue,
-} from './getBaseBoxStyles';
+} from '../getBaseBoxStyles';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme';
 
 export const removeUndefinedValues = (props: CSSObject): CSSObject =>
