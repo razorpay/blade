@@ -1,13 +1,12 @@
-import type { CSSObject } from 'styled-components';
 import {
   getSpacingValue,
   getBackgroundValue,
   getBaseBoxStyles,
   getBorderRadiusValue,
-} from '../getBaseBoxStyles';
+} from '../BaseBox/getBaseBoxStyles';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme';
 
-export const removeUndefinedValues = (props: CSSObject): CSSObject =>
+export const removeUndefinedValues = (props: Record<string, unknown>): Record<string, unknown> =>
   JSON.parse(JSON.stringify(props));
 
 describe('getBackgroundValue', () => {

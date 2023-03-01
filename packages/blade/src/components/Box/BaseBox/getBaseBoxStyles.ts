@@ -224,7 +224,6 @@ const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject =
 };
 
 const getBaseBoxStyles = (props: BaseBoxProps & { theme: Theme }): CSSObject => {
-  console.count('getBaseBoxStyles');
   return {
     ...getAllProps(props),
     ...getAllMediaQueries(props),

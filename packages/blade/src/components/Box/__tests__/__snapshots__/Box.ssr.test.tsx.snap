@@ -1,18 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseBox /> should render BaseBox component with the correct styles 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" overflow=\\"hidden\\" height=\\"auto\\" width=\\"auto\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bbAWnK\\"></div></div>"`;
+exports[`<Box /> should render Box component with supported styles 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"Box\\" display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 cVhZTX\\"></div></div>"`;
 
-exports[`<BaseBox /> should render BaseBox component with the correct styles 2`] = `
-<div
-  data-reactroot=""
-  id="root"
->
-  <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bbAWnK"
-    display="flex"
-    height="auto"
-    overflow="hidden"
-    width="auto"
-  />
-</div>
-`;
+exports[`<Box /> should throw error for unsupport values 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"Box\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fhGsWn\\"></div></div>"`;

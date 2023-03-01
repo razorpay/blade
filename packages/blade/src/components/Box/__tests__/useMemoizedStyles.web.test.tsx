@@ -1,4 +1,4 @@
-import { getDependencyProps } from '../useMemoizedStyles';
+import { getDependencyProps } from '../BaseBox/useMemoizedStyles.web';
 
 describe('getDependencyProp', () => {
   it('should return react usememo dependency prop', () => {

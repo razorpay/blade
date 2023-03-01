@@ -1,32 +1,52 @@
-import BaseBox from '../BaseBox';
+import { Box } from '../Box';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
-describe('<BaseBox />', () => {
-  it('should render BaseBox component with the correct styles', () => {
-    const renderTree = renderWithTheme(
-      <BaseBox
+describe('<Box />', () => {
+  it('should render Box component with supported styles', () => {
+    const { toJSON } = renderWithTheme(
+      <Box
         display="flex"
-        justifyContent="center"
-        alignItems="center"
-        alignSelf="center"
-        paddingTop="spacing.3"
-        paddingBottom="spacing.4"
-        paddingLeft="spacing.5"
-        paddingRight="spacing.6"
-        minHeight="48px"
-        maxHeight="56px"
-        minWidth="48px"
-        maxWidth="56px"
-        position="absolute"
-        top="0px"
-        right="0px"
-        bottom="0px"
-        left="0px"
-        overflow="hidden"
-        height="auto"
-        width="auto"
+        padding="spacing.0"
+        // @ts-expect-error: Intentional to test bad flow
+        borderRadius="small"
       />,
-    ).toJSON();
-    expect(renderTree).toMatchSnapshot();
+    );
+    expect(toJSON()).toMatchInlineSnapshot(`
+      <View
+        display="flex"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      />
+    `);
+  });
+
+  it('should throw error for unsupport values', () => {
+    // React Native also prints errors on console. Just ignoring that to not show error in console while running tests
+    const tempConsoleError = console.error;
+    console.error = jest.fn();
+    try {
+      renderWithTheme(
+        <Box
+          // @ts-expect-error: Intentional to test bad flow
+          backgroundColor="red"
+        />,
+      );
+    } catch (err: unknown) {
+      expect(err).toMatchInlineSnapshot(`
+        [Error: [Blade - Box]: Oops! Currently you can only use \`surface.background.*\` tokens with backgroundColor property but we received \`red\` instead.
+
+         Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
+      `);
+    }
+    console.error = tempConsoleError;
   });
 });
