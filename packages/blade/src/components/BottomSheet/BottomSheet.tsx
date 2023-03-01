@@ -148,6 +148,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       [close, open],
     );
 
+    // sync the select dropdown's state with bottomsheet's state
     React.useEffect(() => {
       if (!dropdownBottomSheetProps) return;
 
