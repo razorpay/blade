@@ -122,10 +122,12 @@ const Dropdown: WithComponentId<DropdownProps> = ({
     ],
   );
 
+  const dropdownBottomSheetContextValue = React.useMemo(() => {
+    return { isOpen, setIsOpen, selectionType, hasBottomSheet, setHasBottomSheet };
+  }, [isOpen, setIsOpen, selectionType, hasBottomSheet, setHasBottomSheet]);
+
   return (
-    <DropdownBottomSheetContext.Provider
-      value={{ isOpen, setIsOpen, selectionType, hasBottomSheet, setHasBottomSheet }}
-    >
+    <DropdownBottomSheetContext.Provider value={dropdownBottomSheetContextValue}>
       <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>
     </DropdownBottomSheetContext.Provider>
   );

@@ -18,7 +18,11 @@ import {
   ArrowRightIcon,
   ClockIcon,
   DownloadIcon,
+  HomeIcon,
+  InfoIcon,
   LogOutIcon,
+  PhoneIcon,
+  RupeeIcon,
   SearchIcon,
   SettingsIcon,
   UserIcon,
@@ -33,6 +37,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
+import { Text } from '~components/Typography';
 
 export default {
   title: 'Components/BottomSheet',
@@ -207,27 +212,82 @@ export const Default = BottomSheetTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
 
-const SelectContent = (): React.ReactElement => {
+const SingleSelectContent = (): React.ReactElement => {
   return (
     <ActionList>
+      <ActionListItem leading={<ActionListItemIcon icon={HomeIcon} />} title="Home" value="Home" />
       <ActionListItem
         leading={<ActionListItemIcon icon={SettingsIcon} />}
         title="Settings"
         value="settings"
       />
-      <ActionListItem leading={<ActionListItemIcon icon={ClockIcon} />} title="Info" value="info" />
+      <ActionListItem leading={<ActionListItemIcon icon={InfoIcon} />} title="Info" value="info" />
       <ActionListItem
-        leading={<ActionListItemIcon icon={ClockIcon} />}
+        leading={<ActionListItemIcon icon={RupeeIcon} />}
         title="Price"
         value="Price"
       />
       <ActionListItem
-        leading={<ActionListItemIcon icon={ClockIcon} />}
+        leading={<ActionListItemIcon icon={PhoneIcon} />}
         title="Contact"
         value="Contact"
       />
-      <ActionListItem leading={<ActionListItemIcon icon={ClockIcon} />} title="Nice" value="Nice" />
-      <ActionListItem leading={<ActionListItemIcon icon={ClockIcon} />} title="Call" value="Call" />
+      <ActionListItem
+        leading={<ActionListItemIcon icon={UserIcon} />}
+        title="About"
+        value="About"
+      />
+    </ActionList>
+  );
+};
+
+const MultiSelectContent = (): React.ReactElement => {
+  const fruites = [
+    'Apple',
+    'Apricot',
+    'Avocado',
+    'Banana',
+    'Blackberry',
+    'Blueberry',
+    'Cherry',
+    'Coconut',
+    'Cucumber',
+    'Durian',
+    'Dragonfruit',
+    'Fig',
+    'Gooseberry',
+    'Grape',
+    'Guava',
+    'Jackfruit',
+    'Plum',
+    'Kiwifruit',
+    'Kumquat',
+    'Lemon',
+    'Lime',
+    'Mango',
+    'Watermelon',
+    'Mulberry',
+    'Orange',
+    'Papaya',
+    'Passionfruit',
+    'Peach',
+    'Pear',
+    'Persimmon',
+    'Pineapple',
+    'Pineberry',
+    'Quince',
+    'Raspberry',
+    'Soursop',
+    'Star fruit',
+    'Strawberry',
+    'Tamarind',
+    'Yuzu',
+  ];
+  return (
+    <ActionList>
+      {fruites.map((fruit) => {
+        return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+      })}
     </ActionList>
   );
 };
@@ -240,17 +300,12 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
 
   return (
     <BaseBox>
+      <BaseBox marginBottom="spacing.5" marginTop="spacing.5">
+        <Text>Single Select</Text>
+      </BaseBox>
+
       <Dropdown selectionType="single">
-        <SelectInput
-          label="Select Action"
-          // onChange={() => {
-          //   sheet?.current?.close?.();
-          // }}
-          // onClick={() => {
-          //   sheet?.current?.open?.();
-          //   console.log(sheet);
-          // }}
-        />
+        <SelectInput label="Single Select" />
         {isMobile ? (
           <BottomSheetComponent {...args}>
             <BottomSheetHeader>
@@ -263,7 +318,7 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
               />
             </BottomSheetHeader>
             <BottomSheetBody>
-              <SelectContent />
+              <SingleSelectContent />
             </BottomSheetBody>
             <BottomSheetFooter>
               <BottomSheetFooterLeading title="Footer Title" />
@@ -277,7 +332,44 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
           </BottomSheetComponent>
         ) : (
           <DropdownOverlay>
-            <SelectContent />
+            <SingleSelectContent />
+          </DropdownOverlay>
+        )}
+      </Dropdown>
+
+      <BaseBox marginBottom="spacing.5" marginTop="spacing.5">
+        <Text>Multi Select</Text>
+      </BaseBox>
+
+      <Dropdown selectionType="multiple">
+        <SelectInput label="Multi Select" />
+        {isMobile ? (
+          <BottomSheetComponent {...args}>
+            <BottomSheetHeader>
+              <BottomSheetHeaderLeading
+                title="Select Account"
+                prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              />
+              <BottomSheetHeaderTrailing
+                visual={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              />
+            </BottomSheetHeader>
+            <BottomSheetBody>
+              <MultiSelectContent />
+            </BottomSheetBody>
+            <BottomSheetFooter>
+              <BottomSheetFooterLeading title="Footer Title" />
+              <BottomSheetFooterTrailing
+                actions={{
+                  primary: { text: 'Confirm' },
+                  secondary: { text: 'Close' },
+                }}
+              />
+            </BottomSheetFooter>
+          </BottomSheetComponent>
+        ) : (
+          <DropdownOverlay>
+            <MultiSelectContent />
           </DropdownOverlay>
         )}
       </Dropdown>

@@ -176,6 +176,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
         active,
         last,
         cancel,
+        tap,
         movement: [_mx, my],
         velocity: [_vx, vy],
         lastOffset: [_, lastOffsetY],
@@ -250,7 +251,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
           );
 
           // if we stop dragging assign snap to the nearest point
-          if (!active) {
+          if (!active && !tap) {
             newY = nearest;
           }
         }
