@@ -268,6 +268,7 @@ import StampIconComponent from './StampIcon';
 import MenuDotsIconComponent from './MenuDotsIcon';
 import SendIconComponent from './SendIcon';
 import MailOpenIconComponent from './MailOpenIcon';
+import BulkPayoutsIconComponent from './BulkPayoutsIcon';
 import type { IconComponent } from './';
 
 // add new icons here to make them visible in storybook
@@ -542,6 +543,7 @@ const iconMap: Record<string, IconComponent> = {
   MenuDotsIcon: MenuDotsIconComponent,
   SendIcon: SendIconComponent,
   MailOpenIcon: MailOpenIconComponent,
+  BulkPayoutsIcon: BulkPayoutsIconComponent,
 };
 
 export default iconMap;
