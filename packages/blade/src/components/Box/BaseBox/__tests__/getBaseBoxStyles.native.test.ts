@@ -4,8 +4,8 @@ import {
   getSpacingValue,
   getAllMediaQueries,
   getAllProps,
-} from './getBaseBoxStyles';
-import type { BaseBoxProps } from './types';
+} from '../getBaseBoxStyles';
+import type { BaseBoxProps } from '../types';
 import { removeUndefinedValues } from './getBaseBoxStyles.test';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme/paymentLightTheme';
 import type { Theme } from '~components/BladeProvider';

@@ -2,15 +2,29 @@ import type { StyledProps } from '../BaseBox/types';
 import type { KeysRequired } from '~src/_helpers/types';
 
 /**
- * This utility takes all your props and returns only the styled props that are to be used on components
+ *
+ * ## How to add Styled Props to components?
+ *
+ * There are 2 ways
+ * - Using `getStyledProps` + BaseBox wrapper
+ * - Using `useStyledProps`
+ *
+ * You can use `getStyledProps` method if you're fine adding or already have BaseBox wrapper around your component
+ * And use `useStyledProps` when adding BaseBox wrapper can cause styling issues or is unneccessary
  *
  * ### Usage
  *
- * ```tsx
- * import type { StyledProps } from '~utils';
- * import { getStyledProps } from '~utils';
+ * #### `getStyledProps` + BaseBox wrapper
  *
- * const MyComponent = (props: MyComponentProps & StyledProps) => {
+ * ```tsx
+ * import type { StyledProps } from '~src/components/Box/styled-props';
+ * import { getStyledProps } from '~src/components/Box/styled-props';
+ *
+ * type MyComponentProps = {
+ *   // ... Your Props
+ * } & StyledProps;
+ *
+ * const MyComponent = (props: MyComponentProps): JSX.Element => {
  *  return (
  *    <BaseBox {...getStyledProps(props)}>
  *      // Your component code
@@ -19,23 +33,29 @@ import type { KeysRequired } from '~src/_helpers/types';
  * }
  * ```
  *
+ * #### `useStyledProps`
  *
- * Or if you don't want to wrap component in BaseBox, checkout [useStyledProps](./useStyledProps.web.tsx)
  *
  * ```tsx
- * import { useStyledProps } from '~utils';
+ * import type { StyledProps } from '~src/components/Box/styled-props';
+ * import { useStyledProps } from '~src/components/Box/styled-props';
  *
- * const TextComponentWithStyledProps = styled.p((props) => {
- *  const styledPropsCSSObject = useStyledProps(props)
+ * type MyTextComponentProps = {
+ *   // ... Your Props
+ * } & StyledProps;
+ *
+ *
+ * const TextComponentWithStyledProps = styled.p<MyTextComponentProps>((props) => {
+ *  const styledPropsCSSObject = useStyledProps(props);
  *
  *  return {
  *    ...styledPropsCSSObject,
- *    ...your other CSS,
+ *    // ...your other CSS,
  *  }
  * })
  * ```
  *
- * Checkout implementation in `BaseText` components for more details
+ * Checkout implementation in `BaseText` components for example of `useStyledProps`
  *
  * - Web: [`BaseText.web.tsx`](../../components/Typography/BaseText/BaseText.web.tsx)
  * - Native: [`BaseText.native.tsx`](../../components/Typography/BaseText/BaseText.native.tsx)
