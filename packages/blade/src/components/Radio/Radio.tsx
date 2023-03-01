@@ -12,12 +12,13 @@ import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportTe
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getPlatformType } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 type RadioProps = {
   /**
    * Sets the label text of the Radio
    */
-  children: string;
+  children: StringChildrenType;
   /**
    * Help text for the Radio
    */

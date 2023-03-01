@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { metaAttribute, MetaConstants, testID } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 import { BaseLink } from '~components/Link/BaseLink';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 const fallbackId = 'blade-skip-nav';
 type SkipNavLinkProps = {
   id?: string;
-  children?: string;
+  children?: StringChildrenType;
 };
 
 const StyledLink = styled(BaseLink)(({ theme }) => ({

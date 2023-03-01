@@ -1,5 +1,31 @@
 # @razorpay/blade
 
+## 6.2.3
+
+### Patch Changes
+
+- cbb1424b: fix: change import to default in package exports
+
+  Jest does not support the "import" condition in exports. This was causing tests to fail for Blade consumers. Changed "import" to "default" which is supported by all tools. Since Blade is not exporting a dual package, we don't need the "import" condition.
+
+## 6.2.2
+
+### Patch Changes
+
+- 559d97d9: feat: support string array in children
+
+  Users can now use dynamic variables inside children and don't have to wrap it around with string literals
+
+  ```jsx
+  <Button onClick={}>{someVariable} hello</Button>
+  ```
+
+## 6.2.1
+
+### Patch Changes
+
+- 7016c215: fix(Dropdown): infinite render onChange, positioning in flex container
+
 ## 6.2.0
 
 ### Minor Changes

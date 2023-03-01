@@ -1,6 +1,7 @@
 import type { ReactElement, SyntheticEvent } from 'react';
 import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
@@ -25,7 +26,7 @@ type LinkCommonProps = {
 */
 type LinkWithoutIconProps = LinkCommonProps & {
   icon?: undefined;
-  children: string;
+  children: StringChildrenType;
 };
 
 /*
@@ -33,7 +34,7 @@ type LinkWithoutIconProps = LinkCommonProps & {
 */
 type LinkWithIconProps = LinkCommonProps & {
   icon: IconComponent;
-  children?: string;
+  children?: StringChildrenType;
 };
 
 /*

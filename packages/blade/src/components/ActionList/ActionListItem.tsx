@@ -19,6 +19,7 @@ import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants }
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import sizes from '~tokens/global/sizes';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 type ActionListItemProps = {
   title: string;
@@ -148,7 +149,7 @@ const ActionListItemIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }):
 
 ActionListItemIcon.componentId = componentIds.ActionListItemIcon;
 
-const ActionListItemText: WithComponentId<{ children: string }> = ({ children }) => {
+const ActionListItemText: WithComponentId<{ children: StringChildrenType }> = ({ children }) => {
   const { isDisabled } = React.useContext(ActionListItemContext);
 
   return (

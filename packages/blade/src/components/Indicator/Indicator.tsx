@@ -6,6 +6,8 @@ import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 import sizes from '~tokens/global/sizes';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 import type { Feedback } from '~tokens/theme/theme';
 import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
@@ -30,7 +32,7 @@ type IndicatorWithoutA11yLabel = {
   /**
    * A text label to show alongside the indicator dot
    */
-  children: string;
+  children: StringChildrenType;
 
   /**
    * a11y label for screen readers
@@ -47,7 +49,7 @@ type IndicatorWithA11yLabel = {
   /**
    * A text label to show alongside the indicator dot
    */
-  children?: string;
+  children?: StringChildrenType;
 };
 
 type IndicatorProps = IndicatorCommonProps & (IndicatorWithA11yLabel | IndicatorWithoutA11yLabel);
@@ -64,6 +66,7 @@ const Indicator = ({
   intent = 'neutral',
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
+  const childrenString = getStringFromReactText(children);
 
   const fillColor = theme.colors.feedback.background[intent].highContrast;
   const strokeColor = theme.colors.brand.gray.a100.highContrast;
@@ -82,7 +85,7 @@ const Indicator = ({
   const isReactNative = getPlatformType() === 'react-native';
   const isWeb = !isReactNative;
   const a11yProps = makeAccessible({
-    label: accessibilityLabel ?? children,
+    label: accessibilityLabel ?? childrenString,
     ...(isWeb && { role: 'status' }),
   });
 

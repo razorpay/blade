@@ -47,7 +47,7 @@ type TextInputProps = Pick<
   showClearButton?: boolean;
 
   /**
-   * Event handler to handle the onClick event for clear button.
+   * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
 
