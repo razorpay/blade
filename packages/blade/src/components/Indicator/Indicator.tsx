@@ -5,6 +5,7 @@ import BaseBox from '~components/Box/BaseBox';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
+import sizeTokens from '~tokens/global/size';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StringChildrenType } from '~src/_helpers/types';
 
@@ -54,7 +55,7 @@ type IndicatorWithA11yLabel = {
 type IndicatorProps = IndicatorCommonProps & (IndicatorWithA11yLabel | IndicatorWithoutA11yLabel);
 
 type Dimensions = {
-  svgSize: string;
+  svgSize: number;
   textSize: 'small' | 'medium';
 };
 
@@ -72,11 +73,11 @@ const Indicator = ({
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':
-        return { svgSize: '6', textSize: 'small' };
+        return { svgSize: sizeTokens[6], textSize: 'small' };
       case 'large':
-        return { svgSize: '10', textSize: 'medium' };
+        return { svgSize: sizeTokens[10], textSize: 'medium' };
       default:
-        return { svgSize: '8', textSize: 'medium' };
+        return { svgSize: sizeTokens[8], textSize: 'medium' };
     }
   }, [size]);
   const dimensions = getDimension();
@@ -96,7 +97,12 @@ const Indicator = ({
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Indicator)}
     >
-      <Svg width={dimensions.svgSize} height={dimensions.svgSize} viewBox="0 0 10 10" fill="none">
+      <Svg
+        width={String(dimensions.svgSize)}
+        height={String(dimensions.svgSize)}
+        viewBox="0 0 10 10"
+        fill="none"
+      >
         <Circle cx="5" cy="5" r="5" fill={fillColor} />
         <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
       </Svg>

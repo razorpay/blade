@@ -11,6 +11,8 @@ import type {
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
 import { Text } from '~components/Typography';
+import { makeSize } from '~utils';
+import size from '~tokens/global/size';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -104,7 +106,7 @@ const getRNInputStyles = (
     textAlignVertical: 'top',
     height: props.isTextArea
       ? `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`
-      : '36px',
+      : makeSize(size[36]),
   };
 };
 

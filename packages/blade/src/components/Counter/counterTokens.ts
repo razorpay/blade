@@ -1,8 +1,10 @@
 import type { CounterProps } from './Counter';
 import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { Size } from '~tokens/global/size';
+import size from '~tokens/global/size';
 
-type CounterMaxWidth = 100 | 120;
+type CounterMaxWidth = Size[100] | Size[120];
 
 const verticalPadding: Record<NonNullable<CounterProps['size']>, DotNotationSpacingStringToken> = {
   small: 'spacing.0',
@@ -20,8 +22,8 @@ const horizontalPadding: Record<
 };
 
 const maxWidth: Record<NonNullable<TypographyPlatforms>, CounterMaxWidth> = {
-  onMobile: 100,
-  onDesktop: 120,
+  onMobile: size[100],
+  onDesktop: size[120],
 };
 
 export { maxWidth, verticalPadding, horizontalPadding };

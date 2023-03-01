@@ -9,6 +9,7 @@ import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import size from '~tokens/global/size';
 
 type ProgressBarCommonProps = {
   /**
@@ -91,8 +92,8 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
 const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 | 4> = {
-  small: 2,
-  medium: 4,
+  small: size[2],
+  medium: size[4],
 };
 
 const ProgressBar = ({
