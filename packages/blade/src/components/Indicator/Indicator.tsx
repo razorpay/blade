@@ -5,7 +5,7 @@ import BaseBox from '~components/Box/BaseBox';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
-import sizes from '~tokens/global/sizes';
+import sizeTokens from '~tokens/global/size';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StringChildrenType } from '~src/_helpers/types';
 
@@ -73,11 +73,11 @@ const Indicator = ({
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':
-        return { svgSize: sizes[150], textSize: 'small' };
+        return { svgSize: sizeTokens[6], textSize: 'small' };
       case 'large':
-        return { svgSize: sizes[250], textSize: 'medium' };
+        return { svgSize: sizeTokens[10], textSize: 'medium' };
       default:
-        return { svgSize: sizes[200], textSize: 'medium' };
+        return { svgSize: sizeTokens[8], textSize: 'medium' };
     }
   }, [size]);
   const dimensions = getDimension();

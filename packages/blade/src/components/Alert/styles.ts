@@ -2,9 +2,9 @@ import type { CSSObject, StyledProps } from 'styled-components';
 
 import type { StyledAlertProps } from './types';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
-import sizes from '~tokens/global/sizes';
+import size from '~tokens/global/size';
 
-const MAX_WIDTH = sizes[6100];
+const MAX_WIDTH = size[584];
 
 export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject => {
   const { theme, contrastType, intent, isFullWidth, isDesktop } = props;

@@ -1,6 +1,6 @@
 import { componentIds } from './componentIds';
 import type { WithComponentId } from '~utils';
-import sizes from '~tokens/global/sizes';
+import size from '~tokens/global/size';
 
 type ActionListItemAssetProps = {
   /**
@@ -13,7 +13,7 @@ type ActionListItemAssetProps = {
   alt: string;
 };
 const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) => {
-  return <img src={props.src} alt={props.alt} width={sizes[400]} height={sizes[300]} />;
+  return <img src={props.src} alt={props.alt} width={size[16]} height={size[12]} />;
 };
 
 ActionListItemAsset.componentId = componentIds.ActionListItemAsset;

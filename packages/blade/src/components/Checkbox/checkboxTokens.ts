@@ -1,6 +1,6 @@
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
-import sizes from '~tokens/global/sizes';
+import size from '~tokens/global/size';
 
 const checkboxSizes = {
   group: {
@@ -17,12 +17,12 @@ const checkboxSizes = {
   },
   icon: {
     small: {
-      width: sizes[300],
-      height: sizes[300],
+      width: size[12],
+      height: size[12],
     },
     medium: {
-      width: sizes[400],
-      height: sizes[400],
+      width: size[16],
+      height: size[16],
     },
   },
 } as const;

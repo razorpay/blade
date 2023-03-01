@@ -1,6 +1,6 @@
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
-import sizes from '~tokens/global/sizes';
+import size from '~tokens/global/size';
 
 const radioSizes = {
   group: {
@@ -17,14 +17,14 @@ const radioSizes = {
   },
   icon: {
     small: {
-      width: sizes[300],
-      height: sizes[300],
-      dotRadius: sizes[50],
+      width: size[12],
+      height: size[12],
+      dotRadius: size[2],
     },
     medium: {
-      width: sizes[400],
-      height: sizes[400],
-      dotRadius: sizes[75],
+      width: size[16],
+      height: size[16],
+      dotRadius: size[3],
     },
   },
 } as const;

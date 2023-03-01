@@ -3,7 +3,7 @@ import type { ListProps } from './List';
 import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import { makeSize } from '~utils';
-import sizes from '~tokens/global/sizes';
+import size from '~tokens/global/size';
 
 const listItemMarginLeft: Record<
   NonNullable<ListProps['variant'] | 'unorderedWithIcon'>,
@@ -96,12 +96,12 @@ const listItemUnorderedBulletSize: Record<
   Record<NonNullable<ListProps['size']>, string>
 > = {
   onDesktop: {
-    small: makeSize(sizes[150]),
-    medium: makeSize(sizes[150]),
+    small: makeSize(size[6]),
+    medium: makeSize(size[6]),
   },
   onMobile: {
-    small: makeSize(sizes[125]),
-    medium: makeSize(sizes[150]),
+    small: makeSize(size[5]),
+    medium: makeSize(size[6]),
   },
 };
 
@@ -115,22 +115,22 @@ const ComponentIds = {
 const listItemOrderedBulletBoxSize = {
   ordered: {
     onDesktop: {
-      small: makeSize(sizes[400]),
-      medium: makeSize(sizes[500]),
+      small: makeSize(size[16]),
+      medium: makeSize(size[20]),
     },
     onMobile: {
-      small: makeSize(sizes[400]),
-      medium: makeSize(sizes[600]),
+      small: makeSize(size[16]),
+      medium: makeSize(size[24]),
     },
   },
   'ordered-filled': {
     onDesktop: {
-      small: makeSize(sizes[450]),
-      medium: makeSize(sizes[500]),
+      small: makeSize(size[18]),
+      medium: makeSize(size[20]),
     },
     onMobile: {
-      small: makeSize(sizes[400]),
-      medium: makeSize(sizes[500]),
+      small: makeSize(size[16]),
+      medium: makeSize(size[20]),
     },
   },
 };

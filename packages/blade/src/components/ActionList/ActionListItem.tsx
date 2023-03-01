@@ -18,7 +18,7 @@ import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
-import sizes from '~tokens/global/sizes';
+import sizes from '~tokens/global/size';
 import type { StringChildrenType } from '~src/_helpers/types';
 
 type ActionListItemProps = {
@@ -67,7 +67,7 @@ const ActionListItemContext = React.createContext<{
 }>({});
 
 const StyledSectionDivider = styled(BaseBox)((props) => ({
-  height: makeSize(sizes[25]),
+  height: makeSize(sizes[1]),
   backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
   margin: `${makeSize(props.theme.spacing[1])} ${makeSize(props.theme.spacing[3])}`,
 }));
@@ -278,7 +278,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
           justifyContent="center"
           flexDirection="row"
           alignItems="center"
-          maxHeight={isReactNative() ? undefined : sizes[500]}
+          maxHeight={isReactNative() ? undefined : sizes[20]}
         >
           <BaseBox display="flex" justifyContent="center" alignItems="center">
             {selectionType === 'multiple' ? (

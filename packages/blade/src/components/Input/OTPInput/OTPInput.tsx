@@ -9,7 +9,7 @@ import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, getPlatformType, MetaConstants, isEmpty } from '~utils';
 import { useTheme } from '~components/BladeProvider';
-import sizes from '~tokens/global/sizes';
+import size from '~tokens/global/size';
 
 export type OTPInputProps = Pick<
   BaseInputProps,
@@ -266,7 +266,7 @@ const OTPInput = ({
           flex={1}
           marginLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
           key={`${inputId}-${index}`}
-          maxWidth={platform === 'onDesktop' ? sizes[900] : sizes[1000]}
+          maxWidth={platform === 'onDesktop' ? size[36] : size[40]}
         >
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus

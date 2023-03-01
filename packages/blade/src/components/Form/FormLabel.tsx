@@ -6,7 +6,7 @@ import { getPlatformType, makeSize, makeSpace, useBreakpoint } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
-import sizes from '~tokens/global/sizes';
+import size from '~tokens/global/size';
 
 type CommonProps = {
   as: 'span' | 'label';
@@ -127,7 +127,7 @@ const FormLabel = ({
 
   const Component = as;
   // only set 120px label when device is desktop
-  const width = isLabelLeftPositioned && isDesktop ? makeSize(sizes[2050]) : 'auto';
+  const width = isLabelLeftPositioned && isDesktop ? makeSize(size[120]) : 'auto';
 
   return (
     <Component

@@ -2,7 +2,7 @@ import { Image } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { componentIds } from './componentIds';
 import type { WithComponentId } from '~utils';
-import sizes from '~tokens/global/sizes';
+import size from '~tokens/global/size';
 
 type ActionListItemAssetProps = {
   /**
@@ -25,7 +25,7 @@ const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) =
   return (
     <Image
       source={source}
-      style={{ width: sizes[400], height: sizes[300] }}
+      style={{ width: size[16], height: size[12] }}
       accessibilityIgnoresInvertColors
       // @ts-expect-error: alt does exist on React Native Image https://reactnative.dev/docs/image#alt
       alt={props.alt}

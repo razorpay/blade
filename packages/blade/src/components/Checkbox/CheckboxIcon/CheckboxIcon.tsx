@@ -7,16 +7,16 @@ import { Fade } from './Fade';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
 import { getIn, makeSpace } from '~utils';
-import sizes from '~tokens/global/sizes';
+import size from '~tokens/global/size';
 
 const svgSize = {
   small: {
-    width: sizes[200],
-    height: sizes[200],
+    width: size[8],
+    height: size[8],
   },
   medium: {
-    width: sizes[300],
-    height: sizes[300],
+    width: size[12],
+    height: size[12],
   },
 };
 
