@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-chore(blade): added BulkPayoutsIcon
+feat(icons): add BulkPayoutsIcon
