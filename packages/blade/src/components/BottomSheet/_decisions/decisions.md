@@ -49,7 +49,7 @@ Sample usage:
 ```jsx
 import { BottomSheet } from '@razorpay/blade';
 
-<BottomSheet open={boolean} snapPoints={[]}>
+<BottomSheet isOpen={boolean} snapPoints={[]}>
   <BottomSheetHeader>
     <BottomSheetHeaderLeading title="Payments Links" prefix={BladeIcon} />
     <BottomSheetHeaderTrailing visual={Link | Action | Icon} />
@@ -98,7 +98,7 @@ We'll expose a `BottomSheet` component with the following API:
 
 | Prop            | Type        | Default                 | Description                                                                                     | Required |
 | --------------- | ----------- | ----------------------- | ----------------------------------------------------------------------------------------------- | -------- |
-| open            | `boolean`   | `false`                 | toggles bottom sheet state content                                                              |          |
+| isOpen            | `boolean`   | `false`                 | toggles bottom sheet state content                                                              |          |
 | snapPoints      | `[number, number, number]`  | `[0.35, 0.5, 0.85]` | Snappoints in which the bottom sheeet will rest on, this accepts a number between 0 & 1 which maps to the total view height of the screen. 0.5 means 50% of screen height.                                              |          |
 | onDismiss       | `Callback`  | `undefined`             | called when the bottom sheet is closed, either by user state, hitting `esc` or tapping backdrop |          |
 | initialFocusRef | `React.Ref` | `undefined`             | ref element you want to get keyboard focus when opening the sheet                               |          |
@@ -252,7 +252,7 @@ There are two major reasons:
 
 ## Accessibility
 
-The bottom sheet will follow the accessibility charechtaristics of a Modal.
+The bottom sheet will follow the accessibility characteristics of a Modal.
 
 [APG Guidelines for Modal](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)
 
