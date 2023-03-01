@@ -35,6 +35,7 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
 
 type DropdownBottomSheetContexProps = {
   isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectionType: 'single' | 'multiple';
   hasBottomSheet: boolean;
   setHasBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;

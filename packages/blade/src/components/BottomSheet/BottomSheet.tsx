@@ -86,6 +86,7 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
     const preventScrollingRef = React.useRef(true);
     const scrollRef = React.useRef<HTMLDivElement>(null);
     const grabHandleRef = React.useRef<HTMLDivElement>(null);
+    const originalFocusElement = React.useRef<HTMLElement>(null);
 
     const setPosY = React.useCallback(
       (value: number, limit = true) => {
@@ -114,16 +115,26 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
       });
     }, [grabHandleRef, isOpen]);
 
+    const returnFocus = React.useCallback(() => {
+      if (!originalFocusElement.current) return;
+      originalFocusElement.current.focus();
+    }, [originalFocusElement]);
+
     const close = React.useCallback(() => {
       setIsOpen(false);
       setPosY(0);
+      returnFocus();
+      // close the select dropdown as well
+      dropdownBottomSheetProps?.setIsOpen(false);
       scrollLockRef.current.deactivate();
-    }, [scrollLockRef, setPosY]);
+    }, [setPosY, returnFocus, scrollLockRef, dropdownBottomSheetProps]);
 
     const open = React.useCallback(() => {
       setIsOpen(true);
       setPosY(dimensions.height * 0.5);
       scrollLockRef.current.activate();
+      // @ts-expect-error this is a mutable ref
+      originalFocusElement.current = originalFocusElement.current || document.activeElement;
     }, [dimensions.height, scrollLockRef, setPosY]);
 
     React.useImperativeHandle(

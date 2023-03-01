@@ -124,7 +124,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
 
   return (
     <DropdownBottomSheetContext.Provider
-      value={{ isOpen, selectionType, hasBottomSheet, setHasBottomSheet }}
+      value={{ isOpen, setIsOpen, selectionType, hasBottomSheet, setHasBottomSheet }}
     >
       <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>
     </DropdownBottomSheetContext.Provider>
