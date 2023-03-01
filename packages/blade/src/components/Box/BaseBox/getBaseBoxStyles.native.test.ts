@@ -1,6 +1,14 @@
-import { getBaseBoxStyles, getResponsiveValue, getSpacingValue } from './getBaseBoxStyles';
+import {
+  getBaseBoxStyles,
+  getResponsiveValue,
+  getSpacingValue,
+  getAllMediaQueries,
+  getAllProps,
+} from './getBaseBoxStyles';
 import type { BaseBoxProps } from './types';
+import { removeUndefinedValues } from './getBaseBoxStyles.test';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme/paymentLightTheme';
+import type { Theme } from '~components/BladeProvider';
 
 describe('getResponsiveValue', () => {
   it('should return correctly for plain values', () => {
@@ -61,6 +69,32 @@ describe('getBaseBoxStyles', () => {
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
       Object {
         "margin": "2px 12px 100%",
+      }
+    `);
+  });
+});
+
+describe('getAllMediaQueries', () => {
+  it('should return empty object', () => {
+    expect(
+      getAllMediaQueries({ display: 'block', theme: paymentLightTheme }),
+    ).toMatchInlineSnapshot(`Object {}`);
+  });
+});
+
+describe('getAllProps', () => {
+  it('should return all values for depending on react native priority', () => {
+    const baseBoxProps: BaseBoxProps & { theme: Theme } = {
+      display: 'block',
+      padding: { base: 'spacing.1', s: '20px' },
+      margin: { m: 'spacing.1' },
+      theme: paymentLightTheme,
+    };
+
+    expect(removeUndefinedValues(getAllProps(baseBoxProps))).toMatchInlineSnapshot(`
+      Object {
+        "display": "block",
+        "padding": "20px",
       }
     `);
   });
