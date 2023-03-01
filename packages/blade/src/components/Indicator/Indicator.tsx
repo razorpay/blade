@@ -7,14 +7,9 @@ import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 
 import type { Feedback } from '~tokens/theme/theme';
-import type { StyledProps } from '~utils';
-import {
-  metaAttribute,
-  getPlatformType,
-  makeAccessible,
-  MetaConstants,
-  getStyledProps,
-} from '~utils';
+import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 
 type IndicatorCommonProps = {
   /**

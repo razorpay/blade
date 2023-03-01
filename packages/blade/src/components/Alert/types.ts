@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 import type { ColorContrast, Feedback } from '~tokens/theme/theme';
-import type { StyledProps } from '~utils';
+import type { StyledProps } from '~components/Box/styled-props';
 
 export type StyledAlertProps = {
   children: ReactNode;

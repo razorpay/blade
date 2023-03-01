@@ -3,8 +3,10 @@ import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
-import type { StyledProps, WithComponentId } from '~utils';
-import { getStyledProps, isValidAllowedChildren } from '~utils';
+import type { WithComponentId } from '~utils';
+import { isValidAllowedChildren } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 
 import BaseBox from '~components/Box/BaseBox';
 

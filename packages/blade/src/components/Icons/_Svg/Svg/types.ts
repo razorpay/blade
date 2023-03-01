@@ -1,4 +1,4 @@
-import type { StyledProps } from '~utils';
+import type { StyledProps } from '~components/Box/styled-props';
 
 export type SvgProps = {
   children: React.ReactNode;

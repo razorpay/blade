@@ -1,4 +1,4 @@
-import type { StyledProps } from '../../components/Box/BaseBox/types';
+import type { StyledProps } from '../BaseBox/types';
 import type { KeysRequired } from '~src/_helpers/types';
 
 /**

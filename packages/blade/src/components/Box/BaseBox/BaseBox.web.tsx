@@ -4,6 +4,7 @@ import { getBaseBoxStyles, getDependencyProps } from './getBaseBoxStyles';
 import type { BaseBoxProps } from './types';
 
 const BaseBox = styled.div<BaseBoxProps>((props) => {
+  // @TODO move this out into common hook like `useStyledProps` and use it here and in `useStyledProps` both
   const dependencyProp = getDependencyProps(props);
 
   // Without memo, the Box style recalculations will run on things like screen size change or randomly during scroll.

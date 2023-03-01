@@ -11,7 +11,7 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-import type { StyledProps } from '~utils';
+import type { StyledProps } from '~components/Box/styled-props';
 import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';

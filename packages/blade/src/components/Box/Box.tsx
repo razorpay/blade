@@ -76,6 +76,8 @@ const getValidatedBoxProps = (props: BoxProps): Omit<KeysRequired<BoxProps>, 'ch
     right: props.right,
     bottom: props.bottom,
     left: props.left,
+
+    // Add background
   };
 };
 
@@ -115,6 +117,7 @@ const getValidatedBoxProps = (props: BoxProps): Omit<KeysRequired<BoxProps>, 'ch
  * 
  */
 const Box = (props: BoxProps): JSX.Element => {
+  // @TODO: add meta attributes
   return <BaseBox {...getValidatedBoxProps(props)} />;
 };
 

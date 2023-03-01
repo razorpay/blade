@@ -5,7 +5,8 @@ import React from 'react';
 import type { TextInput } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
-import { getIn, useStyledProps } from '~utils';
+import { getIn } from '~utils';
+import { useStyledProps } from '~components/Box/styled-props';
 import { useTheme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 

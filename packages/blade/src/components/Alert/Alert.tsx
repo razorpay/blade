@@ -15,9 +15,9 @@ import {
   metaAttribute,
   MetaConstants,
   useBreakpoint,
-  getStyledProps,
 } from '~utils';
-import type { StyledProps } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
