@@ -13,13 +13,13 @@ type AmountProps = {
    * The value to be rendered within the component.
    *
    */
-  children: string;
+  value: number;
   /**
    * Sets the variant of the amount.
    *
    * @default 'neutral'
    */
-  variant?: Feedback | 'blue' | 'none';
+  variant?: Feedback;
   /**
    * Sets the size of the amount.
    *
@@ -27,11 +27,11 @@ type AmountProps = {
    */
   size: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
   /**
-   * Sets the fontWeight of the label.
+   * Sets the weight of the label.
    *
    * @default 'regular'
    */
-  fontWeight?: 'regular' | 'bold';
+  weight?: 'regular' | 'bold';
   /**
    * Indicates whether a text suffix should be used
    *
@@ -41,17 +41,12 @@ type AmountProps = {
   /**
    * Highlight the main amount by making the prefix symbol and decimal digits small
    *
-   * @default 'regular'
+   * @default 'Decimals'
    */
-  isSuffixPrefixHighlighted?: true | false;
+  isAffixSubtle?: true | false;
 };
 
 const RUPEE_SYMBOL = '₹';
-
-const isFeedbackVariant = (variant: string): variant is Feedback => {
-  const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
-  return feedbackVariants.includes(variant);
-};
 
 type ColorProps = {
   textColor: BaseTextProps['color'];
@@ -67,15 +62,10 @@ const getColorProps = ({
     textColor: 'feedback.text.neutral.lowContrast',
     prefixSuffixColor: 'feedback.text.neutral.lowContrast',
   };
-  if (isFeedbackVariant(variant)) {
-    props.textColor = `feedback.text.${variant}.lowContrast`;
-    props.prefixSuffixColor = `feedback.text.${variant}.lowContrast`;
-    if (variant === 'neutral') {
-      props.prefixSuffixColor = `surface.text.muted.lowContrast`;
-    }
-  } else {
-    props.textColor = `badge.text.${variant}.lowContrast`;
-    props.prefixSuffixColor = `badge.text.${variant}.lowContrast`;
+  props.textColor = `feedback.text.${variant}.lowContrast`;
+  props.prefixSuffixColor = `feedback.text.${variant}.lowContrast`;
+  if (variant === 'neutral') {
+    props.prefixSuffixColor = `surface.text.muted.lowContrast`;
   }
   return props;
 };
@@ -86,14 +76,14 @@ const addCommas = (num: number): string => {
 
 const getFormattedAmountWithSuffixSymbol = (num: number): string => {
   const abbreviations = [
-    { value: 1e9, symbol: 'cr' },
-    { value: 1e5, symbol: 'l' },
+    { value: 1e9, symbol: 'Cr' },
+    { value: 1e5, symbol: 'L' },
     { value: 1e3, symbol: 'k' },
   ];
 
   const abbreviation = abbreviations.find((abbr) => num >= abbr.value);
   if (abbreviation) {
-    num = Number((num / abbreviation.value).toFixed());
+    num = Number((num / abbreviation.value).toFixed(2));
     return addCommas(num) + abbreviation.symbol;
   } else {
     return num.toFixed();
@@ -114,33 +104,31 @@ const formatAmountWithSuffix = (suffix: string, num: number): string => {
   }
 };
 
-const getRupeeFontWeight = (
-  isSuffixPrefixHighlighted: true | false,
-  fontWeight: 'regular' | 'bold',
+const getRupeeweight = (
+  isAffixSubtle: true | false,
+  weight: 'regular' | 'bold',
 ): 'regular' | 'bold' => {
-  if (!isSuffixPrefixHighlighted && fontWeight === 'regular') return 'regular';
+  if (!isAffixSubtle && weight === 'regular') return 'regular';
   return 'bold';
 };
 
 const Amount = ({
-  children,
+  value,
   suffix = 'Decimals',
-  fontWeight = 'regular',
+  weight = 'regular',
   size = 'medium',
-  isSuffixPrefixHighlighted = true,
+  isAffixSubtle = true,
   variant = 'neutral',
 }: AmountProps): ReactElement => {
-  if (!children?.trim() && typeof children !== 'string' && !isNaN(children)) {
-    throw new Error('[Blade: Badge]: Number as children is required for Amount.');
+  if (typeof value !== 'number' && !isNaN(value)) {
+    throw new Error('[Blade: Amount]: Number as value is required for Amount.');
   }
-
-  const num = Number(children);
-  const value = formatAmountWithSuffix(suffix, num);
+  const renderedValue = formatAmountWithSuffix(suffix, value);
   const { textColor, prefixSuffixColor } = getColorProps({
     variant,
   });
-  const rupeeFontWeight = getRupeeFontWeight(isSuffixPrefixHighlighted, fontWeight);
-  const rupeeFontSize = getSuffixPrefixFontSize(isSuffixPrefixHighlighted, size);
+  const rupeeweight = getRupeeweight(isAffixSubtle, weight);
+  const rupeeFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
 
   return (
     <Box
@@ -154,15 +142,15 @@ const Amount = ({
       alignItems="baseline"
       overflow="hidden"
     >
-      <BaseText fontWeight={rupeeFontWeight} fontSize={rupeeFontSize} color={prefixSuffixColor}>
+      <BaseText fontWeight={rupeeweight} fontSize={rupeeFontSize} color={prefixSuffixColor}>
         {RUPEE_SYMBOL}
       </BaseText>
       <BaseAmount
-        value={value}
-        fontWeight={fontWeight}
+        value={renderedValue}
+        weight={weight}
         textColor={textColor}
         size={size}
-        isSuffixPrefixHighlighted={isSuffixPrefixHighlighted}
+        isAffixSubtle={isAffixSubtle}
         suffix={suffix}
         prefixSuffixColor={prefixSuffixColor}
       />

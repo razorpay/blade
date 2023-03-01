@@ -23,13 +23,12 @@ const Page = (): React.ReactElement => {
       <Title>Usage</Title>
       <Sandbox>
         {`
-        import { Amount, InfoIcon } from '@razorpay/blade/components';
+        import { Amount } from '@razorpay/blade/components';
         
         function App(): JSX.Element {
+          const value = 21222.2;
           return (
-            <Amount variant="neutral" icon={InfoIcon}>
-              Boop
-            </Amount>
+            <Amount variant="neutral" value={value} />  
           )
         }
 
@@ -51,15 +50,15 @@ export default {
   },
 } as Meta<AmountProps>;
 
-const AmountTemplate: ComponentStory<typeof AmountComponent> = ({ children, ...args }) => {
-  return <AmountComponent {...args}>{children}</AmountComponent>;
+const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+  return <AmountComponent {...args} />;
 };
 
 export const Amount = AmountTemplate.bind({});
 Amount.args = {
-  children: '120322.231',
+  value: 121322.231,
   variant: 'neutral',
-  fontWeight: 'bold',
+  weight: 'bold',
   size: 'small',
 };
 Amount.storyName = 'Default';

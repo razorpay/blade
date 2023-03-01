@@ -5,16 +5,16 @@ import type { BaseTextProps } from '../Typography/BaseText/types';
 import { amountTextSizes, prefixSuffixTextSizes } from './amountTokens';
 import type { AmountProps } from './Amount';
 
-const getDecimalFontWeight = (isSuffixPrefixHighlighted: true | false): 'regular' | 'bold' => {
-  if (isSuffixPrefixHighlighted) return 'regular';
+const getDecimalFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' => {
+  if (isAffixSubtle) return 'regular';
   return 'bold';
 };
 
 export const getSuffixPrefixFontSize = (
-  isSuffixPrefixHighlighted: NonNullable<AmountProps['isSuffixPrefixHighlighted']>,
+  isAffixSubtle: NonNullable<AmountProps['isAffixSubtle']>,
   size: NonNullable<AmountProps['size']>,
 ): keyof FontSize | undefined => {
-  if (isSuffixPrefixHighlighted) return prefixSuffixTextSizes[size];
+  if (isAffixSubtle) return prefixSuffixTextSizes[size];
   return amountTextSizes[size].fontSize;
 };
 
@@ -27,24 +27,20 @@ interface BaseAmount extends AmountProps {
 const BaseAmount = ({
   value,
   size,
-  fontWeight,
+  weight,
   textColor,
-  isSuffixPrefixHighlighted,
+  isAffixSubtle,
   suffix,
   prefixSuffixColor,
 }: BaseAmount): ReactElement => {
-  if (suffix === 'Decimals' && isSuffixPrefixHighlighted) {
+  if (suffix === 'Decimals' && isAffixSubtle) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
-    const affixFontWeight = getDecimalFontWeight(isSuffixPrefixHighlighted);
-    const affixFontSize = getSuffixPrefixFontSize(isSuffixPrefixHighlighted, size);
+    const affixFontWeight = getDecimalFontWeight(isAffixSubtle);
+    const affixFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
     return (
       <>
-        <BaseText
-          fontSize={amountTextSizes[size].fontSize}
-          fontWeight={fontWeight}
-          color={textColor}
-        >
+        <BaseText fontSize={amountTextSizes[size].fontSize} fontWeight={weight} color={textColor}>
           {integer}.
         </BaseText>
         <BaseText fontWeight={affixFontWeight} fontSize={affixFontSize} color={prefixSuffixColor}>
@@ -54,7 +50,7 @@ const BaseAmount = ({
     );
   }
   return (
-    <BaseText {...amountTextSizes[size]} fontWeight={fontWeight} color={textColor}>
+    <BaseText {...amountTextSizes[size]} fontWeight={weight} color={textColor}>
       {value}
     </BaseText>
   );
