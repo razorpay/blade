@@ -6,6 +6,7 @@ export const MetaConstants = {
   ActionListSection: 'action-list-section',
   Alert: 'alert',
   Badge: 'badge',
+  Box: 'Box',
   Button: 'button',
   Checkbox: 'checkbox',
   CheckboxGroup: 'checkbox-group',

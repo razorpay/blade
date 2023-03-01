@@ -2,6 +2,7 @@ import React from 'react';
 import BaseBox from './BaseBox';
 import type { BoxProps, MakeValueResponsive } from './BaseBox/types';
 import type { KeysRequired } from '~src/_helpers/types';
+import { metaAttribute, MetaConstants } from '~utils';
 
 const isValidBackgroundColorString = (stringBackgroundColorValue: string): void => {
   if (!stringBackgroundColorValue.startsWith('surface.background')) {
@@ -149,8 +150,12 @@ const useValidatedBoxProps = (props: BoxProps): KeysRequired<BoxProps> => {
  * 
  */
 const Box = (props: BoxProps): JSX.Element => {
-  // @TODO: add meta attributes
-  return <BaseBox {...useValidatedBoxProps(props)} />;
+  return (
+    <BaseBox
+      {...metaAttribute(MetaConstants.Component, MetaConstants.Box)}
+      {...useValidatedBoxProps(props)}
+    />
+  );
 };
 
 export { Box };
