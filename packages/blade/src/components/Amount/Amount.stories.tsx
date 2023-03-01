@@ -1,10 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import capitalize from 'lodash/capitalize';
 import { Title } from '@storybook/addon-docs';
+import Box from '../Box';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
-import Box from '~components/Box';
-import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
@@ -51,7 +49,17 @@ export default {
 } as Meta<AmountProps>;
 
 const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
-  return <AmountComponent {...args} />;
+  const variants = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+
+  return (
+    <Box>
+      {variants.map((variant) => (
+        <Box key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
+          <AmountComponent {...args} variant={variant} />
+        </Box>
+      ))}
+    </Box>
+  );
 };
 
 export const Amount = AmountTemplate.bind({});
@@ -63,37 +71,64 @@ Amount.args = {
 };
 Amount.storyName = 'Default';
 
-// const AmountsWithVariantTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
-//   const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
+const defaultArgs = {
+  value: 121322.231,
+};
 
-//   const getLabel = (label: string): string => {
-//     return args.fontWeight === 'bold' ? label.toUpperCase() : capitalize(label);
-//   };
+export const Negative = AmountTemplate.bind({});
 
-//   return (
-//     <Box display="flex" flexDirection="column">
-//       <Box
-//         display="flex"
-//         flexDirection="row"
-//         paddingTop="spacing.3"
-//         paddingBottom="spacing.5"
-//         flexWrap="wrap"
-//       >
-//         {variants.map((variant) => (
-//           <Box key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
-//             <AmountComponent {...args} variant={variant}>
-//               {getLabel(variant)}
-//             </AmountComponent>
-//           </Box>
-//         ))}
-//       </Box>
-//     </Box>
-//   );
-// };
+Negative.args = {
+  ...defaultArgs,
+  value: -121322.231,
+  variant: 'negative',
+};
+Negative.storyName = 'Negative';
 
-// export const AmountSmallSize = AmountsWithVariantTemplate.bind({});
-// AmountSmallSize.args = {
-//   size: 'large',
-//   variant: 'negative',
-// };
-// AmountSmallSize.storyName = 'Small Size';
+export const Notice = AmountTemplate.bind({});
+Notice.args = {
+  ...defaultArgs,
+  variant: 'notice',
+};
+Notice.storyName = 'Notice';
+
+export const Information = AmountTemplate.bind({});
+Information.args = {
+  ...defaultArgs,
+  variant: 'information',
+};
+Information.storyName = 'Information';
+
+export const RegularWeight = AmountTemplate.bind({});
+RegularWeight.args = {
+  ...defaultArgs,
+  weight: 'regular',
+};
+RegularWeight.storyName = 'Regular Weight';
+
+export const NoSuffix = AmountTemplate.bind({});
+NoSuffix.args = {
+  ...defaultArgs,
+  suffix: 'none',
+};
+NoSuffix.storyName = 'No Suffix';
+
+export const HumanizeSuffix = AmountTemplate.bind({});
+HumanizeSuffix.args = {
+  ...defaultArgs,
+  suffix: 'humanize',
+};
+HumanizeSuffix.storyName = 'Humanize Suffix';
+
+export const SmallSize = AmountTemplate.bind({});
+SmallSize.args = {
+  ...defaultArgs,
+  size: 'small',
+};
+SmallSize.storyName = 'Small Size';
+
+export const AffixSubtleOff = AmountTemplate.bind({});
+AffixSubtleOff.args = {
+  ...defaultArgs,
+  isAffixSubtle: false,
+};
+AffixSubtleOff.storyName = 'Affix Subtle Off';

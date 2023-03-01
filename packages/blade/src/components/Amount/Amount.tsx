@@ -8,6 +8,12 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 // import { metaAttribute, MetaConstants } from '~utils';
 
+export const suffixTypes = {
+  HUMANIZE: 'humanize',
+  DECIMALS: 'decimals',
+  NONE: 'none',
+};
+
 type AmountProps = {
   /**
    * The value to be rendered within the component.
@@ -25,7 +31,7 @@ type AmountProps = {
    *
    * @default 'low'
    */
-  size: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
+  size?: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
   /**
    * Sets the weight of the label.
    *
@@ -37,7 +43,7 @@ type AmountProps = {
    *
    * @default 'regular'
    */
-  suffix?: 'Decimals' | 'None' | 'Humanise';
+  suffix?: 'decimals' | 'none' | 'humanize';
   /**
    * Highlight the main amount by making the prefix symbol and decimal digits small
    *
@@ -92,15 +98,15 @@ const getFormattedAmountWithSuffixSymbol = (num: number): string => {
 
 const formatAmountWithSuffix = (suffix: string, num: number): string => {
   switch (suffix) {
-    case 'Decimals': {
+    case suffixTypes.DECIMALS: {
       const decimalNum = Number(num.toFixed(2));
       return addCommas(decimalNum);
     }
-    case 'Humanise': {
+    case suffixTypes.HUMANIZE: {
       return getFormattedAmountWithSuffixSymbol(num);
     }
     default:
-      return num.toFixed(0);
+      return num.toFixed(2);
   }
 };
 
@@ -114,7 +120,7 @@ const getRupeeweight = (
 
 const Amount = ({
   value,
-  suffix = 'Decimals',
+  suffix = 'decimals',
   weight = 'regular',
   size = 'medium',
   isAffixSubtle = true,
@@ -146,7 +152,7 @@ const Amount = ({
         {RUPEE_SYMBOL}
       </BaseText>
       <BaseAmount
-        value={renderedValue}
+        mainValue={renderedValue}
         weight={weight}
         textColor={textColor}
         size={size}

@@ -4,6 +4,7 @@ import type { FontSize } from '../../tokens/global/typography';
 import type { BaseTextProps } from '../Typography/BaseText/types';
 import { amountTextSizes, prefixSuffixTextSizes } from './amountTokens';
 import type { AmountProps } from './Amount';
+import { suffixTypes } from './Amount';
 
 const getDecimalFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' => {
   if (isAffixSubtle) return 'regular';
@@ -15,17 +16,17 @@ export const getSuffixPrefixFontSize = (
   size: NonNullable<AmountProps['size']>,
 ): keyof FontSize | undefined => {
   if (isAffixSubtle) return prefixSuffixTextSizes[size];
-  return amountTextSizes[size].fontSize;
+  return amountTextSizes[size];
 };
 
 interface BaseAmount extends AmountProps {
   prefixSuffixColor: BaseTextProps['color'];
   textColor: BaseTextProps['color'];
-  value: string;
+  mainValue: string;
 }
 
 const BaseAmount = ({
-  value,
+  mainValue,
   size,
   weight,
   textColor,
@@ -33,14 +34,14 @@ const BaseAmount = ({
   suffix,
   prefixSuffixColor,
 }: BaseAmount): ReactElement => {
-  if (suffix === 'Decimals' && isAffixSubtle) {
-    const integer = value.split('.')[0];
-    const decimal = value.split('.')[1];
+  if (suffix === suffixTypes.DECIMALS && isAffixSubtle) {
+    const integer = mainValue.split('.')[0];
+    const decimal = mainValue.split('.')[1];
     const affixFontWeight = getDecimalFontWeight(isAffixSubtle);
     const affixFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
     return (
       <>
-        <BaseText fontSize={amountTextSizes[size].fontSize} fontWeight={weight} color={textColor}>
+        <BaseText fontSize={amountTextSizes[size]} fontWeight={weight} color={textColor}>
           {integer}.
         </BaseText>
         <BaseText fontWeight={affixFontWeight} fontSize={affixFontSize} color={prefixSuffixColor}>
@@ -51,7 +52,7 @@ const BaseAmount = ({
   }
   return (
     <BaseText {...amountTextSizes[size]} fontWeight={weight} color={textColor}>
-      {value}
+      {mainValue}
     </BaseText>
   );
 };

@@ -38,24 +38,12 @@ const prefixSuffixTextSizes = {
 } as const;
 
 const amountTextSizes = {
-  small: {
-    fontSize: 50,
-  },
-  medium: {
-    fontSize: 75,
-  },
-  large: {
-    fontSize: 100,
-  },
-  xlarge: {
-    fontSize: 300,
-  },
-  '2xlarge': {
-    fontSize: 500,
-  },
-  '3xlarge': {
-    fontSize: 700,
-  },
+  small: 50,
+  medium: 75,
+  large: 100,
+  xlarge: 300,
+  '2xlarge': 500,
+  '3xlarge': 700,
 } as const;
 
 export { verticalPadding, horizontalPadding, iconPadding, amountTextSizes, prefixSuffixTextSizes };
