@@ -10,15 +10,14 @@ Amount component is a UI element that displays and formats various currency valu
 
 ## API
 
-| Prop          | Type                                                       | Default     | Description                                                | Required |
-| ------------- | ---------------------------------------------------------- | ----------- | ---------------------------------------------------------- | -------- |
-| value         | `number`                                                   | `undefined` | The value to be rendered within the component              | ✅       |
-| variant       | `positive`, `negative`, `notice`, `information`            | `undefined` | The variant of the amount to be rendered                   |          |
-| weight        | `bold`, `regular`                                          | `bold`      | The weight of the amount to be rendered                    |          |
-| hasDecimals   | `true`, `false`                                            | `true`      | Indicates whether a given value has decimal places or not. |          |
-| humanize      | `true`, `false`                                            | `false`     | This will humanize the value based on the currency system  |          |
-| size          | `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small` | `3xlarge`   | The size of the amount to be rendered                      |          |
-| isAffixSubtle | `true`, `false`                                            | `true`      | Makes the prefix symbol and decimal digits small and faded |          |
+| Prop          | Type                                                       | Default     | Description                                                                                                                                                                                         | Required |
+| ------------- | ---------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| value         | `number`                                                   | `undefined` | The value to be rendered within the component                                                                                                                                                       | ✅       |
+| variant       | `positive`, `negative`, `notice`, `information`, `blue`    | `undefined` | The variant of the amount to be rendered                                                                                                                                                            |          |
+| weight        | `bold`, `regular`                                          | `bold`      | The weight of the amount to be rendered                                                                                                                                                             |          |
+| suffix        | `none`, `decimals` , `humanize`                            | `decimals`  | The type of suffix to be displayed with the currency value, (none, decimals, and humanize) that respectively indicate no suffix, the number of decimal places, and the scale of the currency value. |          |
+| size          | `3xlarge`, `2xlarge`, `xlarge`, `large`, `medium`, `small` | `3xlarge`   | The size of the amount to be rendered                                                                                                                                                               |          |
+| isAffixSubtle | `true`, `false`                                            | `true`      | Makes the prefix symbol and decimal digits small and faded                                                                                                                                          |          |
 
 ### Sample Usage
 
@@ -26,8 +25,7 @@ Amount component is a UI element that displays and formats various currency valu
 import { Amount } from '@razorpay/components';
 
 <Amount
-  hasDecimals={true}
-  humanize={false}
+  suffix="decimals"
   size="2xlarge"
   isAffixSubtle={true}
   weight="regular"
@@ -43,8 +41,7 @@ import { Amount } from '@razorpay/components';
 - ~~Should we call it `variant` or `intent`, `isStyled` or something more apt?~~
 - ~~Should we separate the amount with commas based on the Indian currency format?~~
 - ~~What should be the default `intent`? Kept it as `default` for now, but `neutral` seems more apt.~~
-- ~~We currently use amount value in paise in backend, so how should we convert it to rupee here?~~
-- ~~Should we have two seperate props for decimals and humanize?~~
+- We currently use amount value in paise in backend, so how should we convert it to rupee here?
 - ~~Scope of A11y?~~
 
 #### Design
@@ -53,13 +50,9 @@ import { Amount } from '@razorpay/components';
 
 ## Discussions
 
-### Should we have two seperate props for decimals and humanize?
-
-- We opted to use two distinct props, namely `humanize` and `hasDecimals`, because they serve distinct purposes and humanize can include decimals. Keeping them separate is therefore preferable.
-
 ### Should we call `isSuffixPrefixHighlighted` or `isHighlighted` or `isAffixSubtle`, considering when this value is true the value will be highligted and not the affix.
 
-- We decided to name this property `isAffixSubtle`. This decision was reached based on the fact that the property controls the behavior of the affix, which in turn affects the visual appearance of the prefix and decimal digits. By setting this property to 'true', the affix will appear smaller and more faded.
+- After careful consideration, we decided to name this property `isAffixSubtle`. This decision was reached based on the fact that the property controls the behavior of the affix, which in turn affects the visual appearance of the prefix and decimal digits. By setting this property to 'true', the affix will appear smaller and more faded.
 
 ### Should we have a seperate prop for decimals and another for affix symbols?
 
