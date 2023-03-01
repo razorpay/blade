@@ -15,7 +15,14 @@ import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
-import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
+import {
+  isReactNative,
+  makeAccessible,
+  makeSize,
+  metaAttribute,
+  MetaConstants,
+  useBreakpoint,
+} from '~utils';
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import { useTheme } from '~components/BladeProvider';
@@ -213,6 +220,8 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
   } = useDropdown();
 
   const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isMobile = matchedDeviceType === 'mobile';
 
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
@@ -275,6 +284,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         intent={props.intent}
         isSelected={isSelected}
         isKeydownPressed={isKeydownPressed}
+        isMobile={isMobile}
       >
         <BaseBox
           display="flex"
