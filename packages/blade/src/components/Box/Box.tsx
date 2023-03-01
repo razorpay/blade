@@ -1,11 +1,41 @@
+import React from 'react';
 import BaseBox from './BaseBox';
-import type { BoxProps } from './BaseBox/types';
+import type { BoxProps, MakeValueResponsive } from './BaseBox/types';
 import type { KeysRequired } from '~src/_helpers/types';
+
+const isValidBackgroundColorString = (stringBackgroundColorValue: string): void => {
+  if (!stringBackgroundColorValue.startsWith('surface.background')) {
+    throw new Error(
+      `[Blade - Box]: Oops! Currently you can only use \`surface.background.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
+    );
+  }
+};
+
+const validateBackgroundColor = (
+  responsiveBackgroundColor: MakeValueResponsive<string | undefined>,
+): void => {
+  if (responsiveBackgroundColor) {
+    if (typeof responsiveBackgroundColor === 'string') {
+      isValidBackgroundColorString(responsiveBackgroundColor);
+      return;
+    }
+
+    Object.values(responsiveBackgroundColor).forEach((backgroundColor) => {
+      if (typeof responsiveBackgroundColor === 'string') {
+        isValidBackgroundColorString(backgroundColor);
+      }
+    });
+  }
+};
 
 /**
  * This function is to filter out any unexpected props passed by the user
  */
-const getValidatedBoxProps = (props: BoxProps): Omit<KeysRequired<BoxProps>, 'children'> => {
+const useValidatedBoxProps = (props: BoxProps): KeysRequired<BoxProps> => {
+  React.useEffect(() => {
+    validateBackgroundColor(props.backgroundColor);
+  }, [props.backgroundColor]);
+
   return {
     // Layout
     display: props.display,
@@ -77,7 +107,9 @@ const getValidatedBoxProps = (props: BoxProps): Omit<KeysRequired<BoxProps>, 'ch
     bottom: props.bottom,
     left: props.left,
 
-    // Add background
+    // Visual
+    backgroundColor: props.backgroundColor,
+    children: props.children,
   };
 };
 
@@ -118,7 +150,7 @@ const getValidatedBoxProps = (props: BoxProps): Omit<KeysRequired<BoxProps>, 'ch
  */
 const Box = (props: BoxProps): JSX.Element => {
   // @TODO: add meta attributes
-  return <BaseBox {...getValidatedBoxProps(props)} />;
+  return <BaseBox {...useValidatedBoxProps(props)} />;
 };
 
 export { Box };

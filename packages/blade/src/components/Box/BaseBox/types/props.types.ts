@@ -93,19 +93,21 @@ type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotat
   Theme['colors'][T]['background']
 >}`;
 
-type BackgroundColorType =
-  | BackgroundColorString<'feedback'>
-  | BackgroundColorString<'surface'>
-  | BackgroundColorString<'action'>
-  | (string & Record<never, never>);
-
-type VisualProps = MakeObjectResponsive<
+type BaseBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
-    backgroundColor: BackgroundColorType;
+    backgroundColor:
+      | BackgroundColorString<'feedback'>
+      | BackgroundColorString<'surface'>
+      | BackgroundColorString<'action'>
+      | (string & Record<never, never>);
     lineHeight: SpacingValueType;
   } & Pick<CSSObject, 'transform'>
 >;
+
+type BoxVisualProps = MakeObjectResponsive<{
+  backgroundColor: BackgroundColorString<'surface'>;
+}>;
 
 type StyledProps = Partial<
   MarginProps &
@@ -129,12 +131,16 @@ type BoxProps = Partial<
     LayoutProps &
     FlexboxProps &
     PositionProps &
-    GridProps & { children?: React.ReactNode | React.ReactNode[] }
+    GridProps &
+    BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] }
 >;
 
-type BaseBoxProps = BoxProps &
+// Visual props have different types for BaseBox and Box.
+// So first we Omit Visual props of Box
+// Then we append BaseBoxVisualProps and some other props for styled-components like class and id
+type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
   Partial<
-    VisualProps & {
+    BaseBoxVisualProps & {
       className?: string;
       id?: string;
     }
