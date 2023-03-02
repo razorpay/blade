@@ -2,11 +2,11 @@ import type { ReactElement } from 'react';
 import { BaseText } from '../Typography/BaseText/BaseText.web';
 import { horizontalPadding, verticalPadding } from './amountTokens';
 import BaseAmount, { getSuffixPrefixFontSize } from './BaseAmount';
+import { StyledAmount } from './StyledAmount';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-
-// import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
 
 export const suffixTypes = {
   HUMANIZE: 'humanize',
@@ -31,7 +31,7 @@ type AmountProps = {
    *
    * @default 'low'
    */
-  size?: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
+  size: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
   /**
    * Sets the weight of the label.
    *
@@ -137,30 +137,32 @@ const Amount = ({
   const rupeeFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
 
   return (
-    <Box
-      paddingRight={horizontalPadding[size]}
-      paddingLeft={horizontalPadding[size]}
-      paddingTop={verticalPadding[size]}
-      paddingBottom={verticalPadding[size]}
-      display="flex"
-      flexDirection="row"
-      justifyContent="center"
-      alignItems="baseline"
-      overflow="hidden"
-    >
-      <BaseText fontWeight={rupeeweight} fontSize={rupeeFontSize} color={prefixSuffixColor}>
-        {RUPEE_SYMBOL}
-      </BaseText>
-      <BaseAmount
-        mainValue={renderedValue}
-        weight={weight}
-        textColor={textColor}
-        size={size}
-        isAffixSubtle={isAffixSubtle}
-        suffix={suffix}
-        prefixSuffixColor={prefixSuffixColor}
-      />
-    </Box>
+    <StyledAmount {...metaAttribute(MetaConstants.Component, MetaConstants.Amount)}>
+      <Box
+        paddingRight={horizontalPadding[size]}
+        paddingLeft={horizontalPadding[size]}
+        paddingTop={verticalPadding[size]}
+        paddingBottom={verticalPadding[size]}
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="baseline"
+        overflow="hidden"
+      >
+        <BaseText fontWeight={rupeeweight} fontSize={rupeeFontSize} color={prefixSuffixColor}>
+          {RUPEE_SYMBOL}
+        </BaseText>
+        <BaseAmount
+          value={renderedValue}
+          weight={weight}
+          textColor={textColor}
+          size={size}
+          isAffixSubtle={isAffixSubtle}
+          suffix={suffix}
+          prefixSuffixColor={prefixSuffixColor}
+        />
+      </Box>
+    </StyledAmount>
   );
 };
 

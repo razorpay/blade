@@ -4,6 +4,7 @@ import Box from '../Box';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Text } from '~components/Typography';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
 const Page = (): React.ReactElement => {
@@ -11,9 +12,9 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       figmaURL={{
         paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8110%3A417',
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=28012%3A580578&t=WfWp7qiwZ3lvvbdw-0',
         bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9727%3A118573',
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=28012%3A580578&t=WfWp7qiwZ3lvvbdw-0',
       }}
       componentName="Amount"
       componentDescription="Amounts are used to show small amount of color coded metadata, which are ideal for getting user attention."
@@ -48,13 +49,39 @@ export default {
   },
 } as Meta<AmountProps>;
 
+const AmountDefaultTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+  return (
+    <Box display="flex" alignItems="baseline" paddingRight="spacing.3" paddingTop="spacing.2">
+      <AmountComponent {...args} />
+    </Box>
+  );
+};
+
+export const Amount = AmountDefaultTemplate.bind({});
+Amount.args = {
+  value: 122345.678,
+  variant: 'neutral',
+  size: 'medium',
+  suffix: 'decimals',
+  isAffixSubtle: true,
+  weight: 'bold',
+};
+Amount.storyName = 'Default';
+
 const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
   const variants = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
 
   return (
     <Box>
       {variants.map((variant) => (
-        <Box key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
+        <Box
+          key={variant}
+          display="flex"
+          alignItems="baseline"
+          paddingRight="spacing.3"
+          paddingTop="spacing.2"
+        >
+          <Text>{variant}</Text>
           <AmountComponent {...args} variant={variant} />
         </Box>
       ))}
@@ -62,41 +89,53 @@ const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
   );
 };
 
-export const Amount = AmountTemplate.bind({});
-Amount.args = {
-  value: 121322.231,
-  variant: 'neutral',
-  weight: 'bold',
-  size: 'small',
+const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
+  return (
+    <Box>
+      <Box marginBottom="spacing.3">
+        <Text>Small</Text>
+        <Box marginBottom="spacing.2" />
+        <AmountComponent {...args} size="small" />
+      </Box>
+      <Box marginBottom="spacing.3">
+        <Text>Medium</Text>
+        <Box marginBottom="spacing.2" />
+        <AmountComponent {...args} size="medium" />
+      </Box>
+      <Box marginBottom="spacing.3">
+        <Text>Large</Text>
+        <Box marginBottom="spacing.2" />
+        <AmountComponent {...args} size="large" />
+      </Box>
+      <Box marginBottom="spacing.3">
+        <Text>Extra Large</Text>
+        <Box marginBottom="spacing.2" />
+        <AmountComponent {...args} size="xlarge" />
+      </Box>
+      <Box marginBottom="spacing.3">
+        <Text>Extra Large</Text>
+        <Box marginBottom="spacing.2" />
+        <AmountComponent {...args} size="2xlarge" />
+      </Box>
+      <Box marginBottom="spacing.3">
+        <Text>Extra Large</Text>
+        <Box marginBottom="spacing.2" />
+        <AmountComponent {...args} size="3xlarge" />
+      </Box>
+    </Box>
+  );
 };
-Amount.storyName = 'Default';
 
-const defaultArgs = {
-  value: 121322.231,
+const defaultArgs: AmountProps = {
+  value: 123456.789,
+  size: 'xlarge',
 };
 
-export const Negative = AmountTemplate.bind({});
-
-Negative.args = {
+export const AmountSizes: ComponentStory<typeof AmountComponent> = AmountSizesTemplate.bind({});
+AmountSizes.args = {
   ...defaultArgs,
-  value: -121322.231,
-  variant: 'negative',
 };
-Negative.storyName = 'Negative';
-
-export const Notice = AmountTemplate.bind({});
-Notice.args = {
-  ...defaultArgs,
-  variant: 'notice',
-};
-Notice.storyName = 'Notice';
-
-export const Information = AmountTemplate.bind({});
-Information.args = {
-  ...defaultArgs,
-  variant: 'information',
-};
-Information.storyName = 'Information';
+AmountSizes.storyName = 'Sizes';
 
 export const RegularWeight = AmountTemplate.bind({});
 RegularWeight.args = {
@@ -118,13 +157,6 @@ HumanizeSuffix.args = {
   suffix: 'humanize',
 };
 HumanizeSuffix.storyName = 'Humanize Suffix';
-
-export const SmallSize = AmountTemplate.bind({});
-SmallSize.args = {
-  ...defaultArgs,
-  size: 'small',
-};
-SmallSize.storyName = 'Small Size';
 
 export const AffixSubtleOff = AmountTemplate.bind({});
 AffixSubtleOff.args = {

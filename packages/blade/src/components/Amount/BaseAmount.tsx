@@ -19,14 +19,14 @@ export const getSuffixPrefixFontSize = (
   return amountTextSizes[size];
 };
 
-interface BaseAmount extends AmountProps {
+interface BaseAmount extends Omit<AmountProps, 'value'> {
   prefixSuffixColor: BaseTextProps['color'];
   textColor: BaseTextProps['color'];
-  mainValue: string;
+  value: string;
 }
 
 const BaseAmount = ({
-  mainValue,
+  value,
   size,
   weight,
   textColor,
@@ -35,8 +35,8 @@ const BaseAmount = ({
   prefixSuffixColor,
 }: BaseAmount): ReactElement => {
   if (suffix === suffixTypes.DECIMALS && isAffixSubtle) {
-    const integer = mainValue.split('.')[0];
-    const decimal = mainValue.split('.')[1];
+    const integer = value.split('.')[0];
+    const decimal = value.split('.')[1];
     const affixFontWeight = getDecimalFontWeight(isAffixSubtle);
     const affixFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
     return (
@@ -51,8 +51,8 @@ const BaseAmount = ({
     );
   }
   return (
-    <BaseText {...amountTextSizes[size]} fontWeight={weight} color={textColor}>
-      {mainValue}
+    <BaseText fontSize={amountTextSizes[size]} fontWeight={weight} color={textColor}>
+      {value}
     </BaseText>
   );
 };

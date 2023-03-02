@@ -8,7 +8,7 @@ const verticalPadding: Record<NonNullable<AmountProps['size']>, DotNotationSpaci
   xlarge: 'spacing.2',
   '2xlarge': 'spacing.2',
   '3xlarge': 'spacing.2',
-};
+} as const;
 
 const horizontalPadding: Record<NonNullable<AmountProps['size']>, DotNotationSpacingStringToken> = {
   small: 'spacing.3',
@@ -17,7 +17,7 @@ const horizontalPadding: Record<NonNullable<AmountProps['size']>, DotNotationSpa
   xlarge: 'spacing.2',
   '2xlarge': 'spacing.2',
   '3xlarge': 'spacing.2',
-};
+} as const;
 
 const iconPadding: Record<NonNullable<AmountProps['size']>, DotNotationSpacingStringToken> = {
   small: 'spacing.1',
@@ -26,7 +26,7 @@ const iconPadding: Record<NonNullable<AmountProps['size']>, DotNotationSpacingSt
   xlarge: 'spacing.2',
   '2xlarge': 'spacing.2',
   '3xlarge': 'spacing.2',
-};
+} as const;
 
 const prefixSuffixTextSizes = {
   small: 50,
