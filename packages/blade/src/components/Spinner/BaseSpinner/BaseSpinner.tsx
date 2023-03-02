@@ -4,15 +4,9 @@ import SpinnerIcon from './SpinnerIcon';
 import { SpinningBox } from './SpinningBox';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import type { StyledProps } from '~utils';
-import {
-  metaAttribute,
-  getIn,
-  makeAccessible,
-  makeSize,
-  MetaConstants,
-  getStyledProps,
-} from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
+import { metaAttribute, getIn, makeAccessible, makeSize, MetaConstants } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';

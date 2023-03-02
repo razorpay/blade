@@ -97,6 +97,9 @@ exports[`<Radio /> should render radio with label 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -104,12 +107,12 @@ exports[`<Radio /> should render radio with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c5 {
+  padding: 0;
+  margin: 0;
+  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -117,12 +120,12 @@ exports[`<Radio /> should render radio with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c12 {
+  padding: 0;
+  margin: 0;
+  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -130,9 +133,6 @@ exports[`<Radio /> should render radio with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c4 {
@@ -186,104 +186,112 @@ exports[`<Radio /> should render radio with label 1`] = `
 
 <div>
   <div
-    aria-labelledby="radio-group-3-label"
-    class="c0"
-    data-blade-component="radio-group"
-    display="flex"
-    role="group"
+    class=""
   >
-    <span
-      id="radio-group-3-label"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      aria-labelledby="radio-group-3-label"
+      class="c0"
+      data-blade-component="radio-group"
+      display="flex"
+      role="group"
     >
-      <div
-        class="c1"
+      <span
+        id="radio-group-3-label"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
-          class="c2"
-          display="flex"
+          class="c1"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Select fruit
-          </p>
           <div
-            class="c4"
+            class="c2"
+            display="flex"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
-              font-size="100"
+              font-size="75"
               font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
-      </div>
-    </span>
-    <div
-      class=""
-    >
-      <div
-        class="c0"
-        display="flex"
-      >
-        <div
-          class="c6"
-        >
-          <label
-            class="c7"
-          >
-            <div
-              class="c0"
-              display="flex"
+              font-weight="bold"
             >
-              <div
-                class="c8"
-                display="flex"
-              >
-                <input
-                  aria-checked="false"
-                  aria-describedby="radio-1-helptext-2"
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="c9"
-                  name="radio-group-3"
-                  role="radio"
-                  type="radio"
-                  value="apple"
-                />
-                <div
-                  class="c10"
-                />
-                <div
-                  class="c11"
-                />
-                <div
-                  class="c12"
-                  color="surface.text.subtle.lowContrast"
-                  font-family="text"
-                  font-size="100"
-                  font-weight="regular"
-                >
-                  Apple
-                </div>
-              </div>
-              <div
-                class="c13"
+              Select fruit
+            </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
               />
             </div>
-          </label>
+          </div>
+        </div>
+      </span>
+      <div
+        class=""
+      >
+        <div
+          class="c0"
+          display="flex"
+        >
+          <div
+            class="c6"
+          >
+            <div
+              class=""
+            >
+              <label
+                class="c7"
+              >
+                <div
+                  class="c0"
+                  display="flex"
+                >
+                  <div
+                    class="c8"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-1-helptext-2"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c9"
+                      name="radio-group-3"
+                      role="radio"
+                      type="radio"
+                      value="apple"
+                    />
+                    <div
+                      class="c10"
+                    />
+                    <div
+                      class="c11"
+                    />
+                    <div
+                      class="c12"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Apple
+                    </div>
+                  </div>
+                  <div
+                    class="c13"
+                  />
+                </div>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -388,6 +396,9 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -395,12 +406,12 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c5 {
+  padding: 0;
+  margin: 0;
+  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -408,12 +419,12 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c12 {
+  padding: 0;
+  margin: 0;
+  line-height: 1.25rem;
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -421,9 +432,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c4 {
@@ -467,105 +475,113 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 
 <div>
   <div
-    aria-labelledby="radio-group-10-label"
-    class="c0"
-    data-blade-component="radio-group"
-    display="flex"
-    role="group"
+    class=""
   >
-    <span
-      id="radio-group-10-label"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      aria-labelledby="radio-group-10-label"
+      class="c0"
+      data-blade-component="radio-group"
+      display="flex"
+      role="group"
     >
-      <div
-        class="c1"
+      <span
+        id="radio-group-10-label"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
-          class="c2"
-          display="flex"
+          class="c1"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Select fruit
-          </p>
           <div
-            class="c4"
+            class="c2"
+            display="flex"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
-              font-size="100"
+              font-size="75"
               font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
-      </div>
-    </span>
-    <div
-      class=""
-    >
-      <div
-        class="c0"
-        display="flex"
-      >
-        <div
-          class="c6"
-        >
-          <label
-            class="c7"
-          >
-            <div
-              class="c0"
-              display="flex"
+              font-weight="bold"
             >
-              <div
-                class="c8"
-                display="flex"
-              >
-                <input
-                  aria-checked="false"
-                  aria-describedby="radio-11-helptext-12"
-                  aria-disabled="true"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="c9"
-                  disabled=""
-                  name="radio-group-10"
-                  role="radio"
-                  type="radio"
-                  value="apple"
-                />
-                <div
-                  class="c10"
-                />
-                <div
-                  class="c11"
-                />
-                <div
-                  class="c12"
-                  color="surface.text.placeholder.lowContrast"
-                  font-family="text"
-                  font-size="100"
-                  font-weight="regular"
-                >
-                  Apple
-                </div>
-              </div>
-              <div
-                class="c13"
+              Select fruit
+            </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
               />
             </div>
-          </label>
+          </div>
+        </div>
+      </span>
+      <div
+        class=""
+      >
+        <div
+          class="c0"
+          display="flex"
+        >
+          <div
+            class="c6"
+          >
+            <div
+              class=""
+            >
+              <label
+                class="c7"
+              >
+                <div
+                  class="c0"
+                  display="flex"
+                >
+                  <div
+                    class="c8"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-11-helptext-12"
+                      aria-disabled="true"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c9"
+                      disabled=""
+                      name="radio-group-10"
+                      role="radio"
+                      type="radio"
+                      value="apple"
+                    />
+                    <div
+                      class="c10"
+                    />
+                    <div
+                      class="c11"
+                    />
+                    <div
+                      class="c12"
+                      color="surface.text.placeholder.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Apple
+                    </div>
+                  </div>
+                  <div
+                    class="c13"
+                  />
+                </div>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </div>

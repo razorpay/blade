@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CheckboxGroup /> should render errorText when validationState is set to error 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" role=\\"group\\" aria-labelledby=\\"checkbox-group-undefined-label-undefined\\" data-blade-component=\\"checkbox-group\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><span style=\\"width:auto;flex-shrink:0;margin-right:16px;word-break:break-all\\" id=\\"checkbox-group-undefined-label-undefined\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Select fruits</p><div class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">,Invalid selection </p></div></div></div></span><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div data-blade-component=\\"checkbox\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><input type=\\"checkbox\\" value=\\"apple\\" role=\\"checkbox\\" aria-required=\\"false\\" aria-invalid=\\"true\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-errormessage=\\"checkbox-undefined-errortext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN\\"/><div class=\\"CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI\\"><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\"><path d=\\"M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\"></path></svg></div><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV\\"></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"></div><div color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz\\">Apple</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY\\"></div></div></label></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div data-blade-component=\\"checkbox\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><input type=\\"checkbox\\" value=\\"mango\\" role=\\"checkbox\\" aria-required=\\"false\\" aria-invalid=\\"true\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-errormessage=\\"checkbox-undefined-errortext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN\\"/><div class=\\"CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI\\"><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\"><path d=\\"M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\"></path></svg></div><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV\\"></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"></div><div color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz\\">Mango</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY\\"></div></div></label></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gtUzJy\\"><div data-blade-component=\\"checkbox\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><input type=\\"checkbox\\" value=\\"orange\\" role=\\"checkbox\\" aria-required=\\"false\\" aria-invalid=\\"true\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-errormessage=\\"checkbox-undefined-errortext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN\\"/><div class=\\"CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI\\"><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\"><path d=\\"M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\"></path></svg></div><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV\\"></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"></div><div color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz\\">Orange</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY\\"></div></div></label></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jDyOnG\\"><span style=\\"display:flex;flex-direction:row;align-items:center;word-break:break-all\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 24 24\\" width=\\"12px\\" fill=\\"none\\"><path d=\\"M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z\\" fill=\\"hsla(8, 73%, 47%, 1)\\"></path><path d=\\"M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z\\" fill=\\"hsla(8, 73%, 47%, 1)\\"></path><path d=\\"M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(8, 73%, 47%, 1)\\" fill-rule=\\"evenodd\\"></path></svg><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 lcvqDl\\"></div><span color=\\"feedback.text.negative.lowContrast\\" font-family=\\"text\\" font-size=\\"50\\" font-style=\\"italic\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 fhklZr\\">Invalid selection</span></span></div></div></div></div>"`;
+exports[`<CheckboxGroup /> should render errorText when validationState is set to error 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" role=\\"group\\" aria-labelledby=\\"checkbox-group-undefined-label-undefined\\" data-blade-component=\\"checkbox-group\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><span style=\\"width:auto;flex-shrink:0;margin-right:16px;word-break:break-all\\" id=\\"checkbox-group-undefined-label-undefined\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hsojmA Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Select fruits</p><div class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bUjChz Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">,Invalid selection </p></div></div></div></span><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div data-blade-component=\\"checkbox\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><input type=\\"checkbox\\" value=\\"apple\\" role=\\"checkbox\\" aria-required=\\"false\\" aria-invalid=\\"true\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-errormessage=\\"checkbox-undefined-errortext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN\\"/><div class=\\"CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI\\"><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\"></path></svg></div><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV\\"></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"></div><div color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dvRgbT\\">Apple</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY\\"></div></div></label></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div data-blade-component=\\"checkbox\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><input type=\\"checkbox\\" value=\\"mango\\" role=\\"checkbox\\" aria-required=\\"false\\" aria-invalid=\\"true\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-errormessage=\\"checkbox-undefined-errortext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN\\"/><div class=\\"CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI\\"><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\"></path></svg></div><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV\\"></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"></div><div color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dvRgbT\\">Mango</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY\\"></div></div></label></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gtUzJy\\"><div data-blade-component=\\"checkbox\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><input type=\\"checkbox\\" value=\\"orange\\" role=\\"checkbox\\" aria-required=\\"false\\" aria-invalid=\\"true\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-errormessage=\\"checkbox-undefined-errortext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN\\"/><div class=\\"CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI\\"><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\"></path></svg></div><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV\\"></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"></div><div color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dvRgbT\\">Orange</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY\\"></div></div></label></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jDyOnG\\"><span style=\\"display:flex;flex-direction:row;align-items:center;word-break:break-all\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 24 24\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z\\" fill=\\"hsla(8, 73%, 47%, 1)\\"></path><path d=\\"M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z\\" fill=\\"hsla(8, 73%, 47%, 1)\\"></path><path d=\\"M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(8, 73%, 47%, 1)\\" fill-rule=\\"evenodd\\"></path></svg><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 lcvqDl\\"></div><span color=\\"feedback.text.negative.lowContrast\\" font-family=\\"text\\" font-size=\\"50\\" font-style=\\"italic\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 eYFEwL\\">Invalid selection</span></span></div></div></div></div></div>"`;
 
 exports[`<CheckboxGroup /> should render errorText when validationState is set to error 2`] = `
 <div
@@ -8,345 +8,353 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
   id="root"
 >
   <div
-    aria-labelledby="checkbox-group-19-label-24"
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
-    data-blade-component="checkbox-group"
-    display="flex"
-    role="group"
+    class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
   >
-    <span
-      id="checkbox-group-19-label-24"
-      style="width:auto;flex-shrink:0;margin-right:16px;word-break:break-all"
+    <div
+      aria-labelledby="checkbox-group-19-label-24"
+      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
+      data-blade-component="checkbox-group"
+      display="flex"
+      role="group"
     >
-      <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
+      <span
+        id="checkbox-group-19-label-24"
+        style="width:auto;flex-shrink:0;margin-right:16px;word-break:break-all"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf"
-          display="flex"
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
         >
-          <p
-            class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Select fruits
-          </p>
           <div
-            class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf"
+            display="flex"
           >
             <p
-              class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hsojmA Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
-              font-size="100"
+              font-size="75"
               font-style="normal"
-              font-weight="regular"
+              font-weight="bold"
             >
-              ,Invalid selection 
+              Select fruits
             </p>
+            <div
+              class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
+            >
+              <p
+                class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bUjChz Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                ,Invalid selection 
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </span>
-    <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
-    >
+      </span>
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
-        display="flex"
+        class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
+          display="flex"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
-            data-blade-component="checkbox"
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
           >
-            <label
-              class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+            <div
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+              data-blade-component="checkbox"
             >
-              <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
-                display="flex"
+              <label
+                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
               >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf"
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
                   display="flex"
                 >
-                  <input
-                    aria-checked="false"
-                    aria-disabled="false"
-                    aria-errormessage="checkbox-1-errortext-3"
-                    aria-invalid="true"
-                    aria-required="false"
-                    class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN"
-                    role="checkbox"
-                    type="checkbox"
-                    value="apple"
-                  />
                   <div
-                    class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI"
+                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf"
+                    display="flex"
                   >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-errormessage="checkbox-1-errortext-3"
+                      aria-invalid="true"
+                      aria-required="false"
+                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN"
+                      role="checkbox"
+                      type="checkbox"
+                      value="apple"
+                    />
                     <div
-                      class="Fadeweb__AnimatedFade-sc-1h424tv-0"
-                      style="opacity:0;position:absolute;display:flex"
+                      class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI"
                     >
-                      <svg
-                        aria-hidden="true"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="12px"
-                        viewBox="0 0 8 8"
-                        width="12px"
+                      <div
+                        class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+                        style="opacity:0;position:absolute;display:flex"
                       >
-                        <path
-                          clip-rule="evenodd"
-                          d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                          fill="hsla(220, 27%, 98%, 1)"
-                          fill-rule="evenodd"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="0.5"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 8 8"
+                          width="12px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            fill="hsla(220, 27%, 98%, 1)"
+                            fill-rule="evenodd"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="0.5"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+                        style="opacity:0;position:absolute;display:flex"
+                      />
                     </div>
                     <div
-                      class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
-                      style="opacity:0;position:absolute;display:flex"
+                      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna"
                     />
+                    <div
+                      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dvRgbT"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Apple
+                    </div>
                   </div>
                   <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna"
+                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY"
                   />
-                  <div
-                    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz"
-                    color="surface.text.subtle.lowContrast"
-                    font-family="text"
-                    font-size="100"
-                    font-weight="regular"
-                  >
-                    Apple
-                  </div>
                 </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
+          >
+            <div
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+              data-blade-component="checkbox"
+            >
+              <label
+                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+              >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY"
-                />
-              </div>
-            </label>
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
+                  display="flex"
+                >
+                  <div
+                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-errormessage="checkbox-7-errortext-9"
+                      aria-invalid="true"
+                      aria-required="false"
+                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN"
+                      role="checkbox"
+                      type="checkbox"
+                      value="mango"
+                    />
+                    <div
+                      class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI"
+                    >
+                      <div
+                        class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+                        style="opacity:0;position:absolute;display:flex"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 8 8"
+                          width="12px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            fill="hsla(220, 27%, 98%, 1)"
+                            fill-rule="evenodd"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="0.5"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+                        style="opacity:0;position:absolute;display:flex"
+                      />
+                    </div>
+                    <div
+                      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna"
+                    />
+                    <div
+                      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dvRgbT"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Mango
+                    </div>
+                  </div>
+                  <div
+                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY"
+                  />
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gtUzJy"
+          >
+            <div
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+              data-blade-component="checkbox"
+            >
+              <label
+                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+              >
+                <div
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
+                  display="flex"
+                >
+                  <div
+                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-errormessage="checkbox-13-errortext-15"
+                      aria-invalid="true"
+                      aria-required="false"
+                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN"
+                      role="checkbox"
+                      type="checkbox"
+                      value="orange"
+                    />
+                    <div
+                      class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI"
+                    >
+                      <div
+                        class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+                        style="opacity:0;position:absolute;display:flex"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="12px"
+                          viewBox="0 0 8 8"
+                          width="12px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            fill="hsla(220, 27%, 98%, 1)"
+                            fill-rule="evenodd"
+                            stroke="white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="0.5"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+                        style="opacity:0;position:absolute;display:flex"
+                      />
+                    </div>
+                    <div
+                      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna"
+                    />
+                    <div
+                      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dvRgbT"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Orange
+                    </div>
+                  </div>
+                  <div
+                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY"
+                  />
+                </div>
+              </label>
+            </div>
           </div>
         </div>
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jDyOnG"
         >
-          <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
-            data-blade-component="checkbox"
-          >
-            <label
-              class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
-            >
-              <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
-                display="flex"
-              >
-                <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf"
-                  display="flex"
-                >
-                  <input
-                    aria-checked="false"
-                    aria-disabled="false"
-                    aria-errormessage="checkbox-7-errortext-9"
-                    aria-invalid="true"
-                    aria-required="false"
-                    class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN"
-                    role="checkbox"
-                    type="checkbox"
-                    value="mango"
-                  />
-                  <div
-                    class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI"
-                  >
-                    <div
-                      class="Fadeweb__AnimatedFade-sc-1h424tv-0"
-                      style="opacity:0;position:absolute;display:flex"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="12px"
-                        viewBox="0 0 8 8"
-                        width="12px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                          fill="hsla(220, 27%, 98%, 1)"
-                          fill-rule="evenodd"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="0.5"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
-                      style="opacity:0;position:absolute;display:flex"
-                    />
-                  </div>
-                  <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna"
-                  />
-                  <div
-                    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz"
-                    color="surface.text.subtle.lowContrast"
-                    font-family="text"
-                    font-size="100"
-                    font-weight="regular"
-                  >
-                    Mango
-                  </div>
-                </div>
-                <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY"
-                />
-              </div>
-            </label>
-          </div>
-        </div>
-        <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gtUzJy"
-        >
-          <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
-            data-blade-component="checkbox"
-          >
-            <label
-              class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
-            >
-              <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
-                display="flex"
-              >
-                <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf"
-                  display="flex"
-                >
-                  <input
-                    aria-checked="false"
-                    aria-disabled="false"
-                    aria-errormessage="checkbox-13-errortext-15"
-                    aria-invalid="true"
-                    aria-required="false"
-                    class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bKBGaN"
-                    role="checkbox"
-                    type="checkbox"
-                    value="orange"
-                  />
-                  <div
-                    class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI"
-                  >
-                    <div
-                      class="Fadeweb__AnimatedFade-sc-1h424tv-0"
-                      style="opacity:0;position:absolute;display:flex"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-blade-component="icon"
-                        fill="none"
-                        height="12px"
-                        viewBox="0 0 8 8"
-                        width="12px"
-                      >
-                        <path
-                          clip-rule="evenodd"
-                          d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-                          fill="hsla(220, 27%, 98%, 1)"
-                          fill-rule="evenodd"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="0.5"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
-                      style="opacity:0;position:absolute;display:flex"
-                    />
-                  </div>
-                  <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna"
-                  />
-                  <div
-                    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz"
-                    color="surface.text.subtle.lowContrast"
-                    font-family="text"
-                    font-size="100"
-                    font-weight="regular"
-                  >
-                    Orange
-                  </div>
-                </div>
-                <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY"
-                />
-              </div>
-            </label>
-          </div>
-        </div>
-      </div>
-      <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jDyOnG"
-      >
-        <span
-          style="display:flex;flex-direction:row;align-items:center;word-break:break-all"
-        >
-          <svg
-            aria-hidden="true"
-            data-blade-component="icon"
-            fill="none"
-            height="12px"
-            viewBox="0 0 24 24"
-            width="12px"
-          >
-            <path
-              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-              fill="hsla(8, 73%, 47%, 1)"
-            />
-            <path
-              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-              fill="hsla(8, 73%, 47%, 1)"
-            />
-            <path
-              clip-rule="evenodd"
-              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-              fill="hsla(8, 73%, 47%, 1)"
-              fill-rule="evenodd"
-            />
-          </svg>
-          <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 lcvqDl"
-          />
           <span
-            class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 fhklZr"
-            color="feedback.text.negative.lowContrast"
-            font-family="text"
-            font-size="50"
-            font-style="italic"
+            style="display:flex;flex-direction:row;align-items:center;word-break:break-all"
           >
-            Invalid selection
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
+            >
+              <path
+                d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                fill="hsla(8, 73%, 47%, 1)"
+              />
+              <path
+                d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                fill="hsla(8, 73%, 47%, 1)"
+              />
+              <path
+                clip-rule="evenodd"
+                d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                fill="hsla(8, 73%, 47%, 1)"
+                fill-rule="evenodd"
+              />
+            </svg>
+            <div
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 lcvqDl"
+            />
+            <span
+              class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 eYFEwL"
+              color="feedback.text.negative.lowContrast"
+              font-family="text"
+              font-size="50"
+              font-style="italic"
+            >
+              Invalid selection
+            </span>
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>

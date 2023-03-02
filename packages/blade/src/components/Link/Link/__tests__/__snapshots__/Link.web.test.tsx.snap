@@ -2,15 +2,15 @@
 
 exports[`<Link /> should render button variant of link 1`] = `
 .c0 {
+  display: inline-block;
   padding: 0;
   background-color: transparent;
+  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -54,6 +54,9 @@ exports[`<Link /> should render button variant of link 1`] = `
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -61,10 +64,7 @@ exports[`<Link /> should render button variant of link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -95,15 +95,15 @@ exports[`<Link /> should render button variant of link 1`] = `
 
 exports[`<Link /> should render disabled button variant of link 1`] = `
 .c0 {
+  display: inline-block;
   padding: 0;
   background-color: transparent;
+  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: not-allowed;
-  display: inline-block;
-  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -147,6 +147,9 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -154,10 +157,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -189,15 +189,15 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
 
 exports[`<Link /> should render link with default properties 1`] = `
 .c0 {
+  display: inline-block;
   padding: 0;
   background-color: transparent;
+  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -241,6 +241,9 @@ exports[`<Link /> should render link with default properties 1`] = `
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -248,10 +251,7 @@ exports[`<Link /> should render link with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -281,15 +281,15 @@ exports[`<Link /> should render link with default properties 1`] = `
 
 exports[`<Link /> should render link with icon with default iconPosition 1`] = `
 .c0 {
+  display: inline-block;
   padding: 0;
   background-color: transparent;
+  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -345,6 +345,9 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -352,10 +355,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -376,6 +376,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -413,15 +414,15 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
 
 exports[`<Link /> should render link with icon with left iconPosition 1`] = `
 .c0 {
+  display: inline-block;
   padding: 0;
   background-color: transparent;
+  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -477,6 +478,9 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -484,10 +488,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -508,6 +509,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -545,15 +547,15 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
 
 exports[`<Link /> should render link with icon with right iconPosition 1`] = `
 .c0 {
+  display: inline-block;
   padding: 0;
   background-color: transparent;
+  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -609,6 +611,9 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
 }
 
 .c2 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -616,10 +621,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -648,6 +650,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -677,15 +680,15 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
 
 exports[`<Link /> should render link with icon without text 1`] = `
 .c0 {
+  display: inline-block;
   padding: 0;
   background-color: transparent;
+  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -741,6 +744,9 @@ exports[`<Link /> should render link with icon without text 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -748,10 +754,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -772,6 +775,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -807,15 +811,15 @@ exports[`<Link /> should render link with icon without text 1`] = `
 
 exports[`<Link /> should render with small size 1`] = `
 .c0 {
+  display: inline-block;
   padding: 0;
   background-color: transparent;
+  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -871,6 +875,9 @@ exports[`<Link /> should render with small size 1`] = `
 }
 
 .c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -878,10 +885,7 @@ exports[`<Link /> should render with small size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -902,6 +906,7 @@ exports[`<Link /> should render with small size 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="12px"

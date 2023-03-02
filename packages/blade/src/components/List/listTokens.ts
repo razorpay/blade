@@ -87,7 +87,7 @@ const listItemBulletMarginTop: Record<
 
 const listItemUnorderedBulletSize: Record<
   TypographyPlatforms,
-  Record<NonNullable<ListProps['size']>, `${string}px`>
+  Record<NonNullable<ListProps['size']>, SpacingValueType>
 > = {
   // We need hard-coded non-tokenized spacing for bullet alignment in List
   onDesktop: {

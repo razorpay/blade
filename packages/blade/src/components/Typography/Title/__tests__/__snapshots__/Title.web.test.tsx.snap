@@ -2,6 +2,9 @@
 
 exports[`<Title /> should render Title with default properties 1`] = `
 .c0 {
+  padding: 0;
+  margin: 0;
+  line-height: 2.5rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5625rem;
@@ -9,9 +12,6 @@ exports[`<Title /> should render Title with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2.5rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -31,6 +31,9 @@ exports[`<Title /> should render Title with default properties 1`] = `
 
 exports[`<Title /> should render Title with variant "large" 1`] = `
 .c0 {
+  padding: 0;
+  margin: 0;
+  line-height: 3.75rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 2.5rem;
@@ -38,9 +41,6 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 3.75rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -60,6 +60,9 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
 
 exports[`<Title /> should render Title with variant "medium" 1`] = `
 .c0 {
+  padding: 0;
+  margin: 0;
+  line-height: 2.5rem;
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.75rem;
@@ -67,9 +70,6 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2.5rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -89,6 +89,9 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
 
 exports[`<Title /> should render Title with variant "small" 1`] = `
 .c0 {
+  padding: 0;
+  margin: 0;
+  line-height: 2.5rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5625rem;
@@ -96,9 +99,6 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2.5rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>
@@ -118,6 +118,9 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
 
 exports[`<Title /> should render Title with variant "small" and contrast "high" 1`] = `
 .c0 {
+  padding: 0;
+  margin: 0;
+  line-height: 2.5rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5625rem;
@@ -125,9 +128,6 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2.5rem;
-  margin: 0;
-  padding: 0;
 }
 
 <div>

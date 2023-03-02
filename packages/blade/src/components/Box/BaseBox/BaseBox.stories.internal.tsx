@@ -1,4 +1,3 @@
-// @TODO: test story. Remove later
 import type { Meta } from '@storybook/react';
 import type { BaseBoxProps } from './types';
 import { getBaseBoxArgTypes } from './storybookArgTypes';

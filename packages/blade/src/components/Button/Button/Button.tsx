@@ -2,7 +2,8 @@ import type { GestureResponderEvent } from 'react-native';
 import React from 'react';
 import BaseButton from '../BaseButton';
 import type { IconComponent } from '~components/Icons';
-import type { Platform, StyledProps } from '~utils';
+import type { Platform } from '~utils';
+import type { StyledProps } from '~components/Box/styled-props';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 type ButtonCommonProps = {

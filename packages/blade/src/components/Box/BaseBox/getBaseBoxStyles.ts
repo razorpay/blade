@@ -21,11 +21,30 @@ const getResponsiveValue = <T extends string | number | string[]>(
   }
 
   if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value)) {
+    /**
+     * Flat values like string or number should only be added in `base` styles.
+     *
+     * E.g. if you pass `display="block"`, it should only put that style in base style and not in media queries
+     * ```js
+     * // Output should be just this-
+     * display: block;
+     *
+     * // And not this-
+     * display: block;
+     * media (min-width: s) {
+     *   display: block;
+     * }
+     *
+     * media (min-width: m) {
+     *   display: block
+     * }
+     * //  and more ...
+     * ```
+     */
     if (size === 'base') {
       return value;
     }
 
-    // Plain values will already get added in base styles so we don't have to repeat them in media queries
     return undefined;
   }
 
@@ -193,12 +212,12 @@ const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject =
 
   return Object.fromEntries(
     Object.entries(breakpointsWithoutBase).map(([breakpointKey, breakpointValue]) => {
-      const mediaQuery = `@media ${getMediaQuery({ min: breakpointValue })}`;
       const cssPropsForCurrentBreakpoint = getAllProps(props, breakpointKey as keyof Breakpoints);
       if (!shouldAddBreakpoint(cssPropsForCurrentBreakpoint)) {
         return [];
       }
 
+      const mediaQuery = `@media ${getMediaQuery({ min: breakpointValue })}`;
       return [mediaQuery, cssPropsForCurrentBreakpoint];
     }),
   );
@@ -211,30 +230,13 @@ const getBaseBoxStyles = (props: BaseBoxProps & { theme: Theme }): CSSObject => 
   };
 };
 
-const getDependencyProps = (props: BaseBoxProps & { theme?: Theme }): string | BaseBoxProps => {
-  // These are the props that change nothing in the getBaseBoxStyles calculations
-  const { theme, children, className, id, ...rest } = props;
-  let dependencyPropString: string | BaseBoxProps = '';
-  try {
-    dependencyPropString = JSON.stringify(rest);
-  } catch (err: unknown) {
-    console.warn(
-      '[BaseBox]: stringification of props failed in BaseBox so falling back to re-calculations on all changes\n\n If you see this warning, please create issue on https://github.com/razorpay/blade as this could degrade runtime styling performance',
-      err,
-    );
-
-    dependencyPropString = rest;
-  }
-
-  return dependencyPropString;
-};
-
 export {
-  getDependencyProps,
   getBaseBoxStyles,
   getResponsiveValue,
   getSpacingValue,
   getBackgroundValue,
   getBorderRadiusValue,
   shouldAddBreakpoint,
+  getAllMediaQueries,
+  getAllProps,
 };

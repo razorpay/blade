@@ -507,6 +507,9 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                 },
+                Array [
+                  Object {},
+                ],
                 Object {
                   "flex": 0,
                   "height": 16,

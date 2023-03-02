@@ -1,6 +1,6 @@
 import { getOnlyBoxProps } from '../Box';
 import type { BaseBoxProps, BoxProps, StyledProps } from './types';
-import { getStyledProps } from '~utils';
+import { getStyledProps } from '../styled-props';
 
 type StorybookArgTypes<T> = {
   [P in keyof T]: {

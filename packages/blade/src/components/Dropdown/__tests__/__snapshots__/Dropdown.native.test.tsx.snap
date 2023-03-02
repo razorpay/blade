@@ -340,6 +340,9 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                       },
+                      Array [
+                        Object {},
+                      ],
                       Object {
                         "flex": 0,
                         "height": 16,
@@ -543,6 +546,9 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                     },
+                    Array [
+                      Object {},
+                    ],
                     Object {
                       "flex": 0,
                       "height": 12,
@@ -939,6 +945,9 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                     },
+                    Array [
+                      Object {},
+                    ],
                     Object {
                       "flex": 0,
                       "height": 12,
@@ -1094,6 +1103,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     },
                   ]
                 }
+                type="button"
               >
                 <View
                   alignItems="center"

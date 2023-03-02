@@ -3,42 +3,9 @@
 exports[`<Counter /> should render Counter with default props 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -61,18 +28,55 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -90,42 +94,9 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 exports[`<Counter /> should render high contrast information intent Counter 1`] = `
 .c0 {
   background-color: hsla(193,100%,35%,1);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -148,18 +119,55 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(193,100%,35%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.information.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -177,42 +185,9 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
 exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
 .c0 {
   background-color: hsla(8,73%,47%,1);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -235,18 +210,55 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(8,73%,47%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.negative.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -264,42 +276,9 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
 exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
 .c0 {
   background-color: hsla(216,33%,29%,1);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -322,18 +301,55 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(216,33%,29%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -351,42 +367,9 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
 exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
 .c0 {
   background-color: hsla(38,97%,38%,1);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -409,18 +392,55 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(38,97%,38%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.notice.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -438,42 +458,9 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
 exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
 .c0 {
   background-color: hsla(160,100%,26%,1);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -496,18 +483,55 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(160,100%,26%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.positive.highContrast"
         data-blade-component="text"
         font-family="text"
@@ -525,42 +549,9 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
 exports[`<Counter /> should render large size Counter 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -583,18 +574,55 @@ exports[`<Counter /> should render large size Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1.25rem;
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -612,42 +640,9 @@ exports[`<Counter /> should render large size Counter 1`] = `
 exports[`<Counter /> should render low contrast information intent Counter 1`] = `
 .c0 {
   background-color: hsla(193,100%,35%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(193,100%,35%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -670,18 +665,55 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(193,100%,35%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(193,100%,35%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.information.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -699,42 +731,9 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
 exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
 .c0 {
   background-color: hsla(9,91%,56%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(8,73%,47%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -757,18 +756,55 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(9,91%,56%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(8,73%,47%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.negative.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -786,42 +822,9 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
 exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -844,18 +847,55 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -873,42 +913,9 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
 exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
 .c0 {
   background-color: hsla(36,100%,44%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(38,97%,38%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -931,18 +938,55 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(36,100%,44%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(38,97%,38%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.notice.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -960,42 +1004,9 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
 exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
 .c0 {
   background-color: hsla(155,100%,31%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(160,100%,26%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1018,18 +1029,55 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(155,100%,31%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.positive.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -1047,42 +1095,9 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
 exports[`<Counter /> should render medium size Counter 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1105,18 +1120,55 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   padding-left: 8px;
 }
 
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -1134,42 +1186,9 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 exports[`<Counter /> should render small size Counter 1`] = `
 .c0 {
   background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.625rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1192,18 +1211,55 @@ exports[`<Counter /> should render small size Counter 1`] = `
   padding-left: 4px;
 }
 
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c3 {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+}
+
+.c4 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="c0"
+    class="c0 c1"
   >
     <div
-      class="c1"
+      class="c2"
       data-blade-component="counter"
       display="flex"
       overflow="hidden"
     >
       <p
-        class="c2 c3"
+        class="c3 c4"
         color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
         font-family="text"

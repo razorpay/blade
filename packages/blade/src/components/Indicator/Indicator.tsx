@@ -7,15 +7,9 @@ import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 
 import type { Feedback } from '~tokens/theme/theme';
-import type { StyledProps } from '~utils';
-import {
-  makeSpace,
-  metaAttribute,
-  getPlatformType,
-  makeAccessible,
-  MetaConstants,
-  getStyledProps,
-} from '~utils';
+import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 
 type IndicatorCommonProps = {
   /**
@@ -60,7 +54,7 @@ type IndicatorWithA11yLabel = {
 type IndicatorProps = IndicatorCommonProps & (IndicatorWithA11yLabel | IndicatorWithoutA11yLabel);
 
 type Dimensions = {
-  svgSize: `${string}px`;
+  svgSize: string;
   textSize: 'small' | 'medium';
 };
 
@@ -78,11 +72,11 @@ const Indicator = ({
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':
-        return { svgSize: makeSpace(6), textSize: 'small' };
+        return { svgSize: '6', textSize: 'small' };
       case 'large':
-        return { svgSize: makeSpace(10), textSize: 'medium' };
+        return { svgSize: '10', textSize: 'medium' };
       default:
-        return { svgSize: makeSpace(8), textSize: 'medium' };
+        return { svgSize: '8', textSize: 'medium' };
     }
   }, [size]);
   const dimensions = getDimension();

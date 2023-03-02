@@ -1,7 +1,13 @@
+import styled from 'styled-components';
 import type { ReactElement } from 'react';
 import type { SvgProps } from './types';
-import { metaAttribute, makeAccessible, MetaConstants, getStyledProps } from '~utils';
-import BaseBox from '~components/Box/BaseBox';
+import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
+import { useStyledProps } from '~components/Box/styled-props';
+
+const StyledSvg = styled.svg<SvgProps>((props) => {
+  const styledPropsCSSObject = useStyledProps(props);
+  return styledPropsCSSObject;
+});
 
 const Svg = ({
   children,
@@ -12,19 +18,17 @@ const Svg = ({
   ...styledProps
 }: SvgProps): ReactElement => {
   return (
-    // line-height adds some extra spacing in div around svg so removing it
-    <BaseBox display="inline-block" lineHeight="spacing.0" {...getStyledProps(styledProps)}>
-      <svg
-        {...makeAccessible({ hidden: true })}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.Icon)}
-        height={height}
-        viewBox={viewBox}
-        width={width}
-        fill={fill}
-      >
-        {children}
-      </svg>
-    </BaseBox>
+    <StyledSvg
+      {...styledProps}
+      {...makeAccessible({ hidden: true })}
+      {...metaAttribute(MetaConstants.Component, MetaConstants.Icon)}
+      height={height}
+      viewBox={viewBox}
+      width={width}
+      fill={fill}
+    >
+      {children}
+    </StyledSvg>
   );
 };
 

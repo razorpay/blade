@@ -43,7 +43,7 @@ export type Breakpoints = Readonly<{
    *
    * Medium and Large Tablets.
    *
-   * Dimentions above m can be treated as desktop in mobile-first approach (with min-width).
+   * Dimensions with `m` and above can be treated as desktop in mobile-first approach (with min-width).
    * Hence this breakpoint can be used for desktop styling.
    *
    * E.g. next example will keep flexDirection `row` on mobiles and `column` on large tablets, desktop, and larger screens

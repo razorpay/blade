@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Text /> should render Text on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Displaying some text</p></div>"`;
+exports[`<Text /> should render Text on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bUjChz Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Displaying some text</p></div>"`;
 
 exports[`<Text /> should render Text on server 2`] = `
 <div
@@ -8,7 +8,7 @@ exports[`<Text /> should render Text on server 2`] = `
   id="root"
 >
   <p
-    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
+    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bUjChz Text__StyledText-wkh56f-0"
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     font-family="text"

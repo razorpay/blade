@@ -1,23 +1,13 @@
-import React from 'react';
 import styled from 'styled-components';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
-import { castWebType, getIn, getStyledProps, makeBorderSize, makeMotionTime } from '~utils';
-import { getBaseBoxStyles, getDependencyProps } from '~components/Box/BaseBox/getBaseBoxStyles';
+import { castWebType, getIn, makeBorderSize, makeMotionTime } from '~utils';
+import { useStyledProps } from '~components/Box/styled-props';
 
 const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
   ...props.accessibilityProps,
 }))<StyledBaseLinkProps>((props) => {
-  // In other components, we wrap the component by div. But for link and text, we wanted to avoid that to not add unneccessary div around and cause layout any issues
-  // So we build the styled-props specifically for link and text
-  const styledPropsStyles = getStyledProps(props);
-  const styledPropsMemoDependency = getDependencyProps(styledPropsStyles);
-  const styledPropsCSSObject = React.useMemo(
-    () => getBaseBoxStyles({ ...styledPropsStyles, theme: props.theme }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [styledPropsMemoDependency],
-  );
-
+  const styledPropsCSSObject = useStyledProps(props);
   return {
     ...styledPropsCSSObject,
     ...getStyledLinkStyles(props),

@@ -7,8 +7,9 @@ import BaseBox from '~components/Box/BaseBox';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
-import { getStyledProps, metaAttribute, MetaConstants } from '~utils';
-import type { StyledProps } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 
 type BadgeProps = {
   /**

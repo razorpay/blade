@@ -7,15 +7,9 @@ import { FormHint, FormLabel } from '../../Form';
 import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
-import type { StyledProps } from '~utils';
-import {
-  metaAttribute,
-  getPlatformType,
-  MetaConstants,
-  isEmpty,
-  makeSize,
-  getStyledProps,
-} from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
+import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 export type OTPInputProps = Pick<

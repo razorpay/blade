@@ -1,3 +1,9 @@
+/**
+ * When any of the values are changed here, do change the jsdoc comments in BaseBox/types/spacing.types.ts as well
+ *
+ * {@link ../../components/Box/BaseBox/types/spacing.types.ts}
+ */
+
 export type Spacing = Readonly<{
   /** 0: 0(px/rem/pt) */
   0: 0;

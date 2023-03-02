@@ -1360,6 +1360,9 @@ exports[`<BaseLink /> should render icon only link 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -1805,6 +1808,9 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -1979,6 +1985,9 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -2185,6 +2194,9 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,

@@ -1,8 +1,14 @@
+import styled from 'styled-components/native';
 import type { ReactElement } from 'react';
 import { Svg as SvgNative } from 'react-native-svg';
 import type { SvgProps } from './types';
-import { getStyledProps, makeAccessible } from '~utils';
-import BaseBox from '~components/Box/BaseBox';
+import { makeAccessible } from '~utils';
+import { useStyledProps } from '~components/Box/styled-props';
+
+const StyledSvg = styled(SvgNative)((props) => {
+  const styledPropsCSSObject = useStyledProps(props);
+  return styledPropsCSSObject;
+});
 
 const Svg = ({
   children,
@@ -13,17 +19,16 @@ const Svg = ({
   ...styledProps
 }: SvgProps): ReactElement => {
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
-      <SvgNative
-        {...makeAccessible({ hidden: true })}
-        height={height}
-        viewBox={viewBox}
-        width={width}
-        fill={fill}
-      >
-        {children}
-      </SvgNative>
-    </BaseBox>
+    <StyledSvg
+      {...styledProps}
+      {...makeAccessible({ hidden: true })}
+      height={height}
+      viewBox={viewBox}
+      width={width}
+      fill={fill}
+    >
+      {children}
+    </StyledSvg>
   );
 };
 
