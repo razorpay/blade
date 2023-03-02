@@ -34,16 +34,11 @@ exports[`<List /> should render List with default properties 1`] = `
   margin-right: 8px;
 }
 
-.c5 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 .c1 {
   margin-top: 8px;
 }
 
-.c6 {
+.c5 {
   padding: 0;
   margin: 0;
   line-height: 1.25rem;
@@ -60,7 +55,7 @@ exports[`<List /> should render List with default properties 1`] = `
   margin-left: 4px;
 }
 
-.c7 {
+.c6 {
   margin-left: 16px;
 }
 
@@ -85,29 +80,25 @@ exports[`<List /> should render List with default properties 1`] = `
             class="c4"
             display="flex"
           >
-            <div
-              class="c5"
-              display="inline-block"
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="6px"
+              viewBox="0 0 6 6"
+              width="6px"
             >
-              <svg
-                aria-hidden="true"
-                data-blade-component="icon"
-                fill="none"
-                height="6px"
-                viewBox="0 0 6 6"
-                width="6px"
-              >
-                <circle
-                  cx="3px"
-                  cy="3px"
-                  fill="hsla(214, 18%, 69%, 1)"
-                  r="3px"
-                />
-              </svg>
-            </div>
+              <circle
+                cx="3px"
+                cy="3px"
+                fill="hsla(214, 18%, 69%, 1)"
+                r="3px"
+              />
+            </svg>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c5 Text__StyledText-wkh56f-0"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -127,7 +118,7 @@ exports[`<List /> should render List with default properties 1`] = `
             role="list"
           >
             <li
-              class=" c7"
+              class=" c6"
               data-blade-component="list-item"
             >
               <div
@@ -138,29 +129,25 @@ exports[`<List /> should render List with default properties 1`] = `
                   class="c4"
                   display="flex"
                 >
-                  <div
-                    class="c5"
-                    display="inline-block"
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="6px"
+                    viewBox="0 0 6 6"
+                    width="6px"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="6px"
-                      viewBox="0 0 6 6"
-                      width="6px"
-                    >
-                      <circle
-                        cx="3px"
-                        cy="3px"
-                        r="2.5px"
-                        stroke="hsla(214, 18%, 69%, 1)"
-                      />
-                    </svg>
-                  </div>
+                    <circle
+                      cx="3px"
+                      cy="3px"
+                      r="2.5px"
+                      stroke="hsla(214, 18%, 69%, 1)"
+                    />
+                  </svg>
                 </div>
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c5 Text__StyledText-wkh56f-0"
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   font-family="text"
@@ -180,7 +167,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   role="list"
                 >
                   <li
-                    class=" c7"
+                    class=" c6"
                     data-blade-component="list-item"
                   >
                     <div
@@ -191,29 +178,25 @@ exports[`<List /> should render List with default properties 1`] = `
                         class="c4"
                         display="flex"
                       >
-                        <div
-                          class="c5"
-                          display="inline-block"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            data-blade-component="icon"
-                            fill="none"
+                          <rect
+                            fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
-                            viewBox="0 0 6 6"
+                            rx="1px"
                             width="6px"
-                          >
-                            <rect
-                              fill="hsla(214, 18%, 69%, 1)"
-                              height="6px"
-                              rx="1px"
-                              width="6px"
-                            />
-                          </svg>
-                        </div>
+                          />
+                        </svg>
                       </div>
                       <p
-                        class="c6 Text__StyledText-wkh56f-0"
+                        class="c5 Text__StyledText-wkh56f-0"
                         color="surface.text.normal.lowContrast"
                         data-blade-component="text"
                         font-family="text"
@@ -270,16 +253,11 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   margin-right: 8px;
 }
 
-.c5 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 .c1 {
   margin-top: 8px;
 }
 
-.c6 {
+.c5 {
   padding: 0;
   margin: 0;
   line-height: 1.25rem;
@@ -292,7 +270,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   text-decoration-line: none;
 }
 
-.c8 {
+.c7 {
   padding: 0;
   margin: 0;
   line-height: 1.25rem;
@@ -305,7 +283,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   text-decoration-line: none;
 }
 
-.c7 {
+.c6 {
   padding: 0px 4px;
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
@@ -338,29 +316,25 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             class="c4"
             display="flex"
           >
-            <div
-              class="c5"
-              display="inline-block"
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="6px"
+              viewBox="0 0 6 6"
+              width="6px"
             >
-              <svg
-                aria-hidden="true"
-                data-blade-component="icon"
-                fill="none"
-                height="6px"
-                viewBox="0 0 6 6"
-                width="6px"
-              >
-                <circle
-                  cx="3px"
-                  cy="3px"
-                  fill="hsla(214, 18%, 69%, 1)"
-                  r="3px"
-                />
-              </svg>
-            </div>
+              <circle
+                cx="3px"
+                cy="3px"
+                fill="hsla(214, 18%, 69%, 1)"
+                r="3px"
+              />
+            </svg>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c5 Text__StyledText-wkh56f-0"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -370,11 +344,11 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             Level 1 
             <span
-              class=" c7"
+              class=" c6"
               data-blade-component="code"
             >
               <code
-                class="c8"
+                class="c7"
                 color="surface.text.subtle.lowContrast"
                 font-family="code"
                 font-size="75"
@@ -397,29 +371,25 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             class="c4"
             display="flex"
           >
-            <div
-              class="c5"
-              display="inline-block"
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="6px"
+              viewBox="0 0 6 6"
+              width="6px"
             >
-              <svg
-                aria-hidden="true"
-                data-blade-component="icon"
-                fill="none"
-                height="6px"
-                viewBox="0 0 6 6"
-                width="6px"
-              >
-                <circle
-                  cx="3px"
-                  cy="3px"
-                  fill="hsla(214, 18%, 69%, 1)"
-                  r="3px"
-                />
-              </svg>
-            </div>
+              <circle
+                cx="3px"
+                cy="3px"
+                fill="hsla(214, 18%, 69%, 1)"
+                r="3px"
+              />
+            </svg>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c5 Text__StyledText-wkh56f-0"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -499,11 +469,6 @@ exports[`<List /> should render medium ordered List 1`] = `
   align-self: flex-start;
   margin-top: 8px;
   margin-right: 8px;
-}
-
-.c10 {
-  display: inline-block;
-  line-height: 0px;
 }
 
 .c1 {
@@ -611,26 +576,22 @@ exports[`<List /> should render medium ordered List 1`] = `
                   class="c9"
                   display="flex"
                 >
-                  <div
-                    class="c10"
-                    display="inline-block"
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="6px"
+                    viewBox="0 0 6 6"
+                    width="6px"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="6px"
-                      viewBox="0 0 6 6"
-                      width="6px"
-                    >
-                      <circle
-                        cx="3px"
-                        cy="3px"
-                        r="2.5px"
-                        stroke="hsla(214, 18%, 69%, 1)"
-                      />
-                    </svg>
-                  </div>
+                    <circle
+                      cx="3px"
+                      cy="3px"
+                      r="2.5px"
+                      stroke="hsla(214, 18%, 69%, 1)"
+                    />
+                  </svg>
                 </div>
                 <p
                   class="c6 Text__StyledText-wkh56f-0"
@@ -664,26 +625,22 @@ exports[`<List /> should render medium ordered List 1`] = `
                         class="c9"
                         display="flex"
                       >
-                        <div
-                          class="c10"
-                          display="inline-block"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            data-blade-component="icon"
-                            fill="none"
+                          <rect
+                            fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
-                            viewBox="0 0 6 6"
+                            rx="1px"
                             width="6px"
-                          >
-                            <rect
-                              fill="hsla(214, 18%, 69%, 1)"
-                              height="6px"
-                              rx="1px"
-                              width="6px"
-                            />
-                          </svg>
-                        </div>
+                          />
+                        </svg>
                       </div>
                       <p
                         class="c6 Text__StyledText-wkh56f-0"
@@ -957,12 +914,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c5 {
-  display: inline-block;
-  line-height: 0px;
-}
-
-.c8 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -978,7 +930,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-top: 8px;
 }
 
-.c6 {
+.c5 {
   padding: 0;
   margin: 0;
   line-height: 1.25rem;
@@ -995,7 +947,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-left: 0;
 }
 
-.c7 {
+.c6 {
   margin-left: 16px;
 }
 
@@ -1020,27 +972,23 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             class="c4"
             display="flex"
           >
-            <div
-              class="c5"
-              display="inline-block"
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="16px"
+              viewBox="0 0 24 24"
+              width="16px"
             >
-              <svg
-                aria-hidden="true"
-                data-blade-component="icon"
-                fill="none"
-                height="16px"
-                viewBox="0 0 24 24"
-                width="16px"
-              >
-                <path
-                  d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
-                  fill="hsla(217, 18%, 45%, 1)"
-                />
-              </svg>
-            </div>
+              <path
+                d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
+                fill="hsla(217, 18%, 45%, 1)"
+              />
+            </svg>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c5 Text__StyledText-wkh56f-0"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -1060,7 +1008,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             role="list"
           >
             <li
-              class=" c7"
+              class=" c6"
               data-blade-component="list-item"
             >
               <div
@@ -1071,27 +1019,23 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   class="c4"
                   display="flex"
                 >
-                  <div
-                    class="c5"
-                    display="inline-block"
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="16px"
+                    viewBox="0 0 24 24"
+                    width="16px"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="16px"
-                      viewBox="0 0 24 24"
-                      width="16px"
-                    >
-                      <path
-                        d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
-                        fill="hsla(217, 18%, 45%, 1)"
-                      />
-                    </svg>
-                  </div>
+                    <path
+                      d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
+                      fill="hsla(217, 18%, 45%, 1)"
+                    />
+                  </svg>
                 </div>
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c5 Text__StyledText-wkh56f-0"
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   font-family="text"
@@ -1111,7 +1055,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   role="list"
                 >
                   <li
-                    class=" c7"
+                    class=" c6"
                     data-blade-component="list-item"
                   >
                     <div
@@ -1119,32 +1063,28 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       display="flex"
                     >
                       <div
-                        class="c8"
+                        class="c7"
                         display="flex"
                       >
-                        <div
-                          class="c5"
-                          display="inline-block"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            data-blade-component="icon"
-                            fill="none"
+                          <rect
+                            fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
-                            viewBox="0 0 6 6"
+                            rx="1px"
                             width="6px"
-                          >
-                            <rect
-                              fill="hsla(214, 18%, 69%, 1)"
-                              height="6px"
-                              rx="1px"
-                              width="6px"
-                            />
-                          </svg>
-                        </div>
+                          />
+                        </svg>
                       </div>
                       <p
-                        class="c6 Text__StyledText-wkh56f-0"
+                        class="c5 Text__StyledText-wkh56f-0"
                         color="surface.text.normal.lowContrast"
                         data-blade-component="text"
                         font-family="text"
@@ -1230,11 +1170,6 @@ exports[`<List /> should render small ordered List 1`] = `
   align-self: flex-start;
   margin-top: 6px;
   margin-right: 8px;
-}
-
-.c10 {
-  display: inline-block;
-  line-height: 0px;
 }
 
 .c1 {
@@ -1342,26 +1277,22 @@ exports[`<List /> should render small ordered List 1`] = `
                   class="c9"
                   display="flex"
                 >
-                  <div
-                    class="c10"
-                    display="inline-block"
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="6px"
+                    viewBox="0 0 6 6"
+                    width="6px"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="6px"
-                      viewBox="0 0 6 6"
-                      width="6px"
-                    >
-                      <circle
-                        cx="3px"
-                        cy="3px"
-                        r="2.5px"
-                        stroke="hsla(214, 18%, 69%, 1)"
-                      />
-                    </svg>
-                  </div>
+                    <circle
+                      cx="3px"
+                      cy="3px"
+                      r="2.5px"
+                      stroke="hsla(214, 18%, 69%, 1)"
+                    />
+                  </svg>
                 </div>
                 <p
                   class="c6 Text__StyledText-wkh56f-0"
@@ -1395,26 +1326,22 @@ exports[`<List /> should render small ordered List 1`] = `
                         class="c9"
                         display="flex"
                       >
-                        <div
-                          class="c10"
-                          display="inline-block"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            data-blade-component="icon"
-                            fill="none"
+                          <rect
+                            fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
-                            viewBox="0 0 6 6"
+                            rx="1px"
                             width="6px"
-                          >
-                            <rect
-                              fill="hsla(214, 18%, 69%, 1)"
-                              height="6px"
-                              rx="1px"
-                              width="6px"
-                            />
-                          </svg>
-                        </div>
+                          />
+                        </svg>
                       </div>
                       <p
                         class="c6 Text__StyledText-wkh56f-0"
@@ -1688,12 +1615,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c5 {
-  display: inline-block;
-  line-height: 0px;
-}
-
-.c8 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1709,7 +1631,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-top: 8px;
 }
 
-.c6 {
+.c5 {
   padding: 0;
   margin: 0;
   line-height: 1rem;
@@ -1726,7 +1648,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-left: 0;
 }
 
-.c7 {
+.c6 {
   margin-left: 16px;
 }
 
@@ -1751,27 +1673,23 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             class="c4"
             display="flex"
           >
-            <div
-              class="c5"
-              display="inline-block"
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
             >
-              <svg
-                aria-hidden="true"
-                data-blade-component="icon"
-                fill="none"
-                height="12px"
-                viewBox="0 0 24 24"
-                width="12px"
-              >
-                <path
-                  d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
-                  fill="hsla(217, 18%, 45%, 1)"
-                />
-              </svg>
-            </div>
+              <path
+                d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
+                fill="hsla(217, 18%, 45%, 1)"
+              />
+            </svg>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c5 Text__StyledText-wkh56f-0"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -1791,7 +1709,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             role="list"
           >
             <li
-              class=" c7"
+              class=" c6"
               data-blade-component="list-item"
             >
               <div
@@ -1802,27 +1720,23 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   class="c4"
                   display="flex"
                 >
-                  <div
-                    class="c5"
-                    display="inline-block"
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="12px"
+                    viewBox="0 0 24 24"
+                    width="12px"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="12px"
-                      viewBox="0 0 24 24"
-                      width="12px"
-                    >
-                      <path
-                        d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
-                        fill="hsla(217, 18%, 45%, 1)"
-                      />
-                    </svg>
-                  </div>
+                    <path
+                      d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
+                      fill="hsla(217, 18%, 45%, 1)"
+                    />
+                  </svg>
                 </div>
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c5 Text__StyledText-wkh56f-0"
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   font-family="text"
@@ -1842,7 +1756,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   role="list"
                 >
                   <li
-                    class=" c7"
+                    class=" c6"
                     data-blade-component="list-item"
                   >
                     <div
@@ -1850,32 +1764,28 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       display="flex"
                     >
                       <div
-                        class="c8"
+                        class="c7"
                         display="flex"
                       >
-                        <div
-                          class="c5"
-                          display="inline-block"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            data-blade-component="icon"
-                            fill="none"
+                          <rect
+                            fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
-                            viewBox="0 0 6 6"
+                            rx="1px"
                             width="6px"
-                          >
-                            <rect
-                              fill="hsla(214, 18%, 69%, 1)"
-                              height="6px"
-                              rx="1px"
-                              width="6px"
-                            />
-                          </svg>
-                        </div>
+                          />
+                        </svg>
                       </div>
                       <p
-                        class="c6 Text__StyledText-wkh56f-0"
+                        class="c5 Text__StyledText-wkh56f-0"
                         color="surface.text.normal.lowContrast"
                         data-blade-component="text"
                         font-family="text"
@@ -1932,16 +1842,11 @@ exports[`<List /> should render unordered List of small size 1`] = `
   margin-right: 8px;
 }
 
-.c5 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 .c1 {
   margin-top: 8px;
 }
 
-.c6 {
+.c5 {
   padding: 0;
   margin: 0;
   line-height: 1rem;
@@ -1958,7 +1863,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   margin-left: 4px;
 }
 
-.c7 {
+.c6 {
   margin-left: 16px;
 }
 
@@ -1983,29 +1888,25 @@ exports[`<List /> should render unordered List of small size 1`] = `
             class="c4"
             display="flex"
           >
-            <div
-              class="c5"
-              display="inline-block"
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="6px"
+              viewBox="0 0 6 6"
+              width="6px"
             >
-              <svg
-                aria-hidden="true"
-                data-blade-component="icon"
-                fill="none"
-                height="6px"
-                viewBox="0 0 6 6"
-                width="6px"
-              >
-                <circle
-                  cx="3px"
-                  cy="3px"
-                  fill="hsla(214, 18%, 69%, 1)"
-                  r="3px"
-                />
-              </svg>
-            </div>
+              <circle
+                cx="3px"
+                cy="3px"
+                fill="hsla(214, 18%, 69%, 1)"
+                r="3px"
+              />
+            </svg>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c5 Text__StyledText-wkh56f-0"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -2025,7 +1926,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             role="list"
           >
             <li
-              class=" c7"
+              class=" c6"
               data-blade-component="list-item"
             >
               <div
@@ -2036,29 +1937,25 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   class="c4"
                   display="flex"
                 >
-                  <div
-                    class="c5"
-                    display="inline-block"
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="6px"
+                    viewBox="0 0 6 6"
+                    width="6px"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="6px"
-                      viewBox="0 0 6 6"
-                      width="6px"
-                    >
-                      <circle
-                        cx="3px"
-                        cy="3px"
-                        r="2.5px"
-                        stroke="hsla(214, 18%, 69%, 1)"
-                      />
-                    </svg>
-                  </div>
+                    <circle
+                      cx="3px"
+                      cy="3px"
+                      r="2.5px"
+                      stroke="hsla(214, 18%, 69%, 1)"
+                    />
+                  </svg>
                 </div>
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c5 Text__StyledText-wkh56f-0"
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   font-family="text"
@@ -2078,7 +1975,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   role="list"
                 >
                   <li
-                    class=" c7"
+                    class=" c6"
                     data-blade-component="list-item"
                   >
                     <div
@@ -2089,29 +1986,25 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         class="c4"
                         display="flex"
                       >
-                        <div
-                          class="c5"
-                          display="inline-block"
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
                         >
-                          <svg
-                            aria-hidden="true"
-                            data-blade-component="icon"
-                            fill="none"
+                          <rect
+                            fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
-                            viewBox="0 0 6 6"
+                            rx="1px"
                             width="6px"
-                          >
-                            <rect
-                              fill="hsla(214, 18%, 69%, 1)"
-                              height="6px"
-                              rx="1px"
-                              width="6px"
-                            />
-                          </svg>
-                        </div>
+                          />
+                        </svg>
                       </div>
                       <p
-                        class="c6 Text__StyledText-wkh56f-0"
+                        class="c5 Text__StyledText-wkh56f-0"
                         color="surface.text.normal.lowContrast"
                         data-blade-component="text"
                         font-family="text"

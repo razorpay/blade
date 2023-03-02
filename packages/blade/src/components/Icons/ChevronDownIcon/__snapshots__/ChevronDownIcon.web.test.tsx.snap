@@ -1,31 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ChevronDownIcon /> should render ChevronDownIcon 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="20px"
-      viewBox="0 0 24 24"
-      width="20px"
-    >
-      <path
-        clip-rule="evenodd"
-        d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-        fill="hsla(216, 27%, 36%, 1)"
-        fill-rule="evenodd"
-      />
-    </svg>
-  </div>
+    <path
+      clip-rule="evenodd"
+      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+      fill="hsla(216, 27%, 36%, 1)"
+      fill-rule="evenodd"
+    />
+  </svg>
 </div>
 `;

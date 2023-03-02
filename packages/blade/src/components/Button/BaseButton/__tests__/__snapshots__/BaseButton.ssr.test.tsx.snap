@@ -1,62 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"inline-block\\" width=\\"auto\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 IouAx\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fbGQuk\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hLhPpW\\"><div display=\\"inline-block\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jBiSGs\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\"><path d=\\"M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(0, 0%, 100%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div></div><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 kNGLeX\\">Pay Now</div></div></button></div></div>"`;
+exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hTEpfM\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hLhPpW\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(0, 0%, 100%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 kNGLeX\\">Pay Now</div></div></button></div>"`;
 
 exports[`<BaseButton /> should render button with icon with left iconPosition 2`] = `
 <div
   data-reactroot=""
   id="root"
 >
-  <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 IouAx"
-    display="inline-block"
-    width="auto"
+  <button
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hTEpfM"
+    data-blade-component="button"
+    role="button"
+    type="button"
   >
-    <button
-      class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fbGQuk"
-      data-blade-component="button"
-      role="button"
-      type="button"
+    <div
+      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA"
+      display="flex"
     >
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA"
+        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hLhPpW"
         display="flex"
       >
-        <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hLhPpW"
-          display="flex"
+        <svg
+          aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
+          data-blade-component="icon"
+          fill="none"
+          height="16px"
+          viewBox="0 0 24 24"
+          width="16px"
         >
-          <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jBiSGs"
-            display="inline-block"
-          >
-            <svg
-              aria-hidden="true"
-              data-blade-component="icon"
-              fill="none"
-              height="16px"
-              viewBox="0 0 24 24"
-              width="16px"
-            >
-              <path
-                clip-rule="evenodd"
-                d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-                fill="hsla(0, 0%, 100%, 1)"
-                fill-rule="evenodd"
-              />
-            </svg>
-          </div>
-        </div>
-        <div
-          class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 kNGLeX"
-          color="action.text.primary.default"
-          font-size="100"
-          font-weight="bold"
-        >
-          Pay Now
-        </div>
+          <path
+            clip-rule="evenodd"
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill="hsla(0, 0%, 100%, 1)"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
-    </button>
-  </div>
+      <div
+        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 kNGLeX"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
 </div>
 `;

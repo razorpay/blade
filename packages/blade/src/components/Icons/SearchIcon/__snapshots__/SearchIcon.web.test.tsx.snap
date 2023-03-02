@@ -1,31 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SearchIcon /> should render SearchIcon 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="20px"
-      viewBox="0 0 24 24"
-      width="20px"
-    >
-      <path
-        clip-rule="evenodd"
-        d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
-        fill="hsla(216, 27%, 36%, 1)"
-        fill-rule="evenodd"
-      />
-    </svg>
-  </div>
+    <path
+      clip-rule="evenodd"
+      d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+      fill="hsla(216, 27%, 36%, 1)"
+      fill-rule="evenodd"
+    />
+  </svg>
 </div>
 `;

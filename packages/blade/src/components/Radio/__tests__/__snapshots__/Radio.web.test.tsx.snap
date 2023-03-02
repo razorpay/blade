@@ -29,6 +29,15 @@ exports[`<Radio /> should render radio with label 1`] = `
   transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -85,15 +94,6 @@ exports[`<Radio /> should render radio with label 1`] = `
 
 .c13 {
   margin-left: 24px;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
 }
 
 .c3 {
@@ -328,6 +328,15 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -384,15 +393,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 
 .c13 {
   margin-left: 24px;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
 }
 
 .c3 {

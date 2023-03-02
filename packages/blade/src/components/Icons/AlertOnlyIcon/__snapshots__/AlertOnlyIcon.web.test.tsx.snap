@@ -1,31 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AlertOnlyIcon /> should render AlertOnlyIcon 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="20px"
-      viewBox="0 0 24 24"
-      width="20px"
-    >
-      <path
-        clip-rule="evenodd"
-        d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V14C11 14.5523 11.4477 15 12 15C12.5523 15 13 14.5523 13 14V5ZM12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
-        fill="hsla(216, 27%, 36%, 1)"
-        fill-rule="evenodd"
-      />
-    </svg>
-  </div>
+    <path
+      clip-rule="evenodd"
+      d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V14C11 14.5523 11.4477 15 12 15C12.5523 15 13 14.5523 13 14V5ZM12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
+      fill="hsla(216, 27%, 36%, 1)"
+      fill-rule="evenodd"
+    />
+  </svg>
 </div>
 `;

@@ -1,60 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BankIcon /> should render CloseIcon 1`] = `
-<View
+<RNSVGSvgView
+  accessibilityElementsHidden={true}
+  align="xMidYMid"
+  bbHeight="20px"
+  bbWidth="20px"
+  fill="none"
+  focusable={false}
+  height="20px"
+  importantForAccessibility="no-hide-descendants"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
   style={
     Array [
-      Object {},
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Array [
+        Object {},
+      ],
+      Object {
+        "flex": 0,
+        "height": 20,
+        "width": 20,
+      },
     ]
   }
+  vbHeight={24}
+  vbWidth={24}
+  width="20px"
 >
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
-    style={
+  <RNSVGGroup
+    fill={null}
+    propList={
       Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 20,
-          "width": 20,
-        },
+        "fill",
       ]
     }
-    vbHeight={24}
-    vbWidth={24}
-    width="20px"
   >
-    <RNSVGGroup
-      fill={null}
+    <RNSVGPath
+      d="M5.105 10.429a1 1 0 0 0-1 1v5.333a1 1 0 0 0 1 1h1.158a1 1 0 0 0 1-1v-5.333a1 1 0 0 0-1-1H5.105Zm6.316 0a1 1 0 0 0-1 1v5.333a1 1 0 0 0 1 1h1.158a1 1 0 0 0 1-1v-5.333a1 1 0 0 0-1-1H11.42ZM2 22a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-1.143a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1V22Zm15.737-11.571a1 1 0 0 0-1 1v5.333a1 1 0 0 0 1 1h1.158a1 1 0 0 0 1-1v-5.333a1 1 0 0 0-1-1h-1.158Zm-5.273-9.186a1 1 0 0 0-.928 0l-9 4.714A1 1 0 0 0 2 6.843v.49a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-.49a1 1 0 0 0-.536-.886l-9-4.714Z"
+      fill={4282603381}
       propList={
         Array [
           "fill",
         ]
       }
-    >
-      <RNSVGPath
-        d="M5.105 10.429a1 1 0 0 0-1 1v5.333a1 1 0 0 0 1 1h1.158a1 1 0 0 0 1-1v-5.333a1 1 0 0 0-1-1H5.105Zm6.316 0a1 1 0 0 0-1 1v5.333a1 1 0 0 0 1 1h1.158a1 1 0 0 0 1-1v-5.333a1 1 0 0 0-1-1H11.42ZM2 22a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-1.143a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1V22Zm15.737-11.571a1 1 0 0 0-1 1v5.333a1 1 0 0 0 1 1h1.158a1 1 0 0 0 1-1v-5.333a1 1 0 0 0-1-1h-1.158Zm-5.273-9.186a1 1 0 0 0-.928 0l-9 4.714A1 1 0 0 0 2 6.843v.49a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-.49a1 1 0 0 0-.536-.886l-9-4.714Z"
-        fill={4282603381}
-        propList={
-          Array [
-            "fill",
-          ]
-        }
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
-</View>
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
 `;

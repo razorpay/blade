@@ -29,6 +29,15 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -89,15 +98,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 
 .c14 {
   margin-top: 4px;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
 }
 
 .c3 {
@@ -468,6 +468,15 @@ exports[`<RadioGroup /> should render with label 1`] = `
   transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -524,15 +533,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
 
 .c13 {
   margin-bottom: 0px;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
 }
 
 .c3 {

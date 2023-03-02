@@ -1,60 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ArrowUpRightIcon /> should render ArrowUpRightIcon 1`] = `
-<View
+<RNSVGSvgView
+  accessibilityElementsHidden={true}
+  align="xMidYMid"
+  bbHeight="20px"
+  bbWidth="20px"
+  fill="none"
+  focusable={false}
+  height="20px"
+  importantForAccessibility="no-hide-descendants"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
   style={
     Array [
-      Object {},
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Array [
+        Object {},
+      ],
+      Object {
+        "flex": 0,
+        "height": 20,
+        "width": 20,
+      },
     ]
   }
+  vbHeight={24}
+  vbWidth={24}
+  width="20px"
 >
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
-    style={
+  <RNSVGGroup
+    fill={null}
+    propList={
       Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 20,
-          "width": 20,
-        },
+        "fill",
       ]
     }
-    vbHeight={24}
-    vbWidth={24}
-    width="20px"
   >
-    <RNSVGGroup
-      fill={null}
+    <RNSVGPath
+      d="M9 5a1 1 0 0 0 0 2h6.586L5.293 17.293a1 1 0 1 0 1.414 1.414L17 8.414V15a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1H9Z"
+      fill={4282603381}
       propList={
         Array [
           "fill",
         ]
       }
-    >
-      <RNSVGPath
-        d="M9 5a1 1 0 0 0 0 2h6.586L5.293 17.293a1 1 0 1 0 1.414 1.414L17 8.414V15a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1H9Z"
-        fill={4282603381}
-        propList={
-          Array [
-            "fill",
-          ]
-        }
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
-</View>
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
 `;

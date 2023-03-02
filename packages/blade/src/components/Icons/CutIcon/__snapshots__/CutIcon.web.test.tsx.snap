@@ -1,79 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CutIcon /> should render CutIcon 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="20px"
-      viewBox="0 0 24 24"
-      width="20px"
+    <g
+      clip-path="url(#clip0_60_191)"
     >
-      <g
-        clip-path="url(#clip0_60_191)"
+      <path
+        clip-rule="evenodd"
+        d="M6 9C7.65685 9 9 7.65685 9 6C9 4.34315 7.65685 3 6 3C4.34315 3 3 4.34315 3 6C3 7.65685 4.34315 9 6 9Z"
+        fill-rule="evenodd"
+        stroke="hsla(216, 27%, 36%, 1)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+      <path
+        clip-rule="evenodd"
+        d="M6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21Z"
+        fill-rule="evenodd"
+        stroke="hsla(216, 27%, 36%, 1)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+      <path
+        d="M20 4L8.12 15.88"
+        stroke="hsla(216, 27%, 36%, 1)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+      <path
+        d="M14.47 14.48L20 20"
+        stroke="hsla(216, 27%, 36%, 1)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+      <path
+        d="M8.12 8.12L12 12"
+        stroke="hsla(216, 27%, 36%, 1)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+    </g>
+    <defs>
+      <clippath
+        id="clip0_60_191"
       >
-        <path
-          clip-rule="evenodd"
-          d="M6 9C7.65685 9 9 7.65685 9 6C9 4.34315 7.65685 3 6 3C4.34315 3 3 4.34315 3 6C3 7.65685 4.34315 9 6 9Z"
-          fill-rule="evenodd"
-          stroke="hsla(216, 27%, 36%, 1)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+        <rect
+          fill="hsla(216, 27%, 36%, 1)"
+          height="24"
+          width="24"
         />
-        <path
-          clip-rule="evenodd"
-          d="M6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21Z"
-          fill-rule="evenodd"
-          stroke="hsla(216, 27%, 36%, 1)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-        />
-        <path
-          d="M20 4L8.12 15.88"
-          stroke="hsla(216, 27%, 36%, 1)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-        />
-        <path
-          d="M14.47 14.48L20 20"
-          stroke="hsla(216, 27%, 36%, 1)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-        />
-        <path
-          d="M8.12 8.12L12 12"
-          stroke="hsla(216, 27%, 36%, 1)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-        />
-      </g>
-      <defs>
-        <clippath
-          id="clip0_60_191"
-        >
-          <rect
-            fill="hsla(216, 27%, 36%, 1)"
-            height="24"
-            width="24"
-          />
-        </clippath>
-      </defs>
-    </svg>
-  </div>
+      </clippath>
+    </defs>
+  </svg>
 </div>
 `;

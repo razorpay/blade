@@ -1,63 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MonitorIcon /> should render MonitorIcon 1`] = `
-<View
+<RNSVGSvgView
+  accessibilityElementsHidden={true}
+  align="xMidYMid"
+  bbHeight="20px"
+  bbWidth="20px"
+  fill="none"
+  focusable={false}
+  height="20px"
+  importantForAccessibility="no-hide-descendants"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
   style={
     Array [
-      Object {},
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Array [
+        Object {},
+      ],
+      Object {
+        "flex": 0,
+        "height": 20,
+        "width": 20,
+      },
     ]
   }
+  vbHeight={24}
+  vbWidth={24}
+  width="20px"
 >
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
-    style={
+  <RNSVGGroup
+    fill={null}
+    propList={
       Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 20,
-          "width": 20,
-        },
+        "fill",
       ]
     }
-    vbHeight={24}
-    vbWidth={24}
-    width="20px"
   >
-    <RNSVGGroup
-      fill={null}
+    <RNSVGPath
+      clipRule={0}
+      d="M1 5C1 3.34315 2.34315 2 4 2H20C21.6569 2 23 3.34315 23 5V15C23 16.6569 21.6569 18 20 18H13V20H16C16.5523 20 17 20.4477 17 21C17 21.5523 16.5523 22 16 22H8C7.44772 22 7 21.5523 7 21C7 20.4477 7.44772 20 8 20H11V18H4C2.34315 18 1 16.6569 1 15V5ZM20 16C20.5523 16 21 15.5523 21 15V5C21 4.44772 20.5523 4 20 4H4C3.44772 4 3 4.44772 3 5V15C3 15.5523 3.44772 16 4 16H20Z"
+      fill={4282603381}
+      fillRule={0}
       propList={
         Array [
           "fill",
+          "fillRule",
         ]
       }
-    >
-      <RNSVGPath
-        clipRule={0}
-        d="M1 5C1 3.34315 2.34315 2 4 2H20C21.6569 2 23 3.34315 23 5V15C23 16.6569 21.6569 18 20 18H13V20H16C16.5523 20 17 20.4477 17 21C17 21.5523 16.5523 22 16 22H8C7.44772 22 7 21.5523 7 21C7 20.4477 7.44772 20 8 20H11V18H4C2.34315 18 1 16.6569 1 15V5ZM20 16C20.5523 16 21 15.5523 21 15V5C21 4.44772 20.5523 4 20 4H4C3.44772 4 3 4.44772 3 5V15C3 15.5523 3.44772 16 4 16H20Z"
-        fill={4282603381}
-        fillRule={0}
-        propList={
-          Array [
-            "fill",
-            "fillRule",
-          ]
-        }
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
-</View>
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
 `;

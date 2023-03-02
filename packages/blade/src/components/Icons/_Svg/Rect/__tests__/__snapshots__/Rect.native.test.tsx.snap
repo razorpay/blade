@@ -1,51 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Rect /> should render react-native-svg Rect component 1`] = `
-<View
+<RNSVGSvgView
+  accessibilityElementsHidden={true}
+  align="xMidYMid"
+  bbHeight="110"
+  bbWidth="400"
+  focusable={false}
+  height="110"
+  importantForAccessibility="no-hide-descendants"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
   style={
     Array [
-      Object {},
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Array [
+        Object {},
+      ],
+      Object {
+        "flex": 0,
+        "height": 110,
+        "width": 400,
+      },
     ]
   }
+  vbHeight={100}
+  vbWidth={100}
+  width="400"
 >
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="110px"
-    bbWidth="400px"
-    focusable={false}
-    height="110px"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 110,
-          "width": 400,
-        },
-      ]
-    }
-    vbHeight={100}
-    vbWidth={100}
-    width="400px"
-  >
-    <RNSVGGroup>
-      <RNSVGRect
-        height="100"
-        rx="4"
-        ry="4"
-        width="200"
-        x="10"
-        y="10"
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
-</View>
+  <RNSVGGroup>
+    <RNSVGRect
+      height="100"
+      rx="4"
+      ry="4"
+      width="200"
+      x="10"
+      y="10"
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
 `;

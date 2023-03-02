@@ -1,29 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ArrowUpRightIcon /> should render ArrowUpRightIcon 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="20px"
-      viewBox="0 0 24 24"
-      width="20px"
-    >
-      <path
-        d="M9 5a1 1 0 0 0 0 2h6.586L5.293 17.293a1 1 0 1 0 1.414 1.414L17 8.414V15a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1H9Z"
-        fill="hsla(216, 27%, 36%, 1)"
-      />
-    </svg>
-  </div>
+    <path
+      d="M9 5a1 1 0 0 0 0 2h6.586L5.293 17.293a1 1 0 1 0 1.414 1.414L17 8.414V15a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1H9Z"
+      fill="hsla(216, 27%, 36%, 1)"
+    />
+  </svg>
 </div>
 `;

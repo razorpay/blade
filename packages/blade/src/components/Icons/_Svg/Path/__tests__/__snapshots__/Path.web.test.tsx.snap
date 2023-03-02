@@ -1,64 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Path /> should not accept dashed props 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="40px"
+    viewBox="0 0 6 6"
+    width="40px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="40px"
-      viewBox="0 0 6 6"
-      width="40px"
-    >
-      <path
-        d=""
-      />
-    </svg>
-  </div>
+    <path
+      d=""
+    />
+  </svg>
 </div>
 `;
 
 exports[`<Path /> should render html path component 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="40px"
+    viewBox="0 0 6 6"
+    width="40px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="40px"
-      viewBox="0 0 6 6"
-      width="40px"
-    >
-      <path
-        clip-path="#id1"
-        clip-rule="evenodd"
-        d="M2 2h2v2H2V2"
-        fill="#000"
-        fill-opacity="0.5"
-        fill-rule="nonzero"
-        stroke="#1212"
-        stroke-linecap="square"
-        stroke-linejoin="bevel"
-        stroke-width="2px"
-      />
-    </svg>
-  </div>
+    <path
+      clip-path="#id1"
+      clip-rule="evenodd"
+      d="M2 2h2v2H2V2"
+      fill="#000"
+      fill-opacity="0.5"
+      fill-rule="nonzero"
+      stroke="#1212"
+      stroke-linecap="square"
+      stroke-linejoin="bevel"
+      stroke-width="2px"
+    />
+  </svg>
 </div>
 `;

@@ -1,31 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SidebarIcon /> should render SidebarIcon 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="20px"
-      viewBox="0 0 24 24"
-      width="20px"
-    >
-      <path
-        clip-rule="evenodd"
-        d="M5 2C3.34315 2 2 3.34315 2 5V19C2 20.6569 3.34315 22 5 22H19C20.6569 22 22 20.6569 22 19V5C22 3.34315 20.6569 2 19 2H5ZM8 4H5C4.44772 4 4 4.44772 4 5V19C4 19.5523 4.44772 20 5 20H8V4ZM10 20V4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H10Z"
-        fill="hsla(216, 27%, 36%, 1)"
-        fill-rule="evenodd"
-      />
-    </svg>
-  </div>
+    <path
+      clip-rule="evenodd"
+      d="M5 2C3.34315 2 2 3.34315 2 5V19C2 20.6569 3.34315 22 5 22H19C20.6569 22 22 20.6569 22 19V5C22 3.34315 20.6569 2 19 2H5ZM8 4H5C4.44772 4 4 4.44772 4 5V19C4 19.5523 4.44772 20 5 20H8V4ZM10 20V4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H10Z"
+      fill="hsla(216, 27%, 36%, 1)"
+      fill-rule="evenodd"
+    />
+  </svg>
 </div>
 `;

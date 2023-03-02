@@ -1,32 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Rect /> should render html rect component 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    height="110"
+    viewBox="0 0 100 100"
+    width="400"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      height="110px"
-      viewBox="0 0 100 100"
-      width="400px"
-    >
-      <rect
-        height="100"
-        rx="4"
-        ry="4"
-        width="200"
-        x="10"
-        y="10"
-      />
-    </svg>
-  </div>
+    <rect
+      height="100"
+      rx="4"
+      ry="4"
+      width="200"
+      x="10"
+      y="10"
+    />
+  </svg>
 </div>
 `;

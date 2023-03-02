@@ -1,31 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HistoryIcon /> should render HistoryIcon 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="20px"
-      viewBox="0 0 24 24"
-      width="20px"
-    >
-      <path
-        clip-rule="evenodd"
-        d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
-        fill="hsla(216, 27%, 36%, 1)"
-        fill-rule="evenodd"
-      />
-    </svg>
-  </div>
+    <path
+      clip-rule="evenodd"
+      d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
+      fill="hsla(216, 27%, 36%, 1)"
+      fill-rule="evenodd"
+    />
+  </svg>
 </div>
 `;

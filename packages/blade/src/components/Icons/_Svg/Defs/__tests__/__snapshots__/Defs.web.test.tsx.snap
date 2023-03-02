@@ -1,31 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Defs /> should render html defs component 1`] = `
-.c0 {
-  display: inline-block;
-  line-height: 0px;
-}
-
 <div>
-  <div
-    class="c0"
-    display="inline-block"
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="40px"
+    viewBox="0 0 6 6"
+    width="40px"
   >
-    <svg
-      aria-hidden="true"
-      data-blade-component="icon"
-      fill="none"
-      height="40px"
-      viewBox="0 0 6 6"
-      width="40px"
-    >
-      <defs>
-        <path
-          d="M2 2h2v2H2V2"
-          fill="#000"
-        />
-      </defs>
-    </svg>
-  </div>
+    <defs>
+      <path
+        d="M2 2h2v2H2V2"
+        fill="#000"
+      />
+    </defs>
+  </svg>
 </div>
 `;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Indicator /> should have role and a11y label when text label is passed 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" aria-label=\\"Active\\" role=\\"status\\" data-blade-component=\\"indicator\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><div display=\\"inline-block\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jBiSGs\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"8px\\" viewBox=\\"0 0 10 10\\" width=\\"8px\\" fill=\\"none\\"><circle cx=\\"5\\" cy=\\"5\\" r=\\"5\\" fill=\\"hsla(216, 33%, 29%, 1)\\"></circle><circle cx=\\"5\\" cy=\\"5\\" r=\\"4.75\\" stroke=\\"hsla(214, 21%, 94%, 0.18)\\" stroke-width=\\"0.5\\"></circle></svg></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"><p color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dvRgbT Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Active</p></div></div></div>"`;
+exports[`<Indicator /> should have role and a11y label when text label is passed 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" aria-label=\\"Active\\" role=\\"status\\" data-blade-component=\\"indicator\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"8\\" viewBox=\\"0 0 10 10\\" width=\\"8\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><circle cx=\\"5\\" cy=\\"5\\" r=\\"5\\" fill=\\"hsla(216, 33%, 29%, 1)\\"></circle><circle cx=\\"5\\" cy=\\"5\\" r=\\"4.75\\" stroke=\\"hsla(214, 21%, 94%, 0.18)\\" stroke-width=\\"0.5\\"></circle></svg><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"><p color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dvRgbT Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Active</p></div></div></div>"`;
 
 exports[`<Indicator /> should have role and a11y label when text label is passed 2`] = `
 <div
@@ -14,33 +14,29 @@ exports[`<Indicator /> should have role and a11y label when text label is passed
     display="flex"
     role="status"
   >
-    <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jBiSGs"
-      display="inline-block"
+    <svg
+      aria-hidden="true"
+      class="Svgweb__StyledSvg-vcmjs8-0"
+      data-blade-component="icon"
+      fill="none"
+      height="8"
+      viewBox="0 0 10 10"
+      width="8"
     >
-      <svg
-        aria-hidden="true"
-        data-blade-component="icon"
-        fill="none"
-        height="8px"
-        viewBox="0 0 10 10"
-        width="8px"
-      >
-        <circle
-          cx="5"
-          cy="5"
-          fill="hsla(216, 33%, 29%, 1)"
-          r="5"
-        />
-        <circle
-          cx="5"
-          cy="5"
-          r="4.75"
-          stroke="hsla(214, 21%, 94%, 0.18)"
-          stroke-width="0.5"
-        />
-      </svg>
-    </div>
+      <circle
+        cx="5"
+        cy="5"
+        fill="hsla(216, 33%, 29%, 1)"
+        r="5"
+      />
+      <circle
+        cx="5"
+        cy="5"
+        r="4.75"
+        stroke="hsla(214, 21%, 94%, 0.18)"
+        stroke-width="0.5"
+      />
+    </svg>
     <div
       class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna"
     >

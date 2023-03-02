@@ -2443,131 +2443,121 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 Array [
   <View
+    accessibilityRole="button"
+    accessibilityState={
+      Object {
+        "disabled": false,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
+    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
+    defaultBorderColor="hsla(213, 89%, 56%, 1)"
+    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
+    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
+    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
       Array [
         Object {
+          "alignSelf": "center",
+          "backgroundColor": "hsla(213, 89%, 56%, 1)",
+          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
           "width": "auto",
+        },
+        Object {
+          "backgroundColor": "hsla(213, 89%, 56%, 1)",
+          "borderColor": "hsla(213, 89%, 56%, 1)",
         },
       ]
     }
-    width="auto"
+    type="button"
   >
     <View
-      accessibilityRole="button"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-      activeBorderColor="hsla(227, 100%, 45%, 1)"
-      borderRadius="2px"
-      borderWidth="1px"
-      buttonPaddingBottom="0px"
-      buttonPaddingLeft="20px"
-      buttonPaddingRight="20px"
-      buttonPaddingTop="0px"
-      collapsable={false}
-      defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-      defaultBorderColor="hsla(213, 89%, 56%, 1)"
-      focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-      focusBorderColor="hsla(223, 95%, 48%, 1)"
-      focusRingColor="hsla(218, 89%, 51%, 0.18)"
-      focusable={true}
-      hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-      hoverBorderColor="hsla(218, 89%, 51%, 1)"
-      isFullWidth={false}
-      isLoading={false}
-      minHeight="36px"
-      motionDuration="duration.xquick"
-      motionEasing="easing.standard.effective"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
       style={
         Array [
           Object {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(213, 89%, 56%, 1)",
-            "borderColor": "hsla(213, 89%, 56%, 1)",
-            "borderRadius": 2,
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "cursor": "pointer",
-            "minHeight": 36,
-            "paddingBottom": 0,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 0,
-            "width": "auto",
-          },
-          Object {
-            "backgroundColor": "hsla(213, 89%, 56%, 1)",
-            "borderColor": "hsla(213, 89%, 56%, 1)",
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
           },
         ]
       }
     >
-      <View
-        alignItems="center"
-        display="flex"
-        flexDirection="row"
-        isHidden={false}
-        justifyContent="center"
+      <Text
+        color="action.text.primary.default"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight="l"
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "opacity": 1,
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 15,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 24,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
             },
           ]
         }
+        textAlign="center"
       >
-        <Text
-          color="action.text.primary.default"
-          fontSize={100}
-          fontWeight="bold"
-          lineHeight="l"
-          style={
-            Array [
-              Object {
-                "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          Update Progress
-        </Text>
-      </View>
+        Update Progress
+      </Text>
     </View>
   </View>,
   <View
@@ -2830,131 +2820,121 @@ Array [
 exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 Array [
   <View
+    accessibilityRole="button"
+    accessibilityState={
+      Object {
+        "disabled": false,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
+    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
+    defaultBorderColor="hsla(213, 89%, 56%, 1)"
+    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
+    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
+    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
       Array [
         Object {
+          "alignSelf": "center",
+          "backgroundColor": "hsla(213, 89%, 56%, 1)",
+          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
           "width": "auto",
+        },
+        Object {
+          "backgroundColor": "hsla(213, 89%, 56%, 1)",
+          "borderColor": "hsla(213, 89%, 56%, 1)",
         },
       ]
     }
-    width="auto"
+    type="button"
   >
     <View
-      accessibilityRole="button"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-      activeBorderColor="hsla(227, 100%, 45%, 1)"
-      borderRadius="2px"
-      borderWidth="1px"
-      buttonPaddingBottom="0px"
-      buttonPaddingLeft="20px"
-      buttonPaddingRight="20px"
-      buttonPaddingTop="0px"
-      collapsable={false}
-      defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-      defaultBorderColor="hsla(213, 89%, 56%, 1)"
-      focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-      focusBorderColor="hsla(223, 95%, 48%, 1)"
-      focusRingColor="hsla(218, 89%, 51%, 0.18)"
-      focusable={true}
-      hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-      hoverBorderColor="hsla(218, 89%, 51%, 1)"
-      isFullWidth={false}
-      isLoading={false}
-      minHeight="36px"
-      motionDuration="duration.xquick"
-      motionEasing="easing.standard.effective"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
       style={
         Array [
           Object {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(213, 89%, 56%, 1)",
-            "borderColor": "hsla(213, 89%, 56%, 1)",
-            "borderRadius": 2,
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "cursor": "pointer",
-            "minHeight": 36,
-            "paddingBottom": 0,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 0,
-            "width": "auto",
-          },
-          Object {
-            "backgroundColor": "hsla(213, 89%, 56%, 1)",
-            "borderColor": "hsla(213, 89%, 56%, 1)",
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
           },
         ]
       }
     >
-      <View
-        alignItems="center"
-        display="flex"
-        flexDirection="row"
-        isHidden={false}
-        justifyContent="center"
+      <Text
+        color="action.text.primary.default"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight="l"
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "opacity": 1,
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 15,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 24,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
             },
           ]
         }
+        textAlign="center"
       >
-        <Text
-          color="action.text.primary.default"
-          fontSize={100}
-          fontWeight="bold"
-          lineHeight="l"
-          style={
-            Array [
-              Object {
-                "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          Update Progress
-        </Text>
-      </View>
+        Update Progress
+      </Text>
     </View>
   </View>,
   <View
