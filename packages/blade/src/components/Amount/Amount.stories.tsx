@@ -51,7 +51,13 @@ export default {
 
 const AmountDefaultTemplate: ComponentStory<typeof AmountComponent> = (args) => {
   return (
-    <Box display="flex" alignItems="baseline" paddingRight="spacing.3" paddingTop="spacing.2">
+    <Box
+      display="flex"
+      alignItems="baseline"
+      justifyContent="center"
+      paddingRight="spacing.3"
+      paddingTop="spacing.2"
+    >
       <AmountComponent {...args} />
     </Box>
   );
@@ -68,30 +74,9 @@ Amount.args = {
 };
 Amount.storyName = 'Default';
 
-const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
-  const variants = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
-
-  return (
-    <Box>
-      {variants.map((variant) => (
-        <Box
-          key={variant}
-          display="flex"
-          alignItems="baseline"
-          paddingRight="spacing.3"
-          paddingTop="spacing.2"
-        >
-          <Text>{variant}</Text>
-          <AmountComponent {...args} variant={variant} />
-        </Box>
-      ))}
-    </Box>
-  );
-};
-
 const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
   return (
-    <Box>
+    <Box justifyContent="center">
       <Box marginBottom="spacing.3">
         <Text>Small</Text>
         <Box marginBottom="spacing.2" />
@@ -136,6 +121,27 @@ AmountSizes.args = {
   ...defaultArgs,
 };
 AmountSizes.storyName = 'Sizes';
+
+const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+  const variants = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+
+  return (
+    <Box width="100%" justifyContent="center">
+      {variants.map((variant) => (
+        <Box
+          key={variant}
+          // display="flex"
+          alignItems="baseline"
+          paddingRight="spacing.3"
+          paddingTop="spacing.2"
+        >
+          <Text>{variant}</Text>
+          <AmountComponent {...args} variant={variant} />
+        </Box>
+      ))}
+    </Box>
+  );
+};
 
 export const RegularWeight = AmountTemplate.bind({});
 RegularWeight.args = {
