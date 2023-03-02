@@ -9,6 +9,9 @@ const getDependencyProps = (props: BaseBoxProps & { theme?: Theme }): string | B
   const { theme, children, className, id, ...rest } = props;
   let dependencyPropString: string | BaseBoxProps = '';
   try {
+    // I know this looks illegal but Dan approves it - https://twitter.com/dan_abramov/status/1104414272753487872?s=20
+    // A lot of times passing object to dependency prop isn't efficient and mostly won't work
+    // Hence we JSON.strinfigy and pass the string as dependency prop. React handles this way better.
     dependencyPropString = JSON.stringify(rest);
   } catch (err: unknown) {
     console.warn(

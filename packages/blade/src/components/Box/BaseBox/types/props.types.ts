@@ -4,6 +4,11 @@ import type { MakeObjectResponsive } from './responsive.types';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
+import type { Platform } from '~src/utils/platform/platform';
+
+type MakeObjectWebOnly<T> = {
+  [P in keyof T]: Platform.Select<{ web: T[P]; native: never }>;
+};
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -67,24 +72,26 @@ type PositionProps = MakeObjectResponsive<
   } & Pick<CSSObject, 'position' | 'zIndex'>
 >;
 
-type GridProps = MakeObjectResponsive<
-  Pick<
-    CSSObject,
-    | 'grid'
-    | 'gridColumn'
-    | 'gridRow'
-    | 'gridRowStart'
-    | 'gridRowEnd'
-    | 'gridColumnStart'
-    | 'gridColumnEnd'
-    | 'gridArea'
-    | 'gridAutoFlow'
-    | 'gridAutoRows'
-    | 'gridAutoColumns'
-    | 'gridTemplate'
-    | 'gridTemplateAreas'
-    | 'gridTemplateColumns'
-    | 'gridTemplateRows'
+type GridProps = MakeObjectWebOnly<
+  MakeObjectResponsive<
+    Pick<
+      CSSObject,
+      | 'grid'
+      | 'gridColumn'
+      | 'gridRow'
+      | 'gridRowStart'
+      | 'gridRowEnd'
+      | 'gridColumnStart'
+      | 'gridColumnEnd'
+      | 'gridArea'
+      | 'gridAutoFlow'
+      | 'gridAutoRows'
+      | 'gridAutoColumns'
+      | 'gridTemplate'
+      | 'gridTemplateAreas'
+      | 'gridTemplateColumns'
+      | 'gridTemplateRows'
+    >
   >
 >;
 
