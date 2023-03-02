@@ -4,7 +4,7 @@ import { Linking } from 'react-native';
 import styled from 'styled-components/native';
 import type { StyledBaseLinkProps } from './types';
 import getStyledLinkStyles from './getStyledLinkStyles';
-import { useStyledProps } from '~utils';
+import { useStyledProps } from '~components/Box/styled-props';
 
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);

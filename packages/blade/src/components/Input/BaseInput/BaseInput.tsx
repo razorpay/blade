@@ -14,9 +14,10 @@ import { BaseInputWrapper } from './BaseInputWrapper';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
-import type { AriaAttributes, StyledProps } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
+import type { AriaAttributes } from '~utils';
 import {
-  getStyledProps,
   metaAttribute,
   getPlatformType,
   makeAccessible,

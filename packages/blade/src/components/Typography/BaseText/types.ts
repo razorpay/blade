@@ -2,7 +2,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { AccessibilityProps } from '~src/utils/makeAccessible/types';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
 import type { Feedback } from '~tokens/theme/theme';
-import type { StyledProps } from '~utils';
+import type { StyledProps } from '~components/Box/styled-props';
 
 type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
   Theme['colors']['feedback']['text']

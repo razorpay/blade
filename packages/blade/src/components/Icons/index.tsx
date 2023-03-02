@@ -1,7 +1,7 @@
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
 import type { Feedback } from '~tokens/theme/theme';
-import type { StyledProps } from '~utils';
+import type { StyledProps } from '~components/Box/styled-props';
 
 type FeedbackIconColors = `feedback.icon.${DotNotationColorStringToken<
   Theme['colors']['feedback']['icon']

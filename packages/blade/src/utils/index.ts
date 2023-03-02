@@ -16,7 +16,6 @@ export * from './makeSpace';
 export * from './makeTypographySize';
 export * from './merge';
 export * from './mocks';
-export * from './styled-props';
 export * from './testId';
 export * from './toTitleCase';
 export * from './useBreakpoint';

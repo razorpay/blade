@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
-import { castWebType, getIn, makeBorderSize, makeMotionTime, useStyledProps } from '~utils';
+import { castWebType, getIn, makeBorderSize, makeMotionTime } from '~utils';
+import { useStyledProps } from '~components/Box/styled-props';
 
 const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
   ...props.accessibilityProps,

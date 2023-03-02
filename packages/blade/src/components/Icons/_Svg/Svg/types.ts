@@ -1,9 +1,9 @@
-import type { StyledProps } from '~utils';
+import type { StyledProps } from '~components/Box/styled-props';
 
 export type SvgProps = {
   children: React.ReactNode;
   fill?: string;
-  height: `${string}px`;
+  height: string;
   viewBox: string;
-  width: `${string}px`;
+  width: string;
 } & Omit<StyledProps, 'order'>; // Order prop on SVG has different meaning so removing this prop from styled-props

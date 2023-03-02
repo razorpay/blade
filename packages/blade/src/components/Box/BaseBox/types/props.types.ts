@@ -1,54 +1,14 @@
 import type { CSSObject } from 'styled-components';
+import type { MarginProps, PaddingProps, SpacingValueType } from './spacing.types';
+import type { MakeObjectResponsive } from './responsive.types';
 import type { Theme } from '~components/BladeProvider';
-import type { Border, Spacing } from '~tokens/global';
-import type { Breakpoints } from '~tokens/global/breakpoints';
+import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
+import type { Platform } from '~src/utils/platform/platform';
 
-type MakeValueResponsive<T> =
-  | T
-  | {
-      // Using this instead of Record to maintain the jsdoc from breakpoints.ts
-      [P in keyof Breakpoints]?: T;
-    };
-type MakeObjectResponsive<T> = { [P in keyof T]: MakeValueResponsive<T[P]> };
-type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
-
-type SpaceUnits = 'px' | 'fr' | '%' | 'rem' | 'em';
-type SpacingValueType = `spacing.${keyof Spacing}` | `${string}${SpaceUnits}` | 'auto';
-
-type PaddingProps = MakeObjectResponsive<{
-  /**
-   * Padding shorthand
-   *
-   * For token to pixel conversion, checkout -
-   *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
-   */
-  padding: SpacingValueType | ArrayOfMaxLength4<SpacingValueType>;
-  paddingX: SpacingValueType;
-  paddingY: SpacingValueType;
-  paddingTop: SpacingValueType;
-  paddingRight: SpacingValueType;
-  paddingBottom: SpacingValueType;
-  paddingLeft: SpacingValueType;
-}>;
-
-type MarginProps = MakeObjectResponsive<{
-  /**
-   * Margin shorthand
-   *
-   * For token to pixel conversion, checkout -
-   *
-   * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
-   */
-  margin: SpacingValueType | ArrayOfMaxLength4<SpacingValueType>;
-  marginX: SpacingValueType;
-  marginY: SpacingValueType;
-  marginTop: SpacingValueType;
-  marginRight: SpacingValueType;
-  marginBottom: SpacingValueType;
-  marginLeft: SpacingValueType;
-}>;
+type MakeObjectWebOnly<T> = {
+  [P in keyof T]: Platform.Select<{ web: T[P]; native: never }>;
+};
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -112,24 +72,26 @@ type PositionProps = MakeObjectResponsive<
   } & Pick<CSSObject, 'position' | 'zIndex'>
 >;
 
-type GridProps = MakeObjectResponsive<
-  Pick<
-    CSSObject,
-    | 'grid'
-    | 'gridColumn'
-    | 'gridRow'
-    | 'gridRowStart'
-    | 'gridRowEnd'
-    | 'gridColumnStart'
-    | 'gridColumnEnd'
-    | 'gridArea'
-    | 'gridAutoFlow'
-    | 'gridAutoRows'
-    | 'gridAutoColumns'
-    | 'gridTemplate'
-    | 'gridTemplateAreas'
-    | 'gridTemplateColumns'
-    | 'gridTemplateRows'
+type GridProps = MakeObjectWebOnly<
+  MakeObjectResponsive<
+    Pick<
+      CSSObject,
+      | 'grid'
+      | 'gridColumn'
+      | 'gridRow'
+      | 'gridRowStart'
+      | 'gridRowEnd'
+      | 'gridColumnStart'
+      | 'gridColumnEnd'
+      | 'gridArea'
+      | 'gridAutoFlow'
+      | 'gridAutoRows'
+      | 'gridAutoColumns'
+      | 'gridTemplate'
+      | 'gridTemplateAreas'
+      | 'gridTemplateColumns'
+      | 'gridTemplateRows'
+    >
   >
 >;
 
@@ -138,19 +100,21 @@ type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotat
   Theme['colors'][T]['background']
 >}`;
 
-type BackgroundColorType =
-  | BackgroundColorString<'feedback'>
-  | BackgroundColorString<'surface'>
-  | BackgroundColorString<'action'>
-  | (string & Record<never, never>);
-
-type VisualProps = MakeObjectResponsive<
+type BaseBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
-    backgroundColor: BackgroundColorType;
+    backgroundColor:
+      | BackgroundColorString<'feedback'>
+      | BackgroundColorString<'surface'>
+      | BackgroundColorString<'action'>
+      | (string & Record<never, never>);
     lineHeight: SpacingValueType;
   } & Pick<CSSObject, 'transform'>
 >;
+
+type BoxVisualProps = MakeObjectResponsive<{
+  backgroundColor: BackgroundColorString<'surface'>;
+}>;
 
 type StyledProps = Partial<
   MarginProps &
@@ -174,22 +138,19 @@ type BoxProps = Partial<
     LayoutProps &
     FlexboxProps &
     PositionProps &
-    GridProps & { children?: React.ReactNode | React.ReactNode[] }
+    GridProps &
+    BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] }
 >;
 
-type BaseBoxProps = BoxProps &
+// Visual props have different types for BaseBox and Box.
+// So first we Omit Visual props of Box
+// Then we append BaseBoxVisualProps and some other props for styled-components like class and id
+type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
   Partial<
-    VisualProps & {
+    BaseBoxVisualProps & {
       className?: string;
       id?: string;
     }
   >;
 
-export {
-  BoxProps,
-  StyledProps,
-  BaseBoxProps,
-  MakeValueResponsive,
-  SpacingValueType,
-  ArrayOfMaxLength4,
-};
+export { BaseBoxProps, BoxProps, StyledProps };
