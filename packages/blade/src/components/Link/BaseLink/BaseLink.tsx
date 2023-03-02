@@ -10,7 +10,11 @@ import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
-import type { DotNotationSpacingStringToken, StringChildrenType } from '~src/_helpers/types';
+import type {
+  DotNotationSpacingStringToken,
+  StringChildrenType,
+  TestID,
+} from '~src/_helpers/types';
 import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
@@ -31,7 +35,7 @@ type BaseLinkCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium';
-};
+} & TestID;
 
 /*
   Mandatory children prop when icon is not provided
@@ -212,6 +216,7 @@ const BaseLink = ({
   // @ts-expect-error avoiding exposing to public
   style,
   size = 'medium',
+  testID,
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
   const childrenString = getStringFromReactText(children);
@@ -266,7 +271,7 @@ const BaseLink = ({
   return (
     <StyledBaseLink
       {...syntheticEvents}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Link)}
+      {...metaAttribute({ name: MetaConstants.Link, testID })}
       accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
       variant={variant}
       as={as}

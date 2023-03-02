@@ -1,6 +1,9 @@
-const metaAttribute = (name: string, value: string | undefined): Record<string, string> => {
-  if (!value) return {};
-  return { [`data-${name}`]: value };
+import { MetaConstants } from './metaConstants';
+
+const metaAttribute = ({ name }: { name?: string; testID?: string }): Record<string, string> => {
+  return {
+    ...(name ? { [`data-${MetaConstants.Component}`]: name } : {}),
+  };
 };
 
 export { metaAttribute };

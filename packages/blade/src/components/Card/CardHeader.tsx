@@ -24,6 +24,7 @@ import {
   isValidAllowedChildren,
   makeSpace,
 } from '~utils';
+import type { TestID } from '~src/_helpers/types';
 
 const CardHeaderIcon: WithComponentId<{ icon: IconComponent }> = ({ icon: Icon }) => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -80,9 +81,9 @@ CardHeaderIconButton.componentId = ComponentIds.CardHeaderIconButton;
 
 type CardHeaderProps = {
   children?: React.ReactNode;
-};
+} & TestID;
 
-const CardHeader: WithComponentId<CardHeaderProps> = ({ children }) => {
+const CardHeader: WithComponentId<CardHeaderProps> = ({ children, testID }) => {
   useVerifyInsideCard('CardHeader');
   useVerifyAllowedComponents(children, 'CardHeader', [
     ComponentIds.CardHeaderLeading,
@@ -92,7 +93,7 @@ const CardHeader: WithComponentId<CardHeaderProps> = ({ children }) => {
   return (
     <BaseBox
       marginBottom="spacing.7"
-      {...metaAttribute(MetaConstants.Component, MetaConstants.CardHeader)}
+      {...metaAttribute({ name: MetaConstants.CardHeader, testID })}
     >
       <BaseBox
         marginBottom="spacing.7"

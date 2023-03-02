@@ -12,6 +12,7 @@ import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { TestID } from '~src/_helpers/types';
 
 type OnChange = ({
   isChecked,
@@ -101,7 +102,7 @@ type CheckboxProps = {
    *
    */
   tabIndex?: number;
-};
+} & TestID;
 
 const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
   {
@@ -119,6 +120,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     errorText,
     size = 'medium',
     tabIndex,
+    testID,
   },
   ref,
 ) => {
@@ -197,7 +199,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   });
 
   return (
-    <BaseBox {...metaAttribute(MetaConstants.Component, MetaConstants.Checkbox)}>
+    <BaseBox {...metaAttribute({ name: MetaConstants.Checkbox, testID })}>
       <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">

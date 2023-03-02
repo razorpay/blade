@@ -19,7 +19,7 @@ import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants }
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import size from '~tokens/global/size';
-import type { StringChildrenType } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 type ActionListItemProps = {
   title: string;
@@ -59,7 +59,7 @@ type ActionListItemProps = {
    * @private
    */
   _index?: number;
-};
+} & TestID;
 
 const ActionListItemContext = React.createContext<{
   intent?: ActionListItemProps['intent'];
@@ -96,10 +96,11 @@ type ActionListSectionProps = {
    * @private
    */
   _hideDivider?: boolean;
-};
+} & TestID;
 const ActionListSection: WithComponentId<ActionListSectionProps> = ({
   title,
   children,
+  testID,
   _hideDivider,
 }): JSX.Element => {
   return (
@@ -108,7 +109,7 @@ const ActionListSection: WithComponentId<ActionListSectionProps> = ({
         role: getActionListSectionRole(),
         label: title,
       })}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListSection)}
+      {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
     >
       {/* We're announcing title as group label so we can hide this */}
       <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
@@ -253,7 +254,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
           }
           props.onClick?.({ name: props.value, value: isSelected });
         })}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListItem)}
+        {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
         onMouseDown={() => {
           setShouldIgnoreBlur(true);
           // We want to keep focus on Dropdown's trigger while option is being clicked

@@ -6,6 +6,7 @@ import type { IconComponent } from '~components/Icons';
 import { isValidAllowedChildren, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
+import type { TestID } from '~src/_helpers/types';
 
 const StyledActionListHeader = styled(BaseBox)((props) => {
   return {
@@ -25,7 +26,7 @@ type ActionListHeaderProps = {
    * Valid children - `ActionListHeaderIcon`
    */
   leading?: React.ReactNode;
-};
+} & TestID;
 /**
  * ### ActionListHeader
  *
@@ -58,7 +59,7 @@ const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.El
 
   return (
     <StyledActionListHeader
-      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListHeader)}
+      {...metaAttribute({ name: MetaConstants.ActionListHeader, testID: props.testID })}
     >
       <BaseBox>{props.leading}</BaseBox>
       <BaseBox paddingLeft="spacing.3" paddingRight="spacing.3">

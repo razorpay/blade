@@ -11,6 +11,7 @@ import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import spacing from '~tokens/global/spacing';
 import size from '~tokens/global/size';
+import type { TestID } from '~src/_helpers/types';
 
 const dropdownFadeIn = keyframes`
 from {
@@ -49,14 +50,19 @@ const StyledDropdownOverlay = styled(BaseBox)<{
     `,
 );
 
-type DropdownOverlayProps = { children: React.ReactNode };
+type DropdownOverlayProps = {
+  children: React.ReactNode;
+} & TestID;
 
 /**
  * Overlay of dropdown
  *
  * Wrap your ActionList within this component
  */
-const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): JSX.Element => {
+const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({
+  children,
+  testID,
+}): JSX.Element => {
   const { isOpen, triggererRef, hasLabelOnLeft } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
@@ -122,7 +128,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
             setDisplay('none');
           }
         }}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.DropdownOverlay)}
+        {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
       </StyledDropdownOverlay>

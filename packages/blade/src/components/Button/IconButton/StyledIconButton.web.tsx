@@ -51,13 +51,14 @@ const StyledIconButton = ({
   size,
   contrast,
   accessibilityLabel,
+  testID,
 }: StyledIconButtonProps): ReactElement => (
   <StyledButton
     onClick={onClick}
     contrast={contrast}
     type="button"
     {...makeAccessible({ label: accessibilityLabel })}
-    {...metaAttribute(MetaConstants.Component, MetaConstants.IconButton)}
+    {...metaAttribute({ name: MetaConstants.IconButton, testID })}
   >
     <Icon size={size} color="currentColor" />
   </StyledButton>

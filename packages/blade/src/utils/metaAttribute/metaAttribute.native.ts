@@ -1,5 +1,7 @@
-const metaAttribute = (_name: string, _value: string): Record<string, string> => {
-  return {};
+const metaAttribute = ({ testID }: { name?: string; testID?: string }): Record<string, string> => {
+  return {
+    ...(testID ? { testID } : {}),
+  };
 };
 
 export { metaAttribute };

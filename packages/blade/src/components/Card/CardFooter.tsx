@@ -11,6 +11,7 @@ import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
+import type { TestID } from '~src/_helpers/types';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -21,7 +22,7 @@ export type CardFooterAction = Pick<
 
 type CardFooterProps = {
   children?: React.ReactNode;
-};
+} & TestID;
 
 const useIsMobile = (): boolean => {
   const { theme } = useTheme();
@@ -31,7 +32,7 @@ const useIsMobile = (): boolean => {
   return matchedDeviceType === 'mobile';
 };
 
-const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
+const CardFooter: WithComponentId<CardFooterProps> = ({ children, testID }) => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
   useVerifyAllowedComponents(children, 'CardFooter', [
@@ -40,7 +41,7 @@ const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
   ]);
 
   return (
-    <BaseBox marginTop="auto" {...metaAttribute(MetaConstants.Component, MetaConstants.CardFooter)}>
+    <BaseBox marginTop="auto" {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
       <BaseBox marginTop="spacing.7" />
       <Divider />
       <BaseBox
