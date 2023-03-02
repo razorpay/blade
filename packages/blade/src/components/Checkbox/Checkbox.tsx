@@ -167,6 +167,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   const _hasError = _validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const _name = name ?? groupProps?.name;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
   const _size = groupProps.size ?? size;
   const isSmall = _size === 'small';
