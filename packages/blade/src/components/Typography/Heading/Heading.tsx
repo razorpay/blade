@@ -3,8 +3,9 @@ import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import type { StyledProps } from '~utils';
-import { getStyledProps, getPlatformType } from '~utils';
+import { getPlatformType } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 
 import type { Theme } from '~components/BladeProvider';
 

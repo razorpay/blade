@@ -3,8 +3,11 @@ import {
   getBackgroundValue,
   getBaseBoxStyles,
   getBorderRadiusValue,
-} from './getBaseBoxStyles';
+} from '../BaseBox/getBaseBoxStyles';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme';
+
+export const removeUndefinedValues = (props: Record<string, unknown>): Record<string, unknown> =>
+  JSON.parse(JSON.stringify(props));
 
 describe('getBackgroundValue', () => {
   it('should return correct background color value', () => {

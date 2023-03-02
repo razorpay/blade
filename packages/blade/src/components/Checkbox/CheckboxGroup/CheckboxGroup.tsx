@@ -5,8 +5,9 @@ import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabel, FormHint } from '~components/Form';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
-import type { StyledProps } from '~utils';
-import { getStyledProps, makeSize, useBreakpoint } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
+import { makeSize, useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
 

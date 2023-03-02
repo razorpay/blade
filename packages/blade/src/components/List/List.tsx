@@ -6,10 +6,8 @@ import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
 import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
-import type { StyledProps } from '~utils';
 import {
   getIn,
-  getStyledProps,
   isValidAllowedChildren,
   makeAccessible,
   makeSpace,
@@ -18,6 +16,8 @@ import {
 } from '~utils';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 
 type ListCommonProps = {
   /**

@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import BaseBox from '~components/Box/BaseBox';
-import type { StyledProps } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 import {
   metaAttribute,
   getPlatformType,
   makeSpace,
   makeTypographySize,
   MetaConstants,
-  getStyledProps,
 } from '~utils';
 import type { FontSize } from '~tokens/global/typography';
 

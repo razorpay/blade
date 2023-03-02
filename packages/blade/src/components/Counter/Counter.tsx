@@ -6,8 +6,9 @@ import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import type { StyledProps } from '~utils';
-import { getStyledProps, metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 
 export type CounterProps = {
   /**

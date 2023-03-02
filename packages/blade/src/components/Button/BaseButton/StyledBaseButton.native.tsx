@@ -6,15 +6,21 @@ import type { TextInput } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
 import { getIn } from '~utils';
+import { useStyledProps } from '~components/Box/styled-props';
 import { useTheme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
->((props) => ({
-  ...getStyledBaseButtonStyles(props),
-  alignSelf: 'center',
-}));
+>((props) => {
+  const styledPropsCSSObject = useStyledProps(props);
+
+  return {
+    ...styledPropsCSSObject,
+    ...getStyledBaseButtonStyles(props),
+    alignSelf: 'center',
+  };
+});
 
 const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledBaseButtonProps> = (
   {
@@ -42,6 +48,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
     motionEasing,
     isLoading,
     accessibilityProps,
+    ...styledProps
   },
   ref,
 ) => {
@@ -67,6 +74,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
 
   return (
     <StyledPressable
+      {...styledProps}
       {...accessibilityProps}
       ref={ref as React.RefObject<TextInput>}
       isLoading={isLoading}

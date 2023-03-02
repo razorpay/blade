@@ -15,9 +15,9 @@ import {
   metaAttribute,
   MetaConstants,
   useBreakpoint,
-  getStyledProps,
 } from '~utils';
-import type { StyledProps } from '~utils';
+import { getStyledProps } from '~components/Box/styled-props';
+import type { StyledProps } from '~components/Box/styled-props';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
@@ -126,17 +126,17 @@ const intentIconMap = {
   notice: AlertTriangleIcon,
 };
 
-const Alert = (props: AlertProps): ReactElement | null => {
-  const {
-    description,
-    title,
-    isDismissible = true,
-    onDismiss,
-    contrast = 'low',
-    isFullWidth = false,
-    intent = 'neutral',
-    actions,
-  } = props;
+const Alert = ({
+  description,
+  title,
+  isDismissible = true,
+  onDismiss,
+  contrast = 'low',
+  isFullWidth = false,
+  intent = 'neutral',
+  actions,
+  ...styledProps
+}: AlertProps): ReactElement | null => {
   if (!actions?.primary && actions?.secondary) {
     throw new Error(
       '[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.',
@@ -290,7 +290,7 @@ const Alert = (props: AlertProps): ReactElement | null => {
 
   return (
     <StyledAlert
-      {...getStyledProps(props)}
+      {...getStyledProps(styledProps)}
       intent={intent}
       contrastType={contrastType}
       isFullWidth={isFullWidth}

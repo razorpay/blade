@@ -5,7 +5,7 @@ import { useListContext } from './ListContext';
 import { Svg, Circle, Rect } from '~components/Icons/_Svg';
 
 type UnorderedIconProps = {
-  iconDimensions: `${string}px`;
+  iconDimensions: string;
   color: string;
 };
 

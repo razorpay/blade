@@ -25,4 +25,22 @@ type DotNotationMotionStringToken<TokenType> = {
 
 type DotNotationSpacingStringToken = `spacing.${keyof Spacing}`;
 
-export { DotNotationColorStringToken, DotNotationMotionStringToken, DotNotationSpacingStringToken };
+/**
+ * Similar to Partial except it keeps key as required and only supports undefined as explicit value
+ */
+type AllowUndefinedValue<T> = {
+  [P in keyof T]: T[P] | undefined;
+};
+
+/**
+ * Similar to `Required` except it allows undefined as value.
+ * So all keys have to be explicitly defined, but they can have undefined as value
+ */
+type KeysRequired<T> = AllowUndefinedValue<Required<T>>;
+
+export {
+  DotNotationColorStringToken,
+  DotNotationMotionStringToken,
+  DotNotationSpacingStringToken,
+  KeysRequired,
+};

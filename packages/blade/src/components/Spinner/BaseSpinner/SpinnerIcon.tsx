@@ -1,7 +1,7 @@
 import { Svg, Path } from '~components/Icons/_Svg';
 
 type SpinnerIconProps = {
-  dimensions: `${string}px`;
+  dimensions: string;
   color: string;
 };
 
