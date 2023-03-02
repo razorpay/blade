@@ -2,13 +2,14 @@
 import type { Meta } from '@storybook/react';
 import { Highlight } from '@storybook/design-system';
 import dedent from 'dedent';
-import type { BaseBoxProps } from './BaseBox/types';
+import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbox/sandpack-react';
+import type { BoxProps } from './BaseBox/types';
 import { getBoxArgTypes } from './BaseBox/storybookArgTypes';
 import BaseBox from './BaseBox';
 import { Box } from '.';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox, SandboxProvider } from '~src/_helpers/storybook/Sandbox';
 import { List, ListItem, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
 
@@ -108,7 +109,7 @@ const BoxStoryMeta = {
                     {/*
                       <Box
                         // Uncomment this block to see padding shorthands in action
-                        padding={["spacing.3", "35px"]} // We also support padding and margin shorthands
+                        padding={["spacing.3", "35px"]} // We also support padding and margin shorthands similar to CSS
                         marginX="spacing.5" // adds horizontal margin
                       >
                         <Text>More Text</Text>
@@ -128,14 +129,42 @@ const BoxStoryMeta = {
               <Code>margin</Code>. And these props can have values such as <Code>spacing.3</Code>{' '}
               (Our tokens), <Code>132px</Code> (absolute values), <Code>auto</Code>
             </Text>
+            <Heading size="large" marginBottom="spacing.3" marginTop="spacing.6">
+              Responsive Props 📱 🖥
+            </Heading>
+            <Text>Uncomment the commented code below to see things in action ✨</Text>
+            <SandboxProvider
+              code={`
+             import { Box, Text } from '@razorpay/blade/components'
+             function App(): JSX.Element {
+               return (
+                   <Box 
+                     // Uncomment next lines to see padding and margin in action
+                     // padding="spacing.4"
+                     // marginTop="32px"
+                   >
+                     <Text>Some Text</Text>
+                   </Box>
+               )
+             }
+ 
+             export default App;
+            `}
+            >
+              <SandpackLayout>
+                <SandpackCodeEditor />
+                <SandpackPreview />
+                <SandpackPreview />
+              </SandpackLayout>
+            </SandboxProvider>
           </BaseBox>
         </StoryPageWrapper>
       ),
     },
   },
-} as Meta<BaseBoxProps>;
+} as Meta<BoxProps>;
 
-export const Default = (args: BaseBoxProps): JSX.Element => {
+export const Default = (args: BoxProps): JSX.Element => {
   return (
     <Box {...args}>
       <Text>Change controls to see the parameters change for the container</Text>
@@ -143,7 +172,7 @@ export const Default = (args: BaseBoxProps): JSX.Element => {
   );
 };
 
-export const Responsive = (args: BaseBoxProps): JSX.Element => {
+export const Responsive = (args: BoxProps): JSX.Element => {
   return (
     <Box {...args}>
       <Text>On mobile, The padding should change</Text>
@@ -156,6 +185,6 @@ Responsive.args = {
   display: 'flex',
   padding: { base: ['spacing.2', 'spacing.3'], l: 'spacing.10' },
   flexDirection: { base: 'column', l: 'row' },
-} as BaseBoxProps;
+} as BoxProps;
 
 export default BoxStoryMeta;

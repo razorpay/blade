@@ -37,6 +37,8 @@ const getOnlyBoxProps = (props: BoxProps): KeysRequired<BoxProps> => {
     // Layout
     display: props.display,
     overflow: props.overflow,
+    overflowX: props.overflowX,
+    overflowY: props.overflowY,
     height: props.height,
     minHeight: props.minHeight,
     maxHeight: props.maxHeight,

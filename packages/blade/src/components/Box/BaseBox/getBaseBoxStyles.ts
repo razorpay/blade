@@ -8,7 +8,7 @@ import type {
 import type { Breakpoints } from '~tokens/global/breakpoints';
 import breakpoints from '~tokens/global/breakpoints';
 import { getMediaQuery } from '~src/utils/getMediaQuery';
-import { isReactNative, isEmpty, getIn, makeSpace, makeSize } from '~utils';
+import { isReactNative, isEmpty, getIn, makeSpace } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 
 const getResponsiveValue = <T extends string | number | string[]>(
@@ -118,7 +118,7 @@ const getBorderRadiusValue = (
   const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, size);
   return isEmpty(responsiveBorderRadiusValue)
     ? undefined
-    : makeSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
+    : getIn(theme, `border.radius.${responsiveBorderRadiusValue}`);
 };
 
 const getAllProps = (
@@ -128,6 +128,8 @@ const getAllProps = (
   return {
     display: getResponsiveValue(props.display, size),
     overflow: getResponsiveValue(props.overflow, size),
+    overflowX: getResponsiveValue(props.overflowX, size),
+    overflowY: getResponsiveValue(props.overflowY, size),
 
     // Flex
     flex: getResponsiveValue(props.flex, size),
@@ -191,6 +193,11 @@ const getAllProps = (
     borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, size),
     transform: getResponsiveValue(props.transform, size),
     lineHeight: getSpacingValue(props.lineHeight, props.theme, size),
+    border: getResponsiveValue(props.border, size),
+    borderTop: getResponsiveValue(props.borderTop, size),
+    borderRight: getResponsiveValue(props.borderRight, size),
+    borderBottom: getResponsiveValue(props.borderBottom, size),
+    borderLeft: getResponsiveValue(props.borderLeft, size),
   };
 };
 

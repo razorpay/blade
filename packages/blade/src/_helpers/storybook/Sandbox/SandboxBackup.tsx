@@ -1,11 +1,19 @@
 import React from 'react';
-import { Sandpack, SandpackProvider } from '@codesandbox/sandpack-react';
+import styled from 'styled-components';
+import {
+  SandpackCodeEditor,
+  SandpackPreview,
+  SandpackProvider,
+  SandpackConsole,
+  ConsoleIcon,
+} from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
+import { Box } from '~components/Box';
 
 type SandboxProps = {
   children: string;
@@ -29,6 +37,73 @@ const getBladeVersion = (): string => {
 };
 
 const bladeVersion = getBladeVersion();
+
+const SandpackButton = styled(BaseBox)((_props) => ({
+  border: 'none',
+  cursor: 'pointer',
+  color: 'var(--sp-colors-clickable)',
+}));
+
+const sandpackBorder = '1px solid var(--sp-colors-surface2)';
+
+const SandboxGrid = ({
+  showConsole = false,
+  editorHeight = 300,
+  editorWidthPercentage = 50,
+}: Partial<SandboxProps>): JSX.Element => {
+  const [showConsoleTab, setShowConsoleTab] = React.useState(showConsole);
+
+  return (
+    <BaseBox
+      display="flex"
+      borderRadius="medium"
+      overflowX="hidden"
+      border={sandpackBorder}
+      flexDirection={{ base: 'column-reverse', m: 'row' }}
+    >
+      <BaseBox
+        width={{ base: '100%', m: `${editorWidthPercentage}%` }}
+        borderRight={sandpackBorder}
+        height={`${editorHeight}px`}
+      >
+        <SandpackCodeEditor
+          showInlineErrors
+          showRunButton={false}
+          style={{
+            height: `${editorHeight}px`,
+            width: `100%`,
+          }}
+        />
+      </BaseBox>
+
+      <BaseBox
+        width={{ base: '100%', m: `${editorWidthPercentage}%` }}
+        display="flex"
+        flexDirection="column"
+        height={`${editorHeight}px`}
+      >
+        <SandpackPreview
+          style={{ height: '100%', width: '100%', flex: '1' }}
+          showRefreshButton
+          actionsChildren={
+            <SandpackButton
+              as="button"
+              borderRadius="round"
+              onClick={() => {
+                setShowConsoleTab(!showConsoleTab);
+              }}
+            >
+              <ConsoleIcon />
+            </SandpackButton>
+          }
+        />
+        <Box flex="1" maxHeight="40%" display={showConsoleTab ? 'block' : 'none'}>
+          <SandpackConsole showHeader={false} />
+        </Box>
+      </BaseBox>
+    </BaseBox>
+  );
+};
 
 const useSandpackSetup = ({
   code,
@@ -110,38 +185,26 @@ const useSandpackSetup = ({
   };
 };
 
-const SandboxProvider = ({
+const SandboxSetup = ({
+  language = 'tsx',
   code,
   children,
-  language = 'tsx',
-}: Omit<SandboxProps, 'children'> & { code: string; children: React.ReactNode }): JSX.Element => {
-  const sandboxSetup = useSandpackSetup({ language, code });
-  return <SandpackProvider {...sandboxSetup}>{children}</SandpackProvider>;
+}: Pick<SandboxProps, 'language'> & { children: React.ReactNode; code: string }): JSX.Element => {
+  const sandpackSetup = useSandpackSetup({ language, code });
+  return <SandpackProvider {...sandpackSetup}>{children}</SandpackProvider>;
 };
 
 function Sandbox({
   children,
-  language = 'tsx',
-  showConsole = false,
-  editorHeight = 300,
-  editorWidthPercentage = 50,
   padding = ['spacing.5', 'spacing.0', 'spacing.8'],
+  ...sandboxOptions
 }: SandboxProps): JSX.Element {
-  const sandpackSetup = useSandpackSetup({ language, code: children });
-
   return (
-    <BaseBox padding={padding}>
-      <Sandpack
-        {...sandpackSetup}
-        options={{
-          showInlineErrors: true,
-          showConsoleButton: true,
-          showConsole,
-          editorHeight,
-          editorWidthPercentage,
-        }}
-      />
-    </BaseBox>
+    <Box padding={padding}>
+      <SandboxSetup language={sandboxOptions.language} code={children}>
+        <SandboxGrid {...sandboxOptions} />
+      </SandboxSetup>
+    </Box>
   );
 }
 
@@ -189,4 +252,4 @@ const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   );
 };
 
-export { Sandbox, SandboxProvider, SandboxProps, RecipeSandbox, RecipeSandboxProps };
+export { Sandbox, SandboxSetup, SandboxGrid, SandboxProps, RecipeSandbox, RecipeSandboxProps };

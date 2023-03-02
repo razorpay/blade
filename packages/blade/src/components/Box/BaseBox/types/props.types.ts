@@ -18,7 +18,7 @@ type LayoutProps = MakeObjectResponsive<
     width: SpacingValueType;
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
-  } & Pick<CSSObject, 'display' | 'overflow'>
+  } & Pick<CSSObject, 'display' | 'overflow' | 'overflowX' | 'overflowY'>
 >;
 
 type FlexboxProps = MakeObjectResponsive<
@@ -109,7 +109,10 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'action'>
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
-  } & Pick<CSSObject, 'transform'>
+  } & Pick<
+    CSSObject,
+    'transform' | 'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom'
+  >
 >;
 
 type BoxVisualProps = MakeObjectResponsive<{
