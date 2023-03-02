@@ -1,3 +1,4 @@
+import { Text } from 'react-native';
 import { Box } from '../Box';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
@@ -9,7 +10,10 @@ describe('<Box />', () => {
         padding="spacing.0"
         // @ts-expect-error: Intentional to test bad flow
         borderRadius="small"
-      />,
+      >
+        {/** Using React Native's text instead of our Text component to keep snapshots small. Our Text component is tested separately anyways */}
+        <Text>children test!</Text>
+      </Box>,
     );
     expect(toJSON()).toMatchInlineSnapshot(`
       <View
@@ -25,7 +29,11 @@ describe('<Box />', () => {
             },
           ]
         }
-      />
+      >
+        <Text>
+          children test!
+        </Text>
+      </View>
     `);
   });
 

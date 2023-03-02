@@ -9,7 +9,9 @@ describe('<Box />', () => {
         padding="spacing.0"
         // @ts-expect-error: Intentional to test bad flow
         borderRadius="small"
-      />,
+      >
+        children test!
+      </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
       .c0 {
@@ -25,12 +27,17 @@ describe('<Box />', () => {
           class="c0"
           data-blade-component="Box"
           display="flex"
-        />
+        >
+          children test!
+        </div>
       </div>
     `);
   });
 
   it('should throw error for unsupport values', () => {
+    // Ignoring error from console to not show it while running tests
+    const tempConsoleError = console.error;
+    console.error = jest.fn();
     try {
       renderWithTheme(
         <Box
@@ -45,5 +52,6 @@ describe('<Box />', () => {
          Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
       `);
     }
+    console.error = tempConsoleError;
   });
 });
