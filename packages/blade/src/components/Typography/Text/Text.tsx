@@ -56,8 +56,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
   weight,
   size,
   contrast,
-  textAlign,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'textAlign'>): Omit<
+}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'size' | 'contrast'>): Omit<
   BaseTextProps,
   'children'
 > &
@@ -73,7 +72,6 @@ const getTextProps = <T extends { variant: TextVariant }>({
     fontFamily: 'text',
     forwardedAs: isPlatformWeb ? 'p' : undefined,
     componentName: 'text',
-    textAlign,
   };
 
   if (variant === 'body') {
@@ -125,11 +123,10 @@ const Text = <T extends { variant: TextVariant }>({
   truncateAfterLines,
   children,
   color,
-  textAlign,
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
-    ...getTextProps({ variant, type, weight, size, contrast, textAlign }),
+    ...getTextProps({ variant, type, weight, size, contrast }),
     ...(color ? { color } : {}),
   };
   return <StyledText {...props}>{children}</StyledText>;
