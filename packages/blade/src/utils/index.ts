@@ -2,6 +2,7 @@ export * from './cloneDeep';
 export * from './metaAttribute';
 export * from './getColorScheme';
 export * from './getIn';
+export * from './getMediaQuery';
 export * from './getPlatformType';
 export * from './isEmpty';
 export * from './isEqual';

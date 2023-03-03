@@ -8,15 +8,17 @@ const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => (
   ...props.accessibilityProps,
 }))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
+  // Picking props that should override default styles
+  const { position, ...restStyledProps } = styledPropsCSSObject;
   return {
-    ...styledPropsCSSObject,
+    ...restStyledProps,
     ...getStyledBaseButtonStyles(props),
     transitionProperty: 'background-color, border-color, box-shadow',
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
     transitionDuration: castWebType(
       makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
     ),
-    position: 'relative',
+    position: position ?? 'relative',
     '&:hover': {
       backgroundColor: props.hoverBackgroundColor,
       borderColor: props.hoverBorderColor,

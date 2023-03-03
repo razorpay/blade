@@ -1,5 +1,6 @@
 import React from 'react';
-import { Sandpack, SandpackProvider } from '@codesandbox/sandpack-react';
+import styled from 'styled-components';
+import { Sandpack, SandpackCodeViewer, SandpackProvider } from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
@@ -25,7 +26,7 @@ const getBladeVersion = (): string => {
     return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
   }
 
-  return '*';
+  return 'https://pkg.csb.dev/razorpay/blade/commit/b1b0f883/@razorpay/blade';
 };
 
 const bladeVersion = getBladeVersion();
@@ -110,13 +111,38 @@ const useSandpackSetup = ({
   };
 };
 
+const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
+  '& .highlight': {
+    backgroundColor: '#ff03',
+    borderRadius: '2px',
+    padding: '2px',
+  },
+  '& pre': {
+    padding: '0px',
+  },
+}));
+
+const SandboxViewer = ({ children }: { children: string }): JSX.Element => {
+  return (
+    <CodeLineHighlighterContainer>
+      <SandpackProvider>
+        <SandpackCodeViewer code={dedent(children)} showLineNumbers />
+      </SandpackProvider>
+    </CodeLineHighlighterContainer>
+  );
+};
+
 const SandboxProvider = ({
   code,
   children,
   language = 'tsx',
 }: Omit<SandboxProps, 'children'> & { code: string; children: React.ReactNode }): JSX.Element => {
   const sandboxSetup = useSandpackSetup({ language, code });
-  return <SandpackProvider {...sandboxSetup}>{children}</SandpackProvider>;
+  return (
+    <CodeLineHighlighterContainer>
+      <SandpackProvider {...sandboxSetup}>{children}</SandpackProvider>
+    </CodeLineHighlighterContainer>
+  );
 };
 
 function Sandbox({
@@ -189,4 +215,4 @@ const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   );
 };
 
-export { Sandbox, SandboxProvider, SandboxProps, RecipeSandbox, RecipeSandboxProps };
+export { Sandbox, SandboxProvider, SandboxViewer, SandboxProps, RecipeSandbox, RecipeSandboxProps };

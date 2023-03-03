@@ -1,6 +1,6 @@
 import { getOnlyBoxProps } from '../Box';
-import type { BaseBoxProps, BoxProps, StyledProps } from './types';
 import { getStyledProps } from '../styled-props';
+import type { BaseBoxProps, BoxProps, StyledProps } from './types';
 
 type StorybookArgTypes<T> = {
   [P in keyof T]: {
@@ -170,6 +170,11 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
     },
     ...getStyledPropsArgTypes({ descriptionLength: 'long' }),
     ...restBoxArgTypes,
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   };
 };
 
@@ -202,6 +207,11 @@ const getBaseBoxArgTypes = (): StorybookArgTypes<
       },
     },
     ref: {
+      table: {
+        disable: true,
+      },
+    },
+    children: {
       table: {
         disable: true,
       },
