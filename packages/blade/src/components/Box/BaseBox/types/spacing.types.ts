@@ -2,7 +2,7 @@ import type { MakeObjectResponsive } from './responsive.types';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
-type SpaceUnits = 'px' | 'fr' | '%' | 'rem' | 'em';
+type SpaceUnits = 'px' | 'fr' | '%' | 'rem' | 'em' | 'vh' | 'vw';
 type SpacingValueType = DotNotationSpacingStringToken | `${string}${SpaceUnits}` | 'auto';
 
 /**

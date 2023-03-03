@@ -4,7 +4,7 @@ import type { BaseBoxProps, BoxProps, StyledProps } from './types';
 
 type StorybookArgTypes<T> = {
   [P in keyof T]: {
-    table?: { category?: 'StyledProps'; disable?: boolean };
+    table?: { category?: 'StyledProps' | null; disable?: boolean };
     control?: { type: string };
     description?: string;
   };
@@ -31,17 +31,20 @@ const spacingTypeDescription = [
   '- responsive object with combinatation of all previous values `{ "base": "spacing.3", "l": "20px"}`',
 ].join('\n\n');
 
+const styledPropsSupportMessage =
+  '&nbsp;&nbsp;<span title="Also supported as styled-prop in other components">💅🏼</span>';
+
 const defaultStyledPropsObject = getStyledProps({});
 
 const getStyledPropsArgTypes = ({
-  category,
+  category = 'StyledProps',
   descriptionLength,
 }: {
-  category?: 'StyledProps';
+  category?: 'StyledProps' | null;
   descriptionLength?: 'long';
 } = {}): StorybookArgTypes<StyledProps> => {
   const commonStyledPropsProperties: {
-    table: { category?: 'StyledProps' };
+    table: { category?: 'StyledProps' | null };
     control: { type: string };
   } = {
     ...commonProperties,
@@ -59,7 +62,9 @@ const getStyledPropsArgTypes = ({
           key,
           {
             ...commonProperties,
-            description: `**CSS property \`${cssPropertyName}\`**\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/${cssPropertyName}">MDN Docs for ${cssPropertyName}</a><br/><br/>`,
+            description: `**CSS property \`${cssPropertyName}\`** ${
+              descriptionLength === 'long' ? styledPropsSupportMessage : ''
+            }\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/${cssPropertyName}">MDN Docs for ${cssPropertyName}</a><br/><br/>`,
             table: {
               category,
               type: {
@@ -74,40 +79,45 @@ const getStyledPropsArgTypes = ({
   return {
     margin: {
       ...commonStyledPropsProperties,
-      description: `**Margin Shorthand**\n\n${
-        descriptionLength === 'long' ? spacingTypeShorthandDescription : ''
-      }`,
+      description: `**Margin Shorthand**${
+        descriptionLength === 'long' ? styledPropsSupportMessage : ''
+      }\n\n${descriptionLength === 'long' ? spacingTypeShorthandDescription : ''}`,
     },
     marginX: {
       ...commonStyledPropsProperties,
-      description: `**Horizontal Margin**\n\n${
-        descriptionLength === 'long' ? spacingTypeDescription : ''
-      }`,
+      description: `**Horizontal Margin**${
+        descriptionLength === 'long' ? styledPropsSupportMessage : ''
+      }\n\n${descriptionLength === 'long' ? spacingTypeDescription : ''}`,
     },
     marginY: {
       ...commonStyledPropsProperties,
-      description: `**Vertical Margin**\n\n${
-        descriptionLength === 'long' ? spacingTypeDescription : ''
-      }`,
+      description: `**Vertical Margin**${
+        descriptionLength === 'long' ? styledPropsSupportMessage : ''
+      }\n\n${descriptionLength === 'long' ? spacingTypeDescription : ''}`,
     },
     marginTop: {
       ...commonStyledPropsProperties,
-      description: '**CSS Property `margin-top`**\n\n Supports same values as marginX, and marginY',
+      description: `**CSS Property \`margin-top\`**${
+        descriptionLength === 'long' ? styledPropsSupportMessage : ''
+      }\n\n Supports same values as marginX, and marginY`,
     },
     marginRight: {
       ...commonStyledPropsProperties,
-      description:
-        '**CSS Property `margin-right`**\n\n Supports same values as marginX, and marginY',
+      description: `**CSS Property \`margin-right\`**${
+        descriptionLength === 'long' ? styledPropsSupportMessage : ''
+      }\n\n Supports same values as marginX, and marginY`,
     },
     marginBottom: {
       ...commonStyledPropsProperties,
-      description:
-        '**CSS Property `margin-bottom`**\n\n Supports same values as marginX, and marginY',
+      description: `**CSS Property \`margin-bottom\`**${
+        descriptionLength === 'long' ? styledPropsSupportMessage : ''
+      }\n\n Supports same values as marginX, and marginY`,
     },
     marginLeft: {
       ...commonStyledPropsProperties,
-      description:
-        '**CSS Property `margin-left`**\n\n Supports same values as marginX, and marginY',
+      description: `**CSS Property \`margin-left\`**${
+        descriptionLength === 'long' ? styledPropsSupportMessage : ''
+      }\n\n Supports same values as marginX, and marginY`,
     },
     ...restStyledPropsArgTypes,
   };
@@ -116,7 +126,9 @@ const getStyledPropsArgTypes = ({
 const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
   const restBoxArgTypes = Object.fromEntries(
     Object.entries(getOnlyBoxProps({}))
-      .filter(([key]) => !key.includes('margin') && !key.includes('padding'))
+      .filter(
+        ([key]) => !Object.keys(getStyledPropsArgTypes()).includes(key) && !key.includes('padding'),
+      )
       .map(([key, _value]) => {
         const cssPropertyName = key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
 
@@ -168,7 +180,7 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
       description:
         '**CSS Property `padding-left`**\n\n Supports same values as paddingX, and paddingY',
     },
-    ...getStyledPropsArgTypes({ descriptionLength: 'long' }),
+    ...getStyledPropsArgTypes({ descriptionLength: 'long', category: null }),
     ...restBoxArgTypes,
     children: {
       table: {

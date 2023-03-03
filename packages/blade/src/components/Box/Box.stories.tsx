@@ -1,17 +1,12 @@
 import type { Meta } from '@storybook/react';
-import {
-  SandpackCodeEditor,
-  SandpackCodeViewer,
-  SandpackLayout,
-  SandpackPreview,
-} from '@codesandbox/sandpack-react';
+import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbox/sandpack-react';
 import type { BoxProps } from './BaseBox/types';
 import { getBoxArgTypes } from './BaseBox/storybookArgTypes';
 import BaseBox from './BaseBox';
 import { Box } from '.';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
-import { Sandbox, SandboxProvider, SandboxViewer } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox, SandboxProvider, SandboxHighlighter } from '~src/_helpers/storybook/Sandbox';
 import { List, ListItem, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
 
@@ -47,6 +42,7 @@ const BoxStoryMeta = {
         <StoryPageWrapper
           componentDescription="Layout primitive Box component. Use this for adding spacings, grids, and any of your layout needs"
           componentName="Box"
+          propsDescription="All Box props support responsive objects. Props marked with 💅🏼 next to their names are the props that can also be used as styled-props on other blade components. Check out styled-props documentation above for more details."
           imports=""
         >
           <hr />
@@ -114,7 +110,7 @@ const BoxStoryMeta = {
           </BaseBox>
           <BaseBox id="box-usage" paddingY="spacing.6">
             <Title size="small" marginBottom="spacing.3">
-              Box Usage
+              📦 Box Usage
             </Title>
             <Text>
               Box is a primitive Layout component which can be used for creating different
@@ -127,13 +123,13 @@ const BoxStoryMeta = {
               and works on all platforms.
             </Text>
             <Text marginY="spacing.4">The simplest Box usage would look something like this-</Text>
-            <SandboxViewer>
+            <SandboxHighlighter>
               {`
               <Box>Hello</Box>
-              // On Web          -> &lt;div&gt;Hello&lt;/div&gt; 
-              // On React Native -> &lt;View&gt;Hello&lt;/View&gt;
+              // On Web          -> <div>Hello</div> 
+              // On React Native -> <View>Hello</View>
             `}
-            </SandboxViewer>
+            </SandboxHighlighter>
           </BaseBox>
           <BaseBox id="adding-margin-and-padding" paddingY="spacing.6">
             <Heading size="large" marginBottom="spacing.3" marginTop="spacing.6">
@@ -190,7 +186,8 @@ const BoxStoryMeta = {
             </Text>
             <SandboxProvider
               code={`
-             import { Box, Text } from '@razorpay/blade/components'
+             import { Box, Text } from '@razorpay/blade/components';
+
              function App(): JSX.Element {
                return (
                 <>
@@ -241,54 +238,50 @@ const BoxStoryMeta = {
               Styled Props
             </Title>
             <Text>
-              Want to add spacing in-between 2 elements? add layout props directly on the Blade
-              elements ✨
+              Want to add spacing between 2 elements? add layout props directly on the Blade
+              components ✨
             </Text>
-            <SandboxProvider
-              code={`
-              import { Text } from '@razorpay/blade/components'
 
-              function App(): JSX.Element {
-                return (
-                  <>
-                    {/** ❌ No need of Box wrappers */}
-                    <Box>
-                      <Text>Text Node 1</Text>
-                    </Box>
-                    <Box marginTop="spacing.4">
-                      <Text>Text Node 2</Text>
-                    </Box>
-
-                    {/** ✅ Add layout props directly into your favorite components 🥳 */}
-                    <Text>Text Node 1</Text>
-                    <Text marginTop="spacing.4">Text Node 2</Text>
-                  </>
-                )
-              };
-
-              export default App;
-              `}
+            <SandboxHighlighter
+              decorators={[
+                {
+                  className: 'highlight',
+                  line: 16,
+                  startColumn: 12,
+                  endColumn: 33,
+                },
+              ]}
             >
-              <SandpackCodeViewer
-                showLineNumbers
-                showTabs={false}
-                decorators={[
-                  {
-                    className: 'highlight',
-                    line: 16,
-                    startColumn: 12,
-                    endColumn: 33,
-                  },
-                ]}
-              />
-            </SandboxProvider>
+              {`
+                import { Text } from '@razorpay/blade/components'
+
+                function App(): JSX.Element {
+                  return (
+                    <>
+                      {/** ❌ No need of Box wrappers */}
+                      <Box>
+                        <Text>Text Node 1</Text>
+                      </Box>
+                      <Box marginTop="spacing.4">
+                        <Text>Text Node 2</Text>
+                      </Box>
+
+                      {/** ✅ Add layout props directly into your favorite components 🥳 */}
+                      <Text>Text Node 1</Text>
+                      <Text marginTop="spacing.4">Text Node 2</Text>
+                    </>
+                  )
+                };
+
+                export default App;
+              `}
+            </SandboxHighlighter>
             <Text marginTop="spacing.3">
               Here&apos;s another example where we position Alert component to the bottom of the
               screen
             </Text>
             <Sandbox>
               {`
-              import { useState } from 'react';
               import { Alert } from '@razorpay/blade/components';
 
               function App() {

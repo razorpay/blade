@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { CodeViewerProps } from '@codesandbox/sandpack-react';
 import { Sandpack, SandpackCodeViewer, SandpackProvider } from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
@@ -49,23 +50,15 @@ const useSandpackSetup = ({
     files: {
       '/index.tsx': dedent`import { StrictMode } from "react";
             import ReactDOM from "react-dom";
-            import styled, { createGlobalStyle } from "styled-components";
+            import { createGlobalStyle } from "styled-components";
   
-            import { BladeProvider, Theme } from "@razorpay/blade/components";
+            import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
             import { ${themeTokenName} } from "@razorpay/blade/tokens";
             import "@fontsource/lato/400.css";
             import "@fontsource/lato/700.css";
             
             import App from "./App";
   
-            const BackgroundBox = styled.div(
-              ({ theme }: { theme: Theme }) => ({
-                backgroundColor: theme.colors.surface.background.level1.lowContrast,
-                minHeight: '100vh',
-                padding: '12px 24px'
-              })
-            );
-
             const GlobalStyles = createGlobalStyle\`
               * { 
                 box-sizing: border-box;
@@ -86,9 +79,13 @@ const useSandpackSetup = ({
               <StrictMode>
                 <BladeProvider themeTokens={${themeTokenName}} colorScheme="${colorScheme}">
                   <GlobalStyles />
-                  <BackgroundBox>
+                  <Box 
+                    backgroundColor="surface.background.level1.lowContrast"
+                    minHeight="100vh"
+                    padding={['spacing.4', 'spacing.7']}
+                  >
                     <App />
-                  </BackgroundBox>
+                  </Box>
                 </BladeProvider>
               </StrictMode>,
               rootElement
@@ -122,11 +119,14 @@ const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
   },
 }));
 
-const SandboxViewer = ({ children }: { children: string }): JSX.Element => {
+const SandboxHighlighter = ({
+  children,
+  ...sandpackCodeViewerProps
+}: { children: string } & CodeViewerProps): JSX.Element => {
   return (
     <CodeLineHighlighterContainer>
       <SandpackProvider>
-        <SandpackCodeViewer code={dedent(children)} showLineNumbers />
+        <SandpackCodeViewer code={dedent(children)} showLineNumbers {...sandpackCodeViewerProps} />
       </SandpackProvider>
     </CodeLineHighlighterContainer>
   );
@@ -215,4 +215,11 @@ const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   );
 };
 
-export { Sandbox, SandboxProvider, SandboxViewer, SandboxProps, RecipeSandbox, RecipeSandboxProps };
+export {
+  Sandbox,
+  SandboxProvider,
+  SandboxHighlighter,
+  SandboxProps,
+  RecipeSandbox,
+  RecipeSandboxProps,
+};

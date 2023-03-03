@@ -8,6 +8,7 @@ import type { CheckboxGroupProps } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -83,6 +84,7 @@ export default {
         type: 'multi-select',
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

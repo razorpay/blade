@@ -34,6 +34,7 @@ import { Alert } from '~components/Alert';
 import { Code, Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import iconMap from '~components/Icons/iconMap';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -260,6 +261,7 @@ const DropdownStoryMeta: Meta = {
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
+    ...getStyledPropsArgTypes(),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as Record<keyof AllDropdownProps, any>,
   parameters: {

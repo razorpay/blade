@@ -8,6 +8,7 @@ import BaseInputLayoutImage from './_decisions/base-inputfield-layout.png';
 import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {
   BASE_PROPS: 'Base Input Props',
@@ -223,6 +224,7 @@ export default {
         category: propsCategory.KEYBOARD_PROPS,
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

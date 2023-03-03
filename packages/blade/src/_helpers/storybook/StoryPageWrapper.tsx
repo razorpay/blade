@@ -8,10 +8,14 @@ import {
   Title,
   Description,
 } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
 import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
+import { SandboxHighlighter } from './Sandbox';
 import BaseBox from '~components/Box/BaseBox';
+import { Alert } from '~components/Alert';
+import { BladeProvider } from '~components/BladeProvider';
+import { paymentTheme } from '~tokens/theme';
+import { Box } from '~components/Box';
 
 type StoryPageWrapperTypes = {
   figmaURL?: {
@@ -19,6 +23,7 @@ type StoryPageWrapperTypes = {
     bankingTheme: string;
   };
   componentDescription: string;
+  propsDescription?: string;
   componentName: string;
   children?: React.ReactNode;
   note?: string;
@@ -50,15 +55,15 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
       {figmaURL !== '#' ? (
         <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
       ) : null}
-      {props.children}
+      <BladeProvider themeTokens={paymentTheme}>{props.children}</BladeProvider>
       {props.imports === '' ? null : (
         <>
           <Title>Imports</Title>
-          <Highlight language="tsx">
+          <SandboxHighlighter>
             {props.imports
               ? dedent(props.imports)
               : `import { ${props.componentName} } from '@razorpay/blade/components';\nimport type { ${props.componentName}Props } from '@razorpay/blade/components';`}
-          </Highlight>
+          </SandboxHighlighter>
           <br />
           <br />
         </>
@@ -71,6 +76,17 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
       <Primary />
       <BaseBox id="properties-ref">
         <Title>Properties</Title>
+        {props.propsDescription ? (
+          // adding box with surface background so that when theme of storybook is changed, the alert doesn't become invisible
+          <Box backgroundColor="surface.background.level3.lowContrast">
+            <Alert
+              isFullWidth
+              marginTop="spacing.5"
+              isDismissible={false}
+              description={props.propsDescription}
+            />
+          </Box>
+        ) : null}
       </BaseBox>
       <ArgsTable story={PRIMARY_STORY} />
       <Stories />

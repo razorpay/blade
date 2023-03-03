@@ -7,6 +7,7 @@ import { CreditCardIcon } from '.';
 import BaseBox from '~components/Box/BaseBox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -91,6 +92,7 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

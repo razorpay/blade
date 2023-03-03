@@ -8,6 +8,7 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -150,6 +151,7 @@ export default {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {
