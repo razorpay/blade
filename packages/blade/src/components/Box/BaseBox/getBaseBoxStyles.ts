@@ -8,7 +8,7 @@ import type {
 import type { Breakpoints } from '~tokens/global/breakpoints';
 import breakpoints from '~tokens/global/breakpoints';
 import { getMediaQuery } from '~src/utils/getMediaQuery';
-import { isReactNative, isEmpty, getIn, makeSpace } from '~utils';
+import { isReactNative, isEmpty, getIn, makeSpace, makeSize } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 
 const getResponsiveValue = <T extends string | number | string[]>(
@@ -118,7 +118,7 @@ const getBorderRadiusValue = (
   const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, size);
   return isEmpty(responsiveBorderRadiusValue)
     ? undefined
-    : getIn(theme, `border.radius.${responsiveBorderRadiusValue}`);
+    : makeSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
 };
 
 const getAllProps = (
