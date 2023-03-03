@@ -1,12 +1,16 @@
+import 'react-native-gesture-handler';
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import { StyleSheet } from 'react-native';
 import { View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export const decorators = [
   (StoryFn) => (
-    <View style={styles.container}>
-      <StoryFn />
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <StoryFn />
+      </View>
+    </GestureHandlerRootView>
   ),
   withBackgrounds,
 ];

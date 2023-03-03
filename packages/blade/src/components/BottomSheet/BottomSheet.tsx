@@ -71,6 +71,9 @@ const BottomSheetSurface = styled.div<{
   };
 });
 
+// TODO:
+// 1. Do a POC with removing BottomSheetFooter/Header and use ActionListFooter/Header
+// 2. If we use ActionListFooter/Header then we won't be able to use the BottomSheet's body as a slot
 const BottomSheet = React.forwardRef<any, BottomSheetProps>(
   ({ children, snapPoints = [0.35, 0.5, 0.85] }, ref): React.ReactElement => {
     const dimensions = useWindowSize();
