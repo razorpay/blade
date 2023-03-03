@@ -17,7 +17,6 @@ type TextCommonProps = {
    * **For Internal use only**:  Sets the color of the Text component
    */
   color?: BaseTextProps['color'];
-  textAlign?: BaseTextProps['textAlign'];
 };
 
 export type TextVariant = 'body' | 'caption';
