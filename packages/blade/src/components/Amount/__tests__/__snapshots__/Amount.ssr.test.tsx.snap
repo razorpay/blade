@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Badge /> should render Badge on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"amount\\" class=\\"StyledAmountweb__StyledAmount-pbu3ys-0 kQHTiW\\"><div display=\\"flex\\" overflow=\\"hidden\\" class=\\"Boxweb__Box-xvyj85-0 bQsvqk\\"><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"50\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 fVUvgn\\">₹</div><div color=\\"feedback.text.neutral.lowContrast\\" font-size=\\"75\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hoTsgH\\">10,000<!-- -->.</div><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"50\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 cRAtgU\\"></div></div></div></div>"`;
+
+exports[`<Badge /> should render Badge on server 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <div
+    class="StyledAmountweb__StyledAmount-pbu3ys-0 kQHTiW"
+    data-blade-component="amount"
+  >
+    <div
+      class="Boxweb__Box-xvyj85-0 bQsvqk"
+      display="flex"
+      overflow="hidden"
+    >
+      <div
+        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 fVUvgn"
+        color="surface.text.muted.lowContrast"
+        font-size="50"
+        font-weight="bold"
+      >
+        ₹
+      </div>
+      <div
+        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hoTsgH"
+        color="feedback.text.neutral.lowContrast"
+        font-size="75"
+        font-weight="regular"
+      >
+        10,000
+        <!-- -->
+        .
+      </div>
+      <div
+        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 cRAtgU"
+        color="surface.text.muted.lowContrast"
+        font-size="50"
+        font-weight="regular"
+      />
+    </div>
+  </div>
+</div>
+`;

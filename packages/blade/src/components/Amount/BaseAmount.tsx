@@ -1,10 +1,11 @@
 import type { ReactElement } from 'react';
-import { BaseText } from '../Typography/BaseText/BaseText.web';
+
 import type { FontSize } from '../../tokens/global/typography';
 import type { BaseTextProps } from '../Typography/BaseText/types';
 import { amountTextSizes, prefixSuffixTextSizes } from './amountTokens';
 import type { AmountProps } from './Amount';
 import { suffixTypes } from './Amount';
+import { BaseText } from '~components/Typography/BaseText';
 
 const getDecimalFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' => {
   if (isAffixSubtle) return 'regular';

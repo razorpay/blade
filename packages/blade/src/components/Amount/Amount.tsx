@@ -1,8 +1,9 @@
 import type { ReactElement } from 'react';
-import { BaseText } from '../Typography/BaseText/BaseText.web';
+
 import { horizontalPadding, verticalPadding } from './amountTokens';
 import BaseAmount, { getSuffixPrefixFontSize } from './BaseAmount';
 import { StyledAmount } from './StyledAmount';
+import { BaseText } from '~components/Typography/BaseText';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -31,7 +32,7 @@ type AmountProps = {
    *
    * @default 'low'
    */
-  size: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
+  size?: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
   /**
    * Sets the weight of the label.
    *
