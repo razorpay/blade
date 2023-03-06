@@ -77,6 +77,12 @@ const getColorProps = ({
   return props;
 };
 
+const getFlooredFixed = (value: number, precision: number): number => {
+  const factor = 10 ** precision;
+  const roundedValue = Math.floor(value * factor) / factor;
+  return Number(roundedValue.toFixed(precision));
+};
+
 const addCommas = (num: number): string => {
   return num.toLocaleString('en-IN');
 };
@@ -90,24 +96,25 @@ const getFormattedAmountWithSuffixSymbol = (num: number): string => {
 
   const abbreviation = abbreviations.find((abbr) => num >= abbr.value);
   if (abbreviation) {
-    num = Number((num / abbreviation.value).toFixed(2));
-    return addCommas(num) + abbreviation.symbol;
+    num = num / abbreviation.value;
+    const formattedNum = Number(getFlooredFixed(num, 2));
+    return addCommas(formattedNum) + abbreviation.symbol;
   } else {
-    return num.toFixed();
+    return num.toString();
   }
 };
 
 const formatAmountWithSuffix = (suffix: string, num: number): string => {
   switch (suffix) {
     case suffixTypes.DECIMALS: {
-      const decimalNum = Number(num.toFixed(2));
+      const decimalNum = getFlooredFixed(num, 2);
       return addCommas(decimalNum);
     }
     case suffixTypes.HUMANIZE: {
       return getFormattedAmountWithSuffixSymbol(num);
     }
     default:
-      return num.toFixed(2);
+      return String(getFlooredFixed(num, 2));
   }
 };
 

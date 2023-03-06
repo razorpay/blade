@@ -28,11 +28,11 @@ interface BaseAmount extends Omit<AmountProps, 'value'> {
 
 const BaseAmount = ({
   value,
-  size,
-  weight,
+  size = 'medium',
+  weight = 'regular',
   textColor,
-  isAffixSubtle,
-  suffix,
+  isAffixSubtle = true,
+  suffix = 'decimals',
   prefixSuffixColor,
 }: BaseAmount): ReactElement => {
   if (suffix === suffixTypes.DECIMALS && isAffixSubtle) {
