@@ -1,6 +1,5 @@
 import { Amount } from '../Amount';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
-import { InfoIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
