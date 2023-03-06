@@ -40,6 +40,7 @@ type TextInputProps = Pick<
   | 'autoFocus'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
+  | 'autoCapitalize'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -71,7 +72,7 @@ type TextInputProps = Pick<
 
 type TextInputKeyboardAndAutoComplete = Pick<
   BaseInputProps,
-  'keyboardType' | 'keyboardReturnKeyType' | 'autoCompleteSuggestionType'
+  'keyboardType' | 'keyboardReturnKeyType' | 'autoCompleteSuggestionType' | 'autoCapitalize'
 > & {
   type: Type;
 };
@@ -80,12 +81,14 @@ const getKeyboardAndAutocompleteProps = ({
   type = 'text',
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
+  autoCapitalize,
 }: TextInputKeyboardAndAutoComplete): TextInputKeyboardAndAutoComplete => {
   const keyboardAndAutocompleteProps: TextInputKeyboardAndAutoComplete = {
     type,
     keyboardType: 'text',
     keyboardReturnKeyType: 'default',
     autoCompleteSuggestionType: 'none',
+    autoCapitalize,
   };
 
   const keyboardConfigMap = {
@@ -93,31 +96,37 @@ const getKeyboardAndAutocompleteProps = ({
       keyboardType: 'text',
       keyboardReturnKeyType: 'default',
       autoCompleteSuggestionType: 'none',
+      autoCapitalize: undefined,
     },
     telephone: {
       keyboardType: 'telephone',
       keyboardReturnKeyType: 'done',
       autoCompleteSuggestionType: 'telephone',
+      autoCapitalize: undefined,
     },
     email: {
       keyboardType: 'email',
       keyboardReturnKeyType: 'done',
       autoCompleteSuggestionType: 'email',
+      autoCapitalize: 'none',
     },
     url: {
       keyboardType: 'url',
       keyboardReturnKeyType: 'go',
       autoCompleteSuggestionType: 'none',
+      autoCapitalize: 'none',
     },
     number: {
       keyboardType: 'decimal',
       keyboardReturnKeyType: 'done',
       autoCompleteSuggestionType: 'none',
+      autoCapitalize: undefined,
     },
     search: {
       keyboardType: 'search',
       keyboardReturnKeyType: 'search',
       autoCompleteSuggestionType: 'none',
+      autoCapitalize: undefined,
     },
   } as const;
 
@@ -130,6 +139,8 @@ const getKeyboardAndAutocompleteProps = ({
 
   keyboardAndAutocompleteProps.autoCompleteSuggestionType =
     autoCompleteSuggestionType ?? keyboardConfig.autoCompleteSuggestionType;
+
+  keyboardAndAutocompleteProps.autoCapitalize = keyboardConfig.autoCapitalize;
 
   if (type === 'number') {
     /* the default keyboardType:numeric shows alphanumeric keyboard on iOS but number pad on android. making it type:text and keyboardType:decimal fixes this on all platforms.
@@ -183,6 +194,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     autoFocus,
     keyboardReturnKeyType,
     autoCompleteSuggestionType,
+    autoCapitalize,
   },
   ref,
 ): ReactElement => {
@@ -278,6 +290,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         type,
         keyboardReturnKeyType,
         autoCompleteSuggestionType,
+        autoCapitalize,
       })}
     />
   );

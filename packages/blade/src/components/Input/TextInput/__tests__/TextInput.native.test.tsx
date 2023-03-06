@@ -373,7 +373,7 @@ describe('<TextInput />', () => {
     expect(input).toHaveProp('textContentType', 'emailAddress');
   });
 
-  it(`type='url' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
+  it(`type='url' should have correct keyboard type, autocomplete suggestions, autocapitalize and keyboard return key`, () => {
     const placeholder = 'https://abc.com';
 
     const { getByPlaceholderText } = renderWithTheme(
@@ -386,6 +386,7 @@ describe('<TextInput />', () => {
     expect(input).toHaveProp('returnKeyType', 'go');
     expect(input).toHaveProp('autoCompleteType', 'off');
     expect(input).toHaveProp('textContentType', 'none');
+    expect(input).toHaveProp('autoCapitalize', 'none');
   });
 
   it(`type='number' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {

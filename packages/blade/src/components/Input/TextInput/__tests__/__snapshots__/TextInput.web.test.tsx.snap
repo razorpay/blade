@@ -738,6 +738,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           aria-disabled="false"
           aria-invalid="false"
           aria-required="false"
+          autocapitalize="none"
           autocomplete="off"
           class="c13"
           enterkeyhint="go"

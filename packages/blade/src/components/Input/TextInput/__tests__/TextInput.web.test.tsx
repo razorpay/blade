@@ -390,7 +390,7 @@ describe('<TextInput />', () => {
     expect(input).toHaveAttribute('autoComplete', 'email');
   });
 
-  it(`type='url' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
+  it(`type='url' should have correct keyboard type, autocomplete suggestions, autocapitalize and keyboard return key`, () => {
     const label = 'Enter Company Website';
 
     const { getByLabelText } = renderWithTheme(<TextInput label={label} type="url" />);
@@ -401,6 +401,7 @@ describe('<TextInput />', () => {
     expect(input).toHaveAttribute('inputMode', 'url');
     expect(input).toHaveAttribute('enterKeyHint', 'go');
     expect(input).toHaveAttribute('autoComplete', 'off');
+    expect(input).toHaveAttribute('autocapitalize', 'none');
   });
 
   it(`type='number' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {

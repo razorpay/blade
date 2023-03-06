@@ -212,4 +212,15 @@ describe('<BaseInput />', () => {
     const input = getByPlaceholderText(placeholder);
     expect(input).toBeEnabled();
   });
+
+  it(`should set autoCapitalize prop`, () => {
+    const placeholder = 'abc@gmail.com';
+    const { getByPlaceholderText } = renderWithTheme(
+      <BaseInput id="email" label="Enter email" placeholder={placeholder} autoCapitalize="none" />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+
+    expect(input).toHaveProp('autoCapitalize', 'none');
+  });
 });

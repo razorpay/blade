@@ -152,6 +152,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       autoFocus={autoFocus}
       autoCompleteSuggestionType={autoCompleteSuggestionType}
       keyboardReturnKeyType={keyboardReturnKeyType}
+      autoCapitalize="none"
     />
   );
 };
