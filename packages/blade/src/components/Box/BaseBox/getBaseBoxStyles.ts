@@ -8,12 +8,36 @@ import type {
 import type { Breakpoints } from '~tokens/global/breakpoints';
 import breakpoints from '~tokens/global/breakpoints';
 import { getMediaQuery } from '~src/utils/getMediaQuery';
-import { isReactNative, isEmpty, getIn, makeSpace, makeSize } from '~utils';
+import { isReactNative, isEmpty, getIn, makeSpace, makeBorderSize } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 
+/**
+ * A helper function that returns the exact value for that breakpoint on passing the prop and breakpoint
+ *
+ * ## Usage
+ *
+ * ### Get base value of prop
+ *
+ * ```ts
+ * getResponsiveValue(props.yourProp, 'base');
+ * // yourProp="hi" -> "hi"
+ * // yourProp={{ base: 'hello', m: 'hi' }} -> "hello"
+ * // yourProp={{ m: 'hi' }} -> undefined
+ * ```
+ *
+ * ### Get value of particular breakpoint
+ *
+ *
+ * ```ts
+ * getResponsiveValue(props.yourProp, 'm');
+ * // yourProp="hi" -> undefined
+ * // yourProp={{ base: 'hello', m: 'hi' }} -> "hi"
+ * // yourProp={{ m: 'hi' }} -> "hi"
+ * ```
+ */
 const getResponsiveValue = <T extends string | number | string[]>(
   value: MakeValueResponsive<T> | undefined,
-  size: keyof Breakpoints = 'base',
+  breakpoint: keyof Breakpoints = 'base',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any | undefined => {
   if (value === undefined || value === null) {
@@ -41,7 +65,7 @@ const getResponsiveValue = <T extends string | number | string[]>(
      * //  and more ...
      * ```
      */
-    if (size === 'base') {
+    if (breakpoint === 'base') {
       return value;
     }
 
@@ -60,7 +84,7 @@ const getResponsiveValue = <T extends string | number | string[]>(
     return priorityArray.find((val) => val !== undefined);
   }
 
-  return value[size];
+  return value[breakpoint];
 };
 
 const getSpacingValue = (
@@ -68,7 +92,7 @@ const getSpacingValue = (
     | MakeValueResponsive<SpacingValueType | ArrayOfMaxLength4<SpacingValueType>>
     | undefined,
   theme: Theme,
-  size?: keyof Breakpoints,
+  breakpoint?: keyof Breakpoints,
 ): string | undefined => {
   if (isEmpty(spacingValue)) {
     return undefined;
@@ -76,7 +100,7 @@ const getSpacingValue = (
 
   const responsiveSpacingValue: SpacingValueType | SpacingValueType[] = getResponsiveValue(
     spacingValue as MakeValueResponsive<string | string[]>,
-    size,
+    breakpoint,
   );
 
   if (isEmpty(responsiveSpacingValue)) {
@@ -103,9 +127,9 @@ const getSpacingValue = (
 const getBackgroundValue = (
   backgroundColor: BaseBoxProps['backgroundColor'],
   theme: Theme,
-  size?: keyof Breakpoints,
+  breakpoint?: keyof Breakpoints,
 ): string => {
-  const responsiveBackgroundValue = getResponsiveValue(backgroundColor, size);
+  const responsiveBackgroundValue = getResponsiveValue(backgroundColor, breakpoint);
   const tokenValue = getIn(theme, `colors.${responsiveBackgroundValue}`);
   return tokenValue ?? responsiveBackgroundValue;
 };
@@ -113,84 +137,84 @@ const getBackgroundValue = (
 const getBorderRadiusValue = (
   borderRadius: BaseBoxProps['borderRadius'],
   theme: Theme,
-  size?: keyof Breakpoints,
+  breakpoint?: keyof Breakpoints,
 ): string | undefined => {
-  const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, size);
+  const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, breakpoint);
   return isEmpty(responsiveBorderRadiusValue)
     ? undefined
-    : makeSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
+    : makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
 };
 
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
-  size?: keyof Breakpoints,
+  breakpoint?: keyof Breakpoints,
 ): CSSObject => {
   return {
-    display: getResponsiveValue(props.display, size),
-    overflow: getResponsiveValue(props.overflow, size),
+    display: getResponsiveValue(props.display, breakpoint),
+    overflow: getResponsiveValue(props.overflow, breakpoint),
 
     // Flex
-    flex: getResponsiveValue(props.flex, size),
-    flexWrap: getResponsiveValue(props.flexWrap, size),
-    flexDirection: getResponsiveValue(props.flexDirection, size),
-    flexGrow: getResponsiveValue(props.flexGrow, size),
-    flexShrink: getResponsiveValue(props.flexShrink, size),
-    flexBasis: getResponsiveValue(props.flexBasis, size),
-    alignItems: getResponsiveValue(props.alignItems, size),
-    alignContent: getResponsiveValue(props.alignContent, size),
-    alignSelf: getResponsiveValue(props.alignSelf, size),
-    justifyItems: getResponsiveValue(props.justifyItems, size),
-    justifyContent: getResponsiveValue(props.justifyContent, size),
-    justifySelf: getResponsiveValue(props.justifySelf, size),
-    order: getResponsiveValue(props.order, size),
-    position: getResponsiveValue(props.position, size),
-    zIndex: getResponsiveValue(props.zIndex, size),
+    flex: getResponsiveValue(props.flex, breakpoint),
+    flexWrap: getResponsiveValue(props.flexWrap, breakpoint),
+    flexDirection: getResponsiveValue(props.flexDirection, breakpoint),
+    flexGrow: getResponsiveValue(props.flexGrow, breakpoint),
+    flexShrink: getResponsiveValue(props.flexShrink, breakpoint),
+    flexBasis: getResponsiveValue(props.flexBasis, breakpoint),
+    alignItems: getResponsiveValue(props.alignItems, breakpoint),
+    alignContent: getResponsiveValue(props.alignContent, breakpoint),
+    alignSelf: getResponsiveValue(props.alignSelf, breakpoint),
+    justifyItems: getResponsiveValue(props.justifyItems, breakpoint),
+    justifyContent: getResponsiveValue(props.justifyContent, breakpoint),
+    justifySelf: getResponsiveValue(props.justifySelf, breakpoint),
+    order: getResponsiveValue(props.order, breakpoint),
+    position: getResponsiveValue(props.position, breakpoint),
+    zIndex: getResponsiveValue(props.zIndex, breakpoint),
 
     // Grid
-    grid: getResponsiveValue(props.grid, size),
-    gridColumn: getResponsiveValue(props.gridColumn, size),
-    gridRow: getResponsiveValue(props.gridRow, size),
-    gridRowStart: getResponsiveValue(props.gridRowStart, size),
-    gridRowEnd: getResponsiveValue(props.gridRowEnd, size),
-    gridArea: getResponsiveValue(props.gridArea, size),
-    gridAutoFlow: getResponsiveValue(props.gridAutoFlow, size),
-    gridAutoRows: getResponsiveValue(props.gridAutoRows, size),
-    gridAutoColumns: getResponsiveValue(props.gridAutoColumns, size),
-    gridTemplate: getResponsiveValue(props.gridTemplate, size),
-    gridTemplateAreas: getResponsiveValue(props.gridTemplateAreas, size),
-    gridTemplateColumns: getResponsiveValue(props.gridTemplateColumns, size),
-    gridTemplateRows: getResponsiveValue(props.gridTemplateRows, size),
+    grid: getResponsiveValue(props.grid, breakpoint),
+    gridColumn: getResponsiveValue(props.gridColumn, breakpoint),
+    gridRow: getResponsiveValue(props.gridRow, breakpoint),
+    gridRowStart: getResponsiveValue(props.gridRowStart, breakpoint),
+    gridRowEnd: getResponsiveValue(props.gridRowEnd, breakpoint),
+    gridArea: getResponsiveValue(props.gridArea, breakpoint),
+    gridAutoFlow: getResponsiveValue(props.gridAutoFlow, breakpoint),
+    gridAutoRows: getResponsiveValue(props.gridAutoRows, breakpoint),
+    gridAutoColumns: getResponsiveValue(props.gridAutoColumns, breakpoint),
+    gridTemplate: getResponsiveValue(props.gridTemplate, breakpoint),
+    gridTemplateAreas: getResponsiveValue(props.gridTemplateAreas, breakpoint),
+    gridTemplateColumns: getResponsiveValue(props.gridTemplateColumns, breakpoint),
+    gridTemplateRows: getResponsiveValue(props.gridTemplateRows, breakpoint),
 
     // Spacing Props
-    padding: getSpacingValue(props.padding, props.theme, size),
-    paddingTop: getSpacingValue(props.paddingTop ?? props.paddingY, props.theme, size),
-    paddingBottom: getSpacingValue(props.paddingBottom ?? props.paddingY, props.theme, size),
-    paddingRight: getSpacingValue(props.paddingRight ?? props.paddingX, props.theme, size),
-    paddingLeft: getSpacingValue(props.paddingLeft ?? props.paddingX, props.theme, size),
-    margin: getSpacingValue(props.margin, props.theme, size),
-    marginBottom: getSpacingValue(props.marginBottom, props.theme, size),
-    marginTop: getSpacingValue(props.marginTop, props.theme, size),
-    marginRight: getSpacingValue(props.marginRight, props.theme, size),
-    marginLeft: getSpacingValue(props.marginLeft, props.theme, size),
-    height: getSpacingValue(props.height, props.theme, size),
-    minHeight: getSpacingValue(props.minHeight, props.theme, size),
-    maxHeight: getSpacingValue(props.maxHeight, props.theme, size),
-    width: getSpacingValue(props.width, props.theme, size),
-    minWidth: getSpacingValue(props.minWidth, props.theme, size),
-    maxWidth: getSpacingValue(props.maxWidth, props.theme, size),
-    gap: getSpacingValue(props.gap, props.theme, size),
-    rowGap: getSpacingValue(props.rowGap, props.theme, size),
-    columnGap: getSpacingValue(props.columnGap, props.theme, size),
-    top: getSpacingValue(props.top, props.theme, size),
-    right: getSpacingValue(props.right, props.theme, size),
-    bottom: getSpacingValue(props.bottom, props.theme, size),
-    left: getSpacingValue(props.left, props.theme, size),
+    padding: getSpacingValue(props.padding, props.theme, breakpoint),
+    paddingTop: getSpacingValue(props.paddingTop ?? props.paddingY, props.theme, breakpoint),
+    paddingBottom: getSpacingValue(props.paddingBottom ?? props.paddingY, props.theme, breakpoint),
+    paddingRight: getSpacingValue(props.paddingRight ?? props.paddingX, props.theme, breakpoint),
+    paddingLeft: getSpacingValue(props.paddingLeft ?? props.paddingX, props.theme, breakpoint),
+    margin: getSpacingValue(props.margin, props.theme, breakpoint),
+    marginBottom: getSpacingValue(props.marginBottom, props.theme, breakpoint),
+    marginTop: getSpacingValue(props.marginTop, props.theme, breakpoint),
+    marginRight: getSpacingValue(props.marginRight, props.theme, breakpoint),
+    marginLeft: getSpacingValue(props.marginLeft, props.theme, breakpoint),
+    height: getSpacingValue(props.height, props.theme, breakpoint),
+    minHeight: getSpacingValue(props.minHeight, props.theme, breakpoint),
+    maxHeight: getSpacingValue(props.maxHeight, props.theme, breakpoint),
+    width: getSpacingValue(props.width, props.theme, breakpoint),
+    minWidth: getSpacingValue(props.minWidth, props.theme, breakpoint),
+    maxWidth: getSpacingValue(props.maxWidth, props.theme, breakpoint),
+    gap: getSpacingValue(props.gap, props.theme, breakpoint),
+    rowGap: getSpacingValue(props.rowGap, props.theme, breakpoint),
+    columnGap: getSpacingValue(props.columnGap, props.theme, breakpoint),
+    top: getSpacingValue(props.top, props.theme, breakpoint),
+    right: getSpacingValue(props.right, props.theme, breakpoint),
+    bottom: getSpacingValue(props.bottom, props.theme, breakpoint),
+    left: getSpacingValue(props.left, props.theme, breakpoint),
 
     // Visual props
-    backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, size),
-    borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, size),
-    transform: getResponsiveValue(props.transform, size),
-    lineHeight: getSpacingValue(props.lineHeight, props.theme, size),
+    backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, breakpoint),
+    borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, breakpoint),
+    transform: getResponsiveValue(props.transform, breakpoint),
+    lineHeight: getSpacingValue(props.lineHeight, props.theme, breakpoint),
   };
 };
 
