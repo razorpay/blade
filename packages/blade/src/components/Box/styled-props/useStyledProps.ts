@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components';
 import { useMemoizedStyles } from '../BaseBox/useMemoizedStyles';
-import { getStyledProps } from './getStyledProps';
+import { getStyledProps, removeUndefinedStyledProps } from './getStyledProps';
 import type { Theme } from '~components/BladeProvider';
 
 /**
@@ -66,7 +66,8 @@ import type { Theme } from '~components/BladeProvider';
 const useStyledProps = (props: Record<string, any> & { theme: Theme }): CSSObject => {
   const styledPropsStyles = getStyledProps(props);
   const styledPropsCSSObject = useMemoizedStyles({ ...styledPropsStyles, theme: props.theme });
-  return styledPropsCSSObject;
+  const styledPropsWithoutUndefined = removeUndefinedStyledProps(styledPropsCSSObject);
+  return styledPropsWithoutUndefined;
 };
 
 export { useStyledProps };
