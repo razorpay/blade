@@ -7,7 +7,7 @@ import { Box } from '.';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
 import { Sandbox, SandboxProvider, SandboxHighlighter } from '~src/_helpers/storybook/Sandbox';
-import { List, ListItem, ListItemLink } from '~components/List';
+import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
 
 // Storybook's docs page is under iframe so just href="#target" doesn't work (it tries to scroll on parent of iframe)
@@ -42,7 +42,7 @@ const BoxStoryMeta = {
         <StoryPageWrapper
           componentDescription="Layout primitive Box component. Use this for adding spacings, grids, and any of your layout needs"
           componentName="Box"
-          propsDescription="All Box props support responsive objects. Props marked with 💅🏼 next to their names are the props that can also be used as styled-props on other blade components. Check out styled-props documentation above for more details."
+          propsDescription="All Box props support responsive objects. Props marked with 💅🏼 next to their names are the props that can also be used as styled-props on other blade components. Check out styled-props documentation for more details."
           imports=""
         >
           <hr />
@@ -68,6 +68,10 @@ const BoxStoryMeta = {
 
             <ListItem>
               <ScrollIntoViewLink href="#styled-props">Styled Props</ScrollIntoViewLink>
+            </ListItem>
+
+            <ListItem>
+              <ScrollIntoViewLink href="#api-decisions">API Decisions</ScrollIntoViewLink>
             </ListItem>
 
             <ListItem>
@@ -133,7 +137,7 @@ const BoxStoryMeta = {
           </BaseBox>
           <BaseBox id="adding-margin-and-padding" paddingY="spacing.6">
             <Heading size="large" marginBottom="spacing.3" marginTop="spacing.6">
-              Adding Margin and Padding
+              ↔️ Adding Margin and Padding
             </Heading>
             <Text>Uncomment the commented code below to see things in action ✨</Text>
             <Sandbox padding={['spacing.5', 'spacing.0', 'spacing.5']} editorHeight={500}>
@@ -235,7 +239,7 @@ const BoxStoryMeta = {
 
           <BaseBox id="styled-props">
             <Title size="small" marginBottom="spacing.3" marginTop="spacing.6">
-              Styled Props
+              💅🏼 Styled Props for Blade Components
             </Title>
             <Text>
               Want to add spacing between 2 elements? add layout props directly on the Blade
@@ -301,6 +305,111 @@ const BoxStoryMeta = {
               `}
             </Sandbox>
           </BaseBox>
+
+          <BaseBox id="api-decisions" paddingBottom="spacing.8">
+            <Title size="small" marginBottom="spacing.3" marginTop="spacing.6">
+              🧐 Questions you might have
+            </Title>
+            <Text>
+              This is a summary and some questions you might have regarding API. You can check out
+              complete API decisions at{' '}
+              <Link href="https://github.com/razorpay/blade/blob/master/rfcs/2023-01-06-layout.md">
+                Layout Primitives and Components RFC
+              </Link>
+            </Text>
+            <BaseBox id="why-is-x-prop-not-support">
+              <Heading marginTop="spacing.4" marginBottom="spacing.2" size="large">
+                Why is `xyz` prop not supported in Box?
+              </Heading>
+              <Text marginY="spacing.3">
+                To start the <Code>Box</Code> implementation, we primarily focussed on supporting
+                props that help you change layouts like - margins, paddings, flex, grids, etc. This
+                is roughly the rule of thumb we have followed so far-
+              </Text>
+              <List>
+                <ListItem>
+                  Is it layout prop that does not change look and feel?
+                  <List>
+                    <ListItem>E.g. - flex, grid, margins, etc</ListItem>
+                    <ListItem>{'→'} Added to Box 🥳</ListItem>
+                  </List>
+                </ListItem>
+
+                <ListItem>
+                  Is it very commonly used in your codebase and cannot be implemented using
+                  alternate components from blade?
+                  <List>
+                    <ListItem>E.g. - backgroundColor</ListItem>
+                    <ListItem>{'→'} Added to Box 🥳</ListItem>
+                  </List>
+                </ListItem>
+
+                <ListItem>
+                  Is there any alternate Blade component that can be used instead?
+                  <List>
+                    <ListItem>
+                      E.g. - We do not support borderRadius, boxShadow because in most cases (with
+                      few exceptions) you might be looking for <ListItemCode>Card</ListItemCode>{' '}
+                      component instead
+                    </ListItem>
+                    <ListItem>{'→'} Not Added in Box 😠</ListItem>
+                  </List>
+                </ListItem>
+
+                <ListItem>
+                  Do you find yourself creating wrapper around Box for this prop again and again
+                  throughout your codebase?
+                  <List>
+                    <ListItem>
+                      <ListItemLink
+                        href="https://github.com/razorpay/blade/issues/new?title=Request+to+add+xyz+prop+to+Box&labels=enhancement"
+                        target="_blank"
+                      >
+                        Create an issue in razorpay/blade repo
+                      </ListItemLink>{' '}
+                      to let us know
+                    </ListItem>
+                  </List>
+                </ListItem>
+
+                <ListItem>
+                  Not convinced with the reasonings we had in Layouts RFC?
+                  <List>
+                    <ListItem>
+                      <ListItemLink
+                        href="https://github.com/razorpay/blade/issues/new"
+                        target="_blank"
+                      >
+                        Create an issue in razorpay/blade repo
+                      </ListItemLink>{' '}
+                      and we can discuss
+                    </ListItem>
+                  </List>
+                </ListItem>
+              </List>
+              <Text>
+                We are open for suggestions on this. You can create an issue on blade repo to
+                discuss any of the API decisions. Extra points if you can mention any
+                razorpay-specific issues you are facing with Box or styled-props API.
+              </Text>
+            </BaseBox>
+
+            <BaseBox id="what-to-do-if-prop-is-not-supported">
+              <Heading marginTop="spacing.4" marginBottom="spacing.2" size="large">
+                What to do if Box doesn&apos;t support the prop you want to use?
+              </Heading>
+              <Text marginY="spacing.3">
+                You can go ahead and create a custom <Code>styled.div</Code> component with your
+                prop to unblock yourself. If it is very specific and rare usecase, creating custom
+                styled component might just be ideal.
+              </Text>
+              <Text marginY="spacing.3">
+                However, if it is for a prop that you see yourself adding multiple times (Lets say
+                30% of times of all Box occurences), then it might be better to create an issue in
+                our repo and we can look into adding that prop to Box itself.
+              </Text>
+            </BaseBox>
+          </BaseBox>
         </StoryPageWrapper>
       ),
     },
@@ -318,15 +427,26 @@ export const Default = (args: BoxProps): JSX.Element => {
 export const Responsive = (args: BoxProps): JSX.Element => {
   return (
     <Box {...args}>
-      <Text>On mobile, The padding should change</Text>
-      <Text>And this text should go on next line</Text>
+      <Box
+        flex="1"
+        backgroundColor="surface.background.level2.highContrast"
+        minHeight="spacing.10"
+        padding="spacing.2"
+      >
+        <Text contrast="high">flexDirection property of this layout will change in mobile</Text>
+      </Box>
+      <Box
+        flex="1"
+        backgroundColor="surface.background.level3.highContrast"
+        minHeight="spacing.10"
+      />
     </Box>
   );
 };
 
 Responsive.args = {
   display: 'flex',
-  padding: { base: ['spacing.2', 'spacing.3'], l: 'spacing.10' },
+  padding: 'spacing.10',
   flexDirection: { base: 'column', l: 'row' },
 } as BoxProps;
 

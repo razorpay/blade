@@ -125,8 +125,13 @@ const SandboxHighlighter = ({
 }: { children: string } & CodeViewerProps): JSX.Element => {
   return (
     <CodeLineHighlighterContainer>
-      <SandpackProvider>
-        <SandpackCodeViewer code={dedent(children)} showLineNumbers {...sandpackCodeViewerProps} />
+      <SandpackProvider
+        template="vanilla-ts"
+        files={{
+          '/src/index.ts': dedent(children),
+        }}
+      >
+        <SandpackCodeViewer showLineNumbers {...sandpackCodeViewerProps} />
       </SandpackProvider>
     </CodeLineHighlighterContainer>
   );

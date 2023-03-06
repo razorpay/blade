@@ -1,4 +1,3 @@
-import dedent from 'dedent';
 import {
   ArgsTable,
   Primary,
@@ -59,9 +58,9 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
       {props.imports === '' ? null : (
         <>
           <Title>Imports</Title>
-          <SandboxHighlighter>
+          <SandboxHighlighter showLineNumbers={false} showTabs={false}>
             {props.imports
-              ? dedent(props.imports)
+              ? props.imports
               : `import { ${props.componentName} } from '@razorpay/blade/components';\nimport type { ${props.componentName}Props } from '@razorpay/blade/components';`}
           </SandboxHighlighter>
           <br />
