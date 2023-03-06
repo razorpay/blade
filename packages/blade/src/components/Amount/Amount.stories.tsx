@@ -1,8 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import Box from '../Box';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
+import Box from '~components/Box';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import { Text } from '~components/Typography';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
