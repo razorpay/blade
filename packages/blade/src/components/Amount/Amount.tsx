@@ -4,9 +4,9 @@ import { horizontalPadding, verticalPadding } from './amountTokens';
 import BaseAmount, { getSuffixPrefixFontSize } from './BaseAmount';
 import { StyledAmount } from './StyledAmount';
 import { BaseText } from '~components/Typography/BaseText';
-import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import Box from '~components/Box';
 import { metaAttribute, MetaConstants } from '~utils';
 
 export const suffixTypes = {

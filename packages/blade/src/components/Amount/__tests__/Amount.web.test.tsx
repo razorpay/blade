@@ -89,4 +89,39 @@ describe('<Amount />', () => {
     const { container } = renderWithTheme(<Amount variant="notice" value={1000} />);
     expect(container).toMatchSnapshot();
   });
+
+  it('should render positive variant Amount with bold and isAffixSubtle false', () => {
+    const { container } = renderWithTheme(
+      <Amount isAffixSubtle={false} weight="bold" variant="positive" value={1000} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render information variant Amount ', () => {
+    const { container } = renderWithTheme(
+      <Amount isAffixSubtle={false} weight="bold" variant="information" value={1000} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render negative variant Amount ', () => {
+    const { container } = renderWithTheme(
+      <Amount isAffixSubtle={false} weight="bold" variant="negative" value={1000} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render neutral variant Amount ', () => {
+    const { container } = renderWithTheme(
+      <Amount isAffixSubtle={false} weight="bold" variant="neutral" value={1000} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render positive variant Amount ', () => {
+    const { container } = renderWithTheme(
+      <Amount isAffixSubtle={false} weight="bold" variant="notice" value={1000} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });
