@@ -95,10 +95,10 @@ const Counter = ({
 
   return (
     <StyledCounter
-      {...getStyledProps(styledProps)}
       backgroundColor={backgroundColor}
       size={size}
       platform={platform}
+      {...getStyledProps(styledProps)}
     >
       <BaseBox
         paddingRight={horizontalPadding[size]}

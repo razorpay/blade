@@ -55,14 +55,14 @@ const Card = ({ children, surfaceLevel = 3, ...styledProps }: CardProps): React.
   return (
     <CardProvider>
       <CardSurface
-        {...metaAttribute(MetaConstants.Component, MetaConstants.Card)}
-        {...getStyledProps(styledProps)}
         paddingLeft="spacing.7"
         paddingRight="spacing.7"
         paddingTop="spacing.6"
         paddingBottom="spacing.6"
         borderRadius="medium"
         surfaceLevel={surfaceLevel}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.Card)}
+        {...getStyledProps(styledProps)}
       >
         {children}
       </CardSurface>

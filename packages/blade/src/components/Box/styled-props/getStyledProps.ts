@@ -102,7 +102,8 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  *
  * const MyComponent = (props: MyComponentProps): JSX.Element => {
  *  return (
- *    <BaseBox {...getStyledProps(props)}>
+ *    // Make sure styled-props come last so they take priority in stylings in-case of overrides
+ *    <BaseBox someOtherProp={someValue} {...getStyledProps(props)}>
  *      // Your component code
  *    </BaseBox>
  *  )
@@ -125,8 +126,8 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  *  const styledPropsCSSObject = useStyledProps(props);
  *
  *  return {
- *    ...styledPropsCSSObject,
  *    // ...your other CSS,
+ *    ...styledPropsCSSObject, // Make sure styled-props come last so they take priority in styles
  *  }
  * })
  * ```

@@ -13,12 +13,12 @@ const Spinner = ({
 }: SpinnerProps): React.ReactElement => {
   return (
     <BaseSpinner
-      {...styledProps}
       label={label}
       labelPosition={labelPosition}
       accessibilityLabel={accessibilityLabel ?? label ?? 'Loading'}
       contrast={contrast}
       size={size}
+      {...styledProps}
     />
   );
 };

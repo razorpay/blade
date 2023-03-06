@@ -20,7 +20,6 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
     return {
-      ...styledPropsCSSObject,
       ...getBaseTextStyles({
         color,
         fontFamily,
@@ -32,6 +31,7 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
         textAlign,
         theme: props.theme,
       }),
+      ...styledPropsCSSObject,
     };
   },
 );

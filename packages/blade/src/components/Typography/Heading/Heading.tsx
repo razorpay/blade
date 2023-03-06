@@ -116,7 +116,7 @@ export const Heading = <T extends { variant: HeadingVariant }>({
 }: HeadingProps<T>): ReactElement => {
   const props = getProps({ variant, size, type, weight, contrast });
   return (
-    <BaseText {...getStyledProps(styledProps)} {...props}>
+    <BaseText {...props} {...getStyledProps(styledProps)}>
       {children}
     </BaseText>
   );

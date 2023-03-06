@@ -9,7 +9,6 @@ const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => (
 }))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   return {
-    ...styledPropsCSSObject,
     ...getStyledBaseButtonStyles(props),
     transitionProperty: 'background-color, border-color, box-shadow',
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
@@ -38,6 +37,7 @@ const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => (
       ),
       transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
     },
+    ...styledPropsCSSObject,
   };
 });
 

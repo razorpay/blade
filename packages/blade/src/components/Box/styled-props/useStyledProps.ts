@@ -28,6 +28,7 @@ import type { Theme } from '~components/BladeProvider';
  *
  * const MyComponent = (props: MyComponentProps): JSX.Element => {
  *  return (
+ *    // Make sure styled-props come last so they take priority in stylings in-case of overrides
  *    <BaseBox {...getStyledProps(props)}>
  *      // Your component code
  *    </BaseBox>
@@ -51,8 +52,8 @@ import type { Theme } from '~components/BladeProvider';
  *  const styledPropsCSSObject = useStyledProps(props);
  *
  *  return {
- *    ...styledPropsCSSObject,
  *    // ...your other CSS,
+ *    ...styledPropsCSSObject, // Make sure styled-props come last so they take priority in styles
  *  }
  * })
  * ```
