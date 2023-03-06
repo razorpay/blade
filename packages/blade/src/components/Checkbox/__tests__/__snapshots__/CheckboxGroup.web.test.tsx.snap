@@ -234,6 +234,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           </p>
           <div
             class="c4"
+            data-blade-component="visually-hidden"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -737,6 +738,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           </p>
           <div
             class="c4"
+            data-blade-component="visually-hidden"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"

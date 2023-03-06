@@ -100,4 +100,16 @@ describe('<Radio />', () => {
     await userEvents.click(button);
     expect(input).toHaveFocus();
   });
+
+  it('should accept testID', () => {
+    const labelText = 'Select fruit';
+    const { getByTestId } = renderWithTheme(
+      <RadioGroup label={labelText}>
+        <Radio value="apple" testID="radio-test">
+          Apple
+        </Radio>
+      </RadioGroup>,
+    );
+    expect(getByTestId('radio-test')).toBeTruthy();
+  });
 });

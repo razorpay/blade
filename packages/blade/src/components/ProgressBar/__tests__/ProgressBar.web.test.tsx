@@ -180,4 +180,11 @@ describe('<ProgressBar />', () => {
       `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
     );
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <ProgressBar label="Label" value={20} testID="progress-bar-test" />,
+    );
+    expect(getByTestId('progress-bar-test')).toBeTruthy();
+  });
 });

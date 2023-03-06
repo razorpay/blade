@@ -382,4 +382,12 @@ describe('<BaseLink />', () => {
     const { container } = renderWithTheme(<BaseLink variant="button">{linkText}</BaseLink>);
     await assertAccessible(container);
   });
+
+  it('should accept testID', () => {
+    const linkText = 'Learn More';
+    const { getByTestId } = renderWithTheme(
+      <BaseLink testID="base-link-test">{linkText}</BaseLink>,
+    );
+    expect(getByTestId('base-link-test')).toBeTruthy();
+  });
 });

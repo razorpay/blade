@@ -283,4 +283,14 @@ describe('<CheckboxGroup /> runtime errors', () => {
       expect(err.message).toMatch(errorMsg);
     }
   });
+
+  it('should accept testID', () => {
+    const labelText = 'Select fruits';
+    const { getByTestId } = renderWithTheme(
+      <CheckboxGroup label={labelText} testID="checkbox-group-test">
+        <Checkbox value="apple">Apple</Checkbox>
+      </CheckboxGroup>,
+    );
+    expect(getByTestId('checkbox-group-test')).toBeTruthy();
+  });
 });

@@ -567,6 +567,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
     >
       <div
         class="c1"
+        data-blade-component="visually-hidden"
       >
         <input
           aria-hidden="true"
@@ -611,6 +612,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                   </p>
                   <div
                     class="c1"
+                    data-blade-component="visually-hidden"
                   >
                     <p
                       class="c7 "
