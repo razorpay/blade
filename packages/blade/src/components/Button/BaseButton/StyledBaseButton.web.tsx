@@ -8,15 +8,18 @@ const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => (
   ...props.accessibilityProps,
 }))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
+  const { position, ...restStyledProps } = styledPropsCSSObject;
+  const shouldOverridePosition = position && ['unset', 'revert'].includes(position);
   return {
-    ...styledPropsCSSObject,
+    ...restStyledProps,
     ...getStyledBaseButtonStyles(props),
     transitionProperty: 'background-color, border-color, box-shadow',
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
     transitionDuration: castWebType(
       makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
     ),
-    position: 'relative',
+    // We let user override `position` unless position is undefined or unset
+    position: shouldOverridePosition ? position : 'relative',
     '&:hover': {
       backgroundColor: props.hoverBackgroundColor,
       borderColor: props.hoverBorderColor,
