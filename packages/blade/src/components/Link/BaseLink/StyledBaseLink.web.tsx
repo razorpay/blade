@@ -9,7 +9,6 @@ const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLi
 }))<StyledBaseLinkProps>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   return {
-    ...styledPropsCSSObject,
     ...getStyledLinkStyles(props),
     display: 'inline-block',
     borderRadius: makeBorderSize(props.theme.border.radius.small),
@@ -34,6 +33,7 @@ const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLi
         makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
       ),
     },
+    ...styledPropsCSSObject,
   };
 });
 

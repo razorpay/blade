@@ -119,10 +119,10 @@ const Badge = (props: BadgeProps): ReactElement => {
 
   return (
     <StyledBadge
-      {...getStyledProps(props)}
       backgroundColor={backgroundColor}
       size={size}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Badge)}
+      {...getStyledProps(props)}
     >
       <BaseBox
         paddingRight={horizontalPadding[size]}

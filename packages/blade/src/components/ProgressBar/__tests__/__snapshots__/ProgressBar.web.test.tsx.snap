@@ -82,9 +82,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 }
 
 .c3 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -92,12 +89,12 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -105,12 +102,12 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c6 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -118,6 +115,9 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c4 {
@@ -387,9 +387,6 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -397,6 +394,9 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -515,9 +515,6 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -525,6 +522,9 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -643,9 +643,6 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -653,6 +650,9 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -771,9 +771,6 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -781,6 +778,9 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -899,9 +899,6 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -909,6 +906,9 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1027,9 +1027,6 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1037,6 +1034,9 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1155,9 +1155,6 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1165,6 +1162,9 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1283,9 +1283,6 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1293,6 +1290,9 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1411,9 +1411,6 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1421,6 +1418,9 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1539,9 +1539,6 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1549,6 +1546,9 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1667,9 +1667,6 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1677,6 +1674,9 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1813,9 +1813,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 }
 
 .c3 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1823,12 +1820,12 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1836,12 +1833,12 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c6 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1849,6 +1846,9 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c4 {
@@ -2125,9 +2125,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 }
 
 .c3 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2135,12 +2132,12 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2148,12 +2145,12 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c6 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2161,6 +2158,9 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c4 {
@@ -2374,9 +2374,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 }
 
 .c3 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2384,13 +2381,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c7 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2398,12 +2395,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c9 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2411,12 +2408,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c10 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2424,6 +2421,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c8 {
@@ -2444,25 +2444,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 }
 
 .c0 {
-  position: relative;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-right: 20px;
-  padding-left: 20px;
   min-height: 36px;
   width: auto;
-  background-color: hsla(213,89%,56%,1);
-  border-radius: 2px;
   cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
   border-color: hsla(213,89%,56%,1);
   border-width: 1px;
+  border-radius: 2px;
   border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2709,9 +2709,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 }
 
 .c3 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2719,13 +2716,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c7 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2733,12 +2730,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c9 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2746,12 +2743,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c10 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2759,6 +2756,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c8 {
@@ -2779,25 +2779,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 }
 
 .c0 {
-  position: relative;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-right: 20px;
-  padding-left: 20px;
   min-height: 36px;
   width: auto;
-  background-color: hsla(213,89%,56%,1);
-  border-radius: 2px;
   cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
   border-color: hsla(213,89%,56%,1);
   border-width: 1px;
+  border-radius: 2px;
   border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {

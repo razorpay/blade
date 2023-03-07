@@ -85,13 +85,13 @@ const Link = ({
 }: LinkProps): ReactElement => {
   return (
     <BaseLink
-      {...styledProps}
       {...(icon ? { icon, children } : { children })}
       {...(variant === 'anchor' ? { variant, href, target, rel } : { variant, isDisabled })}
       iconPosition={iconPosition}
       onClick={onClick}
       accessibilityLabel={accessibilityLabel}
       size={size}
+      {...styledProps}
     />
   );
 };

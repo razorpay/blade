@@ -16,9 +16,9 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   const styledPropsCSSObject = useStyledProps(props);
 
   return {
-    ...styledPropsCSSObject,
     ...getStyledBaseButtonStyles(props),
     alignSelf: 'center',
+    ...styledPropsCSSObject,
   };
 });
 

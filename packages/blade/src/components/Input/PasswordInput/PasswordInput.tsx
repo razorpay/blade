@@ -128,7 +128,6 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
 
   return (
     <BaseInput
-      {...styledProps}
       ref={inputRef as React.Ref<HTMLInputElement>}
       componentName="password-input"
       id="password-field"
@@ -156,6 +155,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       autoFocus={autoFocus}
       autoCompleteSuggestionType={autoCompleteSuggestionType}
       keyboardReturnKeyType={keyboardReturnKeyType}
+      {...styledProps}
     />
   );
 };

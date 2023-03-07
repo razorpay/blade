@@ -277,6 +277,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         "paddingLeft": 16,
         "paddingRight": 16,
         "paddingTop": 12,
+        "width": "100%",
       },
     ]
   }

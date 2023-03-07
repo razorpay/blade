@@ -9,9 +9,9 @@ import { useStyledProps } from '~components/Box/styled-props';
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   return {
-    ...styledPropsCSSObject,
     ...getStyledLinkStyles({}),
     alignSelf: 'flex-start',
+    ...styledPropsCSSObject,
   };
 });
 
