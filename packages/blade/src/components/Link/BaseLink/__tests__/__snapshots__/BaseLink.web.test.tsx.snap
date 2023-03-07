@@ -2,15 +2,15 @@
 
 exports[`<BaseLink /> should change the link to a visited state after click 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -54,9 +54,6 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(268,100%,79%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -64,7 +61,10 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -97,15 +97,15 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
 
 exports[`<BaseLink /> should not change the button to a visited state after click 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -149,9 +149,6 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -159,7 +156,10 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -190,15 +190,15 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
 
 exports[`<BaseLink /> should render button variant of link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -242,9 +242,6 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -252,7 +249,10 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -283,15 +283,15 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
 
 exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: not-allowed;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -335,9 +335,6 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -345,7 +342,10 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -377,15 +377,15 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 
 exports[`<BaseLink /> should render disabled information intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -429,9 +429,6 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(180,100%,97%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -439,7 +436,10 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -469,15 +469,15 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
 
 exports[`<BaseLink /> should render disabled information intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -521,9 +521,6 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(195,100%,31%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -531,7 +528,10 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -561,15 +561,15 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
 
 exports[`<BaseLink /> should render disabled negative intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -613,9 +613,6 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(0,100%,97%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -623,7 +620,10 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -653,15 +653,15 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
 
 exports[`<BaseLink /> should render disabled negative intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -705,9 +705,6 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -715,7 +712,10 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -745,15 +745,15 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
 
 exports[`<BaseLink /> should render disabled neutral intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -797,9 +797,6 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(220,27%,98%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -807,7 +804,10 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -837,15 +837,15 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
 
 exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -889,9 +889,6 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -899,7 +896,10 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -929,15 +929,15 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
 
 exports[`<BaseLink /> should render disabled notice intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -981,9 +981,6 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(32,100%,94%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -991,7 +988,10 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1021,15 +1021,15 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
 
 exports[`<BaseLink /> should render disabled notice intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1073,9 +1073,6 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(38,97%,38%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1083,7 +1080,10 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1113,15 +1113,15 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
 
 exports[`<BaseLink /> should render disabled positive intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1165,9 +1165,6 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(107,100%,96%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1175,7 +1172,10 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1205,15 +1205,15 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
 
 exports[`<BaseLink /> should render disabled positive intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1257,9 +1257,6 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1267,7 +1264,10 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1297,15 +1297,15 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
 
 exports[`<BaseLink /> should render icon only link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1361,9 +1361,6 @@ exports[`<BaseLink /> should render icon only link 1`] = `
 }
 
 .c3 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1371,7 +1368,10 @@ exports[`<BaseLink /> should render icon only link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1428,15 +1428,15 @@ exports[`<BaseLink /> should render icon only link 1`] = `
 
 exports[`<BaseLink /> should render information intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1480,9 +1480,6 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(180,100%,97%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1490,7 +1487,10 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1520,15 +1520,15 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
 
 exports[`<BaseLink /> should render information intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1572,9 +1572,6 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(195,100%,31%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1582,7 +1579,10 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1612,15 +1612,15 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
 
 exports[`<BaseLink /> should render link with default properties 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1664,9 +1664,6 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1674,7 +1671,10 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1704,15 +1704,15 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
 
 exports[`<BaseLink /> should render link with icon with default iconPosition 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1768,9 +1768,6 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
 }
 
 .c3 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1778,7 +1775,10 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1837,15 +1837,15 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
 
 exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1901,9 +1901,6 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
 }
 
 .c3 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1911,7 +1908,10 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -1970,15 +1970,15 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
 
 exports[`<BaseLink /> should render link with icon with right iconPosition 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2034,9 +2034,6 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2044,7 +2041,10 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -2103,15 +2103,15 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
 
 exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2155,9 +2155,6 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(0,100%,97%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2165,7 +2162,10 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -2195,15 +2195,15 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
 
 exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2247,9 +2247,6 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2257,7 +2254,10 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -2287,15 +2287,15 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
 
 exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2339,9 +2339,6 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(220,27%,98%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2349,7 +2346,10 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -2379,15 +2379,15 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
 
 exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2431,9 +2431,6 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2441,7 +2438,10 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -2471,15 +2471,15 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
 
 exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2523,9 +2523,6 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(32,100%,94%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2533,7 +2530,10 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -2563,15 +2563,15 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
 
 exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2615,9 +2615,6 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(38,97%,38%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2625,7 +2622,10 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -2655,15 +2655,15 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
 
 exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2707,9 +2707,6 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(107,100%,96%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2717,7 +2714,10 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -2747,15 +2747,15 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
 
 exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
 .c0 {
-  display: inline-block;
   padding: 0;
   background-color: transparent;
-  border-radius: 2px;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2799,9 +2799,6 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
 }
 
 .c2 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2809,7 +2806,10 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 <div>

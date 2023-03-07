@@ -39,9 +39,6 @@ exports[`<List /> should render List with default properties 1`] = `
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -49,6 +46,9 @@ exports[`<List /> should render List with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c2 {
@@ -258,9 +258,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -268,12 +265,12 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c7 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: monospace;
   font-size: 0.75rem;
@@ -281,6 +278,9 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c6 {
@@ -476,9 +476,6 @@ exports[`<List /> should render medium ordered List 1`] = `
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -486,12 +483,12 @@ exports[`<List /> should render medium ordered List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c6 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -499,6 +496,9 @@ exports[`<List /> should render medium ordered List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c2 {
@@ -720,9 +720,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.625rem;
@@ -730,12 +727,12 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c6 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -743,6 +740,9 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c2 {
@@ -931,9 +931,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1.25rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -941,6 +938,9 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c2 {
@@ -1177,9 +1177,6 @@ exports[`<List /> should render small ordered List 1`] = `
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1187,12 +1184,12 @@ exports[`<List /> should render small ordered List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c6 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1200,6 +1197,9 @@ exports[`<List /> should render small ordered List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c2 {
@@ -1421,9 +1421,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.625rem;
@@ -1431,12 +1428,12 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c6 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1444,6 +1441,9 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c2 {
@@ -1632,9 +1632,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1642,6 +1639,9 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c2 {
@@ -1847,9 +1847,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
 }
 
 .c5 {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1857,6 +1854,9 @@ exports[`<List /> should render unordered List of small size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c2 {
