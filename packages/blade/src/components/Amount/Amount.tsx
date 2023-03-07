@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 
-import { horizontalPadding, verticalPadding } from './amountTokens';
+import { currencyPrefixMapping, horizontalPadding, verticalPadding } from './amountTokens';
 import BaseAmount, { getSuffixPrefixFontSize } from './BaseAmount';
 import { StyledAmount } from './StyledAmount';
 import { BaseText } from '~components/Typography/BaseText';
@@ -22,17 +22,23 @@ type AmountProps = {
    */
   value: number;
   /**
-   * Sets the variant of the amount.
+   * Sets the intent of the amount.
    *
    * @default 'neutral'
    */
-  variant?: Feedback;
+  intent?: Feedback;
+  /**
+   * Sets the variant of the amount.
+   *
+   * @default 'heading'
+   */
+  variant?: `heading` | `title` | `body`;
   /**
    * Sets the size of the amount.
    *
    * @default 'low'
    */
-  size?: `3xlarge` | `2xlarge` | `xlarge` | `large` | `medium` | `small`;
+  size?: `large` | `medium` | `small`;
   /**
    * Sets the weight of the label.
    *
@@ -42,36 +48,42 @@ type AmountProps = {
   /**
    * Indicates whether a text suffix should be used
    *
-   * @default 'regular'
+   * @default 'decimals'
    */
   suffix?: 'decimals' | 'none' | 'humanize';
   /**
    * Highlight the main amount by making the prefix symbol and decimal digits small
    *
-   * @default 'Decimals'
+   * @default true
    */
   isAffixSubtle?: true | false;
+  /**
+   * Prefix to be shown before the currency value. The prefix can be either a currency symbol or a currency code.
+   *
+   * @default 'currency-symbol'
+   */
+  prefix?: 'currency-symbol' | 'currency-code';
+  /**
+   * Currency to be used
+   *
+   * @default 'INR'
+   */
+  currency?: 'INR' | 'MYR';
 };
-
-const RUPEE_SYMBOL = '₹';
 
 type ColorProps = {
   textColor: BaseTextProps['color'];
   prefixSuffixColor: BaseTextProps['color'];
 };
 
-const getColorProps = ({
-  variant,
-}: {
-  variant: NonNullable<AmountProps['variant']>;
-}): ColorProps => {
+const getColorProps = ({ intent }: { intent: NonNullable<AmountProps['intent']> }): ColorProps => {
   const props: ColorProps = {
     textColor: 'feedback.text.neutral.lowContrast',
     prefixSuffixColor: 'feedback.text.neutral.lowContrast',
   };
-  props.textColor = `feedback.text.${variant}.lowContrast`;
-  props.prefixSuffixColor = `feedback.text.${variant}.lowContrast`;
-  if (variant === 'neutral') {
+  props.textColor = `feedback.text.${intent}.lowContrast`;
+  props.prefixSuffixColor = `feedback.text.${intent}.lowContrast`;
+  if (intent === 'neutral') {
     props.prefixSuffixColor = `surface.text.muted.lowContrast`;
   }
   return props;
@@ -128,18 +140,23 @@ const getRupeeweight = (
 
 const Amount = ({
   value,
+  currency = 'INR',
   suffix = 'decimals',
+  variant = 'heading',
   weight = 'regular',
   size = 'medium',
   isAffixSubtle = true,
-  variant = 'neutral',
+  intent = 'neutral',
+  prefix = 'currency-symbol',
 }: AmountProps): ReactElement => {
   if (typeof value !== 'number' && !isNaN(value)) {
     throw new Error('[Blade: Amount]: Number as value is required for Amount.');
   }
+
+  const currencyPrefix = currencyPrefixMapping[currency][prefix];
   const renderedValue = formatAmountWithSuffix(suffix, value);
   const { textColor, prefixSuffixColor } = getColorProps({
-    variant,
+    intent,
   });
   const rupeeweight = getRupeeweight(isAffixSubtle, weight);
   const rupeeFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
@@ -158,7 +175,7 @@ const Amount = ({
         overflow="hidden"
       >
         <BaseText fontWeight={rupeeweight} fontSize={rupeeFontSize} color={prefixSuffixColor}>
-          {RUPEE_SYMBOL}
+          {currencyPrefix}
         </BaseText>
         <BaseAmount
           value={renderedValue}

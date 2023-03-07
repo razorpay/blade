@@ -46,4 +46,22 @@ const amountTextSizes = {
   '3xlarge': 700,
 } as const;
 
-export { verticalPadding, horizontalPadding, iconPadding, amountTextSizes, prefixSuffixTextSizes };
+const currencyPrefixMapping = {
+  INR: {
+    'currency-symbol': 'RM',
+    'currency-code': 'INR',
+  },
+  MYR: {
+    'currency-symbol': '₹',
+    'currency-code': 'MYR',
+  },
+};
+
+export {
+  verticalPadding,
+  horizontalPadding,
+  iconPadding,
+  amountTextSizes,
+  prefixSuffixTextSizes,
+  currencyPrefixMapping,
+};
