@@ -355,7 +355,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   return (
     <StyledBaseButton
       ref={buttonRef}
-      {...styledProps}
       accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
       isLoading={isLoading}
       disabled={disabled}
@@ -381,6 +380,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Button)}
+      {...styledProps}
     >
       {isLoading ? (
         <BaseBox

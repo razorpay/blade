@@ -90,12 +90,12 @@ const Indicator = ({
 
   return (
     <BaseBox
-      {...getStyledProps(styledProps)}
       display="flex"
       flexDirection="row"
       alignItems="center"
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Indicator)}
+      {...getStyledProps(styledProps)}
     >
       <Svg width={dimensions.svgSize} height={dimensions.svgSize} viewBox="0 0 10 10" fill="none">
         <Circle cx="5" cy="5" r="5" fill={fillColor} />

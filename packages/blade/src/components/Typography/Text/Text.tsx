@@ -133,7 +133,7 @@ const Text = <T extends { variant: TextVariant }>({
     ...(color ? { color } : {}),
   };
   return (
-    <StyledText {...getStyledProps(styledProps)} {...props}>
+    <StyledText {...props} {...getStyledProps(styledProps)}>
       {children}
     </StyledText>
   );

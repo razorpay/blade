@@ -265,7 +265,6 @@ const BaseLink = ({
 
   return (
     <StyledBaseLink
-      {...styledProps}
       {...syntheticEvents}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Link)}
       accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
@@ -282,6 +281,7 @@ const BaseLink = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
+      {...styledProps}
       // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}

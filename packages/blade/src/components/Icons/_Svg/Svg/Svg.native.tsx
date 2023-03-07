@@ -20,12 +20,12 @@ const Svg = ({
 }: SvgProps): ReactElement => {
   return (
     <StyledSvg
-      {...styledProps}
       {...makeAccessible({ hidden: true })}
       height={height}
       viewBox={viewBox}
       width={width}
       fill={fill}
+      {...styledProps}
     >
       {children}
     </StyledSvg>

@@ -124,7 +124,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
 
   return (
     <DropdownContext.Provider value={contextValue}>
-      <BaseBox {...getStyledProps(styledProps)} position="relative">
+      <BaseBox position="relative" {...getStyledProps(styledProps)}>
         {children}
       </BaseBox>
     </DropdownContext.Provider>

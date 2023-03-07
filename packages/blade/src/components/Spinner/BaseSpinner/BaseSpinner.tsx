@@ -76,9 +76,9 @@ const BaseSpinner = ({
   const { theme } = useTheme();
   return (
     <BaseBox
-      {...getStyledProps(styledProps)}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Spinner)}
       display="flex"
+      {...getStyledProps(styledProps)}
     >
       <BaseBox
         display="flex"
