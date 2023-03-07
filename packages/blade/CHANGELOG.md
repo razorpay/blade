@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 6.3.0
+
+### Minor Changes
+
+- a2518742: feat(icons): add BulkPayoutsIcon
+
 ## 6.2.3
 
 ### Patch Changes

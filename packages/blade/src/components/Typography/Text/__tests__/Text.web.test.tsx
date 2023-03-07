@@ -52,6 +52,12 @@ describe('<Text />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Text with center textAlign', () => {
+    const displayText = 'Displaying some text';
+    const { container } = renderWithTheme(<Text textAlign="center">{displayText}</Text>);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should throw error when variant is "caption" and size "small" is passed', () => {
     const displayText = 'Displaying some text';
     expect(() =>
