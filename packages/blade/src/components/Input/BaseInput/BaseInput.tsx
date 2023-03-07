@@ -14,7 +14,7 @@ import { BaseInputWrapper } from './BaseInputWrapper';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
-import type { AriaAttributes } from '~utils';
+import type { AriaAttributes, Platform } from '~utils';
 
 import {
   metaAttribute,
@@ -234,7 +234,15 @@ export type BaseInputProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
-  };
+  } & Platform.Select<{
+    native: {
+      /**
+       * The callback function to be invoked when the value of the input field is submitted. This is a react-native only prop and has no effect on web.
+       */
+      onSubmit?: FormInputOnEvent;
+    };
+    web: undefined;
+  }>;
 
 const autoCompleteSuggestionTypeValues = [
   'none',
@@ -261,16 +269,26 @@ const useInput = ({
   onFocus,
   onChange,
   onBlur,
+  onSubmit,
   onInput,
   onKeyDown,
 }: Pick<
   BaseInputProps,
-  'value' | 'defaultValue' | 'onFocus' | 'onChange' | 'onBlur' | 'onInput' | 'onKeyDown' | 'onClick'
+  | 'value'
+  | 'defaultValue'
+  | 'onFocus'
+  | 'onChange'
+  | 'onBlur'
+  | 'onInput'
+  | 'onKeyDown'
+  | 'onClick'
+  | 'onSubmit'
 >): {
   handleOnFocus: FormInputHandleOnEvent;
   handleOnClick: FormInputHandleOnClickEvent;
   handleOnChange: FormInputHandleOnEvent;
   handleOnBlur: FormInputHandleOnEvent;
+  handleOnSubmit: FormInputHandleOnEvent;
   handleOnInput: FormInputHandleOnEvent;
   handleOnKeyDown: FormInputHandleOnKeyDownEvent;
   inputValue?: string;
@@ -321,9 +339,10 @@ const useInput = ({
     [onClick],
   );
 
-  const handleOnChange: FormInputHandleOnEvent = React.useCallback(
+  const handleOnSubmit: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
+      console.log({ name, value });
 
       if (getPlatformType() === 'react-native' && typeof value === 'string') {
         _value = value;
@@ -332,13 +351,13 @@ const useInput = ({
         _value = value?.target.value ?? '';
       }
 
-      onChange?.({
+      onSubmit?.({
         name,
         value: _value,
       });
       setInputValue(_value);
     },
-    [onChange],
+    [onSubmit],
   );
 
   const handleOnBlur: FormInputHandleOnEvent = React.useCallback(
@@ -357,6 +376,26 @@ const useInput = ({
       });
     },
     [onBlur],
+  );
+
+  const handleOnChange: FormInputHandleOnEvent = React.useCallback(
+    ({ name, value }) => {
+      let _value = '';
+
+      if (getPlatformType() === 'react-native' && typeof value === 'string') {
+        _value = value;
+      } else if (typeof value !== 'string') {
+        // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
+        _value = value?.target.value ?? '';
+      }
+
+      onChange?.({
+        name,
+        value: _value,
+      });
+      setInputValue(_value);
+    },
+    [onChange],
   );
 
   const handleOnInput: FormInputHandleOnEvent = React.useCallback(
@@ -394,6 +433,7 @@ const useInput = ({
     handleOnClick,
     handleOnChange,
     handleOnBlur,
+    handleOnSubmit,
     handleOnInput,
     handleOnKeyDown,
     inputValue,
@@ -469,6 +509,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onChange,
       onInput,
       onBlur,
+      onSubmit,
       onClick,
       onKeyDown,
       isDisabled,
@@ -512,6 +553,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       handleOnChange,
       handleOnClick,
       handleOnBlur,
+      handleOnSubmit,
       handleOnInput,
       handleOnKeyDown,
       inputValue,
@@ -522,6 +564,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onClick,
       onChange,
       onBlur,
+      onSubmit,
       onInput,
       onKeyDown,
     });
@@ -567,7 +610,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
     return (
-      <BaseBox {...metaAttribute(MetaConstants.Component, componentName!)}>
+      <BaseBox {...metaAttribute(MetaConstants.Component, componentName)}>
         <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -619,6 +662,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               handleOnFocus={handleOnFocus}
               handleOnChange={handleOnChange}
               handleOnBlur={handleOnBlur}
+              handleOnSubmit={handleOnSubmit}
               handleOnInput={handleOnInput}
               handleOnKeyDown={handleOnKeyDown}
               handleOnClick={handleOnClick}
