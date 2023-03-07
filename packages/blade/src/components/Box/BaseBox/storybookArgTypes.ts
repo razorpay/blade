@@ -1,5 +1,5 @@
 import { getOnlyBoxProps } from '../Box';
-import { getStyledProps } from '../styled-props';
+import { filterStyledProps } from '../styled-props';
 import type { BaseBoxProps, BoxProps, StyledProps } from './types';
 
 type StorybookArgTypes<T> = {
@@ -34,7 +34,7 @@ const spacingTypeDescription = [
 const styledPropsSupportMessage =
   '&nbsp;&nbsp;<span title="Also supported as styled-prop in other components">💅🏼</span>';
 
-const defaultStyledPropsObject = getStyledProps({});
+const defaultStyledPropsObject = filterStyledProps({});
 
 const getStyledPropsArgTypes = ({
   category = 'StyledProps',
@@ -127,7 +127,10 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
   const restBoxArgTypes = Object.fromEntries(
     Object.entries(getOnlyBoxProps({}))
       .filter(
-        ([key]) => !Object.keys(getStyledPropsArgTypes()).includes(key) && !key.includes('padding'),
+        ([key]) =>
+          !Object.keys(getStyledPropsArgTypes()).includes(key) &&
+          !key.includes('padding') &&
+          !key.includes('backgroundColor'),
       )
       .map(([key, _value]) => {
         const cssPropertyName = key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
@@ -136,7 +139,7 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
           key,
           {
             ...commonProperties,
-            description: `**CSS property \`${cssPropertyName}\`**\n\n`,
+            description: `**CSS property \`${cssPropertyName}\`**\n\n\n\n<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/${cssPropertyName}">MDN Docs for ${cssPropertyName}</a><br/><br/>`,
             table: {
               type: {
                 summary: `MakeValueResponsive<CSSObject['${key}']>`,
@@ -148,6 +151,11 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
   );
 
   return {
+    backgroundColor: {
+      ...commonProperties,
+      description:
+        '**CSS property `background-color`**.\n\nYou can use our surface.background.* tokens as value here',
+    },
     padding: {
       ...commonProperties,
       description: `**Padding Shorthand**\n\n${spacingTypeShorthandDescription}`,
@@ -194,11 +202,6 @@ const getBaseBoxArgTypes = (): StorybookArgTypes<
   BaseBoxProps & { forwardedAs: string; ref: unknown; theme: unknown; as: string }
 > => {
   return {
-    backgroundColor: {
-      ...commonProperties,
-      description:
-        '**CSS property `background-color`**.\n\nYou can use absolute colors, or our action background tokens',
-    },
     ...getBoxArgTypes(),
     borderRadius: {
       ...commonProperties,
