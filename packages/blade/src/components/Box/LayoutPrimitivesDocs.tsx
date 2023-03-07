@@ -8,6 +8,10 @@ import { Sandbox, SandboxProvider, SandboxHighlighter } from '~src/_helpers/stor
 import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
 
+if (window.top) {
+  document.getElementById(window.top.location.hash)?.scrollIntoView();
+}
+
 // Storybook's docs page is under iframe so just href="#target" doesn't work (it tries to scroll on parent of iframe)
 // This function uses scrollIntoView instead to scroll then
 const ScrollIntoViewLink = ({
@@ -439,7 +443,12 @@ function LayoutPrimitivesDocs(): JSX.Element {
             </ListItemLink>
           </ListItem>
           <ListItem>
-            <ListItemLink href="/?path=/docs/components-layout-primitives-box-box--default&globals=measureEnabled:false">
+            <ListItemLink href="/?path=/docs/components-layout-primitives-box-styled-props--styled-props">
+              Styled Props Story
+            </ListItemLink>
+          </ListItem>
+          <ListItem>
+            <ListItemLink href="/?path=/docs/components-layout-primitives-box-styled-props--styled-props#properties-ref">
               Styled Props Properties Reference
             </ListItemLink>
           </ListItem>

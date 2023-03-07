@@ -5,7 +5,7 @@ import type { BoxProps } from '.';
 import { Box } from '.';
 import { Text, Title } from '~components/Typography';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { Link } from '~components/Link';
+import { LinkToStorybook } from '~src/_helpers/storybook/LinkToStorybook';
 
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();
@@ -26,8 +26,11 @@ const BoxStoryMeta = {
           <Box paddingY="spacing.5" paddingBottom="spacing.8">
             <Title size="medium">Layout Primitives Documentation</Title>
             <Text marginTop="spacing.3">
-              Check Out <Link>&quot;How to Create Layouts?&quot; Docs</Link> for more detailed
-              documentation of Box
+              Check Out{' '}
+              <LinkToStorybook url="Components/Layout Primitives (Box)/How to Create Layouts?">
+                &quot;How to Create Layouts?&quot; Docs
+              </LinkToStorybook>{' '}
+              for more detailed documentation of Box
             </Text>
           </Box>
         </StoryPageWrapper>
