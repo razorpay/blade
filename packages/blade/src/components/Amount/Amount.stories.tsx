@@ -128,13 +128,7 @@ const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
   return (
     <Box width="100%" justifyContent="center">
       {variants.map((variant) => (
-        <Box
-          key={variant}
-          // display="flex"
-          alignItems="baseline"
-          paddingRight="spacing.3"
-          paddingTop="spacing.2"
-        >
+        <Box key={variant} alignItems="baseline" paddingRight="spacing.3" paddingTop="spacing.2">
           <Text>{variant}</Text>
           <AmountComponent {...args} variant={variant} />
         </Box>
