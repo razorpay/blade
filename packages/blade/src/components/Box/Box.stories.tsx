@@ -424,6 +424,10 @@ export const Default = (args: BoxProps): JSX.Element => {
   );
 };
 
+Default.args = {
+  padding: { base: 'spacing.2', m: 'spacing.10' },
+} as BoxProps;
+
 export const Responsive = (args: BoxProps): JSX.Element => {
   return (
     <Box {...args}>
@@ -447,7 +451,7 @@ export const Responsive = (args: BoxProps): JSX.Element => {
 Responsive.args = {
   display: 'flex',
   padding: 'spacing.10',
-  flexDirection: { base: 'column', l: 'row' },
+  flexDirection: { base: 'column', m: 'row' },
 } as BoxProps;
 
 export default BoxStoryMeta;
