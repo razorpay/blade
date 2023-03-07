@@ -16,8 +16,9 @@ const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): JSX.Ele
 const ComponentWithUseStyledProps = styled(Text)<MyComponentWithStyledProps>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   return {
-    ...styledPropsCSSObject,
     display: 'flex',
+    marginLeft: '0px',
+    ...styledPropsCSSObject,
   };
 });
 

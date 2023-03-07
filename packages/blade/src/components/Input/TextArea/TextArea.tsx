@@ -117,7 +117,6 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
 
   return (
     <BaseInput
-      {...styledProps}
       as="textarea"
       id="textarea"
       componentName="textarea"
@@ -161,6 +160,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
           </BaseBox>
         ) : null;
       }}
+      {...styledProps}
     />
   );
 };

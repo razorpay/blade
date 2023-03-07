@@ -23,7 +23,6 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
       throw new Error(`[Blade: BaseText]: "as" prop is not supported for BaseText on React Native`);
     } else {
       return {
-        ...styledPropsCSSObject,
         ...getBaseTextStyles({
           color,
           fontFamily,
@@ -35,6 +34,7 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
           textAlign,
           theme: props.theme,
         }),
+        ...styledPropsCSSObject,
       };
     }
   },

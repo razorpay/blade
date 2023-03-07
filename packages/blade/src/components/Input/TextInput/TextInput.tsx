@@ -231,7 +231,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
   return (
     <BaseInput
-      {...styledProps}
       id="textinput"
       componentName="textinput"
       ref={textInputRef as React.Ref<HTMLInputElement>}
@@ -282,6 +281,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         keyboardReturnKeyType,
         autoCompleteSuggestionType,
       })}
+      {...styledProps}
     />
   );
 };

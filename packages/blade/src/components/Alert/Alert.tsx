@@ -290,13 +290,13 @@ const Alert = ({
 
   return (
     <StyledAlert
-      {...getStyledProps(styledProps)}
       intent={intent}
       contrastType={contrastType}
       isFullWidth={isFullWidth}
       isDesktop={isDesktop}
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
+      {...getStyledProps(styledProps)}
     >
       {icon}
       <BaseBox

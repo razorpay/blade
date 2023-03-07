@@ -81,10 +81,10 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
 const Code = ({ children, size = 'small', ...styledProps }: CodeProps): JSX.Element => {
   return (
     <CodeContainer
-      {...getStyledProps(styledProps)}
       size={size}
       as={isPlatformWeb ? 'span' : undefined}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Code)}
+      {...getStyledProps(styledProps)}
     >
       <BaseText
         color="surface.text.subtle.lowContrast"

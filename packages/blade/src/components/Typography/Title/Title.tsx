@@ -57,7 +57,7 @@ export const Title = ({
 }: TitleProps): ReactElement => {
   const props = getProps({ size, type, contrast });
   return (
-    <BaseText {...getStyledProps(styledProps)} {...props}>
+    <BaseText {...props} {...getStyledProps(styledProps)}>
       {children}
     </BaseText>
   );

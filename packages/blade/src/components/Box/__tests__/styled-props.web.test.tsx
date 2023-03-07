@@ -15,8 +15,10 @@ const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): JSX.Ele
 const ComponentWithUseStyledProps = styled.button<MyComponentWithStyledProps>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   return {
-    ...styledPropsCSSObject,
+    // should be overridden in tests
+    margin: '0px',
     display: 'inline-block',
+    ...styledPropsCSSObject,
   };
 });
 
@@ -52,8 +54,8 @@ describe('styled-props with useStyledProps', () => {
 
     expect(container).toMatchInlineSnapshot(`
       .c0 {
-        display: inline-block;
         margin: 0px 48px;
+        display: inline-block;
       }
 
       <div>
