@@ -1,6 +1,12 @@
 import type { ReactElement } from 'react';
 
-import { currencyPrefixMapping, horizontalPadding, verticalPadding } from './amountTokens';
+import {
+  currencyAbbreviationsMapping,
+  currencylocaleMapping,
+  currencyPrefixMapping,
+  horizontalPadding,
+  verticalPadding,
+} from './amountTokens';
 import BaseAmount, { getSuffixPrefixFontSize } from './BaseAmount';
 import { StyledAmount } from './StyledAmount';
 import { BaseText } from '~components/Typography/BaseText';
@@ -95,35 +101,39 @@ const getFlooredFixed = (value: number, precision: number): number => {
   return Number(roundedValue.toFixed(precision));
 };
 
-const addCommas = (num: number): string => {
-  return num.toLocaleString('en-IN');
+const addCommas = (num: number, currency: AmountProps['currency']): string => {
+  const locale = currencylocaleMapping[currency];
+  return num.toLocaleString(locale);
 };
 
-const getFormattedAmountWithSuffixSymbol = (num: number): string => {
-  const abbreviations = [
-    { value: 1e9, symbol: 'Cr' },
-    { value: 1e5, symbol: 'L' },
-    { value: 1e3, symbol: 'k' },
-  ];
+const getFormattedAmountWithSuffixSymbol = (
+  num: number,
+  currency: AmountProps['currency'],
+): string => {
+  const abbreviations: [{ value: number; symbol: string }] = currencyAbbreviationsMapping[currency];
 
   const abbreviation = abbreviations.find((abbr) => num >= abbr.value);
   if (abbreviation) {
     num = num / abbreviation.value;
     const formattedNum = Number(getFlooredFixed(num, 2));
-    return addCommas(formattedNum) + abbreviation.symbol;
+    return addCommas(formattedNum, currency) + abbreviation.symbol;
   } else {
     return num.toString();
   }
 };
 
-const formatAmountWithSuffix = (suffix: string, num: number): string => {
+const formatAmountWithSuffix = (
+  suffix: AmountProps['suffix'],
+  num: number,
+  currency: AmountProps['currency'],
+): string => {
   switch (suffix) {
     case suffixTypes.DECIMALS: {
       const decimalNum = getFlooredFixed(num, 2);
-      return addCommas(decimalNum);
+      return addCommas(decimalNum, currency);
     }
     case suffixTypes.HUMANIZE: {
-      return getFormattedAmountWithSuffixSymbol(num);
+      return getFormattedAmountWithSuffixSymbol(num, currency);
     }
     default:
       return String(getFlooredFixed(num, 2));
@@ -154,7 +164,7 @@ const Amount = ({
   }
 
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
-  const renderedValue = formatAmountWithSuffix(suffix, value);
+  const renderedValue = formatAmountWithSuffix(suffix, value, currency);
   const { textColor, prefixSuffixColor } = getColorProps({
     intent,
   });

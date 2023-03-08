@@ -27,7 +27,7 @@ const Page = (): React.ReactElement => {
         function App(): JSX.Element {
           const value = 21222.2;
           return (
-            <Amount variant="neutral" value={value} />  
+            <Amount intent="neutral" value={value} />  
           )
         }
 
@@ -66,7 +66,7 @@ const AmountDefaultTemplate: ComponentStory<typeof AmountComponent> = (args) => 
 export const Amount = AmountDefaultTemplate.bind({});
 Amount.args = {
   value: 122345.678,
-  variant: 'neutral',
+  intent: 'neutral',
   size: 'medium',
   suffix: 'decimals',
   isAffixSubtle: true,
@@ -123,14 +123,14 @@ AmountSizes.args = {
 AmountSizes.storyName = 'Sizes';
 
 const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
-  const variants = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+  const intents = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
 
   return (
     <Box width="100%" justifyContent="center">
-      {variants.map((variant) => (
-        <Box key={variant} alignItems="baseline" paddingRight="spacing.3" paddingTop="spacing.2">
-          <Text>{variant}</Text>
-          <AmountComponent {...args} variant={variant} />
+      {intents.map((intent) => (
+        <Box key={intent} alignItems="baseline" paddingRight="spacing.3" paddingTop="spacing.2">
+          <Text>{intent}</Text>
+          <AmountComponent {...args} intent={intent} />
         </Box>
       ))}
     </Box>

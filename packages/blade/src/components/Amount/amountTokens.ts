@@ -48,13 +48,31 @@ const amountTextSizes = {
 
 const currencyPrefixMapping = {
   INR: {
-    'currency-symbol': 'RM',
+    'currency-symbol': '₹',
     'currency-code': 'INR',
   },
   MYR: {
-    'currency-symbol': '₹',
+    'currency-symbol': 'RM',
     'currency-code': 'MYR',
   },
+};
+
+const currencylocaleMapping = {
+  INR: 'en-IN',
+  MYR: 'en-MY',
+};
+
+const currencyAbbreviationsMapping = {
+  INR: [
+    { value: 1e9, symbol: 'Cr' },
+    { value: 1e5, symbol: 'L' },
+    { value: 1e3, symbol: 'k' },
+  ],
+  MYR: [
+    { value: 1e9, symbol: 'B' },
+    { value: 1e6, symbol: 'M' },
+    { value: 1e3, symbol: 'K' },
+  ],
 };
 
 export {
@@ -64,4 +82,6 @@ export {
   amountTextSizes,
   prefixSuffixTextSizes,
   currencyPrefixMapping,
+  currencylocaleMapping,
+  currencyAbbreviationsMapping,
 };
