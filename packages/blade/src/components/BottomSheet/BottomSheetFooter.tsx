@@ -8,14 +8,16 @@ import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import type { WithComponentId } from '~utils';
-import { getComponentId } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
 
-const BottomSheetFooterContext = React.createContext({ hasLeading: false, hasTrailing: false });
-
 type BottomSheetFooterProps = {
-  children?: React.ReactNode;
+  title: string;
+  leading?: React.ReactNode;
+  trailing?: {
+    primary?: BottomSheetFooterAction;
+    secondary?: BottomSheetFooterAction;
+  };
 };
 
 type BottomSheetFooterAction = Pick<
@@ -58,12 +60,13 @@ type BottomSheetFooterTrailingProps = {
     primary?: BottomSheetFooterAction;
     secondary?: BottomSheetFooterAction;
   };
+  hasLeading: boolean;
 };
 
 const BottomSheetFooterTrailing: WithComponentId<BottomSheetFooterTrailingProps> = ({
   actions,
+  hasLeading,
 }) => {
-  const { hasLeading } = React.useContext(BottomSheetFooterContext);
   const { primary, secondary } = actions || {};
 
   return (
@@ -94,9 +97,11 @@ const BottomSheetFooterTrailing: WithComponentId<BottomSheetFooterTrailingProps>
 };
 BottomSheetFooterTrailing.componentId = ComponentIds.BottomSheetFooterTrailing;
 
-const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactElement => {
-  const hasLeading = React.useRef(false);
-  const hasTrailing = React.useRef(false);
+const BottomSheetFooter = ({
+  title,
+  leading,
+  trailing,
+}: BottomSheetFooterProps): React.ReactElement => {
   const { theme } = useTheme();
   const { setFooterHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
@@ -111,48 +116,33 @@ const BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEle
     });
   }, [ref, isOpen]);
 
-  React.useEffect(() => {
-    React.Children.forEach(children, (child) => {
-      const componentId = Boolean(child) && getComponentId(child)!;
-      if (componentId === ComponentIds.BottomSheetFooterLeading) {
-        hasLeading.current = true;
-      }
-      if (componentId === ComponentIds.BottomSheetFooterTrailing) {
-        hasTrailing.current = true;
-      }
-    });
-  }, [children]);
-
   return (
-    <BottomSheetFooterContext.Provider
-      value={{ hasLeading: hasLeading.current, hasTrailing: hasTrailing.current }}
+    <BaseBox
+      data-footer
+      ref={ref}
+      width="100%"
+      flexShrink={0}
+      marginTop="auto"
+      backgroundColor={theme.colors.surface.background.level2.lowContrast}
+      touchAction="none"
+      zIndex={2}
+      {...bind?.()}
     >
+      <Divider />
       <BaseBox
-        data-footer
-        ref={ref}
-        width="100%"
-        flexShrink={0}
-        marginTop="auto"
-        backgroundColor={theme.colors.surface.background.level2.lowContrast}
-        touchAction="none"
-        zIndex={2}
-        {...bind?.()}
+        marginLeft="spacing.6"
+        marginRight="spacing.6"
+        marginTop="spacing.5"
+        marginBottom="spacing.5"
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="stretch"
       >
-        <Divider />
-        <BaseBox
-          marginLeft="spacing.6"
-          marginRight="spacing.6"
-          marginTop="spacing.5"
-          marginBottom="spacing.5"
-          display="flex"
-          flexDirection="row"
-          justifyContent="space-between"
-          alignItems="stretch"
-        >
-          {children}
-        </BaseBox>
+        <BottomSheetFooterLeading title={title} prefix={leading} />
+        <BottomSheetFooterTrailing hasLeading={Boolean(leading)} actions={trailing} />
       </BaseBox>
-    </BottomSheetFooterContext.Provider>
+    </BaseBox>
   );
 };
 

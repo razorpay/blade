@@ -62,11 +62,15 @@ const BottomSheetHeaderTrailing: WithComponentId<BottomSheetHeaderTrailingProps>
 BottomSheetHeaderTrailing.componentId = ComponentIds.BottomSheetHeaderTrailing;
 
 type BottomSheetHeaderProps = {
-  children?: React.ReactNode;
+  title: string;
+  leading?: React.ReactNode;
+  trailing?: React.ReactNode;
 };
 
 const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
-  children,
+  leading,
+  trailing,
+  title,
 }): React.ReactElement => {
   const { setHeaderHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
@@ -91,7 +95,8 @@ const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
         touchAction="none"
         {...bind?.()}
       >
-        {children}
+        <BottomSheetHeaderLeading title={title} prefix={leading} />
+        <BottomSheetHeaderTrailing visual={trailing} />
       </BaseBox>
       <Divider />
     </BaseBox>
