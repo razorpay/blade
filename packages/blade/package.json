@@ -102,11 +102,9 @@
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",
-    "@gorhom/bottom-sheet": "^4",
     "@types/body-scroll-lock": "3.1.0",
     "@use-gesture/react": "10.2.24",
     "body-scroll-lock": "4.0.0-beta.0",
-    "react-native-gesture-handler": "^2.9.0",
     "use-presence": "1.1.0"
   },
   "devDependencies": {
@@ -191,7 +189,9 @@
     "rollup-plugin-peer-deps-external": "2.2.4",
     "style-dictionary": "3.7.1",
     "styled-components": "5.3.5",
-    "tsconfig-paths-webpack-plugin": "3.5.2"
+    "tsconfig-paths-webpack-plugin": "3.5.2",
+    "@gorhom/bottom-sheet": "4",
+    "react-native-gesture-handler": "2.9.0"
   },
   "peerDependencies": {
     "react": ">=17",
@@ -199,7 +199,8 @@
     "react-native": "^0.66.5",
     "react-native-reanimated": "^2.6.0",
     "react-native-svg": "^12.3.0",
-    "styled-components": "^5"
+    "styled-components": "^5",
+    "@gorhom/bottom-sheet": "^4"
   },
   "peerDependenciesMeta": {
     "react-native": {

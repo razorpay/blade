@@ -6,10 +6,6 @@
  */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-const { getDefaultConfig } = require('metro-config');
-const { resolver: defaultResolver } = getDefaultConfig.getDefaultValues();
-
-console.log('HELLO', defaultResolver.sourceExts);
 
 module.exports = {
   resetCache: true,
@@ -22,7 +18,6 @@ module.exports = {
     }),
   },
   resolver: {
-    resolverMainFields: ['sbmodern', 'browser', 'main'],
-    sourceExts: [...defaultResolver.sourceExts, 'cjs'],
+    resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
   },
 };
