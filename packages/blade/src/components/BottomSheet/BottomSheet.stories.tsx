@@ -4,16 +4,8 @@ import React from 'react';
 import type { BottomSheetProps } from './BottomSheet';
 import { BottomSheetBody, BottomSheet as BottomSheetComponent } from './BottomSheet';
 
-import {
-  BottomSheetFooter,
-  BottomSheetFooterLeading,
-  BottomSheetFooterTrailing,
-} from './BottomSheetFooter';
-import {
-  BottomSheetHeader,
-  BottomSheetHeaderLeading,
-  BottomSheetHeaderTrailing,
-} from './BottomSheetHeader';
+import { BottomSheetFooter } from './BottomSheetFooter';
+import { BottomSheetHeader } from './BottomSheetHeader';
 import {
   ArrowRightIcon,
   ClockIcon,
@@ -51,15 +43,20 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
     <BaseBox>
       <Button onClick={() => sheet?.current?.open?.()}>Open</Button>
       <BottomSheetComponent {...args} ref={sheet}>
-        <BottomSheetHeader>
-          <BottomSheetHeaderLeading
-            title="Select Account"
-            prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-          />
-          <BottomSheetHeaderTrailing
-            visual={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-          />
-        </BottomSheetHeader>
+        <BottomSheetHeader
+          title="Select Account"
+          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          trailing={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        {/* <BottomSheetBody>any content</BottomSheetBody>
+        <BottomSheetFooter
+          title="Footer Title"
+          leading={<ActionListFooterIcon icon={DocIcon} />}
+          trailing={{ //<- confirm if this BottomSheet Footer should be 2 buttons or anything else?
+            primary: { text: 'Apply' },
+            secondary: { text: 'Cancel' },
+          }}
+        /> */}
         <BottomSheetBody>
           <BaseBox>
             <ActionListSection title="Section Heading">
@@ -191,18 +188,15 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
             />
           </BaseBox>
         </BottomSheetBody>
-        <BottomSheetFooter>
-          <BottomSheetFooterLeading
-            title="Search Tips"
-            prefix={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
-          />
-          <BottomSheetFooterTrailing
-            actions={{
-              primary: { text: 'Apply' },
-              // secondary: { text: 'Cancel' },
-            }}
-          />
-        </BottomSheetFooter>
+        <BottomSheetFooter
+          title="Footer Title"
+          leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
+          trailing={{
+            // <- confirm if this BottomSheet Footer should be 2 buttons or anything else?
+            primary: { text: 'Apply' },
+            secondary: { text: 'Cancel' },
+          }}
+        />
       </BottomSheetComponent>
     </BaseBox>
   );
@@ -308,27 +302,24 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
         <SelectInput label="Single Select" />
         {isMobile ? (
           <BottomSheetComponent {...args}>
-            <BottomSheetHeader>
-              <BottomSheetHeaderLeading
-                title="Select Account"
-                prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-              />
-              <BottomSheetHeaderTrailing
-                visual={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-              />
-            </BottomSheetHeader>
+            <BottomSheetHeader
+              title="Select Account"
+              leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              trailing={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+            />
             <BottomSheetBody>
               <SingleSelectContent />
             </BottomSheetBody>
-            <BottomSheetFooter>
-              <BottomSheetFooterLeading title="Footer Title" />
-              <BottomSheetFooterTrailing
-                actions={{
-                  primary: { text: 'Confirm' },
-                  secondary: { text: 'Close' },
-                }}
-              />
-            </BottomSheetFooter>
+
+            <BottomSheetFooter
+              title="Footer Title"
+              leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
+              trailing={{
+                // <- confirm if this BottomSheet Footer should be 2 buttons or anything else?
+                primary: { text: 'Apply' },
+                secondary: { text: 'Cancel' },
+              }}
+            />
           </BottomSheetComponent>
         ) : (
           <DropdownOverlay>
@@ -345,27 +336,23 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
         <SelectInput label="Multi Select" />
         {isMobile ? (
           <BottomSheetComponent {...args}>
-            <BottomSheetHeader>
-              <BottomSheetHeaderLeading
-                title="Select Account"
-                prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-              />
-              <BottomSheetHeaderTrailing
-                visual={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-              />
-            </BottomSheetHeader>
+            <BottomSheetHeader
+              title="Select Account"
+              leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              trailing={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+            />
             <BottomSheetBody>
               <MultiSelectContent />
             </BottomSheetBody>
-            <BottomSheetFooter>
-              <BottomSheetFooterLeading title="Footer Title" />
-              <BottomSheetFooterTrailing
-                actions={{
-                  primary: { text: 'Confirm' },
-                  secondary: { text: 'Close' },
-                }}
-              />
-            </BottomSheetFooter>
+            <BottomSheetFooter
+              title="Footer Title"
+              leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
+              trailing={{
+                // <- confirm if this BottomSheet Footer should be 2 buttons or anything else?
+                primary: { text: 'Apply' },
+                secondary: { text: 'Cancel' },
+              }}
+            />
           </BottomSheetComponent>
         ) : (
           <DropdownOverlay>
