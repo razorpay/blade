@@ -74,10 +74,6 @@ function LayoutPrimitivesDocs(): JSX.Element {
         </ListItem>
 
         <ListItem>
-          <ScrollIntoViewLink href="#api-decisions">API Decisions</ScrollIntoViewLink>
-        </ListItem>
-
-        <ListItem>
           <ScrollIntoViewLink href="#questions-you-might-have">
             Questions You Might Have
           </ScrollIntoViewLink>

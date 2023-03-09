@@ -6,7 +6,7 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Text } from '~components/Typography';
 
 const BoxStoryMeta = {
-  title: 'Components/Box/BaseBox (Internal)',
+  title: 'Components/Layout Primitives (Box)/Box/BaseBox (Internal)',
   component: BaseBox,
   argTypes: getBaseBoxArgTypes(),
   parameters: {
