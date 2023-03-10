@@ -73,6 +73,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
 };
 
 const Button = React.forwardRef(_Button);
-Button.displayName = 'Button';
+/*#__PURE__*/ Object.assign(Button, { displayName: 'Button' });
 
 export default Button;

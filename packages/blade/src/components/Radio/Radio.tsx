@@ -116,6 +116,6 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
 };
 
 const Radio = React.forwardRef(_Radio);
-Radio.displayName = 'Radio';
+/*#__PURE__*/ Object.assign(Radio, { displayName: 'Radio' });
 
 export { Radio, RadioProps };

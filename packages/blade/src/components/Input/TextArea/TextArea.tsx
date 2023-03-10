@@ -163,6 +163,6 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
 };
 
 const TextArea = React.forwardRef(_TextArea);
-TextArea.displayName = 'TextArea';
+/*#__PURE__*/ Object.assign(TextArea, { displayName: 'TextArea' });
 
 export { TextArea, TextAreaProps };

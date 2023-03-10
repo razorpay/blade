@@ -16,7 +16,6 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
-import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import size from '~tokens/global/size';
 import type { StringChildrenType } from '~src/_helpers/types';
@@ -97,11 +96,11 @@ type ActionListSectionProps = {
    */
   _hideDivider?: boolean;
 };
-const ActionListSection: WithComponentId<ActionListSectionProps> = ({
+const ActionListSection = ({
   title,
   children,
   _hideDivider,
-}): JSX.Element => {
+}: ActionListSectionProps): JSX.Element => {
   return (
     <BaseBox
       {...makeAccessible({
@@ -130,9 +129,9 @@ const ActionListSection: WithComponentId<ActionListSectionProps> = ({
   );
 };
 
-ActionListSection.componentId = componentIds.ActionListSection;
+/*#__PURE__*/ Object.assign(ActionListSection, { componentId: componentIds.ActionListSection });
 
-const ActionListItemIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }): JSX.Element => {
+const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   const Icon = icon;
   const { intent, isDisabled } = React.useContext(ActionListItemContext);
   return (
@@ -147,9 +146,9 @@ const ActionListItemIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }):
   );
 };
 
-ActionListItemIcon.componentId = componentIds.ActionListItemIcon;
+/*#__PURE__*/ Object.assign(ActionListItemIcon, { componentId: componentIds.ActionListItemIcon });
 
-const ActionListItemText: WithComponentId<{ children: StringChildrenType }> = ({ children }) => {
+const ActionListItemText = ({ children }: { children: StringChildrenType }): JSX.Element => {
   const { isDisabled } = React.useContext(ActionListItemContext);
 
   return (
@@ -159,7 +158,7 @@ const ActionListItemText: WithComponentId<{ children: StringChildrenType }> = ({
   );
 };
 
-ActionListItemText.componentId = componentIds.ActionListItemText;
+/*#__PURE__*/ Object.assign(ActionListItemText, { componentId: componentIds.ActionListItemText });
 
 const ActionListCheckboxWrapper = styled(BaseBox)<{ hasDescription: boolean }>((_props) => ({
   pointerEvents: 'none',
@@ -199,7 +198,7 @@ const makeActionListItemClickable = (
  * </ActionList>
  * ```
  */
-const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Element => {
+const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const {
     activeIndex,
     dropdownBaseId,
@@ -332,7 +331,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
   );
 };
 
-ActionListItem.componentId = componentIds.ActionListItem;
+/*#__PURE__*/ Object.assign(ActionListItem, { componentId: componentIds.ActionListItem });
 
 export {
   ActionListItem,

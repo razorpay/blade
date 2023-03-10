@@ -85,6 +85,6 @@ const _SelectorInput: React.ForwardRefRenderFunction<
 };
 
 const SelectorInput = React.forwardRef(_SelectorInput);
-SelectorInput.displayName = 'SelectorInput';
+/*#__PURE__*/ Object.assign(SelectorInput, { displayName: 'SelectorInput' });
 
 export { SelectorInput };

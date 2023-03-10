@@ -284,6 +284,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 };
 
 const TextInput = React.forwardRef(_TextInput);
-TextInput.displayName = 'TextInput';
+
+/*#__PURE__*/ Object.assign(TextInput, { displayName: 'TextInput' });
 
 export { TextInput, TextInputProps };
