@@ -139,7 +139,7 @@ const Amount = ({
     throw new Error('[Blade: Amount]: Number as value is required for Amount.');
   }
 
-  // This will be added to prop and can be toggled to different currencies
+  // This will be added to prop and can be switched to a currency
   const currency = 'INR';
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
   const renderedValue = formatAmountWithSuffix(suffix, value, currency);
@@ -147,8 +147,8 @@ const Amount = ({
     intent,
   });
 
-  const ruppeColor = isAffixSubtle ? prefixSuffixColor : textColor;
-  const rupeeFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
+  const currencyColor = isAffixSubtle ? prefixSuffixColor : textColor;
+  const currencyFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
 
   return (
     <StyledAmount
@@ -164,7 +164,7 @@ const Amount = ({
       overflow="hidden"
     >
       <Box paddingRight={1}>
-        <BaseText fontWeight="bold" fontSize={rupeeFontSize} color={ruppeColor}>
+        <BaseText fontWeight="bold" fontSize={currencyFontSize} color={currencyColor}>
           {currencyPrefix}
         </BaseText>
       </Box>
