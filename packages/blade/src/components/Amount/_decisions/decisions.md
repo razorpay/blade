@@ -10,16 +10,14 @@ Amount component is a UI element that displays and formats various currency valu
 
 ## API
 
-| Prop          | Type                                            | Default           | Description                                                                                                                                                                                         | Required |
-| ------------- | ----------------------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| value         | `number`                                        | `undefined`       | The value to be rendered within the component                                                                                                                                                       | ✅       |
-| intent        | `positive`, `negative`, `notice`, `information` | `undefined`       | The intent of the amount to be rendered                                                                                                                                                             |
-| variant       | `title`, `body`, `heading`                      | `heading`         | The typography varaint of the component to be rendered                                                                                                                                              |          |
-| weight        | `bold`, `regular`                               | `bold`            | The weight of the amount to be rendered                                                                                                                                                             |
-| prefix        | `currency-symbol`, `currency-code`              | `currency-symbol` | The type of prefix to be shown                                                                                                                                                                      |          |
-| suffix        | `none`, `decimals` , `humanize`                 | `decimals`        | The type of suffix to be displayed with the currency value, (none, decimals, and humanize) that respectively indicate no suffix, the number of decimal places, and the scale of the currency value. |          |
-| size          | `large`, `medium`, `small`                      | `large`           | The size of the amount to be rendered                                                                                                                                                               |          |
-| isAffixSubtle | `true`, `false`                                 | `true`            | Makes the prefix symbol and decimal digits small and faded                                                                                                                                          |          |
+| Prop          | Type                                                                                           | Default           | Description                                                                                                                                                                                         | Required |
+| ------------- | ---------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| value         | `number`                                                                                       | `undefined`       | The value to be rendered within the component                                                                                                                                                       | ✅       |
+| intent        | `positive`, `negative`, `notice`, `information`                                                | `undefined`       | The intent of the amount to be rendered                                                                                                                                                             |
+| prefix        | `currency-symbol`, `currency-code`                                                             | `currency-symbol` | The type of prefix to be shown                                                                                                                                                                      |          |
+| suffix        | `none`, `decimals` , `humanize`                                                                | `decimals`        | The type of suffix to be displayed with the currency value, (none, decimals, and humanize) that respectively indicate no suffix, the number of decimal places, and the scale of the currency value. |          |
+| size          | `title-medium`, `title-small`, `heading-large` , `heading-small`, `body-medium` , `body-small` | `heading-small`   | The size of the amount to be rendered in sync with the title heading and body sizes                                                                                                                 |          |
+| isAffixSubtle | `true`, `false`                                                                                | `true`            | Makes the prefix symbol and decimal digits small and faded                                                                                                                                          |          |
 
 ### Sample Usage
 
@@ -28,12 +26,10 @@ import { Amount } from '@razorpay/components';
 
 <Amount
   suffix="decimals"
-  size="large"
+  size="title-medium"
   isAffixSubtle={true}
-  weight="regular"
   intent="information"
   prefix="currency-symbol"
-  variant="heading"
   value={1000}
 />;
 ```
@@ -45,7 +41,9 @@ import { Amount } from '@razorpay/components';
 - ~~Should we call it `variant` or `intent`, `isStyled` or something more apt?~~
 - ~~Should we separate the amount with commas based on the Indian currency format?~~
 - ~~What should be the default `intent`? Kept it as `default` for now, but `neutral` seems more apt.~~
-- We currently use amount value in paise in backend, so how should we convert it to rupee here?
+- ~~We currently use amount value in paise in backend, so how should we convert it to rupee here?~~
+- ~~We currently use amount value in paise in backend, so how should we convert it to rupee here?~~
+- ~~How do we sync the sizes with the different typography~~
 - ~~Scope of A11y?~~
 
 #### Design
@@ -53,6 +51,14 @@ import { Amount } from '@razorpay/components';
 - ~~Do we need to support more currency types?~~
 
 ## Discussions
+
+### Do we need to support more currency types?
+
+- We concluded to have 'INR' as a primary currency for now, and enable other currencies in further versions.
+
+### How do we sync the sizes with the different typography?
+
+- After consideration we finalized to use this format variant-fontSize-fontWeight. This will make sure that we are in sync with different typography and not come under impossible states.
 
 ### Should we call `isSuffixPrefixHighlighted` or `isHighlighted` or `isAffixSubtle`, considering when this value is true the value will be highligted and not the affix.
 
@@ -65,6 +71,7 @@ import { Amount } from '@razorpay/components';
 ### Should we call `weight` or `fontWeight`?
 
 - We decided to call it `weight` as this represents the weight of the amount component with the affix changing accordingly. This also follows the same convention as other components.
+- Eventually we removed this prop as size prop will give weight too
 
 ### Should we separate the amount with commas based on the Indian currency format?
 
