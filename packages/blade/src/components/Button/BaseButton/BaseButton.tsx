@@ -443,7 +443,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   );
 };
 
-const BaseButton = React.forwardRef(_BaseButton);
-/*#__PURE__*/ Object.assign(BaseButton, { displayName: 'BaseButton' });
+const BaseButton = /*#__PURE__*/ Object.assign(React.forwardRef(_BaseButton), {
+  displayName: 'BaseButton',
+});
 
 export default BaseButton;

@@ -96,7 +96,7 @@ type ActionListSectionProps = {
    */
   _hideDivider?: boolean;
 };
-const ActionListSection = ({
+const _ActionListSection = ({
   title,
   children,
   _hideDivider,
@@ -129,9 +129,11 @@ const ActionListSection = ({
   );
 };
 
-/*#__PURE__*/ Object.assign(ActionListSection, { componentId: componentIds.ActionListSection });
+const ActionListSection = /*#__PURE__*/ Object.assign(_ActionListSection, {
+  componentId: componentIds.ActionListSection,
+});
 
-const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   const Icon = icon;
   const { intent, isDisabled } = React.useContext(ActionListItemContext);
   return (
@@ -146,9 +148,11 @@ const ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
   );
 };
 
-/*#__PURE__*/ Object.assign(ActionListItemIcon, { componentId: componentIds.ActionListItemIcon });
+const ActionListItemIcon = /*#__PURE__*/ Object.assign(_ActionListItemIcon, {
+  componentId: componentIds.ActionListItemIcon,
+});
 
-const ActionListItemText = ({ children }: { children: StringChildrenType }): JSX.Element => {
+const _ActionListItemText = ({ children }: { children: StringChildrenType }): JSX.Element => {
   const { isDisabled } = React.useContext(ActionListItemContext);
 
   return (
@@ -158,7 +162,9 @@ const ActionListItemText = ({ children }: { children: StringChildrenType }): JSX
   );
 };
 
-/*#__PURE__*/ Object.assign(ActionListItemText, { componentId: componentIds.ActionListItemText });
+const ActionListItemText = /*#__PURE__*/ Object.assign(_ActionListItemText, {
+  componentId: componentIds.ActionListItemText,
+});
 
 const ActionListCheckboxWrapper = styled(BaseBox)<{ hasDescription: boolean }>((_props) => ({
   pointerEvents: 'none',
@@ -198,7 +204,7 @@ const makeActionListItemClickable = (
  * </ActionList>
  * ```
  */
-const ActionListItem = (props: ActionListItemProps): JSX.Element => {
+const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const {
     activeIndex,
     dropdownBaseId,
@@ -331,7 +337,9 @@ const ActionListItem = (props: ActionListItemProps): JSX.Element => {
   );
 };
 
-/*#__PURE__*/ Object.assign(ActionListItem, { componentId: componentIds.ActionListItem });
+const ActionListItem = /*#__PURE__*/ Object.assign(_ActionListItem, {
+  componentId: componentIds.ActionListItem,
+});
 
 export {
   ActionListItem,

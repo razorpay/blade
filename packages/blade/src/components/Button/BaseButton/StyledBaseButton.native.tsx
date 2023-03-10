@@ -101,7 +101,8 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
   );
 };
 
-const StyledBaseButton = React.forwardRef(_StyledBaseButton);
-/*#__PURE__*/ Object.assign(StyledBaseButton, { displayName: 'StyledBaseButton' });
+const StyledBaseButton = /*#__PURE__*/ Object.assign(React.forwardRef(_StyledBaseButton), {
+  displayName: 'StyledBaseButton',
+});
 
 export default StyledBaseButton;

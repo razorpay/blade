@@ -156,8 +156,9 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
   );
 };
 
-const PasswordInput = React.forwardRef(_PasswordInput);
 // nosemgrep
-/*#__PURE__*/ Object.assign(PasswordInput, { displayName: 'PasswordInput' });
+const PasswordInput = /*#__PURE__*/ Object.assign(React.forwardRef(_PasswordInput), {
+  displayName: 'PasswordInput',
+});
 
 export { PasswordInputProps, PasswordInput };

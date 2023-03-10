@@ -236,8 +236,8 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   );
 };
 
-const Checkbox = React.forwardRef(_Checkbox);
-
-/*#__PURE__*/ Object.assign(Checkbox, { displayName: 'Checkbox' });
+const Checkbox = /*#__PURE__*/ Object.assign(React.forwardRef(_Checkbox), {
+  displayName: 'Checkbox',
+});
 
 export { Checkbox, CheckboxProps };
