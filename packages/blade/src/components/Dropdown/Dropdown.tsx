@@ -42,7 +42,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
   children,
   selectionType = 'single',
 }): JSX.Element => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(true);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
     DropdownContextType['selectedIndices']
@@ -60,22 +60,24 @@ const Dropdown: WithComponentId<DropdownProps> = ({
 
   let dropdownTriggerer: DropdownContextType['dropdownTriggerer'];
 
-  React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      if (
-        !isValidAllowedChildren(child, 'SelectInput') &&
-        !isValidAllowedChildren(child, componentIds.DropdownOverlay)
-      ) {
-        throw new Error(
-          `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
-        );
-      }
+  React.useEffect(() => {
+    React.Children.map(children, (child) => {
+      if (React.isValidElement(child)) {
+        if (
+          !isValidAllowedChildren(child, 'SelectInput') &&
+          !isValidAllowedChildren(child, componentIds.DropdownOverlay)
+        ) {
+          throw new Error(
+            `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
+          );
+        }
 
-      if (isValidAllowedChildren(child, 'SelectInput')) {
-        dropdownTriggerer = 'SelectInput';
+        if (isValidAllowedChildren(child, 'SelectInput')) {
+          dropdownTriggerer = 'SelectInput';
+        }
       }
-    }
-  });
+    });
+  }, [children]);
 
   const contextValue = React.useMemo<DropdownContextType>(
     () => ({

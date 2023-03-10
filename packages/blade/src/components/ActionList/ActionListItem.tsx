@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import styled from 'styled-components';
 import { StyledActionListItem } from './styles/StyledActionListItem';
@@ -20,6 +21,7 @@ import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import size from '~tokens/global/size';
 import type { StringChildrenType } from '~src/_helpers/types';
+import type { DropdownProps } from '~components/Dropdown';
 
 type ActionListItemProps = {
   title: string;
@@ -181,6 +183,144 @@ const makeActionListItemClickable = (
   };
 };
 
+const ActionListItemDescription = ({
+  leading,
+  selectionType,
+  isDisabled,
+  description,
+}: Pick<ActionListItemProps, 'leading' | 'description' | 'isDisabled'> & {
+  selectionType: 'single' | 'multiple';
+}): React.ReactElement => {
+  return (
+    <BaseBox paddingLeft={leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
+      {description ? (
+        <Text color={getNormalTextColor(isDisabled, { isMuted: true })} size="small">
+          {description}
+        </Text>
+      ) : null}
+    </BaseBox>
+  );
+};
+
+const _ActionListItemLeading = ({
+  selectionType,
+  isSelected,
+  description,
+  isDisabled,
+  leading,
+}: Pick<ActionListItemProps, 'description' | 'isDisabled' | 'leading'> & {
+  selectionType: DropdownProps['selectionType'];
+  isSelected?: boolean;
+}): React.ReactElement => {
+  return (
+    <BaseBox display="flex" justifyContent="center" alignItems="center">
+      {selectionType === 'multiple' ? (
+        // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+        <ActionListCheckboxWrapper
+          hasDescription={Boolean(description)}
+          {...makeAccessible({
+            hidden: true,
+          })}
+        >
+          <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
+            {/* 
+              Checkbox requires children. Didn't want to make it optional because its helpful for consumers
+              But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
+            */}
+            {null}
+          </Checkbox>
+        </ActionListCheckboxWrapper>
+      ) : (
+        leading
+      )}
+    </BaseBox>
+  );
+};
+const ActionListItemLeading = React.memo(_ActionListItemLeading);
+
+const _ActionListItemTitle = ({
+  selectionType,
+  intent,
+  leading,
+  isDisabled,
+  title,
+}: Pick<ActionListItemProps, 'intent' | 'isDisabled' | 'leading' | 'title'> &
+  Pick<DropdownProps, 'selectionType'>): React.ReactElement => {
+  // console.log('rerender _ActionListItemTitle');
+  return (
+    <BaseBox
+      paddingLeft={selectionType === 'multiple' || !leading ? 'spacing.0' : 'spacing.3'}
+      paddingRight="spacing.3"
+    >
+      <Text
+        truncateAfterLines={1}
+        color={
+          intent === 'negative'
+            ? 'feedback.text.negative.lowContrast'
+            : getNormalTextColor(isDisabled)
+        }
+      >
+        {title}
+      </Text>
+    </BaseBox>
+  );
+};
+
+const ActionListItemTitle = React.memo(_ActionListItemTitle);
+
+const _ActionListItemBody = ({
+  selectionType,
+  intent,
+  description,
+  isDisabled,
+  leading,
+  trailing,
+  title,
+  isSelected,
+}: Pick<
+  ActionListItemProps,
+  'intent' | 'isDisabled' | 'description' | 'trailing' | 'leading' | 'title'
+> & {
+  selectionType: DropdownProps['selectionType'];
+  isSelected?: boolean;
+}): React.ReactElement => {
+  return (
+    <>
+      <BaseBox
+        display="flex"
+        justifyContent="center"
+        flexDirection="row"
+        alignItems="center"
+        maxHeight={isReactNative() ? undefined : size[20]}
+      >
+        <ActionListItemLeading
+          selectionType={selectionType}
+          description={description}
+          isSelected={isSelected}
+          isDisabled={isDisabled}
+          leading={leading}
+        />
+        <ActionListItemTitle
+          selectionType={selectionType}
+          intent={intent}
+          leading={leading}
+          isDisabled={isDisabled}
+          title={title}
+        />
+        <BaseBox marginLeft="auto">{trailing}</BaseBox>
+      </BaseBox>
+      <ActionListItemDescription
+        description={description}
+        isDisabled={isDisabled}
+        leading={leading}
+        selectionType="multiple"
+      />
+    </>
+  );
+};
+
+const ActionListItemBody = React.memo(_ActionListItemBody);
+
 /**
  * ### ActionListItem
  *
@@ -199,7 +339,7 @@ const makeActionListItemClickable = (
  * </ActionList>
  * ```
  */
-const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Element => {
+const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const {
     activeIndex,
     dropdownBaseId,
@@ -232,6 +372,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     }
   }, [props.intent, dropdownTriggerer]);
 
+  console.log('item', props._index);
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
       <StyledActionListItem
@@ -273,65 +414,23 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
         isSelected={isSelected}
         isKeydownPressed={isKeydownPressed}
       >
-        <BaseBox
-          display="flex"
-          justifyContent="center"
-          flexDirection="row"
-          alignItems="center"
-          maxHeight={isReactNative() ? undefined : size[20]}
-        >
-          <BaseBox display="flex" justifyContent="center" alignItems="center">
-            {selectionType === 'multiple' ? (
-              // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-              <ActionListCheckboxWrapper
-                hasDescription={Boolean(props.description)}
-                {...makeAccessible({
-                  hidden: true,
-                })}
-              >
-                <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={props.isDisabled}>
-                  {/* 
-                      Checkbox requires children. Didn't want to make it optional because its helpful for consumers
-                      But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
-                    */}
-                  {null}
-                </Checkbox>
-              </ActionListCheckboxWrapper>
-            ) : (
-              props.leading
-            )}
-          </BaseBox>
-          <BaseBox
-            paddingLeft={selectionType === 'multiple' || !props.leading ? 'spacing.0' : 'spacing.3'}
-            paddingRight="spacing.3"
-          >
-            <Text
-              truncateAfterLines={1}
-              color={
-                props.intent === 'negative'
-                  ? 'feedback.text.negative.lowContrast'
-                  : getNormalTextColor(props.isDisabled)
-              }
-            >
-              {props.title}
-            </Text>
-          </BaseBox>
-          <BaseBox marginLeft="auto">{props.trailing}</BaseBox>
-        </BaseBox>
-        <BaseBox
-          paddingLeft={props.leading || selectionType === 'multiple' ? 'spacing.7' : undefined}
-        >
-          {props.description ? (
-            <Text color={getNormalTextColor(props.isDisabled, { isMuted: true })} size="small">
-              {props.description}
-            </Text>
-          ) : null}
-        </BaseBox>
+        <ActionListItemBody
+          selectionType={selectionType}
+          intent={props.intent}
+          description={props.description}
+          isDisabled={props.isDisabled}
+          leading={props.leading}
+          trailing={props.trailing}
+          title={props.title}
+          isSelected={isSelected}
+        />
       </StyledActionListItem>
     </ActionListItemContext.Provider>
   );
 };
 
+const ActionListItem = React.memo(_ActionListItem);
+// @ts-expect-error
 ActionListItem.componentId = componentIds.ActionListItem;
 
 export {
