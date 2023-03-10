@@ -183,91 +183,6 @@ const makeActionListItemClickable = (
   };
 };
 
-const ActionListItemDescription = ({
-  leading,
-  selectionType,
-  isDisabled,
-  description,
-}: Pick<ActionListItemProps, 'leading' | 'description' | 'isDisabled'> & {
-  selectionType: 'single' | 'multiple';
-}): React.ReactElement => {
-  return (
-    <BaseBox paddingLeft={leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
-      {description ? (
-        <Text color={getNormalTextColor(isDisabled, { isMuted: true })} size="small">
-          {description}
-        </Text>
-      ) : null}
-    </BaseBox>
-  );
-};
-
-const _ActionListItemLeading = ({
-  selectionType,
-  isSelected,
-  description,
-  isDisabled,
-  leading,
-}: Pick<ActionListItemProps, 'description' | 'isDisabled' | 'leading'> & {
-  selectionType: DropdownProps['selectionType'];
-  isSelected?: boolean;
-}): React.ReactElement => {
-  return (
-    <BaseBox display="flex" justifyContent="center" alignItems="center">
-      {selectionType === 'multiple' ? (
-        // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-        <ActionListCheckboxWrapper
-          hasDescription={Boolean(description)}
-          {...makeAccessible({
-            hidden: true,
-          })}
-        >
-          <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
-            {/* 
-              Checkbox requires children. Didn't want to make it optional because its helpful for consumers
-              But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
-            */}
-            {null}
-          </Checkbox>
-        </ActionListCheckboxWrapper>
-      ) : (
-        leading
-      )}
-    </BaseBox>
-  );
-};
-const ActionListItemLeading = React.memo(_ActionListItemLeading);
-
-const _ActionListItemTitle = ({
-  selectionType,
-  intent,
-  leading,
-  isDisabled,
-  title,
-}: Pick<ActionListItemProps, 'intent' | 'isDisabled' | 'leading' | 'title'> &
-  Pick<DropdownProps, 'selectionType'>): React.ReactElement => {
-  // console.log('rerender _ActionListItemTitle');
-  return (
-    <BaseBox
-      paddingLeft={selectionType === 'multiple' || !leading ? 'spacing.0' : 'spacing.3'}
-      paddingRight="spacing.3"
-    >
-      <Text
-        truncateAfterLines={1}
-        color={
-          intent === 'negative'
-            ? 'feedback.text.negative.lowContrast'
-            : getNormalTextColor(isDisabled)
-        }
-      >
-        {title}
-      </Text>
-    </BaseBox>
-  );
-};
-
-const ActionListItemTitle = React.memo(_ActionListItemTitle);
-
 const _ActionListItemBody = ({
   selectionType,
   intent,
@@ -293,28 +208,51 @@ const _ActionListItemBody = ({
         alignItems="center"
         maxHeight={isReactNative() ? undefined : size[20]}
       >
-        <ActionListItemLeading
-          selectionType={selectionType}
-          description={description}
-          isSelected={isSelected}
-          isDisabled={isDisabled}
-          leading={leading}
-        />
-        <ActionListItemTitle
-          selectionType={selectionType}
-          intent={intent}
-          leading={leading}
-          isDisabled={isDisabled}
-          title={title}
-        />
+        <BaseBox display="flex" justifyContent="center" alignItems="center">
+          {selectionType === 'multiple' ? (
+            // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
+            <ActionListCheckboxWrapper
+              hasDescription={Boolean(description)}
+              {...makeAccessible({
+                hidden: true,
+              })}
+            >
+              <Checkbox isChecked={isSelected} tabIndex={-1} isDisabled={isDisabled}>
+                {/* 
+                      Checkbox requires children. Didn't want to make it optional because its helpful for consumers
+                      But for this case in particular, we just want to use Text separately so that we can control spacing and color and keep it consistent with non-multiselect dropdowns
+                    */}
+                {null}
+              </Checkbox>
+            </ActionListCheckboxWrapper>
+          ) : (
+            leading
+          )}
+        </BaseBox>
+        <BaseBox
+          paddingLeft={selectionType === 'multiple' || !leading ? 'spacing.0' : 'spacing.3'}
+          paddingRight="spacing.3"
+        >
+          <Text
+            truncateAfterLines={1}
+            color={
+              intent === 'negative'
+                ? 'feedback.text.negative.lowContrast'
+                : getNormalTextColor(isDisabled)
+            }
+          >
+            {title}
+          </Text>
+        </BaseBox>
         <BaseBox marginLeft="auto">{trailing}</BaseBox>
       </BaseBox>
-      <ActionListItemDescription
-        description={description}
-        isDisabled={isDisabled}
-        leading={leading}
-        selectionType="multiple"
-      />
+      <BaseBox paddingLeft={leading || selectionType === 'multiple' ? 'spacing.7' : undefined}>
+        {description ? (
+          <Text color={getNormalTextColor(isDisabled, { isMuted: true })} size="small">
+            {description}
+          </Text>
+        ) : null}
+      </BaseBox>
     </>
   );
 };

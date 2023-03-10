@@ -797,4 +797,62 @@ WithMultipleDropdowns.args = {
   name: 'design-system',
 };
 
+export const APerf = (): React.ReactElement => {
+  const fruites = [
+    'Apple',
+    'Apricot',
+    'Avocado',
+    'Banana',
+    'Blackberry',
+    'Blueberry',
+    'Cherry',
+    'Coconut',
+    'Cucumber',
+    'Durian',
+    'Dragonfruit',
+    'Fig',
+    'Gooseberry',
+    'Grape',
+    'Guava',
+    'Jackfruit',
+    'Plum',
+    'Kiwifruit',
+    'Kumquat',
+    'Lemon',
+    'Lime',
+    'Mango',
+    'Watermelon',
+    'Mulberry',
+    'Orange',
+    'Papaya',
+    'Passionfruit',
+    'Peach',
+    'Pear',
+    'Persimmon',
+    'Pineapple',
+    'Pineberry',
+    'Quince',
+    'Raspberry',
+    'Soursop',
+    'Star fruit',
+    'Strawberry',
+    'Tamarind',
+    'Yuzu',
+  ];
+  console.log(fruites.length);
+
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Select fruits" />
+      <DropdownOverlay>
+        <ActionList>
+          {fruites.map((fruit) => {
+            return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+          })}
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
 export default DropdownStoryMeta;
