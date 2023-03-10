@@ -1,8 +1,5 @@
-import styled from 'styled-components/native';
-import type { StyledAmountProps } from './types';
+import { View } from 'react-native';
 
-const StyledAmount = styled.View<StyledAmountProps>(() => ({
-  alignSelf: 'center',
-}));
+const StyledAmount = View;
 
 export { StyledAmount };

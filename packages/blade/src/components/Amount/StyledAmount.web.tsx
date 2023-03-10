@@ -1,8 +1,5 @@
-import styled from 'styled-components';
-import type { StyledAmountProps } from './types';
+import Box from '~components/Box';
 
-const StyledAmount = styled.div<StyledAmountProps>(() => ({
-  width: 'fit-content',
-}));
+const StyledAmount = Box;
 
 export { StyledAmount };

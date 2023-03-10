@@ -67,10 +67,9 @@ export const Amount = AmountDefaultTemplate.bind({});
 Amount.args = {
   value: 122345.678,
   intent: 'neutral',
-  size: 'medium',
+  size: 'title-medium',
   suffix: 'decimals',
   isAffixSubtle: true,
-  weight: 'bold',
 };
 Amount.storyName = 'Default';
 
@@ -80,32 +79,32 @@ const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }
       <Box marginBottom="spacing.3">
         <Text>Small</Text>
         <Box marginBottom="spacing.2" />
-        <AmountComponent {...args} size="small" />
+        <AmountComponent {...args} size="body-small" />
       </Box>
       <Box marginBottom="spacing.3">
         <Text>Medium</Text>
         <Box marginBottom="spacing.2" />
-        <AmountComponent {...args} size="medium" />
+        <AmountComponent {...args} size="body-medium" />
       </Box>
       <Box marginBottom="spacing.3">
         <Text>Large</Text>
         <Box marginBottom="spacing.2" />
-        <AmountComponent {...args} size="large" />
+        <AmountComponent {...args} size="heading-small" />
       </Box>
       <Box marginBottom="spacing.3">
         <Text>Extra Large</Text>
         <Box marginBottom="spacing.2" />
-        <AmountComponent {...args} size="xlarge" />
+        <AmountComponent {...args} size="heading-large" />
       </Box>
       <Box marginBottom="spacing.3">
         <Text>Extra Large</Text>
         <Box marginBottom="spacing.2" />
-        <AmountComponent {...args} size="2xlarge" />
+        <AmountComponent {...args} size="title-small" />
       </Box>
       <Box marginBottom="spacing.3">
         <Text>Extra Large</Text>
         <Box marginBottom="spacing.2" />
-        <AmountComponent {...args} size="3xlarge" />
+        <AmountComponent {...args} size="title-medium" />
       </Box>
     </Box>
   );
@@ -113,7 +112,7 @@ const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }
 
 const defaultArgs: AmountProps = {
   value: 123456.789,
-  size: 'xlarge',
+  size: 'title-medium',
 };
 
 export const AmountSizes: ComponentStory<typeof AmountComponent> = AmountSizesTemplate.bind({});
@@ -140,7 +139,6 @@ const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
 export const RegularWeight = AmountTemplate.bind({});
 RegularWeight.args = {
   ...defaultArgs,
-  weight: 'regular',
 };
 RegularWeight.storyName = 'Regular Weight';
 

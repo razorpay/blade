@@ -7,7 +7,7 @@ import {
   horizontalPadding,
   verticalPadding,
 } from './amountTokens';
-import BaseAmount, { getSuffixPrefixFontSize } from './BaseAmount';
+import AmountValue, { getSuffixPrefixFontSize } from './AmountValue';
 import { StyledAmount } from './StyledAmount';
 import { BaseText } from '~components/Typography/BaseText';
 import type { Feedback } from '~tokens/theme/theme';
@@ -20,6 +20,8 @@ export const suffixTypes = {
   DECIMALS: 'decimals',
   NONE: 'none',
 };
+
+type currencyType = 'INR' | 'MYR';
 
 type AmountProps = {
   /**
@@ -38,19 +40,13 @@ type AmountProps = {
    *
    * @default 'heading'
    */
-  variant?: `heading` | `title` | `body`;
-  /**
-   * Sets the size of the amount.
-   *
-   * @default 'low'
-   */
-  size?: `large` | `medium` | `small`;
-  /**
-   * Sets the weight of the label.
-   *
-   * @default 'regular'
-   */
-  weight?: 'regular' | 'bold';
+  size?:
+    | `title-medium`
+    | `title-small`
+    | `heading-large`
+    | `heading-small`
+    | `body-medium`
+    | `body-small`;
   /**
    * Indicates whether a text suffix should be used
    *
@@ -69,12 +65,6 @@ type AmountProps = {
    * @default 'currency-symbol'
    */
   prefix?: 'currency-symbol' | 'currency-code';
-  /**
-   * Currency to be used
-   *
-   * @default 'INR'
-   */
-  currency?: 'INR' | 'MYR';
 };
 
 type ColorProps = {
@@ -101,16 +91,13 @@ const getFlooredFixed = (value: number, precision: number): number => {
   return Number(roundedValue.toFixed(precision));
 };
 
-const addCommas = (num: number, currency: AmountProps['currency']): string => {
+const addCommas = (num: number, currency: currencyType): string => {
   const locale = currencylocaleMapping[currency];
   return num.toLocaleString(locale);
 };
 
-const getFormattedAmountWithSuffixSymbol = (
-  num: number,
-  currency: AmountProps['currency'],
-): string => {
-  const abbreviations: [{ value: number; symbol: string }] = currencyAbbreviationsMapping[currency];
+const getFormattedAmountWithSuffixSymbol = (num: number, currency: currencyType): string => {
+  const abbreviations: { value: number; symbol: string }[] = currencyAbbreviationsMapping[currency];
 
   const abbreviation = abbreviations.find((abbr) => num >= abbr.value);
   if (abbreviation) {
@@ -125,7 +112,7 @@ const getFormattedAmountWithSuffixSymbol = (
 const formatAmountWithSuffix = (
   suffix: AmountProps['suffix'],
   num: number,
-  currency: AmountProps['currency'],
+  currency: currencyType,
 ): string => {
   switch (suffix) {
     case suffixTypes.DECIMALS: {
@@ -140,21 +127,10 @@ const formatAmountWithSuffix = (
   }
 };
 
-const getRupeeweight = (
-  isAffixSubtle: true | false,
-  weight: 'regular' | 'bold',
-): 'regular' | 'bold' => {
-  if (!isAffixSubtle && weight === 'regular') return 'regular';
-  return 'bold';
-};
-
 const Amount = ({
   value,
-  currency = 'INR',
   suffix = 'decimals',
-  variant = 'heading',
-  weight = 'regular',
-  size = 'medium',
+  size = 'heading-small',
   isAffixSubtle = true,
   intent = 'neutral',
   prefix = 'currency-symbol',
@@ -163,40 +139,43 @@ const Amount = ({
     throw new Error('[Blade: Amount]: Number as value is required for Amount.');
   }
 
+  // This will be added to prop and can be toggled to different currencies
+  const currency = 'INR';
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
   const renderedValue = formatAmountWithSuffix(suffix, value, currency);
   const { textColor, prefixSuffixColor } = getColorProps({
     intent,
   });
-  const rupeeweight = getRupeeweight(isAffixSubtle, weight);
+
+  const ruppeColor = isAffixSubtle ? prefixSuffixColor : textColor;
   const rupeeFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
 
   return (
-    <StyledAmount {...metaAttribute(MetaConstants.Component, MetaConstants.Amount)}>
-      <Box
-        paddingRight={horizontalPadding[size]}
-        paddingLeft={horizontalPadding[size]}
-        paddingTop={verticalPadding[size]}
-        paddingBottom={verticalPadding[size]}
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="baseline"
-        overflow="hidden"
-      >
-        <BaseText fontWeight={rupeeweight} fontSize={rupeeFontSize} color={prefixSuffixColor}>
+    <StyledAmount
+      {...metaAttribute(MetaConstants.Component, MetaConstants.Amount)}
+      paddingRight={horizontalPadding[size]}
+      paddingLeft={horizontalPadding[size]}
+      paddingTop={verticalPadding[size]}
+      paddingBottom={verticalPadding[size]}
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      alignItems="baseline"
+      overflow="hidden"
+    >
+      <Box paddingRight={1}>
+        <BaseText fontWeight="bold" fontSize={rupeeFontSize} color={ruppeColor}>
           {currencyPrefix}
         </BaseText>
-        <BaseAmount
-          value={renderedValue}
-          weight={weight}
-          textColor={textColor}
-          size={size}
-          isAffixSubtle={isAffixSubtle}
-          suffix={suffix}
-          prefixSuffixColor={prefixSuffixColor}
-        />
       </Box>
+      <AmountValue
+        value={renderedValue}
+        textColor={textColor}
+        size={size}
+        isAffixSubtle={isAffixSubtle}
+        suffix={suffix}
+        prefixSuffixColor={prefixSuffixColor}
+      />
     </StyledAmount>
   );
 };

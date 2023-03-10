@@ -5,6 +5,7 @@ import type { BaseTextProps } from '../Typography/BaseText/types';
 import { amountTextSizes, prefixSuffixTextSizes } from './amountTokens';
 import type { AmountProps } from './Amount';
 import { suffixTypes } from './Amount';
+import Box from '~components/Box';
 import { BaseText } from '~components/Typography/BaseText';
 
 const getDecimalFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' => {
@@ -20,21 +21,20 @@ export const getSuffixPrefixFontSize = (
   return amountTextSizes[size];
 };
 
-interface BaseAmount extends Omit<AmountProps, 'value'> {
+interface AmountValue extends Omit<AmountProps, 'value'> {
   prefixSuffixColor: BaseTextProps['color'];
   textColor: BaseTextProps['color'];
   value: string;
 }
 
-const BaseAmount = ({
+const AmountValue = ({
   value,
-  size = 'medium',
-  weight = 'regular',
+  size = 'heading-small',
   textColor,
   isAffixSubtle = true,
   suffix = 'decimals',
   prefixSuffixColor,
-}: BaseAmount): ReactElement => {
+}: AmountValue): ReactElement => {
   if (suffix === suffixTypes.DECIMALS && isAffixSubtle) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
@@ -42,9 +42,11 @@ const BaseAmount = ({
     const affixFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
     return (
       <>
-        <BaseText fontSize={amountTextSizes[size]} fontWeight={weight} color={textColor}>
-          {integer}.
-        </BaseText>
+        <Box paddingRight={1}>
+          <BaseText fontSize={amountTextSizes[size]} fontWeight="bold" color={textColor}>
+            {integer}.
+          </BaseText>
+        </Box>
         <BaseText fontWeight={affixFontWeight} fontSize={affixFontSize} color={prefixSuffixColor}>
           {decimal}
         </BaseText>
@@ -52,10 +54,10 @@ const BaseAmount = ({
     );
   }
   return (
-    <BaseText fontSize={amountTextSizes[size]} fontWeight={weight} color={textColor}>
+    <BaseText fontSize={amountTextSizes[size]} fontWeight="bold" color={textColor}>
       {value}
     </BaseText>
   );
 };
 
-export default BaseAmount;
+export default AmountValue;
