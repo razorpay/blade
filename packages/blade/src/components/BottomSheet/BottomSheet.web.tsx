@@ -13,17 +13,13 @@ import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
+import { BottomSheetProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSpace } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
-
-type BottomSheetProps = {
-  children: React.ReactNode;
-  snapPoints: SnapPoints;
-};
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 

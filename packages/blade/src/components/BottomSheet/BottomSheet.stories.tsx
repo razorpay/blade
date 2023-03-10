@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import type { BottomSheetProps } from './BottomSheet';
+import type { BottomSheetProps } from './types';
 import { BottomSheetBody, BottomSheet as BottomSheetComponent } from './BottomSheet';
 
 import { BottomSheetFooter } from './BottomSheetFooter';
@@ -37,28 +37,28 @@ export default {
 } as Meta<BottomSheetProps>;
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  const sheet = React.useRef<any>();
+  // const sheet = React.useRef<any>();
+  const [open, setOpen] = React.useState(false);
 
   return (
     <BaseBox>
-      <Button onClick={() => sheet?.current?.open?.()}>Open</Button>
-      <BottomSheetComponent {...args} ref={sheet}>
+      <Button
+        onClick={() => {
+          setOpen((prev) => {
+            return !prev;
+          });
+        }}
+      >
+        {open ? 'Open yes' : 'Open noe'}
+      </Button>
+      <BottomSheetComponent isOpen={open} onClose={() => setOpen(false)} {...args}>
         <BottomSheetHeader
           title="Select Account"
           leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
           trailing={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
-        {/* <BottomSheetBody>any content</BottomSheetBody>
-        <BottomSheetFooter
-          title="Footer Title"
-          leading={<ActionListFooterIcon icon={DocIcon} />}
-          trailing={{ //<- confirm if this BottomSheet Footer should be 2 buttons or anything else?
-            primary: { text: 'Apply' },
-            secondary: { text: 'Cancel' },
-          }}
-        /> */}
         <BottomSheetBody>
-          <BaseBox>
+          <ActionList>
             <ActionListSection title="Section Heading">
               <ActionListItem
                 leading={<ActionListItemIcon icon={UserIcon} />}
@@ -186,7 +186,7 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
               title="Done"
               value="done"
             />
-          </BaseBox>
+          </ActionList>
         </BottomSheetBody>
         <BottomSheetFooter
           title="Footer Title"
@@ -277,6 +277,8 @@ const MultiSelectContent = (): React.ReactElement => {
     'Tamarind',
     'Yuzu',
   ];
+  console.log(fruites.length);
+
   return (
     <ActionList>
       {fruites.map((fruit) => {
@@ -303,7 +305,7 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
         {isMobile ? (
           <BottomSheetComponent {...args}>
             <BottomSheetHeader
-              title="Select Account"
+              title="Single Select"
               leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
               trailing={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
@@ -337,7 +339,7 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
         {isMobile ? (
           <BottomSheetComponent {...args}>
             <BottomSheetHeader
-              title="Select Account"
+              title="Multi Select"
               leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
               trailing={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
@@ -367,3 +369,20 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
 export const WithSelect = BottomSheetWithSelectTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 WithSelect.storyName = 'WithSelect';
+
+export const AOnlyActionList = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput
+        label="Select Action"
+        onChange={({ name, values }) => {
+          console.log(name, values);
+        }}
+      />
+      <DropdownOverlay>
+        <MultiSelectContent />
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+AOnlyActionList.storyName = 'AOnlyActionList';

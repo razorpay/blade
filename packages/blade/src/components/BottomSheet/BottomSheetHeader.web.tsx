@@ -1,14 +1,13 @@
-import styled from 'styled-components';
 import React from 'react';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheetContext';
+import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import type { WithComponentId } from '~utils';
-import { makeSpace } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
 type BottomSheetHeaderLeadingProps = {
@@ -103,28 +102,6 @@ const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
   );
 };
 BottomSheetHeader.componentId = ComponentIds.BottomSheetHeader;
-
-const BottomSheetGrabHandle = styled.div(({ theme }) => {
-  return {
-    flexShrink: 0,
-    paddingTop: makeSpace(theme.spacing[5]),
-    touchAction: 'none',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ':after': {
-      margin: 'auto',
-      content: "''",
-      // TODO: refactor to size tokens
-      width: makeSpace(60),
-      height: makeSpace(4),
-      backgroundColor: theme.colors.brand.gray.a100.lowContrast,
-      // TODO: we do not have 16px radius token
-      borderRadius: makeSpace(theme.spacing[5]),
-    },
-  };
-});
 
 export {
   BottomSheetGrabHandle,

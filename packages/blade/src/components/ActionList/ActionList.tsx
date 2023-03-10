@@ -103,7 +103,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     <StyledActionList
       isInBottomSheet={isInBottomSheet}
       surfaceLevel={surfaceLevel}
-      elevation={theme.shadows.androidElevation.level[2]}
+      elevation={isInBottomSheet ? undefined : theme.shadows.androidElevation.level[2]}
       id={`${dropdownBaseId}-actionlist`}
       {...makeAccessible({
         role: actionListContainerRole,

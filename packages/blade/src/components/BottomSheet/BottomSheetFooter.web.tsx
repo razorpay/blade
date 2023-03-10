@@ -11,7 +11,7 @@ import type { WithComponentId } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
 
-type BottomSheetFooterProps = {
+export type BottomSheetFooterProps = {
   title: string;
   leading?: React.ReactNode;
   trailing?: {
