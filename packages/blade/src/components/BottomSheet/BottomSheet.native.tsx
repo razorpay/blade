@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import GorhomBottomSheet, {
@@ -8,7 +9,7 @@ import GorhomBottomSheet, {
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
-import { Platform } from 'react-native';
+import { AccessibilityInfo, findNodeHandle, Platform } from 'react-native';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody.native';
 import type { BottomSheetProps } from './types';
@@ -48,14 +49,23 @@ const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
   };
 });
 
+const focusOnElement = (element: React.Component<any, any>): void => {
+  const reactTag = findNodeHandle(element);
+  if (reactTag) {
+    AccessibilityInfo.setAccessibilityFocus(reactTag);
+  }
+};
+
 const BottomSheet: WithComponentId<BottomSheetProps> = ({
   children,
   snapPoints = [0.35, 0.5, 0.85],
   isOpen,
-  onClose,
+  onDismiss,
+  initialFocusRef,
 }) => {
   const { theme } = useTheme();
   const dropdownBottomSheetProps = useDropdownBottomSheetContext();
+  const defaultInitialFocusRef = React.useRef<any>(null);
   const sheetRef = React.useRef<GorhomBottomSheet>(null);
   const header = React.useRef<React.ReactNode>();
   const footer = React.useRef<React.ReactNode>();
@@ -72,7 +82,8 @@ const BottomSheet: WithComponentId<BottomSheetProps> = ({
     console.log(dropdownBottomSheetProps);
     // close the select dropdown as well
     dropdownBottomSheetProps?.setIsOpen(false);
-  }, [dropdownBottomSheetProps]);
+    onDismiss?.();
+  }, [dropdownBottomSheetProps, onDismiss]);
 
   const open = React.useCallback(() => {
     setIsOpen(true);
@@ -82,11 +93,18 @@ const BottomSheet: WithComponentId<BottomSheetProps> = ({
   React.useEffect(() => {
     if (isOpen === true) {
       open();
+      if (!initialFocusRef) {
+        // focus on close button
+        focusOnElement(defaultInitialFocusRef.current);
+      } else {
+        // focus on the initialRef
+        focusOnElement(initialFocusRef.current);
+      }
     }
     if (isOpen === false) {
       close();
     }
-  }, [close, isOpen, open]);
+  }, [close, initialFocusRef, isOpen, open]);
 
   React.useEffect(() => {
     React.Children.forEach(children, (child) => {
@@ -153,6 +171,7 @@ const BottomSheet: WithComponentId<BottomSheetProps> = ({
       setHeaderHeight: () => {},
       scrollRef: () => {},
       bind: {} as never,
+      defaultInitialFocusRef,
     }),
     [_isOpen, close],
   );
@@ -178,9 +197,7 @@ const BottomSheet: WithComponentId<BottomSheetProps> = ({
             backgroundComponent={BottomSheetSurface}
             footerComponent={renderFooter}
             backdropComponent={renderBackdrop}
-            onClose={() => {
-              onClose();
-            }}
+            onClose={close}
             snapPoints={_snapPoints}
           >
             <BottomSheetScrollView stickyHeaderIndices={[0]}>

@@ -11,7 +11,9 @@ import './storybook.requires';
 import { name as appName } from '../../app.json';
 
 const App = (): React.ReactElement => {
-  const Storybook = getStorybookUI({});
+  const Storybook = getStorybookUI({
+    shouldPersistSelection: true,
+  });
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

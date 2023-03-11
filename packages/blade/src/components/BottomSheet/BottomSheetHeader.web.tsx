@@ -39,7 +39,7 @@ type BottomSheetHeaderTrailingProps = {
 };
 
 const BottomSheetHeaderTrailing: WithComponentId<BottomSheetHeaderTrailingProps> = ({ visual }) => {
-  const { close } = useBottomSheetContext();
+  const { close, defaultInitialFocusRef } = useBottomSheetContext();
 
   return (
     <BaseBox display="flex" flexDirection="row" alignItems="center">
@@ -48,6 +48,7 @@ const BottomSheetHeaderTrailing: WithComponentId<BottomSheetHeaderTrailingProps>
       </BaseBox>
       <BaseBox>
         <IconButton
+          ref={defaultInitialFocusRef}
           onClick={() => {
             close();
           }}

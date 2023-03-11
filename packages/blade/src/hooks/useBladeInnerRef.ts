@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { TextInput as TextInputReactNative, View } from 'react-native';
+import type { Platform } from '~utils';
+import { isReactNative } from '~utils';
 
-type BladeElementRef = Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View, 'focus'>;
+type BladeElementRef = Platform.Select<{
+  web: Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View, 'focus'>;
+  native: React.MutableRefObject<any>;
+}>;
 
 /**
  * A hook which only exposes the properties of html input element via imparative hook
@@ -23,6 +29,8 @@ const useBladeInnerRef = (
     targetRef,
     (): BladeElementRef => {
       const element = innerRef.current;
+      // @ts-expect-error in react-native we expose the ref so that we can do findNodeHandle()
+      if (isReactNative()) return innerRef.current;
       if (element instanceof HTMLElement) {
         return {
           focus: (opts) => (handlers?.onFocus ? handlers.onFocus(opts) : element.focus(opts)),

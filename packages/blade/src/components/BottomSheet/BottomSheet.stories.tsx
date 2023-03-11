@@ -36,8 +36,7 @@ export default {
   component: BottomSheetComponent,
 } as Meta<BottomSheetProps>;
 
-const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  // const sheet = React.useRef<any>();
+const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -51,7 +50,7 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
       >
         {open ? 'Open yes' : 'Open noe'}
       </Button>
-      <BottomSheetComponent isOpen={open} onClose={() => setOpen(false)} {...args}>
+      <BottomSheetComponent isOpen={open} onDismiss={() => setOpen(false)}>
         <BottomSheetHeader
           title="Select Account"
           leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
