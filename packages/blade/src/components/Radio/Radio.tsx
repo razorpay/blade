@@ -10,9 +10,9 @@ import BaseBox from '~components/Box/BaseBox';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import { getPlatformType } from '~utils';
+import { getPlatformType, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import type { StringChildrenType } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 type RadioProps = {
   /**
@@ -40,10 +40,10 @@ type RadioProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-};
+} & TestID;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
-  { value, children, helpText, isDisabled, size = 'medium' },
+  { value, children, helpText, isDisabled, size = 'medium', testID },
   ref,
 ) => {
   const groupProps = useRadioGroupContext();
@@ -85,7 +85,11 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   });
 
   return (
-    <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
+    <SelectorLabel
+      inputProps={isReactNative ? inputProps : {}}
+      componentName={MetaConstants.Radio}
+      testID={testID}
+    >
       <BaseBox display="flex" flexDirection="column">
         <BaseBox display="flex" alignItems="center" flexDirection="row">
           <SelectorInput

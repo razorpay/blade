@@ -24,7 +24,10 @@ const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((pro
  *
  * Wrap your ActionList within this component
  */
-const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): JSX.Element => {
+const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({
+  children,
+  testID,
+}): JSX.Element => {
   const { isOpen, setIsOpen } = useDropdown();
 
   return (
@@ -41,7 +44,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
           position="absolute"
           width="100%"
           testID="dropdown-overlay"
-          {...metaAttribute(MetaConstants.Component, MetaConstants.DropdownOverlay)}
+          {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
         >
           {children}
         </StyledDropdownOverlay>

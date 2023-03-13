@@ -50,4 +50,12 @@ describe('<Indicator />', () => {
 
     await assertAccessible(indicator);
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <Indicator accessibilityLabel="Success" testID="indicator-test" />,
+    );
+
+    expect(getByTestId('indicator-test')).toBeTruthy();
+  });
 });

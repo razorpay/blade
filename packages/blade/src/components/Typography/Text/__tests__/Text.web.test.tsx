@@ -69,4 +69,10 @@ describe('<Text />', () => {
       ),
     ).toThrow(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
   });
+
+  it('should accept testID', () => {
+    const displayText = 'Displaying some text';
+    const { getByTestId } = renderWithTheme(<Text testID="text-test">{displayText}</Text>);
+    expect(getByTestId('text-test')).toBeTruthy();
+  });
 });

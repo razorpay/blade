@@ -74,4 +74,12 @@ describe('<BaseText />', () => {
       }
     }
   });
+
+  it('should accept testID', () => {
+    const displayText = 'Displaying some text';
+    const { getByTestId } = renderWithTheme(
+      <BaseText testID="base-text-test">{displayText}</BaseText>,
+    );
+    expect(getByTestId('base-text-test')).toBeTruthy();
+  });
 });
