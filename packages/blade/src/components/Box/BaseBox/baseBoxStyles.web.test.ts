@@ -6,9 +6,9 @@ import {
   shouldAddBreakpoint,
   getAllMediaQueries,
   getAllProps,
-} from './getBaseBoxStyles';
+} from './baseBoxStyles';
 import type { BaseBoxProps } from './types';
-import { removeUndefinedValues } from './getBaseBoxStyles.test';
+import { removeUndefinedValues } from './baseBoxStyles.test';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme/paymentLightTheme';
 import type { Theme } from '~components/BladeProvider';
 

@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import styled from 'styled-components/native';
-import { getBaseBoxStyles } from './getBaseBoxStyles';
+import { getBaseBoxStyles } from './baseBoxStyles';
 import type { BaseBoxProps } from './types';
 
 /**

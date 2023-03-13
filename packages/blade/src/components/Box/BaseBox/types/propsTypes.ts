@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components';
-import type { MarginProps, PaddingProps, SpacingValueType } from './spacing.types';
-import type { MakeObjectResponsive } from './responsive.types';
+import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
+import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';

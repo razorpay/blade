@@ -1,3 +1,3 @@
-export type { BaseBoxProps } from './props.types';
-export type { ArrayOfMaxLength4, SpacingValueType } from './spacing.types';
-export type { MakeValueResponsive } from './responsive.types';
+export type { BaseBoxProps } from './propsTypes';
+export type { ArrayOfMaxLength4, SpacingValueType } from './spacingTypes';
+export type { MakeValueResponsive } from './responsiveTypes';
