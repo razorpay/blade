@@ -95,6 +95,23 @@ describe('<OTPInput />', () => {
     expect(onOTPFilled).toHaveBeenLastCalledWith({ name: 'otp', value: otp });
   });
 
+  it('should handle onFocus', () => {
+    const label = 'Enter OTP';
+    const onFocus = jest.fn();
+    const user = userEvent.setup();
+    const otp = '123456';
+
+    const { getAllByLabelText } = renderWithTheme(
+      <OTPInput label={label} name="otp" onFocus={onFocus} />,
+    );
+
+    const allInputs = getAllByLabelText(/character/);
+    allInputs.forEach(async (input, index) => {
+      await user.type(input, otp[index]);
+      expect(onFocus).toHaveBeenCalledWith({ value: '', inputIndex: Number(index) + 1 });
+    });
+  });
+
   it('should set value as an uncontrolled input', async () => {
     const user = userEvent.setup();
     const label = 'Enter OTP';
