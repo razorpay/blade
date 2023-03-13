@@ -1,24 +1,3 @@
-import type { AmountProps } from './Amount';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-
-const verticalPadding: Record<NonNullable<AmountProps['size']>, DotNotationSpacingStringToken> = {
-  'body-small': 'spacing.0',
-  'body-medium': 'spacing.1',
-  'heading-small': 'spacing.2',
-  'heading-large': 'spacing.2',
-  'title-small': 'spacing.2',
-  'title-medium': 'spacing.2',
-} as const;
-
-const horizontalPadding: Record<NonNullable<AmountProps['size']>, DotNotationSpacingStringToken> = {
-  'body-small': 'spacing.3',
-  'body-medium': 'spacing.3',
-  'heading-small': 'spacing.4',
-  'heading-large': 'spacing.2',
-  'title-small': 'spacing.2',
-  'title-medium': 'spacing.2',
-} as const;
-
 const prefixSuffixTextSizes = {
   'body-small': 50,
   'body-medium': 50,
@@ -67,8 +46,6 @@ const currencyAbbreviationsMapping = {
 };
 
 export {
-  verticalPadding,
-  horizontalPadding,
   amountTextSizes,
   prefixSuffixTextSizes,
   currencyPrefixMapping,

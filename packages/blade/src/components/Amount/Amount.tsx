@@ -4,8 +4,6 @@ import {
   currencyAbbreviationsMapping,
   currencylocaleMapping,
   currencyPrefixMapping,
-  horizontalPadding,
-  verticalPadding,
 } from './amountTokens';
 import AmountValue, { getSuffixPrefixFontSize } from './AmountValue';
 import { StyledAmount } from './StyledAmount';
@@ -153,10 +151,8 @@ const Amount = ({
   return (
     <StyledAmount
       {...metaAttribute(MetaConstants.Component, MetaConstants.Amount)}
-      paddingRight={horizontalPadding[size]}
-      paddingLeft={horizontalPadding[size]}
-      paddingTop={verticalPadding[size]}
-      paddingBottom={verticalPadding[size]}
+      paddingRight="spacing.2"
+      paddingLeft="spacing.2"
       display="flex"
       flexDirection="row"
       justifyContent="center"
