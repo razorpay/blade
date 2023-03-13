@@ -60,6 +60,7 @@ type PasswordInputProps = Pick<
   | 'value'
   | 'onChange'
   | 'onBlur'
+  | 'onSubmit'
   | 'onFocus'
   | 'name'
   | 'autoFocus'
@@ -87,6 +88,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
     onChange,
     onFocus,
     onBlur,
+    onSubmit,
     name,
     autoFocus = false,
     keyboardReturnKeyType = 'done',
@@ -146,6 +148,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       value={value}
       onChange={onChange}
       onBlur={onBlur}
+      onSubmit={onSubmit}
       onFocus={onFocus}
       name={name}
       // eslint-disable-next-line jsx-a11y/no-autofocus

@@ -26,6 +26,7 @@ type TextAreaProps = Pick<
   | 'onChange'
   | 'onFocus'
   | 'onBlur'
+  | 'onSubmit'
   | 'value'
   | 'isDisabled'
   | 'isRequired'
@@ -65,6 +66,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     onChange,
     onFocus,
     onBlur,
+    onSubmit,
     placeholder,
     value,
     maxCharacters,
@@ -151,6 +153,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       }}
       onFocus={onFocus}
       onBlur={onBlur}
+      onSubmit={onSubmit}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
           <BaseBox marginTop="spacing.2" marginRight="spacing.1">
