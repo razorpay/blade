@@ -13,6 +13,7 @@ const ListItemLink = ({
   onClick,
   rel,
   target,
+  testID,
 }: ListItemLinkProps): React.ReactElement => {
   const { size } = useListContext();
 
@@ -27,6 +28,7 @@ const ListItemLink = ({
       iconPosition={iconPosition}
       onClick={onClick}
       accessibilityLabel={accessibilityLabel}
+      testID={testID}
     />
   );
 };

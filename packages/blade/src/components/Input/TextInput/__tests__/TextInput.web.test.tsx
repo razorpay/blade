@@ -458,4 +458,12 @@ describe('<TextInput />', () => {
     await userEvent.click(button);
     expect(input).toHaveFocus();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <TextInput label="Enter name" testID="text-input-test-id" />,
+    );
+
+    expect(getByTestId('text-input-test-id')).toBeTruthy();
+  });
 });

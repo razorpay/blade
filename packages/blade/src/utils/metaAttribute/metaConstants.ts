@@ -30,4 +30,5 @@ export const MetaConstants = {
   CardBody: 'card-body',
   CardHeader: 'card-header',
   CardFooter: 'card-footer',
+  VisuallyHidden: 'visually-hidden',
 } as const;

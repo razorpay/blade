@@ -14,7 +14,7 @@ import {
   metaAttribute,
   MetaConstants,
 } from '~utils';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
 
 type ListCommonProps = {
   /**
@@ -34,7 +34,7 @@ type ListCommonProps = {
    * @default 'medium'
    */
   size?: 'small' | 'medium';
-};
+} & TestID;
 
 type ListWithIconProps = ListCommonProps & {
   variant?: 'unordered';
@@ -78,7 +78,13 @@ const StyledUnorderedList = styled(UnorderedList)<{ marginTop?: DotNotationSpaci
  *  <List />
  * ```
  */
-const List = ({ variant = 'unordered', size, children, icon }: ListProps): React.ReactElement => {
+const List = ({
+  variant = 'unordered',
+  size,
+  children,
+  icon,
+  testID,
+}: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? StyledUnorderedList : StyledOrderedList;
   const { level, size: listContextSize } = useListContext();
   const listContextValue = useMemo(
@@ -104,7 +110,7 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
     <ListProvider value={listContextValue}>
       <ListElement
         marginTop={level ? undefined : 'spacing.3'}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.List)}
+        {...metaAttribute({ name: MetaConstants.List, testID })}
         {...makeAccessible({ role: 'list' })} // Role needed for react-native
       >
         {variant === 'unordered'

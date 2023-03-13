@@ -197,4 +197,10 @@ describe('<OTPInput />', () => {
     await assertAccessible(allInputs[2]);
     await assertAccessible(allInputs[3]);
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<OTPInput label="Enter OTP" testID="otp-input-test" />);
+
+    expect(getByTestId('otp-input-test')).toBeTruthy();
+  });
 });

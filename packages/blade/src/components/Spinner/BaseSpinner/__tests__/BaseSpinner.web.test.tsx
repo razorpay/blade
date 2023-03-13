@@ -139,4 +139,11 @@ describe('<BaseSpinner />', () => {
     const { container } = renderWithTheme(<BaseSpinner accessibilityLabel="Loading" />);
     await assertAccessible(container);
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <BaseSpinner accessibilityLabel="Loading" testID="base-spinner-test" />,
+    );
+    expect(getByTestId('base-spinner-test')).toBeTruthy();
+  });
 });

@@ -347,4 +347,12 @@ describe('<TextArea />', () => {
     await userEvent.click(button);
     expect(input).toHaveFocus();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <TextArea label="Enter name" testID="text-area-test-id" />,
+    );
+
+    expect(getByTestId('text-area-test-id')).toBeTruthy();
+  });
 });

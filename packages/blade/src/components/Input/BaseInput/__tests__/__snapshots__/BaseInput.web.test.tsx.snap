@@ -285,6 +285,7 @@ exports[`<BaseInput /> should render 1`] = `
               </p>
               <div
                 class="c5"
+                data-blade-component="visually-hidden"
               >
                 <p
                   class="c6 Text__StyledText-wkh56f-0"
@@ -647,6 +648,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               </p>
               <div
                 class="c5"
+                data-blade-component="visually-hidden"
               >
                 <p
                   class="c6 Text__StyledText-wkh56f-0"

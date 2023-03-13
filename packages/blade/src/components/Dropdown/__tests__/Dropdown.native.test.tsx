@@ -139,4 +139,36 @@ describe('<Dropdown />', () => {
     fireEvent.press(getByText('Apply'));
     expect(applyClickHandler).toBeCalled();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <Dropdown>
+        <SelectInput label="Fruits" testID="select-test" />
+        <DropdownOverlay testID="dropdown-overlay-test">
+          <ActionList testID="action-list-test">
+            <ActionListHeader
+              title="Recent Searches"
+              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
+              testID="action-list-header-test"
+            />
+            <ActionListItem title="Apple" value="apple" testID="action-list-item-test" />
+            <ActionListItem title="Mango" value="mango" />
+            <ActionListFooter
+              title="Search Tips"
+              leading={<ActionListFooterIcon icon={SearchIcon} />}
+              trailing={<Button>Apply</Button>}
+              testID="action-list-footer-test"
+            />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(getByTestId('select-test')).toBeTruthy();
+    expect(getByTestId('dropdown-overlay-test')).toBeTruthy();
+    expect(getByTestId('action-list-test')).toBeTruthy();
+    expect(getByTestId('action-list-header-test')).toBeTruthy();
+    expect(getByTestId('action-list-item-test')).toBeTruthy();
+    expect(getByTestId('action-list-footer-test')).toBeTruthy();
+  });
 });

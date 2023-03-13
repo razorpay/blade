@@ -193,4 +193,12 @@ describe('<Checkbox />', () => {
     await userEvents.click(button);
     expect(input).toHaveFocus();
   });
+
+  it('should accept testID', () => {
+    const labelText = 'Remember password';
+    const { getByTestId } = renderWithTheme(
+      <Checkbox testID="checkbox-test">{labelText}</Checkbox>,
+    );
+    expect(getByTestId('checkbox-test')).toBeTruthy();
+  });
 });
