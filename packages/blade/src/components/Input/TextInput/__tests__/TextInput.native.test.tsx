@@ -439,4 +439,12 @@ describe('<TextInput />', () => {
     renderWithTheme(<Example />);
     expect(refValue).toHaveProperty('focus');
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <TextInput label="Enter name" testID="text-input-test-id" />,
+    );
+
+    expect(getByTestId('text-input-test-id')).toBeTruthy();
+  });
 });

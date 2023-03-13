@@ -41,6 +41,7 @@ type TextInputProps = Pick<
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
   | 'autoCapitalize'
+  | 'testID'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -195,6 +196,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     keyboardReturnKeyType,
     autoCompleteSuggestionType,
     autoCapitalize,
+    testID,
   },
   ref,
 ): ReactElement => {
@@ -286,6 +288,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       }}
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocus}
+      testID={testID}
       {...getKeyboardAndAutocompleteProps({
         type,
         keyboardReturnKeyType,

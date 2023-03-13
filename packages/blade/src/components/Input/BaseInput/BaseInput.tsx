@@ -16,13 +16,7 @@ import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import type { AriaAttributes } from '~utils';
 
-import {
-  metaAttribute,
-  getPlatformType,
-  makeAccessible,
-  useBreakpoint,
-  MetaConstants,
-} from '~utils';
+import { metaAttribute, getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~src/hooks/useInteraction';
@@ -30,6 +24,7 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
+import type { TestID } from '~src/_helpers/types';
 
 export type BaseInputProps = FormInputLabelProps &
   FormInputValidationProps & {
@@ -238,7 +233,7 @@ export type BaseInputProps = FormInputLabelProps &
      * sets the autocapitalize behavior for the input
      */
     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
-  };
+  } & TestID;
 
 const autoCompleteSuggestionTypeValues = [
   'none',
@@ -508,6 +503,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       isPopupExpanded,
       shouldIgnoreBlurAnimation,
       autoCapitalize,
+      testID,
     },
     ref,
   ) => {
@@ -572,7 +568,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
     return (
-      <BaseBox {...metaAttribute(MetaConstants.Component, componentName!)}>
+      <BaseBox {...metaAttribute({ name: componentName, testID })}>
         <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}

@@ -56,4 +56,10 @@ describe('<Title />', () => {
     expect(getByText('Displaying Landing Screen Title')).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('should accept testID', () => {
+    const displayText = 'Displaying Landing Screen Title';
+    const { getByTestId } = renderWithTheme(<Title testID="title-test">{displayText}</Title>);
+    expect(getByTestId('title-test')).toBeTruthy();
+  });
 });

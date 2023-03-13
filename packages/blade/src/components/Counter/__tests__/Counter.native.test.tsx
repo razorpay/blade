@@ -76,4 +76,9 @@ describe('<Counter />', () => {
     const { toJSON } = renderWithTheme(<Counter intent="neutral" contrast="high" value={20} />);
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<Counter value={20} testID="counter-test" />);
+    expect(getByTestId('counter-test')).toBeTruthy();
+  });
 });

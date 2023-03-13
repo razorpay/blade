@@ -137,4 +137,10 @@ describe('<Button />', () => {
     renderWithTheme(<Example />);
     expect(refValue).toHaveProperty('focus');
   });
+
+  it('should accept testID', () => {
+    const buttonText = 'Pay Now';
+    const { getByTestId } = renderWithTheme(<Button testID="button-test">{buttonText}</Button>);
+    expect(getByTestId('button-test')).toBeTruthy();
+  });
 });

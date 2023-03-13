@@ -259,4 +259,15 @@ describe('<Card />', () => {
     );
     await assertAccessible(container);
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <Card surfaceLevel={2} testID="card-test">
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+      </Card>,
+    );
+    expect(getByTestId('card-test')).toBeTruthy();
+  });
 });

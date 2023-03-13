@@ -7,6 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import type { TestID } from '~src/_helpers/types';
 
 type CheckboxGroupProps = {
   /**
@@ -78,7 +79,7 @@ type CheckboxGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-};
+} & TestID;
 
 const CheckboxGroup = ({
   children,
@@ -94,6 +95,7 @@ const CheckboxGroup = ({
   onChange,
   value,
   size = 'medium',
+  testID,
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
     defaultValue,
@@ -120,6 +122,7 @@ const CheckboxGroup = ({
         position={labelPosition}
         labelledBy={ids.labelId}
         componentName="checkbox-group"
+        testID={testID}
       >
         <FormLabel
           as="span"

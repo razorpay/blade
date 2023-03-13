@@ -6,6 +6,7 @@ import type { BaseTextProps } from '../BaseText/types';
 import type { Theme } from '~components/BladeProvider';
 import { getPlatformType } from '~utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
+import type { TestID } from '~src/_helpers/types';
 
 type TextCommonProps = {
   type?: TextTypes;
@@ -17,7 +18,8 @@ type TextCommonProps = {
    * **For Internal use only**:  Sets the color of the Text component
    */
   color?: BaseTextProps['color'];
-};
+  textAlign?: BaseTextProps['textAlign'];
+} & TestID;
 
 export type TextVariant = 'body' | 'caption';
 
@@ -55,11 +57,12 @@ const getTextProps = <T extends { variant: TextVariant }>({
   weight,
   size,
   contrast,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'size' | 'contrast'>): Omit<
-  BaseTextProps,
-  'children'
-> &
-  TextForwardedAs => {
+  testID,
+  textAlign,
+}: Pick<
+  TextProps<T>,
+  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'testID' | 'textAlign'
+>): Omit<BaseTextProps, 'children'> & TextForwardedAs => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
@@ -71,6 +74,8 @@ const getTextProps = <T extends { variant: TextVariant }>({
     fontFamily: 'text',
     forwardedAs: isPlatformWeb ? 'p' : undefined,
     componentName: 'text',
+    testID,
+    textAlign,
   };
 
   if (variant === 'body') {
@@ -122,10 +127,12 @@ const Text = <T extends { variant: TextVariant }>({
   truncateAfterLines,
   children,
   color,
+  testID,
+  textAlign,
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
-    ...getTextProps({ variant, type, weight, size, contrast }),
+    ...getTextProps({ variant, type, weight, size, contrast, testID, textAlign }),
     ...(color ? { color } : {}),
   };
   return <StyledText {...props}>{children}</StyledText>;

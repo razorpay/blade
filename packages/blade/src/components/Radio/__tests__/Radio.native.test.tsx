@@ -85,4 +85,16 @@ describe('<Radio />', () => {
     renderWithTheme(<Example />);
     expect(refValue).toBeNull();
   });
+
+  it('should accept testID', () => {
+    const labelText = 'Select fruit';
+    const { getByTestId } = renderWithTheme(
+      <RadioGroup label={labelText}>
+        <Radio value="apple" testID="radio-test">
+          Apple
+        </Radio>
+      </RadioGroup>,
+    );
+    expect(getByTestId('radio-test')).toBeTruthy();
+  });
 });

@@ -233,6 +233,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           </p>
           <div
             class="c4"
+            data-blade-component="visually-hidden"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -261,6 +262,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         >
           <label
             class="c6"
+            data-blade-component="radio"
           >
             <div
               class="c0"
@@ -309,6 +311,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         >
           <label
             class="c6"
+            data-blade-component="radio"
           >
             <div
               class="c0"
@@ -357,6 +360,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         >
           <label
             class="c6"
+            data-blade-component="radio"
           >
             <div
               class="c0"
@@ -639,6 +643,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
           </p>
           <div
             class="c4"
+            data-blade-component="visually-hidden"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -665,6 +670,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
         >
           <label
             class="c6"
+            data-blade-component="radio"
           >
             <div
               class="c0"
@@ -713,6 +719,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
         >
           <label
             class="c6"
+            data-blade-component="radio"
           >
             <div
               class="c0"
@@ -761,6 +768,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
         >
           <label
             class="c6"
+            data-blade-component="radio"
           >
             <div
               class="c0"

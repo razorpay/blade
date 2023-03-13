@@ -7,6 +7,7 @@ import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getPlatformType, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import type { TestID } from '~src/_helpers/types';
 
 type RadioGroupProps = {
   /**
@@ -78,7 +79,7 @@ type RadioGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-};
+} & TestID;
 
 const RadioGroup = ({
   children,
@@ -94,6 +95,7 @@ const RadioGroup = ({
   onChange,
   value,
   size = 'medium',
+  testID,
 }: RadioGroupProps): React.ReactElement => {
   const { contextValue, ids } = useRadioGroup({
     defaultValue,
@@ -122,6 +124,7 @@ const RadioGroup = ({
         labelledBy={ids.labelId}
         accessibilityRole={isReactNative ? 'radiogroup' : 'group'}
         componentName="radio-group"
+        testID={testID}
       >
         <FormLabel
           as="span"

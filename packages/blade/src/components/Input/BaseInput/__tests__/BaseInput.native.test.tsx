@@ -223,4 +223,12 @@ describe('<BaseInput />', () => {
 
     expect(input).toHaveProp('autoCapitalize', 'none');
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <BaseInput id="name" label="Enter name" testID="base-input-test" />,
+    );
+
+    expect(getByTestId('base-input-test')).toBeTruthy();
+  });
 });
