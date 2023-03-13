@@ -88,13 +88,13 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={200}
         fontWeight="regular"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
@@ -237,13 +237,13 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={200}
         fontWeight="regular"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
@@ -386,17 +386,17 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -506,13 +506,13 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={100}
         fontWeight="regular"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 15,
               "fontStyle": "normal",
@@ -655,13 +655,13 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={100}
         fontWeight="bold"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 15,
               "fontStyle": "normal",
@@ -804,13 +804,13 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={75}
         fontWeight="regular"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
@@ -953,13 +953,13 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={75}
         fontWeight="bold"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
@@ -1102,13 +1102,13 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={400}
         fontWeight="regular"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 20,
               "fontStyle": "normal",
@@ -1251,13 +1251,13 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={400}
         fontWeight="bold"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 20,
               "fontStyle": "normal",
@@ -1400,13 +1400,13 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={200}
         fontWeight="regular"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
@@ -1549,13 +1549,13 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={200}
         fontWeight="bold"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
@@ -1849,7 +1849,7 @@ exports[`<Amount /> should render information variant Amount  2`] = `
       <Text
         color="feedback.text.information.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -1857,7 +1857,7 @@ exports[`<Amount /> should render information variant Amount  2`] = `
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1969,7 +1969,7 @@ exports[`<Amount /> should render information variant Amount  3`] = `
       <Text
         color="feedback.text.information.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -1977,7 +1977,7 @@ exports[`<Amount /> should render information variant Amount  3`] = `
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2087,13 +2087,13 @@ exports[`<Amount /> should render medium size Amount 1`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={700}
         fontWeight="regular"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 24,
               "fontStyle": "normal",
@@ -2236,13 +2236,13 @@ exports[`<Amount /> should render medium size Amount 2`] = `
       }
     >
       <Text
-        color="feedback.text.neutral.lowContrast"
+        color="surface.text.normal.lowContrast"
         fontSize={600}
         fontWeight="regular"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 22,
               "fontStyle": "normal",
@@ -2536,7 +2536,7 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
       <Text
         color="feedback.text.negative.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -2544,7 +2544,7 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2656,7 +2656,7 @@ exports[`<Amount /> should render negative variant Amount  3`] = `
       <Text
         color="feedback.text.negative.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -2664,7 +2664,7 @@ exports[`<Amount /> should render negative variant Amount  3`] = `
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2925,7 +2925,7 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
       <Text
         color="feedback.text.neutral.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -2933,7 +2933,7 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3045,7 +3045,7 @@ exports[`<Amount /> should render neutral variant Amount  3`] = `
       <Text
         color="feedback.text.neutral.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -3053,7 +3053,7 @@ exports[`<Amount /> should render neutral variant Amount  3`] = `
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3463,7 +3463,7 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
       <Text
         color="feedback.text.notice.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -3471,7 +3471,7 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3583,7 +3583,7 @@ exports[`<Amount /> should render positive variant Amount  4`] = `
       <Text
         color="feedback.text.notice.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -3591,7 +3591,7 @@ exports[`<Amount /> should render positive variant Amount  4`] = `
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3703,7 +3703,7 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
       <Text
         color="feedback.text.positive.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -3711,7 +3711,7 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3823,7 +3823,7 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
       <Text
         color="feedback.text.positive.lowContrast"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="regular"
         style={
           Array [
             Object {
@@ -3831,7 +3831,7 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
               "fontFamily": "Lato",
               "fontSize": 17,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,

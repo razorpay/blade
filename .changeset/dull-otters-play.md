@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": minor
+'@razorpay/blade': minor
 ---
 
-feat(amount): add amount component
+feat: add `Amount` component

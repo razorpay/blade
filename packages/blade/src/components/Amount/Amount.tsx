@@ -33,7 +33,7 @@ type AmountProps = {
    *
    * @default 'neutral'
    */
-  intent?: Feedback;
+  intent?: Feedback | undefined;
   /**
    * Sets the variant of the amount.
    *
@@ -75,11 +75,12 @@ type ColorProps = {
   prefixSuffixColor: BaseTextProps['color'];
 };
 
-const getColorProps = ({ intent }: { intent: NonNullable<AmountProps['intent']> }): ColorProps => {
+const getColorProps = ({ intent }: { intent: AmountProps['intent'] }): ColorProps => {
   const props: ColorProps = {
-    textColor: 'feedback.text.neutral.lowContrast',
-    prefixSuffixColor: 'feedback.text.neutral.lowContrast',
+    textColor: 'surface.text.normal.lowContrast',
+    prefixSuffixColor: 'surface.text.muted.lowContrast',
   };
+  if (!intent) return props;
   props.textColor = `feedback.text.${intent}.lowContrast`;
   props.prefixSuffixColor = `feedback.text.${intent}.lowContrast`;
   if (intent === 'neutral') {
@@ -133,10 +134,8 @@ const formatAmountWithSuffix = (
 const getCurrencyWeight = (
   isAffixSubtle: NonNullable<AmountProps['isAffixSubtle']>,
   size: NonNullable<AmountProps['size']>,
-  prefix: NonNullable<AmountProps['prefix']>,
 ): 'bold' | 'regular' => {
-  if (isAffixSubtle) return 'bold';
-  if (size.includes('bold') && prefix === 'currency-code') return 'bold';
+  if (isAffixSubtle || size.includes('bold')) return 'bold';
   return 'regular';
 };
 
@@ -145,7 +144,7 @@ const Amount = ({
   suffix = 'decimals',
   size = 'heading-small',
   isAffixSubtle = true,
-  intent = 'neutral',
+  intent,
   prefix = 'currency-symbol',
   testID,
 }: AmountProps): ReactElement => {
@@ -163,7 +162,7 @@ const Amount = ({
 
   const currencyColor = isAffixSubtle ? prefixSuffixColor : textColor;
   const currencyFontSize = getAffixFontSize(isAffixSubtle, size);
-  const currencyWeight = getCurrencyWeight(isAffixSubtle, size, prefix);
+  const currencyWeight = getCurrencyWeight(isAffixSubtle, size);
 
   return (
     <StyledAmount {...metaAttribute({ name: MetaConstants.Amount, testID })}>

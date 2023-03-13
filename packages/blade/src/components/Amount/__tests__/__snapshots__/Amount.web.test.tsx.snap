@@ -40,7 +40,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
   font-weight: 400;
@@ -113,7 +113,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="200"
           font-weight="regular"
         >
@@ -178,10 +178,10 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 }
 
 .c5 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.75rem;
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -238,9 +238,9 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
       >
         <div
           class="c5"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="700"
-          font-weight="bold"
+          font-weight="regular"
         >
           1k
         </div>
@@ -290,7 +290,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 400;
@@ -363,7 +363,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="100"
           font-weight="regular"
         >
@@ -424,7 +424,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -497,7 +497,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="100"
           font-weight="bold"
         >
@@ -558,7 +558,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
   font-weight: 400;
@@ -631,7 +631,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="75"
           font-weight="regular"
         >
@@ -692,7 +692,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
   font-weight: 700;
@@ -765,7 +765,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="75"
           font-weight="bold"
         >
@@ -826,7 +826,7 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
   font-weight: 400;
@@ -899,7 +899,7 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="400"
           font-weight="regular"
         >
@@ -960,7 +960,7 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
   font-weight: 700;
@@ -1033,7 +1033,7 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="400"
           font-weight="bold"
         >
@@ -1094,7 +1094,7 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
   font-weight: 400;
@@ -1167,7 +1167,7 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="200"
           font-weight="regular"
         >
@@ -1228,7 +1228,7 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
   font-weight: 700;
@@ -1301,7 +1301,7 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="200"
           font-weight="bold"
         >
@@ -1499,19 +1499,6 @@ exports[`<Amount /> should render information variant Amount  2`] = `
   padding: 0;
 }
 
-.c5 {
-  color: hsla(193,100%,35%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1559,10 +1546,10 @@ exports[`<Amount /> should render information variant Amount  2`] = `
         class="c4"
       >
         <div
-          class="c5"
+          class="c3"
           color="feedback.text.information.lowContrast"
           font-size="200"
-          font-weight="bold"
+          font-weight="regular"
         >
           1,000
         </div>
@@ -1749,19 +1736,6 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
   padding: 0;
 }
 
-.c5 {
-  color: hsla(8,73%,47%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1809,10 +1783,10 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
         class="c4"
       >
         <div
-          class="c5"
+          class="c3"
           color="feedback.text.negative.lowContrast"
           font-size="200"
-          font-weight="bold"
+          font-weight="regular"
         >
           1,000
         </div>
@@ -1999,19 +1973,6 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
   padding: 0;
 }
 
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2059,10 +2020,10 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
         class="c4"
       >
         <div
-          class="c5"
+          class="c3"
           color="feedback.text.neutral.lowContrast"
           font-size="200"
-          font-weight="bold"
+          font-weight="regular"
         >
           1,000
         </div>
@@ -2383,19 +2344,6 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
   padding: 0;
 }
 
-.c5 {
-  color: hsla(38,97%,38%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2443,10 +2391,10 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
         class="c4"
       >
         <div
-          class="c5"
+          class="c3"
           color="feedback.text.notice.lowContrast"
           font-size="200"
-          font-weight="bold"
+          font-weight="regular"
         >
           1,000
         </div>
@@ -2499,19 +2447,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
   padding: 0;
 }
 
-.c5 {
-  color: hsla(160,100%,26%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2559,10 +2494,10 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
         class="c4"
       >
         <div
-          class="c5"
+          class="c3"
           color="feedback.text.positive.lowContrast"
           font-size="200"
-          font-weight="bold"
+          font-weight="regular"
         >
           1,000
         </div>
@@ -2612,7 +2547,7 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.75rem;
   font-weight: 400;
@@ -2685,7 +2620,7 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="700"
           font-weight="regular"
         >
@@ -2746,7 +2681,7 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5625rem;
   font-weight: 400;
@@ -2819,7 +2754,7 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
       >
         <div
           class="c4"
-          color="feedback.text.neutral.lowContrast"
+          color="surface.text.normal.lowContrast"
           font-size="600"
           font-weight="regular"
         >

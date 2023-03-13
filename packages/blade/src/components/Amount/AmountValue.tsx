@@ -35,12 +35,12 @@ const AmountValue = ({
   suffix = 'decimals',
   prefixSuffixColor,
 }: AmountValue): ReactElement => {
+  const affixFontWeight = getDecimalFontWeight(isAffixSubtle);
+  const affixFontSize = getAffixFontSize(isAffixSubtle, size);
+  const valueForWeight = size.includes('bold') ? 'bold' : 'regular';
   if (suffix === suffixTypes.DECIMALS && isAffixSubtle) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
-    const affixFontWeight = getDecimalFontWeight(isAffixSubtle);
-    const affixFontSize = getAffixFontSize(isAffixSubtle, size);
-    const valueForWeight = size.includes('bold') ? 'bold' : 'regular';
 
     return (
       <>
@@ -57,7 +57,7 @@ const AmountValue = ({
   }
   return (
     <BaseBox paddingRight="spacing.2">
-      <BaseText fontSize={amountTextSizes[size]} fontWeight="bold" color={textColor}>
+      <BaseText fontSize={amountTextSizes[size]} fontWeight={valueForWeight} color={textColor}>
         {value}
       </BaseText>
     </BaseBox>
