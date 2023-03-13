@@ -1,18 +1,26 @@
 const prefixSuffixTextSizes = {
-  'body-small': 50,
-  'body-medium': 50,
-  'heading-small': 50,
-  'heading-large': 75,
-  'title-small': 200,
-  'title-medium': 300,
+  'body-small': 75,
+  'body-small-bold': 75,
+  'body-medium': 75,
+  'body-medium-bold': 75,
+  'heading-small': 75,
+  'heading-small-bold': 75,
+  'heading-large': 100,
+  'heading-large-bold': 100,
+  'title-small': 300,
+  'title-medium': 400,
 } as const;
 
 const amountTextSizes = {
-  'body-small': 50,
-  'body-medium': 75,
-  'heading-small': 100,
-  'heading-large': 300,
-  'title-small': 500,
+  'body-small': 75,
+  'body-small-bold': 75,
+  'body-medium': 100,
+  'body-medium-bold': 100,
+  'heading-small': 200,
+  'heading-small-bold': 200,
+  'heading-large': 400,
+  'heading-large-bold': 400,
+  'title-small': 600,
   'title-medium': 700,
 } as const;
 

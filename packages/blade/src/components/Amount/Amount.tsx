@@ -5,12 +5,13 @@ import {
   currencylocaleMapping,
   currencyPrefixMapping,
 } from './amountTokens';
-import AmountValue, { getSuffixPrefixFontSize } from './AmountValue';
+import AmountValue, { getAffixFontSize } from './AmountValue';
 import { StyledAmount } from './StyledAmount';
 import { BaseText } from '~components/Typography/BaseText';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
+import type { TestID } from '~src/_helpers/types';
 import { metaAttribute, MetaConstants } from '~utils';
 
 export const suffixTypes = {
@@ -42,9 +43,13 @@ type AmountProps = {
     | `title-medium`
     | `title-small`
     | `heading-large`
+    | `heading-large-bold`
     | `heading-small`
+    | `heading-small-bold`
     | `body-medium`
-    | `body-small`;
+    | `body-medium-bold`
+    | `body-small`
+    | `body-small-bold`;
   /**
    * Indicates whether a text suffix should be used
    *
@@ -63,7 +68,7 @@ type AmountProps = {
    * @default 'currency-symbol'
    */
   prefix?: 'currency-symbol' | 'currency-code';
-};
+} & TestID;
 
 type ColorProps = {
   textColor: BaseTextProps['color'];
@@ -125,6 +130,16 @@ const formatAmountWithSuffix = (
   }
 };
 
+const getCurrencyWeight = (
+  isAffixSubtle: NonNullable<AmountProps['isAffixSubtle']>,
+  size: NonNullable<AmountProps['size']>,
+  prefix: NonNullable<AmountProps['prefix']>,
+): 'bold' | 'regular' => {
+  if (isAffixSubtle) return 'bold';
+  if (size.includes('bold') && prefix === 'currency-code') return 'bold';
+  return 'regular';
+};
+
 const Amount = ({
   value,
   suffix = 'decimals',
@@ -132,6 +147,7 @@ const Amount = ({
   isAffixSubtle = true,
   intent = 'neutral',
   prefix = 'currency-symbol',
+  testID,
 }: AmountProps): ReactElement => {
   if (typeof value !== 'number' && !isNaN(value)) {
     throw new Error('[Blade: Amount]: Number as value is required for Amount.');
@@ -146,32 +162,34 @@ const Amount = ({
   });
 
   const currencyColor = isAffixSubtle ? prefixSuffixColor : textColor;
-  const currencyFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
+  const currencyFontSize = getAffixFontSize(isAffixSubtle, size);
+  const currencyWeight = getCurrencyWeight(isAffixSubtle, size, prefix);
 
   return (
-    <StyledAmount
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Amount)}
-      paddingRight="spacing.2"
-      paddingLeft="spacing.2"
-      display="flex"
-      flexDirection="row"
-      justifyContent="center"
-      alignItems="baseline"
-      overflow="hidden"
-    >
-      <BaseBox paddingRight="spacing.1">
-        <BaseText fontWeight="bold" fontSize={currencyFontSize} color={currencyColor}>
-          {currencyPrefix}
-        </BaseText>
+    <StyledAmount {...metaAttribute({ name: MetaConstants.Amount, testID })}>
+      <BaseBox
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="baseline"
+        overflow="hidden"
+        paddingLeft="spacing.2"
+        paddingRight="spacing.2"
+      >
+        <BaseBox paddingRight="spacing.1">
+          <BaseText fontWeight={currencyWeight} fontSize={currencyFontSize} color={currencyColor}>
+            {currencyPrefix}
+          </BaseText>
+        </BaseBox>
+        <AmountValue
+          value={renderedValue}
+          textColor={textColor}
+          size={size}
+          isAffixSubtle={isAffixSubtle}
+          suffix={suffix}
+          prefixSuffixColor={prefixSuffixColor}
+        />
       </BaseBox>
-      <AmountValue
-        value={renderedValue}
-        textColor={textColor}
-        size={size}
-        isAffixSubtle={isAffixSubtle}
-        suffix={suffix}
-        prefixSuffixColor={prefixSuffixColor}
-      />
     </StyledAmount>
   );
 };

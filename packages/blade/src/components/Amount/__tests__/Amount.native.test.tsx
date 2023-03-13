@@ -21,23 +21,48 @@ describe('<Amount />', () => {
     }
   });
 
-  it('should render small size Amount', () => {
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<Amount value={10000} testID="amount-test" />);
+    expect(getByTestId('amount-test')).toBeTruthy();
+  });
+
+  it('should render body-medium size Amount', () => {
     const { toJSON } = renderWithTheme(<Amount size="body-medium" value={1000} />);
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render medium size Amount', () => {
+  it('should render body-medium-bold size Amount', () => {
+    const { toJSON } = renderWithTheme(<Amount size="body-medium-bold" value={1000} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render body-small size Amount', () => {
     const { toJSON } = renderWithTheme(<Amount size="body-small" value={1000} />);
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render medium size Amount', () => {
+  it('should render body-small-bold size Amount', () => {
+    const { toJSON } = renderWithTheme(<Amount size="body-small-bold" value={1000} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render heading-large size Amount', () => {
     const { toJSON } = renderWithTheme(<Amount size="heading-large" value={1000} />);
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render medium size Amount', () => {
+  it('should render heading-large-bold size Amount', () => {
+    const { toJSON } = renderWithTheme(<Amount size="heading-large-bold" value={1000} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render heading-small size Amount', () => {
     const { toJSON } = renderWithTheme(<Amount size="heading-small" value={1000} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render heading-small-bold size Amount', () => {
+    const { toJSON } = renderWithTheme(<Amount size="heading-small-bold" value={1000} />);
     expect(toJSON()).toMatchSnapshot();
   });
 

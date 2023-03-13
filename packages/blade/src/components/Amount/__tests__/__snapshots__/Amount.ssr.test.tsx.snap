@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Badge /> should render Badge on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" overflow=\\"hidden\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dlfjEL\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo\\"><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"50\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 fVUvgn\\">₹</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo\\"><div color=\\"feedback.text.neutral.lowContrast\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 eceDKI\\">10,000<!-- -->.</div></div><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"50\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 cRAtgU\\"></div></div></div>"`;
+exports[`<Badge /> should render Badge on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"amount\\" class=\\"StyledAmountweb__StyledAmount-pbu3ys-0 jDuSnm\\"><div display=\\"flex\\" overflow=\\"hidden\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 iqprPL\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo\\"><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 pRsFV\\">₹</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo\\"><div color=\\"feedback.text.neutral.lowContrast\\" font-size=\\"200\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 ieAly\\">10,000<!-- -->.</div></div><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 krnmPe\\"></div></div></div></div>"`;
 
 exports[`<Badge /> should render Badge on server 2`] = `
 <div
@@ -8,42 +8,47 @@ exports[`<Badge /> should render Badge on server 2`] = `
   id="root"
 >
   <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 dlfjEL"
-    display="flex"
-    overflow="hidden"
+    class="StyledAmountweb__StyledAmount-pbu3ys-0 jDuSnm"
+    data-blade-component="amount"
   >
     <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo"
+      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 iqprPL"
+      display="flex"
+      overflow="hidden"
     >
       <div
-        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 fVUvgn"
+        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo"
+      >
+        <div
+          class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 pRsFV"
+          color="surface.text.muted.lowContrast"
+          font-size="75"
+          font-weight="bold"
+        >
+          ₹
+        </div>
+      </div>
+      <div
+        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo"
+      >
+        <div
+          class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 ieAly"
+          color="feedback.text.neutral.lowContrast"
+          font-size="200"
+          font-weight="regular"
+        >
+          10,000
+          <!-- -->
+          .
+        </div>
+      </div>
+      <div
+        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 krnmPe"
         color="surface.text.muted.lowContrast"
-        font-size="50"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+        font-size="75"
+        font-weight="regular"
+      />
     </div>
-    <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo"
-    >
-      <div
-        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 eceDKI"
-        color="feedback.text.neutral.lowContrast"
-        font-size="100"
-        font-weight="bold"
-      >
-        10,000
-        <!-- -->
-        .
-      </div>
-    </div>
-    <div
-      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 cRAtgU"
-      color="surface.text.muted.lowContrast"
-      font-size="50"
-      font-weight="regular"
-    />
   </div>
 </div>
 `;

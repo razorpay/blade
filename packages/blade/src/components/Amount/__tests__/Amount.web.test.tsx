@@ -10,6 +10,12 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<Amount value={1000} testID="amount-test" />);
+
+    expect(getByTestId('amount-test')).toBeTruthy();
+  });
+
   it('should throw an error when a string is passed', () => {
     try {
       // @ts-expect-error testing failure case when there is no children passed
@@ -26,8 +32,18 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render body-small-bold size Amount', () => {
+    const { container } = renderWithTheme(<Amount size="body-small-bold" value={1000} />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render body-medium size Amount', () => {
     const { container } = renderWithTheme(<Amount size="body-medium" value={1000} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render body-medium-bold size Amount', () => {
+    const { container } = renderWithTheme(<Amount size="body-medium-bold" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
@@ -36,8 +52,18 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render heading-large-bold size Amount', () => {
+    const { container } = renderWithTheme(<Amount size="heading-large-bold" value={1000} />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render heading-small size Amount', () => {
     const { container } = renderWithTheme(<Amount size="heading-small" value={1000} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render heading-small-bold size Amount', () => {
+    const { container } = renderWithTheme(<Amount size="heading-small-bold" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 

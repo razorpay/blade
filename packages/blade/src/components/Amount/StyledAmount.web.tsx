@@ -1,5 +1,9 @@
-import BaseBox from '~components/Box/BaseBox';
+import styled from 'styled-components';
+import type { Theme } from '../BladeProvider';
+import { getAmountStyles } from './getAmountBadgeStyles';
 
-const StyledAmount = BaseBox;
+const StyledAmount = styled.div<{ theme: Theme }>((props) => ({
+  ...getAmountStyles(props),
+}));
 
 export { StyledAmount };

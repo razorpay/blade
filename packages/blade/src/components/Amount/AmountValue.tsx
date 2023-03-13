@@ -13,7 +13,7 @@ const getDecimalFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' =
   return 'bold';
 };
 
-export const getSuffixPrefixFontSize = (
+export const getAffixFontSize = (
   isAffixSubtle: NonNullable<AmountProps['isAffixSubtle']>,
   size: NonNullable<AmountProps['size']>,
 ): keyof FontSize | undefined => {
@@ -39,11 +39,13 @@ const AmountValue = ({
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
     const affixFontWeight = getDecimalFontWeight(isAffixSubtle);
-    const affixFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
+    const affixFontSize = getAffixFontSize(isAffixSubtle, size);
+    const valueForWeight = size.includes('bold') ? 'bold' : 'regular';
+
     return (
       <>
         <BaseBox paddingRight="spacing.1">
-          <BaseText fontSize={amountTextSizes[size]} fontWeight="bold" color={textColor}>
+          <BaseText fontSize={amountTextSizes[size]} fontWeight={valueForWeight} color={textColor}>
             {integer}.
           </BaseText>
         </BaseBox>
@@ -54,9 +56,11 @@ const AmountValue = ({
     );
   }
   return (
-    <BaseText fontSize={amountTextSizes[size]} fontWeight="bold" color={textColor}>
-      {value}
-    </BaseText>
+    <BaseBox paddingRight="spacing.2">
+      <BaseText fontSize={amountTextSizes[size]} fontWeight="bold" color={textColor}>
+        {value}
+      </BaseText>
+    </BaseBox>
   );
 };
 
