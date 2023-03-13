@@ -4,7 +4,7 @@ import { Title, Description } from '@storybook/addon-docs';
 import iconMap from './iconMap';
 import type { IconProps } from '.';
 import { CreditCardIcon } from '.';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 
@@ -114,11 +114,11 @@ Icon.args = {
 
 export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) => {
   return (
-    <Box>
+    <BaseBox>
       {Object.keys(iconMap).map((icon, key) => {
         const IconComponent = iconMap[icon];
         return (
-          <Box
+          <BaseBox
             height={95}
             width={125}
             display="inline-flex"
@@ -128,7 +128,7 @@ export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) 
             key={key}
           >
             <IconComponent {...args} />
-            <Box
+            <BaseBox
               style={{
                 fontSize: 12,
                 width: '90%',
@@ -138,10 +138,10 @@ export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) 
               }}
             >
               {icon}
-            </Box>
-          </Box>
+            </BaseBox>
+          </BaseBox>
         );
       })}
-    </Box>
+    </BaseBox>
   );
 };

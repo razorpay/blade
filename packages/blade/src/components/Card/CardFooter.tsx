@@ -5,12 +5,13 @@ import { Button } from '../Button';
 import { Divider } from './Divider';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
+import type { TestID } from '~src/_helpers/types';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -21,7 +22,7 @@ export type CardFooterAction = Pick<
 
 type CardFooterProps = {
   children?: React.ReactNode;
-};
+} & TestID;
 
 const useIsMobile = (): boolean => {
   const { theme } = useTheme();
@@ -31,7 +32,7 @@ const useIsMobile = (): boolean => {
   return matchedDeviceType === 'mobile';
 };
 
-const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
+const CardFooter: WithComponentId<CardFooterProps> = ({ children, testID }) => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
   useVerifyAllowedComponents(children, 'CardFooter', [
@@ -40,10 +41,10 @@ const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
   ]);
 
   return (
-    <Box marginTop="auto" {...metaAttribute(MetaConstants.Component, MetaConstants.CardFooter)}>
-      <Box marginTop="spacing.7" />
+    <BaseBox marginTop="auto" {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
+      <BaseBox marginTop="spacing.7" />
       <Divider />
-      <Box
+      <BaseBox
         marginTop="spacing.7"
         display="flex"
         flexDirection={isMobile ? 'column' : 'row'}
@@ -51,8 +52,8 @@ const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
         alignItems={isMobile ? 'stretch' : 'center'}
       >
         {children}
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 CardFooter.componentId = ComponentIds.CardFooter;
@@ -65,7 +66,7 @@ const CardFooterLeading: WithComponentId<CardFooterLeadingProps> = ({ title, sub
   useVerifyInsideCard('CardFooterLeading');
 
   return (
-    <Box>
+    <BaseBox>
       {title && (
         <Text variant="body" size="medium" weight="bold">
           {title}
@@ -76,7 +77,7 @@ const CardFooterLeading: WithComponentId<CardFooterLeadingProps> = ({ title, sub
           {subtitle}
         </Text>
       )}
-    </Box>
+    </BaseBox>
   );
 };
 CardFooterLeading.componentId = ComponentIds.CardFooterLeading;
@@ -92,29 +93,29 @@ const CardFooterTrailing: WithComponentId<CardFooterTrailingProps> = ({ actions 
   useVerifyInsideCard('CardFooterTrailing');
 
   return (
-    <Box
+    <BaseBox
       display="flex"
       flexDirection="row"
       alignSelf={isMobile ? 'auto' : 'center'}
       marginTop={isMobile ? 'spacing.5' : 'spacing.0'}
       marginLeft={isMobile ? 'spacing.0' : 'spacing.5'}
     >
-      <Box flexGrow={1}>
+      <BaseBox flexGrow={1}>
         {actions?.secondary ? (
           <Button isFullWidth size="medium" variant="secondary" {...actions.secondary}>
             {actions.secondary.text!}
           </Button>
         ) : null}
-      </Box>
-      <Box marginLeft="spacing.5" />
-      <Box flexGrow={1}>
+      </BaseBox>
+      <BaseBox marginLeft="spacing.5" />
+      <BaseBox flexGrow={1}>
         {actions?.primary ? (
           <Button isFullWidth size="medium" {...actions.primary}>
             {actions.primary.text!}
           </Button>
         ) : null}
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 CardFooterTrailing.componentId = ComponentIds.CardFooterTrailing;

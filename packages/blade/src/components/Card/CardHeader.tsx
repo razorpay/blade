@@ -9,7 +9,7 @@ import { Button } from '../Button';
 import { Divider } from './Divider';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { TextProps, TextVariant } from '~components/Typography';
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
@@ -24,6 +24,7 @@ import {
   isValidAllowedChildren,
   makeSpace,
 } from '~utils';
+import type { TestID } from '~src/_helpers/types';
 
 const CardHeaderIcon: WithComponentId<{ icon: IconComponent }> = ({ icon: Icon }) => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -71,18 +72,18 @@ const CardHeaderIconButton: WithComponentId<CardHeaderIconButtonProps> = (props)
   useVerifyInsideCard('CardHeaderIconButton');
 
   return (
-    <Box width={makeSpace(minHeight.xsmall)}>
+    <BaseBox width={makeSpace(minHeight.xsmall)}>
       <Button {...props} variant="tertiary" size="xsmall" iconPosition="left" isFullWidth />
-    </Box>
+    </BaseBox>
   );
 };
 CardHeaderIconButton.componentId = ComponentIds.CardHeaderIconButton;
 
 type CardHeaderProps = {
   children?: React.ReactNode;
-};
+} & TestID;
 
-const CardHeader: WithComponentId<CardHeaderProps> = ({ children }) => {
+const CardHeader: WithComponentId<CardHeaderProps> = ({ children, testID }) => {
   useVerifyInsideCard('CardHeader');
   useVerifyAllowedComponents(children, 'CardHeader', [
     ComponentIds.CardHeaderLeading,
@@ -90,20 +91,20 @@ const CardHeader: WithComponentId<CardHeaderProps> = ({ children }) => {
   ]);
 
   return (
-    <Box
+    <BaseBox
       marginBottom="spacing.7"
-      {...metaAttribute(MetaConstants.Component, MetaConstants.CardHeader)}
+      {...metaAttribute({ name: MetaConstants.CardHeader, testID })}
     >
-      <Box
+      <BaseBox
         marginBottom="spacing.7"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
       >
         {children}
-      </Box>
+      </BaseBox>
       <Divider />
-    </Box>
+    </BaseBox>
   );
 };
 CardHeader.componentId = ComponentIds.CardHeader;
@@ -145,22 +146,22 @@ const CardHeaderLeading: WithComponentId<CardHeaderLeadingProps> = ({
   }
 
   return (
-    <Box flex={1} display="flex" flexDirection="row">
-      <Box marginRight="spacing.3" alignSelf="center" display="flex">
+    <BaseBox flex={1} display="flex" flexDirection="row">
+      <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
         {prefix}
-      </Box>
-      <Box>
-        <Box display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+      </BaseBox>
+      <BaseBox>
+        <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
           <Heading size="small" variant="regular" type="normal">
             {title}
           </Heading>
-          <Box marginLeft="spacing.3">{suffix}</Box>
-        </Box>
+          <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
+        </BaseBox>
         <Text variant="body" size="small" weight="regular">
           {subtitle}
         </Text>
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 CardHeaderLeading.componentId = ComponentIds.CardHeaderLeading;
@@ -192,7 +193,7 @@ const CardHeaderTrailing: WithComponentId<CardHeaderTrailingProps> = ({ visual }
     );
   }
 
-  return <Box alignSelf="center">{visual}</Box>;
+  return <BaseBox alignSelf="center">{visual}</BaseBox>;
 };
 CardHeaderTrailing.componentId = ComponentIds.CardHeaderTrailing;
 

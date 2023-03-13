@@ -251,6 +251,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
+  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -292,6 +293,7 @@ exports[`<TextArea /> should render 1`] = `
               </p>
               <div
                 class="c5"
+                data-blade-component="visually-hidden"
               >
                 <p
                   class="c6 Text__StyledText-wkh56f-0"
@@ -590,6 +592,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
+  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -631,6 +634,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
               </p>
               <div
                 class="c5"
+                data-blade-component="visually-hidden"
               >
                 <p
                   class="c6 Text__StyledText-wkh56f-0"

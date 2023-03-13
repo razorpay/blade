@@ -11,6 +11,7 @@ exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
         "clip": "rect(0 0 0 0)",
         "clipPath": "inset(50%)",
         "height": 1,
+        "left": -10000,
         "marginBottom": -1,
         "marginLeft": 0,
         "marginRight": -1,

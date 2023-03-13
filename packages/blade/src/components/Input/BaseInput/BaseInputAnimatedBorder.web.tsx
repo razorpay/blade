@@ -3,7 +3,7 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import type { ReactElement } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
@@ -31,7 +31,7 @@ to {
 }
 `;
 
-const BaseInputStyledAnimatedBorder = styled(Box)(
+const BaseInputStyledAnimatedBorder = styled(BaseBox)(
   ({
     theme,
     animation,

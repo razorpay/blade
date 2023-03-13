@@ -8,13 +8,18 @@ import useInteraction from '~src/hooks/useInteraction';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type {
+  DotNotationSpacingStringToken,
+  StringChildrenType,
+  TestID,
+} from '~src/_helpers/types';
 import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -30,14 +35,14 @@ type BaseLinkCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium';
-};
+} & TestID;
 
 /*
   Mandatory children prop when icon is not provided
 */
 type BaseLinkWithoutIconProps = BaseLinkCommonProps & {
   icon?: undefined;
-  children: string;
+  children: StringChildrenType;
 };
 
 /*
@@ -45,7 +50,7 @@ type BaseLinkWithoutIconProps = BaseLinkCommonProps & {
 */
 type BaseLinkWithIconProps = BaseLinkCommonProps & {
   icon: IconComponent;
-  children?: string;
+  children?: StringChildrenType;
 };
 
 /*
@@ -96,6 +101,7 @@ type BaseLinkStyleProps = {
   defaultRel: BaseLinkProps['rel'];
   type?: 'button';
   fontSize: BaseTextProps['fontSize'];
+  lineHeight: BaseTextProps['lineHeight'];
 };
 
 const getColorToken = ({
@@ -167,6 +173,7 @@ const getProps = ({
       isVisited,
     }) as IconProps['color'],
     fontSize: size === 'medium' ? 100 : 75,
+    lineHeight: size === 'medium' ? 'm' : 's',
     iconSize: size,
     iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
@@ -209,11 +216,13 @@ const BaseLink = ({
   // @ts-expect-error avoiding exposing to public
   style,
   size = 'medium',
+  testID,
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
+  const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
-  if (!Icon && !children?.trim()) {
+  if (!Icon && !childrenString?.trim()) {
     throw new Error(
       `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
     );
@@ -234,11 +243,12 @@ const BaseLink = ({
     role,
     defaultRel,
     type,
+    lineHeight,
   } = getProps({
     theme,
     variant,
     currentInteraction,
-    children,
+    children: childrenString,
     isDisabled,
     intent,
     contrast,
@@ -261,7 +271,7 @@ const BaseLink = ({
   return (
     <StyledBaseLink
       {...syntheticEvents}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Link)}
+      {...metaAttribute({ name: MetaConstants.Link, testID })}
       accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
       variant={variant}
       as={as}
@@ -280,27 +290,28 @@ const BaseLink = ({
       className={className}
       style={style}
     >
-      <Box display="flex" flexDirection="row" className="content-container" alignItems="center">
+      <BaseBox display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (
-          <Box paddingRight={iconPadding} display="flex" alignItems="center">
+          <BaseBox paddingRight={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size={iconSize} />
-          </Box>
+          </BaseBox>
         ) : null}
         <BaseText
           textDecorationLine={textDecorationLine}
           color={textColor}
           fontSize={fontSize}
+          lineHeight={lineHeight}
           textAlign="center"
           fontWeight="bold"
         >
           {children}
         </BaseText>
         {Icon && iconPosition == 'right' ? (
-          <Box paddingLeft={iconPadding} display="flex" alignItems="center">
+          <BaseBox paddingLeft={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size={iconSize} />
-          </Box>
+          </BaseBox>
         ) : null}
-      </Box>
+      </BaseBox>
     </StyledBaseLink>
   );
 };

@@ -5,7 +5,7 @@ import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
 import { InfoIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -82,9 +82,9 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
   };
 
   return (
-    <Box display="flex" flexDirection="column">
+    <BaseBox display="flex" flexDirection="column">
       <BladeText>Low Contrast</BladeText>
-      <Box
+      <BaseBox
         display="flex"
         flexDirection="row"
         paddingTop="spacing.3"
@@ -92,15 +92,15 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
         flexWrap="wrap"
       >
         {variants.map((variant) => (
-          <Box key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
+          <BaseBox key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
             <BadgeComponent {...args} variant={variant} contrast="low">
               {getLabel(variant)}
             </BadgeComponent>
-          </Box>
+          </BaseBox>
         ))}
-      </Box>
+      </BaseBox>
       <BladeText>High Contrast</BladeText>
-      <Box
+      <BaseBox
         display="flex"
         flexDirection="row"
         paddingTop="spacing.3"
@@ -108,14 +108,14 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
         flexWrap="wrap"
       >
         {variants.map((variant) => (
-          <Box key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
+          <BaseBox key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
             <BadgeComponent {...args} variant={variant} contrast="high">
               {getLabel(variant)}
             </BadgeComponent>
-          </Box>
+          </BaseBox>
         ))}
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 

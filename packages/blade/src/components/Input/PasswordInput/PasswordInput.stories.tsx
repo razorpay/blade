@@ -1,12 +1,15 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import type { PasswordInputProps } from './PasswordInput';
 import { PasswordInput } from './PasswordInput';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import BaseBox from '~components/Box/BaseBox';
+import { Button } from '~components/Button';
 
 const Page = (): ReactElement => {
   return (
@@ -204,6 +207,35 @@ ControlledInput.parameters = {
   docs: {
     description: {
       story: '`value` and `onChange` can be used to make the input field controlled',
+    },
+  },
+};
+
+export const inputRef: ComponentStory<typeof PasswordInput> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const inputRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <BaseBox gap="spacing.3" display="flex" alignItems="end">
+      <PasswordInput ref={inputRef} label="Message" />
+      <Button
+        onClick={() => {
+          inputRef?.current?.focus();
+          console.log(inputRef);
+        }}
+      >
+        Click to focus the input
+      </Button>
+    </BaseBox>
+  );
+};
+
+inputRef.storyName = 'Password Input Ref';
+inputRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'PasswordInput component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
 };

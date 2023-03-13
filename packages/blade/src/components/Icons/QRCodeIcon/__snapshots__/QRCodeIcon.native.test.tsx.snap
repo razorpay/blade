@@ -56,7 +56,13 @@ exports[`<QRCodeIcon /> should render QRCodeIcon 1`] = `
         name="clip0_14689_191599"
       >
         <RNSVGRect
+          fill={4294967295}
           height="24"
+          propList={
+            Array [
+              "fill",
+            ]
+          }
           width="24"
           x={0}
           y={0}

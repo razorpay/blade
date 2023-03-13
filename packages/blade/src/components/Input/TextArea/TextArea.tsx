@@ -5,7 +5,7 @@ import { CloseIcon } from '../../Icons';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { IconButton } from '~components/Button/IconButton';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
@@ -32,13 +32,14 @@ type TextAreaProps = Pick<
   | 'maxCharacters'
   | 'autoFocus'
   | 'numberOfLines'
+  | 'testID'
 > & {
   /**
    * Decides whether to render a clear icon button
    */
   showClearButton?: boolean;
   /**
-   * Event handler to handle the onClick event for clear button.
+   * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
 };
@@ -72,6 +73,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     onClearButtonClick,
     autoFocus,
     numberOfLines = 2,
+    testID,
   },
   ref,
 ) => {
@@ -85,7 +87,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   const renderInteractionElement = (): React.ReactNode => {
     if (shouldShowClearButton) {
       return (
-        <Box paddingTop="spacing.3" marginTop="spacing.1">
+        <BaseBox paddingTop="spacing.3" marginTop="spacing.1">
           <IconButton
             icon={CloseIcon}
             accessibilityLabel="Clear textarea content"
@@ -106,7 +108,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
               setShouldShowClearButton(false);
             }}
           />
-        </Box>
+        </BaseBox>
       );
     }
 
@@ -153,11 +155,12 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       onBlur={onBlur}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <Box marginTop="spacing.2" marginRight="spacing.1">
+          <BaseBox marginTop="spacing.2" marginRight="spacing.1">
             <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
-          </Box>
+          </BaseBox>
         ) : null;
       }}
+      testID={testID}
     />
   );
 };

@@ -5,13 +5,14 @@ import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
 import { metaAttribute, isEmpty, MetaConstants } from '~utils';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { TestID } from '~src/_helpers/types';
 
 type OnChange = ({
   isChecked,
@@ -96,7 +97,12 @@ type CheckboxProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-};
+  /**
+   * Sets the tab-index property on checkbox element
+   *
+   */
+  tabIndex?: number;
+} & TestID;
 
 const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
   {
@@ -113,6 +119,8 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     helpText,
     errorText,
     size = 'medium',
+    tabIndex,
+    testID,
   },
   ref,
 ) => {
@@ -159,6 +167,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   const _hasError = _validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const _name = name ?? groupProps?.name;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
   const _size = groupProps.size ?? size;
   const isSmall = _size === 'small';
@@ -191,15 +200,16 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   });
 
   return (
-    <Box {...metaAttribute(MetaConstants.Component, MetaConstants.Checkbox)}>
+    <BaseBox {...metaAttribute({ name: MetaConstants.Checkbox, testID })}>
       <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
-        <Box display="flex" flexDirection="column">
-          <Box display="flex" alignItems="center" flexDirection="row">
+        <BaseBox display="flex" flexDirection="column">
+          <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
               isChecked={state.isChecked || Boolean(isIndeterminate)}
               isDisabled={_isDisabled}
               hasError={_hasError}
               inputProps={inputProps}
+              tabIndex={tabIndex}
               ref={ref}
             />
             <CheckboxIcon
@@ -212,20 +222,20 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
             <SelectorTitle size={_size} isDisabled={_isDisabled}>
               {children}
             </SelectorTitle>
-          </Box>
-          <Box marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
+          </BaseBox>
+          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
             {showSupportingText && (
               <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
             )}
-          </Box>
-        </Box>
+          </BaseBox>
+        </BaseBox>
       </SelectorLabel>
       <FormHint
         errorText={errorText}
         errorTextId={ids?.errorTextId}
         type={validationState === 'error' ? 'error' : 'help'}
       />
-    </Box>
+    </BaseBox>
   );
 };
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import {
   metaAttribute,
   getPlatformType,
@@ -9,16 +9,17 @@ import {
   MetaConstants,
 } from '~utils';
 import type { FontSize } from '~tokens/global/typography';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type CodeProps = {
-  children: string;
+  children: StringChildrenType;
   /**
    * Decides the fontSize and padding of Code
    *
    * @default small
    */
   size?: 'small' | 'medium';
-};
+} & TestID;
 
 type CodeContainerProps = {
   size: CodeProps['size'];
@@ -37,7 +38,7 @@ const getCodeFontSize = (size: CodeProps['size']): keyof FontSize => {
   }
 };
 
-const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
+const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
   const padding = `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`;
   return {
     padding,
@@ -69,19 +70,19 @@ const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
  * In React Native, you would have to align it using flex to make sure the Code and the surrounding text is correctly aligned
  *
  * ```tsx
- *  <Box flexWrap="wrap" flexDirection="row" alignItems="flex-start">
+ *  <BaseBox flexWrap="wrap" flexDirection="row" alignItems="flex-start">
  *   <Text>Lorem ipsum </Text>
  *   <Code>SENTRY_TOKEN</Code>
  *   <Text> normal text</Text>
- * </Box>
+ * </BaseBox>
  * ```
  */
-const Code = ({ children, size = 'small' }: CodeProps): JSX.Element => {
+const Code = ({ children, size = 'small', testID }: CodeProps): JSX.Element => {
   return (
     <CodeContainer
       size={size}
       as={isPlatformWeb ? 'span' : undefined}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Code)}
+      {...metaAttribute({ name: MetaConstants.Code, testID })}
     >
       <BaseText
         color="surface.text.subtle.lowContrast"

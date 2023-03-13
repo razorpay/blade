@@ -7,8 +7,10 @@ import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import size from '~tokens/global/size';
+import type { TestID } from '~src/_helpers/types';
 
 type ProgressBarCommonProps = {
   /**
@@ -48,7 +50,7 @@ type ProgressBarCommonProps = {
    * @default 100
    */
   max?: number;
-};
+} & TestID;
 
 type ProgressBarVariant = 'progress' | 'meter';
 
@@ -91,8 +93,8 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
 const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 | 4> = {
-  small: 2,
-  medium: 4,
+  small: size[2],
+  medium: size[4],
 };
 
 const ProgressBar = ({
@@ -107,6 +109,7 @@ const ProgressBar = ({
   variant = 'progress',
   min = 0,
   max = 100,
+  testID,
 }: ProgressBarProps): ReactElement => {
   const { theme } = useTheme();
   const id = useId(variant);
@@ -153,7 +156,7 @@ const ProgressBar = ({
 
   return (
     <>
-      <Box
+      <BaseBox
         display="flex"
         flexDirection="row"
         justifyContent={hasLabel ? 'space-between' : 'flex-end'}
@@ -164,19 +167,19 @@ const ProgressBar = ({
           </FormLabel>
         ) : null}
         {shouldShowPercentage ? (
-          <Box marginBottom="spacing.2">
+          <BaseBox marginBottom="spacing.2">
             <Text
               type="subdued"
               variant="body"
               contrast={contrast}
               size="small"
             >{`${percentageProgressValue}%`}</Text>
-          </Box>
+          </BaseBox>
         ) : null}
-      </Box>
-      <Box
+      </BaseBox>
+      <BaseBox
         id={id}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.ProgressBar)}
+        {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
         {...makeAccessible({
           role: accessibilityProps.role,
           label: accessibilityProps.label,
@@ -186,7 +189,7 @@ const ProgressBar = ({
           valueMax: accessibilityProps.valueMax,
         })}
       >
-        <Box
+        <BaseBox
           backgroundColor={unfilledBackgroundColor}
           height={makeSize(progressBarHeight[size])}
           overflow="hidden"
@@ -203,8 +206,8 @@ const ProgressBar = ({
             variant={variant}
             isIndeterminate={isIndeterminate}
           />
-        </Box>
-      </Box>
+        </BaseBox>
+      </BaseBox>
     </>
   );
 };

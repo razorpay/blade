@@ -378,4 +378,12 @@ describe('<BaseLink />', () => {
     const link = getByRole('link');
     expect(link.findByProps({ accessibilityLabel: 'Info' })).toBeTruthy();
   });
+
+  it('should accept testID', () => {
+    const linkText = 'Learn More';
+    const { getByTestId } = renderWithTheme(
+      <BaseLink testID="base-link-test">{linkText}</BaseLink>,
+    );
+    expect(getByTestId('base-link-test')).toBeTruthy();
+  });
 });

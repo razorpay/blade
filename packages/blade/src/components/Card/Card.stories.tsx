@@ -25,7 +25,7 @@ import { UsersIcon, TrashIcon } from '~components/Icons';
 
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 
 const Page = (): React.ReactElement => {
@@ -57,6 +57,7 @@ const Page = (): React.ReactElement => {
           CardHeaderBadge,
           CardHeaderIconButton,
           InfoIcon,
+          Text
         } from '@razorpay/blade/components';
 
         function App() {
@@ -274,53 +275,53 @@ const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement
         <CardHeaderTrailing visual={<CardHeaderIconButton icon={TrashIcon} />} />
       </CardHeader>
       <CardBody>
-        <Box display="flex" flexDirection="row" gap="spacing.5">
-          <Box flex={1}>
+        <BaseBox display="flex" flexDirection="row" gap="spacing.5">
+          <BaseBox flex={1}>
             <TextInput
               label="First Name"
               isRequired
               necessityIndicator="required"
               placeholder="Enter your first name"
             />
-          </Box>
-          <Box flex={1}>
+          </BaseBox>
+          <BaseBox flex={1}>
             <TextInput
               label="Last Name"
               isRequired
               necessityIndicator="required"
               placeholder="Enter your last name"
             />
-          </Box>
-        </Box>
-        <Box marginTop="spacing.5" />
+          </BaseBox>
+        </BaseBox>
+        <BaseBox marginTop="spacing.5" />
         <TextInput
           label="Address Line 1"
           isRequired
           placeholder="Apartment name, number, suite, etc."
           necessityIndicator="required"
         />
-        <Box marginTop="spacing.5" />
+        <BaseBox marginTop="spacing.5" />
         <TextInput label="Address Line 2" isRequired placeholder="Area, Locality, etc." />
-        <Box marginTop="spacing.5" />
-        <Box display="flex" flexDirection="row" gap="spacing.5">
-          <Box flex={1}>
+        <BaseBox marginTop="spacing.5" />
+        <BaseBox display="flex" flexDirection="row" gap="spacing.5">
+          <BaseBox flex={1}>
             <TextInput
               label="Postal Code"
               isRequired
               necessityIndicator="required"
               placeholder="Zipcode"
             />
-          </Box>
-          <Box flex={1}>
+          </BaseBox>
+          <BaseBox flex={1}>
             <TextInput
               label="Country"
               isRequired
               necessityIndicator="required"
               placeholder="Country"
             />
-          </Box>
-        </Box>
-        <Box marginTop="spacing.5" />
+          </BaseBox>
+        </BaseBox>
+        <BaseBox marginTop="spacing.5" />
         <TextInput
           label="Mobile Number"
           necessityIndicator="optional"

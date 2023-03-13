@@ -3,9 +3,11 @@ import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { TextAreaProps } from './TextArea';
 import { TextArea as TextAreaComponent } from './TextArea';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Button } from '~components/Button';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -148,6 +150,11 @@ export default {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
+    onClearButtonClick: {
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
   },
   parameters: {
     docs: {
@@ -269,7 +276,7 @@ export const TextAreaControlled = TextAreaControlledTemplate.bind({});
 const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = () => {
   return (
     <>
-      <Box display="flex" gap="spacing.5">
+      <BaseBox display="flex" gap="spacing.5">
         <TextArea
           showClearButton
           label="Description"
@@ -301,8 +308,8 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = ()
           defaultValue="Anurag"
           successText="Name is valid"
         />
-      </Box>
-      <Box display="flex" flexDirection="column" gap="spacing.5">
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="column" gap="spacing.5">
         <TextArea
           label="Description"
           placeholder="Enter Description"
@@ -344,8 +351,37 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = ()
           validationState="none"
           helpText="Write your message"
         />
-      </Box>
+      </BaseBox>
     </>
   );
 };
 export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});
+
+export const inputRef: ComponentStory<typeof TextAreaComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const inputRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <BaseBox gap="spacing.3" display="flex" alignItems="end">
+      <TextAreaComponent ref={inputRef} label="Message" />
+      <Button
+        onClick={() => {
+          inputRef?.current?.focus();
+          console.log(inputRef);
+        }}
+      >
+        Click to focus the input
+      </Button>
+    </BaseBox>
+  );
+};
+
+inputRef.storyName = 'Text Area Ref';
+inputRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'TextArea component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
+    },
+  },
+};

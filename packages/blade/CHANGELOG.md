@@ -1,5 +1,80 @@
 # @razorpay/blade
 
+## 6.3.0
+
+### Minor Changes
+
+- a2518742: feat(icons): add BulkPayoutsIcon
+
+## 6.2.3
+
+### Patch Changes
+
+- cbb1424b: fix: change import to default in package exports
+
+  Jest does not support the "import" condition in exports. This was causing tests to fail for Blade consumers. Changed "import" to "default" which is supported by all tools. Since Blade is not exporting a dual package, we don't need the "import" condition.
+
+## 6.2.2
+
+### Patch Changes
+
+- 559d97d9: feat: support string array in children
+
+  Users can now use dynamic variables inside children and don't have to wrap it around with string literals
+
+  ```jsx
+  <Button onClick={}>{someVariable} hello</Button>
+  ```
+
+## 6.2.1
+
+### Patch Changes
+
+- 7016c215: fix(Dropdown): infinite render onChange, positioning in flex container
+
+## 6.2.0
+
+### Minor Changes
+
+- bb2f1561: feat(Dropdown): Add `Dropdown`, `Select`, `ActionList`.
+
+  Check out [Dropdown Story](https://blade.razorpay.com/?path=/docs/components-dropdown-with-select) for usage
+
+### Patch Changes
+
+- 505ca975: fix(checkbox): fixed screen reader styles
+
+  Fixed a bug where if we have lots of checkboxes in a small overflowed container the browser is trying to jump to the hidden inputs which is causing unexpected jumps in the scroll.
+
+## 6.1.0
+
+### Minor Changes
+
+- aff735ba: feat: add `List`, `ListItem`, `ListItemLink` & `ListItemCode` components
+
+## 6.0.5
+
+### Patch Changes
+
+- 38e8e6d0: chore(OTPInput): add `autoCompleteSuggestionType` prop and disable password manager with `isMasked`
+
+  We wanted to disable the password managers for OTPInput when `isMasked` is set. The straightforward way to do this is set autocomplete='off' (i.e autoCompleteSuggestionType='none'). The issue with autocomplete is that its not an enforcement but a suggestion to the browser to follow. Safari mostly adheres to it but Chrome and Firefox ignores it and shows the password managers anyway. We decided on a workaround to unset `type` on first render and set it to `password` once a value is entered. This way the password managers won't make any suggestions when the user is on an empty OTP input field.
+
+## 6.0.4
+
+### Patch Changes
+
+- 26ffc564: fix: add types field to package exports for ESM TypeScript projects
+
+## 6.0.3
+
+### Patch Changes
+
+- c95e814a: chore(blade): fix dependabot alerts
+- d2cfab2d: fix(blade): checkbox icon wrapper position
+
+  Fixed a bug in checkbox where the checkbox icon was flaoting outside it's wrapper because we've added `position: absolute` in the FadeIn animation component but forgot to add `position: relative` in the parent wrapper.
+
 ## 6.0.2
 
 ### Patch Changes

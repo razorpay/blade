@@ -62,8 +62,8 @@ const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, ha
 
 const _SelectorInput: React.ForwardRefRenderFunction<
   BladeElementRef,
-  HoverProps & { inputProps: any }
-> = ({ inputProps, isChecked, isDisabled, hasError }, ref) => {
+  HoverProps & { inputProps: any; tabIndex?: number }
+> = ({ inputProps, isChecked, isDisabled, hasError, tabIndex }, ref) => {
   const inputRef = useBladeInnerRef(ref);
 
   return (
@@ -71,6 +71,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<
       isChecked={isChecked}
       isDisabled={isDisabled}
       hasError={hasError}
+      tabIndex={tabIndex}
       {...inputProps}
       // merging both refs because inputProps.ref needs to have access to indeterminate state
       // to be able to set the mixed value via setMixed() function

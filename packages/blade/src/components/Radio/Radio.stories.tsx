@@ -8,7 +8,9 @@ import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { Button } from '~components/Button';
 
 const Page = (): React.ReactElement => {
   return (
@@ -239,7 +241,7 @@ export const KitchenSink = (): React.ReactElement => {
         <RadioComponent value="mango">Mango</RadioComponent>
         <RadioComponent value="orange">Orange</RadioComponent>
       </RadioGroupComponent>
-      <Box height={50} overflow="scroll" marginTop="spacing.4">
+      <BaseBox height={50} overflow="scroll" marginTop="spacing.4">
         <RadioGroupComponent
           labelPosition="left"
           necessityIndicator="optional"
@@ -252,7 +254,33 @@ export const KitchenSink = (): React.ReactElement => {
           <RadioComponent value="mango">Mango</RadioComponent>
           <RadioComponent value="orange">Orange</RadioComponent>
         </RadioGroupComponent>
-      </Box>
+      </BaseBox>
     </>
   );
+};
+
+export const radioRef: ComponentStory<typeof RadioComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const radioRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <BaseBox gap="spacing.3" display="flex" alignItems="center">
+      <RadioGroupComponent label="Radio ref example">
+        <RadioComponent ref={radioRef} value="1">
+          Radio
+        </RadioComponent>
+      </RadioGroupComponent>
+      <Button onClick={() => radioRef?.current?.focus()}>Click to focus the Radio</Button>
+    </BaseBox>
+  );
+};
+
+radioRef.storyName = 'Radio Ref';
+radioRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'Radio component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
+    },
+  },
 };

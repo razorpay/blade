@@ -9,9 +9,9 @@ import {
   AlertCircleIcon,
 } from '../../components/Icons';
 import { LinkToStorybook } from './LinkToStorybook';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { makeSpace } from '~utils';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
@@ -33,6 +33,14 @@ type ComponentStatusData = {
 }[];
 
 const componentData: ComponentStatusData = [
+  {
+    name: 'ActionList',
+    status: 'released',
+    releasedIn: '6.2.0',
+    storybookLink: 'Components/Dropdown/With Select',
+    description:
+      'List of multiple actionable items. Can be used as menu items inside `Dropdown`, `BottomSheet` and as selectable items when combined with `SelectInput`',
+  },
   {
     name: 'Alert',
     status: 'released',
@@ -112,6 +120,14 @@ const componentData: ComponentStatusData = [
     storybookLink: 'Components/Link',
     description:
       'Link component can be used for showing external or internal Links to the user. The Link component can also be used as an inline button in certain cases with the `button` variant.',
+  },
+  {
+    name: 'List',
+    status: 'released',
+    releasedIn: '6.1.0',
+    storybookLink: 'Components/List',
+    description:
+      'Lists display a set of related items that are composed of text/links. Each list item begins with a bullet or a number.',
   },
   {
     name: 'ProgressBar',
@@ -225,20 +241,18 @@ const componentData: ComponentStatusData = [
       'VisuallyHidden component makes content hidden from sighted users but available for screen reader users.',
   },
   {
-    name: 'ListView',
-    status: 'in-development',
-    description:
-      'Lists display a set of related items that are composed of text/links. Each list item begins with a bullet or a number.',
-  },
-  {
-    name: 'DropDown',
-    status: 'in-development',
+    name: 'Dropdown',
+    status: 'released',
+    releasedIn: '6.2.0',
+    storybookLink: 'Components/Dropdown/With Select',
     description:
       'Dropdown Menu displays a list of choices on temporary surfaces. They allow users to make a selection from multiple options. They appear when users interact with a button, action, or other control.',
   },
   {
-    name: 'Select',
-    status: 'in-development',
+    name: 'SelectInput',
+    status: 'released',
+    releasedIn: '6.2.0',
+    storybookLink: 'Components/Dropdown/With Select',
     description:
       'Select displays a list of choices on temporary surfaces. They allows users pick a value from predefined options',
   },
@@ -355,56 +369,85 @@ const ComponentStatusTable = (): React.ReactElement => {
     if (!a.releasedIn || !b.releasedIn) {
       return a.status.localeCompare(b.status);
     }
-    return a.name.localeCompare(b.name);
+    return b.releasedIn.localeCompare(a.releasedIn);
   });
 
   return (
-    <Box>
-      <Table>
-        <thead>
-          <tr>
-            <th align="left">
-              <Text weight="bold">Component</Text>
-            </th>
-            <th align="left">
-              <Text weight="bold">Status</Text>
-            </th>
-            <th style={{ width: '50%' }} align="left">
-              <Text weight="bold">Description</Text>
-            </th>
-            <th align="right">
-              <Text weight="bold">Released In</Text>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedData.map((data) => {
-            return (
-              <tr key={data.name}>
-                <td align="left">
-                  {data.storybookLink ? (
-                    <LinkToStorybook url={data.storybookLink}>{data.name}</LinkToStorybook>
-                  ) : (
-                    <Text>{data.name}</Text>
-                  )}
-                </td>
-                <td align="left">
-                  <ComponentStatusBadge status={data.status} />
-                </td>
-                <td align="left">
-                  <Text size="medium" color="surface.text.subtle.lowContrast">
-                    {data.description}
-                  </Text>
-                </td>
-                <td align="right">
-                  <ReleasedInLink version={data.releasedIn} />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    </Box>
+    <>
+      <Heading variant="regular">Lifecycle of a component</Heading>
+      <br />
+      <BaseBox display="flex" flexDirection="row" marginBottom="spacing.7" gap="spacing.2">
+        <Badge variant="information" icon={ClockIcon}>
+          Planned: Qn Design
+        </Badge>
+        ➡️
+        <Badge variant="information" icon={ClockIcon}>
+          Planned: Qn Dev
+        </Badge>
+        ➡️
+        <Badge variant="notice" icon={LoaderIcon}>
+          In Design
+        </Badge>
+        ➡️
+        <Badge variant="notice" icon={EditIcon}>
+          API In Progress
+        </Badge>
+        ➡️
+        <Badge variant="notice" icon={LoaderIcon}>
+          In Development
+        </Badge>
+        ➡️
+        <Badge variant="positive" icon={CheckIcon}>
+          Released
+        </Badge>
+      </BaseBox>
+      <BaseBox>
+        <Table>
+          <thead>
+            <tr>
+              <th align="left">
+                <Text weight="bold">Component</Text>
+              </th>
+              <th align="left">
+                <Text weight="bold">Status</Text>
+              </th>
+              <th style={{ width: '50%' }} align="left">
+                <Text weight="bold">Description</Text>
+              </th>
+              <th align="right">
+                <Text weight="bold">Released In</Text>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedData.map((data) => {
+              return (
+                <tr key={data.name}>
+                  <td align="left">
+                    {data.storybookLink ? (
+                      <LinkToStorybook url={data.storybookLink}>{data.name}</LinkToStorybook>
+                    ) : (
+                      <Text>{data.name}</Text>
+                    )}
+                  </td>
+                  <td align="left">
+                    <ComponentStatusBadge status={data.status} />
+                  </td>
+                  <td align="left">
+                    <Text size="medium" color="surface.text.subtle.lowContrast">
+                      {data.description}
+                    </Text>
+                  </td>
+                  <td align="right">
+                    <ReleasedInLink version={data.releasedIn} />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      </BaseBox>
+    </>
   );
 };
 

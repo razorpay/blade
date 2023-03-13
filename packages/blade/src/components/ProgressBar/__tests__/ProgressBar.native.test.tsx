@@ -12,6 +12,7 @@ describe('<ProgressBar />', () => {
     const { toJSON } = renderWithTheme(<ProgressBar label="Label" value={20} />);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should update the progress value appropriately', () => {
     const UpdatingProgressBar = (): React.ReactElement => {
       const [progressValue, setProgressValue] = useState(0);
@@ -173,5 +174,12 @@ describe('<ProgressBar />', () => {
     expect(() => renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />)).toThrow(
       `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
     );
+  });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <ProgressBar label="Label" value={20} testID="progress-bar-test" />,
+    );
+    expect(getByTestId('progress-bar-test')).toBeTruthy();
   });
 });

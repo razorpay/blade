@@ -5,9 +5,11 @@ import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { Button } from '~components/Button';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -170,12 +172,22 @@ export default {
         category: propsCategory.LEADING_VISUAL_PROPS,
       },
     },
+    suffix: {
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
     showClearButton: {
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
-    suffix: {
+    onClearButtonClick: {
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
+    isLoading: {
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
@@ -304,7 +316,7 @@ export const TextInputControlled = TextInputControlledTemplate.bind({});
 const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = () => {
   return (
     <>
-      <Box display="flex" gap="spacing.5">
+      <BaseBox display="flex" gap="spacing.5">
         <TextInput
           showClearButton
           label="First Name"
@@ -336,8 +348,8 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
           defaultValue="Anurag"
           successText="Name is valid"
         />
-      </Box>
-      <Box display="flex" flexDirection="column" gap="spacing.5">
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="column" gap="spacing.5">
         <TextInput
           label="First Name"
           placeholder="Enter your first"
@@ -373,8 +385,37 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
           validationState="none"
           helpText="Write your message"
         />
-      </Box>
+      </BaseBox>
     </>
   );
 };
 export const TextInputKitchenSink = TextInputKitchenSinkTemplate.bind({});
+
+export const inputRef: ComponentStory<typeof TextInputComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const inputRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <BaseBox gap="spacing.3" display="flex" alignItems="end">
+      <TextInputComponent ref={inputRef} label="First Name" name="fullName" />
+      <Button
+        onClick={() => {
+          inputRef?.current?.focus();
+          console.log(inputRef);
+        }}
+      >
+        Click to focus the input
+      </Button>
+    </BaseBox>
+  );
+};
+
+inputRef.storyName = 'Text Input Ref';
+inputRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'TextInput component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
+    },
+  },
+};

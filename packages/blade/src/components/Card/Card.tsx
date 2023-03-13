@@ -1,9 +1,10 @@
 import React from 'react';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils';
+import type { TestID } from '~src/_helpers/types';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -41,9 +42,9 @@ export type CardProps = {
    * - Figma: https://shorturl.at/fsvwK
    */
   surfaceLevel?: 2 | 3;
-};
+} & TestID;
 
-const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => {
+const Card = ({ children, surfaceLevel = 3, testID }: CardProps): React.ReactElement => {
   useVerifyAllowedComponents(children, 'Card', [
     ComponentIds.CardHeader,
     ComponentIds.CardBody,
@@ -53,7 +54,7 @@ const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => 
   return (
     <CardProvider>
       <CardSurface
-        {...metaAttribute(MetaConstants.Component, MetaConstants.Card)}
+        {...metaAttribute({ name: MetaConstants.Card, testID })}
         paddingLeft="spacing.7"
         paddingRight="spacing.7"
         paddingTop="spacing.6"
@@ -69,12 +70,12 @@ const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => 
 
 type CardBodyProps = {
   children: React.ReactNode;
-};
+} & TestID;
 
-const CardBody: WithComponentId<CardBodyProps> = ({ children }) => {
+const CardBody: WithComponentId<CardBodyProps> = ({ children, testID }) => {
   useVerifyInsideCard('CardBody');
 
-  return <Box {...metaAttribute(MetaConstants.Component, MetaConstants.CardBody)}>{children}</Box>;
+  return <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })}>{children}</BaseBox>;
 };
 CardBody.componentId = ComponentIds.CardBody;
 

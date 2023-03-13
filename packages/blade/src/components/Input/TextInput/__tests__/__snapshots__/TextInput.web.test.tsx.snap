@@ -244,6 +244,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
+  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -285,6 +286,7 @@ exports[`<TextInput /> should render 1`] = `
               </p>
               <div
                 class="c5"
+                data-blade-component="visually-hidden"
               >
                 <p
                   class="c6 Text__StyledText-wkh56f-0"
@@ -622,6 +624,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
+  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -663,6 +666,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               </p>
               <div
                 class="c5"
+                data-blade-component="visually-hidden"
               >
                 <p
                   class="c6 Text__StyledText-wkh56f-0"

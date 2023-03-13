@@ -112,6 +112,7 @@ exports[`<TextInput /> should render 1`] = `
                   "clip": "rect(0 0 0 0)",
                   "clipPath": "inset(50%)",
                   "height": 1,
+                  "left": -10000,
                   "marginBottom": -1,
                   "marginLeft": 0,
                   "marginRight": -1,
@@ -191,6 +192,7 @@ exports[`<TextInput /> should render 1`] = `
         accessibilityState={
           Object {
             "disabled": false,
+            "expanded": undefined,
           }
         }
         autoCompleteType="off"
@@ -398,6 +400,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                   "clip": "rect(0 0 0 0)",
                   "clipPath": "inset(50%)",
                   "height": 1,
+                  "left": -10000,
                   "marginBottom": -1,
                   "marginLeft": 0,
                   "marginRight": -1,
@@ -617,6 +620,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         accessibilityState={
           Object {
             "disabled": false,
+            "expanded": undefined,
           }
         }
         autoCompleteType="off"

@@ -212,4 +212,12 @@ describe('<PasswordInput />', () => {
     renderWithTheme(<Example />);
     expect(refValue).toHaveProperty('focus');
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <PasswordInput label="Enter password" testID="password-input-test" />,
+    );
+
+    expect(getByTestId('password-input-test')).toBeTruthy();
+  });
 });

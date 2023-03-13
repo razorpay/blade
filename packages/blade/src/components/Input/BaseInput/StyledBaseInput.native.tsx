@@ -1,8 +1,18 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import type { TextInput } from 'react-native';
+import type { CSSObject, ThemeProps, DefaultTheme } from 'styled-components';
+import type {
+  TextInputProps,
+  TextInput,
+  TouchableHighlight,
+  TouchableHighlightProps,
+  GestureResponderEvent,
+} from 'react-native';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
+import { Text } from '~components/Typography';
+import { makeSize } from '~utils';
+import size from '~tokens/global/size';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -64,35 +74,49 @@ const KeyboardTypeToNativeValuesMap = {
   decimal: 'decimal-pad',
 };
 
-const StyledNativeBaseInput = styled.TextInput<
-  Omit<
-    StyledBaseInputProps,
-    'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction'
-  > & {
-    isTextArea?: boolean;
-    isFocused: boolean;
-    autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
-  }
->((props) => ({
-  ...getBaseInputStyles({
-    theme: props.theme,
-    isFocused: props.isFocused,
-    isDisabled: !props.editable,
-    validationState: props.validationState,
-    leadingIcon: props.leadingIcon,
-    prefix: props.prefix,
-    interactionElement: props.interactionElement,
-    suffix: props.suffix,
-    trailingIcon: props.trailingIcon,
-  }),
-  lineHeight: undefined,
-  textAlignVertical: 'top',
-  height: props.isTextArea
-    ? `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`
-    : '36px',
-}));
+type StyledComponentInputProps = Omit<
+  StyledBaseInputProps,
+  'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction'
+> & {
+  isTextArea?: boolean;
+  isFocused: boolean;
+  autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
+  editable?: boolean;
+  onPress?: (event: GestureResponderEvent) => void;
+};
 
-export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>(
+const getRNInputStyles = (
+  props: StyledComponentInputProps &
+    ThemeProps<DefaultTheme> &
+    (TextInputProps | TouchableHighlightProps),
+): CSSObject => {
+  return {
+    ...getBaseInputStyles({
+      theme: props.theme,
+      isFocused: props.isFocused,
+      isDisabled: !props.editable,
+      validationState: props.validationState,
+      leadingIcon: props.leadingIcon,
+      prefix: props.prefix,
+      interactionElement: props.interactionElement,
+      suffix: props.suffix,
+      trailingIcon: props.trailingIcon,
+    }),
+    lineHeight: undefined,
+    textAlignVertical: 'top',
+    height: props.isTextArea
+      ? `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`
+      : makeSize(size[36]),
+  };
+};
+
+const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(getRNInputStyles);
+const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(getRNInputStyles);
+
+export const StyledBaseInput = React.forwardRef<
+  TextInput | TouchableHighlight,
+  StyledBaseInputProps
+>(
   (
     {
       name,
@@ -104,6 +128,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       handleOnBlur,
       handleOnInput,
       handleOnKeyDown,
+      handleOnClick,
       keyboardType = 'text',
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
@@ -113,26 +138,62 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       type,
       numberOfLines,
       isTextArea,
+      hasPopup,
+      shouldIgnoreBlurAnimation,
       ...props
     },
     ref,
   ) => {
-    return (
+    const buttonValue = props.value ? props.value : props.placeholder;
+    const commonProps = {
+      onBlur: (): void => {
+        // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
+        // The selectinput should always look like it is in focus otherwise it triggers blur + focus again which can cause flicker
+        if (!shouldIgnoreBlurAnimation) {
+          setCurrentInteraction('default');
+        }
+      },
+      isFocused: currentInteraction === 'active',
+    };
+
+    return hasPopup ? (
+      <StyledNativeBaseButton
+        // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={ref as any}
+        onPress={(): void => {
+          handleOnClick?.({ name, value: props.value });
+        }}
+        onFocus={(): void => {
+          handleOnFocus?.({ name, value: props.value });
+          setCurrentInteraction('active');
+        }}
+        {...commonProps}
+        {...props}
+        {...accessibilityProps}
+      >
+        <Text
+          size="medium"
+          variant="body"
+          type={props.value ? 'subtle' : 'placeholder'}
+          contrast="low"
+          weight="regular"
+        >
+          {buttonValue}
+        </Text>
+      </StyledNativeBaseButton>
+    ) : (
       <StyledNativeBaseInput
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         multiline={isTextArea}
         numberOfLines={numberOfLines}
-        isFocused={currentInteraction === 'active'}
         editable={!isDisabled}
         maxLength={maxCharacters}
         onFocus={(event): void => {
           handleOnFocus?.({ name, value: event?.nativeEvent.text });
           setCurrentInteraction('active');
-        }}
-        onBlur={(): void => {
-          setCurrentInteraction('default');
         }}
         onChangeText={(text): void => {
           handleOnChange?.({ name, value: text });
@@ -164,6 +225,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
             ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
             : undefined
         }
+        {...commonProps}
         {...props}
         {...accessibilityProps}
       />

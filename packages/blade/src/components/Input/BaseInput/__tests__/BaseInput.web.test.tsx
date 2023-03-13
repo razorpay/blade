@@ -244,4 +244,12 @@ describe('<BaseInput />', () => {
     await assertAccessible(input);
     jest.clearAllMocks();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <BaseInput id="name" label="Enter name" testID="base-input-test" />,
+    );
+
+    expect(getByTestId('base-input-test')).toBeTruthy();
+  });
 });

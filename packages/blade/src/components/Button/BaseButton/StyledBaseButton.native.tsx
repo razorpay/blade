@@ -42,6 +42,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
     motionEasing,
     isLoading,
     accessibilityProps,
+    testID,
   },
   ref,
 ) => {
@@ -92,6 +93,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      testID={testID}
     >
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;

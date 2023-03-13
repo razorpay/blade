@@ -18,7 +18,7 @@ import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -177,7 +177,7 @@ describe('<Card />', () => {
     expect(() =>
       renderWithTheme(
         <Card>
-          <Box>some random Box</Box>
+          <BaseBox>some random Box</BaseBox>
           <CardHeader />
           <CardBody>Plain Card</CardBody>
           <CardFooter />
@@ -194,7 +194,7 @@ describe('<Card />', () => {
         <Card>
           <CardHeader>
             <CardHeaderLeading title="" />
-            <Box>some random children</Box>
+            <BaseBox>some random children</BaseBox>
             <CardHeaderTrailing />
           </CardHeader>
           <CardBody>Plain Card</CardBody>
@@ -215,12 +215,23 @@ describe('<Card />', () => {
           <CardFooter>
             <CardFooterLeading />
             <CardFooterTrailing />
-            <Box>some random children</Box>
+            <BaseBox>some random children</BaseBox>
           </CardFooter>
         </Card>,
       ),
     ).toThrow(
       '[Blade Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted as CardFooter children',
     );
+  });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <Card surfaceLevel={2} testID="card-test">
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+      </Card>,
+    );
+    expect(getByTestId('card-test')).toBeTruthy();
   });
 });

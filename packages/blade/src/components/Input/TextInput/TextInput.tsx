@@ -8,7 +8,7 @@ import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
@@ -40,6 +40,7 @@ type TextInputProps = Pick<
   | 'autoFocus'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
+  | 'testID'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -47,7 +48,7 @@ type TextInputProps = Pick<
   showClearButton?: boolean;
 
   /**
-   * Event handler to handle the onClick event for clear button.
+   * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
 
@@ -183,6 +184,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     autoFocus,
     keyboardReturnKeyType,
     autoCompleteSuggestionType,
+    testID,
   },
   ref,
 ): ReactElement => {
@@ -267,13 +269,14 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       successText={successText}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <Box marginTop="spacing.2" marginRight="spacing.1">
+          <BaseBox marginTop="spacing.2" marginRight="spacing.1">
             <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
-          </Box>
+          </BaseBox>
         ) : null;
       }}
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocus}
+      testID={testID}
       {...getKeyboardAndAutocompleteProps({
         type,
         keyboardReturnKeyType,

@@ -13,6 +13,7 @@ exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
+  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -20,6 +21,7 @@ exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="visually-hidden"
   >
     Text only visible to screen readers
   </div>

@@ -1,8 +1,9 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
-import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
-import Box from '~components/Box';
+import { metaAttribute, getPlatformType, makeAccessible } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 import type { AriaRoles } from '~utils';
+import type { TestID } from '~src/_helpers/types';
 
 type SelectorGroupFieldProps = {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ type SelectorGroupFieldProps = {
   position?: 'top' | 'left';
   accessibilityRole?: AriaRoles;
   componentName: 'checkbox-group' | 'radio-group';
-};
+} & TestID;
 
 const SelectorGroupField = ({
   children,
@@ -18,6 +19,7 @@ const SelectorGroupField = ({
   position,
   accessibilityRole = 'group',
   componentName,
+  testID,
 }: SelectorGroupFieldProps): React.ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
   let labelPosition: CSSObject['flexDirection'] = position === 'top' ? 'column' : 'row';
@@ -25,17 +27,17 @@ const SelectorGroupField = ({
   const role = accessibilityRole === 'group' && isReactNative ? undefined : accessibilityRole;
 
   return (
-    <Box
+    <BaseBox
       display="flex"
       flexDirection={labelPosition}
       {...makeAccessible({
         role,
         labelledBy,
       })}
-      {...metaAttribute(MetaConstants.Component, componentName)}
+      {...metaAttribute({ name: componentName, testID })}
     >
       {children}
-    </Box>
+    </BaseBox>
   );
 };
 

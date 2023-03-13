@@ -3,18 +3,20 @@ import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
 import { iconPadding, iconSize, horizontalPadding, verticalPadding } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
 
 type BadgeProps = {
   /**
    * Sets the label for the badge.
    *
    */
-  children: string;
+  children: StringChildrenType;
   /**
    * Sets the variant of the badge.
    *
@@ -45,7 +47,7 @@ type BadgeProps = {
    * @default 'regular'
    */
   fontWeight?: 'regular' | 'bold';
-};
+} & TestID;
 
 const isFeedbackVariant = (variant: string): variant is Feedback => {
   const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
@@ -89,8 +91,10 @@ const Badge = ({
   icon: Icon,
   size = 'medium',
   variant = 'neutral',
+  testID,
 }: BadgeProps): ReactElement => {
-  if (!children?.trim()) {
+  const childrenString = getStringFromReactText(children);
+  if (!childrenString?.trim()) {
     throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }
   const { backgroundColor, iconColor, textColor } = getColorProps({
@@ -117,9 +121,9 @@ const Badge = ({
     <StyledBadge
       backgroundColor={backgroundColor}
       size={size}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Badge)}
+      {...metaAttribute({ name: MetaConstants.Badge, testID })}
     >
-      <Box
+      <BaseBox
         paddingRight={horizontalPadding[size]}
         paddingLeft={horizontalPadding[size]}
         paddingTop={verticalPadding[size]}
@@ -131,9 +135,9 @@ const Badge = ({
         overflow="hidden"
       >
         {Icon ? (
-          <Box paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
+          <BaseBox paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
             <Icon color={iconColor} size={iconSize[size]} />
-          </Box>
+          </BaseBox>
         ) : null}
         <Text
           {...badgeTextSizes[size]}
@@ -144,7 +148,7 @@ const Badge = ({
         >
           {children}
         </Text>
-      </Box>
+      </BaseBox>
     </StyledBadge>
   );
 };

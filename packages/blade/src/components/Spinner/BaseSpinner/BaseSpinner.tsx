@@ -6,8 +6,9 @@ import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, getIn, makeAccessible, makeSize, MetaConstants } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+import type { TestID } from '~src/_helpers/types';
 
 type BaseSpinnerProps = {
   intent?: Feedback;
@@ -39,7 +40,7 @@ type BaseSpinnerProps = {
    *
    */
   accessibilityLabel: string;
-};
+} & TestID;
 
 const getColor = ({
   contrast,
@@ -69,11 +70,12 @@ const BaseSpinner = ({
   contrast = 'low',
   intent,
   size = 'medium',
+  testID,
 }: BaseSpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
-    <Box display="flex" {...metaAttribute(MetaConstants.Component, MetaConstants.Spinner)}>
-      <Box
+    <BaseBox display="flex" {...metaAttribute({ name: MetaConstants.Spinner, testID })}>
+      <BaseBox
         display="flex"
         alignItems="center"
         flexDirection={labelPosition === 'right' ? 'row' : 'column'}
@@ -89,17 +91,17 @@ const BaseSpinner = ({
           />
         </SpinningBox>
         {label && label.trim().length > 0 ? (
-          <Box
+          <BaseBox
             marginLeft={labelPosition === 'right' ? 'spacing.3' : 'spacing.0'}
             marginTop={labelPosition === 'bottom' ? 'spacing.3' : 'spacing.0'}
           >
             <Text variant="body" weight="regular" type="subdued" size="small" contrast={contrast}>
               {label}
             </Text>
-          </Box>
+          </BaseBox>
         ) : null}
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 

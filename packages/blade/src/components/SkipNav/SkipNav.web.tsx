@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { metaAttribute, MetaConstants, testID } from '~utils';
+import { metaAttribute, MetaConstants, testID as testIDWebAndNative } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 import { BaseLink } from '~components/Link/BaseLink';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 const fallbackId = 'blade-skip-nav';
 type SkipNavLinkProps = {
   id?: string;
-  children?: string;
+  children?: StringChildrenType;
 };
 
 const StyledLink = styled(BaseLink)(({ theme }) => ({
@@ -32,16 +33,19 @@ const SkipNavLink = ({
 
 type SkipNavContentProps = {
   id?: string;
-};
+} & TestID;
 
-const SkipNavContent = ({ id = fallbackId }: SkipNavContentProps): JSX.Element => {
+const SkipNavContent = ({
+  id = fallbackId,
+  testID = 'skipnav-content',
+}: SkipNavContentProps): JSX.Element => {
   return (
     <div
       tabIndex={-1}
       id={id}
       style={{ outline: 0 }}
-      {...testID('skipnav-content')}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.SkipNav)}
+      {...testIDWebAndNative(testID)}
+      {...metaAttribute({ name: MetaConstants.SkipNav })}
     />
   );
 };

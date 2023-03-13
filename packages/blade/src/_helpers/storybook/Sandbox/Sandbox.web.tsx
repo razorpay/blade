@@ -4,7 +4,7 @@ import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
 type SandboxProps = {
   children: string;
@@ -41,7 +41,7 @@ function Sandbox({
   } = React.useContext(DocsContext);
 
   return (
-    <Box>
+    <BaseBox>
       <br />
       <Sandpack
         template="react-ts"
@@ -66,6 +66,9 @@ function Sandbox({
             );
 
             const GlobalStyles = createGlobalStyle\`
+              * { 
+                box-sizing: border-box;
+              }
               body {
                 margin: 0;
                 padding: 0;
@@ -114,7 +117,7 @@ function Sandbox({
       />
       <br />
       <br />
-    </Box>
+    </BaseBox>
   );
 }
 
