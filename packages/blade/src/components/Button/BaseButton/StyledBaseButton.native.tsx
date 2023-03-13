@@ -8,6 +8,7 @@ import type { StyledBaseButtonProps } from './types';
 import { getIn } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
@@ -101,7 +102,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
   );
 };
 
-const StyledBaseButton = /*#__PURE__*/ Object.assign(React.forwardRef(_StyledBaseButton), {
+const StyledBaseButton = assignWithoutSideEffects(React.forwardRef(_StyledBaseButton), {
   displayName: 'StyledBaseButton',
 });
 

@@ -40,6 +40,7 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -443,7 +444,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   );
 };
 
-const BaseButton = /*#__PURE__*/ Object.assign(React.forwardRef(_BaseButton), {
+const BaseButton = assignWithoutSideEffects(React.forwardRef(_BaseButton), {
   displayName: 'BaseButton',
 });
 

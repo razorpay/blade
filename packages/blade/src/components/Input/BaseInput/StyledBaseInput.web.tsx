@@ -5,6 +5,7 @@ import { getBaseInputStyles } from './baseInputStyles';
 
 import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 const getWebInputStyles = (
   props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &
@@ -80,95 +81,98 @@ const autoCompleteSuggestionTypeMap = {
   creditCardExpiryYear: 'cc-exp-year',
 };
 
-export const StyledBaseInput = React.forwardRef<
+const _StyledBaseInput: React.ForwardRefRenderFunction<
   HTMLInputElement | HTMLButtonElement,
   StyledBaseInputProps
->(
-  (
-    {
-      name,
-      isDisabled,
-      isRequired,
-      maxCharacters,
-      handleOnFocus,
-      handleOnChange,
-      handleOnBlur,
-      handleOnInput,
-      handleOnKeyDown,
-      handleOnClick,
-      keyboardType,
-      keyboardReturnKeyType,
-      autoCompleteSuggestionType,
-      accessibilityProps,
-      setCurrentInteraction,
-      numberOfLines,
-      type,
-      hasPopup,
-      shouldIgnoreBlurAnimation,
-      ...props
-    },
-    ref,
-  ) => {
-    const commonProps = {
-      onBlur: (event: React.ChangeEvent<HTMLInputElement>): void => {
-        // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
-        // The selectinput should always look like it is in focus otherwise it triggers blur + focus again which can cause flicker
-        if (!shouldIgnoreBlurAnimation) {
-          setCurrentInteraction('default');
-        }
-        handleOnBlur?.({ name, value: event });
-      },
-      onFocus: (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setCurrentInteraction('active');
-        handleOnFocus?.({ name, value: event });
-      },
-      onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
-        handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
-      },
-      disabled: isDisabled,
-      enterKeyHint: keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType,
-      autoComplete: autoCompleteSuggestionType
-        ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
-        : undefined,
-    };
-
-    return props.as === 'button' ? (
-      <StyledBaseNativeButton
-        // @ts-expect-error: TS doesnt understand that this will always be `button`
-        ref={ref}
-        name={name}
-        type="button"
-        onClick={(event: React.MouseEvent<HTMLInputElement>): void => {
-          handleOnClick?.({ name, value: event });
-        }}
-        {...commonProps}
-        {...props}
-        {...accessibilityProps}
-        value={props.value}
-      >
-        {props.value ? props.value : props.placeholder}
-      </StyledBaseNativeButton>
-    ) : (
-      <StyledBaseNativeInput
-        // @ts-expect-error: TS doesnt understand that this will always be `input`
-        ref={ref}
-        name={name}
-        type={type === 'telephone' ? 'tel' : type}
-        required={isRequired}
-        maxLength={maxCharacters}
-        rows={numberOfLines}
-        inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
-          handleOnChange?.({ name, value: event })
-        }
-        onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
-          handleOnInput?.({ name, value: event });
-        }}
-        {...commonProps}
-        {...props}
-        {...accessibilityProps}
-      />
-    );
+> = (
+  {
+    name,
+    isDisabled,
+    isRequired,
+    maxCharacters,
+    handleOnFocus,
+    handleOnChange,
+    handleOnBlur,
+    handleOnInput,
+    handleOnKeyDown,
+    handleOnClick,
+    keyboardType,
+    keyboardReturnKeyType,
+    autoCompleteSuggestionType,
+    accessibilityProps,
+    setCurrentInteraction,
+    numberOfLines,
+    type,
+    hasPopup,
+    shouldIgnoreBlurAnimation,
+    ...props
   },
-);
-StyledBaseInput.displayName = 'StyledBaseInput';
+  ref,
+) => {
+  const commonProps = {
+    onBlur: (event: React.ChangeEvent<HTMLInputElement>): void => {
+      // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
+      // The selectinput should always look like it is in focus otherwise it triggers blur + focus again which can cause flicker
+      if (!shouldIgnoreBlurAnimation) {
+        setCurrentInteraction('default');
+      }
+      handleOnBlur?.({ name, value: event });
+    },
+    onFocus: (event: React.ChangeEvent<HTMLInputElement>): void => {
+      setCurrentInteraction('active');
+      handleOnFocus?.({ name, value: event });
+    },
+    onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
+      handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
+    },
+    disabled: isDisabled,
+    enterKeyHint: keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType,
+    autoComplete: autoCompleteSuggestionType
+      ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
+      : undefined,
+  };
+
+  return props.as === 'button' ? (
+    <StyledBaseNativeButton
+      // @ts-expect-error: TS doesnt understand that this will always be `button`
+      ref={ref}
+      name={name}
+      type="button"
+      onClick={(event: React.MouseEvent<HTMLInputElement>): void => {
+        handleOnClick?.({ name, value: event });
+      }}
+      {...commonProps}
+      {...props}
+      {...accessibilityProps}
+      value={props.value}
+    >
+      {props.value ? props.value : props.placeholder}
+    </StyledBaseNativeButton>
+  ) : (
+    <StyledBaseNativeInput
+      // @ts-expect-error: TS doesnt understand that this will always be `input`
+      ref={ref}
+      name={name}
+      type={type === 'telephone' ? 'tel' : type}
+      required={isRequired}
+      maxLength={maxCharacters}
+      rows={numberOfLines}
+      inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
+      onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+        handleOnChange?.({ name, value: event })
+      }
+      onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
+        handleOnInput?.({ name, value: event });
+      }}
+      {...commonProps}
+      {...props}
+      {...accessibilityProps}
+    />
+  );
+};
+
+const StyledBaseInput = assignWithoutSideEffects(React.forwardRef(_StyledBaseInput), {
+  displayName: 'StyledBaseInput',
+});
+
+export { StyledBaseInput };

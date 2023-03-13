@@ -19,6 +19,7 @@ import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants }
 import { Checkbox } from '~components/Checkbox';
 import size from '~tokens/global/size';
 import type { StringChildrenType } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListItemProps = {
   title: string;
@@ -129,7 +130,7 @@ const _ActionListSection = ({
   );
 };
 
-const ActionListSection = /*#__PURE__*/ Object.assign(_ActionListSection, {
+const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
   componentId: componentIds.ActionListSection,
 });
 
@@ -148,7 +149,7 @@ const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => 
   );
 };
 
-const ActionListItemIcon = /*#__PURE__*/ Object.assign(_ActionListItemIcon, {
+const ActionListItemIcon = assignWithoutSideEffects(_ActionListItemIcon, {
   componentId: componentIds.ActionListItemIcon,
 });
 
@@ -162,7 +163,7 @@ const _ActionListItemText = ({ children }: { children: StringChildrenType }): JS
   );
 };
 
-const ActionListItemText = /*#__PURE__*/ Object.assign(_ActionListItemText, {
+const ActionListItemText = assignWithoutSideEffects(_ActionListItemText, {
   componentId: componentIds.ActionListItemText,
 });
 
@@ -337,7 +338,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
   );
 };
 
-const ActionListItem = /*#__PURE__*/ Object.assign(_ActionListItem, {
+const ActionListItem = assignWithoutSideEffects(_ActionListItem, {
   componentId: componentIds.ActionListItem,
 });
 

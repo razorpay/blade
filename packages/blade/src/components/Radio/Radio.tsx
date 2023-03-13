@@ -13,6 +13,7 @@ import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getPlatformType } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import type { StringChildrenType } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type RadioProps = {
   /**
@@ -115,6 +116,6 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   );
 };
 
-const Radio = /*#__PURE__*/ Object.assign(React.forwardRef(_Radio), { displayName: 'Radio' });
+const Radio = assignWithoutSideEffects(React.forwardRef(_Radio), { displayName: 'Radio' });
 
 export { Radio, RadioProps };

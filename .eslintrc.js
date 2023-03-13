@@ -32,6 +32,14 @@ module.exports = {
       },
     ],
     'import/extensions': ['error', 'never', { css: 'always' }],
+    'no-restricted-properties': [
+      2,
+      {
+        property: 'displayName',
+        message:
+          "Please define displayName using `assignWithoutSideEffects` instead. This will make sure the code doesn't create side-effects and tree-shaking continues to work",
+      },
+    ],
   },
   env: {
     browser: true,

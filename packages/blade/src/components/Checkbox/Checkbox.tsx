@@ -12,6 +12,7 @@ import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type OnChange = ({
   isChecked,
@@ -236,7 +237,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   );
 };
 
-const Checkbox = /*#__PURE__*/ Object.assign(React.forwardRef(_Checkbox), {
+const Checkbox = assignWithoutSideEffects(React.forwardRef(_Checkbox), {
   displayName: 'Checkbox',
 });
 

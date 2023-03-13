@@ -8,6 +8,7 @@ import { castWebType, getIn, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type HoverProps = {
   isChecked?: boolean;
@@ -84,7 +85,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<
   );
 };
 
-const SelectorInput = /*#__PURE__*/ Object.assign(React.forwardRef(_SelectorInput), {
+const SelectorInput = assignWithoutSideEffects(React.forwardRef(_SelectorInput), {
   displayName: 'SelectorInput',
 });
 

@@ -11,6 +11,7 @@ import { isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -155,7 +156,7 @@ const _SelectInput = (
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-select--with-single-select SelectInput Documentation}.
  */
 
-const SelectInput = /*#__PURE__*/ Object.assign(React.forwardRef(_SelectInput), {
+const SelectInput = assignWithoutSideEffects(React.forwardRef(_SelectInput), {
   componentId: 'SelectInput',
 });
 

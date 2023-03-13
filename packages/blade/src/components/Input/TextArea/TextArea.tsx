@@ -10,6 +10,7 @@ import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type TextAreaProps = Pick<
   BaseInputProps,
@@ -162,7 +163,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   );
 };
 
-const TextArea = /*#__PURE__*/ Object.assign(React.forwardRef(_TextArea), {
+const TextArea = assignWithoutSideEffects(React.forwardRef(_TextArea), {
   displayName: 'TextArea',
 });
 

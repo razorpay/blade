@@ -7,6 +7,7 @@ import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type PasswordInputExtraProps = {
   /**
@@ -157,7 +158,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
 };
 
 // nosemgrep
-const PasswordInput = /*#__PURE__*/ Object.assign(React.forwardRef(_PasswordInput), {
+const PasswordInput = assignWithoutSideEffects(React.forwardRef(_PasswordInput), {
   displayName: 'PasswordInput',
 });
 

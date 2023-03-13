@@ -5,6 +5,7 @@ import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import type { StringChildrenType } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -72,6 +73,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   );
 };
 
-const Button = /*#__PURE__*/ Object.assign(React.forwardRef(_Button), { displayName: 'Button' });
+const Button = assignWithoutSideEffects(React.forwardRef(_Button), { displayName: 'Button' });
 
 export default Button;
