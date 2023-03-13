@@ -56,6 +56,7 @@ export default {
     suffix: '',
     keyboardReturnKeyType: undefined,
     autoCompleteSuggestionType: undefined,
+    autoCapitalize: undefined,
   },
   argTypes: {
     defaultValue: {
@@ -198,6 +199,11 @@ export default {
       },
     },
     autoCompleteSuggestionType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    autoCapitalize: {
       table: {
         category: propsCategory.KEYBOARD_PROPS,
       },

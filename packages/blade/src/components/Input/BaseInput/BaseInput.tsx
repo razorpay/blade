@@ -229,6 +229,10 @@ export type BaseInputProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
+    /**
+     * sets the autocapitalize behavior for the input
+     */
+    autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
   } & TestID;
 
 const autoCompleteSuggestionTypeValues = [
@@ -498,6 +502,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       popupId,
       isPopupExpanded,
       shouldIgnoreBlurAnimation,
+      autoCapitalize,
       testID,
     },
     ref,
@@ -637,6 +642,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               isTextArea={isTextArea}
               hasPopup={hasPopup}
               shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+              autoCapitalize={autoCapitalize}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}
