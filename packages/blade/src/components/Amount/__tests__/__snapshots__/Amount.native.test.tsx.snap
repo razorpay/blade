@@ -13,11 +13,11 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -52,11 +52,11 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -133,11 +133,11 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -172,11 +172,11 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -255,11 +255,11 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -337,11 +337,11 @@ exports[`<Amount /> should render information variant Amount  1`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -376,11 +376,11 @@ exports[`<Amount /> should render information variant Amount  1`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -457,11 +457,11 @@ exports[`<Amount /> should render information variant Amount  2`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -539,11 +539,11 @@ exports[`<Amount /> should render information variant Amount  3`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -621,11 +621,11 @@ exports[`<Amount /> should render medium size Amount 1`] = `
   paddingTop="spacing.0"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -660,11 +660,11 @@ exports[`<Amount /> should render medium size Amount 1`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -741,11 +741,11 @@ exports[`<Amount /> should render medium size Amount 2`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -780,11 +780,11 @@ exports[`<Amount /> should render medium size Amount 2`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -861,11 +861,11 @@ exports[`<Amount /> should render medium size Amount 3`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -900,11 +900,11 @@ exports[`<Amount /> should render medium size Amount 3`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -981,11 +981,11 @@ exports[`<Amount /> should render medium size Amount 4`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1020,11 +1020,11 @@ exports[`<Amount /> should render medium size Amount 4`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1101,11 +1101,11 @@ exports[`<Amount /> should render medium size Amount 5`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1140,11 +1140,11 @@ exports[`<Amount /> should render medium size Amount 5`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1221,11 +1221,11 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1260,11 +1260,11 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1341,11 +1341,11 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1423,11 +1423,11 @@ exports[`<Amount /> should render negative variant Amount  3`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1505,11 +1505,11 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1544,11 +1544,11 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1625,11 +1625,11 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1707,11 +1707,11 @@ exports[`<Amount /> should render neutral variant Amount  3`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1789,11 +1789,11 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1828,11 +1828,11 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1909,11 +1909,11 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -1948,11 +1948,11 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -2029,11 +2029,11 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -2111,11 +2111,11 @@ exports[`<Amount /> should render positive variant Amount  4`] = `
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -2193,11 +2193,11 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -2275,11 +2275,11 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
   paddingTop="spacing.2"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -2357,11 +2357,11 @@ exports[`<Amount /> should render small size Amount 1`] = `
   paddingTop="spacing.1"
 >
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }
@@ -2396,11 +2396,11 @@ exports[`<Amount /> should render small size Amount 1`] = `
     </Text>
   </View>
   <View
-    paddingRight={1}
+    paddingRight="spacing.1"
     style={
       Array [
         Object {
-          "paddingRight": 1,
+          "paddingRight": 2,
         },
       ]
     }

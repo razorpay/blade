@@ -25,7 +25,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -70,7 +70,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -134,7 +133,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -166,7 +165,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -219,7 +217,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -264,7 +262,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -328,7 +325,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -373,7 +370,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -437,7 +433,7 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -482,7 +478,6 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -546,7 +541,7 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -591,7 +586,6 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -655,7 +649,7 @@ exports[`<Amount /> should render information variant Amount  1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -700,7 +694,6 @@ exports[`<Amount /> should render information variant Amount  1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -764,7 +757,7 @@ exports[`<Amount /> should render information variant Amount  2`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -783,7 +776,6 @@ exports[`<Amount /> should render information variant Amount  2`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -836,7 +828,7 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -881,7 +873,6 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -945,7 +936,7 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -964,7 +955,6 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -1017,7 +1007,7 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -1062,7 +1052,6 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -1126,7 +1115,7 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -1145,7 +1134,6 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -1198,7 +1186,7 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -1243,7 +1231,6 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -1307,7 +1294,7 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -1352,7 +1339,6 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -1416,7 +1402,7 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -1435,7 +1421,6 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -1488,7 +1473,7 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -1507,7 +1492,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -1560,7 +1544,7 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -1605,7 +1589,6 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
@@ -1669,7 +1652,7 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
 }
 
 .c1 {
-  padding-right: 1px;
+  padding-right: 2px;
 }
 
 .c2 {
@@ -1714,7 +1697,6 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="amount"
     display="flex"
     overflow="hidden"
   >
