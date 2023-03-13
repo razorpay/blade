@@ -126,7 +126,7 @@ const formatAmountWithSuffix = (
       return getFormattedAmountWithSuffixSymbol(num, currency);
     }
     default:
-      return String(getFlooredFixed(num, 2));
+      return String(getFlooredFixed(num, 0));
   }
 };
 
