@@ -11,6 +11,7 @@ import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import spacing from '~tokens/global/spacing';
 import type { SpacingValueType } from '~components/Box/BaseBox/types';
+import size from '~tokens/global/size';
 
 const dropdownFadeIn = keyframes`
 from {
@@ -85,7 +86,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
   React.useEffect(() => {
     const setOverlayWidth = throttle((): void => {
       if (triggererRef.current?.clientWidth && hasLabelOnLeft) {
-        const svgWidth: number = theme.spacing[5];
+        const svgWidth: number = size[16];
         const interactionElementPadding: number = theme.spacing[4];
         const offset = svgWidth + interactionElementPadding;
         // SelectInput is -> Button + InteractionElement on right (the chevron icon)

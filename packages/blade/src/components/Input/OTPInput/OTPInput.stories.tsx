@@ -97,6 +97,16 @@ export default {
         category: propsCategory.KEYBOARD_PROPS,
       },
     },
+    autoCompleteSuggestionType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    isMasked: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
     validationState: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
