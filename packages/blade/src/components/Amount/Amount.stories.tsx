@@ -77,32 +77,52 @@ const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }
   return (
     <BaseBox justifyContent="center">
       <BaseBox marginBottom="spacing.3">
-        <Text>Small</Text>
+        <Text>Body-small</Text>
         <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="body-small" />
       </BaseBox>
       <BaseBox marginBottom="spacing.3">
-        <Text>Medium</Text>
+        <Text>Body-small-bold</Text>
+        <BaseBox marginBottom="spacing.2" />
+        <AmountComponent {...args} size="body-small-bold" />
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
+        <Text>Body-medium</Text>
         <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="body-medium" />
       </BaseBox>
       <BaseBox marginBottom="spacing.3">
-        <Text>Large</Text>
+        <Text>Body-medium-bold</Text>
+        <BaseBox marginBottom="spacing.2" />
+        <AmountComponent {...args} size="body-medium-bold" />
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
+        <Text>Heading-small</Text>
         <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="heading-small" />
       </BaseBox>
       <BaseBox marginBottom="spacing.3">
-        <Text>Extra Large</Text>
+        <Text>Heading-small-bold</Text>
+        <BaseBox marginBottom="spacing.2" />
+        <AmountComponent {...args} size="heading-small-bold" />
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
+        <Text>Heading-large</Text>
         <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="heading-large" />
       </BaseBox>
       <BaseBox marginBottom="spacing.3">
-        <Text>Extra Large</Text>
+        <Text>Heading-large-bold</Text>
+        <BaseBox marginBottom="spacing.2" />
+        <AmountComponent {...args} size="heading-large-bold" />
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
+        <Text>Title-small</Text>
         <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="title-small" />
       </BaseBox>
       <BaseBox marginBottom="spacing.3">
-        <Text>Extra Large</Text>
+        <Text>Title-medium</Text>
         <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="title-medium" />
       </BaseBox>
