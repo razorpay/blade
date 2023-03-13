@@ -50,7 +50,7 @@ const AmountValue = ({
           </BaseText>
         </BaseBox>
         <BaseText fontWeight={affixFontWeight} fontSize={affixFontSize} color={prefixSuffixColor}>
-          {decimal}
+          {decimal || '00'}
         </BaseText>
       </>
     );

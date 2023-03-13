@@ -82,8 +82,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -126,7 +126,9 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -205,8 +207,8 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -330,8 +332,8 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -374,7 +376,9 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -462,8 +466,8 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -506,7 +510,9 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -594,8 +600,8 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -638,7 +644,9 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -726,8 +734,8 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -770,7 +778,9 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -858,8 +868,8 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -902,7 +912,9 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="100"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -990,8 +1002,8 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -1034,7 +1046,9 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="100"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -1122,8 +1136,8 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -1166,7 +1180,9 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -1254,8 +1270,8 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -1298,7 +1314,9 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -1386,8 +1404,8 @@ exports[`<Amount /> should render information variant Amount  1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -1430,7 +1448,9 @@ exports[`<Amount /> should render information variant Amount  1`] = `
         color="feedback.text.information.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -1509,8 +1529,8 @@ exports[`<Amount /> should render information variant Amount  2`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -1634,8 +1654,8 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -1678,7 +1698,9 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
         color="feedback.text.negative.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -1757,8 +1779,8 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -1882,8 +1904,8 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -1926,7 +1948,9 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
         color="surface.text.muted.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -2005,8 +2029,8 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -2130,8 +2154,8 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -2174,7 +2198,9 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
         color="feedback.text.positive.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -2262,8 +2288,8 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -2306,7 +2332,9 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
         color="feedback.text.notice.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -2385,8 +2413,8 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -2501,8 +2529,8 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -2626,8 +2654,8 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -2670,7 +2698,9 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="400"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
@@ -2758,8 +2788,8 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
   -ms-flex-align: baseline;
   align-items: baseline;
   overflow: hidden;
-  padding-left: spacing.2;
-  padding-right: spacing.2;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 <div>
@@ -2802,7 +2832,9 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
         color="surface.text.muted.lowContrast"
         font-size="300"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>

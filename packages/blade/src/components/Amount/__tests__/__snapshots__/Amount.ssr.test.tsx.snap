@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Badge /> should render Badge on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"amount\\" class=\\"StyledAmountweb__StyledAmount-pbu3ys-0 jDuSnm\\"><div display=\\"flex\\" overflow=\\"hidden\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 iqprPL\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo\\"><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 pRsFV\\">₹</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo\\"><div color=\\"feedback.text.neutral.lowContrast\\" font-size=\\"200\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 ieAly\\">10,000<!-- -->.</div></div><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 krnmPe\\"></div></div></div></div>"`;
+exports[`<Badge /> should render Badge on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"amount\\" class=\\"StyledAmountweb__StyledAmount-pbu3ys-0 iCTzuW\\"><div display=\\"flex\\" overflow=\\"hidden\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 iqprPL\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo\\"><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 pRsFV\\">₹</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jwGpAo\\"><div color=\\"feedback.text.neutral.lowContrast\\" font-size=\\"200\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 ieAly\\">10,000<!-- -->.</div></div><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 krnmPe\\">00</div></div></div></div>"`;
 
 exports[`<Badge /> should render Badge on server 2`] = `
 <div
@@ -8,7 +8,7 @@ exports[`<Badge /> should render Badge on server 2`] = `
   id="root"
 >
   <div
-    class="StyledAmountweb__StyledAmount-pbu3ys-0 jDuSnm"
+    class="StyledAmountweb__StyledAmount-pbu3ys-0 iCTzuW"
     data-blade-component="amount"
   >
     <div
@@ -47,7 +47,9 @@ exports[`<Badge /> should render Badge on server 2`] = `
         color="surface.text.muted.lowContrast"
         font-size="75"
         font-weight="regular"
-      />
+      >
+        00
+      </div>
     </div>
   </div>
 </div>
