@@ -12,7 +12,7 @@ import { StyledAmount } from './StyledAmount';
 import { BaseText } from '~components/Typography/BaseText';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils';
 
 export const suffixTypes = {
@@ -163,11 +163,11 @@ const Amount = ({
       alignItems="baseline"
       overflow="hidden"
     >
-      <Box paddingRight={1}>
+      <BaseBox paddingRight={1}>
         <BaseText fontWeight="bold" fontSize={currencyFontSize} color={currencyColor}>
           {currencyPrefix}
         </BaseText>
-      </Box>
+      </BaseBox>
       <AmountValue
         value={renderedValue}
         textColor={textColor}

@@ -5,7 +5,7 @@ import type { BaseTextProps } from '../Typography/BaseText/types';
 import { amountTextSizes, prefixSuffixTextSizes } from './amountTokens';
 import type { AmountProps } from './Amount';
 import { suffixTypes } from './Amount';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
 
 const getDecimalFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' => {
@@ -42,11 +42,11 @@ const AmountValue = ({
     const affixFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
     return (
       <>
-        <Box paddingRight={1}>
+        <BaseBox paddingRight={1}>
           <BaseText fontSize={amountTextSizes[size]} fontWeight="bold" color={textColor}>
             {integer}.
           </BaseText>
-        </Box>
+        </BaseBox>
         <BaseText fontWeight={affixFontWeight} fontSize={affixFontSize} color={prefixSuffixColor}>
           {decimal}
         </BaseText>
