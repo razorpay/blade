@@ -1,5 +1,5 @@
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
-const StyledAmount = Box;
+const StyledAmount = BaseBox;
 
 export { StyledAmount };

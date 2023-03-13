@@ -2,7 +2,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import { Text } from '~components/Typography';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
@@ -51,7 +51,7 @@ export default {
 
 const AmountDefaultTemplate: ComponentStory<typeof AmountComponent> = (args) => {
   return (
-    <Box
+    <BaseBox
       display="flex"
       alignItems="baseline"
       justifyContent="center"
@@ -59,7 +59,7 @@ const AmountDefaultTemplate: ComponentStory<typeof AmountComponent> = (args) => 
       paddingTop="spacing.2"
     >
       <AmountComponent {...args} />
-    </Box>
+    </BaseBox>
   );
 };
 
@@ -75,38 +75,38 @@ Amount.storyName = 'Default';
 
 const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
   return (
-    <Box justifyContent="center">
-      <Box marginBottom="spacing.3">
+    <BaseBox justifyContent="center">
+      <BaseBox marginBottom="spacing.3">
         <Text>Small</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="body-small" />
-      </Box>
-      <Box marginBottom="spacing.3">
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
         <Text>Medium</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="body-medium" />
-      </Box>
-      <Box marginBottom="spacing.3">
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
         <Text>Large</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="heading-small" />
-      </Box>
-      <Box marginBottom="spacing.3">
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
         <Text>Extra Large</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="heading-large" />
-      </Box>
-      <Box marginBottom="spacing.3">
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
         <Text>Extra Large</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="title-small" />
-      </Box>
-      <Box marginBottom="spacing.3">
+      </BaseBox>
+      <BaseBox marginBottom="spacing.3">
         <Text>Extra Large</Text>
-        <Box marginBottom="spacing.2" />
+        <BaseBox marginBottom="spacing.2" />
         <AmountComponent {...args} size="title-medium" />
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 
@@ -125,14 +125,14 @@ const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
   const intents = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
 
   return (
-    <Box width="100%" justifyContent="center">
+    <BaseBox width="100%" justifyContent="center">
       {intents.map((intent) => (
-        <Box key={intent} alignItems="baseline" paddingRight="spacing.3" paddingTop="spacing.2">
+        <BaseBox key={intent} alignItems="baseline" paddingRight="spacing.3" paddingTop="spacing.2">
           <Text>{intent}</Text>
           <AmountComponent {...args} intent={intent} />
-        </Box>
+        </BaseBox>
       ))}
-    </Box>
+    </BaseBox>
   );
 };
 

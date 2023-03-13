@@ -163,7 +163,7 @@ const Amount = ({
       alignItems="baseline"
       overflow="hidden"
     >
-      <BaseBox paddingRight={1}>
+      <BaseBox paddingRight="spacing.1">
         <BaseText fontWeight="bold" fontSize={currencyFontSize} color={currencyColor}>
           {currencyPrefix}
         </BaseText>

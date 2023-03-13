@@ -42,7 +42,7 @@ const AmountValue = ({
     const affixFontSize = getSuffixPrefixFontSize(isAffixSubtle, size);
     return (
       <>
-        <BaseBox paddingRight={1}>
+        <BaseBox paddingRight="spacing.1">
           <BaseText fontSize={amountTextSizes[size]} fontWeight="bold" color={textColor}>
             {integer}.
           </BaseText>
