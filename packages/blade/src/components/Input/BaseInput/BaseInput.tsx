@@ -347,7 +347,6 @@ const useInput = ({
   const handleOnSubmit: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
-      console.log({ name, value });
 
       if (getPlatformType() === 'react-native' && typeof value === 'string') {
         _value = value;
@@ -360,7 +359,6 @@ const useInput = ({
         name,
         value: _value,
       });
-      setInputValue(_value);
     },
     [onSubmit],
   );
