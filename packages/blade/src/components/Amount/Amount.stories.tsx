@@ -56,58 +56,27 @@ Amount.args = {
 Amount.storyName = 'Default';
 
 const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
+  const sizes: AmountProps['size'][] = [
+    'body-small',
+    'body-small-bold',
+    'body-medium',
+    'body-medium-bold',
+    'heading-small',
+    'heading-small-bold',
+    'heading-large',
+    'heading-large-bold',
+    'title-small',
+    'title-medium',
+  ];
   return (
     <BaseBox justifyContent="center">
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Body-small</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="body-small" />
-      </BaseBox>
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Body-small-bold</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="body-small-bold" />
-      </BaseBox>
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Body-medium</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="body-medium" />
-      </BaseBox>
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Body-medium-bold</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="body-medium-bold" />
-      </BaseBox>
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Heading-small</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="heading-small" />
-      </BaseBox>
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Heading-small-bold</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="heading-small-bold" />
-      </BaseBox>
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Heading-large</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="heading-large" />
-      </BaseBox>
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Heading-large-bold</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="heading-large-bold" />
-      </BaseBox>
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Title-small</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="title-small" />
-      </BaseBox>
-      <BaseBox marginBottom="spacing.3" display="flex" justifyContent="space-between">
-        <Text>Title-medium</Text>
-        <BaseBox marginBottom="spacing.2" />
-        <AmountComponent {...args} size="title-medium" />
-      </BaseBox>
+      {sizes.map((size) => (
+        <BaseBox key={size} marginBottom="spacing.5">
+          <Text>{size}</Text>
+          <BaseBox marginBottom="spacing.2" />
+          <AmountComponent {...args} size={size} />
+        </BaseBox>
+      ))}
     </BaseBox>
   );
 };
@@ -135,7 +104,6 @@ const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
           alignItems="baseline"
           paddingRight="spacing.3"
           paddingTop="spacing.2"
-          justifyContent="space-between"
         >
           <Text>{intent}</Text>
           <AmountComponent {...args} intent={intent} />
@@ -158,7 +126,21 @@ NoSuffix.args = {
 };
 NoSuffix.storyName = 'No Suffix';
 
-export const HumanizeSuffix = AmountDefaultTemplate.bind({});
+const AmountHumanizeSuffixTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+  const values = [1234, 12345, 123456, 1234567, 12345678] as const;
+
+  return (
+    <BaseBox justifyContent="flex-start">
+      {values.map((value) => (
+        <BaseBox paddingBottom={5} key={value}>
+          <AmountComponent {...args} value={value} />
+        </BaseBox>
+      ))}
+    </BaseBox>
+  );
+};
+
+export const HumanizeSuffix = AmountHumanizeSuffixTemplate.bind({});
 HumanizeSuffix.args = {
   ...defaultArgs,
   suffix: 'humanize',

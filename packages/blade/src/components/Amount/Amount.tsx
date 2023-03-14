@@ -127,7 +127,7 @@ const formatAmountWithSuffix = (
       return getFormattedAmountWithSuffixSymbol(num, currency);
     }
     default:
-      return String(getFlooredFixed(num, 0));
+      return addCommas(getFlooredFixed(num, 0), currency);
   }
 };
 

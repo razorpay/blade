@@ -42,7 +42,7 @@ const currencylocaleMapping = {
 
 const currencyAbbreviationsMapping = {
   INR: [
-    { value: 1e9, symbol: 'Cr' },
+    { value: 1e7, symbol: 'Cr' },
     { value: 1e5, symbol: 'L' },
     { value: 1e3, symbol: 'k' },
   ],
