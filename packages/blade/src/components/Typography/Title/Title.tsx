@@ -6,7 +6,7 @@ import { getPlatformType } from '~utils';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type TitleProps = {
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xlarge';
   contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: StringChildrenType;
@@ -41,6 +41,10 @@ const getProps = ({
     props.lineHeight = '4xl';
     props.as = isPlatformWeb ? 'h2' : undefined;
   } else if (size === 'large') {
+    props.fontSize = 800;
+    props.lineHeight = '6xl';
+    props.as = isPlatformWeb ? 'h1' : undefined;
+  } else if (size === 'xlarge') {
     props.fontSize = 1000;
     props.lineHeight = '6xl';
     props.as = isPlatformWeb ? 'h1' : undefined;
