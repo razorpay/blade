@@ -119,7 +119,7 @@ exports[`<List /> should render List with default properties 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -255,7 +255,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "lineHeight": 24,
@@ -393,7 +393,7 @@ exports[`<List /> should render List with default properties 1`] = `
                     Object {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "lineHeight": 24,
@@ -541,7 +541,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -715,7 +715,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -859,7 +859,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -942,7 +942,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                   Object {
                     "color": "hsla(213, 89%, 56%, 1)",
                     "fontFamily": "Lato",
-                    "fontSize": 15,
+                    "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "700",
                     "lineHeight": 18,
@@ -1076,7 +1076,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -1179,7 +1179,7 @@ exports[`<List /> should render medium ordered List 1`] = `
               Object {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 15,
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 24,
@@ -1212,7 +1212,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -1348,7 +1348,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "lineHeight": 24,
@@ -1486,7 +1486,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                     Object {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "lineHeight": 24,
@@ -1597,7 +1597,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               Object {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 11,
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 16,
@@ -1630,7 +1630,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -1722,7 +1722,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               Object {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 11,
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 16,
@@ -1755,7 +1755,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -1847,7 +1847,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               Object {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 11,
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 16,
@@ -1880,7 +1880,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -2022,7 +2022,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -2156,7 +2156,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "lineHeight": 24,
@@ -2294,7 +2294,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     Object {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "lineHeight": 24,
@@ -2819,7 +2819,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               Object {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 11,
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 16,
@@ -2944,7 +2944,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               Object {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 11,
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 16,
@@ -3069,7 +3069,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               Object {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 11,
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 16,

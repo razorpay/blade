@@ -1480,7 +1480,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
           Object {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 11,
+            "fontSize": 10,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 16,

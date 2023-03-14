@@ -118,7 +118,7 @@ Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "lineHeight": 24,
@@ -1888,7 +1888,7 @@ Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "lineHeight": 24,
@@ -2228,7 +2228,7 @@ Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "lineHeight": 24,
@@ -2461,7 +2461,7 @@ Array [
             Object {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
               "lineHeight": 24,
@@ -2600,7 +2600,7 @@ Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "lineHeight": 24,
@@ -2833,7 +2833,7 @@ Array [
             Object {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
               "lineHeight": 24,
@@ -2972,7 +2972,7 @@ Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "lineHeight": 24,

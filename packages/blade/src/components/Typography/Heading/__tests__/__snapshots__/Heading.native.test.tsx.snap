@@ -14,7 +14,7 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
       Object {
         "color": "hsla(217, 56%, 17%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 17,
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 24,
@@ -49,7 +49,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
       Object {
         "color": "hsla(217, 18%, 45%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 20,
+        "fontSize": 18,
         "fontStyle": "normal",
         "fontWeight": "400",
         "lineHeight": 28,
@@ -84,7 +84,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
       Object {
         "color": "hsla(216, 16%, 60%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 18,
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
         "lineHeight": 28,
@@ -119,7 +119,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
       Object {
         "color": "hsla(217, 56%, 17%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 17,
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
         "lineHeight": 24,
@@ -154,7 +154,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
       Object {
         "color": "hsla(0, 0%, 100%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 17,
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
         "lineHeight": 24,

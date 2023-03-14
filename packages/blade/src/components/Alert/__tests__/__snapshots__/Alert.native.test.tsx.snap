@@ -410,7 +410,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
             Object {
               "color": "hsla(216, 27%, 36%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,

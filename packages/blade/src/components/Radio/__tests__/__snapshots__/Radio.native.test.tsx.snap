@@ -117,7 +117,7 @@ exports[`<Radio /> should render radio with label 1`] = `
               Object {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 15,
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 24,
@@ -279,7 +279,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                     Object {
                       "color": "hsla(216, 27%, 36%, 1)",
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "lineHeight": 24,
@@ -434,7 +434,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
               Object {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 15,
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 24,
@@ -596,7 +596,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     Object {
                       "color": "hsla(214, 18%, 69%, 1)",
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "lineHeight": 24,

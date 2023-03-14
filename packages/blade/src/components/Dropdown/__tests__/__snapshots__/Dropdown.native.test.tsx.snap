@@ -162,7 +162,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       Object {
                         "color": "hsla(217, 56%, 17%, 1)",
                         "fontFamily": "Lato",
-                        "fontSize": 15,
+                        "fontSize": 14,
                         "fontStyle": "normal",
                         "fontWeight": "400",
                         "lineHeight": 24,
@@ -230,7 +230,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "fontFamily": "Lato",
-                "fontSize": 15,
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "height": 36,
@@ -261,7 +261,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   Object {
                     "color": "hsla(214, 18%, 69%, 1)",
                     "fontFamily": "Lato",
-                    "fontSize": 15,
+                    "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
                     "lineHeight": 24,
@@ -735,7 +735,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           Object {
                             "color": "hsla(217, 56%, 17%, 1)",
                             "fontFamily": "Lato",
-                            "fontSize": 15,
+                            "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
                             "lineHeight": 24,
@@ -866,7 +866,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           Object {
                             "color": "hsla(217, 56%, 17%, 1)",
                             "fontFamily": "Lato",
-                            "fontSize": 15,
+                            "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
                             "lineHeight": 24,
@@ -1145,7 +1145,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         Object {
                           "color": "hsla(0, 0%, 100%, 1)",
                           "fontFamily": "Lato",
-                          "fontSize": 15,
+                          "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "700",
                           "lineHeight": 24,

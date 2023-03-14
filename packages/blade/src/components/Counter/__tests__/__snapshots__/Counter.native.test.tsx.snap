@@ -543,7 +543,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
           Object {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 24,
@@ -1110,7 +1110,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
           Object {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 11,
+            "fontSize": 10,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 16,

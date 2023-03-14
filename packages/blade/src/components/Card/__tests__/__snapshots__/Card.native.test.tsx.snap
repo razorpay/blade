@@ -51,7 +51,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 24,
@@ -140,7 +140,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               Object {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 15,
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "700",
                 "lineHeight": 24,
@@ -316,7 +316,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     Object {
                       "color": "hsla(213, 89%, 56%, 1)",
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "700",
                       "lineHeight": 24,
@@ -455,7 +455,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     Object {
                       "color": "hsla(0, 0%, 100%, 1)",
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "700",
                       "lineHeight": 24,
@@ -679,7 +679,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   Object {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
-                    "fontSize": 17,
+                    "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "700",
                     "lineHeight": 24,
@@ -941,7 +941,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 24,
@@ -1016,7 +1016,7 @@ exports[`<Card /> should render a plain Card 1`] = `
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 24,

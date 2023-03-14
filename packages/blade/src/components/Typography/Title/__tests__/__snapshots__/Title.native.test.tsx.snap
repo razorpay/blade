@@ -14,7 +14,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
       Object {
         "color": "hsla(217, 56%, 17%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 22,
+        "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 32,
@@ -49,7 +49,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
       Object {
         "color": "hsla(217, 18%, 45%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 29,
+        "fontSize": 32,
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 40,
@@ -119,7 +119,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
       Object {
         "color": "hsla(217, 56%, 17%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 22,
+        "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 32,
@@ -154,7 +154,7 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
       Object {
         "color": "hsla(0, 0%, 100%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 22,
+        "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 32,
