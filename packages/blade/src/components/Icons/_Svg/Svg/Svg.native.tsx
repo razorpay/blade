@@ -3,7 +3,7 @@ import type { ReactElement } from 'react';
 import { Svg as SvgNative } from 'react-native-svg';
 import type { SvgProps } from './types';
 import { makeAccessible } from '~utils';
-import { useStyledProps } from '~components/Box/styled-props';
+import { useStyledProps } from '~components/Box/styledProps';
 
 const StyledSvg = styled(SvgNative)((props) => {
   const styledPropsCSSObject = useStyledProps(props);

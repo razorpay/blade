@@ -1,13 +1,13 @@
 import { Text } from 'react-native';
 import styled from 'styled-components';
 import BaseBox from '../BaseBox';
-import type { StyledProps } from '~components/Box/styled-props';
-import { useStyledProps, getStyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { useStyledProps, getStyledProps } from '~components/Box/styledProps';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 type MyComponentWithStyledProps = {
   test: 'working???';
-} & StyledProps;
+} & StyledPropsBlade;
 
 const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): JSX.Element => {
   return <BaseBox {...getStyledProps(props)} />;
@@ -22,8 +22,8 @@ const ComponentWithUseStyledProps = styled(Text)<MyComponentWithStyledProps>((pr
   };
 });
 
-describe('styled-props with getStyledProps', () => {
-  it('should add styled-props in styles', () => {
+describe('styledProps with getStyledProps', () => {
+  it('should add styledProps in styles', () => {
     const { toJSON } = renderWithTheme(
       <ComponentWithGetStyledProps margin={['spacing.0', 'spacing.10']} test="working???" />,
     );
@@ -45,8 +45,8 @@ describe('styled-props with getStyledProps', () => {
   });
 });
 
-describe('styled-props with useStyledProps', () => {
-  it('should add styled-props on actual base element', () => {
+describe('styledProps with useStyledProps', () => {
+  it('should add styledProps on actual base element', () => {
     const { toJSON } = renderWithTheme(
       <ComponentWithUseStyledProps margin={['spacing.0', 'spacing.10']} test="working???" />,
     );
