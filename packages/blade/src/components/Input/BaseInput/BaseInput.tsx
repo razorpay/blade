@@ -242,7 +242,7 @@ export type BaseInputProps = FormInputLabelProps &
       onSubmit?: FormInputOnEvent;
     };
     web: {
-      onSubmit?: unknown;
+      onSubmit?: undefined;
     };
   }>;
 
