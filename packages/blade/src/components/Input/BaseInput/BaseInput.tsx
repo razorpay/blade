@@ -353,7 +353,6 @@ const useInput = ({
         _value = value?.target.value ?? '';
       }
 
-      //@ts-expect-error this is a native only prop and will exist for native consumers
       onSubmit?.({
         name,
         value: _value,
