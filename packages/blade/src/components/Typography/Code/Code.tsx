@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import BaseBox from '~components/Box/BaseBox';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   metaAttribute,
   getPlatformType,
@@ -11,16 +11,17 @@ import {
   MetaConstants,
 } from '~utils';
 import type { FontSize } from '~tokens/global/typography';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 export type CodeProps = {
-  children: string;
+  children: StringChildrenType;
   /**
    * Decides the fontSize and padding of Code
    *
    * @default small
    */
   size?: 'small' | 'medium';
-} & StyledProps;
+} & StyledPropsBlade;
 
 type CodeContainerProps = {
   size: CodeProps['size'];

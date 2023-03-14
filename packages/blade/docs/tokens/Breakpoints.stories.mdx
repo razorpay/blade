@@ -22,7 +22,7 @@ import { getMediaQuery } from '../../src/utils';
             <BladeProvider
               key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
               themeTokens={getThemeTokens()}
-              colorScheme={context.globals.colorScheme}
+              colorScheme="light"
             >
               {children}
             </BladeProvider>

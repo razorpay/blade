@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components';
-import type { MarginProps, PaddingProps, SpacingValueType } from './spacing.types';
-import type { MakeObjectResponsive } from './responsive.types';
+import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
+import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
@@ -119,7 +119,7 @@ type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor: BackgroundColorString<'surface'>;
 }>;
 
-type StyledProps = Partial<
+type StyledPropsBlade = Partial<
   MarginProps &
     Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
     PositionProps &
@@ -145,7 +145,7 @@ type BoxProps = Partial<
     BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] }
 >;
 
-// Visual props have different types for BaseBox and Box.
+// Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.
 // So first we Omit Visual props of Box
 // Then we append BaseBoxVisualProps and some other props for styled-components like class and id
 type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
@@ -156,4 +156,4 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
     }
   >;
 
-export { BaseBoxProps, BoxProps, StyledProps };
+export { BaseBoxProps, BoxProps, StyledPropsBlade };

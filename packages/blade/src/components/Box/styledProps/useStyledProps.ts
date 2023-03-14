@@ -19,16 +19,16 @@ import type { Theme } from '~components/BladeProvider';
  * #### `getStyledProps` + BaseBox wrapper
  *
  * ```tsx
- * import type { StyledProps } from '~src/components/Box/styled-props';
- * import { getStyledProps } from '~src/components/Box/styled-props';
+ * import type { StyledPropsBlade } from '~src/components/Box/styledProps';
+ * import { getStyledProps } from '~src/components/Box/styledProps';
  *
  * type MyComponentProps = {
  *   // ... Your Props
- * } & StyledProps;
+ * } & StyledPropsBlade;
  *
  * const MyComponent = (props: MyComponentProps): JSX.Element => {
  *  return (
- *    // Make sure styled-props come last so they take priority in stylings in-case of overrides
+ *    // Make sure styledProps come last so they take priority in stylings in-case of overrides
  *    <BaseBox {...getStyledProps(props)}>
  *      // Your component code
  *    </BaseBox>
@@ -40,12 +40,12 @@ import type { Theme } from '~components/BladeProvider';
  *
  *
  * ```tsx
- * import type { StyledProps } from '~src/components/Box/styled-props';
- * import { useStyledProps } from '~src/components/Box/styled-props';
+ * import type { StyledPropsBlade } from '~src/components/Box/styledProps';
+ * import { useStyledProps } from '~src/components/Box/styledProps';
  *
  * type MyTextComponentProps = {
  *   // ... Your Props
- * } & StyledProps;
+ * } & StyledPropsBlade;
  *
  *
  * const TextComponentWithStyledProps = styled.p<MyTextComponentProps>((props) => {
@@ -53,7 +53,7 @@ import type { Theme } from '~components/BladeProvider';
  *
  *  return {
  *    // ...your other CSS,
- *    ...styledPropsCSSObject, // Make sure styled-props come last so they take priority in styles
+ *    ...styledPropsCSSObject, // Make sure styledProps come last so they take priority in styles
  *  }
  * })
  * ```

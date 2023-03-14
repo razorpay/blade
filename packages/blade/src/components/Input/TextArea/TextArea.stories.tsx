@@ -151,6 +151,11 @@ export default {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
+    onClearButtonClick: {
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
     ...getStyledPropsArgTypes(),
   },
   parameters: {

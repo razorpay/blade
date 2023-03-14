@@ -18,6 +18,8 @@ import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
+import size from '~tokens/global/size';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 type ActionListItemProps = {
   title: string;
@@ -65,8 +67,7 @@ const ActionListItemContext = React.createContext<{
 }>({});
 
 const StyledSectionDivider = styled(BaseBox)((props) => ({
-  // @TODO: replace this with token value if we add 1px token
-  height: makeSize(1),
+  height: makeSize(size[1]),
   backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
   margin: `${makeSize(props.theme.spacing[1])} ${makeSize(props.theme.spacing[3])}`,
 }));
@@ -148,7 +149,7 @@ const ActionListItemIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }):
 
 ActionListItemIcon.componentId = componentIds.ActionListItemIcon;
 
-const ActionListItemText: WithComponentId<{ children: string }> = ({ children }) => {
+const ActionListItemText: WithComponentId<{ children: StringChildrenType }> = ({ children }) => {
   const { isDisabled } = React.useContext(ActionListItemContext);
 
   return (
@@ -210,7 +211,6 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     dropdownTriggerer,
     isKeydownPressed,
   } = useDropdown();
-
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
     typeof props._index === 'number'
@@ -278,7 +278,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
           justifyContent="center"
           flexDirection="row"
           alignItems="center"
-          maxHeight={isReactNative() ? undefined : 'spacing.6'}
+          maxHeight={isReactNative() ? undefined : makeSize(size[20])}
         >
           <BaseBox display="flex" justifyContent="center" alignItems="center">
             {selectionType === 'multiple' ? (

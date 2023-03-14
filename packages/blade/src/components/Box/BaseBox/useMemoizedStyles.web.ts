@@ -1,10 +1,10 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
-import { getBaseBoxStyles } from './getBaseBoxStyles';
+import { getBaseBoxStyles } from './baseBoxStyles';
 import type { BaseBoxProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 
-const getDependencyProps = (props: BaseBoxProps & { theme?: Theme }): string | BaseBoxProps => {
+const getMemoDependency = (props: BaseBoxProps & { theme?: Theme }): string | BaseBoxProps => {
   // These are the props that change nothing in the getBaseBoxStyles calculations
   const { theme, children, className, id, ...rest } = props;
   let dependencyPropString: string | BaseBoxProps = '';
@@ -36,7 +36,7 @@ const getDependencyProps = (props: BaseBoxProps & { theme?: Theme }): string | B
  * Checkout: https://github.com/razorpay/blade/pull/1009#discussion_r1113767442 for benchmarks
  */
 const useMemoizedStyles = (boxProps: BaseBoxProps & { theme: Theme }): CSSObject => {
-  const boxPropsMemoDependency = getDependencyProps(boxProps);
+  const boxPropsMemoDependency = getMemoDependency(boxProps);
   const boxPropsCSSObject = React.useMemo(
     () => getBaseBoxStyles({ ...boxProps, theme: boxProps.theme }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,4 +46,4 @@ const useMemoizedStyles = (boxProps: BaseBoxProps & { theme: Theme }): CSSObject
   return boxPropsCSSObject;
 };
 
-export { useMemoizedStyles, getDependencyProps };
+export { useMemoizedStyles, getMemoDependency };

@@ -5,12 +5,13 @@ import { FormLabel } from '~components/Form';
 import type { AccessibilityProps } from '~utils';
 import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import size from '~tokens/global/size';
 
 type ProgressBarCommonProps = {
   /**
@@ -50,7 +51,7 @@ type ProgressBarCommonProps = {
    * @default 100
    */
   max?: number;
-} & StyledProps;
+} & StyledPropsBlade;
 
 type ProgressBarVariant = 'progress' | 'meter';
 
@@ -93,8 +94,8 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
 const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 | 4> = {
-  small: 2,
-  medium: 4,
+  small: size[2],
+  medium: size[4],
 };
 
 const ProgressBar = ({

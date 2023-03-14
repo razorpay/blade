@@ -3,7 +3,7 @@ import React from 'react';
 import { getStyledPropsArgTypes } from '../BaseBox/storybookArgTypes';
 import type { BoxProps } from '..';
 import { Box } from '..';
-import type { StyledProps as StyledPropsType } from './getStyledProps';
+import type { StyledPropsBlade as StyledPropsType } from './getStyledProps';
 import { Text, Title } from '~components/Typography';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Link } from '~components/Link';

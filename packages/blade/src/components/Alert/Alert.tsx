@@ -16,8 +16,8 @@ import {
   MetaConstants,
   useBreakpoint,
 } from '~utils';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
@@ -111,7 +111,7 @@ type AlertProps = {
      */
     secondary?: SecondaryAction;
   };
-} & StyledProps;
+} & StyledPropsBlade;
 
 const isReactNative = getPlatformType() === 'react-native';
 

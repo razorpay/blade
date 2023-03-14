@@ -1,6 +1,6 @@
-import { getOnlyBoxProps } from '../Box';
-import { filterStyledProps } from '../styled-props';
-import type { BaseBoxProps, BoxProps, StyledProps } from './types';
+import { makeBoxProps } from '../Box';
+import { makeStyledProps } from '../styledProps';
+import type { BaseBoxProps, BoxProps, StyledPropsBlade } from './types';
 
 type StorybookArgTypes<T> = {
   [P in keyof T]: {
@@ -34,7 +34,7 @@ const spacingTypeDescription = [
 const styledPropsSupportMessage =
   '&nbsp;&nbsp;<span title="Also supported as styled-prop in other components">💅🏼</span>';
 
-const defaultStyledPropsObject = filterStyledProps({});
+const defaultStyledPropsObject = makeStyledProps({});
 
 const getStyledPropsArgTypes = ({
   category = 'StyledProps',
@@ -42,7 +42,7 @@ const getStyledPropsArgTypes = ({
 }: {
   category?: 'StyledProps' | null;
   descriptionLength?: 'long';
-} = {}): StorybookArgTypes<StyledProps> => {
+} = {}): StorybookArgTypes<StyledPropsBlade> => {
   const commonStyledPropsProperties: {
     table: { category?: 'StyledProps' | null };
     control: { type: string };
@@ -125,7 +125,7 @@ const getStyledPropsArgTypes = ({
 
 const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
   const restBoxArgTypes = Object.fromEntries(
-    Object.entries(getOnlyBoxProps({}))
+    Object.entries(makeBoxProps({}))
       .filter(
         ([key]) =>
           !Object.keys(getStyledPropsArgTypes()).includes(key) &&
