@@ -2,4 +2,4 @@
 "@razorpay/blade": minor
 ---
 
-feat(Input): add onSubmit prop for native
+feat(Input): add onSubmit prop on BaseInput, TextInput, TextArea, OTPInput & PasswordInput for react-native
