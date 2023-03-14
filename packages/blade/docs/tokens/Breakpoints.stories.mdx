@@ -84,3 +84,15 @@ export const Breakpoints = () => {
   marginY="spacing.6"
   isDismissible={false}
 />
+
+## `useBreakpoint` hook
+
+You can use `useBreakpoint` hook to know about the current breakpoint and the matchedDevice
+
+```tsx
+import { useBreakpoint } from '@razorpay/blade/utils';
+
+const { matchedBreakpoint, matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+// matchedBreakpoint can have values like `xs`, `s`, `m`, etc
+// matchedDevice can be `mobile` or `desktop` (small tablets are considered as mobile)
+```
