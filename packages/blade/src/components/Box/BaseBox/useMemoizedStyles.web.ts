@@ -1,6 +1,6 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
-import { getBaseBoxStyles } from './getBaseBoxStyles';
+import { getBaseBoxStyles } from './baseBoxStyles';
 import type { BaseBoxProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 
