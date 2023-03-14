@@ -1,4 +1,4 @@
-import { filterStyledProps, getStyledProps } from '~components/Box/styledProps';
+import { makeStyledProps, getStyledProps } from '~components/Box/styledProps';
 
 describe('getStyledProps', () => {
   it('should ignore props that are not styledProps', () => {
@@ -12,7 +12,7 @@ describe('getStyledProps', () => {
   it('should print all styledProps', () => {
     // This test is meant like an alert if we end up adding some prop unexpectedly.
     // Do update the snapshot if adding new prop was intentional
-    expect(filterStyledProps({})).toMatchInlineSnapshot(`
+    expect(makeStyledProps({})).toMatchInlineSnapshot(`
       Object {
         "alignSelf": undefined,
         "bottom": undefined,

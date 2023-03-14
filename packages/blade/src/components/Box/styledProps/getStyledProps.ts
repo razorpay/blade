@@ -48,7 +48,7 @@ const removeUndefinedStyledProps = (obj: StyledPropsInputType): StyledPropsInput
  *
  * **Use `getStyledProps` instead if you're using this for adding styledProps!**
  */
-const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsBlade> => {
+const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsBlade> => {
   return {
     alignSelf: props.alignSelf,
     justifySelf: props.justifySelf,
@@ -139,7 +139,7 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getStyledProps = (props: Record<string, any>): StyledPropsBlade => {
-  return removeUndefinedStyledProps(filterStyledProps(props));
+  return removeUndefinedStyledProps(makeStyledProps(props));
 };
 
-export { getStyledProps, filterStyledProps, StyledPropsBlade, removeUndefinedStyledProps };
+export { getStyledProps, makeStyledProps, StyledPropsBlade, removeUndefinedStyledProps };
