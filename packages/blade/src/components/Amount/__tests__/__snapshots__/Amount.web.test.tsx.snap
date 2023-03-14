@@ -6,18 +6,10 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -66,22 +58,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -94,7 +70,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -140,18 +115,10 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -191,22 +158,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -219,7 +170,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -256,18 +206,10 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -316,22 +258,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -344,7 +270,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -390,18 +315,10 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -450,22 +367,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -478,7 +379,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -524,18 +424,10 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -584,22 +476,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -612,7 +488,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -658,18 +533,10 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -718,22 +585,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -746,7 +597,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -792,18 +642,10 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -852,22 +694,6 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -880,7 +706,6 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -926,18 +751,10 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -986,22 +803,6 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1014,7 +815,6 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -1060,18 +860,10 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1120,22 +912,6 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1148,7 +924,6 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -1194,18 +969,10 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1254,22 +1021,6 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1282,7 +1033,6 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -1328,18 +1078,10 @@ exports[`<Amount /> should render information variant Amount  1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1388,22 +1130,6 @@ exports[`<Amount /> should render information variant Amount  1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1416,7 +1142,6 @@ exports[`<Amount /> should render information variant Amount  1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -1462,18 +1187,10 @@ exports[`<Amount /> should render information variant Amount  2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1500,22 +1217,6 @@ exports[`<Amount /> should render information variant Amount  2`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1528,7 +1229,6 @@ exports[`<Amount /> should render information variant Amount  2`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -1565,18 +1265,10 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1625,22 +1317,6 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1653,7 +1329,6 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -1699,18 +1374,10 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1737,22 +1404,6 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1765,7 +1416,6 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -1802,18 +1452,10 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1862,22 +1504,6 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1890,7 +1516,6 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -1936,18 +1561,10 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -1974,22 +1591,6 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2002,7 +1603,6 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -2039,18 +1639,10 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2099,22 +1691,6 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2127,7 +1703,6 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -2173,18 +1748,10 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2233,22 +1800,6 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2261,7 +1812,6 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -2307,18 +1857,10 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2345,22 +1887,6 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2373,7 +1899,6 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -2410,18 +1935,10 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2448,22 +1965,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2476,7 +1977,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -2513,18 +2013,10 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2573,22 +2065,6 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2601,7 +2077,6 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"
@@ -2647,18 +2122,10 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2707,22 +2174,6 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  overflow: hidden;
   padding-left: 4px;
   padding-right: 4px;
 }
@@ -2735,7 +2186,6 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
     <div
       class="c1"
       display="flex"
-      overflow="hidden"
     >
       <div
         class="c2"

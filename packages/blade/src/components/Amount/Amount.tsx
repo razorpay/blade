@@ -168,10 +168,7 @@ const Amount = ({
     <StyledAmount {...metaAttribute({ name: MetaConstants.Amount, testID })}>
       <BaseBox
         display="flex"
-        flexDirection="row"
-        justifyContent="center"
         alignItems="baseline"
-        overflow="hidden"
         paddingLeft="spacing.2"
         paddingRight="spacing.2"
       >

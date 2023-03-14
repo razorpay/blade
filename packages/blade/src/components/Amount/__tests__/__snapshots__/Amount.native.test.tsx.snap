@@ -5,11 +5,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -19,9 +14,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -29,9 +21,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -154,11 +143,6 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -168,9 +152,6 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -178,9 +159,6 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -303,11 +281,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -317,9 +290,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -327,9 +297,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -423,11 +390,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -437,9 +399,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -447,9 +406,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -572,11 +528,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -586,9 +537,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -596,9 +544,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -721,11 +666,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -735,9 +675,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -745,9 +682,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -870,11 +804,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -884,9 +813,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -894,9 +820,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -1019,11 +942,6 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -1033,9 +951,6 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -1043,9 +958,6 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -1168,11 +1080,6 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -1182,9 +1089,6 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -1192,9 +1096,6 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -1317,11 +1218,6 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -1331,9 +1227,6 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -1341,9 +1234,6 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -1466,11 +1356,6 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -1480,9 +1365,6 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -1490,9 +1372,6 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -1615,11 +1494,6 @@ exports[`<Amount /> should render information variant Amount  1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -1629,9 +1503,6 @@ exports[`<Amount /> should render information variant Amount  1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -1639,9 +1510,6 @@ exports[`<Amount /> should render information variant Amount  1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -1764,11 +1632,6 @@ exports[`<Amount /> should render information variant Amount  2`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -1778,9 +1641,6 @@ exports[`<Amount /> should render information variant Amount  2`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -1788,9 +1648,6 @@ exports[`<Amount /> should render information variant Amount  2`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -1884,11 +1741,6 @@ exports[`<Amount /> should render information variant Amount  3`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -1898,9 +1750,6 @@ exports[`<Amount /> should render information variant Amount  3`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -1908,9 +1757,6 @@ exports[`<Amount /> should render information variant Amount  3`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -2004,11 +1850,6 @@ exports[`<Amount /> should render medium size Amount 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -2018,9 +1859,6 @@ exports[`<Amount /> should render medium size Amount 1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -2028,9 +1866,6 @@ exports[`<Amount /> should render medium size Amount 1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -2153,11 +1988,6 @@ exports[`<Amount /> should render medium size Amount 2`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -2167,9 +1997,6 @@ exports[`<Amount /> should render medium size Amount 2`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -2177,9 +2004,6 @@ exports[`<Amount /> should render medium size Amount 2`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -2302,11 +2126,6 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -2316,9 +2135,6 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -2326,9 +2142,6 @@ exports[`<Amount /> should render negative variant Amount  1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -2451,11 +2264,6 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -2465,9 +2273,6 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -2475,9 +2280,6 @@ exports[`<Amount /> should render negative variant Amount  2`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -2571,11 +2373,6 @@ exports[`<Amount /> should render negative variant Amount  3`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -2585,9 +2382,6 @@ exports[`<Amount /> should render negative variant Amount  3`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -2595,9 +2389,6 @@ exports[`<Amount /> should render negative variant Amount  3`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -2691,11 +2482,6 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -2705,9 +2491,6 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -2715,9 +2498,6 @@ exports[`<Amount /> should render neutral variant Amount  1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -2840,11 +2620,6 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -2854,9 +2629,6 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -2864,9 +2636,6 @@ exports[`<Amount /> should render neutral variant Amount  2`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -2960,11 +2729,6 @@ exports[`<Amount /> should render neutral variant Amount  3`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -2974,9 +2738,6 @@ exports[`<Amount /> should render neutral variant Amount  3`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -2984,9 +2745,6 @@ exports[`<Amount /> should render neutral variant Amount  3`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -3080,11 +2838,6 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -3094,9 +2847,6 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -3104,9 +2854,6 @@ exports[`<Amount /> should render positive variant Amount  1`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -3229,11 +2976,6 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -3243,9 +2985,6 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -3253,9 +2992,6 @@ exports[`<Amount /> should render positive variant Amount  2`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -3378,11 +3114,6 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -3392,9 +3123,6 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -3402,9 +3130,6 @@ exports[`<Amount /> should render positive variant Amount  3`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -3498,11 +3223,6 @@ exports[`<Amount /> should render positive variant Amount  4`] = `
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -3512,9 +3232,6 @@ exports[`<Amount /> should render positive variant Amount  4`] = `
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -3522,9 +3239,6 @@ exports[`<Amount /> should render positive variant Amount  4`] = `
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -3618,11 +3332,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -3632,9 +3341,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -3642,9 +3348,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
@@ -3738,11 +3441,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
   style={
     Array [
       Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "overflow": "hidden",
         "paddingLeft": 4,
         "paddingRight": 4,
       },
@@ -3752,9 +3450,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
   <View
     alignItems="baseline"
     display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
     paddingLeft="spacing.2"
     paddingRight="spacing.2"
     style={
@@ -3762,9 +3457,6 @@ exports[`<Amount /> should render positive variant Amount with bold and isAffixS
         Object {
           "alignItems": "baseline",
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
           "paddingLeft": 4,
           "paddingRight": 4,
         },
