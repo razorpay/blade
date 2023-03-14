@@ -5,7 +5,7 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import { getPlatformType } from '~utils';
 
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
@@ -21,7 +21,7 @@ type TextCommonProps = {
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
-} & StyledProps;
+} & StyledPropsBlade;
 
 export type TextVariant = 'body' | 'caption';
 

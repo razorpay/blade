@@ -11,7 +11,7 @@ import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import { getPlatformType } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import type { StringChildrenType } from '~src/_helpers/types';
@@ -42,7 +42,7 @@ type RadioProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-} & StyledProps;
+} & StyledPropsBlade;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   { value, children, helpText, isDisabled, size = 'medium', ...styledProps },

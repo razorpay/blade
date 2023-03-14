@@ -6,7 +6,7 @@ import { BaseInput } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
@@ -68,7 +68,7 @@ type TextInputProps = Pick<
    * @default text
    */
   type?: Type;
-} & StyledProps;
+} & StyledPropsBlade;
 
 type TextInputKeyboardAndAutoComplete = Pick<
   BaseInputProps,

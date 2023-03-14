@@ -6,14 +6,14 @@ import { useId } from '~src/hooks/useId';
 import type { WithComponentId } from '~utils';
 import { isValidAllowedChildren } from '~utils';
 import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 
 import BaseBox from '~components/Box/BaseBox';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
   children: React.ReactNode[];
-} & StyledProps;
+} & StyledPropsBlade;
 
 /**
  * ### Dropdown component

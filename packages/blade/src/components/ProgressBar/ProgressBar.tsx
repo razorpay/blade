@@ -6,7 +6,7 @@ import type { AccessibilityProps } from '~utils';
 import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -51,7 +51,7 @@ type ProgressBarCommonProps = {
    * @default 100
    */
   max?: number;
-} & StyledProps;
+} & StyledPropsBlade;
 
 type ProgressBarVariant = 'progress' | 'meter';
 

@@ -1,7 +1,7 @@
 import type { ReactElement, SyntheticEvent } from 'react';
 import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import type { StringChildrenType } from '~src/_helpers/types';
 
 type LinkCommonProps = {
@@ -20,7 +20,7 @@ type LinkCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium';
-} & StyledProps;
+} & StyledPropsBlade;
 
 /*
   Mandatory children prop when icon is not provided

@@ -5,7 +5,7 @@ import { SpinningBox } from './SpinningBox';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import { metaAttribute, getIn, makeAccessible, makeSize, MetaConstants } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
@@ -41,7 +41,7 @@ type BaseSpinnerProps = {
    *
    */
   accessibilityLabel: string;
-} & StyledProps;
+} & StyledPropsBlade;
 
 const getColor = ({
   contrast,

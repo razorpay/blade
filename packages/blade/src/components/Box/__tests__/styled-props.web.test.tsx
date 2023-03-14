@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import BaseBox from '../BaseBox';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import { useStyledProps, getStyledProps } from '~components/Box/styled-props';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 type MyComponentWithStyledProps = {
   test: 'working???';
-} & StyledProps;
+} & StyledPropsBlade;
 
 const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): JSX.Element => {
   return <BaseBox {...getStyledProps(props)}>Hello!</BaseBox>;

@@ -8,7 +8,7 @@ import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import size from '~tokens/global/size';
@@ -60,7 +60,7 @@ export type OTPInputProps = Pick<
     BaseInputProps['autoCompleteSuggestionType'],
     'none' | 'oneTimeCode'
   >;
-} & StyledProps;
+} & StyledPropsBlade;
 
 const isReactNative = getPlatformType() === 'react-native';
 

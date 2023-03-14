@@ -18,7 +18,7 @@ import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 
 import {
   MetaConstants,
@@ -58,7 +58,7 @@ type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-} & StyledProps;
+} & StyledPropsBlade;
 
 /*
 Mandatory children prop when icon is not provided

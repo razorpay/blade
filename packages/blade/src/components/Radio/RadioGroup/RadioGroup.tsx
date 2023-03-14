@@ -6,7 +6,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import { getPlatformType, makeSize, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
@@ -80,7 +80,7 @@ type RadioGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-} & StyledProps;
+} & StyledPropsBlade;
 
 const RadioGroup = ({
   children,

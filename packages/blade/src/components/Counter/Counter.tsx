@@ -8,7 +8,7 @@ import { useTheme } from '~components/BladeProvider';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 
 export type CounterProps = {
   /**
@@ -38,7 +38,7 @@ export type CounterProps = {
    * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
-} & StyledProps;
+} & StyledPropsBlade;
 
 type ColorProps = {
   textColor: BaseTextProps['color'];

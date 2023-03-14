@@ -1,4 +1,4 @@
-import type { StyledProps } from '../BaseBox/types';
+import type { StyledPropsBlade } from '../BaseBox/types';
 import type { KeysRequired } from '~src/_helpers/types';
 
 /**
@@ -28,12 +28,12 @@ type StyledPropsInputType = Record<string, any>;
   * ```
   */
 const removeUndefinedStyledProps = (obj: StyledPropsInputType): StyledPropsInputType => {
-  const onlyDefinedStyledProps: StyledProps = {};
+  const onlyDefinedStyledProps: StyledPropsBlade = {};
   for (const k in obj) {
-    if (obj[k as keyof StyledProps] !== undefined) {
+    if (obj[k as keyof StyledPropsBlade] !== undefined) {
       // @ts-expect-error: complex type error
       // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      onlyDefinedStyledProps[k as keyof StyledProps] = obj[k as keyof StyledProps];
+      onlyDefinedStyledProps[k as keyof StyledPropsBlade] = obj[k as keyof StyledPropsBlade];
     }
   }
   return onlyDefinedStyledProps;
@@ -48,7 +48,7 @@ const removeUndefinedStyledProps = (obj: StyledPropsInputType): StyledPropsInput
  *
  * **Use `getStyledProps` instead if you're using this for adding styled-props!**
  */
-const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProps> => {
+const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsBlade> => {
   return {
     alignSelf: props.alignSelf,
     justifySelf: props.justifySelf,
@@ -86,19 +86,19 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  * - Using `useStyledProps`
  *
  * You can use `getStyledProps` method if you're fine adding or already have BaseBox wrapper around your component
- * And use `useStyledProps` when adding BaseBox wrapper can cause styling issues or is unneccessary
+ * And use `useStyledProps` when adding BaseBox wrapper can cause styling issues or is unneccessary and you want to prevent unnecessary renders
  *
  * ### Usage
  *
  * #### `getStyledProps` + BaseBox wrapper
  *
  * ```tsx
- * import type { StyledProps } from '~src/components/Box/styled-props';
+ * import type { StyledPropsBlade } from '~src/components/Box/styled-props';
  * import { getStyledProps } from '~src/components/Box/styled-props';
  *
  * type MyComponentProps = {
  *   // ... Your Props
- * } & StyledProps;
+ * } & StyledPropsBlade;
  *
  * const MyComponent = (props: MyComponentProps): JSX.Element => {
  *  return (
@@ -114,12 +114,12 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  *
  *
  * ```tsx
- * import type { StyledProps } from '~src/components/Box/styled-props';
+ * import type { StyledPropsBlade } from '~src/components/Box/styled-props';
  * import { useStyledProps } from '~src/components/Box/styled-props';
  *
  * type MyTextComponentProps = {
  *   // ... Your Props
- * } & StyledProps;
+ * } & StyledPropsBlade;
  *
  *
  * const TextComponentWithStyledProps = styled.p<MyTextComponentProps>((props) => {
@@ -138,8 +138,8 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  * - Native: [`BaseText.native.tsx`](../../components/Typography/BaseText/BaseText.native.tsx)
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getStyledProps = (props: Record<string, any>): StyledProps => {
+const getStyledProps = (props: Record<string, any>): StyledPropsBlade => {
   return removeUndefinedStyledProps(filterStyledProps(props));
 };
 
-export { getStyledProps, filterStyledProps, StyledProps, removeUndefinedStyledProps };
+export { getStyledProps, filterStyledProps, StyledPropsBlade, removeUndefinedStyledProps };

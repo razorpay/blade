@@ -4,7 +4,7 @@ import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
 import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styled-props';
 import type { StringChildrenType } from '~src/_helpers/types';
 
 export type TitleProps = {
@@ -12,7 +12,7 @@ export type TitleProps = {
   contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: StringChildrenType;
-} & StyledProps;
+} & StyledPropsBlade;
 
 const getProps = ({
   size,

@@ -19,12 +19,12 @@ import type { Theme } from '~components/BladeProvider';
  * #### `getStyledProps` + BaseBox wrapper
  *
  * ```tsx
- * import type { StyledProps } from '~src/components/Box/styled-props';
+ * import type { StyledPropsBlade } from '~src/components/Box/styled-props';
  * import { getStyledProps } from '~src/components/Box/styled-props';
  *
  * type MyComponentProps = {
  *   // ... Your Props
- * } & StyledProps;
+ * } & StyledPropsBlade;
  *
  * const MyComponent = (props: MyComponentProps): JSX.Element => {
  *  return (
@@ -40,12 +40,12 @@ import type { Theme } from '~components/BladeProvider';
  *
  *
  * ```tsx
- * import type { StyledProps } from '~src/components/Box/styled-props';
+ * import type { StyledPropsBlade } from '~src/components/Box/styled-props';
  * import { useStyledProps } from '~src/components/Box/styled-props';
  *
  * type MyTextComponentProps = {
  *   // ... Your Props
- * } & StyledProps;
+ * } & StyledPropsBlade;
  *
  *
  * const TextComponentWithStyledProps = styled.p<MyTextComponentProps>((props) => {
