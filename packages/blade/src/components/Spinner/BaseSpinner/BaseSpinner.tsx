@@ -8,6 +8,7 @@ import { metaAttribute, getIn, makeAccessible, makeSize, MetaConstants } from '~
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+import type { TestID } from '~src/_helpers/types';
 
 type BaseSpinnerProps = {
   intent?: Feedback;
@@ -39,7 +40,7 @@ type BaseSpinnerProps = {
    *
    */
   accessibilityLabel: string;
-};
+} & TestID;
 
 const getColor = ({
   contrast,
@@ -69,10 +70,11 @@ const BaseSpinner = ({
   contrast = 'low',
   intent,
   size = 'medium',
+  testID,
 }: BaseSpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
-    <BaseBox display="flex" {...metaAttribute(MetaConstants.Component, MetaConstants.Spinner)}>
+    <BaseBox display="flex" {...metaAttribute({ name: MetaConstants.Spinner, testID })}>
       <BaseBox
         display="flex"
         alignItems="center"

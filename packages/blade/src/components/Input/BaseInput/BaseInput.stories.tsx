@@ -58,6 +58,7 @@ export default {
     trailingIcon: undefined,
     keyboardReturnKeyType: undefined,
     autoCompleteSuggestionType: undefined,
+    autoCapitalize: undefined,
   },
   argTypes: {
     id: {
@@ -224,6 +225,11 @@ export default {
       },
     },
     autoCompleteSuggestionType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    autoCapitalize: {
       table: {
         category: propsCategory.KEYBOARD_PROPS,
       },

@@ -3,6 +3,7 @@ import type { CSSObject } from 'styled-components';
 import type { BaseLinkProps } from './BaseLink';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { ActionStates } from '~tokens/theme/theme';
+import type { TestID } from '~src/_helpers/types';
 
 export type StyledBaseLinkProps = {
   variant: BaseLinkProps['variant'];
@@ -20,4 +21,4 @@ export type StyledBaseLinkProps = {
   accessibilityProps: Record<string, unknown>;
   type?: 'button';
   size?: 'small' | 'medium';
-};
+} & TestID;

@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 import styled from 'styled-components/native';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
+import { metaAttribute, makeAccessible } from '~utils';
 
 const StyledBaseText = styled.Text<StyledBaseTextProps>(
   ({
@@ -52,6 +52,7 @@ export const BaseText = ({
   style,
   accessibilityProps = {},
   componentName,
+  testID,
 }: BaseTextProps): ReactElement => {
   return (
     <StyledBaseText
@@ -69,7 +70,7 @@ export const BaseText = ({
       style={style}
       id={id}
       {...makeAccessible(accessibilityProps)}
-      {...metaAttribute(MetaConstants.Component, componentName!)}
+      {...metaAttribute({ name: componentName, testID })}
     >
       {children}
     </StyledBaseText>

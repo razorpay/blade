@@ -23,6 +23,7 @@ import {
   metaAttribute,
   MetaConstants,
 } from '~utils';
+import type { TestID } from '~src/_helpers/types';
 
 type ListItemProps = {
   /**
@@ -40,7 +41,7 @@ type ListItemProps = {
    *
    */
   _itemNumber?: undefined;
-};
+} & TestID;
 
 const StyledListItem = styled(ListItemElement)<{
   level?: number;
@@ -59,7 +60,12 @@ const StyledListItem = styled(ListItemElement)<{
     : 0,
 }));
 
-const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.ReactElement => {
+const ListItem = ({
+  children,
+  icon: Icon,
+  _itemNumber,
+  testID,
+}: ListItemProps): React.ReactElement => {
   const { level, size, icon: ListContextIcon, variant } = useListContext();
   const { theme, platform } = useTheme();
   const ItemIcon = Icon ?? ListContextIcon;
@@ -97,7 +103,7 @@ const ListItem = ({ children, icon: Icon, _itemNumber }: ListItemProps): React.R
       level={level}
       variant={variant}
       hasIcon={hasIcon}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.ListItem)}
+      {...metaAttribute({ name: MetaConstants.ListItem, testID })}
     >
       <BaseBox
         display="flex"

@@ -115,4 +115,10 @@ describe('<Heading />', () => {
     const { container } = renderWithTheme(<Heading>Text content</Heading>);
     await assertAccessible(container);
   });
+
+  it('should accept testID', () => {
+    const displayText = 'Get Started With Payment Gateway';
+    const { getByTestId } = renderWithTheme(<Heading testID="heading-test">{displayText}</Heading>);
+    expect(getByTestId('heading-test')).toBeTruthy();
+  });
 });

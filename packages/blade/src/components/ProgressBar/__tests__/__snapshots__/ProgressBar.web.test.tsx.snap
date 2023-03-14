@@ -166,6 +166,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           </p>
           <div
             class="c4"
+            data-blade-component="visually-hidden"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -1845,6 +1846,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           </p>
           <div
             class="c4"
+            data-blade-component="visually-hidden"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -2149,6 +2151,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           </p>
           <div
             class="c4"
+            data-blade-component="visually-hidden"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -2480,6 +2483,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           </p>
           <div
             class="c8"
+            data-blade-component="visually-hidden"
           >
             <p
               class="c9 Text__StyledText-wkh56f-0"
@@ -2811,6 +2815,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           </p>
           <div
             class="c8"
+            data-blade-component="visually-hidden"
           >
             <p
               class="c9 Text__StyledText-wkh56f-0"

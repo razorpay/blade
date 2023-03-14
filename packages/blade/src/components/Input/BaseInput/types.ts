@@ -49,5 +49,6 @@ export type StyledBaseInputProps = {
   | 'popupId'
   | 'isPopupExpanded'
   | 'shouldIgnoreBlurAnimation'
+  | 'autoCapitalize'
 >;
 export { StyledBaseInput } from './StyledBaseInput.web';

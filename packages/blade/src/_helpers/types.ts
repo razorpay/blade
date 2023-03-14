@@ -48,9 +48,14 @@ type DotNotationSpacingStringToken = `spacing.${keyof Spacing}`;
  */
 type StringChildrenType = React.ReactText | React.ReactText[];
 
+type TestID = {
+  testID?: string;
+};
+
 export {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
   DotNotationSpacingStringToken,
   StringChildrenType,
+  TestID,
 };

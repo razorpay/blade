@@ -18,6 +18,7 @@ import {
 } from '~utils';
 import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
+import type { TestID } from '~src/_helpers/types';
 
 type ActionListFooterProps = {
   title?: string;
@@ -33,7 +34,7 @@ type ActionListFooterProps = {
    * Anything can be passed here but maybe don't? Should ideally have Button or Tick Icon Buttons.
    */
   trailing?: React.ReactNode;
-};
+} & TestID;
 
 const StyledActionListFooter = styled(BaseBox)((props) => {
   return {
@@ -134,7 +135,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
         role: getActionListFooterRole(),
         label: props.title,
       })}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListFooter)}
+      {...metaAttribute({ name: MetaConstants.ActionListFooter, testID: props.testID })}
     >
       {props.leading ? <BaseBox>{props.leading}</BaseBox> : null}
       {props.title ? (

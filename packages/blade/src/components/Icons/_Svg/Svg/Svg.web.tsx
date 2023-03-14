@@ -2,11 +2,11 @@ import type { ReactElement } from 'react';
 import type { SvgProps } from './types';
 import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
 
-const Svg = ({ children, height, viewBox, width, fill }: SvgProps): ReactElement => {
+const Svg = ({ children, height, viewBox, width, fill, testID }: SvgProps): ReactElement => {
   return (
     <svg
       {...makeAccessible({ hidden: true })}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Icon)}
+      {...metaAttribute({ name: MetaConstants.Icon, testID })}
       height={height}
       viewBox={viewBox}
       width={width}

@@ -208,6 +208,7 @@ exports[`<TextInput /> should render 1`] = `
         onEndEditing={[Function]}
         onFocus={[Function]}
         onKeyPress={[Function]}
+        onSubmitEditing={[Function]}
         returnKeyType="default"
         secureTextEntry={false}
         style={
@@ -623,6 +624,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             "expanded": undefined,
           }
         }
+        autoCapitalize="none"
         autoCompleteType="off"
         editable={true}
         id="textinput-31-input-32"
@@ -637,6 +639,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         onEndEditing={[Function]}
         onFocus={[Function]}
         onKeyPress={[Function]}
+        onSubmitEditing={[Function]}
         placeholder="something"
         prefix="https://"
         returnKeyType="go"
