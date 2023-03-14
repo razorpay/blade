@@ -13,7 +13,7 @@ type TextCommonProps = {
   contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
   children: React.ReactNode;
-  weight?: keyof Theme['typography']['fonts']['weight'];
+  weight?: Exclude<keyof Theme['typography']['fonts']['weight'], 'semibold'>;
   /**
    * **For Internal use only**:  Sets the color of the Text component
    */
@@ -25,7 +25,7 @@ export type TextVariant = 'body' | 'caption';
 
 type TextBodyVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'body'>;
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
 type TextCaptionVariant = TextCommonProps & {
@@ -51,6 +51,13 @@ type TextForwardedAs = {
   forwardedAs?: BaseTextProps['as'];
 };
 
+type GetTextPropsReturn = Omit<BaseTextProps, 'children'> & TextForwardedAs;
+type GetTextProps<T extends { variant: TextVariant }> = Pick<
+  TextProps<T>,
+  'type' | 'variant' | 'size' | 'contrast' | 'testID' | 'textAlign'
+> & {
+  weight: keyof Theme['typography']['fonts']['weight'];
+};
 const getTextProps = <T extends { variant: TextVariant }>({
   variant,
   type,
@@ -59,13 +66,10 @@ const getTextProps = <T extends { variant: TextVariant }>({
   contrast,
   testID,
   textAlign,
-}: Pick<
-  TextProps<T>,
-  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'testID' | 'textAlign'
->): Omit<BaseTextProps, 'children'> & TextForwardedAs => {
+}: GetTextProps<T>): GetTextPropsReturn => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
-  const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
+  const props: GetTextPropsReturn = {
     color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
     fontSize: 100,
     fontWeight: weight ?? 'regular',
@@ -87,12 +91,15 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.fontSize = 25;
       props.lineHeight = 's';
     }
-  } else if (variant === 'caption') {
-    if (size === 'xsmall') {
-      throw new Error(`[Blade: Text]: size cannot be 'xsmall' when variant is 'caption'`);
+    if (size === 'large') {
+      props.fontSize = 200;
+      // TODO: change line height
+      props.lineHeight = 's';
     }
-    if (size === 'small') {
-      throw new Error(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
+  }
+  if (variant === 'caption') {
+    if (size && ['xsmall', 'small', 'large'].includes(size)) {
+      throw new Error(`[Blade: Text]: size cannot be '${size}' when variant is 'caption'`);
     }
     props.fontSize = 50;
     props.lineHeight = 's';
@@ -132,7 +139,16 @@ const Text = <T extends { variant: TextVariant }>({
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
-    ...getTextProps({ variant, type, weight, size, contrast, testID, textAlign }),
+    ...getTextProps({
+      variant,
+      type,
+      // substitiue bold with semibold
+      weight: weight === 'bold' ? 'semibold' : weight,
+      size,
+      contrast,
+      testID,
+      textAlign,
+    }),
     ...(color ? { color } : {}),
   };
   return <StyledText {...props}>{children}</StyledText>;

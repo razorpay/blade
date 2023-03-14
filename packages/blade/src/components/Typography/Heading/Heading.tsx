@@ -23,7 +23,7 @@ type HeadingNormalVariant = HeadingCommonProps & {
    * @default small
    */
   size?: HeadingSize;
-  weight?: keyof Theme['typography']['fonts']['weight'];
+  weight?: Exclude<keyof Theme['typography']['fonts']['weight'], 'semibold'>;
 };
 
 type HeadingSubHeadingVariant = HeadingCommonProps & {
