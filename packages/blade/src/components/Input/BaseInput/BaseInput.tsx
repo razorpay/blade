@@ -237,11 +237,14 @@ export type BaseInputProps = FormInputLabelProps &
   } & Platform.Select<{
     native: {
       /**
-       * The callback function to be invoked when the value of the input field is submitted. This is a react-native only prop and has no effect on web.
+       * The callback function to be invoked when the value of the input field is submitted.
        */
       onSubmit?: FormInputOnEvent;
     };
     web: {
+      /**
+       * This is a react-native only prop and has no effect on web.
+       */
       onSubmit?: undefined;
     };
   }>;
