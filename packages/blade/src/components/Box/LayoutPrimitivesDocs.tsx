@@ -44,7 +44,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
       componentName="Layout Primitives"
       componentDescription="Layout Primitives from Blade. Use this for adding spacings, grids, and any of your layout needs"
       imports=""
-      hideStorybookControls={true}
+      showStorybookControls={false}
     >
       <hr />
       <Title size="small">Table of Content</Title>
@@ -219,8 +219,8 @@ function LayoutPrimitivesDocs(): JSX.Element {
              function App(): JSX.Element {
                return (
                 <>
-                  <Box display={{ base: 'none', m: 'block' }}><Text>Desktop View</Text></Box>
-                  <Box display={{ base: 'block', m: 'none' }}><Text>Mobile View</Text></Box>
+                  <Box display={{ base: 'none', m: 'block' }}><Text>🖥 Desktop View</Text></Box>
+                  <Box display={{ base: 'block', m: 'none' }}><Text>📱 Mobile View</Text></Box>
                   <Box 
                     padding="spacing.4"
                     marginTop="32px"
@@ -319,7 +319,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
                     isFullWidth
                     // styled-props 👇🏼
                     position="fixed"
-                    bottom="spacing.0"
+                    bottom="spacing.10"
                     left="spacing.0"
                   />
                 )

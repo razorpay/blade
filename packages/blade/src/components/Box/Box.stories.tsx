@@ -63,7 +63,9 @@ export const Responsive = (args: BoxProps): JSX.Element => {
         minHeight="spacing.10"
         padding="spacing.2"
       >
-        <Text contrast="high">flexDirection property of this layout will change in mobile</Text>
+        <Text contrast="high">
+          Change screen size to see flexDirection switch between row and column
+        </Text>
       </Box>
       <Box
         flex="1"

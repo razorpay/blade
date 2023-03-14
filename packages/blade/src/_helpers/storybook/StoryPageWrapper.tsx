@@ -27,7 +27,7 @@ type StoryPageWrapperTypes = {
   componentName: string;
   children?: React.ReactNode;
   note?: string;
-  hideStorybookControls?: boolean;
+  showStorybookControls?: boolean;
   /**
    * Use this to override default imports
    */
@@ -72,6 +72,8 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
     },
   ]);
 
+  const { showStorybookControls = true } = props;
+
   return (
     <WithGlobalStyles>
       <Title>{props.componentName}</Title>
@@ -93,7 +95,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           <br />
         </>
       )}
-      {props.hideStorybookControls ? null : (
+      {showStorybookControls ? (
         <>
           <Title>Example</Title>
           <Subtitle>
@@ -117,7 +119,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           <ArgsTable story={PRIMARY_STORY} />
           <Stories />
         </>
-      )}
+      ) : null}
     </WithGlobalStyles>
   );
 };
