@@ -4,7 +4,7 @@ import type { BoxProps, MakeValueResponsive } from './BaseBox/types';
 import type { KeysRequired } from '~src/_helpers/types';
 import { metaAttribute, MetaConstants } from '~utils';
 
-const isValidBackgroundColorString = (stringBackgroundColorValue: string): void => {
+const validateBackgroundString = (stringBackgroundColorValue: string): void => {
   if (!stringBackgroundColorValue.startsWith('surface.background')) {
     throw new Error(
       `[Blade - Box]: Oops! Currently you can only use \`surface.background.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
@@ -12,19 +12,17 @@ const isValidBackgroundColorString = (stringBackgroundColorValue: string): void 
   }
 };
 
-const validateBackgroundColor = (
+const validateBackgroundProp = (
   responsiveBackgroundColor: MakeValueResponsive<string | undefined>,
 ): void => {
   if (responsiveBackgroundColor) {
     if (typeof responsiveBackgroundColor === 'string') {
-      isValidBackgroundColorString(responsiveBackgroundColor);
+      validateBackgroundString(responsiveBackgroundColor);
       return;
     }
 
     Object.values(responsiveBackgroundColor).forEach((backgroundColor) => {
-      if (typeof responsiveBackgroundColor === 'string') {
-        isValidBackgroundColorString(backgroundColor);
-      }
+      validateBackgroundString(backgroundColor);
     });
   }
 };
@@ -34,7 +32,7 @@ const validateBackgroundColor = (
  */
 const useValidatedBoxProps = (props: BoxProps): KeysRequired<BoxProps> => {
   React.useEffect(() => {
-    validateBackgroundColor(props.backgroundColor);
+    validateBackgroundProp(props.backgroundColor);
   }, [props.backgroundColor]);
 
   return {

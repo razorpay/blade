@@ -1,7 +1,7 @@
 /**
- * When any of the values are changed here, do change the jsdoc comments in BaseBox/types/spacing.types.ts as well
+ * When any of the values are changed here, do change the jsdoc comments in BaseBox/types/spacingTypes.ts as well
  *
- * {@link ../../components/Box/BaseBox/types/spacing.types.ts}
+ * {@link ../../components/Box/BaseBox/types/spacingTypes.ts}
  */
 
 export type Spacing = Readonly<{

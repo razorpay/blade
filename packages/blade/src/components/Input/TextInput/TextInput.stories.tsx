@@ -172,12 +172,22 @@ export default {
         category: propsCategory.LEADING_VISUAL_PROPS,
       },
     },
+    suffix: {
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
     showClearButton: {
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
-    suffix: {
+    onClearButtonClick: {
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
+    isLoading: {
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },

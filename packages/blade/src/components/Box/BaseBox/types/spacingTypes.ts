@@ -1,4 +1,4 @@
-import type { MakeObjectResponsive } from './responsive.types';
+import type { MakeObjectResponsive } from './responsiveTypes';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];

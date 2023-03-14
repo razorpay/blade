@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { Spacing } from '~tokens/global';
 import type { EasingFunctionFactory } from '~tokens/global/motion';
 
@@ -38,9 +39,32 @@ type AllowUndefinedValue<T> = {
  */
 type KeysRequired<T> = AllowUndefinedValue<Required<T>>;
 
+/**
+ * Use this when you want children to be string.
+ *
+ * This covers scenarios like
+ * ```jsx
+ * <Title>Hi</Title>
+ * <Title>{dynamicVariable} something</Title>
+ * ```
+ *
+ *
+ * ### Usage
+ *
+ * ```ts
+ * import type { StringChildrenType } from '~helpers/types';
+ *
+ * type MyProps = {
+ *  children: StringChildrenType;
+ * }
+ * ```
+ */
+type StringChildrenType = React.ReactText | React.ReactText[];
+
 export {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
   DotNotationSpacingStringToken,
   KeysRequired,
+  StringChildrenType,
 };

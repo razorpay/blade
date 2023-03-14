@@ -5,8 +5,8 @@ import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
 import { metaAttribute, isEmpty, MetaConstants } from '~utils';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -103,7 +103,7 @@ type CheckboxProps = {
    *
    */
   tabIndex?: number;
-} & StyledProps;
+} & StyledPropsBlade;
 
 const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
   {

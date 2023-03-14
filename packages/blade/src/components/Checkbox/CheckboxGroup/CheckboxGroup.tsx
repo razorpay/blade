@@ -5,8 +5,8 @@ import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabel, FormHint } from '~components/Form';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeSize, useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
@@ -81,7 +81,7 @@ type CheckboxGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-} & StyledProps;
+} & StyledPropsBlade;
 
 const CheckboxGroup = ({
   children,

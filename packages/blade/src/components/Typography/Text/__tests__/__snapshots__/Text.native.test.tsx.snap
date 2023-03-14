@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Text /> should render Text with center textAlign 1`] = `
+<Text
+  color="surface.text.normal.lowContrast"
+  fontFamily="text"
+  fontSize={100}
+  fontStyle="normal"
+  fontWeight="regular"
+  lineHeight="l"
+  style={
+    Array [
+      Object {
+        "color": "hsla(217, 56%, 17%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 15,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 24,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
+        "textAlign": "center",
+        "textDecorationLine": "none",
+      },
+      Object {},
+    ]
+  }
+  textAlign="center"
+>
+  Displaying some text
+</Text>
+`;
+
 exports[`<Text /> should render Text with default properties 1`] = `
 <Text
   color="surface.text.normal.lowContrast"

@@ -4,10 +4,11 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 import type { Theme } from '~components/BladeProvider';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
@@ -15,8 +16,8 @@ type HeadingSize = 'small' | 'medium' | 'large';
 type HeadingCommonProps = {
   type?: TextTypes;
   contrast?: ColorContrastTypes;
-  children: string;
-} & StyledProps;
+  children: StringChildrenType;
+} & StyledPropsBlade;
 
 type HeadingNormalVariant = HeadingCommonProps & {
   variant?: Exclude<HeadingVariant, 'subheading'>;

@@ -14,8 +14,8 @@ import { BaseInputWrapper } from './BaseInputWrapper';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledProps } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { AriaAttributes } from '~utils';
 import {
   metaAttribute,
@@ -236,7 +236,7 @@ export type BaseInputProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
-  } & StyledProps;
+  } & StyledPropsBlade;
 
 const autoCompleteSuggestionTypeValues = [
   'none',
