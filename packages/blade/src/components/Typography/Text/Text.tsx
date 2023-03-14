@@ -20,6 +20,7 @@ type TextCommonProps = {
    * **For Internal use only**:  Sets the color of the Text component
    */
   color?: BaseTextProps['color'];
+  textAlign?: BaseTextProps['textAlign'];
 } & StyledProps;
 
 export type TextVariant = 'body' | 'caption';
@@ -58,7 +59,8 @@ const getTextProps = <T extends { variant: TextVariant }>({
   weight,
   size,
   contrast,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'size' | 'contrast'>): Omit<
+  textAlign,
+}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'textAlign'>): Omit<
   BaseTextProps,
   'children'
 > &
@@ -74,6 +76,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     fontFamily: 'text',
     forwardedAs: isPlatformWeb ? 'p' : undefined,
     componentName: 'text',
+    textAlign,
   };
 
   if (variant === 'body') {
@@ -125,11 +128,12 @@ const Text = <T extends { variant: TextVariant }>({
   truncateAfterLines,
   children,
   color,
+  textAlign,
   ...styledProps
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
-    ...getTextProps({ variant, type, weight, size, contrast }),
+    ...getTextProps({ variant, type, weight, size, contrast, textAlign }),
     ...(color ? { color } : {}),
   };
   return (

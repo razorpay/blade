@@ -11,6 +11,7 @@ import { getStyledProps } from '~components/Box/styled-props';
 import type { StyledProps } from '~components/Box/styled-props';
 import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import size from '~tokens/global/size';
 
 export type OTPInputProps = Pick<
   BaseInputProps,
@@ -268,7 +269,7 @@ const OTPInput = ({
           flex={1}
           marginLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
           key={`${inputId}-${index}`}
-          maxWidth={platform === 'onDesktop' ? makeSize(36) : makeSize(40)} // TODO: use size tokens
+          maxWidth={platform === 'onDesktop' ? makeSize(size[36]) : makeSize(size[40])}
         >
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus

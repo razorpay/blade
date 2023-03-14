@@ -3,7 +3,7 @@ import {
   getBackgroundValue,
   getBaseBoxStyles,
   getBorderRadiusValue,
-} from '../BaseBox/getBaseBoxStyles';
+} from '../BaseBox/baseBoxStyles';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme';
 
 export const removeUndefinedValues = (props: Record<string, unknown>): Record<string, unknown> =>

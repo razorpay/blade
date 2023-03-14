@@ -14,12 +14,13 @@ import { getStyledProps } from '~components/Box/styled-props';
 import type { StyledProps } from '~components/Box/styled-props';
 import { getPlatformType } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 type RadioProps = {
   /**
    * Sets the label text of the Radio
    */
-  children: string;
+  children: StringChildrenType;
   /**
    * Help text for the Radio
    */

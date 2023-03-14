@@ -11,9 +11,10 @@ import {
   MetaConstants,
 } from '~utils';
 import type { FontSize } from '~tokens/global/typography';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 export type CodeProps = {
-  children: string;
+  children: StringChildrenType;
   /**
    * Decides the fontSize and padding of Code
    *

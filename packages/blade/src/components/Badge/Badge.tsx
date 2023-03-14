@@ -10,13 +10,15 @@ import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styled-props';
 import type { StyledProps } from '~components/Box/styled-props';
+import type { StringChildrenType } from '~src/_helpers/types';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
 
 type BadgeProps = {
   /**
    * Sets the label for the badge.
    *
    */
-  children: string;
+  children: StringChildrenType;
   /**
    * Sets the variant of the badge.
    *
@@ -84,17 +86,17 @@ const getColorProps = ({
   return props;
 };
 
-const Badge = (props: BadgeProps): ReactElement => {
-  const {
-    children,
-    contrast = 'low',
-    fontWeight = 'regular',
-    icon: Icon,
-    size = 'medium',
-    variant = 'neutral',
-  } = props;
-
-  if (!children?.trim()) {
+const Badge = ({
+  children,
+  contrast = 'low',
+  fontWeight = 'regular',
+  icon: Icon,
+  size = 'medium',
+  variant = 'neutral',
+  ...styledProps
+}: BadgeProps): ReactElement => {
+  const childrenString = getStringFromReactText(children);
+  if (!childrenString?.trim()) {
     throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }
   const { backgroundColor, iconColor, textColor } = getColorProps({
@@ -122,7 +124,7 @@ const Badge = (props: BadgeProps): ReactElement => {
       backgroundColor={backgroundColor}
       size={size}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Badge)}
-      {...getStyledProps(props)}
+      {...getStyledProps(styledProps)}
     >
       <BaseBox
         paddingRight={horizontalPadding[size]}

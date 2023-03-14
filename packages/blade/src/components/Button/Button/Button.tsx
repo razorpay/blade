@@ -5,6 +5,7 @@ import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { StyledProps } from '~components/Box/styled-props';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -26,7 +27,7 @@ type ButtonCommonProps = {
   */
 type ButtonWithoutIconProps = ButtonCommonProps & {
   icon?: undefined;
-  children: string;
+  children: StringChildrenType;
 };
 
 /*
@@ -34,7 +35,7 @@ type ButtonWithoutIconProps = ButtonCommonProps & {
   */
 type ButtonWithIconProps = ButtonCommonProps & {
   icon: IconComponent;
-  children?: string;
+  children?: StringChildrenType;
 };
 
 export type ButtonProps = ButtonWithoutIconProps | ButtonWithIconProps;

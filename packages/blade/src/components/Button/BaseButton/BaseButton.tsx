@@ -37,10 +37,11 @@ import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, StringChildrenType } from '~src/_helpers/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -64,7 +65,7 @@ Mandatory children prop when icon is not provided
 */
 type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
   icon?: undefined;
-  children: string;
+  children: StringChildrenType;
 };
 
 /*
@@ -72,7 +73,7 @@ type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
 */
 type BaseButtonWithIconProps = BaseButtonCommonProps & {
   icon: IconComponent;
-  children?: string;
+  children?: StringChildrenType;
 };
 
 /*
@@ -296,10 +297,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   },
   ref,
 ) => {
+  const childrenString = getStringFromReactText(children);
   const buttonRef = useBladeInnerRef(ref);
   const disabled = isLoading || isDisabled;
   const { theme } = useTheme();
-  if (!Icon && !children?.trim()) {
+  if (!Icon && !childrenString?.trim()) {
     throw new Error(
       `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
     );
@@ -342,7 +344,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     motionEasing,
   } = getProps({
     buttonTypographyTokens: buttonTypography,
-    children,
+    children: childrenString,
     isDisabled: disabled,
     size,
     variant,

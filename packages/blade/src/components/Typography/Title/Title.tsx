@@ -5,12 +5,13 @@ import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme
 import { getPlatformType } from '~utils';
 import { getStyledProps } from '~components/Box/styled-props';
 import type { StyledProps } from '~components/Box/styled-props';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 export type TitleProps = {
   size?: 'small' | 'medium' | 'large';
   contrast?: ColorContrastTypes;
   type?: TextTypes;
-  children: string;
+  children: StringChildrenType;
 } & StyledProps;
 
 const getProps = ({

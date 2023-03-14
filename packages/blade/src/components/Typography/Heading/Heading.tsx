@@ -8,6 +8,7 @@ import { getStyledProps } from '~components/Box/styled-props';
 import type { StyledProps } from '~components/Box/styled-props';
 
 import type { Theme } from '~components/BladeProvider';
+import type { StringChildrenType } from '~src/_helpers/types';
 
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
@@ -15,7 +16,7 @@ type HeadingSize = 'small' | 'medium' | 'large';
 type HeadingCommonProps = {
   type?: TextTypes;
   contrast?: ColorContrastTypes;
-  children: string;
+  children: StringChildrenType;
 } & StyledProps;
 
 type HeadingNormalVariant = HeadingCommonProps & {
