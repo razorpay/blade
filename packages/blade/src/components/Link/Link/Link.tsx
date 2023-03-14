@@ -1,7 +1,7 @@
 import type { ReactElement, SyntheticEvent } from 'react';
 import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
-import type { StyledPropsBlade } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType } from '~src/_helpers/types';
 
 type LinkCommonProps = {

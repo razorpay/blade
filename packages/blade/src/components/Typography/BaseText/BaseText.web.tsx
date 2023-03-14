@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
 import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
-import { useStyledProps } from '~components/Box/styled-props';
+import { useStyledProps } from '~components/Box/styledProps';
 
 const StyledBaseText = styled.div<StyledBaseTextProps>(
   ({

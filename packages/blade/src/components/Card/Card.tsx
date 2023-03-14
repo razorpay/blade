@@ -4,8 +4,8 @@ import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from '.
 import BaseBox from '~components/Box/BaseBox';
 import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledPropsBlade } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',

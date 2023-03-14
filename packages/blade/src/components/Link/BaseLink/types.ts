@@ -3,7 +3,7 @@ import type { CSSObject } from 'styled-components';
 import type { BaseLinkProps } from './BaseLink';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { ActionStates } from '~tokens/theme/theme';
-import type { StyledPropsBlade } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 export type StyledBaseLinkProps = {
   variant: BaseLinkProps['variant'];

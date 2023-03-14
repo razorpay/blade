@@ -3,8 +3,8 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledPropsBlade } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType } from '~src/_helpers/types';
 
 export type TitleProps = {

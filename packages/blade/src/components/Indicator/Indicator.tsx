@@ -11,8 +11,8 @@ import type { StringChildrenType } from '~src/_helpers/types';
 
 import type { Feedback } from '~tokens/theme/theme';
 import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledPropsBlade } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type IndicatorCommonProps = {
   /**

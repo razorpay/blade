@@ -6,7 +6,7 @@ import { BaseInput } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
-import type { StyledPropsBlade } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';

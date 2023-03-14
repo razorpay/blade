@@ -16,8 +16,8 @@ import {
 } from '~utils';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import BaseBox from '~components/Box/BaseBox';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledPropsBlade } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type ListCommonProps = {
   /**

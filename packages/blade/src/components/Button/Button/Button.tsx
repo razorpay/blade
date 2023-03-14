@@ -3,7 +3,7 @@ import React from 'react';
 import BaseButton from '../BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
-import type { StyledPropsBlade } from '~components/Box/styled-props';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import type { StringChildrenType } from '~src/_helpers/types';
 

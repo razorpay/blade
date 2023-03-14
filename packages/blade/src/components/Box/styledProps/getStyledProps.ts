@@ -2,13 +2,13 @@ import type { StyledPropsBlade } from '../BaseBox/types';
 import type { KeysRequired } from '~src/_helpers/types';
 
 /**
- * The input type to these styled-props utilities can be anything as we can just pass all the props and then get the filtered styled-props out of it
+ * The input type to these styledProps utilities can be anything as we can just pass all the props and then get the filtered styledProps out of it
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type StyledPropsInputType = Record<string, any>;
 
 /**
- * Removing undefined styled-props because when used with spread operator, undefined can override the earlier defined values.
+ * Removing undefined styledProps because when used with spread operator, undefined can override the earlier defined values.
 
   * Example: the following code will print display: undefined since it is given priority in spread.
   * 
@@ -40,13 +40,13 @@ const removeUndefinedStyledProps = (obj: StyledPropsInputType): StyledPropsInput
 };
 
 /**
- * - Removes the props that are not styled-props
+ * - Removes the props that are not styledProps
  * - Returns all the styled props along with undefined values.
  *
  * Can be used in generating storybook docs and testing the possible props.
  *
  *
- * **Use `getStyledProps` instead if you're using this for adding styled-props!**
+ * **Use `getStyledProps` instead if you're using this for adding styledProps!**
  */
 const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsBlade> => {
   return {
@@ -93,8 +93,8 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  * #### `getStyledProps` + BaseBox wrapper
  *
  * ```tsx
- * import type { StyledPropsBlade } from '~src/components/Box/styled-props';
- * import { getStyledProps } from '~src/components/Box/styled-props';
+ * import type { StyledPropsBlade } from '~src/components/Box/styledProps';
+ * import { getStyledProps } from '~src/components/Box/styledProps';
  *
  * type MyComponentProps = {
  *   // ... Your Props
@@ -102,7 +102,7 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  *
  * const MyComponent = (props: MyComponentProps): JSX.Element => {
  *  return (
- *    // Make sure styled-props come last so they take priority in stylings in-case of overrides
+ *    // Make sure styledProps come last so they take priority in stylings in-case of overrides
  *    <BaseBox someOtherProp={someValue} {...getStyledProps(props)}>
  *      // Your component code
  *    </BaseBox>
@@ -114,8 +114,8 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  *
  *
  * ```tsx
- * import type { StyledPropsBlade } from '~src/components/Box/styled-props';
- * import { useStyledProps } from '~src/components/Box/styled-props';
+ * import type { StyledPropsBlade } from '~src/components/Box/styledProps';
+ * import { useStyledProps } from '~src/components/Box/styledProps';
  *
  * type MyTextComponentProps = {
  *   // ... Your Props
@@ -127,7 +127,7 @@ const filterStyledProps = (props: StyledPropsInputType): KeysRequired<StyledProp
  *
  *  return {
  *    // ...your other CSS,
- *    ...styledPropsCSSObject, // Make sure styled-props come last so they take priority in styles
+ *    ...styledPropsCSSObject, // Make sure styledProps come last so they take priority in styles
  *  }
  * })
  * ```

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import BaseBox from '~components/Box/BaseBox';
-import { getStyledProps } from '~components/Box/styled-props';
-import type { StyledPropsBlade } from '~components/Box/styled-props';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   metaAttribute,
   getPlatformType,
