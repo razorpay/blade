@@ -142,13 +142,14 @@ function LayoutPrimitivesDocs(): JSX.Element {
           <Link target="_blank" href="https://chakra-ui.com/docs/components/box">
             Chakra
           </Link>
-          . Our Box is similar, except it&apos;s primarily focussed towards layout properties and
-          works on all platforms.
+          . Our Box is similar, except it&apos;s primarily focused on layout properties and works on
+          all platforms.
         </Text>
         <Text marginY="spacing.4">The simplest Box usage would look something like this-</Text>
         <SandboxHighlighter>
           {`
               <Box>Hello</Box>
+              // This will translate to:
               // On Web          -> <div>Hello</div> 
               // On React Native -> <View>Hello</View>
             `}
@@ -178,6 +179,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
                         // Uncomment this block to see padding shorthands in action
                         padding={["spacing.3", "35px"]} // We also support padding and margin shorthands similar to CSS
                         marginX="spacing.5" // adds horizontal margin
+                        backgroundColor='surface.background.level3.lowContrast'
                       >
                         <Text>More Text</Text>
                       </Box>
@@ -192,9 +194,12 @@ function LayoutPrimitivesDocs(): JSX.Element {
           <Text>
             Blade supports multiple props like <Code>padding</Code>, <Code>paddingX</Code>,{' '}
             <Code>paddingY</Code>, <Code>paddingTop</Code>, <Code>paddingRight</Code>,{' '}
-            <Code>paddingBottom</Code>, <Code>paddingLeft</Code> + similar props with{' '}
-            <Code>margin</Code>. And these props can have values such as <Code>spacing.3</Code> (Our
-            tokens), <Code>132px</Code> (absolute values), <Code>auto</Code>
+            <Code>paddingBottom</Code>, <Code>paddingLeft</Code> and similar props with{' '}
+            <Code>margin</Code>
+          </Text>
+          <Text>
+            These props can have values such as <Code>spacing.3</Code> (Our tokens),{' '}
+            <Code>132px</Code> (absolute values), <Code>auto</Code>
           </Text>
         </Section>
 
@@ -203,8 +208,9 @@ function LayoutPrimitivesDocs(): JSX.Element {
             Responsive Props 📱 🖥
           </Heading>
           <Text marginBottom="spacing.4">
-            Check out how the code renders differently on screens when{' '}
-            <Code>{`{base: 'column', m: 'row'}`}</Code> is used.
+            Our responsive props allow you do define responsive layouts with ease. Check out how the
+            code renders differently on screens when <Code>{`{base: 'column', m: 'row'}`}</Code> is
+            used.
           </Text>
           <SandboxProvider
             code={`
@@ -340,7 +346,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
             Why is `xyz` prop not supported in Box?
           </Heading>
           <Text marginY="spacing.3">
-            To start the <Code>Box</Code> implementation, we primarily focussed on supporting props
+            To start the <Code>Box</Code> implementation, we primarily focused on supporting props
             that help you change layouts like - margins, paddings, flex, grids, etc. This is roughly
             the rule of thumb we have followed so far-
           </Text>
@@ -349,7 +355,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
               Is it layout prop that does not change look and feel?
               <List>
                 <ListItem>E.g. - flex, grid, margins, etc</ListItem>
-                <ListItem>{'→'} Added to Box 🥳</ListItem>
+                <ListItem>{'→'} Available in Box 🥳</ListItem>
               </List>
             </ListItem>
 
@@ -358,7 +364,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
               components from blade?
               <List>
                 <ListItem>E.g. - backgroundColor</ListItem>
-                <ListItem>{'→'} Added to Box 🥳</ListItem>
+                <ListItem>{'→'} Available in Box 🥳</ListItem>
               </List>
             </ListItem>
 
@@ -370,7 +376,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
                   exceptions) you might be looking for <ListItemCode>Card</ListItemCode> component
                   instead
                 </ListItem>
-                <ListItem>{'→'} Not Added in Box 😠</ListItem>
+                <ListItem>{'→'} Not Available in Box 😠</ListItem>
               </List>
             </ListItem>
 
@@ -385,7 +391,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
                   >
                     Create an issue in razorpay/blade repo
                   </ListItemLink>{' '}
-                  to let us know
+                  mentioning your use-cases and how frequently is it needed
                 </ListItem>
               </List>
             </ListItem>

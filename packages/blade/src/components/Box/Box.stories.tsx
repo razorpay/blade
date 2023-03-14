@@ -7,6 +7,8 @@ import { Text, Title } from '~components/Typography';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { LinkToStorybook } from '~src/_helpers/storybook/LinkToStorybook';
 
+// Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
+// So we manually read location.hash of parent window and scroll to that section on load
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();
 }

@@ -22,6 +22,7 @@ const spacingTypeShorthandDescription = [
   '- token `"spacing.5"`',
   '- an array shorthand `["spacing.2", "10px", "spacing.5", "spacing.9"]` (Similar to CSS shorthands)',
   '- responsive object with combinatation of all previous values `{ "base": "spacing.3", "l": ["spacing.10", "20px"]}`',
+  '[MDN Docs for ShortHand Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#margin_and_padding_properties)',
 ].join('\n\n');
 
 const spacingTypeDescription = [
@@ -162,11 +163,11 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
     },
     paddingX: {
       ...commonProperties,
-      description: `**Horizontal Margin**\n\n${spacingTypeDescription}`,
+      description: `**Horizontal Padding**\n\n${spacingTypeDescription}`,
     },
     paddingY: {
       ...commonProperties,
-      description: `**Vertical Margin**\n\n${spacingTypeDescription}`,
+      description: `**Vertical Padding**\n\n${spacingTypeDescription}`,
     },
     paddingTop: {
       ...commonProperties,

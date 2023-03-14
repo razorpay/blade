@@ -117,6 +117,9 @@ const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
   '& pre': {
     padding: '0px',
   },
+  border: '1px solid #EFEFEF',
+  borderRadius: '4px',
+  overflow: 'auto',
 }));
 
 const SandboxHighlighter = ({

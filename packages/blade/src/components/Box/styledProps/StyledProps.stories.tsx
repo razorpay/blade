@@ -51,7 +51,7 @@ const BoxStoryMeta = {
 export const StyledProps = (args: StyledPropsType): JSX.Element => {
   return (
     <Box backgroundColor="surface.background.level2.lowContrast">
-      <Button {...args}>I am Blade Component!</Button>
+      <Button {...args}>Blade Button</Button>
     </Box>
   );
 };
