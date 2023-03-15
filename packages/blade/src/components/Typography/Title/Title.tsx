@@ -34,19 +34,19 @@ const getProps = ({
 
   if (size === 'small') {
     props.fontSize = 600;
-    props.lineHeight = '4xl';
+    props.lineHeight = '2xl';
     props.as = isPlatformWeb ? 'h3' : undefined;
   } else if (size === 'medium') {
     props.fontSize = 700;
-    props.lineHeight = '4xl';
+    props.lineHeight = '3xl';
     props.as = isPlatformWeb ? 'h2' : undefined;
   } else if (size === 'large') {
     props.fontSize = 800;
-    props.lineHeight = '6xl';
+    props.lineHeight = '4xl';
     props.as = isPlatformWeb ? 'h1' : undefined;
   } else if (size === 'xlarge') {
     props.fontSize = 1000;
-    props.lineHeight = '6xl';
+    props.lineHeight = '5xl';
     props.as = isPlatformWeb ? 'h1' : undefined;
   }
 

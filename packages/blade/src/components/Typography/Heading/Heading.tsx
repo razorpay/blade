@@ -77,15 +77,15 @@ const getProps = <T extends { variant: HeadingVariant }>({
   if (variant === 'regular') {
     if (!size || size === 'small') {
       props.fontSize = 200;
-      props.lineHeight = '2xl';
+      props.lineHeight = 'l';
       props.as = isPlatformWeb ? 'h6' : undefined;
     } else if (size === 'medium') {
       props.fontSize = 300;
-      props.lineHeight = '3xl';
+      props.lineHeight = 'm';
       props.as = isPlatformWeb ? 'h5' : undefined;
     } else if (size === 'large') {
       props.fontSize = 400;
-      props.lineHeight = '3xl';
+      props.lineHeight = 'xl';
       props.as = isPlatformWeb ? 'h4' : undefined;
     }
   } else if (variant === 'subheading') {
@@ -98,7 +98,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
       );
     }
     props.fontSize = 75;
-    props.lineHeight = 's';
+    props.lineHeight = 'xs';
     props.as = isPlatformWeb ? 'h6' : undefined;
   }
 

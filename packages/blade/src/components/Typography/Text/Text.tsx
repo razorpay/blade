@@ -25,12 +25,12 @@ export type TextVariant = 'body' | 'caption';
 
 type TextBodyVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'body'>;
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 };
 
 type TextCaptionVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'caption'>;
-  size?: 'medium';
+  size?: 'medium' | 'small';
 };
 
 /**
@@ -85,24 +85,28 @@ const getTextProps = <T extends { variant: TextVariant }>({
   if (variant === 'body') {
     if (size === 'small') {
       props.fontSize = 75;
-      props.lineHeight = 's';
-    }
-    if (size === 'xsmall') {
-      props.fontSize = 25;
-      props.lineHeight = 's';
+      props.lineHeight = 'xs';
     }
     if (size === 'large') {
       props.fontSize = 200;
-      // TODO: change line height
-      props.lineHeight = 's';
+      props.lineHeight = 'l';
     }
   }
   if (variant === 'caption') {
-    if (size && ['xsmall', 'small', 'large'].includes(size)) {
+    if (size === 'large') {
       throw new Error(`[Blade: Text]: size cannot be '${size}' when variant is 'caption'`);
     }
-    props.fontSize = 50;
-    props.lineHeight = 's';
+
+    if (size === 'small') {
+      props.fontSize = 25;
+      props.lineHeight = 'xs';
+    }
+
+    if (size === 'medium') {
+      props.fontSize = 50;
+      props.lineHeight = 'xs';
+    }
+
     props.fontStyle = 'italic';
   }
 
