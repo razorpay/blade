@@ -76,4 +76,16 @@ Responsive.args = {
   flexDirection: { base: 'column', m: 'row' },
 } as BoxProps;
 
+export const AsSection = (args: BoxProps): JSX.Element => {
+  return (
+    <Box {...args}>
+      <Text>This box is rendered as {args.as} HTML tag</Text>
+    </Box>
+  );
+};
+
+AsSection.args = {
+  as: 'section',
+} as BoxProps;
+
 export default BoxStoryMeta;

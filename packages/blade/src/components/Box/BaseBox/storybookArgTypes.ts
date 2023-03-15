@@ -1,11 +1,12 @@
 import { makeBoxProps } from '../Box';
 import { makeStyledProps } from '../styledProps';
 import type { BaseBoxProps, BoxProps, StyledPropsBlade } from './types';
+import { validBoxAsValues } from './types/propsTypes';
 
 type StorybookArgTypes<T> = {
   [P in keyof T]: {
     table?: { category?: 'StyledProps' | null; disable?: boolean };
-    control?: { type: string };
+    control?: { type: string; options?: readonly string[] };
     description?: string;
   };
 };
@@ -194,6 +195,12 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
     children: {
       table: {
         disable: true,
+      },
+    },
+    as: {
+      control: {
+        type: 'select',
+        options: validBoxAsValues,
       },
     },
   };

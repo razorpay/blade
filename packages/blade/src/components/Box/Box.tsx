@@ -1,8 +1,9 @@
 import React from 'react';
 import BaseBox from './BaseBox';
 import type { BoxProps, MakeValueResponsive } from './BaseBox/types';
+import { validBoxAsValues } from './BaseBox/types/propsTypes';
 import type { KeysRequired } from '~src/_helpers/types';
-import { metaAttribute, MetaConstants } from '~utils';
+import { isReactNative, metaAttribute, MetaConstants } from '~utils';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
   if (!stringBackgroundColorValue.startsWith('surface.background')) {
@@ -107,6 +108,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID'>> =
     // Visual
     backgroundColor: props.backgroundColor,
     children: props.children,
+    as: props.as,
   };
 };
 
@@ -149,6 +151,22 @@ const Box = (props: BoxProps): JSX.Element => {
   React.useEffect(() => {
     validateBackgroundProp(props.backgroundColor);
   }, [props.backgroundColor]);
+
+  React.useEffect(() => {
+    if (props.as && typeof props.as === 'string') {
+      if (isReactNative()) {
+        throw new Error('[Blade - Box]: `as` prop is not supported on React Native');
+      }
+
+      if (!validBoxAsValues.includes(props.as)) {
+        throw new Error(
+          `[Blade - Box]: Invalid \`as\` prop value - ${props.as}. Only ${validBoxAsValues.join(
+            ', ',
+          )} are valid values`,
+        );
+      }
+    }
+  }, [props.as]);
 
   return (
     <BaseBox
