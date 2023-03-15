@@ -9,6 +9,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
+import type { TestID } from '~src/_helpers/types';
 
 type TextCommonProps = {
   type?: TextTypes;
@@ -21,7 +22,8 @@ type TextCommonProps = {
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 export type TextVariant = 'body' | 'caption';
 
@@ -59,12 +61,12 @@ const getTextProps = <T extends { variant: TextVariant }>({
   weight,
   size,
   contrast,
+  testID,
   textAlign,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'textAlign'>): Omit<
-  BaseTextProps,
-  'children'
-> &
-  TextForwardedAs => {
+}: Pick<
+  TextProps<T>,
+  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'testID' | 'textAlign'
+>): Omit<BaseTextProps, 'children'> & TextForwardedAs => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
@@ -76,6 +78,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     fontFamily: 'text',
     forwardedAs: isPlatformWeb ? 'p' : undefined,
     componentName: 'text',
+    testID,
     textAlign,
   };
 
@@ -128,12 +131,13 @@ const Text = <T extends { variant: TextVariant }>({
   truncateAfterLines,
   children,
   color,
+  testID,
   textAlign,
   ...styledProps
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
-    ...getTextProps({ variant, type, weight, size, contrast, textAlign }),
+    ...getTextProps({ variant, type, weight, size, contrast, testID, textAlign }),
     ...(color ? { color } : {}),
   };
   return (

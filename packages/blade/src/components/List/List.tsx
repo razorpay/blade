@@ -14,7 +14,7 @@ import {
   metaAttribute,
   MetaConstants,
 } from '~utils';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -37,7 +37,8 @@ type ListCommonProps = {
    * @default 'medium'
    */
   size?: 'small' | 'medium';
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 type ListWithIconProps = ListCommonProps & {
   variant?: 'unordered';
@@ -86,6 +87,7 @@ const List = ({
   size,
   children,
   icon,
+  testID,
   ...styledProps
 }: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? StyledUnorderedList : StyledOrderedList;
@@ -114,7 +116,7 @@ const List = ({
       <BaseBox {...getStyledProps(styledProps)}>
         <ListElement
           marginTop={level ? undefined : 'spacing.3'}
-          {...metaAttribute(MetaConstants.Component, MetaConstants.List)}
+          {...metaAttribute({ name: MetaConstants.List, testID })}
           {...makeAccessible({ role: 'list' })} // Role needed for react-native
         >
           {variant === 'unordered'

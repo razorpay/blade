@@ -1,5 +1,5 @@
-import { isEmpty } from 'lodash';
 import type { StringChildrenType } from '~src/_helpers/types';
+import { isEmpty } from '~utils';
 
 const getStringFromReactText = (
   childReactText: StringChildrenType | undefined,

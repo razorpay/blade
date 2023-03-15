@@ -149,4 +149,10 @@ describe('<Button />', () => {
     fireEvent.click(buttonTrigger);
     expect(button).toHaveFocus();
   });
+
+  it('should accept testID', () => {
+    const buttonText = 'Pay Now';
+    const { getByTestId } = renderWithTheme(<Button testID="button-test">{buttonText}</Button>);
+    expect(getByTestId('button-test')).toBeInTheDocument();
+  });
 });

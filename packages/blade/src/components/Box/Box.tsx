@@ -30,7 +30,7 @@ const validateBackgroundProp = (
 /**
  * This function is to filter out any unexpected props passed by the user
  */
-const makeBoxProps = (props: BoxProps): KeysRequired<BoxProps> => {
+const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID'>> => {
   return {
     // Layout
     display: props.display,
@@ -152,7 +152,7 @@ const Box = (props: BoxProps): JSX.Element => {
 
   return (
     <BaseBox
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Box)}
+      {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
       {...makeBoxProps(props)}
     />
   );

@@ -36,6 +36,7 @@ const StyledLink = ({
   accessibilityProps,
   // @ts-expect-error avoid exposing to public
   style,
+  testID,
 }: StyledBaseLinkProps & { children: React.ReactNode }): ReactElement => {
   const handleOnPress = (event: GestureResponderEvent): void => {
     if (href && variant === 'anchor') {
@@ -61,6 +62,7 @@ const StyledLink = ({
       onPressIn={(): void => setCurrentInteraction('active')}
       onPressOut={(): void => setCurrentInteraction('default')}
       style={style}
+      testID={testID}
     >
       {children}
     </StyledNativeLink>

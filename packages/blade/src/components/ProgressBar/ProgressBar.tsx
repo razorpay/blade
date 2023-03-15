@@ -12,6 +12,7 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import size from '~tokens/global/size';
+import type { TestID } from '~src/_helpers/types';
 
 type ProgressBarCommonProps = {
   /**
@@ -51,7 +52,8 @@ type ProgressBarCommonProps = {
    * @default 100
    */
   max?: number;
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 type ProgressBarVariant = 'progress' | 'meter';
 
@@ -110,6 +112,7 @@ const ProgressBar = ({
   variant = 'progress',
   min = 0,
   max = 100,
+  testID,
   ...styledProps
 }: ProgressBarProps): ReactElement => {
   const { theme } = useTheme();
@@ -180,7 +183,7 @@ const ProgressBar = ({
       </BaseBox>
       <BaseBox
         id={id}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.ProgressBar)}
+        {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
         {...makeAccessible({
           role: accessibilityProps.role,
           label: accessibilityProps.label,

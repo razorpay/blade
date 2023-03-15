@@ -31,6 +31,7 @@ type SelectInputProps = Pick<
   | 'onFocus'
   | 'onBlur'
   | 'placeholder'
+  | 'testID'
 > & {
   icon?: IconComponent;
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
@@ -122,6 +123,7 @@ const _SelectInput = (
             icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />
         }
+        testID={props.testID}
       />
     </BaseBox>
   );

@@ -25,7 +25,7 @@ import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
 
 type Nullable<Type> = Type | null;
 
@@ -111,7 +111,8 @@ type AlertProps = {
      */
     secondary?: SecondaryAction;
   };
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -135,6 +136,7 @@ const Alert = ({
   isFullWidth = false,
   intent = 'neutral',
   actions,
+  testID,
   ...styledProps
 }: AlertProps): ReactElement | null => {
   if (!actions?.primary && actions?.secondary) {
@@ -295,7 +297,7 @@ const Alert = ({
       isFullWidth={isFullWidth}
       isDesktop={isDesktop}
       {...a11yProps}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
+      {...metaAttribute({ name: MetaConstants.Alert, testID })}
       {...getStyledProps(styledProps)}
     >
       {icon}

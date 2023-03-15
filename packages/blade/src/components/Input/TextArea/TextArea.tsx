@@ -33,6 +33,7 @@ type TextAreaProps = Pick<
   | 'maxCharacters'
   | 'autoFocus'
   | 'numberOfLines'
+  | 'testID'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -73,6 +74,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     onClearButtonClick,
     autoFocus,
     numberOfLines = 2,
+    testID,
     ...styledProps
   },
   ref,
@@ -160,6 +162,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
           </BaseBox>
         ) : null;
       }}
+      testID={testID}
       {...styledProps}
     />
   );

@@ -110,4 +110,10 @@ describe('<Link />', () => {
     const link = getByRole('link');
     expect(link.findByProps({ accessibilityLabel: 'Info' })).toBeTruthy();
   });
+
+  it('should accept testID', () => {
+    const linkText = 'Learn More';
+    const { getByTestId } = renderWithTheme(<Link testID="link-test">{linkText}</Link>);
+    expect(getByTestId('link-test')).toBeTruthy();
+  });
 });

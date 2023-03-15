@@ -10,6 +10,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeSize, useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
+import type { TestID } from '~src/_helpers/types';
 
 type CheckboxGroupProps = {
   /**
@@ -81,7 +82,8 @@ type CheckboxGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 const CheckboxGroup = ({
   children,
@@ -97,6 +99,7 @@ const CheckboxGroup = ({
   onChange,
   value,
   size = 'medium',
+  testID,
   ...styledProps
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
@@ -125,6 +128,7 @@ const CheckboxGroup = ({
           position={labelPosition}
           labelledBy={ids.labelId}
           componentName="checkbox-group"
+          testID={testID}
         >
           <FormLabel
             as="span"

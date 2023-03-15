@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 6.4.0
+
+### Minor Changes
+
+- 4145d553: feat: add `testID` prop to all components
+- a7826b0b: feat(Input): add `autoCapitalize` support to `BaseInput`, `TextInput` & `PasswordInput`
+- bdd74d7a: feat(Text): add `textAlign` prop
+
+### Patch Changes
+
+- da4489b3: fix: lodash tree shaking to reduce effective bundle-size.
+
 ## 6.3.0
 
 ### Minor Changes

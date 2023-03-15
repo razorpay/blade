@@ -11,7 +11,7 @@ import {
   MetaConstants,
 } from '~utils';
 import type { FontSize } from '~tokens/global/typography';
-import type { StringChildrenType } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type CodeProps = {
   children: StringChildrenType;
@@ -21,7 +21,8 @@ export type CodeProps = {
    * @default small
    */
   size?: 'small' | 'medium';
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 type CodeContainerProps = {
   size: CodeProps['size'];
@@ -79,12 +80,12 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * </BaseBox>
  * ```
  */
-const Code = ({ children, size = 'small', ...styledProps }: CodeProps): JSX.Element => {
+const Code = ({ children, size = 'small', testID, ...styledProps }: CodeProps): JSX.Element => {
   return (
     <CodeContainer
       size={size}
       as={isPlatformWeb ? 'span' : undefined}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Code)}
+      {...metaAttribute({ name: MetaConstants.Code, testID })}
       {...getStyledProps(styledProps)}
     >
       <BaseText

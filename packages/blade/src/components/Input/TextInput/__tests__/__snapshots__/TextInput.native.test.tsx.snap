@@ -615,6 +615,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             "expanded": undefined,
           }
         }
+        autoCapitalize="none"
         autoCompleteType="off"
         editable={true}
         id="textinput-31-input-32"

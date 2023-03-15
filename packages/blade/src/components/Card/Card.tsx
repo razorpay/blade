@@ -6,6 +6,7 @@ import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { TestID } from '~src/_helpers/types';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -43,9 +44,15 @@ export type CardProps = {
    * - Figma: https://shorturl.at/fsvwK
    */
   surfaceLevel?: 2 | 3;
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
-const Card = ({ children, surfaceLevel = 3, ...styledProps }: CardProps): React.ReactElement => {
+const Card = ({
+  children,
+  surfaceLevel = 3,
+  testID,
+  ...styledProps
+}: CardProps): React.ReactElement => {
   useVerifyAllowedComponents(children, 'Card', [
     ComponentIds.CardHeader,
     ComponentIds.CardBody,
@@ -55,13 +62,13 @@ const Card = ({ children, surfaceLevel = 3, ...styledProps }: CardProps): React.
   return (
     <CardProvider>
       <CardSurface
+        {...metaAttribute({ name: MetaConstants.Card, testID })}
         paddingLeft="spacing.7"
         paddingRight="spacing.7"
         paddingTop="spacing.6"
         paddingBottom="spacing.6"
         borderRadius="medium"
         surfaceLevel={surfaceLevel}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.Card)}
         {...getStyledProps(styledProps)}
       >
         {children}
@@ -72,16 +79,12 @@ const Card = ({ children, surfaceLevel = 3, ...styledProps }: CardProps): React.
 
 type CardBodyProps = {
   children: React.ReactNode;
-};
+} & TestID;
 
-const CardBody: WithComponentId<CardBodyProps> = ({ children }) => {
+const CardBody: WithComponentId<CardBodyProps> = ({ children, testID }) => {
   useVerifyInsideCard('CardBody');
 
-  return (
-    <BaseBox {...metaAttribute(MetaConstants.Component, MetaConstants.CardBody)}>
-      {children}
-    </BaseBox>
-  );
+  return <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })}>{children}</BaseBox>;
 };
 CardBody.componentId = ComponentIds.CardBody;
 

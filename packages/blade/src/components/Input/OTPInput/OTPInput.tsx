@@ -29,6 +29,7 @@ export type OTPInputProps = Pick<
   | 'keyboardReturnKeyType'
   | 'keyboardType'
   | 'placeholder'
+  | 'testID'
 > & {
   /**
    * Determines the number of input fields to show for the OTP
@@ -102,6 +103,7 @@ const OTPInput = ({
   value: inputValue,
   isMasked,
   autoCompleteSuggestionType = 'oneTimeCode',
+  testID,
   ...styledProps
 }: OTPInputProps): React.ReactElement => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
@@ -308,7 +310,7 @@ const OTPInput = ({
 
   return (
     <BaseBox
-      {...metaAttribute(MetaConstants.Component, MetaConstants.OTPInput)}
+      {...metaAttribute({ name: MetaConstants.OTPInput, testID })}
       {...getStyledProps(styledProps)}
     >
       <BaseBox

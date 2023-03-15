@@ -14,7 +14,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import type { StringChildrenType } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 type RadioProps = {
   /**
@@ -42,10 +42,11 @@ type RadioProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
-  { value, children, helpText, isDisabled, size = 'medium', ...styledProps },
+  { value, children, helpText, isDisabled, size = 'medium', testID, ...styledProps },
   ref,
 ) => {
   const groupProps = useRadioGroupContext();
@@ -88,7 +89,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
 
   return (
     <BaseBox {...getStyledProps(styledProps)}>
-      <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
+      <SelectorLabel inputProps={isReactNative ? inputProps : {}} testID={testID}>
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput

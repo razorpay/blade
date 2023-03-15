@@ -9,6 +9,7 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { TestID } from '~src/_helpers/types';
 
 export type CounterProps = {
   /**
@@ -38,7 +39,8 @@ export type CounterProps = {
    * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 type ColorProps = {
   textColor: BaseTextProps['color'];
@@ -65,6 +67,7 @@ const Counter = ({
   intent = 'neutral',
   contrast = 'low',
   size = 'medium',
+  testID,
   ...styledProps
 }: CounterProps): React.ReactElement => {
   let content = `${value}`;
@@ -110,7 +113,7 @@ const Counter = ({
         justifyContent="center"
         alignItems="center"
         overflow="hidden"
-        {...metaAttribute(MetaConstants.Component, MetaConstants.Counter)}
+        {...metaAttribute({ name: MetaConstants.Counter, testID })}
       >
         <Text
           {...counterTextSizes[size]}

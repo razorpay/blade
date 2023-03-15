@@ -37,7 +37,11 @@ import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type { DotNotationSpacingStringToken, StringChildrenType } from '~src/_helpers/types';
+import type {
+  DotNotationSpacingStringToken,
+  StringChildrenType,
+  TestID,
+} from '~src/_helpers/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
@@ -58,7 +62,8 @@ type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 /*
 Mandatory children prop when icon is not provided
@@ -293,6 +298,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     type = 'button',
     children,
     accessibilityLabel,
+    testID,
     ...styledProps
   },
   ref,
@@ -381,7 +387,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Button)}
+      {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...styledProps}
     >
       {isLoading ? (

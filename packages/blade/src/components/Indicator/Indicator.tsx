@@ -7,7 +7,7 @@ import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 import sizeTokens from '~tokens/global/size';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import type { StringChildrenType } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 import type { Feedback } from '~tokens/theme/theme';
 import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
@@ -28,7 +28,8 @@ type IndicatorCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 type IndicatorWithoutA11yLabel = {
   /**
@@ -66,6 +67,7 @@ const Indicator = ({
   children,
   size = 'medium',
   intent = 'neutral',
+  testID,
   ...styledProps
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
@@ -98,7 +100,7 @@ const Indicator = ({
       flexDirection="row"
       alignItems="center"
       {...a11yProps}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Indicator)}
+      {...metaAttribute({ name: MetaConstants.Indicator, testID })}
       {...getStyledProps(styledProps)}
     >
       <Svg

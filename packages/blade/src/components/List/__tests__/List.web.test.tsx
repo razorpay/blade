@@ -251,4 +251,19 @@ describe('<List />', () => {
     );
     await assertAccessible(container);
   });
+
+  it('should render List with default properties', () => {
+    const { getByTestId } = renderWithTheme(
+      <List testID="list-test">
+        <ListItem testID="list-item-test">
+          Level 1<ListItemLink testID="list-item-link-test">Link</ListItemLink>
+          <ListItemCode testID="list-item-code-test">Code</ListItemCode>
+        </ListItem>
+      </List>,
+    );
+    expect(getByTestId('list-test')).toBeTruthy();
+    expect(getByTestId('list-item-test')).toBeTruthy();
+    expect(getByTestId('list-item-link-test')).toBeTruthy();
+    expect(getByTestId('list-item-code-test')).toBeTruthy();
+  });
 });

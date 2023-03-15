@@ -9,6 +9,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType, makeSize, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import type { TestID } from '~src/_helpers/types';
 
 type RadioGroupProps = {
   /**
@@ -80,7 +81,8 @@ type RadioGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 const RadioGroup = ({
   children,
@@ -96,6 +98,7 @@ const RadioGroup = ({
   onChange,
   value,
   size = 'medium',
+  testID,
   ...styledProps
 }: RadioGroupProps): React.ReactElement => {
   const { contextValue, ids } = useRadioGroup({
@@ -126,6 +129,7 @@ const RadioGroup = ({
           labelledBy={ids.labelId}
           accessibilityRole={isReactNative ? 'radiogroup' : 'group'}
           componentName="radio-group"
+          testID={testID}
         >
           <FormLabel
             as="span"
