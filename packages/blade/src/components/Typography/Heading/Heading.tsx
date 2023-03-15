@@ -4,6 +4,9 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+
 import type { Theme } from '~components/BladeProvider';
 import type { StringChildrenType } from '~src/_helpers/types';
 
@@ -14,7 +17,7 @@ type HeadingCommonProps = {
   type?: TextTypes;
   contrast?: ColorContrastTypes;
   children: StringChildrenType;
-};
+} & StyledPropsBlade;
 
 type HeadingNormalVariant = HeadingCommonProps & {
   variant?: Exclude<HeadingVariant, 'subheading'>;
@@ -110,7 +113,12 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   weight = 'bold',
   contrast = 'low',
   children,
+  ...styledProps
 }: HeadingProps<T>): ReactElement => {
   const props = getProps({ variant, size, type, weight, contrast });
-  return <BaseText {...props}>{children}</BaseText>;
+  return (
+    <BaseText {...props} {...getStyledProps(styledProps)}>
+      {children}
+    </BaseText>
+  );
 };

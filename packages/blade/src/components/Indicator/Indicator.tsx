@@ -11,6 +11,8 @@ import type { StringChildrenType } from '~src/_helpers/types';
 
 import type { Feedback } from '~tokens/theme/theme';
 import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type IndicatorCommonProps = {
   /**
@@ -26,7 +28,7 @@ type IndicatorCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-};
+} & StyledPropsBlade;
 
 type IndicatorWithoutA11yLabel = {
   /**
@@ -64,6 +66,7 @@ const Indicator = ({
   children,
   size = 'medium',
   intent = 'neutral',
+  ...styledProps
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
@@ -96,6 +99,7 @@ const Indicator = ({
       alignItems="center"
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Indicator)}
+      {...getStyledProps(styledProps)}
     >
       <Svg
         width={String(dimensions.svgSize)}

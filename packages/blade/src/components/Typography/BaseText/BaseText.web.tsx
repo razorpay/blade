@@ -1,8 +1,10 @@
+import React from 'react';
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
 import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
+import { useStyledProps } from '~components/Box/styledProps';
 
 const StyledBaseText = styled.div<StyledBaseTextProps>(
   ({
@@ -15,18 +17,23 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
     lineHeight,
     textAlign,
     ...props
-  }) =>
-    getBaseTextStyles({
-      color,
-      fontFamily,
-      fontSize,
-      fontWeight,
-      fontStyle,
-      textDecorationLine,
-      lineHeight,
-      textAlign,
-      theme: props.theme,
-    }),
+  }) => {
+    const styledPropsCSSObject = useStyledProps(props);
+    return {
+      ...getBaseTextStyles({
+        color,
+        fontFamily,
+        fontSize,
+        fontWeight,
+        fontStyle,
+        textDecorationLine,
+        lineHeight,
+        textAlign,
+        theme: props.theme,
+      }),
+      ...styledPropsCSSObject,
+    };
+  },
 );
 
 export const BaseText = ({
@@ -46,9 +53,11 @@ export const BaseText = ({
   style,
   accessibilityProps = {},
   componentName,
+  ...styledProps
 }: BaseTextProps): ReactElement => {
   return (
     <StyledBaseText
+      {...styledProps}
       color={color}
       fontFamily={fontFamily}
       fontSize={fontSize}

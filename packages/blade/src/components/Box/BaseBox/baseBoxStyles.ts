@@ -214,6 +214,7 @@ const getAllProps = (
     backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, breakpoint),
     borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, breakpoint),
     transform: getResponsiveValue(props.transform, breakpoint),
+    lineHeight: getSpacingValue(props.lineHeight, props.theme, breakpoint),
   };
 };
 
@@ -253,26 +254,7 @@ const getBaseBoxStyles = (props: BaseBoxProps & { theme: Theme }): CSSObject => 
   };
 };
 
-const getDependencyProps = (props: BaseBoxProps & { theme: Theme }): string | BaseBoxProps => {
-  // These are the props that change nothing in the getBaseBoxStyles calculations
-  const { theme, children, className, id, ...rest } = props;
-  let dependencyPropString: string | BaseBoxProps = '';
-  try {
-    dependencyPropString = JSON.stringify(rest);
-  } catch (err: unknown) {
-    console.warn(
-      '[BaseBox]: stringification of props failed in BaseBox so falling back to re-calculations on all changes\n\n If you see this warning, please create issue on https://github.com/razorpay/blade as this could degrade runtime styling performance',
-      err,
-    );
-
-    dependencyPropString = rest;
-  }
-
-  return dependencyPropString;
-};
-
 export {
-  getDependencyProps,
   getBaseBoxStyles,
   getResponsiveValue,
   getSpacingValue,

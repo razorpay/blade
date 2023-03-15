@@ -1,4 +1,4 @@
-const metaAttribute = (_name: string, _value: string): Record<string, string> => {
+const metaAttribute = (_name: string, _value: string | undefined): Record<string, string> => {
   return {};
 };
 

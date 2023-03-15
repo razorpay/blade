@@ -3,7 +3,7 @@ import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { BaseBoxProps } from '~components/Box/BaseBox/types';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 type InputVisuals = Pick<
   BaseInputProps,

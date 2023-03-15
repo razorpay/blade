@@ -1,19 +1,34 @@
+import styled from 'styled-components';
 import type { ReactElement } from 'react';
 import type { SvgProps } from './types';
 import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
+import { useStyledProps } from '~components/Box/styledProps';
 
-const Svg = ({ children, height, viewBox, width, fill }: SvgProps): ReactElement => {
+const StyledSvg = styled.svg<SvgProps>((props) => {
+  const styledPropsCSSObject = useStyledProps(props);
+  return styledPropsCSSObject;
+});
+
+const Svg = ({
+  children,
+  height,
+  viewBox,
+  width,
+  fill,
+  ...styledProps
+}: SvgProps): ReactElement => {
   return (
-    <svg
+    <StyledSvg
       {...makeAccessible({ hidden: true })}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Icon)}
       height={height}
       viewBox={viewBox}
       width={width}
       fill={fill}
+      {...styledProps}
     >
       {children}
-    </svg>
+    </StyledSvg>
   );
 };
 

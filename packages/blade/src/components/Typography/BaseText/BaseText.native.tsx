@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
 import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
+import { useStyledProps } from '~components/Box/styledProps';
 
 const StyledBaseText = styled.Text<StyledBaseTextProps>(
   ({
@@ -17,20 +18,24 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
     as,
     ...props
   }) => {
+    const styledPropsCSSObject = useStyledProps(props);
     if (as) {
       throw new Error(`[Blade: BaseText]: "as" prop is not supported for BaseText on React Native`);
     } else {
-      return getBaseTextStyles({
-        color,
-        fontFamily,
-        fontSize,
-        fontWeight,
-        fontStyle,
-        textDecorationLine,
-        lineHeight,
-        textAlign,
-        theme: props.theme,
-      });
+      return {
+        ...getBaseTextStyles({
+          color,
+          fontFamily,
+          fontSize,
+          fontWeight,
+          fontStyle,
+          textDecorationLine,
+          lineHeight,
+          textAlign,
+          theme: props.theme,
+        }),
+        ...styledPropsCSSObject,
+      };
     }
   },
 );
@@ -52,9 +57,11 @@ export const BaseText = ({
   style,
   accessibilityProps = {},
   componentName,
+  ...styledProps
 }: BaseTextProps): ReactElement => {
   return (
     <StyledBaseText
+      {...styledProps}
       color={color}
       fontFamily={fontFamily}
       fontSize={fontSize}
@@ -69,7 +76,7 @@ export const BaseText = ({
       style={style}
       id={id}
       {...makeAccessible(accessibilityProps)}
-      {...metaAttribute(MetaConstants.Component, componentName!)}
+      {...metaAttribute(MetaConstants.Component, componentName)}
     >
       {children}
     </StyledBaseText>

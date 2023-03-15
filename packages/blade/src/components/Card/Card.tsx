@@ -4,6 +4,8 @@ import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from '.
 import BaseBox from '~components/Box/BaseBox';
 import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -41,9 +43,9 @@ export type CardProps = {
    * - Figma: https://shorturl.at/fsvwK
    */
   surfaceLevel?: 2 | 3;
-};
+} & StyledPropsBlade;
 
-const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => {
+const Card = ({ children, surfaceLevel = 3, ...styledProps }: CardProps): React.ReactElement => {
   useVerifyAllowedComponents(children, 'Card', [
     ComponentIds.CardHeader,
     ComponentIds.CardBody,
@@ -53,13 +55,14 @@ const Card = ({ children, surfaceLevel = 3 }: CardProps): React.ReactElement => 
   return (
     <CardProvider>
       <CardSurface
-        {...metaAttribute(MetaConstants.Component, MetaConstants.Card)}
         paddingLeft="spacing.7"
         paddingRight="spacing.7"
         paddingTop="spacing.6"
         paddingBottom="spacing.6"
         borderRadius="medium"
         surfaceLevel={surfaceLevel}
+        {...metaAttribute(MetaConstants.Component, MetaConstants.Card)}
+        {...getStyledProps(styledProps)}
       >
         {children}
       </CardSurface>

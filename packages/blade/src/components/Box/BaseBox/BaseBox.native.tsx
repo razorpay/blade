@@ -16,7 +16,6 @@ const BaseBox = styled(View).withConfig({
   shouldForwardProp: (prop, defaultValidator) =>
     isSupportedOnReactNativeElement(prop) && defaultValidator(prop),
 })<BaseBoxProps>((props) => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const cssObject = getBaseBoxStyles(props);
   return cssObject;
 });

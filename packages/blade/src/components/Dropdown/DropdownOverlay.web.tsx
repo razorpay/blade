@@ -10,7 +10,7 @@ import type { WithComponentId } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import spacing from '~tokens/global/spacing';
-import type { SpacingValueType } from '~components/Box/BaseBox/types';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import size from '~tokens/global/size';
 
 const dropdownFadeIn = keyframes`

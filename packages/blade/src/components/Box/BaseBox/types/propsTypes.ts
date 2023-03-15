@@ -4,6 +4,11 @@ import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
+import type { Platform } from '~src/utils/platform/platform';
+
+type MakeObjectWebOnly<T> = {
+  [P in keyof T]: Platform.Select<{ web: T[P]; native: never }>;
+};
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -67,24 +72,26 @@ type PositionProps = MakeObjectResponsive<
   } & Pick<CSSObject, 'position' | 'zIndex'>
 >;
 
-type GridProps = MakeObjectResponsive<
-  Pick<
-    CSSObject,
-    | 'grid'
-    | 'gridColumn'
-    | 'gridRow'
-    | 'gridRowStart'
-    | 'gridRowEnd'
-    | 'gridColumnStart'
-    | 'gridColumnEnd'
-    | 'gridArea'
-    | 'gridAutoFlow'
-    | 'gridAutoRows'
-    | 'gridAutoColumns'
-    | 'gridTemplate'
-    | 'gridTemplateAreas'
-    | 'gridTemplateColumns'
-    | 'gridTemplateRows'
+type GridProps = MakeObjectWebOnly<
+  MakeObjectResponsive<
+    Pick<
+      CSSObject,
+      | 'grid'
+      | 'gridColumn'
+      | 'gridRow'
+      | 'gridRowStart'
+      | 'gridRowEnd'
+      | 'gridColumnStart'
+      | 'gridColumnEnd'
+      | 'gridArea'
+      | 'gridAutoFlow'
+      | 'gridAutoRows'
+      | 'gridAutoColumns'
+      | 'gridTemplate'
+      | 'gridTemplateAreas'
+      | 'gridTemplateColumns'
+      | 'gridTemplateRows'
+    >
   >
 >;
 
@@ -93,31 +100,57 @@ type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotat
   Theme['colors'][T]['background']
 >}`;
 
-type BackgroundColorType =
-  | BackgroundColorString<'feedback'>
-  | BackgroundColorString<'surface'>
-  | BackgroundColorString<'action'>
-  | (string & Record<never, never>);
-
-type VisualProps = MakeObjectResponsive<
+type BaseBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
-    backgroundColor: BackgroundColorType;
+    backgroundColor:
+      | BackgroundColorString<'feedback'>
+      | BackgroundColorString<'surface'>
+      | BackgroundColorString<'action'>
+      | (string & Record<never, never>);
+    lineHeight: SpacingValueType;
   } & Pick<CSSObject, 'transform'>
 >;
 
-type BaseBoxProps = Partial<
+type BoxVisualProps = MakeObjectResponsive<{
+  backgroundColor: BackgroundColorString<'surface'>;
+}>;
+
+type StyledPropsBlade = Partial<
+  MarginProps &
+    Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
+    PositionProps &
+    Pick<
+      GridProps,
+      | 'gridColumn'
+      | 'gridRow'
+      | 'gridRowStart'
+      | 'gridRowEnd'
+      | 'gridColumnStart'
+      | 'gridColumnEnd'
+      | 'gridArea'
+    >
+>;
+
+type BoxProps = Partial<
   PaddingProps &
     MarginProps &
     LayoutProps &
     FlexboxProps &
     PositionProps &
     GridProps &
-    VisualProps & {
-      children: React.ReactNode | React.ReactNode[];
+    BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] }
+>;
+
+// Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.
+// So first we Omit Visual props of Box
+// Then we append BaseBoxVisualProps and some other props for styled-components like class and id
+type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
+  Partial<
+    BaseBoxVisualProps & {
       className?: string;
       id?: string;
     }
->;
+  >;
 
-export { BaseBoxProps };
+export { BaseBoxProps, BoxProps, StyledPropsBlade };

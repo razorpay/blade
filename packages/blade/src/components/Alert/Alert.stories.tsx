@@ -33,30 +33,28 @@ const Page = (): ReactElement => {
               <Button onClick={() => setShowAlert(!showAlert)}>
                 Click to be alerted!
               </Button>
-              <br /><br />
-              <div>
-                { 
-                  showAlert 
-                  ? <Alert 
-                      title="The Button is Clicked 👀" 
-                      description="Click the Button again to hide alert"
-                      actions={{
-                        primary: {
-                          onClick: () => {
-                            alert('Alert from the alert hehe')
-                          },
-                          text: 'Primary Action'
+              { 
+                showAlert 
+                ? <Alert 
+                    title="The Button is Clicked 👀" 
+                    description="Click the Button again to hide alert"
+                    marginTop="spacing.4"
+                    actions={{
+                      primary: {
+                        onClick: () => {
+                          alert('Alert from the alert hehe')
                         },
-                        secondary: {
-                          href: 'https://razorpay.com',
-                          target: '_blank',
-                          text: 'Go to Razorpay.com'
-                        }
-                      }}
-                    /> 
-                  : null 
-                }
-              </div>
+                        text: 'Primary Action'
+                      },
+                      secondary: {
+                        href: 'https://razorpay.com',
+                        target: '_blank',
+                        text: 'Go to Razorpay.com'
+                      }
+                    }}
+                  /> 
+                : null 
+              }
             </div>
           )
         }

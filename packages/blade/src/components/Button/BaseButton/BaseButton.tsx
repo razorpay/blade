@@ -18,6 +18,8 @@ import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+
 import {
   MetaConstants,
   metaAttribute,
@@ -56,7 +58,7 @@ type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-};
+} & StyledPropsBlade;
 
 /*
 Mandatory children prop when icon is not provided
@@ -291,6 +293,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     type = 'button',
     children,
     accessibilityLabel,
+    ...styledProps
   },
   ref,
 ) => {
@@ -379,6 +382,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Button)}
+      {...styledProps}
     >
       {isLoading ? (
         <BaseBox

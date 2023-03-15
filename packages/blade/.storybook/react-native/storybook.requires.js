@@ -58,6 +58,7 @@ const getStories = () => {
     require('../../src/storybook-recipes/SimpleDashboard.stories.tsx'),
     require('../../src/storybook-recipes/SimpleForm.stories.tsx'),
     require('../../src/tokens/theme/overrideTheme.stories.tsx'),
+    require('../../src/components/Box/BaseBox/BaseBox.stories.internal.tsx'),
     require('../../src/components/Button/BaseButton/BaseButton.stories.internal.tsx'),
   ];
 };

@@ -15,6 +15,9 @@ import {
   MetaConstants,
 } from '~utils';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type ListCommonProps = {
   /**
@@ -34,7 +37,7 @@ type ListCommonProps = {
    * @default 'medium'
    */
   size?: 'small' | 'medium';
-};
+} & StyledPropsBlade;
 
 type ListWithIconProps = ListCommonProps & {
   variant?: 'unordered';
@@ -78,7 +81,13 @@ const StyledUnorderedList = styled(UnorderedList)<{ marginTop?: DotNotationSpaci
  *  <List />
  * ```
  */
-const List = ({ variant = 'unordered', size, children, icon }: ListProps): React.ReactElement => {
+const List = ({
+  variant = 'unordered',
+  size,
+  children,
+  icon,
+  ...styledProps
+}: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? StyledUnorderedList : StyledOrderedList;
   const { level, size: listContextSize } = useListContext();
   const listContextValue = useMemo(
@@ -102,18 +111,20 @@ const List = ({ variant = 'unordered', size, children, icon }: ListProps): React
 
   return (
     <ListProvider value={listContextValue}>
-      <ListElement
-        marginTop={level ? undefined : 'spacing.3'}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.List)}
-        {...makeAccessible({ role: 'list' })} // Role needed for react-native
-      >
-        {variant === 'unordered'
-          ? childListItems
-          : childListItems.map(
-              (child, index) =>
-                React.cloneElement(child as React.ReactElement, { _itemNumber: index + 1 }), // adds _itemNumber for rendering ordered list bullets
-            )}
-      </ListElement>
+      <BaseBox {...getStyledProps(styledProps)}>
+        <ListElement
+          marginTop={level ? undefined : 'spacing.3'}
+          {...metaAttribute(MetaConstants.Component, MetaConstants.List)}
+          {...makeAccessible({ role: 'list' })} // Role needed for react-native
+        >
+          {variant === 'unordered'
+            ? childListItems
+            : childListItems.map(
+                (child, index) =>
+                  React.cloneElement(child as React.ReactElement, { _itemNumber: index + 1 }), // adds _itemNumber for rendering ordered list bullets
+              )}
+        </ListElement>
+      </BaseBox>
     </ListProvider>
   );
 };

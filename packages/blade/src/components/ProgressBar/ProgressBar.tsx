@@ -5,6 +5,8 @@ import { FormLabel } from '~components/Form';
 import type { AccessibilityProps } from '~utils';
 import { makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -49,7 +51,7 @@ type ProgressBarCommonProps = {
    * @default 100
    */
   max?: number;
-};
+} & StyledPropsBlade;
 
 type ProgressBarVariant = 'progress' | 'meter';
 
@@ -108,6 +110,7 @@ const ProgressBar = ({
   variant = 'progress',
   min = 0,
   max = 100,
+  ...styledProps
 }: ProgressBarProps): ReactElement => {
   const { theme } = useTheme();
   const id = useId(variant);
@@ -153,7 +156,7 @@ const ProgressBar = ({
   }
 
   return (
-    <>
+    <BaseBox {...getStyledProps(styledProps)}>
       <BaseBox
         display="flex"
         flexDirection="row"
@@ -206,7 +209,7 @@ const ProgressBar = ({
           />
         </BaseBox>
       </BaseBox>
-    </>
+    </BaseBox>
   );
 };
 

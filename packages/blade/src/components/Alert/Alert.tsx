@@ -16,6 +16,8 @@ import {
   MetaConstants,
   useBreakpoint,
 } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
@@ -109,7 +111,7 @@ type AlertProps = {
      */
     secondary?: SecondaryAction;
   };
-};
+} & StyledPropsBlade;
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -133,6 +135,7 @@ const Alert = ({
   isFullWidth = false,
   intent = 'neutral',
   actions,
+  ...styledProps
 }: AlertProps): ReactElement | null => {
   if (!actions?.primary && actions?.secondary) {
     throw new Error(
@@ -293,6 +296,7 @@ const Alert = ({
       isDesktop={isDesktop}
       {...a11yProps}
       {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
+      {...getStyledProps(styledProps)}
     >
       {icon}
       <BaseBox
