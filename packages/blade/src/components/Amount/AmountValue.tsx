@@ -8,9 +8,13 @@ import { suffixTypes } from './Amount';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
 
-const getDecimalFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' => {
+const getAffixFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' => {
   if (isAffixSubtle) return 'regular';
   return 'bold';
+};
+
+const getMainValuetWeight = (size: NonNullable<AmountProps['size']>): 'regular' | 'bold' => {
+  return size.includes('bold') || size.includes('title') ? 'bold' : 'regular';
 };
 
 export const getAffixFontSize = (
@@ -35,9 +39,9 @@ const AmountValue = ({
   suffix = 'decimals',
   prefixSuffixColor,
 }: AmountValue): ReactElement => {
-  const affixFontWeight = getDecimalFontWeight(isAffixSubtle);
+  const affixFontWeight = getAffixFontWeight(isAffixSubtle);
   const affixFontSize = getAffixFontSize(isAffixSubtle, size);
-  const valueForWeight = size.includes('bold') ? 'bold' : 'regular';
+  const valueForWeight = getMainValuetWeight(size);
   if (suffix === suffixTypes.DECIMALS && isAffixSubtle) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
