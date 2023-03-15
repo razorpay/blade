@@ -102,7 +102,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
         <Title size="small">Playground</Title>
         <Sandbox padding="spacing.0">
           {`
-            import { Box } from '@razorpay/blade/components'
+            import { Box, Text } from '@razorpay/blade/components'
 
             function App(): JSX.Element {
               return (
@@ -114,15 +114,15 @@ function LayoutPrimitivesDocs(): JSX.Element {
                   <Box 
                     backgroundColor="surface.background.level3.highContrast" 
                     flex="1" 
-                    minHeight="spacing.10" 
-                    minWidth="spacing.10" 
-                  />
+                  >
+                    <Text margin="spacing.4" contrast="high">Box1</Text>
+                  </Box>
                   <Box 
                     backgroundColor="surface.background.level2.highContrast" 
                     flex="1" 
-                    minHeight="spacing.10" 
-                    minWidth="spacing.10" 
-                  />
+                  >
+                    <Text margin="spacing.4" contrast="high">Box2</Text>
+                  </Box>
                 </Box>
               )
             }

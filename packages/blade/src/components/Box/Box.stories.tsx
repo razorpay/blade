@@ -56,29 +56,32 @@ Default.args = {
 
 export const Responsive = (args: BoxProps): JSX.Element => {
   return (
-    <Box {...args}>
-      <Box
-        flex="1"
-        backgroundColor="surface.background.level2.highContrast"
-        minHeight="spacing.10"
-        padding="spacing.2"
-      >
-        <Text contrast="high">
-          Change screen size to see flexDirection switch between row and column
-        </Text>
+    <>
+      <Text>Change screen size to see flexDirection switch between row and column</Text>
+      <Box {...args}>
+        <Box
+          flex="1"
+          backgroundColor="surface.background.level2.highContrast"
+          minHeight="spacing.10"
+          padding="spacing.2"
+        >
+          <Text contrast="high">Box1</Text>
+        </Box>
+        <Box
+          flex="1"
+          backgroundColor="surface.background.level3.highContrast"
+          minHeight="spacing.10"
+        >
+          <Text contrast="high">Box2</Text>
+        </Box>
       </Box>
-      <Box
-        flex="1"
-        backgroundColor="surface.background.level3.highContrast"
-        minHeight="spacing.10"
-      />
-    </Box>
+    </>
   );
 };
 
 Responsive.args = {
   display: 'flex',
-  padding: 'spacing.10',
+  paddingY: 'spacing.6',
   flexDirection: { base: 'column', m: 'row' },
 } as BoxProps;
 
