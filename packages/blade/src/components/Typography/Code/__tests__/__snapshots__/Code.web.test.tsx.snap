@@ -9,7 +9,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -19,7 +19,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1rem;
+  line-height: 1.25rem;
 }
 
 <div>
@@ -48,7 +48,7 @@ exports[`<Code /> should render medium Code 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -58,7 +58,7 @@ exports[`<Code /> should render medium Code 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1rem;
+  line-height: 1.25rem;
 }
 
 <div>
@@ -87,7 +87,7 @@ exports[`<Code /> should render small Code 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -97,7 +97,7 @@ exports[`<Code /> should render small Code 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1rem;
+  line-height: 1.25rem;
 }
 
 <div>

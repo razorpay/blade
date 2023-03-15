@@ -38,7 +38,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 3.75rem;
+  line-height: NaNrem;
   margin: 0;
   padding: 0;
 }

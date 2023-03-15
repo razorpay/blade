@@ -161,7 +161,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
         "fontSize": 12,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 16,
+        "lineHeight": 20,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
