@@ -11,6 +11,7 @@ export type StyledBaseInputProps = {
   handleOnFocus?: FormInputHandleOnEvent;
   handleOnChange?: FormInputHandleOnEvent;
   handleOnBlur?: FormInputHandleOnEvent;
+  handleOnSubmit?: FormInputHandleOnEvent;
   handleOnKeyDown?: FormInputHandleOnKeyDownEvent;
   handleOnInput?: FormInputHandleOnEvent;
   handleOnClick?: FormInputHandleOnClickEvent;
