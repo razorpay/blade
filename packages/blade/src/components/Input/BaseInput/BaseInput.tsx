@@ -15,8 +15,14 @@ import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import type { AriaAttributes, Platform } from '~utils';
+import {
+  isReactNative,
+  metaAttribute,
+  getPlatformType,
+  makeAccessible,
+  useBreakpoint,
+} from '~utils';
 
-import { metaAttribute, getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~src/hooks/useInteraction';
@@ -354,11 +360,14 @@ const useInput = ({
         // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
         _value = value?.target.value ?? '';
       }
-
-      onSubmit?.({
-        name,
-        value: _value,
-      });
+      if (isReactNative()) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+        //@ts-ignore need to ignore this since it will throw a TS error for web but not for native
+        onSubmit?.({
+          name,
+          value: _value,
+        });
+      }
     },
     [onSubmit],
   );
