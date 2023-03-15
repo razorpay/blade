@@ -20,6 +20,7 @@ describe('<Box />', () => {
       >
         <div
           class="BaseBoxweb__BaseBox-sc-1icfu8j-0 cVhZTX"
+          data-blade-component="Box"
           display="flex"
         >
           children test!
