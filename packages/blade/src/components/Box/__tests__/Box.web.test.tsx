@@ -33,6 +33,29 @@ describe('<Box />', () => {
     `);
   });
 
+  it('should render Box as footer tag', () => {
+    const { container } = renderWithTheme(
+      <Box display="block" as="footer">
+        Footer test!
+      </Box>,
+    );
+    expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        display: block;
+      }
+
+      <div>
+        <footer
+          class="c0"
+          data-blade-component="Box"
+          display="block"
+        >
+          Footer test!
+        </footer>
+      </div>
+    `);
+  });
+
   it('should throw error for unsupport values', () => {
     // Ignoring error from console to not show it while running tests
     const tempConsoleError = console.error;
