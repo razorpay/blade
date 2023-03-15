@@ -30,8 +30,10 @@ const BoxStoryMeta = {
             isFullWidth
             isDismissible={false}
             description="This is an example styled prop story. You can also check out stories of individual blade components where you will find 'Styled Props' category in their storybook args table."
+            marginTop="spacing.4"
+            marginBottom="spacing.8"
           />
-          <Box paddingY="spacing.5" paddingBottom="spacing.8">
+          <Box paddingBottom="spacing.8">
             <Title size="medium">Layout Primitives Documentation</Title>
             <Text marginTop="spacing.3">
               Check Out{' '}
