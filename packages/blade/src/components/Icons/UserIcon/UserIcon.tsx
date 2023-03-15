@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const UserIcon: IconComponent = ({ size, color }) => {
+const UserIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} fill="none" viewBox="0 0 24 24">
+    <Svg {...styledProps} width={width} height={height} fill="none" viewBox="0 0 24 24">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

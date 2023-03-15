@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const LogOutIcon: IconComponent = ({ size, color }) => {
+const LogOutIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M5 3C4.44772 3 4 3.44772 4 4V20C4 20.5523 4.44772 21 5 21H10C10.5523 21 11 21.4477 11 22C11 22.5523 10.5523 23 10 23H5C3.34315 23 2 21.6569 2 20V4C2 2.34315 3.34315 1 5 1H10C10.5523 1 11 1.44772 11 2C11 2.55228 10.5523 3 10 3H5Z"
         fill={iconColor}
