@@ -19,7 +19,7 @@ exports[`<List /> should render List with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -223,7 +223,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -236,7 +236,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -273,7 +273,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1rem;
+  line-height: 1.25rem;
 }
 
 .c2 {
@@ -410,7 +410,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -423,7 +423,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -650,7 +650,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -663,7 +663,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -860,7 +860,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -1078,7 +1078,7 @@ exports[`<List /> should render small ordered List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -1091,7 +1091,7 @@ exports[`<List /> should render small ordered List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -1318,7 +1318,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -1331,7 +1331,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -1528,7 +1528,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -1740,7 +1740,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }

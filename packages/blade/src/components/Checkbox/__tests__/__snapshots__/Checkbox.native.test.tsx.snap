@@ -558,7 +558,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               "fontSize": 11,
               "fontStyle": "italic",
               "fontWeight": "400",
-              "lineHeight": 16,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,

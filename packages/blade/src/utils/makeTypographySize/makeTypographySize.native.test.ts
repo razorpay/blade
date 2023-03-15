@@ -9,6 +9,6 @@ describe('makeTypographySize', () => {
 
   it('should return the line-height value in `px`', () => {
     const lineHeight = makeTypographySize(typography.onMobile.lineHeights.m);
-    expect(lineHeight).toEqual('18px');
+    expect(lineHeight).toEqual('20px');
   });
 });

@@ -70,7 +70,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -83,7 +83,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.5rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -340,7 +340,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -535,7 +535,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -548,7 +548,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   font-style: italic;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -784,7 +784,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }

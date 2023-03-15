@@ -9,7 +9,7 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -38,7 +38,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.75rem;
+  line-height: 2.5rem;
   margin: 0;
   padding: 0;
 }
@@ -67,7 +67,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.75rem;
+  line-height: 2.5rem;
   margin: 0;
   padding: 0;
 }
@@ -96,7 +96,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -125,7 +125,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -154,7 +154,7 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }

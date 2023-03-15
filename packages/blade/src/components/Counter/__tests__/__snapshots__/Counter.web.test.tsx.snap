@@ -25,7 +25,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -112,7 +112,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -199,7 +199,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -286,7 +286,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -373,7 +373,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -460,7 +460,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -547,7 +547,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -634,7 +634,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -721,7 +721,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -808,7 +808,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -895,7 +895,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -982,7 +982,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -1069,7 +1069,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -1156,7 +1156,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
