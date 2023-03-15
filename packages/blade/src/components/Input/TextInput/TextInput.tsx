@@ -40,6 +40,7 @@ type TextInputProps = Pick<
   | 'autoFocus'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
+  | 'onSubmit'
   | 'autoCapitalize'
   | 'testID'
 > & {
@@ -179,6 +180,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     onChange,
     onFocus,
     onBlur,
+    onSubmit,
     isDisabled,
     necessityIndicator,
     validationState,
@@ -268,6 +270,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       }}
       onFocus={onFocus}
       onBlur={onBlur}
+      onSubmit={onSubmit}
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
