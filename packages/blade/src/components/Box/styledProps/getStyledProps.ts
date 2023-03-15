@@ -29,11 +29,11 @@ type StyledPropsInputType = Record<string, any>;
   */
 const removeUndefinedStyledProps = (obj: StyledPropsInputType): StyledPropsInputType => {
   const onlyDefinedStyledProps: StyledPropsBlade = {};
-  for (const k in obj) {
-    if (obj[k as keyof StyledPropsBlade] !== undefined) {
+  for (const key in obj) {
+    if (obj[key as keyof StyledPropsBlade] !== undefined) {
       // @ts-expect-error: complex type error
       // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      onlyDefinedStyledProps[k as keyof StyledPropsBlade] = obj[k as keyof StyledPropsBlade];
+      onlyDefinedStyledProps[key as keyof StyledPropsBlade] = obj[key as keyof StyledPropsBlade];
     }
   }
   return onlyDefinedStyledProps;
