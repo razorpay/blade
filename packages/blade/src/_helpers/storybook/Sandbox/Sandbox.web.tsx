@@ -27,7 +27,7 @@ const getBladeVersion = (): string => {
     return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
   }
 
-  return 'https://pkg.csb.dev/razorpay/blade/commit/b1b0f883/@razorpay/blade';
+  return '*';
 };
 
 const bladeVersion = getBladeVersion();
