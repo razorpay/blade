@@ -67,6 +67,9 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 12,

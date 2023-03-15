@@ -274,6 +274,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 },
               ]
             }
+            text="Delete"
+            type="button"
           >
             <View
               alignItems="center"
@@ -411,6 +413,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 },
               ]
             }
+            text="Save"
+            type="button"
           >
             <View
               alignItems="center"
@@ -571,6 +575,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                 },
+                Array [
+                  Object {},
+                ],
                 Object {
                   "flex": 0,
                   "height": 24,

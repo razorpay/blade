@@ -34,6 +34,9 @@ exports[`<Indicator /> should render 1`] = `
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
+        Array [
+          Object {},
+        ],
         Object {
           "flex": 0,
           "height": 8,
@@ -157,6 +160,9 @@ Array [
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 6,
@@ -276,6 +282,9 @@ Array [
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 8,
@@ -395,6 +404,9 @@ Array [
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 10,
@@ -514,6 +526,9 @@ Array [
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 8,

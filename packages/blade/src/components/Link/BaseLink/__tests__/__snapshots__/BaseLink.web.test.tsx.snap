@@ -1392,6 +1392,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1798,6 +1799,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1930,6 +1932,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -2070,6 +2073,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"

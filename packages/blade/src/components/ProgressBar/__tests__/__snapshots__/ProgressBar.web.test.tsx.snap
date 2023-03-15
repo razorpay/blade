@@ -139,85 +139,89 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
+    class=""
   >
-    <label
-      for="progress-1"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      class="c0"
+      display="flex"
     >
+      <label
+        for="progress-1"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      >
+        <div
+          class="c1"
+        >
+          <div
+            class="c2"
+            display="flex"
+          >
+            <p
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="75"
+              font-style="normal"
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </div>
+        </div>
+      </label>
       <div
         class="c1"
       >
-        <div
-          class="c2"
-          display="flex"
+        <p
+          class="c6 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
-          <div
-            class="c4"
-          >
-            <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
+          20%
+        </p>
       </div>
-    </label>
-    <div
-      class="c1"
-    >
-      <p
-        class="c6 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-1"
-    role="progressbar"
-  >
     <div
-      class="c7"
-      height="2px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-1"
+      role="progressbar"
     >
       <div
-        class="c8 c9 c10"
+        class="c7"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c11 c12"
-        />
+          class="c8 c9 c10"
+        >
+          <div
+            class=" c11 c12"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -285,30 +289,34 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  />
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="50"
-    aria-valuetext="50%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-7"
-    role="progressbar"
   >
     <div
-      class="c1"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
+    />
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="50"
+      aria-valuetext="50%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-7"
+      role="progressbar"
     >
       <div
-        class="c2 c3 c4"
+        class="c1"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c5 c6"
-        />
+          class="c2 c3 c4"
+        >
+          <div
+            class=" c5 c6"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -393,46 +401,50 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-9"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-9"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -517,46 +529,50 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-17"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-17"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -641,46 +657,50 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-13"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-13"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -765,46 +785,50 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-19"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-19"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -889,46 +913,50 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-15"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-15"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1013,46 +1041,50 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.highContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-11"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.highContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-11"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1137,46 +1169,50 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-16"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-16"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1261,46 +1297,50 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-12"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-12"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1385,46 +1425,50 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-18"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-18"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1509,46 +1553,50 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-14"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-14"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1633,46 +1681,50 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  >
-    <div
-      class="c1"
-    >
-      <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
-    </div>
-  </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
     class=""
-    data-blade-component="progress-bar"
-    id="progress-10"
-    role="progressbar"
   >
     <div
-      class="c3"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
     >
       <div
-        class="c4 c5 c6"
+        class="c1"
+      >
+        <p
+          class="c2 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
+        >
+          20%
+        </p>
+      </div>
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-10"
+      role="progressbar"
+    >
+      <div
+        class="c3"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c7 c8"
-        />
+          class="c4 c5 c6"
+        >
+          <div
+            class=" c7 c8"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1818,85 +1870,89 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
+    class=""
   >
-    <label
-      for="progress-6"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      class="c0"
+      display="flex"
     >
+      <label
+        for="progress-6"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      >
+        <div
+          class="c1"
+        >
+          <div
+            class="c2"
+            display="flex"
+          >
+            <p
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="75"
+              font-style="normal"
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </div>
+        </div>
+      </label>
       <div
         class="c1"
       >
-        <div
-          class="c2"
-          display="flex"
+        <p
+          class="c6 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
-          <div
-            class="c4"
-          >
-            <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
+          20%
+        </p>
       </div>
-    </label>
-    <div
-      class="c1"
-    >
-      <p
-        class="c6 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-6"
-    role="progressbar"
-  >
     <div
-      class="c7"
-      height="4px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-6"
+      role="progressbar"
     >
       <div
-        class="c8 c9 c10"
+        class="c7"
+        height="4px"
+        overflow="hidden"
       >
         <div
-          class=" c11 c12"
-        />
+          class="c8 c9 c10"
+        >
+          <div
+            class=" c11 c12"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1953,30 +2009,34 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
-  />
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="70"
-    aria-valuetext="70"
     class=""
-    data-blade-component="progress-bar"
-    id="meter-8"
-    role="meter"
   >
     <div
-      class="c1"
-      height="2px"
-      overflow="hidden"
+      class="c0"
+      display="flex"
+    />
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="70"
+      aria-valuetext="70"
+      class=""
+      data-blade-component="progress-bar"
+      id="meter-8"
+      role="meter"
     >
       <div
-        class="c2 c3 c4"
+        class="c1"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c5"
-        />
+          class="c2 c3 c4"
+        >
+          <div
+            class=" c5"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -2122,85 +2182,89 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 
 <div>
   <div
-    class="c0"
-    display="flex"
+    class=""
   >
-    <label
-      for="progress-5"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      class="c0"
+      display="flex"
     >
+      <label
+        for="progress-5"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      >
+        <div
+          class="c1"
+        >
+          <div
+            class="c2"
+            display="flex"
+          >
+            <p
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="75"
+              font-style="normal"
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c4"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </div>
+        </div>
+      </label>
       <div
         class="c1"
       >
-        <div
-          class="c2"
-          display="flex"
+        <p
+          class="c6 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
-          <div
-            class="c4"
-          >
-            <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
+          20%
+        </p>
       </div>
-    </label>
-    <div
-      class="c1"
-    >
-      <p
-        class="c6 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        20%
-      </p>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="20"
-    aria-valuetext="20%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-5"
-    role="progressbar"
-  >
     <div
-      class="c7"
-      height="2px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="20"
+      aria-valuetext="20%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-5"
+      role="progressbar"
     >
       <div
-        class="c8 c9 c10"
+        class="c7"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c11 c12"
-        />
+          class="c8 c9 c10"
+        >
+          <div
+            class=" c11 c12"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -2453,85 +2517,89 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     </div>
   </button>
   <div
-    class="c4"
-    display="flex"
+    class=""
   >
-    <label
-      for="progress-3"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      class="c4"
+      display="flex"
     >
+      <label
+        for="progress-3"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      >
+        <div
+          class="c5"
+        >
+          <div
+            class="c6"
+            display="flex"
+          >
+            <p
+              class="c7 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="75"
+              font-style="normal"
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c8"
+            >
+              <p
+                class="c9 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </div>
+        </div>
+      </label>
       <div
         class="c5"
       >
-        <div
-          class="c6"
-          display="flex"
+        <p
+          class="c10 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
         >
-          <p
-            class="c7 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
-          <div
-            class="c8"
-          >
-            <p
-              class="c9 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
+          0%
+        </p>
       </div>
-    </label>
-    <div
-      class="c5"
-    >
-      <p
-        class="c10 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        0%
-      </p>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
-    aria-valuetext="0%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-3"
-    role="progressbar"
-  >
     <div
-      class="c11"
-      height="2px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="0"
+      aria-valuetext="0%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-3"
+      role="progressbar"
     >
       <div
-        class="c12 c13 c14"
+        class="c11"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c15 c16"
-        />
+          class="c12 c13 c14"
+        >
+          <div
+            class=" c15 c16"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -2784,85 +2852,89 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     </div>
   </button>
   <div
-    class="c4"
-    display="flex"
+    class=""
   >
-    <label
-      for="progress-3"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      class="c4"
+      display="flex"
     >
+      <label
+        for="progress-3"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      >
+        <div
+          class="c5"
+        >
+          <div
+            class="c6"
+            display="flex"
+          >
+            <p
+              class="c7 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
+              font-family="text"
+              font-size="75"
+              font-style="normal"
+              font-weight="bold"
+            >
+              Label
+            </p>
+            <div
+              class="c8"
+            >
+              <p
+                class="c9 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
+          </div>
+        </div>
+      </label>
       <div
         class="c5"
       >
-        <div
-          class="c6"
-          display="flex"
+        <p
+          class="c10 Text__StyledText-wkh56f-0"
+          color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          font-family="text"
+          font-size="75"
+          font-style="normal"
+          font-weight="regular"
         >
-          <p
-            class="c7 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Label
-          </p>
-          <div
-            class="c8"
-          >
-            <p
-              class="c9 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
-            />
-          </div>
-        </div>
+          60%
+        </p>
       </div>
-    </label>
-    <div
-      class="c5"
-    >
-      <p
-        class="c10 Text__StyledText-wkh56f-0"
-        color="surface.text.subdued.lowContrast"
-        data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
-      >
-        60%
-      </p>
     </div>
-  </div>
-  <div
-    aria-label="Label"
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="60"
-    aria-valuetext="60%"
-    class=""
-    data-blade-component="progress-bar"
-    id="progress-3"
-    role="progressbar"
-  >
     <div
-      class="c11"
-      height="2px"
-      overflow="hidden"
+      aria-label="Label"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="60"
+      aria-valuetext="60%"
+      class=""
+      data-blade-component="progress-bar"
+      id="progress-3"
+      role="progressbar"
     >
       <div
-        class="c12 c13 c14"
+        class="c11"
+        height="2px"
+        overflow="hidden"
       >
         <div
-          class=" c15 c16"
-        />
+          class="c12 c13 c14"
+        >
+          <div
+            class=" c15 c16"
+          />
+        </div>
       </div>
     </div>
   </div>

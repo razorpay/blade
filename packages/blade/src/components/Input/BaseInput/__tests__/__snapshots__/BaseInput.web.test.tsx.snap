@@ -677,6 +677,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="16px"
@@ -719,6 +720,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="16px"

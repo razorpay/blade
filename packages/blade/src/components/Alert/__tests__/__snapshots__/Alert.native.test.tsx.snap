@@ -56,6 +56,9 @@ exports[`<Alert /> should render 1`] = `
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 16,
@@ -213,6 +216,9 @@ exports[`<Alert /> should render 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -271,6 +277,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         "paddingLeft": 16,
         "paddingRight": 16,
         "paddingTop": 12,
+        "width": "100%",
       },
     ]
   }
@@ -304,6 +311,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 20,
@@ -471,6 +481,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 20,

@@ -465,7 +465,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
   margin-left: 8px;
 }
 
-.c10 {
+.c9 {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -488,7 +492,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding-left: 8px;
 }
 
-.c14 {
+.c15 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -507,7 +511,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   background-color: hsla(0,0%,100%,1);
 }
 
-.c15 {
+.c16 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -535,7 +539,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding: 0;
 }
 
-.c11 {
+.c12 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -548,7 +552,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding: 0;
 }
 
-.c13 {
+.c14 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -561,7 +565,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding: 0;
 }
 
-.c17 {
+.c18 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -574,7 +578,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c13 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -582,13 +586,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c16 {
+.c17 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
 }
 
-.c9 {
+.c10 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -627,6 +631,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           >
             <svg
               aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="24px"
@@ -671,16 +676,16 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 class="c8"
               >
                 <div
-                  class="c9"
+                  class="c9 c10"
                 >
                   <div
-                    class="c10"
+                    class="c11"
                     data-blade-component="counter"
                     display="flex"
                     overflow="hidden"
                   >
                     <p
-                      class="c11 c12"
+                      class="c12 c13"
                       color="feedback.text.neutral.lowContrast"
                       data-blade-component="text"
                       font-family="text"
@@ -695,7 +700,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               </div>
             </div>
             <p
-              class="c13 "
+              class="c14 "
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               font-family="text"
@@ -708,19 +713,19 @@ exports[`<Card /> should render a Card with Header 1`] = `
           </div>
         </div>
         <div
-          class="c14"
+          class="c15"
         >
           <div
-            class="c15"
+            class="c9 c16"
             data-blade-component="badge"
           >
             <div
-              class="c10"
+              class="c11"
               display="flex"
               overflow="hidden"
             >
               <p
-                class="c11 c12"
+                class="c12 c13"
                 color="feedback.text.neutral.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -735,7 +740,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </div>
       </div>
       <div
-        class="c16"
+        class="c17"
       />
     </div>
     <div
@@ -743,7 +748,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       data-blade-component="card-body"
     >
       <p
-        class="c17 "
+        class="c18 "
         color="surface.text.normal.lowContrast"
         data-blade-component="text"
         font-family="text"

@@ -476,6 +476,9 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 12,

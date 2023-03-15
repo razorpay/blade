@@ -256,6 +256,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
           >
             <svg
               aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="20px"
@@ -642,6 +643,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -790,6 +792,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -946,6 +949,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1071,6 +1075,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="20px"
