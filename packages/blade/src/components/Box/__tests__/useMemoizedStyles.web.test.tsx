@@ -1,7 +1,6 @@
-import type { CSSObject } from 'styled-components';
+import { renderHook } from '@testing-library/react-hooks';
 import { getMemoDependency, useMemoizedStyles } from '../BaseBox/useMemoizedStyles';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme/paymentLightTheme.web';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('getDependencyProp', () => {
   it('should return react usememo dependency prop', () => {
@@ -20,24 +19,16 @@ describe('getDependencyProp', () => {
 });
 
 describe('useMemoizedStyles', () => {
-  const MockComponentToTestHook = ({
-    returnValueCallback,
-  }: {
-    returnValueCallback: (val: CSSObject) => void;
-  }): null => {
-    const memoVal = useMemoizedStyles({
-      padding: 'spacing.10',
-      margin: ['spacing.1', 'spacing.2'],
-      theme: paymentLightTheme,
-    });
-    returnValueCallback(memoVal);
-    return null;
-  };
-
   it('should return correct CSS styles', () => {
-    const returnValueCallback = jest.fn();
-    renderWithTheme(<MockComponentToTestHook returnValueCallback={returnValueCallback} />);
-    expect(JSON.stringify(returnValueCallback.mock.calls[0][0])).toMatchInlineSnapshot(
+    const { result } = renderHook(() =>
+      useMemoizedStyles({
+        padding: 'spacing.10',
+        margin: ['spacing.1', 'spacing.2'],
+        theme: paymentLightTheme,
+      }),
+    );
+
+    expect(JSON.stringify(result.current)).toMatchInlineSnapshot(
       `"{\\"padding\\":\\"48px\\",\\"margin\\":\\"2px 4px\\"}"`,
     );
   });
