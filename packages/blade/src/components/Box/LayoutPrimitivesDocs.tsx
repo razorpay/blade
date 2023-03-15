@@ -231,14 +231,14 @@ function LayoutPrimitivesDocs(): JSX.Element {
                     <Box
                       flex="1"
                       backgroundColor="surface.background.level2.highContrast"
-                      minHeight="spacing.10" 
+                      padding="spacing.4" 
                     >
                       <Text contrast="high">Box1</Text>
                     </Box>
                     <Box 
                       flex="1" 
                       backgroundColor="surface.background.level3.highContrast" 
-                      minHeight="spacing.10" 
+                      padding="spacing.4" 
                     >
                       <Text contrast="high">Box2</Text>
                     </Box>
