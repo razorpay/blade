@@ -110,7 +110,7 @@ const useSandpackSetup = ({
 
 const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
   '& .highlight': {
-    backgroundColor: '#ff03',
+    backgroundColor: '#fffbdd',
     borderRadius: '2px',
     padding: '2px',
   },
