@@ -74,7 +74,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     fontSize: 100,
     fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
-    lineHeight: 'l',
+    lineHeight: 'm',
     fontFamily: 'text',
     forwardedAs: isPlatformWeb ? 'p' : undefined,
     componentName: 'text',
