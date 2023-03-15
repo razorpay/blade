@@ -98,6 +98,16 @@ export type Typography = {
     weight: FontWeight;
   };
   lineHeights: {
+    /** desktop: 0(px/rem/pt)
+     *
+     * mobile: 0(px/rem/pt)
+     */
+    none: number;
+    /** desktop: 16(px/rem/pt)
+     *
+     * mobile: 16(px/rem/pt)
+     */
+    xs: number;
     /** desktop: 16(px/rem/pt)
      *
      * mobile: 16(px/rem/pt)
@@ -138,11 +148,6 @@ export type Typography = {
      * mobile: 30(px/rem/pt)
      */
     '5xl': number;
-    /** desktop: 60(px/rem/pt)
-     *
-     * mobile: 40(px/rem/pt)
-     */
-    '6xl': number;
   };
   // letterSpacings: {};
 };
@@ -178,15 +183,16 @@ const typography: TypographyWithPlatforms = {
       },
     },
     lineHeights: {
-      s: 16,
-      m: 16,
-      l: 20,
-      xl: 24,
-      '2xl': 24,
-      '3xl': 28,
+      none: 0,
+      xs: 16,
+      s: 20,
+      m: 24,
+      l: 24,
+      xl: 28,
+      '2xl': 32,
+      '3xl': 40,
       '4xl': 40,
-      '5xl': 42,
-      '6xl': 60,
+      '5xl': 48,
     },
     // letterSpacings: {},
   },
@@ -216,15 +222,16 @@ const typography: TypographyWithPlatforms = {
       },
     },
     lineHeights: {
-      s: 16,
-      m: 18,
+      none: 0,
+      xs: 16,
+      s: 20,
+      m: 20,
       l: 24,
-      xl: 28,
-      '2xl': 24,
-      '3xl': 28,
-      '4xl': 32,
-      '5xl': 30,
-      '6xl': 40,
+      xl: 24,
+      '2xl': 28,
+      '3xl': 32,
+      '4xl': 40,
+      '5xl': 40,
     },
     // letterSpacings: {},
   },
