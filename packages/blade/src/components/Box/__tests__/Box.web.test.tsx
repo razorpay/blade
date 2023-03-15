@@ -25,6 +25,7 @@ describe('<Box />', () => {
       <div>
         <div
           class="c0"
+          data-blade-component="Box"
           display="flex"
         >
           children test!
