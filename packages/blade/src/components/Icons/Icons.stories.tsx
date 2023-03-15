@@ -119,8 +119,8 @@ export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) 
         const IconComponent = iconMap[icon];
         return (
           <BaseBox
-            height={95}
-            width={125}
+            height="95px"
+            width="125px"
             display="inline-flex"
             flexDirection="column"
             alignItems="center"

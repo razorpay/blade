@@ -455,17 +455,17 @@ exports[`<List /> should render medium ordered List 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
   margin-top: 0px;
   margin-right: 4px;
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
 
 .c9 {
@@ -695,17 +695,17 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
   margin-top: 0px;
   margin-right: 8px;
-  width: 20px;
   height: 20px;
+  width: 20px;
   background-color: hsla(216,15%,54%,0.18);
   border-radius: 9999px;
 }
@@ -1123,17 +1123,17 @@ exports[`<List /> should render small ordered List 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
   margin-top: 0px;
   margin-right: 4px;
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
 
 .c9 {
@@ -1363,17 +1363,17 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
   margin-top: 0px;
   margin-right: 8px;
-  width: 18px;
   height: 18px;
+  width: 18px;
   background-color: hsla(216,15%,54%,0.18);
   border-radius: 9999px;
 }

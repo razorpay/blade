@@ -279,7 +279,7 @@ export const KitchenSink = (): React.ReactElement => {
         <CheckboxComponent value="mango">Mango</CheckboxComponent>
         <CheckboxComponent value="orange">Orange</CheckboxComponent>
       </CheckboxGroupComponent>
-      <BaseBox height={50} overflow="scroll" marginTop="spacing.4">
+      <BaseBox height="50px" overflow="scroll" marginTop="spacing.4">
         <CheckboxGroupComponent
           labelPosition="left"
           necessityIndicator="optional"

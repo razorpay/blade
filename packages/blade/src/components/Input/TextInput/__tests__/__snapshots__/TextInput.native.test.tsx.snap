@@ -26,8 +26,6 @@ exports[`<TextInput /> should render 1`] = `
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
-      marginBottom="spacing.0"
-      marginTop="spacing.0"
       style={
         Array [
           Object {
@@ -41,8 +39,6 @@ exports[`<TextInput /> should render 1`] = `
       }
     >
       <View
-        marginBottom="spacing.2"
-        marginRight="spacing.5"
         style={
           Array [
             Object {
@@ -261,7 +257,6 @@ exports[`<TextInput /> should render 1`] = `
     />
   </View>
   <View
-    marginLeft={0}
     style={
       Array [
         Object {
@@ -314,8 +309,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
-      marginBottom="spacing.0"
-      marginTop="spacing.0"
       style={
         Array [
           Object {
@@ -329,8 +322,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       }
     >
       <View
-        marginBottom="spacing.2"
-        marginRight="spacing.5"
         style={
           Array [
             Object {
@@ -489,7 +480,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       >
         <View
           display="flex"
-          paddingLeft="spacing.4"
           style={
             Array [
               Object {
@@ -570,7 +560,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           </RNSVGSvgView>
         </View>
         <View
-          paddingLeft="spacing.2"
           style={
             Array [
               Object {
@@ -686,7 +675,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         }
       >
         <View
-          paddingRight="spacing.4"
           style={
             Array [
               Object {
@@ -751,7 +739,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
     />
   </View>
   <View
-    marginLeft={0}
     style={
       Array [
         Object {

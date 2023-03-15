@@ -67,7 +67,6 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -188,7 +187,6 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -309,7 +307,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -332,7 +329,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingRight="spacing.3"
       style={
         Array [
           Object {
@@ -498,7 +494,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -521,7 +516,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingRight="spacing.3"
       style={
         Array [
           Object {
@@ -687,7 +681,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -741,7 +734,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingLeft="spacing.3"
       style={
         Array [
           Object {
@@ -876,7 +868,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1032,7 +1023,6 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1153,7 +1143,6 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1274,7 +1263,6 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1395,7 +1383,6 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1516,7 +1503,6 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1637,7 +1623,6 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1758,7 +1743,6 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1879,7 +1863,6 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2000,7 +1983,6 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2121,7 +2103,6 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2242,7 +2223,6 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2363,7 +2343,6 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2484,7 +2463,6 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2605,7 +2583,6 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2726,7 +2703,6 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2847,7 +2823,6 @@ exports[`<BaseButton /> should render large size button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2967,12 +2942,12 @@ exports[`<BaseButton /> should render loading button 1`] = `
 >
   <View
     alignItems="center"
-    bottom={0}
+    bottom="0px"
     display="flex"
     justifyContent="center"
-    left={0}
+    left="0px"
     position="absolute"
-    right={0}
+    right="0px"
     style={
       Array [
         Object {
@@ -2987,7 +2962,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
         },
       ]
     }
-    top={0}
+    top="0px"
   >
     <View
       display="flex"
@@ -3112,7 +3087,6 @@ exports[`<BaseButton /> should render loading button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={true}
     justifyContent="center"
@@ -3233,7 +3207,6 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3354,7 +3327,6 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3475,7 +3447,6 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3596,7 +3567,6 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3717,7 +3687,6 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3838,7 +3807,6 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3959,7 +3927,6 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4080,7 +4047,6 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4201,7 +4167,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4322,7 +4287,6 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4443,7 +4407,6 @@ exports[`<BaseButton /> should render small size button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4564,7 +4527,6 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4685,7 +4647,6 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"

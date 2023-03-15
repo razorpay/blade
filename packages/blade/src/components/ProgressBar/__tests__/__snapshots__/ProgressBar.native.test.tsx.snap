@@ -17,8 +17,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
       style={
         Array [
           Object {
@@ -140,7 +138,6 @@ Array [
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -357,7 +354,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -487,7 +483,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -617,7 +612,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -747,7 +741,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -877,7 +870,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1007,7 +999,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1137,7 +1128,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1267,7 +1257,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1397,7 +1386,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1527,7 +1515,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1657,7 +1644,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1787,8 +1773,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
       style={
         Array [
           Object {
@@ -1910,7 +1894,6 @@ Array [
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -2127,8 +2110,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
       style={
         Array [
           Object {
@@ -2250,7 +2231,6 @@ Array [
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -2432,7 +2412,6 @@ Array [
     <View
       alignItems="center"
       display="flex"
-      flex={1}
       flexDirection="row"
       isHidden={false}
       justifyContent="center"
@@ -2499,8 +2478,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
       style={
         Array [
           Object {
@@ -2622,7 +2599,6 @@ Array [
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -2804,7 +2780,6 @@ Array [
     <View
       alignItems="center"
       display="flex"
-      flex={1}
       flexDirection="row"
       isHidden={false}
       justifyContent="center"
@@ -2871,8 +2846,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
       style={
         Array [
           Object {
@@ -2994,7 +2967,6 @@ Array [
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {

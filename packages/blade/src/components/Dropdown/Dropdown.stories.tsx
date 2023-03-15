@@ -305,7 +305,7 @@ const DropdownTemplate: ComponentStory<typeof Playground> = (args) => {
     ...selectInputArgs
   } = args;
   return (
-    <BaseBox minHeight={200}>
+    <BaseBox minHeight="200px">
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
@@ -367,7 +367,7 @@ export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
     ...selectInputArgs
   } = args;
   return (
-    <BaseBox minHeight={400}>
+    <BaseBox minHeight="400px">
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
@@ -434,7 +434,7 @@ export const WithScrollbar = (args: AllDropdownProps): JSX.Element => {
     ...selectInputArgs
   } = args;
   return (
-    <BaseBox minHeight={500}>
+    <BaseBox minHeight="500px">
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
@@ -536,7 +536,7 @@ export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <BaseBox minHeight={300}>
+    <BaseBox minHeight="300px">
       <Text>Selected Values: {JSON.stringify(dropdownValues)}</Text>
       <BaseBox marginTop="spacing.5" />
       <Dropdown selectionType={selectionType}>
@@ -596,7 +596,7 @@ export const WithHTMLFormSubmission = (args: AllDropdownProps): JSX.Element => {
     return <Text>Not available on React Native Story</Text>;
   }
   return (
-    <BaseBox minHeight={200}>
+    <BaseBox minHeight="200px">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -652,7 +652,7 @@ export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <BaseBox minHeight={300} paddingBottom="spacing.5">
+    <BaseBox minHeight="300px" paddingBottom="spacing.5">
       <Alert
         intent="information"
         description="Select more than 2 options to see error state"
@@ -713,7 +713,7 @@ export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <BaseBox minHeight={300}>
+    <BaseBox minHeight="300px">
       <Dropdown selectionType={selectionType}>
         <SelectInput ref={selectRef} label="Top 2 design systems" {...selectInputArgs} />
         <DropdownOverlay>
@@ -761,7 +761,7 @@ export const WithMultipleDropdowns = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <BaseBox display="flex" flexDirection="row" minHeight={300} gap="spacing.2">
+    <BaseBox display="flex" flexDirection="row" minHeight="300px" gap="spacing.2">
       <BaseBox flex={1}>
         <Dropdown selectionType={selectionType}>
           <SelectInput label="Top 2 design systems" {...selectInputArgs} />
