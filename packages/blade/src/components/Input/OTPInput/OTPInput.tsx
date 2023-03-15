@@ -299,6 +299,7 @@ const OTPInput = ({
             id={`${inputId}-${index}`}
             textAlign="center"
             ref={ref}
+            name={name}
             value={currentValue}
             maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
             onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex: index })}
