@@ -14,12 +14,17 @@ function FigmaEmbed(props: { src: string; title: string }): JSX.Element {
       />
       <Description
         markdown={dedent`
-          > **Note**
-          > 
-          > Currently the designs are only accessible to Razorpay Employees.
-          >
-          > For Razorpay Employees,<br/>
-          > Figma Embed may not work with adblockers 😿. You can [View Design on Figma](${props.src}) or pause adblockers for this domain.
+        <small>
+          <details>
+            <summary style="cursor: pointer">Figma not loading?</summary>
+
+            > Currently the designs are only accessible to Razorpay Employees.
+            >
+            > For Razorpay Employees,<br/>
+            > Figma Embed may not work with adblockers 😿. You can [View Design on Figma](${props.src}) or pause adblockers for this domain.
+        
+          </details>
+        </small>
         `}
       />
       <br />

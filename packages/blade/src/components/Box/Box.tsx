@@ -30,15 +30,13 @@ const validateBackgroundProp = (
 /**
  * This function is to filter out any unexpected props passed by the user
  */
-const useValidatedBoxProps = (props: BoxProps): KeysRequired<BoxProps> => {
-  React.useEffect(() => {
-    validateBackgroundProp(props.backgroundColor);
-  }, [props.backgroundColor]);
-
+const makeBoxProps = (props: BoxProps): KeysRequired<BoxProps> => {
   return {
     // Layout
     display: props.display,
     overflow: props.overflow,
+    overflowX: props.overflowX,
+    overflowY: props.overflowY,
     height: props.height,
     minHeight: props.minHeight,
     maxHeight: props.maxHeight,
@@ -148,12 +146,16 @@ const useValidatedBoxProps = (props: BoxProps): KeysRequired<BoxProps> => {
  * 
  */
 const Box = (props: BoxProps): JSX.Element => {
+  React.useEffect(() => {
+    validateBackgroundProp(props.backgroundColor);
+  }, [props.backgroundColor]);
+
   return (
     <BaseBox
       {...metaAttribute(MetaConstants.Component, MetaConstants.Box)}
-      {...useValidatedBoxProps(props)}
+      {...makeBoxProps(props)}
     />
   );
 };
 
-export { Box };
+export { Box, makeBoxProps };

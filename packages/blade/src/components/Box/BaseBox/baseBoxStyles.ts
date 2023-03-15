@@ -152,6 +152,8 @@ const getAllProps = (
   return {
     display: getResponsiveValue(props.display, breakpoint),
     overflow: getResponsiveValue(props.overflow, breakpoint),
+    overflowX: getResponsiveValue(props.overflowX, breakpoint),
+    overflowY: getResponsiveValue(props.overflowY, breakpoint),
 
     // Flex
     flex: getResponsiveValue(props.flex, breakpoint),
@@ -192,10 +194,10 @@ const getAllProps = (
     paddingRight: getSpacingValue(props.paddingRight ?? props.paddingX, props.theme, breakpoint),
     paddingLeft: getSpacingValue(props.paddingLeft ?? props.paddingX, props.theme, breakpoint),
     margin: getSpacingValue(props.margin, props.theme, breakpoint),
-    marginBottom: getSpacingValue(props.marginBottom, props.theme, breakpoint),
-    marginTop: getSpacingValue(props.marginTop, props.theme, breakpoint),
-    marginRight: getSpacingValue(props.marginRight, props.theme, breakpoint),
-    marginLeft: getSpacingValue(props.marginLeft, props.theme, breakpoint),
+    marginBottom: getSpacingValue(props.marginBottom ?? props.marginY, props.theme, breakpoint),
+    marginTop: getSpacingValue(props.marginTop ?? props.marginY, props.theme, breakpoint),
+    marginRight: getSpacingValue(props.marginRight ?? props.marginX, props.theme, breakpoint),
+    marginLeft: getSpacingValue(props.marginLeft ?? props.marginX, props.theme, breakpoint),
     height: getSpacingValue(props.height, props.theme, breakpoint),
     minHeight: getSpacingValue(props.minHeight, props.theme, breakpoint),
     maxHeight: getSpacingValue(props.maxHeight, props.theme, breakpoint),
@@ -215,6 +217,11 @@ const getAllProps = (
     borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, breakpoint),
     transform: getResponsiveValue(props.transform, breakpoint),
     lineHeight: getSpacingValue(props.lineHeight, props.theme, breakpoint),
+    border: getResponsiveValue(props.border, breakpoint),
+    borderTop: getResponsiveValue(props.borderTop, breakpoint),
+    borderRight: getResponsiveValue(props.borderRight, breakpoint),
+    borderBottom: getResponsiveValue(props.borderBottom, breakpoint),
+    borderLeft: getResponsiveValue(props.borderLeft, breakpoint),
   };
 };
 

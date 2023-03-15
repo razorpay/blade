@@ -5,6 +5,7 @@ import type { OTPInputProps } from './OTPInput';
 import { OTPInput as OTPInputComponent } from './OTPInput';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -127,6 +128,7 @@ export default {
         category: propsCategory.VALIDATION_PROPS,
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

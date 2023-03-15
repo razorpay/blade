@@ -10,6 +10,7 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { Button } from '~components/Button';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -202,6 +203,7 @@ export default {
         category: propsCategory.KEYBOARD_PROPS,
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

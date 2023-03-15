@@ -7,6 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -42,6 +43,7 @@ const Page = (): ReactElement => {
 export default {
   title: 'Components/Counter',
   component: CounterComponent,
+  argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
       page: Page,

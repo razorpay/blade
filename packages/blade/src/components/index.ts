@@ -2,6 +2,7 @@ export * from './ActionList';
 export * from './Alert';
 export * from './Badge';
 export * from './BladeProvider';
+export * from './Box';
 export * from './Card';
 export * from './Button';
 export * from './Button/IconButton';

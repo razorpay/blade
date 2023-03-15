@@ -11,6 +11,7 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { Button } from '~components/Button';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -90,6 +91,7 @@ export default {
         type: 'select',
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {
