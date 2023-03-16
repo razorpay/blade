@@ -149,6 +149,28 @@ describe('<BaseInput />', () => {
     expect(onBlur).toHaveBeenCalledWith({ name: 'name', value: userName });
   });
 
+  it('should handle onSubmit', () => {
+    const placeholder = 'First Last';
+    const onSubmit = jest.fn();
+    const userName = 'Divyanshu';
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        placeholder={placeholder}
+        id="name"
+        name="name"
+        onSubmit={onSubmit}
+      />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+
+    fireEvent(input, 'onSubmitEditing', { nativeEvent: { text: userName } });
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit).toHaveBeenCalledWith({ name: 'name', value: userName });
+  });
+
   /**
    * No tests for uncontrolled input because react-native-testing-library doesn't support it
    * https://github.com/callstack/react-native-testing-library/issues/978#issuecomment-1203256954

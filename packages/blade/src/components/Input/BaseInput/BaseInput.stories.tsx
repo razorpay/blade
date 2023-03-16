@@ -128,6 +128,11 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    onSubmit: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     label: {
       table: {
         category: propsCategory.HEADER_PROPS,
