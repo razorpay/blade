@@ -100,6 +100,20 @@ type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotat
   Theme['colors'][T]['background']
 >}`;
 
+// Created this as an array so I can reuse it for runtime validation
+const validBoxAsValues = [
+  'div',
+  'section',
+  'footer',
+  'header',
+  'main',
+  'aside',
+  'nav',
+  'span',
+] as const;
+
+type BoxAsType = typeof validBoxAsValues[number];
+
 type BaseBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
@@ -117,7 +131,11 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor: BackgroundColorString<'surface'>;
-}>;
+}> & {
+  // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
+  // styled-components do not support passing `as` prop as an object
+  as: BoxAsType;
+};
 
 type StyledPropsBlade = Partial<
   MarginProps &
@@ -156,4 +174,4 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
     }
   >;
 
-export { BaseBoxProps, BoxProps, StyledPropsBlade };
+export { BaseBoxProps, BoxProps, StyledPropsBlade, validBoxAsValues };

@@ -57,4 +57,18 @@ describe('<Box />', () => {
     }
     console.error = tempConsoleError;
   });
+
+  it('should throw error for unsupport as prop values', () => {
+    // React Native also prints errors on console. Just ignoring that to not show error in console while running tests
+    const tempConsoleError = console.error;
+    console.error = jest.fn();
+    try {
+      renderWithTheme(<Box as="section" />);
+    } catch (err: unknown) {
+      expect(err).toMatchInlineSnapshot(
+        `[Error: [Blade - Box]: \`as\` prop is not supported on React Native]`,
+      );
+    }
+    console.error = tempConsoleError;
+  });
 });

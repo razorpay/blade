@@ -107,6 +107,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
             function App(): JSX.Element {
               return (
                 <Box 
+                  as="section" // renders as <section> tag instead of <div>
                   display="flex"
                   flexDirection={{ base: 'column', m: 'row' }}
                   padding={{ base: ['spacing.1', '9px'], m: 'spacing.3' }}

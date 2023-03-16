@@ -6,6 +6,7 @@ import { Box } from '.';
 import { Text, Title } from '~components/Typography';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { LinkToStorybook } from '~src/_helpers/storybook/LinkToStorybook';
+import { isReactNative } from '~utils';
 
 // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
 // So we manually read location.hash of parent window and scroll to that section on load
@@ -74,6 +75,26 @@ Responsive.args = {
   display: 'flex',
   paddingY: 'spacing.6',
   flexDirection: { base: 'column', m: 'row' },
+} as BoxProps;
+
+export const AsSection = (args: BoxProps): JSX.Element => {
+  if (isReactNative()) {
+    return (
+      <Box>
+        <Text>as prop is not supported on React Native. Check the same story on web</Text>
+      </Box>
+    );
+  }
+
+  return (
+    <Box {...args}>
+      <Text>This box is rendered as {args.as} HTML tag</Text>
+    </Box>
+  );
+};
+
+AsSection.args = {
+  as: 'section',
 } as BoxProps;
 
 export default BoxStoryMeta;
