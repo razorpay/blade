@@ -9,7 +9,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2.5rem;
+  line-height: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -33,12 +33,12 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
 .c0 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: NaNrem;
+  line-height: 2.5rem;
   margin: 0;
   padding: 0;
 }
@@ -49,7 +49,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
     color="surface.text.subdued.lowContrast"
     data-blade-component="title"
     font-family="text"
-    font-size="1000"
+    font-size="800"
     font-style="normal"
     font-weight="bold"
   >
@@ -96,7 +96,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2.5rem;
+  line-height: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -125,7 +125,7 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2.5rem;
+  line-height: 2rem;
   margin: 0;
   padding: 0;
 }

@@ -104,11 +104,11 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -227,7 +227,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             font-family="text"
             font-size="75"
             font-style="normal"
-            font-weight="bold"
+            font-weight="semibold"
           >
             Select fruits
           </p>
@@ -527,11 +527,11 @@ exports[`<RadioGroup /> should render with label 1`] = `
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -637,7 +637,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             font-family="text"
             font-size="75"
             font-style="normal"
-            font-weight="bold"
+            font-weight="semibold"
           >
             Select fav fruit
           </p>

@@ -113,7 +113,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -130,7 +130,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -314,7 +314,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             font-family="text"
             font-size="100"
             font-style="normal"
-            font-weight="bold"
+            font-weight="semibold"
           >
             Card Footer
           </p>
@@ -530,7 +530,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -543,7 +543,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -556,7 +556,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }

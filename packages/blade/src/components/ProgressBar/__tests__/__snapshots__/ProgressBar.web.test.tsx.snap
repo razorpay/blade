@@ -85,11 +85,11 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -115,7 +115,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -160,7 +160,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             font-family="text"
             font-size="75"
             font-style="normal"
-            font-weight="bold"
+            font-weight="semibold"
           >
             Label
           </p>
@@ -387,7 +387,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -511,7 +511,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -635,7 +635,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -759,7 +759,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -883,7 +883,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -1007,7 +1007,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -1131,7 +1131,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -1255,7 +1255,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -1379,7 +1379,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -1503,7 +1503,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -1627,7 +1627,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -1765,11 +1765,11 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -1795,7 +1795,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -1840,7 +1840,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             font-family="text"
             font-size="75"
             font-style="normal"
-            font-weight="bold"
+            font-weight="semibold"
           >
             Label
           </p>
@@ -2070,11 +2070,11 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -2100,7 +2100,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -2145,7 +2145,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             font-family="text"
             font-size="75"
             font-style="normal"
-            font-weight="bold"
+            font-weight="semibold"
           >
             Label
           </p>
@@ -2330,11 +2330,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -2360,7 +2360,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -2477,7 +2477,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             font-family="text"
             font-size="75"
             font-style="normal"
-            font-weight="bold"
+            font-weight="semibold"
           >
             Label
           </p>
@@ -2662,11 +2662,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -2692,7 +2692,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -2809,7 +2809,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             font-family="text"
             font-size="75"
             font-style="normal"
-            font-weight="bold"
+            font-weight="semibold"
           >
             Label
           </p>
