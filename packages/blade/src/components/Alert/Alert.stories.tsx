@@ -7,6 +7,7 @@ import { Alert as AlertComponent } from './Alert';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -24,40 +25,38 @@ const Page = (): ReactElement => {
       <Sandbox editorHeight={500}>
         {`
         import { useState } from 'react';
-        import { Alert, Button } from '@razorpay/blade/components';
+        import { Alert, Button, Box } from '@razorpay/blade/components';
 
         function App() {
           const [showAlert, setShowAlert] = useState(false);
           return (
-            <div>
+            <Box>
               <Button onClick={() => setShowAlert(!showAlert)}>
                 Click to be alerted!
               </Button>
-              <br /><br />
-              <div>
-                { 
-                  showAlert 
-                  ? <Alert 
-                      title="The Button is Clicked 👀" 
-                      description="Click the Button again to hide alert"
-                      actions={{
-                        primary: {
-                          onClick: () => {
-                            alert('Alert from the alert hehe')
-                          },
-                          text: 'Primary Action'
+              { 
+                showAlert 
+                ? <Alert 
+                    title="The Button is Clicked 👀" 
+                    description="Click the Button again to hide alert"
+                    marginTop="spacing.4"
+                    actions={{
+                      primary: {
+                        onClick: () => {
+                          alert('Alert from the alert hehe')
                         },
-                        secondary: {
-                          href: 'https://razorpay.com',
-                          target: '_blank',
-                          text: 'Go to Razorpay.com'
-                        }
-                      }}
-                    /> 
-                  : null 
-                }
-              </div>
-            </div>
+                        text: 'Primary Action'
+                      },
+                      secondary: {
+                        href: 'https://razorpay.com',
+                        target: '_blank',
+                        text: 'Go to Razorpay.com'
+                      }
+                    }}
+                  /> 
+                : null 
+              }
+            </Box>
           )
         }
 
@@ -97,6 +96,7 @@ const meta: Meta<AlertProps> = {
     },
   },
   argTypes: {
+    ...getStyledPropsArgTypes(),
     onDismiss: { action: 'Dismissed' },
   },
   parameters: {
@@ -190,7 +190,7 @@ PrimaryActionOnly.parameters = {
 
 export const FullWidth: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
-    <BaseBox height={200} position="relative">
+    <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">
         <AlertComponent {...args} />
       </BaseBox>
@@ -215,7 +215,7 @@ FullWidth.parameters = {
 
 export const FullWidthWithActions: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
-    <BaseBox height={200} position="relative">
+    <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">
         <AlertComponent {...args} />
       </BaseBox>

@@ -9,6 +9,7 @@ import { Button } from '~components/Button';
 import { getPlatformType } from '~utils';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -26,13 +27,13 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { Indicator } from '@razorpay/blade/components';
+        import { Indicator, Box } from '@razorpay/blade/components';
 
         function App() {
           return (
-            <div>
+            <Box>
               <Indicator accessibilityLabel="Success" intent="positive" />
-            </div>
+            </Box>
           )
         }
 
@@ -52,7 +53,7 @@ const meta: Meta<IndicatorProps> = {
     intent: 'neutral',
     size: 'medium',
   },
-  argTypes: {},
+  argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
       page: Page,
@@ -90,9 +91,13 @@ export const Composition: ComponentStory<typeof IndicatorComponent> = ({ ...args
       display={isReactNative ? 'flex' : 'inline-flex'}
       alignSelf="center"
     >
-      <BaseBox position="absolute" top={isReactNative ? -8 : -4} right={-8} zIndex={10}>
-        <IndicatorComponent {...args} />
-      </BaseBox>
+      <IndicatorComponent
+        {...args}
+        position="absolute"
+        top={isReactNative ? '-8px' : '-4px'}
+        right="-8px"
+        zIndex={10}
+      />
       <Button>Get started</Button>
     </BaseBox>
   );

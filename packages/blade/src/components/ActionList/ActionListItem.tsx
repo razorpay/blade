@@ -279,7 +279,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
           justifyContent="center"
           flexDirection="row"
           alignItems="center"
-          maxHeight={isReactNative() ? undefined : size[20]}
+          maxHeight={isReactNative() ? undefined : makeSize(size[20])}
         >
           <BaseBox display="flex" justifyContent="center" alignItems="center">
             {selectionType === 'multiple' ? (

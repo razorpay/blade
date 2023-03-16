@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const FileTextIcon: IconComponent = ({ size, color }) => {
+const FileTextIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H13C13.5523 13 14 12.5523 14 12C14 11.4477 13.5523 11 13 11H5Z"
         fill={iconColor}
