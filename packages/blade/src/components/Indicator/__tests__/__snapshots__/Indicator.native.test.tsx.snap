@@ -95,7 +95,7 @@ exports[`<Indicator /> should render 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="l"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -104,7 +104,7 @@ exports[`<Indicator /> should render 1`] = `
             "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -219,7 +219,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="s"
+        lineHeight="xs"
         style={
           Array [
             Object {
@@ -228,7 +228,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 20,
+              "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -339,7 +339,7 @@ Array [
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="l"
+        lineHeight="m"
         style={
           Array [
             Object {
@@ -348,7 +348,7 @@ Array [
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -459,7 +459,7 @@ Array [
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="l"
+        lineHeight="m"
         style={
           Array [
             Object {
@@ -468,7 +468,7 @@ Array [
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -579,7 +579,7 @@ Array [
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="l"
+        lineHeight="m"
         style={
           Array [
             Object {
@@ -588,7 +588,7 @@ Array [
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,

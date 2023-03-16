@@ -8,7 +8,7 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
   fontSize={200}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="2xl"
+  lineHeight="l"
   style={
     Array [
       Object {
@@ -17,7 +17,7 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 28,
+        "lineHeight": 24,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
@@ -43,7 +43,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
   fontSize={400}
   fontStyle="normal"
   fontWeight="regular"
-  lineHeight="3xl"
+  lineHeight="xl"
   style={
     Array [
       Object {
@@ -52,7 +52,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
         "fontSize": 18,
         "fontStyle": "normal",
         "fontWeight": "400",
-        "lineHeight": 32,
+        "lineHeight": 24,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
@@ -78,7 +78,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
   fontSize={300}
   fontStyle="normal"
   fontWeight="regular"
-  lineHeight="3xl"
+  lineHeight="m"
   style={
     Array [
       Object {
@@ -87,7 +87,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
-        "lineHeight": 32,
+        "lineHeight": 20,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
@@ -113,7 +113,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
   fontSize={200}
   fontStyle="normal"
   fontWeight="regular"
-  lineHeight="2xl"
+  lineHeight="l"
   style={
     Array [
       Object {
@@ -122,7 +122,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
-        "lineHeight": 28,
+        "lineHeight": 24,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
@@ -148,7 +148,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
   fontSize={200}
   fontStyle="normal"
   fontWeight="regular"
-  lineHeight="2xl"
+  lineHeight="l"
   style={
     Array [
       Object {
@@ -157,7 +157,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
-        "lineHeight": 28,
+        "lineHeight": 24,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
@@ -183,7 +183,7 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
   fontSize={75}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="s"
+  lineHeight="xs"
   style={
     Array [
       Object {
@@ -192,7 +192,7 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
         "fontSize": 12,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 20,
+        "lineHeight": 16,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,

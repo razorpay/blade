@@ -50,7 +50,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -60,7 +60,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -131,7 +131,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -141,7 +141,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -212,7 +212,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -222,7 +222,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -293,7 +293,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -303,7 +303,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -374,7 +374,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -384,7 +384,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -455,7 +455,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -465,7 +465,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -536,7 +536,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="l"
+      lineHeight="m"
       numberOfLines={1}
       style={
         Array [
@@ -546,7 +546,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
             "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -617,7 +617,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -627,7 +627,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -698,7 +698,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -708,7 +708,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -779,7 +779,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -789,7 +789,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -860,7 +860,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -870,7 +870,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -941,7 +941,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -951,7 +951,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1022,7 +1022,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
       fontSize={75}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -1032,7 +1032,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1103,7 +1103,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
       fontSize={25}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="s"
+      lineHeight="xs"
       numberOfLines={1}
       style={
         Array [
@@ -1113,7 +1113,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
             "fontSize": 10,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,

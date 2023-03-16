@@ -8,7 +8,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
   fontSize={600}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="4xl"
+  lineHeight="2xl"
   style={
     Array [
       Object {
@@ -17,7 +17,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
         "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 40,
+        "lineHeight": 28,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
@@ -40,19 +40,19 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
   accessibilityRole="header"
   color="surface.text.subdued.lowContrast"
   fontFamily="text"
-  fontSize={1000}
+  fontSize={800}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="6xl"
+  lineHeight="4xl"
   style={
     Array [
       Object {
         "color": "hsla(217, 18%, 45%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 32,
+        "fontSize": 28,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": "undefinedpx",
+        "lineHeight": 40,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
@@ -78,7 +78,7 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
   fontSize={700}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="4xl"
+  lineHeight="3xl"
   style={
     Array [
       Object {
@@ -87,7 +87,7 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
         "fontSize": 24,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 40,
+        "lineHeight": 32,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
@@ -113,7 +113,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
   fontSize={600}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="4xl"
+  lineHeight="2xl"
   style={
     Array [
       Object {
@@ -122,7 +122,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
         "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 40,
+        "lineHeight": 28,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
@@ -148,7 +148,7 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
   fontSize={600}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="4xl"
+  lineHeight="2xl"
   style={
     Array [
       Object {
@@ -157,7 +157,7 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
         "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 40,
+        "lineHeight": 28,
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,

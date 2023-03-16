@@ -45,7 +45,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="l"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -54,7 +54,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -133,8 +133,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           fontFamily="text"
           fontSize={100}
           fontStyle="normal"
-          fontWeight="bold"
-          lineHeight="l"
+          fontWeight="semibold"
+          lineHeight="m"
           style={
             Array [
               Object {
@@ -142,8 +142,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 "fontFamily": "Lato",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 24,
+                "fontWeight": "600",
+                "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -166,7 +166,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="s"
+          lineHeight="xs"
           style={
             Array [
               Object {
@@ -175,7 +175,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 20,
+                "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -673,7 +673,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               fontSize={200}
               fontStyle="normal"
               fontWeight="bold"
-              lineHeight="2xl"
+              lineHeight="l"
               style={
                 Array [
                   Object {
@@ -682,7 +682,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "700",
-                    "lineHeight": 28,
+                    "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -757,7 +757,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     fontSize={75}
                     fontStyle="normal"
                     fontWeight="regular"
-                    lineHeight="s"
+                    lineHeight="xs"
                     numberOfLines={1}
                     style={
                       Array [
@@ -767,7 +767,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 20,
+                          "lineHeight": 16,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -794,7 +794,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="s"
+            lineHeight="xs"
             style={
               Array [
                 Object {
@@ -803,7 +803,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 20,
+                  "lineHeight": 16,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -879,7 +879,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight="s"
+              lineHeight="xs"
               numberOfLines={1}
               style={
                 Array [
@@ -889,7 +889,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 20,
+                    "lineHeight": 16,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -935,7 +935,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="l"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -944,7 +944,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
             "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1010,7 +1010,7 @@ exports[`<Card /> should render a plain Card 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="l"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -1019,7 +1019,7 @@ exports[`<Card /> should render a plain Card 1`] = `
             "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
