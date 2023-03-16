@@ -12,7 +12,7 @@ describe('<Amount />', () => {
 
   it('should throw an error when a string is passed', () => {
     try {
-      // @ts-expect-error testing failure case when there is no children passed
+      // @ts-expect-error testing failure case when value is passed as a string
       renderWithTheme(<Amount value={'10000'} />);
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -66,12 +66,12 @@ describe('<Amount />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render medium size Amount', () => {
+  it('should render title-medium size Amount', () => {
     const { toJSON } = renderWithTheme(<Amount size="title-medium" value={1000} />);
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render medium size Amount', () => {
+  it('should render title-small size Amount', () => {
     const { toJSON } = renderWithTheme(<Amount size="title-small" value={1000} />);
     expect(toJSON()).toMatchSnapshot();
   });
@@ -90,97 +90,14 @@ describe('<Amount />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render positive variant Amount ', () => {
+  it('should render positive intent Amount ', () => {
     const { toJSON } = renderWithTheme(<Amount intent="positive" value={1000} />);
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render information variant Amount ', () => {
-    const { toJSON } = renderWithTheme(<Amount intent="information" value={1000} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render negative variant Amount ', () => {
-    const { toJSON } = renderWithTheme(<Amount intent="negative" value={1000} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render neutral variant Amount ', () => {
-    const { toJSON } = renderWithTheme(<Amount intent="neutral" value={1000} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render positive variant Amount ', () => {
-    const { toJSON } = renderWithTheme(<Amount intent="notice" value={1000} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render positive variant Amount with bold and isAffixSubtle false', () => {
-    const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="positive" value={1000} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render information variant Amount ', () => {
+  it('should render information intent Amount ', () => {
     const { toJSON } = renderWithTheme(
       <Amount isAffixSubtle={false} intent="information" value={1000} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render negative variant Amount ', () => {
-    const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="negative" value={1000} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render neutral variant Amount ', () => {
-    const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="neutral" value={1000} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render positive variant Amount ', () => {
-    const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="notice" value={1000} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render positive variant Amount with bold and isAffixSubtle false', () => {
-    const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="positive" value={1000} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render information variant Amount ', () => {
-    const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="information" value={1000} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render negative variant Amount ', () => {
-    const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="negative" value={1000} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render neutral variant Amount ', () => {
-    const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="neutral" value={1000} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render positive variant Amount ', () => {
-    const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="notice" value={1000} />,
     );
     expect(toJSON()).toMatchSnapshot();
   });

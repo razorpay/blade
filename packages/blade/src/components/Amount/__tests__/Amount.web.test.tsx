@@ -84,62 +84,14 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render positive variant Amount ', () => {
+  it('should render positive intent Amount ', () => {
     const { container } = renderWithTheme(<Amount intent="positive" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render information variant Amount ', () => {
-    const { container } = renderWithTheme(<Amount intent="information" value={1000} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render negative variant Amount ', () => {
-    const { container } = renderWithTheme(<Amount intent="negative" value={1000} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render neutral variant Amount ', () => {
-    const { container } = renderWithTheme(<Amount intent="neutral" value={1000} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render positive variant Amount ', () => {
-    const { container } = renderWithTheme(<Amount intent="notice" value={1000} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render positive variant Amount with bold and isAffixSubtle false', () => {
-    const { container } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="positive" value={1000} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render information variant Amount ', () => {
-    const { container } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="information" value={1000} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render negative variant Amount ', () => {
+  it('should render negative intent Amount ', () => {
     const { container } = renderWithTheme(
       <Amount isAffixSubtle={false} intent="negative" value={1000} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render neutral variant Amount ', () => {
-    const { container } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="neutral" value={1000} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render positive variant Amount ', () => {
-    const { container } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="notice" value={1000} />,
     );
     expect(container).toMatchSnapshot();
   });

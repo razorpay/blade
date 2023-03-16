@@ -1,12 +1,13 @@
 import type { ReactElement } from 'react';
-
+import type { FontSize } from '../../tokens/global/typography';
+import type { HeadingProps, TextProps, TitleProps } from '../Typography';
 import {
+  amountTextSizes,
   currencyAbbreviationsMapping,
-  currencylocaleMapping,
+  currencyLocaleMapping,
   currencyPrefixMapping,
+  affixFontSizes,
 } from './amountTokens';
-import AmountValue, { getAffixFontSize } from './AmountValue';
-import { StyledAmount } from './StyledAmount';
 import { BaseText } from '~components/Typography/BaseText';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -14,13 +15,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~src/_helpers/types';
 import { metaAttribute, MetaConstants } from '~utils';
 
-export const suffixTypes = {
-  HUMANIZE: 'humanize',
-  DECIMALS: 'decimals',
-  NONE: 'none',
-};
-
-type currencyType = 'INR' | 'MYR';
+type Currency = 'INR' | 'MYR';
 
 type AmountProps = {
   /**
@@ -31,39 +26,38 @@ type AmountProps = {
   /**
    * Sets the intent of the amount.
    *
-   * @default 'neutral'
+   * @default undefined
    */
   intent?: Feedback | undefined;
   /**
-   * Sets the variant of the amount.
+   * Sets the size of the amount.
    *
    * @default 'heading'
    */
   size?:
-    | `title-medium`
-    | `title-small`
-    | `heading-large`
-    | `heading-large-bold`
-    | `heading-small`
-    | `heading-small-bold`
-    | `body-medium`
-    | `body-medium-bold`
-    | `body-small`
-    | `body-small-bold`;
+    | `title-${NonNullable<Exclude<TitleProps['size'], 'large'>>}`
+    | `heading-${NonNullable<Exclude<HeadingProps<{ variant: 'regular' }>['size'], 'medium'>>}`
+    | `heading-${NonNullable<
+        Exclude<HeadingProps<{ variant: 'regular' }>['size'], 'medium'>
+      >}-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['weight'], 'regular'>>}`
+    | `body-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['size'], 'xsmall'>>}`
+    | `body-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['size'], 'xsmall'>>}-${NonNullable<
+        Exclude<TextProps<{ variant: 'body' }>['weight'], 'regular'>
+      >}`;
   /**
-   * Indicates whether a text suffix should be used
+   * Indicates what the suffix of amount should be
    *
    * @default 'decimals'
    */
   suffix?: 'decimals' | 'none' | 'humanize';
   /**
-   * Highlight the main amount by making the prefix symbol and decimal digits small
+   * Highlights the main amount by making the prefix symbol and decimal digits subtle
    *
    * @default true
    */
   isAffixSubtle?: true | false;
   /**
-   * Prefix to be shown before the currency value. The prefix can be either a currency symbol or a currency code.
+   * Prefix to be shown before the amount value. The prefix can be either a currency symbol or a currency code.
    *
    * @default 'currency-symbol'
    */
@@ -71,63 +65,146 @@ type AmountProps = {
 } & TestID;
 
 type ColorProps = {
-  textColor: BaseTextProps['color'];
-  prefixSuffixColor: BaseTextProps['color'];
+  amountValueColor: BaseTextProps['color'];
+  affixColor: BaseTextProps['color'];
 };
 
-const getColorProps = ({ intent }: { intent: AmountProps['intent'] }): ColorProps => {
+const getTextColorProps = ({ intent }: { intent: AmountProps['intent'] }): ColorProps => {
   const props: ColorProps = {
-    textColor: 'surface.text.normal.lowContrast',
-    prefixSuffixColor: 'surface.text.muted.lowContrast',
+    amountValueColor: 'surface.text.normal.lowContrast',
+    affixColor: 'surface.text.muted.lowContrast',
   };
   if (!intent) return props;
-  props.textColor = `feedback.text.${intent}.lowContrast`;
-  props.prefixSuffixColor = `feedback.text.${intent}.lowContrast`;
+  props.amountValueColor = `feedback.text.${intent}.lowContrast`;
+  props.affixColor = `feedback.text.${intent}.lowContrast`;
   if (intent === 'neutral') {
-    props.prefixSuffixColor = `surface.text.muted.lowContrast`;
+    props.affixColor = `feedback.text.neutral.lowContrast`;
   }
   return props;
 };
 
+const getAffixFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' => {
+  if (isAffixSubtle) return 'regular';
+  return 'bold';
+};
+
+const getMainValueWeight = (
+  size: NonNullable<AmountProps['size']>,
+): NonNullable<TextProps<{ variant: 'body' }>['weight']> => {
+  return size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
+};
+
+const getAffixFontSize = (
+  isAffixSubtle: NonNullable<AmountProps['isAffixSubtle']>,
+  size: NonNullable<AmountProps['size']>,
+): keyof FontSize | undefined => {
+  if (isAffixSubtle) return affixFontSizes[size];
+  return amountTextSizes[size];
+};
+
+interface AmountValue extends Omit<AmountProps, 'value'> {
+  affixColor: BaseTextProps['color'];
+  amountValueColor: BaseTextProps['color'];
+  value: string;
+}
+
+const AmountValue = ({
+  value,
+  size = 'heading-small',
+  amountValueColor,
+  isAffixSubtle = true,
+  suffix = 'decimals',
+  affixColor,
+}: AmountValue): ReactElement => {
+  const affixFontWeight = getAffixFontWeight(isAffixSubtle);
+  const affixFontSize = getAffixFontSize(isAffixSubtle, size);
+  const valueForWeight = getMainValueWeight(size);
+  if (suffix === 'decimals' && isAffixSubtle) {
+    const integer = value.split('.')[0];
+    const decimal = value.split('.')[1];
+
+    return (
+      <>
+        <BaseBox paddingRight="spacing.1">
+          <BaseText
+            fontSize={amountTextSizes[size]}
+            fontWeight={valueForWeight}
+            color={amountValueColor}
+          >
+            {integer}.
+          </BaseText>
+        </BaseBox>
+        <BaseText fontWeight={affixFontWeight} fontSize={affixFontSize} color={affixColor}>
+          {decimal || '00'}
+        </BaseText>
+      </>
+    );
+  }
+  return (
+    <BaseBox paddingRight="spacing.2">
+      <BaseText
+        fontSize={amountTextSizes[size]}
+        fontWeight={valueForWeight}
+        color={amountValueColor}
+      >
+        {value}
+      </BaseText>
+    </BaseBox>
+  );
+};
+
+// First calculates a factor based on the desired precision by raising 10 to the power of the
+// precision value. This factor is then used to multiply the value and round it down to the nearest integer
+// value. Finally, the rounded value is divided by the factor again to restore its original scale, and then
+// rounded to the desired precision using toFixed().
 const getFlooredFixed = (value: number, precision: number): number => {
   const factor = 10 ** precision;
   const roundedValue = Math.floor(value * factor) / factor;
   return Number(roundedValue.toFixed(precision));
 };
 
-const addCommas = (num: number, currency: currencyType): string => {
-  const locale = currencylocaleMapping[currency];
-  return num.toLocaleString(locale);
+const addCommas = (amountValue: number, currency: Currency): string => {
+  const locale = currencyLocaleMapping[currency];
+  return amountValue.toLocaleString(locale);
 };
 
-const getFormattedAmountWithSuffixSymbol = (num: number, currency: currencyType): string => {
-  const abbreviations: { value: number; symbol: string }[] = currencyAbbreviationsMapping[currency];
+const getHumanizedAmount = (amountValue: number, currency: Currency): string => {
+  const abbreviations = currencyAbbreviationsMapping[currency];
 
-  const abbreviation = abbreviations.find((abbr) => num >= abbr.value);
+  const abbreviation = abbreviations.find((abbr) => amountValue >= abbr.value);
   if (abbreviation) {
-    num = num / abbreviation.value;
-    const formattedNum = Number(getFlooredFixed(num, 2));
-    return addCommas(formattedNum, currency) + abbreviation.symbol;
+    amountValue = amountValue / abbreviation.value;
+    const formattedAmountValue = getFlooredFixed(amountValue, 2);
+    return addCommas(formattedAmountValue, currency) + abbreviation.symbol;
   } else {
-    return num.toString();
+    return amountValue.toString();
   }
 };
 
-const formatAmountWithSuffix = (
-  suffix: AmountProps['suffix'],
-  num: number,
-  currency: currencyType,
-): string => {
+type FormatAmountWithSuffixType = {
+  suffix: AmountProps['suffix'];
+  value: number;
+  currency: Currency;
+};
+
+const formatAmountWithSuffix = ({
+  suffix,
+  value,
+  currency,
+}: FormatAmountWithSuffixType): string => {
   switch (suffix) {
-    case suffixTypes.DECIMALS: {
-      const decimalNum = getFlooredFixed(num, 2);
-      return addCommas(decimalNum, currency);
+    case 'decimals': {
+      const decimalNumber = getFlooredFixed(value, 2);
+      return addCommas(decimalNumber, currency);
     }
-    case suffixTypes.HUMANIZE: {
-      return getFormattedAmountWithSuffixSymbol(num, currency);
+    case 'humanize': {
+      return getHumanizedAmount(value, currency);
+    }
+    case 'none': {
+      return addCommas(getFlooredFixed(value, 0), currency);
     }
     default:
-      return addCommas(getFlooredFixed(num, 0), currency);
+      return addCommas(getFlooredFixed(value, 0), currency);
   }
 };
 
@@ -135,7 +212,7 @@ const getCurrencyWeight = (
   isAffixSubtle: NonNullable<AmountProps['isAffixSubtle']>,
   size: NonNullable<AmountProps['size']>,
 ): 'bold' | 'regular' => {
-  if (isAffixSubtle || size.includes('bold')) return 'bold';
+  if (isAffixSubtle || size.startsWith('bold')) return 'bold';
   return 'regular';
 };
 
@@ -148,24 +225,28 @@ const Amount = ({
   prefix = 'currency-symbol',
   testID,
 }: AmountProps): ReactElement => {
-  if (typeof value !== 'number' && !isNaN(value)) {
-    throw new Error('[Blade: Amount]: Number as value is required for Amount.');
+  if (isNaN(value)) {
+    throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
   }
 
   // This will be added to prop and can be switched to a currency
   const currency = 'INR';
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
-  const renderedValue = formatAmountWithSuffix(suffix, value, currency);
-  const { textColor, prefixSuffixColor } = getColorProps({
+  const renderedValue = formatAmountWithSuffix({ suffix, value, currency });
+  const { amountValueColor, affixColor } = getTextColorProps({
     intent,
   });
 
-  const currencyColor = isAffixSubtle ? prefixSuffixColor : textColor;
+  const currencyColor = isAffixSubtle ? affixColor : amountValueColor;
   const currencyFontSize = getAffixFontSize(isAffixSubtle, size);
   const currencyWeight = getCurrencyWeight(isAffixSubtle, size);
 
   return (
-    <StyledAmount {...metaAttribute({ name: MetaConstants.Amount, testID })}>
+    <BaseBox
+      paddingLeft="spacing.2"
+      paddingRight="spacing.2"
+      {...metaAttribute({ name: MetaConstants.Amount, testID })}
+    >
       <BaseBox
         display="flex"
         alignItems="baseline"
@@ -179,14 +260,14 @@ const Amount = ({
         </BaseBox>
         <AmountValue
           value={renderedValue}
-          textColor={textColor}
+          amountValueColor={amountValueColor}
           size={size}
           isAffixSubtle={isAffixSubtle}
           suffix={suffix}
-          prefixSuffixColor={prefixSuffixColor}
+          affixColor={affixColor}
         />
       </BaseBox>
-    </StyledAmount>
+    </BaseBox>
   );
 };
 

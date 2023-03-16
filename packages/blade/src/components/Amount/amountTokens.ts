@@ -1,4 +1,7 @@
-const prefixSuffixTextSizes = {
+import type { FontSize } from './../../tokens/global/typography';
+import type { AmountProps } from './Amount';
+
+const affixFontSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> = {
   'body-small': 75,
   'body-small-bold': 75,
   'body-medium': 75,
@@ -11,7 +14,7 @@ const prefixSuffixTextSizes = {
   'title-medium': 400,
 } as const;
 
-const amountTextSizes = {
+const amountTextSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> = {
   'body-small': 75,
   'body-small-bold': 75,
   'body-medium': 100,
@@ -24,7 +27,14 @@ const amountTextSizes = {
   'title-medium': 700,
 } as const;
 
-const currencyPrefixMapping = {
+type CurrencyPrefixMapping = {
+  [key: string]: {
+    'currency-symbol': string;
+    'currency-code': string;
+  };
+};
+
+const currencyPrefixMapping: CurrencyPrefixMapping = {
   INR: {
     'currency-symbol': '₹',
     'currency-code': 'INR',
@@ -35,7 +45,11 @@ const currencyPrefixMapping = {
   },
 };
 
-const currencylocaleMapping = {
+type CurrencyLocaleMapping = {
+  [key: string]: string;
+};
+
+const currencyLocaleMapping: CurrencyLocaleMapping = {
   INR: 'en-IN',
   MYR: 'en-MY',
 };
@@ -55,8 +69,8 @@ const currencyAbbreviationsMapping = {
 
 export {
   amountTextSizes,
-  prefixSuffixTextSizes,
+  affixFontSizes,
   currencyPrefixMapping,
-  currencylocaleMapping,
+  currencyLocaleMapping,
   currencyAbbreviationsMapping,
 };
