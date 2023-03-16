@@ -59,7 +59,7 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
       color="action.text.link.visited"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -150,7 +150,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -241,7 +241,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -332,7 +332,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
       color="action.text.link.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -423,7 +423,7 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
       color="feedback.information.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -514,7 +514,7 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
       color="feedback.information.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -605,7 +605,7 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
       color="feedback.negative.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -696,7 +696,7 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
       color="feedback.negative.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -787,7 +787,7 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
       color="feedback.neutral.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -878,7 +878,7 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
       color="feedback.neutral.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -969,7 +969,7 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
       color="feedback.notice.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -1060,7 +1060,7 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
       color="feedback.notice.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -1151,7 +1151,7 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
       color="feedback.positive.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -1242,7 +1242,7 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
       color="feedback.positive.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -1417,7 +1417,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -1506,7 +1506,7 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
       color="feedback.information.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -1597,7 +1597,7 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
       color="feedback.information.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -1688,7 +1688,7 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -1863,7 +1863,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2038,7 +2038,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2129,7 +2129,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2304,7 +2304,7 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
       color="feedback.negative.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2395,7 +2395,7 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
       color="feedback.negative.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2486,7 +2486,7 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
       color="feedback.neutral.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2577,7 +2577,7 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
       color="feedback.neutral.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2668,7 +2668,7 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
       color="feedback.notice.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2759,7 +2759,7 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
       color="feedback.notice.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2850,7 +2850,7 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
       color="feedback.positive.action.text.link.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -2941,7 +2941,7 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
       color="feedback.positive.action.text.link.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {

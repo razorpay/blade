@@ -113,7 +113,7 @@ exports[`<List /> should render List with default properties 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -249,7 +249,7 @@ exports[`<List /> should render List with default properties 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="m"
+            lineHeight={200}
             style={
               Array [
                 Object {
@@ -387,7 +387,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
-                lineHeight="m"
+                lineHeight={200}
                 style={
                   Array [
                     Object {
@@ -535,7 +535,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -709,7 +709,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -853,7 +853,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -936,7 +936,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               color="action.text.link.default"
               fontSize={100}
               fontWeight="bold"
-              lineHeight="m"
+              lineHeight={200}
               style={
                 Array [
                   Object {
@@ -1070,7 +1070,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -1173,7 +1173,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="m"
+          lineHeight={200}
           style={
             Array [
               Object {
@@ -1206,7 +1206,7 @@ exports[`<List /> should render medium ordered List 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -1342,7 +1342,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="m"
+            lineHeight={200}
             style={
               Array [
                 Object {
@@ -1480,7 +1480,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
-                lineHeight="m"
+                lineHeight={200}
                 style={
                   Array [
                     Object {
@@ -1591,7 +1591,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="xs"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -1624,7 +1624,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -1716,7 +1716,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="xs"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -1749,7 +1749,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -1841,7 +1841,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="xs"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -1874,7 +1874,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -2016,7 +2016,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -2150,7 +2150,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="m"
+            lineHeight={200}
             style={
               Array [
                 Object {
@@ -2288,7 +2288,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
-                lineHeight="m"
+                lineHeight={200}
                 style={
                   Array [
                     Object {
@@ -2395,7 +2395,7 @@ exports[`<List /> should render small ordered List 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="xs"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -2428,7 +2428,7 @@ exports[`<List /> should render small ordered List 1`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -2564,7 +2564,7 @@ exports[`<List /> should render small ordered List 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="xs"
+            lineHeight={50}
             style={
               Array [
                 Object {
@@ -2702,7 +2702,7 @@ exports[`<List /> should render small ordered List 1`] = `
                 fontSize={75}
                 fontStyle="normal"
                 fontWeight="regular"
-                lineHeight="xs"
+                lineHeight={50}
                 style={
                   Array [
                     Object {
@@ -2813,7 +2813,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="xs"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -2846,7 +2846,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -2938,7 +2938,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="xs"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -2971,7 +2971,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -3063,7 +3063,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="xs"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -3096,7 +3096,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -3238,7 +3238,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -3372,7 +3372,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="xs"
+            lineHeight={50}
             style={
               Array [
                 Object {
@@ -3510,7 +3510,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 fontSize={75}
                 fontStyle="normal"
                 fontWeight="regular"
-                lineHeight="xs"
+                lineHeight={50}
                 style={
                   Array [
                     Object {
@@ -3658,7 +3658,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -3794,7 +3794,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="xs"
+            lineHeight={50}
             style={
               Array [
                 Object {
@@ -3932,7 +3932,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 fontSize={75}
                 fontStyle="normal"
                 fontWeight="regular"
-                lineHeight="xs"
+                lineHeight={50}
                 style={
                   Array [
                     Object {

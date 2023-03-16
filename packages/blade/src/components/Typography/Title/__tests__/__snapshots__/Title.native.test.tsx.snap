@@ -8,7 +8,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
   fontSize={600}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="2xl"
+  lineHeight={500}
   style={
     Array [
       Object {
@@ -43,7 +43,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
   fontSize={800}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="4xl"
+  lineHeight={700}
   style={
     Array [
       Object {
@@ -78,7 +78,7 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
   fontSize={700}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="3xl"
+  lineHeight={600}
   style={
     Array [
       Object {
@@ -113,7 +113,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
   fontSize={600}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="2xl"
+  lineHeight={500}
   style={
     Array [
       Object {
@@ -148,7 +148,7 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
   fontSize={600}
   fontStyle="normal"
   fontWeight="bold"
-  lineHeight="2xl"
+  lineHeight={500}
   style={
     Array [
       Object {

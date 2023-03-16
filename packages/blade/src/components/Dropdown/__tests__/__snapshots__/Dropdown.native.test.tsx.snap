@@ -96,7 +96,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 fontSize={75}
                 fontStyle="normal"
                 fontWeight="semibold"
-                lineHeight="xs"
+                lineHeight={50}
                 style={
                   Array [
                     Object {
@@ -156,7 +156,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   fontSize={100}
                   fontStyle="normal"
                   fontWeight="regular"
-                  lineHeight="m"
+                  lineHeight={200}
                   style={
                     Array [
                       Object {
@@ -255,7 +255,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight="m"
+              lineHeight={200}
               style={
                 Array [
                   Object {
@@ -601,7 +601,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 fontSize={50}
                 fontStyle="italic"
                 fontWeight="regular"
-                lineHeight="xs"
+                lineHeight={50}
                 style={
                   Array [
                     Object {
@@ -728,7 +728,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
-                      lineHeight="m"
+                      lineHeight={200}
                       numberOfLines={1}
                       style={
                         Array [
@@ -859,7 +859,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
-                      lineHeight="m"
+                      lineHeight={200}
                       numberOfLines={1}
                       style={
                         Array [
@@ -1009,7 +1009,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 fontSize={50}
                 fontStyle="italic"
                 fontWeight="regular"
-                lineHeight="xs"
+                lineHeight={50}
                 style={
                   Array [
                     Object {
@@ -1139,7 +1139,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     color="action.text.primary.default"
                     fontSize={100}
                     fontWeight="bold"
-                    lineHeight="l"
+                    lineHeight={300}
                     style={
                       Array [
                         Object {

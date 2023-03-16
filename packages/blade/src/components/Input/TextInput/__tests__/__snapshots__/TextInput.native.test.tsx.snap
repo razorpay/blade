@@ -76,7 +76,7 @@ exports[`<TextInput /> should render 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="semibold"
-            lineHeight="xs"
+            lineHeight={50}
             style={
               Array [
                 Object {
@@ -136,7 +136,7 @@ exports[`<TextInput /> should render 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight="m"
+              lineHeight={200}
               style={
                 Array [
                   Object {
@@ -364,7 +364,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="semibold"
-            lineHeight="xs"
+            lineHeight={50}
             style={
               Array [
                 Object {
@@ -424,7 +424,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight="m"
+              lineHeight={200}
               style={
                 Array [
                   Object {
@@ -585,7 +585,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="m"
+            lineHeight={200}
             style={
               Array [
                 Object {
@@ -702,7 +702,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="m"
+            lineHeight={200}
             style={
               Array [
                 Object {

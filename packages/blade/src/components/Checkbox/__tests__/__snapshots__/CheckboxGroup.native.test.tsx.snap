@@ -50,7 +50,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="semibold"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -110,7 +110,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="m"
+          lineHeight={200}
           style={
             Array [
               Object {
@@ -276,7 +276,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   fontFamily="text"
                   fontSize={100}
                   fontWeight="regular"
-                  lineHeight="l"
+                  lineHeight={300}
                   style={
                     Array [
                       Object {
@@ -434,7 +434,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   fontFamily="text"
                   fontSize={100}
                   fontWeight="regular"
-                  lineHeight="l"
+                  lineHeight={300}
                   style={
                     Array [
                       Object {
@@ -592,7 +592,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   fontFamily="text"
                   fontSize={100}
                   fontWeight="regular"
-                  lineHeight="l"
+                  lineHeight={300}
                   style={
                     Array [
                       Object {
@@ -687,7 +687,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="semibold"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -747,7 +747,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight="m"
+          lineHeight={200}
           style={
             Array [
               Object {
@@ -913,7 +913,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   fontFamily="text"
                   fontSize={100}
                   fontWeight="regular"
-                  lineHeight="l"
+                  lineHeight={300}
                   style={
                     Array [
                       Object {
@@ -1071,7 +1071,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   fontFamily="text"
                   fontSize={100}
                   fontWeight="regular"
-                  lineHeight="l"
+                  lineHeight={300}
                   style={
                     Array [
                       Object {
@@ -1229,7 +1229,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   fontFamily="text"
                   fontSize={100}
                   fontWeight="regular"
-                  lineHeight="l"
+                  lineHeight={300}
                   style={
                     Array [
                       Object {
@@ -1294,7 +1294,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           fontFamily="text"
           fontSize={50}
           fontStyle="italic"
-          lineHeight="s"
+          lineHeight={100}
           style={
             Array [
               Object {

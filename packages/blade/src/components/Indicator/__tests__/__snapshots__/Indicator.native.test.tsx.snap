@@ -95,7 +95,7 @@ exports[`<Indicator /> should render 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -219,7 +219,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -339,7 +339,7 @@ Array [
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -459,7 +459,7 @@ Array [
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
@@ -579,7 +579,7 @@ Array [
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {

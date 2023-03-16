@@ -59,7 +59,7 @@ exports[`<Link /> should render button variant of link 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -150,7 +150,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
       color="action.text.link.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -241,7 +241,7 @@ exports[`<Link /> should render link with default properties 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -416,7 +416,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -591,7 +591,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -682,7 +682,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -941,7 +941,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
       color="action.text.link.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -1114,7 +1114,7 @@ exports[`<Link /> should render with small size 1`] = `
       color="action.text.link.default"
       fontSize={75}
       fontWeight="bold"
-      lineHeight="s"
+      lineHeight={100}
       style={
         Array [
           Object {

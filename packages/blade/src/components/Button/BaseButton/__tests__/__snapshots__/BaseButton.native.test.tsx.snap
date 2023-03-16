@@ -90,7 +90,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -211,7 +211,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -400,7 +400,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -589,7 +589,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -710,7 +710,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1055,7 +1055,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       color="action.text.primary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1176,7 +1176,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       color="feedback.information.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1297,7 +1297,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       color="feedback.information.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1418,7 +1418,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       color="feedback.negative.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1539,7 +1539,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       color="feedback.negative.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1660,7 +1660,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       color="feedback.neutral.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1781,7 +1781,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       color="feedback.neutral.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1902,7 +1902,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       color="feedback.notice.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -2023,7 +2023,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       color="feedback.notice.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -2144,7 +2144,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       color="feedback.positive.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -2265,7 +2265,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       color="feedback.positive.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -2386,7 +2386,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
       color="action.text.secondary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -2507,7 +2507,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       color="action.text.tertiary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -2628,7 +2628,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       color="feedback.information.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -2749,7 +2749,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       color="feedback.information.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -2870,7 +2870,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
       color="action.text.primary.default"
       fontSize={200}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={200}
       style={
         Array [
           Object {
@@ -3135,7 +3135,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
       color="action.text.primary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -3256,7 +3256,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -3377,7 +3377,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       color="feedback.negative.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -3498,7 +3498,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       color="feedback.negative.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -3619,7 +3619,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       color="feedback.neutral.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -3740,7 +3740,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       color="feedback.neutral.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -3861,7 +3861,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       color="feedback.notice.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -3982,7 +3982,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       color="feedback.notice.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -4103,7 +4103,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       color="feedback.positive.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -4224,7 +4224,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       color="feedback.positive.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -4345,7 +4345,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
       color="action.text.secondary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -4466,7 +4466,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
       color="action.text.primary.default"
       fontSize={75}
       fontWeight="bold"
-      lineHeight="s"
+      lineHeight={100}
       style={
         Array [
           Object {
@@ -4587,7 +4587,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       color="action.text.tertiary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -4708,7 +4708,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       color="action.text.primary.default"
       fontSize={75}
       fontWeight="bold"
-      lineHeight="s"
+      lineHeight={100}
       style={
         Array [
           Object {

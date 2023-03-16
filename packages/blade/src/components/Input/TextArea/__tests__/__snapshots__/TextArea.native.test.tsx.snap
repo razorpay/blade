@@ -78,7 +78,7 @@ exports[`<TextArea /> should render 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="semibold"
-            lineHeight="xs"
+            lineHeight={50}
             style={
               Array [
                 Object {
@@ -138,7 +138,7 @@ exports[`<TextArea /> should render 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight="m"
+              lineHeight={200}
               style={
                 Array [
                   Object {

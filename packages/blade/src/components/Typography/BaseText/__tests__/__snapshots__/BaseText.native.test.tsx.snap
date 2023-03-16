@@ -6,7 +6,7 @@ exports[`<BaseText /> should render regular text 1`] = `
   fontFamily="text"
   fontSize={25}
   fontWeight="regular"
-  lineHeight="m"
+  lineHeight={200}
   style={
     Array [
       Object {
@@ -40,7 +40,7 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
   fontSize={25}
   fontStyle="italic"
   fontWeight="regular"
-  lineHeight="m"
+  lineHeight={200}
   style={
     Array [
       Object {

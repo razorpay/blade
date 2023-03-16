@@ -7,7 +7,7 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
   fontSize={100}
   fontStyle="normal"
   fontWeight="regular"
-  lineHeight="m"
+  lineHeight={200}
   style={
     Array [
       Object {
@@ -44,7 +44,7 @@ exports[`<Text /> should render Text with default properties 1`] = `
   fontSize={100}
   fontStyle="normal"
   fontWeight="regular"
-  lineHeight="m"
+  lineHeight={200}
   style={
     Array [
       Object {
@@ -79,7 +79,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
   fontSize={100}
   fontStyle="normal"
   fontWeight="semibold"
-  lineHeight="m"
+  lineHeight={200}
   numberOfLines={3}
   style={
     Array [
@@ -115,7 +115,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
   fontSize={100}
   fontStyle="normal"
   fontWeight="semibold"
-  lineHeight="m"
+  lineHeight={200}
   numberOfLines={3}
   style={
     Array [
@@ -151,7 +151,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   fontSize={75}
   fontStyle="normal"
   fontWeight="semibold"
-  lineHeight="xs"
+  lineHeight={50}
   numberOfLines={3}
   style={
     Array [
@@ -187,7 +187,7 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
   fontSize={100}
   fontStyle="normal"
   fontWeight="semibold"
-  lineHeight="m"
+  lineHeight={200}
   style={
     Array [
       Object {

@@ -141,7 +141,7 @@ exports[`<Alert /> should render 1`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="xs"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -404,7 +404,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="m"
+        lineHeight={200}
         style={
           Array [
             Object {
