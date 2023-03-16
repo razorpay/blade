@@ -28,6 +28,7 @@ export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject
     flexDirection: 'row',
     maxWidth: isFullWidth ? 'auto' : makeSize(MAX_WIDTH),
     width: isFullWidth ? '100%' : undefined,
+    boxSizing: 'border-box',
     alignItems: isFullWidth && isDesktop ? 'center' : 'flex-start',
   };
 };
