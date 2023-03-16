@@ -71,4 +71,23 @@ describe('<Box />', () => {
     }
     console.error = tempConsoleError;
   });
+
+  it('should throw error for unsupport as prop', () => {
+    // Ignoring error from console to not show it while running tests
+    const tempConsoleError = console.error;
+    console.error = jest.fn();
+    try {
+      renderWithSSR(
+        <Box
+          // @ts-expect-error: Intentional to test bad flow
+          as="button"
+        />,
+      );
+    } catch (err: unknown) {
+      expect(err).toMatchInlineSnapshot(
+        `[Error: [Blade - Box]: Invalid \`as\` prop value - button. Only div, section, footer, header, main, aside, nav, span are valid values]`,
+      );
+    }
+    console.error = tempConsoleError;
+  });
 });
