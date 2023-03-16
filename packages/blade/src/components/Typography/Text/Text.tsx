@@ -25,7 +25,7 @@ export type TextVariant = 'body' | 'caption';
 
 type TextBodyVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'body'>;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 };
 
 type TextCaptionVariant = TextCommonProps & {
@@ -83,6 +83,10 @@ const getTextProps = <T extends { variant: TextVariant }>({
   };
 
   if (variant === 'body') {
+    if (size === 'xsmall') {
+      props.fontSize = 25;
+      props.lineHeight = 'xs';
+    }
     if (size === 'small') {
       props.fontSize = 75;
       props.lineHeight = 'xs';
@@ -93,20 +97,12 @@ const getTextProps = <T extends { variant: TextVariant }>({
     }
   }
   if (variant === 'caption') {
-    if (size === 'large') {
-      throw new Error(`[Blade: Text]: size cannot be '${size}' when variant is 'caption'`);
-    }
-
-    if (size === 'small') {
-      props.fontSize = 25;
-      props.lineHeight = 'xs';
-    }
-
     if (size === 'medium') {
       props.fontSize = 50;
       props.lineHeight = 'xs';
+    } else {
+      throw new Error(`[Blade: Text]: size cannot be '${size}' when variant is 'caption'`);
     }
-
     props.fontStyle = 'italic';
   }
 
