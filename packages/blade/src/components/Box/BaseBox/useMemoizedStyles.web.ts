@@ -12,7 +12,7 @@ const getMemoDependency = (props: BaseBoxProps & { theme?: Theme }): string | Ba
     // I know this looks illegal but Dan approves it - https://twitter.com/dan_abramov/status/1104414272753487872?s=20
     // A lot of times passing object to dependency prop isn't efficient and mostly won't work
     // Hence we JSON.strinfigy and pass the string as dependency prop. React handles this way better.
-    dependencyPropString = JSON.stringify(rest);
+    dependencyPropString = `${JSON.stringify(rest)}-${theme?.name}`;
   } catch (err: unknown) {
     console.warn(
       '[Blade - BaseBox]: stringification of props failed in BaseBox so falling back to re-calculations on all changes\n\n If you see this warning, please create issue on https://github.com/razorpay/blade as this could degrade runtime styling performance',
