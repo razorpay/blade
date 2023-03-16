@@ -153,7 +153,7 @@ const Box = (props: BoxProps): JSX.Element => {
   }, [props.backgroundColor]);
 
   React.useEffect(() => {
-    if (props.as && typeof props.as === 'string') {
+    if (props.as) {
       if (isReactNative()) {
         throw new Error('[Blade - Box]: `as` prop is not supported on React Native');
       }

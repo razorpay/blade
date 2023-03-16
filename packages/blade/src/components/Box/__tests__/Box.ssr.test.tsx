@@ -29,6 +29,28 @@ describe('<Box />', () => {
     `);
   });
 
+  it('should render Box as footer tag', () => {
+    const { container } = renderWithSSR(
+      <Box display="block" as="footer">
+        Footer test!
+      </Box>,
+    );
+    expect(container).toMatchInlineSnapshot(`
+      <div
+        data-reactroot=""
+        id="root"
+      >
+        <footer
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gxRbfF"
+          data-blade-component="Box"
+          display="block"
+        >
+          Footer test!
+        </footer>
+      </div>
+    `);
+  });
+
   it('should throw error for unsupport values', () => {
     // Ignoring error from console to not show it while running tests
     const tempConsoleError = console.error;
