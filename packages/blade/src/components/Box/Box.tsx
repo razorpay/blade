@@ -108,7 +108,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID'>> =
     // Visual
     backgroundColor: props.backgroundColor,
     children: props.children,
-    as: props.as,
+    as: isReactNative() ? undefined : props.as, // as is not supported on react-native
   };
 };
 
