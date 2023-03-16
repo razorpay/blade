@@ -19,7 +19,7 @@ describe('<BaseText />', () => {
       <BaseText
         color="surface.text.normal.highContrast"
         fontFamily="text"
-        lineHeight="m"
+        lineHeight={200}
         fontSize={25}
         fontWeight="regular"
       >
@@ -36,7 +36,7 @@ describe('<BaseText />', () => {
       <BaseText
         color="surface.text.normal.highContrast"
         fontFamily="text"
-        lineHeight="m"
+        lineHeight={200}
         fontSize={25}
         fontWeight="regular"
         fontStyle="italic"
@@ -56,7 +56,7 @@ describe('<BaseText />', () => {
         <BaseText
           color="surface.text.normal.highContrast"
           fontFamily="text"
-          lineHeight="m"
+          lineHeight={200}
           fontSize={25}
           fontWeight="regular"
           fontStyle="italic"

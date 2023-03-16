@@ -30,7 +30,7 @@ type TextBodyVariant = TextCommonProps & {
 
 type TextCaptionVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'caption'>;
-  size?: 'medium' | 'small';
+  size?: 'medium';
 };
 
 /**
@@ -74,7 +74,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     fontSize: 100,
     fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
-    lineHeight: 'm',
+    lineHeight: 200,
     fontFamily: 'text',
     forwardedAs: isPlatformWeb ? 'p' : undefined,
     componentName: 'text',
@@ -85,21 +85,21 @@ const getTextProps = <T extends { variant: TextVariant }>({
   if (variant === 'body') {
     if (size === 'xsmall') {
       props.fontSize = 25;
-      props.lineHeight = 'xs';
+      props.lineHeight = 50;
     }
     if (size === 'small') {
       props.fontSize = 75;
-      props.lineHeight = 'xs';
+      props.lineHeight = 50;
     }
     if (size === 'large') {
       props.fontSize = 200;
-      props.lineHeight = 'l';
+      props.lineHeight = 300;
     }
   }
   if (variant === 'caption') {
     if (size === 'medium') {
       props.fontSize = 50;
-      props.lineHeight = 'xs';
+      props.lineHeight = 50;
     } else {
       throw new Error(`[Blade: Text]: size cannot be '${size}' when variant is 'caption'`);
     }

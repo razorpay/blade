@@ -27,7 +27,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElem
           as={isReactNative ? undefined : 'span'}
           color={color}
           fontSize={50}
-          lineHeight="s"
+          lineHeight={100}
           fontStyle="italic"
           fontFamily="text"
         >
