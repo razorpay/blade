@@ -74,6 +74,7 @@ type StringChildrenType = React.ReactText | React.ReactText[];
  * This will show paymentTheme and bankingTheme in autocomplete but also allow any other string as value.
  *
  * More details - https://github.com/razorpay/blade/pull/1031/commits/86b6ee0facf45e7556739efcbfa5396b11b1b3c9#r1121298293
+ * Related TS Issue - https://github.com/microsoft/TypeScript/issues/29729
  *
  */
 type StringWithAutocomplete = string & Record<never, never>;
