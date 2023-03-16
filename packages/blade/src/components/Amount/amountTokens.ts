@@ -54,7 +54,16 @@ const currencyLocaleMapping: CurrencyLocaleMapping = {
   MYR: 'en-MY',
 };
 
-const currencyAbbreviationsMapping = {
+type CurrencyAbbreviation = {
+  value: number;
+  symbol: string;
+};
+
+type CurrencyAbbreviationsMapping = {
+  [key: string]: CurrencyAbbreviation[];
+};
+
+const currencyAbbreviationsMapping: CurrencyAbbreviationsMapping = {
   INR: [
     { value: 1e7, symbol: 'Cr' },
     { value: 1e5, symbol: 'L' },
