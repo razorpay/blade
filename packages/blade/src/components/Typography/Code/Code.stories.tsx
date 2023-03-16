@@ -6,6 +6,7 @@ import { Code as CodeComponent } from './Code';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -50,6 +51,7 @@ const CodeStoryMeta: Meta = {
       page: () => <Page />,
     },
   },
+  argTypes: getStyledPropsArgTypes(),
 };
 
 const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (

@@ -5,6 +5,8 @@ import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
 import { metaAttribute, isEmpty, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -102,7 +104,8 @@ type CheckboxProps = {
    *
    */
   tabIndex?: number;
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
   {
@@ -121,6 +124,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     size = 'medium',
     tabIndex,
     testID,
+    ...styledProps
   },
   ref,
 ) => {
@@ -200,7 +204,10 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   });
 
   return (
-    <BaseBox {...metaAttribute({ name: MetaConstants.Checkbox, testID })}>
+    <BaseBox
+      {...metaAttribute({ name: MetaConstants.Checkbox, testID })}
+      {...getStyledProps(styledProps)}
+    >
       <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">

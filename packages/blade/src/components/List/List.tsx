@@ -15,6 +15,9 @@ import {
   MetaConstants,
 } from '~utils';
 import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
+import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type ListCommonProps = {
   /**
@@ -34,7 +37,8 @@ type ListCommonProps = {
    * @default 'medium'
    */
   size?: 'small' | 'medium';
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 type ListWithIconProps = ListCommonProps & {
   variant?: 'unordered';
@@ -84,6 +88,7 @@ const List = ({
   children,
   icon,
   testID,
+  ...styledProps
 }: ListProps): React.ReactElement => {
   const ListElement = variant === 'unordered' ? StyledUnorderedList : StyledOrderedList;
   const { level, size: listContextSize } = useListContext();
@@ -108,18 +113,20 @@ const List = ({
 
   return (
     <ListProvider value={listContextValue}>
-      <ListElement
-        marginTop={level ? undefined : 'spacing.3'}
-        {...metaAttribute({ name: MetaConstants.List, testID })}
-        {...makeAccessible({ role: 'list' })} // Role needed for react-native
-      >
-        {variant === 'unordered'
-          ? childListItems
-          : childListItems.map(
-              (child, index) =>
-                React.cloneElement(child as React.ReactElement, { _itemNumber: index + 1 }), // adds _itemNumber for rendering ordered list bullets
-            )}
-      </ListElement>
+      <BaseBox {...getStyledProps(styledProps)}>
+        <ListElement
+          marginTop={level ? undefined : 'spacing.3'}
+          {...metaAttribute({ name: MetaConstants.List, testID })}
+          {...makeAccessible({ role: 'list' })} // Role needed for react-native
+        >
+          {variant === 'unordered'
+            ? childListItems
+            : childListItems.map(
+                (child, index) =>
+                  React.cloneElement(child as React.ReactElement, { _itemNumber: index + 1 }), // adds _itemNumber for rendering ordered list bullets
+              )}
+        </ListElement>
+      </BaseBox>
     </ListProvider>
   );
 };

@@ -18,6 +18,8 @@ import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+
 import {
   MetaConstants,
   metaAttribute,
@@ -60,7 +62,8 @@ type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 /*
 Mandatory children prop when icon is not provided
@@ -296,6 +299,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     children,
     accessibilityLabel,
     testID,
+    ...styledProps
   },
   ref,
 ) => {
@@ -384,6 +388,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
+      {...styledProps}
     >
       {isLoading ? (
         <BaseBox
@@ -391,10 +396,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           justifyContent="center"
           alignItems="center"
           position="absolute"
-          top={0}
-          left={0}
-          bottom={0}
-          right={0}
+          top="0px"
+          left="0px"
+          bottom="0px"
+          right="0px"
         >
           <BaseSpinner
             accessibilityLabel="Loading"

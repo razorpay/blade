@@ -8,6 +8,7 @@ import type { CheckboxGroupProps } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -83,6 +84,7 @@ export default {
         type: 'multi-select',
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {
@@ -279,7 +281,7 @@ export const KitchenSink = (): React.ReactElement => {
         <CheckboxComponent value="mango">Mango</CheckboxComponent>
         <CheckboxComponent value="orange">Orange</CheckboxComponent>
       </CheckboxGroupComponent>
-      <BaseBox height={50} overflow="scroll" marginTop="spacing.4">
+      <BaseBox height="50px" overflow="scroll" marginTop="spacing.4">
         <CheckboxGroupComponent
           labelPosition="left"
           necessityIndicator="optional"

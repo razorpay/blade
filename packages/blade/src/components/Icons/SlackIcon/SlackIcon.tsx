@@ -2,11 +2,11 @@ import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const SlackIcon: IconComponent = ({ size, color }) => {
+const SlackIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_83_560)">
         <Path
           fillRule="evenodd"

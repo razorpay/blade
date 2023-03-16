@@ -5,7 +5,10 @@ import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabel, FormHint } from '~components/Form';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
-import { useBreakpoint } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { makeSize, useBreakpoint } from '~utils';
+
 import { useTheme } from '~components/BladeProvider';
 import type { TestID } from '~src/_helpers/types';
 
@@ -79,7 +82,8 @@ type CheckboxGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 const CheckboxGroup = ({
   children,
@@ -96,6 +100,7 @@ const CheckboxGroup = ({
   value,
   size = 'medium',
   testID,
+  ...styledProps
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
     defaultValue,
@@ -118,38 +123,43 @@ const CheckboxGroup = ({
 
   return (
     <CheckboxGroupProvider value={contextValue}>
-      <SelectorGroupField
-        position={labelPosition}
-        labelledBy={ids.labelId}
-        componentName="checkbox-group"
-        testID={testID}
-      >
-        <FormLabel
-          as="span"
-          necessityIndicator={necessityIndicator}
+      <BaseBox {...getStyledProps(styledProps)}>
+        <SelectorGroupField
           position={labelPosition}
-          id={ids.labelId}
-          accessibilityText={accessibilityText}
+          labelledBy={ids.labelId}
+          componentName="checkbox-group"
+          testID={testID}
         >
-          {label}
-        </FormLabel>
-        <BaseBox>
-          <BaseBox display="flex" flexDirection="column">
-            {React.Children.map(children, (child, index) => {
-              return (
-                <BaseBox key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
-                  {child}
-                </BaseBox>
-              );
-            })}
+          <FormLabel
+            as="span"
+            necessityIndicator={necessityIndicator}
+            position={labelPosition}
+            id={ids.labelId}
+            accessibilityText={accessibilityText}
+          >
+            {label}
+          </FormLabel>
+          <BaseBox>
+            <BaseBox display="flex" flexDirection="column">
+              {React.Children.map(children, (child, index) => {
+                return (
+                  <BaseBox
+                    key={index}
+                    {...{ marginBottom: index === childCount - 1 ? makeSize(0) : gap }}
+                  >
+                    {child}
+                  </BaseBox>
+                );
+              })}
+            </BaseBox>
+            <FormHint
+              errorText={errorText}
+              helpText={helpText}
+              type={validationState === 'error' ? 'error' : 'help'}
+            />
           </BaseBox>
-          <FormHint
-            errorText={errorText}
-            helpText={helpText}
-            type={validationState === 'error' ? 'error' : 'help'}
-          />
-        </BaseBox>
-      </SelectorGroupField>
+        </SelectorGroupField>
+      </BaseBox>
     </CheckboxGroupProvider>
   );
 };

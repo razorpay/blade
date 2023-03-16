@@ -7,6 +7,7 @@ import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type PasswordInputExtraProps = {
   /**
@@ -68,7 +69,8 @@ type PasswordInputProps = Pick<
   | 'autoCompleteSuggestionType'
   | 'testID'
 > &
-  PasswordInputExtraProps;
+  PasswordInputExtraProps &
+  StyledPropsBlade;
 
 const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordInputProps> = (
   {
@@ -95,6 +97,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
     keyboardReturnKeyType = 'done',
     autoCompleteSuggestionType,
     testID,
+    ...styledProps
   },
   ref,
 ) => {
@@ -159,6 +162,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       keyboardReturnKeyType={keyboardReturnKeyType}
       autoCapitalize="none"
       testID={testID}
+      {...styledProps}
     />
   );
 };
