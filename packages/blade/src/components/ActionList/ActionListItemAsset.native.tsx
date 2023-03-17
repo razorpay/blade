@@ -1,8 +1,8 @@
 import { Image } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { componentIds } from './componentIds';
-import type { WithComponentId } from '~utils';
 import size from '~tokens/global/size';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListItemAssetProps = {
   /**
@@ -19,7 +19,7 @@ type ActionListItemAssetProps = {
 /**
  *
  */
-const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) => {
+const _ActionListItemAsset = (props: ActionListItemAssetProps): JSX.Element => {
   const source = typeof props.src === 'string' ? { uri: props.src } : props.src;
 
   return (
@@ -33,6 +33,8 @@ const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) =
   );
 };
 
-ActionListItemAsset.componentId = componentIds.ActionListItemAsset;
+const ActionListItemAsset = assignWithoutSideEffects(_ActionListItemAsset, {
+  componentId: componentIds.ActionListItemAsset,
+});
 
 export { ActionListItemAsset, ActionListItemAssetProps };

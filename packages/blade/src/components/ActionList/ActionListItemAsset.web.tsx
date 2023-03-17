@@ -1,6 +1,6 @@
 import { componentIds } from './componentIds';
-import type { WithComponentId } from '~utils';
 import size from '~tokens/global/size';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListItemAssetProps = {
   /**
@@ -12,10 +12,12 @@ type ActionListItemAssetProps = {
    */
   alt: string;
 };
-const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) => {
+const _ActionListItemAsset = (props: ActionListItemAssetProps): JSX.Element => {
   return <img src={props.src} alt={props.alt} width={size[16]} height={size[12]} />;
 };
 
-ActionListItemAsset.componentId = componentIds.ActionListItemAsset;
+const ActionListItemAsset = assignWithoutSideEffects(_ActionListItemAsset, {
+  componentId: componentIds.ActionListItemAsset,
+});
 
 export { ActionListItemAsset, ActionListItemAssetProps };

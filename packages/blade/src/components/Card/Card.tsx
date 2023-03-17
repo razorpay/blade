@@ -2,11 +2,11 @@ import React from 'react';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import BaseBox from '~components/Box/BaseBox';
-import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -81,11 +81,11 @@ type CardBodyProps = {
   children: React.ReactNode;
 } & TestID;
 
-const CardBody: WithComponentId<CardBodyProps> = ({ children, testID }) => {
+const _CardBody = ({ children, testID }: CardBodyProps): JSX.Element => {
   useVerifyInsideCard('CardBody');
 
   return <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })}>{children}</BaseBox>;
 };
-CardBody.componentId = ComponentIds.CardBody;
+const CardBody = assignWithoutSideEffects(_CardBody, { componentId: ComponentIds.CardBody });
 
 export { Card, CardBody };

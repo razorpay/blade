@@ -6,7 +6,7 @@ import type { DropdownOverlayProps } from './DropdownOverlay.web';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize, metaAttribute, MetaConstants } from '~utils';
-import type { WithComponentId } from '~utils';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 const StyledDropdownOverlay = styled(BaseBox)<{ testID: 'dropdown-overlay' }>((props) => ({
   transform: `translateY(${makeSize(props.theme.spacing[3])})`,
@@ -24,10 +24,7 @@ const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((pro
  *
  * Wrap your ActionList within this component
  */
-const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({
-  children,
-  testID,
-}): JSX.Element => {
+const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
   const { isOpen, setIsOpen } = useDropdown();
 
   return (
@@ -53,6 +50,8 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({
   );
 };
 
-DropdownOverlay.componentId = componentIds.DropdownOverlay;
+const DropdownOverlay = assignWithoutSideEffects(_DropdownOverlay, {
+  componentId: componentIds.DropdownOverlay,
+});
 
 export { DropdownOverlay, DropdownOverlayProps };
