@@ -131,6 +131,13 @@ function LayoutPrimitivesDocs(): JSX.Element {
             export default App;
             `}
         </Sandbox>
+        <Text marginTop="spacing.4">
+          Check out our{' '}
+          <Link href="/?path=/story/recipes-simple-dashboard--simple-dashboard&globals=measureEnabled:false">
+            Simple Dashboard Recipe
+          </Link>{' '}
+          for a real-world example on Box usage.
+        </Text>
       </Section>
       <Section id="box-usage">
         <Title size="small" marginBottom="spacing.3">
@@ -450,6 +457,11 @@ function LayoutPrimitivesDocs(): JSX.Element {
             </ListItemLink>
           </ListItem>
           <ListItem>
+            <ListItemLink href="/?path=/story/recipes-simple-dashboard--simple-dashboard&globals=measureEnabled:false">
+              Simple Dashboard Recipe Using Box
+            </ListItemLink>
+          </ListItem>
+          <ListItem>
             <ListItemLink href="/?path=/docs/components-layout-primitives-box-styled-props--styled-props">
               Styled Props Story
             </ListItemLink>
@@ -457,6 +469,11 @@ function LayoutPrimitivesDocs(): JSX.Element {
           <ListItem>
             <ListItemLink href="/?path=/docs/components-layout-primitives-box-styled-props--styled-props#properties-ref">
               Styled Props Properties Reference
+            </ListItemLink>
+          </ListItem>
+          <ListItem>
+            <ListItemLink href="/?path=/docs/tokens-breakpoints--page">
+              Breakpoint Tokens Reference
             </ListItemLink>
           </ListItem>
           <ListItem>
