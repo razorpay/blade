@@ -257,9 +257,12 @@ const componentData: ComponentStatusData = [
       'Select displays a list of choices on temporary surfaces. They allows users pick a value from predefined options',
   },
   {
-    name: 'Layout',
-    status: 'in-api-spec',
-    description: 'Layout components/primitives are used to build complex layouts.',
+    name: 'Layout Primitives',
+    status: 'released',
+    releasedIn: '6.5.0',
+    storybookLink: 'Components/Layout Primitives (Box)/Layout Primitives Tutorial',
+    description:
+      'Layout Primitives are used to build complex responsive layouts. Includes Box component and Styled Props on existing blade components',
   },
   {
     name: 'BottomSheet',
