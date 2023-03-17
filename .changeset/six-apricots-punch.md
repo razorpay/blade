@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-feat/link hit slop react native
+feat(Link): add `hitSlop` support for native
