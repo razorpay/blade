@@ -20,8 +20,8 @@ import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants }
 import type { WithComponentId } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import size from '~tokens/global/size';
-import type { StringChildrenType } from '~src/_helpers/types';
 import type { DropdownProps } from '~components/Dropdown';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 type ActionListItemProps = {
   title: string;
@@ -61,7 +61,7 @@ type ActionListItemProps = {
    * @private
    */
   _index?: number;
-};
+} & TestID;
 
 const ActionListItemContext = React.createContext<{
   intent?: ActionListItemProps['intent'];
@@ -98,10 +98,11 @@ type ActionListSectionProps = {
    * @private
    */
   _hideDivider?: boolean;
-};
+} & TestID;
 const ActionListSection: WithComponentId<ActionListSectionProps> = ({
   title,
   children,
+  testID,
   _hideDivider,
 }): JSX.Element => {
   return (
@@ -110,7 +111,7 @@ const ActionListSection: WithComponentId<ActionListSectionProps> = ({
         role: getActionListSectionRole(),
         label: title,
       })}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListSection)}
+      {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
     >
       {/* We're announcing title as group label so we can hide this */}
       <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
@@ -206,7 +207,7 @@ const _ActionListItemBody = ({
         justifyContent="center"
         flexDirection="row"
         alignItems="center"
-        maxHeight={isReactNative() ? undefined : size[20]}
+        maxHeight={isReactNative() ? undefined : makeSize(size[20])}
       >
         <BaseBox display="flex" justifyContent="center" alignItems="center">
           {selectionType === 'multiple' ? (
@@ -332,7 +333,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
           }
           props.onClick?.({ name: props.value, value: isSelected });
         })}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListItem)}
+        {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
         onMouseDown={() => {
           setShouldIgnoreBlur(true);
           // We want to keep focus on Dropdown's trigger while option is being clicked

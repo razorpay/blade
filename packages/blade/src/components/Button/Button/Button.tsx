@@ -3,8 +3,9 @@ import React from 'react';
 import BaseButton from '../BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import type { StringChildrenType } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -19,7 +20,8 @@ type ButtonCommonProps = {
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
-};
+} & TestID &
+  StyledPropsBlade;
 
 /*
   Mandatory children prop when icon is not provided
@@ -52,12 +54,15 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     type = 'button',
     variant = 'primary',
     accessibilityLabel,
+    testID,
+    ...styledProps
   },
   ref,
 ) => {
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
+      {...styledProps}
       ref={ref}
       accessibilityLabel={accessibilityLabel}
       iconPosition={iconPosition}
@@ -68,6 +73,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       type={type}
       variant={variant}
       isLoading={isLoading}
+      testID={testID}
     />
   );
 };

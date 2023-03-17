@@ -3,20 +3,24 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
-import type { StringChildrenType } from '~src/_helpers/types';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type TitleProps = {
   size?: 'small' | 'medium' | 'large';
   contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: StringChildrenType;
-};
+} & TestID &
+  StyledPropsBlade;
 
 const getProps = ({
   size,
   type,
   contrast,
-}: Pick<TitleProps, 'size' | 'type' | 'contrast'>): Omit<BaseTextProps, 'children'> => {
+  testID,
+}: Pick<TitleProps, 'size' | 'type' | 'contrast' | 'testID'>): Omit<BaseTextProps, 'children'> => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
@@ -28,6 +32,7 @@ const getProps = ({
     fontFamily: 'text',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
     componentName: 'title',
+    testID,
   };
 
   if (size === 'small') {
@@ -52,7 +57,13 @@ export const Title = ({
   type = 'normal',
   contrast = 'low',
   children,
+  testID,
+  ...styledProps
 }: TitleProps): ReactElement => {
-  const props = getProps({ size, type, contrast });
-  return <BaseText {...props}>{children}</BaseText>;
+  const props = getProps({ size, type, contrast, testID });
+  return (
+    <BaseText {...props} {...getStyledProps(styledProps)}>
+      {children}
+    </BaseText>
+  );
 };

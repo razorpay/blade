@@ -105,6 +105,7 @@ export const StyledBaseInput = React.forwardRef<
       type,
       hasPopup,
       shouldIgnoreBlurAnimation,
+      autoCapitalize,
       ...props
     },
     ref,
@@ -164,6 +165,7 @@ export const StyledBaseInput = React.forwardRef<
         onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
           handleOnInput?.({ name, value: event });
         }}
+        autoCapitalize={autoCapitalize}
         {...commonProps}
         {...props}
         {...accessibilityProps}

@@ -11,6 +11,7 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { Button } from '~components/Button';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -90,6 +91,7 @@ export default {
         type: 'select',
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {
@@ -241,7 +243,7 @@ export const KitchenSink = (): React.ReactElement => {
         <RadioComponent value="mango">Mango</RadioComponent>
         <RadioComponent value="orange">Orange</RadioComponent>
       </RadioGroupComponent>
-      <BaseBox height={50} overflow="scroll" marginTop="spacing.4">
+      <BaseBox height="50px" overflow="scroll" marginTop="spacing.4">
         <RadioGroupComponent
           labelPosition="left"
           necessityIndicator="optional"

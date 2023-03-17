@@ -32,4 +32,9 @@ describe('<Code />', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<Code testID="code-test">TEST_TOKEN</Code>);
+    expect(getByTestId('code-test')).toBeTruthy();
+  });
 });

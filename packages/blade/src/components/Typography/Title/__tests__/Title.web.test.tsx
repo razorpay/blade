@@ -67,4 +67,10 @@ describe('<Title />', () => {
     const { container } = renderWithTheme(<Title>Text content</Title>);
     await assertAccessible(container);
   });
+
+  it('should accept testID', () => {
+    const displayText = 'Displaying Landing Screen Title';
+    const { getByTestId } = renderWithTheme(<Title testID="title-test">{displayText}</Title>);
+    expect(getByTestId('title-test')).toBeTruthy();
+  });
 });

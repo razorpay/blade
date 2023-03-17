@@ -8,6 +8,7 @@ import { Text } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { useTheme } from '~components/BladeProvider';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -56,6 +57,7 @@ export default {
       page: Page,
     },
   },
+  argTypes: getStyledPropsArgTypes(),
 } as Meta<SpinnerProps>;
 
 const SpinnerTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {

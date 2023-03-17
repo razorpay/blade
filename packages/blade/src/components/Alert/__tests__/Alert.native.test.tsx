@@ -99,4 +99,10 @@ describe('<Alert />', () => {
       ),
     ).toThrow(`[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.`);
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<Alert description="Test" testID="alert-test" />);
+
+    expect(getByTestId('alert-test')).toBeTruthy();
+  });
 });

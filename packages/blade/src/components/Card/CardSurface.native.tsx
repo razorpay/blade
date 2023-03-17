@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import type { BaseBoxProps } from '~components/Box/BaseBox/types';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 const isAndroid = Platform.OS === 'android';
 // TODO: Temporary workaround to make android shadows look as close as iOS

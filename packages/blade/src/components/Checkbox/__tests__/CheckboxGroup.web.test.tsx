@@ -346,4 +346,14 @@ describe('<CheckboxGroup /> integration tests', () => {
     expect(getByLabelText('orange')).toHaveFocus();
     expect(getByLabelText('orange')).toBeChecked();
   });
+
+  it('should accept testID', () => {
+    const labelText = 'Select fruits';
+    const { getByTestId } = renderWithTheme(
+      <CheckboxGroup label={labelText} testID="checkbox-group-test">
+        <Checkbox value="apple">Apple</Checkbox>
+      </CheckboxGroup>,
+    );
+    expect(getByTestId('checkbox-group-test')).toBeTruthy();
+  });
 });

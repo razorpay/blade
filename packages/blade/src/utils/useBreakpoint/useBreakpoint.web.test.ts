@@ -11,7 +11,7 @@ describe('useBreakpoint', () => {
 
     const { result } = renderHook(() => useBreakpoint({ breakpoints }));
 
-    expect(result.current.matchedBreakpoint).toBe('xs');
+    expect(result.current.matchedBreakpoint).toBe('base');
     expect(result.current.matchedDeviceType).toBe('mobile');
   });
 
@@ -20,7 +20,7 @@ describe('useBreakpoint', () => {
       // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
       .fn<void, ((arg: { media: string }) => void)[]>()
       .mockImplementation((_, callback: (arg: { media: string }) => void) => {
-        callback({ media: 'screen and (min-width: 769px) and (max-width: 1024px)' });
+        callback({ media: 'screen and (min-width: 1024px) and (max-width: 1199px)' });
       });
     setupMatchMediaMock({
       // return matches true for initial state because event object is set only once useEffect runs
@@ -38,7 +38,7 @@ describe('useBreakpoint', () => {
     }) => void;
     act(() => {
       addEventListenerMockCallback({
-        media: 'screen and (max-width: 320px)',
+        media: 'screen and (min-width: 320px) and (max-width: 479px)',
       });
     });
 

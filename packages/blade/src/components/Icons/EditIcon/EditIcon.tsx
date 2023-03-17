@@ -3,11 +3,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconProps } from '..';
 import useIconProps from '../useIconProps';
 
-const EditIcon = ({ size, color }: IconProps): ReactElement => {
+const EditIcon = ({ size, color, ...styledProps }: IconProps): ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

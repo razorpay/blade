@@ -285,4 +285,12 @@ describe('<TextArea />', () => {
     renderWithTheme(<Example />);
     expect(refValue).toHaveProperty('focus');
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <TextArea label="Enter name" testID="text-area-test-id" />,
+    );
+
+    expect(getByTestId('text-area-test-id')).toBeTruthy();
+  });
 });

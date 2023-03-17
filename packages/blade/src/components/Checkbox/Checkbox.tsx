@@ -5,6 +5,8 @@ import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
 import { metaAttribute, isEmpty, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -12,6 +14,7 @@ import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { TestID } from '~src/_helpers/types';
 
 type OnChange = ({
   isChecked,
@@ -101,7 +104,8 @@ type CheckboxProps = {
    *
    */
   tabIndex?: number;
-};
+} & TestID &
+  StyledPropsBlade;
 
 const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> = (
   {
@@ -119,6 +123,8 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     errorText,
     size = 'medium',
     tabIndex,
+    testID,
+    ...styledProps
   },
   ref,
 ) => {
@@ -165,6 +171,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   const _hasError = _validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const _name = name ?? groupProps?.name;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
   const _size = groupProps.size ?? size;
   const isSmall = _size === 'small';
@@ -197,7 +204,10 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   });
 
   return (
-    <BaseBox {...metaAttribute(MetaConstants.Component, MetaConstants.Checkbox)}>
+    <BaseBox
+      {...metaAttribute({ name: MetaConstants.Checkbox, testID })}
+      {...getStyledProps(styledProps)}
+    >
       <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
