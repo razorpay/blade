@@ -107,7 +107,10 @@ const _SelectInput = (
         isPopupExpanded={isOpen}
         onClick={onTriggerClick}
         onKeyDown={onTriggerKeydown}
-        onBlur={onTriggerBlur}
+        onBlur={({ name, value }) => {
+          onTriggerBlur?.({ name, value });
+          props.onBlur?.({ name, value });
+        }}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
         shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
