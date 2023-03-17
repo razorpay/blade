@@ -266,29 +266,29 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'BottomSheet',
-    status: 'planned-Q4-dev',
+    status: 'in-development',
     description:
       'Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.',
   },
   {
     name: 'Tags',
-    status: 'planned-Q4-design',
+    status: 'in-design',
     description: 'A tag labels UI objects for quick recognition and navigation.',
   },
   {
     name: 'Toggle',
-    status: 'planned-Q4-dev',
+    status: 'in-design',
     description:
       'Toggle component is used as an alternative for the checkbox component, It can be used to switch between two states: often on or off.',
   },
   {
     name: 'Amount',
-    status: 'planned-Q4-dev',
+    status: 'in-development',
     description: 'Amount component is used to display & format various currencies',
   },
   {
     name: 'Accordion',
-    status: 'planned-Q4-design',
+    status: 'in-design',
     description:
       'Accordion component allows the user to show and hide sections of related content on a page',
   },
