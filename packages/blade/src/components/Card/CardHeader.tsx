@@ -157,9 +157,11 @@ const CardHeaderLeading: WithComponentId<CardHeaderLeadingProps> = ({
           </Heading>
           <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
         </BaseBox>
-        <Text variant="body" size="small" weight="regular">
-          {subtitle}
-        </Text>
+        {subtitle && (
+          <Text variant="body" size="small" weight="regular">
+            {subtitle}
+          </Text>
+        )}
       </BaseBox>
     </BaseBox>
   );
