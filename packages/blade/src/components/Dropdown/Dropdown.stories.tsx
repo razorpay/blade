@@ -311,10 +311,16 @@ const DropdownTemplate: ComponentStory<typeof Playground> = (args) => {
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
-          onChange={({ name, values }) => {
-            console.log(name, values);
-          }}
           {...selectInputArgs}
+          onChange={(e) => {
+            console.log('onChange--', e);
+          }}
+          onBlur={(e) => {
+            console.log('onBlur--', e);
+          }}
+          onFocus={(e) => {
+            console.log('oFocus--', e);
+          }}
         />
         <DropdownOverlay>
           <ActionList surfaceLevel={surfaceLevel}>

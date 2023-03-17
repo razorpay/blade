@@ -88,6 +88,31 @@ describe('<Dropdown />', () => {
     expect(selectInput.textContent).toBe('Orange');
   });
 
+  it('should trigger focus and blur events for SelectInput', async () => {
+    const user = userEvent.setup();
+    const onFocus = jest.fn();
+    const onBlur = jest.fn();
+
+    const { getByRole } = renderWithTheme(
+      <Dropdown>
+        <SelectInput name="dropdown-select" label="Fruits" onFocus={onFocus} onBlur={onBlur} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Banana" value="banana" />
+            <ActionListItem title="Orange" value="orange" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const selectInput = getByRole('combobox', { name: 'Fruits' });
+
+    await user.click(selectInput);
+    expect(onFocus).toHaveBeenCalledWith({ name: 'dropdown-select', value: '' });
+    await user.click(getByRole('option', { name: 'Orange' }));
+    expect(onBlur).toHaveBeenCalledWith({ name: 'dropdown-select', value: 'Orange' });
+  });
+
   it('should handle accessibility of multiselect', async () => {
     const user = userEvent.setup();
     const { container, getByRole } = renderWithTheme(
