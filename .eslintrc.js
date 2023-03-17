@@ -33,11 +33,16 @@ module.exports = {
     ],
     'import/extensions': ['error', 'never', { css: 'always' }],
     'no-restricted-properties': [
-      2,
+      'error',
       {
         property: 'displayName',
         message:
           "Please define displayName using `assignWithoutSideEffects` instead. This will make sure the code doesn't create side-effects and tree-shaking continues to work",
+      },
+      {
+        property: 'componentId',
+        message:
+          "Please define componentId using `assignWithoutSideEffects` instead. This will make sure the code doesn't create side-effects and tree-shaking continues to work",
       },
     ],
   },
