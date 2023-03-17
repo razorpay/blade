@@ -12,9 +12,11 @@ describe('getDependencyProp', () => {
         className: 'hi',
         children: 'wuuhuuu',
         // @ts-expect-error: we don't have to care about actual theme object. It is ignored in this function
-        theme: { something: 'something' },
+        theme: { name: 'paymentTheme', something: 'something' },
       }),
-    ).toMatchInlineSnapshot(`"{\\"paddingLeft\\":\\"12px\\",\\"display\\":\\"block\\"}"`);
+    ).toMatchInlineSnapshot(
+      `"{\\"paddingLeft\\":\\"12px\\",\\"display\\":\\"block\\"}-paymentTheme"`,
+    );
   });
 });
 
