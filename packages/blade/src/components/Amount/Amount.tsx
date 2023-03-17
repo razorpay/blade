@@ -107,7 +107,7 @@ interface AmountValue extends Omit<AmountProps, 'value'> {
 
 const AmountValue = ({
   value,
-  size = 'heading-small',
+  size = 'body-medium',
   amountValueColor,
   isAffixSubtle = true,
   suffix = 'decimals',
