@@ -5,6 +5,7 @@ import type { ReactElement } from 'react';
 import type { BaseSpinnerProps } from './BaseSpinner';
 import { BaseSpinner as BaseSpinnerComponent } from './BaseSpinner';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -54,6 +55,7 @@ export default {
       page: Page,
     },
   },
+  argTypes: getStyledPropsArgTypes(),
 } as Meta<BaseSpinnerProps>;
 
 const BaseSpinnerTemplate: ComponentStory<typeof BaseSpinnerComponent> = ({ ...args }) => {

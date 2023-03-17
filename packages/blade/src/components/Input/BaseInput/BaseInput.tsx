@@ -14,9 +14,18 @@ import { BaseInputWrapper } from './BaseInputWrapper';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
-import type { AriaAttributes } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import {
+  isReactNative,
+  metaAttribute,
+  getPlatformType,
+  makeAccessible,
+  useBreakpoint,
+  makeSize,
+} from '~utils';
+import type { AriaAttributes, Platform } from '~utils';
 
-import { metaAttribute, getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~src/hooks/useInteraction';
@@ -229,7 +238,26 @@ export type BaseInputProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
-  } & TestID;
+    /**
+     * sets the autocapitalize behavior for the input
+     */
+    autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+  } & TestID &
+  Platform.Select<{
+    native: {
+      /**
+       * The callback function to be invoked when the value of the input field is submitted.
+       */
+      onSubmit?: FormInputOnEvent;
+    };
+    web: {
+      /**
+       * This is a react-native only prop and has no effect on web.
+       */
+      onSubmit?: undefined;
+    };
+  }> &
+  StyledPropsBlade;
 
 const autoCompleteSuggestionTypeValues = [
   'none',
@@ -256,16 +284,26 @@ const useInput = ({
   onFocus,
   onChange,
   onBlur,
+  onSubmit,
   onInput,
   onKeyDown,
 }: Pick<
   BaseInputProps,
-  'value' | 'defaultValue' | 'onFocus' | 'onChange' | 'onBlur' | 'onInput' | 'onKeyDown' | 'onClick'
+  | 'value'
+  | 'defaultValue'
+  | 'onFocus'
+  | 'onChange'
+  | 'onBlur'
+  | 'onInput'
+  | 'onKeyDown'
+  | 'onClick'
+  | 'onSubmit'
 >): {
   handleOnFocus: FormInputHandleOnEvent;
   handleOnClick: FormInputHandleOnClickEvent;
   handleOnChange: FormInputHandleOnEvent;
   handleOnBlur: FormInputHandleOnEvent;
+  handleOnSubmit: FormInputHandleOnEvent;
   handleOnInput: FormInputHandleOnEvent;
   handleOnKeyDown: FormInputHandleOnKeyDownEvent;
   inputValue?: string;
@@ -316,7 +354,7 @@ const useInput = ({
     [onClick],
   );
 
-  const handleOnChange: FormInputHandleOnEvent = React.useCallback(
+  const handleOnSubmit: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
 
@@ -326,14 +364,16 @@ const useInput = ({
         // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
         _value = value?.target.value ?? '';
       }
-
-      onChange?.({
-        name,
-        value: _value,
-      });
-      setInputValue(_value);
+      if (isReactNative()) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+        //@ts-ignore need to ignore this since it will throw a TS error for web but not for native
+        onSubmit?.({
+          name,
+          value: _value,
+        });
+      }
     },
-    [onChange],
+    [onSubmit],
   );
 
   const handleOnBlur: FormInputHandleOnEvent = React.useCallback(
@@ -352,6 +392,26 @@ const useInput = ({
       });
     },
     [onBlur],
+  );
+
+  const handleOnChange: FormInputHandleOnEvent = React.useCallback(
+    ({ name, value }) => {
+      let _value = '';
+
+      if (getPlatformType() === 'react-native' && typeof value === 'string') {
+        _value = value;
+      } else if (typeof value !== 'string') {
+        // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
+        _value = value?.target.value ?? '';
+      }
+
+      onChange?.({
+        name,
+        value: _value,
+      });
+      setInputValue(_value);
+    },
+    [onChange],
   );
 
   const handleOnInput: FormInputHandleOnEvent = React.useCallback(
@@ -389,6 +449,7 @@ const useInput = ({
     handleOnClick,
     handleOnChange,
     handleOnBlur,
+    handleOnSubmit,
     handleOnInput,
     handleOnKeyDown,
     inputValue,
@@ -464,6 +525,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onChange,
       onInput,
       onBlur,
+      onSubmit,
       onClick,
       onKeyDown,
       isDisabled,
@@ -498,7 +560,9 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       popupId,
       isPopupExpanded,
       shouldIgnoreBlurAnimation,
+      autoCapitalize,
       testID,
+      ...styledProps
     },
     ref,
   ) => {
@@ -508,6 +572,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       handleOnChange,
       handleOnClick,
       handleOnBlur,
+      handleOnSubmit,
       handleOnInput,
       handleOnKeyDown,
       inputValue,
@@ -518,6 +583,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onClick,
       onChange,
       onBlur,
+      onSubmit,
       onInput,
       onKeyDown,
     });
@@ -563,7 +629,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
     return (
-      <BaseBox {...metaAttribute({ name: componentName, testID })}>
+      <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
         <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -615,6 +681,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               handleOnFocus={handleOnFocus}
               handleOnChange={handleOnChange}
               handleOnBlur={handleOnBlur}
+              handleOnSubmit={handleOnSubmit}
               handleOnInput={handleOnInput}
               handleOnKeyDown={handleOnKeyDown}
               handleOnClick={handleOnClick}
@@ -637,6 +704,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               isTextArea={isTextArea}
               hasPopup={hasPopup}
               shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+              autoCapitalize={autoCapitalize}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}
@@ -648,7 +716,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         </BaseBox>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
         {!hideFormHint && (
-          <BaseBox marginLeft={isLabelLeftPositioned ? 136 : 0}>
+          <BaseBox marginLeft={makeSize(isLabelLeftPositioned ? 136 : 0)}>
             <BaseBox
               display="flex"
               flexDirection="row"

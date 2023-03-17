@@ -41,8 +41,8 @@ const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' 
 };
 
 const IndeterminateIcon = ({ color, size }: { color: string; size: 'small' | 'medium' }) => {
-  const width = `${svgSize[size].width}px`;
-  const height = `${svgSize[size].height}px`;
+  const width = makeSpace(svgSize[size].width);
+  const height = makeSpace(svgSize[size].height);
 
   return (
     <Svg width={width} height={height} viewBox="0 0 8 8" fill="none">

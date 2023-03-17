@@ -4,29 +4,23 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 1`]
 <View
   alignItems="center"
   alignSelf="center"
-  background="hotpink"
-  bottom={0}
+  bottom="0px"
   display="flex"
   height="auto"
   justifyContent="center"
-  left={0}
-  maxHeight={56}
-  maxWidth={56}
-  minHeight={48}
-  minWidth={48}
+  left="0px"
+  maxHeight="56px"
+  maxWidth="56px"
+  minHeight="48px"
+  minWidth="48px"
   overflow="hidden"
-  paddingBottom="spacing.4"
-  paddingLeft="spacing.5"
-  paddingRight="spacing.6"
-  paddingTop="spacing.3"
   position="absolute"
-  right={0}
+  right="0px"
   style={
     Array [
       Object {
         "alignItems": "center",
         "alignSelf": "center",
-        "backgroundColor": "hotpink",
         "bottom": 0,
         "display": "flex",
         "height": "auto",
@@ -48,7 +42,7 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 1`]
       },
     ]
   }
-  top={0}
+  top="0px"
   width="auto"
 />
 `;
