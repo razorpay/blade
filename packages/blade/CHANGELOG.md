@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 6.5.2
+
+### Patch Changes
+
+- 2700667f: fix(SelectInput): call user passed onBlur callback
+- 3855a583: fix(Card): CardHeader title alignment when subtitle is not present
+
 ## 6.5.1
 
 ### Patch Changes
