@@ -63,7 +63,7 @@ const _SelectInput = (
     },
   });
 
-  const { icon, onChange, placeholder = 'Select Option', ...baseInputProps } = props;
+  const { icon, onChange, placeholder = 'Select Option', onBlur, ...baseInputProps } = props;
 
   React.useEffect(() => {
     onChange?.({ name: props.name, values: value.split(', ') });
@@ -107,7 +107,9 @@ const _SelectInput = (
         isPopupExpanded={isOpen}
         onClick={onTriggerClick}
         onKeyDown={onTriggerKeydown}
-        onBlur={onTriggerBlur}
+        onBlur={({ name }) => {
+          onTriggerBlur?.({ name, value, onBlurCallback: onBlur });
+        }}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
         shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
