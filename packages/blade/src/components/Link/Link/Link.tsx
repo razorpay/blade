@@ -3,6 +3,7 @@ import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { Platform } from '~utils';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
@@ -21,7 +22,28 @@ type LinkCommonProps = {
    */
   size?: 'small' | 'medium';
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  Platform.Select<{
+    native: {
+      /**
+       * Defines how far your touch can start away from the link
+       */
+      hitSlop?:
+        | {
+            top?: number;
+            right?: number;
+            bottom?: number;
+            left?: number;
+          }
+        | number;
+    };
+    web: {
+      /**
+       * This is a react-native only prop and has no effect on web.
+       */
+      hitSlop?: undefined;
+    };
+  }>;
 
 /*
   Mandatory children prop when icon is not provided
@@ -84,6 +106,7 @@ const Link = ({
   accessibilityLabel,
   size = 'medium',
   testID,
+  hitSlop,
   ...styledProps
 }: LinkProps): ReactElement => {
   return (
@@ -95,6 +118,7 @@ const Link = ({
       accessibilityLabel={accessibilityLabel}
       size={size}
       testID={testID}
+      hitSlop={hitSlop}
       {...styledProps}
     />
   );

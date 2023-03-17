@@ -21,7 +21,6 @@ import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { Platform } from '~utils';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -37,29 +36,16 @@ type BaseLinkCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium';
+  hitSlop?:
+    | {
+        top?: number;
+        right?: number;
+        bottom?: number;
+        left?: number;
+      }
+    | number;
 } & TestID &
-  StyledPropsBlade &
-  Platform.Select<{
-    native: {
-      /**
-       * Defines how far your touch can start away from the link
-       */
-      hitSlop?:
-        | {
-            top?: number;
-            right?: number;
-            bottom?: number;
-            left?: number;
-          }
-        | number;
-    };
-    web: {
-      /**
-       * This is a react-native only prop and has no effect on web.
-       */
-      hitSlop?: undefined;
-    };
-  }>;
+  StyledPropsBlade;
 
 /*
   Mandatory children prop when icon is not provided
