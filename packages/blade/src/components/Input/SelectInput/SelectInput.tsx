@@ -108,7 +108,7 @@ const _SelectInput = (
         onClick={onTriggerClick}
         onKeyDown={onTriggerKeydown}
         onBlur={({ name }) => {
-          onTriggerBlur?.({ name, value, userOnBlur: onBlur });
+          onTriggerBlur?.({ name, value, onBlurCallback: onBlur });
         }}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}

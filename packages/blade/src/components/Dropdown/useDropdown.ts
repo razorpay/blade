@@ -105,7 +105,7 @@ let searchString = '';
 type OnTriggerBlurEvent = (options: {
   name?: string;
   value?: string;
-  userOnBlur?: SelectInputProps['onBlur'];
+  onBlurCallback?: SelectInputProps['onBlur'];
 }) => void;
 
 type UseDropdownReturnValue = DropdownContextType & {
@@ -227,7 +227,7 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Blur handler on combobox. Also handles the selection logic when user moves focus
    */
-  const onTriggerBlur: OnTriggerBlurEvent = ({ name, value, userOnBlur }) => {
+  const onTriggerBlur: OnTriggerBlurEvent = ({ name, value, onBlurCallback }) => {
     if (rest.hasFooterAction) {
       // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
       // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
@@ -239,7 +239,7 @@ const useDropdown = (): UseDropdownReturnValue => {
       return;
     }
 
-    userOnBlur?.({ name, value });
+    onBlurCallback?.({ name, value });
 
     if (isOpen) {
       if (selectionType !== 'multiple') {
