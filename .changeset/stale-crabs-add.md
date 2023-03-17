@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-fix(Card): ChardHeader title alignment when subtitle is not present
+fix(Card): CardHeader title alignment when subtitle is not present
