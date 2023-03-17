@@ -442,6 +442,21 @@ function LayoutPrimitivesDocs(): JSX.Element {
             and we can look into adding that prop to Box itself.
           </Text>
         </BaseBox>
+
+        <BaseBox id="how-is-it-different-from-card" paddingTop="spacing.4">
+          <Heading marginBottom="spacing.2" size="large">
+            How is it different from Card Component?
+          </Heading>
+          <Text marginY="spacing.3">
+            Layout Primitives are empty components meant for creating responsive layouts and
+            don&apos;t follow any visual structure. They also don&apos;t exist on figma.
+          </Text>
+          <Text marginY="spacing.3">
+            Card has a certain visual structure. It follows a standard padding, borderRadius,
+            boxShadow, etc. It is meant for creating cards where you want to add shadows, headers,
+            footers, etc.
+          </Text>
+        </BaseBox>
       </Section>
       <Section id="references">
         <Title size="small">References</Title>
