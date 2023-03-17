@@ -395,7 +395,6 @@ const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement =
 
 const ComponentStatusTable = (): React.ReactElement => {
   const unreleasedComponentsSort: ComponentStatuses[] = [
-    'to-be-decided',
     'planned-Q1-design',
     'planned-Q1-dev',
     'planned-Q2-design',
@@ -407,6 +406,7 @@ const ComponentStatusTable = (): React.ReactElement => {
     'in-design',
     'in-api-spec',
     'in-development',
+    'to-be-decided',
     'released',
   ];
 
