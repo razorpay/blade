@@ -4,6 +4,7 @@ exports[`<PhoneIcon /> should render PhoneIcon 1`] = `
 <div>
   <svg
     aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
     data-blade-component="icon"
     fill="none"
     height="20px"

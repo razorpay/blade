@@ -32,6 +32,7 @@ type SelectInputProps = Pick<
   | 'onFocus'
   | 'onBlur'
   | 'placeholder'
+  | 'testID'
 > & {
   icon?: IconComponent;
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
@@ -63,7 +64,7 @@ const _SelectInput = (
     },
   });
 
-  const { icon, onChange, placeholder = 'Select Option', ...baseInputProps } = props;
+  const { icon, onChange, placeholder = 'Select Option', onBlur, ...baseInputProps } = props;
 
   React.useEffect(() => {
     onChange?.({ name: props.name, values: value.split(', ') });
@@ -107,7 +108,9 @@ const _SelectInput = (
         isPopupExpanded={isOpen}
         onClick={onTriggerClick}
         onKeyDown={onTriggerKeydown}
-        onBlur={onTriggerBlur}
+        onBlur={({ name }) => {
+          onTriggerBlur?.({ name, value, onBlurCallback: onBlur });
+        }}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
         shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
@@ -123,6 +126,7 @@ const _SelectInput = (
             icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />
         }
+        testID={props.testID}
       />
     </BaseBox>
   );

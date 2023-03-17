@@ -140,6 +140,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     isTextArea,
     hasPopup,
     shouldIgnoreBlurAnimation,
+    autoCapitalize,
     ...props
   },
   ref,
@@ -225,6 +226,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
           ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
           : undefined
       }
+      autoCapitalize={autoCapitalize}
       {...commonProps}
       {...props}
       {...accessibilityProps}

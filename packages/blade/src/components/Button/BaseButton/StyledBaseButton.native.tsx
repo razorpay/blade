@@ -6,16 +6,22 @@ import type { TextInput } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
 import { getIn } from '~utils';
+import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
->((props) => ({
-  ...getStyledBaseButtonStyles(props),
-  alignSelf: 'center',
-}));
+>((props) => {
+  const styledPropsCSSObject = useStyledProps(props);
+
+  return {
+    ...getStyledBaseButtonStyles(props),
+    alignSelf: 'center',
+    ...styledPropsCSSObject,
+  };
+});
 
 const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledBaseButtonProps> = (
   {
@@ -43,6 +49,8 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
     motionEasing,
     isLoading,
     accessibilityProps,
+    testID,
+    ...styledProps
   },
   ref,
 ) => {
@@ -68,6 +76,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
 
   return (
     <StyledPressable
+      {...styledProps}
       {...accessibilityProps}
       ref={ref as React.RefObject<TextInput>}
       isLoading={isLoading}
@@ -93,6 +102,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      testID={testID}
     >
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;

@@ -23,4 +23,9 @@ describe('<Code />', () => {
     expect(renderedCode).toHaveStyle({ fontSize: typography.onMobile.fonts.size[100] });
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<Code testID="code-test">TEST_TOKEN</Code>);
+    expect(getByTestId('code-test')).toBeTruthy();
+  });
 });

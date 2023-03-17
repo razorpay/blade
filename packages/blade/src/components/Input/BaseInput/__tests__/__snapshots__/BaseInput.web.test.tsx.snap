@@ -24,8 +24,8 @@ exports[`<BaseInput /> should render 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-top: 0px;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .c2 {
@@ -285,6 +285,7 @@ exports[`<BaseInput /> should render 1`] = `
               </p>
               <div
                 class="c5"
+                data-blade-component="visually-hidden"
               >
                 <p
                   class="c6 Text__StyledText-wkh56f-0"
@@ -356,8 +357,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-top: 0px;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .c2 {
@@ -647,6 +648,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               </p>
               <div
                 class="c5"
+                data-blade-component="visually-hidden"
               >
                 <p
                   class="c6 Text__StyledText-wkh56f-0"
@@ -677,6 +679,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="16px"
@@ -719,6 +722,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="16px"

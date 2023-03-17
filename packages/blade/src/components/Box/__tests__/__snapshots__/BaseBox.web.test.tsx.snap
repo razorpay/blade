@@ -6,34 +6,33 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  overflow: hidden;
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   padding-top: 8px;
   padding-bottom: 12px;
-  padding-left: 16px;
   padding-right: 20px;
-  width: auto;
+  padding-left: 16px;
   height: auto;
   min-height: 48px;
-  min-width: 48px;
   max-height: 56px;
+  width: auto;
+  min-width: 48px;
   max-width: 56px;
-  background: hotpink;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
 
 <div>

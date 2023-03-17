@@ -10,7 +10,9 @@ import type { WithComponentId } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import spacing from '~tokens/global/spacing';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import size from '~tokens/global/size';
+import type { TestID } from '~src/_helpers/types';
 
 const dropdownFadeIn = keyframes`
 from {
@@ -49,18 +51,23 @@ const StyledDropdownOverlay = styled(BaseBox)<{
     `,
 );
 
-type DropdownOverlayProps = { children: React.ReactNode };
+type DropdownOverlayProps = {
+  children: React.ReactNode;
+} & TestID;
 
 /**
  * Overlay of dropdown
  *
  * Wrap your ActionList within this component
  */
-const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): JSX.Element => {
+const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({
+  children,
+  testID,
+}): JSX.Element => {
   const { isOpen, triggererRef, hasLabelOnLeft } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
-  const [width, setWidth] = React.useState<number | string>('100%');
+  const [width, setWidth] = React.useState<SpacingValueType>('100%');
 
   const fadeIn = css`
     animation: ${dropdownFadeIn} ${makeMotionTime(theme.motion.duration.quick)}
@@ -90,7 +97,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
         const offset = svgWidth + interactionElementPadding;
         // SelectInput is -> Button + InteractionElement on right (the chevron icon)
         // So we add the interactionElement offset with Button's width.
-        setWidth(triggererRef.current?.clientWidth + offset);
+        setWidth(makeSize(triggererRef.current?.clientWidth + offset));
       } else {
         // We don't have to worry about setting the custom width when label is on top since we can just 100% width of parent div
         setWidth('100%');
@@ -112,7 +119,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
         width={width}
         style={{ opacity: isOpen ? 1 : 0 }}
         display={display}
-        right="0"
+        right="0px"
         position="absolute"
         transition={isOpen ? fadeIn : fadeOut}
         onAnimationEnd={() => {
@@ -122,7 +129,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({ children }): J
             setDisplay('none');
           }
         }}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.DropdownOverlay)}
+        {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
       </StyledDropdownOverlay>

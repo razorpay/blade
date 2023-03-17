@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import type { SelectorLabelProps } from './types';
-import { makeSpace } from '~utils';
+import { makeSpace, metaAttribute } from '~utils';
 
 const StyledSelectorLabel = styled.Pressable(({ theme }) => ({
   display: 'flex',
@@ -11,8 +11,16 @@ const StyledSelectorLabel = styled.Pressable(({ theme }) => ({
   marginBottom: makeSpace(theme.spacing[1]),
 }));
 
-const SelectorLabel = ({ children, inputProps }: SelectorLabelProps): React.ReactElement => {
-  return <StyledSelectorLabel {...inputProps}>{children}</StyledSelectorLabel>;
+const SelectorLabel = ({
+  children,
+  inputProps,
+  testID,
+}: SelectorLabelProps): React.ReactElement => {
+  return (
+    <StyledSelectorLabel {...inputProps} {...metaAttribute({ testID })}>
+      {children}
+    </StyledSelectorLabel>
+  );
 };
 
 export { SelectorLabel };

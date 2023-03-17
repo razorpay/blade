@@ -19,6 +19,9 @@ exports[`<G /> should render react-native-svg G component 1`] = `
         "backgroundColor": "transparent",
         "borderWidth": 0,
       },
+      Array [
+        Object {},
+      ],
       Object {
         "flex": 0,
         "height": 40,

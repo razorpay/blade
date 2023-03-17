@@ -2,11 +2,11 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const MapPinIcon: IconComponent = ({ size, color }) => {
+const MapPinIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M11.4448 23.8317C11.4448 23.8317 11.4453 23.8321 12 23L12.5547 23.8321C12.2188 24.056 11.7807 24.0556 11.4448 23.8317Z"
         fill={iconColor}

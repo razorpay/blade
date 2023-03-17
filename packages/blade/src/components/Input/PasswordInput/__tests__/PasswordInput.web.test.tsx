@@ -260,4 +260,12 @@ describe('<PasswordInput />', () => {
     await userEvent.click(button);
     expect(input).toHaveFocus();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <PasswordInput label="Enter password" testID="password-input-test" />,
+    );
+
+    expect(getByTestId('password-input-test')).toBeTruthy();
+  });
 });

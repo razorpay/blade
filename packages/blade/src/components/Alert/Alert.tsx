@@ -16,6 +16,8 @@ import {
   MetaConstants,
   useBreakpoint,
 } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
@@ -23,7 +25,7 @@ import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
 
 type Nullable<Type> = Type | null;
 
@@ -109,7 +111,8 @@ type AlertProps = {
      */
     secondary?: SecondaryAction;
   };
-};
+} & TestID &
+  StyledPropsBlade;
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -133,6 +136,8 @@ const Alert = ({
   isFullWidth = false,
   intent = 'neutral',
   actions,
+  testID,
+  ...styledProps
 }: AlertProps): ReactElement | null => {
   if (!actions?.primary && actions?.secondary) {
     throw new Error(
@@ -292,7 +297,8 @@ const Alert = ({
       isFullWidth={isFullWidth}
       isDesktop={isDesktop}
       {...a11yProps}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
+      {...metaAttribute({ name: MetaConstants.Alert, testID })}
+      {...getStyledProps(styledProps)}
     >
       {icon}
       <BaseBox

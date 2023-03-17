@@ -244,4 +244,20 @@ describe('<BaseInput />', () => {
     await assertAccessible(input);
     jest.clearAllMocks();
   });
+
+  it('should set autocapitalize attribute', () => {
+    const { getByLabelText } = renderWithTheme(
+      <BaseInput label="Enter name" id="name" autoCapitalize="none" />,
+    );
+
+    expect(getByLabelText('Enter name')).toHaveAttribute('autocapitalize', 'none');
+  });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <BaseInput id="name" label="Enter name" testID="base-input-test" />,
+    );
+
+    expect(getByTestId('base-input-test')).toBeTruthy();
+  });
 });

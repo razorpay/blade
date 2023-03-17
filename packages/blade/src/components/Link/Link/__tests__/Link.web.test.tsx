@@ -120,4 +120,10 @@ describe('<Link />', () => {
     const { container } = renderWithTheme(<Link variant="button">{linkText}</Link>);
     await assertAccessible(container);
   });
+
+  it('should accept testID', () => {
+    const linkText = 'Learn More';
+    const { getByTestId } = renderWithTheme(<Link testID="link-test">{linkText}</Link>);
+    expect(getByTestId('link-test')).toBeTruthy();
+  });
 });

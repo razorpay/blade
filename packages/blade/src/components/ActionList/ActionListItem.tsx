@@ -18,7 +18,7 @@ import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import size from '~tokens/global/size';
-import type { StringChildrenType } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListItemProps = {
@@ -59,7 +59,7 @@ type ActionListItemProps = {
    * @private
    */
   _index?: number;
-};
+} & TestID;
 
 const ActionListItemContext = React.createContext<{
   intent?: ActionListItemProps['intent'];
@@ -96,10 +96,11 @@ type ActionListSectionProps = {
    * @private
    */
   _hideDivider?: boolean;
-};
+} & TestID;
 const _ActionListSection = ({
   title,
   children,
+  testID,
   _hideDivider,
 }: ActionListSectionProps): JSX.Element => {
   return (
@@ -108,7 +109,7 @@ const _ActionListSection = ({
         role: getActionListSectionRole(),
         label: title,
       })}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListSection)}
+      {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
     >
       {/* We're announcing title as group label so we can hide this */}
       <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
@@ -259,7 +260,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
           }
           props.onClick?.({ name: props.value, value: isSelected });
         })}
-        {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListItem)}
+        {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
         onMouseDown={() => {
           setShouldIgnoreBlur(true);
           // We want to keep focus on Dropdown's trigger while option is being clicked
@@ -284,7 +285,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
           justifyContent="center"
           flexDirection="row"
           alignItems="center"
-          maxHeight={isReactNative() ? undefined : size[20]}
+          maxHeight={isReactNative() ? undefined : makeSize(size[20])}
         >
           <BaseBox display="flex" justifyContent="center" alignItems="center">
             {selectionType === 'multiple' ? (

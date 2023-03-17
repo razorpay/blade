@@ -4,6 +4,7 @@ import { Highlight } from '@storybook/design-system';
 import { BaseText as BaseTextComponent } from './BaseText';
 import type { BaseTextProps } from './types';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 export default {
   title: 'Components/Typography/BaseText (Internal)',
@@ -34,6 +35,7 @@ export default {
       ),
     },
   },
+  argTypes: getStyledPropsArgTypes(),
 } as Meta<BaseTextProps>;
 
 const BaseTextTemplate: ComponentStory<typeof BaseTextComponent> = (args) => {

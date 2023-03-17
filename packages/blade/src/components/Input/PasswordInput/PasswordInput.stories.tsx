@@ -10,6 +10,7 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -81,6 +82,7 @@ const meta: Meta<PasswordInputProps> = {
     onChange: { action: 'Changed', table: { category: propsCategory.BASE_PROPS } },
     onFocus: { action: 'Focussed', table: { category: propsCategory.BASE_PROPS } },
     onBlur: { action: 'Blurred', table: { category: propsCategory.BASE_PROPS } },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

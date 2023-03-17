@@ -80,4 +80,9 @@ describe('<Counter />', () => {
     const { container } = renderWithTheme(<Counter intent="neutral" contrast="high" value={20} />);
     expect(container).toMatchSnapshot();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<Counter value={20} testID="counter-test" />);
+    expect(getByTestId('counter-test')).toBeTruthy();
+  });
 });

@@ -8,7 +8,9 @@ import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils';
-import type { StringChildrenType } from '~src/_helpers/types';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 
 type BadgeProps = {
@@ -47,7 +49,8 @@ type BadgeProps = {
    * @default 'regular'
    */
   fontWeight?: 'regular' | 'bold';
-};
+} & TestID &
+  StyledPropsBlade;
 
 const isFeedbackVariant = (variant: string): variant is Feedback => {
   const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
@@ -91,6 +94,8 @@ const Badge = ({
   icon: Icon,
   size = 'medium',
   variant = 'neutral',
+  testID,
+  ...styledProps
 }: BadgeProps): ReactElement => {
   const childrenString = getStringFromReactText(children);
   if (!childrenString?.trim()) {
@@ -120,7 +125,8 @@ const Badge = ({
     <StyledBadge
       backgroundColor={backgroundColor}
       size={size}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Badge)}
+      {...metaAttribute({ name: MetaConstants.Badge, testID })}
+      {...getStyledProps(styledProps)}
     >
       <BaseBox
         paddingRight={horizontalPadding[size]}

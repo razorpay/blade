@@ -18,6 +18,8 @@ import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+
 import {
   MetaConstants,
   metaAttribute,
@@ -35,7 +37,11 @@ import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type { DotNotationSpacingStringToken, StringChildrenType } from '~src/_helpers/types';
+import type {
+  DotNotationSpacingStringToken,
+  StringChildrenType,
+  TestID,
+} from '~src/_helpers/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
@@ -57,7 +63,8 @@ type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-};
+} & TestID &
+  StyledPropsBlade;
 
 /*
 Mandatory children prop when icon is not provided
@@ -292,6 +299,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     type = 'button',
     children,
     accessibilityLabel,
+    testID,
+    ...styledProps
   },
   ref,
 ) => {
@@ -379,7 +388,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Button)}
+      {...metaAttribute({ name: MetaConstants.Button, testID })}
+      {...styledProps}
     >
       {isLoading ? (
         <BaseBox
@@ -387,10 +397,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           justifyContent="center"
           alignItems="center"
           position="absolute"
-          top={0}
-          left={0}
-          bottom={0}
-          right={0}
+          top="0px"
+          left="0px"
+          bottom="0px"
+          right="0px"
         >
           <BaseSpinner
             accessibilityLabel="Loading"

@@ -155,6 +155,19 @@ module.exports = {
         '@typescript-eslint/no-shadow': ['off'],
         '@typescript-eslint/explicit-module-boundary-types': ['off'],
         'no-only-tests/no-only-tests': 'error',
+        'no-restricted-imports': [
+          'error',
+          {
+            paths: [
+              {
+                name: 'lodash',
+                message:
+                  "Named export from lodash is restricted. Use path exports like `import get from 'lodash/get';` instead",
+              },
+            ],
+            patterns: ['!lodash/*'],
+          },
+        ],
       },
     },
     {

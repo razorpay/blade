@@ -14,4 +14,14 @@ describe('<VisuallyHidden />', () => {
     expect(getByText(displayText)).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('should accept testID', () => {
+    const displayText = 'Text only visible to screen readers';
+    const { getByTestId } = renderWithTheme(
+      <VisuallyHidden testID="visually-hidden-test">
+        <Text>{displayText}</Text>
+      </VisuallyHidden>,
+    );
+    expect(getByTestId('visually-hidden-test')).toBeTruthy();
+  });
 });

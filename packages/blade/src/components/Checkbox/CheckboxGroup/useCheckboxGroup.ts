@@ -45,6 +45,7 @@ const useCheckboxGroup = ({
   const [checkedValues, setValue] = useControllableState({
     value,
     defaultValue: defaultValue || [],
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     onChange: (values: string[]) => onChange?.({ values, name: name! }),
   });
 

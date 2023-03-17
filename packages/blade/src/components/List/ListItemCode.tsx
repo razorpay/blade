@@ -5,10 +5,10 @@ import { listItemCodeSize } from './listTokens';
 
 type ListItemCodeProps = Exclude<CodeProps, 'size'>;
 
-const ListItemCode = ({ children }: ListItemCodeProps): React.ReactElement => {
+const ListItemCode = ({ children, testID }: ListItemCodeProps): React.ReactElement => {
   const { size } = useListContext();
 
-  return <Code size={listItemCodeSize[size]} children={children} />;
+  return <Code size={listItemCodeSize[size]} children={children} testID={testID} />;
 };
 
 ListItemCode.componentId = 'ListItemCode';
