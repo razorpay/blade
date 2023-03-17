@@ -805,4 +805,22 @@ WithMultipleDropdowns.args = {
   name: 'design-system',
 };
 
+export const FocusTest = (): JSX.Element => {
+  return (
+    <Dropdown>
+      <SelectInput
+        name="focus-select"
+        label="Select"
+        onFocus={({ name, value }) => console.log('focus', name, value)}
+      />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Hello" value="hello" />
+          <ActionListItem title="Hi" value="hi" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
 export default DropdownStoryMeta;
