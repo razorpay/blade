@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import type { IconComponent } from '../../components/Icons';
 import {
+  StampIcon,
   EditIcon,
   CheckIcon,
   ClockIcon,
   LoaderIcon,
   AlertCircleIcon,
 } from '../../components/Icons';
+
 import { LinkToStorybook } from './LinkToStorybook';
 import { Heading, Text } from '~components/Typography';
 import { makeSpace } from '~utils';
@@ -22,6 +24,7 @@ type ComponentStatuses =
   | 'in-development'
   | 'in-design'
   | 'deprecated'
+  | 'to-be-decided'
   | `planned-Q${1 | 2 | 3 | 4}-${'dev' | 'design'}`;
 
 type ComponentStatusData = {
@@ -276,10 +279,10 @@ const componentData: ComponentStatusData = [
     description: 'A tag labels UI objects for quick recognition and navigation.',
   },
   {
-    name: 'Toggle',
+    name: 'Switch',
     status: 'in-design',
     description:
-      'Toggle component is used as an alternative for the checkbox component, It can be used to switch between two states: often on or off.',
+      'Switch component is used as an alternative for the checkbox component, It can be used to switch between two states: often on or off.',
   },
   {
     name: 'Amount',
@@ -293,16 +296,38 @@ const componentData: ComponentStatusData = [
       'Accordion component allows the user to show and hide sections of related content on a page',
   },
   {
-    name: 'Modal',
-    status: 'planned-Q4-design',
-    description:
-      "Modal is a dialog that focuses the user's attention exclusively on an information via a window that is overlaid on primary content.",
-  },
-  {
     name: 'Tooltip',
     status: 'planned-Q4-design',
     description:
       'Tooltip is a brief, informative message that appears when a user interacts with an element.',
+  },
+  {
+    name: 'Modal',
+    status: 'to-be-decided',
+    description:
+      "Modal is a dialog that focuses the user's attention exclusively on an information via a window that is overlaid on primary content.",
+  },
+  {
+    name: 'Carousel',
+    status: 'to-be-decided',
+    description:
+      'Carousel is a component to one-by-one display multiple blocks of information in circular manner',
+  },
+  {
+    name: 'Tabs',
+    status: 'to-be-decided',
+    description:
+      'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
+  },
+  {
+    name: 'Toast',
+    status: 'to-be-decided',
+    description: 'Toast is a component to show a simple floating messages to your users',
+  },
+  {
+    name: 'DataTable',
+    status: 'to-be-decided',
+    description: 'DataTable will allow you to display your data in tabular manner',
   },
 ];
 
@@ -334,6 +359,7 @@ const ComponentStatusBadge = ({ status }: { status: ComponentStatuses }): React.
   > = {
     released: { label: 'Released', variant: 'positive', icon: CheckIcon },
     deprecated: { label: 'Deprecated', variant: 'negative', icon: AlertCircleIcon },
+    'to-be-decided': { label: 'TBD', variant: 'information', icon: StampIcon },
     'in-design': { label: 'In Design', variant: 'notice', icon: LoaderIcon },
     'in-api-spec': { label: 'API In Progress', variant: 'notice', icon: EditIcon },
     'in-development': { label: 'In Development', variant: 'notice', icon: LoaderIcon },
@@ -368,9 +394,27 @@ const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement =
 };
 
 const ComponentStatusTable = (): React.ReactElement => {
+  const unreleasedComponentsSort: ComponentStatuses[] = [
+    'to-be-decided',
+    'planned-Q1-design',
+    'planned-Q1-dev',
+    'planned-Q2-design',
+    'planned-Q2-dev',
+    'planned-Q3-design',
+    'planned-Q3-dev',
+    'planned-Q4-design',
+    'planned-Q4-dev',
+    'in-design',
+    'in-api-spec',
+    'in-development',
+    'released',
+  ];
+
   const sortedData = componentData.sort((a, b) => {
     if (!a.releasedIn || !b.releasedIn) {
-      return a.status.localeCompare(b.status);
+      return unreleasedComponentsSort.indexOf(a.status) > unreleasedComponentsSort.indexOf(b.status)
+        ? 1
+        : -1;
     }
     return b.releasedIn.localeCompare(a.releasedIn);
   });
@@ -380,6 +424,10 @@ const ComponentStatusTable = (): React.ReactElement => {
       <Heading variant="regular">Lifecycle of a component</Heading>
       <br />
       <BaseBox display="flex" flexDirection="row" marginBottom="spacing.7" gap="spacing.2">
+        <Badge variant="information" icon={StampIcon}>
+          TBD
+        </Badge>
+        ➡️
         <Badge variant="information" icon={ClockIcon}>
           Planned: Qn Design
         </Badge>
