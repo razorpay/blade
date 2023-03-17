@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 6.5.1
+
+### Patch Changes
+
+- 86cd05a6: chore(blade): update meta constant of Box
+
 ## 6.5.0
 
 ### Minor Changes
