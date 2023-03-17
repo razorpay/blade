@@ -131,6 +131,13 @@ function LayoutPrimitivesDocs(): JSX.Element {
             export default App;
             `}
         </Sandbox>
+        <Text marginTop="spacing.4">
+          Check out our{' '}
+          <Link href="/?path=/story/recipes-simple-dashboard--simple-dashboard&globals=measureEnabled:false">
+            Simple Dashboard Recipe
+          </Link>{' '}
+          for a real-world example on Box usage.
+        </Text>
       </Section>
       <Section id="box-usage">
         <Title size="small" marginBottom="spacing.3">
@@ -435,6 +442,21 @@ function LayoutPrimitivesDocs(): JSX.Element {
             and we can look into adding that prop to Box itself.
           </Text>
         </BaseBox>
+
+        <BaseBox id="how-is-it-different-from-card" paddingTop="spacing.4">
+          <Heading marginBottom="spacing.2" size="large">
+            How is it different from Card Component?
+          </Heading>
+          <Text marginY="spacing.3">
+            Layout Primitives are empty components meant for creating responsive layouts and
+            don&apos;t follow any visual structure. They also don&apos;t exist on figma.
+          </Text>
+          <Text marginY="spacing.3">
+            Card has a certain visual structure. It follows a standard padding, borderRadius,
+            boxShadow, etc. It is meant for creating cards where you want to add shadows, headers,
+            footers, etc.
+          </Text>
+        </BaseBox>
       </Section>
       <Section id="references">
         <Title size="small">References</Title>
@@ -450,6 +472,11 @@ function LayoutPrimitivesDocs(): JSX.Element {
             </ListItemLink>
           </ListItem>
           <ListItem>
+            <ListItemLink href="/?path=/story/recipes-simple-dashboard--simple-dashboard&globals=measureEnabled:false">
+              Simple Dashboard Recipe Using Box
+            </ListItemLink>
+          </ListItem>
+          <ListItem>
             <ListItemLink href="/?path=/docs/components-layout-primitives-box-styled-props--styled-props">
               Styled Props Story
             </ListItemLink>
@@ -457,6 +484,11 @@ function LayoutPrimitivesDocs(): JSX.Element {
           <ListItem>
             <ListItemLink href="/?path=/docs/components-layout-primitives-box-styled-props--styled-props#properties-ref">
               Styled Props Properties Reference
+            </ListItemLink>
+          </ListItem>
+          <ListItem>
+            <ListItemLink href="/?path=/docs/tokens-breakpoints--page">
+              Breakpoint Tokens Reference
             </ListItemLink>
           </ListItem>
           <ListItem>
