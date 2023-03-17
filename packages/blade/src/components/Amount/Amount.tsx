@@ -28,7 +28,7 @@ type AmountProps = {
    *
    * @default undefined
    */
-  intent?: Feedback | undefined;
+  intent?: Exclude<Feedback, 'neutral'> | undefined;
   /**
    * Sets the size of the amount.
    *
@@ -77,9 +77,6 @@ const getTextColorProps = ({ intent }: { intent: AmountProps['intent'] }): Color
   if (!intent) return props;
   props.amountValueColor = `feedback.text.${intent}.lowContrast`;
   props.affixColor = `feedback.text.${intent}.lowContrast`;
-  if (intent === 'neutral') {
-    props.affixColor = `feedback.text.neutral.lowContrast`;
-  }
   return props;
 };
 
