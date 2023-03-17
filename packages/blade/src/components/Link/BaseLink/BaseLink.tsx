@@ -21,6 +21,7 @@ import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { Platform } from '~utils';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -37,7 +38,28 @@ type BaseLinkCommonProps = {
    */
   size?: 'small' | 'medium';
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  Platform.Select<{
+    native: {
+      /**
+       * Defines how far your touch can start away from the link
+       */
+      hitSlop?:
+        | {
+            top?: number;
+            right?: number;
+            bottom?: number;
+            left?: number;
+          }
+        | number;
+    };
+    web: {
+      /**
+       * This is a react-native only prop and has no effect on web.
+       */
+      hitSlop?: undefined;
+    };
+  }>;
 
 /*
   Mandatory children prop when icon is not provided
@@ -219,6 +241,7 @@ const BaseLink = ({
   style,
   size = 'medium',
   testID,
+  hitSlop,
   ...styledProps
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
@@ -293,6 +316,7 @@ const BaseLink = ({
       // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}
+      hitSlop={hitSlop}
     >
       <BaseBox display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (
