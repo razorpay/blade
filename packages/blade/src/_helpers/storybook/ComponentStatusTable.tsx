@@ -329,6 +329,12 @@ const componentData: ComponentStatusData = [
     status: 'to-be-decided',
     description: 'DataTable will allow you to display your data in tabular manner',
   },
+  {
+    name: 'AutoComplete',
+    status: 'to-be-decided',
+    description:
+      'AutoComplete Component will allow you to filter Dropdown options as you type ahead in the Input',
+  },
 ];
 
 const Table = styled.table`
