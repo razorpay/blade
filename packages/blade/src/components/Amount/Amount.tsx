@@ -107,7 +107,7 @@ const AmountValue = ({
           fontSize={amountFontSizes[size]}
           fontWeight={valueForWeight}
           color={amountValueColor}
-          paddingRight="spacing.1"
+          marginX="spacing.1"
         >
           {integer}.
         </BaseText>
@@ -118,15 +118,14 @@ const AmountValue = ({
     );
   }
   return (
-    <BaseBox paddingRight="spacing.2">
-      <BaseText
-        fontSize={amountFontSizes[size]}
-        fontWeight={valueForWeight}
-        color={amountValueColor}
-      >
-        {value}
-      </BaseText>
-    </BaseBox>
+    <BaseText
+      fontSize={amountFontSizes[size]}
+      fontWeight={valueForWeight}
+      color={amountValueColor}
+      paddingRight="spacing.2"
+    >
+      {value}
+    </BaseText>
   );
 };
 

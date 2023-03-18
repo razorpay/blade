@@ -55,7 +55,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={100}
     fontWeight="regular"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -66,8 +66,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -167,7 +167,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={200}
     fontWeight="regular"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -178,8 +178,8 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -275,44 +275,35 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
       ₹
     </Text>
   </View>
-  <View
+  <Text
+    color="surface.text.normal.lowContrast"
+    fontSize={200}
+    fontWeight="regular"
+    paddingRight="spacing.2"
     style={
       Array [
         Object {
-          "paddingRight": 4,
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 17,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
         },
       ]
     }
   >
-    <Text
-      color="surface.text.normal.lowContrast"
-      fontSize={200}
-      fontWeight="regular"
-      style={
-        Array [
-          Object {
-            "color": "hsla(217, 56%, 17%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 17,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 24,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-    >
-      1k
-    </Text>
-  </View>
+    1k
+  </Text>
 </View>
 `;
 
@@ -371,7 +362,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={100}
     fontWeight="regular"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -382,8 +373,8 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
           "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -483,7 +474,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={100}
     fontWeight="bold"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -494,8 +485,8 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
           "fontWeight": "700",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -595,7 +586,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={75}
     fontWeight="regular"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -606,8 +597,8 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
           "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -707,7 +698,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={75}
     fontWeight="bold"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -718,8 +709,8 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
           "fontWeight": "700",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -819,7 +810,7 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={400}
     fontWeight="regular"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -830,8 +821,8 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
           "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -931,7 +922,7 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={400}
     fontWeight="bold"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -942,8 +933,8 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
           "fontWeight": "700",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -1043,7 +1034,7 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={200}
     fontWeight="regular"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -1054,8 +1045,8 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
           "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -1155,7 +1146,7 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={200}
     fontWeight="bold"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -1166,8 +1157,8 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
           "fontWeight": "700",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -1263,44 +1254,35 @@ exports[`<Amount /> should render information intent Amount  1`] = `
       ₹
     </Text>
   </View>
-  <View
+  <Text
+    color="feedback.text.information.lowContrast"
+    fontSize={100}
+    fontWeight="regular"
+    paddingRight="spacing.2"
     style={
       Array [
         Object {
-          "paddingRight": 4,
+          "color": "hsla(193, 100%, 35%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 15,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.information.lowContrast"
-      fontSize={100}
-      fontWeight="regular"
-      style={
-        Array [
-          Object {
-            "color": "hsla(193, 100%, 35%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 15,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 24,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-    >
-      1,000
-    </Text>
-  </View>
+    1,000
+  </Text>
 </View>
 `;
 
@@ -1359,7 +1341,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
     color="feedback.text.positive.lowContrast"
     fontSize={100}
     fontWeight="regular"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -1370,8 +1352,8 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -1471,7 +1453,7 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={700}
     fontWeight="bold"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -1482,8 +1464,8 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
           "fontWeight": "700",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -1583,7 +1565,7 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={600}
     fontWeight="bold"
-    paddingRight="spacing.1"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -1594,8 +1576,8 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
           "fontWeight": "700",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,

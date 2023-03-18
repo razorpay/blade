@@ -25,6 +25,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -106,7 +108,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   padding: 0;
 }
 
-.c3 {
+.c2 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.75rem;
@@ -132,10 +134,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   padding-left: 4px;
 }
 
-.c2 {
-  padding-right: 4px;
-}
-
 <div>
   <div
     class="c0"
@@ -156,15 +154,11 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
     </div>
     <div
       class="c2"
+      color="surface.text.normal.lowContrast"
+      font-size="700"
+      font-weight="bold"
     >
-      <div
-        class="c3"
-        color="surface.text.normal.lowContrast"
-        font-size="700"
-        font-weight="bold"
-      >
-        1k
-      </div>
+      1k
     </div>
   </div>
 </div>
@@ -195,6 +189,8 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -287,6 +283,8 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -379,6 +377,8 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -471,6 +471,8 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -563,6 +565,8 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -655,6 +659,8 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -747,6 +753,8 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -839,6 +847,8 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -933,10 +943,6 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   padding-left: 4px;
 }
 
-.c2 {
-  padding-right: 4px;
-}
-
 <div>
   <div
     class="c0"
@@ -956,16 +962,12 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
       </div>
     </div>
     <div
-      class="c2"
+      class="c1"
+      color="feedback.text.negative.lowContrast"
+      font-size="100"
+      font-weight="regular"
     >
-      <div
-        class="c1"
-        color="feedback.text.negative.lowContrast"
-        font-size="100"
-        font-weight="regular"
-      >
-        1,000
-      </div>
+      1,000
     </div>
   </div>
 </div>
@@ -996,6 +998,8 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -1088,6 +1092,8 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
@@ -1180,6 +1186,8 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .c3 {
