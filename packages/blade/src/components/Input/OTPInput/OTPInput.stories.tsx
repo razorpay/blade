@@ -5,6 +5,7 @@ import type { OTPInputProps } from './OTPInput';
 import { OTPInput as OTPInputComponent } from './OTPInput';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -24,6 +25,12 @@ export default {
     autoFocus: false,
     onChange: ({ name, value }): void => {
       console.log(`input field ${name} content changed to ${value}`);
+    },
+    onBlur: ({ name, value, inputIndex }): void => {
+      console.log(`input field ${name} blurred with value ${value} for inputIdex ${inputIndex}`);
+    },
+    onFocus: ({ name, value, inputIndex }): void => {
+      console.log(`input field ${name} focused with value ${value} for inputIdex ${inputIndex}`);
     },
     onOTPFilled: ({ name, value }): void => {
       console.log(`otp field ${name} filled with ${value}`);
@@ -127,6 +134,7 @@ export default {
         category: propsCategory.VALIDATION_PROPS,
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

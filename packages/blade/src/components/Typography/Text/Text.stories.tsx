@@ -5,6 +5,7 @@ import type { TextProps } from './';
 import { Text as TextComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -54,6 +55,7 @@ const TextStoryMeta: Meta<TextProps<{ variant: 'body' | 'caption' }>> = {
       page: () => <Page />,
     },
   },
+  argTypes: getStyledPropsArgTypes(),
 };
 
 const TextTemplate: ComponentStory<typeof TextComponent> = (args) => {

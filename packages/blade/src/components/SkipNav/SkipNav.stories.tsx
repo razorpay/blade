@@ -24,12 +24,13 @@ const Page = (): ReactElement => {
             SkipNavContent, 
             Text, 
             Link,
-            Code 
+            Code,
+            Box 
           } from '@razorpay/blade/components';
 
           function App(): JSX.Element {
             return (
-              <div>
+              <Box>
                 <Text>Click somewhere on the text here to focus on this window and press <Code>TAB</Code> key to see it in action</Text>
                 <SkipNavLink>Skip to content</SkipNavLink>
                 <nav style={{ marginBottom: '800px' }}>
@@ -43,7 +44,7 @@ const Page = (): ReactElement => {
                   <SkipNavContent />
                   <Text>Main Content of the Page</Text>
                 </main>
-              </div>
+              </Box>
             )
           }
 

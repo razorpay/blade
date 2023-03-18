@@ -10,6 +10,7 @@ const Spinner = ({
   contrast = 'low',
   size = 'medium',
   testID,
+  ...styledProps
 }: SpinnerProps): React.ReactElement => {
   return (
     <BaseSpinner
@@ -19,6 +20,7 @@ const Spinner = ({
       contrast={contrast}
       size={size}
       testID={testID}
+      {...styledProps}
     />
   );
 };

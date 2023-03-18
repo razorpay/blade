@@ -124,6 +124,9 @@ describe('<TextInput />', () => {
     let clearButton = queryByRole('button');
     expect(clearButton).toBeFalsy();
     await user.tab();
+    /* We are intentionally making sure that the input is not disabled and focusable since we don't want the input to be disabled while the user is still typing. 
+    For instance, in an autocomplete while the user types, API call is made for each letter and loader shows up but also allows the user to continue typing.
+     */
     expect(input).toHaveFocus();
     await user.type(input, 'Kamlesh');
     clearButton = queryByRole('button');
@@ -390,7 +393,7 @@ describe('<TextInput />', () => {
     expect(input).toHaveAttribute('autoComplete', 'email');
   });
 
-  it(`type='url' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {
+  it(`type='url' should have correct keyboard type, autocomplete suggestions, autocapitalize and keyboard return key`, () => {
     const label = 'Enter Company Website';
 
     const { getByLabelText } = renderWithTheme(<TextInput label={label} type="url" />);
@@ -401,6 +404,7 @@ describe('<TextInput />', () => {
     expect(input).toHaveAttribute('inputMode', 'url');
     expect(input).toHaveAttribute('enterKeyHint', 'go');
     expect(input).toHaveAttribute('autoComplete', 'off');
+    expect(input).toHaveAttribute('autocapitalize', 'none');
   });
 
   it(`type='number' should have correct keyboard type, autocomplete suggestions and keyboard return key`, () => {

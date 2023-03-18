@@ -26,6 +26,8 @@ const getStories = () => {
     require('../../src/components/Alert/Alert.stories.tsx'),
     require('../../src/components/Amount/Amount.stories.tsx'),
     require('../../src/components/Badge/Badge.stories.tsx'),
+    require('../../src/components/Box/Box.stories.tsx'),
+    require('../../src/components/Box/styledProps/StyledProps.stories.tsx'),
     require('../../src/components/Button/Button/Button.stories.tsx'),
     require('../../src/components/Button/IconButton/IconButton.stories.tsx'),
     require('../../src/components/Card/Card.stories.tsx'),
@@ -58,6 +60,7 @@ const getStories = () => {
     require('../../src/storybook-recipes/SimpleDashboard.stories.tsx'),
     require('../../src/storybook-recipes/SimpleForm.stories.tsx'),
     require('../../src/tokens/theme/overrideTheme.stories.tsx'),
+    require('../../src/components/Box/BaseBox/BaseBox.stories.internal.tsx'),
     require('../../src/components/Button/BaseButton/BaseButton.stories.internal.tsx'),
   ];
 };

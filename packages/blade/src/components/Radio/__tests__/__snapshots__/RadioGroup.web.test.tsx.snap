@@ -203,224 +203,237 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 
 <div>
   <div
-    aria-labelledby="radio-group-15-label"
-    class="c0"
-    data-blade-component="radio-group"
-    display="flex"
-    role="group"
+    class=""
   >
-    <span
-      id="radio-group-15-label"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      aria-labelledby="radio-group-15-label"
+      class="c0"
+      data-blade-component="radio-group"
+      display="flex"
+      role="group"
     >
-      <div
-        class="c1"
+      <span
+        id="radio-group-15-label"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
-          class="c2"
-          display="flex"
+          class="c1"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Select fruits
-          </p>
           <div
-            class="c4"
-            data-blade-component="visually-hidden"
+            class="c2"
+            display="flex"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
-              font-size="100"
+              font-size="75"
               font-style="normal"
-              font-weight="regular"
+              font-weight="bold"
             >
-              ,Select one
+              Select fruits
             </p>
+            <div
+              class="c4"
+              data-blade-component="visually-hidden"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                ,Select one
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </span>
-    <div
-      class=""
-    >
+      </span>
       <div
-        class="c0"
-        display="flex"
+        class=""
       >
         <div
-          class="c1"
+          class="c0"
+          display="flex"
         >
-          <label
-            class="c6"
-            data-blade-component="radio"
+          <div
+            class="c1"
           >
             <div
-              class="c0"
-              display="flex"
+              class=""
             >
-              <div
-                class="c7"
-                display="flex"
+              <label
+                class="c6"
               >
-                <input
-                  aria-checked="false"
-                  aria-describedby="radio-16-helptext-17"
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="c8"
-                  name="radio-group-15"
-                  role="radio"
-                  type="radio"
-                  value="apple"
-                />
                 <div
-                  class="c9"
-                />
-                <div
-                  class="c10"
-                />
-                <div
-                  class="c11"
-                  color="surface.text.subtle.lowContrast"
-                  font-family="text"
-                  font-size="100"
-                  font-weight="regular"
+                  class="c0"
+                  display="flex"
                 >
-                  Apple
+                  <div
+                    class="c7"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-16-helptext-17"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      name="radio-group-15"
+                      role="radio"
+                      type="radio"
+                      value="apple"
+                    />
+                    <div
+                      class="c9"
+                    />
+                    <div
+                      class="c10"
+                    />
+                    <div
+                      class="c11"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Apple
+                    </div>
+                  </div>
+                  <div
+                    class="c12"
+                  />
                 </div>
-              </div>
-              <div
-                class="c12"
-              />
+              </label>
             </div>
-          </label>
+          </div>
+          <div
+            class="c1"
+          >
+            <div
+              class=""
+            >
+              <label
+                class="c6"
+              >
+                <div
+                  class="c0"
+                  display="flex"
+                >
+                  <div
+                    class="c7"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-18-helptext-19"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      name="radio-group-15"
+                      role="radio"
+                      type="radio"
+                      value="mango"
+                    />
+                    <div
+                      class="c9"
+                    />
+                    <div
+                      class="c10"
+                    />
+                    <div
+                      class="c11"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Mango
+                    </div>
+                  </div>
+                  <div
+                    class="c12"
+                  />
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="c13"
+          >
+            <div
+              class=""
+            >
+              <label
+                class="c6"
+              >
+                <div
+                  class="c0"
+                  display="flex"
+                >
+                  <div
+                    class="c7"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-20-helptext-21"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      name="radio-group-15"
+                      role="radio"
+                      type="radio"
+                      value="orange"
+                    />
+                    <div
+                      class="c9"
+                    />
+                    <div
+                      class="c10"
+                    />
+                    <div
+                      class="c11"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Orange
+                    </div>
+                  </div>
+                  <div
+                    class="c12"
+                  />
+                </div>
+              </label>
+            </div>
+          </div>
         </div>
         <div
-          class="c1"
-        >
-          <label
-            class="c6"
-            data-blade-component="radio"
-          >
-            <div
-              class="c0"
-              display="flex"
-            >
-              <div
-                class="c7"
-                display="flex"
-              >
-                <input
-                  aria-checked="false"
-                  aria-describedby="radio-18-helptext-19"
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="c8"
-                  name="radio-group-15"
-                  role="radio"
-                  type="radio"
-                  value="mango"
-                />
-                <div
-                  class="c9"
-                />
-                <div
-                  class="c10"
-                />
-                <div
-                  class="c11"
-                  color="surface.text.subtle.lowContrast"
-                  font-family="text"
-                  font-size="100"
-                  font-weight="regular"
-                >
-                  Mango
-                </div>
-              </div>
-              <div
-                class="c12"
-              />
-            </div>
-          </label>
-        </div>
-        <div
-          class="c13"
-        >
-          <label
-            class="c6"
-            data-blade-component="radio"
-          >
-            <div
-              class="c0"
-              display="flex"
-            >
-              <div
-                class="c7"
-                display="flex"
-              >
-                <input
-                  aria-checked="false"
-                  aria-describedby="radio-20-helptext-21"
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="c8"
-                  name="radio-group-15"
-                  role="radio"
-                  type="radio"
-                  value="orange"
-                />
-                <div
-                  class="c9"
-                />
-                <div
-                  class="c10"
-                />
-                <div
-                  class="c11"
-                  color="surface.text.subtle.lowContrast"
-                  font-family="text"
-                  font-size="100"
-                  font-weight="regular"
-                >
-                  Orange
-                </div>
-              </div>
-              <div
-                class="c12"
-              />
-            </div>
-          </label>
-        </div>
-      </div>
-      <div
-        class="c14"
-      >
-        <span
-          style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
+          class="c14"
         >
           <span
-            class="c15"
-            color="surface.text.muted.lowContrast"
-            font-family="text"
-            font-size="50"
-            font-style="italic"
+            style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
           >
-            Select one
+            <span
+              class="c15"
+              color="surface.text.muted.lowContrast"
+              font-family="text"
+              font-size="50"
+              font-style="italic"
+            >
+              Select one
+            </span>
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -613,204 +626,217 @@ exports[`<RadioGroup /> should render with label 1`] = `
 
 <div>
   <div
-    aria-labelledby="radio-group-7-label"
-    class="c0"
-    data-blade-component="radio-group"
-    display="flex"
-    role="group"
+    class=""
   >
-    <span
-      id="radio-group-7-label"
-      style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+    <div
+      aria-labelledby="radio-group-7-label"
+      class="c0"
+      data-blade-component="radio-group"
+      display="flex"
+      role="group"
     >
-      <div
-        class="c1"
+      <span
+        id="radio-group-7-label"
+        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
       >
         <div
-          class="c2"
-          display="flex"
+          class="c1"
         >
-          <p
-            class="c3 Text__StyledText-wkh56f-0"
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="bold"
-          >
-            Select fav fruit
-          </p>
           <div
-            class="c4"
-            data-blade-component="visually-hidden"
+            class="c2"
+            display="flex"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c3 Text__StyledText-wkh56f-0"
+              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
-              font-size="100"
+              font-size="75"
               font-style="normal"
-              font-weight="regular"
-            />
+              font-weight="bold"
+            >
+              Select fav fruit
+            </p>
+            <div
+              class="c4"
+              data-blade-component="visually-hidden"
+            >
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </span>
-    <div
-      class=""
-    >
+      </span>
       <div
-        class="c0"
-        display="flex"
+        class=""
       >
         <div
-          class="c1"
+          class="c0"
+          display="flex"
         >
-          <label
-            class="c6"
-            data-blade-component="radio"
+          <div
+            class="c1"
           >
             <div
-              class="c0"
-              display="flex"
+              class=""
             >
-              <div
-                class="c7"
-                display="flex"
+              <label
+                class="c6"
               >
-                <input
-                  aria-checked="false"
-                  aria-describedby="radio-1-helptext-2"
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="c8"
-                  name="radio-group-7"
-                  role="radio"
-                  type="radio"
-                  value="apple"
-                />
                 <div
-                  class="c9"
-                />
-                <div
-                  class="c10"
-                />
-                <div
-                  class="c11"
-                  color="surface.text.subtle.lowContrast"
-                  font-family="text"
-                  font-size="100"
-                  font-weight="regular"
+                  class="c0"
+                  display="flex"
                 >
-                  Apple
+                  <div
+                    class="c7"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-1-helptext-2"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      name="radio-group-7"
+                      role="radio"
+                      type="radio"
+                      value="apple"
+                    />
+                    <div
+                      class="c9"
+                    />
+                    <div
+                      class="c10"
+                    />
+                    <div
+                      class="c11"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Apple
+                    </div>
+                  </div>
+                  <div
+                    class="c12"
+                  />
                 </div>
-              </div>
-              <div
-                class="c12"
-              />
+              </label>
             </div>
-          </label>
-        </div>
-        <div
-          class="c1"
-        >
-          <label
-            class="c6"
-            data-blade-component="radio"
+          </div>
+          <div
+            class="c1"
           >
             <div
-              class="c0"
-              display="flex"
+              class=""
             >
-              <div
-                class="c7"
-                display="flex"
+              <label
+                class="c6"
               >
-                <input
-                  aria-checked="false"
-                  aria-describedby="radio-3-helptext-4"
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="c8"
-                  name="radio-group-7"
-                  role="radio"
-                  type="radio"
-                  value="mango"
-                />
                 <div
-                  class="c9"
-                />
-                <div
-                  class="c10"
-                />
-                <div
-                  class="c11"
-                  color="surface.text.subtle.lowContrast"
-                  font-family="text"
-                  font-size="100"
-                  font-weight="regular"
+                  class="c0"
+                  display="flex"
                 >
-                  Mango
+                  <div
+                    class="c7"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-3-helptext-4"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      name="radio-group-7"
+                      role="radio"
+                      type="radio"
+                      value="mango"
+                    />
+                    <div
+                      class="c9"
+                    />
+                    <div
+                      class="c10"
+                    />
+                    <div
+                      class="c11"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Mango
+                    </div>
+                  </div>
+                  <div
+                    class="c12"
+                  />
                 </div>
-              </div>
-              <div
-                class="c12"
-              />
+              </label>
             </div>
-          </label>
-        </div>
-        <div
-          class="c13"
-        >
-          <label
-            class="c6"
-            data-blade-component="radio"
+          </div>
+          <div
+            class="c13"
           >
             <div
-              class="c0"
-              display="flex"
+              class=""
             >
-              <div
-                class="c7"
-                display="flex"
+              <label
+                class="c6"
               >
-                <input
-                  aria-checked="false"
-                  aria-describedby="radio-5-helptext-6"
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-required="false"
-                  class="c8"
-                  name="radio-group-7"
-                  role="radio"
-                  type="radio"
-                  value="orange"
-                />
                 <div
-                  class="c9"
-                />
-                <div
-                  class="c10"
-                />
-                <div
-                  class="c11"
-                  color="surface.text.subtle.lowContrast"
-                  font-family="text"
-                  font-size="100"
-                  font-weight="regular"
+                  class="c0"
+                  display="flex"
                 >
-                  Orange
+                  <div
+                    class="c7"
+                    display="flex"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-5-helptext-6"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="c8"
+                      name="radio-group-7"
+                      role="radio"
+                      type="radio"
+                      value="orange"
+                    />
+                    <div
+                      class="c9"
+                    />
+                    <div
+                      class="c10"
+                    />
+                    <div
+                      class="c11"
+                      color="surface.text.subtle.lowContrast"
+                      font-family="text"
+                      font-size="100"
+                      font-weight="regular"
+                    >
+                      Orange
+                    </div>
+                  </div>
+                  <div
+                    class="c12"
+                  />
                 </div>
-              </div>
-              <div
-                class="c12"
-              />
+              </label>
             </div>
-          </label>
+          </div>
         </div>
       </div>
     </div>

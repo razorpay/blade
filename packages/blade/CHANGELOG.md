@@ -1,5 +1,45 @@
 # @razorpay/blade
 
+## 6.5.2
+
+### Patch Changes
+
+- 2700667f: fix(SelectInput): call user passed onBlur callback
+- 3855a583: fix(Card): CardHeader title alignment when subtitle is not present
+
+## 6.5.1
+
+### Patch Changes
+
+- 86cd05a6: chore(blade): update meta constant of Box
+
+## 6.5.0
+
+### Minor Changes
+
+- a4be1b06: feat(Layout Primitives): Add `Box` Component and Styled Props to Blade Components
+
+  Documentation: https://blade.razorpay.com/?path=/docs/components-layout-primitives-box-layout-primitives-tutorial--page
+
+  **Breakpoint Token Changes**
+
+  `max` breakpoint is removed as it wasn't used and had same value as `xl`.
+  Through our audit, we didn't find any usage of this token. If you happen to use this somewhere, you can rename `breakpoints.max` to `breakpoints.xl`
+
+- 2c7034b7: feat(Input): add onSubmit prop on BaseInput, TextInput, TextArea, & PasswordInput for react-native
+
+## 6.4.0
+
+### Minor Changes
+
+- 4145d553: feat: add `testID` prop to all components
+- a7826b0b: feat(Input): add `autoCapitalize` support to `BaseInput`, `TextInput` & `PasswordInput`
+- bdd74d7a: feat(Text): add `textAlign` prop
+
+### Patch Changes
+
+- da4489b3: fix: lodash tree shaking to reduce effective bundle-size.
+
 ## 6.3.0
 
 ### Minor Changes

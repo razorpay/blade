@@ -10,6 +10,7 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -63,7 +64,7 @@ export default {
     children: 'Toggle checkbox',
     size: 'medium',
   },
-  argTypes: {},
+  argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
       page: Page,

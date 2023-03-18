@@ -55,6 +55,24 @@ Amount.args = {
 };
 Amount.storyName = 'Default';
 
+const AmountTemplateWithText: ComponentStory<typeof AmountComponent> = (args) => {
+  return (
+    <BaseBox display="flex">
+      <Text>Total Amount is</Text>
+      <AmountComponent {...args} />
+      <Text>only.</Text>
+    </BaseBox>
+  );
+};
+
+export const AmountWithText = AmountTemplateWithText.bind({});
+
+AmountWithText.args = {
+  value: 122345.678,
+  size: 'body-medium',
+};
+AmountWithText.storyName = 'With Text';
+
 const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
   const sizes: AmountProps['size'][] = [
     'body-small',
@@ -93,7 +111,7 @@ AmountSizes.args = {
 AmountSizes.storyName = 'Sizes';
 
 const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
-  const intents = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+  const intents = ['positive', 'negative', 'notice', 'information'] as const;
 
   return (
     <BaseBox justifyContent="flex-start">

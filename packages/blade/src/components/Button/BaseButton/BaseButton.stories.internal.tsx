@@ -3,6 +3,7 @@ import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 import iconMap from '~components/Icons/iconMap';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 export default {
   title: 'Components/Button/BaseButton (Internal)',
@@ -22,6 +23,7 @@ export default {
     type: 'button',
   },
   argTypes: {
+    ...getStyledPropsArgTypes(),
     icon: {
       name: 'icon',
       type: 'select',

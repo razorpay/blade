@@ -1,8 +1,7 @@
 import type { ReactElement } from 'react';
-import type { FontSize } from '../../tokens/global/typography';
 import type { HeadingProps, TextProps, TitleProps } from '../Typography';
 import {
-  amountTextSizes,
+  amountFontSizes,
   currencyAbbreviationsMapping,
   currencyLocaleMapping,
   currencyPrefixMapping,
@@ -28,11 +27,11 @@ type AmountProps = {
    *
    * @default undefined
    */
-  intent?: Exclude<Feedback, 'neutral'> | undefined;
+  intent?: Exclude<Feedback, 'neutral'>;
   /**
    * Sets the size of the amount.
    *
-   * @default 'heading'
+   * @default 'body-medium'
    */
   size?:
     | `title-${NonNullable<Exclude<TitleProps['size'], 'large'>>}`
@@ -51,7 +50,7 @@ type AmountProps = {
    */
   suffix?: 'decimals' | 'none' | 'humanize';
   /**
-   * Highlights the main amount by making the prefix symbol and decimal digits subtle
+   * in amount by making the prefix symbol and decimal digits s
    *
    * @default true
    */
@@ -74,63 +73,44 @@ const getTextColorProps = ({ intent }: { intent: AmountProps['intent'] }): Color
     amountValueColor: 'surface.text.normal.lowContrast',
     affixColor: 'surface.text.muted.lowContrast',
   };
-  if (!intent) return props;
+  if (!intent && intent !== 'neutral') return props;
   props.amountValueColor = `feedback.text.${intent}.lowContrast`;
   props.affixColor = `feedback.text.${intent}.lowContrast`;
   return props;
-};
-
-const getAffixFontWeight = (isAffixSubtle: true | false): 'regular' | 'bold' => {
-  if (isAffixSubtle) return 'regular';
-  return 'bold';
-};
-
-const getMainValueWeight = (
-  size: NonNullable<AmountProps['size']>,
-): NonNullable<TextProps<{ variant: 'body' }>['weight']> => {
-  return size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
-};
-
-const getAffixFontSize = (
-  isAffixSubtle: NonNullable<AmountProps['isAffixSubtle']>,
-  size: NonNullable<AmountProps['size']>,
-): keyof FontSize | undefined => {
-  if (isAffixSubtle) return affixFontSizes[size];
-  return amountTextSizes[size];
 };
 
 interface AmountValue extends Omit<AmountProps, 'value'> {
   affixColor: BaseTextProps['color'];
   amountValueColor: BaseTextProps['color'];
   value: string;
+  size: Exclude<AmountProps['size'], undefined>;
 }
 
 const AmountValue = ({
   value,
-  size = 'body-medium',
+  size,
   amountValueColor,
-  isAffixSubtle = true,
-  suffix = 'decimals',
+  isAffixSubtle,
+  suffix,
   affixColor,
 }: AmountValue): ReactElement => {
-  const affixFontWeight = getAffixFontWeight(isAffixSubtle);
-  const affixFontSize = getAffixFontSize(isAffixSubtle, size);
-  const valueForWeight = getMainValueWeight(size);
+  const affixFontWeight = isAffixSubtle ? 'regular' : 'bold';
+  const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
+  const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
   if (suffix === 'decimals' && isAffixSubtle) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
 
     return (
       <>
-        <BaseBox paddingRight="spacing.1">
-          <BaseText
-            fontSize={amountTextSizes[size]}
-            fontWeight={valueForWeight}
-            color={amountValueColor}
-          >
-            {integer}.
-          </BaseText>
-        </BaseBox>
+        <BaseText
+          fontSize={amountFontSizes[size]}
+          fontWeight={valueForWeight}
+          color={amountValueColor}
+          paddingRight="spacing.1"
+        >
+          {integer}.
+        </BaseText>
         <BaseText fontWeight={affixFontWeight} fontSize={affixFontSize} color={affixColor}>
           {decimal || '00'}
         </BaseText>
@@ -140,7 +120,7 @@ const AmountValue = ({
   return (
     <BaseBox paddingRight="spacing.2">
       <BaseText
-        fontSize={amountTextSizes[size]}
+        fontSize={amountFontSizes[size]}
         fontWeight={valueForWeight}
         color={amountValueColor}
       >
@@ -216,7 +196,7 @@ const getCurrencyWeight = (
 const Amount = ({
   value,
   suffix = 'decimals',
-  size = 'heading-small',
+  size = 'body-medium',
   isAffixSubtle = true,
   intent,
   prefix = 'currency-symbol',
@@ -235,35 +215,30 @@ const Amount = ({
   });
 
   const currencyColor = isAffixSubtle ? affixColor : amountValueColor;
-  const currencyFontSize = getAffixFontSize(isAffixSubtle, size);
+  const currencyFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const currencyWeight = getCurrencyWeight(isAffixSubtle, size);
 
   return (
     <BaseBox
       paddingLeft="spacing.2"
       paddingRight="spacing.2"
+      display="flex"
+      alignItems="baseline"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
     >
-      <BaseBox
-        display="flex"
-        alignItems="baseline"
-        paddingLeft="spacing.2"
-        paddingRight="spacing.2"
-      >
-        <BaseBox paddingRight="spacing.1">
-          <BaseText fontWeight={currencyWeight} fontSize={currencyFontSize} color={currencyColor}>
-            {currencyPrefix}
-          </BaseText>
-        </BaseBox>
-        <AmountValue
-          value={renderedValue}
-          amountValueColor={amountValueColor}
-          size={size}
-          isAffixSubtle={isAffixSubtle}
-          suffix={suffix}
-          affixColor={affixColor}
-        />
+      <BaseBox>
+        <BaseText fontWeight={currencyWeight} fontSize={currencyFontSize} color={currencyColor}>
+          {currencyPrefix}
+        </BaseText>
       </BaseBox>
+      <AmountValue
+        value={renderedValue}
+        amountValueColor={amountValueColor}
+        size={size}
+        isAffixSubtle={isAffixSubtle}
+        suffix={suffix}
+        affixColor={affixColor}
+      />
     </BaseBox>
   );
 };

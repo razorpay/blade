@@ -7,6 +7,7 @@ export const MetaConstants = {
   Alert: 'alert',
   Amount: 'amount',
   Badge: 'badge',
+  Box: 'box',
   Button: 'button',
   Checkbox: 'checkbox',
   CheckboxGroup: 'checkbox-group',

@@ -14,7 +14,7 @@ const affixFontSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> =
   'title-medium': 400,
 } as const;
 
-const amountTextSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> = {
+const amountFontSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> = {
   'body-small': 75,
   'body-small-bold': 75,
   'body-medium': 100,
@@ -77,7 +77,7 @@ const currencyAbbreviationsMapping: CurrencyAbbreviationsMapping = {
 };
 
 export {
-  amountTextSizes,
+  amountFontSizes,
   affixFontSizes,
   currencyPrefixMapping,
   currencyLocaleMapping,

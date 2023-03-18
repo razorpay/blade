@@ -27,9 +27,11 @@ const Page = (): ReactElement => {
 
         function App() {
           return (
-            <div>
-              <IconButton icon={CloseIcon} accessibilityLabel="Close" onClick={() => console.log('Clicked')} />
-            </div>
+            <IconButton 
+              icon={CloseIcon} 
+              accessibilityLabel="Close" 
+              onClick={() => console.log('Clicked')} 
+            />
           )
         }
 
