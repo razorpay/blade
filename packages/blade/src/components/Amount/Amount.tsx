@@ -122,7 +122,7 @@ const AmountValue = ({
       fontSize={amountFontSizes[size]}
       fontWeight={valueForWeight}
       color={amountValueColor}
-      paddingRight="spacing.2"
+      marginX="spacing.1"
     >
       {value}
     </BaseText>
