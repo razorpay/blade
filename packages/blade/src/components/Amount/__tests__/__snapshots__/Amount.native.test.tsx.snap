@@ -279,7 +279,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
     color="surface.text.normal.lowContrast"
     fontSize={200}
     fontWeight="regular"
-    paddingRight="spacing.2"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -290,8 +290,8 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
           "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -1258,7 +1258,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
     color="feedback.text.information.lowContrast"
     fontSize={100}
     fontWeight="regular"
-    paddingRight="spacing.2"
+    marginX="spacing.1"
     style={
       Array [
         Object {
@@ -1269,8 +1269,8 @@ exports[`<Amount /> should render information intent Amount  1`] = `
           "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "marginLeft": 2,
+          "marginRight": 2,
           "marginTop": 0,
           "paddingBottom": 0,
           "paddingLeft": 0,
