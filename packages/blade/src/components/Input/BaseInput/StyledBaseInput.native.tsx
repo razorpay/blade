@@ -126,6 +126,7 @@ export const StyledBaseInput = React.forwardRef<
       handleOnFocus,
       handleOnChange,
       handleOnBlur,
+      handleOnSubmit,
       handleOnInput,
       handleOnKeyDown,
       handleOnClick,
@@ -201,6 +202,9 @@ export const StyledBaseInput = React.forwardRef<
           handleOnInput?.({ name, value: text });
         }}
         onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
+        onSubmitEditing={(event): void =>
+          handleOnSubmit?.({ name, value: event?.nativeEvent.text })
+        }
         onKeyPress={(event): void => {
           handleOnKeyDown?.({
             name,

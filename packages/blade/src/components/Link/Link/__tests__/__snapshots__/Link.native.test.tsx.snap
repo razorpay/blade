@@ -331,7 +331,6 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
     <View
       alignItems="center"
       display="flex"
-      paddingRight="spacing.2"
       style={
         Array [
           Object {
@@ -360,6 +359,9 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -506,7 +508,6 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
     <View
       alignItems="center"
       display="flex"
-      paddingRight="spacing.2"
       style={
         Array [
           Object {
@@ -535,6 +536,9 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -713,7 +717,6 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
     <View
       alignItems="center"
       display="flex"
-      paddingLeft="spacing.2"
       style={
         Array [
           Object {
@@ -742,6 +745,9 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -856,7 +862,6 @@ exports[`<Link /> should render link with icon without text 1`] = `
     <View
       alignItems="center"
       display="flex"
-      paddingRight="spacing.0"
       style={
         Array [
           Object {
@@ -885,6 +890,9 @@ exports[`<Link /> should render link with icon without text 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -1029,7 +1037,6 @@ exports[`<Link /> should render with small size 1`] = `
     <View
       alignItems="center"
       display="flex"
-      paddingRight="spacing.2"
       style={
         Array [
           Object {
@@ -1058,6 +1065,9 @@ exports[`<Link /> should render with small size 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 12,

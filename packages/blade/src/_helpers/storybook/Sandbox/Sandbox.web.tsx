@@ -1,9 +1,12 @@
 import React from 'react';
-import { Sandpack } from '@codesandbox/sandpack-react';
+import styled from 'styled-components';
+import type { CodeViewerProps } from '@codesandbox/sandpack-react';
+import { Sandpack, SandpackCodeViewer, SandpackProvider } from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 
 type SandboxProps = {
@@ -12,6 +15,7 @@ type SandboxProps = {
   showConsole?: boolean;
   editorHeight?: number;
   editorWidthPercentage?: number;
+  padding?: BaseBoxProps['padding'];
 };
 
 const getBladeVersion = (): string => {
@@ -28,43 +32,33 @@ const getBladeVersion = (): string => {
 
 const bladeVersion = getBladeVersion();
 
-function Sandbox({
-  children,
+const useSandpackSetup = ({
+  code,
   language = 'tsx',
-  showConsole = false,
-  editorHeight = 300,
-  editorWidthPercentage = 50,
-}: SandboxProps): JSX.Element {
+}: {
+  code: string;
+  language: SandboxProps['language'];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+}): any => {
   const {
     // @ts-expect-error globals is available but the typings in storybook are properly defined hence, ignoring it
     globals: { themeTokenName, colorScheme },
   } = React.useContext(DocsContext);
 
-  return (
-    <BaseBox>
-      <br />
-      <Sandpack
-        template="react-ts"
-        files={{
-          '/index.tsx': dedent`import { StrictMode } from "react";
+  return {
+    template: 'react-ts',
+    files: {
+      '/index.tsx': dedent`import { StrictMode } from "react";
             import ReactDOM from "react-dom";
-            import styled, { createGlobalStyle } from "styled-components";
+            import { createGlobalStyle } from "styled-components";
   
-            import { BladeProvider, Theme } from "@razorpay/blade/components";
+            import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
             import { ${themeTokenName} } from "@razorpay/blade/tokens";
             import "@fontsource/lato/400.css";
             import "@fontsource/lato/700.css";
             
             import App from "./App";
   
-            const BackgroundBox = styled.div(
-              ({ theme }: { theme: Theme }) => ({
-                backgroundColor: theme.colors.surface.background.level1.lowContrast,
-                minHeight: '100vh',
-                padding: '12px 24px'
-              })
-            );
-
             const GlobalStyles = createGlobalStyle\`
               * { 
                 box-sizing: border-box;
@@ -85,9 +79,13 @@ function Sandbox({
               <StrictMode>
                 <BladeProvider themeTokens={${themeTokenName}} colorScheme="${colorScheme}">
                   <GlobalStyles />
-                  <BackgroundBox>
+                  <Box 
+                    backgroundColor="surface.background.level1.lowContrast"
+                    minHeight="100vh"
+                    padding={['spacing.4', 'spacing.7']}
+                  >
                     <App />
-                  </BackgroundBox>
+                  </Box>
                 </BladeProvider>
               </StrictMode>,
               rootElement
@@ -95,18 +93,80 @@ function Sandbox({
 
             console.clear(); // There could be some codesandbox warnings, clearing them here on init
             `,
-          [`/App.${language}`]: dedent(children),
+      [`/App.${language}`]: dedent(code),
+    },
+    customSetup: {
+      dependencies: {
+        react: packageJson.peerDependencies.react,
+        'react-dom': packageJson.peerDependencies['react-dom'],
+        'react-scripts': '4.0.3',
+        '@razorpay/blade': bladeVersion,
+        '@fontsource/lato': '4.5.10',
+        'styled-components': packageJson.peerDependencies['styled-components'],
+      },
+    },
+  };
+};
+
+const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
+  '& .highlight': {
+    backgroundColor: '#fffbdd',
+    borderRadius: '2px',
+    padding: '2px',
+  },
+  '& pre': {
+    padding: '0px',
+  },
+  border: '1px solid #EFEFEF',
+  borderRadius: '4px',
+  overflow: 'auto',
+}));
+
+const SandboxHighlighter = ({
+  children,
+  ...sandpackCodeViewerProps
+}: { children: string } & CodeViewerProps): JSX.Element => {
+  return (
+    <CodeLineHighlighterContainer>
+      <SandpackProvider
+        template="vanilla-ts"
+        files={{
+          '/src/index.ts': dedent(children),
         }}
-        customSetup={{
-          dependencies: {
-            react: packageJson.peerDependencies.react,
-            'react-dom': packageJson.peerDependencies['react-dom'],
-            'react-scripts': '4.0.3',
-            '@razorpay/blade': bladeVersion,
-            '@fontsource/lato': '4.5.10',
-            'styled-components': packageJson.peerDependencies['styled-components'],
-          },
-        }}
+      >
+        <SandpackCodeViewer showLineNumbers {...sandpackCodeViewerProps} />
+      </SandpackProvider>
+    </CodeLineHighlighterContainer>
+  );
+};
+
+const SandboxProvider = ({
+  code,
+  children,
+  language = 'tsx',
+}: Omit<SandboxProps, 'children'> & { code: string; children: React.ReactNode }): JSX.Element => {
+  const sandboxSetup = useSandpackSetup({ language, code });
+  return (
+    <CodeLineHighlighterContainer>
+      <SandpackProvider {...sandboxSetup}>{children}</SandpackProvider>
+    </CodeLineHighlighterContainer>
+  );
+};
+
+function Sandbox({
+  children,
+  language = 'tsx',
+  showConsole = false,
+  editorHeight = 300,
+  editorWidthPercentage = 50,
+  padding = ['spacing.5', 'spacing.0', 'spacing.8'],
+}: SandboxProps): JSX.Element {
+  const sandpackSetup = useSandpackSetup({ language, code: children });
+
+  return (
+    <BaseBox padding={padding}>
+      <Sandpack
+        {...sandpackSetup}
         options={{
           showInlineErrors: true,
           showConsoleButton: true,
@@ -115,8 +175,6 @@ function Sandbox({
           editorWidthPercentage,
         }}
       />
-      <br />
-      <br />
     </BaseBox>
   );
 }
@@ -165,4 +223,11 @@ const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   );
 };
 
-export { Sandbox, SandboxProps, RecipeSandbox, RecipeSandboxProps };
+export {
+  Sandbox,
+  SandboxProvider,
+  SandboxHighlighter,
+  SandboxProps,
+  RecipeSandbox,
+  RecipeSandboxProps,
+};

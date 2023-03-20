@@ -66,6 +66,9 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -188,6 +191,9 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -310,6 +316,9 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -363,8 +372,6 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
       </View>
     </View>
     <View
-      marginLeft="spacing.0"
-      marginTop="spacing.3"
       style={
         Array [
           Object {
@@ -477,6 +484,9 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -599,6 +609,9 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -721,6 +734,9 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -843,6 +859,9 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -965,6 +984,9 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -1087,6 +1109,9 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 20,
@@ -1209,6 +1234,9 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -1331,6 +1359,9 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -1384,8 +1415,6 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
       </View>
     </View>
     <View
-      marginLeft="spacing.3"
-      marginTop="spacing.0"
       style={
         Array [
           Object {
@@ -1498,6 +1527,9 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -1620,6 +1652,9 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -1742,6 +1777,9 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -1864,6 +1902,9 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -1986,6 +2027,9 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -2108,6 +2152,9 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 16,
@@ -2230,6 +2277,9 @@ exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
+              Array [
+                Object {},
+              ],
               Object {
                 "flex": 0,
                 "height": 24,

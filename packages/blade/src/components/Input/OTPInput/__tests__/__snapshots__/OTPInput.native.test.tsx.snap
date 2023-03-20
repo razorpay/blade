@@ -23,8 +23,6 @@ exports[`<OTPInput /> should render 1`] = `
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
       style={
         Array [
           Object {
@@ -158,9 +156,7 @@ exports[`<OTPInput /> should render 1`] = `
       }
     >
       <View
-        flex={1}
-        marginLeft="spacing.0"
-        maxWidth={40}
+        maxWidth="40px"
         style={
           Array [
             Object {
@@ -238,6 +234,7 @@ exports[`<OTPInput /> should render 1`] = `
                 onEndEditing={[Function]}
                 onFocus={[Function]}
                 onKeyPress={[Function]}
+                onSubmitEditing={[Function]}
                 placeholder=""
                 secureTextEntry={false}
                 style={
@@ -295,9 +292,7 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
       </View>
       <View
-        flex={1}
-        marginLeft="spacing.3"
-        maxWidth={40}
+        maxWidth="40px"
         style={
           Array [
             Object {
@@ -375,6 +370,7 @@ exports[`<OTPInput /> should render 1`] = `
                 onEndEditing={[Function]}
                 onFocus={[Function]}
                 onKeyPress={[Function]}
+                onSubmitEditing={[Function]}
                 placeholder=""
                 secureTextEntry={false}
                 style={
@@ -432,9 +428,7 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
       </View>
       <View
-        flex={1}
-        marginLeft="spacing.3"
-        maxWidth={40}
+        maxWidth="40px"
         style={
           Array [
             Object {
@@ -512,6 +506,7 @@ exports[`<OTPInput /> should render 1`] = `
                 onEndEditing={[Function]}
                 onFocus={[Function]}
                 onKeyPress={[Function]}
+                onSubmitEditing={[Function]}
                 placeholder=""
                 secureTextEntry={false}
                 style={
@@ -569,9 +564,7 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
       </View>
       <View
-        flex={1}
-        marginLeft="spacing.3"
-        maxWidth={40}
+        maxWidth="40px"
         style={
           Array [
             Object {
@@ -649,6 +642,7 @@ exports[`<OTPInput /> should render 1`] = `
                 onEndEditing={[Function]}
                 onFocus={[Function]}
                 onKeyPress={[Function]}
+                onSubmitEditing={[Function]}
                 placeholder=""
                 secureTextEntry={false}
                 style={
@@ -706,9 +700,7 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
       </View>
       <View
-        flex={1}
-        marginLeft="spacing.3"
-        maxWidth={40}
+        maxWidth="40px"
         style={
           Array [
             Object {
@@ -786,6 +778,7 @@ exports[`<OTPInput /> should render 1`] = `
                 onEndEditing={[Function]}
                 onFocus={[Function]}
                 onKeyPress={[Function]}
+                onSubmitEditing={[Function]}
                 placeholder=""
                 secureTextEntry={false}
                 style={
@@ -843,9 +836,7 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
       </View>
       <View
-        flex={1}
-        marginLeft="spacing.3"
-        maxWidth={40}
+        maxWidth="40px"
         style={
           Array [
             Object {
@@ -923,6 +914,7 @@ exports[`<OTPInput /> should render 1`] = `
                 onEndEditing={[Function]}
                 onFocus={[Function]}
                 onKeyPress={[Function]}
+                onSubmitEditing={[Function]}
                 placeholder=""
                 secureTextEntry={false}
                 style={
@@ -982,7 +974,6 @@ exports[`<OTPInput /> should render 1`] = `
     </View>
   </View>
   <View
-    marginLeft={0}
     style={
       Array [
         Object {

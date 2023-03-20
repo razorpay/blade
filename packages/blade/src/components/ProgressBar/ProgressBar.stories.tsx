@@ -7,6 +7,7 @@ import { ProgressBar as ProgressBarComponent } from './ProgressBar';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -51,6 +52,7 @@ export default {
       page: Page,
     },
   },
+  argTypes: getStyledPropsArgTypes(),
 } as Meta<ProgressBarProps>;
 
 const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...args }) => {

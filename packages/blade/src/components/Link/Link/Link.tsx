@@ -1,6 +1,7 @@
 import type { ReactElement, SyntheticEvent } from 'react';
 import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 type LinkCommonProps = {
@@ -19,7 +20,8 @@ type LinkCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium';
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 /*
   Mandatory children prop when icon is not provided
@@ -82,6 +84,7 @@ const Link = ({
   accessibilityLabel,
   size = 'medium',
   testID,
+  ...styledProps
 }: LinkProps): ReactElement => {
   return (
     <BaseLink
@@ -92,6 +95,7 @@ const Link = ({
       accessibilityLabel={accessibilityLabel}
       size={size}
       testID={testID}
+      {...styledProps}
     />
   );
 };

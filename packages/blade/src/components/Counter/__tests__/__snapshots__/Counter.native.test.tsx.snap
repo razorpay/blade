@@ -24,10 +24,6 @@ exports[`<Counter /> should render Counter with default props 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -105,10 +101,6 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -186,10 +178,6 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -267,10 +255,6 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -348,10 +332,6 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -429,10 +409,6 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -510,10 +486,6 @@ exports[`<Counter /> should render large size Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -591,10 +563,6 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -672,10 +640,6 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -753,10 +717,6 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -834,10 +794,6 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -915,10 +871,6 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -996,10 +948,6 @@ exports[`<Counter /> should render medium size Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.1"
-    paddingLeft="spacing.3"
-    paddingRight="spacing.3"
-    paddingTop="spacing.1"
     style={
       Array [
         Object {
@@ -1077,10 +1025,6 @@ exports[`<Counter /> should render small size Counter 1`] = `
     flexDirection="row"
     justifyContent="center"
     overflow="hidden"
-    paddingBottom="spacing.0"
-    paddingLeft="spacing.2"
-    paddingRight="spacing.2"
-    paddingTop="spacing.0"
     style={
       Array [
         Object {

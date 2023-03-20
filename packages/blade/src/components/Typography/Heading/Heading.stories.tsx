@@ -5,6 +5,7 @@ import type { HeadingProps } from './';
 import { Heading as HeadingComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -51,6 +52,7 @@ const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>
     size: {
       description: 'Decides size of the Heading',
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {
