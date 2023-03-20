@@ -26,7 +26,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -47,6 +46,9 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -62,16 +64,12 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="75"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="75"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -119,8 +117,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
-  margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c0 {
@@ -128,6 +124,9 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -143,16 +142,12 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="400"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="400"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -192,7 +187,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -213,6 +207,9 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -228,16 +225,12 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="75"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="75"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -286,7 +279,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -307,6 +299,9 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -322,16 +317,12 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="75"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="75"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -380,7 +371,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -401,6 +391,9 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -416,16 +409,12 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="75"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="75"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -474,7 +463,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -495,6 +483,9 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -510,16 +501,12 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="75"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="75"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -568,7 +555,6 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -589,6 +575,9 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -604,16 +593,12 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="100"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="100"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -662,7 +647,6 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -683,6 +667,9 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -698,16 +685,12 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="100"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="100"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -756,7 +739,6 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -777,6 +759,9 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -792,16 +777,12 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="75"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="75"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -850,7 +831,6 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -871,6 +851,9 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -886,16 +869,12 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="75"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="75"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -932,26 +911,14 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   padding: 0;
 }
 
-.c2 {
-  color: hsla(8,73%,47%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-  margin-right: 2px;
-  margin-left: 2px;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -967,19 +934,15 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="feedback.text.negative.lowContrast"
+      font-size="100"
+      font-weight="regular"
     >
-      <div
-        class="c1"
-        color="feedback.text.negative.lowContrast"
-        font-size="100"
-        font-weight="regular"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
-      class="c2"
+      class="c1"
       color="feedback.text.negative.lowContrast"
       font-size="100"
       font-weight="regular"
@@ -1016,7 +979,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -1037,6 +999,9 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -1052,16 +1017,12 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="feedback.text.positive.lowContrast"
+      font-size="75"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="feedback.text.positive.lowContrast"
-        font-size="75"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -1110,7 +1071,6 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -1131,6 +1091,9 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -1146,16 +1109,12 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="400"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="400"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"
@@ -1204,7 +1163,6 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
   margin: 0;
   padding: 0;
   margin-right: 2px;
-  margin-left: 2px;
 }
 
 .c3 {
@@ -1225,6 +1183,9 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -1240,16 +1201,12 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
     display="flex"
   >
     <div
-      class=""
+      class="c1"
+      color="surface.text.muted.lowContrast"
+      font-size="300"
+      font-weight="bold"
     >
-      <div
-        class="c1"
-        color="surface.text.muted.lowContrast"
-        font-size="300"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
       class="c2"

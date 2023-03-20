@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Badge /> should render Amount on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" data-blade-component=\\"amount\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fWcVkY\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 pRsFV\\">₹</div></div><div color=\\"surface.text.normal.lowContrast\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 juKRrA\\">10,000<!-- -->.</div><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 krnmPe\\">00</div></div></div>"`;
+exports[`<Badge /> should render Amount on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" data-blade-component=\\"amount\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fgJIjk\\"><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 pRsFV\\">₹</div><div color=\\"surface.text.normal.lowContrast\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 eODhVX\\">10,000<!-- -->.</div><div color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 krnmPe\\">00</div></div></div>"`;
 
 exports[`<Badge /> should render Amount on server 2`] = `
 <div
@@ -8,24 +8,20 @@ exports[`<Badge /> should render Amount on server 2`] = `
   id="root"
 >
   <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fWcVkY"
+    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fgJIjk"
     data-blade-component="amount"
     display="flex"
   >
     <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 pRsFV"
+      color="surface.text.muted.lowContrast"
+      font-size="75"
+      font-weight="bold"
     >
-      <div
-        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 pRsFV"
-        color="surface.text.muted.lowContrast"
-        font-size="75"
-        font-weight="bold"
-      >
-        ₹
-      </div>
+      ₹
     </div>
     <div
-      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 juKRrA"
+      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 eODhVX"
       color="surface.text.normal.lowContrast"
       font-size="100"
       font-weight="regular"
