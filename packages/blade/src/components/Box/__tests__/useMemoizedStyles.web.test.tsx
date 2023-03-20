@@ -23,9 +23,10 @@ describe('getDependencyProp', () => {
         children: 'wuuhuuu',
         // @ts-expect-error: we don't have to care about actual theme object. It is ignored in this function
         theme: { name: 'paymentTheme', something: 'something' },
+        colorScheme: 'light',
       }),
     ).toMatchInlineSnapshot(
-      `"{\\"paddingLeft\\":\\"12px\\",\\"display\\":\\"block\\"}-paymentTheme"`,
+      `"{\\"paddingLeft\\":\\"12px\\",\\"display\\":\\"block\\"}-paymentTheme-light"`,
     );
   });
 });
