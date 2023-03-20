@@ -36,6 +36,9 @@ type BaseLinkCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium';
+  /**
+   * Defines how far your touch can start away from the link. This is a react-native only prop and has no effect on web.
+   */
   hitSlop?:
     | {
         top?: number;

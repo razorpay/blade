@@ -22,13 +22,6 @@ export type StyledBaseLinkProps = {
   accessibilityProps: Record<string, unknown>;
   type?: 'button';
   size?: 'small' | 'medium';
-  hitSlop?:
-    | {
-        top?: number;
-        right?: number;
-        bottom?: number;
-        left?: number;
-      }
-    | number;
+  hitSlop?: BaseLinkProps['hitSlop'];
 } & TestID &
   StyledPropsBlade;
