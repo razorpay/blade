@@ -800,55 +800,74 @@ WithMultipleDropdowns.args = {
 };
 
 export const APerf = (): React.ReactElement => {
-  const fruites = [
-    'Apple',
-    'Apricot',
-    'Avocado',
-    'Banana',
-    'Blackberry',
-    'Blueberry',
-    'Cherry',
-    'Coconut',
-    'Cucumber',
-    'Durian',
-    'Dragonfruit',
+  const fruits = [
+    'Apples',
+    'Apricots',
+    'Avocados',
+    'Bananas',
+    'Boysenberries',
+    'Blueberries',
+    'Bing Cherry',
+    'Cherries',
+    'Cantaloupe',
+    'Crab apples',
+    'Clementine',
+    'Cucumbers',
+    'Damson plum',
+    'Dinosaur Eggs',
+    'Dates',
+    'Dewberries',
+    'Dragon',
+    'Elderberry',
+    'Eggfruit',
+    'Evergreen',
+    'Huckleberry',
+    'Entawak',
     'Fig',
-    'Gooseberry',
-    'Grape',
+    'Farkleberry',
+    'Finger Lime',
+    'Grapefruit',
+    'Grapes',
+    'Gooseberries',
     'Guava',
+    'Honeydew melon',
+    'Hackberry',
+    'Honeycrisp Apples',
+    'Indian Prune',
+    'Indonesian Lime',
+    'Imbe',
+    'Indian Fig',
     'Jackfruit',
-    'Plum',
-    'Kiwifruit',
+    'Java Apple',
+    'Jambolan',
+    'Kiwi',
+    'Kaffir Lime',
     'Kumquat',
-    'Lemon',
     'Lime',
+    'Longan',
+    'Lychee',
+    'Loquat',
     'Mango',
-    'Watermelon',
-    'Mulberry',
+    'Mandarin',
     'Orange',
-    'Papaya',
-    'Passionfruit',
-    'Peach',
-    'Pear',
-    'Persimmon',
-    'Pineapple',
-    'Pineberry',
-    'Quince',
-    'Raspberry',
-    'Soursop',
-    'Star fruit',
-    'Strawberry',
-    'Tamarind',
-    'Yuzu',
+    'Mulberry',
   ];
-  console.log(fruites.length);
+
+  console.log('total items', fruits.length);
+  const [clickCount, setClickCount] = React.useState(0);
 
   return (
     <Dropdown selectionType="multiple">
-      <SelectInput label="Select fruits" />
+      <SelectInput
+        label="Select fruits"
+        onClick={() => {
+          setClickCount((prev) => prev + 1);
+          console.log('click count', clickCount);
+        }}
+      />
       <DropdownOverlay>
         <ActionList>
-          {fruites.map((fruit) => {
+          {fruits.map((fruit) => {
             return <ActionListItem key={fruit} title={fruit} value={fruit} />;
           })}
         </ActionList>
