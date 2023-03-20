@@ -22,5 +22,6 @@ export type StyledBaseLinkProps = {
   accessibilityProps: Record<string, unknown>;
   type?: 'button';
   size?: 'small' | 'medium';
+  hitSlop?: BaseLinkProps['hitSlop'];
 } & TestID &
   StyledPropsBlade;
