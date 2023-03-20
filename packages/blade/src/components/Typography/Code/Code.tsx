@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   metaAttribute,
   getPlatformType,
@@ -19,7 +21,8 @@ export type CodeProps = {
    * @default small
    */
   size?: 'small' | 'medium';
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 type CodeContainerProps = {
   size: CodeProps['size'];
@@ -77,12 +80,13 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * </BaseBox>
  * ```
  */
-const Code = ({ children, size = 'small', testID }: CodeProps): JSX.Element => {
+const Code = ({ children, size = 'small', testID, ...styledProps }: CodeProps): JSX.Element => {
   return (
     <CodeContainer
       size={size}
       as={isPlatformWeb ? 'span' : undefined}
       {...metaAttribute({ name: MetaConstants.Code, testID })}
+      {...getStyledProps(styledProps)}
     >
       <BaseText
         color="surface.text.subtle.lowContrast"

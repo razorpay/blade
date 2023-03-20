@@ -124,6 +124,9 @@ describe('<TextInput />', () => {
     let clearButton = queryByRole('button');
     expect(clearButton).toBeFalsy();
     await user.tab();
+    /* We are intentionally making sure that the input is not disabled and focusable since we don't want the input to be disabled while the user is still typing. 
+    For instance, in an autocomplete while the user types, API call is made for each letter and loader shows up but also allows the user to continue typing.
+     */
     expect(input).toHaveFocus();
     await user.type(input, 'Kamlesh');
     clearButton = queryByRole('button');

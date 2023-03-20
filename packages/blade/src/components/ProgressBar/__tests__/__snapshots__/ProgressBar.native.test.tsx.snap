@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -17,8 +23,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
       style={
         Array [
           Object {
@@ -51,8 +55,8 @@ Array [
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="semibold"
-          lineHeight={50}
+          fontWeight="bold"
+          lineHeight="s"
           style={
             Array [
               Object {
@@ -60,7 +64,7 @@ Array [
                 "fontFamily": "Lato",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "600",
+                "fontWeight": "700",
                 "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -112,16 +116,16 @@ Array [
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={200}
+            lineHeight="l"
             style={
               Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 14,
+                  "fontSize": 15,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 20,
+                  "lineHeight": 24,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -140,7 +144,6 @@ Array [
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -155,7 +158,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -182,7 +185,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityLabel="Label"
     accessibilityRole="progressbar"
@@ -250,12 +253,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render ProgressBar without label and percentage 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -269,7 +278,7 @@ Array [
         },
       ]
     }
-  />,
+  />
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -336,12 +345,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -357,7 +372,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -372,7 +386,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -399,7 +413,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -466,12 +480,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render high contrast information intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -487,7 +507,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -502,7 +521,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -529,7 +548,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -596,12 +615,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render high contrast negative intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -617,7 +642,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -632,7 +656,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -659,7 +683,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -726,12 +750,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -747,7 +777,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -762,7 +791,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -789,7 +818,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -856,12 +885,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -877,7 +912,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -892,7 +926,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -919,7 +953,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -986,12 +1020,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render high contrast positive intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -1007,7 +1047,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1022,7 +1061,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -1049,7 +1088,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -1116,12 +1155,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render low contrast information intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -1137,7 +1182,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1152,7 +1196,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -1179,7 +1223,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -1246,12 +1290,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -1267,7 +1317,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1282,7 +1331,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -1309,7 +1358,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -1376,12 +1425,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -1397,7 +1452,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1412,7 +1466,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -1439,7 +1493,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -1506,12 +1560,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -1527,7 +1587,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1542,7 +1601,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -1569,7 +1628,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -1636,12 +1695,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -1657,7 +1722,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1672,7 +1736,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -1699,7 +1763,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -1766,12 +1830,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -1787,8 +1857,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
       style={
         Array [
           Object {
@@ -1821,8 +1889,8 @@ Array [
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="semibold"
-          lineHeight={50}
+          fontWeight="bold"
+          lineHeight="s"
           style={
             Array [
               Object {
@@ -1830,7 +1898,7 @@ Array [
                 "fontFamily": "Lato",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "600",
+                "fontWeight": "700",
                 "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1882,16 +1950,16 @@ Array [
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={200}
+            lineHeight="l"
             style={
               Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 14,
+                  "fontSize": 15,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 20,
+                  "lineHeight": 24,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1910,7 +1978,6 @@ Array [
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -1925,7 +1992,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -1952,7 +2019,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityLabel="Label"
     accessibilityRole="progressbar"
@@ -2020,12 +2087,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -2039,7 +2112,7 @@ Array [
         },
       ]
     }
-  />,
+  />
   <View
     accessibilityRole="progressbar"
     accessibilityValue={
@@ -2106,12 +2179,18 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="row"
@@ -2127,8 +2206,6 @@ Array [
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
       style={
         Array [
           Object {
@@ -2161,8 +2238,8 @@ Array [
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="semibold"
-          lineHeight={50}
+          fontWeight="bold"
+          lineHeight="s"
           style={
             Array [
               Object {
@@ -2170,7 +2247,7 @@ Array [
                 "fontFamily": "Lato",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "600",
+                "fontWeight": "700",
                 "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2222,16 +2299,16 @@ Array [
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={200}
+            lineHeight="l"
             style={
               Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 14,
+                  "fontSize": 15,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 20,
+                  "lineHeight": 24,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2250,7 +2327,6 @@ Array [
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
       style={
         Array [
           Object {
@@ -2265,7 +2341,7 @@ Array [
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight={50}
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -2292,7 +2368,7 @@ Array [
         20%
       </Text>
     </View>
-  </View>,
+  </View>
   <View
     accessibilityLabel="Label"
     accessibilityRole="progressbar"
@@ -2360,8 +2436,8 @@ Array [
         />
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
@@ -2428,11 +2504,11 @@ Array [
         },
       ]
     }
+    type="button"
   >
     <View
       alignItems="center"
       display="flex"
-      flex={1}
       flexDirection="row"
       isHidden={false}
       justifyContent="center"
@@ -2455,13 +2531,13 @@ Array [
         color="action.text.primary.default"
         fontSize={100}
         fontWeight="bold"
-        lineHeight={300}
+        lineHeight="l"
         style={
           Array [
             Object {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 14,
+              "fontSize": 15,
               "fontStyle": "normal",
               "fontWeight": "700",
               "lineHeight": 24,
@@ -2485,45 +2561,152 @@ Array [
     </View>
   </View>,
   <View
-    display="flex"
-    flexDirection="row"
-    justifyContent="space-between"
     style={
       Array [
-        Object {
-          "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-        },
+        Object {},
       ]
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
+      display="flex"
+      flexDirection="row"
+      justifyContent="space-between"
       style={
         Array [
           Object {
-            "marginBottom": 4,
-            "marginRight": 16,
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
           },
         ]
       }
     >
       <View
-        alignItems="center"
-        display="flex"
-        flexDirection="row"
-        flexWrap="wrap"
-        gap="spacing.0"
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "flexWrap": "wrap",
-              "gap": 0,
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          gap="spacing.0"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            color="surface.text.subdued.lowContrast"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="bold"
+            lineHeight="s"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 18%, 45%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "700",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Label
+          </Text>
+          <View
+            style={
+              Array [
+                Object {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              color="surface.text.normal.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 4,
             },
           ]
         }
@@ -2533,8 +2716,8 @@ Array [
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="semibold"
-          lineHeight={50}
+          fontWeight="regular"
+          lineHeight="s"
           style={
             Array [
               Object {
@@ -2542,7 +2725,7 @@ Array [
                 "fontFamily": "Lato",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "600",
+                "fontWeight": "400",
                 "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2558,178 +2741,76 @@ Array [
             ]
           }
         >
-          Label
+          0%
         </Text>
-        <View
-          style={
-            Array [
-              Object {
-                "borderColor": "black",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-                "clip": "rect(0 0 0 0)",
-                "clipPath": "inset(50%)",
-                "height": 1,
-                "left": -10000,
-                "marginBottom": -1,
-                "marginLeft": 0,
-                "marginRight": -1,
-                "marginTop": 0,
-                "overflow": "hidden",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "position": "absolute",
-                "whiteSpace": "nowrap",
-                "width": 1,
-                "wordWrap": "normal",
-              },
-            ]
-          }
-        >
-          <Text
-            color="surface.text.normal.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={200}
-            style={
-              Array [
-                Object {
-                  "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-                Object {},
-              ]
-            }
-          />
-        </View>
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
-      style={
-        Array [
-          Object {
-            "marginBottom": 4,
-          },
-        ]
-      }
-    >
-      <Text
-        color="surface.text.subdued.lowContrast"
-        fontFamily="text"
-        fontSize={75}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={50}
-        style={
-          Array [
-            Object {
-              "color": "hsla(217, 18%, 45%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 16,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
-            },
-            Object {},
-          ]
+      accessibilityLabel="Label"
+      accessibilityRole="progressbar"
+      accessibilityValue={
+        Object {
+          "max": 100,
+          "min": 0,
+          "now": 0,
+          "text": "0%",
         }
-      >
-        0%
-      </Text>
-    </View>
-  </View>,
-  <View
-    accessibilityLabel="Label"
-    accessibilityRole="progressbar"
-    accessibilityValue={
-      Object {
-        "max": 100,
-        "min": 0,
-        "now": 0,
-        "text": "0%",
       }
-    }
-    id="progress-3"
-    style={
-      Array [
-        Object {},
-      ]
-    }
-  >
-    <View
-      backgroundColor="hsla(216, 15%, 54%, 0.18)"
-      height="2px"
-      overflow="hidden"
-      position="relative"
+      id="progress-3"
       style={
         Array [
-          Object {
-            "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-            "height": 2,
-            "overflow": "hidden",
-            "position": "relative",
-          },
+          Object {},
         ]
       }
     >
       <View
-        backgroundColor="hsla(213, 89%, 56%, 1)"
-        progress={0}
+        backgroundColor="hsla(216, 15%, 54%, 0.18)"
+        height="2px"
+        overflow="hidden"
+        position="relative"
         style={
           Array [
             Object {
-              "backgroundColor": "hsla(213, 89%, 56%, 1)",
-              "height": "100%",
-              "width": "0%",
-            },
-            Object {
-              "width": "0%",
+              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+              "height": 2,
+              "overflow": "hidden",
+              "position": "relative",
             },
           ]
         }
       >
         <View
+          backgroundColor="hsla(213, 89%, 56%, 1)"
+          progress={0}
           style={
             Array [
               Object {
-                "backgroundColor": "white",
+                "backgroundColor": "hsla(213, 89%, 56%, 1)",
                 "height": "100%",
-                "opacity": 0,
-                "width": "100%",
+                "width": "0%",
               },
               Object {
-                "opacity": 0,
+                "width": "0%",
               },
             ]
           }
-        />
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "white",
+                  "height": "100%",
+                  "opacity": 0,
+                  "width": "100%",
+                },
+                Object {
+                  "opacity": 0,
+                },
+              ]
+            }
+          />
+        </View>
       </View>
     </View>
   </View>,
@@ -2800,11 +2881,11 @@ Array [
         },
       ]
     }
+    type="button"
   >
     <View
       alignItems="center"
       display="flex"
-      flex={1}
       flexDirection="row"
       isHidden={false}
       justifyContent="center"
@@ -2827,13 +2908,13 @@ Array [
         color="action.text.primary.default"
         fontSize={100}
         fontWeight="bold"
-        lineHeight={300}
+        lineHeight="l"
         style={
           Array [
             Object {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 14,
+              "fontSize": 15,
               "fontStyle": "normal",
               "fontWeight": "700",
               "lineHeight": 24,
@@ -2857,45 +2938,152 @@ Array [
     </View>
   </View>,
   <View
-    display="flex"
-    flexDirection="row"
-    justifyContent="space-between"
     style={
       Array [
-        Object {
-          "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-        },
+        Object {},
       ]
     }
   >
     <View
-      marginBottom="spacing.2"
-      marginRight="spacing.5"
+      display="flex"
+      flexDirection="row"
+      justifyContent="space-between"
       style={
         Array [
           Object {
-            "marginBottom": 4,
-            "marginRight": 16,
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
           },
         ]
       }
     >
       <View
-        alignItems="center"
-        display="flex"
-        flexDirection="row"
-        flexWrap="wrap"
-        gap="spacing.0"
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "flexWrap": "wrap",
-              "gap": 0,
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          gap="spacing.0"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            color="surface.text.subdued.lowContrast"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="bold"
+            lineHeight="s"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 18%, 45%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "700",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Label
+          </Text>
+          <View
+            style={
+              Array [
+                Object {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              color="surface.text.normal.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 4,
             },
           ]
         }
@@ -2905,8 +3093,8 @@ Array [
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="semibold"
-          lineHeight={50}
+          fontWeight="regular"
+          lineHeight="s"
           style={
             Array [
               Object {
@@ -2914,7 +3102,7 @@ Array [
                 "fontFamily": "Lato",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "600",
+                "fontWeight": "400",
                 "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2930,178 +3118,76 @@ Array [
             ]
           }
         >
-          Label
+          60%
         </Text>
-        <View
-          style={
-            Array [
-              Object {
-                "borderColor": "black",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-                "clip": "rect(0 0 0 0)",
-                "clipPath": "inset(50%)",
-                "height": 1,
-                "left": -10000,
-                "marginBottom": -1,
-                "marginLeft": 0,
-                "marginRight": -1,
-                "marginTop": 0,
-                "overflow": "hidden",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "position": "absolute",
-                "whiteSpace": "nowrap",
-                "width": 1,
-                "wordWrap": "normal",
-              },
-            ]
-          }
-        >
-          <Text
-            color="surface.text.normal.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={200}
-            style={
-              Array [
-                Object {
-                  "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-                Object {},
-              ]
-            }
-          />
-        </View>
       </View>
     </View>
     <View
-      marginBottom="spacing.2"
-      style={
-        Array [
-          Object {
-            "marginBottom": 4,
-          },
-        ]
-      }
-    >
-      <Text
-        color="surface.text.subdued.lowContrast"
-        fontFamily="text"
-        fontSize={75}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={50}
-        style={
-          Array [
-            Object {
-              "color": "hsla(217, 18%, 45%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 16,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
-            },
-            Object {},
-          ]
+      accessibilityLabel="Label"
+      accessibilityRole="progressbar"
+      accessibilityValue={
+        Object {
+          "max": 100,
+          "min": 0,
+          "now": 60,
+          "text": "60%",
         }
-      >
-        60%
-      </Text>
-    </View>
-  </View>,
-  <View
-    accessibilityLabel="Label"
-    accessibilityRole="progressbar"
-    accessibilityValue={
-      Object {
-        "max": 100,
-        "min": 0,
-        "now": 60,
-        "text": "60%",
       }
-    }
-    id="progress-3"
-    style={
-      Array [
-        Object {},
-      ]
-    }
-  >
-    <View
-      backgroundColor="hsla(216, 15%, 54%, 0.18)"
-      height="2px"
-      overflow="hidden"
-      position="relative"
+      id="progress-3"
       style={
         Array [
-          Object {
-            "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-            "height": 2,
-            "overflow": "hidden",
-            "position": "relative",
-          },
+          Object {},
         ]
       }
     >
       <View
-        backgroundColor="hsla(213, 89%, 56%, 1)"
-        progress={60}
+        backgroundColor="hsla(216, 15%, 54%, 0.18)"
+        height="2px"
+        overflow="hidden"
+        position="relative"
         style={
           Array [
             Object {
-              "backgroundColor": "hsla(213, 89%, 56%, 1)",
-              "height": "100%",
-              "width": "60%",
-            },
-            Object {
-              "width": "60%",
+              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+              "height": 2,
+              "overflow": "hidden",
+              "position": "relative",
             },
           ]
         }
       >
         <View
+          backgroundColor="hsla(213, 89%, 56%, 1)"
+          progress={60}
           style={
             Array [
               Object {
-                "backgroundColor": "white",
+                "backgroundColor": "hsla(213, 89%, 56%, 1)",
                 "height": "100%",
-                "opacity": 0,
-                "width": "100%",
+                "width": "60%",
               },
               Object {
-                "opacity": 0,
+                "width": "60%",
               },
             ]
           }
-        />
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "white",
+                  "height": "100%",
+                  "opacity": 0,
+                  "width": "100%",
+                },
+                Object {
+                  "opacity": 0,
+                },
+              ]
+            }
+          />
+        </View>
       </View>
     </View>
   </View>,

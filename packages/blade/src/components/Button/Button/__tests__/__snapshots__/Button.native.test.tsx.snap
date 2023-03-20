@@ -63,11 +63,11 @@ exports[`<Button /> should render button with default properties 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -184,11 +184,11 @@ exports[`<Button /> should render button with full width 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -305,11 +305,11 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -332,7 +332,6 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingRight="spacing.3"
       style={
         Array [
           Object {
@@ -362,6 +361,9 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -494,11 +496,11 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -552,7 +554,6 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingLeft="spacing.3"
       style={
         Array [
           Object {
@@ -582,6 +583,9 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -683,11 +687,11 @@ exports[`<Button /> should render disabled button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -804,11 +808,11 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -925,11 +929,11 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1046,11 +1050,11 @@ exports[`<Button /> should render large size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1167,11 +1171,11 @@ exports[`<Button /> should render medium size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1288,11 +1292,11 @@ exports[`<Button /> should render secondary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1409,11 +1413,11 @@ exports[`<Button /> should render small size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1530,11 +1534,11 @@ exports[`<Button /> should render tertiary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1651,11 +1655,11 @@ exports[`<Button /> should render xsmall size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"

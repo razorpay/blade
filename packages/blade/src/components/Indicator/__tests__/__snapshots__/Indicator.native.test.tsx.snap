@@ -34,6 +34,9 @@ exports[`<Indicator /> should render 1`] = `
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
+        Array [
+          Object {},
+        ],
         Object {
           "flex": 0,
           "height": 8,
@@ -80,7 +83,6 @@ exports[`<Indicator /> should render 1`] = `
     </RNSVGGroup>
   </RNSVGSvgView>
   <View
-    marginLeft="spacing.2"
     style={
       Array [
         Object {
@@ -158,6 +160,9 @@ Array [
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 6,
@@ -204,7 +209,6 @@ Array [
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      marginLeft="spacing.2"
       style={
         Array [
           Object {
@@ -278,6 +282,9 @@ Array [
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 8,
@@ -324,7 +331,6 @@ Array [
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      marginLeft="spacing.2"
       style={
         Array [
           Object {
@@ -398,6 +404,9 @@ Array [
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 10,
@@ -444,7 +453,6 @@ Array [
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      marginLeft="spacing.2"
       style={
         Array [
           Object {
@@ -518,6 +526,9 @@ Array [
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 8,
@@ -564,7 +575,6 @@ Array [
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      marginLeft="spacing.2"
       style={
         Array [
           Object {

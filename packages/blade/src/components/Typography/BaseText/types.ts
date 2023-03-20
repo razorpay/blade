@@ -2,6 +2,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { AccessibilityProps } from '~src/utils/makeAccessible/types';
 import type { DotNotationColorStringToken, TestID } from '~src/_helpers/types';
 import type { Feedback } from '~tokens/theme/theme';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
   Theme['colors']['feedback']['text']
@@ -41,7 +42,8 @@ export type BaseTextProps = {
    */
   numberOfLines?: number;
   componentName?: 'text' | 'title' | 'heading' | 'code';
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 export type StyledBaseTextProps = Pick<
   BaseTextProps,

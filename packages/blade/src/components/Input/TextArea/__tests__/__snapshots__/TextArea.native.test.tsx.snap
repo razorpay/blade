@@ -27,8 +27,6 @@ exports[`<TextArea /> should render 1`] = `
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
-      marginBottom="spacing.0"
-      marginTop="spacing.0"
       style={
         Array [
           Object {
@@ -43,8 +41,6 @@ exports[`<TextArea /> should render 1`] = `
       }
     >
       <View
-        marginBottom="spacing.2"
-        marginRight="spacing.5"
         style={
           Array [
             Object {
@@ -212,6 +208,7 @@ exports[`<TextArea /> should render 1`] = `
         onEndEditing={[Function]}
         onFocus={[Function]}
         onKeyPress={[Function]}
+        onSubmitEditing={[Function]}
         secureTextEntry={false}
         style={
           Array [
@@ -263,7 +260,6 @@ exports[`<TextArea /> should render 1`] = `
     />
   </View>
   <View
-    marginLeft={0}
     style={
       Array [
         Object {

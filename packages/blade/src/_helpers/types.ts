@@ -27,6 +27,19 @@ type DotNotationMotionStringToken<TokenType> = {
 type DotNotationSpacingStringToken = `spacing.${keyof Spacing}`;
 
 /**
+ * Similar to Partial except it keeps key as required and only supports undefined as explicit value
+ */
+type AllowUndefinedValue<T> = {
+  [P in keyof T]: T[P] | undefined;
+};
+
+/**
+ * Similar to `Required` except it allows undefined as value.
+ * So all keys have to be explicitly defined, but they can have undefined as value
+ */
+type KeysRequired<T> = AllowUndefinedValue<Required<T>>;
+
+/**
  * Use this when you want children to be string.
  *
  * This covers scenarios like
@@ -56,6 +69,7 @@ export {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
   DotNotationSpacingStringToken,
+  KeysRequired,
   StringChildrenType,
   TestID,
 };

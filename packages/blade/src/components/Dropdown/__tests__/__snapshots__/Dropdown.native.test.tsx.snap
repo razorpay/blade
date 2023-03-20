@@ -46,8 +46,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           display="flex"
           flexDirection="row"
           justifyContent="space-between"
-          marginBottom="spacing.0"
-          marginTop="spacing.0"
           style={
             Array [
               Object {
@@ -61,8 +59,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           }
         >
           <View
-            marginBottom="spacing.2"
-            marginRight="spacing.5"
             style={
               Array [
                 Object {
@@ -298,7 +294,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           >
             <View
               display="flex"
-              paddingRight="spacing.4"
               style={
                 Array [
                   Object {
@@ -345,6 +340,9 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "backgroundColor": "transparent",
                         "borderWidth": 0,
                       },
+                      Array [
+                        Object {},
+                      ],
                       Object {
                         "flex": 0,
                         "height": 16,
@@ -403,7 +401,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         />
       </View>
       <View
-        marginLeft={0}
         style={
           Array [
             Object {
@@ -549,6 +546,9 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                     },
+                    Array [
+                      Object {},
+                    ],
                     Object {
                       "flex": 0,
                       "height": 12,
@@ -584,8 +584,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </RNSVGSvgView>
             </View>
             <View
-              paddingLeft="spacing.3"
-              paddingRight="spacing.3"
               style={
                 Array [
                   Object {
@@ -711,8 +709,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     }
                   />
                   <View
-                    paddingLeft="spacing.0"
-                    paddingRight="spacing.3"
                     style={
                       Array [
                         Object {
@@ -757,7 +753,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     </Text>
                   </View>
                   <View
-                    marginLeft="auto"
                     style={
                       Array [
                         Object {
@@ -842,8 +837,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     }
                   />
                   <View
-                    paddingLeft="spacing.0"
-                    paddingRight="spacing.3"
                     style={
                       Array [
                         Object {
@@ -888,7 +881,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     </Text>
                   </View>
                   <View
-                    marginLeft="auto"
                     style={
                       Array [
                         Object {
@@ -953,6 +945,9 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                     },
+                    Array [
+                      Object {},
+                    ],
                     Object {
                       "flex": 0,
                       "height": 12,
@@ -988,9 +983,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </RNSVGSvgView>
             </View>
             <View
-              flex={1}
-              paddingLeft="spacing.3"
-              paddingRight="spacing.3"
               style={
                 Array [
                   Object {
@@ -1039,7 +1031,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             <View
               alignItems="center"
               display="flex"
-              marginLeft="auto"
               style={
                 Array [
                   Object {
@@ -1112,11 +1103,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     },
                   ]
                 }
+                type="button"
               >
                 <View
                   alignItems="center"
                   display="flex"
-                  flex={1}
                   flexDirection="row"
                   isHidden={false}
                   justifyContent="center"

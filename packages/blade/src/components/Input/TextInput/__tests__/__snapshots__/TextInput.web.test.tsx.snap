@@ -24,8 +24,8 @@ exports[`<TextInput /> should render 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-top: 0px;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .c2 {
@@ -361,8 +361,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-top: 0px;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .c2 {
@@ -697,6 +697,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <svg
               aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="16px"

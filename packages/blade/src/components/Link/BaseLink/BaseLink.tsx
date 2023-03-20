@@ -20,6 +20,7 @@ import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -35,7 +36,8 @@ type BaseLinkCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium';
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 /*
   Mandatory children prop when icon is not provided
@@ -217,6 +219,7 @@ const BaseLink = ({
   style,
   size = 'medium',
   testID,
+  ...styledProps
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
   const childrenString = getStringFromReactText(children);
@@ -286,6 +289,7 @@ const BaseLink = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
+      {...styledProps}
       // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}

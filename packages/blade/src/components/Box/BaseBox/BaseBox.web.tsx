@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import type { BaseBoxProps } from './types';
-import getBaseBoxStyles from './getBaseBoxStyles';
+import { useMemoizedStyles } from './useMemoizedStyles';
 
-const BaseBox = styled.div<BaseBoxProps>(getBaseBoxStyles);
+const BaseBox = styled.div<BaseBoxProps>((props) => {
+  const cssObject = useMemoizedStyles(props);
+  return cssObject;
+});
 
-export default BaseBox;
+export { BaseBox };

@@ -6,6 +6,7 @@ import { BaseInput } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
@@ -40,6 +41,7 @@ type TextInputProps = Pick<
   | 'autoFocus'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
+  | 'onSubmit'
   | 'autoCapitalize'
   | 'testID'
 > & {
@@ -69,7 +71,7 @@ type TextInputProps = Pick<
    * @default text
    */
   type?: Type;
-};
+} & StyledPropsBlade;
 
 type TextInputKeyboardAndAutoComplete = Pick<
   BaseInputProps,
@@ -179,6 +181,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     onChange,
     onFocus,
     onBlur,
+    onSubmit,
     isDisabled,
     necessityIndicator,
     validationState,
@@ -197,6 +200,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     autoCompleteSuggestionType,
     autoCapitalize,
     testID,
+    ...styledProps
   },
   ref,
 ): ReactElement => {
@@ -268,6 +272,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       }}
       onFocus={onFocus}
       onBlur={onBlur}
+      onSubmit={onSubmit}
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
@@ -295,6 +300,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         autoCompleteSuggestionType,
         autoCapitalize,
       })}
+      {...styledProps}
     />
   );
 };
