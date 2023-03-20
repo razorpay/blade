@@ -2203,6 +2203,7 @@ const shadows: Shadows = {
 };
 
 const paymentTheme: ThemeTokens = {
+  name: 'paymentTheme',
   border,
   breakpoints,
   colors,

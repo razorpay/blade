@@ -61,6 +61,24 @@ type KeysRequired<T> = AllowUndefinedValue<Required<T>>;
  */
 type StringChildrenType = React.ReactText | React.ReactText[];
 
+/**
+ *
+ * When combined with union, this type utility will give you autocomplete of union while still supporting any string value as input
+ *
+ * ### Usage
+ *
+ * ```ts
+ * type ThemeName = 'paymentTheme' | 'bankingTheme' | StringWithAutocomplete;
+ * ```
+ *
+ * This will show paymentTheme and bankingTheme in autocomplete but also allow any other string as value.
+ *
+ * More details - https://github.com/razorpay/blade/pull/1031/commits/86b6ee0facf45e7556739efcbfa5396b11b1b3c9#r1121298293
+ * Related TS Issue - https://github.com/microsoft/TypeScript/issues/29729
+ *
+ */
+type StringWithAutocomplete = string & Record<never, never>;
+
 type TestID = {
   testID?: string;
 };
@@ -71,5 +89,6 @@ export {
   DotNotationSpacingStringToken,
   KeysRequired,
   StringChildrenType,
+  StringWithAutocomplete,
   TestID,
 };
