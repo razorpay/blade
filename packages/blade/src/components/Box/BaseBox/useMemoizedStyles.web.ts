@@ -3,6 +3,7 @@ import type { CSSObject } from 'styled-components';
 import { getBaseBoxStyles } from './baseBoxStyles';
 import type { BaseBoxProps } from './types';
 import type { Theme } from '~components/BladeProvider';
+import { useTheme } from '~components/BladeProvider';
 
 const getMemoDependency = (props: BaseBoxProps & { theme?: Theme }): string | BaseBoxProps => {
   // These are the props that change nothing in the getBaseBoxStyles calculations
@@ -37,10 +38,11 @@ const getMemoDependency = (props: BaseBoxProps & { theme?: Theme }): string | Ba
  */
 const useMemoizedStyles = (boxProps: BaseBoxProps & { theme: Theme }): CSSObject => {
   const boxPropsMemoDependency = getMemoDependency(boxProps);
+  const { colorScheme } = useTheme();
   const boxPropsCSSObject = React.useMemo(
     () => getBaseBoxStyles({ ...boxProps, theme: boxProps.theme }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [boxPropsMemoDependency],
+    [boxPropsMemoDependency, colorScheme],
   );
 
   return boxPropsCSSObject;
