@@ -60,7 +60,7 @@ type CurrencyAbbreviation = {
 };
 
 type CurrencyAbbreviationsMapping = {
-  [key: string]: CurrencyAbbreviation[];
+  [key: keyof CurrencyLocaleMapping]: CurrencyAbbreviation[];
 };
 
 const currencyAbbreviationsMapping: CurrencyAbbreviationsMapping = {

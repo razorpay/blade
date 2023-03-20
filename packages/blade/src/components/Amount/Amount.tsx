@@ -13,6 +13,8 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~src/_helpers/types';
 import { metaAttribute, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type Currency = 'INR' | 'MYR';
 
@@ -50,7 +52,7 @@ type AmountProps = {
    */
   suffix?: 'decimals' | 'none' | 'humanize';
   /**
-   * in amount by making the prefix symbol and decimal digits s
+   * Makes the prefix symbol and decimal digits small and faded
    *
    * @default true
    */
@@ -61,7 +63,8 @@ type AmountProps = {
    * @default 'currency-symbol'
    */
   prefix?: 'currency-symbol' | 'currency-code';
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 type ColorProps = {
   amountValueColor: BaseTextProps['color'];
@@ -107,7 +110,7 @@ const AmountValue = ({
           fontSize={amountFontSizes[size]}
           fontWeight={valueForWeight}
           color={amountValueColor}
-          marginX="spacing.1"
+          marginRight="spacing.1"
         >
           {integer}.
         </BaseText>
@@ -122,7 +125,7 @@ const AmountValue = ({
       fontSize={amountFontSizes[size]}
       fontWeight={valueForWeight}
       color={amountValueColor}
-      marginX="spacing.1"
+      marginRight="spacing.1"
     >
       {value}
     </BaseText>
@@ -200,9 +203,14 @@ const Amount = ({
   intent,
   prefix = 'currency-symbol',
   testID,
+  ...styledProps
 }: AmountProps): ReactElement => {
   if (isNaN(value)) {
     throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
+  }
+  // @ts-expect-error netural intent should throw error
+  if (intent === 'neutral') {
+    throw new Error('[Blade Amount]: `neutral` intent is not support.');
   }
 
   // This will be added to prop and can be switched to a currency
@@ -224,6 +232,7 @@ const Amount = ({
       display="flex"
       alignItems="baseline"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
+      {...getStyledProps(styledProps)}
     >
       <BaseBox>
         <BaseText fontWeight={currencyWeight} fontSize={currencyFontSize} color={currencyColor}>
