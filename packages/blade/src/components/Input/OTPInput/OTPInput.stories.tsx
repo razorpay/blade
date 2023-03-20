@@ -26,6 +26,12 @@ export default {
     onChange: ({ name, value }): void => {
       console.log(`input field ${name} content changed to ${value}`);
     },
+    onBlur: ({ name, value, inputIndex }): void => {
+      console.log(`input field ${name} blurred with value ${value} for inputIdex ${inputIndex}`);
+    },
+    onFocus: ({ name, value, inputIndex }): void => {
+      console.log(`input field ${name} focused with value ${value} for inputIdex ${inputIndex}`);
+    },
     onOTPFilled: ({ name, value }): void => {
       console.log(`otp field ${name} filled with ${value}`);
     },

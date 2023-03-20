@@ -1,5 +1,18 @@
 # @razorpay/blade
 
+## 6.5.2
+
+### Patch Changes
+
+- 2700667f: fix(SelectInput): call user passed onBlur callback
+- 3855a583: fix(Card): CardHeader title alignment when subtitle is not present
+
+## 6.5.1
+
+### Patch Changes
+
+- 86cd05a6: chore(blade): update meta constant of Box
+
 ## 6.5.0
 
 ### Minor Changes

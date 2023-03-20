@@ -13,6 +13,16 @@ import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from
 import { useTheme } from '~components/BladeProvider';
 import size from '~tokens/global/size';
 
+type FormInputOnEventWithIndex = ({
+  name,
+  value,
+  inputIndex,
+}: {
+  name?: string;
+  value?: string;
+  inputIndex: number;
+}) => void;
+
 export type OTPInputProps = Pick<
   BaseInputProps,
   | 'label'
@@ -61,6 +71,14 @@ export type OTPInputProps = Pick<
     BaseInputProps['autoCompleteSuggestionType'],
     'none' | 'oneTimeCode'
   >;
+  /**
+   * The callback function to be invoked when one of the input fields gets focus
+   */
+  onFocus?: FormInputOnEventWithIndex;
+  /**
+   * The callback function to be invoked when one of the input fields is blurred
+   */
+  onBlur?: FormInputOnEventWithIndex;
 } & StyledPropsBlade;
 
 const isReactNative = getPlatformType() === 'react-native';
@@ -95,6 +113,8 @@ const OTPInput = ({
   labelPosition,
   name,
   onChange,
+  onFocus,
+  onBlur,
   onOTPFilled,
   otpLength = 6,
   placeholder,
@@ -282,9 +302,12 @@ const OTPInput = ({
             id={`${inputId}-${index}`}
             textAlign="center"
             ref={ref}
+            name={name}
             value={currentValue}
             maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
             onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex: index })}
+            onFocus={(formEvent) => onFocus?.({ ...formEvent, inputIndex: index })}
+            onBlur={(formEvent) => onBlur?.({ ...formEvent, inputIndex: index })}
             onInput={(formEvent) => handleOnInput({ ...formEvent, currentOtpIndex: index })}
             onKeyDown={(keyboardEvent) =>
               handleOnKeyDown({ ...keyboardEvent, currentOtpIndex: index })
