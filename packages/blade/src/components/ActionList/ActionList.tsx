@@ -98,11 +98,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
   );
   const isMultiSelectable = selectionType === 'multiple';
 
-  // React.useEffect(() => {
-  //   console.log('children change, actionList', childrenWithId);
-  // }, [childrenWithId]);
-
-  // console.log('render actionList', {dropdownBaseId});
   return (
     <StyledActionList
       surfaceLevel={surfaceLevel}
