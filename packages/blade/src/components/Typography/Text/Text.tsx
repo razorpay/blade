@@ -147,8 +147,7 @@ const Text = <T extends { variant: TextVariant }>({
     ...getTextProps({
       variant,
       type,
-      // substitiue bold with semibold
-      weight: weight === 'bold' ? 'semibold' : weight,
+      weight,
       size,
       contrast,
       testID,

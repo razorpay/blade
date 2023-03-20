@@ -4,7 +4,6 @@ import type { FontFamily } from './fontFamily/types';
 type FontWeight = {
   regular: 400;
   bold: 700;
-  semibold: 600;
 };
 
 /**
@@ -90,7 +89,6 @@ export type FontSize = {
 const fontWeight: FontWeight = {
   regular: 400,
   bold: 700,
-  semibold: 600,
 };
 
 export type Typography = {
