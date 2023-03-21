@@ -110,11 +110,15 @@ const AmountValue = ({
           fontSize={amountFontSizes[size]}
           fontWeight={valueForWeight}
           color={amountValueColor}
-          marginRight="spacing.1"
         >
           {integer}.
         </BaseText>
-        <BaseText fontWeight={affixFontWeight} fontSize={affixFontSize} color={affixColor}>
+        <BaseText
+          marginLeft="spacing.1"
+          fontWeight={affixFontWeight}
+          fontSize={affixFontSize}
+          color={affixColor}
+        >
           {decimal || '00'}
         </BaseText>
       </>
@@ -230,7 +234,12 @@ const Amount = ({
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseText fontWeight={currencyWeight} fontSize={currencyFontSize} color={currencyColor}>
+      <BaseText
+        marginRight="spacing.1"
+        fontWeight={currencyWeight}
+        fontSize={currencyFontSize}
+        color={currencyColor}
+      >
         {currencyPrefix}
       </BaseText>
       <AmountValue
