@@ -7,6 +7,7 @@ import { Code, Heading, Text, Title } from '~components/Typography';
 import { Sandbox, SandboxProvider, SandboxHighlighter } from '~src/_helpers/storybook/Sandbox';
 import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
+import { castWebType } from '~utils';
 
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();
@@ -261,7 +262,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
             <SandpackLayout>
               <SandpackCodeEditor />
               <SandpackPreview />
-              <Box display={{ base: 'none', m: 'block' }} width="100%">
+              <Box display={castWebType({ base: 'none', m: 'block' })} width="100%">
                 <SandpackPreview style={{ width: '100%' }} />
               </Box>
             </SandpackLayout>
