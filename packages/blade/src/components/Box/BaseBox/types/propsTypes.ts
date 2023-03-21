@@ -33,7 +33,7 @@ type LayoutProps = MakeObjectResponsive<
         /**
          *
          *
-         * On React Native, **`display`** property supports `flex` and `none`
+         * On React Native, **`display`** property sets whether an element can be `flex` or `none`
          *
          * @see https://reactnative.dev/docs/layout-props.html#display
          */
