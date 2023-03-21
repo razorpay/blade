@@ -37,7 +37,7 @@ type LayoutProps = MakeObjectResponsive<
          *
          * @see https://reactnative.dev/docs/layout-props.html#display
          *
-         * @defaultValue flex
+         * @default 'flex'
          */
         display: 'none' | 'flex';
       };
