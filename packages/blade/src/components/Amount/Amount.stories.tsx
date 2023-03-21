@@ -1,5 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import { getStyledPropsArgTypes } from '../Box/BaseBox/storybookArgTypes';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
 import BaseBox from '~components/Box/BaseBox';
@@ -37,7 +38,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Amount',
   component: AmountComponent,
-  argTypes: {},
+  argTypes: { ...getStyledPropsArgTypes() },
   parameters: {
     docs: {
       page: Page,
