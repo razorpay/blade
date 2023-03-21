@@ -57,7 +57,7 @@ Amount.storyName = 'Default';
 
 const AmountTemplateWithText: ComponentStory<typeof AmountComponent> = (args) => {
   return (
-    <BaseBox display="flex" flexWrap="wrap">
+    <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
       <Text>Total Amount is</Text>
       <AmountComponent {...args} />
       <Text>only.</Text>
@@ -89,9 +89,9 @@ const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }
   return (
     <BaseBox justifyContent="center">
       {sizes.map((size) => (
-        <BaseBox key={size} marginBottom="spacing.5">
+        <BaseBox key={size} marginBottom="spacing.3">
           <Text>{size}</Text>
-          <BaseBox marginBottom="spacing.2" />
+          <BaseBox marginBottom="spacing.1" />
           <AmountComponent {...args} size={size} />
         </BaseBox>
       ))}
@@ -121,9 +121,10 @@ const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
           key={intent}
           alignItems="baseline"
           paddingRight="spacing.3"
-          paddingTop="spacing.2"
+          paddingTop="spacing.3"
+          flexDirection="column"
         >
-          <Text>{intent}</Text>
+          <Text marginBottom="spacing.1">{intent}</Text>
           <AmountComponent {...args} intent={intent} />
         </BaseBox>
       ))}
@@ -150,7 +151,7 @@ const AmountHumanizeSuffixTemplate: ComponentStory<typeof AmountComponent> = (ar
   return (
     <BaseBox justifyContent="flex-start">
       {values.map((value) => (
-        <BaseBox paddingBottom={5} key={value}>
+        <BaseBox paddingBottom="spacing.3" key={value}>
           <AmountComponent {...args} value={value} />
         </BaseBox>
       ))}
