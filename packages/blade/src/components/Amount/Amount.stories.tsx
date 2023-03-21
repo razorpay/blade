@@ -57,7 +57,7 @@ Amount.storyName = 'Default';
 
 const AmountTemplateWithText: ComponentStory<typeof AmountComponent> = (args) => {
   return (
-    <BaseBox display="flex">
+    <BaseBox display="flex" flexWrap="wrap">
       <Text>Total Amount is</Text>
       <AmountComponent {...args} />
       <Text>only.</Text>
