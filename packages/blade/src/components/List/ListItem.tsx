@@ -68,6 +68,9 @@ const ListItemContentChildren = ({
   children: (React.ReactChild | React.ReactFragment | React.ReactPortal)[];
   size: NonNullable<ListProps['size']>;
 }): JSX.Element => {
+  /* Having a <View><Text>...</Text><View/> inside <Text /> breaks vertical alignment. Issue: https://github.com/facebook/react-native/issues/31955
+    As a workaround, we wrap individual strings in their own <Text /> and handle alignment with a parent <View> (BaseBox).
+   */
   return getPlatformType() === 'react-native' ? (
     <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
       {children.map((child) => {
