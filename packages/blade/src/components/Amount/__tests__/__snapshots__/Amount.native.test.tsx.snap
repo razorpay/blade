@@ -47,15 +47,12 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={100}
-    fontWeight="regular"
     style={
       Array [
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 15,
+          "fontSize": 17,
           "fontStyle": "normal",
           "fontWeight": "400",
           "lineHeight": 24,
@@ -72,37 +69,64 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={100}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -154,9 +178,6 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={200}
-    fontWeight="regular"
     style={
       Array [
         Object {
@@ -179,37 +200,64 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    22
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={200}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 17,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      22
+    </Text>
   </Text>
 </View>
 `;
@@ -338,15 +386,12 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={100}
-    fontWeight="regular"
     style={
       Array [
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 15,
+          "fontSize": 17,
           "fontStyle": "normal",
           "fontWeight": "400",
           "lineHeight": 24,
@@ -363,37 +408,64 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={100}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -445,17 +517,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={100}
-    fontWeight="bold"
     style={
       Array [
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 15,
+          "fontSize": 17,
           "fontStyle": "normal",
-          "fontWeight": "700",
+          "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -470,37 +539,64 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={100}
+      fontWeight="bold"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -552,15 +648,12 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
     style={
       Array [
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 12,
+          "fontSize": 17,
           "fontStyle": "normal",
           "fontWeight": "400",
           "lineHeight": 24,
@@ -577,37 +670,64 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -659,17 +779,14 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={75}
-    fontWeight="bold"
     style={
       Array [
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 12,
+          "fontSize": 17,
           "fontStyle": "normal",
-          "fontWeight": "700",
+          "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -684,37 +801,64 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={75}
+      fontWeight="bold"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -766,15 +910,12 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={400}
-    fontWeight="regular"
     style={
       Array [
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 20,
+          "fontSize": 17,
           "fontStyle": "normal",
           "fontWeight": "400",
           "lineHeight": 24,
@@ -791,37 +932,64 @@ exports[`<Amount /> should render heading-large size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={100}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={400}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 20,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={100}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -873,17 +1041,14 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={400}
-    fontWeight="bold"
     style={
       Array [
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 20,
+          "fontSize": 17,
           "fontStyle": "normal",
-          "fontWeight": "700",
+          "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -898,37 +1063,64 @@ exports[`<Amount /> should render heading-large-bold size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={100}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={400}
+      fontWeight="bold"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 20,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={100}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -980,9 +1172,6 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={200}
-    fontWeight="regular"
     style={
       Array [
         Object {
@@ -1005,37 +1194,64 @@ exports[`<Amount /> should render heading-small size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={200}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 17,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -1087,9 +1303,6 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={200}
-    fontWeight="bold"
     style={
       Array [
         Object {
@@ -1097,7 +1310,7 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
           "fontFamily": "Lato",
           "fontSize": 17,
           "fontStyle": "normal",
-          "fontWeight": "700",
+          "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -1112,37 +1325,64 @@ exports[`<Amount /> should render heading-small-bold size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={200}
+      fontWeight="bold"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 17,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -1271,15 +1511,12 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
     ₹
   </Text>
   <Text
-    color="feedback.text.positive.lowContrast"
-    fontSize={100}
-    fontWeight="regular"
     style={
       Array [
         Object {
-          "color": "hsla(160, 100%, 26%, 1)",
+          "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 15,
+          "fontSize": 17,
           "fontStyle": "normal",
           "fontWeight": "400",
           "lineHeight": 24,
@@ -1296,37 +1533,64 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="feedback.text.positive.lowContrast"
-    fontSize={75}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(160, 100%, 26%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="feedback.text.positive.lowContrast"
+      fontSize={100}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(160, 100%, 26%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="feedback.text.positive.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(160, 100%, 26%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -1378,17 +1642,14 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={700}
-    fontWeight="bold"
     style={
       Array [
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 24,
+          "fontSize": 17,
           "fontStyle": "normal",
-          "fontWeight": "700",
+          "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -1403,37 +1664,64 @@ exports[`<Amount /> should render title-medium size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={400}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 20,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={700}
+      fontWeight="bold"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 24,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={400}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 20,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
@@ -1485,17 +1773,14 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
     ₹
   </Text>
   <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={600}
-    fontWeight="bold"
     style={
       Array [
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 22,
+          "fontSize": 17,
           "fontStyle": "normal",
-          "fontWeight": "700",
+          "fontWeight": "400",
           "lineHeight": 24,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -1510,37 +1795,64 @@ exports[`<Amount /> should render title-small size Amount 1`] = `
       ]
     }
   >
-    1,000
-    .
-  </Text>
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={300}
-    fontWeight="regular"
-    marginLeft="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 18,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 2,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    00
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={600}
+      fontWeight="bold"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 22,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={300}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 18,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
   </Text>
 </View>
 `;
