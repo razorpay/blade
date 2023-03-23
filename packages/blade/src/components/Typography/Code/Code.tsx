@@ -92,7 +92,9 @@ const Code = ({ children, size = 'small', testID, ...styledProps }: CodeProps): 
         color="surface.text.subtle.lowContrast"
         fontFamily="code"
         fontSize={getCodeFontSize(size)}
+        alignSelf="baseline"
         as={isPlatformWeb ? 'code' : undefined}
+        lineHeight={100}
       >
         {children}
       </BaseText>
