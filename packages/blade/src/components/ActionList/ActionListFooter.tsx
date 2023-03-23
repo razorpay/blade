@@ -16,9 +16,9 @@ import {
   metaAttribute,
   isValidAllowedChildren,
 } from '~utils';
-import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
 import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListFooterProps = {
   title?: string;
@@ -67,7 +67,7 @@ const StyledActionListFooter = styled(BaseBox)((props) => {
  * />
  * ```
  */
-const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.Element => {
+const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
   const footerRef = React.useRef<HTMLDivElement | null>(null);
   const {
     setShouldIgnoreBlur,
@@ -159,13 +159,17 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
   );
 };
 
-ActionListFooter.componentId = componentIds.ActionListFooter;
+const ActionListFooter = assignWithoutSideEffects(_ActionListFooter, {
+  componentId: componentIds.ActionListFooter,
+});
 
-const ActionListFooterIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }) => {
+const _ActionListFooterIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   return <Icon color="surface.text.muted.lowContrast" size="small" />;
 };
 
-ActionListFooterIcon.componentId = componentIds.ActionListFooterIcon;
+const ActionListFooterIcon = assignWithoutSideEffects(_ActionListFooterIcon, {
+  componentId: componentIds.ActionListFooterIcon,
+});
 
 export { ActionListFooter, ActionListFooterIcon, ActionListFooterProps };

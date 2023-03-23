@@ -1,10 +1,11 @@
 import type { LinkProps } from '../Link';
 import { Link } from '../Link';
 import { useListContext } from './ListContext';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ListItemLinkProps = Exclude<LinkProps, 'size' | 'variant' | 'isDisabled'>;
 
-const ListItemLink = ({
+const _ListItemLink = ({
   accessibilityLabel,
   children,
   href,
@@ -33,6 +34,6 @@ const ListItemLink = ({
   );
 };
 
-ListItemLink.componentId = 'ListItemLink';
+const ListItemLink = assignWithoutSideEffects(_ListItemLink, { componentId: 'ListItemLink' });
 
 export { ListItemLink, ListItemLinkProps };

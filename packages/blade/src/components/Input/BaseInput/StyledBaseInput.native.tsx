@@ -13,6 +13,7 @@ import { getBaseInputStyles } from './baseInputStyles';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
 import size from '~tokens/global/size';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -113,129 +114,130 @@ const getRNInputStyles = (
 const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(getRNInputStyles);
 const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(getRNInputStyles);
 
-export const StyledBaseInput = React.forwardRef<
+const _StyledBaseInput: React.ForwardRefRenderFunction<
   TextInput | TouchableHighlight,
   StyledBaseInputProps
->(
-  (
-    {
-      name,
-      isRequired,
-      isDisabled,
-      maxCharacters,
-      handleOnFocus,
-      handleOnChange,
-      handleOnBlur,
-      handleOnSubmit,
-      handleOnInput,
-      handleOnKeyDown,
-      handleOnClick,
-      keyboardType = 'text',
-      keyboardReturnKeyType,
-      autoCompleteSuggestionType,
-      accessibilityProps,
-      currentInteraction,
-      setCurrentInteraction,
-      type,
-      numberOfLines,
-      isTextArea,
-      hasPopup,
-      shouldIgnoreBlurAnimation,
-      autoCapitalize,
-      ...props
-    },
-    ref,
-  ) => {
-    const buttonValue = props.value ? props.value : props.placeholder;
-    const commonProps = {
-      onBlur: (): void => {
-        // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
-        // The selectinput should always look like it is in focus otherwise it triggers blur + focus again which can cause flicker
-        if (!shouldIgnoreBlurAnimation) {
-          setCurrentInteraction('default');
-        }
-      },
-      isFocused: currentInteraction === 'active',
-    };
-
-    return hasPopup ? (
-      <StyledNativeBaseButton
-        // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={ref as any}
-        onPress={(): void => {
-          handleOnClick?.({ name, value: props.value });
-        }}
-        onFocus={(): void => {
-          handleOnFocus?.({ name, value: props.value });
-          setCurrentInteraction('active');
-        }}
-        {...commonProps}
-        {...props}
-        {...accessibilityProps}
-      >
-        <Text
-          size="medium"
-          variant="body"
-          type={props.value ? 'subtle' : 'placeholder'}
-          contrast="low"
-          weight="regular"
-        >
-          {buttonValue}
-        </Text>
-      </StyledNativeBaseButton>
-    ) : (
-      <StyledNativeBaseInput
-        // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={ref as any}
-        multiline={isTextArea}
-        numberOfLines={numberOfLines}
-        editable={!isDisabled}
-        maxLength={maxCharacters}
-        onFocus={(event): void => {
-          handleOnFocus?.({ name, value: event?.nativeEvent.text });
-          setCurrentInteraction('active');
-        }}
-        onChangeText={(text): void => {
-          handleOnChange?.({ name, value: text });
-          handleOnInput?.({ name, value: text });
-        }}
-        onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
-        onSubmitEditing={(event): void =>
-          handleOnSubmit?.({ name, value: event?.nativeEvent.text })
-        }
-        onKeyPress={(event): void => {
-          handleOnKeyDown?.({
-            name,
-            key: event?.nativeEvent.key,
-            event: (event as unknown) as React.KeyboardEvent<HTMLInputElement>, // TODO: handle platform specific type
-          });
-        }}
-        // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
-        // source: https://reactnative.dev/docs/textinput/#keyboardtype
-        keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
-        returnKeyType={keyboardReturnKeyType}
-        autoCompleteType={
-          autoCompleteSuggestionType
-            ? (autoCompleteSuggestionTypeAndroid[
-                autoCompleteSuggestionType
-              ] as StyledComponentAutoCompleteAndroid)
-            : undefined
-        }
-        secureTextEntry={type === 'password'}
-        isTextArea={isTextArea}
-        textContentType={
-          autoCompleteSuggestionType
-            ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
-            : undefined
-        }
-        autoCapitalize={autoCapitalize}
-        {...commonProps}
-        {...props}
-        {...accessibilityProps}
-      />
-    );
+> = (
+  {
+    name,
+    isRequired,
+    isDisabled,
+    maxCharacters,
+    handleOnFocus,
+    handleOnChange,
+    handleOnBlur,
+    handleOnSubmit,
+    handleOnInput,
+    handleOnKeyDown,
+    handleOnClick,
+    keyboardType = 'text',
+    keyboardReturnKeyType,
+    autoCompleteSuggestionType,
+    accessibilityProps,
+    currentInteraction,
+    setCurrentInteraction,
+    type,
+    numberOfLines,
+    isTextArea,
+    hasPopup,
+    shouldIgnoreBlurAnimation,
+    autoCapitalize,
+    ...props
   },
-);
-StyledBaseInput.displayName = 'StyledBaseInput';
+  ref,
+) => {
+  const buttonValue = props.value ? props.value : props.placeholder;
+  const commonProps = {
+    onBlur: (): void => {
+      // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
+      // The selectinput should always look like it is in focus otherwise it triggers blur + focus again which can cause flicker
+      if (!shouldIgnoreBlurAnimation) {
+        setCurrentInteraction('default');
+      }
+    },
+    isFocused: currentInteraction === 'active',
+  };
+
+  return hasPopup ? (
+    <StyledNativeBaseButton
+      // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
+      onPress={(): void => {
+        handleOnClick?.({ name, value: props.value });
+      }}
+      onFocus={(): void => {
+        handleOnFocus?.({ name, value: props.value });
+        setCurrentInteraction('active');
+      }}
+      {...commonProps}
+      {...props}
+      {...accessibilityProps}
+    >
+      <Text
+        size="medium"
+        variant="body"
+        type={props.value ? 'subtle' : 'placeholder'}
+        contrast="low"
+        weight="regular"
+      >
+        {buttonValue}
+      </Text>
+    </StyledNativeBaseButton>
+  ) : (
+    <StyledNativeBaseInput
+      // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
+      multiline={isTextArea}
+      numberOfLines={numberOfLines}
+      editable={!isDisabled}
+      maxLength={maxCharacters}
+      onFocus={(event): void => {
+        handleOnFocus?.({ name, value: event?.nativeEvent.text });
+        setCurrentInteraction('active');
+      }}
+      onChangeText={(text): void => {
+        handleOnChange?.({ name, value: text });
+        handleOnInput?.({ name, value: text });
+      }}
+      onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
+      onSubmitEditing={(event): void => handleOnSubmit?.({ name, value: event?.nativeEvent.text })}
+      onKeyPress={(event): void => {
+        handleOnKeyDown?.({
+          name,
+          key: event?.nativeEvent.key,
+          event: (event as unknown) as React.KeyboardEvent<HTMLInputElement>, // TODO: handle platform specific type
+        });
+      }}
+      // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
+      // source: https://reactnative.dev/docs/textinput/#keyboardtype
+      keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
+      returnKeyType={keyboardReturnKeyType}
+      autoCompleteType={
+        autoCompleteSuggestionType
+          ? (autoCompleteSuggestionTypeAndroid[
+              autoCompleteSuggestionType
+            ] as StyledComponentAutoCompleteAndroid)
+          : undefined
+      }
+      secureTextEntry={type === 'password'}
+      isTextArea={isTextArea}
+      textContentType={
+        autoCompleteSuggestionType
+          ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
+          : undefined
+      }
+      autoCapitalize={autoCapitalize}
+      {...commonProps}
+      {...props}
+      {...accessibilityProps}
+    />
+  );
+};
+
+const StyledBaseInput = assignWithoutSideEffects(React.forwardRef(_StyledBaseInput), {
+  displayName: 'StyledBaseInput',
+});
+
+export { StyledBaseInput };
