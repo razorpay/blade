@@ -46,7 +46,7 @@ type ActionListHeaderProps = {
  * />
  * ```
  */
-const _ActionListHeader = (props: ActionListHeaderProps): JSX.Element => {
+const _ActionListHeader = (props: ActionListHeaderProps): React.ReactElement => {
   React.useEffect(() => {
     React.Children.map(props.leading, (child) => {
       if (!isValidAllowedChildren(child, componentIds.ActionListHeaderIcon)) {
@@ -75,7 +75,7 @@ const ActionListHeader = assignWithoutSideEffects(_ActionListHeader, {
   componentId: componentIds.ActionListHeader,
 });
 
-const _ActionListHeaderIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const _ActionListHeaderIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   return <Icon color="surface.text.muted.lowContrast" size="small" />;
 };

@@ -81,7 +81,7 @@ type CardBodyProps = {
   children: React.ReactNode;
 } & TestID;
 
-const _CardBody = ({ children, testID }: CardBodyProps): JSX.Element => {
+const _CardBody = ({ children, testID }: CardBodyProps): React.ReactElement => {
   useVerifyInsideCard('CardBody');
 
   return <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })}>{children}</BaseBox>;

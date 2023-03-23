@@ -72,7 +72,7 @@ const StyledSectionDivider = styled(BaseBox)((props) => ({
   margin: `${makeSize(props.theme.spacing[1])} ${makeSize(props.theme.spacing[3])}`,
 }));
 
-const ActionListSectionDivider = (): JSX.Element => (
+const ActionListSectionDivider = (): React.ReactElement => (
   <StyledSectionDivider
     {...makeAccessible({
       role: getSeparatorRole(),
@@ -102,7 +102,7 @@ const _ActionListSection = ({
   children,
   testID,
   _hideDivider,
-}: ActionListSectionProps): JSX.Element => {
+}: ActionListSectionProps): React.ReactElement => {
   return (
     <BaseBox
       {...makeAccessible({
@@ -135,7 +135,7 @@ const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
   componentId: componentIds.ActionListSection,
 });
 
-const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   const { intent, isDisabled } = React.useContext(ActionListItemContext);
   return (
@@ -154,7 +154,11 @@ const ActionListItemIcon = assignWithoutSideEffects(_ActionListItemIcon, {
   componentId: componentIds.ActionListItemIcon,
 });
 
-const _ActionListItemText = ({ children }: { children: StringChildrenType }): JSX.Element => {
+const _ActionListItemText = ({
+  children,
+}: {
+  children: StringChildrenType;
+}): React.ReactElement => {
   const { isDisabled } = React.useContext(ActionListItemContext);
 
   return (
@@ -206,7 +210,7 @@ const makeActionListItemClickable = (
  * </ActionList>
  * ```
  */
-const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
+const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   const {
     activeIndex,
     dropdownBaseId,

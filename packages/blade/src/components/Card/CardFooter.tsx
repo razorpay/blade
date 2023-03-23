@@ -32,7 +32,7 @@ const useIsMobile = (): boolean => {
   return matchedDeviceType === 'mobile';
 };
 
-const _CardFooter = ({ children, testID }: CardFooterProps): JSX.Element => {
+const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
   useVerifyAllowedComponents(children, 'CardFooter', [
@@ -62,7 +62,7 @@ type CardFooterLeadingProps = {
   title?: string;
   subtitle?: string;
 };
-const _CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): JSX.Element => {
+const _CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardFooterLeading');
 
   return (
@@ -90,7 +90,7 @@ type CardFooterTrailingProps = {
     secondary?: CardFooterAction;
   };
 };
-const _CardFooterTrailing = ({ actions }: CardFooterTrailingProps): JSX.Element => {
+const _CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooterTrailing');
 

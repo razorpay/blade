@@ -67,7 +67,7 @@ const StyledActionListFooter = styled(BaseBox)((props) => {
  * />
  * ```
  */
-const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
+const _ActionListFooter = (props: ActionListFooterProps): React.ReactElement => {
   const footerRef = React.useRef<HTMLDivElement | null>(null);
   const {
     setShouldIgnoreBlur,
@@ -163,7 +163,7 @@ const ActionListFooter = assignWithoutSideEffects(_ActionListFooter, {
   componentId: componentIds.ActionListFooter,
 });
 
-const _ActionListFooterIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const _ActionListFooterIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   return <Icon color="surface.text.muted.lowContrast" size="small" />;
 };

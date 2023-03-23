@@ -19,7 +19,7 @@ type ActionListItemAssetProps = {
 /**
  *
  */
-const _ActionListItemAsset = (props: ActionListItemAssetProps): JSX.Element => {
+const _ActionListItemAsset = (props: ActionListItemAssetProps): React.ReactElement => {
   const source = typeof props.src === 'string' ? { uri: props.src } : props.src;
 
   return (

@@ -12,7 +12,7 @@ type ActionListItemAssetProps = {
    */
   alt: string;
 };
-const _ActionListItemAsset = (props: ActionListItemAssetProps): JSX.Element => {
+const _ActionListItemAsset = (props: ActionListItemAssetProps): React.ReactElement => {
   return <img src={props.src} alt={props.alt} width={size[16]} height={size[12]} />;
 };
 
