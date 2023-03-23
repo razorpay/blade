@@ -36,6 +36,17 @@ type BaseLinkCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium';
+  /**
+   * Defines how far your touch can start away from the link. This is a react-native only prop and has no effect on web.
+   */
+  hitSlop?:
+    | {
+        top?: number;
+        right?: number;
+        bottom?: number;
+        left?: number;
+      }
+    | number;
 } & TestID &
   StyledPropsBlade;
 
@@ -219,6 +230,7 @@ const BaseLink = ({
   style,
   size = 'medium',
   testID,
+  hitSlop,
   ...styledProps
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
@@ -293,6 +305,7 @@ const BaseLink = ({
       // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}
+      hitSlop={hitSlop}
     >
       <BaseBox display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (

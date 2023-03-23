@@ -10,6 +10,8 @@ import {
   InfoIcon,
 } from '~components/Icons';
 import {
+  castNativeType,
+  castWebType,
   getPlatformType,
   makeAccessible,
   metaAttribute,
@@ -205,7 +207,10 @@ const Alert = ({
   );
 
   const primaryAction = actions?.primary ? (
-    <BaseBox marginRight="spacing.5" display={isReactNative ? 'flex' : 'inline-flex'}>
+    <BaseBox
+      marginRight="spacing.5"
+      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
+    >
       <BaseButton
         size={textSize}
         onClick={actions.primary.onClick}
@@ -235,7 +240,10 @@ const Alert = ({
     secondaryActionParams.rel = actions.secondary.rel;
   }
   const secondaryAction = actions?.secondary ? (
-    <BaseBox marginRight="spacing.4" display={isReactNative ? 'flex' : 'inline-flex'}>
+    <BaseBox
+      marginRight="spacing.4"
+      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
+    >
       <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
         {actions.secondary.text}
       </BaseLink>

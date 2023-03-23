@@ -1,3 +1,4 @@
+import type { StringWithAutocomplete } from '~src/_helpers/types';
 import type { Border } from '~tokens/global/border';
 import type { Breakpoints } from '~tokens/global/breakpoints';
 import type { Motion } from '~tokens/global/motion';
@@ -155,6 +156,7 @@ export type Colors = {
 export type ColorsWithModes = Record<ColorSchemeModes, Colors>;
 
 export type ThemeTokens = {
+  name: 'paymentTheme' | 'bankingTheme' | StringWithAutocomplete; // Can be used to watch over state changes between theme without watching over entire theme object
   border: Border;
   breakpoints: Breakpoints;
   colors: ColorsWithModes;
