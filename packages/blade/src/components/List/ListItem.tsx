@@ -19,6 +19,7 @@ import BaseBox from '~components/Box/BaseBox';
 import {
   getComponentId,
   getIn,
+  getPlatformType,
   isValidAllowedChildren,
   metaAttribute,
   MetaConstants,
@@ -59,6 +60,33 @@ const StyledListItem = styled(ListItemElement)<{
       )
     : 0,
 }));
+
+const ListItemContentChildren = ({
+  children,
+  size,
+}: {
+  children: (React.ReactChild | React.ReactFragment | React.ReactPortal)[];
+  size: NonNullable<ListProps['size']>;
+}): JSX.Element => {
+  return getPlatformType() === 'react-native' ? (
+    <BaseBox display="flex" flexDirection="row">
+      {children.map((child) => {
+        if (typeof child === 'string') {
+          return (
+            <Text variant="body" size={size}>
+              {child}
+            </Text>
+          );
+        }
+        return child;
+      })}
+    </BaseBox>
+  ) : (
+    <Text variant="body" size={size}>
+      {children}
+    </Text>
+  );
+};
 
 const ListItem = ({
   children,
@@ -152,9 +180,7 @@ const ListItem = ({
             </Text>
           </BaseBox>
         )}
-        <Text variant="body" size={size}>
-          {validChildItem}
-        </Text>
+        <ListItemContentChildren size={size}>{validChildItem}</ListItemContentChildren>
       </BaseBox>
       {childList}
     </StyledListItem>
