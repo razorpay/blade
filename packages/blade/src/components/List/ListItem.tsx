@@ -69,7 +69,7 @@ const ListItemContentChildren = ({
   size: NonNullable<ListProps['size']>;
 }): JSX.Element => {
   return getPlatformType() === 'react-native' ? (
-    <BaseBox display="flex" flexDirection="row">
+    <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
       {children.map((child) => {
         if (typeof child === 'string') {
           return (
