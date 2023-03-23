@@ -96,10 +96,6 @@ interface AmountValue extends Omit<AmountProps, 'value'> {
   size: Exclude<AmountProps['size'], undefined>;
 }
 
-const useIsNative = (): boolean => {
-  return getPlatformType() === 'react-native';
-};
-
 const AmountValue = ({
   value,
   size,
@@ -111,13 +107,12 @@ const AmountValue = ({
   const affixFontWeight = isAffixSubtle ? 'regular' : 'bold';
   const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
-  const isNative = useIsNative();
   if (suffix === 'decimals' && isAffixSubtle) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
 
-    // Becasue Basetext doesn't support display flex we need to wrap it in a fragment for web
-    const AmountWrapper = isNative ? BaseText : React.Fragment;
+    // Native does not support alignItems of Text inside a div, insted we need to wrap is in a Text
+    const AmountWrapper = getPlatformType() === 'react-native' ? BaseText : React.Fragment;
 
     return (
       <AmountWrapper>
@@ -221,12 +216,11 @@ const Amount = ({
   if (isNaN(value)) {
     throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
   }
-  // @ts-expect-error netural intent should throw error
+  // @ts-expect-error neutral intent should throw error
   if (intent === 'neutral') {
     throw new Error('[Blade Amount]: `neutral` intent is not support.');
   }
 
-  // This will be added to prop and can be switched to a currency
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
   const renderedValue = formatAmountWithSuffix({ suffix, value, currency });
   const { amountValueColor, affixColor } = getTextColorProps({
