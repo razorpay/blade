@@ -31,7 +31,7 @@ const validateBackgroundProp = (
 /**
  * This function is to filter out any unexpected props passed by the user
  */
-const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID'>> => {
+const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '__brand__'>> => {
   return {
     // Layout
     display: props.display,
