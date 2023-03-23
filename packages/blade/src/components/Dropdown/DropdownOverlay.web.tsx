@@ -5,7 +5,7 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
+import { castWebType, makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import type { WithComponentId } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
@@ -118,7 +118,7 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({
       <StyledDropdownOverlay
         width={width}
         style={{ opacity: isOpen ? 1 : 0 }}
-        display={display}
+        display={castWebType(display)}
         right="0px"
         position="absolute"
         transition={isOpen ? fadeIn : fadeOut}
