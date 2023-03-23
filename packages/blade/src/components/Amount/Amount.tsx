@@ -13,10 +13,9 @@ import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~src/_helpers/types';
-import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
+import { getPlatformType, metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { useTheme } from '~components/BladeProvider';
 
 type Currency = 'INR' | 'MYR';
 
@@ -91,12 +90,8 @@ interface AmountValue extends Omit<AmountProps, 'value'> {
   size: Exclude<AmountProps['size'], undefined>;
 }
 
-const useIsMobile = (): boolean => {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint({
-    breakpoints: theme.breakpoints,
-  });
-  return matchedDeviceType === 'mobile';
+const useIsNative = (): boolean => {
+  return getPlatformType() === 'react-native';
 };
 
 const AmountValue = ({
@@ -110,12 +105,13 @@ const AmountValue = ({
   const affixFontWeight = isAffixSubtle ? 'regular' : 'bold';
   const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
-  const isMobile = useIsMobile();
+  const isNative = useIsNative();
   if (suffix === 'decimals' && isAffixSubtle) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
 
-    const AmountWrapper = isMobile ? BaseText : React.Fragment;
+    // Becasue Basetext doesn't support display flex we need to wrap it in a fragment for web
+    const AmountWrapper = isNative ? BaseText : React.Fragment;
 
     return (
       <AmountWrapper>
