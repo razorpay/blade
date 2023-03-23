@@ -131,6 +131,137 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 </View>
 `;
 
+exports[`<Amount /> should render MYR currency Amount  1`] = `
+<View
+  alignItems="baseline"
+  display="flex"
+  flexDirection="row"
+  style={
+    Array [
+      Object {
+        "alignItems": "baseline",
+        "display": "flex",
+        "flexDirection": "row",
+        "paddingLeft": 4,
+        "paddingRight": 4,
+      },
+    ]
+  }
+>
+  <Text
+    color="surface.text.muted.lowContrast"
+    fontSize={75}
+    fontWeight="bold"
+    marginRight="spacing.1"
+    style={
+      Array [
+        Object {
+          "color": "hsla(216, 16%, 60%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 2,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    RM
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 17,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={100}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      1,000
+      .
+    </Text>
+    <Text
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      marginLeft="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 2,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      00
+    </Text>
+  </Text>
+</View>
+`;
+
 exports[`<Amount /> should render amount with Decimal value 1`] = `
 <View
   alignItems="baseline"

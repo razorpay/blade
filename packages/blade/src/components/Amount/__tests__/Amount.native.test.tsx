@@ -101,4 +101,9 @@ describe('<Amount />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('should render MYR currency Amount ', () => {
+    const { toJSON } = renderWithTheme(<Amount currency="MYR" value={1000} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

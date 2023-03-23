@@ -95,4 +95,9 @@ describe('<Amount />', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
+  it('should render MYR currency Amount ', () => {
+    const { container } = renderWithTheme(<Amount currency="MYR" value={1000} />);
+    expect(container).toMatchSnapshot();
+  });
 });
