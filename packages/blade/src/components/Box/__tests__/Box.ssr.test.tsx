@@ -1,5 +1,6 @@
 import { Box } from '../Box';
 import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import { castWebType } from '~utils';
 
 describe('<Box />', () => {
   it('should render Box component with supported styles', () => {
@@ -31,7 +32,7 @@ describe('<Box />', () => {
 
   it('should render Box as footer tag', () => {
     const { container } = renderWithSSR(
-      <Box display="block" as="footer">
+      <Box display={castWebType('block')} as="footer">
         Footer test!
       </Box>,
     );

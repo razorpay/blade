@@ -2203,6 +2203,7 @@ const shadows: Shadows = {
 };
 
 const bankingTheme: ThemeTokens = {
+  name: 'bankingTheme',
   border,
   breakpoints,
   colors,

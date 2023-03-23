@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 6.6.0
+
+### Minor Changes
+
+- 5863f939: feat(OTPInput): add `onFocus` & `onBlur` props
+- 75daaa3c: feat(theme): add `name` property in `theme` to watch on theme changes
+
+### Patch Changes
+
+- 6a8524ab: feat(Link): add `hitSlop` support for native
+
 ## 6.5.2
 
 ### Patch Changes
