@@ -46,7 +46,7 @@ type ActionListHeaderProps = {
  * />
  * ```
  */
-const _ActionListHeader = (props: ActionListHeaderProps): React.ReactElement => {
+const _ActionListHeader = (props: ActionListHeaderProps): JSX.Element => {
   React.useEffect(() => {
     React.Children.map(props.leading, (child) => {
       if (!isValidAllowedChildren(child, componentIds.ActionListHeaderIcon)) {
