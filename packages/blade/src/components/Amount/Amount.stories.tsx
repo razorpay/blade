@@ -167,6 +167,35 @@ HumanizeSuffix.args = {
 };
 HumanizeSuffix.storyName = 'Humanize Suffix';
 
+const AmountCurrencyTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+  const values = ['INR', 'MYR'] as const;
+
+  return (
+    <BaseBox justifyContent="flex-start">
+      {values.map((value) => (
+        <BaseBox
+          display="flex"
+          key={value}
+          alignItems="baseline"
+          paddingRight="spacing.3"
+          paddingTop="spacing.3"
+          flexDirection="column"
+        >
+          <Text marginBottom="spacing.1">{value}</Text>
+          <AmountComponent {...args} currency={value} />
+        </BaseBox>
+      ))}
+    </BaseBox>
+  );
+};
+
+export const Currency = AmountCurrencyTemplate.bind({});
+Currency.args = {
+  ...defaultArgs,
+  suffix: 'humanize',
+};
+Currency.storyName = 'Currency';
+
 export const AffixSubtleOff = AmountDefaultTemplate.bind({});
 AffixSubtleOff.args = {
   ...defaultArgs,
