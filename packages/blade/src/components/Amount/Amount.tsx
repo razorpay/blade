@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import React from 'react';
 import type { HeadingProps, TextProps, TitleProps } from '../Typography';
 import {
   amountFontSizes,
@@ -12,9 +13,10 @@ import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~src/_helpers/types';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { useTheme } from '~components/BladeProvider';
 
 type Currency = 'INR' | 'MYR';
 
@@ -89,6 +91,14 @@ interface AmountValue extends Omit<AmountProps, 'value'> {
   size: Exclude<AmountProps['size'], undefined>;
 }
 
+const useIsMobile = (): boolean => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({
+    breakpoints: theme.breakpoints,
+  });
+  return matchedDeviceType === 'mobile';
+};
+
 const AmountValue = ({
   value,
   size,
@@ -100,12 +110,15 @@ const AmountValue = ({
   const affixFontWeight = isAffixSubtle ? 'regular' : 'bold';
   const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
+  const isMobile = useIsMobile();
   if (suffix === 'decimals' && isAffixSubtle) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
 
+    const AmountWrapper = isMobile ? BaseText : React.Fragment;
+
     return (
-      <>
+      <AmountWrapper>
         <BaseText
           fontSize={amountFontSizes[size]}
           fontWeight={valueForWeight}
@@ -121,7 +134,7 @@ const AmountValue = ({
         >
           {decimal || '00'}
         </BaseText>
-      </>
+      </AmountWrapper>
     );
   }
   return (
@@ -131,14 +144,12 @@ const AmountValue = ({
   );
 };
 
-// First calculates a factor based on the desired precision by raising 10 to the power of the
-// precision value. This factor is then used to multiply the value and round it down to the nearest integer
-// value. Finally, the rounded value is divided by the factor again to restore its original scale, and then
-// rounded to the desired precision using toFixed().
-const getFlooredFixed = (value: number, precision: number): number => {
-  const factor = 10 ** precision;
+// This function rounds a number to a specified number of decimal places
+// and floors the result.
+const getFlooredFixed = (value: number, decimalPlaces: number): number => {
+  const factor = 10 ** decimalPlaces;
   const roundedValue = Math.floor(value * factor) / factor;
-  return Number(roundedValue.toFixed(precision));
+  return Number(roundedValue.toFixed(decimalPlaces));
 };
 
 const addCommas = (amountValue: number, currency: Currency): string => {
