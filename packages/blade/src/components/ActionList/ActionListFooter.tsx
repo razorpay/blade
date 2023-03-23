@@ -67,7 +67,7 @@ const StyledActionListFooter = styled(BaseBox)((props) => {
  * />
  * ```
  */
-const _ActionListFooter = (props: ActionListFooterProps): React.ReactElement => {
+const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
   const footerRef = React.useRef<HTMLDivElement | null>(null);
   const {
     setShouldIgnoreBlur,
