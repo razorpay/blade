@@ -64,6 +64,12 @@ type AmountProps = {
    * @default 'currency-symbol'
    */
   prefix?: 'currency-symbol' | 'currency-code';
+  /**
+   * The currency of the amount.
+   *
+   * @default 'INR'
+   * */
+  currency?: Currency;
 } & TestID &
   StyledPropsBlade;
 
@@ -209,6 +215,7 @@ const Amount = ({
   intent,
   prefix = 'currency-symbol',
   testID,
+  currency = 'INR',
   ...styledProps
 }: AmountProps): ReactElement => {
   if (isNaN(value)) {
@@ -220,7 +227,6 @@ const Amount = ({
   }
 
   // This will be added to prop and can be switched to a currency
-  const currency = 'INR';
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
   const renderedValue = formatAmountWithSuffix({ suffix, value, currency });
   const { amountValueColor, affixColor } = getTextColorProps({
