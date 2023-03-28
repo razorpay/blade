@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 6.6.2
+
+### Patch Changes
+
+- c7c66051: fix: ListItemLink alignment
+
 ## 6.6.1
 
 ### Patch Changes
