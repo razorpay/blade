@@ -805,7 +805,7 @@ WithMultipleDropdowns.args = {
   name: 'design-system',
 };
 
-export const APerf = (): React.ReactElement => {
+export const DropdownPerformance = (): React.ReactElement => {
   const fruits = [
     'Apples',
     'Apricots',
