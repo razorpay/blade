@@ -1,5 +1,30 @@
 # @razorpay/blade
 
+## 6.6.2
+
+### Patch Changes
+
+- c7c66051: fix: ListItemLink alignment
+
+## 6.6.1
+
+### Patch Changes
+
+- fe89e6f6: fix: tree-shaking in blade components
+- 7817c9e3: feat(Box): add different types for `display` on react native
+- c6512ba0: fix(Alert, Card): set `box-sizing` as `border-box` for Alert and Card
+
+## 6.6.0
+
+### Minor Changes
+
+- 5863f939: feat(OTPInput): add `onFocus` & `onBlur` props
+- 75daaa3c: feat(theme): add `name` property in `theme` to watch on theme changes
+
+### Patch Changes
+
+- 6a8524ab: feat(Link): add `hitSlop` support for native
+
 ## 6.5.2
 
 ### Patch Changes

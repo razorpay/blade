@@ -16,7 +16,6 @@ import type { IconComponent } from '~components/Icons';
 import type { CounterProps } from '~components/Counter';
 import { Counter } from '~components/Counter';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
-import type { WithComponentId } from '~utils';
 import {
   metaAttribute,
   MetaConstants,
@@ -25,41 +24,52 @@ import {
   makeSpace,
 } from '~utils';
 import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
-const CardHeaderIcon: WithComponentId<{ icon: IconComponent }> = ({ icon: Icon }) => {
+const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
 
   return <Icon color="surface.text.normal.lowContrast" size="xlarge" />;
 };
-CardHeaderIcon.componentId = ComponentIds.CardHeaderIcon;
+const CardHeaderIcon = assignWithoutSideEffects(_CardHeaderIcon, {
+  componentId: ComponentIds.CardHeaderIcon,
+});
 
-const CardHeaderCounter: WithComponentId<CounterProps> = (props) => {
+const _CardHeaderCounter = (props: CounterProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderCounter');
 
   return <Counter {...props} />;
 };
-CardHeaderCounter.componentId = ComponentIds.CardHeaderCounter;
+const CardHeaderCounter = assignWithoutSideEffects(_CardHeaderCounter, {
+  componentId: ComponentIds.CardHeaderCounter,
+});
 
-const CardHeaderBadge: WithComponentId<BadgeProps> = (props) => {
+const _CardHeaderBadge = (props: BadgeProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderBadge');
 
   return <Badge {...props} />;
 };
-CardHeaderBadge.componentId = ComponentIds.CardHeaderBadge;
+const CardHeaderBadge = assignWithoutSideEffects(_CardHeaderBadge, {
+  componentId: ComponentIds.CardHeaderBadge,
+});
 
-const CardHeaderText: WithComponentId<TextProps<{ variant: TextVariant }>> = (props) => {
+const _CardHeaderText = (props: TextProps<{ variant: TextVariant }>): React.ReactElement => {
   useVerifyInsideCard('CardHeaderText');
 
   return <Text {...props} />;
 };
-CardHeaderText.componentId = ComponentIds.CardHeaderText;
+const CardHeaderText = assignWithoutSideEffects(_CardHeaderText, {
+  componentId: ComponentIds.CardHeaderText,
+});
 
-const CardHeaderLink: WithComponentId<LinkProps> = (props) => {
+const _CardHeaderLink = (props: LinkProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLink');
 
   return <Link {...props} />;
 };
-CardHeaderLink.componentId = ComponentIds.CardHeaderLink;
+const CardHeaderLink = assignWithoutSideEffects(_CardHeaderLink, {
+  componentId: ComponentIds.CardHeaderLink,
+});
 
 type CardHeaderIconButtonProps = Omit<
   ButtonProps,
@@ -68,7 +78,7 @@ type CardHeaderIconButtonProps = Omit<
   icon: IconComponent;
 };
 
-const CardHeaderIconButton: WithComponentId<CardHeaderIconButtonProps> = (props) => {
+const _CardHeaderIconButton = (props: CardHeaderIconButtonProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIconButton');
 
   return (
@@ -77,13 +87,15 @@ const CardHeaderIconButton: WithComponentId<CardHeaderIconButtonProps> = (props)
     </BaseBox>
   );
 };
-CardHeaderIconButton.componentId = ComponentIds.CardHeaderIconButton;
+const CardHeaderIconButton = assignWithoutSideEffects(_CardHeaderIconButton, {
+  componentId: ComponentIds.CardHeaderIconButton,
+});
 
 type CardHeaderProps = {
   children?: React.ReactNode;
 } & TestID;
 
-const CardHeader: WithComponentId<CardHeaderProps> = ({ children, testID }) => {
+const _CardHeader = ({ children, testID }: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');
   useVerifyAllowedComponents(children, 'CardHeader', [
     ComponentIds.CardHeaderLeading,
@@ -107,7 +119,7 @@ const CardHeader: WithComponentId<CardHeaderProps> = ({ children, testID }) => {
     </BaseBox>
   );
 };
-CardHeader.componentId = ComponentIds.CardHeader;
+const CardHeader = assignWithoutSideEffects(_CardHeader, { componentId: ComponentIds.CardHeader });
 
 type CardHeaderLeadingProps = {
   title: string;
@@ -125,12 +137,12 @@ type CardHeaderLeadingProps = {
    */
   suffix?: React.ReactNode;
 };
-const CardHeaderLeading: WithComponentId<CardHeaderLeadingProps> = ({
+const _CardHeaderLeading = ({
   title,
   subtitle,
   prefix,
   suffix,
-}) => {
+}: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
 
   if (prefix && !isValidAllowedChildren(prefix, ComponentIds.CardHeaderIcon)) {
@@ -166,7 +178,9 @@ const CardHeaderLeading: WithComponentId<CardHeaderLeadingProps> = ({
     </BaseBox>
   );
 };
-CardHeaderLeading.componentId = ComponentIds.CardHeaderLeading;
+const CardHeaderLeading = assignWithoutSideEffects(_CardHeaderLeading, {
+  componentId: ComponentIds.CardHeaderLeading,
+});
 
 type CardHeaderTrailingProps = {
   /**
@@ -184,7 +198,7 @@ const headerTrailingAllowedComponents = [
   ComponentIds.CardHeaderBadge,
 ];
 
-const CardHeaderTrailing: WithComponentId<CardHeaderTrailingProps> = ({ visual }) => {
+const _CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderTrailing');
 
   if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
@@ -197,7 +211,9 @@ const CardHeaderTrailing: WithComponentId<CardHeaderTrailingProps> = ({ visual }
 
   return <BaseBox alignSelf="center">{visual}</BaseBox>;
 };
-CardHeaderTrailing.componentId = ComponentIds.CardHeaderTrailing;
+const CardHeaderTrailing = assignWithoutSideEffects(_CardHeaderTrailing, {
+  componentId: ComponentIds.CardHeaderTrailing,
+});
 
 export {
   CardHeader,

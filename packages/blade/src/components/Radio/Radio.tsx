@@ -15,6 +15,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type RadioProps = {
   /**
@@ -120,7 +121,6 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   );
 };
 
-const Radio = React.forwardRef(_Radio);
-Radio.displayName = 'Radio';
+const Radio = assignWithoutSideEffects(React.forwardRef(_Radio), { displayName: 'Radio' });
 
 export { Radio, RadioProps };

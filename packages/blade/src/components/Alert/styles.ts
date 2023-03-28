@@ -29,5 +29,6 @@ export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject
     maxWidth: isFullWidth ? 'auto' : makeSize(MAX_WIDTH),
     width: isFullWidth ? '100%' : undefined,
     alignItems: isFullWidth && isDesktop ? 'center' : 'flex-start',
+    boxSizing: 'border-box',
   };
 };

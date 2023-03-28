@@ -18,7 +18,30 @@ type LayoutProps = MakeObjectResponsive<
     width: SpacingValueType;
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
-  } & Pick<CSSObject, 'display' | 'overflow' | 'overflowX' | 'overflowY'>
+  } & Pick<CSSObject, 'overflow' | 'overflowX' | 'overflowY'> &
+    Platform.Select<{
+      web: {
+        /**
+         *
+         * On Web, The **`display`** CSS property sets whether an element is treated as a block or inline element and the layout used for its children, such as flow layout, grid or flex.
+         *
+         * @see https://developer.mozilla.org/docs/Web/CSS/display
+         */
+        display: CSSObject['display'];
+      };
+      native: {
+        /**
+         *
+         *
+         * On React Native, **`display`** property sets whether an element can be `flex` or `none`
+         *
+         * @see https://reactnative.dev/docs/layout-props.html#display
+         *
+         * @default 'flex'
+         */
+        display: 'none' | 'flex';
+      };
+    }>
 >;
 
 type FlexboxProps = MakeObjectResponsive<
