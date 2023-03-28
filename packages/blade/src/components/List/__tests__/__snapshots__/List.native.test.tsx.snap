@@ -114,38 +114,53 @@ exports[`<List /> should render List with default properties 1`] = `
             </RNSVGGroup>
           </RNSVGSvgView>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1
+          </Text>
+        </View>
       </View>
       <View
         style={
@@ -257,38 +272,53 @@ exports[`<List /> should render List with default properties 1`] = `
                   </RNSVGGroup>
                 </RNSVGSvgView>
               </View>
-              <Text
-                color="surface.text.normal.lowContrast"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight="l"
+              <View
+                display="flex"
+                flexDirection="row"
+                flexWrap="wrap"
                 style={
                   Array [
                     Object {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 15,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 24,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
                     },
-                    Object {},
                   ]
                 }
               >
-                Level 2
-              </Text>
+                <Text
+                  color="surface.text.normal.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(217, 56%, 17%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  Level 2
+                </Text>
+              </View>
             </View>
             <View
               style={
@@ -402,38 +432,53 @@ exports[`<List /> should render List with default properties 1`] = `
                         </RNSVGGroup>
                       </RNSVGSvgView>
                     </View>
-                    <Text
-                      color="surface.text.normal.lowContrast"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      lineHeight="l"
+                    <View
+                      display="flex"
+                      flexDirection="row"
+                      flexWrap="wrap"
                       style={
                         Array [
                           Object {
-                            "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 15,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "lineHeight": 24,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "wrap",
                           },
-                          Object {},
                         ]
                       }
                     >
-                      Level 3
-                    </Text>
+                      <Text
+                        color="surface.text.normal.lowContrast"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight="l"
+                        style={
+                          Array [
+                            Object {
+                              "color": "hsla(217, 56%, 17%, 1)",
+                              "fontFamily": "Lato",
+                              "fontSize": 15,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "lineHeight": 24,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        Level 3
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -560,37 +605,52 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             </RNSVGGroup>
           </RNSVGSvgView>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1 
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1 
+          </Text>
           <View
             size="small"
             style={
@@ -636,7 +696,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               Google
             </Text>
           </View>
-        </Text>
+        </View>
       </View>
     </View>
     <View
@@ -734,38 +794,53 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             </RNSVGGroup>
           </RNSVGSvgView>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 2
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 2
+          </Text>
+        </View>
       </View>
     </View>
   </View>
@@ -886,37 +961,52 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             </RNSVGGroup>
           </RNSVGSvgView>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1
+          </Text>
           <View
             accessibilityRole="link"
             accessibilityState={
@@ -975,7 +1065,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 color="action.text.link.default"
                 fontSize={100}
                 fontWeight="bold"
-                lineHeight="m"
+                lineHeight="l"
                 style={
                   Array [
                     Object {
@@ -984,7 +1074,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                       "fontSize": 15,
                       "fontStyle": "normal",
                       "fontWeight": "700",
-                      "lineHeight": 18,
+                      "lineHeight": 24,
                       "marginBottom": 0,
                       "marginLeft": 0,
                       "marginRight": 0,
@@ -1005,7 +1095,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               </Text>
             </View>
           </View>
-        </Text>
+        </View>
       </View>
     </View>
     <View
@@ -1103,38 +1193,53 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             </RNSVGGroup>
           </RNSVGSvgView>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 2
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 2
+          </Text>
+        </View>
       </View>
     </View>
   </View>
@@ -1244,38 +1349,53 @@ exports[`<List /> should render medium ordered List 1`] = `
             1.
           </Text>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1
+          </Text>
+        </View>
       </View>
       <View
         style={
@@ -1387,38 +1507,53 @@ exports[`<List /> should render medium ordered List 1`] = `
                   </RNSVGGroup>
                 </RNSVGSvgView>
               </View>
-              <Text
-                color="surface.text.normal.lowContrast"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight="l"
+              <View
+                display="flex"
+                flexDirection="row"
+                flexWrap="wrap"
                 style={
                   Array [
                     Object {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 15,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 24,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
                     },
-                    Object {},
                   ]
                 }
               >
-                Level 2
-              </Text>
+                <Text
+                  color="surface.text.normal.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(217, 56%, 17%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  Level 2
+                </Text>
+              </View>
             </View>
             <View
               style={
@@ -1532,38 +1667,53 @@ exports[`<List /> should render medium ordered List 1`] = `
                         </RNSVGGroup>
                       </RNSVGSvgView>
                     </View>
-                    <Text
-                      color="surface.text.normal.lowContrast"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      lineHeight="l"
+                    <View
+                      display="flex"
+                      flexDirection="row"
+                      flexWrap="wrap"
                       style={
                         Array [
                           Object {
-                            "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 15,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "lineHeight": 24,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "wrap",
                           },
-                          Object {},
                         ]
                       }
                     >
-                      Level 3
-                    </Text>
+                      <Text
+                        color="surface.text.normal.lowContrast"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight="l"
+                        style={
+                          Array [
+                            Object {
+                              "color": "hsla(217, 56%, 17%, 1)",
+                              "fontFamily": "Lato",
+                              "fontSize": 15,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "lineHeight": 24,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        Level 3
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1683,38 +1833,53 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             1
           </Text>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1
+          </Text>
+        </View>
       </View>
     </View>
     <View
@@ -1805,38 +1970,53 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             2
           </Text>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 2
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 2
+          </Text>
+        </View>
       </View>
     </View>
     <View
@@ -1927,38 +2107,53 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             3
           </Text>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 3
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 3
+          </Text>
+        </View>
       </View>
     </View>
   </View>
@@ -2077,38 +2272,53 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             </RNSVGGroup>
           </RNSVGSvgView>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1
+          </Text>
+        </View>
       </View>
       <View
         style={
@@ -2218,38 +2428,53 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   </RNSVGGroup>
                 </RNSVGSvgView>
               </View>
-              <Text
-                color="surface.text.normal.lowContrast"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight="l"
+              <View
+                display="flex"
+                flexDirection="row"
+                flexWrap="wrap"
                 style={
                   Array [
                     Object {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 15,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 24,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
                     },
-                    Object {},
                   ]
                 }
               >
-                Level 2
-              </Text>
+                <Text
+                  color="surface.text.normal.lowContrast"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  lineHeight="l"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(217, 56%, 17%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 15,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 24,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  Level 2
+                </Text>
+              </View>
             </View>
             <View
               style={
@@ -2363,38 +2588,53 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         </RNSVGGroup>
                       </RNSVGSvgView>
                     </View>
-                    <Text
-                      color="surface.text.normal.lowContrast"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      lineHeight="l"
+                    <View
+                      display="flex"
+                      flexDirection="row"
+                      flexWrap="wrap"
                       style={
                         Array [
                           Object {
-                            "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 15,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "lineHeight": 24,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "wrap",
                           },
-                          Object {},
                         ]
                       }
                     >
-                      Level 3
-                    </Text>
+                      <Text
+                        color="surface.text.normal.lowContrast"
+                        fontFamily="text"
+                        fontSize={100}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight="l"
+                        style={
+                          Array [
+                            Object {
+                              "color": "hsla(217, 56%, 17%, 1)",
+                              "fontFamily": "Lato",
+                              "fontSize": 15,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "lineHeight": 24,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        Level 3
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -2510,38 +2750,53 @@ exports[`<List /> should render small ordered List 1`] = `
             1.
           </Text>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="s"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="s"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1
+          </Text>
+        </View>
       </View>
       <View
         style={
@@ -2653,38 +2908,53 @@ exports[`<List /> should render small ordered List 1`] = `
                   </RNSVGGroup>
                 </RNSVGSvgView>
               </View>
-              <Text
-                color="surface.text.normal.lowContrast"
-                fontFamily="text"
-                fontSize={75}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight="s"
+              <View
+                display="flex"
+                flexDirection="row"
+                flexWrap="wrap"
                 style={
                   Array [
                     Object {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 12,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 16,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
                     },
-                    Object {},
                   ]
                 }
               >
-                Level 2
-              </Text>
+                <Text
+                  color="surface.text.normal.lowContrast"
+                  fontFamily="text"
+                  fontSize={75}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  lineHeight="s"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(217, 56%, 17%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 12,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 16,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  Level 2
+                </Text>
+              </View>
             </View>
             <View
               style={
@@ -2798,38 +3068,53 @@ exports[`<List /> should render small ordered List 1`] = `
                         </RNSVGGroup>
                       </RNSVGSvgView>
                     </View>
-                    <Text
-                      color="surface.text.normal.lowContrast"
-                      fontFamily="text"
-                      fontSize={75}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      lineHeight="s"
+                    <View
+                      display="flex"
+                      flexDirection="row"
+                      flexWrap="wrap"
                       style={
                         Array [
                           Object {
-                            "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 12,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "lineHeight": 16,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "wrap",
                           },
-                          Object {},
                         ]
                       }
                     >
-                      Level 3
-                    </Text>
+                      <Text
+                        color="surface.text.normal.lowContrast"
+                        fontFamily="text"
+                        fontSize={75}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight="s"
+                        style={
+                          Array [
+                            Object {
+                              "color": "hsla(217, 56%, 17%, 1)",
+                              "fontFamily": "Lato",
+                              "fontSize": 12,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "lineHeight": 16,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        Level 3
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -2949,38 +3234,53 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             1
           </Text>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="s"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="s"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1
+          </Text>
+        </View>
       </View>
     </View>
     <View
@@ -3071,38 +3371,53 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             2
           </Text>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="s"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 2
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="s"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 2
+          </Text>
+        </View>
       </View>
     </View>
     <View
@@ -3193,38 +3508,53 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             3
           </Text>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="s"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 3
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="s"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 3
+          </Text>
+        </View>
       </View>
     </View>
   </View>
@@ -3343,38 +3673,53 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             </RNSVGGroup>
           </RNSVGSvgView>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="s"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="s"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1
+          </Text>
+        </View>
       </View>
       <View
         style={
@@ -3484,38 +3829,53 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   </RNSVGGroup>
                 </RNSVGSvgView>
               </View>
-              <Text
-                color="surface.text.normal.lowContrast"
-                fontFamily="text"
-                fontSize={75}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight="s"
+              <View
+                display="flex"
+                flexDirection="row"
+                flexWrap="wrap"
                 style={
                   Array [
                     Object {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 12,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 16,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
                     },
-                    Object {},
                   ]
                 }
               >
-                Level 2
-              </Text>
+                <Text
+                  color="surface.text.normal.lowContrast"
+                  fontFamily="text"
+                  fontSize={75}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  lineHeight="s"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(217, 56%, 17%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 12,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 16,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  Level 2
+                </Text>
+              </View>
             </View>
             <View
               style={
@@ -3629,38 +3989,53 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         </RNSVGGroup>
                       </RNSVGSvgView>
                     </View>
-                    <Text
-                      color="surface.text.normal.lowContrast"
-                      fontFamily="text"
-                      fontSize={75}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      lineHeight="s"
+                    <View
+                      display="flex"
+                      flexDirection="row"
+                      flexWrap="wrap"
                       style={
                         Array [
                           Object {
-                            "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 12,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "lineHeight": 16,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "wrap",
                           },
-                          Object {},
                         ]
                       }
                     >
-                      Level 3
-                    </Text>
+                      <Text
+                        color="surface.text.normal.lowContrast"
+                        fontFamily="text"
+                        fontSize={75}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight="s"
+                        style={
+                          Array [
+                            Object {
+                              "color": "hsla(217, 56%, 17%, 1)",
+                              "fontFamily": "Lato",
+                              "fontSize": 12,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "lineHeight": 16,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        Level 3
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -3787,38 +4162,53 @@ exports[`<List /> should render unordered List of small size 1`] = `
             </RNSVGGroup>
           </RNSVGSvgView>
         </View>
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="s"
+        <View
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
               },
-              Object {},
             ]
           }
         >
-          Level 1
-        </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="s"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            Level 1
+          </Text>
+        </View>
       </View>
       <View
         style={
@@ -3930,38 +4320,53 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   </RNSVGGroup>
                 </RNSVGSvgView>
               </View>
-              <Text
-                color="surface.text.normal.lowContrast"
-                fontFamily="text"
-                fontSize={75}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight="s"
+              <View
+                display="flex"
+                flexDirection="row"
+                flexWrap="wrap"
                 style={
                   Array [
                     Object {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 12,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 16,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
                     },
-                    Object {},
                   ]
                 }
               >
-                Level 2
-              </Text>
+                <Text
+                  color="surface.text.normal.lowContrast"
+                  fontFamily="text"
+                  fontSize={75}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  lineHeight="s"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(217, 56%, 17%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 12,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 16,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  Level 2
+                </Text>
+              </View>
             </View>
             <View
               style={
@@ -4075,38 +4480,53 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         </RNSVGGroup>
                       </RNSVGSvgView>
                     </View>
-                    <Text
-                      color="surface.text.normal.lowContrast"
-                      fontFamily="text"
-                      fontSize={75}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      lineHeight="s"
+                    <View
+                      display="flex"
+                      flexDirection="row"
+                      flexWrap="wrap"
                       style={
                         Array [
                           Object {
-                            "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 12,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "lineHeight": 16,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "wrap",
                           },
-                          Object {},
                         ]
                       }
                     >
-                      Level 3
-                    </Text>
+                      <Text
+                        color="surface.text.normal.lowContrast"
+                        fontFamily="text"
+                        fontSize={75}
+                        fontStyle="normal"
+                        fontWeight="regular"
+                        lineHeight="s"
+                        style={
+                          Array [
+                            Object {
+                              "color": "hsla(217, 56%, 17%, 1)",
+                              "fontFamily": "Lato",
+                              "fontSize": 12,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "lineHeight": 16,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textDecorationLine": "none",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        Level 3
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
