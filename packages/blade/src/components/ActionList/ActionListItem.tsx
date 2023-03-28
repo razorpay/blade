@@ -233,6 +233,7 @@ const ActionListItem: WithComponentId<ActionListItemProps> = (props): JSX.Elemen
     }
   }, [props.intent, dropdownTriggerer]);
 
+  console.log('item render', props.value);
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
       <StyledActionListItem

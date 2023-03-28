@@ -14,6 +14,7 @@ import {
   ActionListItem,
   ActionListItemIcon,
   ActionListSection,
+  ActionListItemText,
 } from '~components/ActionList';
 import type { ActionListProps, ActionListItemProps } from '~components/ActionList';
 import {
@@ -23,6 +24,7 @@ import {
   ArrowRightIcon,
   HistoryIcon,
   FileTextIcon,
+  HomeIcon,
 } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
@@ -803,6 +805,96 @@ WithMultipleDropdowns.args = {
   selectionType: 'single',
   label: 'Top 2 design systems',
   name: 'design-system',
+};
+
+export const APerf = (): React.ReactElement => {
+  const fruits = [
+    'Apples',
+    'Apricots',
+    { name: 'Avocados', description: 'Hello worl 1234556\nhello \nworld\nhello' },
+    'Bananas',
+    'Boysenberries',
+    'Blueberries',
+    'Bing Cherry',
+    'Cherries',
+    'Cantaloupe',
+    'Crab apples',
+    { name: 'Clementine', description: 'Hello worl 1234556\nhello \nworld\nhello' },
+    'Cucumbers',
+    'Damson plum',
+    'Dinosaur Eggs',
+    'Dates',
+    'Dewberries',
+    'Dragon',
+    'Elderberry',
+    'Eggfruit',
+    { name: 'Evergreen', description: 'world\nhello' },
+    'Huckleberry',
+    'Entawak',
+    'Fig',
+    'Farkleberry',
+    'Finger Lime',
+    'Grapefruit',
+    'Grapes',
+    'Gooseberries',
+    'Guava',
+    'Honeydew melon',
+    'Hackberry',
+    'Honeycrisp Apples',
+    'Indian Prune',
+    { groupStart: 'MyGroup', name: 'Indonesian Lime' },
+    'Imbe',
+    'Indian Fig',
+    'Jackfruit',
+    'Java Apple',
+    'Jambolan',
+    { groupEnd: 'MyGroup', name: 'Kiwi' },
+    { name: 'Kaffir Lime', description: 'Hello worl 1234556' },
+    'Kumquat',
+    'Lime',
+    'Longan',
+    'Lychee',
+    'Loquat',
+    'Mango',
+    'Mandarin',
+    'Orange',
+    'Mulberry',
+  ];
+
+  console.log('total items', fruits.length);
+  const [clickCount, setClickCount] = React.useState(0);
+
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput
+        label="Select fruits"
+        onClick={() => {
+          setClickCount((prev) => prev + 1);
+          console.log('click count', clickCount);
+        }}
+      />
+      <DropdownOverlay>
+        <ActionList>
+          {fruits.map((fruit) => {
+            if (typeof fruit === 'string') {
+              return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+            }
+
+            return (
+              <ActionListItem
+                trailing={<ActionListItemText>⌘ + S</ActionListItemText>}
+                leading={<ActionListItemIcon icon={HomeIcon} />}
+                description={fruit.description}
+                key={fruit.name}
+                title={fruit.name}
+                value={fruit.name}
+              />
+            );
+          })}
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
 };
 
 export default DropdownStoryMeta;

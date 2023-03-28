@@ -51,12 +51,14 @@ const actionListAllowedChildren = [
 const getActionListProperties = (
   children: React.ReactNode,
 ): {
+  childrenData: OptionsType;
   childrenWithId?: React.ReactNode[] | null;
   actionListOptions: OptionsType;
   defaultSelectedIndices: number[];
   actionListHeaderChild: React.ReactElement | null;
   actionListFooterChild: React.ReactElement | null;
 } => {
+  const childrenData: ActionListItemProps[] = [];
   const actionListOptions: OptionsType = [];
   const defaultSelectedIndices: number[] = [];
   let actionListHeaderChild: React.ReactElement | null = null;
@@ -64,6 +66,7 @@ const getActionListProperties = (
 
   const getActionListItemWithId = (child: React.ReactNode): React.ReactNode => {
     if (React.isValidElement(child) && !child.props.isDisabled) {
+      childrenData.push(child.props);
       actionListOptions.push({
         title: child.props.title,
         value: child.props.value,
@@ -142,6 +145,7 @@ const getActionListProperties = (
   });
 
   return {
+    childrenData,
     childrenWithId,
     actionListFooterChild,
     actionListHeaderChild,

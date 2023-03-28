@@ -8,6 +8,7 @@ import { name as appName } from '../../app.json';
 
 const App = (): React.ReactElement => {
   const Storybook = getStorybookUI({
+    shouldPersistSelection: true,
     // keeping in comments becuase this is not documented properly in the docs
     // theme: {
     //   backgroundColor: 'white',

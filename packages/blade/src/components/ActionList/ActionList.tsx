@@ -3,6 +3,7 @@ import { getActionListContainerRole, getActionListItemWrapperRole } from './getA
 import { getActionListProperties } from './actionListUtils';
 import { StyledActionList } from './styles/StyledActionList';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
+import { ActionListItem } from './ActionListItem';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -75,6 +76,7 @@ const ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): JS
 
   const {
     childrenWithId,
+    childrenData,
     actionListOptions,
     defaultSelectedIndices,
     actionListHeaderChild,
@@ -98,6 +100,10 @@ const ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): JS
   );
   const isMultiSelectable = selectionType === 'multiple';
 
+  const renderActionListItem = React.useCallback(({ index, item }) => {
+    return <ActionListItem {...item} _index={index} />;
+  }, []);
+
   return (
     <StyledActionList
       surfaceLevel={surfaceLevel}
@@ -112,6 +118,10 @@ const ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): JS
     >
       {actionListHeaderChild}
       <StyledListBoxWrapper
+        windowSize={2}
+        initialNumToRender={3}
+        data={childrenData}
+        renderItem={renderActionListItem}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={actionListItemRef as any}
         {...makeAccessible({
