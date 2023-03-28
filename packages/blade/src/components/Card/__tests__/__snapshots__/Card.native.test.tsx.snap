@@ -126,7 +126,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           fontFamily="text"
           fontSize={100}
           fontStyle="normal"
-          fontWeight="semibold"
+          fontWeight="bold"
           lineHeight={200}
           style={
             Array [
@@ -135,7 +135,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 "fontFamily": "Lato",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "600",
+                "fontWeight": "700",
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,

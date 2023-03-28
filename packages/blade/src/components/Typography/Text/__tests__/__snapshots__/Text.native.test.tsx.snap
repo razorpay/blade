@@ -78,7 +78,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
   fontFamily="text"
   fontSize={100}
   fontStyle="normal"
-  fontWeight="semibold"
+  fontWeight="bold"
   lineHeight={200}
   numberOfLines={3}
   style={
@@ -88,7 +88,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
         "fontFamily": "Lato",
         "fontSize": 14,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "700",
         "lineHeight": 20,
         "marginBottom": 0,
         "marginLeft": 0,
@@ -114,7 +114,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
   fontFamily="text"
   fontSize={100}
   fontStyle="normal"
-  fontWeight="semibold"
+  fontWeight="bold"
   lineHeight={200}
   numberOfLines={3}
   style={
@@ -124,7 +124,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
         "fontFamily": "Lato",
         "fontSize": 14,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "700",
         "lineHeight": 20,
         "marginBottom": 0,
         "marginLeft": 0,
@@ -150,7 +150,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   fontFamily="text"
   fontSize={75}
   fontStyle="normal"
-  fontWeight="semibold"
+  fontWeight="bold"
   lineHeight={50}
   numberOfLines={3}
   style={
@@ -160,7 +160,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
         "fontFamily": "Lato",
         "fontSize": 12,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "700",
         "lineHeight": 16,
         "marginBottom": 0,
         "marginLeft": 0,
@@ -186,7 +186,7 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
   fontFamily="text"
   fontSize={100}
   fontStyle="normal"
-  fontWeight="semibold"
+  fontWeight="bold"
   lineHeight={200}
   style={
     Array [
@@ -195,7 +195,7 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
         "fontFamily": "Lato",
         "fontSize": 14,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "700",
         "lineHeight": 20,
         "marginBottom": 0,
         "marginLeft": 0,

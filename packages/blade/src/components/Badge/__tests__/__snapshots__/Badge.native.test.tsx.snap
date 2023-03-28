@@ -202,7 +202,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
-      fontWeight="semibold"
+      fontWeight="bold"
       lineHeight={50}
       numberOfLines={1}
       style={
@@ -212,7 +212,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
             "fontFamily": "Lato",
             "fontSize": 12,
             "fontStyle": "normal",
-            "fontWeight": "600",
+            "fontWeight": "700",
             "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,

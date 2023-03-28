@@ -73,7 +73,7 @@ exports[`<TextArea /> should render 1`] = `
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="semibold"
+            fontWeight="bold"
             lineHeight={50}
             style={
               Array [
@@ -82,7 +82,7 @@ exports[`<TextArea /> should render 1`] = `
                   "fontFamily": "Lato",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "700",
                   "lineHeight": 16,
                   "marginBottom": 0,
                   "marginLeft": 0,
