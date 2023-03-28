@@ -103,6 +103,11 @@ export type Typography = {
      * mobile: 0(px/rem/pt)
      */
     0: number;
+    /** desktop: 14(px/rem/pt)
+     *
+     * mobile: 14(px/rem/pt)
+     */
+    25: number;
     /** desktop: 16(px/rem/pt)
      *
      * mobile: 16(px/rem/pt)
@@ -111,6 +116,11 @@ export type Typography = {
     /** desktop: 16(px/rem/pt)
      *
      * mobile: 16(px/rem/pt)
+     */
+    75: number;
+    /** desktop: 18(px/rem/pt)
+     *
+     * mobile: 18(px/rem/pt)
      */
     100: number;
     /** desktop: 16(px/rem/pt)
@@ -184,7 +194,9 @@ const typography: TypographyWithPlatforms = {
     },
     lineHeights: {
       0: 0,
+      25: 14,
       50: 16,
+      75: 18,
       100: 20,
       200: 24,
       300: 24,
@@ -223,7 +235,9 @@ const typography: TypographyWithPlatforms = {
     },
     lineHeights: {
       0: 0,
+      25: 14,
       50: 16,
+      75: 18,
       100: 20,
       200: 20,
       300: 24,
