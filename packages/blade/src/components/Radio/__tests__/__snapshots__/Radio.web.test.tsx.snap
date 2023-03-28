@@ -104,7 +104,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -404,7 +404,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }

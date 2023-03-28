@@ -83,7 +83,7 @@ exports[`<TextInput /> should render 1`] = `
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -280,7 +280,7 @@ exports[`<TextInput /> should render 1`] = `
                 font-family="text"
                 font-size="75"
                 font-style="normal"
-                font-weight="semibold"
+                font-weight="bold"
               >
                 Enter name
               </p>
@@ -450,7 +450,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -660,7 +660,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 font-family="text"
                 font-size="75"
                 font-style="normal"
-                font-weight="semibold"
+                font-weight="bold"
               >
                 Enter company website
               </p>

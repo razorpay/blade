@@ -9,9 +9,12 @@ exports[`<Code /> should render Code with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  -webkit-align-self: baseline;
+  -ms-flex-item-align: baseline;
+  align-self: baseline;
 }
 
 .c0 {
@@ -48,9 +51,12 @@ exports[`<Code /> should render medium Code 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  -webkit-align-self: baseline;
+  -ms-flex-item-align: baseline;
+  align-self: baseline;
 }
 
 .c0 {
@@ -87,9 +93,12 @@ exports[`<Code /> should render small Code 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
+  -webkit-align-self: baseline;
+  -ms-flex-item-align: baseline;
+  align-self: baseline;
 }
 
 .c0 {
