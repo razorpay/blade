@@ -25,6 +25,7 @@ import {
   MetaConstants,
 } from '~utils';
 import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ListItemProps = {
   /**
@@ -91,7 +92,7 @@ const ListItemContentChildren = ({
   );
 };
 
-const ListItem = ({
+const _ListItem = ({
   children,
   icon: Icon,
   _itemNumber,
@@ -190,7 +191,7 @@ const ListItem = ({
   );
 };
 
-ListItem.componentId = 'ListItem';
+const ListItem = assignWithoutSideEffects(_ListItem, { componentId: 'ListItem' });
 
 export { ListItem };
 export type { ListItemProps };

@@ -18,6 +18,7 @@ import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types'
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ListCommonProps = {
   /**
@@ -82,7 +83,7 @@ const StyledUnorderedList = styled(UnorderedList)<{ marginTop?: DotNotationSpaci
  *  <List />
  * ```
  */
-const List = ({
+const _List = ({
   variant = 'unordered',
   size,
   children,
@@ -131,7 +132,7 @@ const List = ({
   );
 };
 
-List.componentId = ComponentIds.List;
+const List = assignWithoutSideEffects(_List, { componentId: ComponentIds.List });
 
 export { List };
 export type { ListProps };
