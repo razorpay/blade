@@ -83,7 +83,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
