@@ -66,7 +66,7 @@ const ListItemContentChildren = ({
   children,
   size,
 }: {
-  children: (React.ReactChild | React.ReactFragment | React.ReactPortal)[];
+  children: React.ReactNode[];
   size: NonNullable<ListProps['size']>;
 }): JSX.Element => {
   /* Having a <View><Text>...</Text><View/> inside <Text /> breaks vertical alignment. Issue: https://github.com/facebook/react-native/issues/31955
