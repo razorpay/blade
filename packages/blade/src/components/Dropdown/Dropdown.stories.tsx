@@ -807,6 +807,86 @@ WithMultipleDropdowns.args = {
   name: 'design-system',
 };
 
+export const ASectionsPerf = (): React.ReactElement => {
+  const fruits = [
+    'Apples',
+    'Apricots',
+    { name: 'Avocados', description: 'Hello worl 1234556\nhello \nworld\nhello' },
+    'Bananas',
+    'Boysenberries',
+    'Blueberries',
+    'Bing Cherry',
+    'Cherries',
+    'Cantaloupe',
+    'Crab apples',
+    { name: 'Clementine', description: 'Hello worl 1234556\nhello \nworld\nhello' },
+    'Cucumbers',
+    'Damson plum',
+    'Dinosaur Eggs',
+    'Dates',
+    'Dewberries',
+    'Dragon',
+    'Elderberry',
+    'Eggfruit',
+    'Evergreen',
+    'Huckleberry',
+    'Entawak',
+    'Fig',
+    'Farkleberry',
+    'Finger Lime',
+    'Grapefruit',
+    'Grapes',
+    'Gooseberries',
+    'Guava',
+    'Honeydew melon',
+    'Hackberry',
+    'Honeycrisp Apples',
+    'Indian Prune',
+    'Indonesian Lime',
+    'Imbe',
+    'Indian Fig',
+    'Jackfruit',
+    'Java Apple',
+    'Jambolan',
+    { groupEnd: 'MyGroup', name: 'Kiwi' },
+    { name: 'Kaffir Lime', description: 'Hello worl 1234556' },
+    'Kumquat',
+    'Lime',
+    'Longan',
+    'Lychee',
+    'Loquat',
+    'Mango',
+    'Mandarin',
+    'Orange',
+    'Mulberry',
+  ];
+
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Select fruits" />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Apples" value="Apples" />
+          <ActionListItem title="Appricots" value="Appricots" />
+          <ActionListItem title="Abc" value="Abc" />
+          <ActionListItem title="Def" value="Def" />
+          <ActionListSection title="Recent 1">
+            <ActionListItem title="Avocados" value="Avocados" />
+            <ActionListItem title="Bananas" value="Bananas" />
+            <ActionListItem title="Blueberries" value="Blueberries" />
+          </ActionListSection>
+
+          <ActionListSection title="Recent 2">
+            <ActionListItem title="Cherries" value="Cherries" />
+            <ActionListItem title="Crab apples" value="Crab apples" />
+            <ActionListItem title="Jambolan" value="Jambolan" />
+          </ActionListSection>
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
 export const APerf = (): React.ReactElement => {
   const fruits = [
     'Apples',
