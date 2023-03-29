@@ -19,6 +19,17 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type Currency = 'INR' | 'MYR';
 
+type SizeType =
+  | `title-${NonNullable<Exclude<TitleProps['size'], 'large'>>}`
+  | `heading-${NonNullable<Exclude<HeadingProps<{ variant: 'regular' }>['size'], 'medium'>>}`
+  | `heading-${NonNullable<
+      Exclude<HeadingProps<{ variant: 'regular' }>['size'], 'medium'>
+    >}-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['weight'], 'regular'>>}`
+  | `body-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['size'], 'xsmall'>>}`
+  | `body-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['size'], 'xsmall'>>}-${NonNullable<
+      Exclude<TextProps<{ variant: 'body' }>['weight'], 'regular'>
+    >}`;
+
 type AmountProps = {
   /**
    * The value to be rendered within the component.
@@ -36,16 +47,7 @@ type AmountProps = {
    *
    * @default 'body-medium'
    */
-  size?:
-    | `title-${NonNullable<Exclude<TitleProps['size'], 'large'>>}`
-    | `heading-${NonNullable<Exclude<HeadingProps<{ variant: 'regular' }>['size'], 'medium'>>}`
-    | `heading-${NonNullable<
-        Exclude<HeadingProps<{ variant: 'regular' }>['size'], 'medium'>
-      >}-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['weight'], 'regular'>>}`
-    | `body-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['size'], 'xsmall'>>}`
-    | `body-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['size'], 'xsmall'>>}-${NonNullable<
-        Exclude<TextProps<{ variant: 'body' }>['weight'], 'regular'>
-      >}`;
+  size?: SizeType;
   /**
    * Indicates what the suffix of amount should be
    *
@@ -83,7 +85,7 @@ const getTextColorProps = ({ intent }: { intent: AmountProps['intent'] }): Color
     amountValueColor: 'surface.text.normal.lowContrast',
     affixColor: 'surface.text.muted.lowContrast',
   };
-  if (!intent && intent !== 'neutral') return props;
+  if (!intent) return props;
   props.amountValueColor = `feedback.text.${intent}.lowContrast`;
   props.affixColor = `feedback.text.${intent}.lowContrast`;
   return props;
@@ -105,6 +107,7 @@ const AmountValue = ({
   affixColor,
 }: AmountValue): ReactElement => {
   const affixFontWeight = isAffixSubtle ? 'regular' : 'bold';
+  const isReactNative = getPlatformType() === 'react-native';
   const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
   if (suffix === 'decimals' && isAffixSubtle) {
@@ -120,6 +123,7 @@ const AmountValue = ({
           fontSize={amountFontSizes[size]}
           fontWeight={valueForWeight}
           color={amountValueColor}
+          as={isReactNative ? undefined : 'span'}
         >
           {integer}.
         </BaseText>
@@ -128,6 +132,7 @@ const AmountValue = ({
           fontWeight={affixFontWeight}
           fontSize={affixFontSize}
           color={affixColor}
+          as={isReactNative ? undefined : 'span'}
         >
           {decimal || '00'}
         </BaseText>
@@ -154,6 +159,7 @@ const addCommas = (amountValue: number, currency: Currency): string => {
   return amountValue.toLocaleString(locale);
 };
 
+// This function returns the humanized amount ie: human readble currency format
 const getHumanizedAmount = (amountValue: number, currency: Currency): string => {
   const abbreviations = currencyAbbreviationsMapping[currency];
 
@@ -213,12 +219,12 @@ const Amount = ({
   currency = 'INR',
   ...styledProps
 }: AmountProps): ReactElement => {
-  if (isNaN(value)) {
+  if (Number.isNaN(value) || typeof value !== 'number') {
     throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
   }
   // @ts-expect-error neutral intent should throw error
   if (intent === 'neutral') {
-    throw new Error('[Blade Amount]: `neutral` intent is not support.');
+    throw new Error('[Blade Amount]: `neutral` intent is not supported.');
   }
 
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
@@ -230,6 +236,7 @@ const Amount = ({
   const currencyColor = isAffixSubtle ? affixColor : amountValueColor;
   const currencyFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const currencyWeight = getCurrencyWeight(isAffixSubtle, size);
+  const isReactNative = getPlatformType() === 'react-native';
 
   return (
     <BaseBox
@@ -246,6 +253,7 @@ const Amount = ({
         fontWeight={currencyWeight}
         fontSize={currencyFontSize}
         color={currencyColor}
+        as={isReactNative ? undefined : 'span'}
       >
         {currencyPrefix}
       </BaseText>
