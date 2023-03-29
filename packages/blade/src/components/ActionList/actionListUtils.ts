@@ -74,13 +74,8 @@ const getActionListProperties = (
   const getActionListItemWithId = (
     child: React.ReactNode,
     hideDivider: boolean,
-    sectionTitle: string | null,
   ): React.ReactNode => {
     if (React.isValidElement(child) && !child.props.isDisabled) {
-      // childrenData.push({
-      //   title: sectionTitle,
-      //   data: ,
-      // });
       actionListOptions.push({
         title: child.props.title,
         value: child.props.value,
@@ -88,7 +83,7 @@ const getActionListProperties = (
       });
       const currentIndex = actionListOptions.length - 1;
 
-      const foundSection = sectionData.find((v) => v.title === sectionTitle);
+      const foundSection = sectionData.find((v) => v.title === currentSection);
       // push the item in the appropriate bucket
       if (foundSection) {
         foundSection?.data.push({
@@ -98,7 +93,7 @@ const getActionListProperties = (
       } else {
         // create a new bucket
         sectionData.push({
-          title: sectionTitle!,
+          title: currentSection!,
           hideDivider,
           data: [
             {
@@ -159,7 +154,7 @@ const getActionListProperties = (
           children: React.Children.map(child.props.children, (childInSection) => {
             currentSection = child.props.title;
             if (isValidAllowedChildren(childInSection, componentIds.ActionListItem)) {
-              return getActionListItemWithId(childInSection, shouldHideDivider, currentSection);
+              return getActionListItemWithId(childInSection, shouldHideDivider);
             }
 
             return childInSection;
@@ -170,7 +165,7 @@ const getActionListProperties = (
       }
 
       if (isValidAllowedChildren(child, componentIds.ActionListItem)) {
-        return getActionListItemWithId(child, true, currentSection);
+        return getActionListItemWithId(child, true);
       }
 
       throw new Error(
