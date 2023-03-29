@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
@@ -133,8 +134,13 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
       {actionListHeaderChild}
       <StyledListBoxWrapper
         sections={sectionData}
-        windowSize={2}
-        initialNumToRender={3}
+        windowSize={5}
+        initialNumToRender={5}
+        bouncesZoom={false}
+        bounces={false}
+        keyExtractor={(item: any) => {
+          return item.value;
+        }}
         renderSectionHeader={renderActionListSectionHeader}
         renderSectionFooter={renderActionListSectionDivider}
         renderItem={renderActionListItem}
