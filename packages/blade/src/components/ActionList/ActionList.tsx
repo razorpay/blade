@@ -60,7 +60,7 @@ type ActionListProps = {
  * ```
  *
  */
-const ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): JSX.Element => {
+const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): JSX.Element => {
   const {
     setOptions,
     actionListItemRef,
@@ -125,5 +125,7 @@ const ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): JS
     </StyledActionList>
   );
 };
+
+const ActionList = React.memo(_ActionList);
 
 export { ActionList, ActionListProps };

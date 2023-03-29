@@ -62,7 +62,7 @@ const _Dropdown = ({
 
   const dropdownBaseId = useId('dropdown');
 
-  let dropdownTriggerer: DropdownContextType['dropdownTriggerer'];
+  const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -76,7 +76,7 @@ const _Dropdown = ({
       }
 
       if (isValidAllowedChildren(child, 'SelectInput')) {
-        dropdownTriggerer = 'SelectInput';
+        dropdownTriggerer.current = 'SelectInput';
       }
     }
   });
@@ -105,7 +105,7 @@ const _Dropdown = ({
       setHasFooterAction,
       hasLabelOnLeft,
       setHasLabelOnLeft,
-      dropdownTriggerer,
+      dropdownTriggerer: dropdownTriggerer.current,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [

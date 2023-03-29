@@ -805,4 +805,81 @@ WithMultipleDropdowns.args = {
   name: 'design-system',
 };
 
+export const DropdownPerformance = (): React.ReactElement => {
+  const fruits = [
+    'Apples',
+    'Apricots',
+    'Avocados',
+    'Bananas',
+    'Boysenberries',
+    'Blueberries',
+    'Bing Cherry',
+    'Cherries',
+    'Cantaloupe',
+    'Crab apples',
+    'Clementine',
+    'Cucumbers',
+    'Damson plum',
+    'Dinosaur Eggs',
+    'Dates',
+    'Dewberries',
+    'Dragon',
+    'Elderberry',
+    'Eggfruit',
+    'Evergreen',
+    'Huckleberry',
+    'Entawak',
+    'Fig',
+    'Farkleberry',
+    'Finger Lime',
+    'Grapefruit',
+    'Grapes',
+    'Gooseberries',
+    'Guava',
+    'Honeydew melon',
+    'Hackberry',
+    'Honeycrisp Apples',
+    'Indian Prune',
+    'Indonesian Lime',
+    'Imbe',
+    'Indian Fig',
+    'Jackfruit',
+    'Java Apple',
+    'Jambolan',
+    'Kiwi',
+    'Kaffir Lime',
+    'Kumquat',
+    'Lime',
+    'Longan',
+    'Lychee',
+    'Loquat',
+    'Mango',
+    'Mandarin',
+    'Orange',
+    'Mulberry',
+  ];
+
+  console.log('total items', fruits.length);
+  const [clickCount, setClickCount] = React.useState(0);
+
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput
+        label="Select fruits"
+        onClick={() => {
+          setClickCount((prev) => prev + 1);
+          console.log('click count', clickCount);
+        }}
+      />
+      <DropdownOverlay>
+        <ActionList>
+          {fruits.map((fruit) => {
+            return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+          })}
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
 export default DropdownStoryMeta;
