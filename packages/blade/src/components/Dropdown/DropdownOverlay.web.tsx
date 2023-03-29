@@ -110,22 +110,25 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setWidth, triggererRef, hasLabelOnLeft]);
 
+  const onAnimationEnd = React.useCallback(() => {
+    if (isOpen) {
+      setDisplay('block');
+    } else {
+      setDisplay('none');
+    }
+  }, [isOpen]);
+  const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
+
   return (
     <BaseBox position="relative">
       <StyledDropdownOverlay
         width={width}
-        style={{ opacity: isOpen ? 1 : 0 }}
+        style={styles}
         display={castWebType(display)}
         right="0px"
         position="absolute"
         transition={isOpen ? fadeIn : fadeOut}
-        onAnimationEnd={() => {
-          if (isOpen) {
-            setDisplay('block');
-          } else {
-            setDisplay('none');
-          }
-        }}
+        onAnimationEnd={onAnimationEnd}
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
