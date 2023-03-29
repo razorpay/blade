@@ -126,7 +126,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
   );
 };
 
-// TODO: Add treeshake wrapper
 const ActionList = React.memo(_ActionList);
 
 export { ActionList, ActionListProps };
