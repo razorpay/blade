@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 6.6.3
+
+### Patch Changes
+
+- 0d7bb723: fix(blade): FileTextIcon alignment
+- b62358cb: perf: improve dropdown/actionlist performance
+
 ## 6.6.2
 
 ### Patch Changes
