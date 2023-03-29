@@ -13,6 +13,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -305,7 +306,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   );
 };
 
-const TextInput = React.forwardRef(_TextInput);
-TextInput.displayName = 'TextInput';
+const TextInput = assignWithoutSideEffects(React.forwardRef(_TextInput), {
+  displayName: 'TextInput',
+});
 
 export { TextInput, TextInputProps };

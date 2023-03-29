@@ -6,6 +6,7 @@ import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -78,7 +79,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   );
 };
 
-const Button = React.forwardRef(_Button);
-Button.displayName = 'Button';
+const Button = assignWithoutSideEffects(React.forwardRef(_Button), { displayName: 'Button' });
 
 export default Button;

@@ -875,7 +875,6 @@ export const APerf = (): React.ReactElement => {
     'Jackfruit',
     'Java Apple',
     'Jambolan',
-    { groupEnd: 'MyGroup', name: 'Kiwi' },
     { name: 'Kaffir Lime', description: 'Hello worl 1234556' },
     'Kumquat',
     'Lime',

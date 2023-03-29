@@ -11,6 +11,7 @@ import { isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -158,8 +159,9 @@ const _SelectInput = (
  *
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-select--with-single-select SelectInput Documentation}.
  */
-const SelectInput = React.forwardRef(_SelectInput);
-// @ts-expect-error: componentId is our custom attribute
-SelectInput.componentId = 'SelectInput';
+
+const SelectInput = assignWithoutSideEffects(React.forwardRef(_SelectInput), {
+  componentId: 'SelectInput',
+});
 
 export { SelectInput, SelectInputProps };
