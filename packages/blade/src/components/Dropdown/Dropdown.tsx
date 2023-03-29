@@ -62,26 +62,24 @@ const _Dropdown = ({
 
   const dropdownBaseId = useId('dropdown');
 
-  let dropdownTriggerer: DropdownContextType['dropdownTriggerer'];
+  const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
 
-  React.useEffect(() => {
-    React.Children.map(children, (child) => {
-      if (React.isValidElement(child)) {
-        if (
-          !isValidAllowedChildren(child, 'SelectInput') &&
-          !isValidAllowedChildren(child, componentIds.DropdownOverlay)
-        ) {
-          throw new Error(
-            `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
-          );
-        }
-
-        if (isValidAllowedChildren(child, 'SelectInput')) {
-          dropdownTriggerer = 'SelectInput';
-        }
+  React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      if (
+        !isValidAllowedChildren(child, 'SelectInput') &&
+        !isValidAllowedChildren(child, componentIds.DropdownOverlay)
+      ) {
+        throw new Error(
+          `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
+        );
       }
-    });
-  }, [children]);
+
+      if (isValidAllowedChildren(child, 'SelectInput')) {
+        dropdownTriggerer.current = 'SelectInput';
+      }
+    }
+  });
 
   const contextValue = React.useMemo<DropdownContextType>(
     () => ({
@@ -107,7 +105,7 @@ const _Dropdown = ({
       setHasFooterAction,
       hasLabelOnLeft,
       setHasLabelOnLeft,
-      dropdownTriggerer,
+      dropdownTriggerer: dropdownTriggerer.current,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
