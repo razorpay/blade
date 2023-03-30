@@ -22,6 +22,7 @@ const getWebInputStyles = (
       suffix: props.suffix,
       trailingIcon: props.trailingIcon,
       textAlign: props.textAlign,
+      isTextArea: props.isTextArea,
     }),
     outline: 'none',
     border: 'none',

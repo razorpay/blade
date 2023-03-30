@@ -101,6 +101,7 @@ const getRNInputStyles = (
       interactionElement: props.interactionElement,
       suffix: props.suffix,
       trailingIcon: props.trailingIcon,
+      isTextArea: props.isTextArea,
     }),
     lineHeight: undefined,
     textAlignVertical: 'top',

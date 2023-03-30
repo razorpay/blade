@@ -18,6 +18,7 @@ type GetInputStyles = Pick<
 > & {
   isHovered?: boolean;
   isFocused?: boolean;
+  isTextArea?: boolean;
   theme: Theme;
 };
 
@@ -79,6 +80,7 @@ export const getBaseInputStyles = ({
   suffix,
   trailingIcon,
   textAlign,
+  isTextArea,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -118,6 +120,7 @@ export const getBaseInputStyles = ({
         : makeSpace(theme.spacing[4]),
     textAlign,
     width: '100%',
+    height: isTextArea ? undefined : makeSpace(theme.spacing[9]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };
