@@ -508,7 +508,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight={200}
+      lineHeight={100}
       numberOfLines={1}
       style={
         Array [

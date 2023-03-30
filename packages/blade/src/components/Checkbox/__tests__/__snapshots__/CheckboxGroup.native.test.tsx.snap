@@ -115,7 +115,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={200}
+            lineHeight={100}
             style={
               Array [
                 Object {
@@ -279,7 +279,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight={300}
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
@@ -288,7 +288,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -434,7 +434,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight={300}
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
@@ -443,7 +443,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -589,7 +589,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight={300}
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
@@ -598,7 +598,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -749,7 +749,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={200}
+            lineHeight={100}
             style={
               Array [
                 Object {
@@ -913,7 +913,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight={300}
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
@@ -922,7 +922,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -1068,7 +1068,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight={300}
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
@@ -1077,7 +1077,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -1223,7 +1223,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight={300}
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
@@ -1232,7 +1232,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -1286,7 +1286,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             fontFamily="text"
             fontSize={50}
             fontStyle="italic"
-            lineHeight={100}
+            lineHeight={50}
             style={
               Array [
                 Object {
@@ -1295,7 +1295,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   "fontSize": 11,
                   "fontStyle": "italic",
                   "fontWeight": "400",
-                  "lineHeight": 20,
+                  "lineHeight": 16,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,

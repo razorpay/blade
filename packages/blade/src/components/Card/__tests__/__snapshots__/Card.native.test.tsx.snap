@@ -41,7 +41,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight={200}
+      lineHeight={100}
       style={
         Array [
           Object {
@@ -127,7 +127,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="bold"
-          lineHeight={200}
+          lineHeight={100}
           style={
             Array [
               Object {
@@ -302,7 +302,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 color="action.text.secondary.default"
                 fontSize={100}
                 fontWeight="bold"
-                lineHeight={300}
+                lineHeight={100}
                 style={
                   Array [
                     Object {
@@ -311,7 +311,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "700",
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
                       "marginRight": 0,
@@ -441,7 +441,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 color="action.text.primary.default"
                 fontSize={100}
                 fontWeight="bold"
-                lineHeight={300}
+                lineHeight={100}
                 style={
                   Array [
                     Object {
@@ -450,7 +450,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "700",
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
                       "marginRight": 0,
@@ -913,7 +913,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight={200}
+      lineHeight={100}
       style={
         Array [
           Object {
@@ -984,7 +984,7 @@ exports[`<Card /> should render a plain Card 1`] = `
       fontSize={100}
       fontStyle="normal"
       fontWeight="regular"
-      lineHeight={200}
+      lineHeight={100}
       style={
         Array [
           Object {

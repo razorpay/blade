@@ -8,7 +8,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
       Object {
         "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 4,
-        "lineHeight": 20,
+        "lineHeight": 18,
         "paddingBottom": 0,
         "paddingLeft": 4,
         "paddingRight": 4,
@@ -18,21 +18,19 @@ exports[`<Code /> should render Code with default properties 1`] = `
   }
 >
   <Text
-    alignSelf="baseline"
     color="surface.text.subtle.lowContrast"
     fontFamily="code"
-    fontSize={75}
-    lineHeight={100}
+    fontSize={25}
+    lineHeight={25}
     style={
       Array [
         Object {
-          "alignSelf": "baseline",
           "color": "hsla(216, 27%, 36%, 1)",
           "fontFamily": "Courier",
-          "fontSize": 12,
+          "fontSize": 10,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 20,
+          "lineHeight": 14,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -59,7 +57,7 @@ exports[`<Code /> should render medium Code 1`] = `
       Object {
         "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 4,
-        "lineHeight": 20,
+        "lineHeight": 18,
         "paddingBottom": 0,
         "paddingLeft": 4,
         "paddingRight": 4,
@@ -69,21 +67,19 @@ exports[`<Code /> should render medium Code 1`] = `
   }
 >
   <Text
-    alignSelf="baseline"
     color="surface.text.subtle.lowContrast"
     fontFamily="code"
-    fontSize={100}
-    lineHeight={100}
+    fontSize={75}
+    lineHeight={75}
     style={
       Array [
         Object {
-          "alignSelf": "baseline",
           "color": "hsla(216, 27%, 36%, 1)",
           "fontFamily": "Courier",
-          "fontSize": 14,
+          "fontSize": 12,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 20,
+          "lineHeight": 18,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -110,7 +106,7 @@ exports[`<Code /> should render small Code 1`] = `
       Object {
         "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 4,
-        "lineHeight": 20,
+        "lineHeight": 18,
         "paddingBottom": 0,
         "paddingLeft": 4,
         "paddingRight": 4,
@@ -120,21 +116,19 @@ exports[`<Code /> should render small Code 1`] = `
   }
 >
   <Text
-    alignSelf="baseline"
     color="surface.text.subtle.lowContrast"
     fontFamily="code"
-    fontSize={75}
-    lineHeight={100}
+    fontSize={25}
+    lineHeight={25}
     style={
       Array [
         Object {
-          "alignSelf": "baseline",
           "color": "hsla(216, 27%, 36%, 1)",
           "fontFamily": "Courier",
-          "fontSize": 12,
+          "fontSize": 10,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 20,
+          "lineHeight": 14,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,

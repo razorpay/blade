@@ -116,7 +116,7 @@ exports[`<OTPInput /> should render 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={200}
+            lineHeight={100}
             style={
               Array [
                 Object {
