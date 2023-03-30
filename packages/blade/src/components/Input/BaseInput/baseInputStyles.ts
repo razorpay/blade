@@ -4,6 +4,7 @@ import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { getPlatformType, makeBorderSize, makeSpace } from '~utils';
+import size from '~tokens/global/size';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -120,7 +121,7 @@ export const getBaseInputStyles = ({
         : makeSpace(theme.spacing[4]),
     textAlign,
     width: '100%',
-    height: isTextArea ? undefined : makeSpace(theme.spacing[9]),
+    height: isTextArea ? undefined : makeSpace(size[36]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };
