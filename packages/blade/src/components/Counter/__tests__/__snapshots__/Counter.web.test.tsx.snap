@@ -598,7 +598,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }

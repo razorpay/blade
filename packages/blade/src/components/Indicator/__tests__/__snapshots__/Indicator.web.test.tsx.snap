@@ -27,7 +27,7 @@ exports[`<Indicator /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -120,7 +120,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }

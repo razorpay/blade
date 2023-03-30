@@ -113,7 +113,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -126,7 +126,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -139,7 +139,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   font-style: italic;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -637,7 +637,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -650,7 +650,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }

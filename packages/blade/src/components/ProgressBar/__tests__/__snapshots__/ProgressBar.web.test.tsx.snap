@@ -102,7 +102,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -1834,7 +1834,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -2147,7 +2147,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -2384,7 +2384,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -2411,7 +2411,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
@@ -2720,7 +2720,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -2747,7 +2747,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }
