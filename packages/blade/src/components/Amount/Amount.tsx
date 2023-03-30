@@ -1,6 +1,5 @@
 import type { ReactElement } from 'react';
 import React from 'react';
-import type { HeadingProps, TextProps, TitleProps } from '../Typography';
 import {
   amountFontSizes,
   currencyAbbreviationsMapping,
@@ -19,17 +18,6 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type Currency = 'INR' | 'MYR';
 
-type SizeType =
-  | `title-${NonNullable<Exclude<TitleProps['size'], 'large'>>}`
-  | `heading-${NonNullable<Exclude<HeadingProps<{ variant: 'regular' }>['size'], 'medium'>>}`
-  | `heading-${NonNullable<
-      Exclude<HeadingProps<{ variant: 'regular' }>['size'], 'medium'>
-    >}-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['weight'], 'regular'>>}`
-  | `body-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['size'], 'xsmall'>>}`
-  | `body-${NonNullable<Exclude<TextProps<{ variant: 'body' }>['size'], 'xsmall'>>}-${NonNullable<
-      Exclude<TextProps<{ variant: 'body' }>['weight'], 'regular'>
-    >}`;
-
 type AmountProps = {
   /**
    * The value to be rendered within the component.
@@ -47,7 +35,18 @@ type AmountProps = {
    *
    * @default 'body-medium'
    */
-  size?: SizeType;
+  size?:
+    | 'body-medium-bold'
+    | 'body-small'
+    | 'body-small-bold'
+    | 'body-medium'
+    | 'body-medium-bold'
+    | 'heading-small'
+    | 'heading-small-bold'
+    | 'heading-large'
+    | 'heading-large-bold'
+    | 'title-small'
+    | 'title-medium';
   /**
    * Indicates what the suffix of amount should be
    *
