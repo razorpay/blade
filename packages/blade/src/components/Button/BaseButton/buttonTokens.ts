@@ -27,10 +27,10 @@ const typography: ButtonTypography = {
     },
   },
   lineHeights: {
-    xsmall: 75,
-    small: 75,
-    medium: 200,
-    large: 100,
+    xsmall: 50,
+    small: 50,
+    medium: 100,
+    large: 300,
   },
 };
 

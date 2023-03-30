@@ -16,7 +16,7 @@ const SelectorSupportText = ({
       as={isReactNative ? undefined : 'span'}
       color="surface.text.muted.lowContrast"
       fontSize={50}
-      lineHeight={100}
+      lineHeight={50}
       fontStyle="italic"
       fontFamily="text"
     >

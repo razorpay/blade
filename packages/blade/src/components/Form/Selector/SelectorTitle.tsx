@@ -11,8 +11,8 @@ const SelectorTitle = ({
   size: 'small' | 'medium';
 }): React.ReactElement => {
   const lineHeight = {
-    small: 100,
-    medium: 300,
+    small: 50,
+    medium: 100,
   } as const;
   const fontSize = {
     small: 75,

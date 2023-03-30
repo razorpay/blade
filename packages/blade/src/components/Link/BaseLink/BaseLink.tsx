@@ -175,7 +175,7 @@ const getProps = ({
       isVisited,
     }) as IconProps['color'],
     fontSize: size === 'medium' ? 100 : 75,
-    lineHeight: size === 'medium' ? 200 : 100,
+    lineHeight: size === 'medium' ? 100 : 50,
     iconSize: size,
     iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({

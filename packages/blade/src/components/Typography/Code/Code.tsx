@@ -51,7 +51,7 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
     display: isPlatformWeb ? 'inline-block' : undefined,
     // Removing the line height of container to remove extra surrounding space in background
     // The text itself will still have the normal lineHeight
-    lineHeight: makeTypographySize(props.theme.typography.lineHeights[100]),
+    lineHeight: makeTypographySize(props.theme.typography.lineHeights[75]),
   };
 });
 
@@ -96,7 +96,6 @@ const Code = ({ children, size = 'small', testID, ...styledProps }: CodeProps): 
         fontFamily="code"
         fontSize={fontSize}
         lineHeight={lineHeight}
-        alignSelf="baseline"
         as={isPlatformWeb ? 'code' : undefined}
       >
         {children}

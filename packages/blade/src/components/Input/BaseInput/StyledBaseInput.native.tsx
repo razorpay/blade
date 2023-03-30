@@ -105,7 +105,7 @@ const getRNInputStyles = (
     lineHeight: undefined,
     textAlignVertical: 'top',
     height: props.isTextArea
-      ? `${props.theme.typography.lineHeights[400] * (props.numberOfLines ?? 0)}px`
+      ? `${props.theme.typography.lineHeights[300] * (props.numberOfLines ?? 0)}px`
       : makeSize(size[36]),
   };
 };

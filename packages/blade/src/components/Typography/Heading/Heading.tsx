@@ -71,7 +71,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
     fontSize: 200,
     fontWeight: weight ?? 'bold',
     fontStyle: 'normal',
-    lineHeight: 400,
+    lineHeight: 300,
     fontFamily: 'text',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
     componentName: 'heading',
