@@ -78,7 +78,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     fontSize: 100,
     fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
-    lineHeight: 200,
+    lineHeight: 100,
     fontFamily: 'text',
     forwardedAs: isPlatformWeb ? 'p' : undefined,
     componentName: 'text',
@@ -94,6 +94,10 @@ const getTextProps = <T extends { variant: TextVariant }>({
     if (size === 'small') {
       props.fontSize = 75;
       props.lineHeight = 50;
+    }
+    if (size === 'medium') {
+      props.fontSize = 100;
+      props.lineHeight = 100;
     }
     if (size === 'large') {
       props.fontSize = 200;
