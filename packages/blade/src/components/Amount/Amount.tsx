@@ -158,8 +158,11 @@ const addCommas = (amountValue: number, currency: Currency): string => {
   const locale = currencyLocaleMapping[currency];
   return amountValue.toLocaleString(locale);
 };
-
-// This function returns the humanized amount ie: human readble currency format
+/**
+ * This function returns the humanized amount
+ * ie: for INR 2000 => 2K
+ * for MYR 2000000 => 2M
+ */
 const getHumanizedAmount = (amountValue: number, currency: Currency): string => {
   const abbreviations = currencyAbbreviationsMapping[currency];
 
