@@ -19,11 +19,13 @@ import BaseBox from '~components/Box/BaseBox';
 import {
   getComponentId,
   getIn,
+  getPlatformType,
   isValidAllowedChildren,
   metaAttribute,
   MetaConstants,
 } from '~utils';
 import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ListItemProps = {
   /**
@@ -60,7 +62,37 @@ const StyledListItem = styled(ListItemElement)<{
     : 0,
 }));
 
-const ListItem = ({
+const ListItemContentChildren = ({
+  children,
+  size,
+}: {
+  children: React.ReactNode[];
+  size: NonNullable<ListProps['size']>;
+}): JSX.Element => {
+  /* Having a <View><Text>...</Text><View/> inside <Text /> breaks vertical alignment. Issue: https://github.com/facebook/react-native/issues/31955
+    As a workaround, we wrap individual strings in their own <Text /> and handle alignment with a parent <View> (BaseBox).
+   */
+  return getPlatformType() === 'react-native' ? (
+    <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
+      {children.map((child) => {
+        if (typeof child === 'string') {
+          return (
+            <Text variant="body" size={size}>
+              {child}
+            </Text>
+          );
+        }
+        return child;
+      })}
+    </BaseBox>
+  ) : (
+    <Text variant="body" size={size}>
+      {children}
+    </Text>
+  );
+};
+
+const _ListItem = ({
   children,
   icon: Icon,
   _itemNumber,
@@ -152,16 +184,14 @@ const ListItem = ({
             </Text>
           </BaseBox>
         )}
-        <Text variant="body" size={size}>
-          {validChildItem}
-        </Text>
+        <ListItemContentChildren size={size}>{validChildItem}</ListItemContentChildren>
       </BaseBox>
       {childList}
     </StyledListItem>
   );
 };
 
-ListItem.componentId = 'ListItem';
+const ListItem = assignWithoutSideEffects(_ListItem, { componentId: 'ListItem' });
 
 export { ListItem };
 export type { ListItemProps };
