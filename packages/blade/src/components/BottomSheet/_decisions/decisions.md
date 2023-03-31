@@ -35,12 +35,8 @@ Components:
 
 - BottomSheet
   - BottomSheetHeader
-    - BottomSheetHeaderLeading
-    - BottomSheetHeaderTrailing
   - BottomSheetBody
   - BottomSheetFooter
-    - BottomSheetFooterLeading
-    - BottomSheetFooterTrailing
 
 ## API
 
@@ -50,44 +46,44 @@ Sample usage:
 import { BottomSheet } from '@razorpay/blade';
 
 <BottomSheet isOpen={boolean} snapPoints={[]}>
-  <BottomSheetHeader>
-    <BottomSheetHeaderLeading title="Payments Links" prefix={BladeIcon} />
-    <BottomSheetHeaderTrailing visual={Link | Action | Icon} />
-  </BottomSheetHeader>
+  <BottomSheetHeader
+    title="Select Account"
+    leading={<BladeIcon />}
+    trailing={Link | Action | Icon}
+  />
   <BottomSheetBody>
     <Text>Body Content<Text>
   </BottomSheetBody>
-  <BottomSheetFooter>
-    <BottomSheetFooterLeading title="Footer Title" prefix={icon} />
-    <BottomSheetFooterTrailing
-      actions={{
-        primaryAction: { text: 'Know more', onClick: () => {} },
-        secondaryAction: { text: 'Read Docs', onClick: () => {} },
-      }}
-    />
-  </BottomSheetFooter>
+  <BottomSheetFooter
+    title="Footer Title"
+    leading={BladeIcon}
+    trailing={
+      <>
+        BladeIcon | IconButton | Button
+      </>
+    }
+  />
 </BottomSheet>;
 ```
 
 **Design Constraints**
 
 - BottomSheetHeader:
-  - Leading:
-    - Title
-    - Prefix
-  - Trailing:
+  - Title
+  - leading:
+    - BladeIcon
+  - trailing:
     - empty
     - icon
     - link
     - action
 
 - BottomSheetFooter:
-  - Leading
+  - leading
     - title
     - prefix
-  - Trailing
-    - Primary action button
-    - Secondary action button
+  - trailing
+    - any jsx element
 
 - The BottomSheetFooter will behave similar to Card's footer.
 - The Header, Footer can be individually omitted
@@ -109,44 +105,21 @@ We'll expose a `BottomSheet` component with the following API:
 | ---------- | ----------------- | ----------- | --------------------------- | -------- |
 | `children` | `React.ReactNode` | `undefined` | Contents of the BottomSheet | ✅       |
 
-### `BottomSheetHeaderLeading` API
+### `BottomSheetHeader` API
 
 | Prop     | Type            | Default     | Description                          | Required |
 | -------- | --------------- | ----------- | ------------------------------------ | -------- |
 | `title`  | `string`        | `undefined` | Title of the Header                    | ✅       |
-| `prefix` | `IconComponent` | `undefined` | Prefix icon placed before title text |          |
+| `leading` | `IconComponent` | `undefined` | leading icon placed before title text |          |
+| `trailing` | `Link, Action, Icon` | `undefined` | Trailing element placed on right side of the header |          |
 
-### `BottomSheetHeaderTrailing` API
-
-| Prop     | Type                 | Default     | Description                                                | Required |
-| -------- | -------------------- | ----------- | ---------------------------------------------------------- | -------- |
-| `visual` | `Link, Action, Icon` | `undefined` | Trailing visual element placed on right side of the header |          |
-
-### `BottomSheetFooterLeading` API
+### `BottomSheetFooter` API
 
 | Prop     | Type            | Default     | Description                          | Required |
 | -------- | --------------- | ----------- | ------------------------------------ | -------- |
 | `title`  | `string`        | `undefined` | Title of the BottomSheet footer      | ✅       |
-| `prefix` | `IconComponent` | `undefined` | Prefix icon placed before title text |          |
-
-### `BottomSheetFooterTrailing` API
-
-| Prop      | Type                                     | Default     | Description                                | Required |
-| --------- | ---------------------------------------- | ----------- | ------------------------------------------ | -------- |
-| `actions` | `{ primary: Action, secondary: Action }` | `undefined` | Renders a primary/secondary action buttons |          |
-
-```ts
-type Action = {
-  onClick: () => void;
-  text: string;
-  type?: 'button' | 'reset' | 'submit';
-  accessibilityLabel: string;
-  isLoading: boolean;
-  isDisabled: boolean;
-  icon: React.ReactNode;
-  iconPosition: 'left' | 'right';
-};
-```
+| `leading` | `IconComponent` | `undefined` | leading icon placed before title text |          |
+| `trailing` | `React.ReactNode` | `undefined` | Renders trailing content |          |
 
 ## Composition with Dropdown
 
@@ -154,7 +127,7 @@ We will export `BottomSheet` component separately as an independant component bu
 
 There are two approaches to doing it:
 
-1. We coupled the BottomSheet & SelectInput tightly and internally conditionally switch the components
+#### 1. We coupled the BottomSheet & SelectInput tightly and internally conditionally switch the components  
 
 Pros:
 
@@ -165,12 +138,19 @@ Pros:
 Cons:
 
 - Bundle size will be impacted, even if users are desktop they will get the bundle of BottomSheet (vice versa)
+- BottomSheet's state will get coupled with SelectDropdown
+- There will be a lot of interdependency of state management
+- These [usecases](https://razorpay.slack.com/archives/C01CS8YBEQZ/p1677825334856589?thread_ts=1677825092.305089&cid=C01CS8YBEQZ) will be harder to solve for without the BottomSheet being an independent component.
 
-2. We expose BottomSheet indepandantly and let users lazy load the component as needed
+
+#### 2. We expose BottomSheet as an independently component and let user do the composition
+
 
 Pros:
 
 - No uneccesary bundle size impact for any of the platforms
+- BottomSheet is decoupled from the state and internal logic of SelectDropdown & can also be used independently
+- Reduced implementation complexity & [interdependency](https://www.notion.so/BottomSheet-API-Discussion-e2aa79cd45274ef280fdb998efa6b98f?pvs=4#630d5e93897b4ca0bf54f475f0cd7d6e) of state
 
 Cons:
 
@@ -179,13 +159,20 @@ Cons:
 
 Considering the bundle size downside to approach 1, we decided to go ahead with approach 2.
 
+
+> **API Rabbit Hole**  
+> If you want to go deep into the API Rabbit Hole, We also had explored various other APIs and discussed internally about the pros and cons of each which we **[documented in this Notion doc](https://www.notion.so/BottomSheet-API-Discussion-e2aa79cd45274ef280fdb998efa6b98f?pvs=4#db6bd9826bc048bd97d24a50269fc45d)**
+
+
 ### Composition Example
 
 ```jsx
-import { Spinner, useTheme, useBreakpoint } from "@razorpay/blade";
-
-const BottomSheet = React.lazy();
-const DropdownOverlay = React.lazy();
+import { 
+  useTheme,
+  useBreakpoint,
+  BottomSheet,
+  Dropdown
+} from "@razorpay/blade";
 
 const App = () => {
   const { theme } = useTheme();
@@ -195,32 +182,19 @@ const App = () => {
   return (
     <Dropdown selectionType={selectionType}>
       <SelectInput label="Select Action" />
-      {/* We can either put a fallback spinner or show skeleton loaders */}
-      <React.Suspense fallback={<Spinner />}>
-        {isMobile ? (
-          <BottomSheet>
-            <BottomSheetHeader>
-              <BottomSheetHeaderLeading title="Payments Links" prefix={PayIcon} />
-            </BottomSheetHeader>
-            <BottomSheetBody>
-              <SelectContent />
-            </BottomSheetBody>
-            <BottomSheet>
-              <BottomSheetLeading title="Footer Title" prefix={icon} />
-              <BottomSheetTrailing
-                actions={{
-                  primaryAction: { text: 'Confirm' },
-                  secondaryAction: { text: 'Close' },
-                }}
-              />
-            </BottomSheet>
-          </BottomSheet>
-        ) : (
-          <DropdownOverlay>
+      {isMobile ? (
+        <BottomSheet>
+          <BottomSheetHeader />
+          <BottomSheetBody>
             <SelectContent />
-          </DropdownOverlay>
-        )}
-      </React.Suspense>
+          </BottomSheetBody>
+          <BottomSheetFooter />
+        </BottomSheet>
+      ) : (
+        <DropdownOverlay>
+          <SelectContent />
+        </DropdownOverlay>
+      )}
     </Dropdown>
   );
 };
@@ -268,6 +242,10 @@ Behaviours:
 1. What is `action` in the header trailing visual?
 2. In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component?
 3. In BottomSheetBody will we only have ActionList or users can add any of their own components too? 
+
+## Alternative APIs
+
+If you want to go deep into the API Rabbit Hole, We also had explored various other APIs and discussed internally about the pros and cons of each which we **[documented in this Notion doc.](https://www.notion.so/BottomSheet-API-Discussion-e2aa79cd45274ef280fdb998efa6b98f?pvs=4#db6bd9826bc048bd97d24a50269fc45d)**
 
 ## References
 
