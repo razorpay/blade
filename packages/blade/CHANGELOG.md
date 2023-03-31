@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 6.7.0
+
+### Minor Changes
+
+- 0c8e5f1b: feat: add `Amount` component
+
+  ### Usage
+
+  ```tsx
+  <Amount value={10000} />
+  ```
+
 ## 6.6.3
 
 ### Patch Changes
