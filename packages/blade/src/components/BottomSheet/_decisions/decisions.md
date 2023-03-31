@@ -12,14 +12,12 @@ This document outlines the API of `BottomSheet` component.
   - [API](#api)
     - [`BottomSheet`](#bottomsheet)
     - [`BottomSheetBody`](#bottomsheetbody)
-    - [`BottomSheetHeaderLeading` API](#bottomsheetheaderleading-api)
-    - [`BottomSheetHeaderTrailing` API](#bottomsheetheadertrailing-api)
-    - [`BottomSheetFooterLeading` API](#bottomsheetfooterleading-api)
-    - [`BottomSheetFooterTrailing` API](#bottomsheetfootertrailing-api)
-  - [Composition with DropDown](#composition-with-dropdown)
-    - [Composition Example](#composition-example)
+    - [`BottomSheetHeader` API](#bottomsheetheader-api)
+    - [`BottomSheetFooter` API](#bottomsheetfooter-api)
+  - [Composition with Dropdown](#composition-with-dropdown)
   - [Accessibility](#accessibility)
   - [Open questions](#open-questions)
+  - [Alternative APIs](#alternative-apis)
   - [References](#references)
 
 ## Design
