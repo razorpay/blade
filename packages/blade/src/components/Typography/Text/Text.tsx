@@ -16,7 +16,7 @@ type TextCommonProps = {
   contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
   children: React.ReactNode;
-  weight?: Exclude<keyof Theme['typography']['fonts']['weight'], 'semibold'>;
+  weight?: keyof Theme['typography']['fonts']['weight'];
   /**
    * **For Internal use only**:  Sets the color of the Text component
    */
