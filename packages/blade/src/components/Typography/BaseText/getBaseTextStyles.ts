@@ -19,7 +19,6 @@ const getBaseTextStyles = ({
   const themeFontWeight = theme.typography.fonts.weight[fontWeight];
   const themeLineHeight = makeTypographySize(theme.typography.lineHeights[lineHeight]);
 
-  console.log(themeLineHeight, lineHeight);
   return {
     color: textColor,
     fontFamily: themeFontFamily,

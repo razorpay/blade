@@ -58,10 +58,8 @@ type TextForwardedAs = {
 type GetTextPropsReturn = Omit<BaseTextProps, 'children'> & TextForwardedAs;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  'type' | 'variant' | 'size' | 'contrast' | 'testID' | 'textAlign'
-> & {
-  weight: keyof Theme['typography']['fonts']['weight'];
-};
+  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'testID' | 'textAlign'
+>;
 const getTextProps = <T extends { variant: TextVariant }>({
   variant,
   type,

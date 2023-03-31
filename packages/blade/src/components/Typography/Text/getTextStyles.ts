@@ -11,9 +11,8 @@ const getTextStyles = <T extends { variant: TextVariant }>({
   size,
   contrast,
   theme,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'size' | 'contrast'> & {
+}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'size' | 'contrast'> & {
   theme: Theme;
-  weight: keyof Theme['typography']['fonts']['weight'];
 }): CSSObject => {
   return getBaseTextStyles({ ...getTextProps({ variant, type, weight, size, contrast }), theme });
 };
