@@ -1,4 +1,10 @@
-import { Amount } from '../Amount';
+import {
+  addCommas,
+  Amount,
+  formatAmountWithSuffix,
+  getFlooredFixed,
+  getHumanizedAmount,
+} from '../Amount';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<Amount />', () => {
@@ -65,5 +71,43 @@ describe('<Amount />', () => {
   it('should render MYR currency Amount ', () => {
     const { toJSON } = renderWithTheme(<Amount currency="MYR" value={1000} />);
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should check if getFlooredFixed is returning the floored value', () => {
+    expect(getFlooredFixed(1000.22, 2)).toBe(1000.22);
+  });
+
+  it('should check if addCommas is returning the value with commas', () => {
+    expect(addCommas(1000.22, 'INR')).toBe('1,000.22');
+  });
+
+  it('should check if getHumanizedAmount is returning the right humanized value', () => {
+    expect(getHumanizedAmount(1000.22, 'INR')).toBe('1k');
+    expect(getHumanizedAmount(1000000, 'INR')).toBe('10L');
+    expect(getHumanizedAmount(10000000, 'INR')).toBe('1Cr');
+    expect(getHumanizedAmount(1000.22, 'MYR')).toBe('1K');
+    expect(getHumanizedAmount(1000000, 'MYR')).toBe('1M');
+    expect(getHumanizedAmount(10000000, 'MYR')).toBe('10M');
+  });
+
+  it('should check if formatAmountWithSuffix is returning values for humanize decimals and none', () => {
+    expect(formatAmountWithSuffix({ value: 1000.22, currency: 'INR', suffix: 'humanize' })).toBe(
+      '1k',
+    );
+    expect(formatAmountWithSuffix({ value: 1000000, currency: 'INR', suffix: 'decimals' })).toBe(
+      '10,00,000',
+    );
+    expect(formatAmountWithSuffix({ value: 10000000, currency: 'INR', suffix: 'none' })).toBe(
+      '1,00,00,000',
+    );
+    expect(formatAmountWithSuffix({ value: 1000.22, currency: 'MYR', suffix: 'humanize' })).toBe(
+      '1K',
+    );
+    expect(formatAmountWithSuffix({ value: 1000000, currency: 'MYR', suffix: 'decimals' })).toBe(
+      '1,000,000',
+    );
+    expect(formatAmountWithSuffix({ value: 10000000, currency: 'MYR', suffix: 'none' })).toBe(
+      '10,000,000',
+    );
   });
 });

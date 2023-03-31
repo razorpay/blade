@@ -147,13 +147,13 @@ const AmountValue = ({
 
 // This function rounds a number to a specified number of decimal places
 // and floors the result.
-const getFlooredFixed = (value: number, decimalPlaces: number): number => {
+export const getFlooredFixed = (value: number, decimalPlaces: number): number => {
   const factor = 10 ** decimalPlaces;
   const roundedValue = Math.floor(value * factor) / factor;
   return Number(roundedValue.toFixed(decimalPlaces));
 };
 
-const addCommas = (amountValue: number, currency: Currency): string => {
+export const addCommas = (amountValue: number, currency: Currency): string => {
   const locale = currencyLocaleMapping[currency];
   return amountValue.toLocaleString(locale);
 };
@@ -162,7 +162,7 @@ const addCommas = (amountValue: number, currency: Currency): string => {
  * ie: for INR 2000 => 2K
  * for MYR 2000000 => 2M
  */
-const getHumanizedAmount = (amountValue: number, currency: Currency): string => {
+export const getHumanizedAmount = (amountValue: number, currency: Currency): string => {
   const abbreviations = currencyAbbreviationsMapping[currency];
 
   const abbreviation = abbreviations.find((abbr) => amountValue >= abbr.value);
@@ -181,7 +181,7 @@ type FormatAmountWithSuffixType = {
   currency: Currency;
 };
 
-const formatAmountWithSuffix = ({
+export const formatAmountWithSuffix = ({
   suffix,
   value,
   currency,
@@ -221,7 +221,7 @@ const Amount = ({
   currency = 'INR',
   ...styledProps
 }: AmountProps): ReactElement => {
-  if (Number.isNaN(value) || typeof value !== 'number') {
+  if (typeof value !== 'number') {
     throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
   }
   // @ts-expect-error neutral intent should throw error
