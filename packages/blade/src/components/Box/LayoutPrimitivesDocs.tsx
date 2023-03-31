@@ -7,6 +7,8 @@ import { Code, Heading, Text, Title } from '~components/Typography';
 import { Sandbox, SandboxProvider, SandboxHighlighter } from '~src/_helpers/storybook/Sandbox';
 import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { castWebType } from '~utils';
 
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();
@@ -14,7 +16,7 @@ if (window.top) {
 
 // Storybook's docs page is under iframe so just href="#target" doesn't work (it tries to scroll on parent of iframe)
 // This function uses scrollIntoView instead to scroll then
-const ScrollIntoViewLink = ({
+const _ScrollIntoViewLink = ({
   href,
   children,
 }: {
@@ -32,7 +34,9 @@ const ScrollIntoViewLink = ({
 );
 
 // lmao. sorry
-ScrollIntoViewLink.componentId = 'ListItemLink';
+const ScrollIntoViewLink = assignWithoutSideEffects(_ScrollIntoViewLink, {
+  componentId: 'ListItemLink',
+});
 
 const Section = (props: BaseBoxProps): JSX.Element => {
   return <BaseBox paddingY="spacing.6" {...props} />;
@@ -261,7 +265,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
             <SandpackLayout>
               <SandpackCodeEditor />
               <SandpackPreview />
-              <Box display={{ base: 'none', m: 'block' }} width="100%">
+              <Box display={castWebType({ base: 'none', m: 'block' })} width="100%">
                 <SandpackPreview style={{ width: '100%' }} />
               </Box>
             </SandpackLayout>

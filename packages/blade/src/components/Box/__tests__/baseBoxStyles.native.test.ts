@@ -76,16 +76,16 @@ describe('getBaseBoxStyles', () => {
 
 describe('getAllMediaQueries', () => {
   it('should return empty object', () => {
-    expect(
-      getAllMediaQueries({ display: 'block', theme: paymentLightTheme }),
-    ).toMatchInlineSnapshot(`Object {}`);
+    expect(getAllMediaQueries({ display: 'flex', theme: paymentLightTheme })).toMatchInlineSnapshot(
+      `Object {}`,
+    );
   });
 });
 
 describe('getAllProps', () => {
   it('should return all values for depending on react native priority', () => {
     const baseBoxProps: BaseBoxProps & { theme: Theme } = {
-      display: 'block',
+      display: 'flex',
       padding: { base: 'spacing.1', s: '20px' },
       margin: { m: 'spacing.1' },
       theme: paymentLightTheme,
@@ -93,7 +93,7 @@ describe('getAllProps', () => {
 
     expect(removeUndefinedValues(getAllProps(baseBoxProps))).toMatchInlineSnapshot(`
       Object {
-        "display": "block",
+        "display": "flex",
         "padding": "20px",
       }
     `);

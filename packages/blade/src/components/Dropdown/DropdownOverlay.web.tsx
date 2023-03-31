@@ -5,14 +5,14 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
-import type { WithComponentId } from '~utils';
+import { castWebType, makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import spacing from '~tokens/global/spacing';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import size from '~tokens/global/size';
 import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 const dropdownFadeIn = keyframes`
 from {
@@ -60,10 +60,7 @@ type DropdownOverlayProps = {
  *
  * Wrap your ActionList within this component
  */
-const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({
-  children,
-  testID,
-}): JSX.Element => {
+const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
   const { isOpen, triggererRef, hasLabelOnLeft } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
@@ -113,22 +110,25 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setWidth, triggererRef, hasLabelOnLeft]);
 
+  const onAnimationEnd = React.useCallback(() => {
+    if (isOpen) {
+      setDisplay('block');
+    } else {
+      setDisplay('none');
+    }
+  }, [isOpen]);
+  const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
+
   return (
     <BaseBox position="relative">
       <StyledDropdownOverlay
         width={width}
-        style={{ opacity: isOpen ? 1 : 0 }}
-        display={display}
+        style={styles}
+        display={castWebType(display)}
         right="0px"
         position="absolute"
         transition={isOpen ? fadeIn : fadeOut}
-        onAnimationEnd={() => {
-          if (isOpen) {
-            setDisplay('block');
-          } else {
-            setDisplay('none');
-          }
-        }}
+        onAnimationEnd={onAnimationEnd}
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
@@ -137,6 +137,8 @@ const DropdownOverlay: WithComponentId<DropdownOverlayProps> = ({
   );
 };
 
-DropdownOverlay.componentId = componentIds.DropdownOverlay;
+const DropdownOverlay = assignWithoutSideEffects(_DropdownOverlay, {
+  componentId: componentIds.DropdownOverlay,
+});
 
 export { DropdownOverlay, DropdownOverlayProps };

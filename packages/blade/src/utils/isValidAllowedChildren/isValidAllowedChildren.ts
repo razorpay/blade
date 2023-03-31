@@ -2,17 +2,11 @@
 import React from 'react';
 
 /**
- * A type defining React component with additional static prop `componentId`
- */
-type WithComponentId<Props> = ((props: Props) => React.ReactElement) & {
-  componentId: string;
-};
-
-/**
  * Gets the `componentId` prop of React component if it exists.
  */
 const getComponentId = (component: React.ReactNode): string | null => {
   if (!React.isValidElement(component)) return null;
+  // eslint-disable-next-line no-restricted-properties
   return (component.type as any)?.componentId;
 };
 
@@ -23,4 +17,4 @@ const isValidAllowedChildren = (component: React.ReactNode, id: string): boolean
   return getComponentId(component) === id;
 };
 
-export { isValidAllowedChildren, getComponentId, WithComponentId };
+export { isValidAllowedChildren, getComponentId };
