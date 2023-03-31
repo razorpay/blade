@@ -47,7 +47,6 @@ import { BottomSheet } from '@razorpay/blade';
   <BottomSheetHeader
     title="Select Account"
     leading={<BladeIcon />}
-    trailing={Link | Action | Icon}
   />
   <BottomSheetBody>
     <Text>Body Content<Text>
@@ -70,11 +69,6 @@ import { BottomSheet } from '@razorpay/blade';
   - Title
   - leading:
     - BladeIcon
-  - trailing:
-    - empty
-    - icon
-    - link
-    - action
 
 - BottomSheetFooter:
   - leading
@@ -83,7 +77,7 @@ import { BottomSheet } from '@razorpay/blade';
   - trailing
     - any jsx element
 
-- The BottomSheetFooter will behave similar to Card's footer.
+- The BottomSheetFooter will behave similar to ActionListFooter.
 - The Header, Footer can be individually omitted
 
 ### `BottomSheet`
@@ -92,7 +86,7 @@ We'll expose a `BottomSheet` component with the following API:
 
 | Prop            | Type        | Default                 | Description                                                                                     | Required |
 | --------------- | ----------- | ----------------------- | ----------------------------------------------------------------------------------------------- | -------- |
-| isOpen            | `boolean`   | `false`                 | toggles bottom sheet state content                                                              |          |
+| isOpen            | `boolean`   | `false`                 | Toggles bottom sheet state                                                              |          |
 | snapPoints      | `[number, number, number]`  | `[0.35, 0.5, 0.85]` | Snappoints in which the bottom sheeet will rest on, this accepts a number between 0 & 1 which maps to the total view height of the screen. 0.5 means 50% of screen height.                                              |          |
 | onDismiss       | `Callback`  | `undefined`             | called when the bottom sheet is closed, either by user state, hitting `esc` or tapping backdrop |          |
 | initialFocusRef | `React.Ref` | `undefined`             | ref element you want to get keyboard focus when opening the sheet                               |          |
@@ -109,7 +103,6 @@ We'll expose a `BottomSheet` component with the following API:
 | -------- | --------------- | ----------- | ------------------------------------ | -------- |
 | `title`  | `string`        | `undefined` | Title of the Header                    | ✅       |
 | `leading` | `IconComponent` | `undefined` | leading icon placed before title text |          |
-| `trailing` | `Link, Action, Icon` | `undefined` | Trailing element placed on right side of the header |          |
 
 ### `BottomSheetFooter` API
 
