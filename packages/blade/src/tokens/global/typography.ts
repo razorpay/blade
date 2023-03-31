@@ -16,12 +16,12 @@ type FontWeight = {
 export type FontSize = {
   /** desktop: 9(px/rem/pt)
    *
-   * mobile: 10(px/rem/pt)
+   * mobile: 9(px/rem/pt)
    */
   10: number;
   /** desktop: 10(px/rem/pt)
    *
-   * mobile: 11(px/rem/pt)
+   * mobile: 10(px/rem/pt)
    */
   25: number;
   /** desktop: 11(px/rem/pt)
@@ -36,32 +36,32 @@ export type FontSize = {
   75: number;
   /** desktop: 14(px/rem/pt)
    *
-   * mobile: 15(px/rem/pt)
+   * mobile: 14(px/rem/pt)
    */
   100: number;
   /** desktop: 16(px/rem/pt)
    *
-   * mobile: 17(px/rem/pt)
+   * mobile: 16(px/rem/pt)
    */
   200: number;
   /** desktop: 18(px/rem/pt)
    *
-   * mobile: 18(px/rem/pt)
+   * mobile: 16(px/rem/pt)
    */
   300: number;
   /** desktop: 20(px/rem/pt)
    *
-   * mobile: 20(px/rem/pt)
+   * mobile: 18(px/rem/pt)
    */
   400: number;
   /** desktop: 22(px/rem/pt)
    *
-   * mobile: 22(px/rem/pt)
+   * mobile: 20(px/rem/pt)
    */
   500: number;
-  /** desktop: 25(px/rem/pt)
+  /** desktop: 24(px/rem/pt)
    *
-   * mobile: 22(px/rem/pt)
+   * mobile: 20(px/rem/pt)
    */
   600: number;
   /** desktop: 28(px/rem/pt)
@@ -76,12 +76,12 @@ export type FontSize = {
   800: number;
   /** desktop: 36(px/rem/pt)
    *
-   * mobile: 29(px/rem/pt)
+   * mobile: 32(px/rem/pt)
    */
   900: number;
   /** desktop: 40(px/rem/pt)
    *
-   * mobile: 29(px/rem/pt)
+   * mobile: 32(px/rem/pt)
    */
   1000: number;
 };
@@ -113,49 +113,49 @@ export type Typography = {
      * mobile: 16(px/rem/pt)
      */
     50: number;
-    /** desktop: 16(px/rem/pt)
-     *
-     * mobile: 16(px/rem/pt)
-     */
-    75: number;
     /** desktop: 18(px/rem/pt)
      *
      * mobile: 18(px/rem/pt)
      */
-    100: number;
-    /** desktop: 16(px/rem/pt)
+    75: number;
+    /** desktop: 20(px/rem/pt)
      *
-     * mobile: 18(px/rem/pt)
+     * mobile: 20(px/rem/pt)
+     */
+    100: number;
+    /** desktop: 24(px/rem/pt)
+     *
+     * mobile: 20(px/rem/pt)
      */
     200: number;
-    /** desktop: 20(px/rem/pt)
+    /** desktop: 24(px/rem/pt)
      *
      * mobile: 24(px/rem/pt)
      */
     300: number;
-    /** desktop: 24(px/rem/pt)
-     *
-     * mobile: 28(px/rem/pt)
-     */
-    400: number;
-    /** desktop: 24(px/rem/pt)
+    /** desktop: 28(px/rem/pt)
      *
      * mobile: 24(px/rem/pt)
      */
-    500: number;
-    /** desktop: 28(px/rem/pt)
+    400: number;
+    /** desktop: 32(px/rem/pt)
      *
      * mobile: 28(px/rem/pt)
      */
-    600: number;
+    500: number;
     /** desktop: 40(px/rem/pt)
      *
      * mobile: 32(px/rem/pt)
      */
-    700: number;
-    /** desktop: 42(px/rem/pt)
+    600: number;
+    /** desktop: 40(px/rem/pt)
      *
-     * mobile: 30(px/rem/pt)
+     * mobile: 40(px/rem/pt)
+     */
+    700: number;
+    /** desktop: 48(px/rem/pt)
+     *
+     * mobile: 40(px/rem/pt)
      */
     800: number;
   };
