@@ -10,7 +10,7 @@ import {
   makeTypographySize,
   MetaConstants,
 } from '~utils';
-import type { FontSize } from '~tokens/global/typography';
+import type { FontSize, Typography } from '~tokens/global/typography';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type CodeProps = {
@@ -31,13 +31,14 @@ type CodeContainerProps = {
 const platformType = getPlatformType();
 const isPlatformWeb = platformType === 'browser' || platformType === 'node';
 
-const getCodeFontSize = (size: CodeProps['size']): keyof FontSize => {
+const getCodeFontSizeAndLineHeight = (
+  size: CodeProps['size'],
+): { fontSize: keyof FontSize; lineHeight: keyof Typography['lineHeights'] } => {
   switch (size) {
     case 'medium':
-      return 100;
-
+      return { fontSize: 75, lineHeight: 75 };
     default:
-      return 75;
+      return { fontSize: 25, lineHeight: 25 };
   }
 };
 
@@ -50,7 +51,7 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
     display: isPlatformWeb ? 'inline-block' : undefined,
     // Removing the line height of container to remove extra surrounding space in background
     // The text itself will still have the normal lineHeight
-    lineHeight: makeTypographySize(props.theme.typography.lineHeights.s),
+    lineHeight: makeTypographySize(props.theme.typography.lineHeights[75]),
   };
 });
 
@@ -81,6 +82,8 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * ```
  */
 const Code = ({ children, size = 'small', testID, ...styledProps }: CodeProps): JSX.Element => {
+  const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size);
+
   return (
     <CodeContainer
       size={size}
@@ -91,7 +94,8 @@ const Code = ({ children, size = 'small', testID, ...styledProps }: CodeProps): 
       <BaseText
         color="surface.text.subtle.lowContrast"
         fontFamily="code"
-        fontSize={getCodeFontSize(size)}
+        fontSize={fontSize}
+        lineHeight={lineHeight}
         as={isPlatformWeb ? 'code' : undefined}
       >
         {children}

@@ -92,7 +92,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 fontSize={75}
                 fontStyle="normal"
                 fontWeight="bold"
-                lineHeight="s"
+                lineHeight={50}
                 style={
                   Array [
                     Object {
@@ -101,7 +101,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "fontSize": 12,
                       "fontStyle": "normal",
                       "fontWeight": "700",
-                      "lineHeight": 20,
+                      "lineHeight": 16,
                       "marginBottom": 0,
                       "marginLeft": 0,
                       "marginRight": 0,
@@ -152,7 +152,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   fontSize={100}
                   fontStyle="normal"
                   fontWeight="regular"
-                  lineHeight="l"
+                  lineHeight={100}
                   style={
                     Array [
                       Object {
@@ -161,7 +161,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "fontSize": 14,
                         "fontStyle": "normal",
                         "fontWeight": "400",
-                        "lineHeight": 24,
+                        "lineHeight": 20,
                         "marginBottom": 0,
                         "marginLeft": 0,
                         "marginRight": 0,
@@ -251,7 +251,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight="l"
+              lineHeight={100}
               style={
                 Array [
                   Object {
@@ -260,7 +260,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 24,
+                    "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -599,7 +599,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 fontSize={50}
                 fontStyle="italic"
                 fontWeight="regular"
-                lineHeight="s"
+                lineHeight={50}
                 style={
                   Array [
                     Object {
@@ -608,7 +608,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "fontSize": 11,
                       "fontStyle": "italic",
                       "fontWeight": "400",
-                      "lineHeight": 20,
+                      "lineHeight": 16,
                       "marginBottom": 0,
                       "marginLeft": 0,
                       "marginRight": 0,
@@ -724,7 +724,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
-                      lineHeight="l"
+                      lineHeight={100}
                       numberOfLines={1}
                       style={
                         Array [
@@ -734,7 +734,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "lineHeight": 24,
+                            "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
                             "marginRight": 0,
@@ -852,7 +852,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
-                      lineHeight="l"
+                      lineHeight={100}
                       numberOfLines={1}
                       style={
                         Array [
@@ -862,7 +862,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "lineHeight": 24,
+                            "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
                             "marginRight": 0,
@@ -1001,7 +1001,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 fontSize={50}
                 fontStyle="italic"
                 fontWeight="regular"
-                lineHeight="s"
+                lineHeight={50}
                 style={
                   Array [
                     Object {
@@ -1010,7 +1010,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "fontSize": 11,
                       "fontStyle": "italic",
                       "fontWeight": "400",
-                      "lineHeight": 20,
+                      "lineHeight": 16,
                       "marginBottom": 0,
                       "marginLeft": 0,
                       "marginRight": 0,
@@ -1130,7 +1130,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     color="action.text.primary.default"
                     fontSize={100}
                     fontWeight="bold"
-                    lineHeight="l"
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
@@ -1139,7 +1139,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "700",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,

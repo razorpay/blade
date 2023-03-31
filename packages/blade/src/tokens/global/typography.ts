@@ -102,52 +102,62 @@ export type Typography = {
      *
      * mobile: 0(px/rem/pt)
      */
-    none: number;
+    0: number;
+    /** desktop: 14(px/rem/pt)
+     *
+     * mobile: 14(px/rem/pt)
+     */
+    25: number;
     /** desktop: 16(px/rem/pt)
      *
      * mobile: 16(px/rem/pt)
      */
-    xs: number;
+    50: number;
     /** desktop: 16(px/rem/pt)
      *
      * mobile: 16(px/rem/pt)
      */
-    s: number;
+    75: number;
+    /** desktop: 18(px/rem/pt)
+     *
+     * mobile: 18(px/rem/pt)
+     */
+    100: number;
     /** desktop: 16(px/rem/pt)
      *
      * mobile: 18(px/rem/pt)
      */
-    m: number;
+    200: number;
     /** desktop: 20(px/rem/pt)
      *
      * mobile: 24(px/rem/pt)
      */
-    l: number;
+    300: number;
     /** desktop: 24(px/rem/pt)
      *
      * mobile: 28(px/rem/pt)
      */
-    xl: number;
+    400: number;
     /** desktop: 24(px/rem/pt)
      *
      * mobile: 24(px/rem/pt)
      */
-    '2xl': number;
+    500: number;
     /** desktop: 28(px/rem/pt)
      *
      * mobile: 28(px/rem/pt)
      */
-    '3xl': number;
+    600: number;
     /** desktop: 40(px/rem/pt)
      *
      * mobile: 32(px/rem/pt)
      */
-    '4xl': number;
+    700: number;
     /** desktop: 42(px/rem/pt)
      *
      * mobile: 30(px/rem/pt)
      */
-    '5xl': number;
+    800: number;
   };
   // letterSpacings: {};
 };
@@ -183,16 +193,18 @@ const typography: TypographyWithPlatforms = {
       },
     },
     lineHeights: {
-      none: 0,
-      xs: 16,
-      s: 20,
-      m: 24,
-      l: 24,
-      xl: 28,
-      '2xl': 32,
-      '3xl': 40,
-      '4xl': 40,
-      '5xl': 48,
+      0: 0,
+      25: 14,
+      50: 16,
+      75: 18,
+      100: 20,
+      200: 24,
+      300: 24,
+      400: 28,
+      500: 32,
+      600: 40,
+      700: 40,
+      800: 48,
     },
     // letterSpacings: {},
   },
@@ -222,16 +234,18 @@ const typography: TypographyWithPlatforms = {
       },
     },
     lineHeights: {
-      none: 0,
-      xs: 16,
-      s: 20,
-      m: 20,
-      l: 24,
-      xl: 24,
-      '2xl': 28,
-      '3xl': 32,
-      '4xl': 40,
-      '5xl': 40,
+      0: 0,
+      25: 14,
+      50: 16,
+      75: 18,
+      100: 20,
+      200: 20,
+      300: 24,
+      400: 24,
+      500: 28,
+      600: 32,
+      700: 40,
+      800: 40,
     },
     // letterSpacings: {},
   },

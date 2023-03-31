@@ -387,7 +387,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="s"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -396,7 +396,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 20,
+              "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -1430,7 +1430,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="s"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -1439,7 +1439,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 20,
+              "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,

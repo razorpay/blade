@@ -273,12 +273,12 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 .c7 {
   color: hsla(216,27%,36%,1);
   font-family: monospace;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 0.875rem;
   margin: 0;
   padding: 0;
 }
@@ -288,7 +288,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1rem;
+  line-height: 1.125rem;
 }
 
 .c2 {
@@ -351,7 +351,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 class="c7"
                 color="surface.text.subtle.lowContrast"
                 font-family="code"
-                font-size="75"
+                font-size="25"
               >
                 Google
               </code>

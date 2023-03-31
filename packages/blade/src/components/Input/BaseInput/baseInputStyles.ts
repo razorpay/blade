@@ -4,6 +4,7 @@ import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { getPlatformType, makeBorderSize, makeSpace } from '~utils';
+import size from '~tokens/global/size';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -18,6 +19,7 @@ type GetInputStyles = Pick<
 > & {
   isHovered?: boolean;
   isFocused?: boolean;
+  isTextArea?: boolean;
   theme: Theme;
 };
 
@@ -79,6 +81,7 @@ export const getBaseInputStyles = ({
   suffix,
   trailingIcon,
   textAlign,
+  isTextArea,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -118,6 +121,7 @@ export const getBaseInputStyles = ({
         : makeSpace(theme.spacing[4]),
     textAlign,
     width: '100%',
+    height: isTextArea ? undefined : makeSpace(size[36]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

@@ -91,7 +91,7 @@ exports[`<Alert /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -267,7 +267,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   margin: 0;
   padding: 0;
 }

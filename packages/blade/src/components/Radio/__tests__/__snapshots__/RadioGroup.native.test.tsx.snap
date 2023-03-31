@@ -56,7 +56,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="bold"
-          lineHeight="s"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -116,16 +116,16 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="l"
+            lineHeight={100}
             style={
               Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 24,
+                  "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -283,16 +283,16 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight="l"
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
                           "color": "hsla(216, 27%, 36%, 1)",
                           "fontFamily": "Lato",
-                          "fontSize": 15,
+                          "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -441,16 +441,16 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight="l"
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
                           "color": "hsla(216, 27%, 36%, 1)",
                           "fontFamily": "Lato",
-                          "fontSize": 15,
+                          "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -599,16 +599,16 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight="l"
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
                           "color": "hsla(216, 27%, 36%, 1)",
                           "fontFamily": "Lato",
-                          "fontSize": 15,
+                          "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -662,7 +662,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             fontFamily="text"
             fontSize={50}
             fontStyle="italic"
-            lineHeight="s"
+            lineHeight={50}
             style={
               Array [
                 Object {
@@ -750,7 +750,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="bold"
-          lineHeight="s"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -810,16 +810,16 @@ exports[`<RadioGroup /> should render with label 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="l"
+            lineHeight={100}
             style={
               Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 24,
+                  "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -977,16 +977,16 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight="l"
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
                           "color": "hsla(216, 27%, 36%, 1)",
                           "fontFamily": "Lato",
-                          "fontSize": 15,
+                          "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -1135,16 +1135,16 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight="l"
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
                           "color": "hsla(216, 27%, 36%, 1)",
                           "fontFamily": "Lato",
-                          "fontSize": 15,
+                          "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -1293,16 +1293,16 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     fontFamily="text"
                     fontSize={100}
                     fontWeight="regular"
-                    lineHeight="l"
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
                           "color": "hsla(216, 27%, 36%, 1)",
                           "fontFamily": "Lato",
-                          "fontSize": 15,
+                          "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 24,
+                          "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,

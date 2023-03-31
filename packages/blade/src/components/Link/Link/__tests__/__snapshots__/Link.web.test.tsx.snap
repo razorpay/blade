@@ -61,7 +61,7 @@ exports[`<Link /> should render button variant of link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -154,7 +154,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -248,7 +248,7 @@ exports[`<Link /> should render link with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -352,7 +352,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -485,7 +485,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -618,7 +618,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -751,7 +751,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -882,7 +882,7 @@ exports[`<Link /> should render with small size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   text-align: center;
   margin: 0;
   padding: 0;

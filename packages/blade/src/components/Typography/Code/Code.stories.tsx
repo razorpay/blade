@@ -75,11 +75,10 @@ export const SizeSmall = (): JSX.Element => {
 export const ParagraphUse = (): JSX.Element => {
   return (
     <>
-      <BaseBox>
-        <Text>
-          Lorem ipsum normal text <CodeComponent>CODE</CodeComponent> component
-        </Text>
-      </BaseBox>
+      {/* For React Native, use flex to align items correctly */}
+      <Text>
+        Lorem ipsum normal text <CodeComponent>CODE</CodeComponent> component
+      </Text>
       <BaseBox>
         <Text>
           Blade is Super Cool DS <CodeComponent>CODE</CodeComponent> component
