@@ -66,14 +66,14 @@ import { BottomSheet } from '@razorpay/blade';
 **Design Constraints**
 
 - BottomSheetHeader:
-  - Title
+  - title
   - leading:
     - BladeIcon
 
 - BottomSheetFooter:
-  - leading
-    - title
-    - prefix
+  - title
+  - leading:
+    - BladeIcon
   - trailing
     - any jsx element
 
