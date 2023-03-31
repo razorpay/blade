@@ -279,16 +279,19 @@ const componentData: ComponentStatusData = [
     description: 'A tag labels UI objects for quick recognition and navigation.',
   },
   {
+    name: 'Amount',
+    status: 'released',
+    releasedIn: '6.7.0',
+    storybookLink: 'Components/Amount',
+    description: 'Amount component is used to display & format various currencies',
+  },
+  {
     name: 'Switch',
     status: 'in-design',
     description:
       'Switch component is used as an alternative for the checkbox component, It can be used to switch between two states: often on or off.',
   },
-  {
-    name: 'Amount',
-    status: 'in-development',
-    description: 'Amount component is used to display & format various currencies',
-  },
+
   {
     name: 'Accordion',
     status: 'in-design',
