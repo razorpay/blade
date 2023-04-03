@@ -21,6 +21,7 @@ import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { FontSize, Typography } from '~tokens/global/typography';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -35,7 +36,7 @@ type BaseLinkCommonProps = {
    *
    * @default medium
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Defines how far your touch can start away from the link. This is a react-native only prop and has no effect on web.
    */
@@ -170,9 +171,25 @@ const getProps = ({
   contrast: NonNullable<BaseLinkProps['contrast']>;
   isVisited: boolean;
   target: BaseLinkProps['target'];
-  size: 'small' | 'medium';
+  size: NonNullable<BaseLinkProps['size']>;
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
+  const textSizes: {
+    fontSize: Record<NonNullable<BaseLinkProps['size']>, keyof FontSize>;
+    lineHeight: Record<NonNullable<BaseLinkProps['size']>, keyof Typography['lineHeights']>;
+  } = {
+    fontSize: {
+      small: 75,
+      medium: 100,
+      large: 200,
+    },
+    lineHeight: {
+      small: 50,
+      medium: 100,
+      large: 300,
+    },
+  };
+
   const props: BaseLinkStyleProps = {
     as: isButton ? 'button' : 'a',
     textDecorationLine: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
@@ -185,8 +202,8 @@ const getProps = ({
       isDisabled,
       isVisited,
     }) as IconProps['color'],
-    fontSize: size === 'medium' ? 100 : 75,
-    lineHeight: size === 'medium' ? 100 : 50,
+    fontSize: textSizes.fontSize[size],
+    lineHeight: textSizes.lineHeight[size],
     iconSize: size,
     iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
