@@ -8,7 +8,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
       Object {
         "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 4,
-        "lineHeight": 18,
+        "lineHeight": 0,
         "paddingBottom": 0,
         "paddingLeft": 4,
         "paddingRight": 4,
@@ -21,6 +21,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
     color="surface.text.subtle.lowContrast"
     fontFamily="code"
     fontSize={25}
+    fontWeight="regular"
     lineHeight={25}
     style={
       Array [
@@ -57,7 +58,7 @@ exports[`<Code /> should render medium Code 1`] = `
       Object {
         "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 4,
-        "lineHeight": 18,
+        "lineHeight": 0,
         "paddingBottom": 0,
         "paddingLeft": 4,
         "paddingRight": 4,
@@ -70,6 +71,7 @@ exports[`<Code /> should render medium Code 1`] = `
     color="surface.text.subtle.lowContrast"
     fontFamily="code"
     fontSize={75}
+    fontWeight="regular"
     lineHeight={75}
     style={
       Array [
@@ -106,7 +108,7 @@ exports[`<Code /> should render small Code 1`] = `
       Object {
         "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
         "borderRadius": 4,
-        "lineHeight": 18,
+        "lineHeight": 0,
         "paddingBottom": 0,
         "paddingLeft": 4,
         "paddingRight": 4,
@@ -119,6 +121,7 @@ exports[`<Code /> should render small Code 1`] = `
     color="surface.text.subtle.lowContrast"
     fontFamily="code"
     fontSize={25}
+    fontWeight="regular"
     lineHeight={25}
     style={
       Array [

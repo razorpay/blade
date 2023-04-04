@@ -55,7 +55,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 "alignSelf": "flex-start",
                 "display": "flex",
                 "marginRight": 8,
-                "marginTop": 10,
+                "marginTop": 7,
               },
             ]
           }
@@ -213,7 +213,7 @@ exports[`<List /> should render List with default properties 1`] = `
                       "alignSelf": "flex-start",
                       "display": "flex",
                       "marginRight": 8,
-                      "marginTop": 10,
+                      "marginTop": 7,
                     },
                   ]
                 }
@@ -371,7 +371,7 @@ exports[`<List /> should render List with default properties 1`] = `
                             "alignSelf": "flex-start",
                             "display": "flex",
                             "marginRight": 8,
-                            "marginTop": 10,
+                            "marginTop": 7,
                           },
                         ]
                       }
@@ -546,7 +546,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 "alignSelf": "flex-start",
                 "display": "flex",
                 "marginRight": 8,
-                "marginTop": 10,
+                "marginTop": 7,
               },
             ]
           }
@@ -658,7 +658,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 Object {
                   "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                   "borderRadius": 4,
-                  "lineHeight": 18,
+                  "lineHeight": 0,
                   "paddingBottom": 0,
                   "paddingLeft": 4,
                   "paddingRight": 4,
@@ -671,6 +671,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               color="surface.text.subtle.lowContrast"
               fontFamily="code"
               fontSize={25}
+              fontWeight="regular"
               lineHeight={25}
               style={
                 Array [
@@ -736,7 +737,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 "alignSelf": "flex-start",
                 "display": "flex",
                 "marginRight": 8,
-                "marginTop": 10,
+                "marginTop": 7,
               },
             ]
           }
@@ -903,7 +904,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 "alignSelf": "flex-start",
                 "display": "flex",
                 "marginRight": 8,
-                "marginTop": 10,
+                "marginTop": 7,
               },
             ]
           }
@@ -1135,7 +1136,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 "alignSelf": "flex-start",
                 "display": "flex",
                 "marginRight": 8,
-                "marginTop": 10,
+                "marginTop": 7,
               },
             ]
           }
@@ -1449,7 +1450,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                       "alignSelf": "flex-start",
                       "display": "flex",
                       "marginRight": 8,
-                      "marginTop": 10,
+                      "marginTop": 7,
                     },
                   ]
                 }
@@ -1607,7 +1608,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                             "alignSelf": "flex-start",
                             "display": "flex",
                             "marginRight": 8,
-                            "marginTop": 10,
+                            "marginTop": 7,
                           },
                         ]
                       }
@@ -1794,7 +1795,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                 "height": 20,
                 "justifyContent": "center",
                 "marginRight": 8,
-                "marginTop": 2,
+                "marginTop": 0,
                 "width": 20,
               },
             ]
@@ -1931,7 +1932,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                 "height": 20,
                 "justifyContent": "center",
                 "marginRight": 8,
-                "marginTop": 2,
+                "marginTop": 0,
                 "width": 20,
               },
             ]
@@ -2068,7 +2069,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                 "height": 20,
                 "justifyContent": "center",
                 "marginRight": 8,
-                "marginTop": 2,
+                "marginTop": 0,
                 "width": 20,
               },
             ]
@@ -2216,7 +2217,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 "alignSelf": "flex-start",
                 "display": "flex",
                 "marginRight": 8,
-                "marginTop": 6,
+                "marginTop": 2,
               },
             ]
           }
@@ -2372,7 +2373,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       "alignSelf": "flex-start",
                       "display": "flex",
                       "marginRight": 8,
-                      "marginTop": 6,
+                      "marginTop": 2,
                     },
                   ]
                 }
@@ -2528,7 +2529,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                             "alignSelf": "flex-start",
                             "display": "flex",
                             "marginRight": 8,
-                            "marginTop": 10,
+                            "marginTop": 7,
                           },
                         ]
                       }

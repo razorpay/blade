@@ -73,6 +73,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       color="surface.text.normal.lowContrast"
       fontSize={100}
       fontWeight="regular"
+      lineHeight={100}
       style={
         Array [
           Object {
@@ -204,6 +205,7 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
       color="surface.text.normal.lowContrast"
       fontSize={100}
       fontWeight="regular"
+      lineHeight={100}
       style={
         Array [
           Object {
@@ -336,6 +338,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={100}
         fontWeight="regular"
+        lineHeight={100}
         style={
           Array [
             Object {
@@ -464,6 +467,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={100}
         fontWeight="bold"
+        lineHeight={100}
         style={
           Array [
             Object {
@@ -592,6 +596,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={75}
         fontWeight="regular"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -600,7 +605,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 20,
+              "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -720,6 +725,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={75}
         fontWeight="bold"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -728,7 +734,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 20,
+              "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -848,6 +854,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={400}
         fontWeight="regular"
+        lineHeight={400}
         style={
           Array [
             Object {
@@ -856,7 +863,7 @@ Array [
               "fontSize": 18,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 20,
+              "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -976,6 +983,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={400}
         fontWeight="bold"
+        lineHeight={400}
         style={
           Array [
             Object {
@@ -984,7 +992,7 @@ Array [
               "fontSize": 18,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 20,
+              "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -1104,6 +1112,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={200}
         fontWeight="regular"
+        lineHeight={300}
         style={
           Array [
             Object {
@@ -1112,7 +1121,7 @@ Array [
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 20,
+              "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -1232,6 +1241,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={200}
         fontWeight="bold"
+        lineHeight={300}
         style={
           Array [
             Object {
@@ -1240,7 +1250,7 @@ Array [
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 20,
+              "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -1360,6 +1370,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={700}
         fontWeight="bold"
+        lineHeight={600}
         style={
           Array [
             Object {
@@ -1368,7 +1379,7 @@ Array [
               "fontSize": 24,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 20,
+              "lineHeight": 32,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -1492,6 +1503,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       color="surface.text.normal.lowContrast"
       fontSize={200}
       fontWeight="regular"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1500,7 +1512,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
             "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1777,6 +1789,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       color="feedback.text.positive.lowContrast"
       fontSize={100}
       fontWeight="regular"
+      lineHeight={100}
       style={
         Array [
           Object {
