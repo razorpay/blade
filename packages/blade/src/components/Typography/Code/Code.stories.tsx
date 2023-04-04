@@ -44,6 +44,7 @@ const CodeStoryMeta: Meta = {
   component: CodeComponent,
   args: {
     size: 'small',
+    weight: 'regular',
     children: 'SENTRY_AUTH_TOKEN',
   },
   parameters: {

@@ -3,13 +3,7 @@ import { BaseText } from '../BaseText';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import {
-  metaAttribute,
-  getPlatformType,
-  makeSpace,
-  makeTypographySize,
-  MetaConstants,
-} from '~utils';
+import { metaAttribute, getPlatformType, makeSpace, MetaConstants } from '~utils';
 import type { FontSize, Typography } from '~tokens/global/typography';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
@@ -21,12 +15,12 @@ export type CodeProps = {
    * @default small
    */
   size?: 'small' | 'medium';
+  weight?: 'regular' | 'bold';
 } & TestID &
   StyledPropsBlade;
 
 type CodeContainerProps = {
   size: CodeProps['size'];
-  lineHeights: keyof Typography['lineHeights'];
 };
 
 const platformType = getPlatformType();
@@ -41,7 +35,7 @@ const getCodeFontSizeAndLineHeight = (
     case 'small':
       return { fontSize: 25, lineHeight: 25 };
     default:
-      throw new Error(`[Blade Code]: Unexpected size ${size}`);
+      throw new Error(`[Blade Code]: Unexpected size: ${size}`);
   }
 };
 
@@ -52,7 +46,7 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
     backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
     borderRadius: props.theme.border.radius.medium,
     display: isPlatformWeb ? 'inline-block' : undefined,
-    lineHeight: makeTypographySize(props.theme.typography.lineHeights[props.lineHeights]),
+    lineHeight: 0,
   };
 });
 
@@ -83,8 +77,13 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * ```
  */
 
-// TODO: add weight="bold"
-const Code = ({ children, size = 'small', testID, ...styledProps }: CodeProps): JSX.Element => {
+const Code = ({
+  children,
+  size = 'small',
+  weight = 'regular',
+  testID,
+  ...styledProps
+}: CodeProps): JSX.Element => {
   const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size);
 
   return (
@@ -93,13 +92,14 @@ const Code = ({ children, size = 'small', testID, ...styledProps }: CodeProps): 
       as={isPlatformWeb ? 'span' : undefined}
       {...metaAttribute({ name: MetaConstants.Code, testID })}
       {...getStyledProps(styledProps)}
-      lineHeights={lineHeight}
     >
       <BaseText
         color="surface.text.subtle.lowContrast"
         fontFamily="code"
         fontSize={fontSize}
+        fontWeight={weight}
         as={isPlatformWeb ? 'code' : undefined}
+        lineHeight={lineHeight}
       >
         {children}
       </BaseText>
