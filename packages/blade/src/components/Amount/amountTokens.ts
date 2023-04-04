@@ -1,4 +1,4 @@
-import type { FontSize } from './../../tokens/global/typography';
+import type { FontSize, Typography } from './../../tokens/global/typography';
 import type { AmountProps } from './Amount';
 
 const affixFontSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> = {
@@ -25,6 +25,22 @@ const amountFontSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> 
   'heading-large-bold': 400,
   'title-small': 600,
   'title-medium': 700,
+} as const;
+
+const amountLineHeights: Record<
+  NonNullable<AmountProps['size']>,
+  keyof Typography['lineHeights']
+> = {
+  'body-small': 50,
+  'body-small-bold': 50,
+  'body-medium': 100,
+  'body-medium-bold': 100,
+  'heading-small': 300,
+  'heading-small-bold': 300,
+  'heading-large': 400,
+  'heading-large-bold': 400,
+  'title-small': 500,
+  'title-medium': 600,
 } as const;
 
 type CurrencyPrefixMapping = {
@@ -78,6 +94,7 @@ const currencyAbbreviationsMapping: CurrencyAbbreviationsMapping = {
 
 export {
   amountFontSizes,
+  amountLineHeights,
   affixFontSizes,
   currencyPrefixMapping,
   currencyLocaleMapping,

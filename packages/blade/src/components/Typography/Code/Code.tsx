@@ -81,6 +81,8 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * </BaseBox>
  * ```
  */
+
+// TODO: add weight="bold"
 const Code = ({ children, size = 'small', testID, ...styledProps }: CodeProps): JSX.Element => {
   const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size);
 
