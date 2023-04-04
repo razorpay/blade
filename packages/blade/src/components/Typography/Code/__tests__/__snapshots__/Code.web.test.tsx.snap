@@ -19,7 +19,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1.125rem;
+  line-height: 0;
 }
 
 <div>
@@ -32,6 +32,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
       color="surface.text.subtle.lowContrast"
       font-family="code"
       font-size="25"
+      font-weight="regular"
     >
       TEST_TOKEN
     </code>
@@ -58,7 +59,7 @@ exports[`<Code /> should render medium Code 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1.125rem;
+  line-height: 0;
 }
 
 <div>
@@ -71,6 +72,7 @@ exports[`<Code /> should render medium Code 1`] = `
       color="surface.text.subtle.lowContrast"
       font-family="code"
       font-size="75"
+      font-weight="regular"
     >
       MEDIUM
     </code>
@@ -97,7 +99,7 @@ exports[`<Code /> should render small Code 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1.125rem;
+  line-height: 0;
 }
 
 <div>
@@ -110,6 +112,7 @@ exports[`<Code /> should render small Code 1`] = `
       color="surface.text.subtle.lowContrast"
       font-family="code"
       font-size="25"
+      font-weight="regular"
     >
       SMALL
     </code>

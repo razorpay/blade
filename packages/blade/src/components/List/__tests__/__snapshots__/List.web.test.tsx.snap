@@ -30,7 +30,7 @@ exports[`<List /> should render List with default properties 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  margin-top: 8px;
+  margin-top: 7px;
   margin-right: 8px;
 }
 
@@ -249,7 +249,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  margin-top: 8px;
+  margin-top: 7px;
   margin-right: 8px;
 }
 
@@ -288,7 +288,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1.125rem;
+  line-height: 0;
 }
 
 .c2 {
@@ -352,6 +352,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 color="surface.text.subtle.lowContrast"
                 font-family="code"
                 font-size="25"
+                font-weight="regular"
               >
                 Google
               </code>
@@ -467,7 +468,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  margin-top: 8px;
+  margin-top: 7px;
   margin-right: 8px;
 }
 
@@ -922,7 +923,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  margin-top: 8px;
+  margin-top: 7px;
   margin-right: 8px;
 }
 
