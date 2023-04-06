@@ -61,7 +61,6 @@ For example:
 | 5xl | 700 |
 | 6xl | 800 |
 
-
 #### **Migrate with Codemod:**
 
 To change all instances of `theme.typography.lineHeights` to the new scale automatically use this codemod:
@@ -74,7 +73,7 @@ To change all instances of `theme.typography.lineHeights` to the new scale autom
 
 ```sh
 npx migrate-typography ./YOUR_DIR --parser=tsx
-````
+```
 
 > **Note**
 >
