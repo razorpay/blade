@@ -6,12 +6,16 @@
   "engines": {
     "node": ">=14.18.0"
   },
+  "bin": {
+    "migrate-typography": "./codemods/typography-lineheight/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
   },
   "files": [
     "build",
+    "codemods",
     "components.d.ts",
     "components.js",
     "tokens.d.ts",
@@ -102,7 +106,9 @@
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",
-    "use-presence": "1.1.0"
+    "use-presence": "1.1.0",
+    "args-parser": "1.3.0",
+    "jscodeshift": "0.13.1"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
@@ -186,7 +192,8 @@
     "rollup-plugin-peer-deps-external": "2.2.4",
     "style-dictionary": "3.7.1",
     "styled-components": "5.3.5",
-    "tsconfig-paths-webpack-plugin": "3.5.2"
+    "tsconfig-paths-webpack-plugin": "3.5.2",
+    "@types/jscodeshift": "0.11.6"
   },
   "peerDependencies": {
     "react": ">=17",
