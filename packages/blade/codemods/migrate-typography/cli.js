@@ -6,7 +6,7 @@ const transformerDirectory = path.resolve(__dirname, './transformers');
 
 // usage: npx migrate-typography ./src --parser=tsx
 function run() {
-  const transformerPath = path.join(transformerDirectory, `typography-line-height.ts`);
+  const transformerPath = path.join(transformerDirectory, `migrate-typography.ts`);
 
   const parsedArgs = argParser(process.argv);
   const input = process.argv.slice(2)[0];

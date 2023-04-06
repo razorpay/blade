@@ -7,7 +7,7 @@
     "node": ">=14.18.0"
   },
   "bin": {
-    "migrate-typography": "./codemods/typography-lineheight/cli.js"
+    "migrate-typography": "./codemods/migrate-typography/cli.js"
   },
   "repository": {
     "type": "git",
