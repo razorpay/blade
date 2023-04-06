@@ -4,7 +4,6 @@
 
 feat(Typography): streamline typography scale
 
-
 > **Warning**
 >
 > Breaking Change!
@@ -14,14 +13,11 @@ feat(Typography): streamline typography scale
 
 - Title:
   - Added `xlarge` size
-
-- Text: 
+- Text:
   - Added `large` size
-
-- Link: 
+- Link:
   - Added `large` size
-
-- Code: 
+- Code:
   - Added `weight=bold`
 
 ### Breaking Changes:
@@ -34,7 +30,7 @@ feat(Typography): streamline typography scale
 + <Title size="xlarge">hello world</Title>
 ```
 
-----
+---
 
 ### Line-height scale changes
 
@@ -42,9 +38,10 @@ New scale has been changed to use numbered values for more flexibility, to read 
 
 #### **Migration guide:**
 
-Replace old named tokend to corresponding numbered values: 
+Replace old named tokens to corresponding numbered values:
 
 For example:
+
 ```diff
 - theme.typography.lineHeights.s
 + theme.typography.lineHeights[50]
@@ -52,21 +49,22 @@ For example:
 
 **Old vs New mappings:**
 
-```
-s -> 50
-m -> 50
-l -> 100
-xl -> 200
-2xl -> 300
-3xl -> 400
-4xl -> 600
-5xl -> 700
-6xl -> 800
-```
+| old | new |
+| --- | --- |
+| s   | 50  |
+| m   | 50  |
+| l   | 100 |
+| xl  | 200 |
+| 2xl | 300 |
+| 3xl | 400 |
+| 4xl | 600 |
+| 5xl | 700 |
+| 6xl | 800 |
+
 
 #### **Migrate with Codemod:**
 
-To change all instances of `theme.typography.lineHeights` to the new scale automatically use this codemod: 
+To change all instances of `theme.typography.lineHeights` to the new scale automatically use this codemod:
 
 **Step1:** Install this version of blade
 
@@ -76,7 +74,7 @@ To change all instances of `theme.typography.lineHeights` to the new scale autom
 
 ```sh
 npx migrate-typography ./YOUR_DIR --parser=tsx
-```
+````
 
 > **Note**
 >
