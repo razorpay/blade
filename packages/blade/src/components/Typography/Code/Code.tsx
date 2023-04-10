@@ -52,7 +52,7 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
     backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
     borderRadius: props.theme.border.radius.medium,
     display: isPlatformWeb ? 'inline-block' : undefined,
-    verticalAlign: 'text-bottom',
+    verticalAlign: 'middle',
     lineHeight: makeTypographySize(props.theme.typography.lineHeights[0]),
   };
 });
