@@ -3,7 +3,13 @@ import { BaseText } from '../BaseText';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { metaAttribute, getPlatformType, makeSpace, MetaConstants } from '~utils';
+import {
+  metaAttribute,
+  getPlatformType,
+  makeSpace,
+  MetaConstants,
+  makeTypographySize,
+} from '~utils';
 import type { FontSize, Typography } from '~tokens/global/typography';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
@@ -46,7 +52,8 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
     backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
     borderRadius: props.theme.border.radius.medium,
     display: isPlatformWeb ? 'inline-block' : undefined,
-    lineHeight: 0,
+    verticalAlign: 'text-bottom',
+    lineHeight: makeTypographySize(props.theme.typography.lineHeights[0]),
   };
 });
 
