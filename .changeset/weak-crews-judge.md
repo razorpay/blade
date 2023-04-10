@@ -71,10 +71,10 @@ To change all instances of `theme.typography.lineHeights` to the new scale autom
 
 **Step2:** Run the codemod with the following command
 
-> use `--parser=tsx` for typescript projects and `--parser=jsx` for js projects
+> Checkout [jscodeshift docs](https://github.com/facebook/jscodeshift) for further cli usage help.
 
 ```sh
-npx migrate-typography ./YOUR_DIR --parser=tsx
+npx jscodeshift ./YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/migrate-typography/transformers/migrate-typography.ts --ignore-pattern="**/node_modules/**"
 ```
 
 > **Note**
