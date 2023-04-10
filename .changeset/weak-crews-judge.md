@@ -8,6 +8,8 @@ feat(Typography): streamline typography scale
 >
 > Breaking Change!
 > This is a breaking change for typography components and lineHeight scale
+> 
+> We have written codemod to ease this process so please follow the [migration guide thoroughly](#breaking-changes)
 
 ### Component Changes:
 
