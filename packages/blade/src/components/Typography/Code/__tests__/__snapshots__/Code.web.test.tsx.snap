@@ -19,7 +19,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  vertical-align: text-bottom;
+  vertical-align: middle;
   line-height: 0rem;
 }
 
@@ -60,7 +60,7 @@ exports[`<Code /> should render medium Code 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  vertical-align: text-bottom;
+  vertical-align: middle;
   line-height: 0rem;
 }
 
@@ -101,7 +101,7 @@ exports[`<Code /> should render small Code 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  vertical-align: text-bottom;
+  vertical-align: middle;
   line-height: 0rem;
 }
 
