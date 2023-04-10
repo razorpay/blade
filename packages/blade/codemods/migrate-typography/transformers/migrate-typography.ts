@@ -17,8 +17,12 @@ const transformer: Transform = (file) => {
   const newSource = file.source.replace(
     // gets both .s and ['2xl'] or ["2xl"]
     /theme\.typography\.lineHeights\.?((\w+)|(\W.*\]))/g,
-    (_, match) => {
+    (originalString, match) => {
       const token = match.replace(/\[|\]|'|"/g, '');
+      const replacement = map[token];
+      if (!replacement) {
+        return originalString;
+      }
       return `${prefix}[${map[token]}]`;
     },
   );
