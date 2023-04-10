@@ -288,7 +288,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 0;
+  vertical-align: text-bottom;
+  line-height: 0rem;
 }
 
 .c2 {

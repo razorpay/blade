@@ -663,6 +663,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                   "paddingLeft": 4,
                   "paddingRight": 4,
                   "paddingTop": 0,
+                  "verticalAlign": "text-bottom",
                 },
               ]
             }
