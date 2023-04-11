@@ -43,14 +43,16 @@ const listItemBulletMarginTop: Record<
   Record<TypographyPlatforms, Record<NonNullable<ListProps['size']>, SpacingValueType>>
 > = {
   // We need hard-coded non-tokenized spacing for bullet alignment in List
+  // These size mappings can be found in here:
+  // figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23239-466987&t=easqqrPtzgMwCEtn-0
   unordered: {
     onDesktop: {
       small: makeSize(6),
-      medium: 'spacing.3',
+      medium: makeSize(7),
     },
     onMobile: {
       small: makeSize(6),
-      medium: makeSize(10),
+      medium: makeSize(7),
     },
   },
   unorderedWithIcon: {
@@ -60,7 +62,7 @@ const listItemBulletMarginTop: Record<
     },
     onMobile: {
       small: 'spacing.2',
-      medium: makeSize(6),
+      medium: 'spacing.1',
     },
   },
   ordered: {
@@ -81,7 +83,7 @@ const listItemBulletMarginTop: Record<
     },
     onMobile: {
       small: makeSize(0),
-      medium: 'spacing.1',
+      medium: makeSize(0),
     },
   },
 };

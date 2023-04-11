@@ -30,7 +30,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           "fontSize": 12,
           "fontStyle": "normal",
           "fontWeight": "700",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 2,
@@ -52,10 +52,10 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 17,
+          "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -73,15 +73,16 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       color="surface.text.normal.lowContrast"
       fontSize={100}
       fontWeight="regular"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -111,7 +112,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 2,
             "marginRight": 0,
@@ -161,7 +162,7 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
           "fontSize": 12,
           "fontStyle": "normal",
           "fontWeight": "700",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 2,
@@ -183,10 +184,10 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 17,
+          "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -204,15 +205,16 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
       color="surface.text.normal.lowContrast"
       fontSize={100}
       fontWeight="regular"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -242,7 +244,7 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 2,
             "marginRight": 0,
@@ -293,7 +295,7 @@ Array [
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 2,
@@ -315,10 +317,10 @@ Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -336,15 +338,16 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={100}
         fontWeight="regular"
+        lineHeight={100}
         style={
           Array [
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -374,7 +377,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 2,
               "marginRight": 0,
@@ -421,7 +424,7 @@ Array [
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 2,
@@ -443,10 +446,10 @@ Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -464,15 +467,16 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={100}
         fontWeight="bold"
+        lineHeight={100}
         style={
           Array [
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -502,7 +506,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 2,
               "marginRight": 0,
@@ -549,7 +553,7 @@ Array [
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 2,
@@ -571,10 +575,10 @@ Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -592,6 +596,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={75}
         fontWeight="regular"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -600,7 +605,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -630,7 +635,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 2,
               "marginRight": 0,
@@ -677,7 +682,7 @@ Array [
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 2,
@@ -699,10 +704,10 @@ Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -720,6 +725,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={75}
         fontWeight="bold"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -728,7 +734,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 24,
+              "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -758,7 +764,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 2,
               "marginRight": 0,
@@ -802,10 +808,10 @@ Array [
           Object {
             "color": "hsla(216, 16%, 60%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 2,
@@ -827,10 +833,10 @@ Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -848,12 +854,13 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={400}
         fontWeight="regular"
+        lineHeight={400}
         style={
           Array [
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 20,
+              "fontSize": 18,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -883,10 +890,10 @@ Array [
             Object {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 2,
               "marginRight": 0,
@@ -930,10 +937,10 @@ Array [
           Object {
             "color": "hsla(216, 16%, 60%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 2,
@@ -955,10 +962,10 @@ Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -976,12 +983,13 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={400}
         fontWeight="bold"
+        lineHeight={400}
         style={
           Array [
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 20,
+              "fontSize": 18,
               "fontStyle": "normal",
               "fontWeight": "700",
               "lineHeight": 24,
@@ -1011,10 +1019,10 @@ Array [
             Object {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 2,
               "marginRight": 0,
@@ -1061,7 +1069,7 @@ Array [
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 2,
@@ -1083,10 +1091,10 @@ Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1104,12 +1112,13 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={200}
         fontWeight="regular"
+        lineHeight={300}
         style={
           Array [
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 17,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "lineHeight": 24,
@@ -1142,7 +1151,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 2,
               "marginRight": 0,
@@ -1189,7 +1198,7 @@ Array [
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 2,
@@ -1211,10 +1220,10 @@ Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1232,12 +1241,13 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={200}
         fontWeight="bold"
+        lineHeight={300}
         style={
           Array [
             Object {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 17,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "700",
               "lineHeight": 24,
@@ -1270,7 +1280,7 @@ Array [
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 2,
               "marginRight": 0,
@@ -1314,10 +1324,10 @@ Array [
           Object {
             "color": "hsla(216, 16%, 60%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 20,
+            "fontSize": 18,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 2,
@@ -1339,10 +1349,10 @@ Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1360,6 +1370,7 @@ Array [
         color="surface.text.normal.lowContrast"
         fontSize={700}
         fontWeight="bold"
+        lineHeight={600}
         style={
           Array [
             Object {
@@ -1368,7 +1379,7 @@ Array [
               "fontSize": 24,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 24,
+              "lineHeight": 32,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -1395,10 +1406,10 @@ Array [
             Object {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 20,
+              "fontSize": 18,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 2,
               "marginRight": 0,
@@ -1449,7 +1460,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           "fontSize": 12,
           "fontStyle": "normal",
           "fontWeight": "700",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 2,
@@ -1471,10 +1482,10 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 17,
+          "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -1492,12 +1503,13 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       color="surface.text.normal.lowContrast"
       fontSize={200}
       fontWeight="regular"
+      lineHeight={300}
       style={
         Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 24,
@@ -1530,7 +1542,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 2,
             "marginRight": 0,
@@ -1580,7 +1592,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
           "fontSize": 12,
           "fontStyle": "normal",
           "fontWeight": "700",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 2,
@@ -1605,10 +1617,10 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 17,
+          "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -1654,10 +1666,10 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         Object {
           "color": "hsla(193, 100%, 35%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 15,
+          "fontSize": 14,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 2,
@@ -1682,10 +1694,10 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         Object {
           "color": "hsla(193, 100%, 35%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 15,
+          "fontSize": 14,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -1734,7 +1746,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           "fontSize": 12,
           "fontStyle": "normal",
           "fontWeight": "700",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 2,
@@ -1756,10 +1768,10 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
         Object {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
-          "fontSize": 17,
+          "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -1777,15 +1789,16 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       color="feedback.text.positive.lowContrast"
       fontSize={100}
       fontWeight="regular"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(160, 100%, 26%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1815,7 +1828,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
             "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 2,
             "marginRight": 0,

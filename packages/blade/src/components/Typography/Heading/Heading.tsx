@@ -71,7 +71,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
     fontSize: 200,
     fontWeight: weight ?? 'bold',
     fontStyle: 'normal',
-    lineHeight: 'xl',
+    lineHeight: 300,
     fontFamily: 'text',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
     componentName: 'heading',
@@ -81,15 +81,15 @@ const getProps = <T extends { variant: HeadingVariant }>({
   if (variant === 'regular') {
     if (!size || size === 'small') {
       props.fontSize = 200;
-      props.lineHeight = '2xl';
+      props.lineHeight = 300;
       props.as = isPlatformWeb ? 'h6' : undefined;
     } else if (size === 'medium') {
       props.fontSize = 300;
-      props.lineHeight = '3xl';
+      props.lineHeight = 200;
       props.as = isPlatformWeb ? 'h5' : undefined;
     } else if (size === 'large') {
       props.fontSize = 400;
-      props.lineHeight = '3xl';
+      props.lineHeight = 400;
       props.as = isPlatformWeb ? 'h4' : undefined;
     }
   } else if (variant === 'subheading') {
@@ -102,7 +102,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
       );
     }
     props.fontSize = 75;
-    props.lineHeight = 's';
+    props.lineHeight = 50;
     props.as = isPlatformWeb ? 'h6' : undefined;
   }
 

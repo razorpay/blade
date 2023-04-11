@@ -74,7 +74,7 @@ const FormLabel = ({
   if (necessityIndicator === 'required') {
     necessityLabel = (
       <BaseText
-        lineHeight="s"
+        lineHeight={100}
         fontFamily="text"
         fontStyle="normal"
         fontSize={75}

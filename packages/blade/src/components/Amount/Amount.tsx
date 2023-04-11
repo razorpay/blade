@@ -6,6 +6,7 @@ import {
   currencyLocaleMapping,
   currencyPrefixMapping,
   affixFontSizes,
+  amountLineHeights,
 } from './amountTokens';
 import { BaseText } from '~components/Typography/BaseText';
 import type { Feedback } from '~tokens/theme/theme';
@@ -121,6 +122,7 @@ const AmountValue = ({
         <BaseText
           fontSize={amountFontSizes[size]}
           fontWeight={valueForWeight}
+          lineHeight={amountLineHeights[size]}
           color={amountValueColor}
           as={isReactNative ? undefined : 'span'}
         >
