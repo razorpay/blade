@@ -125,6 +125,7 @@ exports[`<BaseInput /> should render 1`] = `
   padding-left: 12px;
   padding-right: 12px;
   width: 100%;
+  height: 36px;
   resize: none;
   outline: none;
   border: none;
@@ -488,6 +489,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding-left: 8px;
   padding-right: 8px;
   width: 100%;
+  height: 36px;
   resize: none;
   outline: none;
   border: none;

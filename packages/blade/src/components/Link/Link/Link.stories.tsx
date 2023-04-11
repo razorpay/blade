@@ -206,6 +206,16 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
         >
           Medium anchor link
         </LinkComponent>
+        <LinkComponent
+          variant="anchor"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="large"
+          icon={DownloadIcon}
+        >
+          Large anchor link
+        </LinkComponent>
       </BaseBox>
       <BaseBox display="flex" flexDirection="column">
         <BaseBox marginBottom="spacing.3">
@@ -218,6 +228,9 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
         </BaseBox>
         <LinkComponent size="medium" variant="button" onClick={onClick} icon={DownloadIcon}>
           Medium link button
+        </LinkComponent>
+        <LinkComponent size="large" variant="button" onClick={onClick} icon={DownloadIcon}>
+          Large link button
         </LinkComponent>
       </BaseBox>
     </BaseBox>

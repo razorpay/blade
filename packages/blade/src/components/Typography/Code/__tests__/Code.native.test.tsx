@@ -13,14 +13,14 @@ describe('<Code />', () => {
   it('should render small Code', () => {
     const { getByText, toJSON } = renderWithTheme(<Code size="small">SMALL</Code>);
     const renderedCode = getByText('SMALL');
-    expect(renderedCode).toHaveStyle({ fontSize: typography.onMobile.fonts.size[75] });
+    expect(renderedCode).toHaveStyle({ fontSize: typography.onMobile.fonts.size[25] });
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render medium Code', () => {
     const { getByText, toJSON } = renderWithTheme(<Code size="medium">MEDIUM</Code>);
     const renderedCode = getByText('MEDIUM');
-    expect(renderedCode).toHaveStyle({ fontSize: typography.onMobile.fonts.size[100] });
+    expect(renderedCode).toHaveStyle({ fontSize: typography.onMobile.fonts.size[75] });
     expect(toJSON()).toMatchSnapshot();
   });
 

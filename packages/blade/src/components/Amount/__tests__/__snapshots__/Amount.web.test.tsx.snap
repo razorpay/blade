@@ -412,7 +412,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -425,7 +425,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -452,7 +452,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.75rem;
   margin: 0;
   padding: 0;
 }
@@ -479,7 +479,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.75rem;
   margin: 0;
   padding: 0;
 }
@@ -492,7 +492,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -505,7 +505,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -532,7 +532,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 2.5rem;
   margin: 0;
   padding: 0;
 }
@@ -873,7 +873,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -966,7 +966,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }

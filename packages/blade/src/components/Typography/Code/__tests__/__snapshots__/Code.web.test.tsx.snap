@@ -4,12 +4,12 @@ exports[`<Code /> should render Code with default properties 1`] = `
 .c1 {
   color: hsla(216,27%,36%,1);
   font-family: monospace;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 0.875rem;
   margin: 0;
   padding: 0;
 }
@@ -19,7 +19,8 @@ exports[`<Code /> should render Code with default properties 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1rem;
+  vertical-align: middle;
+  line-height: 0rem;
 }
 
 <div>
@@ -31,7 +32,8 @@ exports[`<Code /> should render Code with default properties 1`] = `
       class="c1"
       color="surface.text.subtle.lowContrast"
       font-family="code"
-      font-size="75"
+      font-size="25"
+      font-weight="regular"
     >
       TEST_TOKEN
     </code>
@@ -43,51 +45,12 @@ exports[`<Code /> should render medium Code 1`] = `
 .c1 {
   color: hsla(216,27%,36%,1);
   font-family: monospace;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c0 {
-  padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.09);
-  border-radius: 4px;
-  display: inline-block;
-  line-height: 1rem;
-}
-
-<div>
-  <span
-    class=" c0"
-    data-blade-component="code"
-  >
-    <code
-      class="c1"
-      color="surface.text.subtle.lowContrast"
-      font-family="code"
-      font-size="100"
-    >
-      MEDIUM
-    </code>
-  </span>
-</div>
-`;
-
-exports[`<Code /> should render small Code 1`] = `
-.c1 {
-  color: hsla(216,27%,36%,1);
-  font-family: monospace;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1.125rem;
   margin: 0;
   padding: 0;
 }
@@ -97,7 +60,8 @@ exports[`<Code /> should render small Code 1`] = `
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
-  line-height: 1rem;
+  vertical-align: middle;
+  line-height: 0rem;
 }
 
 <div>
@@ -110,6 +74,48 @@ exports[`<Code /> should render small Code 1`] = `
       color="surface.text.subtle.lowContrast"
       font-family="code"
       font-size="75"
+      font-weight="regular"
+    >
+      MEDIUM
+    </code>
+  </span>
+</div>
+`;
+
+exports[`<Code /> should render small Code 1`] = `
+.c1 {
+  color: hsla(216,27%,36%,1);
+  font-family: monospace;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  padding: 0px 4px;
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0rem;
+}
+
+<div>
+  <span
+    class=" c0"
+    data-blade-component="code"
+  >
+    <code
+      class="c1"
+      color="surface.text.subtle.lowContrast"
+      font-family="code"
+      font-size="25"
+      font-weight="regular"
     >
       SMALL
     </code>
