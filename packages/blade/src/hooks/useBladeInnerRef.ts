@@ -1,5 +1,6 @@
 import React from 'react';
 import type { TextInput as TextInputReactNative, View } from 'react-native';
+import { getPlatformType } from '~utils';
 
 type BladeElementRef = Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View, 'focus'>;
 
@@ -23,7 +24,7 @@ const useBladeInnerRef = (
     targetRef,
     (): BladeElementRef => {
       const element = innerRef.current;
-      if (element instanceof HTMLElement) {
+      if (getPlatformType() !== 'react-native' && element instanceof HTMLElement) {
         return {
           focus: (opts) => (handlers?.onFocus ? handlers.onFocus(opts) : element.focus(opts)),
           scrollIntoView: (opts) => element.scrollIntoView(opts),
