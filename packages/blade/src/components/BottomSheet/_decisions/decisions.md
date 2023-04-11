@@ -118,7 +118,7 @@ We will export `BottomSheet` component separately as an independant component bu
 
 There are two approaches to doing it:
 
-#### 1. We coupled the BottomSheet & SelectInput tightly and internally conditionally switch the components  
+#### 1. We couple the BottomSheet & SelectInput tightly and internally conditionally switch the components  
 
 Pros:
 
@@ -128,7 +128,7 @@ Pros:
 
 Cons:
 
-- Bundle size will be impacted, even if users are desktop they will get the bundle of BottomSheet (vice versa)
+- Bundle size will be impacted. Products where users are desktop only or majority are on desktop they will get the bundle of BottomSheet (vice versa)
 - BottomSheet's state will get coupled with SelectDropdown
 - There will be a lot of interdependency of state management
 - These [usecases](https://razorpay.slack.com/archives/C01CS8YBEQZ/p1677825334856589?thread_ts=1677825092.305089&cid=C01CS8YBEQZ) will be harder to solve for without the BottomSheet being an independent component.
@@ -145,7 +145,7 @@ Pros:
 
 Cons:
 
-- Not trivial to implement from user's end, they will have to compose the BottomSheet & Select as per their needs.
+- Not trivial to implement from user's end, they will have to compose the BottomSheet & Dropdown as per their needs.
 
 
 Considering the bundle size downside to approach 1, we decided to go ahead with approach 2.
@@ -214,6 +214,61 @@ There are two major reasons:
 
 2. There are multiple ways to lazy load react components and it depends on the app's architecture. For example, React.lazy only does client side lazy loading while loadable support SSR too, thus the descision needs to be handed over to the consumers to import & integrate the components as they fit on their stack.
 
+<details>
+
+<summary>Consumer side bottomsheet lazy loading example</summary>
+
+
+```jsx
+import { Spinner, useTheme, useBreakpoint } from "@razorpay/blade";
+
+const BottomSheet = React.lazy(() => import("@razorpay/blade/components/bottomsheet"));
+const DropdownOverlay = React.lazy(() => import("@razorpay/blade/components/dropdown-overlay"));
+
+const App = () => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isMobile = matchedDeviceType === 'mobile';
+
+  return (
+    <Dropdown selectionType={selectionType}>
+      <SelectInput label="Select Action" />
+      {/* We can either put a fallback spinner or show skeleton loaders */}
+      <React.Suspense fallback={<Spinner />}>
+        {isMobile ? (
+          <BottomSheet>
+            <BottomSheetHeader />
+            <BottomSheetBody>
+              <SelectContent />
+            </BottomSheetBody>
+            <BottomSheetFooter />
+          </BottomSheet>
+        ) : (
+          <DropdownOverlay>
+            <SelectContent />
+          </DropdownOverlay>
+        )}
+      </React.Suspense>
+    </Dropdown>
+  );
+};
+
+const SelectContent = () => {
+  return (
+    <ActionList>
+      <ActionListItem
+        leading={<ActionListItemIcon icon={SettingsIcon} />}
+        title="Settings"
+        value="settings"
+      />
+      <ActionListItem leading={<ActionListItemIcon icon={InfoIcon} />} title="Info" value="info" />
+    </ActionList>
+  );
+};
+```
+
+</details>
+
 
 ## Accessibility
 
@@ -232,7 +287,6 @@ Behaviours:
 
 1. What is `action` in the header trailing visual?
 2. In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component?
-3. In BottomSheetBody will we only have ActionList or users can add any of their own components too? 
 
 ## Alternative APIs
 
