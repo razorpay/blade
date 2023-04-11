@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 7.0.1
+
+### Patch Changes
+
+- 0f6e2ad7: fix: ref breakage on react native
+- 9963a7be: feat(package.json): add "main" field to package.json
+
 ## 7.0.0
 
 ### Major Changes
