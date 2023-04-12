@@ -77,7 +77,6 @@ import { BottomSheet } from '@razorpay/blade';
   - trailing
     - any jsx element
 
-- The BottomSheetFooter will behave similar to ActionListFooter.
 - The Header, Footer can be individually omitted
 
 ### `BottomSheet`
