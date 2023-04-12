@@ -54,6 +54,7 @@ export default {
   component: LinkComponent,
   args: {
     children: 'Learn More',
+    htmlTitle: 'Click to learn more',
   },
   argTypes: {
     icon: {
