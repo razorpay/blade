@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 7.0.2
+
+### Patch Changes
+
+- 71b4a85b: feat: add `htmlTitle` prop support for Link component on web
+
 ## 7.0.1
 
 ### Patch Changes
