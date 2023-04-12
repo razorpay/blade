@@ -20,7 +20,7 @@ describe('<BaseLink />', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
       // nosemgrep
-      <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer" title="Google">
+      <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer" htmlTitle="Google">
         {linkText}
       </BaseLink>,
     );

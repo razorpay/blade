@@ -26,16 +26,22 @@ describe('<Link />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render link with an href, target and rel', () => {
+  it('should render link with an href, target, rel and title', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
-      <Link href="https://www.google.com/" target="_blank" rel="noreferrer noopener">
+      <Link
+        href="https://www.google.com/"
+        target="_blank"
+        rel="noreferrer noopener"
+        htmlTitle="Google"
+      >
         {linkText}
       </Link>,
     );
     expect(getByRole('link')).toHaveAttribute('href', 'https://www.google.com/');
     expect(getByRole('link')).toHaveAttribute('target', '_blank');
     expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer noopener');
+    expect(getByRole('link')).toHaveAttribute('title', 'Google');
   });
 
   it('should render link with icon without text', () => {

@@ -39,7 +39,7 @@ type LinkCommonProps = {
       /**
        * This is a web only prop and has no effect on react-native.
        */
-      title?: undefined;
+      htmlTitle?: undefined;
     };
     web: {
       /**
@@ -49,7 +49,7 @@ type LinkCommonProps = {
       /**
        * The title of the link which is displayed as a tooltip.
        */
-      title?: string;
+      htmlTitle?: string;
     };
   }>;
 
@@ -115,6 +115,7 @@ const Link = ({
   size = 'medium',
   testID,
   hitSlop,
+  htmlTitle,
   ...styledProps
 }: LinkProps): ReactElement => {
   return (
@@ -127,6 +128,7 @@ const Link = ({
       size={size}
       testID={testID}
       hitSlop={hitSlop}
+      htmlTitle={htmlTitle}
       {...styledProps}
     />
   );
