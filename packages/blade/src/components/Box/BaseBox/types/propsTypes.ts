@@ -1,14 +1,8 @@
-import type { CSSObject } from 'styled-components';
 import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
-import type {
-  DotNotationColorStringToken,
-  MakeObjectWebOnly,
-  PickCSSByPlatform,
-  TestID,
-} from '~src/_helpers/types';
+import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~src/_helpers/types';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -76,26 +70,23 @@ type PositionProps = MakeObjectResponsive<
   } & PickCSSByPlatform<'position' | 'zIndex'>
 >;
 
-type GridProps = MakeObjectWebOnly<
-  MakeObjectResponsive<
-    Pick<
-      CSSObject,
-      | 'grid'
-      | 'gridColumn'
-      | 'gridRow'
-      | 'gridRowStart'
-      | 'gridRowEnd'
-      | 'gridColumnStart'
-      | 'gridColumnEnd'
-      | 'gridArea'
-      | 'gridAutoFlow'
-      | 'gridAutoRows'
-      | 'gridAutoColumns'
-      | 'gridTemplate'
-      | 'gridTemplateAreas'
-      | 'gridTemplateColumns'
-      | 'gridTemplateRows'
-    >
+type GridProps = MakeObjectResponsive<
+  PickCSSByPlatform<
+    | 'grid'
+    | 'gridColumn'
+    | 'gridRow'
+    | 'gridRowStart'
+    | 'gridRowEnd'
+    | 'gridColumnStart'
+    | 'gridColumnEnd'
+    | 'gridArea'
+    | 'gridAutoFlow'
+    | 'gridAutoRows'
+    | 'gridAutoColumns'
+    | 'gridTemplate'
+    | 'gridTemplateAreas'
+    | 'gridTemplateColumns'
+    | 'gridTemplateRows'
   >
 >;
 
