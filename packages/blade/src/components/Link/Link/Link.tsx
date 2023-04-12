@@ -36,12 +36,20 @@ type LinkCommonProps = {
             left?: number;
           }
         | number;
+      /**
+       * This is a web only prop and has no effect on react-native.
+       */
+      title?: undefined;
     };
     web: {
       /**
        * This is a react-native only prop and has no effect on web.
        */
       hitSlop?: undefined;
+      /**
+       * The title of the link which is displayed as a tooltip.
+       */
+      title?: string;
     };
   }>;
 

@@ -48,6 +48,10 @@ type BaseLinkCommonProps = {
         left?: number;
       }
     | number;
+  /**
+   * The title of the link which is displayed as a tooltip. This is a web only prop and has no effect on react-native.
+   */
+  title?: string;
 } & TestID &
   StyledPropsBlade;
 
@@ -248,6 +252,7 @@ const BaseLink = ({
   size = 'medium',
   testID,
   hitSlop,
+  title,
   ...styledProps
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
@@ -323,6 +328,7 @@ const BaseLink = ({
       className={className}
       style={style}
       hitSlop={hitSlop}
+      title={title}
     >
       <BaseBox display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (

@@ -16,17 +16,18 @@ describe('<BaseLink />', () => {
     expect(getByText('Learn More')).toBeInTheDocument();
   });
 
-  it('should render link with an href, target and rel', () => {
+  it('should render link with an href, target, rel, and title', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
       // nosemgrep
-      <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer">
+      <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer" title="Google">
         {linkText}
       </BaseLink>,
     );
     expect(getByRole('link')).toHaveAttribute('href', 'https://www.google.com/');
     expect(getByRole('link')).toHaveAttribute('target', '_blank');
     expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer');
+    expect(getByRole('link')).toHaveAttribute('title', 'Google');
   });
 
   it('should render link with a default rel set when target is _blank', () => {
