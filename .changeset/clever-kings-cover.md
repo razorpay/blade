@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-feat: add `title` prop support for Link component on web
+feat: add `htmlTitle` prop support for Link component on web
