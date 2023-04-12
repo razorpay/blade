@@ -3,8 +3,7 @@ import React from 'react';
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
 import { StyledActionList } from './styles/StyledActionList';
-import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
-import { ActionListItem, ActionListSection, ActionListSectionDivider } from './ActionListItem';
+import { ActionListBox } from './ActionListBox';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -76,8 +75,8 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
   const { theme } = useTheme();
 
   const {
-    childrenWithId,
     sectionData,
+    childrenWithId,
     actionListOptions,
     defaultSelectedIndices,
     actionListHeaderChild,
@@ -101,24 +100,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
   );
   const isMultiSelectable = selectionType === 'multiple';
 
-  const renderActionListItem = React.useCallback(({ item }) => {
-    return <ActionListItem {...item} />;
-  }, []);
-
-  const renderActionListSectionHeader = React.useCallback(({ section: { title } }) => {
-    if (!title) return null;
-    return <ActionListSection title={title} _hideDivider={true} children={undefined} />;
-  }, []);
-
-  const renderActionListSectionDivider = React.useCallback(
-    ({ section: { title, hideDivider } }) => {
-      if (!title) return null;
-      if (hideDivider) return null;
-      return <ActionListSectionDivider />;
-    },
-    [],
-  );
-
   return (
     <StyledActionList
       surfaceLevel={surfaceLevel}
@@ -132,28 +113,14 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
       {...metaAttribute({ name: MetaConstants.ActionList, testID })}
     >
       {actionListHeaderChild}
-      <StyledListBoxWrapper
-        sections={sectionData}
-        windowSize={5}
-        initialNumToRender={5}
-        bouncesZoom={false}
-        bounces={false}
-        keyExtractor={(item: any) => {
-          return item.value;
-        }}
-        renderSectionHeader={renderActionListSectionHeader}
-        renderSectionFooter={renderActionListSectionDivider}
-        renderItem={renderActionListItem}
+      <ActionListBox
+        actionListItemWrapperRole={actionListItemWrapperRole}
+        childrenWithId={childrenWithId}
+        sectionData={sectionData}
+        isMultiSelectable={isMultiSelectable}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={actionListItemRef as any}
-        {...makeAccessible({
-          role: actionListItemWrapperRole,
-          multiSelectable: actionListItemWrapperRole === 'listbox' ? isMultiSelectable : undefined,
-        })}
-      >
-        {/* children with id is for rendering in web */}
-        {childrenWithId}
-      </StyledListBoxWrapper>
+      />
       {actionListFooterChild}
     </StyledActionList>
   );

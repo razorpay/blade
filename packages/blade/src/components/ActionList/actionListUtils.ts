@@ -45,7 +45,7 @@ const actionListAllowedChildren = [
   componentIds.ActionListSection,
 ];
 
-type SectionData = {
+export type SectionData = {
   title: string;
   hideDivider: boolean;
   data: ActionListItemProps[];
