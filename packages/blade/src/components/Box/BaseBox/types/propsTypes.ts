@@ -127,9 +127,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'action'>
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
-  } & PickCSSByPlatform<
-    'transform' | 'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom'
-  >
+  } & PickCSSByPlatform<'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom'>
 >;
 
 type BoxVisualProps = MakeObjectResponsive<{
@@ -141,19 +139,22 @@ type BoxVisualProps = MakeObjectResponsive<{
 };
 
 type StyledPropsBlade = Partial<
-  MarginProps &
-    Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
-    PositionProps &
-    Pick<
-      GridProps,
-      | 'gridColumn'
-      | 'gridRow'
-      | 'gridRowStart'
-      | 'gridRowEnd'
-      | 'gridColumnStart'
-      | 'gridColumnEnd'
-      | 'gridArea'
-    >
+  Omit<
+    MarginProps &
+      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
+      PositionProps &
+      Pick<
+        GridProps,
+        | 'gridColumn'
+        | 'gridRow'
+        | 'gridRowStart'
+        | 'gridRowEnd'
+        | 'gridColumnStart'
+        | 'gridColumnEnd'
+        | 'gridArea'
+      >,
+    '__brand__'
+  >
 >;
 
 type BoxProps = Partial<
