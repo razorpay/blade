@@ -19,6 +19,7 @@ import { makeMotionTime, makeSpace } from '~utils';
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type BottomSheetProps = {
   children: React.ReactNode;
@@ -71,7 +72,7 @@ const BottomSheetSurface = styled.div<{
   };
 });
 
-const BottomSheet = React.forwardRef<any, BottomSheetProps>(
+const _BottomSheet = React.forwardRef<any, BottomSheetProps>(
   ({ children, snapPoints = [0.35, 0.5, 0.85] }, ref): React.ReactElement => {
     const dimensions = useWindowSize();
     const [contentHeight, setContentHeight] = React.useState(0);
@@ -353,6 +354,8 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
   },
 );
 
-(BottomSheet as any).componentId = ComponentIds.BottomSheet;
+const BottomSheet = assignWithoutSideEffects(_BottomSheet, {
+  componentId: ComponentIds.BottomSheet,
+});
 
 export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetProps };

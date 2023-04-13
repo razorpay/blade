@@ -7,19 +7,19 @@ import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
-import type { WithComponentId } from '~utils';
 import { makeSpace } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type BottomSheetHeaderLeadingProps = {
   title: string;
   prefix: React.ReactNode;
 };
 
-const BottomSheetHeaderLeading: WithComponentId<BottomSheetHeaderLeadingProps> = ({
+const _BottomSheetHeaderLeading = ({
   title,
   prefix,
-}) => {
+}: BottomSheetHeaderLeadingProps): React.ReactElement => {
   return (
     <BaseBox flex={1} display="flex" flexDirection="row" alignItems="center" userSelect="none">
       <BaseBox marginRight="spacing.4" alignSelf="center" display="flex">
@@ -33,13 +33,17 @@ const BottomSheetHeaderLeading: WithComponentId<BottomSheetHeaderLeadingProps> =
     </BaseBox>
   );
 };
-BottomSheetHeaderLeading.componentId = ComponentIds.BottomSheetHeaderLeading;
+const BottomSheetHeaderLeading = assignWithoutSideEffects(_BottomSheetHeaderLeading, {
+  componentId: ComponentIds.BottomSheetHeaderLeading,
+});
 
 type BottomSheetHeaderTrailingProps = {
   visual: React.ReactNode;
 };
 
-const BottomSheetHeaderTrailing: WithComponentId<BottomSheetHeaderTrailingProps> = ({ visual }) => {
+const _BottomSheetHeaderTrailing = ({
+  visual,
+}: BottomSheetHeaderTrailingProps): React.ReactElement => {
   const { close } = useBottomSheetContext();
 
   return (
@@ -59,7 +63,9 @@ const BottomSheetHeaderTrailing: WithComponentId<BottomSheetHeaderTrailingProps>
     </BaseBox>
   );
 };
-BottomSheetHeaderTrailing.componentId = ComponentIds.BottomSheetHeaderTrailing;
+const BottomSheetHeaderTrailing = assignWithoutSideEffects(_BottomSheetHeaderTrailing, {
+  componentId: ComponentIds.BottomSheetHeaderTrailing,
+});
 
 type BottomSheetHeaderProps = {
   title: string;
@@ -67,11 +73,11 @@ type BottomSheetHeaderProps = {
   trailing?: React.ReactNode;
 };
 
-const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
+const _BottomSheetHeader = ({
   leading,
   trailing,
   title,
-}): React.ReactElement => {
+}: BottomSheetHeaderProps): React.ReactElement => {
   const { setHeaderHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -102,7 +108,10 @@ const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
     </BaseBox>
   );
 };
-BottomSheetHeader.componentId = ComponentIds.BottomSheetHeader;
+
+const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
+  componentId: ComponentIds.BottomSheetHeader,
+});
 
 const BottomSheetGrabHandle = styled.div(({ theme }) => {
   return {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
 import { ComponentIds } from './componentIds';
@@ -7,9 +8,9 @@ import BaseBox from '~components/Box/BaseBox';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
-import type { WithComponentId } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type BottomSheetFooterProps = {
   title: string;
@@ -32,10 +33,10 @@ type BottomSheetFooterLeadingProps = {
   prefix?: React.ReactNode;
 };
 
-const BottomSheetFooterLeading: WithComponentId<BottomSheetFooterLeadingProps> = ({
+const _BottomSheetFooterLeading = ({
   title,
   prefix,
-}) => {
+}: BottomSheetFooterLeadingProps): React.ReactElement => {
   return (
     <BaseBox display="flex" alignItems="center" flexDirection="row" userSelect="none">
       {prefix && (
@@ -53,7 +54,10 @@ const BottomSheetFooterLeading: WithComponentId<BottomSheetFooterLeadingProps> =
     </BaseBox>
   );
 };
-BottomSheetFooterLeading.componentId = ComponentIds.BottomSheetFooterLeading;
+
+const BottomSheetFooterLeading = assignWithoutSideEffects(_BottomSheetFooterLeading, {
+  componentId: ComponentIds.BottomSheetFooterLeading,
+});
 
 type BottomSheetFooterTrailingProps = {
   actions?: {
@@ -63,10 +67,10 @@ type BottomSheetFooterTrailingProps = {
   hasLeading: boolean;
 };
 
-const BottomSheetFooterTrailing: WithComponentId<BottomSheetFooterTrailingProps> = ({
+const _BottomSheetFooterTrailing = ({
   actions,
   hasLeading,
-}) => {
+}: BottomSheetFooterTrailingProps): React.ReactElement => {
   const { primary, secondary } = actions || {};
 
   return (
@@ -95,7 +99,9 @@ const BottomSheetFooterTrailing: WithComponentId<BottomSheetFooterTrailingProps>
     </BaseBox>
   );
 };
-BottomSheetFooterTrailing.componentId = ComponentIds.BottomSheetFooterTrailing;
+const BottomSheetFooterTrailing = assignWithoutSideEffects(_BottomSheetFooterTrailing, {
+  componentId: ComponentIds.BottomSheetFooterTrailing,
+});
 
 const BottomSheetFooter = ({
   title,
