@@ -1,6 +1,8 @@
+import type { StringChildrenType } from '~src/_helpers/types';
+
 type SkipNavLinkProps = {
   id?: string;
-  children?: string;
+  children?: StringChildrenType;
 };
 
 const SkipNavLink = (_props: SkipNavLinkProps): never => {

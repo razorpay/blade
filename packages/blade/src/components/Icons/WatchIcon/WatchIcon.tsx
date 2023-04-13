@@ -2,11 +2,11 @@ import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const WatchIcon: IconComponent = ({ size, color }) => {
+const WatchIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#clip0_60_398)">
         <Path
           d="M13 9C13 8.44771 12.5523 8 12 8C11.4477 8 11 8.44771 11 9V12C11 12.2652 11.1054 12.5196 11.2929 12.7071L12.7929 14.2071C13.1834 14.5976 13.8166 14.5976 14.2071 14.2071C14.5976 13.8166 14.5976 13.1834 14.2071 12.7929L13 11.5858V9Z"

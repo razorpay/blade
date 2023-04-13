@@ -6,12 +6,14 @@ import { BaseInput } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -40,6 +42,9 @@ type TextInputProps = Pick<
   | 'autoFocus'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
+  | 'onSubmit'
+  | 'autoCapitalize'
+  | 'testID'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -47,7 +52,7 @@ type TextInputProps = Pick<
   showClearButton?: boolean;
 
   /**
-   * Event handler to handle the onClick event for clear button.
+   * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
 
@@ -67,11 +72,11 @@ type TextInputProps = Pick<
    * @default text
    */
   type?: Type;
-};
+} & StyledPropsBlade;
 
 type TextInputKeyboardAndAutoComplete = Pick<
   BaseInputProps,
-  'keyboardType' | 'keyboardReturnKeyType' | 'autoCompleteSuggestionType'
+  'keyboardType' | 'keyboardReturnKeyType' | 'autoCompleteSuggestionType' | 'autoCapitalize'
 > & {
   type: Type;
 };
@@ -80,12 +85,14 @@ const getKeyboardAndAutocompleteProps = ({
   type = 'text',
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
+  autoCapitalize,
 }: TextInputKeyboardAndAutoComplete): TextInputKeyboardAndAutoComplete => {
   const keyboardAndAutocompleteProps: TextInputKeyboardAndAutoComplete = {
     type,
     keyboardType: 'text',
     keyboardReturnKeyType: 'default',
     autoCompleteSuggestionType: 'none',
+    autoCapitalize,
   };
 
   const keyboardConfigMap = {
@@ -93,31 +100,37 @@ const getKeyboardAndAutocompleteProps = ({
       keyboardType: 'text',
       keyboardReturnKeyType: 'default',
       autoCompleteSuggestionType: 'none',
+      autoCapitalize: undefined,
     },
     telephone: {
       keyboardType: 'telephone',
       keyboardReturnKeyType: 'done',
       autoCompleteSuggestionType: 'telephone',
+      autoCapitalize: undefined,
     },
     email: {
       keyboardType: 'email',
       keyboardReturnKeyType: 'done',
       autoCompleteSuggestionType: 'email',
+      autoCapitalize: 'none',
     },
     url: {
       keyboardType: 'url',
       keyboardReturnKeyType: 'go',
       autoCompleteSuggestionType: 'none',
+      autoCapitalize: 'none',
     },
     number: {
       keyboardType: 'decimal',
       keyboardReturnKeyType: 'done',
       autoCompleteSuggestionType: 'none',
+      autoCapitalize: undefined,
     },
     search: {
       keyboardType: 'search',
       keyboardReturnKeyType: 'search',
       autoCompleteSuggestionType: 'none',
+      autoCapitalize: undefined,
     },
   } as const;
 
@@ -130,6 +143,8 @@ const getKeyboardAndAutocompleteProps = ({
 
   keyboardAndAutocompleteProps.autoCompleteSuggestionType =
     autoCompleteSuggestionType ?? keyboardConfig.autoCompleteSuggestionType;
+
+  keyboardAndAutocompleteProps.autoCapitalize = keyboardConfig.autoCapitalize;
 
   if (type === 'number') {
     /* the default keyboardType:numeric shows alphanumeric keyboard on iOS but number pad on android. making it type:text and keyboardType:decimal fixes this on all platforms.
@@ -167,6 +182,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     onChange,
     onFocus,
     onBlur,
+    onSubmit,
     isDisabled,
     necessityIndicator,
     validationState,
@@ -183,6 +199,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     autoFocus,
     keyboardReturnKeyType,
     autoCompleteSuggestionType,
+    autoCapitalize,
+    testID,
+    ...styledProps
   },
   ref,
 ): ReactElement => {
@@ -254,6 +273,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       }}
       onFocus={onFocus}
       onBlur={onBlur}
+      onSubmit={onSubmit}
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
@@ -274,16 +294,20 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       }}
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocus}
+      testID={testID}
       {...getKeyboardAndAutocompleteProps({
         type,
         keyboardReturnKeyType,
         autoCompleteSuggestionType,
+        autoCapitalize,
       })}
+      {...styledProps}
     />
   );
 };
 
-const TextInput = React.forwardRef(_TextInput);
-TextInput.displayName = 'TextInput';
+const TextInput = assignWithoutSideEffects(React.forwardRef(_TextInput), {
+  displayName: 'TextInput',
+});
 
 export { TextInput, TextInputProps };

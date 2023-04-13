@@ -63,11 +63,11 @@ exports[`<Button /> should render button with default properties 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -90,16 +90,16 @@ exports[`<Button /> should render button with default properties 1`] = `
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -184,11 +184,11 @@ exports[`<Button /> should render button with full width 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -211,16 +211,16 @@ exports[`<Button /> should render button with full width 1`] = `
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -305,11 +305,11 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -332,7 +332,6 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingRight="spacing.3"
       style={
         Array [
           Object {
@@ -362,6 +361,9 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -400,16 +402,16 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -494,11 +496,11 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -521,16 +523,16 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -552,7 +554,6 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingLeft="spacing.3"
       style={
         Array [
           Object {
@@ -582,6 +583,9 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -683,11 +687,11 @@ exports[`<Button /> should render disabled button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -710,16 +714,16 @@ exports[`<Button /> should render disabled button 1`] = `
       color="action.text.primary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(216, 16%, 60%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -804,11 +808,11 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -831,16 +835,16 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
       color="action.text.secondary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(218, 19%, 81%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -925,11 +929,11 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -952,16 +956,16 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
       color="action.text.tertiary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(218, 19%, 81%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1046,11 +1050,11 @@ exports[`<Button /> should render large size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1073,16 +1077,16 @@ exports[`<Button /> should render large size button 1`] = `
       color="action.text.primary.default"
       fontSize={200}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={300}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 18,
+            "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1167,11 +1171,11 @@ exports[`<Button /> should render medium size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1194,16 +1198,16 @@ exports[`<Button /> should render medium size button 1`] = `
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1288,11 +1292,11 @@ exports[`<Button /> should render secondary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1315,16 +1319,16 @@ exports[`<Button /> should render secondary variant button 1`] = `
       color="action.text.secondary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(213, 89%, 56%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1409,11 +1413,11 @@ exports[`<Button /> should render small size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1436,7 +1440,7 @@ exports[`<Button /> should render small size button 1`] = `
       color="action.text.primary.default"
       fontSize={75}
       fontWeight="bold"
-      lineHeight="s"
+      lineHeight={50}
       style={
         Array [
           Object {
@@ -1530,11 +1534,11 @@ exports[`<Button /> should render tertiary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1557,16 +1561,16 @@ exports[`<Button /> should render tertiary variant button 1`] = `
       color="action.text.tertiary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(216, 33%, 29%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1651,11 +1655,11 @@ exports[`<Button /> should render xsmall size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
     alignItems="center"
     display="flex"
-    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1678,7 +1682,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
       color="action.text.primary.default"
       fontSize={75}
       fontWeight="bold"
-      lineHeight="s"
+      lineHeight={50}
       style={
         Array [
           Object {

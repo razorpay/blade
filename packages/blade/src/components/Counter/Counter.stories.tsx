@@ -7,6 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -42,6 +43,7 @@ const Page = (): ReactElement => {
 export default {
   title: 'Components/Counter',
   component: CounterComponent,
+  argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
       page: Page,
@@ -84,9 +86,14 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         flexWrap="wrap"
       >
         {intents.map((intent) => (
-          <BaseBox key={intent} paddingRight="spacing.3" paddingTop="spacing.2">
-            <CounterComponent {...args} intent={intent} contrast="low" />
-          </BaseBox>
+          <CounterComponent
+            {...args}
+            key={intent}
+            marginRight="spacing.3"
+            marginTop="spacing.2"
+            intent={intent}
+            contrast="low"
+          />
         ))}
       </BaseBox>
       <BladeText>High Contrast</BladeText>
@@ -98,9 +105,14 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         flexWrap="wrap"
       >
         {intents.map((intent) => (
-          <BaseBox key={intent} paddingRight="spacing.3" paddingTop="spacing.2">
-            <CounterComponent {...args} intent={intent} contrast="high" />
-          </BaseBox>
+          <CounterComponent
+            {...args}
+            key={intent}
+            marginRight="spacing.3"
+            marginTop="spacing.2"
+            intent={intent}
+            contrast="high"
+          />
         ))}
       </BaseBox>
     </BaseBox>

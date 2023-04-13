@@ -1,8 +1,8 @@
 import { Image } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { componentIds } from './componentIds';
-import { useTheme } from '~components/BladeProvider';
-import type { WithComponentId } from '~utils';
+import size from '~tokens/global/size';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListItemAssetProps = {
   /**
@@ -19,14 +19,13 @@ type ActionListItemAssetProps = {
 /**
  *
  */
-const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) => {
-  const { theme } = useTheme();
+const _ActionListItemAsset = (props: ActionListItemAssetProps): React.ReactElement => {
   const source = typeof props.src === 'string' ? { uri: props.src } : props.src;
 
   return (
     <Image
       source={source}
-      style={{ width: theme.spacing[5], height: theme.spacing[4] }}
+      style={{ width: size[16], height: size[12] }}
       accessibilityIgnoresInvertColors
       // @ts-expect-error: alt does exist on React Native Image https://reactnative.dev/docs/image#alt
       alt={props.alt}
@@ -34,6 +33,8 @@ const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) =
   );
 };
 
-ActionListItemAsset.componentId = componentIds.ActionListItemAsset;
+const ActionListItemAsset = assignWithoutSideEffects(_ActionListItemAsset, {
+  componentId: componentIds.ActionListItemAsset,
+});
 
 export { ActionListItemAsset, ActionListItemAssetProps };

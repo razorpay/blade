@@ -88,6 +88,35 @@ describe('<Dropdown />', () => {
     expect(selectInput.textContent).toBe('Orange');
   });
 
+  it('should trigger focus and blur events for SelectInput', async () => {
+    const user = userEvent.setup();
+    const onFocus = jest.fn();
+    const onBlur = jest.fn();
+
+    const { getByRole } = renderWithTheme(
+      <>
+        <Dropdown>
+          <SelectInput name="dropdown-select" label="Fruits" onFocus={onFocus} onBlur={onBlur} />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Banana" value="banana" />
+              <ActionListItem title="Orange" value="orange" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+        <Button>Outer Button</Button>
+      </>,
+    );
+
+    const selectInput = getByRole('combobox', { name: 'Fruits' });
+
+    await user.click(selectInput);
+    expect(onFocus).toHaveBeenCalledWith({ name: 'dropdown-select', value: '' });
+    await user.click(getByRole('option', { name: 'Orange' }));
+    await user.click(getByRole('button', { name: 'Outer Button' })); // Focusing on outer button to blur the select input
+    expect(onBlur).toHaveBeenCalledWith({ name: 'dropdown-select', value: 'orange' });
+  });
+
   it('should handle accessibility of multiselect', async () => {
     const user = userEvent.setup();
     const { container, getByRole } = renderWithTheme(
@@ -368,5 +397,37 @@ describe('<Dropdown />', () => {
     // Press footer button
     await user.keyboard('{Enter}');
     expect(applyClickHandler).toBeCalledTimes(1);
+  });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <Dropdown>
+        <SelectInput label="Fruits" testID="select-test" />
+        <DropdownOverlay testID="dropdown-overlay-test">
+          <ActionList testID="action-list-test">
+            <ActionListHeader
+              title="Recent Searches"
+              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
+              testID="action-list-header-test"
+            />
+            <ActionListItem title="Apple" value="apple" testID="action-list-item-test" />
+            <ActionListItem title="Mango" value="mango" />
+            <ActionListFooter
+              title="Search Tips"
+              leading={<ActionListFooterIcon icon={SearchIcon} />}
+              trailing={<Button>Apply</Button>}
+              testID="action-list-footer-test"
+            />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(getByTestId('select-test')).toBeTruthy();
+    expect(getByTestId('dropdown-overlay-test')).toBeTruthy();
+    expect(getByTestId('action-list-test')).toBeTruthy();
+    expect(getByTestId('action-list-header-test')).toBeTruthy();
+    expect(getByTestId('action-list-item-test')).toBeTruthy();
+    expect(getByTestId('action-list-footer-test')).toBeTruthy();
   });
 });

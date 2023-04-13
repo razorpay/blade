@@ -4,10 +4,13 @@ import SpinnerIcon from './SpinnerIcon';
 import { SpinningBox } from './SpinningBox';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { metaAttribute, getIn, makeAccessible, makeSize, MetaConstants } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+import type { TestID } from '~src/_helpers/types';
 
 type BaseSpinnerProps = {
   intent?: Feedback;
@@ -39,7 +42,8 @@ type BaseSpinnerProps = {
    *
    */
   accessibilityLabel: string;
-};
+} & TestID &
+  StyledPropsBlade;
 
 const getColor = ({
   contrast,
@@ -69,10 +73,16 @@ const BaseSpinner = ({
   contrast = 'low',
   intent,
   size = 'medium',
+  testID,
+  ...styledProps
 }: BaseSpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
-    <BaseBox display="flex" {...metaAttribute(MetaConstants.Component, MetaConstants.Spinner)}>
+    <BaseBox
+      display="flex"
+      {...metaAttribute({ name: MetaConstants.Spinner, testID })}
+      {...getStyledProps(styledProps)}
+    >
       <BaseBox
         display="flex"
         alignItems="center"

@@ -6,10 +6,12 @@ import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type TextAreaProps = Pick<
   BaseInputProps,
@@ -26,22 +28,24 @@ type TextAreaProps = Pick<
   | 'onChange'
   | 'onFocus'
   | 'onBlur'
+  | 'onSubmit'
   | 'value'
   | 'isDisabled'
   | 'isRequired'
   | 'maxCharacters'
   | 'autoFocus'
   | 'numberOfLines'
+  | 'testID'
 > & {
   /**
    * Decides whether to render a clear icon button
    */
   showClearButton?: boolean;
   /**
-   * Event handler to handle the onClick event for clear button.
+   * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
-};
+} & StyledPropsBlade;
 
 // need to do this to tell TS to infer type as TextInput of React Native and make it believe that `ref.current.clear()` exists
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -65,6 +69,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     onChange,
     onFocus,
     onBlur,
+    onSubmit,
     placeholder,
     value,
     maxCharacters,
@@ -72,6 +77,8 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     onClearButtonClick,
     autoFocus,
     numberOfLines = 2,
+    testID,
+    ...styledProps
   },
   ref,
 ) => {
@@ -151,6 +158,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       }}
       onFocus={onFocus}
       onBlur={onBlur}
+      onSubmit={onSubmit}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
           <BaseBox marginTop="spacing.2" marginRight="spacing.1">
@@ -158,11 +166,14 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
           </BaseBox>
         ) : null;
       }}
+      testID={testID}
+      {...styledProps}
     />
   );
 };
 
-const TextArea = React.forwardRef(_TextArea);
-TextArea.displayName = 'TextArea';
+const TextArea = assignWithoutSideEffects(React.forwardRef(_TextArea), {
+  displayName: 'TextArea',
+});
 
 export { TextArea, TextAreaProps };

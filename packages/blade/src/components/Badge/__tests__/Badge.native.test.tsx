@@ -172,4 +172,10 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('should accept testID', () => {
+    const label = 'Label';
+    const { getByTestId } = renderWithTheme(<Badge testID="badge-test">{label}</Badge>);
+    expect(getByTestId('badge-test')).toBeTruthy();
+  });
 });

@@ -5,6 +5,7 @@ import type { TitleProps } from './';
 import { Title as TitleComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -40,7 +41,7 @@ const TitleStoryMeta: Meta<TitleProps> = {
   title: 'Components/Typography/Title',
   component: TitleComponent,
   args: {
-    size: 'large',
+    size: 'xlarge',
     type: 'normal',
     children: 'Power your finance, grow your business',
     contrast: 'low',
@@ -50,6 +51,7 @@ const TitleStoryMeta: Meta<TitleProps> = {
       page: () => <Page />,
     },
   },
+  argTypes: getStyledPropsArgTypes(),
 };
 
 const TitleTemplate: ComponentStory<typeof TitleComponent> = (args) => {

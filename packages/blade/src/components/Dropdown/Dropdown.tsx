@@ -3,15 +3,19 @@ import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
-import type { WithComponentId } from '~utils';
 import { isValidAllowedChildren } from '~utils';
 import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
 import { DropdownBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+
+import BaseBox from '~components/Box/BaseBox';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
   children: React.ReactNode[];
-};
+} & StyledPropsBlade;
 
 /**
  * ### Dropdown component
@@ -39,10 +43,11 @@ type DropdownProps = {
  *
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-select--with-single-select Dropdown Documentation}
  */
-const Dropdown: WithComponentId<DropdownProps> = ({
+const _Dropdown = ({
   children,
   selectionType = 'single',
-}): JSX.Element => {
+  ...styledProps
+}: DropdownProps): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
@@ -61,7 +66,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
 
   const dropdownBaseId = useId('dropdown');
 
-  let dropdownTriggerer: DropdownContextType['dropdownTriggerer'];
+  const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -76,7 +81,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       }
 
       if (isValidAllowedChildren(child, 'SelectInput')) {
-        dropdownTriggerer = 'SelectInput';
+        dropdownTriggerer.current = 'SelectInput';
       }
     }
   });
@@ -105,7 +110,7 @@ const Dropdown: WithComponentId<DropdownProps> = ({
       setHasFooterAction,
       hasLabelOnLeft,
       setHasLabelOnLeft,
-      dropdownTriggerer,
+      dropdownTriggerer: dropdownTriggerer.current,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
@@ -128,11 +133,15 @@ const Dropdown: WithComponentId<DropdownProps> = ({
 
   return (
     <DropdownBottomSheetContext.Provider value={dropdownBottomSheetContextValue}>
-      <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>
+      <DropdownContext.Provider value={contextValue}>
+        <BaseBox position="relative" {...getStyledProps(styledProps)}>
+          {children}
+        </BaseBox>
+      </DropdownContext.Provider>
     </DropdownBottomSheetContext.Provider>
   );
 };
 
-Dropdown.componentId = componentIds.Dropdown;
+const Dropdown = assignWithoutSideEffects(_Dropdown, { componentId: componentIds.Dropdown });
 
 export { Dropdown, DropdownProps };

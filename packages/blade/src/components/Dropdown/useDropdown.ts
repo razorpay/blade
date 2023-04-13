@@ -12,12 +12,10 @@ import {
 import type { SelectActionsType } from './dropdownUtils';
 import type { DropdownProps } from './Dropdown';
 
-import type {
-  FormInputHandleOnEvent,
-  FormInputHandleOnKeyDownEvent,
-} from '~components/Form/FormTypes';
+import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
 import { useDropdownBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
+import type { SelectInputProps } from '~components/Input/SelectInput';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -105,6 +103,12 @@ const DropdownContext = React.createContext<DropdownContextType>({
 let searchTimeout: number;
 let searchString = '';
 
+type OnTriggerBlurEvent = (options: {
+  name?: string;
+  value?: string;
+  onBlurCallback?: SelectInputProps['onBlur'];
+}) => void;
+
 type UseDropdownReturnValue = DropdownContextType & {
   /**
    * Click event on combobox. Toggles the dropdown
@@ -123,7 +127,7 @@ type UseDropdownReturnValue = DropdownContextType & {
    * - selecting the option before closing if Tab is pressed
    * - ..etc
    */
-  onTriggerBlur: FormInputHandleOnEvent | undefined;
+  onTriggerBlur: OnTriggerBlurEvent | undefined;
 
   /**
    * Handles the click even on option.
@@ -225,7 +229,7 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Blur handler on combobox. Also handles the selection logic when user moves focus
    */
-  const onTriggerBlur = (): void => {
+  const onTriggerBlur: OnTriggerBlurEvent = ({ name, value, onBlurCallback }) => {
     if (rest.hasFooterAction) {
       // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
       // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
@@ -241,6 +245,8 @@ const useDropdown = (): UseDropdownReturnValue => {
       setShouldIgnoreBlur(false);
       return;
     }
+
+    onBlurCallback?.({ name, value });
 
     if (isOpen) {
       if (selectionType !== 'multiple') {

@@ -29,14 +29,14 @@ const Page = (): ReactElement => {
       <StorybookTitle>Usage</StorybookTitle>
       <Sandbox>
         {`
-          import { VisuallyHidden, Checkbox, Text } from '@razorpay/blade/components';
+          import { VisuallyHidden, Checkbox, Text, Box } from '@razorpay/blade/components';
 
           function App(): JSX.Element {
             return (
-              <div>
+              <Box>
                 <Text>If you focus on checkbox below with voice over enabled, you will hear "Hidden Label" announcement</Text>
                 <Checkbox><VisuallyHidden>Hidden Label</VisuallyHidden></Checkbox>
-              </div>
+              </Box>
             )
           }
 

@@ -1,24 +1,29 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   metaAttribute,
   getPlatformType,
   makeSpace,
-  makeTypographySize,
   MetaConstants,
+  makeTypographySize,
 } from '~utils';
-import type { FontSize } from '~tokens/global/typography';
+import type { FontSize, Typography } from '~tokens/global/typography';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type CodeProps = {
-  children: string;
+  children: StringChildrenType;
   /**
    * Decides the fontSize and padding of Code
    *
    * @default small
    */
   size?: 'small' | 'medium';
-};
+  weight?: 'regular' | 'bold';
+} & TestID &
+  StyledPropsBlade;
 
 type CodeContainerProps = {
   size: CodeProps['size'];
@@ -27,13 +32,16 @@ type CodeContainerProps = {
 const platformType = getPlatformType();
 const isPlatformWeb = platformType === 'browser' || platformType === 'node';
 
-const getCodeFontSize = (size: CodeProps['size']): keyof FontSize => {
+const getCodeFontSizeAndLineHeight = (
+  size: CodeProps['size'],
+): { fontSize: keyof FontSize; lineHeight: keyof Typography['lineHeights'] } => {
   switch (size) {
     case 'medium':
-      return 100;
-
+      return { fontSize: 75, lineHeight: 75 };
+    case 'small':
+      return { fontSize: 25, lineHeight: 25 };
     default:
-      return 75;
+      throw new Error(`[Blade Code]: Unexpected size: ${size}`);
   }
 };
 
@@ -44,9 +52,8 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
     backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
     borderRadius: props.theme.border.radius.medium,
     display: isPlatformWeb ? 'inline-block' : undefined,
-    // Removing the line height of container to remove extra surrounding space in background
-    // The text itself will still have the normal lineHeight
-    lineHeight: makeTypographySize(props.theme.typography.lineHeights.s),
+    verticalAlign: 'middle',
+    lineHeight: makeTypographySize(props.theme.typography.lineHeights[0]),
   };
 });
 
@@ -76,18 +83,30 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * </BaseBox>
  * ```
  */
-const Code = ({ children, size = 'small' }: CodeProps): JSX.Element => {
+
+const Code = ({
+  children,
+  size = 'small',
+  weight = 'regular',
+  testID,
+  ...styledProps
+}: CodeProps): JSX.Element => {
+  const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size);
+
   return (
     <CodeContainer
       size={size}
       as={isPlatformWeb ? 'span' : undefined}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Code)}
+      {...metaAttribute({ name: MetaConstants.Code, testID })}
+      {...getStyledProps(styledProps)}
     >
       <BaseText
         color="surface.text.subtle.lowContrast"
         fontFamily="code"
-        fontSize={getCodeFontSize(size)}
+        fontSize={fontSize}
+        fontWeight={weight}
         as={isPlatformWeb ? 'code' : undefined}
+        lineHeight={lineHeight}
       >
         {children}
       </BaseText>

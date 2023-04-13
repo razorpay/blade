@@ -94,7 +94,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           }
         />
         <View
-          marginLeft="spacing.2"
           style={
             Array [
               Object {
@@ -108,16 +107,16 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           fontFamily="text"
           fontSize={100}
           fontWeight="regular"
-          lineHeight="l"
+          lineHeight={100}
           style={
             Array [
               Object {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 15,
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 24,
+                "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -135,7 +134,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
         </Text>
       </View>
       <View
-        marginLeft="spacing.7"
         style={
           Array [
             Object {
@@ -244,7 +242,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           }
         />
         <View
-          marginLeft="spacing.2"
           style={
             Array [
               Object {
@@ -258,16 +255,16 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           fontFamily="text"
           fontSize={100}
           fontWeight="regular"
-          lineHeight="l"
+          lineHeight={100}
           style={
             Array [
               Object {
                 "color": "hsla(214, 18%, 69%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 15,
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 24,
+                "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -285,7 +282,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
         </Text>
       </View>
       <View
-        marginLeft="spacing.7"
         style={
           Array [
             Object {
@@ -394,7 +390,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           }
         />
         <View
-          marginLeft="spacing.2"
           style={
             Array [
               Object {
@@ -408,16 +403,16 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           fontFamily="text"
           fontSize={100}
           fontWeight="regular"
-          lineHeight="l"
+          lineHeight={100}
           style={
             Array [
               Object {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
-                "fontSize": 15,
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 24,
+                "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -435,7 +430,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         </Text>
       </View>
       <View
-        marginLeft="spacing.7"
         style={
           Array [
             Object {
@@ -447,7 +441,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     </View>
   </View>
   <View
-    marginTop="spacing.2"
     style={
       Array [
         Object {
@@ -483,6 +476,9 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 12,
@@ -535,7 +531,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         </RNSVGGroup>
       </RNSVGSvgView>
       <View
-        marginRight="spacing.2"
         style={
           Array [
             Object {
@@ -549,7 +544,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         fontFamily="text"
         fontSize={50}
         fontStyle="italic"
-        lineHeight="s"
+        lineHeight={50}
         style={
           Array [
             Object {

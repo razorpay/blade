@@ -19,6 +19,9 @@ exports[`<BarChartAltIcon /> should render BarChartAltIcon 1`] = `
         "backgroundColor": "transparent",
         "borderWidth": 0,
       },
+      Array [
+        Object {},
+      ],
       Object {
         "flex": 0,
         "height": 20,

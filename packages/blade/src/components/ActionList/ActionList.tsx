@@ -7,6 +7,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
+import type { TestID } from '~src/_helpers/types';
 
 type ActionListProps = {
   children: React.ReactNode[];
@@ -14,7 +15,7 @@ type ActionListProps = {
    * Decides the backgroundColor of ActionList
    */
   surfaceLevel?: 2 | 3;
-};
+} & TestID;
 
 /**
  * ### ActionList
@@ -60,7 +61,7 @@ type ActionListProps = {
  * ```
  *
  */
-const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Element => {
+const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): JSX.Element => {
   const {
     setOptions,
     actionListItemRef,
@@ -110,7 +111,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
         multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
         labelledBy: `${dropdownBaseId}-label`,
       })}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionList)}
+      {...metaAttribute({ name: MetaConstants.ActionList, testID })}
     >
       {actionListHeaderChild}
       <StyledListBoxWrapper
@@ -128,5 +129,7 @@ const ActionList = ({ children, surfaceLevel = 2 }: ActionListProps): JSX.Elemen
     </StyledActionList>
   );
 };
+
+const ActionList = React.memo(_ActionList);
 
 export { ActionList, ActionListProps };

@@ -10,14 +10,18 @@ import BaseBox from '~components/Box/BaseBox';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type RadioProps = {
   /**
    * Sets the label text of the Radio
    */
-  children: string;
+  children: StringChildrenType;
   /**
    * Help text for the Radio
    */
@@ -39,10 +43,11 @@ type RadioProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-};
+} & TestID &
+  StyledPropsBlade;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
-  { value, children, helpText, isDisabled, size = 'medium' },
+  { value, children, helpText, isDisabled, size = 'medium', testID, ...styledProps },
   ref,
 ) => {
   const groupProps = useRadioGroupContext();
@@ -84,37 +89,38 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   });
 
   return (
-    <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
-      <BaseBox display="flex" flexDirection="column">
-        <BaseBox display="flex" alignItems="center" flexDirection="row">
-          <SelectorInput
-            isChecked={state.isChecked}
-            isDisabled={_isDisabled}
-            hasError={hasError}
-            inputProps={inputProps}
-            ref={ref}
-          />
-          <RadioIcon
-            size={_size}
-            isChecked={state.isChecked}
-            isDisabled={_isDisabled}
-            isNegative={hasError}
-          />
-          <SelectorTitle size={_size} isDisabled={_isDisabled}>
-            {children}
-          </SelectorTitle>
+    <BaseBox {...getStyledProps(styledProps)}>
+      <SelectorLabel inputProps={isReactNative ? inputProps : {}} testID={testID}>
+        <BaseBox display="flex" flexDirection="column">
+          <BaseBox display="flex" alignItems="center" flexDirection="row">
+            <SelectorInput
+              isChecked={state.isChecked}
+              isDisabled={_isDisabled}
+              hasError={hasError}
+              inputProps={inputProps}
+              ref={ref}
+            />
+            <RadioIcon
+              size={_size}
+              isChecked={state.isChecked}
+              isDisabled={_isDisabled}
+              isNegative={hasError}
+            />
+            <SelectorTitle size={_size} isDisabled={_isDisabled}>
+              {children}
+            </SelectorTitle>
+          </BaseBox>
+          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
+            {showHelpText && (
+              <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
+            )}
+          </BaseBox>
         </BaseBox>
-        <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-          {showHelpText && (
-            <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-          )}
-        </BaseBox>
-      </BaseBox>
-    </SelectorLabel>
+      </SelectorLabel>
+    </BaseBox>
   );
 };
 
-const Radio = React.forwardRef(_Radio);
-Radio.displayName = 'Radio';
+const Radio = assignWithoutSideEffects(React.forwardRef(_Radio), { displayName: 'Radio' });
 
 export { Radio, RadioProps };

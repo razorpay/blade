@@ -6,6 +6,7 @@ import { Code as CodeComponent } from './Code';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -43,6 +44,7 @@ const CodeStoryMeta: Meta = {
   component: CodeComponent,
   args: {
     size: 'small',
+    weight: 'regular',
     children: 'SENTRY_AUTH_TOKEN',
   },
   parameters: {
@@ -50,6 +52,7 @@ const CodeStoryMeta: Meta = {
       page: () => <Page />,
     },
   },
+  argTypes: getStyledPropsArgTypes(),
 };
 
 const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
@@ -73,11 +76,10 @@ export const SizeSmall = (): JSX.Element => {
 export const ParagraphUse = (): JSX.Element => {
   return (
     <>
-      <BaseBox>
-        <Text>
-          Lorem ipsum normal text <CodeComponent>CODE</CodeComponent> component
-        </Text>
-      </BaseBox>
+      {/* For React Native, use flex to align items correctly */}
+      <Text>
+        Lorem ipsum normal text <CodeComponent>CODE</CodeComponent> component
+      </Text>
       <BaseBox>
         <Text>
           Blade is Super Cool DS <CodeComponent>CODE</CodeComponent> component

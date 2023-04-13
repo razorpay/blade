@@ -27,6 +27,7 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -225,6 +226,7 @@ export default {
     footerSecondaryAction: {
       table: { category: propsCategory.CARD_FOOTER_TRAILING },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

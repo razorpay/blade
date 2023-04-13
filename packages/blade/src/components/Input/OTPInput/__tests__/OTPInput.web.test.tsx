@@ -95,6 +95,48 @@ describe('<OTPInput />', () => {
     expect(onOTPFilled).toHaveBeenLastCalledWith({ name: 'otp', value: otp });
   });
 
+  it('should handle onFocus', async () => {
+    const label = 'Enter OTP';
+    const onFocus = jest.fn();
+    const user = userEvent.setup();
+    const otp = '123456';
+
+    const { getAllByLabelText } = renderWithTheme(
+      <OTPInput label={label} name="otp" onFocus={onFocus} />,
+    );
+    const allInputs = getAllByLabelText(/character/);
+    await user.type(allInputs[0], otp);
+
+    // should be called for each keystroke
+    expect(onFocus).toHaveBeenCalledTimes(6);
+    expect(onFocus).toHaveBeenLastCalledWith({
+      name: 'otp',
+      value: '',
+      inputIndex: otp.length - 1,
+    });
+  });
+
+  it('should handle onBlur', async () => {
+    const label = 'Enter OTP';
+    const onBlur = jest.fn();
+    const user = userEvent.setup();
+    const otp = '123456';
+
+    const { getAllByLabelText } = renderWithTheme(
+      <OTPInput label={label} name="otp" onBlur={onBlur} />,
+    );
+    const allInputs = getAllByLabelText(/character/);
+    await user.type(allInputs[0], otp);
+
+    // should be called for each keystroke
+    expect(onBlur).toHaveBeenCalledTimes(5); // 5 because the last input will remain focused
+    expect(onBlur).toHaveBeenLastCalledWith({
+      name: 'otp',
+      value: otp[otp.length - 2], // -2 because the last input will remain focused and the last blurred input would be 2nd last
+      inputIndex: otp.length - 2,
+    });
+  });
+
   it('should set value as an uncontrolled input', async () => {
     const user = userEvent.setup();
     const label = 'Enter OTP';
@@ -196,5 +238,11 @@ describe('<OTPInput />', () => {
     await assertAccessible(allInputs[1]);
     await assertAccessible(allInputs[2]);
     await assertAccessible(allInputs[3]);
+  });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<OTPInput label="Enter OTP" testID="otp-input-test" />);
+
+    expect(getByTestId('otp-input-test')).toBeTruthy();
   });
 });

@@ -75,6 +75,14 @@ describe('<BaseLink />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should add hitSlop to link', () => {
+    const linkText = 'Learn More';
+    const hitSlop = { top: 4, right: 2, bottom: 4, left: 2 };
+    const { getByRole } = renderWithTheme(<BaseLink hitSlop={hitSlop}>{linkText}</BaseLink>);
+    const link = getByRole('link');
+    expect(link.findByProps({ hitSlop })).toBeTruthy();
+  });
+
   it('should render button variant of link', () => {
     const linkText = 'Learn More';
     const { toJSON, getByRole } = renderWithTheme(<BaseLink variant="button">{linkText}</BaseLink>);
@@ -377,5 +385,13 @@ describe('<BaseLink />', () => {
     );
     const link = getByRole('link');
     expect(link.findByProps({ accessibilityLabel: 'Info' })).toBeTruthy();
+  });
+
+  it('should accept testID', () => {
+    const linkText = 'Learn More';
+    const { getByTestId } = renderWithTheme(
+      <BaseLink testID="base-link-test">{linkText}</BaseLink>,
+    );
+    expect(getByTestId('base-link-test')).toBeTruthy();
   });
 });

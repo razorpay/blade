@@ -17,6 +17,7 @@ const CardSurface = styled(BaseBox)<{ surfaceLevel: 2 | 3 }>(({ surfaceLevel, th
     flexDirection: 'column',
     boxShadow: `${shadow1}, ${shadow2}`,
     backgroundColor,
+    boxSizing: 'border-box',
   };
 });
 
