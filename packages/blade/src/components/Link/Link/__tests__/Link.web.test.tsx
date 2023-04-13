@@ -26,16 +26,22 @@ describe('<Link />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render link with an href, target and rel', () => {
+  it('should render link with an href, target, rel and title', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
-      <Link href="https://www.google.com/" target="_blank" rel="noreferrer noopener">
+      <Link
+        href="https://www.google.com/"
+        target="_blank"
+        rel="noreferrer noopener"
+        htmlTitle="Google"
+      >
         {linkText}
       </Link>,
     );
     expect(getByRole('link')).toHaveAttribute('href', 'https://www.google.com/');
     expect(getByRole('link')).toHaveAttribute('target', '_blank');
     expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer noopener');
+    expect(getByRole('link')).toHaveAttribute('title', 'Google');
   });
 
   it('should render link with icon without text', () => {
@@ -119,5 +125,11 @@ describe('<Link />', () => {
     const linkText = 'Learn more';
     const { container } = renderWithTheme(<Link variant="button">{linkText}</Link>);
     await assertAccessible(container);
+  });
+
+  it('should accept testID', () => {
+    const linkText = 'Learn More';
+    const { getByTestId } = renderWithTheme(<Link testID="link-test">{linkText}</Link>);
+    expect(getByTestId('link-test')).toBeTruthy();
   });
 });

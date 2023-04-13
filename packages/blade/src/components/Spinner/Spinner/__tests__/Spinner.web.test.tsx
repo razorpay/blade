@@ -31,4 +31,11 @@ describe('<Spinner />', () => {
     const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" contrast="high" />);
     expect(container).toMatchSnapshot();
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(
+      <Spinner accessibilityLabel="Loading" testID="spinner-test" />,
+    );
+    expect(getByTestId('spinner-test')).toBeTruthy();
+  });
 });

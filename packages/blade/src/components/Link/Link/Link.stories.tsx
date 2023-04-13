@@ -10,6 +10,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -53,6 +54,7 @@ export default {
   component: LinkComponent,
   args: {
     children: 'Learn More',
+    htmlTitle: 'Click to learn more',
   },
   argTypes: {
     icon: {
@@ -61,6 +63,7 @@ export default {
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {
@@ -204,6 +207,16 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
         >
           Medium anchor link
         </LinkComponent>
+        <LinkComponent
+          variant="anchor"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="large"
+          icon={DownloadIcon}
+        >
+          Large anchor link
+        </LinkComponent>
       </BaseBox>
       <BaseBox display="flex" flexDirection="column">
         <BaseBox marginBottom="spacing.3">
@@ -216,6 +229,9 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
         </BaseBox>
         <LinkComponent size="medium" variant="button" onClick={onClick} icon={DownloadIcon}>
           Medium link button
+        </LinkComponent>
+        <LinkComponent size="large" variant="button" onClick={onClick} icon={DownloadIcon}>
+          Large link button
         </LinkComponent>
       </BaseBox>
     </BaseBox>

@@ -13,6 +13,9 @@ export const parameters = {
     'storybook/docs/panel': { index: 0 },
     canvas: { title: 'Stories', index: 1 },
   },
+  // on development setting it to undefined so that on 'live reload' it won't switch
+  // to docs panel while developing the component
+  viewMode: process.env.NODE_ENV === 'development' ? undefined : 'docs',
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {

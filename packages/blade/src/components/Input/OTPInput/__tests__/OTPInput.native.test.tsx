@@ -136,4 +136,10 @@ describe('<OTPInput />', () => {
       expect(input).toHaveProp('textContentType', 'oneTimeCode');
     });
   });
+
+  it('should accept testID', () => {
+    const { getByTestId } = renderWithTheme(<OTPInput label="Enter OTP" testID="otp-input-test" />);
+
+    expect(getByTestId('otp-input-test')).toBeTruthy();
+  });
 });

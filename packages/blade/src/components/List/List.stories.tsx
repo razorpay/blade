@@ -12,6 +12,7 @@ import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -71,6 +72,7 @@ export default {
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

@@ -20,6 +20,7 @@ import { makeMotionTime, makeSpace } from '~utils';
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 
@@ -67,10 +68,7 @@ const BottomSheetSurface = styled.div<{
   };
 });
 
-// TODO:
-// 1. Do a POC with removing BottomSheetFooter/Header and use ActionListFooter/Header
-// 2. If we use ActionListFooter/Header then we won't be able to use the BottomSheet's body as a slot
-const BottomSheet = React.forwardRef<any, BottomSheetProps>(
+const _BottomSheet = React.forwardRef<any, BottomSheetProps>(
   ({ children, snapPoints = [0.35, 0.5, 0.85] }, ref): React.ReactElement => {
     const dimensions = useWindowSize();
     const [contentHeight, setContentHeight] = React.useState(0);
@@ -352,6 +350,8 @@ const BottomSheet = React.forwardRef<any, BottomSheetProps>(
   },
 );
 
-(BottomSheet as any).componentId = ComponentIds.BottomSheet;
+const BottomSheet = assignWithoutSideEffects(_BottomSheet, {
+  componentId: ComponentIds.BottomSheet,
+});
 
 export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetProps };

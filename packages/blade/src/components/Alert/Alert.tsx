@@ -10,12 +10,16 @@ import {
   InfoIcon,
 } from '~components/Icons';
 import {
+  castNativeType,
+  castWebType,
   getPlatformType,
   makeAccessible,
   metaAttribute,
   MetaConstants,
   useBreakpoint,
 } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
@@ -23,7 +27,7 @@ import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
 
 type Nullable<Type> = Type | null;
 
@@ -109,7 +113,8 @@ type AlertProps = {
      */
     secondary?: SecondaryAction;
   };
-};
+} & TestID &
+  StyledPropsBlade;
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -133,6 +138,8 @@ const Alert = ({
   isFullWidth = false,
   intent = 'neutral',
   actions,
+  testID,
+  ...styledProps
 }: AlertProps): ReactElement | null => {
   if (!actions?.primary && actions?.secondary) {
     throw new Error(
@@ -200,7 +207,10 @@ const Alert = ({
   );
 
   const primaryAction = actions?.primary ? (
-    <BaseBox marginRight="spacing.5" display={isReactNative ? 'flex' : 'inline-flex'}>
+    <BaseBox
+      marginRight="spacing.5"
+      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
+    >
       <BaseButton
         size={textSize}
         onClick={actions.primary.onClick}
@@ -230,7 +240,10 @@ const Alert = ({
     secondaryActionParams.rel = actions.secondary.rel;
   }
   const secondaryAction = actions?.secondary ? (
-    <BaseBox marginRight="spacing.4" display={isReactNative ? 'flex' : 'inline-flex'}>
+    <BaseBox
+      marginRight="spacing.4"
+      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
+    >
       <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
         {actions.secondary.text}
       </BaseLink>
@@ -292,7 +305,8 @@ const Alert = ({
       isFullWidth={isFullWidth}
       isDesktop={isDesktop}
       {...a11yProps}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Alert)}
+      {...metaAttribute({ name: MetaConstants.Alert, testID })}
+      {...getStyledProps(styledProps)}
     >
       {icon}
       <BaseBox

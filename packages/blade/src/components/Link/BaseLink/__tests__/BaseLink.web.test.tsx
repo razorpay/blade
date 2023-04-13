@@ -16,17 +16,18 @@ describe('<BaseLink />', () => {
     expect(getByText('Learn More')).toBeInTheDocument();
   });
 
-  it('should render link with an href, target and rel', () => {
+  it('should render link with an href, target, rel, and title', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
       // nosemgrep
-      <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer">
+      <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer" htmlTitle="Google">
         {linkText}
       </BaseLink>,
     );
     expect(getByRole('link')).toHaveAttribute('href', 'https://www.google.com/');
     expect(getByRole('link')).toHaveAttribute('target', '_blank');
     expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer');
+    expect(getByRole('link')).toHaveAttribute('title', 'Google');
   });
 
   it('should render link with a default rel set when target is _blank', () => {
@@ -381,5 +382,13 @@ describe('<BaseLink />', () => {
     const linkText = 'Learn more';
     const { container } = renderWithTheme(<BaseLink variant="button">{linkText}</BaseLink>);
     await assertAccessible(container);
+  });
+
+  it('should accept testID', () => {
+    const linkText = 'Learn More';
+    const { getByTestId } = renderWithTheme(
+      <BaseLink testID="base-link-test">{linkText}</BaseLink>,
+    );
+    expect(getByTestId('base-link-test')).toBeTruthy();
   });
 });

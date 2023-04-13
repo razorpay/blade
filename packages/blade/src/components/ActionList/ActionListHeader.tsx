@@ -4,8 +4,9 @@ import { componentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { isValidAllowedChildren, makeSize, metaAttribute, MetaConstants } from '~utils';
-import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
+import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 const StyledActionListHeader = styled(BaseBox)((props) => {
   return {
@@ -25,7 +26,7 @@ type ActionListHeaderProps = {
    * Valid children - `ActionListHeaderIcon`
    */
   leading?: React.ReactNode;
-};
+} & TestID;
 /**
  * ### ActionListHeader
  *
@@ -45,7 +46,7 @@ type ActionListHeaderProps = {
  * />
  * ```
  */
-const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.Element => {
+const _ActionListHeader = (props: ActionListHeaderProps): JSX.Element => {
   React.useEffect(() => {
     React.Children.map(props.leading, (child) => {
       if (!isValidAllowedChildren(child, componentIds.ActionListHeaderIcon)) {
@@ -58,7 +59,7 @@ const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.El
 
   return (
     <StyledActionListHeader
-      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListHeader)}
+      {...metaAttribute({ name: MetaConstants.ActionListHeader, testID: props.testID })}
     >
       <BaseBox>{props.leading}</BaseBox>
       <BaseBox paddingLeft="spacing.3" paddingRight="spacing.3">
@@ -70,13 +71,17 @@ const ActionListHeader: WithComponentId<ActionListHeaderProps> = (props): JSX.El
   );
 };
 
-ActionListHeader.componentId = componentIds.ActionListHeader;
+const ActionListHeader = assignWithoutSideEffects(_ActionListHeader, {
+  componentId: componentIds.ActionListHeader,
+});
 
-const ActionListHeaderIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }) => {
+const _ActionListHeaderIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   return <Icon color="surface.text.muted.lowContrast" size="small" />;
 };
 
-ActionListHeaderIcon.componentId = componentIds.ActionListHeaderIcon;
+const ActionListHeaderIcon = assignWithoutSideEffects(_ActionListHeaderIcon, {
+  componentId: componentIds.ActionListHeaderIcon,
+});
 
 export { ActionListHeader, ActionListHeaderIcon, ActionListHeaderProps };

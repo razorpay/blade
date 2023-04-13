@@ -2,11 +2,11 @@
 import React from 'react';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
-import type { WithComponentId } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
-const BottomSheetBody: WithComponentId<{ children: React.ReactNode }> = ({ children }) => {
+const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { scrollRef, setContentHeight, isOpen, bind } = useBottomSheetContext();
   const contentRef = React.useRef<HTMLDivElement>(null);
 
@@ -46,6 +46,9 @@ const BottomSheetBody: WithComponentId<{ children: React.ReactNode }> = ({ child
     </BaseBox>
   );
 };
-BottomSheetBody.componentId = ComponentIds.BottomSheetBody;
+
+const BottomSheetBody = assignWithoutSideEffects(_BottomSheetBody, {
+  componentId: ComponentIds.BottomSheetBody,
+});
 
 export { BottomSheetBody };

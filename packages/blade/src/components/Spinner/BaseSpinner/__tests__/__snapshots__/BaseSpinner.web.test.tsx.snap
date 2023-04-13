@@ -52,6 +52,7 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -130,6 +131,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -226,6 +228,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -319,6 +322,7 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -397,6 +401,7 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -475,6 +480,7 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -553,6 +559,7 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -631,6 +638,7 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -709,6 +717,7 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="20px"
@@ -787,6 +796,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -883,6 +893,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -976,6 +987,7 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1054,6 +1066,7 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1132,6 +1145,7 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1210,6 +1224,7 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1288,6 +1303,7 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1366,6 +1382,7 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1444,6 +1461,7 @@ exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="24px"

@@ -5,8 +5,11 @@ import { useRadioGroup } from './useRadioGroup';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
-import { getPlatformType, useBreakpoint } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getPlatformType, makeSize, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import type { TestID } from '~src/_helpers/types';
 
 type RadioGroupProps = {
   /**
@@ -78,7 +81,8 @@ type RadioGroupProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
-};
+} & TestID &
+  StyledPropsBlade;
 
 const RadioGroup = ({
   children,
@@ -94,6 +98,8 @@ const RadioGroup = ({
   onChange,
   value,
   size = 'medium',
+  testID,
+  ...styledProps
 }: RadioGroupProps): React.ReactElement => {
   const { contextValue, ids } = useRadioGroup({
     defaultValue,
@@ -117,38 +123,44 @@ const RadioGroup = ({
 
   return (
     <RadioGroupProvider value={contextValue}>
-      <SelectorGroupField
-        position={labelPosition}
-        labelledBy={ids.labelId}
-        accessibilityRole={isReactNative ? 'radiogroup' : 'group'}
-        componentName="radio-group"
-      >
-        <FormLabel
-          as="span"
-          necessityIndicator={necessityIndicator}
+      <BaseBox {...getStyledProps(styledProps)}>
+        <SelectorGroupField
           position={labelPosition}
-          id={ids.labelId}
-          accessibilityText={accessibilityText && `,${accessibilityText}`}
+          labelledBy={ids.labelId}
+          accessibilityRole={isReactNative ? 'radiogroup' : 'group'}
+          componentName="radio-group"
+          testID={testID}
         >
-          {label}
-        </FormLabel>
-        <BaseBox>
-          <BaseBox display="flex" flexDirection="column">
-            {React.Children.map(children, (child, index) => {
-              return (
-                <BaseBox key={index} {...{ marginBottom: index === childCount - 1 ? 0 : gap }}>
-                  {child}
-                </BaseBox>
-              );
-            })}
+          <FormLabel
+            as="span"
+            necessityIndicator={necessityIndicator}
+            position={labelPosition}
+            id={ids.labelId}
+            accessibilityText={accessibilityText && `,${accessibilityText}`}
+          >
+            {label}
+          </FormLabel>
+          <BaseBox>
+            <BaseBox display="flex" flexDirection="column">
+              {React.Children.map(children, (child, index) => {
+                return (
+                  <BaseBox
+                    key={index}
+                    {...{ marginBottom: index === childCount - 1 ? makeSize(0) : gap }}
+                  >
+                    {child}
+                  </BaseBox>
+                );
+              })}
+            </BaseBox>
+            <FormHint
+              type={validationState === 'error' ? 'error' : 'help'}
+              errorText={errorText}
+              helpText={helpText}
+            />
           </BaseBox>
-          <FormHint
-            type={validationState === 'error' ? 'error' : 'help'}
-            errorText={errorText}
-            helpText={helpText}
-          />
-        </BaseBox>
-      </SelectorGroupField>
+        </SelectorGroupField>
+      </BaseBox>
     </RadioGroupProvider>
   );
 };

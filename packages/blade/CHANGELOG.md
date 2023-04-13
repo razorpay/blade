@@ -1,5 +1,217 @@
 # @razorpay/blade
 
+## 7.0.2
+
+### Patch Changes
+
+- 71b4a85b: feat: add `htmlTitle` prop support for Link component on web
+
+## 7.0.1
+
+### Patch Changes
+
+- 0f6e2ad7: fix: ref breakage on react native
+- 9963a7be: feat(package.json): add "main" field to package.json
+
+## 7.0.0
+
+### Major Changes
+
+- 5248ea66: feat(Typography): streamline typography scale
+
+  > **Warning**
+  >
+  > Breaking Change!
+  > This is a breaking change for typography components and lineHeight scale
+  >
+  > We have written codemod to ease this process so please follow the [migration guide thoroughly](#breaking-changes)
+
+  ### Component Changes:
+
+  - Title:
+    - Added `xlarge` size
+  - Text:
+    - Added `large` size
+  - Link:
+    - Added `large` size
+  - Code:
+    - Added `weight=bold`
+
+  ### Breaking Changes:
+
+  - Title:
+    - Replace all `large` size variants to `xlarge`
+
+  ```diff
+  - <Title size="large">hello world</Title>
+  + <Title size="xlarge">hello world</Title>
+  ```
+
+  ***
+
+  ### Line-height scale changes
+
+  New scale has been changed to use numbered values for more flexibility, to read more about the changes [check this doc](https://docs.google.com/document/d/16j8dIKuQF9GjDgkhkZwnokVGNeoK7R-7zzIXHCgvveA/edit).
+
+  #### **Migration guide:**
+
+  Replace old named tokens to corresponding numbered values:
+
+  For example:
+
+  ```diff
+  - theme.typography.lineHeights.s
+  + theme.typography.lineHeights[50]
+  ```
+
+  **Old vs New mappings:**
+
+  | old | new |
+  | --- | --- |
+  | s   | 50  |
+  | m   | 50  |
+  | l   | 100 |
+  | xl  | 200 |
+  | 2xl | 300 |
+  | 3xl | 400 |
+  | 4xl | 600 |
+  | 5xl | 700 |
+  | 6xl | 800 |
+
+  #### **Migrate with Codemod:**
+
+  To change all instances of `theme.typography.lineHeights` to the new scale automatically use this codemod:
+
+  **Step1:** Install this version of blade
+
+  **Step2:** Run the codemod with the following command
+
+  > Checkout [jscodeshift docs](https://github.com/facebook/jscodeshift) for further cli usage help.
+
+  ```sh
+  npx jscodeshift ./YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/migrate-typography/transformers/migrate-typography.ts --ignore-pattern="**/node_modules/**"
+  ```
+
+  > **Note**
+  >
+  > This codemod will cover 80% of the usecases, but it might miss certain edge cases, it is advised to thoroughly test & check the code to ensure nothing is missed.
+
+## 6.7.0
+
+### Minor Changes
+
+- 0c8e5f1b: feat: add `Amount` component
+
+  ### Usage
+
+  ```tsx
+  <Amount value={10000} />
+  ```
+
+## 6.6.3
+
+### Patch Changes
+
+- 0d7bb723: fix(blade): FileTextIcon alignment
+- b62358cb: perf: improve dropdown/actionlist performance
+
+## 6.6.2
+
+### Patch Changes
+
+- c7c66051: fix: ListItemLink alignment
+
+## 6.6.1
+
+### Patch Changes
+
+- fe89e6f6: fix: tree-shaking in blade components
+- 7817c9e3: feat(Box): add different types for `display` on react native
+- c6512ba0: fix(Alert, Card): set `box-sizing` as `border-box` for Alert and Card
+
+## 6.6.0
+
+### Minor Changes
+
+- 5863f939: feat(OTPInput): add `onFocus` & `onBlur` props
+- 75daaa3c: feat(theme): add `name` property in `theme` to watch on theme changes
+
+### Patch Changes
+
+- 6a8524ab: feat(Link): add `hitSlop` support for native
+
+## 6.5.2
+
+### Patch Changes
+
+- 2700667f: fix(SelectInput): call user passed onBlur callback
+- 3855a583: fix(Card): CardHeader title alignment when subtitle is not present
+
+## 6.5.1
+
+### Patch Changes
+
+- 86cd05a6: chore(blade): update meta constant of Box
+
+## 6.5.0
+
+### Minor Changes
+
+- a4be1b06: feat(Layout Primitives): Add `Box` Component and Styled Props to Blade Components
+
+  Documentation: https://blade.razorpay.com/?path=/docs/components-layout-primitives-box-layout-primitives-tutorial--page
+
+  **Breakpoint Token Changes**
+
+  `max` breakpoint is removed as it wasn't used and had same value as `xl`.
+  Through our audit, we didn't find any usage of this token. If you happen to use this somewhere, you can rename `breakpoints.max` to `breakpoints.xl`
+
+- 2c7034b7: feat(Input): add onSubmit prop on BaseInput, TextInput, TextArea, & PasswordInput for react-native
+
+## 6.4.0
+
+### Minor Changes
+
+- 4145d553: feat: add `testID` prop to all components
+- a7826b0b: feat(Input): add `autoCapitalize` support to `BaseInput`, `TextInput` & `PasswordInput`
+- bdd74d7a: feat(Text): add `textAlign` prop
+
+### Patch Changes
+
+- da4489b3: fix: lodash tree shaking to reduce effective bundle-size.
+
+## 6.3.0
+
+### Minor Changes
+
+- a2518742: feat(icons): add BulkPayoutsIcon
+
+## 6.2.3
+
+### Patch Changes
+
+- cbb1424b: fix: change import to default in package exports
+
+  Jest does not support the "import" condition in exports. This was causing tests to fail for Blade consumers. Changed "import" to "default" which is supported by all tools. Since Blade is not exporting a dual package, we don't need the "import" condition.
+
+## 6.2.2
+
+### Patch Changes
+
+- 559d97d9: feat: support string array in children
+
+  Users can now use dynamic variables inside children and don't have to wrap it around with string literals
+
+  ```jsx
+  <Button onClick={}>{someVariable} hello</Button>
+  ```
+
+## 6.2.1
+
+### Patch Changes
+
+- 7016c215: fix(Dropdown): infinite render onChange, positioning in flex container
+
 ## 6.2.0
 
 ### Minor Changes

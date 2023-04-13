@@ -7,6 +7,8 @@ import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type PasswordInputExtraProps = {
   /**
@@ -60,13 +62,16 @@ type PasswordInputProps = Pick<
   | 'value'
   | 'onChange'
   | 'onBlur'
+  | 'onSubmit'
   | 'onFocus'
   | 'name'
   | 'autoFocus'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
+  | 'testID'
 > &
-  PasswordInputExtraProps;
+  PasswordInputExtraProps &
+  StyledPropsBlade;
 
 const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordInputProps> = (
   {
@@ -87,10 +92,13 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
     onChange,
     onFocus,
     onBlur,
+    onSubmit,
     name,
     autoFocus = false,
     keyboardReturnKeyType = 'done',
     autoCompleteSuggestionType,
+    testID,
+    ...styledProps
   },
   ref,
 ) => {
@@ -146,18 +154,23 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       value={value}
       onChange={onChange}
       onBlur={onBlur}
+      onSubmit={onSubmit}
       onFocus={onFocus}
       name={name}
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocus}
       autoCompleteSuggestionType={autoCompleteSuggestionType}
       keyboardReturnKeyType={keyboardReturnKeyType}
+      autoCapitalize="none"
+      testID={testID}
+      {...styledProps}
     />
   );
 };
 
-const PasswordInput = React.forwardRef(_PasswordInput);
 // nosemgrep
-PasswordInput.displayName = 'PasswordInput';
+const PasswordInput = assignWithoutSideEffects(React.forwardRef(_PasswordInput), {
+  displayName: 'PasswordInput',
+});
 
 export { PasswordInputProps, PasswordInput };

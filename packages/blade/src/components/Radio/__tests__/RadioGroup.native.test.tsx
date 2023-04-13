@@ -196,4 +196,14 @@ describe('<RadioGroup />', () => {
     expect(onChange).toBeCalledWith('apple');
     expect(getByTestId('values').children[0]).toBe('apple');
   });
+
+  it('should accept testID', () => {
+    const labelText = 'Select fruit';
+    const { getByTestId } = renderWithTheme(
+      <RadioGroup label={labelText} testID="radio-group-test">
+        <Radio value="apple">Apple</Radio>
+      </RadioGroup>,
+    );
+    expect(getByTestId('radio-group-test')).toBeTruthy();
+  });
 });

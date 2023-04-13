@@ -19,7 +19,7 @@ describe('<BaseText />', () => {
       <BaseText
         color="surface.text.normal.highContrast"
         fontFamily="text"
-        lineHeight="m"
+        lineHeight={100}
         fontSize={25}
         fontWeight="regular"
       >
@@ -36,7 +36,7 @@ describe('<BaseText />', () => {
       <BaseText
         color="surface.text.normal.highContrast"
         fontFamily="text"
-        lineHeight="m"
+        lineHeight={100}
         fontSize={25}
         fontWeight="regular"
         fontStyle="italic"
@@ -56,7 +56,7 @@ describe('<BaseText />', () => {
         <BaseText
           color="surface.text.normal.highContrast"
           fontFamily="text"
-          lineHeight="m"
+          lineHeight={100}
           fontSize={25}
           fontWeight="regular"
           fontStyle="italic"
@@ -73,5 +73,13 @@ describe('<BaseText />', () => {
         );
       }
     }
+  });
+
+  it('should accept testID', () => {
+    const displayText = 'Displaying some text';
+    const { getByTestId } = renderWithTheme(
+      <BaseText testID="base-text-test">{displayText}</BaseText>,
+    );
+    expect(getByTestId('base-text-test')).toBeTruthy();
   });
 });

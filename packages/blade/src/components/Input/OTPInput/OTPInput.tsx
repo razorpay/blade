@@ -7,8 +7,21 @@ import { FormHint, FormLabel } from '../../Form';
 import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, getPlatformType, MetaConstants, isEmpty } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import size from '~tokens/global/size';
+
+type FormInputOnEventWithIndex = ({
+  name,
+  value,
+  inputIndex,
+}: {
+  name?: string;
+  value?: string;
+  inputIndex: number;
+}) => void;
 
 export type OTPInputProps = Pick<
   BaseInputProps,
@@ -26,6 +39,7 @@ export type OTPInputProps = Pick<
   | 'keyboardReturnKeyType'
   | 'keyboardType'
   | 'placeholder'
+  | 'testID'
 > & {
   /**
    * Determines the number of input fields to show for the OTP
@@ -57,7 +71,15 @@ export type OTPInputProps = Pick<
     BaseInputProps['autoCompleteSuggestionType'],
     'none' | 'oneTimeCode'
   >;
-};
+  /**
+   * The callback function to be invoked when one of the input fields gets focus
+   */
+  onFocus?: FormInputOnEventWithIndex;
+  /**
+   * The callback function to be invoked when one of the input fields is blurred
+   */
+  onBlur?: FormInputOnEventWithIndex;
+} & StyledPropsBlade;
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -91,6 +113,8 @@ const OTPInput = ({
   labelPosition,
   name,
   onChange,
+  onFocus,
+  onBlur,
   onOTPFilled,
   otpLength = 6,
   placeholder,
@@ -99,6 +123,8 @@ const OTPInput = ({
   value: inputValue,
   isMasked,
   autoCompleteSuggestionType = 'oneTimeCode',
+  testID,
+  ...styledProps
 }: OTPInputProps): React.ReactElement => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
@@ -265,7 +291,7 @@ const OTPInput = ({
           flex={1}
           marginLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
           key={`${inputId}-${index}`}
-          maxWidth={platform === 'onDesktop' ? 36 : 40} // TODO: use size tokens
+          maxWidth={platform === 'onDesktop' ? makeSize(size[36]) : makeSize(size[40])}
         >
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -276,9 +302,12 @@ const OTPInput = ({
             id={`${inputId}-${index}`}
             textAlign="center"
             ref={ref}
+            name={name}
             value={currentValue}
             maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
             onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex: index })}
+            onFocus={(formEvent) => onFocus?.({ ...formEvent, inputIndex: index })}
+            onBlur={(formEvent) => onBlur?.({ ...formEvent, inputIndex: index })}
             onInput={(formEvent) => handleOnInput({ ...formEvent, currentOtpIndex: index })}
             onKeyDown={(keyboardEvent) =>
               handleOnKeyDown({ ...keyboardEvent, currentOtpIndex: index })
@@ -303,7 +332,10 @@ const OTPInput = ({
   };
 
   return (
-    <BaseBox {...metaAttribute(MetaConstants.Component, MetaConstants.OTPInput)}>
+    <BaseBox
+      {...metaAttribute({ name: MetaConstants.OTPInput, testID })}
+      {...getStyledProps(styledProps)}
+    >
       <BaseBox
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -320,7 +352,7 @@ const OTPInput = ({
       </BaseBox>
       {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
       {/*Refer `BaseInput`'s implementation of FormHint which uses similar logic */}
-      <BaseBox marginLeft={isLabelLeftPositioned ? 136 : 0}>
+      <BaseBox marginLeft={makeSize(isLabelLeftPositioned ? 136 : 0)}>
         <FormHint
           type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
           helpText={helpText}

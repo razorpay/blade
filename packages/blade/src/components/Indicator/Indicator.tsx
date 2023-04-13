@@ -5,9 +5,14 @@ import BaseBox from '~components/Box/BaseBox';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
+import sizeTokens from '~tokens/global/size';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 import type { Feedback } from '~tokens/theme/theme';
 import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type IndicatorCommonProps = {
   /**
@@ -23,13 +28,14 @@ type IndicatorCommonProps = {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-};
+} & TestID &
+  StyledPropsBlade;
 
 type IndicatorWithoutA11yLabel = {
   /**
    * A text label to show alongside the indicator dot
    */
-  children: string;
+  children: StringChildrenType;
 
   /**
    * a11y label for screen readers
@@ -46,13 +52,13 @@ type IndicatorWithA11yLabel = {
   /**
    * A text label to show alongside the indicator dot
    */
-  children?: string;
+  children?: StringChildrenType;
 };
 
 type IndicatorProps = IndicatorCommonProps & (IndicatorWithA11yLabel | IndicatorWithoutA11yLabel);
 
 type Dimensions = {
-  svgSize: string;
+  svgSize: number;
   textSize: 'small' | 'medium';
 };
 
@@ -61,19 +67,22 @@ const Indicator = ({
   children,
   size = 'medium',
   intent = 'neutral',
+  testID,
+  ...styledProps
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
+  const childrenString = getStringFromReactText(children);
 
   const fillColor = theme.colors.feedback.background[intent].highContrast;
   const strokeColor = theme.colors.brand.gray.a100.highContrast;
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':
-        return { svgSize: '6', textSize: 'small' };
+        return { svgSize: sizeTokens[6], textSize: 'small' };
       case 'large':
-        return { svgSize: '10', textSize: 'medium' };
+        return { svgSize: sizeTokens[10], textSize: 'medium' };
       default:
-        return { svgSize: '8', textSize: 'medium' };
+        return { svgSize: sizeTokens[8], textSize: 'medium' };
     }
   }, [size]);
   const dimensions = getDimension();
@@ -81,7 +90,7 @@ const Indicator = ({
   const isReactNative = getPlatformType() === 'react-native';
   const isWeb = !isReactNative;
   const a11yProps = makeAccessible({
-    label: accessibilityLabel ?? children,
+    label: accessibilityLabel ?? childrenString,
     ...(isWeb && { role: 'status' }),
   });
 
@@ -91,9 +100,15 @@ const Indicator = ({
       flexDirection="row"
       alignItems="center"
       {...a11yProps}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Indicator)}
+      {...metaAttribute({ name: MetaConstants.Indicator, testID })}
+      {...getStyledProps(styledProps)}
     >
-      <Svg width={dimensions.svgSize} height={dimensions.svgSize} viewBox="0 0 10 10" fill="none">
+      <Svg
+        width={String(dimensions.svgSize)}
+        height={String(dimensions.svgSize)}
+        viewBox="0 0 10 10"
+        fill="none"
+      >
         <Circle cx="5" cy="5" r="5" fill={fillColor} />
         <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
       </Svg>

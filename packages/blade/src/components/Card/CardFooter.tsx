@@ -7,10 +7,11 @@ import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { WithComponentId } from '~utils';
 import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
+import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -21,7 +22,7 @@ export type CardFooterAction = Pick<
 
 type CardFooterProps = {
   children?: React.ReactNode;
-};
+} & TestID;
 
 const useIsMobile = (): boolean => {
   const { theme } = useTheme();
@@ -31,7 +32,7 @@ const useIsMobile = (): boolean => {
   return matchedDeviceType === 'mobile';
 };
 
-const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
+const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
   useVerifyAllowedComponents(children, 'CardFooter', [
@@ -40,7 +41,7 @@ const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
   ]);
 
   return (
-    <BaseBox marginTop="auto" {...metaAttribute(MetaConstants.Component, MetaConstants.CardFooter)}>
+    <BaseBox marginTop="auto" {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
       <BaseBox marginTop="spacing.7" />
       <Divider />
       <BaseBox
@@ -55,13 +56,13 @@ const CardFooter: WithComponentId<CardFooterProps> = ({ children }) => {
     </BaseBox>
   );
 };
-CardFooter.componentId = ComponentIds.CardFooter;
+const CardFooter = assignWithoutSideEffects(_CardFooter, { componentId: ComponentIds.CardFooter });
 
 type CardFooterLeadingProps = {
   title?: string;
   subtitle?: string;
 };
-const CardFooterLeading: WithComponentId<CardFooterLeadingProps> = ({ title, subtitle }) => {
+const _CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardFooterLeading');
 
   return (
@@ -79,7 +80,9 @@ const CardFooterLeading: WithComponentId<CardFooterLeadingProps> = ({ title, sub
     </BaseBox>
   );
 };
-CardFooterLeading.componentId = ComponentIds.CardFooterLeading;
+const CardFooterLeading = assignWithoutSideEffects(_CardFooterLeading, {
+  componentId: ComponentIds.CardFooterLeading,
+});
 
 type CardFooterTrailingProps = {
   actions?: {
@@ -87,7 +90,7 @@ type CardFooterTrailingProps = {
     secondary?: CardFooterAction;
   };
 };
-const CardFooterTrailing: WithComponentId<CardFooterTrailingProps> = ({ actions }) => {
+const _CardFooterTrailing = ({ actions }: CardFooterTrailingProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooterTrailing');
 
@@ -117,6 +120,8 @@ const CardFooterTrailing: WithComponentId<CardFooterTrailingProps> = ({ actions 
     </BaseBox>
   );
 };
-CardFooterTrailing.componentId = ComponentIds.CardFooterTrailing;
+const CardFooterTrailing = assignWithoutSideEffects(_CardFooterTrailing, {
+  componentId: ComponentIds.CardFooterTrailing,
+});
 
 export { CardFooter, CardFooterLeading, CardFooterTrailing };

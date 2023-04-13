@@ -52,6 +52,12 @@ describe('<Text />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Text with center textAlign', () => {
+    const displayText = 'Displaying some text';
+    const { container } = renderWithTheme(<Text textAlign="center">{displayText}</Text>);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should throw error when variant is "caption" and size "small" is passed', () => {
     const displayText = 'Displaying some text';
     expect(() =>
@@ -62,5 +68,11 @@ describe('<Text />', () => {
         </Text>,
       ),
     ).toThrow(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
+  });
+
+  it('should accept testID', () => {
+    const displayText = 'Displaying some text';
+    const { getByTestId } = renderWithTheme(<Text testID="text-test">{displayText}</Text>);
+    expect(getByTestId('text-test')).toBeTruthy();
   });
 });

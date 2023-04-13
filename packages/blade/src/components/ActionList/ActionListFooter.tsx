@@ -16,9 +16,10 @@ import {
   metaAttribute,
   isValidAllowedChildren,
 } from '~utils';
-import type { WithComponentId } from '~utils';
 import { Text } from '~components/Typography';
 import { useDropdownBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
+import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListFooterProps = {
   title?: string;
@@ -34,7 +35,7 @@ type ActionListFooterProps = {
    * Anything can be passed here but maybe don't? Should ideally have Button or Tick Icon Buttons.
    */
   trailing?: React.ReactNode;
-};
+} & TestID;
 
 const StyledActionListFooter = styled(BaseBox)((props) => {
   return {
@@ -67,7 +68,7 @@ const StyledActionListFooter = styled(BaseBox)((props) => {
  * />
  * ```
  */
-const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.Element => {
+const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
   const footerRef = React.useRef<HTMLDivElement | null>(null);
   const {
     setShouldIgnoreBlur,
@@ -140,7 +141,7 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
         role: getActionListFooterRole(),
         label: props.title,
       })}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.ActionListFooter)}
+      {...metaAttribute({ name: MetaConstants.ActionListFooter, testID: props.testID })}
     >
       {props.leading ? <BaseBox>{props.leading}</BaseBox> : null}
       {props.title ? (
@@ -164,13 +165,17 @@ const ActionListFooter: WithComponentId<ActionListFooterProps> = (props): JSX.El
   );
 };
 
-ActionListFooter.componentId = componentIds.ActionListFooter;
+const ActionListFooter = assignWithoutSideEffects(_ActionListFooter, {
+  componentId: componentIds.ActionListFooter,
+});
 
-const ActionListFooterIcon: WithComponentId<{ icon: IconComponent }> = ({ icon }) => {
+const _ActionListFooterIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   return <Icon color="surface.text.muted.lowContrast" size="small" />;
 };
 
-ActionListFooterIcon.componentId = componentIds.ActionListFooterIcon;
+const ActionListFooterIcon = assignWithoutSideEffects(_ActionListFooterIcon, {
+  componentId: componentIds.ActionListFooterIcon,
+});
 
 export { ActionListFooter, ActionListFooterIcon, ActionListFooterProps };

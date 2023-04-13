@@ -4,7 +4,11 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+
 import type { Theme } from '~components/BladeProvider';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
@@ -12,8 +16,9 @@ type HeadingSize = 'small' | 'medium' | 'large';
 type HeadingCommonProps = {
   type?: TextTypes;
   contrast?: ColorContrastTypes;
-  children: string;
-};
+  children: StringChildrenType;
+} & TestID &
+  StyledPropsBlade;
 
 type HeadingNormalVariant = HeadingCommonProps & {
   variant?: Exclude<HeadingVariant, 'subheading'>;
@@ -54,7 +59,8 @@ const getProps = <T extends { variant: HeadingVariant }>({
   type,
   weight,
   contrast,
-}: Pick<HeadingProps<T>, 'variant' | 'size' | 'type' | 'weight' | 'contrast'>): Omit<
+  testID,
+}: Pick<HeadingProps<T>, 'variant' | 'size' | 'type' | 'weight' | 'contrast' | 'testID'>): Omit<
   BaseTextProps,
   'children'
 > => {
@@ -65,24 +71,25 @@ const getProps = <T extends { variant: HeadingVariant }>({
     fontSize: 200,
     fontWeight: weight ?? 'bold',
     fontStyle: 'normal',
-    lineHeight: 'xl',
+    lineHeight: 300,
     fontFamily: 'text',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
     componentName: 'heading',
+    testID,
   };
 
   if (variant === 'regular') {
     if (!size || size === 'small') {
       props.fontSize = 200;
-      props.lineHeight = '2xl';
+      props.lineHeight = 300;
       props.as = isPlatformWeb ? 'h6' : undefined;
     } else if (size === 'medium') {
       props.fontSize = 300;
-      props.lineHeight = '3xl';
+      props.lineHeight = 200;
       props.as = isPlatformWeb ? 'h5' : undefined;
     } else if (size === 'large') {
       props.fontSize = 400;
-      props.lineHeight = '3xl';
+      props.lineHeight = 400;
       props.as = isPlatformWeb ? 'h4' : undefined;
     }
   } else if (variant === 'subheading') {
@@ -95,7 +102,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
       );
     }
     props.fontSize = 75;
-    props.lineHeight = 's';
+    props.lineHeight = 50;
     props.as = isPlatformWeb ? 'h6' : undefined;
   }
 
@@ -109,7 +116,13 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   weight = 'bold',
   contrast = 'low',
   children,
+  testID,
+  ...styledProps
 }: HeadingProps<T>): ReactElement => {
-  const props = getProps({ variant, size, type, weight, contrast });
-  return <BaseText {...props}>{children}</BaseText>;
+  const props = getProps({ variant, size, type, weight, contrast, testID });
+  return (
+    <BaseText {...props} {...getStyledProps(styledProps)}>
+      {children}
+    </BaseText>
+  );
 };

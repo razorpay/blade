@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { TextInput as TextInputReactNative, View } from 'react-native';
 import type { Platform } from '~utils';
-import { isReactNative } from '~utils';
+import { getPlatformType } from '~utils';
 
 type BladeElementRef = Platform.Select<{
   web: Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View, 'focus'>;
@@ -32,15 +33,18 @@ const useBladeInnerRef = (
       // @ts-expect-error in react-native we expose the ref so that we can do findNodeHandle()
       if (isReactNative()) return innerRef.current;
       if (element instanceof HTMLElement) {
-        return {
-          focus: (opts) => (handlers?.onFocus ? handlers.onFocus(opts) : element.focus(opts)),
-          scrollIntoView: (opts) => element.scrollIntoView(opts),
-        };
-      } else {
-        return {
-          focus: () => element?.focus(),
-        };
+        if (getPlatformType() !== 'react-native' && element instanceof HTMLElement) {
+          return {
+            focus: (opts) => (handlers?.onFocus ? handlers.onFocus(opts) : element.focus(opts)),
+            scrollIntoView: (opts) => element.scrollIntoView(opts),
+          };
+        } else {
+          return {
+            focus: () => element?.focus(),
+          };
+        }
       }
+      return { focus: () => {}, scrollIntoView: () => {} };
     },
     [innerRef, handlers],
   );

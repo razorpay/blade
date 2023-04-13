@@ -27,10 +27,10 @@ const BottomSheetBackdrop = (): React.ReactElement => {
       isOpen={isOpen}
       opacity={isOpen ? 1 : 0}
       position="fixed"
-      left={0}
-      top={0}
-      bottom={0}
-      right={0}
+      left="spacing.0"
+      top="spacing.0"
+      bottom="spacing.0"
+      right="spacing.0"
       zIndex={1}
       backgroundColor={theme.colors.overlay.background}
     />

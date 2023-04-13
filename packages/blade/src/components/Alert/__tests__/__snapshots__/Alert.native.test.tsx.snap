@@ -16,6 +16,7 @@ exports[`<Alert /> should render 1`] = `
         "borderRadius": 4,
         "borderStyle": "solid",
         "borderWidth": 1,
+        "boxSizing": "border-box",
         "display": "flex",
         "flexDirection": "row",
         "maxWidth": 584,
@@ -29,7 +30,6 @@ exports[`<Alert /> should render 1`] = `
 >
   <View
     display="flex"
-    marginTop="spacing.0"
     style={
       Array [
         Object {
@@ -57,6 +57,9 @@ exports[`<Alert /> should render 1`] = `
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 16,
@@ -110,9 +113,6 @@ exports[`<Alert /> should render 1`] = `
     </RNSVGSvgView>
   </View>
   <View
-    flex={1}
-    paddingLeft="spacing.3"
-    paddingRight="spacing.2"
     style={
       Array [
         Object {
@@ -126,7 +126,6 @@ exports[`<Alert /> should render 1`] = `
     }
   >
     <View
-      marginTop="spacing.0"
       style={
         Array [
           Object {
@@ -141,7 +140,7 @@ exports[`<Alert /> should render 1`] = `
         fontSize={75}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="s"
+        lineHeight={50}
         style={
           Array [
             Object {
@@ -218,6 +217,9 @@ exports[`<Alert /> should render 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 16,
@@ -269,6 +271,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         "borderRadius": 0,
         "borderStyle": "solid",
         "borderWidth": 0,
+        "boxSizing": "border-box",
         "display": "flex",
         "flexDirection": "row",
         "maxWidth": "auto",
@@ -276,13 +279,13 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         "paddingLeft": 16,
         "paddingRight": 16,
         "paddingTop": 12,
+        "width": "100%",
       },
     ]
   }
 >
   <View
     display="flex"
-    marginTop="spacing.1"
     style={
       Array [
         Object {
@@ -310,6 +313,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
             "backgroundColor": "transparent",
             "borderWidth": 0,
           },
+          Array [
+            Object {},
+          ],
           Object {
             "flex": 0,
             "height": 20,
@@ -373,9 +379,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     </RNSVGSvgView>
   </View>
   <View
-    flex={1}
-    paddingLeft="spacing.4"
-    paddingRight="spacing.2"
     style={
       Array [
         Object {
@@ -389,7 +392,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     }
   >
     <View
-      marginTop="spacing.0"
       style={
         Array [
           Object {
@@ -404,16 +406,16 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         fontSize={100}
         fontStyle="normal"
         fontWeight="regular"
-        lineHeight="l"
+        lineHeight={100}
         style={
           Array [
             Object {
               "color": "hsla(216, 27%, 36%, 1)",
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -481,6 +483,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
+            Array [
+              Object {},
+            ],
             Object {
               "flex": 0,
               "height": 20,

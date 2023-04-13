@@ -3,6 +3,7 @@ import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@st
 import iconMap from '../../Icons/iconMap';
 import type { BaseLinkProps } from './BaseLink';
 import BaseLinkComponent from './BaseLink';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 export default {
   title: 'Components/Link/BaseLink (Internal)',
@@ -24,6 +25,7 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

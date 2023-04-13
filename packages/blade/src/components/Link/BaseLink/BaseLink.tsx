@@ -10,11 +10,18 @@ import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type {
+  DotNotationSpacingStringToken,
+  StringChildrenType,
+  TestID,
+} from '~src/_helpers/types';
 import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { FontSize, Typography } from '~tokens/global/typography';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -29,15 +36,31 @@ type BaseLinkCommonProps = {
    *
    * @default medium
    */
-  size?: 'small' | 'medium';
-};
+  size?: 'small' | 'medium' | 'large';
+  /**
+   * Defines how far your touch can start away from the link. This is a react-native only prop and has no effect on web.
+   */
+  hitSlop?:
+    | {
+        top?: number;
+        right?: number;
+        bottom?: number;
+        left?: number;
+      }
+    | number;
+  /**
+   * The title of the link which is displayed as a tooltip. This is a web only prop and has no effect on react-native.
+   */
+  htmlTitle?: string;
+} & TestID &
+  StyledPropsBlade;
 
 /*
   Mandatory children prop when icon is not provided
 */
 type BaseLinkWithoutIconProps = BaseLinkCommonProps & {
   icon?: undefined;
-  children: string;
+  children: StringChildrenType;
 };
 
 /*
@@ -45,7 +68,7 @@ type BaseLinkWithoutIconProps = BaseLinkCommonProps & {
 */
 type BaseLinkWithIconProps = BaseLinkCommonProps & {
   icon: IconComponent;
-  children?: string;
+  children?: StringChildrenType;
 };
 
 /*
@@ -152,9 +175,25 @@ const getProps = ({
   contrast: NonNullable<BaseLinkProps['contrast']>;
   isVisited: boolean;
   target: BaseLinkProps['target'];
-  size: 'small' | 'medium';
+  size: NonNullable<BaseLinkProps['size']>;
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
+  const textSizes: {
+    fontSize: Record<NonNullable<BaseLinkProps['size']>, keyof FontSize>;
+    lineHeight: Record<NonNullable<BaseLinkProps['size']>, keyof Typography['lineHeights']>;
+  } = {
+    fontSize: {
+      small: 75,
+      medium: 100,
+      large: 200,
+    },
+    lineHeight: {
+      small: 50,
+      medium: 100,
+      large: 300,
+    },
+  };
+
   const props: BaseLinkStyleProps = {
     as: isButton ? 'button' : 'a',
     textDecorationLine: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
@@ -167,8 +206,8 @@ const getProps = ({
       isDisabled,
       isVisited,
     }) as IconProps['color'],
-    fontSize: size === 'medium' ? 100 : 75,
-    lineHeight: size === 'medium' ? 'm' : 's',
+    fontSize: textSizes.fontSize[size],
+    lineHeight: textSizes.lineHeight[size],
     iconSize: size,
     iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
@@ -211,11 +250,16 @@ const BaseLink = ({
   // @ts-expect-error avoiding exposing to public
   style,
   size = 'medium',
+  testID,
+  hitSlop,
+  htmlTitle,
+  ...styledProps
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
+  const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
-  if (!Icon && !children?.trim()) {
+  if (!Icon && !childrenString?.trim()) {
     throw new Error(
       `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
     );
@@ -241,7 +285,7 @@ const BaseLink = ({
     theme,
     variant,
     currentInteraction,
-    children,
+    children: childrenString,
     isDisabled,
     intent,
     contrast,
@@ -264,7 +308,7 @@ const BaseLink = ({
   return (
     <StyledBaseLink
       {...syntheticEvents}
-      {...metaAttribute(MetaConstants.Component, MetaConstants.Link)}
+      {...metaAttribute({ name: MetaConstants.Link, testID })}
       accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
       variant={variant}
       as={as}
@@ -279,9 +323,12 @@ const BaseLink = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
+      {...styledProps}
       // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}
+      hitSlop={hitSlop}
+      title={htmlTitle}
     >
       <BaseBox display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (

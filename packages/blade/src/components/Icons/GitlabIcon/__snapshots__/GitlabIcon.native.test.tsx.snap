@@ -19,6 +19,9 @@ exports[`<GitlabIcon /> should render GitlabIcon 1`] = `
         "backgroundColor": "transparent",
         "borderWidth": 0,
       },
+      Array [
+        Object {},
+      ],
       Object {
         "flex": 0,
         "height": 20,

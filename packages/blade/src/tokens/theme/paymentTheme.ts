@@ -59,7 +59,7 @@ const colors: ColorsWithModes = {
         icon: {
           default: {
             lowContrast: globalColors.neutral.blueGrayLight[500],
-            highContrast: globalColors.neutral.blueGrayLight[300],
+            highContrast: globalColors.neutral.blueGrayLight.a500,
           },
           hover: {
             lowContrast: globalColors.neutral.blueGrayLight[800],
@@ -75,7 +75,7 @@ const colors: ColorsWithModes = {
           },
           disabled: {
             lowContrast: globalColors.neutral.blueGrayLight[300],
-            highContrast: globalColors.neutral.blueGrayLight.a200,
+            highContrast: globalColors.neutral.blueGrayLight.a100,
           },
         },
       },
@@ -1125,7 +1125,7 @@ const colors: ColorsWithModes = {
         icon: {
           default: {
             lowContrast: globalColors.neutral.blueGrayDark[400],
-            highContrast: globalColors.neutral.blueGrayDark[100],
+            highContrast: globalColors.neutral.blueGrayDark.a200,
           },
           hover: {
             lowContrast: globalColors.neutral.blueGrayDark[200],
@@ -1141,7 +1141,7 @@ const colors: ColorsWithModes = {
           },
           disabled: {
             lowContrast: globalColors.neutral.blueGrayDark[600],
-            highContrast: globalColors.neutral.blueGrayDark.a200,
+            highContrast: globalColors.neutral.blueGrayDark.a100,
           },
         },
       },
@@ -1598,19 +1598,19 @@ const colors: ColorsWithModes = {
           border: {
             primary: {
               default: {
-                lowContrast: globalColors.chromatic.crimson[700],
+                lowContrast: globalColors.chromatic.crimson[500],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               hover: {
-                lowContrast: globalColors.chromatic.crimson[700],
+                lowContrast: globalColors.chromatic.crimson[500],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               focus: {
-                lowContrast: globalColors.chromatic.crimson[700],
+                lowContrast: globalColors.chromatic.crimson[500],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               active: {
-                lowContrast: globalColors.chromatic.crimson[700],
+                lowContrast: globalColors.chromatic.crimson[500],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               disabled: {
@@ -1622,19 +1622,19 @@ const colors: ColorsWithModes = {
           text: {
             primary: {
               default: {
-                lowContrast: globalColors.chromatic.crimson[500],
+                lowContrast: globalColors.chromatic.crimson[400],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               hover: {
-                lowContrast: globalColors.chromatic.crimson[500],
+                lowContrast: globalColors.chromatic.crimson[400],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               focus: {
-                lowContrast: globalColors.chromatic.crimson[500],
+                lowContrast: globalColors.chromatic.crimson[400],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               active: {
-                lowContrast: globalColors.chromatic.crimson[500],
+                lowContrast: globalColors.chromatic.crimson[400],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               disabled: {
@@ -1668,19 +1668,19 @@ const colors: ColorsWithModes = {
           icon: {
             primary: {
               default: {
-                lowContrast: globalColors.chromatic.crimson[500],
+                lowContrast: globalColors.chromatic.crimson[400],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               hover: {
-                lowContrast: globalColors.chromatic.crimson[500],
+                lowContrast: globalColors.chromatic.crimson[400],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               focus: {
-                lowContrast: globalColors.chromatic.crimson[500],
+                lowContrast: globalColors.chromatic.crimson[400],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               active: {
-                lowContrast: globalColors.chromatic.crimson[500],
+                lowContrast: globalColors.chromatic.crimson[400],
                 highContrast: globalColors.chromatic.crimson[50],
               },
               disabled: {
@@ -2203,6 +2203,7 @@ const shadows: Shadows = {
 };
 
 const paymentTheme: ThemeTokens = {
+  name: 'paymentTheme',
   border,
   breakpoints,
   colors,

@@ -6,7 +6,9 @@
     "**/**.stories.tsx",
     "**/**.stories.internal.tsx",
     "**/**.native.ts",
-    "**/**.native.tsx"
+    "**/**.native.tsx",
+    "**/**.native.test.ts",
+    "**/**.native.test.tsx"
   ],
   "compilerOptions": {
     "noEmit": true,

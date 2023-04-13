@@ -1,7 +1,6 @@
 import { componentIds } from './componentIds';
-import { useTheme } from '~components/BladeProvider';
-import type { WithComponentId } from '~utils';
-import { makeSize } from '~utils';
+import size from '~tokens/global/size';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListItemAssetProps = {
   /**
@@ -13,18 +12,12 @@ type ActionListItemAssetProps = {
    */
   alt: string;
 };
-const ActionListItemAsset: WithComponentId<ActionListItemAssetProps> = (props) => {
-  const { theme } = useTheme();
-  return (
-    <img
-      src={props.src}
-      alt={props.alt}
-      width={makeSize(theme.spacing[5])}
-      height={makeSize(theme.spacing[4])}
-    />
-  );
+const _ActionListItemAsset = (props: ActionListItemAssetProps): React.ReactElement => {
+  return <img src={props.src} alt={props.alt} width={size[16]} height={size[12]} />;
 };
 
-ActionListItemAsset.componentId = componentIds.ActionListItemAsset;
+const ActionListItemAsset = assignWithoutSideEffects(_ActionListItemAsset, {
+  componentId: componentIds.ActionListItemAsset,
+});
 
 export { ActionListItemAsset, ActionListItemAssetProps };

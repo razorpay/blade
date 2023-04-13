@@ -11,6 +11,7 @@ import { isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -31,6 +32,7 @@ type SelectInputProps = Pick<
   | 'onFocus'
   | 'onBlur'
   | 'placeholder'
+  | 'testID'
 > & {
   icon?: IconComponent;
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
@@ -62,11 +64,12 @@ const _SelectInput = (
     },
   });
 
-  const { icon, onChange, placeholder = 'Select Option', ...baseInputProps } = props;
+  const { icon, onChange, placeholder = 'Select Option', onBlur, ...baseInputProps } = props;
 
   React.useEffect(() => {
     onChange?.({ name: props.name, values: value.split(', ') });
-  }, [value, onChange, props.name]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, props.name]);
 
   React.useEffect(() => {
     setHasLabelOnLeft(props.labelPosition === 'left');
@@ -108,7 +111,9 @@ const _SelectInput = (
           props?.onClick?.(e);
         }}
         onKeyDown={onTriggerKeydown}
-        onBlur={onTriggerBlur}
+        onBlur={({ name }) => {
+          onTriggerBlur?.({ name, value, onBlurCallback: onBlur });
+        }}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
         shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
@@ -124,6 +129,7 @@ const _SelectInput = (
             icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />
         }
+        testID={props.testID}
       />
     </BaseBox>
   );
@@ -156,8 +162,9 @@ const _SelectInput = (
  *
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-select--with-single-select SelectInput Documentation}.
  */
-const SelectInput = React.forwardRef(_SelectInput);
-// @ts-expect-error: componentId is our custom attribute
-SelectInput.componentId = 'SelectInput';
+
+const SelectInput = assignWithoutSideEffects(React.forwardRef(_SelectInput), {
+  componentId: 'SelectInput',
+});
 
 export { SelectInput, SelectInputProps };

@@ -32,6 +32,19 @@ module.exports = {
       },
     ],
     'import/extensions': ['error', 'never', { css: 'always' }],
+    'no-restricted-properties': [
+      'error',
+      {
+        property: 'displayName',
+        message:
+          "Please define displayName using `assignWithoutSideEffects` instead. This will make sure the code doesn't create side-effects and tree-shaking continues to work",
+      },
+      {
+        property: 'componentId',
+        message:
+          "Please define componentId using `assignWithoutSideEffects` instead. This will make sure the code doesn't create side-effects and tree-shaking continues to work",
+      },
+    ],
   },
   env: {
     browser: true,
@@ -147,6 +160,19 @@ module.exports = {
         '@typescript-eslint/no-shadow': ['off'],
         '@typescript-eslint/explicit-module-boundary-types': ['off'],
         'no-only-tests/no-only-tests': 'error',
+        'no-restricted-imports': [
+          'error',
+          {
+            paths: [
+              {
+                name: 'lodash',
+                message:
+                  "Named export from lodash is restricted. Use path exports like `import get from 'lodash/get';` instead",
+              },
+            ],
+            patterns: ['!lodash/*'],
+          },
+        ],
       },
     },
     {

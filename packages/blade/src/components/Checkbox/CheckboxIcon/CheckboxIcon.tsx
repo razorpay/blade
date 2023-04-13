@@ -7,15 +7,16 @@ import { Fade } from './Fade';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
 import { getIn, makeSpace } from '~utils';
+import size from '~tokens/global/size';
 
 const svgSize = {
   small: {
-    width: 8,
-    height: 8,
+    width: size[8],
+    height: size[8],
   },
   medium: {
-    width: 12,
-    height: 12,
+    width: size[12],
+    height: size[12],
   },
 };
 
@@ -40,8 +41,8 @@ const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' 
 };
 
 const IndeterminateIcon = ({ color, size }: { color: string; size: 'small' | 'medium' }) => {
-  const width = `${svgSize[size].width}px`;
-  const height = `${svgSize[size].height}px`;
+  const width = makeSpace(svgSize[size].width);
+  const height = makeSpace(svgSize[size].height);
 
   return (
     <Svg width={width} height={height} viewBox="0 0 8 8" fill="none">

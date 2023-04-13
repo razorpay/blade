@@ -345,6 +345,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -501,6 +502,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -916,7 +918,7 @@ exports[`<Button /> should render large size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.5rem;
   text-align: center;
   margin: 0;
   padding: 0;

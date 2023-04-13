@@ -5,7 +5,9 @@ export const MetaConstants = {
   ActionListItem: 'action-list-item',
   ActionListSection: 'action-list-section',
   Alert: 'alert',
+  Amount: 'amount',
   Badge: 'badge',
+  Box: 'box',
   Button: 'button',
   Checkbox: 'checkbox',
   CheckboxGroup: 'checkbox-group',
@@ -30,4 +32,5 @@ export const MetaConstants = {
   CardBody: 'card-body',
   CardHeader: 'card-header',
   CardFooter: 'card-footer',
+  VisuallyHidden: 'visually-hidden',
 } as const;

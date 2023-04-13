@@ -2,12 +2,17 @@ import type { ReactElement } from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { Linking } from 'react-native';
 import styled from 'styled-components/native';
-import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
+import getStyledLinkStyles from './getStyledLinkStyles';
+import { useStyledProps } from '~components/Box/styledProps';
 
-const StyledNativeLink = styled.Pressable({
-  ...getStyledLinkStyles({}),
-  alignSelf: 'flex-start',
+const StyledNativeLink = styled.Pressable((props) => {
+  const styledPropsCSSObject = useStyledProps(props);
+  return {
+    ...getStyledLinkStyles({}),
+    alignSelf: 'flex-start',
+    ...styledPropsCSSObject,
+  };
 });
 
 const openURL = async (href: string): Promise<void> => {
@@ -31,6 +36,8 @@ const StyledLink = ({
   accessibilityProps,
   // @ts-expect-error avoid exposing to public
   style,
+  testID,
+  hitSlop,
 }: StyledBaseLinkProps & { children: React.ReactNode }): ReactElement => {
   const handleOnPress = (event: GestureResponderEvent): void => {
     if (href && variant === 'anchor') {
@@ -56,6 +63,8 @@ const StyledLink = ({
       onPressIn={(): void => setCurrentInteraction('active')}
       onPressOut={(): void => setCurrentInteraction('default')}
       style={style}
+      testID={testID}
+      hitSlop={hitSlop}
     >
       {children}
     </StyledNativeLink>

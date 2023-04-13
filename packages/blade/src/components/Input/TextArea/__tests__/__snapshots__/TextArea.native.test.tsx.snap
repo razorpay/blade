@@ -27,8 +27,6 @@ exports[`<TextArea /> should render 1`] = `
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
-      marginBottom="spacing.0"
-      marginTop="spacing.0"
       style={
         Array [
           Object {
@@ -43,8 +41,6 @@ exports[`<TextArea /> should render 1`] = `
       }
     >
       <View
-        marginBottom="spacing.2"
-        marginRight="spacing.5"
         style={
           Array [
             Object {
@@ -78,7 +74,7 @@ exports[`<TextArea /> should render 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="bold"
-            lineHeight="s"
+            lineHeight={50}
             style={
               Array [
                 Object {
@@ -138,16 +134,16 @@ exports[`<TextArea /> should render 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight="l"
+              lineHeight={100}
               style={
                 Array [
                   Object {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
-                    "fontSize": 15,
+                    "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 24,
+                    "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -212,6 +208,7 @@ exports[`<TextArea /> should render 1`] = `
         onEndEditing={[Function]}
         onFocus={[Function]}
         onKeyPress={[Function]}
+        onSubmitEditing={[Function]}
         secureTextEntry={false}
         style={
           Array [
@@ -222,10 +219,10 @@ exports[`<TextArea /> should render 1`] = `
               "flexGrow": 1,
               "flexShrink": 1,
               "fontFamily": "Lato",
-              "fontSize": 15,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "height": 56,
+              "height": 48,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -263,7 +260,6 @@ exports[`<TextArea /> should render 1`] = `
     />
   </View>
   <View
-    marginLeft={0}
     style={
       Array [
         Object {

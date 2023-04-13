@@ -83,7 +83,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.25rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -203,6 +203,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             >
               <svg
                 aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -412,6 +413,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             >
               <svg
                 aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -620,6 +622,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             >
               <svg
                 aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -669,6 +672,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       >
         <svg
           aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="12px"
@@ -866,6 +870,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             >
               <svg
                 aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -890,6 +895,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             >
               <svg
                 aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
