@@ -54,7 +54,6 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
         <BottomSheetHeader
           title="Select Account"
           leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-          trailing={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
           <ActionList>
@@ -306,7 +305,6 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
             <BottomSheetHeader
               title="Single Select"
               leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-              trailing={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
             <BottomSheetBody>
               <SingleSelectContent />
@@ -340,7 +338,6 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
             <BottomSheetHeader
               title="Multi Select"
               leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-              trailing={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
             <BottomSheetBody>
               <MultiSelectContent />

@@ -4,8 +4,6 @@ import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheetContext';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import BaseBox from '~components/Box/BaseBox';
-import { IconButton } from '~components/Button/IconButton';
-import { CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
@@ -40,44 +38,12 @@ type BottomSheetHeaderTrailingProps = {
   visual: React.ReactNode;
 };
 
-const _BottomSheetHeaderTrailing = ({
-  visual,
-}: BottomSheetHeaderTrailingProps): React.ReactElement => {
-  const { close, defaultInitialFocusRef } = useBottomSheetContext();
-
-  return (
-    <BaseBox display="flex" flexDirection="row" alignItems="center">
-      <BaseBox marginRight="spacing.4" alignSelf="center" display="flex">
-        {visual}
-      </BaseBox>
-      <BaseBox>
-        <IconButton
-          ref={defaultInitialFocusRef}
-          onClick={() => {
-            close();
-          }}
-          icon={CloseIcon}
-          accessibilityLabel="Close BottomSheet"
-        />
-      </BaseBox>
-    </BaseBox>
-  );
-};
-const BottomSheetHeaderTrailing = assignWithoutSideEffects(_BottomSheetHeaderTrailing, {
-  componentId: ComponentIds.BottomSheetHeaderTrailing,
-});
-
 type BottomSheetHeaderProps = {
   title: string;
   leading?: React.ReactNode;
-  trailing?: React.ReactNode;
 };
 
-const _BottomSheetHeader = ({
-  leading,
-  trailing,
-  title,
-}: BottomSheetHeaderProps): React.ReactElement => {
+const _BottomSheetHeader = ({ leading, title }: BottomSheetHeaderProps): React.ReactElement => {
   const { setHeaderHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -103,7 +69,6 @@ const _BottomSheetHeader = ({
         {...bind?.()}
       >
         <BottomSheetHeaderLeading title={title} prefix={leading} />
-        <BottomSheetHeaderTrailing visual={trailing} />
       </BaseBox>
       <Divider />
     </BaseBox>
@@ -120,6 +85,5 @@ export {
   BottomSheetHeaderLeading,
   BottomSheetHeaderLeadingProps,
   BottomSheetHeaderProps,
-  BottomSheetHeaderTrailing,
   BottomSheetHeaderTrailingProps,
 };

@@ -22,6 +22,7 @@ import { makeSpace, getComponentId } from '~utils';
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 const isAndroid = Platform.OS === 'android';
 // TODO: Temporary workaround to make android shadows look as close as iOS
@@ -56,7 +57,7 @@ const focusOnElement = (element: React.Component<any, any>): void => {
   }
 };
 
-const BottomSheet: WithComponentId<BottomSheetProps> = ({
+const _BottomSheet: WithComponentId<BottomSheetProps> = ({
   children,
   snapPoints = [0.35, 0.5, 0.85],
   isOpen,
@@ -211,7 +212,8 @@ const BottomSheet: WithComponentId<BottomSheetProps> = ({
   );
 };
 
-BottomSheet.componentId = ComponentIds.BottomSheet;
-export { BottomSheet };
+const BottomSheet = assignWithoutSideEffects(_BottomSheet, {
+  componentId: ComponentIds.BottomSheet,
+});
 
-export { BottomSheetBody, BottomSheetFooter, BottomSheetHeader };
+export { BottomSheet, BottomSheetBody, BottomSheetFooter, BottomSheetHeader };
