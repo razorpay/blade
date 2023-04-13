@@ -26,6 +26,3 @@ export * from './SkipNav';
 export * from './Typography';
 export * from './VisuallyHidden';
 export * from './Amount';
-// @TODO: Remove this and replace it with Box component when it is ready.
-// Added it to simplify testing
-export { default as InternalDontUsePleaseWillBeRemovedSoonBaseBox } from './Box/BaseBox';
