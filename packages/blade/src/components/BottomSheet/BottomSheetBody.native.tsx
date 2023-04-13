@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { ComponentIds } from './componentIds';
-import type { WithComponentId } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
-const BottomSheetBody: WithComponentId<{ children: React.ReactNode }> = ({ children }) => {
+const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
     <BaseBox
       style={{
@@ -26,6 +26,9 @@ const BottomSheetBody: WithComponentId<{ children: React.ReactNode }> = ({ child
     </BaseBox>
   );
 };
-BottomSheetBody.componentId = ComponentIds.BottomSheetBody;
+
+const BottomSheetBody = assignWithoutSideEffects(_BottomSheetBody, {
+  componentId: ComponentIds.BottomSheetBody,
+});
 
 export { BottomSheetBody };

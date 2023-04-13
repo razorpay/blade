@@ -2,21 +2,16 @@ import React from 'react';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider.native';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle.native';
-import { BottomSheetHeaderLeading, BottomSheetHeaderTrailing } from './BottomSheetHeader.web';
+import { BottomSheetHeaderLeading } from './BottomSheetHeader.web';
 import BaseBox from '~components/Box/BaseBox';
-import type { WithComponentId } from '~utils';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type BottomSheetHeaderProps = {
   title: string;
   leading?: React.ReactNode;
-  trailing?: React.ReactNode;
 };
 
-const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
-  leading,
-  trailing,
-  title,
-}): React.ReactElement => {
+const _BottomSheetHeader = ({ leading, title }: BottomSheetHeaderProps): React.ReactElement => {
   return (
     <BaseBox backgroundColor="white" overflow="visible" flexShrink={0}>
       <BaseBox
@@ -32,18 +27,19 @@ const BottomSheetHeader: WithComponentId<BottomSheetHeaderProps> = ({
         touchAction="none"
       >
         <BottomSheetHeaderLeading title={title} prefix={leading} />
-        <BottomSheetHeaderTrailing visual={trailing} />
       </BaseBox>
       <Divider />
     </BaseBox>
   );
 };
-BottomSheetHeader.componentId = ComponentIds.BottomSheetHeader;
+
+const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
+  componentId: ComponentIds.BottomSheetHeader,
+});
 
 export {
   BottomSheetGrabHandle,
   BottomSheetHeader,
   BottomSheetHeaderLeading,
   BottomSheetHeaderProps,
-  BottomSheetHeaderTrailing,
 };

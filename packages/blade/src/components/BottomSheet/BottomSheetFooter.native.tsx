@@ -6,13 +6,13 @@ import { BottomSheetFooterLeading, BottomSheetFooterTrailing } from './BottomShe
 import { ComponentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import type { WithComponentId } from '~utils';
+import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
-const BottomSheetFooter: WithComponentId<BottomSheetFooterProps> = ({
+const _BottomSheetFooter = ({
   title,
   leading,
   trailing,
-}) => {
+}: BottomSheetFooterProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
     <BaseBox
@@ -41,6 +41,9 @@ const BottomSheetFooter: WithComponentId<BottomSheetFooterProps> = ({
     </BaseBox>
   );
 };
-BottomSheetFooter.componentId = ComponentIds.BottomSheetFooter;
+
+const BottomSheetFooter = assignWithoutSideEffects(_BottomSheetFooter, {
+  componentId: ComponentIds.BottomSheetFooter,
+});
 
 export { BottomSheetFooter, BottomSheetFooterLeading, BottomSheetFooterTrailing };

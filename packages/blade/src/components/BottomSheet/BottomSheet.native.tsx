@@ -16,7 +16,6 @@ import type { BottomSheetProps } from './types';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
-import type { WithComponentId } from '~utils';
 import { makeSpace, getComponentId } from '~utils';
 
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
@@ -57,13 +56,13 @@ const focusOnElement = (element: React.Component<any, any>): void => {
   }
 };
 
-const _BottomSheet: WithComponentId<BottomSheetProps> = ({
+const _BottomSheet = ({
   children,
   snapPoints = [0.35, 0.5, 0.85],
   isOpen,
   onDismiss,
   initialFocusRef,
-}) => {
+}: BottomSheetProps): React.ReactElement => {
   const { theme } = useTheme();
   const dropdownBottomSheetProps = useDropdownBottomSheetContext();
   const defaultInitialFocusRef = React.useRef<any>(null);
