@@ -31,7 +31,8 @@ const removeUndefinedStyledProps = (obj: StyledPropsInputType): StyledPropsInput
   const onlyDefinedStyledProps: StyledPropsBlade = {};
   for (const key in obj) {
     if (obj[key as keyof StyledPropsBlade] !== undefined) {
-      // @ts-expect-error: complex type error
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+      // @ts-ignore: complex type error
       // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       onlyDefinedStyledProps[key as keyof StyledPropsBlade] = obj[key as keyof StyledPropsBlade];
     }
