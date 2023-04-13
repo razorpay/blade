@@ -87,14 +87,6 @@ type TestID = {
 };
 
 /**
- * Returns the object as it is in web and sets all properties of object to type `never` in react native
- */
-type MakeObjectWebOnly<T> = Platform.Select<{
-  web: T;
-  native: Record<keyof T, never>;
-}>;
-
-/**
  * Similar to `Pick` except this returns `never` when value doesn't exist (native `Pick` returns `unknown`).
  *
  * You might have to ts-ignore the non-existing type error while using this. This is done so that you can get jsdoc from actual type.
@@ -120,8 +112,8 @@ type PickIfExist<T, K extends keyof T> = {
  * // On Native --> This will be just `flex` and `none`
  * ```
  */
-type PickCSSByPlatform<T extends keyof CSSObject | keyof ViewStyle> = Platform.Select<{
-  web: Pick<CSSObject, T>;
+type PickCSSByPlatform<T extends keyof React.CSSProperties | keyof ViewStyle> = Platform.Select<{
+  web: PickIfExist<CSSObject, T>;
   // @ts-expect-error: T passed here may not neccessarily exist. We return `never` type when it doesn't
   native: PickIfExist<ViewStyle, T>;
 }>;
@@ -134,7 +126,6 @@ export {
   StringChildrenType,
   StringWithAutocomplete,
   TestID,
-  MakeObjectWebOnly,
   PickIfExist,
   PickCSSByPlatform,
 };
