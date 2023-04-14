@@ -184,7 +184,7 @@ const { values } = useFormik();
   - Here we are only talking about "selection" logic on consumer-facing props but selection logic on our end will anyway always be there irrespective of this call as we have single component that acts as `<MenuOption />` and `<SelectOption />`, both. Normally I have seen libraries tackle this in separate components.
 
 - **Cons**
-  - Not applicable in Button trigger so `isSelected` would do nothing in that case
+  - Not applicable in Button trigger so `isSelected`, `isDefaultSelected` would do nothing in that case
   - Will be a breaking change (We'll move to using `defaultValue` and `value` on `<SelectInput />` instead of `isDefaultSelected` and `isSelected` on `<ActionListItem />`)
 
 ## TODOs
