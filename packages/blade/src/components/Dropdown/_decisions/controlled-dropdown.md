@@ -136,7 +136,19 @@ Inspirations
 
 Throughout initial discussions we mostly talked about creating this hook so noting down things here which made me change my opinion-
 
--
+- In most Razorpay usecases I saw so far, the ActionList options are kept in a separate array and are rendered later. E.g.
+
+```jsx
+const dataFromAPI = [
+  {
+    title: 'Pending',
+    value: 'pending',
+  }
+]
+<Dropdown>
+
+</Dropdown>
+```
 
 ### Referrences
 
