@@ -172,28 +172,6 @@ const { values } = useFormik();
 - [Polaris](https://polaris.shopify.com/components/selection-and-input/autocomplete) (They have `selected` object with `onSelect` on top component itself)
 - [downshift-js](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#actions) (`useSelect` hook)
 
-## Existing Solutions in Ecosystem
+## TODOs
 
-<details>
-<summary>Combination of <code>isSelected</code> + <code>onChange</code> Props</summary>
-
-```jsx
-const [selectValue, setSelectValue] = React.useState(undefined);
-
-const onSomeAction = () => {
-  setSelectValue('mango');
-};
-
-return (
-  <Select.Root
-    value={selectValue}
-    onChange={(values) => {
-      setSelectValue(values);
-    }}
-  ></Select.Root>
-);
-```
-
-</details>
-
-[Open Example in CodeSandbox]()
+- [ ] Do a code POC to see if implementation is not too complex
