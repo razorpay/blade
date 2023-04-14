@@ -40,8 +40,6 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
         sections={sectionData}
         windowSize={5}
         initialNumToRender={5}
-        bouncesZoom={false}
-        bounces={false}
         keyExtractor={(item: any) => {
           return item.value;
         }}
