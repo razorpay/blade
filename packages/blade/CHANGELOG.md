@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 7.0.3
+
+### Patch Changes
+
+- 6f7ec83f: fix(Box): add correct prop types in react native Box
+- abc4c156: fix(colors): incorrect value of ashGrayLight.1200
+
+  There was a typo earlier in the value of the token.
+
+- fce1c767: feat(TextInput): add note on `type="number"` attribute
+- c0701725: fix: remove internal BaseBox export (no change for consumers)
+
 ## 7.0.2
 
 ### Patch Changes
