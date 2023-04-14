@@ -136,18 +136,24 @@ Inspirations
 
 Throughout initial discussions we mostly talked about creating this hook so noting down things here which made me change my opinion-
 
-- In most Razorpay usecases I saw so far, the ActionList options are kept in a separate array and are rendered later. E.g.
+- The hooks pattern for controlled inputs is not very common in ecosystem. Didn't find this being used anywhere apart from downshift-js (in their case, everything is hook). Most popular libraries follow something along the lines of `onChange` + `isSelected`.
+- Initial assumption was that there will be too much of state management on user's end with `onChange` + `isSelected` type of approach but now that I look at the [overall example](#onchange--isselected-), it doesn't seem too complex. It also covers most usecases I could think of like `reset`, reading currently selected options, etc.
+- Additional learning curve of `useSelect` API. Explaining `isSelected` is a lot more easier.
+- Since `useSelect` will return `selectOption` method, consumers have to hook this into their state management.
 
 ```jsx
-const dataFromAPI = [
-  {
-    title: 'Pending',
-    value: 'pending',
-  }
-]
-<Dropdown>
+const { values } = useFormik();
+const { selectOption } = useSelect();
 
-</Dropdown>
+const doSomethingComplex = () => {
+  // ... bunch of code that updates `values`
+  selectOption(values.status);
+};
+
+// As opposed to in `onChange` it will just look like this -
+const { values } = useFormik();
+
+<ActionListItem isSelected={values.status === 'pending'} title="Pending" />;
 ```
 
 ### Referrences
