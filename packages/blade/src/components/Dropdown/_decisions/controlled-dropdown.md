@@ -180,12 +180,12 @@ const { values } = useFormik();
 
 - **Pros of keeping ActionList selectable**
 
-  - Selection logic is still applicable in `<AutoComplete />`, or any selection trigger we plan to add in future
-  - Here we are only talking about "selection" logic on consumer-facing props but "selection" logic on our end will anyway always be there irrespective of this call as we have single component that acts as `<MenuOption />` and `<SelectOption />`, both. Normally I have seen libraries tackle this in separate components.
+  - Selection logic is still applicable in `<AutoComplete />`, or any selectable trigger we plan to add in future
+  - Here we are only talking about "selection" logic on consumer-facing props but selection logic on our end will anyway always be there irrespective of this call as we have single component that acts as `<MenuOption />` and `<SelectOption />`, both. Normally I have seen libraries tackle this in separate components.
 
 - **Cons**
   - Not applicable in Button trigger so `isSelected` would do nothing in that case
-  - Will be a breaking change
+  - Will be a breaking change (We'll move to using `defaultValue` and `value` on `<SelectInput />` instead of `isDefaultSelected` and `isSelected` on `<ActionListItem />`)
 
 ## TODOs
 
