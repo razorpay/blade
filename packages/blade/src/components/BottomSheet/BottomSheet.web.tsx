@@ -7,6 +7,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
+import { BottomSheetFooter } from './BottomSheetFooter';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
@@ -329,6 +330,7 @@ const _BottomSheet = React.forwardRef<any, BottomSheetProps>(
         <BottomSheetBackdrop />
         <BottomSheetSurface
           data-surface
+          data-testid="bottomsheet-surface"
           windowHeight={dimensions.height}
           isOpen={isOpen}
           isDragging={isDragging}
@@ -354,4 +356,4 @@ const BottomSheet = assignWithoutSideEffects(_BottomSheet, {
   componentId: ComponentIds.BottomSheet,
 });
 
-export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetProps };
+export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetFooter, BottomSheetProps };

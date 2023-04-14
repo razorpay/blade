@@ -38,159 +38,21 @@ export default {
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const [open, setOpen] = React.useState(false);
+  const sheet = React.useRef();
 
   return (
     <BaseBox>
-      <Button
-        onClick={() => {
-          setOpen((prev) => {
-            return !prev;
-          });
-        }}
-      >
-        {open ? 'Open yes' : 'Open noe'}
-      </Button>
-      <BottomSheetComponent isOpen={open} onDismiss={() => setOpen(false)}>
-        <BottomSheetHeader
-          title="Select Account"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
+      <Button onClick={() => sheet?.current.open()}>Open</Button>
+      <BottomSheetComponent ref={sheet}>
+        <BottomSheetHeader title="Select Account" />
         <BottomSheetBody>
-          <ActionList>
-            <ActionListSection title="Section Heading">
-              <ActionListItem
-                leading={<ActionListItemIcon icon={UserIcon} />}
-                trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
-                title="View Profile"
-                value="view-profile"
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={SettingsIcon} />}
-                title="Settings"
-                value="settings"
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={DownloadIcon} />}
-                title="Download"
-                value="download"
-              />
-            </ActionListSection>
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Done"
-              value="done"
-            />
-          </ActionList>
+          {new Array(50).fill(0).map((_, idx) => (
+            <Text key={idx}>BottomSheet body {idx}</Text>
+          ))}
         </BottomSheetBody>
         <BottomSheetFooter
           title="Footer Title"
-          leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
           trailing={{
-            // <- confirm if this BottomSheet Footer should be 2 buttons or anything else?
             primary: { text: 'Apply' },
             secondary: { text: 'Cancel' },
           }}

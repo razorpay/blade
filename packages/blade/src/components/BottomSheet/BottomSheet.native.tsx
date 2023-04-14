@@ -3,15 +3,16 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import GorhomBottomSheet, {
   BottomSheetBackdrop as GorhomBottomSheetBackdrop,
-  BottomSheetFooter,
-  BottomSheetScrollView,
+  BottomSheetFooter as GorhomBottomSheetFooter,
+  BottomSheetScrollView as GorhomBottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
 import { AccessibilityInfo, findNodeHandle, Platform } from 'react-native';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
-import { BottomSheetBody } from './BottomSheetBody.native';
+import { BottomSheetFooter } from './BottomSheetFooter';
+import { BottomSheetBody } from './BottomSheetBody';
 import type { BottomSheetProps } from './types';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
@@ -121,7 +122,7 @@ const _BottomSheet = ({
   }, [children]);
 
   const renderFooter = React.useCallback((props): React.ReactElement => {
-    return <BottomSheetFooter {...props}>{footer.current}</BottomSheetFooter>;
+    return <GorhomBottomSheetFooter {...props}>{footer.current}</GorhomBottomSheetFooter>;
   }, []);
 
   const renderBackdrop = React.useCallback(
@@ -200,10 +201,10 @@ const _BottomSheet = ({
             onClose={close}
             snapPoints={_snapPoints}
           >
-            <BottomSheetScrollView stickyHeaderIndices={[0]}>
+            <GorhomBottomSheetScrollView stickyHeaderIndices={[0]}>
               {header.current}
               {body.current}
-            </BottomSheetScrollView>
+            </GorhomBottomSheetScrollView>
           </GorhomBottomSheet>
         </BottomSheetContext.Provider>
       </DropdownContext.Provider>

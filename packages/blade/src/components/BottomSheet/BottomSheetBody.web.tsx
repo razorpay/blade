@@ -19,6 +19,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
     <BaseBox
       data-scroll
       ref={scrollRef}
+      data-testid="bottomsheet-body"
       style={{
         flexShrink: 1,
         flexGrow: 1,
@@ -38,6 +39,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         data-content
+        data-testid="bottomsheet-content"
         ref={contentRef}
         overflow="hidden"
       >

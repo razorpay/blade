@@ -53,7 +53,7 @@ const _BottomSheetHeader = ({ leading, title }: BottomSheetHeaderProps): React.R
   }, [ref, isOpen]);
 
   return (
-    <BaseBox as="div" ref={ref} overflow="auto" flexShrink={0}>
+    <BaseBox as="div" ref={ref} data-testid="bottomsheet-header" overflow="auto" flexShrink={0}>
       <BaseBox
         as="div"
         data-header

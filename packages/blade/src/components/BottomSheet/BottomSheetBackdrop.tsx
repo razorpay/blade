@@ -21,6 +21,7 @@ const BottomSheetBackdrop = (): React.ReactElement => {
 
   return (
     <StyledBottomSheetBackdrop
+      data-testid="bottomsheet-backdrop"
       onClick={() => {
         close();
       }}

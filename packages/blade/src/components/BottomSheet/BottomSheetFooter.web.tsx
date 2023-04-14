@@ -125,6 +125,7 @@ const BottomSheetFooter = ({
   return (
     <BaseBox
       data-footer
+      data-testid="bottomsheet-footer"
       ref={ref}
       width="100%"
       flexShrink={0}
