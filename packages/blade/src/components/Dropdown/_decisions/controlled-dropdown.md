@@ -172,6 +172,21 @@ const { values } = useFormik();
 - [Polaris](https://polaris.shopify.com/components/selection-and-input/autocomplete) (They have `selected` object with `onSelect` on top component itself)
 - [downshift-js](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#actions) (`useSelect` hook)
 
+## Open Questions
+
+### Are `<ActionListItem />` "selectable" components?
+
+**Context:** We support `isDefaultSelected` on ActionList and plan to support `isSelected` now so that means we are treating ActionList as selectable items. When we have `Button` as trigger, we turn ActionList into menu which is not "selectable" but rather a list of "clickable" items.
+
+- **Pros of keeping ActionList selectable**
+
+  - Selection logic is still applicable in `<AutoComplete />`, or any selection trigger we plan to add in future
+  - Here we are only talking about "selection" logic on consumer-facing props but "selection" logic on our end will anyway always be there irrespective of this call as we have single component that acts as `<MenuOption />` and `<SelectOption />`, both. Normally I have seen libraries tackle this in separate components.
+
+- **Cons**
+  - Not applicable in Button trigger so `isSelected` would do nothing in that case
+  - Will be a breaking change
+
 ## TODOs
 
 - [ ] Do a code POC to see if implementation is not too complex
