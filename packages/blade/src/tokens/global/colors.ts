@@ -296,7 +296,7 @@ const colors: Color = {
       900: `hsla(218, 9%, 36%, ${opacity[9]})`,
       1000: `hsla(219, 12%, 28%, ${opacity[9]})`,
       1100: `hsla(214, 15%, 18%, ${opacity[9]})`,
-      1200: `hsla(216, 15, 13%, ${opacity[9]})`,
+      1200: `hsla(216, 15%, 13%, ${opacity[9]})`,
       1300: `hsla(214, 24%, 6%, ${opacity[9]})`,
       a00: `hsla(214, 15%, 18%, ${opacity[0]})`,
       a50: `hsla(214, 15%, 18%, ${opacity[1]})`,
