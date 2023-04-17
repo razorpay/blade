@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-   The Design System that powers Razorpay
+   A Design System that powers Razorpay
 <p align="center">
 
 ### [`@razorpay/blade`](https://github.com/razorpay/blade/tree/master/packages/blade)
