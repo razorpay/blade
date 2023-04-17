@@ -1,4 +1,4 @@
-name: Blade Validate
+name: Blade Bundle Check
 
 on: [push]
 
