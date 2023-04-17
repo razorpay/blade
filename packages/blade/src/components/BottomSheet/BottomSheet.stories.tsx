@@ -39,34 +39,18 @@ export default {
 } as Meta<BottomSheetProps>;
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  const sheet = React.useRef<any>();
-
-  React.useEffect(() => {
-    window.setTimeout(() => {
-      sheet?.current?.open();
-    });
-  }, []);
+  const [isOpen, setIsOpen] = React.useState(true);
 
   return (
     <BaseBox>
-      <Button onClick={() => sheet?.current?.open?.()}>Open</Button>
-      <BottomSheetComponent {...args} ref={sheet}>
+      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <BottomSheetComponent {...args} isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader
           title="Select Account & Update Details"
           subtitle="Header subtitle"
           prefix={<StarIcon color="surface.text.muted.lowContrast" size="large" />}
           suffix={<Badge variant="positive">label</Badge>}
-          // leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
-        {/* <BottomSheetBody>any content</BottomSheetBody>
-        <BottomSheetFooter
-          title="Footer Title"
-          leading={<ActionListFooterIcon icon={DocIcon} />}
-          trailing={{ //<- confirm if this BottomSheet Footer should be 2 buttons or anything else?
-            primary: { text: 'Apply' },
-            secondary: { text: 'Cancel' },
-          }}
-        /> */}
         <BottomSheetBody>
           <BaseBox>
             <ActionListSection title="Section Heading">
@@ -299,7 +283,6 @@ const MultiSelectContent = (): React.ReactElement => {
 const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent> = ({
   ...args
 }) => {
-  // const sheet = React.useRef<any>();
   const isMobile = true;
 
   return (
