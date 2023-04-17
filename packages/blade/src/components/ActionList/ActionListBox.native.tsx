@@ -39,7 +39,6 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
       <StyledListBoxWrapper
         sections={sectionData}
         windowSize={5}
-        initialNumToRender={5}
         keyExtractor={(item: any) => {
           return item.value;
         }}
