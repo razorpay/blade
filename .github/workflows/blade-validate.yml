@@ -25,6 +25,8 @@ jobs:
         working-directory: packages/blade
       - name: Run Bundlewatch
         run: yarn bundlewatch
+        env:
+          BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
         working-directory: packages/blade
       - name: Lint Source Code
         run: yarn lint
