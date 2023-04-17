@@ -22,6 +22,7 @@ jobs:
           install-command: yarn --frozen-lockfile
       - name: Run Bundlewatch
         run: yarn bundlewatch
+        working-directory: packages/blade
       - name: Lint Source Code
         run: yarn lint
       - name: Run TypeScript Checks
