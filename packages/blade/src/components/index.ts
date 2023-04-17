@@ -25,4 +25,3 @@ export * from './Spinner';
 export * from './SkipNav';
 export * from './Typography';
 export * from './VisuallyHidden';
-export * from './Amount';
