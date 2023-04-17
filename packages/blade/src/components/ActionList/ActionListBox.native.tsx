@@ -9,7 +9,7 @@ import { makeAccessible } from '~utils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListBoxProps = {
-  childrenWithId: React.ReactNode[] | null;
+  childrenWithId?: React.ReactNode[] | null;
   sectionData: SectionData;
   actionListItemWrapperRole: 'listbox' | 'menu' | undefined;
   isMultiSelectable: boolean;
