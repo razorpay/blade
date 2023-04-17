@@ -807,7 +807,7 @@ WithMultipleDropdowns.args = {
   name: 'design-system',
 };
 
-export const ASectionsPerf = (): React.ReactElement => {
+export const InternalSectionListPerformance = (): React.ReactElement => {
   return (
     <Dropdown selectionType="multiple">
       <SelectInput label="Select fruits" />
@@ -834,11 +834,11 @@ export const ASectionsPerf = (): React.ReactElement => {
   );
 };
 
-export const APerf = (): React.ReactElement => {
+export const InternalDropdownPerformance = (): React.ReactElement => {
   const fruits = [
     'Apples',
     'Apricots',
-    { name: 'Avocados', description: 'Hello worl 1234556\nhello \nworld\nhello' },
+    { name: 'Avocados', description: 'Avocados description' },
     'Bananas',
     'Boysenberries',
     'Blueberries',
@@ -846,7 +846,7 @@ export const APerf = (): React.ReactElement => {
     'Cherries',
     'Cantaloupe',
     'Crab apples',
-    { name: 'Clementine', description: 'Hello worl 1234556\nhello \nworld\nhello' },
+    { name: 'Clementine', description: 'Clementine description' },
     'Cucumbers',
     'Damson plum',
     'Dinosaur Eggs',
@@ -875,7 +875,7 @@ export const APerf = (): React.ReactElement => {
     'Jackfruit',
     'Java Apple',
     'Jambolan',
-    { name: 'Kaffir Lime', description: 'Hello worl 1234556' },
+    { name: 'Kaffir Lime', description: 'Kaffir description' },
     'Kumquat',
     'Lime',
     'Longan',
@@ -887,18 +887,9 @@ export const APerf = (): React.ReactElement => {
     'Mulberry',
   ];
 
-  console.log('total items', fruits.length);
-  const [clickCount, setClickCount] = React.useState(0);
-
   return (
     <Dropdown selectionType="multiple">
-      <SelectInput
-        label="Select fruits"
-        onClick={() => {
-          setClickCount((prev) => prev + 1);
-          console.log('click count', clickCount);
-        }}
-      />
+      <SelectInput label="Select fruits" />
       <DropdownOverlay>
         <ActionList>
           {fruits.map((fruit) => {
