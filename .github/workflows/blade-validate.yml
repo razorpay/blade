@@ -20,6 +20,8 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile
+      - name: Run Bundlewatch
+        run: yarn bundlewatch
       - name: Lint Source Code
         run: yarn lint
       - name: Run TypeScript Checks
