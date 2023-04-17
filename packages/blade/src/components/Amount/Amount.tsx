@@ -16,6 +16,7 @@ import type { TestID } from '~src/_helpers/types';
 import { getPlatformType, metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { Button } from '~components/Button';
 
 type Currency = 'INR' | 'MYR';
 
@@ -116,7 +117,8 @@ const AmountValue = ({
 
     // Native does not support alignItems of Text inside a div, insted we need to wrap is in a Text
     const AmountWrapper = getPlatformType() === 'react-native' ? BaseText : React.Fragment;
-
+  console.log(Button);
+  
     return (
       <AmountWrapper>
         <BaseText
