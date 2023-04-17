@@ -550,12 +550,12 @@ export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
       <Dropdown selectionType={selectionType}>
         <SelectInput
           label="Select Action"
+          {...selectInputArgs}
           onChange={({ name, values }) => {
             if (name) {
               setDropdownValues({ [name]: values });
             }
           }}
-          {...selectInputArgs}
         />
         <DropdownOverlay>
           <ActionList surfaceLevel={surfaceLevel}>
@@ -584,6 +584,67 @@ export const WithValueDisplay = (args: AllDropdownProps): JSX.Element => {
   );
 };
 WithValueDisplay.args = {
+  selectionType: 'multiple',
+  description: 'Home sweet home it is',
+};
+
+export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
+
+  const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
+  console.log({ currentSelection });
+
+  return (
+    <BaseBox minHeight="300px">
+      <Button onClick={() => setCurrentSelection('settings')}>Select Settings in Dropdown</Button>
+      <BaseBox marginTop="spacing.5" />
+      <Dropdown selectionType="single">
+        <SelectInput
+          label="Select Action"
+          {...selectInputArgs}
+          onChange={({ values }) => {
+            console.log('onChange', values[0]);
+            setCurrentSelection(values[0]);
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList surfaceLevel={surfaceLevel}>
+            <ActionListItem
+              // @ts-expect-error: for storybook we're typing icon as sting but its actually IconComponent
+              leading={<ActionListItemIcon icon={actionListItemIcon} />}
+              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+              title={title}
+              value={value}
+              description={description}
+              isSelected={currentSelection === value}
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={SettingsIcon} />}
+              title="Configuration"
+              value="config"
+              isSelected={currentSelection === 'config'}
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={DownloadIcon} />}
+              title="Download"
+              value="download"
+              isSelected={currentSelection === 'download'}
+            />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </BaseBox>
+  );
+};
+ControlledDropdown.args = {
   selectionType: 'multiple',
   description: 'Home sweet home it is',
 };

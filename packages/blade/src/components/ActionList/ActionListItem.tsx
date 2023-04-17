@@ -53,6 +53,7 @@ type ActionListItemProps = {
    * If item is selected on page load
    */
   isDefaultSelected?: boolean;
+  isSelected?: boolean;
   isDisabled?: boolean;
   intent?: Extract<Feedback, 'negative'>;
   /**
@@ -82,11 +83,6 @@ const ActionListSectionDivider = (): JSX.Element => (
   />
 );
 
-const StyledActionListSectionTitle = styled(BaseBox)((props) => ({
-  // @TODO: replace this styled-component with new layout box when we have padding shorthand
-  padding: makeSize(props.theme.spacing[3]),
-}));
-
 type ActionListSectionProps = {
   title: string;
   children: React.ReactNode[] | React.ReactNode;
@@ -114,11 +110,11 @@ const _ActionListSection = ({
       {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
     >
       {/* We're announcing title as group label so we can hide this */}
-      <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
+      <BaseBox padding="spacing.3" {...makeAccessible({ hidden: true })}>
         <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
           {title}
         </Text>
-      </StyledActionListSectionTitle>
+      </BaseBox>
       <BaseBox
         {...makeAccessible({
           // On web, we just wrap it in another listbox to announce item count properly for particular group.
@@ -299,6 +295,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
     selectionType,
     dropdownTriggerer,
     isKeydownPressed,
+    selectOption,
   } = useDropdown();
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
@@ -312,6 +309,19 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
       trailing: props.trailing,
     });
   }, [props.leading, props.trailing]);
+
+  React.useEffect(() => {
+    if (props._index) {
+      if (props.isSelected) {
+        console.log('selecting option (isSelect changed)', props._index);
+        selectOption(props._index, {
+          closeOnSelection: false,
+          callOnChange: false,
+          isControlledSelection: true,
+        });
+      }
+    }
+  }, [props.isSelected]);
 
   React.useEffect(() => {
     if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
@@ -390,3 +400,17 @@ export {
   ActionListSectionProps,
   ActionListSectionDivider,
 };
+
+/**
+ * Controlled Dropdown
+ * - It should ignore setting of the values anywhere in dropdown
+ * - It should change the value and call onChange
+ * -
+ * SelectInput
+ * ActionListItem
+ *
+ *
+ * ```jsx
+ * ```
+ *
+ */

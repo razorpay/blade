@@ -56,6 +56,7 @@ const _SelectInput = (
     dropdownTriggerer,
     shouldIgnoreBlurAnimation,
     setHasLabelOnLeft,
+    changeHandlerDependencyProp,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -64,12 +65,13 @@ const _SelectInput = (
     },
   });
 
-  const { icon, onChange, placeholder = 'Select Option', onBlur, ...baseInputProps } = props;
-
   React.useEffect(() => {
-    onChange?.({ name: props.name, values: value.split(', ') });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, props.name]);
+    // @TODO: make it not trigger on initial mount
+    // console.log({ changeHandlerDependencyProp });
+    props?.onChange?.({ name: props.name, values: value.split(',') });
+  }, [changeHandlerDependencyProp]);
+
+  const { icon, onChange, placeholder = 'Select Option', onBlur, ...baseInputProps } = props;
 
   React.useEffect(() => {
     setHasLabelOnLeft(props.labelPosition === 'left');

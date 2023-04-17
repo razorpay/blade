@@ -20,6 +20,14 @@ import type { SelectInputProps } from '~components/Input/SelectInput';
 const noop = (): void => {};
 
 type OptionsType = { title: string; value: string; href?: string }[];
+type SelectOptionType = (
+  index: number,
+  properties?: {
+    closeOnSelection?: boolean;
+    callOnChange?: boolean;
+    isControlledSelection?: boolean;
+  },
+) => void;
 
 type DropdownContextType = {
   isOpen: boolean;
@@ -69,6 +77,9 @@ type DropdownContextType = {
    */
   hasLabelOnLeft: boolean;
   setHasLabelOnLeft: (value: boolean) => void;
+
+  changeHandlerDependencyProp: number;
+  setChangeHandlerDependencyProp: (value: number) => void;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -90,6 +101,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setHasLabelOnLeft: noop,
   isKeydownPressed: false,
   setIsKeydownPressed: noop,
+  changeHandlerDependencyProp: 0,
+  setChangeHandlerDependencyProp: noop,
   dropdownBaseId: '',
   actionListItemRef: {
     current: null,
@@ -146,6 +159,11 @@ type UseDropdownReturnValue = DropdownContextType & {
    * This is the value that is displayed inside select after selection
    */
   displayValue: string;
+
+  /**
+   * Selects the passed option
+   */
+  selectOption: SelectOptionType;
 };
 
 /**
@@ -166,17 +184,12 @@ const useDropdown = (): UseDropdownReturnValue => {
     setShouldIgnoreBlur,
     isKeydownPressed,
     setIsKeydownPressed,
+    changeHandlerDependencyProp,
+    setChangeHandlerDependencyProp,
     options,
     selectionType,
     ...rest
   } = React.useContext(DropdownContext);
-
-  type SelectOptionType = (
-    index: number,
-    properties?: {
-      closeOnSelection?: boolean;
-    },
-  ) => void;
   /**
    * Marks the given index as selected.
    *
@@ -185,13 +198,17 @@ const useDropdown = (): UseDropdownReturnValue => {
    */
   const selectOption: SelectOptionType = (
     index,
-    properties = {
+    { closeOnSelection = true, callOnChange = true } = {
       closeOnSelection: true,
+      callOnChange: true,
+      isControlledSelection: false,
     },
   ) => {
     if (index < 0 || index > options.length - 1) {
       return;
     }
+
+    console.log('selectOption', index);
 
     if (selectionType === 'multiple') {
       if (selectedIndices.includes(index)) {
@@ -212,7 +229,11 @@ const useDropdown = (): UseDropdownReturnValue => {
       setActiveIndex(index);
     }
 
-    if (properties?.closeOnSelection && selectionType !== 'multiple') {
+    if (callOnChange) {
+      setChangeHandlerDependencyProp(changeHandlerDependencyProp + 1);
+    }
+
+    if (closeOnSelection && selectionType !== 'multiple') {
       setIsOpen(false);
     }
   };
@@ -360,6 +381,9 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsOpen,
     selectedIndices,
     setSelectedIndices,
+    selectOption,
+    changeHandlerDependencyProp,
+    setChangeHandlerDependencyProp,
     onTriggerClick,
     onTriggerKeydown,
     onTriggerBlur,
