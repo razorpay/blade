@@ -4,36 +4,10 @@ import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { makeSpace } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-
-type BottomSheetHeaderLeadingProps = {
-  title: string;
-  prefix: React.ReactNode;
-};
-
-const _BottomSheetHeaderLeading = ({
-  title,
-  prefix,
-}: BottomSheetHeaderLeadingProps): React.ReactElement => {
-  return (
-    <BaseBox flex={1} display="flex" flexDirection="row" alignItems="center" userSelect="none">
-      <BaseBox marginRight="spacing.4" alignSelf="center" display="flex">
-        {prefix}
-      </BaseBox>
-      <BaseBox>
-        <Text variant="body" weight="bold" type="normal" contrast="low">
-          {title}
-        </Text>
-      </BaseBox>
-    </BaseBox>
-  );
-};
-const BottomSheetHeaderLeading = assignWithoutSideEffects(_BottomSheetHeaderLeading, {
-  componentId: ComponentIds.BottomSheetHeaderLeading,
-});
 
 type BottomSheetHeaderTrailingProps = {
   visual: React.ReactNode;
@@ -41,10 +15,17 @@ type BottomSheetHeaderTrailingProps = {
 
 type BottomSheetHeaderProps = {
   title: string;
-  leading?: React.ReactNode;
+  subtitle?: string;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 };
 
-const _BottomSheetHeader = ({ leading, title }: BottomSheetHeaderProps): React.ReactElement => {
+const _BottomSheetHeader = ({
+  prefix,
+  suffix,
+  title,
+  subtitle,
+}: BottomSheetHeaderProps): React.ReactElement => {
   const { setHeaderHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -68,7 +49,36 @@ const _BottomSheetHeader = ({ leading, title }: BottomSheetHeaderProps): React.R
         touchAction="none"
         {...bind?.()}
       >
-        <BottomSheetHeaderLeading title={title} prefix={leading} />
+        <BaseBox
+          flex={1}
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          userSelect="none"
+          maxWidth="90%"
+        >
+          <BaseBox
+            marginRight="spacing.4"
+            marginTop="spacing.2"
+            alignSelf="flex-start"
+            display="flex"
+          >
+            {prefix}
+          </BaseBox>
+          <BaseBox>
+            <BaseBox display="flex" flexDirection="row" alignItems="center">
+              <Heading size="small" variant="regular" type="normal">
+                {title}
+              </Heading>
+              <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
+            </BaseBox>
+            {subtitle && (
+              <Text variant="body" size="small" weight="regular">
+                {subtitle}
+              </Text>
+            )}
+          </BaseBox>
+        </BaseBox>
       </BaseBox>
       <Divider />
     </BaseBox>
@@ -104,8 +114,6 @@ const BottomSheetGrabHandle = styled.div(({ theme }) => {
 export {
   BottomSheetGrabHandle,
   BottomSheetHeader,
-  BottomSheetHeaderLeading,
-  BottomSheetHeaderLeadingProps,
   BottomSheetHeaderProps,
   BottomSheetHeaderTrailingProps,
 };

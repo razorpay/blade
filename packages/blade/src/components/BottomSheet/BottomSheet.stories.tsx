@@ -17,6 +17,7 @@ import {
   RupeeIcon,
   SearchIcon,
   SettingsIcon,
+  StarIcon,
   UserIcon,
 } from '~components/Icons';
 import {
@@ -30,6 +31,7 @@ import { Button } from '~components/Button';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { Text } from '~components/Typography';
+import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/BottomSheet',
@@ -39,13 +41,22 @@ export default {
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
   const sheet = React.useRef<any>();
 
+  React.useEffect(() => {
+    window.setTimeout(() => {
+      sheet?.current?.open();
+    });
+  }, []);
+
   return (
     <BaseBox>
       <Button onClick={() => sheet?.current?.open?.()}>Open</Button>
       <BottomSheetComponent {...args} ref={sheet}>
         <BottomSheetHeader
-          title="Select Account"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          title="Select Account & Update Details"
+          subtitle="Header subtitle"
+          prefix={<StarIcon color="surface.text.muted.lowContrast" size="large" />}
+          suffix={<Badge variant="positive">label</Badge>}
+          // leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         {/* <BottomSheetBody>any content</BottomSheetBody>
         <BottomSheetFooter
@@ -303,7 +314,7 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
           <BottomSheetComponent {...args}>
             <BottomSheetHeader
               title="Select Account"
-              leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
             <BottomSheetBody>
               <SingleSelectContent />
@@ -336,7 +347,7 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
           <BottomSheetComponent {...args}>
             <BottomSheetHeader
               title="Select Account"
-              leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
             <BottomSheetBody>
               <MultiSelectContent />

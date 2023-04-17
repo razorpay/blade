@@ -13,6 +13,7 @@ import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
+import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSpace } from '~utils';
 
@@ -345,6 +346,7 @@ const _BottomSheet = React.forwardRef<any, BottomSheetProps>(
           }}
         >
           <BaseBox height="100%" display="flex" flexDirection="column">
+            <BottomSheetCloseButton />
             <BottomSheetGrabHandle ref={grabHandleRef} {...bind()} />
             {children}
           </BaseBox>
