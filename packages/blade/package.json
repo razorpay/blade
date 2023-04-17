@@ -226,6 +226,11 @@
         "path": "./build/components/index.web.js",
         "maxSize": "200kB"
       }
-    ]
+    ],
+    "ci": {
+      "trackBranches": [
+        "master"
+      ]
+    }
   }
 }
