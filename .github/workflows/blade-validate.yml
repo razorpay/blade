@@ -20,6 +20,9 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile
+         - name: Build Blade
+        run: yarn build
+        working-directory: packages/blade
       - name: Run Bundlewatch
         run: yarn bundlewatch
         working-directory: packages/blade
@@ -31,6 +34,4 @@ jobs:
       - name: Run Web & Native Tests
         run: yarn test
         working-directory: packages/blade
-      - name: Build Blade
-        run: yarn build
-        working-directory: packages/blade
+
