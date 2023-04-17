@@ -31,7 +31,7 @@ const myCustomTheme = {
 const App = () => {
   // ...
   return (
-    <BladeProvider theme={bladeTheme}>
+    <BladeProvider themeTokens={bladeTheme}>
       {/* The theme provider below will merge and replace any top level keys from `bladeTheme` above */}
       <ThemeProvider theme={myCustomTheme}>
         <Button>Hello</Button>

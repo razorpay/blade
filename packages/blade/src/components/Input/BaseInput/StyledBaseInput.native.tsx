@@ -102,11 +102,12 @@ const getRNInputStyles = (
       interactionElement: props.interactionElement,
       suffix: props.suffix,
       trailingIcon: props.trailingIcon,
+      isTextArea: props.isTextArea,
     }),
     lineHeight: undefined,
     textAlignVertical: 'top',
     height: props.isTextArea
-      ? `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`
+      ? `${props.theme.typography.lineHeights[300] * (props.numberOfLines ?? 0)}px`
       : makeSize(size[36]),
   };
 };

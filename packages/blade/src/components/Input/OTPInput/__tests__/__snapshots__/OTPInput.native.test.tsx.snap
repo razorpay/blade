@@ -56,7 +56,7 @@ exports[`<OTPInput /> should render 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="bold"
-          lineHeight="s"
+          lineHeight={50}
           style={
             Array [
               Object {
@@ -116,16 +116,16 @@ exports[`<OTPInput /> should render 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight="l"
+            lineHeight={100}
             style={
               Array [
                 Object {
                   "color": "hsla(217, 56%, 17%, 1)",
                   "fontFamily": "Lato",
-                  "fontSize": 15,
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 24,
+                  "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -246,7 +246,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "height": 36,
@@ -382,7 +382,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "height": 36,
@@ -518,7 +518,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "height": 36,
@@ -654,7 +654,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "height": 36,
@@ -790,7 +790,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "height": 36,
@@ -926,7 +926,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "fontFamily": "Lato",
-                      "fontSize": 15,
+                      "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
                       "height": 36,

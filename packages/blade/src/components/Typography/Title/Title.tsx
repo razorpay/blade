@@ -8,7 +8,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type TitleProps = {
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xlarge';
   contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: StringChildrenType;
@@ -28,7 +28,7 @@ const getProps = ({
     fontSize: 600,
     fontWeight: 'bold',
     fontStyle: 'normal',
-    lineHeight: '4xl',
+    lineHeight: 700,
     fontFamily: 'text',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
     componentName: 'title',
@@ -37,15 +37,19 @@ const getProps = ({
 
   if (size === 'small') {
     props.fontSize = 600;
-    props.lineHeight = '4xl';
+    props.lineHeight = 500;
     props.as = isPlatformWeb ? 'h3' : undefined;
   } else if (size === 'medium') {
     props.fontSize = 700;
-    props.lineHeight = '4xl';
+    props.lineHeight = 600;
     props.as = isPlatformWeb ? 'h2' : undefined;
   } else if (size === 'large') {
+    props.fontSize = 800;
+    props.lineHeight = 700;
+    props.as = isPlatformWeb ? 'h1' : undefined;
+  } else if (size === 'xlarge') {
     props.fontSize = 1000;
-    props.lineHeight = '6xl';
+    props.lineHeight = 800;
     props.as = isPlatformWeb ? 'h1' : undefined;
   }
 

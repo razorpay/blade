@@ -90,16 +90,16 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -211,16 +211,16 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -402,16 +402,16 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -593,16 +593,16 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -714,16 +714,16 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1064,16 +1064,16 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       color="action.text.primary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(216, 16%, 60%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1185,16 +1185,16 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       color="feedback.information.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(187, 68%, 52%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1306,16 +1306,16 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       color="feedback.information.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(193, 100%, 35%, 0.32)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1427,16 +1427,16 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       color="feedback.negative.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(8, 99%, 65%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1548,16 +1548,16 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       color="feedback.negative.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(9, 91%, 56%, 0.32)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1669,16 +1669,16 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       color="feedback.neutral.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(216, 15%, 54%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1790,16 +1790,16 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       color="feedback.neutral.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(216, 15%, 54%, 0.32)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1911,16 +1911,16 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       color="feedback.notice.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(35, 84%, 54%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -2032,16 +2032,16 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       color="feedback.notice.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(36, 100%, 44%, 0.32)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -2153,16 +2153,16 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       color="feedback.positive.action.text.primary.disabled.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(149, 99%, 35%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -2274,16 +2274,16 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       color="feedback.positive.action.text.primary.disabled.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(155, 100%, 31%, 0.32)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -2395,16 +2395,16 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
       color="action.text.secondary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(218, 19%, 81%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -2516,16 +2516,16 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       color="action.text.tertiary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(218, 19%, 81%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -2637,16 +2637,16 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       color="feedback.information.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(180, 100%, 97%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -2758,16 +2758,16 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       color="feedback.information.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(195, 100%, 31%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -2879,16 +2879,16 @@ exports[`<BaseButton /> should render large size button 1`] = `
       color="action.text.primary.default"
       fontSize={200}
       fontWeight="bold"
-      lineHeight="m"
+      lineHeight={300}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 17,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 18,
+            "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -3147,16 +3147,16 @@ exports[`<BaseButton /> should render loading button 1`] = `
       color="action.text.primary.disabled"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(216, 16%, 60%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -3268,16 +3268,16 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       color="action.text.primary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -3389,16 +3389,16 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       color="feedback.negative.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(0, 100%, 97%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -3510,16 +3510,16 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       color="feedback.negative.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(8, 73%, 47%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -3631,16 +3631,16 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       color="feedback.neutral.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(220, 27%, 98%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -3752,16 +3752,16 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       color="feedback.neutral.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -3873,16 +3873,16 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       color="feedback.notice.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(32, 100%, 94%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -3994,16 +3994,16 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       color="feedback.notice.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(38, 97%, 38%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -4115,16 +4115,16 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       color="feedback.positive.action.text.primary.default.highContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(107, 100%, 96%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -4236,16 +4236,16 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       color="feedback.positive.action.text.primary.default.lowContrast"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(160, 100%, 26%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -4357,16 +4357,16 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
       color="action.text.secondary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(213, 89%, 56%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -4478,7 +4478,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
       color="action.text.primary.default"
       fontSize={75}
       fontWeight="bold"
-      lineHeight="s"
+      lineHeight={50}
       style={
         Array [
           Object {
@@ -4599,16 +4599,16 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       color="action.text.tertiary.default"
       fontSize={100}
       fontWeight="bold"
-      lineHeight="l"
+      lineHeight={100}
       style={
         Array [
           Object {
             "color": "hsla(216, 33%, 29%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -4720,7 +4720,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       color="action.text.primary.default"
       fontSize={75}
       fontWeight="bold"
-      lineHeight="s"
+      lineHeight={50}
       style={
         Array [
           Object {

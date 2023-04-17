@@ -69,6 +69,14 @@ type TextInputProps = Pick<
   /**
    * Type of Input Field to be rendered. Use `PasswordInput` for type `password`
    *
+   *
+   * **Note on number type**
+   *
+   * `type="number"` internally uses `inputMode="numeric"` instead of HTML's `type="number"` which also allows text characters.
+   * If you have a usecase where you only want to support number input, you can handle it on validations end.
+   *
+   * Check out [Why the GOV.UK Design System team changed the input type for numbers](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for reasoning
+   *
    * @default text
    */
   type?: Type;

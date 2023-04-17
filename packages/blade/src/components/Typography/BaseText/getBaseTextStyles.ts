@@ -9,7 +9,7 @@ const getBaseTextStyles = ({
   fontWeight = 'regular',
   fontStyle = 'normal',
   textDecorationLine = 'none',
-  lineHeight = 'l',
+  lineHeight = 100,
   textAlign,
   theme,
 }: StyledBaseTextProps): CSSObject => {

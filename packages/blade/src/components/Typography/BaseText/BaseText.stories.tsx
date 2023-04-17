@@ -17,7 +17,7 @@ export default {
     fontStyle: 'normal',
     textAlign: 'left',
     textDecorationLine: 'none',
-    lineHeight: 'l',
+    lineHeight: 200,
     name: 'Storybook',
     children:
       'Current Accounts supercharged by RazorpayX come with integrated tools and integrations that make financial management and accounting simple',
