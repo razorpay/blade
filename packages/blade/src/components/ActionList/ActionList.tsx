@@ -9,6 +9,19 @@ import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import type { TestID } from '~src/_helpers/types';
 
+type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
+const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
+const useActionListContext = (): ActionListContextProp => {
+  const context = React.useContext(ActionListContext);
+
+  if (!context) {
+    throw new Error(
+      '[Blade ActionList]: useActionListContext has to be called inside ActionListContext.Provider',
+    );
+  }
+  return context;
+};
+
 type ActionListProps = {
   children: React.ReactNode[];
   /**
@@ -100,32 +113,36 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
   );
   const isMultiSelectable = selectionType === 'multiple';
 
+  const actionListContextValue = React.useMemo(() => ({ surfaceLevel }), [surfaceLevel]);
+
   return (
-    <StyledActionList
-      surfaceLevel={surfaceLevel}
-      elevation={theme.shadows.androidElevation.level[2]}
-      id={`${dropdownBaseId}-actionlist`}
-      {...makeAccessible({
-        role: actionListContainerRole,
-        multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
-        labelledBy: `${dropdownBaseId}-label`,
-      })}
-      {...metaAttribute({ name: MetaConstants.ActionList, testID })}
-    >
-      {actionListHeaderChild}
-      <ActionListBox
-        actionListItemWrapperRole={actionListItemWrapperRole}
-        childrenWithId={childrenWithId}
-        sectionData={sectionData}
-        isMultiSelectable={isMultiSelectable}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={actionListItemRef as any}
-      />
-      {actionListFooterChild}
-    </StyledActionList>
+    <ActionListContext.Provider value={actionListContextValue}>
+      <StyledActionList
+        surfaceLevel={surfaceLevel}
+        elevation={theme.shadows.androidElevation.level[2]}
+        id={`${dropdownBaseId}-actionlist`}
+        {...makeAccessible({
+          role: actionListContainerRole,
+          multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
+          labelledBy: `${dropdownBaseId}-label`,
+        })}
+        {...metaAttribute({ name: MetaConstants.ActionList, testID })}
+      >
+        {actionListHeaderChild}
+        <ActionListBox
+          actionListItemWrapperRole={actionListItemWrapperRole}
+          childrenWithId={childrenWithId}
+          sectionData={sectionData}
+          isMultiSelectable={isMultiSelectable}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ref={actionListItemRef as any}
+        />
+        {actionListFooterChild}
+      </StyledActionList>
+    </ActionListContext.Provider>
   );
 };
 
 const ActionList = React.memo(_ActionList);
 
-export { ActionList, ActionListProps };
+export { ActionList, useActionListContext, ActionListProps };

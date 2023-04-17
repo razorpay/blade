@@ -42,6 +42,7 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
         keyExtractor={(item: any) => {
           return item.value;
         }}
+        stickySectionHeadersEnabled={false}
         renderSectionHeader={renderActionListSectionHeader}
         renderSectionFooter={renderActionListSectionDivider}
         renderItem={renderActionListItem}

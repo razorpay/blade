@@ -11,6 +11,7 @@ import {
   getSeparatorRole,
   isRoleMenu,
 } from './getA11yRoles';
+import { useActionListContext } from './ActionList';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -22,7 +23,6 @@ import size from '~tokens/global/size';
 import type { DropdownProps } from '~components/Dropdown';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { useTheme } from '~components/BladeProvider';
 
 type ActionListItemProps = {
   title: string;
@@ -106,7 +106,7 @@ const _ActionListSection = ({
   testID,
   _hideDivider,
 }: ActionListSectionProps): JSX.Element => {
-  const { theme } = useTheme();
+  const { surfaceLevel } = useActionListContext();
 
   return (
     <BaseBox
@@ -114,11 +114,7 @@ const _ActionListSection = ({
         role: getActionListSectionRole(),
         label: title,
       })}
-      style={{
-        paddingTop: theme.spacing[3],
-        marginTop: -theme.spacing[3],
-      }}
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`}
       {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
     >
       {/* We're announcing title as group label so we can hide this */}

@@ -812,7 +812,7 @@ export const InternalSectionListPerformance = (): React.ReactElement => {
     <Dropdown selectionType="multiple">
       <SelectInput label="Select fruits" />
       <DropdownOverlay>
-        <ActionList>
+        <ActionList surfaceLevel={3}>
           <ActionListItem title="Apples" value="Apples" />
           <ActionListItem title="Appricots" value="Appricots" />
           <ActionListItem title="Abc" value="Abc" />
