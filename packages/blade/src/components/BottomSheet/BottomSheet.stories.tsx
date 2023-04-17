@@ -17,6 +17,7 @@ import {
   RupeeIcon,
   SearchIcon,
   SettingsIcon,
+  StarIcon,
   UserIcon,
 } from '~components/Icons';
 import {
@@ -30,30 +31,25 @@ import { Button } from '~components/Button';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { Text } from '~components/Typography';
+import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/BottomSheet',
   component: BottomSheetComponent,
 } as Meta<BottomSheetProps>;
 
-const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [open, setOpen] = React.useState(false);
+const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
+  const [isOpen, setIsOpen] = React.useState(true);
 
   return (
     <BaseBox>
-      <Button
-        onClick={() => {
-          setOpen((prev) => {
-            return !prev;
-          });
-        }}
-      >
-        {open ? 'Open yes' : 'Open noe'}
-      </Button>
-      <BottomSheetComponent isOpen={open} onDismiss={() => setOpen(false)}>
+      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <BottomSheetComponent {...args} isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader
-          title="Select Account"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          title="Select Account & Update Details"
+          subtitle="Header subtitle"
+          prefix={<StarIcon color="surface.text.muted.lowContrast" size="large" />}
+          suffix={<Badge variant="positive">label</Badge>}
         />
         <BottomSheetBody>
           <ActionList>
@@ -289,7 +285,6 @@ const MultiSelectContent = (): React.ReactElement => {
 const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent> = ({
   ...args
 }) => {
-  // const sheet = React.useRef<any>();
   const isMobile = true;
 
   return (
@@ -303,8 +298,8 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
         {isMobile ? (
           <BottomSheetComponent {...args}>
             <BottomSheetHeader
-              title="Single Select"
-              leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              title="Select Account"
+              prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
             <BottomSheetBody>
               <SingleSelectContent />
@@ -336,8 +331,8 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
         {isMobile ? (
           <BottomSheetComponent {...args}>
             <BottomSheetHeader
-              title="Multi Select"
-              leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              title="Select Account"
+              prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
             <BottomSheetBody>
               <MultiSelectContent />

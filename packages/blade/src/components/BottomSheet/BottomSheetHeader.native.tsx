@@ -1,17 +1,24 @@
 import React from 'react';
 import { ComponentIds } from './componentIds';
-import { Divider } from './Divider.native';
-import { BottomSheetGrabHandle } from './BottomSheetGrabHandle.native';
-import { BottomSheetHeaderLeading } from './BottomSheetHeader.web';
+import { Divider } from './Divider';
+import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { Heading, Text } from '~components/Typography';
 
 type BottomSheetHeaderProps = {
   title: string;
-  leading?: React.ReactNode;
+  subtitle?: string;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 };
 
-const _BottomSheetHeader = ({ leading, title }: BottomSheetHeaderProps): React.ReactElement => {
+const _BottomSheetHeader = ({
+  title,
+  subtitle,
+  prefix,
+  suffix,
+}: BottomSheetHeaderProps): React.ReactElement => {
   return (
     <BaseBox backgroundColor="white" overflow="visible" flexShrink={0}>
       <BaseBox
@@ -26,7 +33,36 @@ const _BottomSheetHeader = ({ leading, title }: BottomSheetHeaderProps): React.R
         justifyContent="space-between"
         touchAction="none"
       >
-        <BottomSheetHeaderLeading title={title} prefix={leading} />
+        <BaseBox
+          flex={1}
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          userSelect="none"
+          maxWidth="90%"
+        >
+          <BaseBox
+            marginRight="spacing.4"
+            marginTop="spacing.2"
+            alignSelf="flex-start"
+            display="flex"
+          >
+            {prefix}
+          </BaseBox>
+          <BaseBox>
+            <BaseBox display="flex" flexDirection="row" alignItems="center">
+              <Heading size="small" variant="regular" type="normal">
+                {title}
+              </Heading>
+              <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
+            </BaseBox>
+            {subtitle && (
+              <Text variant="body" size="small" weight="regular">
+                {subtitle}
+              </Text>
+            )}
+          </BaseBox>
+        </BaseBox>
       </BaseBox>
       <Divider />
     </BaseBox>
@@ -37,9 +73,4 @@ const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
   componentId: ComponentIds.BottomSheetHeader,
 });
 
-export {
-  BottomSheetGrabHandle,
-  BottomSheetHeader,
-  BottomSheetHeaderLeading,
-  BottomSheetHeaderProps,
-};
+export { BottomSheetGrabHandle, BottomSheetHeader, BottomSheetHeaderProps };
