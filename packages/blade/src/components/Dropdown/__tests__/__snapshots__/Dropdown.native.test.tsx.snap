@@ -651,7 +651,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             }
             getItem={[Function]}
             getItemCount={[Function]}
-            initialNumToRender={5}
             keyExtractor={[Function]}
             onContentSizeChange={[Function]}
             onLayout={[Function]}
@@ -662,11 +661,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             onScrollEndDrag={[Function]}
             renderItem={[Function]}
             scrollEventThrottle={50}
-            stickyHeaderIndices={
-              Array [
-                0,
-              ]
-            }
+            stickyHeaderIndices={Array []}
             style={
               Array [
                 Object {
