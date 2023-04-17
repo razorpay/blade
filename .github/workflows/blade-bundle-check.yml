@@ -1,6 +1,6 @@
 name: Blade Bundle Check
 
-on: [push]
+on: [push, pull_request]
 
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
