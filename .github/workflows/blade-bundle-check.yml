@@ -1,13 +1,13 @@
 name: Blade Validate
 
-on: [pull_request]
+on: [push]
 
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
 jobs:
-  validate:
-    name: Validate Source Code
+  bundle-check:
+    name: Bundle Check
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout Codebase
@@ -20,14 +20,12 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile
-      - name: Lint Source Code
-        run: yarn lint
-      - name: Run TypeScript Checks
-        run: yarn typecheck
-        working-directory: packages/blade
-      - name: Run Web & Native Tests
-        run: yarn test
-        working-directory: packages/blade
       - name: Build Blade
         run: yarn build
         working-directory: packages/blade
+      - name: Run Bundlewatch
+        run: yarn bundlewatch
+        env:
+          BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+        working-directory: packages/blade
+
