@@ -17,8 +17,8 @@ const BottomSheetCloseButton = (): React.ReactElement => {
       alignItems="center"
       justifyContent="center"
       position="absolute"
-      top="spacing.5"
-      right="spacing.5"
+      top="spacing.4"
+      right="spacing.4"
     >
       <IconButton
         size="large"

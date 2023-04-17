@@ -16,6 +16,7 @@ import type { BottomSheetProps } from './types';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
+import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { makeSpace, getComponentId } from '~utils';
 
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
@@ -46,6 +47,7 @@ const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
     backgroundColor: theme.colors.surface.background.level2.lowContrast,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative',
   };
 });
 
@@ -193,7 +195,12 @@ const _BottomSheet = ({
             ref={sheetRef}
             index={-1}
             animateOnMount={false}
-            handleComponent={BottomSheetGrabHandle}
+            handleComponent={() => (
+              <BaseBox position="relative">
+                <BottomSheetCloseButton />
+                <BottomSheetGrabHandle />
+              </BaseBox>
+            )}
             backgroundComponent={BottomSheetSurface}
             footerComponent={renderFooter}
             backdropComponent={renderBackdrop}
