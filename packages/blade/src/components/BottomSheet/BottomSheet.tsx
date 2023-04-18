@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
@@ -26,6 +27,7 @@ type BottomSheetProps = {
   isOpen?: boolean;
   onDismiss?: () => void;
   children: React.ReactNode;
+  initialFocusRef?: React.MutableRefObject<any>;
   snapPoints: SnapPoints;
 };
 
@@ -77,6 +79,7 @@ const _BottomSheet = ({
   isOpen,
   onDismiss,
   children,
+  initialFocusRef,
   snapPoints = [0.35, 0.5, 0.85],
 }: BottomSheetProps): React.ReactElement => {
   const { theme } = useTheme();
@@ -95,6 +98,7 @@ const _BottomSheet = ({
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const grabHandleRef = React.useRef<HTMLDivElement>(null);
   const originalFocusElement = React.useRef<HTMLElement>(null);
+  const defaultInitialFocusRef = React.useRef<any>(null);
 
   const setPosY = React.useCallback(
     (value: number, limit = true) => {
@@ -129,6 +133,16 @@ const _BottomSheet = ({
     originalFocusElement.current = null;
   }, [originalFocusElement]);
 
+  const focusOnInitialRef = React.useCallback(() => {
+    if (!initialFocusRef) {
+      // focus on close button
+      defaultInitialFocusRef.current?.focus();
+    } else {
+      // focus on the initialRef passed by the user
+      initialFocusRef.current?.focus();
+    }
+  }, [initialFocusRef]);
+
   const close = React.useCallback(() => {
     setPosY(0);
     returnFocus();
@@ -143,7 +157,8 @@ const _BottomSheet = ({
     scrollLockRef.current.activate();
     // @ts-expect-error this is a mutable ref
     originalFocusElement.current = originalFocusElement.current ?? document.activeElement;
-  }, [dimensions.height, scrollLockRef, setPosY]);
+    focusOnInitialRef();
+  }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPosY]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
@@ -153,7 +168,7 @@ const _BottomSheet = ({
     if (isOpen === false) {
       close();
     }
-  }, [close, isOpen, open]);
+  }, [close, initialFocusRef, isOpen, open]);
 
   // sync the select dropdown's state with bottomsheet's state
   React.useEffect(() => {
@@ -318,6 +333,7 @@ const _BottomSheet = ({
       setHeaderHeight,
       scrollRef,
       bind,
+      defaultInitialFocusRef,
     }),
     [
       _isOpen,
@@ -331,6 +347,7 @@ const _BottomSheet = ({
       setHeaderHeight,
       scrollRef,
       bind,
+      defaultInitialFocusRef,
     ],
   );
 
@@ -342,7 +359,7 @@ const _BottomSheet = ({
     exitTransitionDuration: theme.motion.duration.moderate,
   });
 
-  // we will need to reset these values otherwise the next time the bottomsheet opens
+  // We will need to reset these values otherwise the next time the bottomsheet opens
   // this will be populated and the animations won't run
   // why?: because how the usePresence hook works, we actually just unmount the
   // html contents not the whole <BottomSheet /> react component
@@ -355,7 +372,12 @@ const _BottomSheet = ({
     }
   }, [isMounted, scrollLockRef]);
 
-  if (!isMounted) {
+  // We don't want to destroy the react tree when we are rendering inside Dropdown
+  // Because if we bail out early then ActionList won't render,
+  // and Dropdown manages it's state based on the rendered JSX of ActionList
+  // If we don't render ActionList Dropdown state will reset each time we open/close BottomSheet
+  const isInsideDropdown = Boolean(dropdownBottomSheetProps);
+  if (!isMounted && !isInsideDropdown) {
     return <></>;
   }
 

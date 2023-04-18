@@ -1,7 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/display-name */
 import type { ReactElement } from 'react';
 
+import React from 'react';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
+import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type IconButtonProps = {
   /**
@@ -34,22 +39,20 @@ type IconButtonProps = {
  * Component for making clickable icons with transparent background.
  * For other cases please use `Button` component with `icon` prop.
  */
-const IconButton = ({
-  icon,
-  onClick,
-  size = 'medium',
-  contrast = 'low',
-  accessibilityLabel,
-}: IconButtonProps): ReactElement => {
-  return (
-    <StyledIconButton
-      onClick={onClick}
-      contrast={contrast}
-      size={size}
-      icon={icon}
-      accessibilityLabel={accessibilityLabel}
-    />
-  );
-};
+const IconButton = React.forwardRef<BladeElementRef, IconButtonProps>(
+  ({ icon, onClick, size = 'medium', contrast = 'low', accessibilityLabel }, ref): ReactElement => {
+    const innerRef = useBladeInnerRef(ref);
+    return (
+      <StyledIconButton
+        ref={innerRef as any}
+        onClick={onClick}
+        contrast={contrast}
+        size={size}
+        icon={icon}
+        accessibilityLabel={accessibilityLabel}
+      />
+    );
+  },
+);
 
 export { IconButtonProps, IconButton };

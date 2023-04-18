@@ -16,6 +16,7 @@ type BottomSheetContextProps = {
   isOpen: boolean;
   posY: number;
   isInBottomSheet: boolean;
+  defaultInitialFocusRef: React.MutableRefObject<any>;
 };
 
 const BottomSheetContext = React.createContext<BottomSheetContextProps>({
@@ -31,6 +32,7 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   isOpen: false,
   posY: 0,
   isInBottomSheet: false,
+  defaultInitialFocusRef: { current: null },
 });
 
 type DropdownBottomSheetContexProps = {
