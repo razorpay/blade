@@ -17,6 +17,7 @@ import {
   RupeeIcon,
   SearchIcon,
   SettingsIcon,
+  StarIcon,
   UserIcon,
 } from '~components/Icons';
 import {
@@ -30,33 +31,46 @@ import { Button } from '~components/Button';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { Text } from '~components/Typography';
+import { Badge } from '~components/Badge';
+import { TextInput } from '~components/Input/TextInput';
 
 export default {
   title: 'Components/BottomSheet',
   component: BottomSheetComponent,
 } as Meta<BottomSheetProps>;
 
-const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [open, setOpen] = React.useState(false);
-  const sheet = React.useRef();
+const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <BaseBox>
-      <Button onClick={() => sheet?.current.open()}>Open</Button>
-      <BottomSheetComponent ref={sheet}>
-        <BottomSheetHeader title="Select Account" />
-        <BottomSheetBody>
-          {new Array(50).fill(0).map((_, idx) => (
-            <Text key={idx}>BottomSheet body {idx}</Text>
-          ))}
-        </BottomSheetBody>
-        <BottomSheetFooter
-          title="Footer Title"
-          trailing={{
-            primary: { text: 'Apply' },
-            secondary: { text: 'Cancel' },
-          }}
+      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <BottomSheetComponent
+        {...args}
+        isOpen={isOpen}
+        onDismiss={() => {
+          console.log('closed');
+          setIsOpen(false);
+        }}
+      >
+        <BottomSheetHeader
+          title="Select Account & Update Details"
+          subtitle="Header subtitle"
+          prefix={<StarIcon color="surface.text.muted.lowContrast" size="large" />}
+          suffix={<Badge variant="positive">label</Badge>}
         />
+        <BottomSheetBody>
+          <BaseBox display="flex" flexDirection="column" gap="spacing.5">
+            <TextInput
+              type="number"
+              label="Edit your mobile number"
+              helpText="Your registered mobile number will not get charged"
+            />
+            <Button isFullWidth onClick={() => setIsOpen(false)}>
+              Continue
+            </Button>
+          </BaseBox>
+        </BottomSheetBody>
       </BottomSheetComponent>
     </BaseBox>
   );
@@ -151,7 +165,6 @@ const MultiSelectContent = (): React.ReactElement => {
 const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent> = ({
   ...args
 }) => {
-  // const sheet = React.useRef<any>();
   const isMobile = true;
 
   return (
@@ -165,8 +178,8 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
         {isMobile ? (
           <BottomSheetComponent {...args}>
             <BottomSheetHeader
-              title="Single Select"
-              leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              title="Select Account"
+              prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
             <BottomSheetBody>
               <SingleSelectContent />
@@ -198,8 +211,8 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
         {isMobile ? (
           <BottomSheetComponent {...args}>
             <BottomSheetHeader
-              title="Multi Select"
-              leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+              title="Select Account"
+              prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
             />
             <BottomSheetBody>
               <MultiSelectContent />
