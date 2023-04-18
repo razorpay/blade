@@ -7,7 +7,7 @@ import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } fr
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { Dropdown } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 
@@ -120,37 +120,47 @@ describe('<BottomSheet />', () => {
 
     const Example = (): React.ReactElement => {
       return (
-        <Dropdown selectionType="multiple">
+        <Dropdown selectionType="single">
           <SelectInput
             label="Select Action"
             onChange={({ name, values }) => {
               console.log(name, values);
             }}
           />
-          <DropdownOverlay>
-            <BottomSheet>
-              <BottomSheetBody>
-                <SingleSelectContent />
-              </BottomSheetBody>
-            </BottomSheet>
-          </DropdownOverlay>
+          <BottomSheet>
+            <BottomSheetBody>
+              <SingleSelectContent />
+            </BottomSheetBody>
+          </BottomSheet>
         </Dropdown>
       );
     };
     const { queryByTestId, getByRole } = renderWithTheme(<Example />);
 
     // open / close by clicking the select
-    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
     expect(getByRole('combobox', { name: 'Select Action' })).toBeInTheDocument();
     await user.click(getByRole('combobox', { name: 'Select Action' }));
-    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
-    await user.click(queryByTestId('bottomsheet-backdrop')!);
     await sleep(250);
-    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
+    expect(queryByTestId('bottomsheet-body')).toBeVisible();
+    await user.click(queryByTestId('bottomsheet-backdrop')!);
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // close by selecting an element & assert the select's value
+    await user.click(getByRole('combobox', { name: 'Select Action' }));
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).toBeVisible();
+    await user.click(getByRole('option', { name: 'Settings' }));
+    expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // check that cancelling should not update select's value
+    await user.click(getByRole('combobox', { name: 'Select Action' }));
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).toBeVisible();
+    await user.click(getByRole('button', { name: /Close bottomsheet/i })!);
+    expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
   });
 
   viewport.cleanup();
