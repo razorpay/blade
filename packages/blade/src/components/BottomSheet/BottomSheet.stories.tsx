@@ -40,7 +40,7 @@ export default {
 } as Meta<BottomSheetProps>;
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <BaseBox>

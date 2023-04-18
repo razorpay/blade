@@ -72,14 +72,13 @@ const _BottomSheet = ({
   const header = React.useRef<React.ReactNode>();
   const footer = React.useRef<React.ReactNode>();
   const body = React.useRef<React.ReactNode>();
-  const [_isOpen, setIsOpen] = React.useState(dropdownBottomSheetProps?.isOpen || isOpen);
+  const _isOpen = dropdownBottomSheetProps?.isOpen ?? isOpen;
 
   const _snapPoints = React.useMemo(() => snapPoints.map((point) => `${point * 100}%`), [
     snapPoints,
   ]);
 
   const close = React.useCallback(() => {
-    setIsOpen(false);
     sheetRef.current?.close();
     console.log(dropdownBottomSheetProps);
     // close the select dropdown as well
@@ -88,7 +87,6 @@ const _BottomSheet = ({
   }, [dropdownBottomSheetProps, onDismiss]);
 
   const open = React.useCallback(() => {
-    setIsOpen(true);
     sheetRef.current?.snapToIndex(0);
   }, []);
 
@@ -126,22 +124,18 @@ const _BottomSheet = ({
     return <BottomSheetFooter {...props}>{footer.current}</BottomSheetFooter>;
   }, []);
 
-  const renderBackdrop = React.useCallback(
-    (props) => {
-      return (
-        <GorhomBottomSheetBackdrop
-          {...props}
-          appearsOnIndex={0}
-          disappearsOnIndex={-1}
-          pressBehavior="close"
-          opacity={1}
-          style={{ ...props.style, backgroundColor: theme.colors.overlay.background }}
-        />
-      );
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
+  const renderBackdrop = React.useCallback((props) => {
+    return (
+      <GorhomBottomSheetBackdrop
+        {...props}
+        appearsOnIndex={0}
+        disappearsOnIndex={-1}
+        pressBehavior="close"
+        opacity={1}
+        style={{ ...props.style, backgroundColor: theme.colors.overlay.background }}
+      />
+    );
+  }, []);
 
   // sync the select dropdown's state with bottomsheet's state
   React.useEffect(() => {
@@ -183,6 +177,12 @@ const _BottomSheet = ({
   // To workaround this, I'm portalling both the DropdownContext & BotomSheetContext along with the component
   const dropdownProps = useDropdown();
 
+  // This will reset the BottomSheet body state
+  // We need this because if inside the BottomSheet there is a input which is focused
+  // and user dragged down to close the sheet, even after closing the sheet the input will remain focused
+  // to remove the focus we are updating the key={} property of BottomSheetScrollView
+  const bodyResetKey = _isOpen ? 'opened' : 'closed';
+
   return (
     <Portal hostName="BladeBottomSheetPortal">
       {/* Portalling both the context */}
@@ -207,7 +207,7 @@ const _BottomSheet = ({
             onClose={close}
             snapPoints={_snapPoints}
           >
-            <BottomSheetScrollView stickyHeaderIndices={[0]}>
+            <BottomSheetScrollView key={bodyResetKey} stickyHeaderIndices={[0]}>
               {header.current}
               {body.current}
             </BottomSheetScrollView>
