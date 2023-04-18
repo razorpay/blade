@@ -110,6 +110,7 @@ We will achieve the following with this:
   - Some of the design systems were limited to only checking bundle size limit and not doing any diff
 - Explored internal razorpay projects.
   - All the projects are only doing bundle size limits and none of them are doing master diffing.
+- Discovered [bundlemon](https://github.com/LironEr/bundlemon) while writing this RFC, exploring it as an alternative to bundlewatch
 
 # Adoption strategy
 - NA
