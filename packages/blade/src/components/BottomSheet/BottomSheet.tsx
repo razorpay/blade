@@ -355,7 +355,6 @@ const _BottomSheet = ({
     }
   }, [isMounted, scrollLockRef]);
 
-  console.log(grabHandleHeight, headerHeight);
   if (!isMounted) {
     return <></>;
   }
