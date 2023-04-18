@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/display-name */
 import React from 'react';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 
 type IconButtonProps = {
   /**
@@ -38,9 +41,10 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
   { icon, onClick, size = 'medium', contrast = 'low', accessibilityLabel },
   ref,
 ) => {
+  const innerRef = useBladeInnerRef(ref);
   return (
     <StyledIconButton
-      ref={ref}
+      ref={innerRef as any}
       onClick={onClick}
       contrast={contrast}
       size={size}
