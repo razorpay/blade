@@ -2,41 +2,30 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import userEvents from '@testing-library/user-event';
-import { createEvent, fireEvent, waitFor } from '@testing-library/react';
 import { mockViewport } from 'jsdom-testing-mocks';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { SelectInput } from '~components/Input/SelectInput';
+import { ActionList, ActionListItem } from '~components/ActionList';
 
-// from: https://github.com/pmndrs/use-gesture/blob/main/test/utils.tsx
-function patchCreateEvent(createEvent: any): void {
-  // patching createEvent
-  for (const key in createEvent) {
-    if (key.startsWith('pointer')) {
-      const fn = createEvent[key.replace('pointer', 'mouse')];
-      if (!fn) continue;
-      // eslint-disable-next-line func-names
-      createEvent[key] = function (
-        type: unknown,
-        { pointerId = 1, pointerType = 'mouse', ...rest } = {},
-      ) {
-        const event = fn(type, rest);
-        event.pointerId = pointerId;
-        event.pointerType = pointerType;
-        const eventType = event.type;
-        Object.defineProperty(event, 'type', {
-          get: () => {
-            return eventType.replace('mouse', 'pointer');
-          },
-        });
-        return event;
-      };
-    }
-  }
-}
+export const sleep = (delay = 10): Promise<number> =>
+  new Promise((resolve) => setTimeout(resolve, delay));
 
-patchCreateEvent(createEvent);
+const SingleSelectContent = (): React.ReactElement => {
+  return (
+    <ActionList>
+      <ActionListItem title="Home" value="Home" />
+      <ActionListItem title="Settings" value="settings" />
+      <ActionListItem title="Info" value="info" />
+      <ActionListItem title="Price" value="price" />
+      <ActionListItem title="Contact" value="contact" />
+      <ActionListItem title="About" value="about" />
+    </ActionList>
+  );
+};
 
 describe('<BottomSheet />', () => {
   const viewport = mockViewport({ width: '320px', height: '568px' });
@@ -45,17 +34,15 @@ describe('<BottomSheet />', () => {
     const user = userEvents.setup();
 
     const Example = (): React.ReactElement => {
-      const sheet = React.useRef();
+      const [isOpen, setIsOpen] = React.useState(false);
 
       return (
         <>
-          <Button onClick={() => sheet?.current.open()}>Open</Button>
-          <BottomSheet ref={sheet}>
+          <Button onClick={() => setIsOpen(true)}>Open</Button>
+          <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
             <BottomSheetHeader title="Select Account" />
             <BottomSheetBody>
-              {new Array(50).fill(0).map((_, idx) => (
-                <Text key={idx}>BottomSheet body {idx}</Text>
-              ))}
+              <Text>BottomSheet body</Text>
             </BottomSheetBody>
             <BottomSheetFooter
               title="Footer Title"
@@ -68,30 +55,29 @@ describe('<BottomSheet />', () => {
         </>
       );
     };
-    const { getByText, getByTestId } = renderWithTheme(<Example />);
+    const { getByText, queryByTestId } = renderWithTheme(<Example />);
 
-    expect(getByTestId('bottomsheet-body')).not.toBeVisible();
+    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
     await user.click(getByText(/open/i));
-    expect(getByTestId('bottomsheet-body')).toBeVisible();
-    await user.click(getByTestId('bottomsheet-backdrop'));
-    expect(getByTestId('bottomsheet-body')).not.toBeVisible();
+    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
+    await user.click(queryByTestId('bottomsheet-backdrop')!);
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
   });
 
-  it('should close with gestures', async () => {
+  it('should close with close button', async () => {
     const user = userEvents.setup();
 
     const Example = (): React.ReactElement => {
-      const sheet = React.useRef();
+      const [isOpen, setIsOpen] = React.useState(false);
 
       return (
         <>
-          <Button onClick={() => sheet?.current.open()}>Open</Button>
-          <BottomSheet ref={sheet}>
+          <Button onClick={() => setIsOpen(true)}>Open</Button>
+          <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
             <BottomSheetHeader title="Select Account" />
             <BottomSheetBody>
-              {new Array(50).fill(0).map((_, idx) => (
-                <Text key={idx}>BottomSheet body {idx}</Text>
-              ))}
+              <Text>BottomSheet body</Text>
             </BottomSheetBody>
             <BottomSheetFooter
               title="Footer Title"
@@ -105,26 +91,66 @@ describe('<BottomSheet />', () => {
       );
     };
 
-    const { getByText, getByTestId } = renderWithTheme(<Example />);
+    const { getByText, getByRole, queryByTestId } = renderWithTheme(<Example />);
 
-    expect(getByTestId('bottomsheet-body')).not.toBeVisible();
+    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
     await user.click(getByText(/open/i));
-    expect(getByTestId('bottomsheet-body')).toBeVisible();
-    // drag down
-    fireEvent.pointerDown(getByTestId('bottomsheet-body'), {
-      pointerId: 4,
-      clientX: 50,
-      clientY: 20,
-    });
-    fireEvent.pointerMove(getByTestId('bottomsheet-body'), {
-      pointerId: 4,
-      clientX: 50,
-      clientY: 50,
-    });
+    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
+    await user.click(getByRole('button', { name: /Close bottomsheet/i })!);
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
+  });
 
-    await waitFor(() => {
-      expect(getByTestId('bottomsheet-body')).not.toBeVisible();
-    });
+  it('should work with initial state as open', () => {
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true}>
+          <BottomSheetBody>
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+        </BottomSheet>
+      );
+    };
+    const { queryByTestId } = renderWithTheme(<Example />);
+    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
+  });
+
+  it('should compose with Dropdown single select', async () => {
+    const user = userEvents.setup();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <Dropdown selectionType="multiple">
+          <SelectInput
+            label="Select Action"
+            onChange={({ name, values }) => {
+              console.log(name, values);
+            }}
+          />
+          <DropdownOverlay>
+            <BottomSheet>
+              <BottomSheetBody>
+                <SingleSelectContent />
+              </BottomSheetBody>
+            </BottomSheet>
+          </DropdownOverlay>
+        </Dropdown>
+      );
+    };
+    const { queryByTestId, getByRole } = renderWithTheme(<Example />);
+
+    // open / close by clicking the select
+    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
+    expect(getByRole('combobox', { name: 'Select Action' })).toBeInTheDocument();
+    await user.click(getByRole('combobox', { name: 'Select Action' }));
+    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
+    await user.click(queryByTestId('bottomsheet-backdrop')!);
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
+
+    // close by selecting an element & assert the select's value
+
+    // check that cancelling should not update select's value
   });
 
   viewport.cleanup();
