@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 7.0.4
+
+### Patch Changes
+
+- e3d5321c: perf(blade): integrate SectionList in ActionList
+
 ## 7.0.3
 
 ### Patch Changes
