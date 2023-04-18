@@ -66,6 +66,7 @@ We will achieve the following with this:
 - To get a diff of master we will need to allow Bundlewatch to add a build-status check to the PR (requires github admin approval). The status check will show the diff between the current bundle size and the size of the bundle on master. This will help us to visualize the impact of our changes on the bundle size.
 - The build-status check will show the bundle size like this:
 <img src="./images/bundle-size/build-status.png" width="800" />
+
 - When you click on the `Details` link, it will take you to a page like this:
 <img src="./images/bundle-size/bundle-details.png" width="800" />
 
