@@ -68,10 +68,12 @@ We will achieve the following with this:
 <img src="./images/bundle-size/build-status.png" width="800" />
 - When you click on the `Details` link, it will take you to a page like this:
 <img src="./images/bundle-size/bundle-details.png" width="800" />
+
 - This does not post any comments on the PR to show the diff or the bundle size, we will have to write some code to extract bundle size from the Github Action, curate a custom comment and post it on the PR.
 
 ### Tree Shaking Check
 We will achieve the following with this:
+
 3. Ensure our tree-shaking works as expected by adding a check to ensure that unused components are not included in the bundle.
 
 - We will use [size-limit](https://github.com/ai/size-limit) for this
