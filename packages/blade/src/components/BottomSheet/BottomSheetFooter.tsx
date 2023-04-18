@@ -118,7 +118,7 @@ const BottomSheetFooter = ({
     // we calculate the height on the next browser paint
     window.setTimeout(() => {
       if (!ref.current) return;
-      setFooterHeight(ref.current.offsetHeight);
+      setFooterHeight(ref.current.getBoundingClientRect().height);
     });
   }, [ref, isOpen]);
 

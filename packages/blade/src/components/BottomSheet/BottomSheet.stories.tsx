@@ -32,6 +32,7 @@ import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
+import { TextInput } from '~components/Input/TextInput';
 
 export default {
   title: 'Components/BottomSheet',
@@ -44,7 +45,14 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
   return (
     <BaseBox>
       <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
-      <BottomSheetComponent {...args} isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+      <BottomSheetComponent
+        {...args}
+        isOpen={isOpen}
+        onDismiss={() => {
+          console.log('closed');
+          setIsOpen(false);
+        }}
+      >
         <BottomSheetHeader
           title="Select Account & Update Details"
           subtitle="Header subtitle"
@@ -52,145 +60,17 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
           suffix={<Badge variant="positive">label</Badge>}
         />
         <BottomSheetBody>
-          <BaseBox>
-            <ActionListSection title="Section Heading">
-              <ActionListItem
-                leading={<ActionListItemIcon icon={UserIcon} />}
-                trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
-                title="View Profile"
-                value="view-profile"
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={SettingsIcon} />}
-                title="Settings"
-                value="settings"
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={DownloadIcon} />}
-                title="Download"
-                value="download"
-              />
-            </ActionListSection>
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
+          <BaseBox display="flex" flexDirection="column" gap="spacing.5">
+            <TextInput
+              type="number"
+              label="Edit your mobile number"
+              helpText="Your registered mobile number will not get charged"
             />
-
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              intent="negative"
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Sign Out"
-              value="sign-out"
-            />
-            <ActionListItem
-              leading={<ActionListItemIcon icon={LogOutIcon} />}
-              title="Done"
-              value="done"
-            />
+            <Button isFullWidth onClick={() => setIsOpen(false)}>
+              Continue
+            </Button>
           </BaseBox>
         </BottomSheetBody>
-        <BottomSheetFooter
-          title="Footer Title"
-          leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
-          trailing={{
-            // <- confirm if this BottomSheet Footer should be 2 buttons or anything else?
-            primary: { text: 'Apply' },
-            secondary: { text: 'Cancel' },
-          }}
-        />
       </BottomSheetComponent>
     </BaseBox>
   );
