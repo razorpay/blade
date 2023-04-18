@@ -37,7 +37,7 @@ We will achieve the following with this:
 2. Enable a way for the PR author to visualize the impact of their changes on the bundle size by having a diff from master's bundle size.
 
 #### Bundlewatch
-- We will use [bundlewatch](bundlewatch.io) to achieve this. Bundlewatch is a tool that helps us to keep an eye on our bundle size. It works by comparing the size of our bundles against a predefined limit. If the size of the bundle exceeds the limit, the build fails. It also provides a diff between the current bundle size and the size of the bundle on master. This helps us to visualize the impact of our changes on the bundle size.
+- We will use [bundlewatch](https://bundlewatch.io) to achieve this. Bundlewatch is a tool that helps us to keep an eye on our bundle size. It works by comparing the size of our bundles against a predefined limit. If the size of the bundle exceeds the limit, the build fails. It also provides a diff between the current bundle size and the size of the bundle on master. This helps us to visualize the impact of our changes on the bundle size.
 - Bundlewatch allows us to pass a config like this in `package.json`:
 ```json
 {
