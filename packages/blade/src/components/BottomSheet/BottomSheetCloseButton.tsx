@@ -4,7 +4,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 
 const BottomSheetCloseButton = (): React.ReactElement => {
-  const { close } = useBottomSheetContext();
+  const { close, defaultInitialFocusRef } = useBottomSheetContext();
   return (
     <BaseBox
       width="28px"
@@ -21,6 +21,7 @@ const BottomSheetCloseButton = (): React.ReactElement => {
       right="spacing.4"
     >
       <IconButton
+        ref={defaultInitialFocusRef}
         size="large"
         icon={CloseIcon}
         accessibilityLabel="Close bottomsheet"

@@ -1,6 +1,8 @@
+/* eslint-disable react/display-name */
 import styled from 'styled-components';
 
 import type { ReactElement } from 'react';
+import React from 'react';
 import type { StyledIconButtonProps } from './types';
 import { castWebType, metaAttribute, makeAccessible, makeMotionTime, MetaConstants } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
@@ -45,23 +47,19 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
   };
 });
 
-const StyledIconButton = ({
-  icon: Icon,
-  onClick,
-  size,
-  contrast,
-  accessibilityLabel,
-  testID,
-}: StyledIconButtonProps): ReactElement => (
-  <StyledButton
-    onClick={onClick}
-    contrast={contrast}
-    type="button"
-    {...makeAccessible({ label: accessibilityLabel })}
-    {...metaAttribute({ name: MetaConstants.IconButton, testID })}
-  >
-    <Icon size={size} color="currentColor" />
-  </StyledButton>
+const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonProps>(
+  ({ icon: Icon, onClick, size, contrast, accessibilityLabel, testID }, ref): ReactElement => (
+    <StyledButton
+      ref={ref}
+      onClick={onClick}
+      contrast={contrast}
+      type="button"
+      {...makeAccessible({ label: accessibilityLabel })}
+      {...metaAttribute({ name: MetaConstants.IconButton, testID })}
+    >
+      <Icon size={size} color="currentColor" />
+    </StyledButton>
+  ),
 );
 
 export default StyledIconButton;

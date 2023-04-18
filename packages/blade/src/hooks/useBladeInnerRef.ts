@@ -3,7 +3,7 @@
 import React from 'react';
 import type { TextInput as TextInputReactNative, View } from 'react-native';
 import type { Platform } from '~utils';
-import { getPlatformType } from '~utils';
+import { isReactNative, getPlatformType } from '~utils';
 
 type BladeElementRef = Platform.Select<{
   web: Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View, 'focus'>;
