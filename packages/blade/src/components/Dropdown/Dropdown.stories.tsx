@@ -14,6 +14,7 @@ import {
   ActionListItem,
   ActionListItemIcon,
   ActionListSection,
+  ActionListItemText,
 } from '~components/ActionList';
 import type { ActionListProps, ActionListItemProps } from '~components/ActionList';
 import {
@@ -23,6 +24,7 @@ import {
   ArrowRightIcon,
   HistoryIcon,
   FileTextIcon,
+  HomeIcon,
 } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
@@ -805,11 +807,38 @@ WithMultipleDropdowns.args = {
   name: 'design-system',
 };
 
-export const DropdownPerformance = (): React.ReactElement => {
+export const InternalSectionListPerformance = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Select fruits" />
+      <DropdownOverlay>
+        <ActionList surfaceLevel={3}>
+          <ActionListItem title="Apples" value="Apples" />
+          <ActionListItem title="Appricots" value="Appricots" />
+          <ActionListItem title="Abc" value="Abc" />
+          <ActionListItem title="Def" value="Def" />
+          <ActionListSection title="Recent 1">
+            <ActionListItem title="Avocados" value="Avocados" />
+            <ActionListItem title="Bananas" value="Bananas" />
+            <ActionListItem title="Blueberries" value="Blueberries" />
+          </ActionListSection>
+
+          <ActionListSection title="Recent 2">
+            <ActionListItem title="Cherries" value="Cherries" />
+            <ActionListItem title="Crab apples" value="Crab apples" />
+            <ActionListItem title="Jambolan" value="Jambolan" />
+          </ActionListSection>
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+export const InternalDropdownPerformance = (): React.ReactElement => {
   const fruits = [
     'Apples',
     'Apricots',
-    'Avocados',
+    { name: 'Avocados', description: 'Avocados description' },
     'Bananas',
     'Boysenberries',
     'Blueberries',
@@ -817,7 +846,7 @@ export const DropdownPerformance = (): React.ReactElement => {
     'Cherries',
     'Cantaloupe',
     'Crab apples',
-    'Clementine',
+    { name: 'Clementine', description: 'Clementine description' },
     'Cucumbers',
     'Damson plum',
     'Dinosaur Eggs',
@@ -846,8 +875,7 @@ export const DropdownPerformance = (): React.ReactElement => {
     'Jackfruit',
     'Java Apple',
     'Jambolan',
-    'Kiwi',
-    'Kaffir Lime',
+    { name: 'Kaffir Lime', description: 'Kaffir description' },
     'Kumquat',
     'Lime',
     'Longan',
@@ -859,22 +887,26 @@ export const DropdownPerformance = (): React.ReactElement => {
     'Mulberry',
   ];
 
-  console.log('total items', fruits.length);
-  const [clickCount, setClickCount] = React.useState(0);
-
   return (
     <Dropdown selectionType="multiple">
-      <SelectInput
-        label="Select fruits"
-        onClick={() => {
-          setClickCount((prev) => prev + 1);
-          console.log('click count', clickCount);
-        }}
-      />
+      <SelectInput label="Select fruits" />
       <DropdownOverlay>
         <ActionList>
           {fruits.map((fruit) => {
-            return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+            if (typeof fruit === 'string') {
+              return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+            }
+
+            return (
+              <ActionListItem
+                trailing={<ActionListItemText>⌘ + S</ActionListItemText>}
+                leading={<ActionListItemIcon icon={HomeIcon} />}
+                description={fruit.description}
+                key={fruit.name}
+                title={fruit.name}
+                value={fruit.name}
+              />
+            );
           })}
         </ActionList>
       </DropdownOverlay>
