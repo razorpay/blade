@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import usePresence from 'use-presence';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
+import { BottomSheetFooter } from './BottomSheetFooter';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
@@ -146,11 +147,12 @@ const _BottomSheet = ({
   }, [setPosY, returnFocus, dropdownBottomSheetProps, scrollLockRef, onDismiss]);
 
   const open = React.useCallback(() => {
-    setPosY(dimensions.height * 0.5);
+    setPosY(dimensions.height * snapPoints[1]);
     scrollLockRef.current.activate();
     // @ts-expect-error this is a mutable ref
     originalFocusElement.current = originalFocusElement.current ?? document.activeElement;
     focusOnInitialRef();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPosY]);
 
   // sync controlled state to our actions
@@ -403,4 +405,4 @@ const BottomSheet = assignWithoutSideEffects(_BottomSheet, {
   componentId: ComponentIds.BottomSheet,
 });
 
-export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetProps };
+export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetFooter, BottomSheetProps };

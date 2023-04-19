@@ -11,7 +11,7 @@ export type BottomSheetProps = {
 };
 
 export type BottomSheetFooterProps = {
-  title: string;
+  title?: string;
   leading?: React.ReactNode;
   trailing?: {
     primary?: BottomSheetFooterAction;

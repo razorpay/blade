@@ -2,23 +2,22 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import type { BottomSheetProps } from './types';
-import { BottomSheetBody, BottomSheet as BottomSheetComponent } from './BottomSheet';
-
-import { BottomSheetFooter } from './BottomSheetFooter';
-import { BottomSheetHeader } from './BottomSheetHeader';
 import {
-  ArrowRightIcon,
+  BottomSheetHeader,
+  BottomSheetFooter,
+  BottomSheetBody,
+  BottomSheet as BottomSheetComponent,
+} from './BottomSheet';
+
+import {
+  BookIcon,
   ClockIcon,
-  DownloadIcon,
-  HomeIcon,
-  InfoIcon,
-  LogOutIcon,
-  PhoneIcon,
-  RupeeIcon,
+  CustomersIcon,
   SearchIcon,
-  SettingsIcon,
   StarIcon,
-  UserIcon,
+  ThumbsUpIcon,
+  TrendingDownIcon,
+  TrendingUpIcon,
 } from '~components/Icons';
 import {
   ActionList,
@@ -28,46 +27,45 @@ import {
 } from '~components/ActionList';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { Dropdown } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';
+import { Radio, RadioGroup } from '~components/Radio';
+import { List, ListItem } from '~components/List';
 
 export default {
   title: 'Components/BottomSheet',
   component: BottomSheetComponent,
 } as Meta<BottomSheetProps>;
 
-const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(true);
 
   return (
     <BaseBox>
-      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <Button onClick={() => setIsOpen(true)}>Add address</Button>
       <BottomSheetComponent
-        {...args}
         isOpen={isOpen}
         onDismiss={() => {
-          console.log('closed');
           setIsOpen(false);
         }}
       >
         <BottomSheetHeader
-          title="Select Account & Update Details"
-          subtitle="Header subtitle"
-          prefix={<StarIcon color="surface.text.muted.lowContrast" size="large" />}
-          suffix={<Badge variant="positive">label</Badge>}
+          title="Address Details"
+          subtitle="Saving addresses will improve your checkout experience"
+          prefix={<BookIcon color="surface.text.muted.lowContrast" size="large" />}
+          suffix={<Badge variant="positive">2 Saved</Badge>}
         />
         <BottomSheetBody>
-          <BaseBox display="flex" flexDirection="column" gap="spacing.5">
-            <TextInput
-              type="number"
-              label="Edit your mobile number"
-              helpText="Your registered mobile number will not get charged"
-            />
+          <BaseBox padding="spacing.4" gap="spacing.4" display="flex" flexDirection="column">
+            <RadioGroup label="Addresses">
+              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            </RadioGroup>
             <Button isFullWidth onClick={() => setIsOpen(false)}>
-              Continue
+              Add Another
             </Button>
           </BaseBox>
         </BottomSheetBody>
@@ -76,38 +74,215 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
   );
 };
 
-export const Default = BottomSheetTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Default.storyName = 'Default';
+export const WithHeader = WithHeaderTemplate.bind({});
 
-const SingleSelectContent = (): React.ReactElement => {
+const WithFooterTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(true);
+
   return (
-    <ActionList>
-      <ActionListItem leading={<ActionListItemIcon icon={HomeIcon} />} title="Home" value="Home" />
-      <ActionListItem
-        leading={<ActionListItemIcon icon={SettingsIcon} />}
-        title="Settings"
-        value="settings"
-      />
-      <ActionListItem leading={<ActionListItemIcon icon={InfoIcon} />} title="Info" value="info" />
-      <ActionListItem
-        leading={<ActionListItemIcon icon={RupeeIcon} />}
-        title="Price"
-        value="Price"
-      />
-      <ActionListItem
-        leading={<ActionListItemIcon icon={PhoneIcon} />}
-        title="Contact"
-        value="Contact"
-      />
-      <ActionListItem
-        leading={<ActionListItemIcon icon={UserIcon} />}
-        title="About"
-        value="About"
-      />
-    </ActionList>
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Add address</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="Saved Address" />
+        <BottomSheetBody>
+          <BaseBox padding="spacing.4">
+            <RadioGroup label="Addresses">
+              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            </RadioGroup>
+          </BaseBox>
+        </BottomSheetBody>
+        <BottomSheetFooter
+          trailing={{ primary: { text: 'Add address' }, secondary: { text: 'Remove address' } }}
+        />
+      </BottomSheetComponent>
+    </BaseBox>
   );
 };
+
+export const WithFooter = WithFooterTemplate.bind({});
+
+const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  return (
+    <Dropdown selectionType="single">
+      <SelectInput label="Sort Dishes" />
+      <BottomSheetComponent>
+        <BottomSheetHeader
+          title="Sort By"
+          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem
+              leading={<ActionListItemIcon icon={CustomersIcon} />}
+              title="Relevance (Default)"
+              value="relavance"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={ClockIcon} />}
+              title="Delivery Time"
+              value="delveiry-time"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={ThumbsUpIcon} />}
+              title="Rating"
+              value="rating"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={TrendingUpIcon} />}
+              title="Cost: Low to High"
+              value="Cost: Low to High"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={TrendingDownIcon} />}
+              title="Cost: High to Low"
+              value="Cost: High to Low"
+            />
+          </ActionList>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </Dropdown>
+  );
+};
+
+export const WithDropdownSingleSelect = WithDropdownSingleSelectTemplate.bind({});
+
+const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Cuisines Filter" />
+      <BottomSheetComponent>
+        <BottomSheetHeader
+          title="Filter By Cuisines"
+          prefix={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem title="Chinese" value="Chinese" />
+            <ActionListItem title="Italian" value="Italian" />
+            <ActionListItem title="Mexican" value="Mexican" />
+            <ActionListItem title="Indian" value="Indian" />
+            <ActionListItem title="Thai" value="Thai" />
+            <ActionListItem title="French" value="French" />
+            <ActionListItem title="Japanese" value="Japanese" />
+            <ActionListItem title="Spanish" value="Spanish" />
+            <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+            <ActionListItem title="Korean" value="Korean" />
+            <ActionListItem title="Greek" value="Greek" />
+            <ActionListItem title="Vietnamese" value="Vietnamese" />
+            <ActionListItem title="Brazilian" value="Brazilian" />
+            <ActionListItem title="Moroccan" value="Moroccan" />
+            <ActionListItem title="Caribbean" value="Caribbean" />
+            <ActionListItem title="Turkish" value="Turkish" />
+            <ActionListItem title="Lebanese" value="Lebanese" />
+            <ActionListItem title="Malaysian" value="Malaysian" />
+            <ActionListItem title="Indonesian" value="Indonesian" />
+            <ActionListItem title="Peruvian" value="Peruvian" />
+            <ActionListItem title="Ethiopian" value="Ethiopian" />
+            <ActionListItem title="Filipino" value="Filipino" />
+            <ActionListItem title="Cuban" value="Cuban" />
+            <ActionListItem title="German" value="German" />
+            <ActionListItem title="Nigerian" value="Nigerian" />
+          </ActionList>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </Dropdown>
+  );
+};
+
+export const WithDropdownMultiSelect = WithDropdownMultiSelectTemplate.bind({});
+
+const WithDropdownSectionsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Cuisines Filter" />
+      <BottomSheetComponent>
+        <BottomSheetHeader
+          title="Filter By Cuisines"
+          prefix={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListSection title="Asia">
+              <ActionListItem title="Chinese" value="Chinese" />
+              <ActionListItem title="Indian" value="Indian" />
+              <ActionListItem title="Thai" value="Thai" />
+              <ActionListItem title="Japanese" value="Japanese" />
+              <ActionListItem title="Korean" value="Korean" />
+              <ActionListItem title="Vietnamese" value="Vietnamese" />
+              <ActionListItem title="Malaysian" value="Malaysian" />
+              <ActionListItem title="Indonesian" value="Indonesian" />
+            </ActionListSection>
+
+            <ActionListSection title="Europe">
+              <ActionListItem title="Italian" value="Italian" />
+              <ActionListItem title="French" value="French" />
+              <ActionListItem title="Spanish" value="Spanish" />
+              <ActionListItem title="Greek" value="Greek" />
+              <ActionListItem title="German" value="German" />
+            </ActionListSection>
+
+            <ActionListSection title="North America">
+              <ActionListItem title="Mexican" value="Mexican" />
+              <ActionListItem title="Caribbean" value="Caribbean" />
+            </ActionListSection>
+
+            <ActionListSection title="South America">
+              <ActionListItem title="Brazilian" value="Brazilian" />
+              <ActionListItem title="Peruvian" value="Peruvian" />
+            </ActionListSection>
+
+            <ActionListSection title="Africa">
+              <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+              <ActionListItem title="Moroccan" value="Moroccan" />
+              <ActionListItem title="Ethiopian" value="Ethiopian" />
+              <ActionListItem title="Nigerian" value="Nigerian" />
+            </ActionListSection>
+          </ActionList>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </Dropdown>
+  );
+};
+
+export const WithDropdownSectionsSelect = WithDropdownSectionsTemplate.bind({});
+
+const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const initialFocusRef = React.useRef<HTMLButtonElement>(null);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Add address</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        initialFocusRef={initialFocusRef}
+      >
+        <BottomSheetHeader title="Users" />
+        <BottomSheetBody>
+          <BaseBox padding="spacing.4" gap="spacing.4" display="flex" flexDirection="column">
+            <List>
+              <ListItem>Anurag Hazra</ListItem>
+              <ListItem>Kamlesh Chandnani</ListItem>
+              <ListItem>Divyanshu Maithani</ListItem>
+            </List>
+            <TextInput label="Search Users" ref={initialFocusRef} />
+          </BaseBox>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
+
+export const InitialFocus = InitialFocusTemplate.bind({});
 
 const MultiSelectContent = (): React.ReactElement => {
   const fruites = [
@@ -151,7 +326,6 @@ const MultiSelectContent = (): React.ReactElement => {
     'Tamarind',
     'Yuzu',
   ];
-  console.log(fruites.length);
 
   return (
     <ActionList>
@@ -162,98 +336,69 @@ const MultiSelectContent = (): React.ReactElement => {
   );
 };
 
-const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent> = ({
-  ...args
-}) => {
-  const isMobile = true;
+const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <BaseBox>
-      <BaseBox marginBottom="spacing.5" marginTop="spacing.5">
-        <Text>Single Select</Text>
-      </BaseBox>
-
-      <Dropdown selectionType="single">
-        <SelectInput label="Single Select" />
-        {isMobile ? (
-          <BottomSheetComponent {...args}>
-            <BottomSheetHeader
-              title="Select Account"
-              prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-            />
-            <BottomSheetBody>
-              <SingleSelectContent />
-            </BottomSheetBody>
-
-            <BottomSheetFooter
-              title="Footer Title"
-              leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
-              trailing={{
-                // <- confirm if this BottomSheet Footer should be 2 buttons or anything else?
-                primary: { text: 'Apply' },
-                secondary: { text: 'Cancel' },
-              }}
-            />
-          </BottomSheetComponent>
-        ) : (
-          <DropdownOverlay>
-            <SingleSelectContent />
-          </DropdownOverlay>
-        )}
-      </Dropdown>
-
-      <BaseBox marginBottom="spacing.5" marginTop="spacing.5">
-        <Text>Multi Select</Text>
-      </BaseBox>
-
-      <Dropdown selectionType="multiple">
-        <SelectInput label="Multi Select" />
-        {isMobile ? (
-          <BottomSheetComponent {...args}>
-            <BottomSheetHeader
-              title="Select Account"
-              prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-            />
-            <BottomSheetBody>
-              <MultiSelectContent />
-            </BottomSheetBody>
-            <BottomSheetFooter
-              title="Footer Title"
-              leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
-              trailing={{
-                // <- confirm if this BottomSheet Footer should be 2 buttons or anything else?
-                primary: { text: 'Apply' },
-                secondary: { text: 'Cancel' },
-              }}
-            />
-          </BottomSheetComponent>
-        ) : (
-          <DropdownOverlay>
-            <MultiSelectContent />
-          </DropdownOverlay>
-        )}
-      </Dropdown>
+    <BaseBox display="flex" gap="spacing.3" flexDirection="column">
+      <Text>Custom SnapPoints at 50%, 80%, 100%</Text>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => setIsOpen(false)}
+        snapPoints={[0.5, 0.8, 1]}
+      >
+        <BottomSheetHeader
+          title="Fruits"
+          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <MultiSelectContent />
+        </BottomSheetBody>
+      </BottomSheetComponent>
     </BaseBox>
   );
 };
 
-export const WithSelect = BottomSheetWithSelectTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-WithSelect.storyName = 'WithSelect';
+export const CustomSnapPoints = SnapPointsTemplate.bind({});
 
-export const AOnlyActionList = (): React.ReactElement => {
+const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
-    <Dropdown selectionType="multiple">
-      <SelectInput
-        label="Select Action"
-        onChange={({ name, values }) => {
-          console.log(name, values);
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <BottomSheetComponent
+        {...args}
+        isOpen={isOpen}
+        onDismiss={() => {
+          console.log('closed');
+          setIsOpen(false);
         }}
-      />
-      <DropdownOverlay>
-        <MultiSelectContent />
-      </DropdownOverlay>
-    </Dropdown>
+      >
+        <BottomSheetHeader
+          title="Select Account & Update Details"
+          subtitle="Header subtitle"
+          prefix={<StarIcon color="surface.text.muted.lowContrast" size="large" />}
+          suffix={<Badge variant="positive">label</Badge>}
+        />
+        <BottomSheetBody>
+          <BaseBox display="flex" flexDirection="column" gap="spacing.5">
+            <TextInput
+              type="number"
+              label="Edit your mobile number"
+              helpText="Your registered mobile number will not get charged"
+            />
+            <Button isFullWidth onClick={() => setIsOpen(false)}>
+              Continue
+            </Button>
+          </BaseBox>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </BaseBox>
   );
 };
-AOnlyActionList.storyName = 'AOnlyActionList';
+
+export const Default = BottomSheetTemplate.bind({});
+// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
+Default.storyName = 'Default';
