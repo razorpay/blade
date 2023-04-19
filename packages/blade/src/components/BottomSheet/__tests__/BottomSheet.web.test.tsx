@@ -3,6 +3,7 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { mockViewport } from 'jsdom-testing-mocks';
+import { within } from '@testing-library/react';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
@@ -23,6 +24,30 @@ const SingleSelectContent = (): React.ReactElement => {
       <ActionListItem title="Price" value="price" />
       <ActionListItem title="Contact" value="contact" />
       <ActionListItem title="About" value="about" />
+    </ActionList>
+  );
+};
+
+const MultiSelectContent = (): React.ReactElement => {
+  const fruites = [
+    'Apple',
+    'Apricot',
+    'Avocado',
+    'Banana',
+    'Orange',
+    'Blackberry',
+    'Blueberry',
+    'Cherry',
+    'Coconut',
+    'Cucumber',
+    'Durian',
+  ];
+
+  return (
+    <ActionList>
+      {fruites.map((fruit) => {
+        return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+      })}
     </ActionList>
   );
 };
@@ -161,6 +186,74 @@ describe('<BottomSheet />', () => {
     await user.click(getByRole('button', { name: /Close bottomsheet/i })!);
     expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+  });
+
+  it('should compose with Dropdown multi select', async () => {
+    const user = userEvents.setup();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <Dropdown selectionType="multiple">
+          <SelectInput
+            label="Select Fruit"
+            onChange={({ name, values }) => {
+              console.log(name, values);
+            }}
+          />
+          <BottomSheet>
+            <BottomSheetBody>
+              <MultiSelectContent />
+            </BottomSheetBody>
+          </BottomSheet>
+        </Dropdown>
+      );
+    };
+    const { queryByTestId, getByRole } = renderWithTheme(<Example />);
+
+    const selectInput = getByRole('combobox', { name: 'Select Fruit' });
+
+    // open the dropdown
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+    expect(selectInput).toBeInTheDocument();
+    await user.click(selectInput);
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).toBeVisible();
+
+    // assert no items selected
+    expect(selectInput).toHaveTextContent('Select Option');
+
+    // select multiple elements
+    await user.click(getByRole('option', { name: 'Apple' }));
+    expect(selectInput).toHaveTextContent('Apple');
+    await user.click(getByRole('option', { name: 'Orange' }));
+    expect(selectInput).toHaveTextContent('2 items selected');
+    await user.click(getByRole('option', { name: 'Banana' }));
+    expect(selectInput).toHaveTextContent('3 items selected');
+
+    // close the sheet
+    await user.click(getByRole('button', { name: /Close bottomsheet/i })!);
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+
+    // asssert the selected items
+    expect(selectInput).toHaveTextContent('3 items selected');
+
+    // open again and ensure the previously selected elements are there
+    await user.click(selectInput);
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).toBeVisible();
+    expect(selectInput).toHaveTextContent('3 items selected');
+    expect(
+      within(getByRole('option', { name: 'Apple' })).getByRole('checkbox', { hidden: true }),
+    ).toBeChecked();
+    expect(
+      within(getByRole('option', { name: 'Orange' })).getByRole('checkbox', { hidden: true }),
+    ).toBeChecked();
+    expect(
+      within(getByRole('option', { name: 'Banana' })).getByRole('checkbox', { hidden: true }),
+    ).toBeChecked();
+    expect(
+      within(getByRole('option', { name: 'Avocado' })).getByRole('checkbox', { hidden: true }),
+    ).not.toBeChecked();
   });
 
   viewport.cleanup();
