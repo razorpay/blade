@@ -161,6 +161,7 @@
     "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-styled-components": "1.12.0",
     "bundlewatch": "0.3.3",
+    "bundlemon": "2.0.1",
     "chalk": "4.1.1",
     "copyfiles": "2.4.1",
     "dedent": "0.7.0",
@@ -232,5 +233,14 @@
         "master"
       ]
     }
+  },
+  "bundlemon": {
+    "files": [
+      {
+        "path": "./build/components/index.web.js",
+        "maxSize": "2kb",
+        "maxPercentIncrease": 5
+      }
+    ]
   }
 }

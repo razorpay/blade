@@ -28,4 +28,10 @@ jobs:
         env:
           BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
         working-directory: packages/blade
+      - name: Run BundleMon
+        run: yarn bundlemon
+        working-directory: packages/blade
+        env:
+          CI_COMMIT_SHA: ${{github.event.pull_request.head.sha || github.sha}} # important!
+
 
