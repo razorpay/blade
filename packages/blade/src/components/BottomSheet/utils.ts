@@ -2,6 +2,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 type SnapPoints = [number, ...number[]];
 
+// Taken from:
+// https://github.com/bottom-sheet/state-machine/blob/main/src/utils.ts
 function computeSnapPointBounds(
   unsafeHeight: number,
   snapPoints: SnapPoints,
