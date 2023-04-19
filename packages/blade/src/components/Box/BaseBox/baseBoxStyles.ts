@@ -215,7 +215,6 @@ const getAllProps = (
     // Visual props
     backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, breakpoint),
     borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, breakpoint),
-    transform: getResponsiveValue(props.transform, breakpoint),
     lineHeight: getSpacingValue(props.lineHeight, props.theme, breakpoint),
     border: getResponsiveValue(props.border, breakpoint),
     borderTop: getResponsiveValue(props.borderTop, breakpoint),
