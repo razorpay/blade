@@ -465,6 +465,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   text-decoration: none;
   cursor: pointer;
   width: 100%;
+  display: block;
 }
 
 .c24:hover:not([aria-disabled=true]) {

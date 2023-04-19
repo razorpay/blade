@@ -3,12 +3,7 @@ import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
-import type { DotNotationColorStringToken, TestID } from '~src/_helpers/types';
-import type { Platform } from '~src/utils/platform/platform';
-
-type MakeObjectWebOnly<T> = {
-  [P in keyof T]: Platform.Select<{ web: T[P]; native: never }>;
-};
+import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~src/_helpers/types';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -18,30 +13,7 @@ type LayoutProps = MakeObjectResponsive<
     width: SpacingValueType;
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
-  } & Pick<CSSObject, 'overflow' | 'overflowX' | 'overflowY'> &
-    Platform.Select<{
-      web: {
-        /**
-         *
-         * On Web, The **`display`** CSS property sets whether an element is treated as a block or inline element and the layout used for its children, such as flow layout, grid or flex.
-         *
-         * @see https://developer.mozilla.org/docs/Web/CSS/display
-         */
-        display: CSSObject['display'];
-      };
-      native: {
-        /**
-         *
-         *
-         * On React Native, **`display`** property sets whether an element can be `flex` or `none`
-         *
-         * @see https://reactnative.dev/docs/layout-props.html#display
-         *
-         * @default 'flex'
-         */
-        display: 'none' | 'flex';
-      };
-    }>
+  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY'>
 >;
 
 type FlexboxProps = MakeObjectResponsive<
@@ -67,9 +39,13 @@ type FlexboxProps = MakeObjectResponsive<
      * @see https://caniuse.com/?search=column-gap
      */
     columnGap: SpacingValueType;
-  } & Pick<
-    CSSObject,
-    | 'flex'
+    /**
+     * The **`flex`** CSS shorthand property sets how a flex _item_ will grow or shrink to fit the space available in its flex container.
+     *
+     * @see https://developer.mozilla.org/docs/Web/CSS/flex
+     */
+    flex: string | number;
+  } & PickCSSByPlatform<
     | 'flexWrap'
     | 'flexDirection'
     | 'flexGrow'
@@ -92,29 +68,26 @@ type PositionProps = MakeObjectResponsive<
     right: SpacingValueType;
     bottom: SpacingValueType;
     left: SpacingValueType;
-  } & Pick<CSSObject, 'position' | 'zIndex'>
+  } & PickCSSByPlatform<'position' | 'zIndex'>
 >;
 
-type GridProps = MakeObjectWebOnly<
-  MakeObjectResponsive<
-    Pick<
-      CSSObject,
-      | 'grid'
-      | 'gridColumn'
-      | 'gridRow'
-      | 'gridRowStart'
-      | 'gridRowEnd'
-      | 'gridColumnStart'
-      | 'gridColumnEnd'
-      | 'gridArea'
-      | 'gridAutoFlow'
-      | 'gridAutoRows'
-      | 'gridAutoColumns'
-      | 'gridTemplate'
-      | 'gridTemplateAreas'
-      | 'gridTemplateColumns'
-      | 'gridTemplateRows'
-    >
+type GridProps = MakeObjectResponsive<
+  PickCSSByPlatform<
+    | 'grid'
+    | 'gridColumn'
+    | 'gridRow'
+    | 'gridRowStart'
+    | 'gridRowEnd'
+    | 'gridColumnStart'
+    | 'gridColumnEnd'
+    | 'gridArea'
+    | 'gridAutoFlow'
+    | 'gridAutoRows'
+    | 'gridAutoColumns'
+    | 'gridTemplate'
+    | 'gridTemplateAreas'
+    | 'gridTemplateColumns'
+    | 'gridTemplateRows'
   >
 >;
 
@@ -146,10 +119,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'action'>
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
-  } & Pick<
-    CSSObject,
-    'transform' | 'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom'
-  >
+  } & PickCSSByPlatform<'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom'>
 >;
 
 type BoxVisualProps = MakeObjectResponsive<{
@@ -161,19 +131,22 @@ type BoxVisualProps = MakeObjectResponsive<{
 };
 
 type StyledPropsBlade = Partial<
-  MarginProps &
-    Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
-    PositionProps &
-    Pick<
-      GridProps,
-      | 'gridColumn'
-      | 'gridRow'
-      | 'gridRowStart'
-      | 'gridRowEnd'
-      | 'gridColumnStart'
-      | 'gridColumnEnd'
-      | 'gridArea'
-    >
+  Omit<
+    MarginProps &
+      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
+      PositionProps &
+      Pick<
+        GridProps,
+        | 'gridColumn'
+        | 'gridRow'
+        | 'gridRowStart'
+        | 'gridRowEnd'
+        | 'gridColumnStart'
+        | 'gridColumnEnd'
+        | 'gridArea'
+      >,
+    '__brand__'
+  >
 >;
 
 type BoxProps = Partial<

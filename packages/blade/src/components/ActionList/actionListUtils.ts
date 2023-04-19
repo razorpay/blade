@@ -45,24 +45,36 @@ const actionListAllowedChildren = [
   componentIds.ActionListSection,
 ];
 
+export type SectionData = {
+  title: string;
+  hideDivider: boolean;
+  data: ActionListItemProps[];
+}[];
+
 /**
  * Loops over action list items and returns different properties from children like option values, header and footer child, etc
  */
 const getActionListProperties = (
   children: React.ReactNode,
 ): {
+  sectionData: SectionData;
   childrenWithId?: React.ReactNode[] | null;
   actionListOptions: OptionsType;
   defaultSelectedIndices: number[];
   actionListHeaderChild: React.ReactElement | null;
   actionListFooterChild: React.ReactElement | null;
 } => {
+  const sectionData: SectionData = [];
+  let currentSection: string | null = null;
   const actionListOptions: OptionsType = [];
   const defaultSelectedIndices: number[] = [];
   let actionListHeaderChild: React.ReactElement | null = null;
   let actionListFooterChild: React.ReactElement | null = null;
 
-  const getActionListItemWithId = (child: React.ReactNode): React.ReactNode => {
+  const getActionListItemWithId = (
+    child: React.ReactNode,
+    hideDivider: boolean,
+  ): React.ReactNode => {
     if (React.isValidElement(child) && !child.props.isDisabled) {
       actionListOptions.push({
         title: child.props.title,
@@ -70,6 +82,27 @@ const getActionListProperties = (
         href: child.props.href,
       });
       const currentIndex = actionListOptions.length - 1;
+
+      const foundSection = sectionData.find((v) => v.title === currentSection);
+      // push the item in the appropriate bucket
+      if (foundSection) {
+        foundSection?.data.push({
+          ...child.props,
+          _index: currentIndex,
+        });
+      } else {
+        // create a new bucket
+        sectionData.push({
+          title: currentSection!,
+          hideDivider,
+          data: [
+            {
+              ...child.props,
+              _index: currentIndex,
+            },
+          ],
+        });
+      }
 
       if (child.props.isDefaultSelected) {
         defaultSelectedIndices.push(currentIndex);
@@ -119,8 +152,9 @@ const getActionListProperties = (
         return React.cloneElement(child, {
           // @ts-expect-error: TS doesn't understand the child's props
           children: React.Children.map(child.props.children, (childInSection) => {
+            currentSection = child.props.title;
             if (isValidAllowedChildren(childInSection, componentIds.ActionListItem)) {
-              return getActionListItemWithId(childInSection);
+              return getActionListItemWithId(childInSection, shouldHideDivider);
             }
 
             return childInSection;
@@ -131,7 +165,7 @@ const getActionListProperties = (
       }
 
       if (isValidAllowedChildren(child, componentIds.ActionListItem)) {
-        return getActionListItemWithId(child);
+        return getActionListItemWithId(child, true);
       }
 
       throw new Error(
@@ -142,6 +176,7 @@ const getActionListProperties = (
   });
 
   return {
+    sectionData,
     childrenWithId,
     actionListFooterChild,
     actionListHeaderChild,
