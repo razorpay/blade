@@ -599,20 +599,30 @@ export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
     ...selectInputArgs
   } = args;
 
-  const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
-  console.log({ currentSelection });
+  const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+
+  // React.useEffect(() => {
+  //   console.log({ currentSelection });
+  // }, [currentSelection]);
 
   return (
     <BaseBox minHeight="300px">
-      <Button onClick={() => setCurrentSelection('settings')}>Select Settings in Dropdown</Button>
+      <Button
+        onClick={() => {
+          setCurrentSelection([...currentSelection, 'config']);
+        }}
+      >
+        Select Settings in Dropdown
+      </Button>
       <BaseBox marginTop="spacing.5" />
-      <Dropdown selectionType="single">
+      <Dropdown selectionType="multiple">
         <SelectInput
           label="Select Action"
           {...selectInputArgs}
           onChange={({ values }) => {
-            console.log('onChange', values[0]);
-            setCurrentSelection(values[0]);
+            // console.log({ currentSelection });
+            // console.log('onChange', values);
+            setCurrentSelection(values);
           }}
         />
         <DropdownOverlay>
@@ -624,19 +634,19 @@ export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
               title={title}
               value={value}
               description={description}
-              isSelected={currentSelection === value}
+              isSelected={currentSelection.includes(value)}
             />
             <ActionListItem
               leading={<ActionListItemIcon icon={SettingsIcon} />}
               title="Configuration"
               value="config"
-              isSelected={currentSelection === 'config'}
+              isSelected={currentSelection.includes('config')}
             />
             <ActionListItem
               leading={<ActionListItemIcon icon={DownloadIcon} />}
               title="Download"
               value="download"
-              isSelected={currentSelection === 'download'}
+              isSelected={currentSelection.includes('download')}
             />
           </ActionList>
         </DropdownOverlay>

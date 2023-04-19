@@ -208,17 +208,17 @@ const useDropdown = (): UseDropdownReturnValue => {
       return;
     }
 
-    console.log('selectOption', index);
-
     if (selectionType === 'multiple') {
       if (selectedIndices.includes(index)) {
         // remove existing item
+        console.log('deselecting ', options[index]);
         const existingItemIndex = selectedIndices.indexOf(index);
         setSelectedIndices([
           ...selectedIndices.slice(0, existingItemIndex),
           ...selectedIndices.slice(existingItemIndex + 1),
         ]);
       } else {
+        console.log('selecting ', options[index]);
         setSelectedIndices([...selectedIndices, index]);
       }
     } else {
@@ -403,3 +403,18 @@ const useDropdown = (): UseDropdownReturnValue => {
 };
 
 export { useDropdown, DropdownContext, DropdownContextType, OptionsType };
+
+/***
+ * https://mui.com/material-ui/react-autocomplete/#controlled-states
+ * https://mui.com/material-ui/react-autocomplete/#creatable
+ *
+ * In AutoComplete users can write anything irrespective of whether it exists in options or not.
+ *
+ * Having `value={['Maharashtra', 'India']}`, might suggest that select Maharashtra and India from Dropdown
+ * but maybe they just wanted to write "Maharashtra, India"
+ *
+ * <AutoComplete value="x, y, z" />
+ *
+ *
+ *
+ */

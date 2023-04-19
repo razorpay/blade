@@ -296,12 +296,14 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
     dropdownTriggerer,
     isKeydownPressed,
     selectOption,
+    // options,
   } = useDropdown();
   const renderOnWebAs = props.href ? 'a' : 'button';
-  const isSelected =
-    typeof props._index === 'number'
-      ? selectedIndices.includes(props._index)
-      : props.isDefaultSelected;
+  const isSelected = props.isSelected
+    ? props.isSelected
+    : typeof props._index === 'number'
+    ? selectedIndices.includes(props._index)
+    : props.isDefaultSelected;
 
   React.useEffect(() => {
     validateActionListItemProps({
@@ -312,14 +314,11 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
 
   React.useEffect(() => {
     if (props._index) {
-      if (props.isSelected) {
-        console.log('selecting option (isSelect changed)', props._index);
-        selectOption(props._index, {
-          closeOnSelection: false,
-          callOnChange: false,
-          isControlledSelection: true,
-        });
-      }
+      selectOption(props._index, {
+        closeOnSelection: false,
+        callOnChange: false,
+        isControlledSelection: true,
+      });
     }
   }, [props.isSelected]);
 
