@@ -1,26 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import GorhomBottomSheet, {
-  BottomSheetBackdrop as GorhomBottomSheetBackdrop,
-  BottomSheetFooter,
-  BottomSheetScrollView,
-} from '@gorhom/bottom-sheet';
+import GorhomBottomSheet, { BottomSheetFooter, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
 import { AccessibilityInfo, findNodeHandle, Platform } from 'react-native';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
-import { BottomSheetBody } from './BottomSheetBody.native';
+import { BottomSheetBody } from './BottomSheetBody';
 import type { BottomSheetProps } from './types';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
 import { BottomSheetCloseButton } from './BottomSheetCloseButton';
+import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { makeSpace, getComponentId } from '~utils';
 
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
-import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
@@ -65,7 +61,6 @@ const _BottomSheet = ({
   onDismiss,
   initialFocusRef,
 }: BottomSheetProps): React.ReactElement => {
-  const { theme } = useTheme();
   const dropdownBottomSheetProps = useDropdownBottomSheetContext();
   const defaultInitialFocusRef = React.useRef<any>(null);
   const sheetRef = React.useRef<GorhomBottomSheet>(null);
@@ -122,19 +117,6 @@ const _BottomSheet = ({
 
   const renderFooter = React.useCallback((props): React.ReactElement => {
     return <BottomSheetFooter {...props}>{footer.current}</BottomSheetFooter>;
-  }, []);
-
-  const renderBackdrop = React.useCallback((props) => {
-    return (
-      <GorhomBottomSheetBackdrop
-        {...props}
-        appearsOnIndex={0}
-        disappearsOnIndex={-1}
-        pressBehavior="close"
-        opacity={1}
-        style={{ ...props.style, backgroundColor: theme.colors.overlay.background }}
-      />
-    );
   }, []);
 
   // sync the select dropdown's state with bottomsheet's state
@@ -203,7 +185,7 @@ const _BottomSheet = ({
             )}
             backgroundComponent={BottomSheetSurface}
             footerComponent={renderFooter}
-            backdropComponent={renderBackdrop}
+            backdropComponent={BottomSheetBackdrop}
             onClose={close}
             snapPoints={_snapPoints}
           >

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
 import { Divider } from './Divider.native';
-import type { BottomSheetFooterProps } from './BottomSheetFooter.web';
-import { BottomSheetFooterLeading, BottomSheetFooterTrailing } from './BottomSheetFooter.web';
+import type { BottomSheetFooterProps } from './types';
+import { BottomSheetFooterLeading, BottomSheetFooterTrailing } from './BottomSheetFooterCommon';
 import { ComponentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
