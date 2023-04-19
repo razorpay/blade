@@ -256,6 +256,23 @@ export const TextInput = TextInputTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 TextInput.storyName = 'TextInput';
 
+export const TextInputTypeNumber = TextInputTemplate.bind({});
+TextInputTypeNumber.storyName = 'TextInput with type number';
+TextInputTypeNumber.args = {
+  type: 'number',
+  label: 'Enter Number',
+  placeholder: 'Enter any random number',
+};
+
+// @ts-expect-error: Just another undocumented, untyped storybook property ;__;
+TextInputTypeNumber.story = {
+  parameters: {
+    docs: {
+      storyDescription: `You might notice that type number allows you to enter other characters as well. That's because instead of setting type number internally, we prefer inputMode numeric. Checkout this article for the reasoning - <b><a href="https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/">Why the GOV.UK Design System team changed the input type for numbers</a></b> \n\nIf you have a usecase of only allowing number in field, you can handle that on validations end.`,
+    },
+  },
+};
+
 export const TextInputHelpText = TextInputTemplate.bind({});
 TextInputHelpText.storyName = 'TextInput with Help Text';
 TextInputHelpText.args = {
