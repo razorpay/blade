@@ -29,7 +29,7 @@ const getBaseActionListStyles = (props: StyledActionListProps & { theme: Theme }
     borderWidth: theme.border.width.thin,
     borderColor: theme.colors.surface.border.normal.lowContrast,
     borderRadius: makeSize(theme.border.radius.medium),
-    boxShadow: isInBottomSheet ? undefined : isReactNative() ? undefined : elevation200,
+    boxShadow: isInBottomSheet || isReactNative() ? undefined : elevation200,
   };
 };
 
