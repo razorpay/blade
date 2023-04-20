@@ -68,6 +68,7 @@ const _Dropdown = ({
     if (React.isValidElement(child)) {
       if (
         !isValidAllowedChildren(child, 'SelectInput') &&
+        !isValidAllowedChildren(child, 'DropdownButton') &&
         !isValidAllowedChildren(child, componentIds.DropdownOverlay)
       ) {
         throw new Error(
@@ -77,6 +78,10 @@ const _Dropdown = ({
 
       if (isValidAllowedChildren(child, 'SelectInput')) {
         dropdownTriggerer.current = 'SelectInput';
+      }
+
+      if (isValidAllowedChildren(child, 'DropdownButton')) {
+        dropdownTriggerer.current = 'DropdownButton';
       }
     }
   });
