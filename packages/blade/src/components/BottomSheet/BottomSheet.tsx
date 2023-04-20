@@ -11,7 +11,7 @@ import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
-import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
+import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
 import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import BaseBox from '~components/Box/BaseBox';
@@ -88,9 +88,9 @@ const _BottomSheet = ({
   const [footerHeight, setFooterHeight] = React.useState(0);
   const [grabHandleHeight, setGrabHandleHeight] = React.useState(0);
 
-  const dropdownBottomSheetProps = useDropdownBottomSheetContext();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const [positionY, _setPositionY] = React.useState(0);
-  const _isOpen = dropdownBottomSheetProps?.isOpen ?? isOpen;
+  const _isOpen = bottomSheetAndDropdownGlue?.isOpen ?? isOpen;
   const [isDragging, setIsDragging] = React.useState(false);
 
   const preventScrollingRef = React.useRef(true);
@@ -145,14 +145,15 @@ const _BottomSheet = ({
     }
   }, [initialFocusRef]);
 
+  console.log(bottomSheetAndDropdownGlue);
   const close = React.useCallback(() => {
     setPositionY(0);
     returnFocus();
     onDismiss?.();
     // close the select dropdown as well
-    dropdownBottomSheetProps?.setIsOpen(false);
+    bottomSheetAndDropdownGlue?.setIsOpen(false);
     scrollLockRef.current.deactivate();
-  }, [setPositionY, returnFocus, dropdownBottomSheetProps, scrollLockRef, onDismiss]);
+  }, [setPositionY, returnFocus, bottomSheetAndDropdownGlue, scrollLockRef, onDismiss]);
 
   const open = React.useCallback(() => {
     setPositionY(dimensions.height * 0.5);
@@ -174,19 +175,22 @@ const _BottomSheet = ({
 
   // sync the select dropdown's state with bottomsheet's state
   React.useEffect(() => {
-    if (!dropdownBottomSheetProps) return;
+    if (!bottomSheetAndDropdownGlue) return;
 
     // this will let the Dropdown component know that it's rendering a bottomsheet
-    dropdownBottomSheetProps.setHasBottomSheet(true);
+    bottomSheetAndDropdownGlue.setDropdownHasBottomSheet(true);
 
-    if (dropdownBottomSheetProps.isOpen) {
+    if (bottomSheetAndDropdownGlue.isOpen) {
       open();
     }
 
-    if (!dropdownBottomSheetProps.isOpen && dropdownBottomSheetProps.selectionType === 'single') {
+    if (
+      !bottomSheetAndDropdownGlue.isOpen &&
+      bottomSheetAndDropdownGlue.selectionType === 'single'
+    ) {
       close();
     }
-  }, [close, open, dropdownBottomSheetProps]);
+  }, [close, open, bottomSheetAndDropdownGlue]);
 
   /*
       1. The content should not be scrollable on lower or middle snapPoints
@@ -381,7 +385,7 @@ const _BottomSheet = ({
   // Because if we bail out early then ActionList won't render,
   // and Dropdown manages it's state based on the rendered JSX of ActionList
   // If we don't render ActionList Dropdown state will reset each time we open/close BottomSheet
-  const isInsideDropdown = Boolean(dropdownBottomSheetProps);
+  const isInsideDropdown = Boolean(bottomSheetAndDropdownGlue);
   if (!isMounted && !isInsideDropdown) {
     return <></>;
   }

@@ -35,22 +35,32 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   defaultInitialFocusRef: { current: null },
 });
 
-type DropdownBottomSheetContexProps = {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  selectionType: 'single' | 'multiple';
-  hasBottomSheet: boolean;
-  setHasBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
-} | null;
-const DropdownBottomSheetContext = React.createContext<DropdownBottomSheetContexProps>(null);
-
 const useBottomSheetContext = (): BottomSheetContextProps => {
   const state = React.useContext(BottomSheetContext);
   return state;
 };
 
-const useDropdownBottomSheetContext = (): DropdownBottomSheetContexProps => {
-  const state = React.useContext(DropdownBottomSheetContext);
+// This context provides the bridge between Dropdown And BottomSheet
+type BottomSheetAndDropdownGlueContext = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  selectionType: 'single' | 'multiple';
+  /**
+   * This flag is true when <Dropdown> contains or renders <BottomSheet> inside of it
+   * We can use this flag to alter behavior or styles of Dropdown
+   */
+  dropdownHasBottomSheet: boolean;
+  /**
+   * This is the setter for the flag, we set this flag to true inside <BottomSheet>
+   */
+  setDropdownHasBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
+} | null;
+
+const BottomSheetAndDropdownGlueContext = React.createContext<BottomSheetAndDropdownGlueContext>(
+  null,
+);
+const useBottomSheetAndDropdownGlue = (): BottomSheetAndDropdownGlueContext => {
+  const state = React.useContext(BottomSheetAndDropdownGlueContext);
 
   return state;
 };
@@ -59,6 +69,6 @@ export {
   BottomSheetContext,
   BottomSheetContextProps,
   useBottomSheetContext,
-  DropdownBottomSheetContext,
-  useDropdownBottomSheetContext,
+  BottomSheetAndDropdownGlueContext,
+  useBottomSheetAndDropdownGlue,
 };
