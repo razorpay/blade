@@ -10,6 +10,7 @@ type UseScrollLockProps = {
 };
 
 /**
+ * Modified from: https://github.com/stipsan/react-spring-bottom-sheet/blob/main/src/hooks/useScrollLock.tsx
  * Handle scroll locking to ensure a good dragging experience on Android and iOS.
  *
  * On iOS the following may happen if scroll isn't locked:

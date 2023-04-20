@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-type SnapPoints = [number, ...number[]];
+type SnapPoints = [number, number, number];
 
 // Taken from:
 // https://github.com/bottom-sheet/state-machine/blob/main/src/utils.ts

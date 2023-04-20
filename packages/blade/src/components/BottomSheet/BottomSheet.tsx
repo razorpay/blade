@@ -42,8 +42,8 @@ const BottomSheetSurface = styled.div<{
   const blur = theme.shadows.blurRadius.level[1];
   const shadowColor = theme.shadows.color.level[1];
 
-  const shadow1 = `${offsetX}px ${offsetY}px ${blur}px 0px ${shadowColor}`;
-  const shadow2 = `0px 0px 1px 0px ${shadowColor}`;
+  const shadowLayer1 = `${offsetX}px ${offsetY}px ${blur}px 0px ${shadowColor}`;
+  const shadowLayer2 = `0px 0px 1px 0px ${shadowColor}`;
 
   return {
     background: theme.colors.surface.background.level2.lowContrast,
@@ -51,8 +51,7 @@ const BottomSheetSurface = styled.div<{
     borderTopLeftRadius: makeSpace(theme.spacing[5]),
     borderTopRightRadius: makeSpace(theme.spacing[5]),
     borderColor: theme.colors.surface.border.normal.lowContrast,
-    boxShadow: `${shadow1}, ${shadow2}`,
-
+    boxShadow: `${shadowLayer1}, ${shadowLayer2}`,
     opacity: 0,
     pointerEvents: 'none',
     transitionDuration: isDragging
@@ -66,7 +65,7 @@ const BottomSheetSurface = styled.div<{
     right: 0,
     bottom: 0,
     top: windowHeight,
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.surface.background.level2.lowContrast,
     justifyContent: 'center',
     alignItems: 'center',
     touchAction: 'none',
@@ -90,7 +89,7 @@ const _BottomSheet = ({
   const [grabHandleHeight, setGrabHandleHeight] = React.useState(0);
 
   const dropdownBottomSheetProps = useDropdownBottomSheetContext();
-  const [posY, _setPosY] = React.useState(0);
+  const [positionY, _setPositionY] = React.useState(0);
   const _isOpen = dropdownBottomSheetProps?.isOpen ?? isOpen;
   const [isDragging, setIsDragging] = React.useState(false);
 
@@ -100,7 +99,7 @@ const _BottomSheet = ({
   const originalFocusElement = React.useRef<HTMLElement>(null);
   const defaultInitialFocusRef = React.useRef<any>(null);
 
-  const setPosY = React.useCallback(
+  const setPositionY = React.useCallback(
     (value: number, limit = true) => {
       const maxValue = computeMaxContent({
         contentHeight,
@@ -108,11 +107,12 @@ const _BottomSheet = ({
         headerHeight: headerHeight + grabHandleHeight,
         maxHeight: value,
       });
-      _setPosY(limit ? maxValue : value);
+      _setPositionY(limit ? maxValue : value);
     },
     [contentHeight, footerHeight, grabHandleHeight, headerHeight],
   );
 
+  // locks the body scroll to prevent accidental scrolling of content when we drag the sheet
   const scrollLockRef = useScrollLock({
     enabled: true,
     reserveScrollBarGap: true,
@@ -128,7 +128,9 @@ const _BottomSheet = ({
   const returnFocus = React.useCallback(() => {
     if (!originalFocusElement.current) return;
     originalFocusElement.current.focus();
-    // reset the focus after it's been returned back
+    // After returning focus we will clear the original focus
+    // Because if sheet can be opened up via multiple triggers
+    // We want to ensure the focus returns back to the most recent triggerer
     // @ts-expect-error this is a mutable ref
     originalFocusElement.current = null;
   }, [originalFocusElement]);
@@ -144,21 +146,21 @@ const _BottomSheet = ({
   }, [initialFocusRef]);
 
   const close = React.useCallback(() => {
-    setPosY(0);
+    setPositionY(0);
     returnFocus();
     onDismiss?.();
     // close the select dropdown as well
     dropdownBottomSheetProps?.setIsOpen(false);
     scrollLockRef.current.deactivate();
-  }, [setPosY, returnFocus, dropdownBottomSheetProps, scrollLockRef, onDismiss]);
+  }, [setPositionY, returnFocus, dropdownBottomSheetProps, scrollLockRef, onDismiss]);
 
   const open = React.useCallback(() => {
-    setPosY(dimensions.height * 0.5);
+    setPositionY(dimensions.height * 0.5);
     scrollLockRef.current.activate();
     // @ts-expect-error this is a mutable ref
     originalFocusElement.current = originalFocusElement.current ?? document.activeElement;
     focusOnInitialRef();
-  }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPosY]);
+  }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPositionY]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
@@ -199,14 +201,17 @@ const _BottomSheet = ({
       last,
       cancel,
       tap,
-      movement: [_mx, my],
-      velocity: [_vx, vy],
+      movement: [_movementX, movementY],
+      velocity: [_velocityX, velocityY],
       lastOffset: [_, lastOffsetY],
       down,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
       setIsDragging(down);
-      const rawY = lastOffsetY - my;
+      // lastOffsetY is the previous position user stopped dragging the sheet
+      // movementY is the drag amount from the bottom of the screen, so as you drag up the movementY goes into negatives
+      // and rawY is the calculated offset from the last position of the bottomsheet to current drag amount.
+      const rawY = lastOffsetY - movementY;
 
       const lowerSnapPoint = dimensions.height * snapPoints[0];
       const upperSnapPoint = dimensions.height * snapPoints[snapPoints.length - 1];
@@ -214,7 +219,7 @@ const _BottomSheet = ({
       // predictedY is used to create velocity driven swipe
       // the faster you swipe the more distance you cover
       // this enables users to reach upper & lower snappoint with a single swipe
-      const predictedDistance = my * (vy / 2);
+      const predictedDistance = movementY * (velocityY / 2);
       const predictedY = Math.max(
         lowerSnapPoint,
         Math.min(upperSnapPoint, rawY - predictedDistance * 2),
@@ -278,17 +283,17 @@ const _BottomSheet = ({
         }
       }
 
-      setPosY(newY, !down);
+      setPositionY(newY, !down);
     },
     {
-      from: [0, posY],
+      from: [0, positionY],
       filterTaps: true,
     },
   );
 
   useIsomorphicLayoutEffect(() => {
-    const elem = scrollRef.current;
-    if (!elem) return;
+    const scrollElement = scrollRef.current;
+    if (!scrollElement) return;
 
     const preventScrolling = (e: Event) => {
       if (preventScrollingRef?.current) {
@@ -298,7 +303,7 @@ const _BottomSheet = ({
 
     // https://www.bram.us/2016/05/02/prevent-overscroll-bounce-in-ios-mobilesafari-pure-css/
     const preventSafariOverscroll = (e: Event) => {
-      if (elem.scrollTop < 0) {
+      if (scrollElement.scrollTop < 0) {
         // TODO: figure this out, it doesn't seem to work >iOS12
         // requestAnimationFrame(() => {
         //   elem.style.overflow = 'hidden';
@@ -309,13 +314,13 @@ const _BottomSheet = ({
       }
     };
 
-    elem.addEventListener('scroll', preventScrolling);
-    elem.addEventListener('touchmove', preventScrolling);
-    elem.addEventListener('touchstart', preventSafariOverscroll);
+    scrollElement.addEventListener('scroll', preventScrolling);
+    scrollElement.addEventListener('touchmove', preventScrolling);
+    scrollElement.addEventListener('touchstart', preventSafariOverscroll);
     return () => {
-      elem.removeEventListener('scroll', preventScrolling);
-      elem.removeEventListener('touchmove', preventScrolling);
-      elem.removeEventListener('touchstart', preventSafariOverscroll);
+      scrollElement.removeEventListener('scroll', preventScrolling);
+      scrollElement.removeEventListener('touchmove', preventScrolling);
+      scrollElement.removeEventListener('touchstart', preventSafariOverscroll);
     };
   }, [scrollRef.current]);
 
@@ -324,7 +329,7 @@ const _BottomSheet = ({
       isInBottomSheet: true,
       isOpen: Boolean(_isOpen),
       close,
-      posY,
+      posY: positionY,
       headerHeight,
       contentHeight,
       footerHeight,
@@ -338,7 +343,7 @@ const _BottomSheet = ({
     [
       _isOpen,
       close,
-      posY,
+      positionY,
       headerHeight,
       contentHeight,
       footerHeight,
@@ -391,7 +396,7 @@ const _BottomSheet = ({
         style={{
           opacity: isVisible ? 1 : 0,
           pointerEvents: isVisible ? 'all' : 'none',
-          height: posY,
+          height: positionY,
           bottom: 0,
           top: 'auto',
         }}
