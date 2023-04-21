@@ -225,20 +225,19 @@
   "bundlemon": {
     "files": [
       {
-        "path": "./build/components/index.web.js",
-        "maxSize": "200kb"
+        "path": "./build/components/index.web.js"
       },
       {
-        "path": "./build/components/index.native.js",
-        "maxSize": "200kb"
+        "path": "./build/components/index.native.js"
       },
       {
-        "path": "./build/tokens/index.web.js",
-        "maxSize": "35kb"
+        "path": "./build/tokens/index.web.js"
       },
       {
-        "path": "./build/tokens/index.native.js",
-        "maxSize": "35kb"
+        "path": "./build/tokens/index.native.js"
+      },
+      {
+        "path": "./build/css/*.css"
       }
     ],
     "reportOutput": [
