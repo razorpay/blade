@@ -60,7 +60,7 @@ const onSelectChange = ({ values }) => {
 <details>
 <summary><code>onChange</code> + <code>value</code></summary>
 
-### `onChange` + `value`
+#### `onChange` + `value`
 
 ```jsx
 const [currentSelection, setCurrentSelection] = React.useState();
@@ -98,6 +98,8 @@ const onSelectChange = ({ values }) => {
 <details>
 <summary><code>useSelect</code> hook</summary>
 
+#### useSelect
+
 ```jsx
 const { selectItem, reset, dropdownRef } = useSelect();
 
@@ -126,35 +128,110 @@ Inspirations
 
 ### Approach Comparison
 
-|                          | ✅ `onChange` + `isSelected`                                                                                                                                                                                                                                | `onChange` + `value`                                                                                                                                                                                                                                                                                                                                    | `useSelect`                                                                                                                                                                                                                                                              |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| State Management         | ✅ Independent of how state is manged (consumers can store value of item in state as shown in example above, they can store selectedIndex, they might also have entire ActionList data as array somewhere and they can use `selected` prop from their data) | Consumer can store `currentSelectionValue` in state and handle on basis of that                                                                                                                                                                                                                                                                         | Handles state internally. Requires FE Core to export appropriate methods. E.g. If consumer is storing selected data in some object, they have to transform that data to our input format and then call `selectItem`                                                      |
-| Usage in other libraries | ✅ Primer, A little similar to Radix, and Polaris                                                                                                                                                                                                           | ✅ Very close to Radix, and Polaris                                                                                                                                                                                                                                                                                                                     | downshift-js                                                                                                                                                                                                                                                             |
-| DX (Opinion)             | ✅ Similar to ``tag in HTML. Also we already have`isDefaultSelected`so might be intuitive to have`isSelected` as well                                                                                                                                       | Also intuitive because we support similar thing in other Inputs. My concerns was `value={['mango', 'apple']}` with multiselect. Passing array to `value` might seem a bit strange. Also this approach will only make sense if we overall [decide to make "ActionList" non-selectable items on consumer end](#are-actionlistitem--selectable-components) | This forces you to write selection logic outside of JSX which might not be as intuitive when you want to do something like fetching initial data from API and set selected values while rendering the ActionList. More info at [why not `useSelect`](#why-not-useselect) |
+As displayed above, there are 3 approaches we can take
 
-#### Why not `useSelect`?
+- `onChange` Prop-Based
+  - [`onChange` + `value`](#onchange--value)
+  - [`onChange` + `isSelected`](#onchange--isselected-)
+- Hook-Based ([`useSelect`](#useselect))
 
-Throughout initial discussions we mostly talked about creating this hook so noting down things here which made me change my opinion-
+#### Hook-Based vs `onChange` Prop-Based
 
-- The hooks pattern for controlled inputs is not very common in ecosystem. Didn't find this being used anywhere apart from downshift-js (in their case, everything is hook). Most popular libraries follow something along the lines of `onChange` + `isSelected`.
-- Initial assumption was that there will be too much of state management on user's end with `onChange` + `isSelected` type of approach but now that I look at the [overall example](#onchange--isselected-), it doesn't seem too complex. It also covers most usecases I could think of like `reset`, reading currently selected options, etc.
-- Additional learning curve of `useSelect` API. Explaining `isSelected` is a lot more easier.
-- Since `useSelect` will return `selectOption` method, consumers have to hook this into their state management.
+First we'll discuss Prop-Based vs Hook-Based because throughout initial discussion we talked about creating hook-based API but following points made me change my opinion-
 
-```jsx
-const { values } = useFormik();
-const { selectOption } = useSelect();
+|                             | Hooks-Based Approach                                                                    | ✅ `onChange` Prop Based Approach                                                     |
+| --------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Occurences in Ecosystem** | Rare (only seen in downshift-js)                                                        | ✅ Common (Almost all libraries use some form of this approach for controlled select) |
+| **Learning Curve**          | More (Introduces new hook so need documentation on input type, output type, usage, etc) | ✅ Less (Only adds one prop on top of existing implementation)                        |
+| **API Verbosity**           | ✅ Less verbose                                                                         | Comparitively more verbose but not too complex ([Example](#onchange--isselected-))    |
 
-const doSomethingComplex = () => {
-  // ... bunch of code that updates `values`
-  selectOption(values.status);
-};
+**Conclusion**: We are going with `onChange` prop-based approach ✅
 
-// As opposed to in `onChange` it will just look like this -
-const { values } = useFormik();
+#### `onChange` + `value` vs `onChange` + `isSelected`
 
-<ActionListItem isSelected={values.status === 'pending'} title="Pending" />;
-```
+Lets compare 2 `onChange` prop-based approaches now-
+
+| `onChange` + `isSelected`                                                                    | `onChange` + `value`                                                       |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Preferred Approach if we say `ActionListItem` is selectable component independent of trigger | Preferred Approach if only `SelectInput` trigger has selectable components |
+
+**Reasoning:**
+
+- If ActionListItem is individually selectable, then having `isSelected` makes more sense so that everywhere we use `ActionList`, we'll be able to mark item as selected irrespective of trigger
+- If ActionListItem is not selectable in itself, then having `value` prop on `SelectInput` makes more sense because it's consistent with other Inputs, and we'll likely need something like this in `AutoComplete` eventually.
+
+Thus, deciding factor now is whether the ActionListItem is selectable or not.
+
+Which takes us to next conversation,
+
+### Is `ActionListItem` a selectable component?
+
+well... yes and no.
+
+#### Problem
+
+We cover 2 components in one component, SelectMenu and ActionMenu.
+
+<details>
+
+<summary>Libraries usually prefer building these separately</summary>
+
+- Primer
+  - [SelectPanel](https://primer.style/react/SelectPanel)
+  - [ActionMenu](https://primer.style/react/ActionMenu)
+- Radix
+  - [Select](https://www.radix-ui.com/docs/primitives/components/select#select)
+  - [DropdownMenu](https://www.radix-ui.com/docs/primitives/components/dropdown-menu)
+- Material UI
+  - [Select](https://mui.com/material-ui/react-select/)
+  - [Menu](https://mui.com/material-ui/react-menu/)
+
+</details>
+<br />
+
+To solve this problem, irrespective of whether we build this as separate component or not, we have to think of it as separate component from implementation end.
+
+#### Differences between a Menu and Select
+
+When you click on item inside Select,
+
+- It gets selected
+- The value gets added to SelectInput
+
+E.g. A city selection menu that shows list of cities.
+
+[TODO: add gif of select]
+
+When you click on item inside Menu,
+
+- It performs it's onClick / href action
+
+[TODO: add gif of menu]
+
+E.g. A profile menu that shows options of going to different page, logging out of profile, etc
+
+Easy! So in select the items are selectable and in menu they are not... welll... **nope**.
+
+Think of a usecase where you have a profile icon that allows you to switch profile. You would want your current profile to have "selected" styles in this case.
+
+<details>
+
+<summary>Some libraries support selected prop in their MenuItem components for this reason</summary>
+
+- [MUI](https://mui.com/material-ui/react-menu/#selected-menu)
+- [Primer](https://primer.style/react/ActionMenu#with-selection)
+
+</details>
+
+[TODO: add gif of Swith Profile usecase]
+
+#### Conclusion
+
+Hence, ActionListItem in all the scenarios is a "selectable" item. But in SelectMenu, it gets selected by default on click.
+
+Whereas in ActionMenu, it is selectable only when you explicitly pass `isSelected` under certain condition
+
+Hence, `ActionListItem` as a whole should be selectable. The default behaviour of when and how it gets selected can depend on the trigger.
 
 ### Referrences
 
@@ -171,22 +248,3 @@ const { values } = useFormik();
 - Radix [[CodeSandbox Example](https://codesandbox.io/p/sandbox/holy-cache-5kwcgm?selection=%5B%7B%22endColumn%22%3A1%2C%22endLineNumber%22%3A28%2C%22startColumn%22%3A1%2C%22startLineNumber%22%3A24%7D%5D&file=%2FApp.jsx)]
 - [Polaris](https://polaris.shopify.com/components/selection-and-input/autocomplete) (They have `selected` object with `onSelect` on top component itself)
 - [downshift-js](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#actions) (`useSelect` hook)
-
-## Open Questions
-
-### Are `<ActionListItem />` "selectable" components?
-
-**Context:** We support `isDefaultSelected` on ActionList and plan to support `isSelected` now so that means we are treating ActionList as selectable items. When we have `Button` as trigger, we turn ActionList into menu which is not "selectable" but rather a list of "clickable" items.
-
-- **Pros of keeping ActionList selectable**
-
-  - Selection logic is still applicable in `<AutoComplete />`, or any selectable trigger we plan to add in future
-  - Here we are only talking about "selection" logic on consumer-facing props but selection logic on our end will anyway always be there irrespective of this call as we have single component that acts as `<MenuOption />` and `<SelectOption />`, both. Normally I have seen libraries tackle this in separate components.
-
-- **Cons**
-  - Not applicable in Button trigger so `isSelected`, `isDefaultSelected` would do nothing in that case
-  - Will be a breaking change (We'll move to using `defaultValue` and `value` on `<SelectInput />` instead of `isDefaultSelected` and `isSelected` on `<ActionListItem />`)
-
-## TODOs
-
-- [ ] Do a code POC to see if implementation is not too complex
