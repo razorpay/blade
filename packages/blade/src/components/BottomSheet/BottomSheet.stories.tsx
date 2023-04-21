@@ -33,11 +33,104 @@ import { SelectInput } from '~components/Input/SelectInput';
 import { Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';
+import { Radio, RadioGroup } from '~components/Radio';
 
 export default {
   title: 'Components/BottomSheet',
   component: BottomSheetComponent,
 } as Meta<BottomSheetProps>;
+
+const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isSecondOpen, setSecondOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Open short one first</Button>
+      <Button onClick={() => setSecondOpen(true)}>Open large one first</Button>
+
+      <Text>Okay 3 bugs:</Text>
+      <Text>
+        1. If you open large one first and then short one the zIndex of large always takes
+        precedence, depending on how you render them on DOM
+      </Text>
+      <Text>
+        2. Dragging behaviour is a bit janky because I think the drag event gets bubbled into the
+        previous bottomsheet
+      </Text>
+      <Text>
+        3. Visual bug, where the newly opened bottomsheet's overlay always stays behind all the
+        bottomsheet surfaces thats why the previous bottomsheet doesnt get "dimmed" visually
+      </Text>
+
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="Saved Address" />
+        <BottomSheetBody>
+          <BaseBox padding="spacing.4">
+            <RadioGroup label="Addresses">
+              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            </RadioGroup>
+          </BaseBox>
+        </BottomSheetBody>
+
+        <BottomSheetFooter
+          trailing={{
+            primary: { text: 'Open Large BottomSheet', onClick: () => setSecondOpen(true) },
+          }}
+        />
+      </BottomSheetComponent>
+
+      <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
+        <BottomSheetHeader
+          title="Sort By"
+          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem title="Chinese" value="Chinese" />
+            <ActionListItem title="Italian" value="Italian" />
+            <ActionListItem title="Mexican" value="Mexican" />
+            <ActionListItem title="Indian" value="Indian" />
+            <ActionListItem title="Thai" value="Thai" />
+            <ActionListItem title="French" value="French" />
+            <ActionListItem title="Japanese" value="Japanese" />
+            <ActionListItem title="Spanish" value="Spanish" />
+            <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+            <ActionListItem title="Korean" value="Korean" />
+            <ActionListItem title="Greek" value="Greek" />
+            <ActionListItem title="Vietnamese" value="Vietnamese" />
+            <ActionListItem title="Brazilian" value="Brazilian" />
+            <ActionListItem title="Moroccan" value="Moroccan" />
+            <ActionListItem title="Caribbean" value="Caribbean" />
+            <ActionListItem title="Turkish" value="Turkish" />
+            <ActionListItem title="Lebanese" value="Lebanese" />
+            <ActionListItem title="Malaysian" value="Malaysian" />
+            <ActionListItem title="Indonesian" value="Indonesian" />
+            <ActionListItem title="Peruvian" value="Peruvian" />
+            <ActionListItem title="Ethiopian" value="Ethiopian" />
+            <ActionListItem title="Filipino" value="Filipino" />
+            <ActionListItem title="Cuban" value="Cuban" />
+            <ActionListItem title="German" value="German" />
+            <ActionListItem title="Nigerian" value="Nigerian" />
+          </ActionList>
+        </BottomSheetBody>
+        <BottomSheetFooter
+          trailing={{
+            primary: { text: 'Open Short BottomSheet', onClick: () => setIsOpen(true) },
+          }}
+        />
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
+
+export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
   const [isOpen, setIsOpen] = React.useState(true);

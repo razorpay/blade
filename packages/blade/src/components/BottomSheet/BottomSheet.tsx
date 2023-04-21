@@ -28,7 +28,7 @@ type BottomSheetProps = {
   onDismiss?: () => void;
   children: React.ReactNode;
   initialFocusRef?: React.MutableRefObject<any>;
-  snapPoints: SnapPoints;
+  snapPoints?: SnapPoints;
 };
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
@@ -145,7 +145,6 @@ const _BottomSheet = ({
     }
   }, [initialFocusRef]);
 
-  console.log(bottomSheetAndDropdownGlue);
   const close = React.useCallback(() => {
     setPositionY(0);
     returnFocus();

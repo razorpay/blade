@@ -13,7 +13,7 @@ import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type BottomSheetFooterProps = {
-  title: string;
+  title?: string;
   leading?: React.ReactNode;
   trailing?: {
     primary?: BottomSheetFooterAction;
