@@ -200,19 +200,26 @@ When you click on item inside Select,
 
 E.g. A city selection menu that shows list of cities.
 
-[TODO: add gif of select]
+<img width="453" src="https://user-images.githubusercontent.com/30949385/233962393-eaba886d-d4e6-4975-b15d-e1725c5d798b.gif" />
 
 When you click on item inside Menu,
 
 - It performs it's onClick / href action
 
-[TODO: add gif of menu]
-
 E.g. A profile menu that shows options of going to different page, logging out of profile, etc
+
+<img width="453" src="https://user-images.githubusercontent.com/30949385/233962251-0e1e32f7-9252-4655-9fb6-e4b7c4db5ebc.gif" />
+
+Here, Items are not "selected" after click, they only perform a certain action.
 
 Easy! So in select the items are selectable and in menu they are not... welll... **nope**.
 
 Think of a usecase where you have a profile icon that allows you to switch profile. You would want your current profile to have "selected" styles in this case.
+
+So in the below example, Anurag's profile should have "selected" styling in-order to show the current profile
+
+<img width="453" alt="image" src="https://user-images.githubusercontent.com/30949385/233959558-cabd5ef6-ea9d-437c-97d3-b4d4530e5f9b.png">
+
 
 <details>
 
@@ -223,7 +230,6 @@ Think of a usecase where you have a profile icon that allows you to switch profi
 
 </details>
 
-[TODO: add gif of Swith Profile usecase]
 
 #### Conclusion
 
@@ -232,6 +238,7 @@ Hence, ActionListItem in all the scenarios is a "selectable" item. But in Select
 Whereas in ActionMenu, it is selectable only when you explicitly pass `isSelected` under certain condition
 
 Hence, `ActionListItem` as a whole should be selectable. The default behaviour of when and how it gets selected can depend on the trigger.
+
 
 ### Referrences
 
@@ -248,3 +255,9 @@ Hence, `ActionListItem` as a whole should be selectable. The default behaviour o
 - Radix [[CodeSandbox Example](https://codesandbox.io/p/sandbox/holy-cache-5kwcgm?selection=%5B%7B%22endColumn%22%3A1%2C%22endLineNumber%22%3A28%2C%22startColumn%22%3A1%2C%22startLineNumber%22%3A24%7D%5D&file=%2FApp.jsx)]
 - [Polaris](https://polaris.shopify.com/components/selection-and-input/autocomplete) (They have `selected` object with `onSelect` on top component itself)
 - [downshift-js](https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#actions) (`useSelect` hook)
+
+
+
+
+
+
