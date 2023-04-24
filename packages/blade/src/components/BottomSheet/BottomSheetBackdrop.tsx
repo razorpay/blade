@@ -4,6 +4,7 @@ import { useBottomSheetContext } from './BottomSheetContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
+import { useScrollLock } from '~src/hooks/useScrollLock';
 
 const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme, isOpen }) => {
   return {
@@ -19,10 +20,23 @@ const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme,
 
 const BottomSheetBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement => {
   const { theme } = useTheme();
+  const backdropRef = React.useRef<HTMLDivElement>(null);
   const { close, isOpen } = useBottomSheetContext();
+
+  // locks the body scroll to prevent accidental dragging of bottomsheet backdrop
+  const scrollLockRef = useScrollLock({
+    enabled: true,
+    reserveScrollBarGap: true,
+    targetRef: backdropRef,
+  });
+
+  React.useEffect(() => {
+    scrollLockRef.current.activate();
+  }, [scrollLockRef]);
 
   return (
     <StyledBottomSheetBackdrop
+      ref={backdropRef}
       onClick={() => {
         close();
       }}
