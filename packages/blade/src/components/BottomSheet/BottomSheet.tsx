@@ -418,7 +418,7 @@ const _BottomSheet = ({
       setFooterHeight(0);
       setContentHeight(0);
     }
-  }, [isMounted, scrollLockRef, stack]);
+  }, [isMounted, scrollLockRef]);
 
   // We don't want to destroy the react tree when we are rendering inside Dropdown
   // Because if we bail out early then ActionList won't render,
