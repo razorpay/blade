@@ -1,0 +1,35 @@
+{
+  "name": "icon-importer",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "A Figma plugin to import icons from Figma to code.",
+  "license": "ISC",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "build:watch": "webpack --mode=development --watch",
+    "prettier:format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' "
+  },
+  "dependencies": {
+    "@types/figma": "^1.0.4",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "1.19.0",
+    "@types/react": "17.0.0",
+    "@types/react-dom": "17.0.0",
+    "@types/set-value": "4.0.1",
+    "css-loader": "5.0.1",
+    "figma-plugin-ds": "0.1.8",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "3.2.0",
+    "js-string-compression": "1.0.1",
+    "set-value": "4.1.0",
+    "style-loader": "2.0.0",
+    "ts-loader": "8.0.11",
+    "typescript": "4.1.2",
+    "url-loader": "4.1.1",
+    "webpack": "4.41.4",
+    "webpack-cli": "3.3.6"
+  }
+}

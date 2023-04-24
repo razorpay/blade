@@ -1,0 +1,23 @@
+.container {
+  margin: 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container__button {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.input__field--margin {
+  margin-bottom: 40px !important;
+}
+.button {
+  margin-left: 20px;
+}
+
+.section-title {
+  display: block !important;
+  margin-bottom: 30px;
+}
