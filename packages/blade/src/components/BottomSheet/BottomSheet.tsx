@@ -226,9 +226,10 @@ const _BottomSheet = ({
       velocity: [_velocityX, velocityY],
       lastOffset: [_, lastOffsetY],
       down,
+      dragging,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
-      setIsDragging(down);
+      setIsDragging(Boolean(dragging));
       // lastOffsetY is the previous position user stopped dragging the sheet
       // movementY is the drag amount from the bottom of the screen, so as you drag up the movementY goes into negatives
       // and rawY is the calculated offset from the last position of the bottomsheet to current drag amount.
