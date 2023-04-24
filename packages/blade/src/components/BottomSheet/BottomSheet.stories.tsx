@@ -43,11 +43,13 @@ export default {
 const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isSecondOpen, setSecondOpen] = React.useState(false);
+  const [isThirdOpen, setThirdOpen] = React.useState(false);
 
   return (
     <BaseBox>
       <Button onClick={() => setIsOpen(true)}>Open short one first</Button>
       <Button onClick={() => setSecondOpen(true)}>Open large one first</Button>
+      <Button onClick={() => setThirdOpen(true)}>Open third first</Button>
 
       <BottomSheetComponent
         isOpen={isOpen}
@@ -68,6 +70,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
         <BottomSheetFooter
           trailing={{
             primary: { text: 'Open Large BottomSheet', onClick: () => setSecondOpen(true) },
+            secondary: { text: 'Open third BottomSheet', onClick: () => setThirdOpen(true) },
           }}
         />
       </BottomSheetComponent>
@@ -109,6 +112,59 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
         <BottomSheetFooter
           trailing={{
             primary: { text: 'Open Short BottomSheet', onClick: () => setIsOpen(true) },
+            secondary: { text: 'Open third BottomSheet', onClick: () => setThirdOpen(true) },
+          }}
+        />
+      </BottomSheetComponent>
+
+      <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
+        <BottomSheetHeader
+          title="Sort By"
+          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListSection title="Asia">
+              <ActionListItem title="Chinese" value="Chinese" />
+              <ActionListItem title="Indian" value="Indian" />
+              <ActionListItem title="Thai" value="Thai" />
+              <ActionListItem title="Japanese" value="Japanese" />
+              <ActionListItem title="Korean" value="Korean" />
+              <ActionListItem title="Vietnamese" value="Vietnamese" />
+              <ActionListItem title="Malaysian" value="Malaysian" />
+              <ActionListItem title="Indonesian" value="Indonesian" />
+            </ActionListSection>
+
+            <ActionListSection title="Europe">
+              <ActionListItem title="Italian" value="Italian" />
+              <ActionListItem title="French" value="French" />
+              <ActionListItem title="Spanish" value="Spanish" />
+              <ActionListItem title="Greek" value="Greek" />
+              <ActionListItem title="German" value="German" />
+            </ActionListSection>
+
+            <ActionListSection title="North America">
+              <ActionListItem title="Mexican" value="Mexican" />
+              <ActionListItem title="Caribbean" value="Caribbean" />
+            </ActionListSection>
+
+            <ActionListSection title="South America">
+              <ActionListItem title="Brazilian" value="Brazilian" />
+              <ActionListItem title="Peruvian" value="Peruvian" />
+            </ActionListSection>
+
+            <ActionListSection title="Africa">
+              <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+              <ActionListItem title="Moroccan" value="Moroccan" />
+              <ActionListItem title="Ethiopian" value="Ethiopian" />
+              <ActionListItem title="Nigerian" value="Nigerian" />
+            </ActionListSection>
+          </ActionList>
+        </BottomSheetBody>
+        <BottomSheetFooter
+          trailing={{
+            primary: { text: 'Open Short BottomSheet', onClick: () => setIsOpen(true) },
+            secondary: { text: 'Open Long BottomSheet', onClick: () => setSecondOpen(true) },
           }}
         />
       </BottomSheetComponent>

@@ -12,8 +12,8 @@ const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme,
       ? castWebType(theme.motion.easing.entrance.revealing)
       : castWebType(theme.motion.easing.exit.revealing),
     pointerEvents: isOpen ? 'all' : 'none',
-    transitionProperty: 'opacity',
-    transitionDelay: isOpen ? `${makeMotionTime(theme.motion.duration.moderate)}` : '0ms',
+    transitionProperty: isOpen ? 'opacity' : 'opacity, z-index',
+    transitionDelay: `${makeMotionTime(theme.motion.duration.moderate)}`,
   };
 });
 

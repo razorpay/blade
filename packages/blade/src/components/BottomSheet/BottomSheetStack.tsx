@@ -6,6 +6,7 @@ type BottomSheetStackType = {
   addBottomSheetToStack: (id: string) => void;
   removeBottomSheetFromStack: (id: string) => void;
   getTopOfTheStack: () => string | undefined;
+  getCurrentStackIndexById: (id: string) => number;
 };
 
 const BottomSheetStackContext = React.createContext<BottomSheetStackType>({
@@ -15,6 +16,7 @@ const BottomSheetStackContext = React.createContext<BottomSheetStackType>({
   getTopOfTheStack: () => {
     return undefined;
   },
+  getCurrentStackIndexById: () => -1,
 });
 
 type BottomSheetStackProviderType = {
@@ -49,9 +51,28 @@ const BottomSheetStackProvider = ({
     });
   }, []);
 
+  const getCurrentStackIndexById = React.useCallback(
+    (id: string) => {
+      return stack.findIndex((stackId) => stackId === id);
+    },
+    [stack],
+  );
+
   const value = React.useMemo(() => {
-    return { stack, addBottomSheetToStack, removeBottomSheetFromStack, getTopOfTheStack };
-  }, [addBottomSheetToStack, getTopOfTheStack, removeBottomSheetFromStack, stack]);
+    return {
+      stack,
+      addBottomSheetToStack,
+      removeBottomSheetFromStack,
+      getTopOfTheStack,
+      getCurrentStackIndexById,
+    };
+  }, [
+    addBottomSheetToStack,
+    getCurrentStackIndexById,
+    getTopOfTheStack,
+    removeBottomSheetFromStack,
+    stack,
+  ]);
 
   return (
     <BottomSheetStackContext.Provider value={value}>{children}</BottomSheetStackContext.Provider>

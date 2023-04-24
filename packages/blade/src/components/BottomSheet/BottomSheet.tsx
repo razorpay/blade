@@ -106,8 +106,11 @@ const _BottomSheet = ({
     removeBottomSheetFromStack,
     stack,
     getTopOfTheStack,
+    getCurrentStackIndexById,
   } = useBottomSheetStack();
+  const currentStackIndex = getCurrentStackIndexById(id);
   const isOnTopOfStack = getTopOfTheStack() === id;
+  const zIndex = 100 - currentStackIndex;
 
   const setPositionY = React.useCallback(
     (value: number, limit = true) => {
@@ -165,12 +168,11 @@ const _BottomSheet = ({
   }, [setPositionY, returnFocus, bottomSheetAndDropdownGlue, scrollLockRef, onDismiss]);
 
   const open = React.useCallback(() => {
-    setPositionY(dimensions.height * 0.5);
     scrollLockRef.current.activate();
     // @ts-expect-error this is a mutable ref
     originalFocusElement.current = originalFocusElement.current ?? document.activeElement;
     focusOnInitialRef();
-  }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPositionY]);
+  }, [scrollLockRef, focusOnInitialRef]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
@@ -180,7 +182,13 @@ const _BottomSheet = ({
     if (isOpen === false) {
       close();
     }
-  }, [close, initialFocusRef, isOpen, open]);
+  }, [isOpen, close, open]);
+
+  React.useEffect(() => {
+    if (isOpen === true) {
+      setPositionY(dimensions.height * 0.5);
+    }
+  }, [isOpen, setPositionY, dimensions.height]);
 
   // sync the select dropdown's state with bottomsheet's state
   React.useEffect(() => {
@@ -301,7 +309,7 @@ const _BottomSheet = ({
     {
       from: [0, positionY],
       filterTaps: true,
-      enabled: isOnTopOfStack,
+      enabled: isOnTopOfStack && _isOpen,
     },
   );
 
@@ -415,7 +423,7 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       {/* This has to be isVisible */}
       {/* TODO: fix opactiy flicker */}
-      <BottomSheetBackdrop zIndex={isOnTopOfStack ? 200 : 100 - stack.length} />
+      <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
         data-surface
         windowHeight={dimensions.height}
@@ -426,7 +434,7 @@ const _BottomSheet = ({
           height: positionY,
           bottom: 0,
           top: 'auto',
-          zIndex: isOnTopOfStack ? 300 : 200 - stack.length,
+          zIndex,
         }}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
