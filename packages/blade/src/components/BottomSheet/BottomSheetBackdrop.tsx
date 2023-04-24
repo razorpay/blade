@@ -18,29 +18,26 @@ const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme,
   };
 });
 
-const BottomSheetBackdrop = React.forwardRef<HTMLDivElement, { zIndex: number }>(
-  ({ zIndex }, ref) => {
-    const { theme } = useTheme();
-    const { close, isOpen } = useBottomSheetContext();
+const BottomSheetBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement => {
+  const { theme } = useTheme();
+  const { close, isOpen } = useBottomSheetContext();
 
-    return (
-      <StyledBottomSheetBackdrop
-        ref={ref}
-        onClick={() => {
-          close();
-        }}
-        isOpen={isOpen}
-        opacity={isOpen ? 1 : 0}
-        position="fixed"
-        left="spacing.0"
-        top="spacing.0"
-        bottom="spacing.0"
-        right="spacing.0"
-        zIndex={zIndex}
-        backgroundColor={theme.colors.overlay.background}
-      />
-    );
-  },
-);
+  return (
+    <StyledBottomSheetBackdrop
+      onClick={() => {
+        close();
+      }}
+      isOpen={isOpen}
+      opacity={isOpen ? 1 : 0}
+      position="fixed"
+      left="spacing.0"
+      top="spacing.0"
+      bottom="spacing.0"
+      right="spacing.0"
+      zIndex={zIndex}
+      backgroundColor={theme.colors.overlay.background}
+    />
+  );
+};
 
 export { BottomSheetBackdrop };

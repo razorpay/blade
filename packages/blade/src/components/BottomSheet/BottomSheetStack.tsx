@@ -5,7 +5,7 @@ type BottomSheetStackType = {
   stack: string[];
   addBottomSheetToStack: (id: string) => void;
   removeBottomSheetFromStack: (id: string) => void;
-  getTopOfTheStack: () => string | undefined;
+  getTopOfTheStack: () => string | null;
   getCurrentStackIndexById: (id: string) => number;
 };
 
@@ -14,7 +14,7 @@ const BottomSheetStackContext = React.createContext<BottomSheetStackType>({
   addBottomSheetToStack: () => {},
   removeBottomSheetFromStack: () => {},
   getTopOfTheStack: () => {
-    return undefined;
+    return null;
   },
   getCurrentStackIndexById: () => -1,
 });
@@ -28,7 +28,7 @@ const BottomSheetStackProvider = ({
   const [stack, setStack] = React.useState<string[]>([]);
 
   const getTopOfTheStack = React.useCallback(() => {
-    return stack[0];
+    return stack[0] || null;
   }, [stack]);
 
   const addBottomSheetToStack = React.useCallback((id: string) => {

@@ -168,6 +168,12 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
           }}
         />
       </BottomSheetComponent>
+
+      <BaseBox>
+        {new Array(100).fill(0).map((_, idx) => (
+          <p>{idx}</p>
+        ))}
+      </BaseBox>
     </BaseBox>
   );
 };

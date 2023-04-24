@@ -6,6 +6,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import usePresence from 'use-presence';
+import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
@@ -99,10 +100,10 @@ const _BottomSheet = ({
   const grabHandleRef = React.useRef<HTMLDivElement>(null);
   const originalFocusElement = React.useRef<HTMLElement>(null);
   const defaultInitialFocusRef = React.useRef<any>(null);
-  const backdropRef = React.useRef<HTMLDivElement>(null);
 
   const id = useId();
   const {
+    stack,
     addBottomSheetToStack,
     removeBottomSheetFromStack,
     getTopOfTheStack,
@@ -126,20 +127,23 @@ const _BottomSheet = ({
   );
 
   // locks the body scroll to prevent accidental scrolling of content when we drag the sheet
-  // we are ready when we calculated the height of the content
+  // We are ready when we calculated the height of the content
   const isReady = contentHeight > 0;
+  // only lock the body when we atleast have 1 bottomsheet open
+  const shouldLock = isReady && stack.length > 0;
   const scrollLockRef = useScrollLock({
-    enabled: isReady,
+    enabled: shouldLock,
     targetRef: scrollRef,
     reserveScrollBarGap: true,
   });
-  // TODO: fix backdrop scroll lock getting deactivated when we open
-  // a stacked sheet and then close it afterwards
-  const backdropScrollLockRef = useScrollLock({
-    enabled: isReady,
-    targetRef: backdropRef,
-    reserveScrollBarGap: true,
-  });
+
+  // clear all body locks to avoid memory leaks & accidental body locking
+  React.useEffect(() => {
+    const hasNoBottomSheets = stack.length < 1;
+    if (hasNoBottomSheets) {
+      clearAllBodyScrollLocks();
+    }
+  }, [stack]);
 
   // take the grabHandle's height into headerHeight too
   useIsomorphicLayoutEffect(() => {
@@ -173,24 +177,14 @@ const _BottomSheet = ({
     onDismiss?.();
     // close the select dropdown as well
     bottomSheetAndDropdownGlue?.setIsOpen(false);
-    scrollLockRef.current.deactivate();
-    backdropScrollLockRef.current.deactivate();
-  }, [
-    setPositionY,
-    returnFocus,
-    onDismiss,
-    bottomSheetAndDropdownGlue,
-    scrollLockRef,
-    backdropScrollLockRef,
-  ]);
+  }, [setPositionY, returnFocus, onDismiss, bottomSheetAndDropdownGlue]);
 
   const open = React.useCallback(() => {
     scrollLockRef.current.activate();
-    backdropScrollLockRef.current.activate();
     // @ts-expect-error this is a mutable ref
     originalFocusElement.current = originalFocusElement.current ?? document.activeElement;
     focusOnInitialRef();
-  }, [scrollLockRef, backdropScrollLockRef, focusOnInitialRef]);
+  }, [focusOnInitialRef, scrollLockRef]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
@@ -423,10 +417,8 @@ const _BottomSheet = ({
       setHeaderHeight(0);
       setFooterHeight(0);
       setContentHeight(0);
-      scrollLockRef.current.deactivate();
-      backdropScrollLockRef.current.deactivate();
     }
-  }, [backdropScrollLockRef, isMounted, scrollLockRef]);
+  }, [isMounted, scrollLockRef, stack]);
 
   // We don't want to destroy the react tree when we are rendering inside Dropdown
   // Because if we bail out early then ActionList won't render,
@@ -441,7 +433,7 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       {/* This has to be isVisible */}
       {/* TODO: fix opactiy flicker */}
-      <BottomSheetBackdrop ref={backdropRef} zIndex={zIndex} />
+      <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
         data-surface
         windowHeight={dimensions.height}
