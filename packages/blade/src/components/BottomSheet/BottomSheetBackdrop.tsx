@@ -12,10 +12,12 @@ const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme,
       ? castWebType(theme.motion.easing.entrance.revealing)
       : castWebType(theme.motion.easing.exit.revealing),
     pointerEvents: isOpen ? 'all' : 'none',
+    transitionProperty: 'opacity',
+    transitionDelay: isOpen ? `${makeMotionTime(theme.motion.duration.moderate)}` : '0ms',
   };
 });
 
-const BottomSheetBackdrop = (): React.ReactElement => {
+const BottomSheetBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement => {
   const { theme } = useTheme();
   const { close, isOpen } = useBottomSheetContext();
 
@@ -31,7 +33,7 @@ const BottomSheetBackdrop = (): React.ReactElement => {
       top="spacing.0"
       bottom="spacing.0"
       right="spacing.0"
-      zIndex={1}
+      zIndex={zIndex}
       backgroundColor={theme.colors.overlay.background}
     />
   );

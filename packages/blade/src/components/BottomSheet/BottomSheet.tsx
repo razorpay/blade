@@ -14,6 +14,7 @@ import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
 import { BottomSheetCloseButton } from './BottomSheetCloseButton';
+import { useBottomSheetStack } from './BottomSheetStack';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSpace } from '~utils';
 
@@ -22,6 +23,7 @@ import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
+import { useId } from '~src/hooks/useId';
 
 type BottomSheetProps = {
   isOpen?: boolean;
@@ -59,7 +61,7 @@ const BottomSheetSurface = styled.div<{
       : `${makeMotionTime(theme.motion.duration.moderate)}`,
     transitionTimingFunction: BOTTOM_SHEET_EASING,
     willChange: 'transform, opacity, height',
-    transitionProperty: 'transform, opacity, height',
+    transitionProperty: 'transform, opacity, height, z-index',
     position: 'fixed',
     left: 0,
     right: 0,
@@ -70,7 +72,6 @@ const BottomSheetSurface = styled.div<{
     alignItems: 'center',
     touchAction: 'none',
     overflow: 'hidden',
-    zIndex: 2,
   };
 });
 
@@ -98,6 +99,15 @@ const _BottomSheet = ({
   const grabHandleRef = React.useRef<HTMLDivElement>(null);
   const originalFocusElement = React.useRef<HTMLElement>(null);
   const defaultInitialFocusRef = React.useRef<any>(null);
+
+  const id = useId();
+  const {
+    addBottomSheetToStack,
+    removeBottomSheetFromStack,
+    stack,
+    getTopOfTheStack,
+  } = useBottomSheetStack();
+  const isOnTopOfStack = getTopOfTheStack() === id;
 
   const setPositionY = React.useCallback(
     (value: number, limit = true) => {
@@ -291,6 +301,7 @@ const _BottomSheet = ({
     {
       from: [0, positionY],
       filterTaps: true,
+      enabled: isOnTopOfStack,
     },
   );
 
@@ -327,10 +338,18 @@ const _BottomSheet = ({
     };
   }, [scrollRef.current]);
 
+  // usePresence hook waits for the animation to finish before unmounting the component
+  // It's similar to framer-motions usePresence hook
+  // https://www.framer.com/docs/animate-presence/#usepresence
+  const { isMounted, isVisible } = usePresence(Boolean(_isOpen), {
+    transitionDuration: theme.motion.duration.moderate,
+    exitTransitionDuration: theme.motion.duration.moderate,
+  });
+
   const contextValue = React.useMemo(
     () => ({
       isInBottomSheet: true,
-      isOpen: Boolean(_isOpen),
+      isOpen: Boolean(isVisible),
       close,
       posY: positionY,
       headerHeight,
@@ -344,7 +363,7 @@ const _BottomSheet = ({
       defaultInitialFocusRef,
     }),
     [
-      _isOpen,
+      isVisible,
       close,
       positionY,
       headerHeight,
@@ -359,13 +378,16 @@ const _BottomSheet = ({
     ],
   );
 
-  // usePresence hook waits for the animation to finish before unmounting the component
-  // It's similar to framer-motions usePresence hook
-  // https://www.framer.com/docs/animate-presence/#usepresence
-  const { isMounted, isVisible } = usePresence(Boolean(_isOpen), {
-    transitionDuration: theme.motion.duration.moderate,
-    exitTransitionDuration: theme.motion.duration.moderate,
-  });
+  React.useEffect(() => {
+    if (isMounted) {
+      addBottomSheetToStack(id);
+    } else {
+      removeBottomSheetFromStack(id);
+    }
+  }, [addBottomSheetToStack, id, isMounted, removeBottomSheetFromStack]);
+
+  // check if this id is on top of the stack
+  console.log(id, isOnTopOfStack, stack);
 
   // We will need to reset these values otherwise the next time the bottomsheet opens
   // this will be populated and the animations won't run
@@ -391,7 +413,9 @@ const _BottomSheet = ({
 
   return (
     <BottomSheetContext.Provider value={contextValue}>
-      <BottomSheetBackdrop />
+      {/* This has to be isVisible */}
+      {/* TODO: fix opactiy flicker */}
+      <BottomSheetBackdrop zIndex={isOnTopOfStack ? 200 : 100 - stack.length} />
       <BottomSheetSurface
         data-surface
         windowHeight={dimensions.height}
@@ -402,6 +426,7 @@ const _BottomSheet = ({
           height: positionY,
           bottom: 0,
           top: 'auto',
+          zIndex: isOnTopOfStack ? 300 : 200 - stack.length,
         }}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">

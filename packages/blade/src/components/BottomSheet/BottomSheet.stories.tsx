@@ -49,20 +49,6 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
       <Button onClick={() => setIsOpen(true)}>Open short one first</Button>
       <Button onClick={() => setSecondOpen(true)}>Open large one first</Button>
 
-      <Text>Okay 3 bugs:</Text>
-      <Text>
-        1. If you open large one first and then short one the zIndex of large always takes
-        precedence, depending on how you render them on DOM
-      </Text>
-      <Text>
-        2. Dragging behaviour is a bit janky because I think the drag event gets bubbled into the
-        previous bottomsheet
-      </Text>
-      <Text>
-        3. Visual bug, where the newly opened bottomsheet's overlay always stays behind all the
-        bottomsheet surfaces thats why the previous bottomsheet doesnt get "dimmed" visually
-      </Text>
-
       <BottomSheetComponent
         isOpen={isOpen}
         onDismiss={() => {
