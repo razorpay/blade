@@ -1,10 +1,10 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import styled from 'styled-components';
 import { useBottomSheetContext } from './BottomSheetContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
-import { useScrollLock } from '~src/hooks/useScrollLock';
 
 const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme, isOpen }) => {
   return {
@@ -18,39 +18,29 @@ const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme,
   };
 });
 
-const BottomSheetBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement => {
-  const { theme } = useTheme();
-  const backdropRef = React.useRef<HTMLDivElement>(null);
-  const { close, isOpen } = useBottomSheetContext();
+const BottomSheetBackdrop = React.forwardRef<HTMLDivElement, { zIndex: number }>(
+  ({ zIndex }, ref) => {
+    const { theme } = useTheme();
+    const { close, isOpen } = useBottomSheetContext();
 
-  // locks the body scroll to prevent accidental dragging of bottomsheet backdrop
-  const scrollLockRef = useScrollLock({
-    enabled: true,
-    reserveScrollBarGap: true,
-    targetRef: backdropRef,
-  });
-
-  React.useEffect(() => {
-    scrollLockRef.current.activate();
-  }, [scrollLockRef]);
-
-  return (
-    <StyledBottomSheetBackdrop
-      ref={backdropRef}
-      onClick={() => {
-        close();
-      }}
-      isOpen={isOpen}
-      opacity={isOpen ? 1 : 0}
-      position="fixed"
-      left="spacing.0"
-      top="spacing.0"
-      bottom="spacing.0"
-      right="spacing.0"
-      zIndex={zIndex}
-      backgroundColor={theme.colors.overlay.background}
-    />
-  );
-};
+    return (
+      <StyledBottomSheetBackdrop
+        ref={ref}
+        onClick={() => {
+          close();
+        }}
+        isOpen={isOpen}
+        opacity={isOpen ? 1 : 0}
+        position="fixed"
+        left="spacing.0"
+        top="spacing.0"
+        bottom="spacing.0"
+        right="spacing.0"
+        zIndex={zIndex}
+        backgroundColor={theme.colors.overlay.background}
+      />
+    );
+  },
+);
 
 export { BottomSheetBackdrop };

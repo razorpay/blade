@@ -32,20 +32,14 @@ const BottomSheetStackProvider = ({
   }, [stack]);
 
   const addBottomSheetToStack = React.useCallback((id: string) => {
-    if (/undefined/.exec(id)) return;
-
-    setStack((prev) => {
-      const newStack = [id, ...prev];
-      return newStack;
-    });
+    setStack((prev) => [id, ...prev]);
   }, []);
 
   const removeBottomSheetFromStack = React.useCallback((id: string) => {
-    if (/undefined/.exec(id)) return;
-
     setStack((prev) => {
       const newStack = [...prev];
       const popped = newStack.shift();
+      // only pop the stack if the passed in id is matched to the top of the stack
       if (popped === id) return newStack;
       return newStack;
     });
