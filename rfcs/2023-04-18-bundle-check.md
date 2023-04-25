@@ -27,14 +27,12 @@ As Blade grows, the size of the generated bundles also grows. This can lead to l
 
 # Detailed Design
 We want to achieve the following:
-1. Add a check for each PR that ensures size of our bundles don't increase beyond a certain limit.
-2. Enable a way for the PR author to visualize the impact of their changes on the bundle size by having a diff from master's bundle size.
-3. Ensure our tree-shaking works as expected by adding a check to ensure that unused components are not included in the bundle.
+1. Enable a way for the PR author to visualize the impact of their changes on the bundle size by having a diff from master's bundle size.
+2. Ensure our tree-shaking works as expected by adding a check to ensure that unused components are not included in the bundle.
 
 ### Bundle Size Limit & Master Diff
 We will achieve the following with this:
-1. Add a check for each PR that ensures size of our bundles don't increase beyond a certain limit.
-2. Enable a way for the PR author to visualize the impact of their changes on the bundle size by having a diff from master's bundle size.
+1. Enable a way for the PR author to visualize the impact of their changes on the bundle size by having a diff from master's bundle size.
 
 #### Bundlemon
 - We will use [bundlemon](https://github.com/LironEr/bundlemon) to achieve this. Bundlemon is a tool that helps us to keep an eye on our bundle size. It works by comparing the size of our bundles against a predefined limit. If the size of the bundle exceeds the limit, the build fails. It also provides a diff between the current bundle size and the size of the bundle on master. This helps us to visualize the impact of our changes on the bundle size.
