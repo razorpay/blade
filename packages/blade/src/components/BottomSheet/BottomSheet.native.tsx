@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import GorhomBottomSheet, { BottomSheetFooter, BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import GorhomBottomSheet, {
+  BottomSheetFooter as GorhomBottomSheetFooter,
+  BottomSheetScrollView as GorhomBottomSheetScrollView,
+} from '@gorhom/bottom-sheet';
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
@@ -11,9 +14,10 @@ import { BottomSheetBody } from './BottomSheetBody';
 import type { BottomSheetProps } from './types';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
-import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
+import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
+import { BottomSheetFooter } from './BottomSheetFooter';
 import { makeSpace, getComponentId } from '~utils';
 
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
@@ -61,7 +65,7 @@ const _BottomSheet = ({
   onDismiss,
   initialFocusRef,
 }: BottomSheetProps): React.ReactElement => {
-  const dropdownBottomSheetProps = useDropdownBottomSheetContext();
+  const dropdownBottomSheetProps = useBottomSheetAndDropdownGlue();
   const defaultInitialFocusRef = React.useRef<any>(null);
   const sheetRef = React.useRef<GorhomBottomSheet>(null);
   const header = React.useRef<React.ReactNode>();
@@ -116,7 +120,7 @@ const _BottomSheet = ({
   }, [children]);
 
   const renderFooter = React.useCallback((props): React.ReactElement => {
-    return <BottomSheetFooter {...props}>{footer.current}</BottomSheetFooter>;
+    return <GorhomBottomSheetFooter {...props}>{footer.current}</GorhomBottomSheetFooter>;
   }, []);
 
   // sync the select dropdown's state with bottomsheet's state
@@ -124,7 +128,7 @@ const _BottomSheet = ({
     if (!dropdownBottomSheetProps) return;
 
     // this will let the Dropdown component know that it's rendering a bottomsheet
-    dropdownBottomSheetProps.setHasBottomSheet(true);
+    dropdownBottomSheetProps.setDropdownHasBottomSheet(true);
 
     if (dropdownBottomSheetProps.isOpen) {
       open();
@@ -189,10 +193,10 @@ const _BottomSheet = ({
             onClose={close}
             snapPoints={_snapPoints}
           >
-            <BottomSheetScrollView key={bodyResetKey} stickyHeaderIndices={[0]}>
+            <GorhomBottomSheetScrollView key={bodyResetKey} stickyHeaderIndices={[0]}>
               {header.current}
               {body.current}
-            </BottomSheetScrollView>
+            </GorhomBottomSheetScrollView>
           </GorhomBottomSheet>
         </BottomSheetContext.Provider>
       </DropdownContext.Provider>

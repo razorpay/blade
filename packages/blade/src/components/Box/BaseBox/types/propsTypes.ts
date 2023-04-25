@@ -119,7 +119,16 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'action'>
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
-  } & PickCSSByPlatform<'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom'>
+  } & PickCSSByPlatform<
+    | 'border'
+    | 'borderLeft'
+    | 'borderRight'
+    | 'borderTop'
+    | 'borderBottom'
+    | 'touchAction'
+    | 'userSelect'
+    | 'opacity'
+  >
 >;
 
 type BoxVisualProps = MakeObjectResponsive<{
@@ -159,18 +168,15 @@ type BoxProps = Partial<
     BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] } & TestID
 >;
 
-type BaseBoxUtilityProps = Pick<CSSObject, 'touchAction' | 'userSelect' | 'opacity'>;
-
 // Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.
 // So first we Omit Visual props of Box
 // Then we append BaseBoxVisualProps and some other props for styled-components like class and id
 type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
   Partial<
-    BaseBoxVisualProps &
-      BaseBoxUtilityProps & {
-        className?: string;
-        id?: string;
-      }
+    BaseBoxVisualProps & {
+      className?: string;
+      id?: string;
+    }
   >;
 
 export { BaseBoxProps, BoxProps, StyledPropsBlade, validBoxAsValues };

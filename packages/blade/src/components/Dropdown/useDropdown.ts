@@ -14,7 +14,7 @@ import type { DropdownProps } from './Dropdown';
 
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
-import { useDropdownBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import type { SelectInputProps } from '~components/Input/SelectInput';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -171,7 +171,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     selectionType,
     ...rest
   } = React.useContext(DropdownContext);
-  const bottomSheetContext = useDropdownBottomSheetContext();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   type SelectOptionType = (
     index: number,
@@ -236,7 +236,7 @@ const useDropdown = (): UseDropdownReturnValue => {
       setActiveIndex(-1);
     }
 
-    if (bottomSheetContext?.hasBottomSheet) {
+    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
       setShouldIgnoreBlur(true);
       return;
     }
@@ -252,7 +252,7 @@ const useDropdown = (): UseDropdownReturnValue => {
       if (selectionType !== 'multiple') {
         selectOption(activeIndex);
       }
-      if (!bottomSheetContext?.hasBottomSheet) {
+      if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
         setIsOpen(false);
       }
     }
@@ -335,7 +335,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
 
     // disable closing the select on blur events if we are using a bottomsheet
-    if (bottomSheetContext?.hasBottomSheet) {
+    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
       setShouldIgnoreBlur(true);
     }
 

@@ -40,6 +40,170 @@ export default {
   component: BottomSheetComponent,
 } as Meta<BottomSheetProps>;
 
+const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isFirstOpen, setFirstOpen] = React.useState(false);
+  const [isSecondOpen, setSecondOpen] = React.useState(false);
+  const [isThirdOpen, setThirdOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setFirstOpen(true)}>1 Open short one first</Button>
+      <Button onClick={() => setSecondOpen(true)}>2 Open large one first</Button>
+      <Button onClick={() => setThirdOpen(true)}>3 Open third first</Button>
+
+      <BottomSheetComponent
+        isOpen={isFirstOpen}
+        onDismiss={() => {
+          setFirstOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="1. Saved Address" />
+        <BottomSheetBody>
+          <BaseBox padding="spacing.4">
+            <RadioGroup label="Addresses">
+              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            </RadioGroup>
+          </BaseBox>
+        </BottomSheetBody>
+
+        <BottomSheetFooter
+          trailing={{
+            primary: {
+              text: 'Open Large BottomSheet',
+              onClick: () => setSecondOpen(true),
+              isDisabled: isSecondOpen,
+            },
+            secondary: {
+              text: 'Open third BottomSheet',
+              onClick: () => setThirdOpen(true),
+              isDisabled: isThirdOpen,
+            },
+          }}
+        />
+      </BottomSheetComponent>
+
+      <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
+        <BottomSheetHeader
+          title="2. Sort By"
+          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem title="Chinese" value="Chinese" />
+            <ActionListItem title="Italian" value="Italian" />
+            <ActionListItem title="Mexican" value="Mexican" />
+            <ActionListItem title="Indian" value="Indian" />
+            <ActionListItem title="Thai" value="Thai" />
+            <ActionListItem title="French" value="French" />
+            <ActionListItem title="Japanese" value="Japanese" />
+            <ActionListItem title="Spanish" value="Spanish" />
+            <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+            <ActionListItem title="Korean" value="Korean" />
+            <ActionListItem title="Greek" value="Greek" />
+            <ActionListItem title="Vietnamese" value="Vietnamese" />
+            <ActionListItem title="Brazilian" value="Brazilian" />
+            <ActionListItem title="Moroccan" value="Moroccan" />
+            <ActionListItem title="Caribbean" value="Caribbean" />
+            <ActionListItem title="Turkish" value="Turkish" />
+            <ActionListItem title="Lebanese" value="Lebanese" />
+            <ActionListItem title="Malaysian" value="Malaysian" />
+            <ActionListItem title="Indonesian" value="Indonesian" />
+            <ActionListItem title="Peruvian" value="Peruvian" />
+            <ActionListItem title="Ethiopian" value="Ethiopian" />
+            <ActionListItem title="Filipino" value="Filipino" />
+            <ActionListItem title="Cuban" value="Cuban" />
+            <ActionListItem title="German" value="German" />
+            <ActionListItem title="Nigerian" value="Nigerian" />
+          </ActionList>
+        </BottomSheetBody>
+        <BottomSheetFooter
+          trailing={{
+            primary: {
+              text: 'Open Short BottomSheet',
+              onClick: () => setFirstOpen(true),
+              isDisabled: isFirstOpen,
+            },
+            secondary: {
+              text: 'Open third BottomSheet',
+              onClick: () => setThirdOpen(true),
+              isDisabled: isThirdOpen,
+            },
+          }}
+        />
+      </BottomSheetComponent>
+
+      <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
+        <BottomSheetHeader
+          title="3. Sort By"
+          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListSection title="Asia">
+              <ActionListItem title="Chinese" value="Chinese" />
+              <ActionListItem title="Indian" value="Indian" />
+              <ActionListItem title="Thai" value="Thai" />
+              <ActionListItem title="Japanese" value="Japanese" />
+              <ActionListItem title="Korean" value="Korean" />
+              <ActionListItem title="Vietnamese" value="Vietnamese" />
+              <ActionListItem title="Malaysian" value="Malaysian" />
+              <ActionListItem title="Indonesian" value="Indonesian" />
+            </ActionListSection>
+
+            <ActionListSection title="Europe">
+              <ActionListItem title="Italian" value="Italian" />
+              <ActionListItem title="French" value="French" />
+              <ActionListItem title="Spanish" value="Spanish" />
+              <ActionListItem title="Greek" value="Greek" />
+              <ActionListItem title="German" value="German" />
+            </ActionListSection>
+
+            <ActionListSection title="North America">
+              <ActionListItem title="Mexican" value="Mexican" />
+              <ActionListItem title="Caribbean" value="Caribbean" />
+            </ActionListSection>
+
+            <ActionListSection title="South America">
+              <ActionListItem title="Brazilian" value="Brazilian" />
+              <ActionListItem title="Peruvian" value="Peruvian" />
+            </ActionListSection>
+
+            <ActionListSection title="Africa">
+              <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+              <ActionListItem title="Moroccan" value="Moroccan" />
+              <ActionListItem title="Ethiopian" value="Ethiopian" />
+              <ActionListItem title="Nigerian" value="Nigerian" />
+            </ActionListSection>
+          </ActionList>
+        </BottomSheetBody>
+        <BottomSheetFooter
+          trailing={{
+            primary: {
+              text: 'Open Short BottomSheet',
+              onClick: () => setFirstOpen(true),
+              isDisabled: isFirstOpen,
+            },
+            secondary: {
+              text: 'Open Long BottomSheet',
+              onClick: () => setSecondOpen(true),
+              isDisabled: isSecondOpen,
+            },
+          }}
+        />
+      </BottomSheetComponent>
+
+      <BaseBox>
+        {new Array(100).fill(0).map((_, idx) => (
+          <p key={idx}>{idx}</p>
+        ))}
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
+
 const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(true);
 

@@ -4,6 +4,7 @@ import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import type { SectionData } from './actionListUtils';
 import { makeAccessible } from '~utils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -14,7 +15,9 @@ type ActionListBoxProps = {
 };
 
 const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
-  ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, isInBottomSheet }, ref) => {
+  ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable }, ref) => {
+    const { isInBottomSheet } = useBottomSheetContext();
+
     return (
       <StyledListBoxWrapper
         isInBottomSheet={Boolean(isInBottomSheet)}

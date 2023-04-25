@@ -17,14 +17,7 @@ import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
-import {
-  isReactNative,
-  makeAccessible,
-  makeSize,
-  metaAttribute,
-  MetaConstants,
-  useBreakpoint,
-} from '~utils';
+import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import size from '~tokens/global/size';
 import type { DropdownProps } from '~components/Dropdown';
@@ -313,9 +306,8 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
     isKeydownPressed,
   } = useDropdown();
 
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const isMobile = matchedDeviceType === 'mobile';
+  const { platform } = useTheme();
+  const isMobile = platform === 'onMobile';
 
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =

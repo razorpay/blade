@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 type UseScrollLockProps = {
   targetRef: React.RefObject<Element>;
@@ -10,6 +10,7 @@ type UseScrollLockProps = {
 };
 
 /**
+ * Modified from: https://github.com/stipsan/react-spring-bottom-sheet/blob/main/src/hooks/useScrollLock.tsx
  * Handle scroll locking to ensure a good dragging experience on Android and iOS.
  *
  * On iOS the following may happen if scroll isn't locked:
@@ -27,28 +28,34 @@ export function useScrollLock({
 }: UseScrollLockProps): React.MutableRefObject<{
   activate: () => void;
   deactivate: () => void;
+  active: React.MutableRefObject<boolean>;
 }> {
-  const ref = useRef<{ activate: () => void; deactivate: () => void }>({
+  const active = React.useRef(false);
+  const ref = useRef<{
+    activate: () => void;
+    deactivate: () => void;
+    active: React.MutableRefObject<boolean>;
+  }>({
     activate: () => {
       throw new TypeError('Tried to activate scroll lock too early');
     },
     deactivate: () => {},
+    active,
   });
 
   useEffect(() => {
     if (!enabled) {
-      ref.current.deactivate();
-      ref.current = { activate: () => {}, deactivate: () => {} };
+      ref.current = { activate: () => {}, deactivate: () => {}, active };
       return;
     }
 
     const target = targetRef.current;
-    let active = false;
+    active.current = false;
 
     ref.current = {
       activate: () => {
-        if (active) return;
-        active = true;
+        if (active.current) return;
+        active.current = true;
         if (!target) return;
         disableBodyScroll(target, {
           allowTouchMove: (el: any) => el.closest('[data-body-scroll-lock-ignore]'),
@@ -56,11 +63,12 @@ export function useScrollLock({
         });
       },
       deactivate: () => {
-        if (!active) return;
-        active = false;
+        if (!active.current) return;
+        active.current = false;
         if (!target) return;
         enableBodyScroll(target);
       },
+      active,
     };
   }, [enabled, targetRef, reserveScrollBarGap]);
 

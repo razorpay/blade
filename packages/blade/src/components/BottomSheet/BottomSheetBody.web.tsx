@@ -29,6 +29,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         WebkitOverflowScrolling: 'touch',
         userSelect: 'auto',
         overflow: 'auto',
+        touchAction: 'none',
       }}
       {...bind?.({ isContentDragging: true })}
     >
