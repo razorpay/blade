@@ -93,7 +93,7 @@ We will achieve the following with this:
 - We are not using size-limit to do a total bundle size check or master diff because it doesn't support it as well as bundlemon does. Bundlemon has an infra set up that stores master bundle size and diffs it on every PR. We can't do that with size-limit.
 
 # Drawbacks/Constraints
-- Bundlemon is a free service but it also seems unmaintained since Jan 2022.
+- Bundlemon is a free service and is actively maintained.
 - If Bundlemon service goes down, we will not be able to get any master diffs but we will still be able to get the total bundle size limit check.
 - Alternate to using bundlemon is setting up our own infra to store master bundle size and diff it on every PR. This would also be a lot of work and we would have to maintain it.
 - I'd suggest taking the shorter route and using bundlemon for now. 
