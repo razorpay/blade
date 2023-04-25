@@ -248,12 +248,14 @@
     {
       "path": "./build/components/index.web.js",
       "import": "{ Button }",
-      "limit": "15.1 kb"
+      "limit": "15.1 kb",
+      "running": false
     },
     {
       "path": "./build/components/index.web.js",
       "import": "{ Text }",
-      "limit": "10.3 kb"
+      "limit": "10.3 kb",
+      "running": false
     }
   ]
 }
