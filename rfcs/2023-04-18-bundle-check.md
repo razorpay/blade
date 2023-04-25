@@ -23,7 +23,7 @@ Blade Issue: (leave this empty if no issue yet)
 This RFC proposes the integration of bundle checker into Blade to add checks for the bundle size. This will help us to keep track of the bundle size and prevent any regressions in the future.
 
 # Motivation
-As Blade grows, the size of the generated bundles also grows. This can lead to longer load times and increased bandwidth usage for our consumers. To prevent this, we need a way to monitor the size of our generated assets and ensure that they stay within acceptable limits. We also need to ensure that any changes we make to the design system don't inadvertently increase the size of our bundles, which can impact our users' experience.
+As Blade grows, the size of the generated bundles also grows. This can lead to longer load times and increased bandwidth usage for our consumers. To prevent this, we need a way to monitor the size of our generated assets. We also need to ensure that any changes we make to the design system don't inadvertently increase the size of our bundles, which can impact our users' experience.
 
 # Detailed Design
 We want to achieve the following:
