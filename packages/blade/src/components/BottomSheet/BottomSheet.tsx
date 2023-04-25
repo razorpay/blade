@@ -62,7 +62,7 @@ const BottomSheetSurface = styled.div<{
       : `${makeMotionTime(theme.motion.duration.moderate)}`,
     transitionTimingFunction: BOTTOM_SHEET_EASING,
     willChange: 'transform, opacity, height',
-    transitionProperty: 'transform, opacity, height, z-index',
+    transitionProperty: 'transform, opacity, height',
     position: 'fixed',
     left: 0,
     right: 0,
@@ -365,7 +365,6 @@ const _BottomSheet = ({
   // https://www.framer.com/docs/animate-presence/#usepresence
   const { isMounted, isVisible } = usePresence(Boolean(_isOpen), {
     transitionDuration: theme.motion.duration.moderate,
-    exitTransitionDuration: theme.motion.duration.moderate,
   });
 
   const contextValue = React.useMemo(

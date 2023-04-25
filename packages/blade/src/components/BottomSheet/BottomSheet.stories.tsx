@@ -40,24 +40,24 @@ export default {
   component: BottomSheetComponent,
 } as Meta<BottomSheetProps>;
 
-const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isFirstOpen, setFirstOpen] = React.useState(false);
   const [isSecondOpen, setSecondOpen] = React.useState(false);
   const [isThirdOpen, setThirdOpen] = React.useState(false);
 
   return (
     <BaseBox>
-      <Button onClick={() => setIsOpen(true)}>Open short one first</Button>
-      <Button onClick={() => setSecondOpen(true)}>Open large one first</Button>
-      <Button onClick={() => setThirdOpen(true)}>Open third first</Button>
+      <Button onClick={() => setFirstOpen(true)}>1 Open short one first</Button>
+      <Button onClick={() => setSecondOpen(true)}>2 Open large one first</Button>
+      <Button onClick={() => setThirdOpen(true)}>3 Open third first</Button>
 
       <BottomSheetComponent
-        isOpen={isOpen}
+        isOpen={isFirstOpen}
         onDismiss={() => {
-          setIsOpen(false);
+          setFirstOpen(false);
         }}
       >
-        <BottomSheetHeader title="Saved Address" />
+        <BottomSheetHeader title="1. Saved Address" />
         <BottomSheetBody>
           <BaseBox padding="spacing.4">
             <RadioGroup label="Addresses">
@@ -69,15 +69,23 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
 
         <BottomSheetFooter
           trailing={{
-            primary: { text: 'Open Large BottomSheet', onClick: () => setSecondOpen(true) },
-            secondary: { text: 'Open third BottomSheet', onClick: () => setThirdOpen(true) },
+            primary: {
+              text: 'Open Large BottomSheet',
+              onClick: () => setSecondOpen(true),
+              isDisabled: isSecondOpen,
+            },
+            secondary: {
+              text: 'Open third BottomSheet',
+              onClick: () => setThirdOpen(true),
+              isDisabled: isThirdOpen,
+            },
           }}
         />
       </BottomSheetComponent>
 
       <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
         <BottomSheetHeader
-          title="Sort By"
+          title="2. Sort By"
           prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
@@ -111,15 +119,23 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
         </BottomSheetBody>
         <BottomSheetFooter
           trailing={{
-            primary: { text: 'Open Short BottomSheet', onClick: () => setIsOpen(true) },
-            secondary: { text: 'Open third BottomSheet', onClick: () => setThirdOpen(true) },
+            primary: {
+              text: 'Open Short BottomSheet',
+              onClick: () => setFirstOpen(true),
+              isDisabled: isFirstOpen,
+            },
+            secondary: {
+              text: 'Open third BottomSheet',
+              onClick: () => setThirdOpen(true),
+              isDisabled: isThirdOpen,
+            },
           }}
         />
       </BottomSheetComponent>
 
       <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
         <BottomSheetHeader
-          title="Sort By"
+          title="3. Sort By"
           prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
@@ -163,15 +179,23 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
         </BottomSheetBody>
         <BottomSheetFooter
           trailing={{
-            primary: { text: 'Open Short BottomSheet', onClick: () => setIsOpen(true) },
-            secondary: { text: 'Open Long BottomSheet', onClick: () => setSecondOpen(true) },
+            primary: {
+              text: 'Open Short BottomSheet',
+              onClick: () => setFirstOpen(true),
+              isDisabled: isFirstOpen,
+            },
+            secondary: {
+              text: 'Open Long BottomSheet',
+              onClick: () => setSecondOpen(true),
+              isDisabled: isSecondOpen,
+            },
           }}
         />
       </BottomSheetComponent>
 
       <BaseBox>
         {new Array(100).fill(0).map((_, idx) => (
-          <p>{idx}</p>
+          <p key={idx}>{idx}</p>
         ))}
       </BaseBox>
     </BaseBox>
