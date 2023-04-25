@@ -23,15 +23,6 @@ jobs:
       - name: Build Blade
         run: yarn build
         working-directory: packages/blade
-      - name: Check Bundle Size
-        run: yarn bundlemon
-        working-directory: packages/blade
-        env:
-          CI_COMMIT_SHA: ${{github.event.pull_request.head.sha || github.sha}}
-      - name: Check Tree Shaking
-        run: yarn size-limit
-        working-directory: packages/blade
-        # Temporarily moved build & size checks before linters and tests
       - name: Lint Source Code
         run: yarn lint
       - name: Run TypeScript Checks
@@ -40,4 +31,11 @@ jobs:
       - name: Run Web & Native Tests
         run: yarn test
         working-directory: packages/blade
-
+      - name: Check Bundle Size
+        run: yarn bundlemon
+        working-directory: packages/blade
+        env:
+          CI_COMMIT_SHA: ${{github.event.pull_request.head.sha || github.sha}}
+      - name: Check Tree Shaking
+        run: yarn size-limit
+        working-directory: packages/blade
