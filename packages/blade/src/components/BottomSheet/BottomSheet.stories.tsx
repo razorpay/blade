@@ -205,7 +205,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
 export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <BaseBox>

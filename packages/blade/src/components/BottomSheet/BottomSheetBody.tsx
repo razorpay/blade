@@ -17,7 +17,6 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
 
   return (
     <BaseBox
-      data-scroll
       ref={scrollRef}
       style={{
         flexShrink: 1,
@@ -31,6 +30,8 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         overflow: 'auto',
         touchAction: 'none',
       }}
+      // Passing isContentDragging to bind()
+      // Inside the useDrag() hook this will let us know if user is dragging the content or not
       {...bind?.({ isContentDragging: true })}
     >
       <BaseBox
@@ -38,7 +39,6 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         marginRight="spacing.3"
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
-        data-content
         ref={contentRef}
         overflow="hidden"
       >

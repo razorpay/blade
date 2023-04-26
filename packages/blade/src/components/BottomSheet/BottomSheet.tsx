@@ -372,7 +372,7 @@ const _BottomSheet = ({
       isInBottomSheet: true,
       isOpen: Boolean(isVisible),
       close,
-      posY: positionY,
+      positionY,
       headerHeight,
       contentHeight,
       footerHeight,
