@@ -225,18 +225,23 @@
   "bundlemon": {
     "files": [
       {
+        "friendlyName": "Web Components",
         "path": "./build/components/index.web.js"
       },
       {
+        "friendlyName": "React Native Components",
         "path": "./build/components/index.native.js"
       },
       {
+        "friendlyName": "Web Tokens",
         "path": "./build/tokens/index.web.js"
       },
       {
+        "friendlyName": "React Native Tokens",
         "path": "./build/tokens/index.native.js"
       },
       {
+        "friendlyName": "CSS Theme Tokens",
         "path": "./build/css/*.css"
       }
     ],
@@ -246,12 +251,14 @@
   },
   "size-limit": [
     {
+      "name": "Import Button only",
       "path": "./build/components/index.web.js",
       "import": "{ Button }",
       "limit": "15.1 kb",
       "running": false
     },
     {
+      "name": "Import Text only",
       "path": "./build/components/index.web.js",
       "import": "{ Text }",
       "limit": "10.3 kb",
