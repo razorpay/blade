@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import GorhomBottomSheet, {
+  BottomSheetFlatList,
   BottomSheetFooter as GorhomBottomSheetFooter,
   BottomSheetScrollView as GorhomBottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
@@ -18,11 +19,13 @@ import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheet
 import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetFooter } from './BottomSheetFooter';
-import { makeSpace, getComponentId } from '~utils';
+import { useBottomSheetStack } from './BottomSheetStack';
+import { makeSpace, getComponentId, usePrevious } from '~utils';
 
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { useId } from '~src/hooks/useId';
 
 const isAndroid = Platform.OS === 'android';
 // TODO: Temporary workaround to make android shadows look as close as iOS
@@ -72,6 +75,16 @@ const _BottomSheet = ({
   const footer = React.useRef<React.ReactNode>();
   const body = React.useRef<React.ReactNode>();
   const _isOpen = dropdownBottomSheetProps?.isOpen ?? isOpen;
+  const wasPreviouslyOpen = usePrevious(_isOpen);
+
+  const id = useId();
+  const {
+    addBottomSheetToStack,
+    removeBottomSheetFromStack,
+    getCurrentStackIndexById,
+  } = useBottomSheetStack();
+  const currentStackIndex = getCurrentStackIndexById(id);
+  const zIndex = 100 - currentStackIndex;
 
   const _snapPoints = React.useMemo(() => snapPoints.map((point) => `${point * 100}%`), [
     snapPoints,
@@ -79,15 +92,19 @@ const _BottomSheet = ({
 
   const close = React.useCallback(() => {
     sheetRef.current?.close();
-    console.log(dropdownBottomSheetProps);
     // close the select dropdown as well
     dropdownBottomSheetProps?.setIsOpen(false);
     onDismiss?.();
   }, [dropdownBottomSheetProps, onDismiss]);
 
   const open = React.useCallback(() => {
-    sheetRef.current?.snapToIndex(0);
-  }, []);
+    // Don't again set the snapToIndex to 0 if the bottomsheet was already open
+    // We need to do this because since we set various dependency deps on the useEffect while opening
+    // The useEffect runs multiple times and thus causes this function to get called multiple times
+    if (!wasPreviouslyOpen) {
+      sheetRef.current?.snapToIndex(0);
+    }
+  }, [wasPreviouslyOpen]);
 
   React.useEffect(() => {
     if (isOpen === true) {
@@ -122,6 +139,13 @@ const _BottomSheet = ({
   const renderFooter = React.useCallback((props): React.ReactElement => {
     return <GorhomBottomSheetFooter {...props}>{footer.current}</GorhomBottomSheetFooter>;
   }, []);
+
+  const renderBackdrop = React.useCallback(
+    (props): React.ReactElement => {
+      return <BottomSheetBackdrop {...props} zIndex={zIndex} />;
+    },
+    [zIndex],
+  );
 
   // sync the select dropdown's state with bottomsheet's state
   React.useEffect(() => {
@@ -169,6 +193,15 @@ const _BottomSheet = ({
   // to remove the focus we are updating the key={} property of BottomSheetScrollView
   const bodyResetKey = _isOpen ? 'opened' : 'closed';
 
+  // register and deregister in the stack
+  React.useEffect(() => {
+    if (isOpen) {
+      addBottomSheetToStack(id);
+    } else {
+      removeBottomSheetFromStack(id);
+    }
+  }, [addBottomSheetToStack, isOpen, id, removeBottomSheetFromStack]);
+
   return (
     <Portal hostName="BladeBottomSheetPortal">
       {/* Portalling both the context */}
@@ -180,6 +213,7 @@ const _BottomSheet = ({
             enableContentPanningGesture
             ref={sheetRef}
             index={-1}
+            containerStyle={{ zIndex }}
             animateOnMount={false}
             handleComponent={() => (
               <BaseBox position="relative">
@@ -189,14 +223,25 @@ const _BottomSheet = ({
             )}
             backgroundComponent={BottomSheetSurface}
             footerComponent={renderFooter}
-            backdropComponent={BottomSheetBackdrop}
+            backdropComponent={renderBackdrop}
             onClose={close}
             snapPoints={_snapPoints}
           >
-            <GorhomBottomSheetScrollView key={bodyResetKey} stickyHeaderIndices={[0]}>
+            {/* This fails because in ActionListBox.native now we have FlatList */}
+            {/* But in react-native we can't render a flatlist inside of a scrollview */}
+            {/* <GorhomBottomSheetScrollView key={bodyResetKey} stickyHeaderIndices={[0]}>
               {header.current}
               {body.current}
-            </GorhomBottomSheetScrollView>
+            </GorhomBottomSheetScrollView> */}
+
+            {/* Nasty workaround, this will basically bypass the warning plus the virtualization */}
+            <BottomSheetFlatList
+              data={[0]}
+              ListHeaderComponent={() => <>{header.current}</>}
+              renderItem={() => <>{body.current}</>}
+              stickyHeaderIndices={[0]}
+              key={bodyResetKey}
+            />
           </GorhomBottomSheet>
         </BottomSheetContext.Provider>
       </DropdownContext.Provider>

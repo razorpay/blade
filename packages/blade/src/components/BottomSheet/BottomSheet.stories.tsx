@@ -195,7 +195,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
 
       <BaseBox>
         {new Array(100).fill(0).map((_, idx) => (
-          <p key={idx}>{idx}</p>
+          <Text key={idx}>{idx}</Text>
         ))}
       </BaseBox>
     </BaseBox>
