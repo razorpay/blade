@@ -59,6 +59,10 @@ const _Dropdown = ({
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
+  const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
+    DropdownContextType['changeCallbackTriggerer']
+  >(0);
+  const [isControlled, setIsControlled] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
 
@@ -106,6 +110,10 @@ const _Dropdown = ({
       hasLabelOnLeft,
       setHasLabelOnLeft,
       dropdownTriggerer: dropdownTriggerer.current,
+      changeCallbackTriggerer,
+      setChangeCallbackTriggerer,
+      isControlled,
+      setIsControlled,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
@@ -119,6 +127,8 @@ const _Dropdown = ({
       hasFooterAction,
       hasLabelOnLeft,
       isKeydownPressed,
+      changeCallbackTriggerer,
+      isControlled,
     ],
   );
 

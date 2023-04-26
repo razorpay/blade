@@ -12,6 +12,7 @@ import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { makeInputValue } from '~components/Dropdown/dropdownUtils';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -35,6 +36,7 @@ type SelectInputProps = Pick<
   | 'testID'
 > & {
   icon?: IconComponent;
+  value?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
 };
 
@@ -56,6 +58,12 @@ const _SelectInput = (
     dropdownTriggerer,
     shouldIgnoreBlurAnimation,
     setHasLabelOnLeft,
+    setSelectedIndices,
+    selectedIndices,
+    options,
+    changeCallbackTriggerer,
+    isControlled,
+    setIsControlled,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -67,9 +75,40 @@ const _SelectInput = (
   const { icon, onChange, placeholder = 'Select Option', onBlur, ...baseInputProps } = props;
 
   React.useEffect(() => {
-    onChange?.({ name: props.name, values: value.split(', ') });
+    if (options.length > 0 && props.value) {
+      if (!isControlled) {
+        setIsControlled(true);
+      }
+
+      if (typeof props.value === 'string') {
+        // single select control
+        const selectedItemIndex = options.findIndex((option) => option.value === props.value);
+        if (selectedItemIndex) {
+          setSelectedIndices([selectedItemIndex]);
+        }
+      } else {
+        // multiselect control
+        const controlledSelectedIndices = props.value
+          .map((optionValue) => options.findIndex((option) => option.value === optionValue))
+          .filter((value) => value > 0);
+
+        setSelectedIndices(controlledSelectedIndices);
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, props.name]);
+  }, [props.value, options]);
+
+  React.useEffect(() => {
+    if (props.onChange) {
+      console.log({ selectedIndices });
+      props.onChange({
+        name: props.name,
+        values: makeInputValue(selectedIndices, options).split(','),
+      });
+    }
+    // onChange?.({ name: props.name, values: value.split(', ') });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [changeCallbackTriggerer]);
 
   React.useEffect(() => {
     setHasLabelOnLeft(props.labelPosition === 'left');

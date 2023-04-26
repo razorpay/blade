@@ -69,6 +69,12 @@ type DropdownContextType = {
    */
   hasLabelOnLeft: boolean;
   setHasLabelOnLeft: (value: boolean) => void;
+
+  changeCallbackTriggerer: number;
+  setChangeCallbackTriggerer: (changeCallbackTriggerer: number) => void;
+
+  isControlled: boolean;
+  setIsControlled: (isControlled: boolean) => void;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -90,6 +96,10 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setHasLabelOnLeft: noop,
   isKeydownPressed: false,
   setIsKeydownPressed: noop,
+  changeCallbackTriggerer: 0,
+  setChangeCallbackTriggerer: noop,
+  isControlled: false,
+  setIsControlled: noop,
   dropdownBaseId: '',
   actionListItemRef: {
     current: null,
@@ -168,6 +178,9 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsKeydownPressed,
     options,
     selectionType,
+    changeCallbackTriggerer,
+    setChangeCallbackTriggerer,
+    isControlled,
     ...rest
   } = React.useContext(DropdownContext);
 
@@ -193,20 +206,25 @@ const useDropdown = (): UseDropdownReturnValue => {
       return;
     }
 
-    if (selectionType === 'multiple') {
-      if (selectedIndices.includes(index)) {
-        // remove existing item
-        const existingItemIndex = selectedIndices.indexOf(index);
-        setSelectedIndices([
-          ...selectedIndices.slice(0, existingItemIndex),
-          ...selectedIndices.slice(existingItemIndex + 1),
-        ]);
+    if (!isControlled) {
+      // we don't have to actually select items if dropdown is uncontrolled
+      if (selectionType === 'multiple') {
+        if (selectedIndices.includes(index)) {
+          // remove existing item
+          const existingItemIndex = selectedIndices.indexOf(index);
+          setSelectedIndices([
+            ...selectedIndices.slice(0, existingItemIndex),
+            ...selectedIndices.slice(existingItemIndex + 1),
+          ]);
+        } else {
+          setSelectedIndices([...selectedIndices, index]);
+        }
       } else {
-        setSelectedIndices([...selectedIndices, index]);
+        setSelectedIndices([index]);
       }
-    } else {
-      setSelectedIndices([index]);
     }
+
+    setChangeCallbackTriggerer(changeCallbackTriggerer + 1);
 
     if (activeIndex !== index) {
       setActiveIndex(index);
@@ -370,6 +388,9 @@ const useDropdown = (): UseDropdownReturnValue => {
     setShouldIgnoreBlur,
     isKeydownPressed,
     setIsKeydownPressed,
+    changeCallbackTriggerer,
+    setChangeCallbackTriggerer,
+    isControlled,
     options,
     value: makeInputValue(selectedIndices, options),
     displayValue: makeInputDisplayValue(selectedIndices, options),

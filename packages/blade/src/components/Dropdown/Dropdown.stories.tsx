@@ -366,6 +366,66 @@ WithMultiSelect.parameters = {
   },
 };
 
+export const ControlledDropdown = (): JSX.Element => {
+  const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+
+  return (
+    <>
+      <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+      <Dropdown>
+        <SelectInput
+          label="Select City"
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values[0]);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </>
+  );
+};
+
+export const ControlledDropdownMultiSelect = (): JSX.Element => {
+  const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+
+  return (
+    <>
+      <Button onClick={() => setCurrentSelection(['bangalore'])}>Select Bangalore</Button>
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="Select City"
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </>
+  );
+};
+
 export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
   const {
     selectionType,
