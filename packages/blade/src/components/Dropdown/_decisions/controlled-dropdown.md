@@ -131,11 +131,7 @@ Inspirations
 
 ## Concluded Solution
 
-> **Note**
->
-> Jump to [Approach Comparisons](#approach-comparisons) to know Whys of this conclusion
-
-Based on the [discussion](#discussions-mom), we decided to go with a combination of approaches propsed above-
+Based on the [discussions](#approach-comparisons), we decided to go with a combination of approaches propsed above-
 
 - On `SelectInput`, `value` + `onChange` + `defaultValue`
 - On `ActionListItem`, `isSelected` + `onClick` + `isDefaultSelected`
@@ -323,7 +319,7 @@ Based on the usecases like Menu with Selected Items, we can conclude that `Actio
 
 Whereas in Select, it can be selected in a controlled state as well as when user clicks on item.
 
-#### Future Action Items for Maintainibility
+#### Action Items for Maintainibility
 
 We noticed that we've been mixing the "Menu" and "Select" so far. It's better to refactor and separate them out into individual internal component for better separation of concerns and UX.
 
