@@ -14,9 +14,12 @@ Currently there is no ([legal](https://codesandbox.io/s/state-fill-usecase-42u1e
 
 If you have a "Reset" button in your form, there isn't way to de-select an already selected item ([legally](https://razorpay.slack.com/archives/C01H13RTF8V/p1681287510398639?thread_ts=1681286843.013449&cid=C01H13RTF8V)). For such usecases as well we need controlled Dropdown
 
-## Solutions
+### Proposed Approaches
 
-### `onChange` + `isSelected` ✅
+<details>
+<summary><code>onChange</code> + <code>isSelected</code></summary>
+
+#### `onChange` + `isSelected`
 
 Slightly similar to primer and closest to HTML's `<select>`.
 
@@ -55,7 +58,7 @@ const onSelectChange = ({ values }) => {
 </Dropdown>;
 ```
 
-### Alternate Approach
+</details>
 
 <details>
 <summary><code>onChange</code> + <code>value</code></summary>
@@ -126,7 +129,85 @@ Inspirations
 
 </details>
 
-### Approach Comparison
+## Concluded Solution
+
+> **Note**
+>
+> Jump to [Approach Comparisons](#approach-comparisons) to know Whys of this conclusion
+
+Based on the [discussion](#discussions-mom), we decided to go with a combination of approaches propsed above-
+
+- On `SelectInput`, `value` + `onChange` + `defaultValue`
+- On `ActionListItem`, `isSelected` + `onClick` + `isDefaultSelected`
+
+### When Trigger is `SelectInput`
+
+For SelectInput (and maybe AutoComplete in future), we decided to go with `value` + `onChange` props on the trigger. This keeps the controlled state props on the same component as opposed to `isSelected` + `onChange` approach where `isSelected` goes on ActionListItem and `onChange` goes on SelectInput.
+
+```jsx
+const [currentSelection, setCurrentSelection] = React.useState();
+
+const onSomeAction = () => {
+  setCurrentSelection('mumbai');
+};
+
+const onResetClick = () => {
+  setCurrentSelection(undefined);
+};
+
+const onSelectChange = ({ values }) => {
+  setCurrentSelection(values[0]);
+};
+
+<Dropdown>
+  <SelectInput
+    label="City"
+    // New Prop 👇🏼
+    value={currentSelection}
+    onChange={onSelectChange}
+  />
+  <DropdownOverlay>
+    <ActionList>
+      <ActionListItem title="Mumbai" value="mumbai" />
+      <ActionListItem title="Bangalore" value="bangalore" />
+    </ActionList>
+  </DropdownOverlay>
+</Dropdown>;
+```
+
+### When Trigger is Button or other triggers
+
+When it's Button or other trigger, we use `isSelected` and `onClick` from `ActionListItem`
+
+```jsx
+const [currentSelection, setCurrentSelection] = React.useState();
+const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+const onSomeAction = () => {
+  setCurrentSelection('mumbai');
+};
+
+<Dropdown>
+  <DropdownButton>Show Dropdown</DropdownButton>
+  <DropdownOverlay>
+    <ActionList>
+      <ActionListItem
+        title="Mumbai"
+        value="mumbai"
+        // New Props 👇🏼
+        isSelected={currentSelection === 'mumbai'}
+        onClick={() => {
+          // This handles internal controlled state
+          setCurrentSelection('mumbai');
+        }}
+      />
+      <ActionListItem title="Bangalore" value="bangalore" />
+    </ActionList>
+  </DropdownOverlay>
+</Dropdown>;
+```
+
+### Approach Comparisons
 
 As displayed above, there are 3 approaches we can take
 
@@ -155,20 +236,21 @@ Lets compare 2 `onChange` prop-based approaches now-
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | Preferred Approach if we say `ActionListItem` is selectable component independent of trigger | Preferred Approach if only `SelectInput` trigger has selectable components |
 
-**Reasoning:**
+**Conclusion:** We decided that we would need a combination of both approaches. Because-
 
-- If ActionListItem is individually selectable, then having `isSelected` makes more sense so that everywhere we use `ActionList`, we'll be able to mark item as selected irrespective of trigger
-- If ActionListItem is not selectable in itself, then having `value` prop on `SelectInput` makes more sense because it's consistent with other Inputs, and we'll likely need something like this in `AutoComplete` eventually.
+- Based on the [selectable usecase of Menu](#menu-with-selected-item), the ActionListItem has to be "selectable" individually. Which means we definitely need something like `isSelected` on ActionListItem.
+- However the concerns raised with `onChange` + `isSelected` approach were that the controlled states end up on 2 different indepdent component which is confusing and they in a way become bound to each other.
+- Thus, We decided-
+  - To go with `value` + `onChange` on `SelectInput` trigger so that the controlled state stays on same component and SelectInput also becomes consistent with rest of the Input components.
+  - To go with `isSelected` + `onClick` on `ActionListItem` to satisfy selected menu usecase.
 
-Thus, deciding factor now is whether the ActionListItem is selectable or not.
+### Discussions MOM
 
-Which takes us to next conversation,
-
-## Is `ActionListItem` a selectable component?
+#### Is `ActionListItem` a selectable component?
 
 well... yes and no.
 
-### Problem
+##### Problem
 
 We cover 2 components in one component, SelectMenu and ActionMenu.
 
@@ -191,9 +273,9 @@ We cover 2 components in one component, SelectMenu and ActionMenu.
 
 To solve this problem, irrespective of whether we build this as separate component or not, we have to think of it as separate component from implementation end.
 
-### Differences between a Menu and Select
+##### Differences between a Menu and Select
 
-#### Select
+###### Select
 
 When you click on item inside Select,
 
@@ -204,7 +286,7 @@ E.g. A city selection menu that shows list of cities.
 
 <img width="453" src="https://user-images.githubusercontent.com/30949385/233962393-eaba886d-d4e6-4975-b15d-e1725c5d798b.gif" />
 
-#### Menu
+###### Menu
 
 When you click on item inside Menu,
 
@@ -218,7 +300,7 @@ Here, Items are not "selected" after click, they only perform a certain action.
 
 Easy! So in select the items are selectable and in menu they are not... welll... **nope**.
 
-#### Menu with Selected Item
+###### Menu with Selected Item
 
 Think of a usecase where you have a profile icon that allows you to switch profile. You would want your current profile to have "selected" styles in this case.
 
@@ -235,18 +317,15 @@ In the below example, Anurag's profile should have "selected" styling in-order t
 
 </details>
 
-#### Conclusion
+##### Conclusion
 
-Based on the above usecases, the rule of thumb becomes -
+Based on the usecases like Menu with Selected Items, we can conclude that `ActionListItem` is indeed a selectable component. However, In Menu, it can only be selected in a controlled state (When someone passes `isSelected`) and cannot be selected when item is clicked.
 
-- When trigger is `SelectInput`,
-  Items get selected on click of them **OR** when `isSelected` is passed.
-- When trigger is button or any other trigger,
-  Items get selected **ONLY** when consumer explicitly passes `isSelected` prop to the item. They don't get selected by default on click of them.
+Whereas in Select, it can be selected in a controlled state as well as when user clicks on item.
 
-Hence, `ActionListItem` as a whole should be selectable. The default behaviour of when and how it gets selected can depend on the trigger. Keeping the above scenarios in mind, it makes sense to go with **`onChange` + `isSelected`** approach.
+#### Future Action Items for Maintainibility
 
-#### TODOs
+We noticed that we've been mixing the "Menu" and "Select" so far. It's better to refactor and separate them out into individual internal component for better separation of concerns and UX.
 
 - [ ] Refactor the internal code of `ActionListItem` into `SelectItem` and `MenuItem` components to handle 2 separate behaviours and semantics.
 
