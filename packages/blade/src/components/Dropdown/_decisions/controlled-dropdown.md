@@ -205,7 +205,7 @@ const onSomeAction = () => {
 
 ### Approach Comparisons
 
-As displayed above, there are 3 approaches we can take
+As mentioned in [Propsed Approaches](#proposed-approaches), we considered 3 approaches majorly -
 
 - `onChange` Prop-Based
   - [`onChange` + `value`](#onchange--value)
@@ -319,11 +319,11 @@ Based on the usecases like Menu with Selected Items, we can conclude that `Actio
 
 Whereas in Select, it can be selected in a controlled state as well as when user clicks on item.
 
-#### Action Items for Maintainibility
+#### Additional Notes and Action Items
 
-We noticed that we've been mixing the "Menu" and "Select" so far. It's better to refactor and separate them out into individual internal component for better separation of concerns and UX.
-
-- [ ] Refactor the internal code of `ActionListItem` into `SelectItem` and `MenuItem` components to handle 2 separate behaviours and semantics.
+- We noticed that we've been mixing the "Menu" and "Select" so far. It's better to refactor and separate them out into individual internal component for better separation of concerns and UX.
+  - [ ] Refactor the internal code of `ActionListItem` into `SelectItem` and `MenuItem` components to handle 2 separate behaviours and semantics.
+- There are also "impossible" states like passing `isSelected` on ActionListItem when `SelectInput` is used, we decided to handle it validations end. Things like trying to select multiple items in single select will also be handled on validations end.
 
 ### Referrences
 
