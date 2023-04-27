@@ -25,6 +25,7 @@ import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
 import { useId } from '~src/hooks/useId';
+import size from '~tokens/global/size';
 
 type BottomSheetProps = {
   isOpen?: boolean;
@@ -51,8 +52,8 @@ const BottomSheetSurface = styled.div<{
   return {
     background: theme.colors.surface.background.level2.lowContrast,
     // TODO: we do not have 16px radius token
-    borderTopLeftRadius: makeSpace(theme.spacing[5]),
-    borderTopRightRadius: makeSpace(theme.spacing[5]),
+    borderTopLeftRadius: makeSpace(size[16]),
+    borderTopRightRadius: makeSpace(size[16]),
     borderColor: theme.colors.surface.border.normal.lowContrast,
     boxShadow: `${shadowLayer1}, ${shadowLayer2}`,
     opacity: 0,
