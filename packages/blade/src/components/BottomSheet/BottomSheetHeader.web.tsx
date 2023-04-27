@@ -6,7 +6,7 @@ import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import BaseBox from '~components/Box/BaseBox';
 import { Text, Heading } from '~components/Typography';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils';
 
 type BottomSheetHeaderTrailingProps = {
   visual: React.ReactNode;

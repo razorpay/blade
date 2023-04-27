@@ -20,14 +20,14 @@ import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { useBottomSheetStack } from './BottomSheetStack';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSpace } from '~utils';
+import { makeMotionTime, makeSpace, assignWithoutSideEffects } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import { useId } from '~src/hooks/useId';
+import size from '~tokens/global/size';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 
@@ -46,8 +46,8 @@ const BottomSheetSurface = styled.div<{
   return {
     background: theme.colors.surface.background.level2.lowContrast,
     // TODO: we do not have 16px radius token
-    borderTopLeftRadius: makeSpace(theme.spacing[5]),
-    borderTopRightRadius: makeSpace(theme.spacing[5]),
+    borderTopLeftRadius: makeSpace(size[16]),
+    borderTopRightRadius: makeSpace(size[16]),
     borderColor: theme.colors.surface.border.normal.lowContrast,
     boxShadow: `${shadowLayer1}, ${shadowLayer2}`,
     opacity: 0,

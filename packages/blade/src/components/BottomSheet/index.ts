@@ -1,8 +1,8 @@
 export {
   BottomSheet as PrereleaseBottomSheet,
   BottomSheetBody,
-  BottomSheetHeader,
   BottomSheetFooter,
+  BottomSheetHeader,
 } from './BottomSheet';
 
 export { BottomSheetProps } from './types';

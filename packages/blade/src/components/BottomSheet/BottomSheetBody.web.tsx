@@ -6,6 +6,17 @@ import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect'
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
+const bodyStyles: React.CSSProperties = {
+  WebkitTapHighlightColor: 'revert',
+  WebkitTouchCallout: 'revert',
+  WebkitUserSelect: 'auto',
+  overscrollBehavior: 'contain',
+  WebkitOverflowScrolling: 'touch',
+  userSelect: 'auto',
+  overflow: 'auto',
+  touchAction: 'none',
+};
+
 const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { scrollRef, setContentHeight, isOpen, bind } = useBottomSheetContext();
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -18,27 +29,18 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
   return (
     <BaseBox
       ref={scrollRef}
-      style={{
-        flexShrink: 1,
-        flexGrow: 1,
-        WebkitTapHighlightColor: 'revert',
-        WebkitTouchCallout: 'revert',
-        WebkitUserSelect: 'auto',
-        overscrollBehavior: 'contain',
-        WebkitOverflowScrolling: 'touch',
-        userSelect: 'auto',
-        overflow: 'auto',
-        touchAction: 'none',
-      }}
+      flexGrow={1}
+      flexShrink={1}
+      style={bodyStyles}
       // Passing isContentDragging to bind()
       // Inside the useDrag() hook this will let us know if user is dragging the content or not
       {...bind?.({ isContentDragging: true })}
     >
       <BaseBox
-        marginLeft="spacing.3"
-        marginRight="spacing.3"
-        paddingTop="spacing.3"
-        paddingBottom="spacing.3"
+        marginLeft="spacing.5"
+        marginRight="spacing.5"
+        paddingTop="spacing.5"
+        paddingBottom="spacing.5"
         ref={contentRef}
         overflow="hidden"
       >
