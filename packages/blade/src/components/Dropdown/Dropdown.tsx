@@ -51,6 +51,9 @@ const _Dropdown = ({
   const [selectedIndices, setSelectedIndices] = React.useState<
     DropdownContextType['selectedIndices']
   >([]);
+  const [controlledValueIndices, setControlledValueIndices] = React.useState<
+    DropdownContextType['selectedIndices']
+  >([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
@@ -91,6 +94,8 @@ const _Dropdown = ({
       setIsOpen,
       selectedIndices,
       setSelectedIndices,
+      controlledValueIndices,
+      setControlledValueIndices,
       options,
       setOptions,
       activeIndex,
@@ -119,6 +124,7 @@ const _Dropdown = ({
     [
       isOpen,
       selectedIndices,
+      controlledValueIndices,
       options,
       activeIndex,
       shouldIgnoreBlur,

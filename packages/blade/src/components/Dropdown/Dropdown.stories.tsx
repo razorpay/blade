@@ -401,7 +401,15 @@ export const ControlledDropdownMultiSelect = (): JSX.Element => {
 
   return (
     <>
-      <Button onClick={() => setCurrentSelection(['bangalore'])}>Select Bangalore</Button>
+      <Button
+        onClick={() => {
+          if (!currentSelection.includes('bangalore')) {
+            setCurrentSelection([...currentSelection, 'bangalore']);
+          }
+        }}
+      >
+        Select Bangalore
+      </Button>
       <Dropdown selectionType="multiple">
         <SelectInput
           label="Select City"

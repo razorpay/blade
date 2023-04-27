@@ -30,6 +30,11 @@ type DropdownContextType = {
   selectedIndices: number[];
   setSelectedIndices: (value: number[]) => void;
   /**
+   * contains the indexes of selected items during controlled selection
+   */
+  controlledValueIndices: number[];
+  setControlledValueIndices: (value: number[]) => void;
+  /**
    * contains information about all the options inside actionlist
    */
   options: OptionsType;
@@ -82,6 +87,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setIsOpen: noop,
   selectedIndices: [],
   setSelectedIndices: noop,
+  controlledValueIndices: [],
+  setControlledValueIndices: noop,
   options: [],
   setOptions: noop,
   activeIndex: -1,
@@ -181,6 +188,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     changeCallbackTriggerer,
     setChangeCallbackTriggerer,
     isControlled,
+    setControlledValueIndices,
     ...rest
   } = React.useContext(DropdownContext);
 
@@ -190,6 +198,14 @@ const useDropdown = (): UseDropdownReturnValue => {
       closeOnSelection?: boolean;
     },
   ) => void;
+
+  const setIndices = (indices: number[]): void => {
+    if (isControlled) {
+      setControlledValueIndices(indices);
+    } else {
+      setSelectedIndices(indices);
+    }
+  };
   /**
    * Marks the given index as selected.
    *
@@ -206,24 +222,22 @@ const useDropdown = (): UseDropdownReturnValue => {
       return;
     }
 
-    if (!isControlled) {
-      // we don't have to actually select items if dropdown is uncontrolled
-      if (selectionType === 'multiple') {
-        if (selectedIndices.includes(index)) {
-          // remove existing item
-          const existingItemIndex = selectedIndices.indexOf(index);
-          setSelectedIndices([
-            ...selectedIndices.slice(0, existingItemIndex),
-            ...selectedIndices.slice(existingItemIndex + 1),
-          ]);
-        } else {
-          setSelectedIndices([...selectedIndices, index]);
-        }
+    if (selectionType === 'multiple') {
+      if (selectedIndices.includes(index)) {
+        // remove existing item
+        const existingItemIndex = selectedIndices.indexOf(index);
+        setIndices([
+          ...selectedIndices.slice(0, existingItemIndex),
+          ...selectedIndices.slice(existingItemIndex + 1),
+        ]);
       } else {
-        setSelectedIndices([index]);
+        setIndices([...selectedIndices, index]);
       }
+    } else {
+      setIndices([index]);
     }
 
+    // Triggers `onChange` on SelectInput
     setChangeCallbackTriggerer(changeCallbackTriggerer + 1);
 
     if (activeIndex !== index) {
@@ -378,6 +392,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsOpen,
     selectedIndices,
     setSelectedIndices,
+    setControlledValueIndices,
     onTriggerClick,
     onTriggerKeydown,
     onTriggerBlur,

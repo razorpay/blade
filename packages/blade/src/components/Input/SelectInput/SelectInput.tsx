@@ -12,7 +12,6 @@ import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { makeInputValue } from '~components/Dropdown/dropdownUtils';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -59,7 +58,7 @@ const _SelectInput = (
     shouldIgnoreBlurAnimation,
     setHasLabelOnLeft,
     setSelectedIndices,
-    selectedIndices,
+    controlledValueIndices,
     options,
     changeCallbackTriggerer,
     isControlled,
@@ -83,16 +82,16 @@ const _SelectInput = (
       if (typeof props.value === 'string') {
         // single select control
         const selectedItemIndex = options.findIndex((option) => option.value === props.value);
-        if (selectedItemIndex) {
+        if (typeof selectedItemIndex === 'number') {
           setSelectedIndices([selectedItemIndex]);
         }
       } else {
         // multiselect control
-        const controlledSelectedIndices = props.value
+        const selectedItemIndices = props.value
           .map((optionValue) => options.findIndex((option) => option.value === optionValue))
-          .filter((value) => value > 0);
+          .filter((value) => value >= 0);
 
-        setSelectedIndices(controlledSelectedIndices);
+        setSelectedIndices(selectedItemIndices);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -100,10 +99,12 @@ const _SelectInput = (
 
   React.useEffect(() => {
     if (props.onChange) {
-      console.log({ selectedIndices });
+      console.log({ controlledValueIndices });
       props.onChange({
         name: props.name,
-        values: makeInputValue(selectedIndices, options).split(','),
+        values: controlledValueIndices.map(
+          (controlledSelectedIndex) => options[controlledSelectedIndex].value,
+        ),
       });
     }
     // onChange?.({ name: props.name, values: value.split(', ') });
