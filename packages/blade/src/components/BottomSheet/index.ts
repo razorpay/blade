@@ -1,5 +1,5 @@
 export {
-  BottomSheet as PrereleaseBottomSheet,
+  BottomSheet as BottomSheet_PRE_RELEASE,
   BottomSheetBody,
   BottomSheetFooter,
   BottomSheetHeader,

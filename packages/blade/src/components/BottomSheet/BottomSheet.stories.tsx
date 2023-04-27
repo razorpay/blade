@@ -4,7 +4,7 @@ import React from 'react';
 import type { BottomSheetProps } from './';
 import {
   BottomSheetBody,
-  PrereleaseBottomSheet as BottomSheetComponent,
+  BottomSheet_PRE_RELEASE as BottomSheetComponent,
   BottomSheetFooter,
   BottomSheetHeader,
 } from './';
