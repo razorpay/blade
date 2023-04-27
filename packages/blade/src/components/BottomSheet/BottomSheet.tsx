@@ -16,6 +16,7 @@ import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheet
 import { ComponentIds } from './componentIds';
 import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { useBottomSheetStack } from './BottomSheetStack';
+import { BottomSheetFooter } from './BottomSheetFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSpace } from '~utils';
 
@@ -463,4 +464,4 @@ const BottomSheet = assignWithoutSideEffects(_BottomSheet, {
   componentId: ComponentIds.BottomSheet,
 });
 
-export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetProps };
+export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetFooter, BottomSheetProps };

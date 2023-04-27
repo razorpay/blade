@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import type { BottomSheetProps } from './BottomSheet';
-import { BottomSheetBody, BottomSheet as BottomSheetComponent } from './BottomSheet';
-
-import { BottomSheetFooter } from './BottomSheetFooter';
-import { BottomSheetHeader } from './BottomSheetHeader';
+import type { BottomSheetProps } from './';
 import {
-  ArrowRightIcon,
+  BottomSheetBody,
+  PrereleaseBottomSheet as BottomSheetComponent,
+  BottomSheetFooter,
+  BottomSheetHeader,
+} from './';
+
+import {
   ClockIcon,
-  DownloadIcon,
   HomeIcon,
   InfoIcon,
-  LogOutIcon,
   PhoneIcon,
   RupeeIcon,
   SearchIcon,
@@ -36,7 +36,7 @@ import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
 
 export default {
-  title: 'Components/BottomSheet',
+  title: 'Components/BottomSheet (Internal)',
   component: BottomSheetComponent,
 } as Meta<BottomSheetProps>;
 
