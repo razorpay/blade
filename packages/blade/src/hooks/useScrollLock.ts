@@ -1,12 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 type UseScrollLockProps = {
   targetRef: React.RefObject<Element>;
   enabled: boolean;
   reserveScrollBarGap: boolean;
+};
+
+type ScrollLockMethods = {
+  activate: () => void;
+  deactivate: () => void;
+  active: React.MutableRefObject<boolean>;
 };
 
 /**
@@ -20,22 +26,19 @@ type UseScrollLockProps = {
  * On Android it causes the chrome toolbar to pop down as you drag down, and hide as you drag up.
  * When it's in between two toolbar states it causes the framerate to drop way below 60fps on
  * the bottom sheet drag interaction.
+ *
+ * This hook does two things
+ * - Provides a imparative API to activate and deactivate the body scroll lock
+ * - And ensures the activation and deactivation doesn't happen twice for a single target
  */
 export function useScrollLock({
   targetRef,
   enabled,
   reserveScrollBarGap,
-}: UseScrollLockProps): React.MutableRefObject<{
-  activate: () => void;
-  deactivate: () => void;
-  active: React.MutableRefObject<boolean>;
-}> {
+}: UseScrollLockProps): React.MutableRefObject<ScrollLockMethods> {
   const active = React.useRef(false);
-  const ref = useRef<{
-    activate: () => void;
-    deactivate: () => void;
-    active: React.MutableRefObject<boolean>;
-  }>({
+  // Imparative functions which users can call
+  const ref = React.useRef<ScrollLockMethods>({
     activate: () => {
       throw new TypeError('Tried to activate scroll lock too early');
     },
@@ -43,7 +46,8 @@ export function useScrollLock({
     active,
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
+    // if it's disabled we just return NOOP, so the functions do nothing even if called.
     if (!enabled) {
       ref.current = { activate: () => {}, deactivate: () => {}, active };
       return;
@@ -54,7 +58,9 @@ export function useScrollLock({
 
     ref.current = {
       activate: () => {
+        // if we are already active do nothig
         if (active.current) return;
+        // if not, set the active=true so next time this is called we know it's true
         active.current = true;
         if (!target) return;
         disableBodyScroll(target, {
@@ -63,6 +69,7 @@ export function useScrollLock({
         });
       },
       deactivate: () => {
+        // only deactivate if we are active
         if (!active.current) return;
         active.current = false;
         if (!target) return;

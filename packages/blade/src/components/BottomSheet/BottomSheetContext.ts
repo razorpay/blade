@@ -69,7 +69,6 @@ const useBottomSheetContext = (): BottomSheetContextProps => {
   return state;
 };
 
-// This context provides the bridge between Dropdown And BottomSheet
 type BottomSheetAndDropdownGlueContext = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;

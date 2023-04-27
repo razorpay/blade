@@ -358,7 +358,10 @@ const _BottomSheet = ({
       scrollElement.removeEventListener('touchmove', preventScrolling);
       scrollElement.removeEventListener('touchstart', preventSafariOverscroll);
     };
-  }, [scrollRef.current]);
+    // Only run this hook when we know all the layout calculations are done,
+    // Otherwise the scrollRef.current will be null.
+    // isReady prop will ensure that we are done measuring the content height
+  }, [isReady]);
 
   // usePresence hook waits for the animation to finish before unmounting the component
   // It's similar to framer-motions usePresence hook
