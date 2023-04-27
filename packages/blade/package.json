@@ -6,6 +6,7 @@
   "engines": {
     "node": ">=14.18.0"
   },
+  "type": "module",
   "bin": {
     "migrate-typography": "./codemods/migrate-typography/cli.js"
   },
