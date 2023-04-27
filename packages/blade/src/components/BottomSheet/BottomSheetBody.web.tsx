@@ -37,10 +37,10 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
       {...bind?.({ isContentDragging: true })}
     >
       <BaseBox
-        marginLeft="spacing.3"
-        marginRight="spacing.3"
-        paddingTop="spacing.3"
-        paddingBottom="spacing.3"
+        marginLeft="spacing.5"
+        marginRight="spacing.5"
+        paddingTop="spacing.5"
+        paddingBottom="spacing.5"
         ref={contentRef}
         overflow="hidden"
       >
