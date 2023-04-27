@@ -118,7 +118,16 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'action'>
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
-  } & PickCSSByPlatform<'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom'>
+  } & PickCSSByPlatform<
+    | 'border'
+    | 'borderLeft'
+    | 'borderRight'
+    | 'borderTop'
+    | 'borderBottom'
+    | 'touchAction'
+    | 'userSelect'
+    | 'opacity'
+  >
 >;
 
 type BoxVisualProps = MakeObjectResponsive<{

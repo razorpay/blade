@@ -6,6 +6,7 @@ import { useColorScheme, toTitleCase, useBreakpoint } from '~utils';
 import { colorSchemeNamesInput } from '~tokens/theme';
 import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { ColorSchemeModes, ThemeTokens, ColorSchemeNamesInput } from '~tokens/theme/theme';
+import { BottomSheetStackProvider } from '~components/BottomSheet/BottomSheetStack';
 
 export type BladeProviderProps = {
   themeTokens: ThemeTokens;
@@ -57,7 +58,9 @@ const BladeProvider = ({
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
-      <StyledComponentThemeProvider theme={theme}>{children}</StyledComponentThemeProvider>
+      <StyledComponentThemeProvider theme={theme}>
+        <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
+      </StyledComponentThemeProvider>
     </ThemeContext.Provider>
   );
 };
