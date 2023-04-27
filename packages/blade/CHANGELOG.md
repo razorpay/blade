@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 7.1.1
+
+### Patch Changes
+
+- 85737340: fix(SelectInput): dropdown without label takes up margin space
+
+  A dropdown without any label will now correctly take no extra space for the margin
+
 ## 7.1.0
 
 ### Minor Changes
