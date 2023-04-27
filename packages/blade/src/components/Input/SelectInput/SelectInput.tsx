@@ -64,6 +64,7 @@ const _SelectInput = (
     isControlled,
     setIsControlled,
     selectionType,
+    selectedIndices,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -73,6 +74,19 @@ const _SelectInput = (
   });
 
   const { icon, onChange, placeholder = 'Select Option', onBlur, ...baseInputProps } = props;
+
+  const getValuesArrayFromIndices = (): string[] => {
+    let indices: number[] = [];
+    if (isControlled) {
+      indices = controlledValueIndices;
+    } else {
+      indices = selectedIndices;
+    }
+
+    return indices.map((selectionIndex) => options[selectionIndex].value);
+  };
+
+  const isFirstRenderRef = React.useRef(true);
 
   React.useEffect(() => {
     if (options.length > 0 && props.value) {
@@ -105,13 +119,16 @@ const _SelectInput = (
   }, [props.value, options]);
 
   React.useEffect(() => {
-    if (props.onChange) {
-      console.log({ controlledValueIndices });
+    // Ignore calling onChange on mount
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false;
+      return;
+    }
+
+    if (props.onChange && !isFirstRenderRef.current) {
       props.onChange({
         name: props.name,
-        values: controlledValueIndices.map(
-          (controlledSelectedIndex) => options[controlledSelectedIndex].value,
-        ),
+        values: getValuesArrayFromIndices(),
       });
     }
     // onChange?.({ name: props.name, values: value.split(', ') });

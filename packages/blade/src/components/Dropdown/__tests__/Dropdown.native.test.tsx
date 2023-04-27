@@ -79,7 +79,7 @@ describe('<Dropdown />', () => {
     // Click on combobox
     fireEvent.press(getByRole('combobox'));
     expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
-    expect(selectOnChange).toBeCalledWith({ name: 'fruits', values: [''] });
+    expect(selectOnChange).not.toBeCalled();
     expect(getByRole('combobox')).toHaveTextContent('Select Option');
 
     // Click on item
@@ -116,7 +116,7 @@ describe('<Dropdown />', () => {
     // Click on combobox
     fireEvent.press(getByRole('combobox'));
     expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
-    expect(selectOnChangeHandler).toBeCalledWith({ name: 'fruits', values: [''] });
+    expect(selectOnChangeHandler).not.toBeCalled();
     expect(getByRole('combobox')).toHaveTextContent('Select Option');
 
     // Click on item
@@ -170,5 +170,100 @@ describe('<Dropdown />', () => {
     expect(getByTestId('action-list-header-test')).toBeTruthy();
     expect(getByTestId('action-list-item-test')).toBeTruthy();
     expect(getByTestId('action-list-footer-test')).toBeTruthy();
+  });
+
+  it('should handle controlled props with single select', () => {
+    const ControlledDropdown = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+
+      return (
+        <>
+          <Button onClick={() => setCurrentSelection('bangalore')} testID="select-blr-button">
+            Select Bangalore
+          </Button>
+          <Dropdown selectionType="single">
+            <SelectInput
+              label="Select City"
+              value={currentSelection}
+              onChange={(args) => {
+                setCurrentSelection(args.values[0]);
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" testID="pune-option" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const { getByTestId, getByRole } = renderWithTheme(<ControlledDropdown />);
+
+    const selectInput = getByRole('combobox');
+    expect(selectInput).toHaveTextContent('Select Option');
+    fireEvent.press(getByTestId('select-blr-button'));
+    expect(selectInput).toHaveTextContent('Bangalore');
+
+    fireEvent.press(selectInput);
+    fireEvent.press(getByTestId('pune-option'));
+    expect(selectInput).toHaveTextContent('Pune');
+  });
+
+  it('should handle controlled props with multi select', () => {
+    const ControlledDropdown = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+
+      return (
+        <>
+          <Button
+            onClick={() => {
+              if (!currentSelection.includes('bangalore')) {
+                setCurrentSelection([...currentSelection, 'bangalore']);
+              }
+            }}
+            testID="select-blr-button"
+          >
+            Select Bangalore
+          </Button>
+          <Dropdown selectionType="multiple">
+            <SelectInput
+              label="Select City"
+              value={currentSelection}
+              onChange={(args) => {
+                if (args) {
+                  setCurrentSelection(args.values);
+                  console.log('onChange triggered');
+                }
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" testID="pune-option" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const { getByRole, getByTestId } = renderWithTheme(<ControlledDropdown />);
+
+    const selectInput = getByRole('combobox');
+    expect(selectInput).toHaveTextContent('Select Option');
+    fireEvent.press(getByTestId('select-blr-button'));
+    expect(selectInput).toHaveTextContent('Bangalore');
+
+    fireEvent.press(selectInput);
+    fireEvent.press(getByTestId('pune-option'));
+    expect(selectInput).toHaveTextContent('2 items selected');
+
+    fireEvent.press(getByTestId('select-blr-button'));
+    expect(selectInput).toHaveTextContent('2 items selected');
   });
 });
