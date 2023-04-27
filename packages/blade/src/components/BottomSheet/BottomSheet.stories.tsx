@@ -339,7 +339,7 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
       <Dropdown selectionType="single">
         <SelectInput label="Single Select" />
         {isMobile ? (
-          <BottomSheetComponent {...args}>
+          <BottomSheetComponent>
             <BottomSheetHeader
               title="Select Account"
               prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
@@ -372,7 +372,7 @@ const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent>
       <Dropdown selectionType="multiple">
         <SelectInput label="Multi Select" />
         {isMobile ? (
-          <BottomSheetComponent {...args}>
+          <BottomSheetComponent>
             <BottomSheetHeader
               title="Select Account"
               prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}

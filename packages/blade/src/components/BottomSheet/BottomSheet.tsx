@@ -212,6 +212,7 @@ const _BottomSheet = ({
 
     if (bottomSheetAndDropdownGlue.isOpen) {
       open();
+      setPositionY(dimensions.height * 0.5);
     }
 
     if (
@@ -220,7 +221,7 @@ const _BottomSheet = ({
     ) {
       close();
     }
-  }, [close, open, bottomSheetAndDropdownGlue]);
+  }, [close, open, bottomSheetAndDropdownGlue, setPositionY, dimensions.height]);
 
   /*
       1. The content should not be scrollable on lower or middle snapPoints
