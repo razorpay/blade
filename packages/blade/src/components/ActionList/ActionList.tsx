@@ -133,6 +133,7 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
       >
         {actionListHeaderChild}
         <ActionListBox
+          isInBottomSheet={isInBottomSheet}
           actionListItemWrapperRole={actionListItemWrapperRole}
           childrenWithId={childrenWithId}
           sectionData={sectionData}
