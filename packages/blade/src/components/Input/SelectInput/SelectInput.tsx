@@ -106,7 +106,10 @@ const _SelectInput = (
         leadingIcon={icon}
         hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
         isPopupExpanded={isOpen}
-        onClick={onTriggerClick}
+        onClick={(e) => {
+          onTriggerClick();
+          props?.onClick?.(e);
+        }}
         onKeyDown={onTriggerKeydown}
         onBlur={({ name }) => {
           onTriggerBlur?.({ name, value, onBlurCallback: onBlur });

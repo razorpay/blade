@@ -26,6 +26,7 @@ const getStories = () => {
     require('../../src/components/Alert/Alert.stories.tsx'),
     require('../../src/components/Amount/Amount.stories.tsx'),
     require('../../src/components/Badge/Badge.stories.tsx'),
+    require('../../src/components/BottomSheet/BottomSheet.stories.tsx'),
     require('../../src/components/Box/Box.stories.tsx'),
     require('../../src/components/Box/styledProps/StyledProps.stories.tsx'),
     require('../../src/components/Button/Button/Button.stories.tsx'),
