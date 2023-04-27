@@ -31,7 +31,6 @@ const BottomSheetFooter = ({
 
   return (
     <BaseBox
-      data-footer
       ref={ref as any}
       width="100%"
       flexShrink={0}

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import type { BottomSheetProps } from './types';
+import type { BottomSheetProps } from './';
 import {
-  BottomSheetHeader,
-  BottomSheetFooter,
   BottomSheetBody,
-  BottomSheet as BottomSheetComponent,
-} from './BottomSheet';
+  PrereleaseBottomSheet as BottomSheetComponent,
+  BottomSheetFooter,
+  BottomSheetHeader,
+} from './';
 
 import {
   BookIcon,
@@ -36,7 +36,7 @@ import { Radio, RadioGroup } from '~components/Radio';
 import { List, ListItem } from '~components/List';
 
 export default {
-  title: 'Components/BottomSheet',
+  title: 'Components/BottomSheet (Internal)',
   component: BottomSheetComponent,
 } as Meta<BottomSheetProps>;
 

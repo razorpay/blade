@@ -11,7 +11,7 @@ type ActionListBoxProps = {
   sectionData: SectionData;
   actionListItemWrapperRole: 'listbox' | 'menu' | undefined;
   isMultiSelectable: boolean;
-  isInBottomSheet?: boolean;
+  isInBottomSheet: boolean;
 };
 
 const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(

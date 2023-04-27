@@ -18,6 +18,7 @@ import { ComponentIds } from './componentIds';
 import { BottomSheetProps } from './types';
 import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { useBottomSheetStack } from './BottomSheetStack';
+import { BottomSheetFooter } from './BottomSheetFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSpace } from '~utils';
 
@@ -205,6 +206,7 @@ const _BottomSheet = ({
 
     if (bottomSheetAndDropdownGlue.isOpen) {
       open();
+      setPositionY(dimensions.height * 0.5);
     }
 
     if (
@@ -213,7 +215,7 @@ const _BottomSheet = ({
     ) {
       close();
     }
-  }, [close, open, bottomSheetAndDropdownGlue]);
+  }, [close, open, bottomSheetAndDropdownGlue, setPositionY, dimensions.height]);
 
   /*
       1. The content should not be scrollable on lower or middle snapPoints
@@ -352,7 +354,10 @@ const _BottomSheet = ({
       scrollElement.removeEventListener('touchmove', preventScrolling);
       scrollElement.removeEventListener('touchstart', preventSafariOverscroll);
     };
-  }, [scrollRef.current]);
+    // Only run this hook when we know all the layout calculations are done,
+    // Otherwise the scrollRef.current will be null.
+    // isReady prop will ensure that we are done measuring the content height
+  }, [isReady]);
 
   // usePresence hook waits for the animation to finish before unmounting the component
   // It's similar to framer-motions usePresence hook
@@ -366,7 +371,7 @@ const _BottomSheet = ({
       isInBottomSheet: true,
       isOpen: Boolean(isVisible),
       close,
-      posY: positionY,
+      positionY,
       headerHeight,
       contentHeight,
       footerHeight,

@@ -16,7 +16,6 @@ const _BottomSheetFooter = ({
   const { theme } = useTheme();
   return (
     <BaseBox
-      data-footer
       width="100%"
       flexShrink={0}
       marginTop="auto"
