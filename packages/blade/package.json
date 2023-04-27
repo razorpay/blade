@@ -79,11 +79,11 @@
     "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
     "types:copy-declarations:web": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/web",
     "types:copy-declarations:native": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/native",
-    "build:generate-root-imports": "rollup -c && node ./scripts/generateRootImports.js",
+    "build:generate-root-imports": "rollup -c && node ./scripts/generateRootImports.cjs",
     "build:clean-declarations": "rm -rf build/types",
-    "build:react": "FRAMEWORK=REACT rollup -c && node ./scripts/generateRootImports.js",
-    "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c && node ./scripts/generateRootImports.js",
-    "build:generate-css-variables": "GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
+    "build:react": "FRAMEWORK=REACT rollup -c && node ./scripts/generateRootImports.cjs",
+    "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c && node ./scripts/generateRootImports.cjs",
+    "build:generate-css-variables": "GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.cjs",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-android",
@@ -103,8 +103,8 @@
     "watch:test:react": "yarn test:react --watch --onlyChanged",
     "watch:test:react-native": "yarn test:react-native --watch --onlyChanged",
     "chromatic": "npx chromatic",
-    "publish-npm": "node ./scripts/publishToNpm.js",
-    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js"
+    "publish-npm": "node ./scripts/publishToNpm.cjs",
+    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.cjs"
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",

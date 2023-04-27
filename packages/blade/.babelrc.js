@@ -1,4 +1,5 @@
-const manualPureFunctions = require('./scripts/manualPureFunctions');
+// eslint-disable-next-line import/extensions
+import { manualPureFunctions } from './scripts/manualPureFunctions.js';
 
 const alias = {
   '@storybook/react': '@storybook/react-native',
@@ -152,10 +153,12 @@ const configs = {
 };
 
 const framework = process.env.FRAMEWORK;
+// eslint-disable-next-line import/no-mutable-exports
+let configExport = {};
 if (framework === 'REACT') {
-  module.exports = { env: configs.react };
+  configExport = { env: configs.react };
 } else if (framework === 'REACT_NATIVE') {
-  module.exports = { env: configs.reactNative };
+  configExport = { env: configs.reactNative };
 } else {
   throw new Error(
     `Blade requires "FRAMEWORK" environment variable to be set. Valid values are "REACT" and "REACT_NATIVE". Instead, received: ${JSON.stringify(
@@ -163,3 +166,5 @@ if (framework === 'REACT') {
     )}`,
   );
 }
+
+export default configExport;

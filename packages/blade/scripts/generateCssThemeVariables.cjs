@@ -5,14 +5,14 @@ const cloneDeep = require('lodash/cloneDeep');
 const chalk = require('chalk');
 const figures = require('figures');
 
-const { paymentTheme, bankingTheme } = require('../build/js-bundle-for-css/tokensBundle');
+const { paymentTheme, bankingTheme } = require('../build/js-bundle-for-css/tokensBundle.cjs');
 const {
   makeBorderSize,
   makeMotionTime,
   makeSpace,
   makeTypographySize,
   makeSize,
-} = require('../build/js-bundle-for-css/utilsBundle');
+} = require('../build/js-bundle-for-css/utilsBundle.cjs');
 
 const getThemeFromTokens = ({ onColorMode, onDeviceType, themeTokens }) => {
   return {

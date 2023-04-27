@@ -142,7 +142,7 @@ const getDeclarationsConfig = ({ exportCategory, isNative }) => {
 const getCSSVariablesConfig = ({ exportCategory }) => ({
   input: `src/${exportCategory}/index.ts`,
   output: {
-    file: `${outputRootDirectory}/js-bundle-for-css/${exportCategory}Bundle.js`,
+    file: `${outputRootDirectory}/js-bundle-for-css/${exportCategory}Bundle.cjs`,
     format: 'cjs',
   },
   plugins: [
