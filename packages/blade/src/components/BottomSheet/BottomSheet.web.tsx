@@ -18,7 +18,7 @@ import { ComponentIds } from './componentIds';
 import { BottomSheetProps } from './types';
 import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { useBottomSheetStack } from './BottomSheetStack';
-import { BottomSheetFooter } from './BottomSheetFooter';
+
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSpace, assignWithoutSideEffects } from '~utils';
 
