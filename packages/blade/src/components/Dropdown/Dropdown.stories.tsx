@@ -366,74 +366,6 @@ WithMultiSelect.parameters = {
   },
 };
 
-export const ControlledDropdown = (): JSX.Element => {
-  const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
-
-  return (
-    <>
-      <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
-      <Dropdown>
-        <SelectInput
-          label="Select City"
-          value={currentSelection}
-          onChange={(args) => {
-            if (args) {
-              setCurrentSelection(args.values[0]);
-              console.log('onChange triggered');
-            }
-          }}
-        />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Mumbai" value="mumbai" />
-            <ActionListItem title="Bangalore" value="bangalore" />
-            <ActionListItem title="Pune" value="pune" />
-            <ActionListItem title="Chennai" value="chennai" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-    </>
-  );
-};
-
-export const ControlledDropdownMultiSelect = (): JSX.Element => {
-  const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
-
-  return (
-    <>
-      <Button
-        onClick={() => {
-          if (!currentSelection.includes('bangalore')) {
-            setCurrentSelection([...currentSelection, 'bangalore']);
-          }
-        }}
-      >
-        Select Bangalore
-      </Button>
-      <Dropdown selectionType="multiple">
-        <SelectInput
-          label="Select City"
-          value={currentSelection}
-          onChange={(args) => {
-            if (args) {
-              setCurrentSelection(args.values);
-              console.log('onChange triggered');
-            }
-          }}
-        />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Mumbai" value="mumbai" />
-            <ActionListItem title="Bangalore" value="bangalore" />
-            <ActionListItem title="Pune" value="pune" />
-            <ActionListItem title="Chennai" value="chennai" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-    </>
-  );
-};
-
 export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
   const {
     selectionType,
@@ -980,6 +912,108 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
       </DropdownOverlay>
     </Dropdown>
   );
+};
+
+export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
+  const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
+
+  return (
+    <>
+      <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+      <Dropdown selectionType="single">
+        <SelectInput
+          label="Select City"
+          {...selectInputArgs}
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values[0]);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title={title} value={value} />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </>
+  );
+};
+
+ControlledDropdown.args = {
+  label: 'Select City',
+  title: 'Mumbai',
+  value: 'mumbai',
+};
+
+export const ControlledDropdownMultiSelect = (args: AllDropdownProps): JSX.Element => {
+  const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          if (!currentSelection.includes('bangalore')) {
+            setCurrentSelection([...currentSelection, 'bangalore']);
+          }
+        }}
+      >
+        Select Bangalore
+      </Button>
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="Select City"
+          {...selectInputArgs}
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title={title} value={value} />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </>
+  );
+};
+
+ControlledDropdownMultiSelect.args = {
+  label: 'Select City',
+  title: 'Mumbai',
+  value: 'mumbai',
 };
 
 export default DropdownStoryMeta;

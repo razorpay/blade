@@ -63,6 +63,7 @@ const _SelectInput = (
     changeCallbackTriggerer,
     isControlled,
     setIsControlled,
+    selectionType,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -87,7 +88,13 @@ const _SelectInput = (
         }
       } else {
         // multiselect control
-        const selectedItemIndices = props.value
+
+        // Handles repeated values in user state
+        const uniqueValues = Array.from(new Set(props.value));
+        // Handle selectionType single with multiselect values
+        const userValues = selectionType === 'single' ? [props.value[0]] : uniqueValues;
+
+        const selectedItemIndices = userValues
           .map((optionValue) => options.findIndex((option) => option.value === optionValue))
           .filter((value) => value >= 0);
 
