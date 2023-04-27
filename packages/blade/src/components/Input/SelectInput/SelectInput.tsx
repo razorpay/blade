@@ -96,6 +96,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
+        hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
         ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
         textAlign="left"
