@@ -64,6 +64,7 @@ const getWebConfig = ({ exportCategory }) => ({
       file: `${outputRootDirectory}/${exportCategory}/index.web.js`,
       format: 'esm',
       sourcemap: true,
+      interop: 'compat',
     },
   ],
   external: (id) => id.includes('@babel/runtime'),
