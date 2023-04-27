@@ -5,9 +5,8 @@ import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
-import { makeSpace } from '~utils';
+import { makeSpace, assignWithoutSideEffects } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type BottomSheetHeaderTrailingProps = {
   visual: React.ReactNode;

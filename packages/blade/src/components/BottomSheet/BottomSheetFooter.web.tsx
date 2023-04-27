@@ -1,16 +1,18 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
+// Type generation fails if we import this type via `~components/Button`
+// Related issue: https://github.com/razorpay/blade/issues/701
+import type { ButtonProps } from '../../components/Button';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
-import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils';
 
 type BottomSheetFooterProps = {
   title?: string;

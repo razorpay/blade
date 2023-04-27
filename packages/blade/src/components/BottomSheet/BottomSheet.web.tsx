@@ -18,12 +18,11 @@ import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { useBottomSheetStack } from './BottomSheetStack';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSpace } from '~utils';
+import { makeMotionTime, makeSpace, assignWithoutSideEffects } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import { useId } from '~src/hooks/useId';
 

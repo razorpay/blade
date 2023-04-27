@@ -325,9 +325,7 @@ const MultiSelectContent = (): React.ReactElement => {
   );
 };
 
-const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent> = ({
-  ...args
-}) => {
+const BottomSheetWithSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const isMobile = true;
 
   return (
