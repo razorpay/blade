@@ -39,6 +39,7 @@ jobs:
         if: steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch' # run when the package is published via changeset or if a release is triggered manually.
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn publish-npm
       - name: Build Blade if not built by changeset
         if: steps.changesets.outputs.published == 'false'
         working-directory: packages/blade
