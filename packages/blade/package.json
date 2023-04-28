@@ -243,6 +243,14 @@
       {
         "friendlyName": "CSS Theme Tokens",
         "path": "./build/css/*.css"
+      },
+      {
+        "friendlyName": "Web Utils",
+        "path": "./build/utils/index.web.js"
+      },
+      {
+        "friendlyName": "React Native Utils",
+        "path": "./build/utils/index.native.js"
       }
     ],
     "reportOutput": [
