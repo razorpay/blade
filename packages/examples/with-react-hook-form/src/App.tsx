@@ -1,3 +1,4 @@
+import { useController, useForm } from 'react-hook-form';
 import {
   BladeProvider,
   Button,
@@ -10,7 +11,6 @@ import '@fontsource/lato/400.css';
 import '@fontsource/lato/400-italic.css';
 import '@fontsource/lato/700.css';
 import '@fontsource/lato/700-italic.css';
-import { useController, useForm } from 'react-hook-form';
 
 type FormFields = {
   firstName: string;
