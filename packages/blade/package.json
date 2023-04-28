@@ -126,6 +126,7 @@
     "@rollup/plugin-babel": "5.3.1",
     "@rollup/plugin-commonjs": "21.1.0",
     "@rollup/plugin-node-resolve": "13.1.1",
+    "@size-limit/preset-big-lib": "8.2.4",
     "@storybook/addon-a11y": "6.3.0",
     "@storybook/addon-actions": "6.3.0",
     "@storybook/addon-controls": "6.3",
@@ -163,6 +164,7 @@
     "babel-loader": "8.2.3",
     "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-styled-components": "1.12.0",
+    "bundlemon": "2.0.1",
     "chalk": "4.1.1",
     "copyfiles": "2.4.1",
     "dedent": "0.7.0",
@@ -192,6 +194,7 @@
     "rollup": "2.61.1",
     "rollup-plugin-dts": "4.0.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
+    "size-limit": "8.2.4",
     "style-dictionary": "3.7.1",
     "styled-components": "5.3.5",
     "tsconfig-paths-webpack-plugin": "3.5.2",
@@ -221,5 +224,56 @@
     "react-dom": "17.0.2",
     "react": "17.0.2",
     "styled-components": "^5"
-  }
+  },
+  "bundlemon": {
+    "files": [
+      {
+        "friendlyName": "Web Components",
+        "path": "./build/components/index.web.js"
+      },
+      {
+        "friendlyName": "React Native Components",
+        "path": "./build/components/index.native.js"
+      },
+      {
+        "friendlyName": "Web Tokens",
+        "path": "./build/tokens/index.web.js"
+      },
+      {
+        "friendlyName": "React Native Tokens",
+        "path": "./build/tokens/index.native.js"
+      },
+      {
+        "friendlyName": "CSS Theme Tokens",
+        "path": "./build/css/*.css"
+      },
+      {
+        "friendlyName": "Web Utils",
+        "path": "./build/utils/index.web.js"
+      },
+      {
+        "friendlyName": "React Native Utils",
+        "path": "./build/utils/index.native.js"
+      }
+    ],
+    "reportOutput": [
+      "github"
+    ]
+  },
+  "size-limit": [
+    {
+      "name": "Import Button only",
+      "path": "./build/components/index.web.js",
+      "import": "{ Button }",
+      "limit": "16.6 kb",
+      "running": false
+    },
+    {
+      "name": "Import Text only",
+      "path": "./build/components/index.web.js",
+      "import": "{ Text }",
+      "limit": "11.9 kb",
+      "running": false
+    }
+  ]
 }
