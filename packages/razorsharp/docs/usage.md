@@ -1,6 +1,6 @@
 # Usage guide for developers
 
-How to install and use Razorsharp
+This guide provides step-by-step instructions on how to properly install and effectively utilize Razorsharp.
 
 ## Installation
 
@@ -12,7 +12,7 @@ If you are not a Razorpay employee, you can download and build the project local
 
 ### Running the plugin
 
-Figma allows plugins to be run only when the user has edit access to the file. Most developers wont have edit access to the file. So, you will have to create a copy of the file and then run the plugin on that file.
+Figma allows plugins to be run only when the user has edit access to the file. Most developers won't have edit access to the file. So, you will have to create a copy of the file and then run the plugin on that file.
 
 You can duplicate the file by right-clicking on the thumbnail and clicking on "Duplicate".
 
@@ -20,7 +20,7 @@ You can duplicate the file by right-clicking on the thumbnail and clicking on "D
 
 Open the duplicate file. You should be able to see it in the "Drafts" section in the sidebar. Once you have opened the duplicate file, you can run the plugin.
 
-To run the plugin, click on the "Plugins" menu and then click on "Razorsharp" then click on "Run".
+To run the plugin, click on the "Plugins" menu and then click on "Razorsharp" and then click on "Run".
 
 ![click on the "Plugins" menu and then click on "Razorsharp"](./images/usage-plugins-menu.png)
 
