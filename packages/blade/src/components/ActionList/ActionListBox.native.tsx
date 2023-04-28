@@ -13,10 +13,11 @@ type ActionListBoxProps = {
   sectionData: SectionData;
   actionListItemWrapperRole: 'listbox' | 'menu' | undefined;
   isMultiSelectable: boolean;
+  isInBottomSheet: boolean;
 };
 
 const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
-  ({ sectionData, actionListItemWrapperRole, isMultiSelectable }, ref) => {
+  ({ sectionData, actionListItemWrapperRole, isMultiSelectable, isInBottomSheet }, ref) => {
     const renderActionListItem = React.useCallback(({ item }) => {
       return <ActionListItem {...item} />;
     }, []);
@@ -37,6 +38,7 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
 
     return (
       <StyledListBoxWrapper
+        isInBottomSheet={isInBottomSheet}
         sections={sectionData}
         windowSize={5}
         keyExtractor={(item: any) => {

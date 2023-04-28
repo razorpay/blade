@@ -4,14 +4,19 @@ import type { SectionListProps } from 'react-native';
 import { getBaseListBoxWrapperStyles } from './getBaseListBoxWrapperStyles';
 import BaseBox from '~components/Box/BaseBox';
 
-const StyledListBoxWrapper = styled(BaseBox)<Partial<SectionListProps<any, any>>>((props) => {
+const StyledListBoxWrapper = styled(BaseBox)<
+  Partial<SectionListProps<any, any>> & { isInBottomSheet: boolean }
+>((props) => {
   return {
     // Hides the last Divider (we don't want divider on last section)
     [`& [role=group]:last-child > [role=separator]:last-child`]: {
       display: 'none',
     },
     overflowY: 'auto',
-    ...getBaseListBoxWrapperStyles({ theme: props.theme }),
+    ...getBaseListBoxWrapperStyles({
+      theme: props.theme,
+      isInBottomSheet: props.isInBottomSheet,
+    }),
   };
 });
 

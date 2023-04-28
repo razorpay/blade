@@ -7,6 +7,7 @@ import { ActionListBox } from './ActionListBox';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
@@ -86,6 +87,7 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
   } = useDropdown();
 
   const { theme } = useTheme();
+  const { isInBottomSheet } = useBottomSheetContext();
 
   const {
     sectionData,
@@ -118,6 +120,7 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
   return (
     <ActionListContext.Provider value={actionListContextValue}>
       <StyledActionList
+        isInBottomSheet={isInBottomSheet}
         surfaceLevel={surfaceLevel}
         elevation={theme.shadows.androidElevation.level[2]}
         id={`${dropdownBaseId}-actionlist`}
@@ -130,6 +133,7 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
       >
         {actionListHeaderChild}
         <ActionListBox
+          isInBottomSheet={isInBottomSheet}
           actionListItemWrapperRole={actionListItemWrapperRole}
           childrenWithId={childrenWithId}
           sectionData={sectionData}
