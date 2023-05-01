@@ -6,9 +6,6 @@ import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<TextInput />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<TextInput label="Enter name" />);
@@ -211,6 +208,7 @@ describe('<TextInput />', () => {
   });
 
   it('should throw error when both value and defaultValue are passed', () => {
+    jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <TextInput label="Enter name" defaultValue="Kamlesh" value="Kamlesh Chandnani" />,
@@ -218,6 +216,7 @@ describe('<TextInput />', () => {
     ).toThrow(
       `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
     );
+    jest.restoreAllMocks();
   });
 
   /**

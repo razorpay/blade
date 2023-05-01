@@ -8,9 +8,6 @@ const invalidOverridesObjectError =
 const invalidBaseThemeError =
   '[@razorpay/blade:overrideTheme]: The base theme provided is not a valid Blade theme';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('overrideTheme', () => {
   it('should return new theme based on overrides for paymentTheme', () => {
     const overrides = {
@@ -71,6 +68,7 @@ describe('overrideTheme', () => {
   });
 
   it('should throw error when overrides object is invalid', () => {
+    jest.spyOn(console, 'error').mockImplementation();
     const overrides = {
       colors: {
         onLight: {
@@ -97,9 +95,11 @@ describe('overrideTheme', () => {
         overrides,
       });
     }).toThrowError(invalidOverridesObjectError);
+    jest.restoreAllMocks();
   });
 
   it('should throw error when base theme is invalid', () => {
+    jest.spyOn(console, 'error').mockImplementation();
     const invalidBaseTheme = {
       colors: {
         onLight: {
@@ -127,5 +127,6 @@ describe('overrideTheme', () => {
         overrides: invalidBaseTheme,
       });
     }).toThrowError(invalidBaseThemeError);
+    jest.restoreAllMocks();
   });
 });

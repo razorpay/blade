@@ -4,9 +4,6 @@ import { Alert } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<Alert />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(
@@ -96,6 +93,7 @@ describe('<Alert />', () => {
   });
 
   it('should throw an error if secondary action is defined without primary action', () => {
+    jest.spyOn(console, 'error').mockImplementation();
     const onClickSecondary = jest.fn();
     expect(() =>
       renderWithTheme(
@@ -108,6 +106,7 @@ describe('<Alert />', () => {
         />,
       ),
     ).toThrow(`[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.`);
+    jest.restoreAllMocks();
   });
 
   it('should accept testID', () => {
