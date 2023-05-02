@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import usePresence from 'use-presence';
 import { clearAllBodyScrollLocks } from 'body-scroll-lock';
-import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
+import { BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
@@ -17,6 +17,7 @@ import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheet
 import { ComponentIds } from './componentIds';
 import { BottomSheetProps } from './types';
 import { BottomSheetCloseButton } from './BottomSheetCloseButton';
+import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
 
 import BaseBox from '~components/Box/BaseBox';
