@@ -20,7 +20,7 @@ import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { useBottomSheetStack } from './BottomSheetStack';
 
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSpace, assignWithoutSideEffects } from '~utils';
+import { makeMotionTime, assignWithoutSideEffects, makeSize } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
@@ -45,9 +45,8 @@ const BottomSheetSurface = styled.div<{
 
   return {
     background: theme.colors.surface.background.level2.lowContrast,
-    // TODO: we do not have 16px radius token
-    borderTopLeftRadius: makeSpace(size[16]),
-    borderTopRightRadius: makeSpace(size[16]),
+    borderTopLeftRadius: makeSize(size[16]),
+    borderTopRightRadius: makeSize(size[16]),
     borderColor: theme.colors.surface.border.normal.lowContrast,
     boxShadow: `${shadowLayer1}, ${shadowLayer2}`,
     opacity: 0,

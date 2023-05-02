@@ -2,11 +2,10 @@ import React from 'react';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheetContext';
-import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import BaseBox from '~components/Box/BaseBox';
-import { Text, Heading } from '~components/Typography';
-import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { Heading, Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils';
+import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
 type BottomSheetHeaderTrailingProps = {
   visual: React.ReactNode;
@@ -34,9 +33,8 @@ const _BottomSheetHeader = ({
   }, [ref, isOpen]);
 
   return (
-    <BaseBox as="div" ref={ref} overflow="auto" flexShrink={0}>
+    <BaseBox ref={ref} overflow="auto" flexShrink={0}>
       <BaseBox
-        as="div"
         data-header
         overflow="auto"
         marginTop="spacing.5"
@@ -89,9 +87,4 @@ const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
   componentId: ComponentIds.BottomSheetHeader,
 });
 
-export {
-  BottomSheetGrabHandle,
-  BottomSheetHeader,
-  BottomSheetHeaderProps,
-  BottomSheetHeaderTrailingProps,
-};
+export { BottomSheetHeader, BottomSheetHeaderProps, BottomSheetHeaderTrailingProps };
