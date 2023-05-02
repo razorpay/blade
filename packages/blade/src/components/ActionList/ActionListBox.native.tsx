@@ -8,6 +8,7 @@ import { ActionListItem, ActionListSection, ActionListSectionDivider } from './A
 import type { SectionData } from './actionListUtils';
 import { makeAccessible } from '~utils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -19,6 +20,8 @@ type ActionListBoxProps = {
 
 const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
   ({ sectionData, actionListItemWrapperRole, isMultiSelectable, isInBottomSheet }, ref) => {
+    const { footerHeight } = useBottomSheetContext();
+
     const renderActionListItem = React.useCallback(({ item }) => {
       return <ActionListItem {...item} />;
     }, []);
@@ -43,6 +46,9 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
         // We can't simply use RNSectionList because GorhomSectionList handles extra bottomsheet specific logic internally
         as={isInBottomSheet ? GorhomBottomSheetSectionList : SectionList}
         isInBottomSheet={Boolean(isInBottomSheet)}
+        // Setting footerHeight as bottom margin for ActionListBox
+        // otherwise the footer hides few list items under it, this will offset it
+        marginBottom={footerHeight}
         sections={sectionData}
         windowSize={5}
         keyExtractor={(item: any) => {

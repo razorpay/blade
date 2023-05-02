@@ -3,12 +3,14 @@
 import React from 'react';
 import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { ComponentIds } from './componentIds';
+import { useBottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { isValidAllowedChildren } from '~utils';
 import { componentIds } from '~components/ActionList/componentIds';
 
 const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+  const { footerHeight } = useBottomSheetContext();
   const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<
     boolean | undefined
   >(undefined);
@@ -30,7 +32,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
       {bottomSheetHasActionList ? (
         children
       ) : (
-        <BottomSheetScrollView>
+        <BottomSheetScrollView style={{ marginBottom: footerHeight }}>
           <BaseBox
             style={{
               flexShrink: 1,

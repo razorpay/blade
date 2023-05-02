@@ -7,7 +7,7 @@ import GorhomBottomSheet, {
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
-import { AccessibilityInfo, findNodeHandle, Platform } from 'react-native';
+import { AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { BottomSheetProps } from './types';
@@ -74,6 +74,7 @@ const _BottomSheet = ({
   const body = React.useRef<React.ReactNode>();
   const _isOpen = dropdownBottomSheetProps?.isOpen ?? isOpen;
   const wasPreviouslyOpen = usePrevious(_isOpen);
+  const [footerHeight, setFooterHeight] = React.useState(0);
 
   const id = useId();
   const {
@@ -135,7 +136,19 @@ const _BottomSheet = ({
   }, [children]);
 
   const renderFooter = React.useCallback((props): React.ReactElement => {
-    return <GorhomBottomSheetFooter {...props}>{footer.current}</GorhomBottomSheetFooter>;
+    return (
+      <GorhomBottomSheetFooter {...props}>
+        <View
+          onLayout={(event) => {
+            // save footer height so that later we can offset the marginBottom from body content
+            // otherwise few elements gets hidden under the footer
+            setFooterHeight(event.nativeEvent.layout.height);
+          }}
+        >
+          {footer.current}
+        </View>
+      </GorhomBottomSheetFooter>
+    );
   }, []);
 
   const renderBackdrop = React.useCallback(
@@ -144,6 +157,18 @@ const _BottomSheet = ({
     },
     [zIndex],
   );
+
+  const renderHandle = React.useCallback((): React.ReactElement => {
+    return (
+      <BaseBox>
+        <BaseBox zIndex={zIndex}>
+          <BottomSheetCloseButton />
+          <BottomSheetGrabHandle />
+        </BaseBox>
+        {header.current}
+      </BaseBox>
+    );
+  }, [zIndex]);
 
   // sync the select dropdown's state with bottomsheet's state
   React.useEffect(() => {
@@ -169,7 +194,7 @@ const _BottomSheet = ({
       positionY: 0,
       headerHeight: 0,
       contentHeight: 0,
-      footerHeight: 0,
+      footerHeight,
       setContentHeight: () => {},
       setFooterHeight: () => {},
       setHeaderHeight: () => {},
@@ -177,7 +202,7 @@ const _BottomSheet = ({
       bind: {} as never,
       defaultInitialFocusRef,
     }),
-    [_isOpen, close],
+    [_isOpen, close, footerHeight],
   );
 
   // Hack: We need to <Portal> the GorhomBottomSheet to the root of the react-native app
@@ -213,15 +238,7 @@ const _BottomSheet = ({
             index={-1}
             containerStyle={{ zIndex }}
             animateOnMount={false}
-            handleComponent={() => (
-              <BaseBox>
-                <BaseBox zIndex={zIndex}>
-                  <BottomSheetCloseButton />
-                  <BottomSheetGrabHandle />
-                </BaseBox>
-                {header.current}
-              </BaseBox>
-            )}
+            handleComponent={renderHandle}
             backgroundComponent={BottomSheetSurface}
             footerComponent={renderFooter}
             backdropComponent={renderBackdrop}
