@@ -10,10 +10,16 @@ import {
 } from './';
 
 import {
+  ArrowRightIcon,
   BookIcon,
   ClockIcon,
   CustomersIcon,
+  DownloadIcon,
+  FileTextIcon,
+  HistoryIcon,
+  HomeIcon,
   SearchIcon,
+  SettingsIcon,
   StarIcon,
   ThumbsUpIcon,
   TrendingDownIcon,
@@ -21,13 +27,18 @@ import {
 } from '~components/Icons';
 import {
   ActionList,
+  ActionListFooter,
+  ActionListFooterIcon,
+  ActionListHeader,
+  ActionListHeaderIcon,
   ActionListItem,
+  ActionListItemAsset,
   ActionListItemIcon,
   ActionListSection,
 } from '~components/ActionList';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
-import { Dropdown } from '~components/Dropdown';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
@@ -115,6 +126,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
             <ActionListItem title="Cuban" value="Cuban" />
             <ActionListItem title="German" value="German" />
             <ActionListItem title="Nigerian" value="Nigerian" />
+            <ActionListFooter />
           </ActionList>
         </BottomSheetBody>
         <BottomSheetFooter
@@ -203,6 +215,323 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
 };
 
 export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
+
+// ActionList should not have header/footer while inside BottomSheet
+// BottomSheet body needs to be naked when rendering ActionList otherwise GorhomBottomSheetFlatList wont work
+
+const BottomSheetActionListTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isFirstOpen, setFirstOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setFirstOpen(true)}>first</Button>
+      <Button onClick={() => setIsOpen(true)}>open</Button>
+
+      <BottomSheetComponent
+        isOpen={isFirstOpen}
+        onDismiss={() => {
+          setFirstOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="1. Saved Address" />
+        <BottomSheetBody>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+          <Text>Reached End</Text>
+        </BottomSheetBody>
+
+        <BottomSheetFooter
+          trailing={{
+            primary: {
+              text: 'Open Large BottomSheet',
+            },
+          }}
+        />
+      </BottomSheetComponent>
+
+      <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+        <BottomSheetHeader
+          title="3. Sort By"
+          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem
+              leading={<ActionListItemIcon icon={HomeIcon} />}
+              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+              title="Home"
+              value="Home"
+              description="Go to home"
+            />
+            <ActionListSection title="Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings 1"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download 1"
+              />
+            </ActionListSection>
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing 1"
+            />
+            <ActionListSection title="Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings 2"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download 2"
+              />
+            </ActionListSection>
+            <ActionListSection title="Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings 3"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download 3"
+              />
+            </ActionListSection>
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing 3"
+            />
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing 4"
+            />
+            <ActionListSection title="Asia">
+              <ActionListItem title="Chinese" value="Chinese" />
+              <ActionListItem title="Indian" value="Indian" />
+              <ActionListItem title="Thai" value="Thai" />
+              <ActionListItem title="Japanese" value="Japanese" />
+              <ActionListItem title="Korean" value="Korean" />
+              <ActionListItem title="Vietnamese" value="Vietnamese" />
+              <ActionListItem title="Malaysian" value="Malaysian" />
+              <ActionListItem title="Indonesian" value="Indonesian" />
+            </ActionListSection>
+
+            <ActionListSection title="Europe">
+              <ActionListItem title="Italian" value="Italian" />
+              <ActionListItem title="French" value="French" />
+              <ActionListItem title="Spanish" value="Spanish" />
+              <ActionListItem title="Greek" value="Greek" />
+              <ActionListItem title="German" value="German" />
+            </ActionListSection>
+
+            <ActionListSection title="North America">
+              <ActionListItem title="Mexican" value="Mexican" />
+              <ActionListItem title="Caribbean" value="Caribbean" />
+            </ActionListSection>
+
+            <ActionListSection title="South America">
+              <ActionListItem title="Brazilian" value="Brazilian" />
+              <ActionListItem title="Peruvian" value="Peruvian" />
+            </ActionListSection>
+
+            <ActionListSection title="Africa">
+              <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+              <ActionListItem title="Moroccan" value="Moroccan" />
+              <ActionListItem title="Ethiopian" value="Ethiopian" />
+              <ActionListItem title="Nigerian" value="Nigerian" />
+            </ActionListSection>
+          </ActionList>
+        </BottomSheetBody>
+        <BottomSheetFooter
+          trailing={{
+            primary: {
+              text: 'Open Short BottomSheet',
+              onClick: () => 1,
+            },
+            secondary: {
+              text: 'Open Long BottomSheet',
+              onClick: () => 1,
+            },
+          }}
+        />
+      </BottomSheetComponent>
+
+      <BaseBox minHeight="200px">
+        <Dropdown selectionType="single">
+          <SelectInput
+            label="Select Action"
+            onChange={({ name, values }) => {
+              console.log(name, values);
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListHeader
+                title="Recent Searches"
+                leading={<ActionListHeaderIcon icon={HistoryIcon} />}
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={HomeIcon} />}
+                trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+                title="Home"
+                value="Home"
+                description="Go to home"
+              />
+              <ActionListSection title="Options">
+                <ActionListItem
+                  leading={<ActionListItemIcon icon={SettingsIcon} />}
+                  title="Settings"
+                  value="settings 1"
+                />
+                <ActionListItem
+                  leading={<ActionListItemIcon icon={DownloadIcon} />}
+                  title="Download"
+                  value="download 1"
+                />
+              </ActionListSection>
+              <ActionListItem
+                leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+                title="Pricing"
+                value="pricing 1"
+              />
+              <ActionListSection title="Options">
+                <ActionListItem
+                  leading={<ActionListItemIcon icon={SettingsIcon} />}
+                  title="Settings"
+                  value="settings 2"
+                />
+                <ActionListItem
+                  leading={<ActionListItemIcon icon={DownloadIcon} />}
+                  title="Download"
+                  value="download 2"
+                />
+              </ActionListSection>
+              <ActionListSection title="Options">
+                <ActionListItem
+                  leading={<ActionListItemIcon icon={SettingsIcon} />}
+                  title="Settings"
+                  value="settings 3"
+                />
+                <ActionListItem
+                  leading={<ActionListItemIcon icon={DownloadIcon} />}
+                  title="Download"
+                  value="download 3"
+                />
+              </ActionListSection>
+              <ActionListItem
+                leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+                title="Pricing"
+                value="pricing 3"
+              />
+              <ActionListItem
+                leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+                title="Pricing"
+                value="pricing 4"
+              />
+              <ActionListFooter
+                title="Search Tips"
+                leading={<ActionListFooterIcon icon={FileTextIcon} />}
+                trailing={<Button onClick={console.log}>Apply</Button>}
+              />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </BaseBox>
+
+      <BaseBox minHeight="500px">
+        <Dropdown selectionType="single">
+          <SelectInput
+            label="Select Action"
+            onChange={({ name, values }) => {
+              console.log(name, values);
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem
+                leading={<ActionListItemIcon icon={HomeIcon} />}
+                trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+                title="Home"
+                value="Home"
+                description="Go to home"
+              />
+              <ActionListSection title="Options">
+                <ActionListItem
+                  leading={<ActionListItemIcon icon={SettingsIcon} />}
+                  title="Settings"
+                  value="settings 1"
+                />
+                <ActionListItem
+                  leading={<ActionListItemIcon icon={DownloadIcon} />}
+                  title="Download"
+                  value="download 1"
+                />
+              </ActionListSection>
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+export const BottomSheetActionList = BottomSheetActionListTemplate.bind({});
 
 const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(true);
@@ -320,6 +649,9 @@ const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponen
   return (
     <Dropdown selectionType="multiple">
       <SelectInput label="Cuisines Filter" />
+      {/* // check if we are rendering ActionList
+      // If there is, stop rendering ActionList's SectionList
+      // Loop over JSX of actionlist, data={} */}
       <BottomSheetComponent>
         <BottomSheetHeader
           title="Filter By Cuisines"

@@ -2,9 +2,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import GorhomBottomSheet, {
-  BottomSheetFlatList,
   BottomSheetFooter as GorhomBottomSheetFooter,
-  BottomSheetScrollView as GorhomBottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 import React from 'react';
 import { Portal } from '@gorhom/portal';
@@ -216,9 +214,12 @@ const _BottomSheet = ({
             containerStyle={{ zIndex }}
             animateOnMount={false}
             handleComponent={() => (
-              <BaseBox position="relative">
-                <BottomSheetCloseButton />
-                <BottomSheetGrabHandle />
+              <BaseBox>
+                <BaseBox zIndex={zIndex}>
+                  <BottomSheetCloseButton />
+                  <BottomSheetGrabHandle />
+                </BaseBox>
+                {header.current}
               </BaseBox>
             )}
             backgroundComponent={BottomSheetSurface}
@@ -227,21 +228,7 @@ const _BottomSheet = ({
             onClose={close}
             snapPoints={_snapPoints}
           >
-            {/* This fails because in ActionListBox.native now we have FlatList */}
-            {/* But in react-native we can't render a flatlist inside of a scrollview */}
-            {/* <GorhomBottomSheetScrollView key={bodyResetKey} stickyHeaderIndices={[0]}>
-              {header.current}
-              {body.current}
-            </GorhomBottomSheetScrollView> */}
-
-            {/* Nasty workaround, this will basically bypass the warning plus the virtualization */}
-            <BottomSheetFlatList
-              data={[0]}
-              ListHeaderComponent={() => <>{header.current}</>}
-              renderItem={() => <>{body.current}</>}
-              stickyHeaderIndices={[0]}
-              key={bodyResetKey}
-            />
+            {body.current}
           </GorhomBottomSheet>
         </BottomSheetContext.Provider>
       </DropdownContext.Provider>

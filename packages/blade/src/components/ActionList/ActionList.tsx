@@ -4,8 +4,9 @@ import { getActionListContainerRole, getActionListItemWrapperRole } from './getA
 import { getActionListProperties } from './actionListUtils';
 import { StyledActionList } from './styles/StyledActionList';
 import { ActionListBox } from './ActionListBox';
+import { componentIds } from './componentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
+import { assignWithoutSideEffects, makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
@@ -117,36 +118,54 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
 
   const actionListContextValue = React.useMemo(() => ({ surfaceLevel }), [surfaceLevel]);
 
+  // If we are inside BottomSheet, we don't render The StyledActionList wrapper
+  // This is to ensure:
+  // 1. We don't render the box wrapper styles which includes shadows, padding, border etc
+  // 2. to ensure GorhomBottomSheetSectionList works as expected, if we add extra wrappers GorhomBottomSheet won't render the content inside
+  // NOTE: That this also means inside BottomSheet, ActionList won't render any ActionListHeader or Footer.
   return (
     <ActionListContext.Provider value={actionListContextValue}>
-      <StyledActionList
-        isInBottomSheet={isInBottomSheet}
-        surfaceLevel={surfaceLevel}
-        elevation={isInBottomSheet ? undefined : theme.shadows.androidElevation.level[2]}
-        id={`${dropdownBaseId}-actionlist`}
-        {...makeAccessible({
-          role: actionListContainerRole,
-          multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
-          labelledBy: `${dropdownBaseId}-label`,
-        })}
-        {...metaAttribute({ name: MetaConstants.ActionList, testID })}
-      >
-        {actionListHeaderChild}
+      {isInBottomSheet ? (
         <ActionListBox
           isInBottomSheet={isInBottomSheet}
           actionListItemWrapperRole={actionListItemWrapperRole}
           childrenWithId={childrenWithId}
           sectionData={sectionData}
           isMultiSelectable={isMultiSelectable}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ref={actionListItemRef as any}
         />
-        {actionListFooterChild}
-      </StyledActionList>
+      ) : (
+        <StyledActionList
+          isInBottomSheet={isInBottomSheet}
+          surfaceLevel={surfaceLevel}
+          elevation={isInBottomSheet ? undefined : theme.shadows.androidElevation.level[2]}
+          id={`${dropdownBaseId}-actionlist`}
+          {...makeAccessible({
+            role: actionListContainerRole,
+            multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
+            labelledBy: `${dropdownBaseId}-label`,
+          })}
+          {...metaAttribute({ name: MetaConstants.ActionList, testID })}
+        >
+          {actionListHeaderChild}
+          <ActionListBox
+            isInBottomSheet={isInBottomSheet}
+            actionListItemWrapperRole={actionListItemWrapperRole}
+            childrenWithId={childrenWithId}
+            sectionData={sectionData}
+            isMultiSelectable={isMultiSelectable}
+            ref={actionListItemRef as any}
+          />
+          {actionListFooterChild}
+        </StyledActionList>
+      )}
     </ActionListContext.Provider>
   );
 };
 
-const ActionList = React.memo(_ActionList);
+const ActionList = assignWithoutSideEffects(React.memo(_ActionList), {
+  componentId: componentIds.ActionList,
+  displayName: 'ActionList',
+});
 
 export { ActionList, useActionListContext, ActionListProps };

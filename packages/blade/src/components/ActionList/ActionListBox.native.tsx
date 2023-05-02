@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/display-name */
 import React from 'react';
-import type { SectionList } from 'react-native';
+import { BottomSheetSectionList as GorhomBottomSheetSectionList } from '@gorhom/bottom-sheet';
+import { SectionList } from 'react-native';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import { ActionListItem, ActionListSection, ActionListSectionDivider } from './ActionListItem';
 import type { SectionData } from './actionListUtils';
@@ -38,6 +39,9 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
 
     return (
       <StyledListBoxWrapper
+        // Render either the Gorhom or RN Section list depending on where we are
+        // We can't simply use RNSectionList because GorhomSectionList handles extra bottomsheet specific logic internally
+        as={isInBottomSheet ? GorhomBottomSheetSectionList : SectionList}
         isInBottomSheet={Boolean(isInBottomSheet)}
         sections={sectionData}
         windowSize={5}
@@ -48,7 +52,6 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
         renderSectionHeader={renderActionListSectionHeader}
         renderSectionFooter={renderActionListSectionDivider}
         renderItem={renderActionListItem}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         {...makeAccessible({
           role: actionListItemWrapperRole,
