@@ -162,7 +162,6 @@ const _BottomSheet = ({
     return (
       <BaseBox>
         <BaseBox zIndex={zIndex}>
-          <BottomSheetCloseButton />
           <BottomSheetGrabHandle />
         </BaseBox>
         {header.current}

@@ -535,11 +535,11 @@ const BottomSheetActionListTemplate: ComponentStory<typeof BottomSheetComponent>
 export const BottomSheetActionList = BottomSheetActionListTemplate.bind({});
 
 const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <BaseBox>
-      <Button onClick={() => setIsOpen(true)}>Add address</Button>
+      <Button onClick={() => setIsOpen(true)}>Add {isOpen ? 'yes' : 'no'}</Button>
       <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader
           showBackButton
@@ -569,36 +569,36 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
 
 export const WithHeader = WithHeaderTemplate.bind({});
 
-const WithFooterTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(true);
+// const WithFooterTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+//   const [isOpen, setIsOpen] = React.useState(true);
 
-  return (
-    <BaseBox>
-      <Button onClick={() => setIsOpen(true)}>Add address</Button>
-      <BottomSheetComponent
-        isOpen={isOpen}
-        onDismiss={() => {
-          setIsOpen(false);
-        }}
-      >
-        <BottomSheetHeader title="Saved Address" />
-        <BottomSheetBody>
-          <BaseBox padding="spacing.4">
-            <RadioGroup label="Addresses">
-              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-            </RadioGroup>
-          </BaseBox>
-        </BottomSheetBody>
-        <BottomSheetFooter
-          trailing={{ primary: { text: 'Add address' }, secondary: { text: 'Remove address' } }}
-        />
-      </BottomSheetComponent>
-    </BaseBox>
-  );
-};
+//   return (
+//     <BaseBox>
+//       <Button onClick={() => setIsOpen(true)}>Add address</Button>
+//       <BottomSheetComponent
+//         isOpen={isOpen}
+//         onDismiss={() => {
+//           setIsOpen(false);
+//         }}
+//       >
+//         <BottomSheetHeader title="Saved Address" />
+//         <BottomSheetBody>
+//           <BaseBox padding="spacing.4">
+//             <RadioGroup label="Addresses">
+//               <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+//               <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+//             </RadioGroup>
+//           </BaseBox>
+//         </BottomSheetBody>
+//         <BottomSheetFooter
+//           trailing={{ primary: { text: 'Add address' }, secondary: { text: 'Remove address' } }}
+//         />
+//       </BottomSheetComponent>
+//     </BaseBox>
+//   );
+// };
 
-export const WithFooter = WithFooterTemplate.bind({});
+// export const WithFooter = WithFooterTemplate.bind({});
 
 const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   return (

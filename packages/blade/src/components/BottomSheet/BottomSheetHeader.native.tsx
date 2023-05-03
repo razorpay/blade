@@ -2,15 +2,22 @@ import React from 'react';
 import { ComponentIds } from './componentIds';
 import { Divider } from './Divider';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
+import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { Heading, Text } from '~components/Typography';
+import { ChevronLeftIcon } from '~components/Icons';
+import { IconButton } from '~components/Button/IconButton';
 
 type BottomSheetHeaderProps = {
-  title: string;
+  title?: string;
   subtitle?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  trailing?: React.ReactNode;
+  hideDivider?: boolean;
+  showBackButton?: boolean;
+  onBackButtonClick?: () => void;
 };
 
 const _BottomSheetHeader = ({
@@ -18,53 +25,76 @@ const _BottomSheetHeader = ({
   subtitle,
   prefix,
   suffix,
+  trailing,
+  hideDivider = false,
+  showBackButton = false,
+  onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
   return (
     <BaseBox backgroundColor="white" overflow="visible" flexShrink={0}>
       <BaseBox
-        data-header
         overflow="visible"
         marginTop="spacing.5"
         marginBottom="spacing.5"
-        paddingLeft="spacing.6"
-        paddingRight="spacing.6"
+        paddingLeft="spacing.5"
+        paddingRight="spacing.5"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
         touchAction="none"
       >
-        <BaseBox
-          flex={1}
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          userSelect="none"
-          maxWidth="90%"
-        >
-          <BaseBox
-            marginRight="spacing.4"
-            marginTop="spacing.2"
-            alignSelf="flex-start"
-            display="flex"
-          >
-            {prefix}
-          </BaseBox>
-          <BaseBox>
-            <BaseBox display="flex" flexDirection="row" alignItems="center">
-              <Heading size="small" variant="regular" type="normal">
-                {title}
-              </Heading>
-              <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
+        <BaseBox flex={1} display="flex" flexDirection="row" alignItems="center" userSelect="none">
+          {showBackButton && (
+            <BaseBox overflow="visible" marginRight="spacing.5">
+              <IconButton
+                size="large"
+                icon={ChevronLeftIcon}
+                onClick={() => onBackButtonClick?.()}
+                accessibilityLabel="Back"
+              />
             </BaseBox>
-            {subtitle && (
-              <Text variant="body" size="small" weight="regular">
-                {subtitle}
-              </Text>
+          )}
+          <BaseBox
+            paddingRight="spacing.5"
+            marginRight="auto"
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+          >
+            {prefix && (
+              <BaseBox
+                width="spacing.8"
+                height="spacing.8"
+                flexShrink={0}
+                marginRight="spacing.3"
+                justifyContent="center"
+                alignItems="center"
+                display="flex"
+              >
+                {prefix}
+              </BaseBox>
             )}
+            <BaseBox width="90%">
+              <BaseBox flexShrink={0} display="flex" flexDirection="row" alignItems="center">
+                {title && (
+                  <Heading size="small" variant="regular" type="normal">
+                    {title}
+                  </Heading>
+                )}
+                {suffix && <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>}
+              </BaseBox>
+              {subtitle && (
+                <Text variant="body" size="small" weight="regular">
+                  {subtitle}
+                </Text>
+              )}
+            </BaseBox>
           </BaseBox>
+          <BaseBox marginRight="spacing.5">{trailing}</BaseBox>
+          <BottomSheetCloseButton />
         </BaseBox>
       </BaseBox>
-      <Divider />
+      {!hideDivider && <Divider />}
     </BaseBox>
   );
 };

@@ -80,7 +80,6 @@ const _BottomSheetHeader = ({
                 justifyContent="center"
                 alignItems="center"
                 display="flex"
-                backgroundColor="surface.background.level1.lowContrast"
               >
                 {prefix}
               </BaseBox>
