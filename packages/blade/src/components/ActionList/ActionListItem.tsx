@@ -53,6 +53,12 @@ type ActionListItemProps = {
   isDisabled?: boolean;
   intent?: Extract<Feedback, 'negative'>;
   /**
+   * Can be used in combination of `onClick` to highlight item as selected in Button Triggers.
+   *
+   * When trigger is SelectInput, Use `value` prop on SelectInput instead to make dropdown controlled.
+   */
+  isSelected?: boolean;
+  /**
    * Internally passed from ActionList. No need to pass it explicitly
    *
    * @private
@@ -300,9 +306,22 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
     dropdownTriggerer,
     isKeydownPressed,
   } = useDropdown();
+
   const renderOnWebAs = props.href ? 'a' : 'button';
-  const isSelected =
-    typeof props._index === 'number' ? selectedIndices.includes(props._index) : undefined;
+
+  const getIsSelected = (): boolean | undefined => {
+    if (dropdownTriggerer === 'SelectInput') {
+      if (typeof props._index === 'number') {
+        return selectedIndices.includes(props._index);
+      }
+
+      return undefined;
+    }
+
+    return props.isSelected;
+  };
+
+  const isSelected = getIsSelected();
 
   React.useEffect(() => {
     validateActionListItemProps({
