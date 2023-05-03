@@ -332,7 +332,7 @@ Whereas in Select, it can be selected in a controlled state as well as when user
 
 - We noticed that we've been mixing the "Menu" and "Select" so far. It's better to refactor and separate them out into individual internal component for better separation of concerns and UX.
   - [ ] Refactor the internal code of `ActionListItem` into `SelectItem` and `MenuItem` components to handle 2 separate behaviours and semantics.
-- There are also "impossible" states like passing `isSelected` on ActionListItem when `SelectInput` is used, we decided to handle it validations end. Things like trying to select multiple items in single select will also be handled on validations end.
+- There are also "impossible" states like passing `isSelected` on ActionListItem when `SelectInput` is used, we decided to handle it via validations. Things like trying to select multiple items in single select will also be handled via validations.
 
 ### Referrences
 
