@@ -4,6 +4,8 @@ import type { DropdownContextType } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
 import { isValidAllowedChildren } from '~utils';
+import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
+import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
@@ -66,6 +68,8 @@ const _Dropdown = ({
     DropdownContextType['changeCallbackTriggerer']
   >(0);
   const [isControlled, setIsControlled] = React.useState(false);
+  // keep track if dropdown contains bottomsheet
+  const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
 
@@ -75,7 +79,8 @@ const _Dropdown = ({
     if (React.isValidElement(child)) {
       if (
         !isValidAllowedChildren(child, 'SelectInput') &&
-        !isValidAllowedChildren(child, componentIds.DropdownOverlay)
+        !isValidAllowedChildren(child, componentIds.DropdownOverlay) &&
+        !isValidAllowedChildren(child, bottomSheetComponentIds.BottomSheet)
       ) {
         throw new Error(
           `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
@@ -138,12 +143,24 @@ const _Dropdown = ({
     ],
   );
 
+  const BottomSheetAndDropdownGlueContextValue = React.useMemo(() => {
+    return {
+      isOpen,
+      setIsOpen,
+      selectionType,
+      dropdownHasBottomSheet,
+      setDropdownHasBottomSheet,
+    };
+  }, [isOpen, setIsOpen, selectionType, dropdownHasBottomSheet, setDropdownHasBottomSheet]);
+
   return (
-    <DropdownContext.Provider value={contextValue}>
-      <BaseBox position="relative" {...getStyledProps(styledProps)}>
-        {children}
-      </BaseBox>
-    </DropdownContext.Provider>
+    <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
+      <DropdownContext.Provider value={contextValue}>
+        <BaseBox position="relative" {...getStyledProps(styledProps)}>
+          {children}
+        </BaseBox>
+      </DropdownContext.Provider>
+    </BottomSheetAndDropdownGlueContext.Provider>
   );
 };
 

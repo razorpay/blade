@@ -14,6 +14,7 @@ import type { DropdownProps } from './Dropdown';
 
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import type { SelectInputProps } from '~components/Input/SelectInput';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -191,6 +192,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setControlledValueIndices,
     ...rest
   } = React.useContext(DropdownContext);
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   type SelectOptionType = (
     index: number,
@@ -266,6 +268,11 @@ const useDropdown = (): UseDropdownReturnValue => {
       setActiveIndex(-1);
     }
 
+    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
+      setShouldIgnoreBlur(true);
+      return;
+    }
+
     if (shouldIgnoreBlur) {
       setShouldIgnoreBlur(false);
       return;
@@ -277,7 +284,9 @@ const useDropdown = (): UseDropdownReturnValue => {
       if (selectionType !== 'multiple') {
         selectOption(activeIndex);
       }
-      setIsOpen(false);
+      if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
+        setIsOpen(false);
+      }
     }
   };
 
@@ -354,6 +363,11 @@ const useDropdown = (): UseDropdownReturnValue => {
   const onTriggerKeydown = (e: { event: React.KeyboardEvent<HTMLInputElement> }): void => {
     if (e.event.key === 'Tab' && rest.hasFooterAction) {
       // When footer has Action Buttons, we ignore the blur event so that we can move focus to action item than bluring out of dropdown
+      setShouldIgnoreBlur(true);
+    }
+
+    // disable closing the select on blur events if we are using a bottomsheet
+    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
       setShouldIgnoreBlur(true);
     }
 

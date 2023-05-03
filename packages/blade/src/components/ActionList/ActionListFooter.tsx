@@ -17,6 +17,7 @@ import {
   isValidAllowedChildren,
 } from '~utils';
 import { Text } from '~components/Typography';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
@@ -77,6 +78,7 @@ const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
     setIsOpen,
     selectionType,
   } = useDropdown();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   React.useEffect(() => {
     React.Children.map(props.leading, (child) => {
@@ -114,7 +116,7 @@ const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
           (nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0;
         // We ignore the selection keydowns on footer to let users click on items on the footer
         if (shouldIgnoreDropdownKeydown) {
-          if (selectionType === 'single') {
+          if (selectionType === 'single' && !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
             // We close the dropdown on clicks in single select
             setIsOpen(false);
           }
@@ -127,7 +129,11 @@ const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
       onBlur={(e) => {
         const nextItem = e.relatedTarget;
         const nextItemRole = nextItem?.getAttribute('role');
-        if (nextItemRole !== 'combobox' && nextItemRole !== 'option') {
+        if (
+          nextItemRole !== 'combobox' &&
+          nextItemRole !== 'option' &&
+          !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet
+        ) {
           setIsOpen(false);
         }
       }}
