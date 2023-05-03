@@ -8,7 +8,6 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import type { TestID } from '~src/_helpers/types';
-import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
@@ -81,9 +80,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
     actionListItemRef,
     selectionType,
     dropdownBaseId,
-    setControlledValueIndices,
-    setSelectedIndices,
-    isControlled,
     dropdownTriggerer,
     hasFooterAction,
   } = useDropdown();
@@ -94,7 +90,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
     sectionData,
     childrenWithId,
     actionListOptions,
-    defaultSelectedIndices,
     actionListHeaderChild,
     actionListFooterChild,
   } = React.useMemo(() => getActionListProperties(children), [children]);
@@ -103,15 +98,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
     setOptions(actionListOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionListOptions]);
-
-  useIsomorphicLayoutEffect(() => {
-    if (isControlled) {
-      setControlledValueIndices(defaultSelectedIndices);
-    } else {
-      setSelectedIndices(defaultSelectedIndices);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const actionListContainerRole = getActionListContainerRole(hasFooterAction, dropdownTriggerer);
   const actionListItemWrapperRole = getActionListItemWrapperRole(

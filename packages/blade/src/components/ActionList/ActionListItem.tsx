@@ -50,42 +50,6 @@ type ActionListItemProps = {
    * Valid elements - `<ActionListItemText />`, `<ActionListItemIcon />`
    */
   trailing?: React.ReactNode;
-  /**
-   * If item is selected on page load
-   *
-   * ---
-   *
-   * ### 🚧 Deprecated 🚧
-   *
-   * This prop is deprecated and will be removed in future major version. Make sure to migrate to `defaultValue` instead.
-   *
-   * If you're using this inside a Button trigger or any other trigger than SelectInput,
-   * rename the props to `isSelected` instead
-   *
-   * ---
-   *
-   * ### 🏗️ Migration to `defaultValue`
-   *
-   * ```diff
-   * <Dropdown>
-   *   <SelectInput
-   *     label="Select City"
-   * +   defaultValue="mumbai"
-   *   />
-   *  <DropdownOverlay>
-   *    <ActionListItem
-   *      title="Mumbai"
-   * -    isDefaultSelected
-   *    />
-   *    <ActionListItem title="Bangalore" />
-   *  </DropdownOverlay>
-   * </Dropdown>
-   *
-   * ```
-   *
-   * @deprecated
-   */
-  isDefaultSelected?: boolean;
   isDisabled?: boolean;
   intent?: Extract<Feedback, 'negative'>;
   /**
@@ -338,9 +302,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
   } = useDropdown();
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
-    typeof props._index === 'number'
-      ? selectedIndices.includes(props._index)
-      : props.isDefaultSelected;
+    typeof props._index === 'number' ? selectedIndices.includes(props._index) : undefined;
 
   React.useEffect(() => {
     validateActionListItemProps({

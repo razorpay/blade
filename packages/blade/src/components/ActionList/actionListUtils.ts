@@ -60,14 +60,12 @@ const getActionListProperties = (
   sectionData: SectionData;
   childrenWithId?: React.ReactNode[] | null;
   actionListOptions: OptionsType;
-  defaultSelectedIndices: number[];
   actionListHeaderChild: React.ReactElement | null;
   actionListFooterChild: React.ReactElement | null;
 } => {
   const sectionData: SectionData = [];
   let currentSection: string | null = null;
   const actionListOptions: OptionsType = [];
-  const defaultSelectedIndices: number[] = [];
   let actionListHeaderChild: React.ReactElement | null = null;
   let actionListFooterChild: React.ReactElement | null = null;
 
@@ -102,10 +100,6 @@ const getActionListProperties = (
             },
           ],
         });
-      }
-
-      if (child.props.isDefaultSelected) {
-        defaultSelectedIndices.push(currentIndex);
       }
 
       const clonedChild = React.cloneElement(child, {
@@ -181,7 +175,6 @@ const getActionListProperties = (
     actionListFooterChild,
     actionListHeaderChild,
     actionListOptions,
-    defaultSelectedIndices,
   };
 };
 
