@@ -198,7 +198,6 @@ const argsTable: ArgsTable = {
   'ActionListItem[0]/title': 'Home',
   'ActionListItem[0]/description': '',
   'ActionListItem[0]/value': 'home',
-  'ActionListItem[0]/isDefaultSelected': false,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   'ActionListItem[0]/onClick': () => {},
   'ActionListItem[0]/trailing': {},
@@ -213,6 +212,7 @@ const argsTable: ArgsTable = {
   isRequired: false,
   placeholder: 'Select Option',
   isDisabled: false,
+  defaultValue: '',
   prefix: {},
   suffix: {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -303,7 +303,6 @@ const DropdownTemplate: ComponentStory<typeof Playground> = (args) => {
     title = 'Home',
     description = '',
     value = 'home',
-    isDefaultSelected,
     actionListItemIcon,
     actionListItemIsDisabled,
     ...selectInputArgs
@@ -332,7 +331,6 @@ const DropdownTemplate: ComponentStory<typeof Playground> = (args) => {
               title={title}
               description={description}
               value={value}
-              isDefaultSelected={isDefaultSelected}
               isDisabled={actionListItemIsDisabled}
             />
             <ActionListItem
@@ -356,6 +354,7 @@ export const WithSingleSelect = DropdownTemplate.bind({});
 export const WithMultiSelect = DropdownTemplate.bind({});
 WithMultiSelect.args = {
   selectionType: 'multiple',
+  defaultValue: 'home',
 };
 WithMultiSelect.parameters = {
   docs: {

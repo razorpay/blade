@@ -35,7 +35,16 @@ type SelectInputProps = Pick<
   | 'testID'
 > & {
   icon?: IconComponent;
+  /**
+   * Controlled value of the Select. Use it in combination of `onChange`.
+   *
+   * Check out [Controlled Dropdown Documentation](https://blade.razorpay.com/?path=/story/components-dropdown-with-select--controlled-dropdown&globals=measureEnabled:false) for example.
+   */
   value?: string | string[];
+  /**
+   * Set initial value of Select. Use `value` instead if you want to make Dropdown controlled.
+   */
+  defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
 };
 
@@ -73,7 +82,14 @@ const _SelectInput = (
     },
   });
 
-  const { icon, onChange, placeholder = 'Select Option', onBlur, ...baseInputProps } = props;
+  const {
+    icon,
+    onChange,
+    defaultValue,
+    placeholder = 'Select Option',
+    onBlur,
+    ...baseInputProps
+  } = props;
 
   const getValuesArrayFromIndices = (): string[] => {
     let indices: number[] = [];
@@ -88,25 +104,21 @@ const _SelectInput = (
 
   const isFirstRenderRef = React.useRef(true);
 
-  React.useEffect(() => {
-    if (options.length > 0 && props.value) {
-      if (!isControlled) {
-        setIsControlled(true);
-      }
-
-      if (typeof props.value === 'string') {
+  const selectValues = (valuesToSelect: string | string[]): void => {
+    if (options.length > 0) {
+      if (typeof valuesToSelect === 'string') {
         // single select control
-        const selectedItemIndex = options.findIndex((option) => option.value === props.value);
-        if (typeof selectedItemIndex === 'number') {
+        const selectedItemIndex = options.findIndex((option) => option.value === valuesToSelect);
+        if (selectedItemIndex >= 0) {
           setSelectedIndices([selectedItemIndex]);
         }
       } else {
         // multiselect control
 
         // Handles repeated values in user state
-        const uniqueValues = Array.from(new Set(props.value));
+        const uniqueValues = Array.from(new Set(valuesToSelect));
         // Handle selectionType single with multiselect values
-        const userValues = selectionType === 'single' ? [props.value[0]] : uniqueValues;
+        const userValues = selectionType === 'single' ? [valuesToSelect?.[0]] : uniqueValues;
 
         const selectedItemIndices = userValues
           .map((optionValue) => options.findIndex((option) => option.value === optionValue))
@@ -114,6 +126,25 @@ const _SelectInput = (
 
         setSelectedIndices(selectedItemIndices);
       }
+    }
+  };
+
+  // Handles `defaultValue` prop
+  React.useEffect(() => {
+    if (options.length > 0 && props.defaultValue) {
+      selectValues(props.defaultValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [options.length]);
+
+  // Handles `value` prop
+  React.useEffect(() => {
+    if (options.length > 0 && props.value) {
+      if (!isControlled) {
+        setIsControlled(true);
+      }
+
+      selectValues(props.value);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.value, options]);
