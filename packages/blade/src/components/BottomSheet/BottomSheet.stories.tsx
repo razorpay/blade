@@ -404,7 +404,7 @@ export const WithSelect = BottomSheetWithSelectTemplate.bind({});
 WithSelect.storyName = 'WithSelect';
 
 const BottomSheetScrollingContentTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(true);
 
   return (
     <BaseBox>
