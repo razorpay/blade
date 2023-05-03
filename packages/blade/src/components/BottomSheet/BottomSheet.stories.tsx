@@ -45,6 +45,7 @@ import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
 import { List, ListItem } from '~components/List';
+import { Link } from '~components/Link';
 
 export default {
   title: 'Components/BottomSheet (Internal)',
@@ -539,20 +540,16 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   return (
     <BaseBox>
       <Button onClick={() => setIsOpen(true)}>Add address</Button>
-      <BottomSheetComponent
-        isOpen={isOpen}
-        onDismiss={() => {
-          setIsOpen(false);
-        }}
-      >
+      <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader
+          showBackButton
           title="Address Details"
           subtitle="Saving addresses will improve your checkout experience"
-          prefix={<BookIcon color="surface.text.muted.lowContrast" size="large" />}
           suffix={<Badge variant="positive">2 Saved</Badge>}
+          trailing={<Link href="/">Clear</Link>}
         />
         <BottomSheetBody>
-          <BaseBox padding="spacing.4" gap="spacing.4" display="flex" flexDirection="column">
+          <BaseBox gap="spacing.4" display="flex" flexDirection="column">
             <RadioGroup label="Addresses">
               <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
               <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
@@ -562,6 +559,9 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
             </Button>
           </BaseBox>
         </BottomSheetBody>
+        <BottomSheetFooter
+          trailing={{ primary: { text: 'Add address' }, secondary: { text: 'Remove address' } }}
+        />
       </BottomSheetComponent>
     </BaseBox>
   );
