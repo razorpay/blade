@@ -125,8 +125,6 @@ const onResetClick = () => {
 </Dropdown>;
 ```
 
-Inspirations
-
 </details>
 
 ## Concluded Solution
@@ -192,9 +190,13 @@ const onSomeAction = () => {
         value="mumbai"
         // New Props 👇🏼
         isSelected={currentSelection === 'mumbai'}
-        onClick={() => {
-          // This handles internal controlled state
-          setCurrentSelection('mumbai');
+        // This handles controlled state
+        onClick={({ name, value }) => {
+          if (value === true) {
+            setCurrentSelection(name);
+          } else {
+            // You can remove selection here from your state in case of multiselect
+          }
         }}
       />
       <ActionListItem title="Bangalore" value="bangalore" />
@@ -235,7 +237,14 @@ Lets compare 2 `onChange` prop-based approaches now-
 **Conclusion:** We decided that we would need a combination of both approaches. Because-
 
 - Based on the [selectable usecase of Menu](#menu-with-selected-item), the ActionListItem has to be "selectable" individually. Which means we definitely need something like `isSelected` on ActionListItem.
-- However the concerns raised with `onChange` + `isSelected` approach were that the controlled states end up on 2 different indepdent component which is confusing and they in a way become bound to each other.
+- However the concerns raised with `onChange` + `isSelected` approach were -
+  - The controlled states end up on 2 different indepdent component which is confusing and they in a way become bound to each other.
+  ```jsx
+  <SelectInput onChange={}>
+  // and
+  <ActionListItem isSelected={}>
+  ```
+  - In this case, you would have to put `isSelected` prop on every ActionListItem in the Dropdown which might be bad DX if items are static (not looped through)
 - Thus, We decided-
   - To go with `value` + `onChange` on `SelectInput` trigger so that the controlled state stays on same component and SelectInput also becomes consistent with rest of the Input components.
   - To go with `isSelected` + `onClick` on `ActionListItem` to satisfy selected menu usecase.
