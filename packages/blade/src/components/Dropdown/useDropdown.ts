@@ -19,7 +19,11 @@ import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomShe
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
 
-type OptionsType = { title: string; value: string; href?: string }[];
+type OptionsType = {
+  title: string;
+  value: string;
+  onClickTrigger?: (isSelected: boolean) => void;
+}[];
 
 type DropdownContextType = {
   isOpen: boolean;
@@ -198,7 +202,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     properties?: {
       closeOnSelection?: boolean;
     },
-  ) => void;
+  ) => boolean;
 
   const setIndices = (indices: number[]): void => {
     if (isControlled) {
@@ -219,8 +223,10 @@ const useDropdown = (): UseDropdownReturnValue => {
       closeOnSelection: true,
     },
   ) => {
+    let isSelected = false;
+
     if (index < 0 || index > options.length - 1) {
-      return;
+      return isSelected;
     }
 
     if (selectionType === 'multiple') {
@@ -231,11 +237,14 @@ const useDropdown = (): UseDropdownReturnValue => {
           ...selectedIndices.slice(0, existingItemIndex),
           ...selectedIndices.slice(existingItemIndex + 1),
         ]);
+        isSelected = false;
       } else {
         setIndices([...selectedIndices, index]);
+        isSelected = true;
       }
     } else {
       setIndices([index]);
+      isSelected = true;
     }
 
     // Triggers `onChange` on SelectInput
@@ -248,6 +257,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     if (properties?.closeOnSelection && selectionType !== 'multiple') {
       setIsOpen(false);
     }
+
+    return isSelected;
   };
 
   /**
@@ -385,18 +396,12 @@ const useDropdown = (): UseDropdownReturnValue => {
         onOptionChange,
         onComboType,
         selectCurrentOption: () => {
-          selectOption(activeIndex);
+          const isSelected = selectOption(activeIndex);
           if (rest.hasFooterAction && !isReactNative()) {
             rest.triggererRef.current?.focus();
           }
 
-          const anchorLink = options[activeIndex]?.href;
-          if (anchorLink) {
-            window.location.href = anchorLink;
-            if (window.top) {
-              window.top.location.href = anchorLink;
-            }
-          }
+          options[activeIndex].onClickTrigger?.(isSelected);
         },
       });
     }

@@ -77,7 +77,20 @@ const getActionListProperties = (
       actionListOptions.push({
         title: child.props.title,
         value: child.props.value,
-        href: child.props.href,
+        onClickTrigger: (value) => {
+          const anchorLink = child.props.href;
+          child.props.onClick?.({
+            name: child.props.value,
+            value: child.props.isSelected ?? value,
+          });
+
+          if (anchorLink) {
+            window.location.href = anchorLink;
+            if (window.top) {
+              window.top.location.href = anchorLink;
+            }
+          }
+        },
       });
       const currentIndex = actionListOptions.length - 1;
 

@@ -304,7 +304,6 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
     setShouldIgnoreBlur,
     setShouldIgnoreBlurAnimation,
     selectionType,
-    setIsOpen,
     dropdownTriggerer,
     isKeydownPressed,
   } = useDropdown();
@@ -359,25 +358,17 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
           disabled: props.isDisabled,
         })}
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
-          if (props.onClick) {
-            props.onClick({ name: props.value, value: isSelected });
-            setIsOpen(false);
-          } else {
-            // Let my if be lonely its readable 😤
-            // eslint-disable-next-line no-lonely-if
-            if (typeof props._index === 'number') {
-              onOptionClick(e, props._index);
-            }
+          if (typeof props._index === 'number') {
+            onOptionClick(e, props._index);
+            props.onClick?.({ name: props.value, value: isSelected });
           }
         })}
         {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
         onMouseDown={() => {
-          if (dropdownTriggerer === 'SelectInput') {
-            setShouldIgnoreBlur(true);
-            // We want to keep focus on Dropdown's trigger while option is being clicked
-            // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
-            setShouldIgnoreBlurAnimation(true);
-          }
+          setShouldIgnoreBlur(true);
+          // We want to keep focus on Dropdown's trigger while option is being clicked
+          // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
+          setShouldIgnoreBlurAnimation(true);
         }}
         onMouseUp={() => {
           // (Contd from above comment...) We set this flag back to false since blur of SelectInput is done calling by this time
