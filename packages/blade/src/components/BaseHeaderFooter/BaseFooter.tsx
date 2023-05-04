@@ -13,10 +13,10 @@ const _BaseFooter = ({ children, hideDivider = false }: BaseFooterProps): React.
     <>
       {!hideDivider && <Divider />}
       <BaseBox
-        marginLeft="spacing.6"
-        marginRight="spacing.6"
-        marginTop="spacing.5"
-        marginBottom="spacing.5"
+        paddingLeft="spacing.6"
+        paddingRight="spacing.6"
+        paddingTop="spacing.5"
+        paddingBottom="spacing.5"
       >
         {children}
       </BaseBox>
