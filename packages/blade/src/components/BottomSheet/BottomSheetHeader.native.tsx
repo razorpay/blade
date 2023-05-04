@@ -12,9 +12,9 @@ import { IconButton } from '~components/Button/IconButton';
 type BottomSheetHeaderProps = {
   title?: string;
   subtitle?: string;
-  prefix?: React.ReactNode;
-  suffix?: React.ReactNode;
+  leading?: React.ReactNode;
   trailing?: React.ReactNode;
+  titleSuffix?: React.ReactNode;
   hideDivider?: boolean;
   showBackButton?: boolean;
   onBackButtonClick?: () => void;
@@ -23,9 +23,9 @@ type BottomSheetHeaderProps = {
 const _BottomSheetHeader = ({
   title,
   subtitle,
-  prefix,
-  suffix,
+  leading,
   trailing,
+  titleSuffix,
   hideDivider = false,
   showBackButton = false,
   onBackButtonClick,
@@ -61,7 +61,7 @@ const _BottomSheetHeader = ({
             flexDirection="row"
             alignItems="center"
           >
-            {prefix && (
+            {leading && (
               <BaseBox
                 width="spacing.8"
                 height="spacing.8"
@@ -71,7 +71,7 @@ const _BottomSheetHeader = ({
                 alignItems="center"
                 display="flex"
               >
-                {prefix}
+                {leading}
               </BaseBox>
             )}
             <BaseBox width="90%">
@@ -81,7 +81,7 @@ const _BottomSheetHeader = ({
                     {title}
                   </Heading>
                 )}
-                {suffix && <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>}
+                {titleSuffix && <BaseBox marginLeft="spacing.3">{titleSuffix}</BaseBox>}
               </BaseBox>
               {subtitle && (
                 <Text variant="body" size="small" weight="regular">

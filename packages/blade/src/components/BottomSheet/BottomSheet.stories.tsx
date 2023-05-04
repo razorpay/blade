@@ -11,7 +11,6 @@ import {
 
 import {
   ArrowRightIcon,
-  BookIcon,
   ClockIcon,
   CustomersIcon,
   DownloadIcon,
@@ -46,6 +45,7 @@ import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
 import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
+import { Counter } from '~components/Counter';
 
 export default {
   title: 'Components/BottomSheet (Internal)',
@@ -98,7 +98,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
       <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
         <BottomSheetHeader
           title="2. Sort By"
-          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
           <ActionList>
@@ -149,7 +149,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
       <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
         <BottomSheetHeader
           title="3. Sort By"
-          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
           <ActionList>
@@ -300,7 +300,7 @@ const BottomSheetActionListTemplate: ComponentStory<typeof BottomSheetComponent>
       <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader
           title="3. Sort By"
-          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
           <ActionList>
@@ -545,8 +545,8 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
           showBackButton
           title="Address Details"
           subtitle="Saving addresses will improve your checkout experience"
-          suffix={<Badge variant="positive">2 Saved</Badge>}
           trailing={<Link href="/">Clear</Link>}
+          titleSuffix={<Counter intent="positive" value={2} />}
         />
         <BottomSheetBody>
           <BaseBox gap="spacing.4" display="flex" flexDirection="column">
@@ -607,7 +607,7 @@ const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetCompone
       <BottomSheetComponent>
         <BottomSheetHeader
           title="Sort By"
-          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
           <ActionList>
@@ -655,7 +655,7 @@ const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponen
       <BottomSheetComponent>
         <BottomSheetHeader
           title="Filter By Cuisines"
-          prefix={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
+          leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
           <ActionList>
@@ -700,7 +700,7 @@ const WithDropdownSectionsTemplate: ComponentStory<typeof BottomSheetComponent> 
       <BottomSheetComponent>
         <BottomSheetHeader
           title="Filter By Cuisines"
-          prefix={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
+          leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
           <ActionList>
@@ -845,7 +845,7 @@ const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
       >
         <BottomSheetHeader
           title="Fruits"
-          prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
           <MultiSelectContent />
@@ -874,8 +874,8 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
         <BottomSheetHeader
           title="Select Account & Update Details"
           subtitle="Header subtitle"
-          prefix={<StarIcon color="surface.text.muted.lowContrast" size="large" />}
-          suffix={<Badge variant="positive">label</Badge>}
+          leading={<StarIcon color="surface.text.muted.lowContrast" size="large" />}
+          titleSuffix={<Badge variant="positive">label</Badge>}
         />
         <BottomSheetBody>
           <BaseBox display="flex" flexDirection="column" gap="spacing.5">
