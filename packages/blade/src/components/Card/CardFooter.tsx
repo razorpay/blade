@@ -48,7 +48,7 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
   const baseBoxJustifyContent =
     footerChildrensArray.length === 2 || !footerChildrensArray[0]?.props?.actions
       ? 'space-between'
-      : 'end';
+      : 'flex-end';
 
   return (
     <BaseBox marginTop="auto" {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
