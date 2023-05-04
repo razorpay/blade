@@ -544,12 +544,14 @@ const BottomSheetActionListTemplate: ComponentStory<typeof BottomSheetComponent>
 export const BottomSheetActionList = BottomSheetActionListTemplate.bind({});
 
 const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen1, setIsOpen1] = React.useState(false);
+  const [isOpen2, setIsOpen2] = React.useState(false);
 
   return (
     <BaseBox>
-      <Button onClick={() => setIsOpen(true)}>Add {isOpen ? 'yes' : 'no'}</Button>
-      <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+      <Button onClick={() => setIsOpen1(true)}>Open 1</Button>
+      <Button onClick={() => setIsOpen2(true)}>Open 2</Button>
+      <BottomSheetComponent isOpen={isOpen1} onDismiss={() => setIsOpen1(false)}>
         <BottomSheetHeader
           showBackButton
           title="Address Details"
@@ -562,7 +564,27 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
             <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
           </RadioGroup>
-          <Button isFullWidth onClick={() => setIsOpen(false)}>
+          <Button isFullWidth onClick={() => setIsOpen1(false)}>
+            Add Another
+          </Button>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button isFullWidth variant="secondary">
+            Remove address
+          </Button>
+          <Button isFullWidth marginTop="spacing.5">
+            Add address
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+      <BottomSheetComponent isOpen={isOpen2} onDismiss={() => setIsOpen2(false)}>
+        <BottomSheetHeader />
+        <BottomSheetBody>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <Button isFullWidth onClick={() => setIsOpen2(false)}>
             Add Another
           </Button>
         </BottomSheetBody>

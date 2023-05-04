@@ -55,7 +55,7 @@ const _BaseHeader = ({
   return (
     <>
       <BaseBox
-        marginTop="spacing.5"
+        marginTop="spacing.4"
         marginBottom="spacing.5"
         paddingLeft="spacing.5"
         paddingRight="spacing.5"
