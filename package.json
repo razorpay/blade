@@ -10,7 +10,8 @@
     "packages": [
       "packages/blade",
       "packages/tools/*",
-      "packages/token-publisher"
+      "packages/token-publisher",
+      "packages/razorsharp"
     ],
     "nohoist": [
       "**"

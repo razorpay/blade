@@ -1,0 +1,1 @@
+export const GENERATE_HELPERS_DEFAULT_VALUE = false;

@@ -487,6 +487,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           accessibilityRole="menu"
           elevation={5}
           id="dropdown-7-actionlist"
+          isInBottomSheet={false}
           style={
             Array [
               Object {
@@ -651,6 +652,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             }
             getItem={[Function]}
             getItemCount={[Function]}
+            isInBottomSheet={false}
             keyExtractor={[Function]}
             onContentSizeChange={[Function]}
             onLayout={[Function]}
@@ -709,10 +711,10 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "borderWidth": 4,
                       "cursor": "pointer",
                       "opacity": 1,
-                      "paddingBottom": 4,
-                      "paddingLeft": 4,
-                      "paddingRight": 4,
-                      "paddingTop": 4,
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                       "textDecorationColor": "black",
                       "textDecorationLine": "none",
                       "textDecorationStyle": "solid",
@@ -842,10 +844,10 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "borderWidth": 4,
                       "cursor": "pointer",
                       "opacity": 1,
-                      "paddingBottom": 4,
-                      "paddingLeft": 4,
-                      "paddingRight": 4,
-                      "paddingTop": 4,
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
                       "textDecorationColor": "black",
                       "textDecorationLine": "none",
                       "textDecorationStyle": "solid",

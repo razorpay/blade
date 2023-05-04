@@ -23,6 +23,7 @@ import size from '~tokens/global/size';
 import type { DropdownProps } from '~components/Dropdown';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { useTheme } from '~components/BladeProvider';
 
 type ActionListItemProps = {
   title: string;
@@ -305,6 +306,10 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
     dropdownTriggerer,
     isKeydownPressed,
   } = useDropdown();
+
+  const { platform } = useTheme();
+  const isMobile = platform === 'onMobile';
+
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
     typeof props._index === 'number'
@@ -374,6 +379,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
         intent={props.intent}
         isSelected={isSelected}
         isKeydownPressed={isKeydownPressed}
+        isMobile={isMobile}
       >
         <ActionListItemBody
           selectionType={selectionType}
