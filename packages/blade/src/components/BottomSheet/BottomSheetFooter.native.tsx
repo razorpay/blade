@@ -1,6 +1,5 @@
 import React from 'react';
 import type { BottomSheetFooterProps } from './types';
-import { BottomSheetFooterLeading, BottomSheetFooterTrailing } from './BottomSheetFooterCommon';
 import { ComponentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -30,4 +29,4 @@ const BottomSheetFooter = assignWithoutSideEffects(_BottomSheetFooter, {
   componentId: ComponentIds.BottomSheetFooter,
 });
 
-export { BottomSheetFooter, BottomSheetFooterLeading, BottomSheetFooterTrailing };
+export { BottomSheetFooter };
