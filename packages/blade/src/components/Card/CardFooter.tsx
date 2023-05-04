@@ -46,7 +46,7 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
     footerChildrensArray.length && footerChildrensArray.length === 2
       ? 'space-between'
       : React.isValidElement(footerChildrensArray[0]) && footerChildrensArray[0]?.props?.actions // FooterTrailing component receives actions as props
-      ? 'end'
+      ? 'flex-end'
       : 'space-between';
 
   return (
