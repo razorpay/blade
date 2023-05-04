@@ -10,7 +10,7 @@ import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
-import { computeMaxContent, computeSnapPointBounds } from './utils';
+import { nearlyEqual, computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
@@ -297,7 +297,16 @@ const _BottomSheet = ({
         preventScrollingRef.current = newY < upperSnapPoint;
       }
 
-      const shouldClose = newY < lowerSnapPoint;
+      // This ensure that the lower snapPoint will always have atleast headerHeight's buffer
+      // When the bottomsheet total height is less than the lower snapPoint
+      // Video walkthrough: https://www.loom.com/share/a9a8db7688d64194b13df8b3e25859ae
+      const totalHeight = headerHeight + grabHandleHeight + contentHeight + footerHeight;
+      const dynamicLowerSnapPoint =
+        totalHeight < lowerSnapPoint || nearlyEqual(totalHeight, lowerSnapPoint, headerHeight)
+          ? contentHeight
+          : lowerSnapPoint;
+
+      const shouldClose = newY < dynamicLowerSnapPoint;
       if (shouldClose) {
         setIsDragging(false);
         close();
@@ -434,8 +443,6 @@ const _BottomSheet = ({
 
   return (
     <BottomSheetContext.Provider value={contextValue}>
-      {/* This has to be isVisible */}
-      {/* TODO: fix opactiy flicker */}
       <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
         data-surface
