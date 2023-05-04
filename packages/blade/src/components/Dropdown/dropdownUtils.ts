@@ -8,7 +8,6 @@
  */
 
 import type { DropdownContextType, OptionsType } from './useDropdown';
-import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 export type SelectActionsType =
   | 'Close'
@@ -212,7 +211,9 @@ type ActionsType = {
  */
 export const performAction = (
   action: SelectActionsType,
-  e: FormInputOnKeyDownEvent,
+  e: {
+    event: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+  },
   actions: ActionsType,
 ): boolean => {
   const { event } = e;

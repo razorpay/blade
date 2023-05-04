@@ -13,6 +13,7 @@ type StyledActionListItemProps = {
   onPress?: (e: React.TouchEvent<TouchableOpacity>) => void;
   isSelected?: boolean;
   isKeydownPressed: boolean;
+  isMobile: boolean;
 };
 
 const getBaseActionListItemStyles = (
@@ -25,7 +26,7 @@ const getBaseActionListItemStyles = (
     borderColor: 'transparent',
     textAlign: isReactNative() ? undefined : 'left',
     backgroundColor: 'transparent',
-    padding: makeSize(props.theme.spacing[2]),
+    padding: makeSize(props.isMobile ? props.theme.spacing[3] : props.theme.spacing[2]),
     borderRadius: makeSize(props.theme.border.radius.medium),
     textDecoration: 'none',
     cursor: 'pointer',

@@ -14,7 +14,7 @@ import type { DropdownProps } from './Dropdown';
 
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
-import type { SelectInputProps } from '~components/Input/SelectInput';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -57,7 +57,7 @@ type DropdownContextType = {
   /** common baseId which is prepended to multiple other ids inside this dropdown  */
   dropdownBaseId: string;
   /** Which element has triggered the dropdown */
-  dropdownTriggerer?: 'SelectInput';
+  dropdownTriggerer?: 'SelectInput' | 'DropdownButton';
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
@@ -122,7 +122,7 @@ let searchString = '';
 type OnTriggerBlurEvent = (options: {
   name?: string;
   value?: string;
-  onBlurCallback?: SelectInputProps['onBlur'];
+  onBlurCallback?: (callbackArgs: { name?: string; value?: string }) => void;
 }) => void;
 
 type UseDropdownReturnValue = DropdownContextType & {
@@ -191,6 +191,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setControlledValueIndices,
     ...rest
   } = React.useContext(DropdownContext);
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   type SelectOptionType = (
     index: number,
@@ -266,6 +267,11 @@ const useDropdown = (): UseDropdownReturnValue => {
       setActiveIndex(-1);
     }
 
+    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
+      setShouldIgnoreBlur(true);
+      return;
+    }
+
     if (shouldIgnoreBlur) {
       setShouldIgnoreBlur(false);
       return;
@@ -277,7 +283,9 @@ const useDropdown = (): UseDropdownReturnValue => {
       if (selectionType !== 'multiple') {
         selectOption(activeIndex);
       }
-      setIsOpen(false);
+      if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
+        setIsOpen(false);
+      }
     }
   };
 
@@ -351,9 +359,16 @@ const useDropdown = (): UseDropdownReturnValue => {
   /**
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
-  const onTriggerKeydown = (e: { event: React.KeyboardEvent<HTMLInputElement> }): void => {
+  const onTriggerKeydown = (e: {
+    event: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+  }): void => {
     if (e.event.key === 'Tab' && rest.hasFooterAction) {
       // When footer has Action Buttons, we ignore the blur event so that we can move focus to action item than bluring out of dropdown
+      setShouldIgnoreBlur(true);
+    }
+
+    // disable closing the select on blur events if we are using a bottomsheet
+    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
       setShouldIgnoreBlur(true);
     }
 

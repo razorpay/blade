@@ -40,4 +40,12 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn publish-npm
+      - name: Build Blade if not built by changeset
+        if: steps.changesets.outputs.published == 'false'
+        working-directory: packages/blade
+        run: yarn build
+      - name: Run & store bundle metadata
+        run: yarn bundlemon
+        working-directory: packages/blade
+
           

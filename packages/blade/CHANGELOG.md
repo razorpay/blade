@@ -1,5 +1,29 @@
 # @razorpay/blade
 
+## 7.1.2
+
+### Patch Changes
+
+- 69ef5042: fix(blade): BottomSheet unable to scroll content
+
+## 7.1.1
+
+### Patch Changes
+
+- 85737340: fix(SelectInput): dropdown without label takes up margin space
+
+  A dropdown without any label will now correctly take no extra space for the margin
+
+## 7.1.0
+
+### Minor Changes
+
+- 85289118: feat(blade): BottomSheet prerelease
+
+  > **Warning**
+  >
+  > The final `BottomSheet` API isn't final and subjected to change as we work on stabilizing the component.
+
 ## 7.0.4
 
 ### Patch Changes
