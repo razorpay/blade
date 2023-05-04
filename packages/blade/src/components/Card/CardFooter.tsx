@@ -40,6 +40,15 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
     ComponentIds.CardFooterTrailing,
   ]);
 
+  const footerChildrensArray = React.Children.toArray(children);
+
+  const baseBoxJustifyContent =
+    footerChildrensArray.length && footerChildrensArray.length === 2
+      ? 'space-between'
+      : React.isValidElement(footerChildrensArray[0]) && footerChildrensArray[0]?.props?.actions // FooterTrailing component receives actions as props
+      ? 'end'
+      : 'space-between';
+
   return (
     <BaseBox marginTop="auto" {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
       <BaseBox marginTop="spacing.7" />
@@ -48,7 +57,7 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
         marginTop="spacing.7"
         display="flex"
         flexDirection={isMobile ? 'column' : 'row'}
-        justifyContent="space-between"
+        justifyContent={baseBoxJustifyContent}
         alignItems={isMobile ? 'stretch' : 'center'}
       >
         {children}
