@@ -173,6 +173,9 @@ const _BottomSheet = ({
   const handleOnOpen = React.useCallback(() => {
     setPositionY(dimensions.height * 0.5);
     scrollLockRef.current.activate();
+    // initialize the original focused element
+    // On first render it will be the activeElement, eg: the button trigger or select input
+    // On Subsequent open operations it won't further update the original focus
     originalFocusElement.current =
       originalFocusElement.current ?? (document.activeElement as HTMLElement);
     focusOnInitialRef();
@@ -190,13 +193,12 @@ const _BottomSheet = ({
 
   // sync controlled state to our actions
   React.useEffect(() => {
-    if (_isOpen === true) {
+    if (_isOpen) {
       // open on the next frame, otherwise the animations will not run on first render
       window.setTimeout(() => {
         handleOnOpen();
       });
-    }
-    if (_isOpen === false) {
+    } else {
       handleOnClose();
     }
   }, [_isOpen, handleOnClose, handleOnOpen]);
