@@ -41,13 +41,14 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
   ]);
 
   const footerChildrensArray = React.Children.toArray(children);
+  if (!React.isValidElement(footerChildrensArray[0])) {
+    throw new Error(`Invalid React Element ${footerChildrensArray}`);
+  }
 
   const baseBoxJustifyContent =
-    footerChildrensArray.length && footerChildrensArray.length === 2
+    footerChildrensArray.length === 2 || !footerChildrensArray[0]?.props?.actions
       ? 'space-between'
-      : React.isValidElement(footerChildrensArray[0]) && footerChildrensArray[0]?.props?.actions // FooterTrailing component receives actions as props
-      ? 'flex-end'
-      : 'space-between';
+      : 'end';
 
   return (
     <BaseBox marginTop="auto" {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
