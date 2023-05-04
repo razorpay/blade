@@ -56,7 +56,7 @@ describe('<Text />', () => {
   });
 
   it('should throw error when variant is "caption" and size "small" is passed', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const displayText = 'Displaying some text';
     expect(() =>
       renderWithTheme(
@@ -66,7 +66,7 @@ describe('<Text />', () => {
         </Text>,
       ),
     ).toThrow(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 
   it('should accept testID', () => {

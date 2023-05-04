@@ -93,7 +93,7 @@ describe('<Alert />', () => {
   });
 
   it('should throw an error if secondary action is defined without primary action', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const onClickSecondary = jest.fn();
     expect(() =>
       renderWithTheme(
@@ -106,7 +106,7 @@ describe('<Alert />', () => {
         />,
       ),
     ).toThrow(`[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.`);
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 
   it('should accept testID', () => {

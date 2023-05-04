@@ -172,12 +172,12 @@ describe('<ProgressBar />', () => {
   });
 
   it('should throw an error when the variant is meter and isIndeterminate is set', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     // @ts-expect-error testing failure case when the variant is meter and isIndeterminate is set
     expect(() => renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />)).toThrow(
       `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
     );
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 
   it('should accept testID', () => {

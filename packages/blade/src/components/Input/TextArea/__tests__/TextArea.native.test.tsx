@@ -165,7 +165,7 @@ describe('<TextArea />', () => {
   });
 
   it('should throw error when both value and defaultValue are passed', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <TextArea label="Enter name" defaultValue="Kamlesh" value="Kamlesh Chandnani" />,
@@ -173,7 +173,7 @@ describe('<TextArea />', () => {
     ).toThrow(
       `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
     );
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 
   /**

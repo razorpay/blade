@@ -21,12 +21,12 @@ describe('<Amount />', () => {
   });
 
   it('should throw an error when a string is passed', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     // @ts-expect-error testing failure case when value is passed as a string
     expect(() => renderWithTheme(<Amount value={'10000'} />)).toThrow(
       '[Blade: Amount]: `value` prop must be of type `number` for Amount.',
     );
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 
   it('should render body-small size Amount', () => {

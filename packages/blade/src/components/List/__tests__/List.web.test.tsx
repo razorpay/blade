@@ -182,7 +182,7 @@ describe('<List />', () => {
   });
 
   it('should throw error on nesting more than 3 levels', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <List>
@@ -205,11 +205,11 @@ describe('<List />', () => {
         </List>,
       ),
     ).toThrow('[Blade List]: List Nesting is allowed only upto 3 levels.');
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 
   it('should throw error on using a non-valid component in ListItem', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <List>
@@ -221,11 +221,11 @@ describe('<List />', () => {
     ).toThrow(
       '[Blade List]: You can only pass a List, ListItemLink, ListItemCode or a string as a child to ListItem.',
     );
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 
   it('should throw error on using a non-valid component in List', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <List>
@@ -233,7 +233,7 @@ describe('<List />', () => {
         </List>,
       ),
     ).toThrow('[Blade List]: You can only pass a ListItem as a child to List.');
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 
   it('should not have accessibility violations', async () => {

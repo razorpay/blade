@@ -68,7 +68,7 @@ describe('overrideTheme', () => {
   });
 
   it('should throw error when overrides object is invalid', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const overrides = {
       colors: {
         onLight: {
@@ -95,11 +95,11 @@ describe('overrideTheme', () => {
         overrides,
       });
     }).toThrowError(invalidOverridesObjectError);
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 
   it('should throw error when base theme is invalid', () => {
-    jest.spyOn(console, 'error').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const invalidBaseTheme = {
       colors: {
         onLight: {
@@ -127,6 +127,6 @@ describe('overrideTheme', () => {
         overrides: invalidBaseTheme,
       });
     }).toThrowError(invalidBaseThemeError);
-    jest.restoreAllMocks();
+    mockConsoleError.mockRestore();
   });
 });
