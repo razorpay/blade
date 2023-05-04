@@ -1,24 +1,11 @@
 import React from 'react';
 import { ComponentIds } from './componentIds';
-import { Divider } from './Divider';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
-import { BottomSheetCloseButton } from './BottomSheetCloseButton';
+import { useBottomSheetContext } from './BottomSheetContext';
+import { BottomSheetHeaderProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { Heading, Text } from '~components/Typography';
-import { ChevronLeftIcon } from '~components/Icons';
-import { IconButton } from '~components/Button/IconButton';
-
-type BottomSheetHeaderProps = {
-  title?: string;
-  subtitle?: string;
-  leading?: React.ReactNode;
-  trailing?: React.ReactNode;
-  titleSuffix?: React.ReactNode;
-  hideDivider?: boolean;
-  showBackButton?: boolean;
-  onBackButtonClick?: () => void;
-};
+import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
 const _BottomSheetHeader = ({
   title,
@@ -30,71 +17,24 @@ const _BottomSheetHeader = ({
   showBackButton = false,
   onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
+  const { close, defaultInitialFocusRef } = useBottomSheetContext();
   return (
     <BaseBox backgroundColor="white" overflow="visible" flexShrink={0}>
-      <BaseBox
-        overflow="visible"
-        marginTop="spacing.5"
-        marginBottom="spacing.5"
-        paddingLeft="spacing.5"
-        paddingRight="spacing.5"
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        touchAction="none"
-      >
-        <BaseBox flex={1} display="flex" flexDirection="row" alignItems="center" userSelect="none">
-          {showBackButton && (
-            <BaseBox overflow="visible" marginRight="spacing.5">
-              <IconButton
-                size="large"
-                icon={ChevronLeftIcon}
-                onClick={() => onBackButtonClick?.()}
-                accessibilityLabel="Back"
-              />
-            </BaseBox>
-          )}
-          <BaseBox
-            paddingRight="spacing.5"
-            marginRight="auto"
-            display="flex"
-            flexDirection="row"
-            alignItems="center"
-          >
-            {leading && (
-              <BaseBox
-                width="spacing.8"
-                height="spacing.8"
-                flexShrink={0}
-                marginRight="spacing.3"
-                justifyContent="center"
-                alignItems="center"
-                display="flex"
-              >
-                {leading}
-              </BaseBox>
-            )}
-            <BaseBox width="90%">
-              <BaseBox flexShrink={0} display="flex" flexDirection="row" alignItems="center">
-                {title && (
-                  <Heading size="small" variant="regular" type="normal">
-                    {title}
-                  </Heading>
-                )}
-                {titleSuffix && <BaseBox marginLeft="spacing.3">{titleSuffix}</BaseBox>}
-              </BaseBox>
-              {subtitle && (
-                <Text variant="body" size="small" weight="regular">
-                  {subtitle}
-                </Text>
-              )}
-            </BaseBox>
-          </BaseBox>
-          <BaseBox marginRight="spacing.5">{trailing}</BaseBox>
-          <BottomSheetCloseButton />
-        </BaseBox>
-      </BaseBox>
-      {!hideDivider && <Divider />}
+      <BaseHeader
+        title={title}
+        subtitle={subtitle}
+        leading={leading}
+        trailing={trailing}
+        titleSuffix={titleSuffix}
+        hideDivider={hideDivider}
+        // back button
+        closeButtonRef={defaultInitialFocusRef}
+        showBackButton={showBackButton}
+        onBackButtonClick={onBackButtonClick}
+        // close button
+        showCloseButton={true}
+        onCloseButtonClick={close}
+      />
     </BaseBox>
   );
 };

@@ -46,6 +46,8 @@ import { Radio, RadioGroup } from '~components/Radio';
 import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
 import { Counter } from '~components/Counter';
+import { Box } from '~components/Box';
+import { Checkbox } from '~components/Checkbox';
 
 export default {
   title: 'Components/BottomSheet (Internal)',
@@ -71,28 +73,31 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
       >
         <BottomSheetHeader title="1. Saved Address" />
         <BottomSheetBody>
-          <BaseBox padding="spacing.4">
+          <BaseBox padding="spacing.5">
             <RadioGroup label="Addresses">
               <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
               <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
             </RadioGroup>
           </BaseBox>
         </BottomSheetBody>
-
-        <BottomSheetFooter
-          trailing={{
-            primary: {
-              text: 'Open Large BottomSheet',
-              onClick: () => setSecondOpen(true),
-              isDisabled: isSecondOpen,
-            },
-            secondary: {
-              text: 'Open third BottomSheet',
-              onClick: () => setThirdOpen(true),
-              isDisabled: isThirdOpen,
-            },
-          }}
-        />
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="secondary"
+            onClick={() => setSecondOpen(true)}
+            isDisabled={isSecondOpen}
+          >
+            Open large BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setThirdOpen(true)}
+            isDisabled={isThirdOpen}
+          >
+            Open third BottomSheet
+          </Button>
+        </BottomSheetFooter>
       </BottomSheetComponent>
 
       <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
@@ -130,20 +135,24 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
             <ActionListFooter />
           </ActionList>
         </BottomSheetBody>
-        <BottomSheetFooter
-          trailing={{
-            primary: {
-              text: 'Open Short BottomSheet',
-              onClick: () => setFirstOpen(true),
-              isDisabled: isFirstOpen,
-            },
-            secondary: {
-              text: 'Open third BottomSheet',
-              onClick: () => setThirdOpen(true),
-              isDisabled: isThirdOpen,
-            },
-          }}
-        />
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="secondary"
+            onClick={() => setFirstOpen(true)}
+            isDisabled={isFirstOpen}
+          >
+            Open Short BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setThirdOpen(true)}
+            isDisabled={isThirdOpen}
+          >
+            Open third BottomSheet
+          </Button>
+        </BottomSheetFooter>
       </BottomSheetComponent>
 
       <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
@@ -190,20 +199,24 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
             </ActionListSection>
           </ActionList>
         </BottomSheetBody>
-        <BottomSheetFooter
-          trailing={{
-            primary: {
-              text: 'Open Short BottomSheet',
-              onClick: () => setFirstOpen(true),
-              isDisabled: isFirstOpen,
-            },
-            secondary: {
-              text: 'Open Long BottomSheet',
-              onClick: () => setSecondOpen(true),
-              isDisabled: isSecondOpen,
-            },
-          }}
-        />
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="secondary"
+            onClick={() => setFirstOpen(true)}
+            isDisabled={isFirstOpen}
+          >
+            Open Short BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setSecondOpen(true)}
+            isDisabled={isSecondOpen}
+          >
+            Open Long BottomSheet
+          </Button>
+        </BottomSheetFooter>
       </BottomSheetComponent>
 
       <BaseBox>
@@ -287,14 +300,9 @@ const BottomSheetActionListTemplate: ComponentStory<typeof BottomSheetComponent>
           <Text>Reached End</Text>
           <Text>Reached End</Text>
         </BottomSheetBody>
-
-        <BottomSheetFooter
-          trailing={{
-            primary: {
-              text: 'Open Large BottomSheet',
-            },
-          }}
-        />
+        <BottomSheetFooter>
+          <Button isFullWidth>Open Large BottomSheet</Button>
+        </BottomSheetFooter>
       </BottomSheetComponent>
 
       <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
@@ -399,18 +407,19 @@ const BottomSheetActionListTemplate: ComponentStory<typeof BottomSheetComponent>
             </ActionListSection>
           </ActionList>
         </BottomSheetBody>
-        <BottomSheetFooter
-          trailing={{
-            primary: {
-              text: 'Open Short BottomSheet',
-              onClick: () => 1,
-            },
-            secondary: {
-              text: 'Open Long BottomSheet',
-              onClick: () => 1,
-            },
-          }}
-        />
+        <BottomSheetFooter>
+          <Box display="flex" flexDirection="column">
+            <Box flexShrink={0} marginBottom="spacing.5">
+              <Checkbox>Accept terms and condition</Checkbox>
+            </Box>
+            <Button isFullWidth variant="secondary" onClick={() => 1}>
+              Open Short BottomSheet
+            </Button>
+            <Button isFullWidth marginTop="spacing.5" onClick={() => 1}>
+              Open Long BottomSheet
+            </Button>
+          </Box>
+        </BottomSheetFooter>
       </BottomSheetComponent>
 
       <BaseBox minHeight="200px">
@@ -549,19 +558,22 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
           titleSuffix={<Counter intent="positive" value={2} />}
         />
         <BottomSheetBody>
-          <BaseBox gap="spacing.4" display="flex" flexDirection="column">
-            <RadioGroup label="Addresses">
-              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-            </RadioGroup>
-            <Button isFullWidth onClick={() => setIsOpen(false)}>
-              Add Another
-            </Button>
-          </BaseBox>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <Button isFullWidth onClick={() => setIsOpen(false)}>
+            Add Another
+          </Button>
         </BottomSheetBody>
-        <BottomSheetFooter
-          trailing={{ primary: { text: 'Add address' }, secondary: { text: 'Remove address' } }}
-        />
+        <BottomSheetFooter>
+          <Button isFullWidth variant="secondary">
+            Remove address
+          </Button>
+          <Button isFullWidth marginTop="spacing.5">
+            Add address
+          </Button>
+        </BottomSheetFooter>
       </BottomSheetComponent>
     </BaseBox>
   );
@@ -583,7 +595,7 @@ export const WithHeader = WithHeaderTemplate.bind({});
 //       >
 //         <BottomSheetHeader title="Saved Address" />
 //         <BottomSheetBody>
-//           <BaseBox padding="spacing.4">
+//           <BaseBox padding="spacing.5">
 //             <RadioGroup label="Addresses">
 //               <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
 //               <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
@@ -764,14 +776,12 @@ const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
       >
         <BottomSheetHeader title="Users" />
         <BottomSheetBody>
-          <BaseBox padding="spacing.4" gap="spacing.4" display="flex" flexDirection="column">
-            <List>
-              <ListItem>Anurag Hazra</ListItem>
-              <ListItem>Kamlesh Chandnani</ListItem>
-              <ListItem>Divyanshu Maithani</ListItem>
-            </List>
-            <TextInput label="Search Users" ref={initialFocusRef} />
-          </BaseBox>
+          <List>
+            <ListItem>Anurag Hazra</ListItem>
+            <ListItem>Kamlesh Chandnani</ListItem>
+            <ListItem>Divyanshu Maithani</ListItem>
+          </List>
+          <TextInput label="Search Users" ref={initialFocusRef} />
         </BottomSheetBody>
       </BottomSheetComponent>
     </BaseBox>

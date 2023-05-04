@@ -14,7 +14,6 @@ import type { BottomSheetProps } from './types';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
-import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import { useBottomSheetStack } from './BottomSheetStack';

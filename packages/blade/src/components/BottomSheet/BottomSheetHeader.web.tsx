@@ -1,29 +1,11 @@
 import React from 'react';
 import { ComponentIds } from './componentIds';
-import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheetContext';
-import { BottomSheetCloseButton } from './BottomSheetCloseButton';
+import type { BottomSheetHeaderProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading, Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
-import { IconButton } from '~components/Button/IconButton';
-import { ChevronLeftIcon } from '~components/Icons';
-
-type BottomSheetHeaderTrailingProps = {
-  visual: React.ReactNode;
-};
-
-type BottomSheetHeaderProps = {
-  title?: string;
-  subtitle?: string;
-  leading?: React.ReactNode;
-  trailing?: React.ReactNode;
-  titleSuffix?: React.ReactNode;
-  hideDivider?: boolean;
-  showBackButton?: boolean;
-  onBackButtonClick?: () => void;
-};
+import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
 const _BottomSheetHeader = ({
   title,
@@ -35,7 +17,7 @@ const _BottomSheetHeader = ({
   showBackButton = false,
   onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
-  const { setHeaderHeight, isOpen, bind } = useBottomSheetContext();
+  const { setHeaderHeight, isOpen, close, bind, defaultInitialFocusRef } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -45,66 +27,22 @@ const _BottomSheetHeader = ({
 
   return (
     <BaseBox ref={ref} overflow="auto" flexShrink={0}>
-      <BaseBox
-        marginTop="spacing.5"
-        marginBottom="spacing.5"
-        paddingLeft="spacing.5"
-        paddingRight="spacing.5"
-        touchAction="none"
+      <BaseHeader
+        title={title}
+        subtitle={subtitle}
+        leading={leading}
+        trailing={trailing}
+        titleSuffix={titleSuffix}
+        hideDivider={hideDivider}
+        // back button
+        closeButtonRef={defaultInitialFocusRef}
+        showBackButton={showBackButton}
+        onBackButtonClick={onBackButtonClick}
+        // close button
+        showCloseButton={true}
+        onCloseButtonClick={close}
         {...bind?.()}
-      >
-        <BaseBox flex={1} display="flex" flexDirection="row" alignItems="center" userSelect="none">
-          {showBackButton && (
-            <BaseBox overflow="visible" marginRight="spacing.5">
-              <IconButton
-                size="large"
-                icon={ChevronLeftIcon}
-                onClick={() => onBackButtonClick?.()}
-                accessibilityLabel="Back"
-              />
-            </BaseBox>
-          )}
-          <BaseBox
-            paddingRight="spacing.5"
-            marginRight="auto"
-            display="flex"
-            flexDirection="row"
-            alignItems="center"
-          >
-            {leading && (
-              <BaseBox
-                width="spacing.8"
-                height="spacing.8"
-                flexShrink={0}
-                marginRight="spacing.3"
-                justifyContent="center"
-                alignItems="center"
-                display="flex"
-              >
-                {leading}
-              </BaseBox>
-            )}
-            <BaseBox>
-              <BaseBox flexShrink={0} display="flex" flexDirection="row" alignItems="center">
-                {title && (
-                  <Heading size="small" variant="regular" type="normal">
-                    {title}
-                  </Heading>
-                )}
-                {titleSuffix && <BaseBox marginLeft="spacing.3">{titleSuffix}</BaseBox>}
-              </BaseBox>
-              {subtitle && (
-                <Text variant="body" size="small" weight="regular">
-                  {subtitle}
-                </Text>
-              )}
-            </BaseBox>
-          </BaseBox>
-          <BaseBox marginRight="spacing.5">{trailing}</BaseBox>
-          <BottomSheetCloseButton />
-        </BaseBox>
-      </BaseBox>
-      {!hideDivider && <Divider />}
+      />
     </BaseBox>
   );
 };
@@ -113,4 +51,4 @@ const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
   componentId: ComponentIds.BottomSheetHeader,
 });
 
-export { BottomSheetHeader, BottomSheetHeaderProps, BottomSheetHeaderTrailingProps };
+export { BottomSheetHeader };
