@@ -54,11 +54,4 @@ function computeMaxContent(
   );
 }
 
-/**
- * Checkes if two numbers are close to reach other
- */
-const nearlyEqual = (value1: number, value2: number, epsilon: number) => {
-  return Math.abs(value1 - value2) < epsilon;
-};
-
-export { SnapPoints, computeMaxContent, computeMinContent, computeSnapPointBounds, nearlyEqual };
+export { SnapPoints, computeMaxContent, computeMinContent, computeSnapPointBounds };
