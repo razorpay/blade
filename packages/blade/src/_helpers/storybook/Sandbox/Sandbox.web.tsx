@@ -108,7 +108,7 @@ const useSandpackSetup = ({
   };
 };
 
-const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
+const CodeLineHighlighterContainer = styled(BaseBox)<{ border?: string }>((props) => ({
   '& .highlight': {
     backgroundColor: '#fffbdd',
     borderRadius: '2px',
@@ -117,7 +117,7 @@ const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
   '& pre': {
     padding: '0px',
   },
-  border: '1px solid #EFEFEF',
+  border: props.border,
   borderRadius: '4px',
   overflow: 'auto',
 }));
@@ -144,10 +144,15 @@ const SandboxProvider = ({
   code,
   children,
   language = 'tsx',
-}: Omit<SandboxProps, 'children'> & { code: string; children: React.ReactNode }): JSX.Element => {
+  border = '1px solid #EFEFEF',
+}: Omit<SandboxProps, 'children'> & {
+  code: string;
+  children: React.ReactNode;
+  border?: string;
+}): JSX.Element => {
   const sandboxSetup = useSandpackSetup({ language, code });
   return (
-    <CodeLineHighlighterContainer>
+    <CodeLineHighlighterContainer border={border}>
       <SandpackProvider {...sandboxSetup}>{children}</SandpackProvider>
     </CodeLineHighlighterContainer>
   );
