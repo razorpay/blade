@@ -412,7 +412,6 @@ const BottomSheetScrollingContentTemplate: ComponentStory<typeof BottomSheetComp
       <BottomSheetComponent
         isOpen={isOpen}
         onDismiss={() => {
-          console.log('dismiss');
           setIsOpen(false);
         }}
       >
