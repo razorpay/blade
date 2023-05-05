@@ -93,7 +93,7 @@ const _BottomSheet = ({
   const preventScrollingRef = React.useRef(true);
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const grabHandleRef = React.useRef<HTMLDivElement>(null);
-  const originalFocusElement = React.useRef<HTMLElement>(null);
+  const originalFocusElement = React.useRef<HTMLElement | null>(null);
   const defaultInitialFocusRef = React.useRef<any>(null);
 
   const id = useId();
@@ -152,7 +152,6 @@ const _BottomSheet = ({
     // After returning focus we will clear the original focus
     // Because if sheet can be opened up via multiple triggers
     // We want to ensure the focus returns back to the most recent triggerer
-    // @ts-expect-error this is a mutable ref
     originalFocusElement.current = null;
   }, [originalFocusElement]);
 
@@ -166,56 +165,44 @@ const _BottomSheet = ({
     }
   }, [initialFocusRef]);
 
-  const close = React.useCallback(() => {
+  const handleOnOpen = React.useCallback(() => {
+    setPositionY(dimensions.height * 0.5);
+    scrollLockRef.current.activate();
+    // initialize the original focused element
+    // On first render it will be the activeElement, eg: the button trigger or select input
+    // On Subsequent open operations it won't further update the original focus
+    originalFocusElement.current =
+      originalFocusElement.current ?? (document.activeElement as HTMLElement);
+    focusOnInitialRef();
+  }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPositionY]);
+
+  const handleOnClose = React.useCallback(() => {
     setPositionY(0);
     returnFocus();
-    onDismiss?.();
-    // close the select dropdown as well
-    bottomSheetAndDropdownGlue?.setIsOpen(false);
-  }, [setPositionY, returnFocus, onDismiss, bottomSheetAndDropdownGlue]);
+  }, [returnFocus, setPositionY]);
 
-  const open = React.useCallback(() => {
-    scrollLockRef.current.activate();
-    // @ts-expect-error this is a mutable ref
-    originalFocusElement.current = originalFocusElement.current ?? document.activeElement;
-    focusOnInitialRef();
-  }, [focusOnInitialRef, scrollLockRef]);
+  const close = React.useCallback(() => {
+    onDismiss?.();
+    bottomSheetAndDropdownGlue?.onBottomSheetDismiss();
+  }, [bottomSheetAndDropdownGlue, onDismiss]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
-    if (isOpen === true) {
-      open();
+    if (_isOpen) {
+      // open on the next frame, otherwise the animations will not run on first render
+      window.setTimeout(() => {
+        handleOnOpen();
+      });
+    } else {
+      handleOnClose();
     }
-    if (isOpen === false) {
-      close();
-    }
-  }, [isOpen, close, open]);
+  }, [_isOpen, handleOnClose, handleOnOpen]);
 
-  React.useEffect(() => {
-    if (isOpen === true) {
-      setPositionY(dimensions.height * 0.5);
-    }
-  }, [isOpen, setPositionY, dimensions.height]);
-
-  // sync the select dropdown's state with bottomsheet's state
+  // let the Dropdown component know that it's rendering a bottomsheet
   React.useEffect(() => {
     if (!bottomSheetAndDropdownGlue) return;
-
-    // this will let the Dropdown component know that it's rendering a bottomsheet
     bottomSheetAndDropdownGlue.setDropdownHasBottomSheet(true);
-
-    if (bottomSheetAndDropdownGlue.isOpen) {
-      open();
-      setPositionY(dimensions.height * 0.5);
-    }
-
-    if (
-      !bottomSheetAndDropdownGlue.isOpen &&
-      bottomSheetAndDropdownGlue.selectionType === 'single'
-    ) {
-      close();
-    }
-  }, [close, open, bottomSheetAndDropdownGlue, setPositionY, dimensions.height]);
+  }, [bottomSheetAndDropdownGlue]);
 
   /*
       1. The content should not be scrollable on lower or middle snapPoints

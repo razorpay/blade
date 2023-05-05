@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 7.1.2
+
+### Patch Changes
+
+- 69ef5042: fix(blade): BottomSheet unable to scroll content
+
 ## 7.1.1
 
 ### Patch Changes

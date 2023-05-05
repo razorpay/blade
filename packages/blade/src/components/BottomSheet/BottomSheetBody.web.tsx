@@ -42,7 +42,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         paddingTop="spacing.5"
         paddingBottom="spacing.5"
         ref={contentRef}
-        overflow="hidden"
+        overflow="auto"
       >
         {children}
       </BaseBox>
