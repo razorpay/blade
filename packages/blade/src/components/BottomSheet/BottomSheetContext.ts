@@ -71,8 +71,6 @@ const useBottomSheetContext = (): BottomSheetContextProps => {
 
 type BottomSheetAndDropdownGlueContext = {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  selectionType: 'single' | 'multiple';
   /**
    * This flag is true when <Dropdown> contains or renders <BottomSheet> inside of it
    * We can use this flag to alter behavior or styles of Dropdown
@@ -82,6 +80,7 @@ type BottomSheetAndDropdownGlueContext = {
    * This is the setter for the flag, we set this flag to true inside <BottomSheet>
    */
   setDropdownHasBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
+  onBottomSheetDismiss: () => void;
 } | null;
 
 const BottomSheetAndDropdownGlueContext = React.createContext<BottomSheetAndDropdownGlueContext>(

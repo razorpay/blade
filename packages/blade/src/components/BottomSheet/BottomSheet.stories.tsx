@@ -39,7 +39,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -929,3 +929,87 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
 export const Default = BottomSheetTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
+
+const BottomSheetScrollingContentTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="1. Saved Address" />
+        <BottomSheetBody>
+          <BaseBox marginBottom="spacing.4">
+            <RadioGroup label="Addresses">
+              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            </RadioGroup>
+          </BaseBox>
+
+          <Heading>Lorem Ipsum</Heading>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent auctor tellus ut arcu
+            porttitor, non ultrices libero accumsan. Proin eget leo sed neque tristique tincidunt.
+            Sed vel ultrices leo, eu auctor magna. Vivamus a ligula interdum, auctor nibh quis,
+            dapibus nisl. Donec efficitur sed ante ac molestie. Pellentesque pharetra, tortor eu
+            vestibulum consectetur, diam ex condimentum enim, sit amet fringilla tellus neque ut
+            risus. Maecenas magna lectus, feugiat vitae blandit eget, iaculis non lectus. Cras
+            aliquet massa id augue vulputate, non lobortis massa aliquet. Nullam facilisis justo et
+          </Text>
+          <Heading>Lorem Ipsum</Heading>
+          <Text>
+            vestibulum sodales. Duis accumsan posuere lorem eget semper. Nam congue, mi sit amet
+            ultrices interdum, quam orci fringilla elit, vitae malesuada lorem elit tristique elit.
+            Aenean bibendum dui ex, sit amet elementum est elementum sit amet. Proin massa orci,
+            tempus a rutrum ac, egestas sit amet tortor. Morbi dictum ultricies ex finibus blandit.
+            Sed luctus quam nec eros convallis fringilla. Duis dignissim nulla neque, eu dapibus
+            metus dignissim at. Nullam imperdiet augue ex, posuere fermentum lectus dapibus vitae.
+            Nullam ultricies libero cursus turpis tincidunt egestas. Vestibulum interdum auctor
+            massa laoreet sollicitudin. Nunc lobortis ullamcorper leo, a imperdiet purus ultricies
+            volutpat. Aliquam erat volutpat. Donec tempus enim nec semper imperdiet. Nullam
+            porttitor enim dui. Curabitur at orci lobortis, faucibus tellus id, malesuada leo.
+            Curabitur fermentum massa a ligula feugiat hendrerit. Ut tincidunt arcu sed ultrices
+            consectetur. Nulla suscipit tortor lacus, id accumsan libero sodales a. Suspendisse in
+            congue massa, sit amet laoreet nisi. Suspendisse at libero eu tortor posuere sodales.
+            Sed suscipit, diam vitae pharetra vestibulum, erat enim pulvinar tortor, ut consectetur
+            sem nibh vitae arcu. Integer lorem leo, lacinia non congue ac, efficitur eu justo.
+            Phasellus quis odio lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          </Text>
+          <Heading>Lorem Ipsum</Heading>
+          <Text>
+            Vestibulum ac purus non justo commodo tincidunt. Pellentesque hendrerit sollicitudin
+            nunc, quis eleifend eros vulputate eu. Ut in nulla et velit rhoncus venenatis quis eu
+            neque. Ut mattis massa risus. Praesent at erat non arcu rhoncus feugiat et eu enim.
+            Etiam sodales nec turpis id placerat. Donec dignissim elit id fringilla faucibus.
+            Suspendisse eu turpis at nulla iaculis tincidunt vitae ut sem. Nulla egestas nunc et
+            lobortis aliquam. Integer nec metus at mauris vestibulum tristique vitae vitae risus.
+            Mauris faucibus vitae eros id consectetur. Sed tincidunt egestas felis sit amet gravida.
+            Donec tincidunt varius varius. Nunc lacinia orci et eros congue, a hendrerit nisi
+            fermentum. Pellentesque vel ligula sit amet dolor ultrices vulputate. Donec arcu leo,
+            interdum et dapibus eu, suscipit quis velit. Pellentesque porta nec quam non finibus.
+            Suspendisse sed ex efficitur lectus mollis faucibus. Quisque viverra eget sapien non
+            ultrices. Quisque eget rutrum lacus. Nulla porta viverra felis, non eleifend nisi
+            convallis at. Pellentesque consectetur, neque laoreet venenatis molestie, metus velit
+            feugiat purus, ut maximus dolor metus ut nisi. Suspendisse consequat enim at odio
+            eleifend mattis.
+          </Text>
+        </BottomSheetBody>
+
+        <BottomSheetFooter
+          trailing={{
+            primary: {
+              text: 'Primary',
+            },
+          }}
+        />
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
+
+export const WithScrollingContent = BottomSheetScrollingContentTemplate.bind({});

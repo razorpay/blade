@@ -54,7 +54,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         paddingTop={bottomSheetHasActionList ? 'spacing.1' : 'spacing.5'}
         paddingBottom={bottomSheetHasActionList ? 'spacing.1' : 'spacing.5'}
         ref={contentRef}
-        overflow="hidden"
+        overflow="auto"
       >
         {children}
       </BaseBox>

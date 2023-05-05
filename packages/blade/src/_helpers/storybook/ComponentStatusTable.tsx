@@ -287,40 +287,56 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Switch',
-    status: 'in-design',
+    status: 'in-development',
     description:
       'Switch component is used as an alternative for the checkbox component, It can be used to switch between two states: often on or off.',
   },
 
   {
     name: 'Accordion',
-    status: 'in-design',
+    status: 'in-development',
     description:
       'Accordion component allows the user to show and hide sections of related content on a page',
   },
   {
     name: 'Tooltip',
-    status: 'planned-Q4-design',
+    status: 'in-design',
     description:
       'Tooltip is a brief, informative message that appears when a user interacts with an element.',
   },
   {
     name: 'Modal',
-    status: 'to-be-decided',
+    status: 'in-design',
     description:
       "Modal is a dialog that focuses the user's attention exclusively on an information via a window that is overlaid on primary content.",
   },
   {
     name: 'Carousel',
-    status: 'to-be-decided',
+    status: 'planned-Q1-dev',
     description:
       'Carousel is a component to one-by-one display multiple blocks of information in circular manner',
   },
   {
     name: 'Tabs',
-    status: 'to-be-decided',
+    status: 'planned-Q1-dev',
     description:
       'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
+  },
+  {
+    name: 'Data Table',
+    status: 'planned-Q1-design',
+    description: 'DataTable will allow you to display your data in tabular manner',
+  },
+  {
+    name: 'Data Picker',
+    status: 'planned-Q1-design',
+    description: 'DataTable will allow you to display your data in tabular manner',
+  },
+  {
+    name: 'AutoComplete',
+    status: 'in-design',
+    description:
+      'AutoComplete Component will allow you to filter Dropdown options as you type ahead in the Input',
   },
   {
     name: 'Toast',
@@ -328,15 +344,14 @@ const componentData: ComponentStatusData = [
     description: 'Toast is a component to show a simple floating messages to your users',
   },
   {
-    name: 'DataTable',
+    name: 'Button Group',
     status: 'to-be-decided',
-    description: 'DataTable will allow you to display your data in tabular manner',
+    description: '',
   },
   {
-    name: 'AutoComplete',
+    name: 'Popover',
     status: 'to-be-decided',
-    description:
-      'AutoComplete Component will allow you to filter Dropdown options as you type ahead in the Input',
+    description: 'Used for cases like guided tours',
   },
 ];
 
@@ -404,6 +419,9 @@ const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement =
 
 const ComponentStatusTable = (): React.ReactElement => {
   const unreleasedComponentsSort: ComponentStatuses[] = [
+    'in-design',
+    'in-api-spec',
+    'in-development',
     'planned-Q1-design',
     'planned-Q1-dev',
     'planned-Q2-design',
@@ -412,9 +430,6 @@ const ComponentStatusTable = (): React.ReactElement => {
     'planned-Q3-dev',
     'planned-Q4-design',
     'planned-Q4-dev',
-    'in-design',
-    'in-api-spec',
-    'in-development',
     'to-be-decided',
     'released',
   ];
