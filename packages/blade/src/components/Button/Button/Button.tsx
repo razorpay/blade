@@ -23,7 +23,7 @@ type ButtonCommonProps = {
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
   onBlur?: BaseButtonProps['onBlur'];
-  onKeyDown: BaseButtonProps['onKeyDown'];
+  onKeyDown?: BaseButtonProps['onKeyDown'];
 } & TestID &
   StyledPropsBlade;
 
