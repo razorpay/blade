@@ -45,6 +45,10 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
     throw new Error(`Invalid React Element ${footerChildrensArray}`);
   }
 
+  // the reason why we are checking for actions here is, because we want the footerTrailing
+  // to always be aligned to the right
+  // if we don't check for action here, and if we do not have footerTrailing and only footerLeading
+  // then the content of footerLeading will be justified to the end.
   const baseBoxJustifyContent =
     footerChildrensArray.length === 2 || !footerChildrensArray[0]?.props?.actions
       ? 'space-between'
