@@ -1,6 +1,7 @@
 import type { GestureResponderEvent } from 'react-native';
 import React from 'react';
 import BaseButton from '../BaseButton';
+import type { BaseButtonProps } from '../BaseButton/BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -21,6 +22,8 @@ type ButtonCommonProps = {
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
+  onBlur?: BaseButtonProps['onBlur'];
+  onKeyDown: BaseButtonProps['onKeyDown'];
 } & TestID &
   StyledPropsBlade;
 
@@ -51,6 +54,8 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isFullWidth = false,
     isLoading = false,
     onClick,
+    onBlur,
+    onKeyDown,
     size = 'medium',
     type = 'button',
     variant = 'primary',
@@ -75,6 +80,8 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       variant={variant}
       isLoading={isLoading}
       testID={testID}
+      onBlur={onBlur}
+      onKeyDown={onKeyDown}
     />
   );
 };

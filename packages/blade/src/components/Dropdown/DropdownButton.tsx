@@ -1,7 +1,7 @@
 import { useDropdown } from './useDropdown';
 import type { ButtonProps } from '~components/Button';
+import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import BaseButton from '~components/Button/BaseButton';
 import { makeAccessible } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 
@@ -17,7 +17,7 @@ const _DropdownButton = (props: ButtonProps): JSX.Element => {
     triggererRef,
   } = useDropdown();
   return (
-    <BaseButton
+    <Button
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={triggererRef as any}
       {...props}

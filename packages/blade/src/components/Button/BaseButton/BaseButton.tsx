@@ -53,7 +53,10 @@ type BaseButtonCommonProps = {
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
-  onBlur?: () => void;
+  onBlur?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  }>;
   onKeyDown?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
