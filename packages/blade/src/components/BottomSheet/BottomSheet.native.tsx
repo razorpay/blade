@@ -23,7 +23,6 @@ import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useId } from '~src/hooks/useId';
-import { Text } from '~components/Typography';
 
 const isAndroid = Platform.OS === 'android';
 // TODO: Temporary workaround to make android shadows look as close as iOS

@@ -4,6 +4,7 @@ import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetContext } from './BottomSheetContext';
 import { BottomSheetHeaderProps } from './types';
 import { useBottomSheetHeaderTrailingRestriction } from './utils';
+import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
@@ -20,24 +21,29 @@ const _BottomSheetHeader = ({
 }: BottomSheetHeaderProps): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useBottomSheetContext();
   const enhancedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
+  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
 
   return (
     <BaseBox backgroundColor="white" overflow="visible" flexShrink={0}>
-      <BaseHeader
-        title={title}
-        subtitle={subtitle}
-        leading={leading}
-        trailing={enhancedTrailingComponent}
-        titleSuffix={titleSuffix}
-        hideDivider={hideDivider}
-        // back button
-        closeButtonRef={defaultInitialFocusRef}
-        showBackButton={showBackButton}
-        onBackButtonClick={onBackButtonClick}
-        // close button
-        showCloseButton={true}
-        onCloseButtonClick={close}
-      />
+      {isHeaderEmpty ? (
+        <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />
+      ) : (
+        <BaseHeader
+          title={title}
+          subtitle={subtitle}
+          leading={leading}
+          trailing={enhancedTrailingComponent}
+          titleSuffix={titleSuffix}
+          hideDivider={hideDivider}
+          // back button
+          closeButtonRef={defaultInitialFocusRef}
+          showBackButton={showBackButton}
+          onBackButtonClick={onBackButtonClick}
+          // close button
+          showCloseButton={true}
+          onCloseButtonClick={close}
+        />
+      )}
     </BaseBox>
   );
 };

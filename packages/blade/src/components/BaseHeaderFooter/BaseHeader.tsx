@@ -3,7 +3,7 @@ import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/sr
 import { Divider } from './Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
-import { assignWithoutSideEffects, isReactNative } from '~utils';
+import { assignWithoutSideEffects } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 
