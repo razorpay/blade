@@ -53,7 +53,7 @@ const _BaseHeader = ({
   onPointerUp,
 }: BaseHeaderProps): React.ReactElement => {
   return (
-    <>
+    <BaseBox>
       <BaseBox
         marginTop="spacing.4"
         marginBottom="spacing.5"
@@ -69,8 +69,8 @@ const _BaseHeader = ({
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
       >
-        <BaseBox flex={1} display="flex" flexDirection="row" alignItems="center" userSelect="none">
-          {showBackButton && (
+        <BaseBox display="flex" flexDirection="row" alignItems="center" userSelect="none">
+          {showBackButton ? (
             <BaseBox overflow="visible" marginRight="spacing.5">
               <IconButton
                 size="large"
@@ -79,7 +79,7 @@ const _BaseHeader = ({
                 accessibilityLabel="Back"
               />
             </BaseBox>
-          )}
+          ) : null}
           <BaseBox
             paddingRight="spacing.5"
             marginRight="auto"
@@ -87,7 +87,7 @@ const _BaseHeader = ({
             flexDirection="row"
             alignItems="center"
           >
-            {leading && (
+            {leading ? (
               <BaseBox
                 width="spacing.8"
                 height="spacing.8"
@@ -99,25 +99,25 @@ const _BaseHeader = ({
               >
                 {leading}
               </BaseBox>
-            )}
+            ) : null}
             <BaseBox width={isReactNative() ? '90%' : '100%'}>
               <BaseBox flexShrink={0} display="flex" flexDirection="row" alignItems="center">
-                {title && (
+                {title ? (
                   <Heading size="small" variant="regular" type="normal">
                     {title}
                   </Heading>
-                )}
+                ) : null}
                 {titleSuffix && <BaseBox marginLeft="spacing.3">{titleSuffix}</BaseBox>}
               </BaseBox>
-              {subtitle && (
+              {subtitle ? (
                 <Text variant="body" size="small" weight="regular">
                   {subtitle}
                 </Text>
-              )}
+              ) : null}
             </BaseBox>
           </BaseBox>
-          {trailing && <BaseBox marginRight="spacing.5">{trailing}</BaseBox>}
-          {showCloseButton && (
+          {trailing ? <BaseBox marginRight="spacing.5">{trailing}</BaseBox> : null}
+          {showCloseButton ? (
             <IconButton
               ref={closeButtonRef}
               size="large"
@@ -125,11 +125,11 @@ const _BaseHeader = ({
               accessibilityLabel="Close"
               onClick={() => onCloseButtonClick?.()}
             />
-          )}
+          ) : null}
         </BaseBox>
       </BaseBox>
-      {!hideDivider && <Divider />}
-    </>
+      {hideDivider ? null : <Divider />}
+    </BaseBox>
   );
 };
 
