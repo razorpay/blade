@@ -83,6 +83,7 @@ const _BaseHeader = ({
           <BaseBox
             paddingRight="spacing.5"
             marginRight="auto"
+            flex="auto"
             display="flex"
             flexDirection="row"
             alignItems="center"
@@ -100,7 +101,7 @@ const _BaseHeader = ({
                 {leading}
               </BaseBox>
             ) : null}
-            <BaseBox width={isReactNative() ? '90%' : '100%'}>
+            <BaseBox>
               <BaseBox flexShrink={0} display="flex" flexDirection="row" alignItems="center">
                 {title ? (
                   <Heading size="small" variant="regular" type="normal">
