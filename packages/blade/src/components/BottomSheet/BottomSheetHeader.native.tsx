@@ -3,6 +3,7 @@ import { ComponentIds } from './componentIds';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetContext } from './BottomSheetContext';
 import { BottomSheetHeaderProps } from './types';
+import { useBottomSheetHeaderTrailingRestriction } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
@@ -18,13 +19,15 @@ const _BottomSheetHeader = ({
   onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useBottomSheetContext();
+  const enhancedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
+
   return (
     <BaseBox backgroundColor="white" overflow="visible" flexShrink={0}>
       <BaseHeader
         title={title}
         subtitle={subtitle}
         leading={leading}
-        trailing={trailing}
+        trailing={enhancedTrailingComponent}
         titleSuffix={titleSuffix}
         hideDivider={hideDivider}
         // back button

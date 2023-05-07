@@ -17,6 +17,7 @@ import {
   FileTextIcon,
   HistoryIcon,
   HomeIcon,
+  InfoIcon,
   SearchIcon,
   SettingsIcon,
   StarIcon,
@@ -556,17 +557,18 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
           showBackButton
           title="Address Details"
           subtitle="Saving addresses will improve your checkout experience"
-          trailing={<Link href="/">Clear</Link>}
+          trailing={<Badge variant="positive">Action Needed</Badge>}
+          // trailing={<Button icon={InfoIcon} accessibilityLabel="Info" />}
+          // trailing={<Text>Action Needed</Text>}
           titleSuffix={<Counter intent="positive" value={2} />}
         />
         <BottomSheetBody>
+          <Badge variant="positive">Action Needed</Badge>
+          <Button icon={InfoIcon} accessibilityLabel="Info" />
           <RadioGroup label="Addresses">
             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
             <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
           </RadioGroup>
-          <Button isFullWidth onClick={() => setIsOpen1(false)}>
-            Add Another
-          </Button>
         </BottomSheetBody>
         <BottomSheetFooter>
           <Button isFullWidth variant="secondary">
@@ -1000,13 +1002,9 @@ const BottomSheetScrollingContentTemplate: ComponentStory<typeof BottomSheetComp
           </Text>
         </BottomSheetBody>
 
-        <BottomSheetFooter
-          trailing={{
-            primary: {
-              text: 'Primary',
-            },
-          }}
-        />
+        <BottomSheetFooter>
+          <Button isFullWidth>Primary button</Button>
+        </BottomSheetFooter>
       </BottomSheetComponent>
     </BaseBox>
   );
