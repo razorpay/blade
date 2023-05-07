@@ -534,7 +534,7 @@ const BottomSheetActionListTemplate: ComponentStory<typeof BottomSheetComponent>
 export const BottomSheetActionList = BottomSheetActionListTemplate.bind({});
 
 const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <BaseBox>

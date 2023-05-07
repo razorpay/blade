@@ -18,7 +18,7 @@ import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import { useBottomSheetStack } from './BottomSheetStack';
-import { makeSpace, getComponentId, usePrevious } from '~utils';
+import { makeSpace, getComponentId } from '~utils';
 
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
@@ -66,14 +66,13 @@ const _BottomSheet = ({
   onDismiss,
   initialFocusRef,
 }: BottomSheetProps): React.ReactElement => {
-  const dropdownBottomSheetProps = useBottomSheetAndDropdownGlue();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const defaultInitialFocusRef = React.useRef<any>(null);
   const sheetRef = React.useRef<GorhomBottomSheet>(null);
   const header = React.useRef<React.ReactNode>();
   const footer = React.useRef<React.ReactNode>();
   const body = React.useRef<React.ReactNode>();
-  const _isOpen = dropdownBottomSheetProps?.isOpen ?? isOpen;
-  const wasPreviouslyOpen = usePrevious(_isOpen);
+  const _isOpen = bottomSheetAndDropdownGlue?.isOpen ?? isOpen;
   const [footerHeight, setFooterHeight] = React.useState(0);
 
   const id = useId();
@@ -90,24 +89,22 @@ const _BottomSheet = ({
   ]);
 
   const close = React.useCallback(() => {
-    sheetRef.current?.close();
-    // close the select dropdown as well
-    dropdownBottomSheetProps?.setIsOpen(false);
     onDismiss?.();
-  }, [dropdownBottomSheetProps, onDismiss]);
+    bottomSheetAndDropdownGlue?.onBottomSheetDismiss();
+  }, [bottomSheetAndDropdownGlue, onDismiss]);
 
-  const open = React.useCallback(() => {
-    // Don't again set the snapToIndex to 0 if the bottomsheet was already open
-    // We need to do this because since we set various dependency deps on the useEffect while opening
-    // The useEffect runs multiple times and thus causes this function to get called multiple times
-    if (!wasPreviouslyOpen) {
-      sheetRef.current?.snapToIndex(0);
-    }
-  }, [wasPreviouslyOpen]);
+  const handleOnOpen = React.useCallback(() => {
+    sheetRef.current?.snapToIndex(0);
+  }, []);
 
+  const handleOnClose = React.useCallback(() => {
+    sheetRef.current?.close();
+  }, [sheetRef]);
+
+  // sync controlled state to our actions
   React.useEffect(() => {
-    if (isOpen === true) {
-      open();
+    if (_isOpen) {
+      handleOnOpen();
       if (!initialFocusRef) {
         // focus on close button
         focusOnElement(defaultInitialFocusRef.current);
@@ -115,11 +112,16 @@ const _BottomSheet = ({
         // focus on the initialRef
         focusOnElement(initialFocusRef.current);
       }
+    } else {
+      handleOnClose();
     }
-    if (isOpen === false) {
-      close();
-    }
-  }, [close, initialFocusRef, isOpen, open]);
+  }, [_isOpen, handleOnClose, handleOnOpen, initialFocusRef]);
+
+  // let the Dropdown component know that it's rendering a bottomsheet
+  React.useEffect(() => {
+    if (!bottomSheetAndDropdownGlue) return;
+    bottomSheetAndDropdownGlue.setDropdownHasBottomSheet(true);
+  }, [bottomSheetAndDropdownGlue]);
 
   React.useEffect(() => {
     React.Children.forEach(children, (child) => {
@@ -170,27 +172,11 @@ const _BottomSheet = ({
     );
   }, [zIndex]);
 
-  // sync the select dropdown's state with bottomsheet's state
-  React.useEffect(() => {
-    if (!dropdownBottomSheetProps) return;
-
-    // this will let the Dropdown component know that it's rendering a bottomsheet
-    dropdownBottomSheetProps.setDropdownHasBottomSheet(true);
-
-    if (dropdownBottomSheetProps.isOpen) {
-      open();
-    }
-
-    if (!dropdownBottomSheetProps.isOpen && dropdownBottomSheetProps.selectionType === 'single') {
-      close();
-    }
-  }, [close, open, dropdownBottomSheetProps]);
-
   const contextValue = React.useMemo<BottomSheetContextProps>(
     () => ({
       isInBottomSheet: true,
       isOpen: Boolean(_isOpen),
-      close,
+      close: handleOnClose,
       positionY: 0,
       headerHeight: 0,
       contentHeight: 0,
@@ -202,7 +188,7 @@ const _BottomSheet = ({
       bind: {} as never,
       defaultInitialFocusRef,
     }),
-    [_isOpen, close, footerHeight],
+    [_isOpen, handleOnClose, footerHeight],
   );
 
   // Hack: We need to <Portal> the GorhomBottomSheet to the root of the react-native app
@@ -218,12 +204,12 @@ const _BottomSheet = ({
 
   // register and deregister in the stack
   React.useEffect(() => {
-    if (isOpen) {
+    if (_isOpen) {
       addBottomSheetToStack(id);
     } else {
       removeBottomSheetFromStack(id);
     }
-  }, [addBottomSheetToStack, isOpen, id, removeBottomSheetFromStack]);
+  }, [addBottomSheetToStack, _isOpen, id, removeBottomSheetFromStack]);
 
   return (
     <Portal hostName="BladeBottomSheetPortal">
