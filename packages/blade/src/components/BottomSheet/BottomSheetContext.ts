@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import React from 'react';
+import type { NativeScrollEvent } from 'react-native';
 
 type BottomSheetContextProps = {
   headerHeight: number;
@@ -10,6 +11,7 @@ type BottomSheetContextProps = {
   setContentHeight: React.Dispatch<React.SetStateAction<number>>;
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
+  onBodyScroll: (nativeEvent: NativeScrollEvent) => void;
   /**
    * Closes the bottomsheet
    */
@@ -55,6 +57,7 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   setContentHeight: () => {},
   setHeaderHeight: () => {},
   setFooterHeight: () => {},
+  onBodyScroll: () => {},
   close: () => {},
   scrollRef: null,
   bind: null,

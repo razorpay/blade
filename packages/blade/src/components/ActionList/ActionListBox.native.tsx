@@ -20,7 +20,7 @@ type ActionListBoxProps = {
 
 const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
   ({ sectionData, actionListItemWrapperRole, isMultiSelectable, isInBottomSheet }, ref) => {
-    const { footerHeight } = useBottomSheetContext();
+    const { footerHeight, onBodyScroll } = useBottomSheetContext();
 
     const renderActionListItem = React.useCallback(({ item }) => {
       return <ActionListItem {...item} />;
@@ -59,6 +59,9 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
         renderSectionFooter={renderActionListSectionDivider}
         renderItem={renderActionListItem}
         ref={ref as any}
+        onScroll={({ nativeEvent }) => {
+          onBodyScroll(nativeEvent);
+        }}
         {...makeAccessible({
           role: actionListItemWrapperRole,
           multiSelectable: actionListItemWrapperRole === 'listbox' ? isMultiSelectable : undefined,

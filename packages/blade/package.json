@@ -110,7 +110,8 @@
     "@types/body-scroll-lock": "3.1.0",
     "use-presence": "1.1.0",
     "@use-gesture/react": "10.2.24",
-    "body-scroll-lock": "4.0.0-beta.0"
+    "body-scroll-lock": "4.0.0-beta.0",
+    "react-native-linear-gradient": "2.6.2"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
@@ -214,7 +215,8 @@
     "react-native-svg": "^12.3.0",
     "styled-components": "^5",
     "@gorhom/bottom-sheet": "^4",
-    "@gorhom/portal": "1.0.14"
+    "@gorhom/portal": "1.0.14",
+    "react-native-linear-gradient": "2.6.2"
   },
   "peerDependenciesMeta": {
     "react-native": {
