@@ -7,6 +7,7 @@ import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect'
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { makeMotionTime } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 const bodyStyles: React.CSSProperties = {
   WebkitTapHighlightColor: 'revert',
@@ -29,6 +30,7 @@ const OverflowGradient = styled(BaseBox)(({ theme }) => {
 
 const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { scrollRef, setContentHeight, footerHeight, isOpen, bind } = useBottomSheetContext();
+  const { theme } = useTheme();
   const contentRef = React.useRef<HTMLDivElement>(null);
   const [showOverflowIndicator, setShowOverflowIndicator] = React.useState(true);
 
@@ -53,9 +55,16 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
   );
 
   useIsomorphicLayoutEffect(() => {
-    const element = (contentRef as React.MutableRefObject<HTMLElement>)?.current;
-    handleOverflowIndicator(element);
-  }, [handleOverflowIndicator, contentRef]);
+    const contentElement = (contentRef as React.MutableRefObject<HTMLElement>)?.current;
+    const scrollElement = (scrollRef as React.MutableRefObject<HTMLElement>)?.current;
+    if (isOpen) {
+      window.setTimeout(() => {
+        if (contentElement.offsetHeight === scrollElement.offsetHeight) {
+          setShowOverflowIndicator(false);
+        }
+      }, Number(theme.motion.duration.gentle));
+    }
+  }, [isOpen, contentRef, scrollRef]);
 
   return (
     <BaseBox

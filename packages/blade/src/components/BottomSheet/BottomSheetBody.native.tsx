@@ -10,7 +10,7 @@ import { isValidAllowedChildren } from '~utils';
 import { componentIds } from '~components/ActionList/componentIds';
 
 const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  const { footerHeight, onBodyScroll } = useBottomSheetContext();
+  const { footerHeight, setContentHeight, onBodyScroll } = useBottomSheetContext();
   const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<
     boolean | undefined
   >(undefined);
@@ -33,6 +33,9 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         children
       ) : (
         <BottomSheetScrollView
+          onLayout={({ nativeEvent }) => {
+            setContentHeight(nativeEvent.layout.height);
+          }}
           onScroll={({ nativeEvent }) => {
             onBodyScroll(nativeEvent);
           }}

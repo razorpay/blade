@@ -8,7 +8,8 @@ import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
 import type { NativeScrollEvent } from 'react-native';
-import { AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native';
+import { Dimensions, AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native';
+
 import LinearGradient from 'react-native-linear-gradient';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
@@ -28,6 +29,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
+import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
 const isAndroid = Platform.OS === 'android';
 // TODO: Temporary workaround to make android shadows look as close as iOS
@@ -77,8 +79,14 @@ const _BottomSheet = ({
   const footer = React.useRef<React.ReactNode>();
   const body = React.useRef<React.ReactNode>();
   const _isOpen = bottomSheetAndDropdownGlue?.isOpen ?? isOpen;
+  const [headerHeight, setHeaderHeight] = React.useState(0);
   const [footerHeight, setFooterHeight] = React.useState(0);
+  const [contentHeight, setContentHeight] = React.useState(0);
   const [showOverflowIndicator, setShowOverflowIndicator] = React.useState(true);
+  const initialSnapPoint = React.useRef<number>(1);
+  const totalHeight = React.useMemo(() => {
+    return headerHeight + footerHeight + contentHeight;
+  }, [contentHeight, footerHeight, headerHeight]);
 
   const id = useId();
   const {
@@ -88,6 +96,18 @@ const _BottomSheet = ({
   } = useBottomSheetStack();
   const currentStackIndex = getCurrentStackIndexById(id);
   const zIndex = 100 - currentStackIndex;
+
+  // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
+  // TODO(fix): sometimes the bottomsheet header, footer, content calculation takes some time
+  // which causes this to bug out, find a better way to do this with useDynamicSnapPoints maybe?
+  useIsomorphicLayoutEffect(() => {
+    const height = Dimensions.get('window').height;
+    const middleSnapPoint = snapPoints[1] * height;
+    const lowerSnapPoint = snapPoints[0] * height;
+    if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
+      initialSnapPoint.current = 0;
+    }
+  }, [snapPoints, totalHeight]);
 
   const _snapPoints = React.useMemo(() => snapPoints.map((point) => `${point * 100}%`), [
     snapPoints,
@@ -99,7 +119,7 @@ const _BottomSheet = ({
   }, [bottomSheetAndDropdownGlue, onDismiss]);
 
   const handleOnOpen = React.useCallback(() => {
-    sheetRef.current?.snapToIndex(0);
+    sheetRef.current?.snapToIndex(initialSnapPoint.current);
   }, []);
 
   const handleOnClose = React.useCallback(() => {
@@ -186,7 +206,11 @@ const _BottomSheet = ({
 
   const renderHandle = React.useCallback((): React.ReactElement => {
     return (
-      <BaseBox>
+      <BaseBox
+        onLayout={({ nativeEvent }) => {
+          setHeaderHeight(nativeEvent.layout.height);
+        }}
+      >
         <BaseBox zIndex={zIndex}>
           <BottomSheetCloseButton />
           <BottomSheetGrabHandle />
@@ -210,18 +234,18 @@ const _BottomSheet = ({
       isOpen: Boolean(_isOpen),
       close: handleOnClose,
       positionY: 0,
-      headerHeight: 0,
-      contentHeight: 0,
+      headerHeight,
+      contentHeight,
       footerHeight,
-      setContentHeight: () => {},
-      setFooterHeight: () => {},
-      setHeaderHeight: () => {},
+      setContentHeight,
+      setFooterHeight,
+      setHeaderHeight,
       scrollRef: () => {},
       bind: {} as never,
       defaultInitialFocusRef,
       onBodyScroll,
     }),
-    [_isOpen, handleOnClose, footerHeight, onBodyScroll],
+    [_isOpen, contentHeight, footerHeight, handleOnClose, headerHeight, onBodyScroll],
   );
 
   // Hack: We need to <Portal> the GorhomBottomSheet to the root of the react-native app
