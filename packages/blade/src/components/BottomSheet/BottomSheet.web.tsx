@@ -422,6 +422,8 @@ const _BottomSheet = ({
       setHeaderHeight(0);
       setFooterHeight(0);
       setContentHeight(0);
+      setGrabHandleHeight(0);
+      _setPositionY(0);
     }
   }, [isMounted, scrollLockRef]);
 

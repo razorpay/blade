@@ -88,6 +88,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         {children}
       </BaseBox>
       <OverflowGradient
+        pointerEvents="none"
         data-oveerflow
         position="fixed"
         bottom={`${footerHeight}px`}
