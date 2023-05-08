@@ -1,7 +1,8 @@
-import { SandpackCodeEditor, SandpackPreview } from '@codesandbox/sandpack-react';
 import React from 'react';
+import styled from 'styled-components';
+import { SandpackCodeEditor, SandpackPreview } from '@codesandbox/sandpack-react';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { Title } from '~components/Typography';
+import { Code, Text, Title } from '~components/Typography';
 import { Sandbox, SandboxProvider } from '~src/_helpers/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -17,7 +18,7 @@ const VerticalEditor = ({
   const [showCode, setShowCode] = React.useState(false);
 
   return (
-    <Box paddingY="spacing.4">
+    <Box paddingY="spacing.2">
       <SandboxProvider code={code} border="none">
         <BaseBox backgroundColor="surface.background.level1.lowContrast" border="1px solid #EFEFEF">
           <SandpackPreview style={{ width: '100%', minHeight }} />
@@ -41,6 +42,26 @@ const VerticalEditor = ({
     </Box>
   );
 };
+
+const ArgsTable = styled.table(
+  (props) => `
+  font-family: ${props.theme.typography.fonts.family.text};
+  text-align: left;
+  min-width: 500px;
+
+  &,
+  & th,
+  & td {
+    border: 1px solid ${props.theme.colors.surface.border.normal.lowContrast};
+    border-collapse: collapse;
+  }
+
+  & td,
+  & th {
+    padding: ${props.theme.spacing[3]}px;
+  }
+`,
+);
 
 const ActionListDocs = (): JSX.Element => {
   return (
@@ -128,7 +149,7 @@ const ActionListDocs = (): JSX.Element => {
         `}
         </Sandbox>
       </Box>
-      <Box as="section">
+      <Box as="section" paddingBottom="spacing.9">
         <Title size="medium">ActionList</Title>
         <VerticalEditor
           code={`
@@ -148,8 +169,26 @@ const ActionListDocs = (): JSX.Element => {
         export default App;
       `}
         />
+        <ArgsTable>
+          <tr>
+            <th>
+              <Text weight="bold">Prop</Text>
+            </th>
+            <th>
+              <Text weight="bold">Type</Text>
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <Code size="medium">surfaceLevel</Code>
+            </td>
+            <td>
+              <Text>2 | 3</Text>
+            </td>
+          </tr>
+        </ArgsTable>
       </Box>
-      <Box as="section">
+      <Box as="section" paddingBottom="spacing.9">
         <Title size="medium">ActionListItem</Title>
         <VerticalEditor
           code={`
@@ -181,6 +220,56 @@ const ActionListDocs = (): JSX.Element => {
         export default App;
       `}
         />
+        <ArgsTable>
+          <tr>
+            <th>
+              <Text weight="bold">Prop</Text>
+            </th>
+            <th>
+              <Text weight="bold">Type</Text>
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <Code size="medium">title</Code>
+            </td>
+            <td>
+              <Text>string</Text>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Code size="medium">description</Code>
+            </td>
+            <td>
+              <Text>string</Text>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Code size="medium">value</Code>
+            </td>
+            <td>
+              <Text>string</Text>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Code size="medium">leading</Code>
+            </td>
+            <td>
+              <Code>&lt;ActionListItemIcon /&gt;</Code> | <Code>&lt;ActionListItemAsset /&gt;</Code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Code size="medium">trailing</Code>
+            </td>
+            <td>
+              <Code>&lt;ActionListItemIcon /&gt;</Code> | <Code>&lt;ActionListItemText /&gt;</Code>
+            </td>
+          </tr>
+        </ArgsTable>
       </Box>
       <Box as="section">
         <Title size="medium">ActionListSection</Title>
