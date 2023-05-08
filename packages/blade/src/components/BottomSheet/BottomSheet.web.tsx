@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable consistent-return */
@@ -95,6 +96,10 @@ const _BottomSheet = ({
   const grabHandleRef = React.useRef<HTMLDivElement>(null);
   const originalFocusElement = React.useRef<HTMLElement | null>(null);
   const defaultInitialFocusRef = React.useRef<any>(null);
+  const initialSnapPoint = React.useRef<number>(snapPoints[1]);
+  const totalHeight = React.useMemo(() => {
+    return grabHandleHeight + headerHeight + footerHeight + contentHeight;
+  }, [contentHeight, footerHeight, grabHandleHeight, headerHeight]);
 
   const id = useId();
   const {
@@ -146,6 +151,15 @@ const _BottomSheet = ({
     setGrabHandleHeight(grabHandleRef.current.getBoundingClientRect().height);
   }, [grabHandleRef.current, _isOpen]);
 
+  // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
+  useIsomorphicLayoutEffect(() => {
+    const middleSnapPoint = snapPoints[1] * dimensions.height;
+    const lowerSnapPoint = snapPoints[0] * dimensions.height;
+    if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
+      initialSnapPoint.current = snapPoints[0];
+    }
+  }, [dimensions.height, snapPoints, totalHeight]);
+
   const returnFocus = React.useCallback(() => {
     if (!originalFocusElement.current) return;
     originalFocusElement.current.focus();
@@ -166,7 +180,7 @@ const _BottomSheet = ({
   }, [initialFocusRef]);
 
   const handleOnOpen = React.useCallback(() => {
-    setPositionY(dimensions.height * 0.5);
+    setPositionY(dimensions.height * initialSnapPoint.current);
     scrollLockRef.current.activate();
     // initialize the original focused element
     // On first render it will be the activeElement, eg: the button trigger or select input
@@ -249,7 +263,6 @@ const _BottomSheet = ({
         // more than the upperSnapPoint or maximum height of the sheet
         // this is basically a clamp() function but creates a nice rubberband effect
         const dampening = 0.55;
-        const totalHeight = grabHandleHeight + headerHeight + footerHeight + contentHeight;
         if (totalHeight < upperSnapPoint) {
           newY = rubberbandIfOutOfBounds(rawY, 0, totalHeight, dampening);
         } else {
@@ -283,7 +296,6 @@ const _BottomSheet = ({
       // When the bottomsheet total height is less than the lower snapPoint
       // Video walkthrough: https://www.loom.com/share/a9a8db7688d64194b13df8b3e25859ae
       const lowerPointBuffer = 60;
-      const totalHeight = headerHeight + grabHandleHeight + contentHeight + footerHeight;
       const lowerestSnap = Math.min(lowerSnapPoint, totalHeight) - lowerPointBuffer;
 
       const shouldClose = newY < lowerestSnap;
@@ -375,6 +387,7 @@ const _BottomSheet = ({
       scrollRef,
       bind,
       defaultInitialFocusRef,
+      onBodyScroll: () => {},
     }),
     [
       isVisible,

@@ -552,15 +552,15 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
           suffix={<Badge variant="positive">2 Saved</Badge>}
         />
         <BottomSheetBody>
-          <BaseBox padding="spacing.4" gap="spacing.4" display="flex" flexDirection="column">
-            <RadioGroup label="Addresses">
-              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-            </RadioGroup>
-            <Button isFullWidth onClick={() => setIsOpen(false)}>
-              Add Another
-            </Button>
-          </BaseBox>
+          <RadioGroup label="Addresses">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+          <Button isFullWidth onClick={() => setIsOpen(false)}>
+            Add Another
+          </Button>
         </BottomSheetBody>
       </BottomSheetComponent>
     </BaseBox>
