@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-fix(blade): ensure that the BottomSheet's lower snappoint will have a buffer
+fix(BottomSheet): ensure that the BottomSheet's lower snappoint will have a buffer
