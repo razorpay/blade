@@ -14,7 +14,11 @@ function SandboxHighlighter({ children }: { children: string } & CodeViewerProps
   return <BaseText fontFamily="code">{dedent(children)}</BaseText>;
 }
 
-function SandboxProvider(_props: { children: React.ReactNode; code: string }): JSX.Element {
+function SandboxProvider(_props: {
+  children: React.ReactNode;
+  code: string;
+  border?: string;
+}): JSX.Element {
   return <Text>Not supported in React Native</Text>;
 }
 

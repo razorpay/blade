@@ -10,6 +10,7 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import BaseBox from '~components/Box/BaseBox';
 import { Alert } from '~components/Alert';
+import { castWebType } from '~utils';
 
 const VerticalEditor = ({
   code,
@@ -22,8 +23,11 @@ const VerticalEditor = ({
 
   return (
     <Box paddingY="spacing.2">
-      <SandboxProvider code={code} border="none">
-        <BaseBox backgroundColor="surface.background.level1.lowContrast" border="1px solid #EFEFEF">
+      <SandboxProvider code={code} border={castWebType('none')}>
+        <BaseBox
+          backgroundColor="surface.background.level1.lowContrast"
+          border={castWebType('1px solid #EFEFEF')}
+        >
           <SandpackPreview style={{ width: '100%', minHeight }} />
         </BaseBox>
         <Box display="flex" justifyContent="flex-end">
@@ -37,7 +41,7 @@ const VerticalEditor = ({
           </Button>
         </Box>
         {showCode ? (
-          <BaseBox border="1px solid #EFEFEF">
+          <BaseBox border={castWebType('1px solid #EFEFEF')}>
             <SandpackCodeEditor />
           </BaseBox>
         ) : null}

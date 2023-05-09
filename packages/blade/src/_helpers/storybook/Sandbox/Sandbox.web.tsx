@@ -8,6 +8,7 @@ import dedent from 'dedent';
 import packageJson from '../../../../package.json'; // eslint-disable-line
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
+import { castWebType } from '~utils';
 
 type SandboxProps = {
   children: string;
@@ -108,7 +109,7 @@ const useSandpackSetup = ({
   };
 };
 
-const CodeLineHighlighterContainer = styled(BaseBox)<{ border?: string }>((props) => ({
+const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
   '& .highlight': {
     backgroundColor: '#fffbdd',
     borderRadius: '2px',
@@ -117,7 +118,6 @@ const CodeLineHighlighterContainer = styled(BaseBox)<{ border?: string }>((props
   '& pre': {
     padding: '0px',
   },
-  border: props.border,
   borderRadius: '4px',
   overflow: 'auto',
 }));
@@ -152,7 +152,7 @@ const SandboxProvider = ({
 }): JSX.Element => {
   const sandboxSetup = useSandpackSetup({ language, code });
   return (
-    <CodeLineHighlighterContainer border={border}>
+    <CodeLineHighlighterContainer border={castWebType(border)}>
       <SandpackProvider {...sandboxSetup}>{children}</SandpackProvider>
     </CodeLineHighlighterContainer>
   );
