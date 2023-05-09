@@ -218,13 +218,6 @@ const _BottomSheet = ({
     bottomSheetAndDropdownGlue.setDropdownHasBottomSheet(true);
   }, [bottomSheetAndDropdownGlue]);
 
-  /*
-      1. The content should not be scrollable on lower or middle snapPoints
-      2. If we reach the top snapPoint we make the content scrollable
-      3. scrolling down the content will work as usual
-      4. but if the scroll position is at top and then we drag down on the content body
-         the bottom-sheet will start the dragging and we will set the scroll to 'none'
-    */
   const bind = useDrag(
     ({
       active,
@@ -292,26 +285,26 @@ const _BottomSheet = ({
         preventScrollingRef.current = newY < upperSnapPoint;
       }
 
-      // This ensure that the lower snapPoint will always have atleast some buffer
-      // When the bottomsheet total height is less than the lower snapPoint
-      // Video walkthrough: https://www.loom.com/share/a9a8db7688d64194b13df8b3e25859ae
-      const lowerPointBuffer = 60;
-      const lowerestSnap = Math.min(lowerSnapPoint, totalHeight) - lowerPointBuffer;
-
-      const shouldClose = newY < lowerestSnap;
-      if (shouldClose) {
-        setIsDragging(false);
-        close();
-        cancel();
-        return;
-      }
-
       if (last) {
         // calculate the nearest snapPoint
-        const [nearest] = computeSnapPointBounds(
+        const [nearest, lower] = computeSnapPointBounds(
           newY,
           snapPoints.map((point) => dimensions.height * point) as SnapPoints,
         );
+
+        // This ensure that the lower snapPoint will always have atleast some buffer
+        // When the bottomsheet total height is less than the lower snapPoint
+        // Video walkthrough: https://www.loom.com/share/a9a8db7688d64194b13df8b3e25859ae
+        const lowerPointBuffer = 60;
+        const lowerestSnap = Math.min(lower, totalHeight) - lowerPointBuffer;
+
+        const shouldClose = rawY < lowerestSnap;
+        if (shouldClose) {
+          setIsDragging(false);
+          cancel();
+          close();
+          return;
+        }
 
         // if we stop dragging assign snap to the nearest point
         if (!active && !tap) {
@@ -387,7 +380,6 @@ const _BottomSheet = ({
       scrollRef,
       bind,
       defaultInitialFocusRef,
-      onBodyScroll: () => {},
     }),
     [
       isVisible,
