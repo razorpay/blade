@@ -51,15 +51,8 @@ import { BottomSheet } from '@razorpay/blade';
   <BottomSheetBody>
     <Text>Body Content<Text>
   </BottomSheetBody>
-  <BottomSheetFooter
-    title="Footer Title"
-    leading={BladeIcon}
-    trailing={
-      <>
-        BladeIcon | IconButton | Button
-      </>
-    }
-  />
+  <BottomSheetFooter>
+  </BottomSheetFooter>
 </BottomSheet>;
 ```
 
