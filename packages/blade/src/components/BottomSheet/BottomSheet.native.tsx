@@ -26,25 +26,11 @@ import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useId } from '~src/hooks/useId';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
-const isAndroid = Platform.OS === 'android';
-// TODO: Temporary workaround to make android shadows look as close as iOS
-const androidShadow = {
-  color: undefined,
-  elevation: 2,
-};
 const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
-  const offsetX = theme.shadows.offsetX.level[1];
-  const offsetY = theme.shadows.offsetY.level[1];
-  const blur = theme.shadows.blurRadius.level[1];
-  const shadowColor = theme.shadows.color.level[1];
   return {
     // TODO: we do not have 16px radius token
     borderTopLeftRadius: makeSpace(theme.spacing[5]),
     borderTopRightRadius: makeSpace(theme.spacing[5]),
-    shadowOpacity: '1',
-    shadowRadius: blur,
-    shadowColor: isAndroid ? androidShadow.color : shadowColor,
-    shadowOffset: `${offsetX}px ${offsetY}px`,
     backgroundColor: theme.colors.surface.background.level2.lowContrast,
     justifyContent: 'center',
     alignItems: 'center',
