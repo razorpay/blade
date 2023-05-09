@@ -11,10 +11,10 @@ This document outlines the API of `BottomSheet` component.
   - [Anatomy](#anatomy)
   - [API](#api)
     - [`BottomSheet`](#bottomsheet)
-    - [`BottomSheetBody`](#bottomsheetbody)
+    - [`BottomSheetBody` API](#bottomsheetbody-api)
     - [`BottomSheetHeader` API](#bottomsheetheader-api)
     - [`BottomSheetFooter` API](#bottomsheetfooter-api)
-  - [Composition with Dropdown](#composition-with-dropdown)
+    - [Composition Example](#composition-example)
   - [Accessibility](#accessibility)
   - [Open questions](#open-questions)
   - [Alternative APIs](#alternative-apis)
@@ -27,7 +27,6 @@ This document outlines the API of `BottomSheet` component.
 ## Anatomy
 
 <img src="./bottomsheet-anatomy.png" alt="BottomSheet Anatomy" width="100%" />
-
 
 Components:
 
@@ -43,47 +42,56 @@ Sample usage:
 ```jsx
 import { BottomSheet } from '@razorpay/blade';
 
-<BottomSheet isOpen={boolean} snapPoints={[]}>
+const [isOpen, setIsOpen] = React.useState(false);
+
+<BottomSheetComponent
+  isOpen={isOpen}
+  onDismiss={() => {
+    setFirstOpen(false);
+  }}
+>
   <BottomSheetHeader
-    title="Select Account"
-    leading={<BladeIcon />}
+    title="Saved Address"
+    subtitle="Addresses are ordered by street"
+    titleSuffix={<Counter value={12} />}
+    trailing={<Badge variant="information">Current: Home</Badge>}
   />
   <BottomSheetBody>
-    <Text>Body Content<Text>
+    <RadioGroup label="Addresses">
+      <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+      <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+      <Radio value="office2">Hackerway - 2011, 51th Street</Radio>
+    </RadioGroup>
   </BottomSheetBody>
   <BottomSheetFooter>
+    <Button isFullWidth variant="secondary">
+      Add new
+    </Button>
+    <Button isFullWidth marginTop="spacing.5">
+      Remove
+    </Button>
   </BottomSheetFooter>
-</BottomSheet>;
+</BottomSheetComponent>;
 ```
 
-**Design Constraints**
+Rendered output:
 
-- BottomSheetHeader:
-  - title
-  - leading:
-    - BladeIcon
+<img src="./bottomsheet-usage-example-1.png" alt="BottomSheet Usage example" width="100%" />
 
-- BottomSheetFooter:
-  - title
-  - leading:
-    - BladeIcon
-  - trailing
-    - any jsx element
-
-- The Header, Footer can be individually omitted
 
 ### `BottomSheet`
 
 We'll expose a `BottomSheet` component with the following API:
 
-| Prop            | Type        | Default                 | Description                                                                                     | Required |
-| --------------- | ----------- | ----------------------- | ----------------------------------------------------------------------------------------------- | -------- |
-| isOpen            | `boolean`   | `false`                 | Toggles bottom sheet state                                                              |          |
-| snapPoints      | `[number, number, number]`  | `[0.35, 0.5, 0.85]` | Snappoints in which the bottom sheeet will rest on, this accepts a number between 0 & 1 which maps to the total view height of the screen. 0.5 means 50% of screen height.                                              |          |
-| onDismiss       | `Callback`  | `undefined`             | called when the bottom sheet is closed, either by user state, hitting `esc` or tapping backdrop |          |
-| initialFocusRef | `React.Ref` | `undefined`             | ref element you want to get keyboard focus when opening the sheet                               |          |
+| Prop            | Type                       | Default             | Description                                                                                                                                                                | Required |
+| --------------- | -------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| isOpen          | `boolean`                  | `false`             | Toggles bottom sheet state                                                                                                                                                 |          |
+| snapPoints      | `[number, number, number]` | `[0.35, 0.5, 0.85]` | Snappoints in which the bottom sheeet will rest on, this accepts a number between 0 & 1 which maps to the total view height of the screen. 0.5 means 50% of screen height. |          |
+| onDismiss       | `Callback`                 | `undefined`         | called when the bottom sheet is closed, either by user state, hitting `esc` or tapping backdrop                                                                            |          |
+| initialFocusRef | `React.Ref`                | `undefined`         | ref element you want to get keyboard focus when opening the sheet                                                                                                          |          |
+| children | `React.ReactNode`                | `undefined`         | Accepts other BottomSheet sub components like BottomSheetHeader,BottomSheetBody,BottomSheetFooter                                                                                                          |          |
 
-### `BottomSheetBody`
+### `BottomSheetBody` API
 
 | Prop       | Type              | Default     | Description                 | Required |
 | ---------- | ----------------- | ----------- | --------------------------- | -------- |
@@ -91,18 +99,23 @@ We'll expose a `BottomSheet` component with the following API:
 
 ### `BottomSheetHeader` API
 
-| Prop     | Type            | Default     | Description                          | Required |
-| -------- | --------------- | ----------- | ------------------------------------ | -------- |
-| `title`  | `string`        | `undefined` | Title of the Header                    | ✅       |
-| `leading` | `IconComponent` | `undefined` | leading icon placed before title text |          |
+| Prop      | Type            | Default     | Description                           | Required |
+| --------- | --------------- | ----------- | ------------------------------------- | -------- |
+| `title`   | `string`        | `undefined` | Title of the Header                   |       |
+| `subtitle`   | `string`        | `undefined` | Subtitle of the Header                   |       |
+| `leading` | `React.ReactNode` | `undefined` | leading asset or icon to be placed at the left most side of the BottomSheetHeader |          |
+| `trailing` | `Badge, Link, Text, IconButton`, `undefined` | trailing component to be placed at the right most side of the BottomSheetHeader |          |
+| `titleSuffix` | `Counter` | `undefined` | A component to be placed adjacent to the title text |          |
+| `hideDivider` | `boolean` | `false` | Show or hide the divider |          |
+| `showBackButton` | `boolean` | `false` | Show or hide back button |          |
+| `onBackButtonClick` | `boolean` | `false` | Event handler for the back button |          |
 
 ### `BottomSheetFooter` API
 
-| Prop     | Type            | Default     | Description                          | Required |
-| -------- | --------------- | ----------- | ------------------------------------ | -------- |
-| `title`  | `string`        | `undefined` | Title of the BottomSheet footer      | ✅       |
-| `leading` | `IconComponent` | `undefined` | leading icon placed before title text |          |
-| `trailing` | `React.ReactNode` | `undefined` | Renders trailing content |          |
+
+| Prop       | Type              | Default     | Description                 | Required |
+| ---------- | ----------------- | ----------- | --------------------------- | -------- |
+| `children` | `React.ReactNode` | `undefined` | Contents of the BottomFooter | ✅       |
 
 ## Composition with Dropdown
 
@@ -110,7 +123,7 @@ We will export `BottomSheet` component separately as an independant component bu
 
 There are two approaches to doing it:
 
-#### 1. We couple the BottomSheet & SelectInput tightly and internally conditionally switch the components  
+#### 1. We couple the BottomSheet & SelectInput tightly and internally conditionally switch the components
 
 Pros:
 
@@ -125,9 +138,7 @@ Cons:
 - There will be a lot of interdependency of state management
 - These [usecases](https://razorpay.slack.com/archives/C01CS8YBEQZ/p1677825334856589?thread_ts=1677825092.305089&cid=C01CS8YBEQZ) will be harder to solve for without the BottomSheet being an independent component.
 
-
 #### 2. We expose BottomSheet as an independently component and let user do the composition
-
 
 Pros:
 
@@ -139,23 +150,15 @@ Cons:
 
 - Not trivial to implement from user's end, they will have to compose the BottomSheet & Dropdown as per their needs.
 
-
 Considering the bundle size downside to approach 1, we decided to go ahead with approach 2.
-
 
 > **API Rabbit Hole**  
 > If you want to go deep into the API Rabbit Hole, We also had explored various other APIs and discussed internally about the pros and cons of each which we **[documented in this Notion doc](https://www.notion.so/BottomSheet-API-Discussion-e2aa79cd45274ef280fdb998efa6b98f?pvs=4#db6bd9826bc048bd97d24a50269fc45d)**
 
-
 ### Composition Example
 
 ```jsx
-import { 
-  useTheme,
-  useBreakpoint,
-  BottomSheet,
-  Dropdown
-} from "@razorpay/blade";
+import { useTheme, useBreakpoint, BottomSheet, Dropdown } from '@razorpay/blade';
 
 const App = () => {
   const { theme } = useTheme();
@@ -194,15 +197,13 @@ const SelectContent = () => {
     </ActionList>
   );
 };
-
 ```
 
-**Q.** Why can't we lazy load from blade side? 
+**Q.** Why can't we lazy load from blade side?
 
-There are two major reasons: 
+There are two major reasons:
 
-
-1. It's generally not feasible to lazy load components from library side, We can't possibly know where & how a blade component can be used or imported in the user's codebase. Even if we know that it will also require changes in how we bundle blade, since right now blade distributes the bundle in single index.js chunks, introducing lazy loading will create more fragmented chunks. 
+1. It's generally not feasible to lazy load components from library side, We can't possibly know where & how a blade component can be used or imported in the user's codebase. Even if we know that it will also require changes in how we bundle blade, since right now blade distributes the bundle in single index.js chunks, introducing lazy loading will create more fragmented chunks.
 
 2. There are multiple ways to lazy load react components and it depends on the app's architecture. For example, React.lazy only does client side lazy loading while loadable support SSR too, thus the descision needs to be handed over to the consumers to import & integrate the components as they fit on their stack.
 
@@ -210,12 +211,11 @@ There are two major reasons:
 
 <summary>Consumer side bottomsheet lazy loading example</summary>
 
-
 ```jsx
-import { Spinner, useTheme, useBreakpoint } from "@razorpay/blade";
+import { Spinner, useTheme, useBreakpoint } from '@razorpay/blade';
 
-const BottomSheet = React.lazy(() => import("@razorpay/blade/components/bottomsheet"));
-const DropdownOverlay = React.lazy(() => import("@razorpay/blade/components/dropdown-overlay"));
+const BottomSheet = React.lazy(() => import('@razorpay/blade/components/bottomsheet'));
+const DropdownOverlay = React.lazy(() => import('@razorpay/blade/components/dropdown-overlay'));
 
 const App = () => {
   const { theme } = useTheme();
@@ -261,7 +261,6 @@ const SelectContent = () => {
 
 </details>
 
-
 ## Accessibility
 
 The bottom sheet will follow the accessibility characteristics of a Modal.
@@ -282,7 +281,9 @@ Behaviours:
 
 ## Alternative APIs
 
-If you want to go deep into the API Rabbit Hole, We also had explored various other APIs and discussed internally about the pros and cons of each which we **[documented in this Notion doc.](https://www.notion.so/BottomSheet-API-Discussion-e2aa79cd45274ef280fdb998efa6b98f?pvs=4#db6bd9826bc048bd97d24a50269fc45d)**
+- If you want to go deep into the API Rabbit Hole, We also had explored various other APIs and discussed internally about the pros and cons of each which we **[documented in this Notion doc.](https://www.notion.so/BottomSheet-API-Discussion-e2aa79cd45274ef280fdb998efa6b98f?pvs=4#db6bd9826bc048bd97d24a50269fc45d)**
+
+- Header/Footer [Unified APIs Discussion Doc](https://docs.google.com/document/d/1gzWRv5RyTgwJiJkzxyvCwV1XVo8QMmoevoakbDD5qsQ/edit)
 
 ## References
 
