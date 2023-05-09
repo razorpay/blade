@@ -7,7 +7,7 @@ import GorhomBottomSheet, {
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
-import { AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native';
+import { Dimensions, AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { BottomSheetProps } from './types';
@@ -23,27 +23,13 @@ import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useId } from '~src/hooks/useId';
+import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
-const isAndroid = Platform.OS === 'android';
-// TODO: Temporary workaround to make android shadows look as close as iOS
-const androidShadow = {
-  color: undefined,
-  elevation: 2,
-};
 const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
-  const offsetX = theme.shadows.offsetX.level[1];
-  const offsetY = theme.shadows.offsetY.level[1];
-  const blur = theme.shadows.blurRadius.level[1];
-  const shadowColor = theme.shadows.color.level[1];
   return {
-    background: theme.colors.surface.background.level2.lowContrast,
     // TODO: we do not have 16px radius token
     borderTopLeftRadius: makeSpace(theme.spacing[5]),
     borderTopRightRadius: makeSpace(theme.spacing[5]),
-    shadowOpacity: '1',
-    shadowRadius: blur,
-    shadowColor: isAndroid ? androidShadow.color : shadowColor,
-    shadowOffset: `${offsetX}px ${offsetY}px`,
     backgroundColor: theme.colors.surface.background.level2.lowContrast,
     justifyContent: 'center',
     alignItems: 'center',
@@ -72,7 +58,13 @@ const _BottomSheet = ({
   const footer = React.useRef<React.ReactNode>();
   const body = React.useRef<React.ReactNode>();
   const _isOpen = bottomSheetAndDropdownGlue?.isOpen ?? isOpen;
+  const [headerHeight, setHeaderHeight] = React.useState(0);
   const [footerHeight, setFooterHeight] = React.useState(0);
+  const [contentHeight, setContentHeight] = React.useState(0);
+  const initialSnapPoint = React.useRef<number>(0);
+  const totalHeight = React.useMemo(() => {
+    return headerHeight + footerHeight + contentHeight;
+  }, [contentHeight, footerHeight, headerHeight]);
 
   const id = useId();
   const {
@@ -82,6 +74,15 @@ const _BottomSheet = ({
   } = useBottomSheetStack();
   const currentStackIndex = getCurrentStackIndexById(id);
   const zIndex = 100 - currentStackIndex;
+
+  // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
+  useIsomorphicLayoutEffect(() => {
+    const height = Dimensions.get('window').height;
+    const middleSnapPoint = snapPoints[1] * height;
+    if (totalHeight > middleSnapPoint) {
+      initialSnapPoint.current = 1;
+    }
+  }, [snapPoints, totalHeight]);
 
   const _snapPoints = React.useMemo(() => snapPoints.map((point) => `${point * 100}%`), [
     snapPoints,
@@ -93,7 +94,7 @@ const _BottomSheet = ({
   }, [bottomSheetAndDropdownGlue, onDismiss]);
 
   const handleOnOpen = React.useCallback(() => {
-    sheetRef.current?.snapToIndex(0);
+    sheetRef.current?.snapToIndex(initialSnapPoint.current);
   }, []);
 
   const handleOnClose = React.useCallback(() => {
@@ -161,7 +162,11 @@ const _BottomSheet = ({
 
   const renderHandle = React.useCallback((): React.ReactElement => {
     return (
-      <BaseBox>
+      <BaseBox
+        onLayout={({ nativeEvent }) => {
+          setHeaderHeight(nativeEvent.layout.height);
+        }}
+      >
         <BaseBox zIndex={zIndex}>
           <BottomSheetGrabHandle />
         </BaseBox>
@@ -176,17 +181,17 @@ const _BottomSheet = ({
       isOpen: Boolean(_isOpen),
       close: handleOnClose,
       positionY: 0,
-      headerHeight: 0,
-      contentHeight: 0,
+      headerHeight,
+      contentHeight,
       footerHeight,
-      setContentHeight: () => {},
-      setFooterHeight: () => {},
-      setHeaderHeight: () => {},
+      setContentHeight,
+      setFooterHeight,
+      setHeaderHeight,
       scrollRef: () => {},
       bind: {} as never,
       defaultInitialFocusRef,
     }),
-    [_isOpen, handleOnClose, footerHeight],
+    [_isOpen, contentHeight, footerHeight, handleOnClose, headerHeight],
   );
 
   // Hack: We need to <Portal> the GorhomBottomSheet to the root of the react-native app

@@ -554,21 +554,21 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
       <Button onClick={() => setIsOpen2(true)}>Open 2</Button>
       <BottomSheetComponent isOpen={isOpen1} onDismiss={() => setIsOpen1(false)}>
         <BottomSheetHeader
-          showBackButton
           title="Address Details"
           subtitle="Saving addresses will improve your checkout experience"
           trailing={<Badge variant="positive">Action Needed</Badge>}
-          // trailing={<Button icon={InfoIcon} accessibilityLabel="Info" />}
-          // trailing={<Text>Action Needed</Text>}
           titleSuffix={<Counter intent="positive" value={2} />}
         />
         <BottomSheetBody>
-          <Badge variant="positive">Action Needed</Badge>
-          <Button icon={InfoIcon} accessibilityLabel="Info" />
           <RadioGroup label="Addresses">
             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
             <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
           </RadioGroup>
+          <Button isFullWidth onClick={() => setIsOpen1(false)}>
+            Add Another
+          </Button>
         </BottomSheetBody>
         <BottomSheetFooter>
           <Button isFullWidth variant="secondary">

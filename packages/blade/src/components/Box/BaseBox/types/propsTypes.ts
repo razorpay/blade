@@ -1,4 +1,3 @@
-import type { CSSObject } from 'styled-components';
 import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';

@@ -10,7 +10,7 @@ import { isValidAllowedChildren } from '~utils';
 import { componentIds } from '~components/ActionList/componentIds';
 
 const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  const { footerHeight } = useBottomSheetContext();
+  const { footerHeight, setContentHeight } = useBottomSheetContext();
   const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<
     boolean | undefined
   >(undefined);
@@ -32,14 +32,13 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
       {bottomSheetHasActionList ? (
         children
       ) : (
-        <BottomSheetScrollView style={{ marginBottom: footerHeight }}>
-          <BaseBox
-            style={{
-              flexShrink: 1,
-              flexGrow: 1,
-              overflow: 'hidden',
-            }}
-          >
+        <BottomSheetScrollView
+          onContentSizeChange={(_width, height) => {
+            setContentHeight(height);
+          }}
+          style={{ marginBottom: footerHeight }}
+        >
+          <BaseBox flexShrink={1} flexGrow={1} overflow="hidden">
             <BaseBox
               paddingLeft={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
               paddingRight={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
