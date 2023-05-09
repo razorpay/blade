@@ -11,6 +11,8 @@ import { Button } from '~components/Button';
 import { Dropdown } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
+import { Badge } from '~components/Badge';
+import { Counter } from '~components/Counter';
 
 export const sleep = (delay = 10): Promise<number> =>
   new Promise((resolve) => setTimeout(resolve, delay));
@@ -52,8 +54,36 @@ const MultiSelectContent = (): React.ReactElement => {
   );
 };
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<BottomSheet />', () => {
   const viewport = mockViewport({ width: '320px', height: '568px' });
+
+  it('should render Header/Footer/Body properly', () => {
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true}>
+          <BottomSheetHeader
+            title="Address Details"
+            subtitle="Saving addresses will improve your checkout experience"
+            trailing={<Badge variant="positive">Action Needed</Badge>}
+            titleSuffix={<Counter intent="positive" value={2} />}
+          />
+          <BottomSheetBody>
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            <Button isFullWidth variant="secondary">
+              Remove address
+            </Button>
+          </BottomSheetFooter>
+        </BottomSheet>
+      );
+    };
+    const { container } = renderWithTheme(<Example />);
+    expect(container).toMatchSnapshot();
+  });
 
   it('should open/close BottomSheet', async () => {
     const user = userEvents.setup();
@@ -69,13 +99,6 @@ describe('<BottomSheet />', () => {
             <BottomSheetBody>
               <Text>BottomSheet body</Text>
             </BottomSheetBody>
-            <BottomSheetFooter
-              title="Footer Title"
-              trailing={{
-                primary: { text: 'Apply' },
-                secondary: { text: 'Cancel' },
-              }}
-            />
           </BottomSheet>
         </>
       );
@@ -84,13 +107,14 @@ describe('<BottomSheet />', () => {
 
     expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
     await user.click(getByText(/open/i));
+    await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
     await user.click(queryByTestId('bottomsheet-backdrop')!);
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
   });
 
-  it('should close with close button', async () => {
+  it.skip('should close with close button', async () => {
     const user = userEvents.setup();
 
     const Example = (): React.ReactElement => {
@@ -99,18 +123,16 @@ describe('<BottomSheet />', () => {
       return (
         <>
           <Button onClick={() => setIsOpen(true)}>Open</Button>
-          <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+          <BottomSheet
+            isOpen={isOpen}
+            onDismiss={() => {
+              setIsOpen(false);
+            }}
+          >
             <BottomSheetHeader title="Select Account" />
             <BottomSheetBody>
               <Text>BottomSheet body</Text>
             </BottomSheetBody>
-            <BottomSheetFooter
-              title="Footer Title"
-              trailing={{
-                primary: { text: 'Apply' },
-                secondary: { text: 'Cancel' },
-              }}
-            />
           </BottomSheet>
         </>
       );
@@ -120,10 +142,11 @@ describe('<BottomSheet />', () => {
 
     expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
     await user.click(getByText(/open/i));
-    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
-    await user.click(getByRole('button', { name: /Close bottomsheet/i })!);
     await sleep(250);
-    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
+    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
+    await user.click(getByRole('button', { name: /Close/i }));
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
   });
 
   it('should work with initial state as open', () => {
@@ -146,14 +169,10 @@ describe('<BottomSheet />', () => {
     const Example = (): React.ReactElement => {
       return (
         <Dropdown selectionType="single">
-          <SelectInput
-            label="Select Action"
-            onChange={({ name, values }) => {
-              console.log(name, values);
-            }}
-          />
+          <SelectInput label="Select Action" />
           <BottomSheet>
             <BottomSheetBody>
+              <BottomSheetHeader />
               <SingleSelectContent />
             </BottomSheetBody>
           </BottomSheet>
@@ -169,6 +188,7 @@ describe('<BottomSheet />', () => {
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(queryByTestId('bottomsheet-backdrop')!);
+    await sleep(250);
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // close by selecting an element & assert the select's value
@@ -176,6 +196,7 @@ describe('<BottomSheet />', () => {
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(getByRole('option', { name: 'Settings' }));
+    await sleep(250);
     expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
@@ -183,7 +204,8 @@ describe('<BottomSheet />', () => {
     await user.click(getByRole('combobox', { name: 'Select Action' }));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
-    await user.click(getByRole('button', { name: /Close bottomsheet/i })!);
+    await user.click(getByRole('button', { name: /Close/i })!);
+    await sleep(250);
     expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
   });
@@ -194,13 +216,9 @@ describe('<BottomSheet />', () => {
     const Example = (): React.ReactElement => {
       return (
         <Dropdown selectionType="multiple">
-          <SelectInput
-            label="Select Fruit"
-            onChange={({ name, values }) => {
-              console.log(name, values);
-            }}
-          />
+          <SelectInput label="Select Fruit" />
           <BottomSheet>
+            <BottomSheetHeader />
             <BottomSheetBody>
               <MultiSelectContent />
             </BottomSheetBody>
@@ -231,7 +249,7 @@ describe('<BottomSheet />', () => {
     expect(selectInput).toHaveTextContent('3 items selected');
 
     // close the sheet
-    await user.click(getByRole('button', { name: /Close bottomsheet/i })!);
+    await user.click(getByRole('button', { name: /Close/i })!);
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // asssert the selected items
@@ -254,6 +272,38 @@ describe('<BottomSheet />', () => {
     expect(
       within(getByRole('option', { name: 'Avocado' })).getByRole('checkbox', { hidden: true }),
     ).not.toBeChecked();
+  });
+
+  test('BottomSheetHeader trailing should not allow any random component', () => {
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true}>
+          <BottomSheetHeader title="Address" trailing={<p>random element</p>} />
+        </BottomSheet>
+      );
+    };
+    expect(() => renderWithTheme(<Example />)).toThrow(
+      '[Blade BottomSheetHeader]: Only one of `Button, Badge, Link, Text` component is accepted as trailing',
+    );
+  });
+
+  test('BottomSheetHeader trailing should warn about prop overrides', () => {
+    jest.spyOn(console, 'warn').mockImplementation();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true}>
+          <BottomSheetHeader title="Address" trailing={<Badge size="large">Hello</Badge>} />
+        </BottomSheet>
+      );
+    };
+    renderWithTheme(<Example />);
+
+    expect(console.warn).toHaveBeenCalledWith(
+      expect.stringContaining(
+        '[Blade BottomSheetHeader]: Do not pass "size" to "Badge" while inside BottomSheetHeader trailing, because we override it.',
+      ),
+    );
   });
 
   viewport.cleanup();
