@@ -7,10 +7,7 @@ import GorhomBottomSheet, {
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
-import type { NativeScrollEvent } from 'react-native';
 import { Dimensions, AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native';
-
-import LinearGradient from 'react-native-linear-gradient';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { BottomSheetProps } from './types';
@@ -21,14 +18,12 @@ import { BottomSheetCloseButton } from './BottomSheetCloseButton';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import { useBottomSheetStack } from './BottomSheetStack';
-import { hslToRgb, isCloseToBottom } from './utils';
 import { makeSpace, getComponentId } from '~utils';
 
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useId } from '~src/hooks/useId';
-import { useTheme } from '~components/BladeProvider';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
 const isAndroid = Platform.OS === 'android';
@@ -71,7 +66,6 @@ const _BottomSheet = ({
   onDismiss,
   initialFocusRef,
 }: BottomSheetProps): React.ReactElement => {
-  const { theme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const defaultInitialFocusRef = React.useRef<any>(null);
   const sheetRef = React.useRef<GorhomBottomSheet>(null);
@@ -82,7 +76,6 @@ const _BottomSheet = ({
   const [headerHeight, setHeaderHeight] = React.useState(0);
   const [footerHeight, setFooterHeight] = React.useState(0);
   const [contentHeight, setContentHeight] = React.useState(0);
-  const [showOverflowIndicator, setShowOverflowIndicator] = React.useState(true);
   const initialSnapPoint = React.useRef<number>(0);
   const totalHeight = React.useMemo(() => {
     return headerHeight + footerHeight + contentHeight;
@@ -159,40 +152,21 @@ const _BottomSheet = ({
     });
   }, [children]);
 
-  const renderFooter = React.useCallback(
-    (props): React.ReactElement => {
-      const [h, s, l] = theme.colors.surface.background.level2.lowContrast
-        .replace(/hsla\(|\)|%/g, '')
-        .split(', ')
-        .map((value) => Number(value));
-      const { r, g, b } = hslToRgb({ h, s, l });
-
-      return (
-        <GorhomBottomSheetFooter {...props}>
-          <LinearGradient
-            style={{
-              opacity: showOverflowIndicator ? 1 : 0,
-              width: '100%',
-              height: 72,
-              padding: 10,
-            }}
-            colors={[`rgba(${r}, ${g}, ${b}, 0)`, `rgba(${r}, ${g}, ${b}, 1)`]}
-          />
-          <View
-            onLayout={(event) => {
-              // save footer height so that later we can offset the marginBottom from body content
-              // otherwise few elements gets hidden under the footer
-              setFooterHeight(event.nativeEvent.layout.height);
-            }}
-          >
-            {footer.current}
-          </View>
-        </GorhomBottomSheetFooter>
-      );
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [showOverflowIndicator],
-  );
+  const renderFooter = React.useCallback((props): React.ReactElement => {
+    return (
+      <GorhomBottomSheetFooter {...props}>
+        <View
+          onLayout={(event) => {
+            // save footer height so that later we can offset the marginBottom from body content
+            // otherwise few elements gets hidden under the footer
+            setFooterHeight(event.nativeEvent.layout.height);
+          }}
+        >
+          {footer.current}
+        </View>
+      </GorhomBottomSheetFooter>
+    );
+  }, []);
 
   const renderBackdrop = React.useCallback(
     (props): React.ReactElement => {
@@ -217,14 +191,6 @@ const _BottomSheet = ({
     );
   }, [zIndex]);
 
-  const onBodyScroll = React.useCallback((nativeEvent: NativeScrollEvent) => {
-    if (isCloseToBottom(nativeEvent)) {
-      setShowOverflowIndicator(false);
-    } else {
-      setShowOverflowIndicator(true);
-    }
-  }, []);
-
   const contextValue = React.useMemo<BottomSheetContextProps>(
     () => ({
       isInBottomSheet: true,
@@ -240,9 +206,8 @@ const _BottomSheet = ({
       scrollRef: () => {},
       bind: {} as never,
       defaultInitialFocusRef,
-      onBodyScroll,
     }),
-    [_isOpen, contentHeight, footerHeight, handleOnClose, headerHeight, onBodyScroll],
+    [_isOpen, contentHeight, footerHeight, handleOnClose, headerHeight],
   );
 
   // Hack: We need to <Portal> the GorhomBottomSheet to the root of the react-native app
