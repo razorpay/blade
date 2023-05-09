@@ -33,8 +33,8 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         children
       ) : (
         <BottomSheetScrollView
-          onLayout={({ nativeEvent }) => {
-            setContentHeight(nativeEvent.layout.height);
+          onContentSizeChange={(_width, height) => {
+            setContentHeight(height);
           }}
           onScroll={({ nativeEvent }) => {
             onBodyScroll(nativeEvent);

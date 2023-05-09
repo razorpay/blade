@@ -83,7 +83,7 @@ const _BottomSheet = ({
   const [footerHeight, setFooterHeight] = React.useState(0);
   const [contentHeight, setContentHeight] = React.useState(0);
   const [showOverflowIndicator, setShowOverflowIndicator] = React.useState(true);
-  const initialSnapPoint = React.useRef<number>(1);
+  const initialSnapPoint = React.useRef<number>(0);
   const totalHeight = React.useMemo(() => {
     return headerHeight + footerHeight + contentHeight;
   }, [contentHeight, footerHeight, headerHeight]);
@@ -98,14 +98,11 @@ const _BottomSheet = ({
   const zIndex = 100 - currentStackIndex;
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
-  // TODO(fix): sometimes the bottomsheet header, footer, content calculation takes some time
-  // which causes this to bug out, find a better way to do this with useDynamicSnapPoints maybe?
   useIsomorphicLayoutEffect(() => {
     const height = Dimensions.get('window').height;
     const middleSnapPoint = snapPoints[1] * height;
-    const lowerSnapPoint = snapPoints[0] * height;
-    if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
-      initialSnapPoint.current = 0;
+    if (totalHeight > middleSnapPoint) {
+      initialSnapPoint.current = 1;
     }
   }, [snapPoints, totalHeight]);
 
