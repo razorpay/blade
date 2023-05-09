@@ -10,11 +10,29 @@ import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 export type BaseHeaderProps = {
   title?: string;
   subtitle?: string;
+  /**
+   * Leading part of the header placed at the left most side of the header
+   */
   leading?: React.ReactNode;
+  /**
+   * Trailing part of the header placed at the right most side of the header
+   */
   trailing?: React.ReactNode;
+  /**
+   * Placed adjacent to the title text
+   */
   titleSuffix?: React.ReactNode;
+  /**
+   * @default false
+   */
   hideDivider?: boolean;
+  /**
+   * @default false
+   */
   showBackButton?: boolean;
+  /**
+   * @default true
+   */
   showCloseButton?: boolean;
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;

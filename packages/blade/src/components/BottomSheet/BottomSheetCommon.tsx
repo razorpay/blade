@@ -6,7 +6,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { isReactNative } from '~utils';
+import { isReactNative, makeSize } from '~utils';
+import size from '~tokens/global/size';
 
 type BottomSheetEmptyHeaderProps = Pick<
   ReactDOMAttributes,
@@ -38,7 +39,10 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
     return (
       <BaseBox
         position="relative"
-        height="24px"
+        // bottomsheet empty header suppose to be 40px in height
+        // the grab handle height is 16px & here we are adding 24px
+        // total = 40px
+        height={makeSize(size[24])}
         touchAction="none"
         onClickCapture={onClickCapture}
         onKeyDown={onKeyDown}
