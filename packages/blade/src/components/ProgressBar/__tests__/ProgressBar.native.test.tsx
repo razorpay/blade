@@ -4,9 +4,6 @@ import { ProgressBar } from '../ProgressBar';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<ProgressBar />', () => {
   it('should render ProgressBar with default props', () => {
     const { toJSON } = renderWithTheme(<ProgressBar label="Label" value={20} />);
@@ -170,10 +167,12 @@ describe('<ProgressBar />', () => {
   });
 
   it('should throw an error when the variant is meter and isIndeterminate is set', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     // @ts-expect-error testing failure case when the variant is meter and isIndeterminate is set
     expect(() => renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />)).toThrow(
       `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should accept testID', () => {
