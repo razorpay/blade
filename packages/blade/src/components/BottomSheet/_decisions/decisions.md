@@ -276,8 +276,12 @@ Behaviours:
 
 ## Open questions
 
-1. What is `action` in the header trailing visual?
-2. In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component?
+- ~~What is `action` in the header trailing visual?~~
+- ~~In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component?~~
+
+- Consideration for using custom solution rather than third party libraries like [react-spring-bottomsheet](https://github.com/stipsan/react-spring-bottom-shee) in web.
+   - **ANS**: We did a initial research for various third-party libraries documented in [here](https://docs.google.com/document/d/1lRIBo5nkp1R9_DC9nRiFFwBEH3oVhMZjLbV7jxFrYBA/edit), most of them did not fit out use case, react-spring-bottomsheet had lot of features covered but comes with a bit of bundle size baggage like usegesture/xstate/xstate-react/react-spring libraries which in mobile users will have to carry.
+   - Plus we had few requirements like stacked bottomsheets, special logic for where the bottomsheet will open initially which either way had to be implemented.
 
 ## Alternative APIs
 
