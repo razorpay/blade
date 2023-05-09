@@ -76,7 +76,7 @@ const [isOpen, setIsOpen] = React.useState(false);
 
 Rendered output:
 
-<img src="./bottomsheet-usage-example-1.png" alt="BottomSheet Usage example" width="75%" />
+<img src="./bottomsheet-usage-example-1.png" alt="BottomSheet Usage example" width="55%" />
 
 
 ### `BottomSheet`
