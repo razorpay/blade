@@ -7,7 +7,7 @@ import GorhomBottomSheet, {
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
-import { Dimensions, AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native';
+import { Dimensions, AccessibilityInfo, findNodeHandle, View } from 'react-native';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import { BottomSheetFooter } from './BottomSheetFooter';
@@ -16,7 +16,6 @@ import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
-import { BottomSheetFooter } from './BottomSheetFooter';
 import { useBottomSheetStack } from './BottomSheetStack';
 import { makeSpace, getComponentId } from '~utils';
 
