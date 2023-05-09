@@ -929,6 +929,7 @@ export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
   return (
     <>
       <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+
       <Dropdown selectionType="single">
         <SelectInput
           label="Select City"
@@ -984,6 +985,7 @@ export const ControlledDropdownMultiSelect = (args: AllDropdownProps): JSX.Eleme
       >
         Select Bangalore
       </Button>
+
       <Dropdown selectionType="multiple">
         <SelectInput
           label="Select City"

@@ -162,7 +162,6 @@ const _SelectInput = (
         values: getValuesArrayFromIndices(),
       });
     }
-    // onChange?.({ name: props.name, values: value.split(', ') });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
 
