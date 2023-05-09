@@ -1,20 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
-import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheetContext';
-import type { BottomSheetFooterProps } from './types';
-import { BottomSheetFooterLeading, BottomSheetFooterTrailing } from './BottomSheetFooterCommon';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 
-const BottomSheetFooter = ({
-  title,
-  leading,
-  trailing,
-}: BottomSheetFooterProps): React.ReactElement => {
+const BottomSheetFooter = ({ children, hideDivider }: BaseFooterProps): React.ReactElement => {
   const { theme } = useTheme();
   const { setFooterHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
@@ -31,33 +23,19 @@ const BottomSheetFooter = ({
 
   return (
     <BaseBox
-      data-footer
-      data-testid="bottomsheet-footer"
-      ref={ref as any}
+      ref={ref}
       width="100%"
       flexShrink={0}
       marginTop="auto"
       backgroundColor={theme.colors.surface.background.level2.lowContrast}
       touchAction="none"
       zIndex={2}
+      data-footer
       {...bind?.()}
     >
-      <Divider />
-      <BaseBox
-        marginLeft="spacing.6"
-        marginRight="spacing.6"
-        marginTop="spacing.5"
-        marginBottom="spacing.5"
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="stretch"
-      >
-        <BottomSheetFooterLeading title={title} prefix={leading} />
-        <BottomSheetFooterTrailing hasLeading={Boolean(leading)} actions={trailing} />
-      </BaseBox>
+      <BaseFooter hideDivider={hideDivider}>{children}</BaseFooter>
     </BaseBox>
   );
 };
 
-export { BottomSheetFooter, BottomSheetFooterLeading, BottomSheetFooterTrailing };
+export { BottomSheetFooter };

@@ -5,7 +5,7 @@ import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
 import { isValidAllowedChildren } from '~utils';
 import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
-import { DropdownBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
+import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
@@ -62,7 +62,7 @@ const _Dropdown = ({
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
   // keep track if dropdown contains bottomsheet
-  const [hasBottomSheet, setHasBottomSheet] = React.useState(false);
+  const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
 
@@ -127,18 +127,29 @@ const _Dropdown = ({
     ],
   );
 
-  const dropdownBottomSheetContextValue = React.useMemo(() => {
-    return { isOpen, setIsOpen, selectionType, hasBottomSheet, setHasBottomSheet };
-  }, [isOpen, setIsOpen, selectionType, hasBottomSheet, setHasBottomSheet]);
+  // This is the dismiss function which will be injected into the BottomSheet
+  // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
+  const onBottomSheetDismiss = React.useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
+    return {
+      isOpen,
+      dropdownHasBottomSheet,
+      setDropdownHasBottomSheet,
+      onBottomSheetDismiss,
+    };
+  }, [dropdownHasBottomSheet, isOpen, onBottomSheetDismiss]);
 
   return (
-    <DropdownBottomSheetContext.Provider value={dropdownBottomSheetContextValue}>
+    <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
         <BaseBox position="relative" {...getStyledProps(styledProps)}>
           {children}
         </BaseBox>
       </DropdownContext.Provider>
-    </DropdownBottomSheetContext.Provider>
+    </BottomSheetAndDropdownGlueContext.Provider>
   );
 };
 

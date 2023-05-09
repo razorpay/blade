@@ -221,9 +221,9 @@ const getAllProps = (
     borderRight: getResponsiveValue(props.borderRight, breakpoint),
     borderBottom: getResponsiveValue(props.borderBottom, breakpoint),
     borderLeft: getResponsiveValue(props.borderLeft, breakpoint),
-    touchAction: props.touchAction,
-    userSelect: props.userSelect,
-    opacity: props.opacity,
+    touchAction: getResponsiveValue(props.touchAction, breakpoint),
+    userSelect: getResponsiveValue(props.userSelect, breakpoint),
+    opacity: getResponsiveValue(props.opacity, breakpoint),
   };
 };
 

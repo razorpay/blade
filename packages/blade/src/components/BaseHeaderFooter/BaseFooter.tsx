@@ -1,0 +1,31 @@
+import React from 'react';
+import { Divider } from './Divider';
+import BaseBox from '~components/Box/BaseBox';
+import { assignWithoutSideEffects } from '~utils';
+
+export type BaseFooterProps = {
+  children: React.ReactNode;
+  hideDivider?: boolean;
+};
+
+const _BaseFooter = ({ children, hideDivider = false }: BaseFooterProps): React.ReactElement => {
+  return (
+    <>
+      {!hideDivider && <Divider />}
+      <BaseBox
+        paddingLeft="spacing.6"
+        paddingRight="spacing.6"
+        paddingTop="spacing.5"
+        paddingBottom="spacing.5"
+      >
+        {children}
+      </BaseBox>
+    </>
+  );
+};
+
+const BaseFooter = assignWithoutSideEffects(_BaseFooter, {
+  componentId: 'BaseFooter',
+});
+
+export { BaseFooter };

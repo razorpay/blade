@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert should generate danger alert correctly 1`] = `
+{
+  "component": "
+<Alert
+  intent="negative"
+  isDismissible={false}
+  title="I am the alert title"
+  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+  actions={{primary: { text: "Primary" }, secondary: { text: "Link" }}}
+/>",
+  "imports": {
+    "@razorpay/blade/components": [
+      "Alert",
+    ],
+  },
+}
+`;
+
+exports[`Alert should generate high contrast warning alert dismissible correctly 1`] = `
+{
+  "component": "
+<Alert
+  intent="notice"
+  contrast="high"
+  title="I am the alert title"
+  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+/>",
+  "imports": {
+    "@razorpay/blade/components": [
+      "Alert",
+    ],
+  },
+}
+`;
+
+exports[`Alert should generate info alert correctly 1`] = `
+{
+  "component": "
+<Alert
+  intent="information"
+  isDismissible={false}
+  title="I am the alert title"
+  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+/>",
+  "imports": {
+    "@razorpay/blade/components": [
+      "Alert",
+    ],
+  },
+}
+`;
+
+exports[`Alert should generate neutral alert correctly 1`] = `
+{
+  "component": "
+<Alert
+  isDismissible={false}
+  title="I am the alert title"
+  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+/>",
+  "imports": {
+    "@razorpay/blade/components": [
+      "Alert",
+    ],
+  },
+}
+`;
+
+exports[`Alert should generate success alert correctly 1`] = `
+{
+  "component": "
+<Alert
+  intent="positive"
+  isDismissible={false}
+  title="I am the alert title"
+  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+/>",
+  "imports": {
+    "@razorpay/blade/components": [
+      "Alert",
+    ],
+  },
+}
+`;
+
+exports[`Alert should generate warning alert dismissible correctly 1`] = `
+{
+  "component": "
+<Alert
+  intent="notice"
+  title="I am the alert title"
+  description="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+/>",
+  "imports": {
+    "@razorpay/blade/components": [
+      "Alert",
+    ],
+  },
+}
+`;

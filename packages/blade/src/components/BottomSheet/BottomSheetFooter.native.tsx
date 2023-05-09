@@ -1,22 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
-import { Divider } from './Divider.native';
 import type { BottomSheetFooterProps } from './types';
-import { BottomSheetFooterLeading, BottomSheetFooterTrailing } from './BottomSheetFooterCommon';
 import { ComponentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 
 const _BottomSheetFooter = ({
-  title,
-  leading,
-  trailing,
+  children,
+  hideDivider,
 }: BottomSheetFooterProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
     <BaseBox
-      data-footer
       width="100%"
       flexShrink={0}
       marginTop="auto"
@@ -24,20 +20,7 @@ const _BottomSheetFooter = ({
       touchAction="none"
       zIndex={2}
     >
-      <Divider />
-      <BaseBox
-        marginLeft="spacing.6"
-        marginRight="spacing.6"
-        marginTop="spacing.5"
-        marginBottom="spacing.5"
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="stretch"
-      >
-        <BottomSheetFooterLeading title={title} prefix={leading} />
-        <BottomSheetFooterTrailing hasLeading={Boolean(leading)} actions={trailing} />
-      </BaseBox>
+      <BaseFooter hideDivider={hideDivider}>{children}</BaseFooter>
     </BaseBox>
   );
 };
@@ -46,4 +29,4 @@ const BottomSheetFooter = assignWithoutSideEffects(_BottomSheetFooter, {
   componentId: ComponentIds.BottomSheetFooter,
 });
 
-export { BottomSheetFooter, BottomSheetFooterLeading, BottomSheetFooterTrailing };
+export { BottomSheetFooter };

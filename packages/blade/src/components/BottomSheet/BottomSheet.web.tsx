@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable consistent-return */
@@ -6,24 +7,28 @@ import React from 'react';
 import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import usePresence from 'use-presence';
-import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
+import { clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
-import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
+import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
 import { BottomSheetProps } from './types';
-import { BottomSheetCloseButton } from './BottomSheetCloseButton';
+import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
+import { useBottomSheetStack } from './BottomSheetStack';
+
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSpace } from '~utils';
+import { makeMotionTime, assignWithoutSideEffects, makeSize } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
+import { useId } from '~src/hooks/useId';
+import size from '~tokens/global/size';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 
@@ -36,17 +41,15 @@ const BottomSheetSurface = styled.div<{
   const blur = theme.shadows.blurRadius.level[1];
   const shadowColor = theme.shadows.color.level[1];
 
-  const shadow1 = `${offsetX}px ${offsetY}px ${blur}px 0px ${shadowColor}`;
-  const shadow2 = `0px 0px 1px 0px ${shadowColor}`;
+  const shadowLayer1 = `${offsetX}px ${offsetY}px ${blur}px 0px ${shadowColor}`;
+  const shadowLayer2 = `0px 0px 1px 0px ${shadowColor}`;
 
   return {
     background: theme.colors.surface.background.level2.lowContrast,
-    // TODO: we do not have 16px radius token
-    borderTopLeftRadius: makeSpace(theme.spacing[5]),
-    borderTopRightRadius: makeSpace(theme.spacing[5]),
+    borderTopLeftRadius: makeSize(size[16]),
+    borderTopRightRadius: makeSize(size[16]),
     borderColor: theme.colors.surface.border.normal.lowContrast,
-    boxShadow: `${shadow1}, ${shadow2}`,
-
+    boxShadow: `${shadowLayer1}, ${shadowLayer2}`,
     opacity: 0,
     pointerEvents: 'none',
     transitionDuration: isDragging
@@ -60,12 +63,11 @@ const BottomSheetSurface = styled.div<{
     right: 0,
     bottom: 0,
     top: windowHeight,
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.surface.background.level2.lowContrast,
     justifyContent: 'center',
     alignItems: 'center',
     touchAction: 'none',
     overflow: 'hidden',
-    zIndex: 2,
   };
 });
 
@@ -83,18 +85,34 @@ const _BottomSheet = ({
   const [footerHeight, setFooterHeight] = React.useState(0);
   const [grabHandleHeight, setGrabHandleHeight] = React.useState(0);
 
-  const dropdownBottomSheetProps = useDropdownBottomSheetContext();
-  const [posY, _setPosY] = React.useState(0);
-  const _isOpen = dropdownBottomSheetProps?.isOpen ?? isOpen;
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
+  const [positionY, _setPositionY] = React.useState(0);
+  const _isOpen = bottomSheetAndDropdownGlue?.isOpen ?? isOpen;
   const [isDragging, setIsDragging] = React.useState(false);
 
   const preventScrollingRef = React.useRef(true);
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const grabHandleRef = React.useRef<HTMLDivElement>(null);
-  const originalFocusElement = React.useRef<HTMLElement>(null);
+  const originalFocusElement = React.useRef<HTMLElement | null>(null);
   const defaultInitialFocusRef = React.useRef<any>(null);
+  const initialSnapPoint = React.useRef<number>(snapPoints[1]);
+  const totalHeight = React.useMemo(() => {
+    return grabHandleHeight + headerHeight + footerHeight + contentHeight;
+  }, [contentHeight, footerHeight, grabHandleHeight, headerHeight]);
 
-  const setPosY = React.useCallback(
+  const id = useId();
+  const {
+    stack,
+    addBottomSheetToStack,
+    removeBottomSheetFromStack,
+    getTopOfTheStack,
+    getCurrentStackIndexById,
+  } = useBottomSheetStack();
+  const currentStackIndex = getCurrentStackIndexById(id);
+  const isOnTopOfStack = getTopOfTheStack() === id;
+  const zIndex = 100 - currentStackIndex;
+
+  const setPositionY = React.useCallback(
     (value: number, limit = true) => {
       const maxValue = computeMaxContent({
         contentHeight,
@@ -102,16 +120,29 @@ const _BottomSheet = ({
         headerHeight: headerHeight + grabHandleHeight,
         maxHeight: value,
       });
-      _setPosY(limit ? maxValue : value);
+      _setPositionY(limit ? maxValue : value);
     },
     [contentHeight, footerHeight, grabHandleHeight, headerHeight],
   );
 
+  // locks the body scroll to prevent accidental scrolling of content when we drag the sheet
+  // We are ready when we calculated the height of the content
+  const isReady = contentHeight > 0;
+  // only lock the body when we atleast have 1 bottomsheet open
+  const shouldLock = isReady && stack.length > 0;
   const scrollLockRef = useScrollLock({
-    enabled: true,
-    reserveScrollBarGap: true,
+    enabled: shouldLock,
     targetRef: scrollRef,
+    reserveScrollBarGap: true,
   });
+
+  // clear all body locks to avoid memory leaks & accidental body locking
+  React.useEffect(() => {
+    const hasNoBottomSheets = stack.length < 1;
+    if (hasNoBottomSheets) {
+      clearAllBodyScrollLocks();
+    }
+  }, [stack]);
 
   // take the grabHandle's height into headerHeight too
   useIsomorphicLayoutEffect(() => {
@@ -119,11 +150,21 @@ const _BottomSheet = ({
     setGrabHandleHeight(grabHandleRef.current.getBoundingClientRect().height);
   }, [grabHandleRef.current, _isOpen]);
 
+  // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
+  useIsomorphicLayoutEffect(() => {
+    const middleSnapPoint = snapPoints[1] * dimensions.height;
+    const lowerSnapPoint = snapPoints[0] * dimensions.height;
+    if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
+      initialSnapPoint.current = snapPoints[0];
+    }
+  }, [dimensions.height, snapPoints, totalHeight]);
+
   const returnFocus = React.useCallback(() => {
     if (!originalFocusElement.current) return;
     originalFocusElement.current.focus();
-    // reset the focus after it's been returned back
-    // @ts-expect-error this is a mutable ref
+    // After returning focus we will clear the original focus
+    // Because if sheet can be opened up via multiple triggers
+    // We want to ensure the focus returns back to the most recent triggerer
     originalFocusElement.current = null;
   }, [originalFocusElement]);
 
@@ -137,70 +178,63 @@ const _BottomSheet = ({
     }
   }, [initialFocusRef]);
 
-  const close = React.useCallback(() => {
-    setPosY(0);
-    returnFocus();
-    onDismiss?.();
-    // close the select dropdown as well
-    dropdownBottomSheetProps?.setIsOpen(false);
-    scrollLockRef.current.deactivate();
-  }, [setPosY, returnFocus, dropdownBottomSheetProps, scrollLockRef, onDismiss]);
-
-  const open = React.useCallback(() => {
-    setPosY(dimensions.height * 0.5);
+  const handleOnOpen = React.useCallback(() => {
+    setPositionY(dimensions.height * initialSnapPoint.current);
     scrollLockRef.current.activate();
-    // @ts-expect-error this is a mutable ref
-    originalFocusElement.current = originalFocusElement.current ?? document.activeElement;
+    // initialize the original focused element
+    // On first render it will be the activeElement, eg: the button trigger or select input
+    // On Subsequent open operations it won't further update the original focus
+    originalFocusElement.current =
+      originalFocusElement.current ?? (document.activeElement as HTMLElement);
     focusOnInitialRef();
-  }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPosY]);
+  }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPositionY]);
+
+  const handleOnClose = React.useCallback(() => {
+    setPositionY(0);
+    returnFocus();
+  }, [returnFocus, setPositionY]);
+
+  const close = React.useCallback(() => {
+    onDismiss?.();
+    bottomSheetAndDropdownGlue?.onBottomSheetDismiss();
+  }, [bottomSheetAndDropdownGlue, onDismiss]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
-    if (isOpen === true) {
-      open();
+    if (_isOpen) {
+      // open on the next frame, otherwise the animations will not run on first render
+      window.setTimeout(() => {
+        handleOnOpen();
+      });
+    } else {
+      handleOnClose();
     }
-    if (isOpen === false) {
-      close();
-    }
-  }, [close, initialFocusRef, isOpen, open]);
+  }, [_isOpen, handleOnClose, handleOnOpen]);
 
-  // sync the select dropdown's state with bottomsheet's state
+  // let the Dropdown component know that it's rendering a bottomsheet
   React.useEffect(() => {
-    if (!dropdownBottomSheetProps) return;
+    if (!bottomSheetAndDropdownGlue) return;
+    bottomSheetAndDropdownGlue.setDropdownHasBottomSheet(true);
+  }, [bottomSheetAndDropdownGlue]);
 
-    // this will let the Dropdown component know that it's rendering a bottomsheet
-    dropdownBottomSheetProps.setHasBottomSheet(true);
-
-    if (dropdownBottomSheetProps.isOpen) {
-      open();
-    }
-
-    if (!dropdownBottomSheetProps.isOpen && dropdownBottomSheetProps.selectionType === 'single') {
-      close();
-    }
-  }, [close, open, dropdownBottomSheetProps]);
-
-  /*
-      1. The content should not be scrollable on lower or middle snapPoints
-      2. If we reach the top snapPoint we make the content scrollable
-      3. scrolling down the content will work as usual
-      4. but if the scroll position is at top and then we drag down on the content body
-         the bottom-sheet will start the dragging and we will set the scroll to 'none'
-    */
   const bind = useDrag(
     ({
       active,
       last,
       cancel,
       tap,
-      movement: [_mx, my],
-      velocity: [_vx, vy],
+      movement: [_movementX, movementY],
+      velocity: [_velocityX, velocityY],
       lastOffset: [_, lastOffsetY],
       down,
+      dragging,
       args: [{ isContentDragging = false } = {}] = [],
     }) => {
-      setIsDragging(down);
-      const rawY = lastOffsetY - my;
+      setIsDragging(Boolean(dragging));
+      // lastOffsetY is the previous position user stopped dragging the sheet
+      // movementY is the drag amount from the bottom of the screen, so as you drag up the movementY goes into negatives
+      // and rawY is the calculated offset from the last position of the bottomsheet to current drag amount.
+      const rawY = lastOffsetY - movementY;
 
       const lowerSnapPoint = dimensions.height * snapPoints[0];
       const upperSnapPoint = dimensions.height * snapPoints[snapPoints.length - 1];
@@ -208,7 +242,7 @@ const _BottomSheet = ({
       // predictedY is used to create velocity driven swipe
       // the faster you swipe the more distance you cover
       // this enables users to reach upper & lower snappoint with a single swipe
-      const predictedDistance = my * (vy / 2);
+      const predictedDistance = movementY * (velocityY / 2);
       const predictedY = Math.max(
         lowerSnapPoint,
         Math.min(upperSnapPoint, rawY - predictedDistance * 2),
@@ -221,7 +255,6 @@ const _BottomSheet = ({
         // more than the upperSnapPoint or maximum height of the sheet
         // this is basically a clamp() function but creates a nice rubberband effect
         const dampening = 0.55;
-        const totalHeight = grabHandleHeight + headerHeight + footerHeight + contentHeight;
         if (totalHeight < upperSnapPoint) {
           newY = rubberbandIfOutOfBounds(rawY, 0, totalHeight, dampening);
         } else {
@@ -251,20 +284,26 @@ const _BottomSheet = ({
         preventScrollingRef.current = newY < upperSnapPoint;
       }
 
-      const shouldClose = newY < lowerSnapPoint;
-      if (shouldClose) {
-        setIsDragging(false);
-        close();
-        cancel();
-        return;
-      }
-
       if (last) {
         // calculate the nearest snapPoint
-        const [nearest] = computeSnapPointBounds(
+        const [nearest, lower] = computeSnapPointBounds(
           newY,
           snapPoints.map((point) => dimensions.height * point) as SnapPoints,
         );
+
+        // This ensure that the lower snapPoint will always have atleast some buffer
+        // When the bottomsheet total height is less than the lower snapPoint
+        // Video walkthrough: https://www.loom.com/share/a9a8db7688d64194b13df8b3e25859ae
+        const lowerPointBuffer = 60;
+        const lowerestSnap = Math.min(lower, totalHeight) - lowerPointBuffer;
+
+        const shouldClose = rawY < lowerestSnap;
+        if (shouldClose) {
+          setIsDragging(false);
+          cancel();
+          close();
+          return;
+        }
 
         // if we stop dragging assign snap to the nearest point
         if (!active && !tap) {
@@ -272,17 +311,19 @@ const _BottomSheet = ({
         }
       }
 
-      setPosY(newY, !down);
+      setPositionY(newY, !down);
     },
     {
-      from: [0, posY],
+      from: [0, positionY],
       filterTaps: true,
+      enabled: isOnTopOfStack && _isOpen,
     },
   );
 
+  // Here we are preventing the scrolling of the content, until the preventScrollingRef value is true
   useIsomorphicLayoutEffect(() => {
-    const elem = scrollRef.current;
-    if (!elem) return;
+    const scrollElement = scrollRef.current;
+    if (!scrollElement) return;
 
     const preventScrolling = (e: Event) => {
       if (preventScrollingRef?.current) {
@@ -292,7 +333,7 @@ const _BottomSheet = ({
 
     // https://www.bram.us/2016/05/02/prevent-overscroll-bounce-in-ios-mobilesafari-pure-css/
     const preventSafariOverscroll = (e: Event) => {
-      if (elem.scrollTop < 0) {
+      if (scrollElement.scrollTop < 0) {
         // TODO: figure this out, it doesn't seem to work >iOS12
         // requestAnimationFrame(() => {
         //   elem.style.overflow = 'hidden';
@@ -303,22 +344,32 @@ const _BottomSheet = ({
       }
     };
 
-    elem.addEventListener('scroll', preventScrolling);
-    elem.addEventListener('touchmove', preventScrolling);
-    elem.addEventListener('touchstart', preventSafariOverscroll);
+    scrollElement.addEventListener('scroll', preventScrolling);
+    scrollElement.addEventListener('touchmove', preventScrolling);
+    scrollElement.addEventListener('touchstart', preventSafariOverscroll);
     return () => {
-      elem.removeEventListener('scroll', preventScrolling);
-      elem.removeEventListener('touchmove', preventScrolling);
-      elem.removeEventListener('touchstart', preventSafariOverscroll);
+      scrollElement.removeEventListener('scroll', preventScrolling);
+      scrollElement.removeEventListener('touchmove', preventScrolling);
+      scrollElement.removeEventListener('touchstart', preventSafariOverscroll);
     };
-  }, [scrollRef.current]);
+    // Only run this hook when we know all the layout calculations are done,
+    // Otherwise the scrollRef.current will be null.
+    // isReady prop will ensure that we are done measuring the content height
+  }, [isReady]);
+
+  // usePresence hook waits for the animation to finish before unmounting the component
+  // It's similar to framer-motions usePresence hook
+  // https://www.framer.com/docs/animate-presence/#usepresence
+  const { isMounted, isVisible } = usePresence(Boolean(_isOpen), {
+    transitionDuration: theme.motion.duration.moderate,
+  });
 
   const contextValue = React.useMemo(
     () => ({
       isInBottomSheet: true,
-      isOpen: Boolean(_isOpen),
+      isOpen: Boolean(isVisible),
       close,
-      posY,
+      positionY,
       headerHeight,
       contentHeight,
       footerHeight,
@@ -330,9 +381,9 @@ const _BottomSheet = ({
       defaultInitialFocusRef,
     }),
     [
-      _isOpen,
+      isVisible,
       close,
-      posY,
+      positionY,
       headerHeight,
       contentHeight,
       footerHeight,
@@ -345,13 +396,13 @@ const _BottomSheet = ({
     ],
   );
 
-  // usePresence hook waits for the animation to finish before unmounting the component
-  // It's similar to framer-motions usePresence hook
-  // https://www.framer.com/docs/animate-presence/#usepresence
-  const { isMounted, isVisible } = usePresence(Boolean(_isOpen), {
-    transitionDuration: theme.motion.duration.moderate,
-    exitTransitionDuration: theme.motion.duration.moderate,
-  });
+  React.useEffect(() => {
+    if (isMounted) {
+      addBottomSheetToStack(id);
+    } else {
+      removeBottomSheetFromStack(id);
+    }
+  }, [addBottomSheetToStack, id, isMounted, removeBottomSheetFromStack]);
 
   // We will need to reset these values otherwise the next time the bottomsheet opens
   // this will be populated and the animations won't run
@@ -362,7 +413,8 @@ const _BottomSheet = ({
       setHeaderHeight(0);
       setFooterHeight(0);
       setContentHeight(0);
-      scrollLockRef.current.deactivate();
+      setGrabHandleHeight(0);
+      _setPositionY(0);
     }
   }, [isMounted, scrollLockRef]);
 
@@ -370,14 +422,14 @@ const _BottomSheet = ({
   // Because if we bail out early then ActionList won't render,
   // and Dropdown manages it's state based on the rendered JSX of ActionList
   // If we don't render ActionList Dropdown state will reset each time we open/close BottomSheet
-  const isInsideDropdown = Boolean(dropdownBottomSheetProps);
+  const isInsideDropdown = Boolean(bottomSheetAndDropdownGlue);
   if (!isMounted && !isInsideDropdown) {
     return <></>;
   }
 
   return (
     <BottomSheetContext.Provider value={contextValue}>
-      <BottomSheetBackdrop />
+      <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
         data-surface
         windowHeight={dimensions.height}
@@ -385,13 +437,13 @@ const _BottomSheet = ({
         style={{
           opacity: isVisible ? 1 : 0,
           pointerEvents: isVisible ? 'all' : 'none',
-          height: posY,
+          height: positionY,
           bottom: 0,
           top: 'auto',
+          zIndex,
         }}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
-          <BottomSheetCloseButton />
           <BottomSheetGrabHandle ref={grabHandleRef} {...bind()} />
           {children}
         </BaseBox>

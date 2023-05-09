@@ -3,47 +3,34 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import GorhomBottomSheet, {
   BottomSheetFooter as GorhomBottomSheetFooter,
-  BottomSheetScrollView as GorhomBottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
-import { AccessibilityInfo, findNodeHandle, Platform } from 'react-native';
+import { Dimensions, AccessibilityInfo, findNodeHandle, Platform, View } from 'react-native';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import type { BottomSheetProps } from './types';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
-import { BottomSheetContext, useDropdownBottomSheetContext } from './BottomSheetContext';
-import { BottomSheetCloseButton } from './BottomSheetCloseButton';
+import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
+import { BottomSheetFooter } from './BottomSheetFooter';
+import { useBottomSheetStack } from './BottomSheetStack';
 import { makeSpace, getComponentId } from '~utils';
 
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { useId } from '~src/hooks/useId';
+import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 
-const isAndroid = Platform.OS === 'android';
-// TODO: Temporary workaround to make android shadows look as close as iOS
-const androidShadow = {
-  color: undefined,
-  elevation: 2,
-};
 const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
-  const offsetX = theme.shadows.offsetX.level[1];
-  const offsetY = theme.shadows.offsetY.level[1];
-  const blur = theme.shadows.blurRadius.level[1];
-  const shadowColor = theme.shadows.color.level[1];
   return {
-    background: theme.colors.surface.background.level2.lowContrast,
     // TODO: we do not have 16px radius token
     borderTopLeftRadius: makeSpace(theme.spacing[5]),
     borderTopRightRadius: makeSpace(theme.spacing[5]),
-    shadowOpacity: '1',
-    shadowRadius: blur,
-    shadowColor: isAndroid ? androidShadow.color : shadowColor,
-    shadowOffset: `${offsetX}px ${offsetY}px`,
     backgroundColor: theme.colors.surface.background.level2.lowContrast,
     justifyContent: 'center',
     alignItems: 'center',
@@ -65,33 +52,60 @@ const _BottomSheet = ({
   onDismiss,
   initialFocusRef,
 }: BottomSheetProps): React.ReactElement => {
-  const dropdownBottomSheetProps = useDropdownBottomSheetContext();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const defaultInitialFocusRef = React.useRef<any>(null);
   const sheetRef = React.useRef<GorhomBottomSheet>(null);
   const header = React.useRef<React.ReactNode>();
   const footer = React.useRef<React.ReactNode>();
   const body = React.useRef<React.ReactNode>();
-  const _isOpen = dropdownBottomSheetProps?.isOpen ?? isOpen;
+  const _isOpen = bottomSheetAndDropdownGlue?.isOpen ?? isOpen;
+  const [headerHeight, setHeaderHeight] = React.useState(0);
+  const [footerHeight, setFooterHeight] = React.useState(0);
+  const [contentHeight, setContentHeight] = React.useState(0);
+  const initialSnapPoint = React.useRef<number>(0);
+  const totalHeight = React.useMemo(() => {
+    return headerHeight + footerHeight + contentHeight;
+  }, [contentHeight, footerHeight, headerHeight]);
+
+  const id = useId();
+  const {
+    addBottomSheetToStack,
+    removeBottomSheetFromStack,
+    getCurrentStackIndexById,
+  } = useBottomSheetStack();
+  const currentStackIndex = getCurrentStackIndexById(id);
+  const zIndex = 100 - currentStackIndex;
+
+  // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
+  useIsomorphicLayoutEffect(() => {
+    const height = Dimensions.get('window').height;
+    const middleSnapPoint = snapPoints[1] * height;
+    if (totalHeight > middleSnapPoint) {
+      initialSnapPoint.current = 1;
+    }
+  }, [snapPoints, totalHeight]);
 
   const _snapPoints = React.useMemo(() => snapPoints.map((point) => `${point * 100}%`), [
     snapPoints,
   ]);
 
   const close = React.useCallback(() => {
-    sheetRef.current?.close();
-    console.log(dropdownBottomSheetProps);
-    // close the select dropdown as well
-    dropdownBottomSheetProps?.setIsOpen(false);
     onDismiss?.();
-  }, [dropdownBottomSheetProps, onDismiss]);
+    bottomSheetAndDropdownGlue?.onBottomSheetDismiss();
+  }, [bottomSheetAndDropdownGlue, onDismiss]);
 
-  const open = React.useCallback(() => {
-    sheetRef.current?.snapToIndex(0);
+  const handleOnOpen = React.useCallback(() => {
+    sheetRef.current?.snapToIndex(initialSnapPoint.current);
   }, []);
 
+  const handleOnClose = React.useCallback(() => {
+    sheetRef.current?.close();
+  }, [sheetRef]);
+
+  // sync controlled state to our actions
   React.useEffect(() => {
-    if (isOpen === true) {
-      open();
+    if (_isOpen) {
+      handleOnOpen();
       if (!initialFocusRef) {
         // focus on close button
         focusOnElement(defaultInitialFocusRef.current);
@@ -99,11 +113,16 @@ const _BottomSheet = ({
         // focus on the initialRef
         focusOnElement(initialFocusRef.current);
       }
+    } else {
+      handleOnClose();
     }
-    if (isOpen === false) {
-      close();
-    }
-  }, [close, initialFocusRef, isOpen, open]);
+  }, [_isOpen, handleOnClose, handleOnOpen, initialFocusRef]);
+
+  // let the Dropdown component know that it's rendering a bottomsheet
+  React.useEffect(() => {
+    if (!bottomSheetAndDropdownGlue) return;
+    bottomSheetAndDropdownGlue.setDropdownHasBottomSheet(true);
+  }, [bottomSheetAndDropdownGlue]);
 
   React.useEffect(() => {
     React.Children.forEach(children, (child) => {
@@ -120,42 +139,60 @@ const _BottomSheet = ({
   }, [children]);
 
   const renderFooter = React.useCallback((props): React.ReactElement => {
-    return <GorhomBottomSheetFooter {...props}>{footer.current}</GorhomBottomSheetFooter>;
+    return (
+      <GorhomBottomSheetFooter {...props}>
+        <View
+          onLayout={(event) => {
+            // save footer height so that later we can offset the marginBottom from body content
+            // otherwise few elements gets hidden under the footer
+            setFooterHeight(event.nativeEvent.layout.height);
+          }}
+        >
+          {footer.current}
+        </View>
+      </GorhomBottomSheetFooter>
+    );
   }, []);
 
-  // sync the select dropdown's state with bottomsheet's state
-  React.useEffect(() => {
-    if (!dropdownBottomSheetProps) return;
+  const renderBackdrop = React.useCallback(
+    (props): React.ReactElement => {
+      return <BottomSheetBackdrop {...props} zIndex={zIndex} />;
+    },
+    [zIndex],
+  );
 
-    // this will let the Dropdown component know that it's rendering a bottomsheet
-    dropdownBottomSheetProps.setHasBottomSheet(true);
-
-    if (dropdownBottomSheetProps.isOpen) {
-      open();
-    }
-
-    if (!dropdownBottomSheetProps.isOpen && dropdownBottomSheetProps.selectionType === 'single') {
-      close();
-    }
-  }, [close, open, dropdownBottomSheetProps]);
+  const renderHandle = React.useCallback((): React.ReactElement => {
+    return (
+      <BaseBox
+        onLayout={({ nativeEvent }) => {
+          setHeaderHeight(nativeEvent.layout.height);
+        }}
+      >
+        <BaseBox zIndex={zIndex}>
+          <BottomSheetGrabHandle />
+        </BaseBox>
+        {header.current}
+      </BaseBox>
+    );
+  }, [zIndex]);
 
   const contextValue = React.useMemo<BottomSheetContextProps>(
     () => ({
       isInBottomSheet: true,
       isOpen: Boolean(_isOpen),
-      close,
-      posY: 0,
-      headerHeight: 0,
-      contentHeight: 0,
-      footerHeight: 0,
-      setContentHeight: () => {},
-      setFooterHeight: () => {},
-      setHeaderHeight: () => {},
+      close: handleOnClose,
+      positionY: 0,
+      headerHeight,
+      contentHeight,
+      footerHeight,
+      setContentHeight,
+      setFooterHeight,
+      setHeaderHeight,
       scrollRef: () => {},
       bind: {} as never,
       defaultInitialFocusRef,
     }),
-    [_isOpen, close],
+    [_isOpen, contentHeight, footerHeight, handleOnClose, headerHeight],
   );
 
   // Hack: We need to <Portal> the GorhomBottomSheet to the root of the react-native app
@@ -169,6 +206,15 @@ const _BottomSheet = ({
   // to remove the focus we are updating the key={} property of BottomSheetScrollView
   const bodyResetKey = _isOpen ? 'opened' : 'closed';
 
+  // register and deregister in the stack
+  React.useEffect(() => {
+    if (_isOpen) {
+      addBottomSheetToStack(id);
+    } else {
+      removeBottomSheetFromStack(id);
+    }
+  }, [addBottomSheetToStack, _isOpen, id, removeBottomSheetFromStack]);
+
   return (
     <Portal hostName="BladeBottomSheetPortal">
       {/* Portalling both the context */}
@@ -180,23 +226,16 @@ const _BottomSheet = ({
             enableContentPanningGesture
             ref={sheetRef}
             index={-1}
+            containerStyle={{ zIndex }}
             animateOnMount={false}
-            handleComponent={() => (
-              <BaseBox position="relative">
-                <BottomSheetCloseButton />
-                <BottomSheetGrabHandle />
-              </BaseBox>
-            )}
+            handleComponent={renderHandle}
             backgroundComponent={BottomSheetSurface}
             footerComponent={renderFooter}
-            backdropComponent={BottomSheetBackdrop}
+            backdropComponent={renderBackdrop}
             onClose={close}
             snapPoints={_snapPoints}
           >
-            <GorhomBottomSheetScrollView key={bodyResetKey} stickyHeaderIndices={[0]}>
-              {header.current}
-              {body.current}
-            </GorhomBottomSheetScrollView>
+            {body.current}
           </GorhomBottomSheet>
         </BottomSheetContext.Provider>
       </DropdownContext.Provider>
