@@ -7,7 +7,7 @@ import GorhomBottomSheet, {
 import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
-import { Dimensions, AccessibilityInfo, findNodeHandle, View } from 'react-native';
+import { Dimensions, AccessibilityInfo, findNodeHandle, View, Keyboard } from 'react-native';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { BottomSheetProps } from './types';
@@ -72,6 +72,7 @@ const _BottomSheet = ({
     addBottomSheetToStack,
     removeBottomSheetFromStack,
     getCurrentStackIndexById,
+    getTopOfTheStack,
   } = useBottomSheetStack();
   const currentStackIndex = getCurrentStackIndexById(id);
   const zIndex = 100 - currentStackIndex;
@@ -100,6 +101,9 @@ const _BottomSheet = ({
 
   const handleOnClose = React.useCallback(() => {
     sheetRef.current?.close();
+    // We need this because if inside the BottomSheet there is a input which is focused
+    // and user dragged down to close the sheet, even after closing the sheet the input will remain focused
+    Keyboard.dismiss();
   }, [sheetRef]);
 
   // sync controlled state to our actions
@@ -201,12 +205,6 @@ const _BottomSheet = ({
   // To workaround this, I'm portalling both the DropdownContext & BotomSheetContext along with the component
   const dropdownProps = useDropdown();
 
-  // This will reset the BottomSheet body state
-  // We need this because if inside the BottomSheet there is a input which is focused
-  // and user dragged down to close the sheet, even after closing the sheet the input will remain focused
-  // to remove the focus we are updating the key={} property of BottomSheetScrollView
-  const bodyResetKey = _isOpen ? 'opened' : 'closed';
-
   // register and deregister in the stack
   React.useEffect(() => {
     if (_isOpen) {
@@ -215,6 +213,24 @@ const _BottomSheet = ({
       removeBottomSheetFromStack(id);
     }
   }, [addBottomSheetToStack, _isOpen, id, removeBottomSheetFromStack]);
+
+  // Handle TextInput inside BottomSheet
+  // We expand the BottomSheet to the max snapPoint so that when the keyboard opens
+  // the body content will be visible
+  // There is a standard way to do this:
+  // https://gorhom.github.io/react-native-bottom-sheet/keyboard-handling
+  // But this didn't worked because:
+  // https://github.com/gorhom/react-native-bottom-sheet/issues/618
+  React.useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      if (id && id === getTopOfTheStack()) {
+        sheetRef.current?.expand();
+      }
+    });
+    return () => {
+      showSubscription.remove();
+    };
+  }, [getTopOfTheStack, id]);
 
   return (
     <Portal hostName="BladeBottomSheetPortal">

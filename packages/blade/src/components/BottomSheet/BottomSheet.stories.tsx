@@ -45,6 +45,7 @@ import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
 import { List, ListItem } from '~components/List';
+import { OTPInput } from '~components/Input/OTPInput';
 
 export default {
   title: 'Components/BottomSheet (Internal)',
@@ -70,12 +71,12 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
       >
         <BottomSheetHeader title="1. Saved Address" />
         <BottomSheetBody>
-          <BaseBox padding="spacing.4">
-            <RadioGroup label="Addresses">
-              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-            </RadioGroup>
-          </BaseBox>
+          <OTPInput label="Enter OTP" helpText="Do not share the OTP with anyone" />
+
+          <RadioGroup label="Addresses" marginBottom="spacing.4">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
         </BottomSheetBody>
 
         <BottomSheetFooter
