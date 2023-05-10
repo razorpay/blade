@@ -7,12 +7,9 @@ import { paymentTheme } from '~tokens/theme';
 
 const renderWithTheme = (ui: ReactElement): RenderAPI =>
   render(
-    <PortalProvider>
-      <BladeProvider themeTokens={paymentTheme} colorScheme="light">
-        {ui}
-        <PortalHost name="BladeBottomSheetPortal" />
-      </BladeProvider>
-    </PortalProvider>,
+    <BladeProvider themeTokens={paymentTheme} colorScheme="light">
+      {ui}
+    </BladeProvider>,
   );
 
 export default renderWithTheme;

@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
-Array [
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
   <View
     accessibilityHint="Tap to close the Bottom Sheet"
     accessibilityLabel="Bottom Sheet backdrop"
@@ -37,7 +43,7 @@ Array [
         },
       ]
     }
-  />,
+  />
   <View
     onLayout={[Function]}
     pointerEvents="box-none"
@@ -821,6 +827,6 @@ Array [
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
