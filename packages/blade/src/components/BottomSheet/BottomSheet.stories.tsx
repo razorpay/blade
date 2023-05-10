@@ -49,6 +49,7 @@ import { Link } from '~components/Link';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
 import { Checkbox } from '~components/Checkbox';
+import { OTPInput } from '~components/Input/OTPInput';
 
 export default {
   title: 'Components/BottomSheet (Internal)',
@@ -74,12 +75,12 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
       >
         <BottomSheetHeader title="1. Saved Address" />
         <BottomSheetBody>
-          <BaseBox padding="spacing.5">
-            <RadioGroup label="Addresses">
-              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-            </RadioGroup>
-          </BaseBox>
+          <OTPInput label="Enter OTP" helpText="Do not share the OTP with anyone" />
+
+          <RadioGroup label="Addresses" marginBottom="spacing.4">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
         </BottomSheetBody>
         <BottomSheetFooter>
           <Button
@@ -811,7 +812,8 @@ const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
 
 export const InitialFocus = InitialFocusTemplate.bind({});
 
-const MultiSelectContent = (): React.ReactElement => {
+const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
   const fruites = [
     'Apple',
     'Apricot',
@@ -853,17 +855,6 @@ const MultiSelectContent = (): React.ReactElement => {
     'Tamarind',
     'Yuzu',
   ];
-  return (
-    <ActionList>
-      {fruites.map((fruit) => {
-        return <ActionListItem key={fruit} title={fruit} value={fruit} />;
-      })}
-    </ActionList>
-  );
-};
-
-const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <BaseBox display="flex" gap="spacing.3" flexDirection="column">
@@ -879,7 +870,11 @@ const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
           leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
-          <MultiSelectContent />
+          <ActionList>
+            {fruites.map((fruit) => {
+              return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+            })}
+          </ActionList>
         </BottomSheetBody>
       </BottomSheetComponent>
     </BaseBox>
@@ -898,7 +893,6 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
         {...args}
         isOpen={isOpen}
         onDismiss={() => {
-          console.log('closed');
           setIsOpen(false);
         }}
       >
