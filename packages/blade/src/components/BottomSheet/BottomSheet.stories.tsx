@@ -780,7 +780,8 @@ const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
 
 export const InitialFocus = InitialFocusTemplate.bind({});
 
-const MultiSelectContent = (): React.ReactElement => {
+const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
   const fruites = [
     'Apple',
     'Apricot',
@@ -822,17 +823,6 @@ const MultiSelectContent = (): React.ReactElement => {
     'Tamarind',
     'Yuzu',
   ];
-  return (
-    <ActionList>
-      {fruites.map((fruit) => {
-        return <ActionListItem key={fruit} title={fruit} value={fruit} />;
-      })}
-    </ActionList>
-  );
-};
-
-const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <BaseBox display="flex" gap="spacing.3" flexDirection="column">
@@ -848,7 +838,11 @@ const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
           prefix={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
         />
         <BottomSheetBody>
-          <MultiSelectContent />
+          <ActionList>
+            {fruites.map((fruit) => {
+              return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+            })}
+          </ActionList>
         </BottomSheetBody>
       </BottomSheetComponent>
     </BaseBox>
@@ -867,7 +861,6 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
         {...args}
         isOpen={isOpen}
         onDismiss={() => {
-          console.log('closed');
           setIsOpen(false);
         }}
       >

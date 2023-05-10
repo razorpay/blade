@@ -22,7 +22,7 @@ import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
 
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, assignWithoutSideEffects, makeSize } from '~utils';
+import { makeMotionTime, assignWithoutSideEffects, makeSize, makeAccessible } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
@@ -432,6 +432,7 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
+        {...makeAccessible({ modal: true, role: 'dialog' })}
         data-surface
         windowHeight={dimensions.height}
         isDragging={isDragging}
