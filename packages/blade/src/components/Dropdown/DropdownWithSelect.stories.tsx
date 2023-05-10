@@ -259,7 +259,7 @@ const makeArgTypes = (argTable: ArgsTable): Meta['argTypes'] => {
 };
 
 const DropdownStoryMeta: Meta = {
-  title: 'Components/Dropdown/With Select',
+  title: 'Components/Dropdown/Stories/With Select',
   component: Playground,
   subcomponents: { SelectInputReference: SelectInput },
   args: {

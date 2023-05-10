@@ -12,7 +12,7 @@ import { Box } from '~components/Box';
 import { Badge } from '~components/Badge';
 
 const DropdownStoryMeta = {
-  title: 'Components/Dropdown/With Button',
+  title: 'Components/Dropdown/Stories/With Button',
   component: Dropdown,
   subcomponents: { DropdownButton },
   args: {},

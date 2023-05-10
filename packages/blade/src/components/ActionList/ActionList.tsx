@@ -4,8 +4,9 @@ import { getActionListContainerRole, getActionListItemWrapperRole } from './getA
 import { getActionListProperties } from './actionListUtils';
 import { StyledActionList } from './styles/StyledActionList';
 import { ActionListBox } from './ActionListBox';
+import { componentIds } from './componentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
+import { assignWithoutSideEffects, makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
@@ -140,6 +141,8 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
   );
 };
 
-const ActionList = React.memo(_ActionList);
+const ActionList = assignWithoutSideEffects(React.memo(_ActionList), {
+  displayName: componentIds.ActionList,
+});
 
 export { ActionList, useActionListContext, ActionListProps };

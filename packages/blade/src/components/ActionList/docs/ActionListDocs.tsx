@@ -9,7 +9,6 @@ import { Sandbox, SandboxProvider } from '~src/_helpers/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import BaseBox from '~components/Box/BaseBox';
-import { Alert } from '~components/Alert';
 import { castWebType } from '~utils';
 
 const VerticalEditor = ({
@@ -125,14 +124,8 @@ const ActionListDocs = (): JSX.Element => {
       componentName="ActionList"
       showStorybookControls={false}
       imports=""
+      note="ActionList is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
     >
-      <Alert
-        intent="notice"
-        description="ActionList is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
-        isFullWidth
-        isDismissible={false}
-        marginBottom="spacing.5"
-      />
       <Box as="section">
         <Title size="medium">Playground</Title>
         <Sandbox editorHeight={400}>{Playground}</Sandbox>

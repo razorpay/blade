@@ -1,12 +1,5 @@
-import {
-  ArgsTable,
-  Primary,
-  PRIMARY_STORY,
-  Stories,
-  Subtitle,
-  Title,
-  Description,
-} from '@storybook/addon-docs';
+import React from 'react';
+import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
 import styled from 'styled-components';
 import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
@@ -58,12 +51,6 @@ const WithGlobalStyles = styled(BaseBox)`
   }
 `;
 
-// Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
-// So we manually read location.hash of parent window and scroll to that section on load
-if (window.top) {
-  document.getElementById(window.top.location.hash)?.scrollIntoView();
-}
-
 const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
   const figmaURL = useMakeFigmaURL([
     {
@@ -78,13 +65,29 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
     },
   ]);
 
+  React.useEffect(() => {
+    // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
+    // So we manually read location.hash of parent window and scroll to that section on load
+    if (window.top?.location.hash) {
+      document.querySelector(window.top.location.hash)?.scrollIntoView();
+    }
+  }, []);
+
   const { showStorybookControls = true } = props;
 
   return (
     <WithGlobalStyles>
       <Title>{props.componentName}</Title>
       <Subtitle>{props.componentDescription}</Subtitle>
-      {props.note ? <Description markdown={`> **Note** <br/>${props.note}`} /> : null}
+      {props.note ? (
+        <Alert
+          description={props.note}
+          isFullWidth
+          isDismissible={false}
+          intent="notice"
+          marginBottom="spacing.5"
+        />
+      ) : null}
       {figmaURL !== '#' ? (
         <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
       ) : null}
