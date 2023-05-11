@@ -7,12 +7,10 @@ import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import { Counter } from '~components/Counter';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<BottomSheet />', () => {
   test('should render Header/Footer/Body properly', () => {
     const Example = (): React.ReactElement => {
+      // Can't render BottomSheetBody because https://github.com/gorhom/react-native-bottom-sheet/issues/11#issuecomment-1283588472
       return (
         <BottomSheet isOpen={true}>
           <BottomSheetHeader
@@ -21,10 +19,6 @@ describe('<BottomSheet />', () => {
             trailing={<Badge variant="positive">Action Needed</Badge>}
             titleSuffix={<Counter intent="positive" value={2} />}
           />
-          {/* Can't render BottomSheetBody because https://github.com/gorhom/react-native-bottom-sheet/issues/11#issuecomment-1283588472 */}
-          {/* <BottomSheetBody>
-            <Text>BottomSheet body</Text>
-          </BottomSheetBody> */}
           <BottomSheetFooter>
             <Button isFullWidth variant="secondary">
               Remove address
@@ -38,6 +32,8 @@ describe('<BottomSheet />', () => {
   });
 
   test('BottomSheetHeader trailing should not allow any random component', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
     const Example = (): React.ReactElement => {
       return (
         <BottomSheet isOpen={true}>
@@ -48,6 +44,7 @@ describe('<BottomSheet />', () => {
     expect(() => renderWithTheme(<Example />)).toThrow(
       '[Blade BottomSheetHeader]: Only one of `Button, Badge, Link, Text` component is accepted as trailing',
     );
+    mockConsoleError.mockRestore();
   });
 
   test('BottomSheetHeader trailing should warn about prop overrides', () => {

@@ -54,13 +54,12 @@ const MultiSelectContent = (): React.ReactElement => {
   );
 };
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<BottomSheet />', () => {
   const viewport = mockViewport({ width: '320px', height: '568px' });
 
   it('should render Header/Footer/Body properly', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
     const Example = (): React.ReactElement => {
       return (
         <BottomSheet isOpen={true}>
@@ -83,9 +82,11 @@ describe('<BottomSheet />', () => {
     };
     const { container } = renderWithTheme(<Example />);
     expect(container).toMatchSnapshot();
+    mockConsoleError.mockRestore();
   });
 
   it('should open/close BottomSheet', async () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const user = userEvents.setup();
 
     const Example = (): React.ReactElement => {
@@ -103,18 +104,20 @@ describe('<BottomSheet />', () => {
         </>
       );
     };
-    const { getByText, queryByTestId } = renderWithTheme(<Example />);
+    const { getByText, queryByText, queryByTestId } = renderWithTheme(<Example />);
 
-    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
+    expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
     await user.click(getByText(/open/i));
     await sleep(250);
-    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
+    expect(queryByText('BottomSheet body')).toBeInTheDocument();
     await user.click(queryByTestId('bottomsheet-backdrop')!);
     await sleep(250);
-    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
+    expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
+    mockConsoleError.mockRestore();
   });
 
   it.skip('should close with close button', async () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const user = userEvents.setup();
 
     const Example = (): React.ReactElement => {
@@ -138,18 +141,21 @@ describe('<BottomSheet />', () => {
       );
     };
 
-    const { getByText, getByRole, queryByTestId } = renderWithTheme(<Example />);
+    const { getByText, getByRole, queryByText } = renderWithTheme(<Example />);
 
-    expect(queryByTestId('bottomsheet-body')).not.toBeInTheDocument();
+    expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
     await user.click(getByText(/open/i));
     await sleep(250);
-    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
+    expect(queryByText('BottomSheet body')).toBeInTheDocument();
     await user.click(getByRole('button', { name: /Close/i }));
     await sleep(250);
-    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+    expect(queryByText('BottomSheet body')).not.toBeVisible();
+    mockConsoleError.mockRestore();
   });
 
   it('should work with initial state as open', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
     const Example = (): React.ReactElement => {
       return (
         <BottomSheet isOpen={true}>
@@ -159,11 +165,14 @@ describe('<BottomSheet />', () => {
         </BottomSheet>
       );
     };
-    const { queryByTestId } = renderWithTheme(<Example />);
-    expect(queryByTestId('bottomsheet-body')).toBeInTheDocument();
+    const { queryByText } = renderWithTheme(<Example />);
+    expect(queryByText('BottomSheet body')).toBeInTheDocument();
+    mockConsoleError.mockRestore();
   });
 
   it('should compose with Dropdown single select', async () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
     const user = userEvents.setup();
 
     const Example = (): React.ReactElement => {
@@ -208,9 +217,13 @@ describe('<BottomSheet />', () => {
     await sleep(250);
     expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+    mockConsoleError.mockRestore();
   });
 
   it('should compose with Dropdown multi select', async () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    mockConsoleError.mockRestore();
+
     const user = userEvents.setup();
 
     const Example = (): React.ReactElement => {
@@ -272,9 +285,11 @@ describe('<BottomSheet />', () => {
     expect(
       within(getByRole('option', { name: 'Avocado' })).getByRole('checkbox', { hidden: true }),
     ).not.toBeChecked();
+    mockConsoleError.mockRestore();
   });
 
   test('BottomSheetHeader trailing should not allow any random component', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const Example = (): React.ReactElement => {
       return (
         <BottomSheet isOpen={true}>
@@ -285,10 +300,12 @@ describe('<BottomSheet />', () => {
     expect(() => renderWithTheme(<Example />)).toThrow(
       '[Blade BottomSheetHeader]: Only one of `Button, Badge, Link, Text` component is accepted as trailing',
     );
+    mockConsoleError.mockRestore();
   });
 
   test('BottomSheetHeader trailing should warn about prop overrides', () => {
     jest.spyOn(console, 'warn').mockImplementation();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 
     const Example = (): React.ReactElement => {
       return (
@@ -304,6 +321,8 @@ describe('<BottomSheet />', () => {
         '[Blade BottomSheetHeader]: Do not pass "size" to "Badge" while inside BottomSheetHeader trailing, because we override it.',
       ),
     );
+
+    mockConsoleError.mockRestore();
   });
 
   viewport.cleanup();
