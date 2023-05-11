@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-autofocus */
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
@@ -10,16 +12,9 @@ import {
 } from './';
 
 import {
-  ArrowRightIcon,
   ClockIcon,
   CustomersIcon,
-  DownloadIcon,
-  FileTextIcon,
-  HistoryIcon,
-  HomeIcon,
   SearchIcon,
-  SettingsIcon,
-  StarIcon,
   ThumbsUpIcon,
   TrendingDownIcon,
   TrendingUpIcon,
@@ -27,19 +22,15 @@ import {
 import {
   ActionList,
   ActionListFooter,
-  ActionListFooterIcon,
-  ActionListHeader,
-  ActionListHeaderIcon,
   ActionListItem,
-  ActionListItemAsset,
   ActionListItemIcon,
   ActionListSection,
 } from '~components/ActionList';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { Dropdown } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
-import { Heading, Text } from '~components/Typography';
+import { Text, Title } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -48,510 +39,192 @@ import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
 import { Checkbox } from '~components/Checkbox';
 import { OTPInput } from '~components/Input/OTPInput';
+import { Link } from '~components/Link';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 
-export default {
-  title: 'Components/BottomSheet (Internal)',
-  component: BottomSheetComponent,
-} as Meta<BottomSheetProps>;
-
-const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isFirstOpen, setFirstOpen] = React.useState(false);
-  const [isSecondOpen, setSecondOpen] = React.useState(false);
-  const [isThirdOpen, setThirdOpen] = React.useState(false);
-
+const Page = (): React.ReactElement => {
   return (
-    <BaseBox>
-      <Button onClick={() => setFirstOpen(true)}>1 Open short one first</Button>
-      <Button onClick={() => setSecondOpen(true)}>2 Open large one first</Button>
-      <Button onClick={() => setThirdOpen(true)}>3 Open third first</Button>
+    <StoryPageWrapper
+      componentDescription="A bottom sheet is a component commonly used in mobile applications to display additional information or actions without obstructing the main content of the screen."
+      componentName="BottomSheet"
+      imports={`
+      import {
+        BottomSheet,
+        BottomSheetBody,
+        BottomSheetFooter,
+        BottomSheetHeader,
+      } from '@razorpay/blade/components';
+      
+      import type {
+        BottomSheetProps, 
+        BottomSheetFooterProps,
+        BottomSheetHeaderProps
+      } from '@razorpay/blade/components';
+      `}
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=26477-578228&t=agFItKEmWAzA4N13-0',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=16767-706689&t=6FVL3Ha33gwM45Cm-0',
+      }}
+    >
+      <Title>Usage</Title>
+      <Sandbox showConsole editorHeight={600}>
+        {`
+          import React from 'react';
+          import { 
+            BottomSheet,
+            BottomSheetBody,
+            BottomSheetFooter,
+            BottomSheetHeader,
+            Button,
+            Box,
+            Checkbox,
+            Text,
+          } from '@razorpay/blade/components';
 
-      <BottomSheetComponent
-        isOpen={isFirstOpen}
-        onDismiss={() => {
-          setFirstOpen(false);
-        }}
-      >
-        <BottomSheetHeader title="1. Saved Address" />
-        <BottomSheetBody>
-          <OTPInput label="Enter OTP" helpText="Do not share the OTP with anyone" />
+          function App(): JSX.Element {
+            const [isOpen, setIsOpen] = React.useState(false);
 
-          <RadioGroup label="Addresses" marginBottom="spacing.4">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-        </BottomSheetBody>
-        <BottomSheetFooter>
-          <Button
-            isFullWidth
-            variant="secondary"
-            onClick={() => setSecondOpen(true)}
-            isDisabled={isSecondOpen}
-          >
-            Open large BottomSheet
-          </Button>
-          <Button
-            isFullWidth
-            marginTop="spacing.5"
-            onClick={() => setThirdOpen(true)}
-            isDisabled={isThirdOpen}
-          >
-            Open third BottomSheet
-          </Button>
-        </BottomSheetFooter>
-      </BottomSheetComponent>
+            return (
+              <Box>
+                <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+                <BottomSheet
+                  isOpen={isOpen}
+                  onDismiss={() => {
+                    setIsOpen(false);
+                  }}
+                >
+                  <BottomSheetHeader title="Terms & Conditions" subtitle="Read carefully before accepting." />
+                  <BottomSheetBody>
+                    <Text>
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                      when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                      It has survived not only five centuries, but also the leap into electronic typesetting, 
+                      remaining essentially unchanged. It was popularised in the 1960s with the release of 
+                      Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
+                      publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </Text>
+                  </BottomSheetBody>
+                  <BottomSheetFooter>
+                    <Box
+                      display="flex"
+                      flexDirection="row"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <Box flexShrink={0}>
+                        <Checkbox>I accept terms and condition</Checkbox>
+                      </Box>
+                      <Button>Continue</Button>
+                    </Box>
+                  </BottomSheetFooter>
+                </BottomSheet>
+              </Box>
+            )
+          }
 
-      <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
-        <BottomSheetHeader
-          title="2. Sort By"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
-        <BottomSheetBody>
-          <ActionList>
-            <ActionListItem title="Chinese" value="Chinese" />
-            <ActionListItem title="Italian" value="Italian" />
-            <ActionListItem title="Mexican" value="Mexican" />
-            <ActionListItem title="Indian" value="Indian" />
-            <ActionListItem title="Thai" value="Thai" />
-            <ActionListItem title="French" value="French" />
-            <ActionListItem title="Japanese" value="Japanese" />
-            <ActionListItem title="Spanish" value="Spanish" />
-            <ActionListItem title="Middle Eastern" value="Middle Eastern" />
-            <ActionListItem title="Korean" value="Korean" />
-            <ActionListItem title="Greek" value="Greek" />
-            <ActionListItem title="Vietnamese" value="Vietnamese" />
-            <ActionListItem title="Brazilian" value="Brazilian" />
-            <ActionListItem title="Moroccan" value="Moroccan" />
-            <ActionListItem title="Caribbean" value="Caribbean" />
-            <ActionListItem title="Turkish" value="Turkish" />
-            <ActionListItem title="Lebanese" value="Lebanese" />
-            <ActionListItem title="Malaysian" value="Malaysian" />
-            <ActionListItem title="Indonesian" value="Indonesian" />
-            <ActionListItem title="Peruvian" value="Peruvian" />
-            <ActionListItem title="Ethiopian" value="Ethiopian" />
-            <ActionListItem title="Filipino" value="Filipino" />
-            <ActionListItem title="Cuban" value="Cuban" />
-            <ActionListItem title="German" value="German" />
-            <ActionListItem title="Nigerian" value="Nigerian" />
-            <ActionListFooter />
-          </ActionList>
-        </BottomSheetBody>
-        <BottomSheetFooter>
-          <Button
-            isFullWidth
-            variant="secondary"
-            onClick={() => setFirstOpen(true)}
-            isDisabled={isFirstOpen}
-          >
-            Open Short BottomSheet
-          </Button>
-          <Button
-            isFullWidth
-            marginTop="spacing.5"
-            onClick={() => setThirdOpen(true)}
-            isDisabled={isThirdOpen}
-          >
-            Open third BottomSheet
-          </Button>
-        </BottomSheetFooter>
-      </BottomSheetComponent>
-
-      <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
-        <BottomSheetHeader
-          title="3. Sort By"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
-        <BottomSheetBody>
-          <ActionList>
-            <ActionListSection title="Asia">
-              <ActionListItem title="Chinese" value="Chinese" />
-              <ActionListItem title="Indian" value="Indian" />
-              <ActionListItem title="Thai" value="Thai" />
-              <ActionListItem title="Japanese" value="Japanese" />
-              <ActionListItem title="Korean" value="Korean" />
-              <ActionListItem title="Vietnamese" value="Vietnamese" />
-              <ActionListItem title="Malaysian" value="Malaysian" />
-              <ActionListItem title="Indonesian" value="Indonesian" />
-            </ActionListSection>
-
-            <ActionListSection title="Europe">
-              <ActionListItem title="Italian" value="Italian" />
-              <ActionListItem title="French" value="French" />
-              <ActionListItem title="Spanish" value="Spanish" />
-              <ActionListItem title="Greek" value="Greek" />
-              <ActionListItem title="German" value="German" />
-            </ActionListSection>
-
-            <ActionListSection title="North America">
-              <ActionListItem title="Mexican" value="Mexican" />
-              <ActionListItem title="Caribbean" value="Caribbean" />
-            </ActionListSection>
-
-            <ActionListSection title="South America">
-              <ActionListItem title="Brazilian" value="Brazilian" />
-              <ActionListItem title="Peruvian" value="Peruvian" />
-            </ActionListSection>
-
-            <ActionListSection title="Africa">
-              <ActionListItem title="Middle Eastern" value="Middle Eastern" />
-              <ActionListItem title="Moroccan" value="Moroccan" />
-              <ActionListItem title="Ethiopian" value="Ethiopian" />
-              <ActionListItem title="Nigerian" value="Nigerian" />
-            </ActionListSection>
-          </ActionList>
-        </BottomSheetBody>
-        <BottomSheetFooter>
-          <Button
-            isFullWidth
-            variant="secondary"
-            onClick={() => setFirstOpen(true)}
-            isDisabled={isFirstOpen}
-          >
-            Open Short BottomSheet
-          </Button>
-          <Button
-            isFullWidth
-            marginTop="spacing.5"
-            onClick={() => setSecondOpen(true)}
-            isDisabled={isSecondOpen}
-          >
-            Open Long BottomSheet
-          </Button>
-        </BottomSheetFooter>
-      </BottomSheetComponent>
-
-      <BaseBox>
-        {new Array(100).fill(0).map((_, idx) => (
-          <Text key={idx}>{idx}</Text>
-        ))}
-      </BaseBox>
-    </BaseBox>
+          export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
   );
 };
 
-export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
+export default {
+  title: 'Components/BottomSheet',
+  component: BottomSheetComponent,
+  parameters: {
+    docs: {
+      page: () => <Page />,
+    },
+  },
+} as Meta<BottomSheetProps>;
 
-// ActionList should not have header/footer while inside BottomSheet
-// BottomSheet body needs to be naked when rendering ActionList otherwise GorhomBottomSheetFlatList wont work
-
-const BottomSheetActionListTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [isFirstOpen, setFirstOpen] = React.useState(false);
 
   return (
     <BaseBox>
-      <Button onClick={() => setFirstOpen(true)}>first</Button>
-      <Button onClick={() => setIsOpen(true)}>open</Button>
-
+      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
       <BottomSheetComponent
-        isOpen={isFirstOpen}
+        {...args}
+        isOpen={isOpen}
         onDismiss={() => {
-          setFirstOpen(false);
+          setIsOpen(false);
         }}
       >
-        <BottomSheetHeader title="1. Saved Address" />
+        <BottomSheetHeader title="Terms & Conditions" subtitle="Read carefully before accepting." />
         <BottomSheetBody>
-          <RadioGroup label="Addresses">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-          <RadioGroup label="Addresses">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-          <RadioGroup label="Addresses">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-          <RadioGroup label="Addresses">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-          <RadioGroup label="Addresses">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-          <RadioGroup label="Addresses">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-          <RadioGroup label="Addresses">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-          <RadioGroup label="Addresses">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
-          <Text>Reached End</Text>
+          <List>
+            <ListItem>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+              has been the industry's standard dummy text ever since the 1500s, when an unknown
+              printer took a galley of type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into electronic typesetting,
+              remaining essentially unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </ListItem>
+            <ListItem>
+              It is a long established fact that a reader will be distracted by the readable content
+              of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+              more-or-less normal distribution of letters, as opposed to using 'Content here,
+              content here', making it look like readable English. Many desktop publishing packages
+              and web page editors now use Lorem Ipsum as their default model text, and a search for
+              'lorem ipsum' will uncover many web sites still in their infancy. Various versions
+              have evolved over the years, sometimes by accident, sometimes on purpose (injected
+              humour and the like).
+            </ListItem>
+            <ListItem>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+              piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard
+              McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going
+              through the cites of the word in classical literature, discovered the undoubtable
+              source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+              Malorum" (If you don't use blade we will haunt you) by Cicero, written in 45 BC. This
+              book is a treatise on the theory of ethics, very popular during the Renaissance. The
+              first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
+              section 1.10.32.
+            </ListItem>
+            <ListItem>
+              The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+              interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by
+              Cicero are also reproduced in their exact original form, accompanied by English
+              versions from the 1914 translation by H. Rackham.
+            </ListItem>
+          </List>
         </BottomSheetBody>
         <BottomSheetFooter>
-          <Button isFullWidth>Open Large BottomSheet</Button>
-        </BottomSheetFooter>
-      </BottomSheetComponent>
-
-      <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
-        <BottomSheetHeader
-          title="3. Sort By"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
-        <BottomSheetBody>
-          <ActionList>
-            <ActionListItem
-              leading={<ActionListItemIcon icon={HomeIcon} />}
-              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
-              title="Home"
-              value="Home"
-              description="Go to home"
-            />
-            <ActionListSection title="Options">
-              <ActionListItem
-                leading={<ActionListItemIcon icon={SettingsIcon} />}
-                title="Settings"
-                value="settings 1"
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={DownloadIcon} />}
-                title="Download"
-                value="download 1"
-              />
-            </ActionListSection>
-            <ActionListItem
-              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
-              title="Pricing"
-              value="pricing 1"
-            />
-            <ActionListSection title="Options">
-              <ActionListItem
-                leading={<ActionListItemIcon icon={SettingsIcon} />}
-                title="Settings"
-                value="settings 2"
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={DownloadIcon} />}
-                title="Download"
-                value="download 2"
-              />
-            </ActionListSection>
-            <ActionListSection title="Options">
-              <ActionListItem
-                leading={<ActionListItemIcon icon={SettingsIcon} />}
-                title="Settings"
-                value="settings 3"
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={DownloadIcon} />}
-                title="Download"
-                value="download 3"
-              />
-            </ActionListSection>
-            <ActionListItem
-              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
-              title="Pricing"
-              value="pricing 3"
-            />
-            <ActionListItem
-              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
-              title="Pricing"
-              value="pricing 4"
-            />
-            <ActionListSection title="Asia">
-              <ActionListItem title="Chinese" value="Chinese" />
-              <ActionListItem title="Indian" value="Indian" />
-              <ActionListItem title="Thai" value="Thai" />
-              <ActionListItem title="Japanese" value="Japanese" />
-              <ActionListItem title="Korean" value="Korean" />
-              <ActionListItem title="Vietnamese" value="Vietnamese" />
-              <ActionListItem title="Malaysian" value="Malaysian" />
-              <ActionListItem title="Indonesian" value="Indonesian" />
-            </ActionListSection>
-
-            <ActionListSection title="Europe">
-              <ActionListItem title="Italian" value="Italian" />
-              <ActionListItem title="French" value="French" />
-              <ActionListItem title="Spanish" value="Spanish" />
-              <ActionListItem title="Greek" value="Greek" />
-              <ActionListItem title="German" value="German" />
-            </ActionListSection>
-
-            <ActionListSection title="North America">
-              <ActionListItem title="Mexican" value="Mexican" />
-              <ActionListItem title="Caribbean" value="Caribbean" />
-            </ActionListSection>
-
-            <ActionListSection title="South America">
-              <ActionListItem title="Brazilian" value="Brazilian" />
-              <ActionListItem title="Peruvian" value="Peruvian" />
-            </ActionListSection>
-
-            <ActionListSection title="Africa">
-              <ActionListItem title="Middle Eastern" value="Middle Eastern" />
-              <ActionListItem title="Moroccan" value="Moroccan" />
-              <ActionListItem title="Ethiopian" value="Ethiopian" />
-              <ActionListItem title="Nigerian" value="Nigerian" />
-            </ActionListSection>
-          </ActionList>
-        </BottomSheetBody>
-        <BottomSheetFooter>
-          <Box display="flex" flexDirection="column">
-            <Box flexShrink={0} marginBottom="spacing.5">
-              <Checkbox>Accept terms and condition</Checkbox>
+          <Box
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <Box flexShrink={0}>
+              <Checkbox>I accept terms and condition</Checkbox>
             </Box>
-            <Button isFullWidth variant="secondary" onClick={() => 1}>
-              Open Short BottomSheet
-            </Button>
-            <Button isFullWidth marginTop="spacing.5" onClick={() => 1}>
-              Open Long BottomSheet
-            </Button>
+            <Button>Continue</Button>
           </Box>
         </BottomSheetFooter>
       </BottomSheetComponent>
-
-      <BaseBox minHeight="200px">
-        <Dropdown selectionType="single">
-          <SelectInput
-            label="Select Action"
-            onChange={({ name, values }) => {
-              console.log(name, values);
-            }}
-          />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListHeader
-                title="Recent Searches"
-                leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-              />
-              <ActionListItem
-                leading={<ActionListItemIcon icon={HomeIcon} />}
-                trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
-                title="Home"
-                value="Home"
-                description="Go to home"
-              />
-              <ActionListSection title="Options">
-                <ActionListItem
-                  leading={<ActionListItemIcon icon={SettingsIcon} />}
-                  title="Settings"
-                  value="settings 1"
-                />
-                <ActionListItem
-                  leading={<ActionListItemIcon icon={DownloadIcon} />}
-                  title="Download"
-                  value="download 1"
-                />
-              </ActionListSection>
-              <ActionListItem
-                leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
-                title="Pricing"
-                value="pricing 1"
-              />
-              <ActionListSection title="Options">
-                <ActionListItem
-                  leading={<ActionListItemIcon icon={SettingsIcon} />}
-                  title="Settings"
-                  value="settings 2"
-                />
-                <ActionListItem
-                  leading={<ActionListItemIcon icon={DownloadIcon} />}
-                  title="Download"
-                  value="download 2"
-                />
-              </ActionListSection>
-              <ActionListSection title="Options">
-                <ActionListItem
-                  leading={<ActionListItemIcon icon={SettingsIcon} />}
-                  title="Settings"
-                  value="settings 3"
-                />
-                <ActionListItem
-                  leading={<ActionListItemIcon icon={DownloadIcon} />}
-                  title="Download"
-                  value="download 3"
-                />
-              </ActionListSection>
-              <ActionListItem
-                leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
-                title="Pricing"
-                value="pricing 3"
-              />
-              <ActionListItem
-                leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
-                title="Pricing"
-                value="pricing 4"
-              />
-              <ActionListFooter
-                title="Search Tips"
-                leading={<ActionListFooterIcon icon={FileTextIcon} />}
-                trailing={<Button onClick={console.log}>Apply</Button>}
-              />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-      </BaseBox>
-
-      <BaseBox minHeight="500px">
-        <Dropdown selectionType="single">
-          <SelectInput
-            label="Select Action"
-            onChange={({ name, values }) => {
-              console.log(name, values);
-            }}
-          />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListItem
-                leading={<ActionListItemIcon icon={HomeIcon} />}
-                trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
-                title="Home"
-                value="Home"
-                description="Go to home"
-              />
-              <ActionListSection title="Options">
-                <ActionListItem
-                  leading={<ActionListItemIcon icon={SettingsIcon} />}
-                  title="Settings"
-                  value="settings 1"
-                />
-                <ActionListItem
-                  leading={<ActionListItemIcon icon={DownloadIcon} />}
-                  title="Download"
-                  value="download 1"
-                />
-              </ActionListSection>
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-      </BaseBox>
     </BaseBox>
   );
 };
 
-export const BottomSheetActionList = BottomSheetActionListTemplate.bind({});
+export const Default = BottomSheetTemplate.bind({});
 
-const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen1, setIsOpen1] = React.useState(false);
-  const [isOpen2, setIsOpen2] = React.useState(false);
+const WithHeaderFooterTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <BaseBox>
-      <Button onClick={() => setIsOpen1(true)}>Open 1</Button>
-      <Button onClick={() => setIsOpen2(true)}>Open 2</Button>
-      <BottomSheetComponent isOpen={isOpen1} onDismiss={() => setIsOpen1(false)}>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader
           title="Address Details"
           subtitle="Saving addresses will improve your checkout experience"
@@ -562,60 +235,7 @@ const WithHeaderTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
           <RadioGroup label="Addresses">
             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
             <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
           </RadioGroup>
-          <Button isFullWidth onClick={() => setIsOpen1(false)}>
-            Add Another
-          </Button>
-        </BottomSheetBody>
-        <BottomSheetFooter>
-          <Button isFullWidth variant="secondary">
-            Remove address
-          </Button>
-          <Button isFullWidth marginTop="spacing.5">
-            Add address
-          </Button>
-        </BottomSheetFooter>
-      </BottomSheetComponent>
-      <BottomSheetComponent isOpen={isOpen2} onDismiss={() => setIsOpen2(false)}>
-        <BottomSheetHeader />
-        <BottomSheetBody>
-          <RadioGroup label="Addresses">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup>
-          <Button isFullWidth onClick={() => setIsOpen2(false)}>
-            Add Another
-          </Button>
-        </BottomSheetBody>
-      </BottomSheetComponent>
-    </BaseBox>
-  );
-};
-
-export const WithHeader = WithHeaderTemplate.bind({});
-
-const WithFooterTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(true);
-
-  return (
-    <BaseBox>
-      <Button onClick={() => setIsOpen(true)}>Add address</Button>
-      <BottomSheetComponent
-        isOpen={isOpen}
-        onDismiss={() => {
-          setIsOpen(false);
-        }}
-      >
-        <BottomSheetHeader title="Saved Address" />
-        <BottomSheetBody>
-          <BaseBox padding="spacing.5">
-            <RadioGroup label="Addresses">
-              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-            </RadioGroup>
-          </BaseBox>
         </BottomSheetBody>
         <BottomSheetFooter>
           <Button isFullWidth variant="secondary">
@@ -630,7 +250,7 @@ const WithFooterTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   );
 };
 
-export const WithFooter = WithFooterTemplate.bind({});
+export const WithHeaderFooter = WithHeaderFooterTemplate.bind({});
 
 const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   return (
@@ -681,9 +301,6 @@ const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponen
   return (
     <Dropdown selectionType="multiple">
       <SelectInput label="Cuisines Filter" />
-      {/* // check if we are rendering ActionList
-      // If there is, stop rendering ActionList's SectionList
-      // Loop over JSX of actionlist, data={} */}
       <BottomSheetComponent>
         <BottomSheetHeader
           title="Filter By Cuisines"
@@ -780,6 +397,178 @@ const WithDropdownSectionsTemplate: ComponentStory<typeof BottomSheetComponent> 
 
 export const WithDropdownSectionsSelect = WithDropdownSectionsTemplate.bind({});
 
+const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isFirstOpen, setFirstOpen] = React.useState(false);
+  const [isSecondOpen, setSecondOpen] = React.useState(false);
+  const [isThirdOpen, setThirdOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setFirstOpen(true)}>Open 1st BottomSheet</Button>
+      <Button marginLeft="spacing.3" onClick={() => setSecondOpen(true)}>
+        Open 2nd BottomSheet
+      </Button>
+      <Button marginLeft="spacing.3" onClick={() => setThirdOpen(true)}>
+        Open 3rd BottomSheet
+      </Button>
+
+      <BottomSheetComponent
+        isOpen={isFirstOpen}
+        onDismiss={() => {
+          setFirstOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="1. Saved Address" />
+        <BottomSheetBody>
+          <RadioGroup label="Addresses" marginBottom="spacing.4">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="secondary"
+            onClick={() => setSecondOpen(true)}
+            isDisabled={isSecondOpen}
+          >
+            Open 2nd BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setThirdOpen(true)}
+            isDisabled={isThirdOpen}
+          >
+            Open third BottomSheet
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+
+      <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
+        <BottomSheetHeader
+          title="2. Sort By"
+          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem title="Chinese" value="Chinese" />
+            <ActionListItem title="Italian" value="Italian" />
+            <ActionListItem title="Mexican" value="Mexican" />
+            <ActionListItem title="Indian" value="Indian" />
+            <ActionListItem title="Thai" value="Thai" />
+            <ActionListItem title="French" value="French" />
+            <ActionListItem title="Japanese" value="Japanese" />
+            <ActionListItem title="Spanish" value="Spanish" />
+            <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+            <ActionListItem title="Korean" value="Korean" />
+            <ActionListItem title="Greek" value="Greek" />
+            <ActionListItem title="Vietnamese" value="Vietnamese" />
+            <ActionListItem title="Brazilian" value="Brazilian" />
+            <ActionListItem title="Moroccan" value="Moroccan" />
+            <ActionListItem title="Caribbean" value="Caribbean" />
+            <ActionListItem title="Turkish" value="Turkish" />
+            <ActionListItem title="Lebanese" value="Lebanese" />
+            <ActionListItem title="Malaysian" value="Malaysian" />
+            <ActionListItem title="Indonesian" value="Indonesian" />
+            <ActionListItem title="Peruvian" value="Peruvian" />
+            <ActionListItem title="Ethiopian" value="Ethiopian" />
+            <ActionListItem title="Filipino" value="Filipino" />
+            <ActionListItem title="Cuban" value="Cuban" />
+            <ActionListItem title="German" value="German" />
+            <ActionListItem title="Nigerian" value="Nigerian" />
+            <ActionListFooter />
+          </ActionList>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="secondary"
+            onClick={() => setFirstOpen(true)}
+            isDisabled={isFirstOpen}
+          >
+            Open 1st BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setThirdOpen(true)}
+            isDisabled={isThirdOpen}
+          >
+            Open 3rd BottomSheet
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+
+      <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
+        <BottomSheetHeader
+          title="3. Sort By"
+          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+        />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListSection title="Asia">
+              <ActionListItem title="Chinese" value="Chinese" />
+              <ActionListItem title="Indian" value="Indian" />
+              <ActionListItem title="Thai" value="Thai" />
+              <ActionListItem title="Japanese" value="Japanese" />
+              <ActionListItem title="Korean" value="Korean" />
+              <ActionListItem title="Vietnamese" value="Vietnamese" />
+              <ActionListItem title="Malaysian" value="Malaysian" />
+              <ActionListItem title="Indonesian" value="Indonesian" />
+            </ActionListSection>
+
+            <ActionListSection title="Europe">
+              <ActionListItem title="Italian" value="Italian" />
+              <ActionListItem title="French" value="French" />
+              <ActionListItem title="Spanish" value="Spanish" />
+              <ActionListItem title="Greek" value="Greek" />
+              <ActionListItem title="German" value="German" />
+            </ActionListSection>
+
+            <ActionListSection title="North America">
+              <ActionListItem title="Mexican" value="Mexican" />
+              <ActionListItem title="Caribbean" value="Caribbean" />
+            </ActionListSection>
+
+            <ActionListSection title="South America">
+              <ActionListItem title="Brazilian" value="Brazilian" />
+              <ActionListItem title="Peruvian" value="Peruvian" />
+            </ActionListSection>
+
+            <ActionListSection title="Africa">
+              <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+              <ActionListItem title="Moroccan" value="Moroccan" />
+              <ActionListItem title="Ethiopian" value="Ethiopian" />
+              <ActionListItem title="Nigerian" value="Nigerian" />
+            </ActionListSection>
+          </ActionList>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="secondary"
+            onClick={() => setFirstOpen(true)}
+            isDisabled={isFirstOpen}
+          >
+            Open 1st BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setSecondOpen(true)}
+            isDisabled={isSecondOpen}
+          >
+            Open 2nd BottomSheet
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
+
+export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
+
 const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const initialFocusRef = React.useRef<HTMLButtonElement>(null);
@@ -796,12 +585,18 @@ const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
       >
         <BottomSheetHeader title="Users" />
         <BottomSheetBody>
-          <List>
+          <TextInput label="Search Users" ref={initialFocusRef} />
+
+          <Text marginTop="spacing.5">
+            By default the initial focus is set to the close button, but you can modify it by
+            passing the `initialFocusRef` prop
+          </Text>
+
+          <List marginTop="spacing.5">
             <ListItem>Anurag Hazra</ListItem>
             <ListItem>Kamlesh Chandnani</ListItem>
             <ListItem>Divyanshu Maithani</ListItem>
           </List>
-          <TextInput label="Search Users" ref={initialFocusRef} />
         </BottomSheetBody>
       </BottomSheetComponent>
     </BaseBox>
@@ -811,7 +606,6 @@ const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
 export const InitialFocus = InitialFocusTemplate.bind({});
 
 const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
   const fruites = [
     'Apple',
     'Apricot',
@@ -855,74 +649,41 @@ const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   ];
 
   return (
-    <BaseBox display="flex" gap="spacing.3" flexDirection="column">
-      <Text>Custom SnapPoints at 50%, 80%, 100%</Text>
-      <Button onClick={() => setIsOpen(true)}>Open</Button>
-      <BottomSheetComponent
-        isOpen={isOpen}
-        onDismiss={() => setIsOpen(false)}
-        snapPoints={[0.5, 0.8, 1]}
-      >
-        <BottomSheetHeader
-          title="Fruits"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
-        <BottomSheetBody>
-          <ActionList>
-            {fruites.map((fruit) => {
-              return <ActionListItem key={fruit} title={fruit} value={fruit} />;
-            })}
-          </ActionList>
-        </BottomSheetBody>
-      </BottomSheetComponent>
+    <BaseBox>
+      <Text marginBottom="spacing.5">Custom SnapPoints at 50%, 80%, 100%</Text>
+      <Dropdown selectionType="multiple">
+        <SelectInput label="Cuisines Filter" />
+        <BottomSheetComponent snapPoints={[0.5, 0.8, 1]}>
+          <BottomSheetHeader
+            title="Fruits"
+            leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
+          />
+          <BottomSheetBody>
+            <ActionList>
+              {fruites.map((fruit) => {
+                return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+              })}
+            </ActionList>
+          </BottomSheetBody>
+        </BottomSheetComponent>
+      </Dropdown>
     </BaseBox>
   );
 };
 
 export const CustomSnapPoints = SnapPointsTemplate.bind({});
 
-const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
+const WithOTPInputTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  return (
-    <BaseBox>
-      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
-      <BottomSheetComponent
-        {...args}
-        isOpen={isOpen}
-        onDismiss={() => {
-          setIsOpen(false);
-        }}
-      >
-        <BottomSheetHeader
-          title="Select Account & Update Details"
-          subtitle="Header subtitle"
-          leading={<StarIcon color="surface.text.muted.lowContrast" size="large" />}
-          titleSuffix={<Badge variant="positive">label</Badge>}
-        />
-        <BottomSheetBody>
-          <BaseBox display="flex" flexDirection="column" gap="spacing.5">
-            <TextInput
-              type="number"
-              label="Edit your mobile number"
-              helpText="Your registered mobile number will not get charged"
-            />
-            <Button isFullWidth onClick={() => setIsOpen(false)}>
-              Continue
-            </Button>
-          </BaseBox>
-        </BottomSheetBody>
-      </BottomSheetComponent>
-    </BaseBox>
-  );
-};
-
-export const Default = BottomSheetTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Default.storyName = 'Default';
-
-const BottomSheetScrollingContentTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const submitOTP = React.useCallback(() => {
+    setIsLoading(true);
+    window.setTimeout(() => {
+      setIsLoading(false);
+      setIsOpen(false);
+    }, 2000);
+  }, []);
 
   return (
     <BaseBox>
@@ -935,68 +696,32 @@ const BottomSheetScrollingContentTemplate: ComponentStory<typeof BottomSheetComp
       >
         <BottomSheetHeader title="1. Saved Address" />
         <BottomSheetBody>
-          <BaseBox marginBottom="spacing.4">
-            <RadioGroup label="Addresses">
-              <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-              <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-            </RadioGroup>
-          </BaseBox>
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <OTPInput
+              onOTPFilled={submitOTP}
+              marginBottom="spacing.5"
+              label="Enter the OTP sent to +9190909090"
+            />
+            <TextInput label="hello" labelPosition="left" />
 
-          <Heading>Lorem Ipsum</Heading>
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent auctor tellus ut arcu
-            porttitor, non ultrices libero accumsan. Proin eget leo sed neque tristique tincidunt.
-            Sed vel ultrices leo, eu auctor magna. Vivamus a ligula interdum, auctor nibh quis,
-            dapibus nisl. Donec efficitur sed ante ac molestie. Pellentesque pharetra, tortor eu
-            vestibulum consectetur, diam ex condimentum enim, sit amet fringilla tellus neque ut
-            risus. Maecenas magna lectus, feugiat vitae blandit eget, iaculis non lectus. Cras
-            aliquet massa id augue vulputate, non lobortis massa aliquet. Nullam facilisis justo et
-          </Text>
-          <Heading>Lorem Ipsum</Heading>
-          <Text>
-            vestibulum sodales. Duis accumsan posuere lorem eget semper. Nam congue, mi sit amet
-            ultrices interdum, quam orci fringilla elit, vitae malesuada lorem elit tristique elit.
-            Aenean bibendum dui ex, sit amet elementum est elementum sit amet. Proin massa orci,
-            tempus a rutrum ac, egestas sit amet tortor. Morbi dictum ultricies ex finibus blandit.
-            Sed luctus quam nec eros convallis fringilla. Duis dignissim nulla neque, eu dapibus
-            metus dignissim at. Nullam imperdiet augue ex, posuere fermentum lectus dapibus vitae.
-            Nullam ultricies libero cursus turpis tincidunt egestas. Vestibulum interdum auctor
-            massa laoreet sollicitudin. Nunc lobortis ullamcorper leo, a imperdiet purus ultricies
-            volutpat. Aliquam erat volutpat. Donec tempus enim nec semper imperdiet. Nullam
-            porttitor enim dui. Curabitur at orci lobortis, faucibus tellus id, malesuada leo.
-            Curabitur fermentum massa a ligula feugiat hendrerit. Ut tincidunt arcu sed ultrices
-            consectetur. Nulla suscipit tortor lacus, id accumsan libero sodales a. Suspendisse in
-            congue massa, sit amet laoreet nisi. Suspendisse at libero eu tortor posuere sodales.
-            Sed suscipit, diam vitae pharetra vestibulum, erat enim pulvinar tortor, ut consectetur
-            sem nibh vitae arcu. Integer lorem leo, lacinia non congue ac, efficitur eu justo.
-            Phasellus quis odio lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-          </Text>
-          <Heading>Lorem Ipsum</Heading>
-          <Text>
-            Vestibulum ac purus non justo commodo tincidunt. Pellentesque hendrerit sollicitudin
-            nunc, quis eleifend eros vulputate eu. Ut in nulla et velit rhoncus venenatis quis eu
-            neque. Ut mattis massa risus. Praesent at erat non arcu rhoncus feugiat et eu enim.
-            Etiam sodales nec turpis id placerat. Donec dignissim elit id fringilla faucibus.
-            Suspendisse eu turpis at nulla iaculis tincidunt vitae ut sem. Nulla egestas nunc et
-            lobortis aliquam. Integer nec metus at mauris vestibulum tristique vitae vitae risus.
-            Mauris faucibus vitae eros id consectetur. Sed tincidunt egestas felis sit amet gravida.
-            Donec tincidunt varius varius. Nunc lacinia orci et eros congue, a hendrerit nisi
-            fermentum. Pellentesque vel ligula sit amet dolor ultrices vulputate. Donec arcu leo,
-            interdum et dapibus eu, suscipit quis velit. Pellentesque porta nec quam non finibus.
-            Suspendisse sed ex efficitur lectus mollis faucibus. Quisque viverra eget sapien non
-            ultrices. Quisque eget rutrum lacus. Nulla porta viverra felis, non eleifend nisi
-            convallis at. Pellentesque consectetur, neque laoreet venenatis molestie, metus velit
-            feugiat purus, ut maximus dolor metus ut nisi. Suspendisse consequat enim at odio
-            eleifend mattis.
-          </Text>
+            <Text textAlign="center">
+              By clicking “Submit OTP”, I agree to <Link href="#">Terms and Conditions</Link>,
+              <Link href="#">Privacy Policy</Link>, and <Link href="#">Service Agreement</Link>.
+            </Text>
+          </Box>
         </BottomSheetBody>
 
         <BottomSheetFooter>
-          <Button isFullWidth>Primary button</Button>
+          <Button isFullWidth variant="secondary">
+            Cancel
+          </Button>
+          <Button isLoading={isLoading} onClick={submitOTP} isFullWidth marginTop="spacing.5">
+            Submit
+          </Button>
         </BottomSheetFooter>
       </BottomSheetComponent>
     </BaseBox>
   );
 };
 
-export const WithScrollingContent = BottomSheetScrollingContentTemplate.bind({});
+export const WithOTPInput = WithOTPInputTemplate.bind({});
