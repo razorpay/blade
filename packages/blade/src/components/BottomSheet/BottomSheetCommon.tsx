@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/display-name */
 import React from 'react';
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
@@ -36,6 +37,19 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
     ref,
   ) => {
     const { close } = useBottomSheetContext();
+    const webOnlyEventHandlers = isReactNative()
+      ? {}
+      : {
+          onClickCapture,
+          onKeyDown,
+          onKeyUp,
+          onLostPointerCapture,
+          onPointerCancel,
+          onPointerDown,
+          onPointerMove,
+          onPointerUp,
+        };
+
     return (
       <BaseBox
         position="relative"
@@ -44,14 +58,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
         // total = 40px
         height={makeSize(size[24])}
         touchAction="none"
-        onClickCapture={onClickCapture}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onLostPointerCapture={onLostPointerCapture}
-        onPointerCancel={onPointerCancel}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
+        {...webOnlyEventHandlers}
       >
         <BaseBox
           position="absolute"

@@ -5,4 +5,4 @@ export {
   BottomSheetHeader,
 } from './BottomSheet';
 
-export type { BottomSheetProps } from './types';
+export * from './types';

@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
 import { ComponentIds } from './componentIds';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetContext } from './BottomSheetContext';
-import { BottomSheetHeaderProps } from './types';
+import type { BottomSheetHeaderProps } from './types';
 import { useBottomSheetHeaderTrailingRestriction } from './utils';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';

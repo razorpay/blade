@@ -3,7 +3,7 @@ import { Divider } from './Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils';
 
-export type BaseFooterProps = {
+type BaseFooterProps = {
   children: React.ReactNode;
   hideDivider?: boolean;
 };
@@ -28,4 +28,4 @@ const BaseFooter = assignWithoutSideEffects(_BaseFooter, {
   componentId: 'BaseFooter',
 });
 
-export { BaseFooter };
+export { BaseFooter, BaseFooterProps };
