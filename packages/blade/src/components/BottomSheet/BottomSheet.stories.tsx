@@ -17,7 +17,6 @@ import {
   FileTextIcon,
   HistoryIcon,
   HomeIcon,
-  InfoIcon,
   SearchIcon,
   SettingsIcon,
   StarIcon,
@@ -45,7 +44,6 @@ import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
 import { List, ListItem } from '~components/List';
-import { Link } from '~components/Link';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
 import { Checkbox } from '~components/Checkbox';
