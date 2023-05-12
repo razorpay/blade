@@ -3,7 +3,7 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { mockViewport } from 'jsdom-testing-mocks';
-import { within } from '@testing-library/react';
+import { fireEvent, within } from '@testing-library/react';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
@@ -116,7 +116,7 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
-  it.skip('should close with close button', async () => {
+  it('should close with close button', async () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const user = userEvents.setup();
 
@@ -129,6 +129,7 @@ describe('<BottomSheet />', () => {
           <BottomSheet
             isOpen={isOpen}
             onDismiss={() => {
+              console.log('click');
               setIsOpen(false);
             }}
           >
@@ -141,15 +142,16 @@ describe('<BottomSheet />', () => {
       );
     };
 
-    const { getByText, getByRole, queryByText } = renderWithTheme(<Example />);
+    const { getByRole, queryByText } = renderWithTheme(<Example />);
 
     expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
-    await user.click(getByText(/open/i));
+    await user.click(getByRole('button', { name: 'Open' }));
     await sleep(250);
     expect(queryByText('BottomSheet body')).toBeInTheDocument();
-    await user.click(getByRole('button', { name: /Close/i }));
+    // for some reason userEvent.press didn't worked
+    fireEvent.click(getByRole('button', { name: 'Close' }));
     await sleep(250);
-    expect(queryByText('BottomSheet body')).not.toBeVisible();
+    expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
     mockConsoleError.mockRestore();
   });
 
