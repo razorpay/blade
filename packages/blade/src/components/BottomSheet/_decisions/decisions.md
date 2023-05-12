@@ -47,7 +47,7 @@ const [isOpen, setIsOpen] = React.useState(false);
 <BottomSheetComponent
   isOpen={isOpen}
   onDismiss={() => {
-    setFirstOpen(false);
+    setIsOpen(false);
   }}
 >
   <BottomSheetHeader
@@ -119,7 +119,9 @@ We'll expose a `BottomSheet` component with the following API:
 
 ## Composition with Dropdown
 
-We will export `BottomSheet` component separately as an independant component but generally the pattern will be to use it with SelectInput, where in mobile devices the Select's dropdown will be replaced by the BottomSheet.
+We will export `BottomSheet` component separately as an independent component but generally the pattern will be to use it with SelectInput, where in mobile devices the Select's dropdown will be replaced by the BottomSheet.
+
+<img src="./bottomsheet-to-dropdown.png" alt="Image of guideline showing how the bottomsheet should behave in different screen sizes" width="55%" />
 
 There are two approaches to doing it:
 
