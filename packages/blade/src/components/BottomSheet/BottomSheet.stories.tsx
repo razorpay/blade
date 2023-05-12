@@ -6,7 +6,7 @@ import React from 'react';
 import type { BottomSheetProps } from './';
 import {
   BottomSheetBody,
-  BottomSheet_PRE_RELEASE as BottomSheetComponent,
+  BottomSheet as BottomSheetComponent,
   BottomSheetFooter,
   BottomSheetHeader,
 } from './';
@@ -395,13 +395,11 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
 
   return (
     <BaseBox>
-      <Button marginRight="spacing.3" onClick={() => setFirstOpen(true)}>
-        Open 1st BottomSheet
-      </Button>
-      <Button marginRight="spacing.3" onClick={() => setSecondOpen(true)}>
-        Open 2nd BottomSheet
-      </Button>
-      <Button onClick={() => setThirdOpen(true)}>Open 3rd BottomSheet</Button>
+      <Box display="flex" gap="spacing.2">
+        <Button onClick={() => setFirstOpen(true)}>Open 1st BottomSheet</Button>
+        <Button onClick={() => setSecondOpen(true)}>Open 2nd BottomSheet</Button>
+        <Button onClick={() => setThirdOpen(true)}>Open 3rd BottomSheet</Button>
+      </Box>
 
       <BottomSheetComponent
         isOpen={isFirstOpen}
