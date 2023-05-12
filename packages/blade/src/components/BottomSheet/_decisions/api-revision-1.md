@@ -434,3 +434,6 @@ This way the BottomSheet becomes independent from the state of the Dropdown and 
 
 - Check Action/Icon have an usecase in BottomSheetHeader trailing, if not we can remove them.
 - Standardise the close button with “isDismissible=true|false” prop and decouple it from the BottomSheetHeader (position it absolutely on top of bottomsheet surface)
+
+
+> This file is cloned from the original Notion File: https://www.notion.so/BottomSheet-API-Discussion-e2aa79cd45274ef280fdb998efa6b98f?pvs=4#db6bd9826bc048bd97d24a50269fc45d

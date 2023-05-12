@@ -155,7 +155,7 @@ Cons:
 Considering the bundle size downside to approach 1, we decided to go ahead with approach 2.
 
 > **API Rabbit Hole**  
-> If you want to go deep into the API Rabbit Hole, We also had explored various other APIs and discussed internally about the pros and cons of each which we **[documented in this Notion doc](https://www.notion.so/BottomSheet-API-Discussion-e2aa79cd45274ef280fdb998efa6b98f?pvs=4#db6bd9826bc048bd97d24a50269fc45d)**
+> If you want to go deep into the API Rabbit Hole, We also had explored various other APIs and discussed internally about the pros and cons of each which we **[documented in here](./api-revision-1.md)**
 
 ### Composition Example
 
@@ -282,14 +282,14 @@ Behaviours:
 - ~~In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component?~~
 
 - Consideration for using custom solution rather than third party libraries like [react-spring-bottomsheet](https://github.com/stipsan/react-spring-bottom-shee) in web.
-   - **ANS**: We did a initial research for various third-party libraries documented in [here](https://docs.google.com/document/d/1lRIBo5nkp1R9_DC9nRiFFwBEH3oVhMZjLbV7jxFrYBA/edit), most of them did not fit out use case, react-spring-bottomsheet had lot of features covered but comes with a bit of bundle size baggage like usegesture/xstate/xstate-react/react-spring libraries which in mobile users will have to carry.
+   - **ANS**: We did a initial research for various third-party libraries documented in [here](./bottomsheet-library-exploration.md), most of them did not fit out use case, react-spring-bottomsheet had lot of features covered but comes with a bit of bundle size baggage like usegesture/xstate/xstate-react/react-spring libraries which in mobile users will have to carry.
    - Plus we had few requirements like stacked bottomsheets, special logic for where the bottomsheet will open initially which either way had to be implemented.
 
 ## Alternative APIs
 
-- If you want to go deep into the API Rabbit Hole, We also had explored various other APIs and discussed internally about the pros and cons of each which we **[documented in this Notion doc.](https://www.notion.so/BottomSheet-API-Discussion-e2aa79cd45274ef280fdb998efa6b98f?pvs=4#db6bd9826bc048bd97d24a50269fc45d)**
+- If you want to go deep into the API Rabbit Hole, We also had explored various other APIs and discussed internally about the pros and cons of each which we **[documented in here](./api-revision-1.md)**
 
-- Header/Footer [Unified APIs Discussion Doc](https://docs.google.com/document/d/1gzWRv5RyTgwJiJkzxyvCwV1XVo8QMmoevoakbDD5qsQ/edit)
+- Header/Footer [Unified APIs Discussion Doc](./bottomsheet-header-footer-unification.md)
 
 ## References
 
