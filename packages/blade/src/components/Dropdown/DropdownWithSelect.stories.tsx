@@ -354,7 +354,6 @@ export const WithSingleSelect = DropdownTemplate.bind({});
 export const WithMultiSelect = DropdownTemplate.bind({});
 WithMultiSelect.args = {
   selectionType: 'multiple',
-  defaultValue: 'home',
 };
 WithMultiSelect.parameters = {
   docs: {
@@ -927,8 +926,11 @@ export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <>
-      <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+    <BaseBox minHeight="300px">
+      <Button marginBottom="spacing.4" onClick={() => setCurrentSelection('bangalore')}>
+        Select Bangalore
+      </Button>
+
       <Dropdown selectionType="single">
         <SelectInput
           label="Select City"
@@ -950,7 +952,7 @@ export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </>
+    </BaseBox>
   );
 };
 
@@ -974,8 +976,9 @@ export const ControlledDropdownMultiSelect = (args: AllDropdownProps): JSX.Eleme
   } = args;
 
   return (
-    <>
+    <BaseBox minHeight="300px">
       <Button
+        marginBottom="spacing.4"
         onClick={() => {
           if (!currentSelection.includes('bangalore')) {
             setCurrentSelection([...currentSelection, 'bangalore']);
@@ -984,6 +987,7 @@ export const ControlledDropdownMultiSelect = (args: AllDropdownProps): JSX.Eleme
       >
         Select Bangalore
       </Button>
+
       <Dropdown selectionType="multiple">
         <SelectInput
           label="Select City"
@@ -1005,7 +1009,7 @@ export const ControlledDropdownMultiSelect = (args: AllDropdownProps): JSX.Eleme
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </>
+    </BaseBox>
   );
 };
 
