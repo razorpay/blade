@@ -1,5 +1,8 @@
 import type { ReactElement } from 'react';
+import { useContext } from 'react';
+import omit from 'lodash/omit';
 import styled from 'styled-components/native';
+import TextAncestor from './TextAncestor';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
 import { metaAttribute, makeAccessible } from '~utils';
@@ -40,27 +43,31 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
   },
 );
 
-export const BaseText = ({
-  id,
-  color,
-  fontFamily,
-  fontSize,
-  fontWeight,
-  fontStyle,
-  textDecorationLine,
-  lineHeight,
-  as,
-  textAlign,
-  children,
-  truncateAfterLines,
-  className,
-  style,
-  accessibilityProps = {},
-  componentName,
-  testID,
-  ...styledProps
-}: BaseTextProps): ReactElement => {
-  return (
+export const BaseText = (baseTextProps: BaseTextProps): ReactElement => {
+  const { value: hasTextAncestor, props: textAncestorProps } = useContext(TextAncestor);
+  const props = { ...(textAncestorProps ?? {}), ...baseTextProps };
+  const {
+    id,
+    color,
+    fontFamily,
+    fontSize,
+    fontWeight,
+    fontStyle,
+    textDecorationLine,
+    lineHeight,
+    as,
+    textAlign,
+    children,
+    truncateAfterLines,
+    className,
+    style,
+    accessibilityProps = {},
+    componentName,
+    testID,
+    ...styledProps
+  } = props;
+
+  const styledBaseText = (
     <StyledBaseText
       {...styledProps}
       color={color}
@@ -82,4 +89,19 @@ export const BaseText = ({
       {children}
     </StyledBaseText>
   );
+
+  if (!hasTextAncestor) {
+    return (
+      <TextAncestor.Provider
+        value={{
+          value: true,
+          props: omit(props, ['id', 'testID', 'numberOfLines', 'truncateAfterLines', 'children']),
+        }}
+      >
+        {styledBaseText}
+      </TextAncestor.Provider>
+    );
+  }
+
+  return styledBaseText;
 };
