@@ -26,6 +26,7 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
 const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledBaseButtonProps> = (
   {
     onClick,
+    onBlur,
     children,
     minHeight,
     buttonPaddingTop,
