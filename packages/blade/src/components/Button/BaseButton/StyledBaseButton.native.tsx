@@ -8,7 +8,6 @@ import type { StyledBaseButtonProps } from './types';
 import { getIn } from '~utils';
 import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
@@ -23,7 +22,7 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   };
 });
 
-const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledBaseButtonProps> = (
+const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseButtonProps> = (
   {
     onClick,
     children,
@@ -78,7 +77,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
     <StyledPressable
       {...styledProps}
       {...accessibilityProps}
-      ref={ref as React.RefObject<TextInput>}
+      ref={ref}
       isLoading={isLoading}
       onPress={onClick}
       style={animatedStyles}

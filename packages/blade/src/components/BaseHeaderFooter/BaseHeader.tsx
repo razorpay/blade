@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import { Divider } from './Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
-import { assignWithoutSideEffects } from '~utils';
+import { assignWithoutSideEffects, isReactNative } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 
-export type BaseHeaderProps = {
+type BaseHeaderProps = {
   title?: string;
   subtitle?: string;
   /**
@@ -36,7 +37,7 @@ export type BaseHeaderProps = {
   showCloseButton?: boolean;
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
-  closeButtonRef: React.MutableRefObject<HTMLButtonElement>;
+  closeButtonRef: React.MutableRefObject<any>;
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -70,6 +71,19 @@ const _BaseHeader = ({
   onPointerMove,
   onPointerUp,
 }: BaseHeaderProps): React.ReactElement => {
+  const webOnlyEventHandlers = isReactNative()
+    ? {}
+    : {
+        onClickCapture,
+        onKeyDown,
+        onKeyUp,
+        onLostPointerCapture,
+        onPointerCancel,
+        onPointerDown,
+        onPointerMove,
+        onPointerUp,
+      };
+
   return (
     <BaseBox>
       <BaseBox
@@ -78,14 +92,7 @@ const _BaseHeader = ({
         paddingLeft="spacing.5"
         paddingRight="spacing.5"
         touchAction="none"
-        onClickCapture={onClickCapture}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onLostPointerCapture={onLostPointerCapture}
-        onPointerCancel={onPointerCancel}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
+        {...webOnlyEventHandlers}
       >
         <BaseBox display="flex" flexDirection="row" alignItems="center" userSelect="none">
           {showBackButton ? (
@@ -156,4 +163,4 @@ const BaseHeader = assignWithoutSideEffects(_BaseHeader, {
   componentId: 'BaseHeader',
 });
 
-export { BaseHeader };
+export { BaseHeader, BaseHeaderProps };

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
+import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import type { SnapPoints } from './utils';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
-import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 
-export type BottomSheetProps = {
+type BottomSheetProps = {
   children: React.ReactNode;
   snapPoints?: SnapPoints;
   onDismiss?: () => void;
@@ -11,7 +11,7 @@ export type BottomSheetProps = {
   initialFocusRef?: React.MutableRefObject<any>;
 };
 
-export type BottomSheetHeaderProps = Pick<
+type BottomSheetHeaderProps = Pick<
   BaseHeaderProps,
   | 'title'
   | 'subtitle'
@@ -23,4 +23,6 @@ export type BottomSheetHeaderProps = Pick<
   | 'onBackButtonClick'
 >;
 
-export type BottomSheetFooterProps = Pick<BaseFooterProps, 'children' | 'hideDivider'>;
+type BottomSheetFooterProps = Pick<BaseFooterProps, 'children' | 'hideDivider'>;
+
+export { BottomSheetProps, BottomSheetHeaderProps, BottomSheetFooterProps };
