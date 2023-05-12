@@ -1,4 +1,3 @@
-import { PortalHost, PortalProvider } from '@gorhom/portal';
 import type { RenderAPI } from '@testing-library/react-native';
 import { render } from '@testing-library/react-native';
 import type { ReactElement } from 'react';
