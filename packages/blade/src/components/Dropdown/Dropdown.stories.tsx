@@ -354,7 +354,6 @@ export const WithSingleSelect = DropdownTemplate.bind({});
 export const WithMultiSelect = DropdownTemplate.bind({});
 WithMultiSelect.args = {
   selectionType: 'multiple',
-  defaultValue: 'home',
 };
 WithMultiSelect.parameters = {
   docs: {
