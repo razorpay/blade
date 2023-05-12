@@ -6,7 +6,7 @@ import { useTheme } from '~components/BladeProvider';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 
-const BottomSheetFooter = ({ children, hideDivider }: BaseFooterProps): React.ReactElement => {
+const BottomSheetFooter = ({ children, showDivider }: BaseFooterProps): React.ReactElement => {
   const { theme } = useTheme();
   const { setFooterHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ const BottomSheetFooter = ({ children, hideDivider }: BaseFooterProps): React.Re
       data-footer
       {...bind?.()}
     >
-      <BaseFooter hideDivider={hideDivider}>{children}</BaseFooter>
+      <BaseFooter showDivider={showDivider}>{children}</BaseFooter>
     </BaseBox>
   );
 };

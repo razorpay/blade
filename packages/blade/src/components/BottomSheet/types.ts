@@ -18,11 +18,11 @@ type BottomSheetHeaderProps = Pick<
   | 'leading'
   | 'trailing'
   | 'titleSuffix'
-  | 'hideDivider'
+  | 'showDivider'
   | 'showBackButton'
   | 'onBackButtonClick'
 >;
 
-type BottomSheetFooterProps = Pick<BaseFooterProps, 'children' | 'hideDivider'>;
+type BottomSheetFooterProps = Pick<BaseFooterProps, 'children' | 'showDivider'>;
 
 export { BottomSheetProps, BottomSheetHeaderProps, BottomSheetFooterProps };

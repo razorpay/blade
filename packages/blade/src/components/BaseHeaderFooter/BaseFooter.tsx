@@ -5,13 +5,13 @@ import { assignWithoutSideEffects } from '~utils';
 
 type BaseFooterProps = {
   children: React.ReactNode;
-  hideDivider?: boolean;
+  showDivider?: boolean;
 };
 
-const _BaseFooter = ({ children, hideDivider = false }: BaseFooterProps): React.ReactElement => {
+const _BaseFooter = ({ children, showDivider = true }: BaseFooterProps): React.ReactElement => {
   return (
     <>
-      {!hideDivider && <Divider />}
+      {showDivider && <Divider />}
       <BaseBox
         paddingLeft="spacing.6"
         paddingRight="spacing.6"

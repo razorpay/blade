@@ -16,7 +16,7 @@ const _BottomSheetHeader = ({
   leading,
   titleSuffix,
   trailing,
-  hideDivider = false,
+  showDivider = true,
   showBackButton = false,
   onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
@@ -42,7 +42,7 @@ const _BottomSheetHeader = ({
           leading={leading}
           trailing={validatedTrailingComponent}
           titleSuffix={titleSuffix}
-          hideDivider={hideDivider}
+          showDivider={showDivider}
           // back button
           closeButtonRef={defaultInitialFocusRef}
           showBackButton={showBackButton}

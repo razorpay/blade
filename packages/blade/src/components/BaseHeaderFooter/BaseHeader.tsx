@@ -24,9 +24,9 @@ type BaseHeaderProps = {
    */
   titleSuffix?: React.ReactNode;
   /**
-   * @default false
+   * @default true
    */
-  hideDivider?: boolean;
+  showDivider?: boolean;
   /**
    * @default false
    */
@@ -56,7 +56,7 @@ const _BaseHeader = ({
   leading,
   titleSuffix,
   trailing,
-  hideDivider = false,
+  showDivider = true,
   showBackButton = false,
   showCloseButton = true,
   onBackButtonClick,
@@ -154,7 +154,7 @@ const _BaseHeader = ({
           ) : null}
         </BaseBox>
       </BaseBox>
-      {hideDivider ? null : <Divider />}
+      {showDivider ? <Divider /> : null}
     </BaseBox>
   );
 };
