@@ -25,6 +25,5 @@ export * from './Spinner';
 export * from './SkipNav';
 export * from './Typography';
 export * from './VisuallyHidden';
-export * from './BottomSheet';
 export * from './Amount';
 export * from './BottomSheet';
