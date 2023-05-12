@@ -8,7 +8,7 @@ import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 
 const _BottomSheetFooter = ({
   children,
-  hideDivider,
+  showDivider,
 }: BottomSheetFooterProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
@@ -20,7 +20,7 @@ const _BottomSheetFooter = ({
       touchAction="none"
       zIndex={2}
     >
-      <BaseFooter hideDivider={hideDivider}>{children}</BaseFooter>
+      <BaseFooter showDivider={showDivider}>{children}</BaseFooter>
     </BaseBox>
   );
 };
