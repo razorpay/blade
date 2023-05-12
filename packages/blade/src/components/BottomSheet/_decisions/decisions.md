@@ -106,7 +106,7 @@ We'll expose a `BottomSheet` component with the following API:
 | `leading` | `React.ReactNode` | `undefined` | leading asset or icon to be placed at the left most side of the BottomSheetHeader |          |
 | `trailing` | `Badge, Link, Text, IconButton`, `undefined` | undefined  |     trailing component to be placed at the right most side of the BottomSheetHeader     |    |
 | `titleSuffix` | `Counter` | `undefined` | A component to be placed adjacent to the title text |          |
-| `hideDivider` | `boolean` | `false` | Show or hide the divider |          |
+| `showDivider` | `boolean` | `true` | Show or hide the divider |          |
 | `showBackButton` | `boolean` | `false` | Show or hide back button |          |
 | `onBackButtonClick` | `boolean` | `false` | Event handler for the back button |          |
 
