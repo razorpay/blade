@@ -7,7 +7,7 @@ const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {
     margin: 'auto',
     content: "''",
-    width: makeSize(size[60]),
+    width: makeSize(size[56]),
     height: makeSize(size[4]),
     backgroundColor: theme.colors.brand.gray.a100.lowContrast,
     // TODO: we do not have 16px radius token
