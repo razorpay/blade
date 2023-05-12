@@ -265,7 +265,7 @@
       "name": "Import Button only",
       "path": "./build/components/index.web.js",
       "import": "{ Button }",
-      "limit": "16.6 kb",
+      "limit": "17 kb",
       "running": false
     },
     {

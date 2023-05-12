@@ -20,7 +20,7 @@ const DropdownStoryMeta = {
 
 export const Default = (): JSX.Element => {
   return (
-    <Box width={{ base: '100%', m: '500px' }}>
+    <Box minHeight="200px" width={{ base: '100%', m: '500px' }}>
       <Dropdown>
         <DropdownButton icon={MyAccountIcon} variant="secondary">
           My Account
@@ -64,45 +64,47 @@ export const ControlledMenu = (): JSX.Element => {
   const [status, setStatus] = React.useState<string | undefined>();
 
   return (
-    <Dropdown>
-      <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
-      <DropdownOverlay>
-        <ActionList>
-          <ActionListItem
-            onClick={({ name, value }) => {
-              console.log({ name, value });
-              setStatus(name);
-            }}
-            leading={<ActionListItemIcon icon={CheckIcon} />}
-            isSelected={status === 'approve'}
-            title="Approve"
-            value="approve"
-          />
-          <ActionListItem
-            onClick={({ name, value }) => {
-              console.log({ name, value });
-              setStatus(name);
-            }}
-            leading={<ActionListItemIcon icon={ClockIcon} />}
-            isSelected={status === 'in-progress'}
-            title="In Progress"
-            value="in-progress"
-          />
+    <Box minHeight="200px">
+      <Dropdown>
+        <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem
+              onClick={({ name, value }) => {
+                console.log({ name, value });
+                setStatus(name);
+              }}
+              leading={<ActionListItemIcon icon={CheckIcon} />}
+              isSelected={status === 'approve'}
+              title="Approve"
+              value="approve"
+            />
+            <ActionListItem
+              onClick={({ name, value }) => {
+                console.log({ name, value });
+                setStatus(name);
+              }}
+              leading={<ActionListItemIcon icon={ClockIcon} />}
+              isSelected={status === 'in-progress'}
+              title="In Progress"
+              value="in-progress"
+            />
 
-          <ActionListItem
-            onClick={({ name, value }) => {
-              console.log({ name, value });
-              setStatus(name);
-            }}
-            leading={<ActionListItemIcon icon={CloseIcon} />}
-            isSelected={status === 'reject'}
-            title="Reject"
-            value="reject"
-            intent="negative"
-          />
-        </ActionList>
-      </DropdownOverlay>
-    </Dropdown>
+            <ActionListItem
+              onClick={({ name, value }) => {
+                console.log({ name, value });
+                setStatus(name);
+              }}
+              leading={<ActionListItemIcon icon={CloseIcon} />}
+              isSelected={status === 'reject'}
+              title="Reject"
+              value="reject"
+              intent="negative"
+            />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 
@@ -120,7 +122,7 @@ export const ControlledMultiSelectMenu = (): JSX.Element => {
   };
 
   return (
-    <Box>
+    <Box minHeight="200px">
       <Box display="flex" paddingBottom="spacing.5" minHeight="spacing.10">
         {filters.map((filter) => (
           <Badge marginRight="spacing.3" variant="information" key={filter}>
