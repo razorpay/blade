@@ -7,7 +7,6 @@ import { SelectInput } from './SelectInput';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Box } from '~components/Box';
@@ -166,12 +165,6 @@ export default {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
-    isLoading: {
-      table: {
-        category: propsCategory.TRAILING_VISUAL_PROPS,
-      },
-    },
-    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {

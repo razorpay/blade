@@ -1,121 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import { SandpackCodeEditor, SandpackPreview } from '@codesandbox/sandpack-react';
 import { ActionList, ActionListItem, ActionListSection, Playground } from './stories';
 import { actionListPropsTables } from './propsTable';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { Code, Text, Title } from '~components/Typography';
-import { Sandbox, SandboxProvider } from '~src/_helpers/storybook/Sandbox';
+import { Code, Title } from '~components/Typography';
+import { Sandbox, VerticalSandbox } from '~src/_helpers/storybook/Sandbox';
 import { Box } from '~components/Box';
-import { Button } from '~components/Button';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType } from '~utils';
-
-const VerticalEditor = ({
-  code,
-  minHeight = undefined,
-}: {
-  code: string;
-  minHeight?: string;
-}): JSX.Element => {
-  const [showCode, setShowCode] = React.useState(false);
-
-  return (
-    <Box paddingY="spacing.2">
-      <SandboxProvider code={code} border={castWebType('none')}>
-        <BaseBox
-          backgroundColor="surface.background.level1.lowContrast"
-          border={castWebType('1px solid #EFEFEF')}
-        >
-          <SandpackPreview style={{ width: '100%', minHeight }} />
-        </BaseBox>
-        <Box display="flex" justifyContent="flex-end">
-          <Button
-            alignSelf="flex-end"
-            variant="tertiary"
-            size="small"
-            onClick={() => setShowCode(!showCode)}
-          >
-            {showCode ? 'Hide' : 'Show'} Code
-          </Button>
-        </Box>
-        {showCode ? (
-          <BaseBox border={castWebType('1px solid #EFEFEF')}>
-            <SandpackCodeEditor />
-          </BaseBox>
-        ) : null}
-      </SandboxProvider>
-    </Box>
-  );
-};
-
-const StyledArgsTable = styled.table(
-  (props) => `
-  font-family: ${props.theme.typography.fonts.family.text};
-  text-align: left;
-  min-width: 500px;
-  margin-bottom: ${props.theme.spacing[8]}px;
-  margin-top: ${props.theme.spacing[4]}px;
-
-  &,
-  & th,
-  & td {
-    border: 1px solid ${props.theme.colors.surface.border.normal.lowContrast};
-    border-collapse: collapse;
-  }
-
-  & td,
-  & th {
-    padding: ${props.theme.spacing[3]}px;
-  }
-`,
-);
-
-const ArgsTable = ({
-  data,
-}: {
-  data: Record<string, string | { note: string; type: string | JSX.Element } | JSX.Element>;
-}): JSX.Element => {
-  return (
-    <StyledArgsTable>
-      <tr>
-        <th>
-          <Text weight="bold">Prop</Text>
-        </th>
-        <th>
-          <Text weight="bold">Type</Text>
-        </th>
-      </tr>
-      {Object.entries(data).map(([propName, propType]) => {
-        const isTypeObject = typeof propType === 'object' && 'note' in propType;
-        const propNote = isTypeObject ? `(${propType.note})` : undefined;
-        const propTypeJSX = (() => {
-          if (typeof propType === 'string') {
-            return <Text>{propType}</Text>;
-          }
-
-          if (isTypeObject) {
-            return <Text>{propType.type}</Text>;
-          }
-
-          return propType;
-        })();
-
-        return (
-          <tr key={propName}>
-            <td>
-              <Text size="medium" variant="caption">
-                <Code size="medium">{propName}</Code> {propNote}
-              </Text>
-            </td>
-
-            <td>{propTypeJSX}</td>
-          </tr>
-        );
-      })}
-    </StyledArgsTable>
-  );
-};
+import { ArgsTable } from '~src/_helpers/storybook/ArgsTable';
 
 const ActionListDocs = (): JSX.Element => {
   return (
@@ -132,12 +23,12 @@ const ActionListDocs = (): JSX.Element => {
       </Box>
       <Box as="section" paddingBottom="spacing.9">
         <Title size="medium">ActionList</Title>
-        <VerticalEditor code={ActionList} />
+        <VerticalSandbox code={ActionList} />
         <ArgsTable data={actionListPropsTables.ActionList} />
       </Box>
       <BaseBox as="section" paddingBottom="spacing.9" id="actionlistitem">
         <Title size="medium">ActionListItem</Title>
-        <VerticalEditor code={ActionListItem} />
+        <VerticalSandbox code={ActionListItem} />
         <ArgsTable data={actionListPropsTables.ActionListItem} />
         <BaseBox id="actionlistitemicon">
           <Title size="small">ActionListItemIcon</Title>
@@ -158,7 +49,7 @@ const ActionListDocs = (): JSX.Element => {
       </BaseBox>
       <BaseBox as="section" id="actionlistsection">
         <Title size="medium">ActionListSection</Title>
-        <VerticalEditor minHeight="250px" code={ActionListSection} />
+        <VerticalSandbox minHeight="250px" code={ActionListSection} />
         <ArgsTable data={actionListPropsTables.ActionListSection} />
       </BaseBox>
     </StoryPageWrapper>

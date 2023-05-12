@@ -102,7 +102,12 @@ const StoryCanvas = styled.div(
       height: 100%;
       bottom: 0;
       overflow: auto;
-      padding: 2rem;
+      padding: ${
+        context.kind.includes('/Dropdown/Stories/With Select') ||
+        context.kind.includes('/Dropdown/Stories/With Button')
+          ? '0rem'
+          : '2rem'
+      };
       border-radius: ${
         context.viewMode === 'story'
           ? `${theme.border.radius.none}px`

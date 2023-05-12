@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { CodeViewerProps } from '@codesandbox/sandpack-react';
-import { Sandpack, SandpackCodeViewer, SandpackProvider } from '@codesandbox/sandpack-react';
+import {
+  Sandpack,
+  SandpackCodeViewer,
+  SandpackProvider,
+  SandpackCodeEditor,
+  SandpackPreview,
+} from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
@@ -9,12 +15,14 @@ import packageJson from '../../../../package.json'; // eslint-disable-line
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
+import { Box } from '~components/Box';
+import { Button } from '~components/Button';
 
 type SandboxProps = {
   children: string;
   language?: 'ts' | 'tsx';
   showConsole?: boolean;
-  editorHeight?: number;
+  editorHeight?: number | string;
   editorWidthPercentage?: number;
   padding?: BaseBoxProps['padding'];
 };
@@ -41,10 +49,13 @@ const useSandpackSetup = ({
   language: SandboxProps['language'];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }): any => {
-  const {
-    // @ts-expect-error globals is available but the typings in storybook are properly defined hence, ignoring it
-    globals: { themeTokenName, colorScheme },
-  } = React.useContext(DocsContext);
+  const docsContext = React.useContext(DocsContext);
+
+  // @ts-expect-error: globals in unavailable on TS
+  const themeTokenName = docsContext?.globals?.themeTokenName ?? 'paymentTheme';
+  // @ts-expect-error: globals in unavailable on TS
+  const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
+  console.log({ themeTokenName });
 
   return {
     template: 'react-ts',
@@ -228,8 +239,48 @@ const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   );
 };
 
+const VerticalSandbox = ({
+  code,
+  minHeight = undefined,
+}: {
+  code: string;
+  minHeight?: string;
+}): JSX.Element => {
+  const [showCode, setShowCode] = React.useState(false);
+
+  return (
+    <SandboxProvider code={code} border={castWebType('none')}>
+      <Box display="flex" flexDirection="column" paddingY="spacing.2" maxHeight="100vh">
+        <BaseBox
+          backgroundColor="surface.background.level1.lowContrast"
+          border={castWebType('1px solid #EFEFEF')}
+          flex="1"
+        >
+          <SandpackPreview style={{ width: '100%', minHeight }} />
+        </BaseBox>
+        <Box display="flex" justifyContent="flex-end">
+          <Button
+            alignSelf="flex-end"
+            variant="tertiary"
+            size="small"
+            onClick={() => setShowCode(!showCode)}
+          >
+            {showCode ? 'Hide' : 'Show'} Code
+          </Button>
+        </Box>
+        {showCode ? (
+          <BaseBox overflow="auto" border="1px solid #EFEFEF" maxHeight="100%">
+            <SandpackCodeEditor />
+          </BaseBox>
+        ) : null}
+      </Box>
+    </SandboxProvider>
+  );
+};
+
 export {
   Sandbox,
+  VerticalSandbox,
   SandboxProvider,
   SandboxHighlighter,
   SandboxProps,

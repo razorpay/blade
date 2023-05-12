@@ -1,21 +1,7 @@
 import type { ActionListItemProps, ActionListSectionProps } from '../ActionListItem';
 import type { ActionListProps } from '../ActionList';
-import { Link } from '~components/Link';
 import { Code } from '~components/Typography';
-
-const ScrollLink = ({ children, href }: { children: string; href: string }): JSX.Element => (
-  <Link
-    size="small"
-    variant="button"
-    onClick={() => {
-      document.querySelector(href)?.scrollIntoView({
-        behavior: 'smooth',
-      });
-    }}
-  >
-    {children}
-  </Link>
-);
+import { ScrollLink } from '~src/_helpers/storybook/ScrollLink';
 
 type PropsTableType<T> = Record<
   keyof Omit<T, 'testID' | '_hideDivider' | '_index'>,
