@@ -6,9 +6,6 @@ import React from 'react';
 import { TextArea } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<TextArea />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<TextArea label="Enter name" />);
@@ -168,6 +165,7 @@ describe('<TextArea />', () => {
   });
 
   it('should throw error when both value and defaultValue are passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <TextArea label="Enter name" defaultValue="Kamlesh" value="Kamlesh Chandnani" />,
@@ -175,6 +173,7 @@ describe('<TextArea />', () => {
     ).toThrow(
       `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
     );
+    mockConsoleError.mockRestore();
   });
 
   /**
