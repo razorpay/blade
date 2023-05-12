@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
+import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import type { SnapPoints } from './utils';
-import type { ButtonProps } from '~components/Button';
 
-export type BottomSheetProps = {
+type BottomSheetProps = {
   children: React.ReactNode;
   snapPoints?: SnapPoints;
   onDismiss?: () => void;
@@ -10,31 +11,18 @@ export type BottomSheetProps = {
   initialFocusRef?: React.MutableRefObject<any>;
 };
 
-export type BottomSheetFooterProps = {
-  title?: string;
-  leading?: React.ReactNode;
-  trailing?: {
-    primary?: BottomSheetFooterAction;
-    secondary?: BottomSheetFooterAction;
-  };
-};
+type BottomSheetHeaderProps = Pick<
+  BaseHeaderProps,
+  | 'title'
+  | 'subtitle'
+  | 'leading'
+  | 'trailing'
+  | 'titleSuffix'
+  | 'showDivider'
+  | 'showBackButton'
+  | 'onBackButtonClick'
+>;
 
-type BottomSheetFooterAction = Pick<
-  ButtonProps,
-  'type' | 'accessibilityLabel' | 'isLoading' | 'isDisabled' | 'icon' | 'iconPosition' | 'onClick'
-> & {
-  text: ButtonProps['children'];
-};
+type BottomSheetFooterProps = Pick<BaseFooterProps, 'children' | 'showDivider'>;
 
-export type BottomSheetFooterLeadingProps = {
-  title?: string;
-  prefix?: React.ReactNode;
-};
-
-export type BottomSheetFooterTrailingProps = {
-  actions?: {
-    primary?: BottomSheetFooterAction;
-    secondary?: BottomSheetFooterAction;
-  };
-  hasLeading: boolean;
-};
+export { BottomSheetProps, BottomSheetHeaderProps, BottomSheetFooterProps };

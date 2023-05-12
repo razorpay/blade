@@ -40,10 +40,10 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         >
           <BaseBox flexShrink={1} flexGrow={1} overflow="hidden">
             <BaseBox
-              marginLeft="spacing.5"
-              marginRight="spacing.5"
-              paddingTop="spacing.5"
-              paddingBottom="spacing.5"
+              paddingLeft={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
+              paddingRight={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
+              paddingTop={bottomSheetHasActionList ? 'spacing.1' : 'spacing.5'}
+              paddingBottom={bottomSheetHasActionList ? 'spacing.1' : 'spacing.5'}
               overflow="hidden"
             >
               {children}

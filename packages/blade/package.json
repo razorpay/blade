@@ -204,7 +204,8 @@
     "size-limit": "8.2.4",
     "style-dictionary": "3.7.1",
     "styled-components": "5.3.5",
-    "tsconfig-paths-webpack-plugin": "3.5.2"
+    "tsconfig-paths-webpack-plugin": "3.5.2",
+    "jsdom-testing-mocks": "1.9.0"
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",

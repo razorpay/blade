@@ -5,6 +5,8 @@ import { useBottomSheetContext } from './BottomSheetContext';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { isValidAllowedChildren, metaAttribute } from '~utils';
+import { componentIds } from '~components/ActionList/componentIds';
 
 const bodyStyles: React.CSSProperties = {
   WebkitTapHighlightColor: 'revert',
@@ -20,14 +22,25 @@ const bodyStyles: React.CSSProperties = {
 const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { scrollRef, setContentHeight, isOpen, bind } = useBottomSheetContext();
   const contentRef = React.useRef<HTMLDivElement>(null);
+  const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<boolean>(false);
 
   useIsomorphicLayoutEffect(() => {
     if (!contentRef.current) return;
     setContentHeight(contentRef.current.getBoundingClientRect().height);
   }, [contentRef, isOpen]);
 
+  React.useEffect(() => {
+    setBottomSheetHasActionList(false);
+    React.Children.forEach(children, (child) => {
+      if (isValidAllowedChildren(child, componentIds.ActionList)) {
+        setBottomSheetHasActionList(true);
+      }
+    });
+  }, [children]);
+
   return (
     <BaseBox
+      {...metaAttribute({ testID: 'bottomsheet-body' })}
       ref={scrollRef}
       flexGrow={1}
       flexShrink={1}
@@ -37,10 +50,10 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
       {...bind?.({ isContentDragging: true })}
     >
       <BaseBox
-        marginLeft="spacing.5"
-        marginRight="spacing.5"
-        paddingTop="spacing.5"
-        paddingBottom="spacing.5"
+        paddingLeft={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
+        paddingRight={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
+        paddingTop={bottomSheetHasActionList ? 'spacing.1' : 'spacing.5'}
+        paddingBottom={bottomSheetHasActionList ? 'spacing.1' : 'spacing.5'}
         ref={contentRef}
         overflow="auto"
       >

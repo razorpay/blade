@@ -1,70 +1,50 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
 import { ComponentIds } from './componentIds';
-import { Divider } from './Divider';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
+import { useBottomSheetContext } from './BottomSheetContext';
+import type { BottomSheetHeaderProps } from './types';
+import { useBottomSheetHeaderTrailingRestriction } from './utils';
+import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { Heading, Text } from '~components/Typography';
-
-type BottomSheetHeaderProps = {
-  title: string;
-  subtitle?: string;
-  prefix?: React.ReactNode;
-  suffix?: React.ReactNode;
-};
+import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
 const _BottomSheetHeader = ({
   title,
   subtitle,
-  prefix,
-  suffix,
+  leading,
+  trailing,
+  titleSuffix,
+  showDivider = true,
+  showBackButton = false,
+  onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
+  const { close, defaultInitialFocusRef } = useBottomSheetContext();
+  const validatedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
+  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
+
   return (
     <BaseBox backgroundColor="white" overflow="visible" flexShrink={0}>
-      <BaseBox
-        data-header
-        overflow="visible"
-        marginTop="spacing.5"
-        marginBottom="spacing.5"
-        paddingLeft="spacing.6"
-        paddingRight="spacing.6"
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        touchAction="none"
-      >
-        <BaseBox
-          flex={1}
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          userSelect="none"
-          maxWidth="90%"
-        >
-          <BaseBox
-            marginRight="spacing.4"
-            marginTop="spacing.2"
-            alignSelf="flex-start"
-            display="flex"
-          >
-            {prefix}
-          </BaseBox>
-          <BaseBox>
-            <BaseBox display="flex" flexDirection="row" alignItems="center">
-              <Heading size="small" variant="regular" type="normal">
-                {title}
-              </Heading>
-              <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
-            </BaseBox>
-            {subtitle && (
-              <Text variant="body" size="small" weight="regular">
-                {subtitle}
-              </Text>
-            )}
-          </BaseBox>
-        </BaseBox>
-      </BaseBox>
-      <Divider />
+      {isHeaderEmpty ? (
+        <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />
+      ) : (
+        <BaseHeader
+          title={title}
+          subtitle={subtitle}
+          leading={leading}
+          trailing={validatedTrailingComponent}
+          titleSuffix={titleSuffix}
+          showDivider={showDivider}
+          // back button
+          closeButtonRef={defaultInitialFocusRef}
+          showBackButton={showBackButton}
+          onBackButtonClick={onBackButtonClick}
+          // close button
+          showCloseButton={true}
+          onCloseButtonClick={close}
+        />
+      )}
     </BaseBox>
   );
 };

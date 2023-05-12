@@ -2,131 +2,145 @@
 
 exports[`<Indicator /> should render 1`] = `
 <View
-  accessibilityLabel="Success"
-  alignItems="center"
-  display="flex"
-  flexDirection="row"
   style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "display": "flex",
-        "flexDirection": "row",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="8"
-    bbWidth="8"
-    fill="none"
-    focusable={false}
-    height="8"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
+  <View
+    accessibilityLabel="Success"
+    alignItems="center"
+    display="flex"
+    flexDirection="row"
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Array [
-          Object {},
-        ],
-        Object {
-          "flex": 0,
-          "height": 8,
-          "width": 8,
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
-    vbHeight={10}
-    vbWidth={10}
-    width="8"
   >
-    <RNSVGGroup
-      fill={null}
-      propList={
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      align="xMidYMid"
+      bbHeight="8"
+      bbWidth="8"
+      fill="none"
+      focusable={false}
+      height="8"
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
         Array [
-          "fill",
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Array [
+            Object {},
+          ],
+          Object {
+            "flex": 0,
+            "height": 8,
+            "width": 8,
+          },
         ]
       }
+      vbHeight={10}
+      vbWidth={10}
+      width="8"
     >
-      <RNSVGCircle
-        cx="5"
-        cy="5"
-        fill={4281484642}
+      <RNSVGGroup
+        fill={null}
         propList={
           Array [
             "fill",
           ]
         }
-        r="5"
-      />
-      <RNSVGCircle
-        cx="5"
-        cy="5"
-        propList={
-          Array [
-            "stroke",
-            "strokeWidth",
-          ]
-        }
-        r="4.75"
-        stroke={787279859}
-        strokeWidth="0.5"
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
-  <View
-    style={
-      Array [
-        Object {
-          "marginLeft": 4,
-        },
-      ]
-    }
-  >
-    <Text
-      color="surface.text.subtle.lowContrast"
-      fontFamily="text"
-      fontSize={100}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={100}
+      >
+        <RNSVGCircle
+          cx="5"
+          cy="5"
+          fill={4281484642}
+          propList={
+            Array [
+              "fill",
+            ]
+          }
+          r="5"
+        />
+        <RNSVGCircle
+          cx="5"
+          cy="5"
+          propList={
+            Array [
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          r="4.75"
+          stroke={787279859}
+          strokeWidth="0.5"
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <View
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 14,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 20,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "marginLeft": 4,
           },
-          Object {},
         ]
       }
-    />
+    >
+      <Text
+        color="surface.text.subtle.lowContrast"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      />
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Indicator /> should render different variants for size and intent 1`] = `
-Array [
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
   <View
     accessibilityLabel="Warning"
     alignItems="center"
@@ -248,7 +262,7 @@ Array [
         }
       />
     </View>
-  </View>,
+  </View>
   <View
     accessibilityLabel="Success"
     alignItems="center"
@@ -370,7 +384,7 @@ Array [
         }
       />
     </View>
-  </View>,
+  </View>
   <View
     accessibilityLabel="Error"
     alignItems="center"
@@ -492,7 +506,7 @@ Array [
         }
       />
     </View>
-  </View>,
+  </View>
   <View
     accessibilityLabel="Info"
     alignItems="center"
@@ -614,6 +628,6 @@ Array [
         }
       />
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

@@ -16,8 +16,7 @@ import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
-import { BottomSheetProps } from './types';
-import { BottomSheetCloseButton } from './BottomSheetCloseButton';
+import type { BottomSheetProps } from './types';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
 
@@ -446,7 +445,6 @@ const _BottomSheet = ({
         }}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
-          <BottomSheetCloseButton />
           <BottomSheetGrabHandle ref={grabHandleRef} {...bind()} />
           {children}
         </BaseBox>

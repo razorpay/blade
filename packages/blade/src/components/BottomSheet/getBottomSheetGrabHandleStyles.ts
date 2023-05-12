@@ -17,7 +17,8 @@ const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
 const getBottomSheetGrabHandleStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {
     flexShrink: 0,
-    paddingTop: makeSpace(theme.spacing[5]),
+    paddingTop: makeSpace(theme.spacing[4]),
+    marginBottom: makeSpace(theme.spacing[2]),
     touchAction: 'none',
     width: '100%',
     display: 'flex',
