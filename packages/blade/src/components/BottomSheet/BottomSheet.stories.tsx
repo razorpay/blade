@@ -682,8 +682,6 @@ const WithOTPInputTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
               marginBottom="spacing.5"
               label="Enter the OTP sent to +9190909090"
             />
-            <TextInput label="hello" labelPosition="left" />
-
             <Text textAlign="center">
               By clicking “Submit OTP”, I agree to <Link href="#">Terms and Conditions</Link>,
               <Link href="#">Privacy Policy</Link>, and <Link href="#">Service Agreement</Link>.
