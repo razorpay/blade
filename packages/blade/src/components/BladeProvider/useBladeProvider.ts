@@ -13,6 +13,12 @@ type ThemeContextValue = {
   platform: TypographyPlatforms;
 };
 
+/**
+ * Reusable hook to be used in BladeProvider.native & BladeProvider.web file
+ *
+ * This hook proccesses incoming themeTokens & initialColorScheme
+ * And validates & returns the theme values
+ */
 const useBladeProvider = ({
   themeTokens,
   initialColorScheme,

@@ -1,14 +1,14 @@
 import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import { isReactNative, makeSpace } from '~utils';
+import size from '~tokens/global/size';
+import { isReactNative, makeSize, makeSpace } from '~utils';
 
 const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {
     margin: 'auto',
     content: "''",
-    // TODO: refactor to size tokens
-    width: makeSpace(60),
-    height: makeSpace(4),
+    width: makeSize(size[60]),
+    height: makeSize(size[4]),
     backgroundColor: theme.colors.brand.gray.a100.lowContrast,
     // TODO: we do not have 16px radius token
     borderRadius: makeSpace(theme.spacing[5]),
