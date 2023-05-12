@@ -2,1078 +2,1190 @@
 
 exports[`<Counter /> should render Counter with default props 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render high contrast information intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.information.highContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(193, 100%, 35%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.information.highContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.information.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.information.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.negative.highContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(8, 73%, 47%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.negative.highContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(8, 73%, 47%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.negative.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.negative.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.highContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 33%, 29%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.highContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 33%, 29%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.neutral.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.notice.highContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(38, 97%, 38%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.notice.highContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(38, 97%, 38%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.notice.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.notice.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.positive.highContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(160, 100%, 26%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.positive.highContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(160, 100%, 26%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.positive.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.positive.highContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render large size Counter 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  platform="onMobile"
-  size="large"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    platform="onMobile"
+    size="large"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={100}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={100}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 14,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 20,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render low contrast information intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.information.lowContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.information.lowContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.information.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(193, 100%, 35%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.information.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(193, 100%, 35%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.negative.lowContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.negative.lowContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.negative.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(8, 73%, 47%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.negative.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(8, 73%, 47%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.notice.lowContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.notice.lowContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.notice.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(38, 97%, 38%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.notice.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(38, 97%, 38%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
 <View
-  backgroundColor="feedback.background.positive.lowContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.positive.lowContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.positive.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(160, 100%, 26%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.positive.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(160, 100%, 26%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render medium size Counter 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  platform="onMobile"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    platform="onMobile"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Counter /> should render small size Counter 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  platform="onMobile"
-  size="small"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-        "maxWidth": 100,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    platform="onMobile"
+    size="small"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 4,
-          "paddingRight": 4,
-          "paddingTop": 0,
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={25}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 10,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
             "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
+            "paddingLeft": 4,
+            "paddingRight": 4,
             "paddingTop": 0,
-            "textDecorationLine": "none",
           },
-          Object {},
         ]
       }
     >
-      20
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        fontFamily="text"
+        fontSize={25}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 10,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        20
+      </Text>
+    </View>
   </View>
 </View>
 `;

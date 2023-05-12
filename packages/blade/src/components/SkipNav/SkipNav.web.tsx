@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { metaAttribute, MetaConstants, testID as testIDWebAndNative } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
@@ -44,8 +44,7 @@ const SkipNavContent = ({
       tabIndex={-1}
       id={id}
       style={{ outline: 0 }}
-      {...testIDWebAndNative(testID)}
-      {...metaAttribute({ name: MetaConstants.SkipNav })}
+      {...metaAttribute({ name: MetaConstants.SkipNav, testID })}
     />
   );
 };

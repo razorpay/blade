@@ -10,12 +10,12 @@ import styled from 'styled-components/native';
 import { Dimensions, AccessibilityInfo, findNodeHandle, View, Keyboard } from 'react-native';
 import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetBody } from './BottomSheetBody';
+import { BottomSheetFooter } from './BottomSheetFooter';
 import type { BottomSheetProps } from './types';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
-import { BottomSheetFooter } from './BottomSheetFooter';
 import { useBottomSheetStack } from './BottomSheetStack';
 import { makeSpace, getComponentId } from '~utils';
 
