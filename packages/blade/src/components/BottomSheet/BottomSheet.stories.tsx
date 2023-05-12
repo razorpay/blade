@@ -14,7 +14,6 @@ import {
 import {
   ClockIcon,
   CustomersIcon,
-  SearchIcon,
   ThumbsUpIcon,
   TrendingDownIcon,
   TrendingUpIcon,
@@ -234,7 +233,8 @@ const WithHeaderFooterTemplate: ComponentStory<typeof BottomSheetComponent> = ()
         <BottomSheetBody>
           <RadioGroup label="Addresses">
             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            <Radio value="office-1">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+            <Radio value="office-2">Work - 5938 New York, Main Street</Radio>
           </RadioGroup>
         </BottomSheetBody>
         <BottomSheetFooter>
@@ -257,10 +257,7 @@ const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetCompone
     <Dropdown selectionType="single">
       <SelectInput label="Sort Dishes" />
       <BottomSheetComponent>
-        <BottomSheetHeader
-          title="Sort By"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
+        <BottomSheetHeader title="Sort By" />
         <BottomSheetBody>
           <ActionList>
             <ActionListItem
@@ -302,10 +299,7 @@ const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponen
     <Dropdown selectionType="multiple">
       <SelectInput label="Cuisines Filter" />
       <BottomSheetComponent>
-        <BottomSheetHeader
-          title="Filter By Cuisines"
-          leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
+        <BottomSheetHeader title="Filter By Cuisines" />
         <BottomSheetBody>
           <ActionList>
             <ActionListItem title="Chinese" value="Chinese" />
@@ -347,10 +341,7 @@ const WithDropdownSectionsTemplate: ComponentStory<typeof BottomSheetComponent> 
     <Dropdown selectionType="multiple">
       <SelectInput label="Cuisines Filter" />
       <BottomSheetComponent>
-        <BottomSheetHeader
-          title="Filter By Cuisines"
-          leading={<SearchIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
+        <BottomSheetHeader title="Filter By Cuisines" />
         <BottomSheetBody>
           <ActionList>
             <ActionListSection title="Asia">
@@ -404,13 +395,13 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
 
   return (
     <BaseBox>
-      <Button onClick={() => setFirstOpen(true)}>Open 1st BottomSheet</Button>
-      <Button marginLeft="spacing.3" onClick={() => setSecondOpen(true)}>
+      <Button marginRight="spacing.3" onClick={() => setFirstOpen(true)}>
+        Open 1st BottomSheet
+      </Button>
+      <Button marginRight="spacing.3" onClick={() => setSecondOpen(true)}>
         Open 2nd BottomSheet
       </Button>
-      <Button marginLeft="spacing.3" onClick={() => setThirdOpen(true)}>
-        Open 3rd BottomSheet
-      </Button>
+      <Button onClick={() => setThirdOpen(true)}>Open 3rd BottomSheet</Button>
 
       <BottomSheetComponent
         isOpen={isFirstOpen}
@@ -446,10 +437,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
       </BottomSheetComponent>
 
       <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
-        <BottomSheetHeader
-          title="2. Sort By"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
+        <BottomSheetHeader title="2. Sort By" />
         <BottomSheetBody>
           <ActionList>
             <ActionListItem title="Chinese" value="Chinese" />
@@ -501,10 +489,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
       </BottomSheetComponent>
 
       <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
-        <BottomSheetHeader
-          title="3. Sort By"
-          leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-        />
+        <BottomSheetHeader title="3. Sort By" />
         <BottomSheetBody>
           <ActionList>
             <ActionListSection title="Asia">
@@ -654,10 +639,7 @@ const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
       <Dropdown selectionType="multiple">
         <SelectInput label="Cuisines Filter" />
         <BottomSheetComponent snapPoints={[0.5, 0.8, 1]}>
-          <BottomSheetHeader
-            title="Fruits"
-            leading={<ClockIcon color="surface.text.muted.lowContrast" size="large" />}
-          />
+          <BottomSheetHeader title="Fruits" />
           <BottomSheetBody>
             <ActionList>
               {fruites.map((fruit) => {

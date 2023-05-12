@@ -22,7 +22,7 @@ const _BottomSheetHeader = ({
 }: BottomSheetHeaderProps): React.ReactElement => {
   const { setHeaderHeight, isOpen, close, bind, defaultInitialFocusRef } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
-  const enhancedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
+  const validatedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
 
   useIsomorphicLayoutEffect(() => {
     if (!ref.current) return;
@@ -40,7 +40,7 @@ const _BottomSheetHeader = ({
           title={title}
           subtitle={subtitle}
           leading={leading}
-          trailing={enhancedTrailingComponent}
+          trailing={validatedTrailingComponent}
           titleSuffix={titleSuffix}
           hideDivider={hideDivider}
           // back button

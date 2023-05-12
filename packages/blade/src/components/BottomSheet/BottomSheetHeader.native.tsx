@@ -21,7 +21,7 @@ const _BottomSheetHeader = ({
   onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useBottomSheetContext();
-  const enhancedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
+  const validatedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
 
   return (
@@ -33,7 +33,7 @@ const _BottomSheetHeader = ({
           title={title}
           subtitle={subtitle}
           leading={leading}
-          trailing={enhancedTrailingComponent}
+          trailing={validatedTrailingComponent}
           titleSuffix={titleSuffix}
           hideDivider={hideDivider}
           // back button

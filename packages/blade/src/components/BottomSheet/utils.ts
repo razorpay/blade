@@ -77,12 +77,12 @@ const propRestrictionMap = {
 } as const;
 
 const useBottomSheetHeaderTrailingRestriction = (trailing: React.ReactNode) => {
-  // Could've used refs, but in react-native for some reason the enhancedTrailing
+  // Could've used refs, but in react-native for some reason the validatedTrailing
   // is changing to null on opening the bottomsheet
   // thus saving it to state only
   const [
-    enhancedTrailingComponent,
-    setEnhancedTrailingComponent,
+    validatedTrailingComponent,
+    setValidatedTrailingComponent,
   ] = React.useState<React.ReactElement | null>(null);
 
   // validate and restrict sub component props in trailing prop
@@ -107,13 +107,13 @@ const useBottomSheetHeaderTrailingRestriction = (trailing: React.ReactNode) => {
           );
         }
       }
-      setEnhancedTrailingComponent(
+      setValidatedTrailingComponent(
         React.cloneElement(trailing as React.ReactElement, restrictedProps),
       );
     }
   }, [trailing]);
 
-  return enhancedTrailingComponent;
+  return validatedTrailingComponent;
 };
 
 export {
