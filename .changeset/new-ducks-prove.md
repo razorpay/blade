@@ -4,9 +4,11 @@
 
 feat(blade): added bottomsheet component
 
+> For react-native consumers make sure to [go through the installation guide](https://blade.razorpay.com/?path=/docs/guides-installation--page#-add-blade-to-your-application) on how to setup the peer dependencies
 
-### Migration guide from prerelease version
-
+<details>
+  <summary>⚠️ Migration guide from prerelease version</summary>
+  
 Update the imports:
 
 ```diff
@@ -23,7 +25,7 @@ Changed Header Footer API:
 
 **Header**
 
-Prop changes: 
+Prop changes:
 
 - Removed prefix/suffix props and added new props
 
@@ -75,3 +77,5 @@ After:
   </Button>
 </BottomSheetFooter>
 ```
+
+</details>
