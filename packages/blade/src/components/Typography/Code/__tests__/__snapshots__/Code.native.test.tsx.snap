@@ -2,153 +2,177 @@
 
 exports[`<Code /> should render Code with default properties 1`] = `
 <View
-  size="small"
   style={
-    Array [
-      Object {
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 4,
-        "lineHeight": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 4,
-        "paddingRight": 4,
-        "paddingTop": 0,
-        "verticalAlign": "middle",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <Text
-    color="surface.text.subtle.lowContrast"
-    fontFamily="code"
-    fontSize={25}
-    fontWeight="regular"
-    lineHeight={25}
+  <View
+    size="small"
     style={
       Array [
         Object {
-          "color": "hsla(216, 27%, 36%, 1)",
-          "fontFamily": "Courier",
-          "fontSize": 10,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 14,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 4,
+          "lineHeight": 0,
           "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
           "paddingTop": 0,
-          "textDecorationLine": "none",
+          "verticalAlign": "middle",
         },
       ]
     }
   >
-    TEST_TOKEN
-  </Text>
+    <Text
+      color="surface.text.subtle.lowContrast"
+      fontFamily="code"
+      fontSize={25}
+      fontWeight="regular"
+      lineHeight={25}
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 27%, 36%, 1)",
+            "fontFamily": "Courier",
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 14,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      TEST_TOKEN
+    </Text>
+  </View>
 </View>
 `;
 
 exports[`<Code /> should render medium Code 1`] = `
 <View
-  size="medium"
   style={
-    Array [
-      Object {
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 4,
-        "lineHeight": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 4,
-        "paddingRight": 4,
-        "paddingTop": 0,
-        "verticalAlign": "middle",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <Text
-    color="surface.text.subtle.lowContrast"
-    fontFamily="code"
-    fontSize={75}
-    fontWeight="regular"
-    lineHeight={75}
+  <View
+    size="medium"
     style={
       Array [
         Object {
-          "color": "hsla(216, 27%, 36%, 1)",
-          "fontFamily": "Courier",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 18,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 4,
+          "lineHeight": 0,
           "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
           "paddingTop": 0,
-          "textDecorationLine": "none",
+          "verticalAlign": "middle",
         },
       ]
     }
   >
-    MEDIUM
-  </Text>
+    <Text
+      color="surface.text.subtle.lowContrast"
+      fontFamily="code"
+      fontSize={75}
+      fontWeight="regular"
+      lineHeight={75}
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 27%, 36%, 1)",
+            "fontFamily": "Courier",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 18,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      MEDIUM
+    </Text>
+  </View>
 </View>
 `;
 
 exports[`<Code /> should render small Code 1`] = `
 <View
-  size="small"
   style={
-    Array [
-      Object {
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 4,
-        "lineHeight": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 4,
-        "paddingRight": 4,
-        "paddingTop": 0,
-        "verticalAlign": "middle",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <Text
-    color="surface.text.subtle.lowContrast"
-    fontFamily="code"
-    fontSize={25}
-    fontWeight="regular"
-    lineHeight={25}
+  <View
+    size="small"
     style={
       Array [
         Object {
-          "color": "hsla(216, 27%, 36%, 1)",
-          "fontFamily": "Courier",
-          "fontSize": 10,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 14,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 4,
+          "lineHeight": 0,
           "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
           "paddingTop": 0,
-          "textDecorationLine": "none",
+          "verticalAlign": "middle",
         },
       ]
     }
   >
-    SMALL
-  </Text>
+    <Text
+      color="surface.text.subtle.lowContrast"
+      fontFamily="code"
+      fontSize={25}
+      fontWeight="regular"
+      lineHeight={25}
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 27%, 36%, 1)",
+            "fontFamily": "Courier",
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 14,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      SMALL
+    </Text>
+  </View>
 </View>
 `;

@@ -2,123 +2,131 @@
 
 exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4284378759}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4284378759}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4284378759}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4284378759}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -127,123 +135,131 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
 
 exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4294112504}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4294112504}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4294112504}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4294112504}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4294112504}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4294112504}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -252,167 +268,175 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
 
 exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom label 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="column"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "column",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="column"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "column",
           },
         ]
       }
     >
       <View
-        style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
-        }
-      >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
-              ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
-          }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
-        >
-          <RNSVGGroup
-            fill={null}
-            propList={
-              Array [
-                "fill",
-              ]
-            }
-          >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4294112504}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4294112504}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4294112504}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-      </View>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "marginLeft": 0,
-            "marginTop": 8,
-          },
-        ]
-      }
-    >
-      <Text
-        color="surface.text.subdued.highContrast"
-        fontFamily="text"
-        fontSize={75}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={50}
+        alignSelf="center"
         style={
           Array [
             Object {
-              "color": "hsla(216, 19%, 89%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 16,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignSelf": "center",
             },
-            Object {},
           ]
         }
       >
-        Loading
-      </Text>
+        <View
+          style={
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
+              ],
+            }
+          }
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
+              ]
+            }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
+          >
+            <RNSVGGroup
+              fill={null}
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4294112504}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4294112504}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4294112504}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginLeft": 0,
+              "marginTop": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          color="surface.text.subdued.highContrast"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          style={
+            Array [
+              Object {
+                "color": "hsla(216, 19%, 89%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+              Object {},
+            ]
+          }
+        >
+          Loading
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -420,123 +444,131 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
 
 exports[`<BaseSpinner /> should render high contrast information intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4281451736}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4281451736}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4281451736}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4281451736}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4281451736}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4281451736}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -545,123 +577,131 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
 
 exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4294862157}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4294862157}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4294862157}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4294862157}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4294862157}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4294862157}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -670,123 +710,131 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
 
 exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4286088859}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4286088859}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4286088859}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4286088859}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4286088859}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4286088859}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -795,123 +843,131 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
 
 exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4293696039}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4293696039}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4293696039}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4293696039}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4293696039}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4293696039}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -920,123 +976,131 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
 
 exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4278301270}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4278301270}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4278301270}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4278301270}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4278301270}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4278301270}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -1045,123 +1109,131 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
 
 exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="20px"
-          bbWidth="20px"
-          fill="none"
-          focusable={false}
-          height="20px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 20,
-                "width": 20,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="20px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="20px"
+            bbWidth="20px"
+            fill="none"
+            focusable={false}
+            height="20px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 20,
+                  "width": 20,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="20px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4284378759}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4284378759}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4284378759}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4284378759}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -1170,123 +1242,131 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
 
 exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4284378759}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4284378759}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4284378759}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4284378759}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -1295,167 +1375,175 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
 
 exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
-        style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
-        }
-      >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
-              ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
-          }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
-        >
-          <RNSVGGroup
-            fill={null}
-            propList={
-              Array [
-                "fill",
-              ]
-            }
-          >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4284378759}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4284378759}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4284378759}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-      </View>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "marginLeft": 8,
-            "marginTop": 0,
-          },
-        ]
-      }
-    >
-      <Text
-        color="surface.text.subdued.lowContrast"
-        fontFamily="text"
-        fontSize={75}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={50}
+        alignSelf="center"
         style={
           Array [
             Object {
-              "color": "hsla(217, 18%, 45%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 16,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignSelf": "center",
             },
-            Object {},
           ]
         }
       >
-        Loading
-      </Text>
+        <View
+          style={
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
+              ],
+            }
+          }
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
+              ]
+            }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
+          >
+            <RNSVGGroup
+              fill={null}
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4284378759}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginLeft": 8,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          color="surface.text.subdued.lowContrast"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          style={
+            Array [
+              Object {
+                "color": "hsla(217, 18%, 45%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+              Object {},
+            ]
+          }
+        >
+          Loading
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -1463,123 +1551,131 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
 
 exports[`<BaseSpinner /> should render low contrast information intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={1375767731}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={1375767731}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={1375767731}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={1375767731}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={1375767731}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={1375767731}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -1588,123 +1684,131 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
 
 exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={1391806249}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={1391806249}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={1391806249}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={1391806249}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={1391806249}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={1391806249}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -1713,123 +1817,131 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
 
 exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={1383630491}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={1383630491}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={1383630491}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={1383630491}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={1383630491}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={1383630491}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -1838,123 +1950,131 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
 
 exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={1390446336}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={1390446336}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={1390446336}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={1390446336}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={1390446336}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={1390446336}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -1963,123 +2083,131 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
 
 exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={1375772252}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={1375772252}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={1375772252}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={1375772252}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={1375772252}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={1375772252}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -2088,123 +2216,131 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
 
 exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4284378759}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4284378759}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4284378759}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4284378759}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -2213,123 +2349,131 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
 
 exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
 <View
-  display="flex"
   style={
-    Array [
-      Object {
-        "display": "flex",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityLabel="Loading"
-    accessibilityRole="progressbar"
-    alignItems="center"
     display="flex"
-    flexDirection="row"
     style={
       Array [
         Object {
-          "alignItems": "center",
           "display": "flex",
-          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      alignSelf="center"
+      accessibilityLabel="Loading"
+      accessibilityRole="progressbar"
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
+        alignSelf="center"
         style={
-          Object {
-            "transform": Array [
-              Object {
-                "rotateZ": "0deg",
-              },
-            ],
-          }
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
         }
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="24px"
-          bbWidth="24px"
-          fill="none"
-          focusable={false}
-          height="24px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Array [
-                Object {},
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "0deg",
+                },
               ],
-              Object {
-                "flex": 0,
-                "height": 24,
-                "width": 24,
-              },
-            ]
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="24px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="24px"
+            bbWidth="24px"
+            fill="none"
+            focusable={false}
+            height="24px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                "fill",
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Array [
+                  Object {},
+                ],
+                Object {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="24px"
           >
-            <RNSVGPath
-              d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-              fill={4284378759}
-              fillOpacity={0.2}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                ]
-              }
-            />
-            <RNSVGPath
-              d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-              fill={4284378759}
+            <RNSVGGroup
+              fill={null}
               propList={
                 Array [
                   "fill",
                 ]
               }
-            />
-            <RNSVGPath
-              d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-              fill={4284378759}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
+                fill={4284378759}
+                fillOpacity={0.2}
+                propList={
+                  Array [
+                    "fill",
+                    "fillOpacity",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+              <RNSVGPath
+                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
+                fill={4284378759}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
