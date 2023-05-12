@@ -4,6 +4,7 @@ import type { RecipeSandboxProps, SandboxProps } from './Sandbox.web';
 import { BaseText } from '~components/Typography/BaseText';
 import { Link } from '~components/Link';
 import { Text } from '~components/Typography';
+import BaseBox from '~components/Box/BaseBox';
 
 // In React Native, the codesandbox doesn't work. So replacing it with normal text display for native
 function Sandbox({ children }: SandboxProps): JSX.Element {
@@ -13,6 +14,20 @@ function Sandbox({ children }: SandboxProps): JSX.Element {
 function SandboxHighlighter({ children }: { children: string } & CodeViewerProps): JSX.Element {
   return <BaseText fontFamily="code">{dedent(children)}</BaseText>;
 }
+
+const VerticalSandbox = ({
+  code,
+  minHeight,
+}: {
+  code: string;
+  minHeight?: `${string}px`;
+}): JSX.Element => {
+  return (
+    <BaseBox minHeight={minHeight}>
+      <Sandbox>{code}</Sandbox>
+    </BaseBox>
+  );
+};
 
 function SandboxProvider(_props: {
   children: React.ReactNode;
@@ -27,4 +42,4 @@ const RecipeSandbox = (props: RecipeSandboxProps): JSX.Element => {
   return <Link href={codesandboxURL}>Open in CodeSandbox</Link>;
 };
 
-export { Sandbox, SandboxProvider, SandboxHighlighter, RecipeSandbox };
+export { Sandbox, SandboxProvider, SandboxHighlighter, RecipeSandbox, VerticalSandbox };

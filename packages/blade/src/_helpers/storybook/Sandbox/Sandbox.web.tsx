@@ -250,7 +250,12 @@ const VerticalSandbox = ({
 
   return (
     <SandboxProvider code={code} border={castWebType('none')}>
-      <Box display="flex" flexDirection="column" paddingY="spacing.2" maxHeight="100vh">
+      <Box
+        display="flex"
+        flexDirection="column"
+        paddingY="spacing.2"
+        maxHeight={castWebType('100vh')}
+      >
         <BaseBox
           backgroundColor="surface.background.level1.lowContrast"
           border={castWebType('1px solid #EFEFEF')}
@@ -269,7 +274,11 @@ const VerticalSandbox = ({
           </Button>
         </Box>
         {showCode ? (
-          <BaseBox overflow="auto" border="1px solid #EFEFEF" maxHeight="100%">
+          <BaseBox
+            overflow={castWebType('auto')}
+            border={castWebType('1px solid #EFEFEF')}
+            maxHeight="100%"
+          >
             <SandpackCodeEditor />
           </BaseBox>
         ) : null}

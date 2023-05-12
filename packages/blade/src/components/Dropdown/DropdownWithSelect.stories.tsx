@@ -4,6 +4,7 @@ import {
   getSimpleSelectCode,
   WithHeaderFooterScroll,
   WithHTMLFormSubmissionStory,
+  WithValidationStateStory,
   WithValueDisplayStory,
 } from './docs/stories';
 import { Dropdown } from '.';
@@ -80,70 +81,13 @@ export const WithHTMLFormSubmission = (): JSX.Element => {
   );
 };
 
-// const SpaceBetweenSmall = (): JSX.Element => <BaseBox height="18px" />;
-
-// export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
-//   const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>(
-//     'none',
-//   );
-//   const {
-//     selectionType,
-//     surfaceLevel,
-//     title = '',
-//     description,
-//     value = '',
-//     actionListItemIcon,
-//     ...selectInputArgs
-//   } = args;
-
-//   return (
-//     <BaseBox minHeight="300px" paddingBottom="spacing.5">
-//       <Alert
-//         intent="information"
-//         description="Select more than 2 options to see error state"
-//         isFullWidth
-//         isDismissible={false}
-//       />
-//       <SpaceBetweenSmall />
-//       <Dropdown selectionType={selectionType}>
-//         <SelectInput
-//           label="Top 2 design systems"
-//           {...selectInputArgs}
-//           validationState={validationState}
-//           onChange={({ values }) => {
-//             if (values.length === 2) {
-//               setValidationState('success');
-//             } else if (values.length > 2) {
-//               setValidationState('error');
-//             } else {
-//               setValidationState('none');
-//             }
-//           }}
-//         />
-//         <DropdownOverlay>
-//           <ActionList surfaceLevel={surfaceLevel}>
-//             <ActionListItem title={title} value={value} />
-//             <ActionListItem title="Primer" value="primer" />
-//             <ActionListItem title="Geist" description="by Vercel" value="geist" />
-//             <ActionListItem title="Airbnb Design" value="airbnb" />
-//           </ActionList>
-//         </DropdownOverlay>
-//       </Dropdown>
-//     </BaseBox>
-//   );
-// };
-// WithValidationState.args = {
-//   selectionType: 'multiple',
-//   title: 'Blade',
-//   value: 'blade',
-//   isRequired: true,
-//   errorText: 'You selected more than 2 options',
-//   successText: 'Yay! Nice choice',
-//   helpText: 'Select only two',
-//   label: 'Top 2 design systems',
-//   name: 'design-systems',
-//   placeholder: 'Select Multiple Options',
-// };
+export const WithValidationState = (): JSX.Element => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {WithValidationStateStory}
+    </Sandbox>
+  );
+};
 
 // export const WithRefUsage = (args: AllDropdownProps): JSX.Element => {
 //   const selectRef = React.useRef<HTMLElement>(null);

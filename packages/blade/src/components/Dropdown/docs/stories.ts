@@ -343,10 +343,135 @@ const WithHTMLFormSubmissionStory = `
   export default App;
 `;
 
+const WithValidationStateStory = `
+  import React from 'react';
+  import {
+    Dropdown,
+    DropdownOverlay,
+    SelectInput,
+    ActionList,
+    ActionListItem,
+    Box,
+    Alert
+  } from '@razorpay/blade/components';
+  import type { SelectInputProps } from '@razorpay/blade/components';
+
+  function App(): JSX.Element {
+    const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>('none');
+
+    return (
+      <Box minHeight="300px" paddingBottom="spacing.5">
+        <Alert
+          intent="information"
+          description="Select more than 2 options to see error state"
+          isFullWidth
+          isDismissible={false}
+          marginBottom="spacing.4"
+        />
+        <Dropdown selectionType="multiple">
+          <SelectInput
+            name="design-systems"
+            label="Top 2 design systems"
+            validationState={validationState}
+            errorText="You selected more than 2 options"
+            successText="Yay! Nice choice"
+            helpText="Select only two"
+            label="Top 2 design systems"
+            placeholder="Select Multiple Options"
+            onChange={({ values }) => {
+              if (values.length === 2) {
+                setValidationState('success');
+              } else if (values.length > 2) {
+                setValidationState('error');
+              } else {
+                setValidationState('none');
+              }
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList surfaceLevel={2}>
+              <ActionListItem title="Blade" value="blade" />
+              <ActionListItem title="Primer" value="primer" />
+              <ActionListItem title="Geist" description="by Vercel" value="geist" />
+              <ActionListItem title="Airbnb Design" value="airbnb" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    )
+  }
+
+  export default App;
+`;
+
+// export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
+//   const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>(
+//     'none',
+//   );
+//   const {
+//     selectionType,
+//     surfaceLevel,
+//     title = '',
+//     description,
+//     value = '',
+//     actionListItemIcon,
+//     ...selectInputArgs
+//   } = args;
+
+//   return (
+//     <BaseBox minHeight="300px" paddingBottom="spacing.5">
+//       <Alert
+//         intent="information"
+//         description="Select more than 2 options to see error state"
+//         isFullWidth
+//         isDismissible={false}
+//       />
+//       <SpaceBetweenSmall />
+//       <Dropdown selectionType={selectionType}>
+//         <SelectInput
+//           label="Top 2 design systems"
+//           {...selectInputArgs}
+//           validationState={validationState}
+//           onChange={({ values }) => {
+//             if (values.length === 2) {
+//               setValidationState('success');
+//             } else if (values.length > 2) {
+//               setValidationState('error');
+//             } else {
+//               setValidationState('none');
+//             }
+//           }}
+//         />
+//         <DropdownOverlay>
+//           <ActionList surfaceLevel={surfaceLevel}>
+//             <ActionListItem title={title} value={value} />
+//             <ActionListItem title="Primer" value="primer" />
+//             <ActionListItem title="Geist" description="by Vercel" value="geist" />
+//             <ActionListItem title="Airbnb Design" value="airbnb" />
+//           </ActionList>
+//         </DropdownOverlay>
+//       </Dropdown>
+//     </BaseBox>
+//   );
+// };
+// WithValidationState.args = {
+//   selectionType: 'multiple',
+//   title: 'Blade',
+//   value: 'blade',
+//   isRequired: true,
+//   errorText: 'You selected more than 2 options',
+//   successText: 'Yay! Nice choice',
+//   helpText: 'Select only two',
+//   label: 'Top 2 design systems',
+//   name: 'design-systems',
+//   placeholder: 'Select Multiple Options',
+// };
+
 export {
   Playground,
   getSimpleSelectCode,
   WithHeaderFooterScroll,
   WithValueDisplayStory,
   WithHTMLFormSubmissionStory,
+  WithValidationStateStory,
 };
