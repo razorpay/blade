@@ -42,7 +42,7 @@ type SelectInputProps = Pick<
    */
   value?: string | string[];
   /**
-   * Set initial value of Select. Use `value` instead if you want to make Dropdown controlled.
+   * Used to set the default value of SelectInput when it's uncontrolled. Use `value` instead for controlled SelectInput
    */
   defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;

@@ -927,8 +927,10 @@ export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
   } = args;
 
   return (
-    <>
-      <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+    <BaseBox minHeight="300px">
+      <Button marginBottom="spacing.4" onClick={() => setCurrentSelection('bangalore')}>
+        Select Bangalore
+      </Button>
 
       <Dropdown selectionType="single">
         <SelectInput
@@ -951,7 +953,7 @@ export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </>
+    </BaseBox>
   );
 };
 
@@ -975,8 +977,9 @@ export const ControlledDropdownMultiSelect = (args: AllDropdownProps): JSX.Eleme
   } = args;
 
   return (
-    <>
+    <BaseBox minHeight="300px">
       <Button
+        marginBottom="spacing.4"
         onClick={() => {
           if (!currentSelection.includes('bangalore')) {
             setCurrentSelection([...currentSelection, 'bangalore']);
@@ -1007,7 +1010,7 @@ export const ControlledDropdownMultiSelect = (args: AllDropdownProps): JSX.Eleme
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
-    </>
+    </BaseBox>
   );
 };
 

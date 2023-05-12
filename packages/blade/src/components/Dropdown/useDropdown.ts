@@ -76,9 +76,22 @@ type DropdownContextType = {
   hasLabelOnLeft: boolean;
   setHasLabelOnLeft: (value: boolean) => void;
 
+  /**
+   * A value that can be used in dependency array to know when Dropdown value is changed.
+   *
+   * E.g.
+   * ```ts
+   * useEffect(() => {
+   *  console.log('Uncontrolled value change');
+   * }, [changeCallbackTriggerer])
+   * ```
+   */
   changeCallbackTriggerer: number;
   setChangeCallbackTriggerer: (changeCallbackTriggerer: number) => void;
 
+  /**
+   * true when SelectInput has `value` prop (when it is controlled)
+   */
   isControlled: boolean;
   setIsControlled: (isControlled: boolean) => void;
 };
