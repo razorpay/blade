@@ -1,11 +1,11 @@
 import React from 'react';
-import { DropdownButton } from './DropdownButton';
+import { DropdownButton } from '../DropdownButton';
+import { Dropdown, DropdownOverlay } from '..';
 import {
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
   WithSimpleMenuStory,
-} from './docs/stories';
-import { Dropdown, DropdownOverlay } from '.';
+} from './stories';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';

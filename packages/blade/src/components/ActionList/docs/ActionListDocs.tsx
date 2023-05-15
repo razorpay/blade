@@ -16,6 +16,12 @@ const ActionListDocs = (): JSX.Element => {
       showStorybookControls={false}
       imports=""
       note="ActionList is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=30043-576428',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=15113-508481',
+      }}
     >
       <Box as="section">
         <Title size="medium">Playground</Title>

@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
+import { Dropdown, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
   WithControlledMultiSelectStory,
@@ -10,8 +11,7 @@ import {
   WithRefUsageStory,
   WithValidationStateStory,
   WithValueDisplayStory,
-} from './docs/stories';
-import { Dropdown, DropdownOverlay } from '.';
+} from './stories';
 
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';

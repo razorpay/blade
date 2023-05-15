@@ -23,6 +23,12 @@ const DropdownDocs = (): JSX.Element => {
       componentDescription="Dropdown component to help you create select menu or action menu. To create a menu, you would have to use this component + Trigger (SelectInput, DropdownButton) + ActionList"
       imports=""
       showStorybookControls={false}
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=38643-719971',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=13448-381615',
+      }}
     >
       <Box as="section">
         <Title size="medium">Playground</Title>
@@ -120,32 +126,6 @@ const DropdownDocs = (): JSX.Element => {
         </Heading>
         <VerticalSandbox minHeight="250px" code={WithControlledMenuStory} />
       </BaseBox>
-      {/* <BaseBox as="section" paddingBottom="spacing.9" id="actionlistitem">
-        <Title size="medium">ActionListItem</Title>
-        <VerticalSandbox code={ActionListItem} />
-        <ArgsTable data={actionListPropsTables.ActionListItem} />
-        <BaseBox id="actionlistitemicon">
-          <Title size="small">ActionListItemIcon</Title>
-          <ArgsTable
-            data={{
-              icon: <Code>IconComponent</Code>,
-            }}
-          />
-        </BaseBox>
-        <BaseBox id="actionlistitemtext">
-          <Title size="small">ActionListItemText</Title>
-          <ArgsTable data={{ children: 'string' }} />
-        </BaseBox>
-        <BaseBox id="actionlistitemasset">
-          <Title size="small">ActionListItemAsset</Title>
-          <ArgsTable data={{ href: 'string', alt: 'string' }} />
-        </BaseBox>
-      </BaseBox>
-      <BaseBox as="section" id="actionlistsection">
-        <Title size="medium">ActionListSection</Title>
-        <VerticalSandbox minHeight="250px" code={ActionListSection} />
-        <ArgsTable data={actionListPropsTables.ActionListSection} />
-      </BaseBox> */}
     </StoryPageWrapper>
   );
 };
