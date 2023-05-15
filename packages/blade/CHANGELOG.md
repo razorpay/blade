@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 7.1.3
+
+### Patch Changes
+
+- 73011827: fix(BottomSheet): ensure that the BottomSheet's lower snappoint will have a buffer
+- f2130469: fix(blade): bottomsheet isOpen state, simplify isOpen logic & glue code
+
+  Previously if users did not changed the isOpen state to false inside `onDismiss` the bottomsheet's internal state will still remain "open", but the bottomsheet would visually be hidden and the backdrop will still remain, this fixes the bug so that internally we won't modify the bottomsheet's position instead we will just call the `onDismiss`. [Check the loom](https://www.loom.com/share/f24fcb51b245431fbf1a0aeb53cea287) video here for more info.
+
+- 24d2a0b0: fix(cardFooter): alignment issue
+
 ## 7.1.2
 
 ### Patch Changes
