@@ -56,7 +56,6 @@ const useSandpackSetup = ({
   const themeTokenName = docsContext?.globals?.themeTokenName ?? 'paymentTheme';
   // @ts-expect-error: globals in unavailable on TS
   const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
-  console.log({ themeTokenName });
 
   return {
     template: 'react-ts',
