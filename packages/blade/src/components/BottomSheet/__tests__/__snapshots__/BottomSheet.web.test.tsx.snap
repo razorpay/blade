@@ -641,7 +641,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       </div>
       <div
         class="c25"
-        data-footer="true"
         width="100%"
       >
         <div
