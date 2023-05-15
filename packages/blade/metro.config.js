@@ -5,6 +5,8 @@
  * @format
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+
 module.exports = {
   resetCache: true,
   transformer: {
@@ -16,6 +18,6 @@ module.exports = {
     }),
   },
   resolver: {
-    resolverMainFields: ['sbmodern', 'browser', 'main'],
+    resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
   },
 };

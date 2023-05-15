@@ -47,8 +47,19 @@ Before you install the package, make sure that you have performed following step
    ```
 
 2. Follow [this guide](#-install-fonts) to install the fonts.
-3. For **React Native** projects, follow [this guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) to support `react-native-reanimated` on Android & iOS which is required by Blade.
-4. For **React Native** projects, follow [this guide](https://github.com/react-native-svg/react-native-svg#with-react-native-cli) to support `react-native-svg` on Android & iOS which is required by Blade.
+
+3. For **React Native** projects you need to do additional setup for the peer dependencies: 
+
+    - react-native-reanimated
+      - Follow [this guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) to install it on Android & iOS which is required by Blade.
+    - react-native-svg
+      - Follow [this guide](https://github.com/react-native-svg/react-native-svg#with-react-native-cli) to install it on Android & iOS which is required by Blade.
+    - react-native-gesture-handler
+      - Follow [this guide](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) to install it, note that you don't need to add `<GestureHandlerRootView style={{ flex: 1 }}>` again on the root because BladeProvider already adds that out of the box.
+    - @gorhom/bottom-sheet
+      - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
+    - @gorhom/portal
+      - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
 
 ## 🔜 Add blade libraries to your figma project
 
@@ -103,7 +114,11 @@ Follow the next steps mentioned below for configuring fonts to work on android:
 
 - Create a directory `font` under `/android/app/src/main/res/font`
 - Copy the font files `Lato-Regular` and `Lato-Bold` you had downloaded earlier and paste them under `/android/app/src/main/res/font`
-- Rename the font files ~~`Lato-Regular.ttf`~~ ➡️ `lato_regular.ttf`, ~~`Lato-RegularItalic.ttf`~~ ➡️ `lato_regular_italic.ttf`, ~~`Lato-Bold.ttf`~~ ➡️`lato_bold.ttf` & ~~`Lato-BoldItalic.ttf`~~ ➡️ `lato_bold_italic.ttf`(**mind the casing and underscores**).
+- Rename the font files (**mind the casing and underscores**):
+  - ~~`Lato-Regular.ttf`~~ ➡️ `lato_regular.ttf`
+  - ~~`Lato-RegularItalic.ttf`~~ ➡️ `lato_regular_italic.ttf`
+  - ~~`Lato-Bold.ttf`~~ ➡️`lato_bold.ttf` 
+  - ~~`Lato-BoldItalic.ttf`~~ ➡️ `lato_bold_italic.ttf`
 - Create a file `lato.xml` under `/android/app/src/main/res/font/lato.xml` and copy the following contents to it
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

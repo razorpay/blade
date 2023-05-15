@@ -1,7 +1,9 @@
+import 'react-native-gesture-handler';
+import React from 'react';
 import { AppRegistry } from 'react-native';
 import { getStorybookUI } from '@storybook/react-native';
 import { BladeProvider } from '../../src/components/BladeProvider';
-import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
+import { paymentTheme } from '../../src/tokens/theme';
 import './storybook.requires';
 
 import { name as appName } from '../../app.json';

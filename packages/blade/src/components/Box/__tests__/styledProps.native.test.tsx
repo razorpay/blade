@@ -31,16 +31,24 @@ describe('styledProps with getStyledProps', () => {
     expect(toJSON()).toMatchInlineSnapshot(`
       <View
         style={
-          Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 48,
-              "marginRight": 48,
-              "marginTop": 0,
-            },
-          ]
+          Object {
+            "flex": 1,
+          }
         }
-      />
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 48,
+                "marginRight": 48,
+                "marginTop": 0,
+              },
+            ]
+          }
+        />
+      </View>
     `);
   });
 });
@@ -52,26 +60,34 @@ describe('styledProps with useStyledProps', () => {
     );
 
     expect(toJSON()).toMatchInlineSnapshot(`
-      <Text
-        margin={
-          Array [
-            "spacing.0",
-            "spacing.10",
-          ]
-        }
+      <View
         style={
-          Array [
-            Object {
-              "display": "flex",
-              "marginBottom": 0,
-              "marginLeft": 48,
-              "marginRight": 48,
-              "marginTop": 0,
-            },
-          ]
+          Object {
+            "flex": 1,
+          }
         }
-        test="working???"
-      />
+      >
+        <Text
+          margin={
+            Array [
+              "spacing.0",
+              "spacing.10",
+            ]
+          }
+          style={
+            Array [
+              Object {
+                "display": "flex",
+                "marginBottom": 0,
+                "marginLeft": 48,
+                "marginRight": 48,
+                "marginTop": 0,
+              },
+            ]
+          }
+          test="working???"
+        />
+      </View>
     `);
   });
 });
