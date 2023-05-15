@@ -19,6 +19,7 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
+      method: 'alphabetical',
       order: [
         'Guides',
         ['Intro', 'Installation', 'Local Development', 'How to use?'],

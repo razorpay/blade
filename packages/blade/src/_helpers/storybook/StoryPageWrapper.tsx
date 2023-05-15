@@ -74,7 +74,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
     }
   }, []);
 
-  const { showStorybookControls = true } = props;
+  const { showStorybookControls = true, showArgsTable = true } = props;
 
   return (
     <WithGlobalStyles>
@@ -112,7 +112,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             {`This is the default ${props.componentName}. You can change the properties using the controls below.`}
           </Subtitle>
           <Primary />
-          {props.showArgsTable ? (
+          {showArgsTable ? (
             <>
               <BaseBox id="properties-ref">
                 <Title>Properties</Title>

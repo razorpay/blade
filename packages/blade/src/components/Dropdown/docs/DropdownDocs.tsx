@@ -99,7 +99,6 @@ const DropdownDocs = (): JSX.Element => {
         <Heading size="large" marginBottom="spacing.3">
           Controlled Select
         </Heading>
-        <Text>TODO: add example</Text>
         <VerticalSandbox minHeight="250px" code={WithControlledSelectStory} />
       </BaseBox>
       <BaseBox as="section">
@@ -115,12 +114,10 @@ const DropdownDocs = (): JSX.Element => {
         <Heading size="large" marginBottom="spacing.3">
           Action Menu
         </Heading>
-        <Text>TODO: add example</Text>
-        <VerticalSandbox minHeight="250px" code={WithSimpleMenuStory} />
+        <VerticalSandbox minHeight="300px" code={WithSimpleMenuStory} />
         <Heading size="large" marginBottom="spacing.3">
           Selectable Menu
         </Heading>
-        <Text>TODO: add example</Text>
         <VerticalSandbox minHeight="250px" code={WithControlledMenuStory} />
       </BaseBox>
       {/* <BaseBox as="section" paddingBottom="spacing.9" id="actionlistitem">

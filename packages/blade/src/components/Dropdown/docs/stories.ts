@@ -522,7 +522,7 @@ const WithControlledSelectStory = `
   
     return (
       <>
-        <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+        <Button marginBottom="spacing.4" onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
         <Dropdown selectionType="single">
           <SelectInput
             label="Select City"
@@ -567,6 +567,7 @@ const WithControlledMultiSelectStory = `
     return (
       <>
         <Button 
+          marginBottom="spacing.4"
           onClick={() => {
             if (!currentSelection.includes('bangalore')) {
               setCurrentSelection([...currentSelection, 'bangalore']);

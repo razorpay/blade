@@ -24,6 +24,7 @@ import {
   ActionListSection,
 } from '~components/ActionList';
 import { HomeIcon } from '~components/Icons';
+import { Button } from '~components/Button';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/Stories/With Select',
@@ -131,6 +132,46 @@ export const WithControlledMultiSelect = (): JSX.Element => {
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithControlledMultiSelectStory}
     </Sandbox>
+  );
+};
+
+// For chromatic and internal react native testing
+export const InternalControlledSelect = (): JSX.Element => {
+  const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+
+  return (
+    <>
+      <Button
+        marginBottom="spacing.4"
+        onClick={() => {
+          if (!currentSelection.includes('bangalore')) {
+            setCurrentSelection([...currentSelection, 'bangalore']);
+          }
+        }}
+      >
+        Select Bangalore
+      </Button>
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="Select City"
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </>
   );
 };
 
