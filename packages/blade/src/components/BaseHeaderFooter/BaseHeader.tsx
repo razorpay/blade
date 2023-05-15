@@ -37,7 +37,7 @@ type BaseHeaderProps = {
   showCloseButton?: boolean;
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
-  closeButtonRef: React.MutableRefObject<any>;
+  closeButtonRef?: React.MutableRefObject<any>;
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
