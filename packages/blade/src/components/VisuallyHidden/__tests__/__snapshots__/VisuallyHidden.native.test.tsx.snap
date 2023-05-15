@@ -3,7 +3,6 @@
 exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
 <View
   data-blade-component="visually-hidden"
-  data-component-from-blade="true"
   style={
     Array [
       Object {

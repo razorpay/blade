@@ -23,7 +23,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
   >
     <View
       data-blade-component="select-input"
-      data-component-from-blade="true"
       style={
         Array [
           Object {},
@@ -91,7 +90,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               <Text
                 color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
-                data-component-from-blade="true"
                 fontFamily="text"
                 fontSize={75}
                 fontStyle="normal"
@@ -124,7 +122,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </Text>
               <View
                 data-blade-component="visually-hidden"
-                data-component-from-blade="true"
                 style={
                   Array [
                     Object {
@@ -155,7 +152,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 <Text
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
-                  data-component-from-blade="true"
                   fontFamily="text"
                   fontSize={100}
                   fontStyle="normal"
@@ -256,7 +252,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             <Text
               color="surface.text.placeholder.lowContrast"
               data-blade-component="text"
-              data-component-from-blade="true"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -474,7 +469,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
     >
       <View
         data-blade-component="dropdown-overlay"
-        data-component-from-blade="true"
         display="none"
         position="absolute"
         style={
@@ -498,7 +492,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           accessibilityLabelledBy="dropdown-7-label"
           accessibilityRole="menu"
           data-blade-component="action-list"
-          data-component-from-blade="true"
           elevation={5}
           id="dropdown-7-actionlist"
           isInBottomSheet={false}
@@ -522,7 +515,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         >
           <View
             data-blade-component="action-list-header"
-            data-component-from-blade="true"
             style={
               Array [
                 Object {
@@ -613,7 +605,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               <Text
                 color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
-                data-component-from-blade="true"
                 fontFamily="text"
                 fontSize={50}
                 fontStyle="italic"
@@ -783,7 +774,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       <Text
                         color="surface.text.normal.lowContrast"
                         data-blade-component="text"
-                        data-component-from-blade="true"
                         fontFamily="text"
                         fontSize={100}
                         fontStyle="normal"
@@ -918,7 +908,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       <Text
                         color="surface.text.normal.lowContrast"
                         data-blade-component="text"
-                        data-component-from-blade="true"
                         fontFamily="text"
                         fontSize={100}
                         fontStyle="normal"
@@ -979,7 +968,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           <View
             accessibilityLabel="Search Tips"
             data-blade-component="action-list-footer"
-            data-component-from-blade="true"
             onBlur={[Function]}
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -1076,7 +1064,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               <Text
                 color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
-                data-component-from-blade="true"
                 fontFamily="text"
                 fontSize={50}
                 fontStyle="italic"
@@ -1139,7 +1126,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 buttonPaddingTop="0px"
                 collapsable={false}
                 data-blade-component="button"
-                data-component-from-blade="true"
                 defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
                 defaultBorderColor="hsla(213, 89%, 56%, 1)"
                 focusBackgroundColor="hsla(223, 95%, 48%, 1)"

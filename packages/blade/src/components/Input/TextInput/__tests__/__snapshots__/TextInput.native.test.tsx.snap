@@ -3,7 +3,6 @@
 exports[`<TextInput /> should render 1`] = `
 <View
   data-blade-component="textinput"
-  data-component-from-blade="true"
   style={
     Array [
       Object {},
@@ -71,7 +70,6 @@ exports[`<TextInput /> should render 1`] = `
           <Text
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
-            data-component-from-blade="true"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
@@ -104,7 +102,6 @@ exports[`<TextInput /> should render 1`] = `
           </Text>
           <View
             data-blade-component="visually-hidden"
-            data-component-from-blade="true"
             style={
               Array [
                 Object {
@@ -135,7 +132,6 @@ exports[`<TextInput /> should render 1`] = `
             <Text
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
-              data-component-from-blade="true"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -295,7 +291,6 @@ exports[`<TextInput /> should render 1`] = `
 exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 <View
   data-blade-component="textinput"
-  data-component-from-blade="true"
   style={
     Array [
       Object {},
@@ -363,7 +358,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           <Text
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
-            data-component-from-blade="true"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
@@ -396,7 +390,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           </Text>
           <View
             data-blade-component="visually-hidden"
-            data-component-from-blade="true"
             style={
               Array [
                 Object {
@@ -427,7 +420,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             <Text
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
-              data-component-from-blade="true"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -591,7 +583,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           <Text
             color="surface.text.subtle.lowContrast"
             data-blade-component="text"
-            data-component-from-blade="true"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
@@ -710,7 +701,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           <Text
             color="surface.text.subtle.lowContrast"
             data-blade-component="text"
-            data-component-from-blade="true"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
