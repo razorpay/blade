@@ -11,6 +11,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   <View
     accessibilityLabelledBy="radio-group-15-label"
     accessibilityRole="radiogroup"
+    data-blade-component="radio-group"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="column"
     style={
@@ -52,6 +54,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       >
         <Text
           color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          data-component-from-blade="true"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -83,6 +87,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           Select fruits
         </Text>
         <View
+          data-blade-component="visually-hidden"
+          data-component-from-blade="true"
           style={
             Array [
               Object {
@@ -112,6 +118,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         >
           <Text
             color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
@@ -705,6 +713,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
   <View
     accessibilityLabelledBy="radio-group-7-label"
     accessibilityRole="radiogroup"
+    data-blade-component="radio-group"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="column"
     style={
@@ -746,6 +756,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
       >
         <Text
           color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          data-component-from-blade="true"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -777,6 +789,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
           Select fav fruit
         </Text>
         <View
+          data-blade-component="visually-hidden"
+          data-component-from-blade="true"
           style={
             Array [
               Object {
@@ -806,6 +820,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
         >
           <Text
             color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"

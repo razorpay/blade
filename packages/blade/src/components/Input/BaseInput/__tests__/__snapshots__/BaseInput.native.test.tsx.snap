@@ -68,6 +68,8 @@ exports[`<BaseInput /> should render 1`] = `
         >
           <Text
             color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
@@ -99,6 +101,8 @@ exports[`<BaseInput /> should render 1`] = `
             Enter name
           </Text>
           <View
+            data-blade-component="visually-hidden"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {
@@ -128,6 +132,8 @@ exports[`<BaseInput /> should render 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              data-component-from-blade="true"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -348,6 +354,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
         >
           <Text
             color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
@@ -379,6 +387,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
             Enter name
           </Text>
           <View
+            data-blade-component="visually-hidden"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {
@@ -408,6 +418,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              data-component-from-blade="true"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"

@@ -10,6 +10,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 >
   <View
     accessibilityLabelledBy="checkbox-group-19-label-24"
+    data-blade-component="checkbox-group"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="column"
     style={
@@ -51,6 +53,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       >
         <Text
           color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          data-component-from-blade="true"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -82,6 +86,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           Select fruits
         </Text>
         <View
+          data-blade-component="visually-hidden"
+          data-component-from-blade="true"
           style={
             Array [
               Object {
@@ -111,6 +117,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         >
           <Text
             color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
@@ -173,6 +181,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
         >
           <View
+            data-blade-component="checkbox"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {},
@@ -328,6 +338,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
         >
           <View
+            data-blade-component="checkbox"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {},
@@ -483,6 +495,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
         >
           <View
+            data-blade-component="checkbox"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {},
@@ -644,6 +658,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
 >
   <View
     accessibilityLabelledBy="checkbox-group-49-label-54"
+    data-blade-component="checkbox-group"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="column"
     style={
@@ -685,6 +701,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       >
         <Text
           color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          data-component-from-blade="true"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -716,6 +734,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           Select fruits
         </Text>
         <View
+          data-blade-component="visually-hidden"
+          data-component-from-blade="true"
           style={
             Array [
               Object {
@@ -745,6 +765,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         >
           <Text
             color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
@@ -807,6 +829,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
         >
           <View
+            data-blade-component="checkbox"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {},
@@ -962,6 +986,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
         >
           <View
+            data-blade-component="checkbox"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {},
@@ -1117,6 +1143,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
         >
           <View
+            data-blade-component="checkbox"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {},

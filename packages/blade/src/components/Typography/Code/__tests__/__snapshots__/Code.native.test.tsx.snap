@@ -2,6 +2,8 @@
 
 exports[`<Code /> should render Code with default properties 1`] = `
 <View
+  data-blade-component="code"
+  data-component-from-blade="true"
   size="small"
   style={
     Array [
@@ -53,6 +55,8 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 exports[`<Code /> should render medium Code 1`] = `
 <View
+  data-blade-component="code"
+  data-component-from-blade="true"
   size="medium"
   style={
     Array [
@@ -104,6 +108,8 @@ exports[`<Code /> should render medium Code 1`] = `
 
 exports[`<Code /> should render small Code 1`] = `
 <View
+  data-blade-component="code"
+  data-component-from-blade="true"
   size="small"
   style={
     Array [

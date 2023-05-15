@@ -4,6 +4,8 @@ exports[`<Indicator /> should render 1`] = `
 <View
   accessibilityLabel="Success"
   alignItems="center"
+  data-blade-component="indicator"
+  data-component-from-blade="true"
   display="flex"
   flexDirection="row"
   style={
@@ -93,6 +95,8 @@ exports[`<Indicator /> should render 1`] = `
   >
     <Text
       color="surface.text.subtle.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={100}
       fontStyle="normal"
@@ -130,6 +134,8 @@ Array [
   <View
     accessibilityLabel="Warning"
     alignItems="center"
+    data-blade-component="indicator"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     style={
@@ -219,6 +225,8 @@ Array [
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -252,6 +260,8 @@ Array [
   <View
     accessibilityLabel="Success"
     alignItems="center"
+    data-blade-component="indicator"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     style={
@@ -341,6 +351,8 @@ Array [
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -374,6 +386,8 @@ Array [
   <View
     accessibilityLabel="Error"
     alignItems="center"
+    data-blade-component="indicator"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     style={
@@ -463,6 +477,8 @@ Array [
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -496,6 +512,8 @@ Array [
   <View
     accessibilityLabel="Info"
     alignItems="center"
+    data-blade-component="indicator"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     style={
@@ -585,6 +603,8 @@ Array [
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"

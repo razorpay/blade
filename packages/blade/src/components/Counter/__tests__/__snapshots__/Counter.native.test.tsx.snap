@@ -20,6 +20,8 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -42,6 +44,8 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -97,6 +101,8 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -119,6 +125,8 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
   >
     <Text
       color="feedback.text.information.highContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -174,6 +182,8 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -196,6 +206,8 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
   >
     <Text
       color="feedback.text.negative.highContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -251,6 +263,8 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -273,6 +287,8 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
   >
     <Text
       color="feedback.text.neutral.highContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -328,6 +344,8 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -350,6 +368,8 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
   >
     <Text
       color="feedback.text.notice.highContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -405,6 +425,8 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -427,6 +449,8 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
   >
     <Text
       color="feedback.text.positive.highContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -482,6 +506,8 @@ exports[`<Counter /> should render large size Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -504,6 +530,8 @@ exports[`<Counter /> should render large size Counter 1`] = `
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={100}
       fontStyle="normal"
@@ -559,6 +587,8 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -581,6 +611,8 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
   >
     <Text
       color="feedback.text.information.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -636,6 +668,8 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -658,6 +692,8 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
   >
     <Text
       color="feedback.text.negative.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -713,6 +749,8 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -735,6 +773,8 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -790,6 +830,8 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -812,6 +854,8 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
   >
     <Text
       color="feedback.text.notice.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -867,6 +911,8 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -889,6 +935,8 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
   >
     <Text
       color="feedback.text.positive.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -944,6 +992,8 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -966,6 +1016,8 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={75}
       fontStyle="normal"
@@ -1021,6 +1073,8 @@ exports[`<Counter /> should render small size Counter 1`] = `
 >
   <View
     alignItems="center"
+    data-blade-component="counter"
+    data-component-from-blade="true"
     display="flex"
     flexDirection="row"
     justifyContent="center"
@@ -1043,6 +1097,8 @@ exports[`<Counter /> should render small size Counter 1`] = `
   >
     <Text
       color="feedback.text.neutral.lowContrast"
+      data-blade-component="text"
+      data-component-from-blade="true"
       fontFamily="text"
       fontSize={25}
       fontStyle="normal"

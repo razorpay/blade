@@ -52,6 +52,8 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
       >
         <Text
           color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          data-component-from-blade="true"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -83,6 +85,8 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           Label
         </Text>
         <View
+          data-blade-component="visually-hidden"
+          data-component-from-blade="true"
           style={
             Array [
               Object {
@@ -112,6 +116,8 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         >
           <Text
             color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
@@ -154,6 +160,8 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
     >
       <Text
         color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -197,6 +205,8 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-1"
     style={
       Array [
@@ -289,6 +299,8 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         "text": "50%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-7"
     style={
       Array [
@@ -382,6 +394,8 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
     >
       <Text
         color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -424,6 +438,8 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-9"
     style={
       Array [
@@ -517,6 +533,8 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
     >
       <Text
         color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -559,6 +577,8 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-17"
     style={
       Array [
@@ -652,6 +672,8 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
     >
       <Text
         color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -694,6 +716,8 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-13"
     style={
       Array [
@@ -787,6 +811,8 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
     >
       <Text
         color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -829,6 +855,8 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-19"
     style={
       Array [
@@ -922,6 +950,8 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
     >
       <Text
         color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -964,6 +994,8 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-15"
     style={
       Array [
@@ -1057,6 +1089,8 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
     >
       <Text
         color="surface.text.subdued.highContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -1099,6 +1133,8 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-11"
     style={
       Array [
@@ -1192,6 +1228,8 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
     >
       <Text
         color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -1234,6 +1272,8 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-16"
     style={
       Array [
@@ -1327,6 +1367,8 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
     >
       <Text
         color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -1369,6 +1411,8 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-12"
     style={
       Array [
@@ -1462,6 +1506,8 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
     >
       <Text
         color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -1504,6 +1550,8 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-18"
     style={
       Array [
@@ -1597,6 +1645,8 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
     >
       <Text
         color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -1639,6 +1689,8 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-14"
     style={
       Array [
@@ -1732,6 +1784,8 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
     >
       <Text
         color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -1774,6 +1828,8 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-10"
     style={
       Array [
@@ -1886,6 +1942,8 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
       >
         <Text
           color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          data-component-from-blade="true"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -1917,6 +1975,8 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           Label
         </Text>
         <View
+          data-blade-component="visually-hidden"
+          data-component-from-blade="true"
           style={
             Array [
               Object {
@@ -1946,6 +2006,8 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         >
           <Text
             color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
@@ -1988,6 +2050,8 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
     >
       <Text
         color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -2031,6 +2095,8 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-6"
     style={
       Array [
@@ -2123,6 +2189,8 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
         "text": "70",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="meter-8"
     style={
       Array [
@@ -2235,6 +2303,8 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
       >
         <Text
           color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          data-component-from-blade="true"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -2266,6 +2336,8 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           Label
         </Text>
         <View
+          data-blade-component="visually-hidden"
+          data-component-from-blade="true"
           style={
             Array [
               Object {
@@ -2295,6 +2367,8 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         >
           <Text
             color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
@@ -2337,6 +2411,8 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
     >
       <Text
         color="surface.text.subdued.lowContrast"
+        data-blade-component="text"
+        data-component-from-blade="true"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -2380,6 +2456,8 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         "text": "20%",
       }
     }
+    data-blade-component="progress-bar"
+    data-component-from-blade="true"
     id="progress-5"
     style={
       Array [
@@ -2459,6 +2537,8 @@ Array [
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
+    data-blade-component="button"
+    data-component-from-blade="true"
     defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
     defaultBorderColor="hsla(213, 89%, 56%, 1)"
     focusBackgroundColor="hsla(223, 95%, 48%, 1)"
@@ -2611,6 +2691,8 @@ Array [
         >
           <Text
             color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
@@ -2642,6 +2724,8 @@ Array [
             Label
           </Text>
           <View
+            data-blade-component="visually-hidden"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {
@@ -2671,6 +2755,8 @@ Array [
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              data-component-from-blade="true"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -2713,6 +2799,8 @@ Array [
       >
         <Text
           color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          data-component-from-blade="true"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -2756,6 +2844,8 @@ Array [
           "text": "0%",
         }
       }
+      data-blade-component="progress-bar"
+      data-component-from-blade="true"
       id="progress-3"
       style={
         Array [
@@ -2836,6 +2926,8 @@ Array [
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
+    data-blade-component="button"
+    data-component-from-blade="true"
     defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
     defaultBorderColor="hsla(213, 89%, 56%, 1)"
     focusBackgroundColor="hsla(223, 95%, 48%, 1)"
@@ -2988,6 +3080,8 @@ Array [
         >
           <Text
             color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            data-component-from-blade="true"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
@@ -3019,6 +3113,8 @@ Array [
             Label
           </Text>
           <View
+            data-blade-component="visually-hidden"
+            data-component-from-blade="true"
             style={
               Array [
                 Object {
@@ -3048,6 +3144,8 @@ Array [
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              data-component-from-blade="true"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -3090,6 +3188,8 @@ Array [
       >
         <Text
           color="surface.text.subdued.lowContrast"
+          data-blade-component="text"
+          data-component-from-blade="true"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -3133,6 +3233,8 @@ Array [
           "text": "60%",
         }
       }
+      data-blade-component="progress-bar"
+      data-component-from-blade="true"
       id="progress-3"
       style={
         Array [

@@ -4,6 +4,8 @@ exports[`<Title /> should render Title with default properties 1`] = `
 <Text
   accessibilityRole="header"
   color="surface.text.normal.lowContrast"
+  data-blade-component="title"
+  data-component-from-blade="true"
   fontFamily="text"
   fontSize={600}
   fontStyle="normal"
@@ -39,6 +41,8 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
 <Text
   accessibilityRole="header"
   color="surface.text.subdued.lowContrast"
+  data-blade-component="title"
+  data-component-from-blade="true"
   fontFamily="text"
   fontSize={800}
   fontStyle="normal"
@@ -74,6 +78,8 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
 <Text
   accessibilityRole="header"
   color="surface.text.muted.lowContrast"
+  data-blade-component="title"
+  data-component-from-blade="true"
   fontFamily="text"
   fontSize={700}
   fontStyle="normal"
@@ -109,6 +115,8 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
 <Text
   accessibilityRole="header"
   color="surface.text.normal.lowContrast"
+  data-blade-component="title"
+  data-component-from-blade="true"
   fontFamily="text"
   fontSize={600}
   fontStyle="normal"
@@ -144,6 +152,8 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
 <Text
   accessibilityRole="header"
   color="surface.text.normal.highContrast"
+  data-blade-component="title"
+  data-component-from-blade="true"
   fontFamily="text"
   fontSize={600}
   fontStyle="normal"
