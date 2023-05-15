@@ -400,7 +400,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       "marginLeft": "auto",
                       "marginRight": "auto",
                       "marginTop": "auto",
-                      "width": 60,
+                      "width": 56,
                     },
                   ]
                 }

@@ -343,7 +343,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 .c4:after {
   margin: auto;
   content: '';
-  width: 60px;
+  width: 56px;
   height: 4px;
   background-color: hsla(216,15%,54%,0.18);
   border-radius: 16px;
