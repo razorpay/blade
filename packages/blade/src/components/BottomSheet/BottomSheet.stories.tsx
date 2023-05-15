@@ -395,7 +395,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
 
   return (
     <BaseBox>
-      <Box display="flex" gap="spacing.2">
+      <Box display="flex" gap="spacing.2" flexWrap="wrap">
         <Button onClick={() => setFirstOpen(true)}>Open 1st BottomSheet</Button>
         <Button onClick={() => setSecondOpen(true)}>Open 2nd BottomSheet</Button>
         <Button onClick={() => setThirdOpen(true)}>Open 3rd BottomSheet</Button>

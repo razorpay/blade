@@ -99,7 +99,7 @@ const StoryCanvas = styled.div(
       right: 0;
       border-right: 'none';
       border: ${theme.border.width.thin}px solid ${theme.colors.surface.border.subtle.lowContrast};
-      width: 100vw;
+      width: 100%;
       height: 100%;
       overflow: auto;
       padding: 2rem;
