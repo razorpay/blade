@@ -178,9 +178,7 @@ describe('<Dropdown />', () => {
 
       return (
         <>
-          <Button onClick={() => setCurrentSelection('bangalore')} testID="select-blr-button">
-            Select Bangalore
-          </Button>
+          <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
           <Dropdown selectionType="single">
             <SelectInput
               label="Select City"
@@ -201,15 +199,15 @@ describe('<Dropdown />', () => {
       );
     };
 
-    const { getByTestId, getByRole } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, getByText } = renderWithTheme(<ControlledDropdown />);
 
     const selectInput = getByRole('combobox');
     expect(selectInput).toHaveTextContent('Select Option');
-    fireEvent.press(getByTestId('select-blr-button'));
+    fireEvent.press(getByText('Select Bangalore'));
     expect(selectInput).toHaveTextContent('Bangalore');
 
     fireEvent.press(selectInput);
-    fireEvent.press(getByTestId('pune-option'));
+    fireEvent.press(getByText('Pune'));
     expect(selectInput).toHaveTextContent('Pune');
   });
 
@@ -225,7 +223,6 @@ describe('<Dropdown />', () => {
                 setCurrentSelection([...currentSelection, 'bangalore']);
               }
             }}
-            testID="select-blr-button"
           >
             Select Bangalore
           </Button>
@@ -236,7 +233,6 @@ describe('<Dropdown />', () => {
               onChange={(args) => {
                 if (args) {
                   setCurrentSelection(args.values);
-                  console.log('onChange triggered');
                 }
               }}
             />
@@ -252,18 +248,18 @@ describe('<Dropdown />', () => {
       );
     };
 
-    const { getByRole, getByTestId } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, getByText } = renderWithTheme(<ControlledDropdown />);
 
     const selectInput = getByRole('combobox');
     expect(selectInput).toHaveTextContent('Select Option');
-    fireEvent.press(getByTestId('select-blr-button'));
+    fireEvent.press(getByText('Select Bangalore'));
     expect(selectInput).toHaveTextContent('Bangalore');
 
     fireEvent.press(selectInput);
-    fireEvent.press(getByTestId('pune-option'));
+    fireEvent.press(getByText('Pune'));
     expect(selectInput).toHaveTextContent('2 items selected');
 
-    fireEvent.press(getByTestId('select-blr-button'));
+    fireEvent.press(getByText('Select Bangalore'));
     expect(selectInput).toHaveTextContent('2 items selected');
   });
 });

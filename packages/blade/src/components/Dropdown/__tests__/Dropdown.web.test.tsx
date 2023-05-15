@@ -464,7 +464,6 @@ describe('<Dropdown />', () => {
               onChange={(args) => {
                 if (args) {
                   setCurrentSelection(args.values);
-                  console.log('onChange triggered');
                 }
               }}
             />
