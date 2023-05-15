@@ -1,6 +1,6 @@
+import { Button } from '../Button';
+import type { ButtonProps } from '../Button';
 import { useDropdown } from './useDropdown';
-import type { ButtonProps } from '~components/Button';
-import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
