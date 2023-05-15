@@ -6,10 +6,7 @@ import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 
-const _BottomSheetFooter = ({
-  children,
-  showDivider,
-}: BottomSheetFooterProps): React.ReactElement => {
+const _BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
     <BaseBox
@@ -20,7 +17,7 @@ const _BottomSheetFooter = ({
       touchAction="none"
       zIndex={2}
     >
-      <BaseFooter showDivider={showDivider}>{children}</BaseFooter>
+      <BaseFooter>{children}</BaseFooter>
     </BaseBox>
   );
 };
