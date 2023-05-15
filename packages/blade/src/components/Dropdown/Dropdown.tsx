@@ -3,7 +3,7 @@ import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
-import { getComponentId, isValidAllowedChildren } from '~utils';
+import { isValidAllowedChildren } from '~utils';
 import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
 import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -77,15 +77,13 @@ const _Dropdown = ({
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      console.log('isValidChildDropdownButton', isValidAllowedChildren(child, 'DropdownButton'));
-      console.log(getComponentId(child));
       if (
         !isValidAllowedChildren(child, 'SelectInput') &&
         !isValidAllowedChildren(child, 'DropdownButton') &&
         !isValidAllowedChildren(child, componentIds.DropdownOverlay) &&
         !isValidAllowedChildren(child, bottomSheetComponentIds.BottomSheet)
       ) {
-        console.log(
+        throw new Error(
           `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
         );
       }
