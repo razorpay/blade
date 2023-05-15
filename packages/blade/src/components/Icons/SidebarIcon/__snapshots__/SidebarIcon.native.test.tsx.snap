@@ -1,58 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SidebarIcon /> should render SidebarIcon 1`] = `
-<RNSVGSvgView
-  accessibilityElementsHidden={true}
-  align="xMidYMid"
-  bbHeight="20px"
-  bbWidth="20px"
-  fill="none"
-  focusable={false}
-  height="20px"
-  importantForAccessibility="no-hide-descendants"
-  meetOrSlice={0}
-  minX={0}
-  minY={0}
+<View
   style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderWidth": 0,
-      },
-      Array [
-        Object {},
-      ],
-      Object {
-        "flex": 0,
-        "height": 20,
-        "width": 20,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
-  vbHeight={24}
-  vbWidth={24}
-  width="20px"
 >
-  <RNSVGGroup
-    fill={null}
-    propList={
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="20px"
+    bbWidth="20px"
+    fill="none"
+    focusable={false}
+    height="20px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
       Array [
-        "fill",
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Array [
+          Object {},
+        ],
+        Object {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
       ]
     }
+    vbHeight={24}
+    vbWidth={24}
+    width="20px"
   >
-    <RNSVGPath
-      clipRule={0}
-      d="M5 2C3.34315 2 2 3.34315 2 5V19C2 20.6569 3.34315 22 5 22H19C20.6569 22 22 20.6569 22 19V5C22 3.34315 20.6569 2 19 2H5ZM8 4H5C4.44772 4 4 4.44772 4 5V19C4 19.5523 4.44772 20 5 20H8V4ZM10 20V4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H10Z"
-      fill={4282603381}
-      fillRule={0}
+    <RNSVGGroup
+      fill={null}
       propList={
         Array [
           "fill",
-          "fillRule",
         ]
       }
-    />
-  </RNSVGGroup>
-</RNSVGSvgView>
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M5 2C3.34315 2 2 3.34315 2 5V19C2 20.6569 3.34315 22 5 22H19C20.6569 22 22 20.6569 22 19V5C22 3.34315 20.6569 2 19 2H5ZM8 4H5C4.44772 4 4 4.44772 4 5V19C4 19.5523 4.44772 20 5 20H8V4ZM10 20V4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H10Z"
+        fill={4282603381}
+        fillRule={0}
+        propList={
+          Array [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;
