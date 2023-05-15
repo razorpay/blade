@@ -1,5 +1,11 @@
 import React from 'react';
-import { getSimpleSelectCode, Playground } from './stories';
+import {
+  getSimpleSelectCode,
+  Playground,
+  WithControlledMenuStory,
+  WithControlledSelectStory,
+  WithSimpleMenuStory,
+} from './stories';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
 import { Sandbox, VerticalSandbox } from '~src/_helpers/storybook/Sandbox';
@@ -94,7 +100,7 @@ const DropdownDocs = (): JSX.Element => {
           Controlled Select
         </Heading>
         <Text>TODO: add example</Text>
-        <VerticalSandbox minHeight="250px" code={getSimpleSelectCode('single')} />
+        <VerticalSandbox minHeight="250px" code={WithControlledSelectStory} />
       </BaseBox>
       <BaseBox as="section">
         <Title size="small" marginBottom="spacing.3">
@@ -110,12 +116,12 @@ const DropdownDocs = (): JSX.Element => {
           Action Menu
         </Heading>
         <Text>TODO: add example</Text>
-        <VerticalSandbox minHeight="250px" code={getSimpleSelectCode('single')} />
+        <VerticalSandbox minHeight="250px" code={WithSimpleMenuStory} />
         <Heading size="large" marginBottom="spacing.3">
           Selectable Menu
         </Heading>
         <Text>TODO: add example</Text>
-        <VerticalSandbox minHeight="250px" code={getSimpleSelectCode('single')} />
+        <VerticalSandbox minHeight="250px" code={WithControlledMenuStory} />
       </BaseBox>
       {/* <BaseBox as="section" paddingBottom="spacing.9" id="actionlistitem">
         <Title size="medium">ActionListItem</Title>
