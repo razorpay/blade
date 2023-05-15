@@ -4,8 +4,8 @@ import type { Breakpoints } from '~tokens/global/breakpoints';
 import type { Motion } from '~tokens/global/motion';
 import type { Spacing } from '~tokens/global/spacing';
 import type { Typography } from '~tokens/global/typography';
-export { default as BladeProvider } from './BladeProvider';
-export * from './BladeProvider';
+export { BladeProvider } from './BladeProvider';
+export * from './types';
 export { default as useTheme } from './useTheme';
 
 export type Theme = {

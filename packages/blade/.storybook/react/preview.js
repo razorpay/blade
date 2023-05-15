@@ -95,12 +95,12 @@ const StoryCanvas = styled.div(
       position: ${context.viewMode === 'story' ? 'absolute' : 'relative'};
       top: 0;
       left: 0;
+      bottom: 0;
+      right: 0;
       border-right: 'none';
       border: ${theme.border.width.thin}px solid ${theme.colors.surface.border.subtle.lowContrast};
-      right: 0;
       width: 100%;
       height: 100%;
-      bottom: 0;
       overflow: auto;
       padding: 2rem;
       border-radius: ${

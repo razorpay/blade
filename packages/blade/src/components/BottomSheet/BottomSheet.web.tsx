@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable consistent-return */
@@ -7,18 +8,20 @@ import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import usePresence from 'use-presence';
 import { clearAllBodyScrollLocks } from 'body-scroll-lock';
-import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
+import { BottomSheetHeader } from './BottomSheetHeader';
+import { BottomSheetFooter } from './BottomSheetFooter';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
-import { BottomSheetCloseButton } from './BottomSheetCloseButton';
+import type { BottomSheetProps } from './types';
+import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
-import { BottomSheetFooter } from './BottomSheetFooter';
+
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, assignWithoutSideEffects, makeSize } from '~utils';
+import { makeMotionTime, assignWithoutSideEffects, makeSize, makeAccessible } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
@@ -26,14 +29,6 @@ import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect'
 import { useTheme } from '~components/BladeProvider';
 import { useId } from '~src/hooks/useId';
 import size from '~tokens/global/size';
-
-type BottomSheetProps = {
-  isOpen?: boolean;
-  onDismiss?: () => void;
-  children: React.ReactNode;
-  initialFocusRef?: React.MutableRefObject<any>;
-  snapPoints?: SnapPoints;
-};
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 
@@ -100,6 +95,10 @@ const _BottomSheet = ({
   const grabHandleRef = React.useRef<HTMLDivElement>(null);
   const originalFocusElement = React.useRef<HTMLElement | null>(null);
   const defaultInitialFocusRef = React.useRef<any>(null);
+  const initialSnapPoint = React.useRef<number>(snapPoints[1]);
+  const totalHeight = React.useMemo(() => {
+    return grabHandleHeight + headerHeight + footerHeight + contentHeight;
+  }, [contentHeight, footerHeight, grabHandleHeight, headerHeight]);
 
   const id = useId();
   const {
@@ -151,6 +150,15 @@ const _BottomSheet = ({
     setGrabHandleHeight(grabHandleRef.current.getBoundingClientRect().height);
   }, [grabHandleRef.current, _isOpen]);
 
+  // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
+  useIsomorphicLayoutEffect(() => {
+    const middleSnapPoint = snapPoints[1] * dimensions.height;
+    const lowerSnapPoint = snapPoints[0] * dimensions.height;
+    if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
+      initialSnapPoint.current = snapPoints[0];
+    }
+  }, [dimensions.height, snapPoints, totalHeight]);
+
   const returnFocus = React.useCallback(() => {
     if (!originalFocusElement.current) return;
     originalFocusElement.current.focus();
@@ -171,7 +179,7 @@ const _BottomSheet = ({
   }, [initialFocusRef]);
 
   const handleOnOpen = React.useCallback(() => {
-    setPositionY(dimensions.height * 0.5);
+    setPositionY(dimensions.height * initialSnapPoint.current);
     scrollLockRef.current.activate();
     // initialize the original focused element
     // On first render it will be the activeElement, eg: the button trigger or select input
@@ -209,13 +217,6 @@ const _BottomSheet = ({
     bottomSheetAndDropdownGlue.setDropdownHasBottomSheet(true);
   }, [bottomSheetAndDropdownGlue]);
 
-  /*
-      1. The content should not be scrollable on lower or middle snapPoints
-      2. If we reach the top snapPoint we make the content scrollable
-      3. scrolling down the content will work as usual
-      4. but if the scroll position is at top and then we drag down on the content body
-         the bottom-sheet will start the dragging and we will set the scroll to 'none'
-    */
   const bind = useDrag(
     ({
       active,
@@ -254,7 +255,6 @@ const _BottomSheet = ({
         // more than the upperSnapPoint or maximum height of the sheet
         // this is basically a clamp() function but creates a nice rubberband effect
         const dampening = 0.55;
-        const totalHeight = grabHandleHeight + headerHeight + footerHeight + contentHeight;
         if (totalHeight < upperSnapPoint) {
           newY = rubberbandIfOutOfBounds(rawY, 0, totalHeight, dampening);
         } else {
@@ -284,27 +284,26 @@ const _BottomSheet = ({
         preventScrollingRef.current = newY < upperSnapPoint;
       }
 
-      // This ensure that the lower snapPoint will always have atleast some buffer
-      // When the bottomsheet total height is less than the lower snapPoint
-      // Video walkthrough: https://www.loom.com/share/a9a8db7688d64194b13df8b3e25859ae
-      const lowerPointBuffer = 60;
-      const totalHeight = headerHeight + grabHandleHeight + contentHeight + footerHeight;
-      const lowerestSnap = Math.min(lowerSnapPoint, totalHeight) - lowerPointBuffer;
-
-      const shouldClose = newY < lowerestSnap;
-      if (shouldClose) {
-        setIsDragging(false);
-        close();
-        cancel();
-        return;
-      }
-
       if (last) {
         // calculate the nearest snapPoint
-        const [nearest] = computeSnapPointBounds(
+        const [nearest, lower] = computeSnapPointBounds(
           newY,
           snapPoints.map((point) => dimensions.height * point) as SnapPoints,
         );
+
+        // This ensure that the lower snapPoint will always have atleast some buffer
+        // When the bottomsheet total height is less than the lower snapPoint
+        // Video walkthrough: https://www.loom.com/share/a9a8db7688d64194b13df8b3e25859ae
+        const lowerPointBuffer = 60;
+        const lowerestSnap = Math.min(lower, totalHeight) - lowerPointBuffer;
+
+        const shouldClose = rawY < lowerestSnap;
+        if (shouldClose) {
+          setIsDragging(false);
+          cancel();
+          close();
+          return;
+        }
 
         // if we stop dragging assign snap to the nearest point
         if (!active && !tap) {
@@ -414,6 +413,8 @@ const _BottomSheet = ({
       setHeaderHeight(0);
       setFooterHeight(0);
       setContentHeight(0);
+      setGrabHandleHeight(0);
+      _setPositionY(0);
     }
   }, [isMounted, scrollLockRef]);
 
@@ -430,6 +431,7 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
+        {...makeAccessible({ modal: true, role: 'dialog' })}
         data-surface
         windowHeight={dimensions.height}
         isDragging={isDragging}
@@ -443,7 +445,6 @@ const _BottomSheet = ({
         }}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
-          <BottomSheetCloseButton />
           <BottomSheetGrabHandle ref={grabHandleRef} {...bind()} />
           {children}
         </BaseBox>

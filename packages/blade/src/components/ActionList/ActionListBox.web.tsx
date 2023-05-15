@@ -20,7 +20,7 @@ const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
 
     return (
       <StyledListBoxWrapper
-        isInBottomSheet={Boolean(isInBottomSheet)}
+        isInBottomSheet={isInBottomSheet}
         ref={ref}
         {...makeAccessible({
           role: actionListItemWrapperRole,

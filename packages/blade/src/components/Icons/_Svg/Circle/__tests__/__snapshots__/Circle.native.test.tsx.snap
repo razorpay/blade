@@ -1,59 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Circle /> should render react-native-svg Circle component 1`] = `
-<RNSVGSvgView
-  accessibilityElementsHidden={true}
-  align="xMidYMid"
-  bbHeight="110"
-  bbWidth="400"
-  focusable={false}
-  height="110"
-  importantForAccessibility="no-hide-descendants"
-  meetOrSlice={0}
-  minX={0}
-  minY={0}
+<View
   style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderWidth": 0,
-      },
-      Array [
-        Object {},
-      ],
-      Object {
-        "flex": 0,
-        "height": 110,
-        "width": 400,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
-  vbHeight={100}
-  vbWidth={100}
-  width="400"
 >
-  <RNSVGGroup>
-    <RNSVGCircle
-      cx="200"
-      cy="100"
-      matrix={
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="110"
+    bbWidth="400"
+    focusable={false}
+    height="110"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
         Array [
-          1,
-          0,
-          -0,
-          1,
-          10,
-          10,
-        ]
-      }
-      propList={
-        Array [
-          "strokeWidth",
-        ]
-      }
-      r="4"
-      strokeWidth="1"
-    />
-  </RNSVGGroup>
-</RNSVGSvgView>
+          Object {},
+        ],
+        Object {
+          "flex": 0,
+          "height": 110,
+          "width": 400,
+        },
+      ]
+    }
+    vbHeight={100}
+    vbWidth={100}
+    width="400"
+  >
+    <RNSVGGroup>
+      <RNSVGCircle
+        cx="200"
+        cy="100"
+        matrix={
+          Array [
+            1,
+            0,
+            -0,
+            1,
+            10,
+            10,
+          ]
+        }
+        propList={
+          Array [
+            "strokeWidth",
+          ]
+        }
+        r="4"
+        strokeWidth="1"
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;

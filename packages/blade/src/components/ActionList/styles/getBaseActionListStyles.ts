@@ -26,7 +26,7 @@ const getBaseActionListStyles = (props: StyledActionListProps & { theme: Theme }
 
   return {
     backgroundColor,
-    borderWidth: theme.border.width.thin,
+    borderWidth: isInBottomSheet ? undefined : theme.border.width.thin,
     borderColor: theme.colors.surface.border.normal.lowContrast,
     borderRadius: makeSize(theme.border.radius.medium),
     boxShadow: isInBottomSheet || isReactNative() ? undefined : elevation200,
