@@ -38,7 +38,6 @@ Prop changes:
 +  leading?: React.ReactNode;
 +  trailing?: React.ReactNode;
 +  titleSuffix?: React.ReactNode;
-+  showDivider?: boolean;
 +  showBackButton?: boolean;
 +  onBackButtonClick?: () => void;
 +  closeButtonRef: React.MutableRefObject<any>;
