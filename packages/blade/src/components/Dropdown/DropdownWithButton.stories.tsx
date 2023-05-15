@@ -13,6 +13,17 @@ const DropdownStoryMeta = {
   component: Dropdown,
   subcomponents: { DropdownButton },
   args: {},
+  parameters: {
+    viewMode: 'story',
+    options: {
+      showPanel: false,
+    },
+    previewTabs: {
+      'storybook/docs/panel': {
+        hidden: true,
+      },
+    },
+  },
 };
 
 export const Default = (): JSX.Element => {

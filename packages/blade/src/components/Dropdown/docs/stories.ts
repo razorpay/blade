@@ -677,7 +677,7 @@ const WithControlledMenuStory = `
     CloseIcon
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element => {
+  function App(): JSX.Element {
     const [status, setStatus] = React.useState<string | undefined>();
 
     return (
@@ -742,7 +742,7 @@ const WithControlledMultiSelectMenuStory = `
     Badge,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element => {
+  function App(): JSX.Element {
     const [filters, setFilters] = React.useState<string[]>([]);
 
     const selectItem = ({ name, value }: { name: string; value?: boolean }): void => {
