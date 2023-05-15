@@ -404,68 +404,203 @@ const WithValidationStateStory = `
   export default App;
 `;
 
-// export const WithValidationState = (args: AllDropdownProps): JSX.Element => {
-//   const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>(
-//     'none',
-//   );
-//   const {
-//     selectionType,
-//     surfaceLevel,
-//     title = '',
-//     description,
-//     value = '',
-//     actionListItemIcon,
-//     ...selectInputArgs
-//   } = args;
+const WithRefUsageStory = `
+  import React from 'react';
+  import {
+    Dropdown,
+    DropdownOverlay,
+    SelectInput,
+    ActionList,
+    ActionListItem,
+    Button,
+    Code,
+    Box,
+    Text
+  } from '@razorpay/blade/components';
 
-//   return (
-//     <BaseBox minHeight="300px" paddingBottom="spacing.5">
-//       <Alert
-//         intent="information"
-//         description="Select more than 2 options to see error state"
-//         isFullWidth
-//         isDismissible={false}
-//       />
-//       <SpaceBetweenSmall />
-//       <Dropdown selectionType={selectionType}>
-//         <SelectInput
-//           label="Top 2 design systems"
-//           {...selectInputArgs}
-//           validationState={validationState}
-//           onChange={({ values }) => {
-//             if (values.length === 2) {
-//               setValidationState('success');
-//             } else if (values.length > 2) {
-//               setValidationState('error');
-//             } else {
-//               setValidationState('none');
-//             }
-//           }}
-//         />
-//         <DropdownOverlay>
-//           <ActionList surfaceLevel={surfaceLevel}>
-//             <ActionListItem title={title} value={value} />
-//             <ActionListItem title="Primer" value="primer" />
-//             <ActionListItem title="Geist" description="by Vercel" value="geist" />
-//             <ActionListItem title="Airbnb Design" value="airbnb" />
-//           </ActionList>
-//         </DropdownOverlay>
-//       </Dropdown>
-//     </BaseBox>
-//   );
-// };
-// WithValidationState.args = {
-//   selectionType: 'multiple',
-//   title: 'Blade',
-//   value: 'blade',
-//   isRequired: true,
-//   errorText: 'You selected more than 2 options',
-//   successText: 'Yay! Nice choice',
-//   helpText: 'Select only two',
-//   label: 'Top 2 design systems',
-//   name: 'design-systems',
-//   placeholder: 'Select Multiple Options',
-// };
+  function App(): JSX.Element {
+    const selectRef = React.useRef<HTMLElement>(null);
+
+
+    return (
+      <Box minHeight="300px">
+        <Dropdown >
+          <SelectInput
+            ref={selectRef}
+            label="City"
+            placeholder="Select your City"
+            name="city"
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Pune" value="pune" />
+              <ActionListItem title="Bangalore" value="bangalore" />
+              <ActionListItem title="Mysore" value="mysore" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+        <Box paddingTop="spacing.3">
+          <Button
+            onClick={() => {
+              selectRef.current?.focus();
+            }}
+          >
+            Click to focus
+          </Button>
+        </Box>
+        <Box paddingTop="spacing.3">
+          <Text>
+            We are using <Code>selectRef.current.focus()</Code> here to focus on input
+          </Text>
+        </Box>
+      </Box>
+    );
+  };
+
+  export default App;
+`;
+
+const WithMultipleDropdownsStory = `
+  import {
+    Dropdown,
+    DropdownOverlay,
+    SelectInput,
+    ActionList,
+    ActionListItem,
+    Box,
+  } from '@razorpay/blade/components';
+
+
+  function App(): JSX.Element {  
+    return (
+      <Box display="flex" flexDirection="row" minHeight="300px" gap="spacing.2">
+        <Box flex={1}>
+          <Dropdown>
+            <SelectInput label="Top 2 design systems" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Primer" value="primer" />
+                <ActionListItem title="Geist" description="by Vercel" value="geist" />
+                <ActionListItem title="Airbnb Design" value="airbnb" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+        <Box flex={1}>
+          <Dropdown>
+            <SelectInput label="Top 2 Languages" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="HTML" value="html" />
+                <ActionListItem title="CSS" value="css" />
+                <ActionListItem title="JavaScript" value="javascript" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+    );
+  };
+
+  export default App;
+`;
+
+const WithControlledSelectStory = `
+  import React from 'react';
+  import {
+    Dropdown,
+    DropdownOverlay,
+    SelectInput,
+    ActionList,
+    ActionListItem,
+    Button,
+  } from '@razorpay/blade/components';
+
+  function App(args): JSX.Element {
+    const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+  
+    return (
+      <>
+        <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+        <Dropdown selectionType="single">
+          <SelectInput
+            label="Select City"
+            value={currentSelection}
+            onChange={(args) => {
+              if (args) {
+                setCurrentSelection(args.values[0]);
+                console.log('onChange triggered');
+              }
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Bangalore" value="bangalore" />
+              <ActionListItem title="Pune" value="pune" />
+              <ActionListItem title="Chennai" value="chennai" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </>
+    );
+  };
+
+  export default App;
+`;
+
+const WithControlledMultiSelectStory = `
+  import React from 'react';
+  import {
+    Dropdown,
+    DropdownOverlay,
+    SelectInput,
+    ActionList,
+    ActionListItem,
+    Button,
+  } from '@razorpay/blade/components';
+
+  function App(args): JSX.Element {
+    const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);  
+
+    return (
+      <>
+        <Button 
+          onClick={() => {
+            if (!currentSelection.includes('bangalore')) {
+              setCurrentSelection([...currentSelection, 'bangalore']);
+            }
+          }}
+        >
+          Select Bangalore
+        </Button>
+        <Dropdown selectionType="single">
+          <SelectInput
+            label="Select City"
+            value={currentSelection}
+            onChange={(args) => {
+              if (args) {
+                setCurrentSelection(args.values[0]);
+                console.log('onChange triggered');
+              }
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Bangalore" value="bangalore" />
+              <ActionListItem title="Pune" value="pune" />
+              <ActionListItem title="Chennai" value="chennai" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </>
+    );
+  };
+
+  export default App;
+`;
 
 export {
   Playground,
@@ -474,4 +609,8 @@ export {
   WithValueDisplayStory,
   WithHTMLFormSubmissionStory,
   WithValidationStateStory,
+  WithRefUsageStory,
+  WithMultipleDropdownsStory,
+  WithControlledSelectStory,
+  WithControlledMultiSelectStory,
 };
