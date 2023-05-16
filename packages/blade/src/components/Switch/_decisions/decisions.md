@@ -26,6 +26,7 @@ A switch component is used to quickly switch between two possible states. These 
 | onChange | `({ event, isChecked, value }) => void` | `undefined` | The function to be called when the switch state changes. |        |
 | isDisabled | `boolean` | `false` | Control whether the switch is disabled or not. |        |
 | accessibilityLabel | `string` | `undefined` | Provides accessible label for internal checkbox component that sets the aria-label prop for screen readers. |        |
+| size | `small, medium` | `medium` | Size of the switch component |        |
 | name (html) | `string` | `undefined` | The name of the input field in a switch, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |        |
 | value (html) | `string` | `undefined` | The value of the input field in a switch, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |        |
 
