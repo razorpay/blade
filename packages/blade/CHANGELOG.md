@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 7.2.1
+
+### Patch Changes
+
+- 40a16da7: fix(blade): BottomSheet body dynamic height
+- e0f80522: feat(blade): added bottomsheet component ids
+
 ## 7.2.0
 
 ### Minor Changes
