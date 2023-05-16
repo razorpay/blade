@@ -1,1 +1,1 @@
-export { default } from './fontFamily.native';
+export { fontFamily } from './fontFamily.native';

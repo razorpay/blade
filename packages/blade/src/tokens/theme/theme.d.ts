@@ -1,41 +1,21 @@
 import type { StringWithAutocomplete } from '~src/_helpers/types';
-import type { Border } from '~tokens/global/border';
-import type { Breakpoints } from '~tokens/global/breakpoints';
-import type { Motion } from '~tokens/global/motion';
-import type { Spacing } from '~tokens/global/spacing';
-import type { TypographyWithPlatforms } from '~tokens/global/typography';
+import type {
+  Border,
+  Breakpoints,
+  Motion,
+  Spacing,
+  TypographyWithPlatforms,
+  ShadowsWithColorModes,
+} from '~tokens/global';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
 export type ColorSchemeModes = 'onDark' | 'onLight';
 
-export type ShadowLevels = 1 | 2 | 3 | 4 | 5;
-
 export type TextTypes = 'muted' | 'normal' | 'placeholder' | 'subdued' | 'subtle';
 
 export type ColorContrastTypes = 'low' | 'high';
-
-export type Shadows = {
-  offsetX: {
-    level: Record<ShadowLevels, number>;
-  };
-  offsetY: {
-    level: Record<ShadowLevels, number>;
-  };
-  blurRadius: {
-    level: Record<ShadowLevels, number>;
-  };
-  color: Record<
-    ColorSchemeModes,
-    {
-      level: Record<ShadowLevels, string>;
-    }
-  >;
-  androidElevation: {
-    level: Record<ShadowLevels, number>;
-  };
-};
 
 export type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
@@ -161,8 +141,8 @@ export type ThemeTokens = {
   breakpoints: Breakpoints;
   colors: ColorsWithModes;
   motion: Motion;
+  shadows: ShadowsWithColorModes;
   spacing: Spacing;
-  shadows: Shadows;
   typography: TypographyWithPlatforms;
 };
 

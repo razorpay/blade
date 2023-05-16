@@ -21,7 +21,7 @@ export type Opacity = Readonly<{
   9: number;
 }>;
 
-const opacities: Opacity = {
+const Opacity: Opacity = {
   0: 0,
   1: 0.09,
   2: 0.18,
@@ -34,4 +34,4 @@ const opacities: Opacity = {
   9: 1.0,
 };
 
-export default opacities;
+export default Opacity;

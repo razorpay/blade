@@ -49,10 +49,7 @@ const useBladeProvider = ({
   const theme: Theme = {
     ...themeTokens,
     colors: themeTokens.colors[onColorMode],
-    shadows: {
-      ...themeTokens.shadows,
-      color: themeTokens.shadows.color[onColorMode],
-    },
+    shadows: themeTokens.shadows[onColorMode],
     typography: themeTokens.typography[onDeviceType],
   };
 

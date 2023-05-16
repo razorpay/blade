@@ -1,4 +1,4 @@
-import fontFamily from './fontFamily';
+import { fontFamily } from './fontFamily';
 import type { FontFamily } from './fontFamily/types';
 
 type FontWeight = {
