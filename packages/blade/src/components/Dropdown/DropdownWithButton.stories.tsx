@@ -7,7 +7,14 @@ import {
   ActionListItemIcon,
   ActionListSection,
 } from '~components/ActionList';
-import { CheckIcon, ClockIcon, CloseIcon, MyAccountIcon } from '~components/Icons';
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ClockIcon,
+  CloseIcon,
+  MyAccountIcon,
+} from '~components/Icons';
 import { Box } from '~components/Box';
 import { Badge } from '~components/Badge';
 
@@ -61,12 +68,26 @@ export const Default = (): JSX.Element => {
 };
 
 export const ControlledMenu = (): JSX.Element => {
-  const [status, setStatus] = React.useState<string | undefined>();
+  const [status, setStatus] = React.useState<string | undefined>('in-progress');
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <Box minHeight="200px">
-      <Dropdown>
-        <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
+      <Dropdown
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+      >
+        <DropdownButton
+          variant="tertiary"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+          icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
+          iconPosition="right"
+        >
+          Status: {status ?? ''}
+        </DropdownButton>
         <DropdownOverlay>
           <ActionList>
             <ActionListItem

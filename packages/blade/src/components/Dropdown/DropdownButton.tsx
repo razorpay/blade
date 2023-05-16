@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDropdown } from './useDropdown';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
@@ -28,7 +29,12 @@ const _DropdownButton = (props: ButtonProps): JSX.Element => {
         role: 'combobox',
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
       })}
-      onClick={onTriggerClick}
+      onClick={(e) => {
+        if (props.onClick) {
+          props.onClick(e as React.MouseEvent<HTMLButtonElement>);
+        }
+        onTriggerClick();
+      }}
       onBlur={() => {
         // With button trigger, there is no "value" as such. It's just clickable items
         onTriggerBlur?.({ name: '', value: '' });
