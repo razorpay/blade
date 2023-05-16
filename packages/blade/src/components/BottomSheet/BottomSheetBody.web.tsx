@@ -27,7 +27,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
   useIsomorphicLayoutEffect(() => {
     if (!contentRef.current) return;
     setContentHeight(contentRef.current.getBoundingClientRect().height);
-  }, [contentRef, isOpen]);
+  }, [contentRef, isOpen, children]);
 
   React.useEffect(() => {
     setBottomSheetHasActionList(false);
