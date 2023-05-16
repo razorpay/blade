@@ -1,5 +1,6 @@
 import React from 'react';
 import { useBottomSheetContext } from './BottomSheetContext';
+import { ComponentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
@@ -31,7 +32,7 @@ const BottomSheetFooter = ({ children }: BaseFooterProps): React.ReactElement =>
       backgroundColor={theme.colors.surface.background.level2.lowContrast}
       touchAction="none"
       zIndex={2}
-      {...metaAttribute({ name: 'BottomSheetFooter' })}
+      {...metaAttribute({ name: ComponentIds.BottomSheetFooter })}
       {...bind?.()}
     >
       <BaseFooter>{children}</BaseFooter>

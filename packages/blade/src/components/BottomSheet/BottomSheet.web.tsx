@@ -452,7 +452,7 @@ const _BottomSheet = ({
         <BaseBox height="100%" display="flex" flexDirection="column">
           <BottomSheetGrabHandle
             ref={grabHandleRef}
-            {...metaAttribute({ name: 'BottomSheetGrabHandle' })}
+            {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
             {...bind()}
           />
           {children}

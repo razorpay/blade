@@ -35,7 +35,7 @@ const _BottomSheetHeader = ({
       ref={ref}
       overflow={isHeaderEmpty ? 'visible' : 'auto'}
       flexShrink={0}
-      {...metaAttribute({ name: 'BottomSheetHeader' })}
+      {...metaAttribute({ name: ComponentIds.BottomSheetHeader })}
     >
       {isHeaderEmpty ? (
         <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />
