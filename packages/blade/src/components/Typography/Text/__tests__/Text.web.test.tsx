@@ -2,9 +2,6 @@ import React from 'react';
 import { Text } from '../';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<Text />', () => {
   it('should render Text with default properties', () => {
     const displayText = 'Displaying some text';
@@ -59,6 +56,7 @@ describe('<Text />', () => {
   });
 
   it('should throw error when variant is "caption" and size "small" is passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const displayText = 'Displaying some text';
     expect(() =>
       renderWithTheme(
@@ -68,6 +66,7 @@ describe('<Text />', () => {
         </Text>,
       ),
     ).toThrow(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
+    mockConsoleError.mockRestore();
   });
 
   it('should accept testID', () => {

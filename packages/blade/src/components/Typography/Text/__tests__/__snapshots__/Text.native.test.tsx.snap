@@ -1,222 +1,270 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Text /> should render Text with center textAlign 1`] = `
-<Text
-  color="surface.text.normal.lowContrast"
-  data-blade-component="text"
-  fontFamily="text"
-  fontSize={100}
-  fontStyle="normal"
-  fontWeight="regular"
-  lineHeight={100}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 56%, 17%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "400",
-        "lineHeight": 20,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textAlign": "center",
-        "textDecorationLine": "none",
-      },
-      Object {},
-    ]
+    Object {
+      "flex": 1,
+    }
   }
-  textAlign="center"
 >
-  Displaying some text
-</Text>
+  <Text
+    color="surface.text.normal.lowContrast"
+    data-blade-component="text"
+    fontFamily="text"
+    fontSize={100}
+    fontStyle="normal"
+    fontWeight="regular"
+    lineHeight={100}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 14,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textAlign": "center",
+          "textDecorationLine": "none",
+        },
+        Object {},
+      ]
+    }
+    textAlign="center"
+  >
+    Displaying some text
+  </Text>
+</View>
 `;
 
 exports[`<Text /> should render Text with default properties 1`] = `
-<Text
-  color="surface.text.normal.lowContrast"
-  data-blade-component="text"
-  fontFamily="text"
-  fontSize={100}
-  fontStyle="normal"
-  fontWeight="regular"
-  lineHeight={100}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 56%, 17%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "400",
-        "lineHeight": 20,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-      Object {},
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Displaying some text
-</Text>
+  <Text
+    color="surface.text.normal.lowContrast"
+    data-blade-component="text"
+    fontFamily="text"
+    fontSize={100}
+    fontStyle="normal"
+    fontWeight="regular"
+    lineHeight={100}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 14,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+        Object {},
+      ]
+    }
+  >
+    Displaying some text
+  </Text>
+</View>
 `;
 
 exports[`<Text /> should render Text with variant "body" 1`] = `
-<Text
-  color="surface.text.normal.lowContrast"
-  data-blade-component="text"
-  fontFamily="text"
-  fontSize={100}
-  fontStyle="normal"
-  fontWeight="bold"
-  lineHeight={100}
-  numberOfLines={3}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 56%, 17%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "700",
-        "lineHeight": 20,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-      Object {},
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Displaying some text
-</Text>
+  <Text
+    color="surface.text.normal.lowContrast"
+    data-blade-component="text"
+    fontFamily="text"
+    fontSize={100}
+    fontStyle="normal"
+    fontWeight="bold"
+    lineHeight={100}
+    numberOfLines={3}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 14,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+        Object {},
+      ]
+    }
+  >
+    Displaying some text
+  </Text>
+</View>
 `;
 
 exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `
-<Text
-  color="surface.text.normal.highContrast"
-  data-blade-component="text"
-  fontFamily="text"
-  fontSize={100}
-  fontStyle="normal"
-  fontWeight="bold"
-  lineHeight={100}
-  numberOfLines={3}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(0, 0%, 100%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "700",
-        "lineHeight": 20,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-      Object {},
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Displaying some text
-</Text>
+  <Text
+    color="surface.text.normal.highContrast"
+    data-blade-component="text"
+    fontFamily="text"
+    fontSize={100}
+    fontStyle="normal"
+    fontWeight="bold"
+    lineHeight={100}
+    numberOfLines={3}
+    style={
+      Array [
+        Object {
+          "color": "hsla(0, 0%, 100%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 14,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+        Object {},
+      ]
+    }
+  >
+    Displaying some text
+  </Text>
+</View>
 `;
 
 exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `
-<Text
-  color="surface.text.normal.lowContrast"
-  data-blade-component="text"
-  fontFamily="text"
-  fontSize={75}
-  fontStyle="normal"
-  fontWeight="bold"
-  lineHeight={50}
-  numberOfLines={3}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 56%, 17%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 12,
-        "fontStyle": "normal",
-        "fontWeight": "700",
-        "lineHeight": 16,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-      Object {},
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Displaying some text
-</Text>
+  <Text
+    color="surface.text.normal.lowContrast"
+    data-blade-component="text"
+    fontFamily="text"
+    fontSize={75}
+    fontStyle="normal"
+    fontWeight="bold"
+    lineHeight={50}
+    numberOfLines={3}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 16,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+        Object {},
+      ]
+    }
+  >
+    Displaying some text
+  </Text>
+</View>
 `;
 
 exports[`<Text /> should render Text with variant "caption" 1`] = `
-<Text
-  color="surface.text.normal.lowContrast"
-  data-blade-component="text"
-  fontFamily="text"
-  fontSize={100}
-  fontStyle="normal"
-  fontWeight="bold"
-  lineHeight={100}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 56%, 17%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "700",
-        "lineHeight": 20,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-      Object {},
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Displaying some text
-</Text>
+  <Text
+    color="surface.text.normal.lowContrast"
+    data-blade-component="text"
+    fontFamily="text"
+    fontSize={100}
+    fontStyle="normal"
+    fontWeight="bold"
+    lineHeight={100}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 14,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+        Object {},
+      ]
+    }
+  >
+    Displaying some text
+  </Text>
+</View>
 `;

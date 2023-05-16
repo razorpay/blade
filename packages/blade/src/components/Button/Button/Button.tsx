@@ -79,6 +79,9 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   );
 };
 
-const Button = assignWithoutSideEffects(React.forwardRef(_Button), { displayName: 'Button' });
+const Button = assignWithoutSideEffects(React.forwardRef(_Button), {
+  displayName: 'Button',
+  componentId: 'Button',
+});
 
 export default Button;

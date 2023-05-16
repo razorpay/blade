@@ -7,7 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
-import { metaAttribute, MetaConstants } from '~utils';
+import { assignWithoutSideEffects, metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
@@ -87,7 +87,7 @@ const getColorProps = ({
   return props;
 };
 
-const Badge = ({
+const _Badge = ({
   children,
   contrast = 'low',
   fontWeight = 'regular',
@@ -157,5 +157,10 @@ const Badge = ({
     </StyledBadge>
   );
 };
+
+const Badge = assignWithoutSideEffects(_Badge, {
+  displayName: 'Badge',
+  componentId: 'Badge',
+});
 
 export { Badge, BadgeProps };

@@ -1,217 +1,265 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Heading /> should render Heading with default properties 1`] = `
-<Text
-  accessibilityRole="header"
-  color="surface.text.normal.lowContrast"
-  data-blade-component="heading"
-  fontFamily="text"
-  fontSize={200}
-  fontStyle="normal"
-  fontWeight="bold"
-  lineHeight={300}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 56%, 17%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 16,
-        "fontStyle": "normal",
-        "fontWeight": "700",
-        "lineHeight": 24,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Get Started With Payment Gateway
-</Text>
+  <Text
+    accessibilityRole="header"
+    color="surface.text.normal.lowContrast"
+    data-blade-component="heading"
+    fontFamily="text"
+    fontSize={200}
+    fontStyle="normal"
+    fontWeight="bold"
+    lineHeight={300}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 16,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Get Started With Payment Gateway
+  </Text>
+</View>
 `;
 
 exports[`<Heading /> should render Heading with size "large" 1`] = `
-<Text
-  accessibilityRole="header"
-  color="surface.text.subdued.lowContrast"
-  data-blade-component="heading"
-  fontFamily="text"
-  fontSize={400}
-  fontStyle="normal"
-  fontWeight="regular"
-  lineHeight={400}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 18%, 45%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 18,
-        "fontStyle": "normal",
-        "fontWeight": "400",
-        "lineHeight": 24,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Get Started With Payment Gateway
-</Text>
+  <Text
+    accessibilityRole="header"
+    color="surface.text.subdued.lowContrast"
+    data-blade-component="heading"
+    fontFamily="text"
+    fontSize={400}
+    fontStyle="normal"
+    fontWeight="regular"
+    lineHeight={400}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 18%, 45%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 18,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Get Started With Payment Gateway
+  </Text>
+</View>
 `;
 
 exports[`<Heading /> should render Heading with size "medium" 1`] = `
-<Text
-  accessibilityRole="header"
-  color="surface.text.muted.lowContrast"
-  data-blade-component="heading"
-  fontFamily="text"
-  fontSize={300}
-  fontStyle="normal"
-  fontWeight="regular"
-  lineHeight={200}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(216, 16%, 60%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 16,
-        "fontStyle": "normal",
-        "fontWeight": "400",
-        "lineHeight": 20,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Get Started With Payment Gateway
-</Text>
+  <Text
+    accessibilityRole="header"
+    color="surface.text.muted.lowContrast"
+    data-blade-component="heading"
+    fontFamily="text"
+    fontSize={300}
+    fontStyle="normal"
+    fontWeight="regular"
+    lineHeight={200}
+    style={
+      Array [
+        Object {
+          "color": "hsla(216, 16%, 60%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 16,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Get Started With Payment Gateway
+  </Text>
+</View>
 `;
 
 exports[`<Heading /> should render Heading with size "small" 1`] = `
-<Text
-  accessibilityRole="header"
-  color="surface.text.normal.lowContrast"
-  data-blade-component="heading"
-  fontFamily="text"
-  fontSize={200}
-  fontStyle="normal"
-  fontWeight="regular"
-  lineHeight={300}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 56%, 17%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 16,
-        "fontStyle": "normal",
-        "fontWeight": "400",
-        "lineHeight": 24,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Get Started With Payment Gateway
-</Text>
+  <Text
+    accessibilityRole="header"
+    color="surface.text.normal.lowContrast"
+    data-blade-component="heading"
+    fontFamily="text"
+    fontSize={200}
+    fontStyle="normal"
+    fontWeight="regular"
+    lineHeight={300}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 16,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Get Started With Payment Gateway
+  </Text>
+</View>
 `;
 
 exports[`<Heading /> should render Heading with size "small" and contrast "high" 1`] = `
-<Text
-  accessibilityRole="header"
-  color="surface.text.normal.highContrast"
-  data-blade-component="heading"
-  fontFamily="text"
-  fontSize={200}
-  fontStyle="normal"
-  fontWeight="regular"
-  lineHeight={300}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(0, 0%, 100%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 16,
-        "fontStyle": "normal",
-        "fontWeight": "400",
-        "lineHeight": 24,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Get Started With Payment Gateway
-</Text>
+  <Text
+    accessibilityRole="header"
+    color="surface.text.normal.highContrast"
+    data-blade-component="heading"
+    fontFamily="text"
+    fontSize={200}
+    fontStyle="normal"
+    fontWeight="regular"
+    lineHeight={300}
+    style={
+      Array [
+        Object {
+          "color": "hsla(0, 0%, 100%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 16,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Get Started With Payment Gateway
+  </Text>
+</View>
 `;
 
 exports[`<Heading /> should render Heading with variant "subheading" and weight "bold" 1`] = `
-<Text
-  accessibilityRole="header"
-  color="surface.text.subdued.lowContrast"
-  data-blade-component="heading"
-  fontFamily="text"
-  fontSize={75}
-  fontStyle="normal"
-  fontWeight="bold"
-  lineHeight={50}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 18%, 45%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 12,
-        "fontStyle": "normal",
-        "fontWeight": "700",
-        "lineHeight": 16,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Get Started With Payment Gateway
-</Text>
+  <Text
+    accessibilityRole="header"
+    color="surface.text.subdued.lowContrast"
+    data-blade-component="heading"
+    fontFamily="text"
+    fontSize={75}
+    fontStyle="normal"
+    fontWeight="bold"
+    lineHeight={50}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 18%, 45%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 16,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Get Started With Payment Gateway
+  </Text>
+</View>
 `;

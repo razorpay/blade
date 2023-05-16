@@ -12,6 +12,7 @@ jest.mock('react-native-reanimated', () => ({
     bezier: jest.fn((x1, y1, x2, y2) => {
       return `${x1} ${y1} ${x2} ${y2}`; // mock an implementation of Easing.bezier that returns a string
     }),
+    out: jest.fn(() => ''),
   },
   // apparently reanimated doesn't mock the Keyframe :(
   Keyframe: class Keyframe {
@@ -25,4 +26,7 @@ jest.mock('react-native-reanimated', () => ({
       return '';
     }
   },
+  // mocking these two for BottomSheet, internally Gorhom BottomSheet is using them
+  makeMutable: (value) => ({ value }),
+  useWorkletCallback: require('react').useCallback,
 }));

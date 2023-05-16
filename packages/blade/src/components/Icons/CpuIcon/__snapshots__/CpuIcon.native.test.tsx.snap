@@ -1,92 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CpuIcon /> should render CpuIcon 1`] = `
-<RNSVGSvgView
-  accessibilityElementsHidden={true}
-  align="xMidYMid"
-  bbHeight="20px"
-  bbWidth="20px"
-  fill="none"
-  focusable={false}
-  height="20px"
-  importantForAccessibility="no-hide-descendants"
-  meetOrSlice={0}
-  minX={0}
-  minY={0}
+<View
   style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderWidth": 0,
-      },
-      Array [
-        Object {},
-      ],
-      Object {
-        "flex": 0,
-        "height": 20,
-        "width": 20,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
-  vbHeight={24}
-  vbWidth={24}
-  width="20px"
 >
-  <RNSVGGroup
-    fill={null}
-    propList={
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="20px"
+    bbWidth="20px"
+    fill="none"
+    focusable={false}
+    height="20px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
       Array [
-        "fill",
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Array [
+          Object {},
+        ],
+        Object {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
       ]
     }
+    vbHeight={24}
+    vbWidth={24}
+    width="20px"
   >
     <RNSVGGroup
-      clipPath="clip0_83_745"
+      fill={null}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
     >
-      <RNSVGPath
-        clipRule={0}
-        d="M9 8C8.44771 8 8 8.44771 8 9V15C8 15.5523 8.44771 16 9 16H15C15.5523 16 16 15.5523 16 15V9C16 8.44771 15.5523 8 15 8H9ZM10 14V10H14V14H10Z"
-        fill={4282603381}
-        fillRule={0}
-        propList={
-          Array [
-            "fill",
-            "fillRule",
-          ]
-        }
-      />
-      <RNSVGPath
-        clipRule={0}
-        d="M9 0C9.55229 0 10 0.447715 10 1V3H14V1C14 0.447715 14.4477 0 15 0C15.5523 0 16 0.447715 16 1V3H18C19.6569 3 21 4.34315 21 6V8H23C23.5523 8 24 8.44771 24 9C24 9.55229 23.5523 10 23 10H21V13H23C23.5523 13 24 13.4477 24 14C24 14.5523 23.5523 15 23 15H21V18C21 19.6569 19.6569 21 18 21H16V23C16 23.5523 15.5523 24 15 24C14.4477 24 14 23.5523 14 23V21H10V23C10 23.5523 9.55229 24 9 24C8.44771 24 8 23.5523 8 23V21H6C4.34315 21 3 19.6569 3 18V15H1C0.447715 15 0 14.5523 0 14C0 13.4477 0.447715 13 1 13H3V10H1C0.447715 10 0 9.55229 0 9C0 8.44771 0.447715 8 1 8H3V6C3 4.34315 4.34315 3 6 3H8V1C8 0.447715 8.44771 0 9 0ZM5 18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V6C19 5.44772 18.5523 5 18 5H6C5.44772 5 5 5.44772 5 6V18Z"
-        fill={4282603381}
-        fillRule={0}
-        propList={
-          Array [
-            "fill",
-            "fillRule",
-          ]
-        }
-      />
-    </RNSVGGroup>
-    <RNSVGDefs>
-      <RNSVGClipPath
-        name="clip0_83_745"
+      <RNSVGGroup
+        clipPath="clip0_83_745"
       >
-        <RNSVGRect
+        <RNSVGPath
+          clipRule={0}
+          d="M9 8C8.44771 8 8 8.44771 8 9V15C8 15.5523 8.44771 16 9 16H15C15.5523 16 16 15.5523 16 15V9C16 8.44771 15.5523 8 15 8H9ZM10 14V10H14V14H10Z"
           fill={4282603381}
-          height="24"
+          fillRule={0}
           propList={
             Array [
               "fill",
+              "fillRule",
             ]
           }
-          width="24"
-          x={0}
-          y={0}
         />
-      </RNSVGClipPath>
-    </RNSVGDefs>
-  </RNSVGGroup>
-</RNSVGSvgView>
+        <RNSVGPath
+          clipRule={0}
+          d="M9 0C9.55229 0 10 0.447715 10 1V3H14V1C14 0.447715 14.4477 0 15 0C15.5523 0 16 0.447715 16 1V3H18C19.6569 3 21 4.34315 21 6V8H23C23.5523 8 24 8.44771 24 9C24 9.55229 23.5523 10 23 10H21V13H23C23.5523 13 24 13.4477 24 14C24 14.5523 23.5523 15 23 15H21V18C21 19.6569 19.6569 21 18 21H16V23C16 23.5523 15.5523 24 15 24C14.4477 24 14 23.5523 14 23V21H10V23C10 23.5523 9.55229 24 9 24C8.44771 24 8 23.5523 8 23V21H6C4.34315 21 3 19.6569 3 18V15H1C0.447715 15 0 14.5523 0 14C0 13.4477 0.447715 13 1 13H3V10H1C0.447715 10 0 9.55229 0 9C0 8.44771 0.447715 8 1 8H3V6C3 4.34315 4.34315 3 6 3H8V1C8 0.447715 8.44771 0 9 0ZM5 18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V6C19 5.44772 18.5523 5 18 5H6C5.44772 5 5 5.44772 5 6V18Z"
+          fill={4282603381}
+          fillRule={0}
+          propList={
+            Array [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGGroup>
+      <RNSVGDefs>
+        <RNSVGClipPath
+          name="clip0_83_745"
+        >
+          <RNSVGRect
+            fill={4282603381}
+            height="24"
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            width="24"
+            x={0}
+            y={0}
+          />
+        </RNSVGClipPath>
+      </RNSVGDefs>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;

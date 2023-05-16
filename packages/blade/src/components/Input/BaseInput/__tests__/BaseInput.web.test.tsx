@@ -7,9 +7,6 @@ import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import { CloseIcon, EyeIcon } from '~components/Icons';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<BaseInput />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(<BaseInput label="Enter name" id="name" />);
@@ -208,6 +205,7 @@ describe('<BaseInput />', () => {
   });
 
   it('should throw error when both value and defaultValue are passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <BaseInput
@@ -220,6 +218,7 @@ describe('<BaseInput />', () => {
     ).toThrow(
       `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should pass a11y', async () => {

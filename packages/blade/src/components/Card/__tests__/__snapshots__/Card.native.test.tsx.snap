@@ -2,644 +2,129 @@
 
 exports[`<Card /> should render a Card with Footer 1`] = `
 <View
-  borderRadius="medium"
-  data-blade-component="card"
-  elevation={5}
   style={
-    Array [
-      Object {
-        "backgroundColor": "hsla(0, 0%, 100%, 1)",
-        "borderRadius": 4,
-        "display": "flex",
-        "flexDirection": "column",
-        "paddingBottom": 20,
-        "paddingLeft": 24,
-        "paddingRight": 24,
-        "paddingTop": 20,
-        "shadowColor": "hsla(216, 15%, 54%, 0.18)",
-        "shadowOffset": Object {
-          "height": 1,
-          "width": 0,
-        },
-        "shadowOpacity": 1,
-        "shadowRadius": 2,
-        "width": "100%",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
-  surfaceLevel={2}
 >
   <View
-    data-blade-component="card-body"
+    borderRadius="medium"
+    data-blade-component="card"
+    elevation={5}
     style={
       Array [
-        Object {},
+        Object {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderRadius": 4,
+          "display": "flex",
+          "flexDirection": "column",
+          "paddingBottom": 20,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 20,
+          "shadowColor": "hsla(216, 15%, 54%, 0.18)",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 2,
+          "width": "100%",
+        },
       ]
     }
+    surfaceLevel={2}
   >
-    <Text
-      color="surface.text.normal.lowContrast"
-      data-blade-component="text"
-      fontFamily="text"
-      fontSize={100}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={100}
+    <View
+      data-blade-component="card-body"
       style={
         Array [
-          Object {
-            "color": "hsla(217, 56%, 17%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 14,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 20,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
-          },
           Object {},
         ]
       }
     >
-      Plain Card
-    </Text>
-  </View>
-  <View
-    data-blade-component="card-footer"
-    style={
-      Array [
-        Object {
-          "marginTop": "auto",
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "marginTop": 24,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "borderBottomStyle": "solid",
-            "borderBottomWidth": 1,
-            "borderColor": "hsla(216, 15%, 54%, 0.18)",
-          },
-        ]
-      }
-    />
-    <View
-      alignItems="stretch"
-      display="flex"
-      flexDirection="column"
-      justifyContent="space-between"
-      style={
-        Array [
-          Object {
-            "alignItems": "stretch",
-            "display": "flex",
-            "flexDirection": "column",
-            "justifyContent": "space-between",
-            "marginTop": 24,
-          },
-        ]
-      }
-    >
-      <View
+      <Text
+        color="surface.text.normal.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
             Object {},
           ]
         }
       >
-        <Text
-          color="surface.text.normal.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="bold"
-          lineHeight={100}
-          style={
-            Array [
-              Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 14,
-                "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 20,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-              Object {},
-            ]
-          }
-        >
-          Card Header
-        </Text>
-        <Text
-          color="surface.text.normal.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          style={
-            Array [
-              Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-              Object {},
-            ]
-          }
-        >
-          Card subtitle
-        </Text>
-      </View>
-      <View
-        alignSelf="auto"
-        display="flex"
-        flexDirection="row"
-        style={
-          Array [
-            Object {
-              "alignSelf": "auto",
-              "display": "flex",
-              "flexDirection": "row",
-              "marginLeft": 0,
-              "marginTop": 16,
-            },
-          ]
-        }
-      >
-        <View
-          flexGrow={1}
-          style={
-            Array [
-              Object {
-                "flexGrow": 1,
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "disabled": false,
-              }
-            }
-            accessible={true}
-            activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
-            activeBorderColor="hsla(213, 89%, 56%, 1)"
-            borderRadius="2px"
-            borderWidth="1px"
-            buttonPaddingBottom="0px"
-            buttonPaddingLeft="20px"
-            buttonPaddingRight="20px"
-            buttonPaddingTop="0px"
-            collapsable={false}
-            data-blade-component="button"
-            defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
-            defaultBorderColor="hsla(213, 89%, 56%, 1)"
-            focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-            focusBorderColor="hsla(213, 89%, 56%, 1)"
-            focusRingColor="hsla(218, 89%, 51%, 0.18)"
-            focusable={true}
-            hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
-            hoverBorderColor="hsla(213, 89%, 56%, 1)"
-            isFullWidth={true}
-            isLoading={false}
-            minHeight="36px"
-            motionDuration="duration.xquick"
-            motionEasing="easing.standard.effective"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "alignSelf": "center",
-                  "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                  "borderColor": "hsla(213, 89%, 56%, 1)",
-                  "borderRadius": 2,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "cursor": "pointer",
-                  "minHeight": 36,
-                  "paddingBottom": 0,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 0,
-                  "width": "100%",
-                },
-                Object {
-                  "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                  "borderColor": "hsla(213, 89%, 56%, 1)",
-                },
-              ]
-            }
-            text="Delete"
-            type="button"
-          >
-            <View
-              alignItems="center"
-              display="flex"
-              flexDirection="row"
-              isHidden={false}
-              justifyContent="center"
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "center",
-                    "opacity": 1,
-                  },
-                ]
-              }
-            >
-              <Text
-                color="action.text.secondary.default"
-                fontSize={100}
-                fontWeight="bold"
-                lineHeight={100}
-                style={
-                  Array [
-                    Object {
-                      "color": "hsla(213, 89%, 56%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "700",
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "center",
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                textAlign="center"
-              >
-                Delete
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "marginLeft": 16,
-              },
-            ]
-          }
-        />
-        <View
-          flexGrow={1}
-          style={
-            Array [
-              Object {
-                "flexGrow": 1,
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "disabled": false,
-              }
-            }
-            accessible={true}
-            activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-            activeBorderColor="hsla(227, 100%, 45%, 1)"
-            borderRadius="2px"
-            borderWidth="1px"
-            buttonPaddingBottom="0px"
-            buttonPaddingLeft="20px"
-            buttonPaddingRight="20px"
-            buttonPaddingTop="0px"
-            collapsable={false}
-            data-blade-component="button"
-            defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-            defaultBorderColor="hsla(213, 89%, 56%, 1)"
-            focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-            focusBorderColor="hsla(223, 95%, 48%, 1)"
-            focusRingColor="hsla(218, 89%, 51%, 0.18)"
-            focusable={true}
-            hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-            hoverBorderColor="hsla(218, 89%, 51%, 1)"
-            isFullWidth={true}
-            isLoading={false}
-            minHeight="36px"
-            motionDuration="duration.xquick"
-            motionEasing="easing.standard.effective"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "alignSelf": "center",
-                  "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                  "borderColor": "hsla(213, 89%, 56%, 1)",
-                  "borderRadius": 2,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "cursor": "pointer",
-                  "minHeight": 36,
-                  "paddingBottom": 0,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 0,
-                  "width": "100%",
-                },
-                Object {
-                  "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                  "borderColor": "hsla(213, 89%, 56%, 1)",
-                },
-              ]
-            }
-            text="Save"
-            type="button"
-          >
-            <View
-              alignItems="center"
-              display="flex"
-              flexDirection="row"
-              isHidden={false}
-              justifyContent="center"
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "center",
-                    "opacity": 1,
-                  },
-                ]
-              }
-            >
-              <Text
-                color="action.text.primary.default"
-                fontSize={100}
-                fontWeight="bold"
-                lineHeight={100}
-                style={
-                  Array [
-                    Object {
-                      "color": "hsla(0, 0%, 100%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "700",
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "center",
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                textAlign="center"
-              >
-                Save
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
+        Plain Card
+      </Text>
     </View>
-  </View>
-</View>
-`;
-
-exports[`<Card /> should render a Card with Header 1`] = `
-<View
-  borderRadius="medium"
-  data-blade-component="card"
-  elevation={5}
-  style={
-    Array [
-      Object {
-        "backgroundColor": "hsla(0, 0%, 100%, 1)",
-        "borderRadius": 4,
-        "display": "flex",
-        "flexDirection": "column",
-        "paddingBottom": 20,
-        "paddingLeft": 24,
-        "paddingRight": 24,
-        "paddingTop": 20,
-        "shadowColor": "hsla(216, 15%, 54%, 0.18)",
-        "shadowOffset": Object {
-          "height": 1,
-          "width": 0,
-        },
-        "shadowOpacity": 1,
-        "shadowRadius": 2,
-        "width": "100%",
-      },
-    ]
-  }
-  surfaceLevel={2}
->
-  <View
-    data-blade-component="card-header"
-    style={
-      Array [
-        Object {
-          "marginBottom": 24,
-        },
-      ]
-    }
-  >
     <View
-      display="flex"
-      flexDirection="row"
-      justifyContent="space-between"
+      data-blade-component="card-footer"
       style={
         Array [
           Object {
-            "display": "flex",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginBottom": 24,
+            "marginTop": "auto",
           },
         ]
       }
     >
       <View
-        display="flex"
-        flexDirection="row"
         style={
           Array [
             Object {
+              "marginTop": 24,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "borderColor": "hsla(216, 15%, 54%, 0.18)",
+            },
+          ]
+        }
+      />
+      <View
+        alignItems="stretch"
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+        style={
+          Array [
+            Object {
+              "alignItems": "stretch",
               "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+              "marginTop": 24,
             },
           ]
         }
       >
-        <View
-          alignSelf="center"
-          display="flex"
-          style={
-            Array [
-              Object {
-                "alignSelf": "center",
-                "display": "flex",
-                "marginRight": 8,
-              },
-            ]
-          }
-        >
-          <RNSVGSvgView
-            accessibilityElementsHidden={true}
-            align="xMidYMid"
-            bbHeight="24px"
-            bbWidth="24px"
-            fill="none"
-            focusable={false}
-            height="24px"
-            importantForAccessibility="no-hide-descendants"
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Array [
-                  Object {},
-                ],
-                Object {
-                  "flex": 0,
-                  "height": 24,
-                  "width": 24,
-                },
-              ]
-            }
-            vbHeight={24}
-            vbWidth={24}
-            width="24px"
-          >
-            <RNSVGGroup
-              fill={null}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            >
-              <RNSVGPath
-                d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-                fill={4279445060}
-                propList={
-                  Array [
-                    "fill",
-                  ]
-                }
-              />
-              <RNSVGPath
-                d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-                fill={4279445060}
-                propList={
-                  Array [
-                    "fill",
-                  ]
-                }
-              />
-              <RNSVGPath
-                clipRule={0}
-                d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                fill={4279445060}
-                fillRule={0}
-                propList={
-                  Array [
-                    "fill",
-                    "fillRule",
-                  ]
-                }
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
-        </View>
         <View
           style={
             Array [
@@ -647,142 +132,39 @@ exports[`<Card /> should render a Card with Header 1`] = `
             ]
           }
         >
-          <View
-            alignItems="center"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
+          <Text
+            color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="bold"
+            lineHeight={100}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "700",
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
                 },
+                Object {},
               ]
             }
           >
-            <Text
-              accessibilityRole="header"
-              color="surface.text.normal.lowContrast"
-              data-blade-component="heading"
-              fontFamily="text"
-              fontSize={200}
-              fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={300}
-              style={
-                Array [
-                  Object {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
-                    "fontSize": 16,
-                    "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 24,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Card Header
-            </Text>
-            <View
-              style={
-                Array [
-                  Object {
-                    "marginLeft": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                backgroundColor="feedback.background.neutral.lowContrast"
-                platform="onMobile"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "center",
-                      "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                      "borderRadius": 9999,
-                      "display": "flex",
-                      "flexWrap": "nowrap",
-                      "maxWidth": 100,
-                    },
-                  ]
-                }
-              >
-                <View
-                  alignItems="center"
-                  data-blade-component="counter"
-                  display="flex"
-                  flexDirection="row"
-                  justifyContent="center"
-                  overflow="hidden"
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "overflow": "hidden",
-                        "paddingBottom": 2,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 2,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    color="feedback.text.neutral.lowContrast"
-                    data-blade-component="text"
-                    fontFamily="text"
-                    fontSize={75}
-                    fontStyle="normal"
-                    fontWeight="regular"
-                    lineHeight={50}
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "hsla(216, 27%, 36%, 1)",
-                          "fontFamily": "Lato",
-                          "fontSize": 12,
-                          "fontStyle": "normal",
-                          "fontWeight": "400",
-                          "lineHeight": 16,
-                          "marginBottom": 0,
-                          "marginLeft": 0,
-                          "marginRight": 0,
-                          "marginTop": 0,
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                          "textDecorationLine": "none",
-                        },
-                        Object {},
-                      ]
-                    }
-                  >
-                    12
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
+            Card Header
+          </Text>
           <Text
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
@@ -817,68 +199,617 @@ exports[`<Card /> should render a Card with Header 1`] = `
             Card subtitle
           </Text>
         </View>
-      </View>
-      <View
-        alignSelf="center"
-        style={
-          Array [
-            Object {
-              "alignSelf": "center",
-            },
-          ]
-        }
-      >
         <View
-          backgroundColor="feedback.background.neutral.lowContrast"
-          data-blade-component="badge"
-          size="medium"
+          alignSelf="auto"
+          display="flex"
+          flexDirection="row"
           style={
             Array [
               Object {
-                "alignSelf": "center",
-                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                "borderRadius": 9999,
+                "alignSelf": "auto",
                 "display": "flex",
-                "flexWrap": "nowrap",
+                "flexDirection": "row",
+                "marginLeft": 0,
+                "marginTop": 16,
               },
             ]
           }
         >
           <View
-            alignItems="center"
-            display="flex"
-            flexDirection="row"
-            justifyContent="center"
-            overflow="hidden"
+            flexGrow={1}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "overflow": "hidden",
-                  "paddingBottom": 2,
-                  "paddingLeft": 8,
-                  "paddingRight": 8,
-                  "paddingTop": 2,
+                  "flexGrow": 1,
                 },
               ]
             }
           >
+            <View
+              accessibilityRole="button"
+              accessibilityState={
+                Object {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+              activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
+              activeBorderColor="hsla(213, 89%, 56%, 1)"
+              borderRadius="2px"
+              borderWidth="1px"
+              buttonPaddingBottom="0px"
+              buttonPaddingLeft="20px"
+              buttonPaddingRight="20px"
+              buttonPaddingTop="0px"
+              collapsable={false}
+              data-blade-component="button"
+              defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
+              defaultBorderColor="hsla(213, 89%, 56%, 1)"
+              focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+              focusBorderColor="hsla(213, 89%, 56%, 1)"
+              focusRingColor="hsla(218, 89%, 51%, 0.18)"
+              focusable={true}
+              hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+              hoverBorderColor="hsla(213, 89%, 56%, 1)"
+              isFullWidth={true}
+              isLoading={false}
+              minHeight="36px"
+              motionDuration="duration.xquick"
+              motionEasing="easing.standard.effective"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "backgroundColor": "hsla(218, 89%, 51%, 0)",
+                    "borderColor": "hsla(213, 89%, 56%, 1)",
+                    "borderRadius": 2,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "minHeight": 36,
+                    "paddingBottom": 0,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  },
+                  Object {
+                    "backgroundColor": "hsla(218, 89%, 51%, 0)",
+                    "borderColor": "hsla(213, 89%, 56%, 1)",
+                  },
+                ]
+              }
+              text="Delete"
+              type="button"
+            >
+              <View
+                alignItems="center"
+                display="flex"
+                flexDirection="row"
+                isHidden={false}
+                justifyContent="center"
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "center",
+                      "opacity": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  color="action.text.secondary.default"
+                  fontSize={100}
+                  fontWeight="bold"
+                  lineHeight={100}
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(213, 89%, 56%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 14,
+                        "fontStyle": "normal",
+                        "fontWeight": "700",
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "center",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                  textAlign="center"
+                >
+                  Delete
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "marginLeft": 16,
+                },
+              ]
+            }
+          />
+          <View
+            flexGrow={1}
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityRole="button"
+              accessibilityState={
+                Object {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+              activeBackgroundColor="hsla(227, 100%, 45%, 1)"
+              activeBorderColor="hsla(227, 100%, 45%, 1)"
+              borderRadius="2px"
+              borderWidth="1px"
+              buttonPaddingBottom="0px"
+              buttonPaddingLeft="20px"
+              buttonPaddingRight="20px"
+              buttonPaddingTop="0px"
+              collapsable={false}
+              data-blade-component="button"
+              defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
+              defaultBorderColor="hsla(213, 89%, 56%, 1)"
+              focusBackgroundColor="hsla(223, 95%, 48%, 1)"
+              focusBorderColor="hsla(223, 95%, 48%, 1)"
+              focusRingColor="hsla(218, 89%, 51%, 0.18)"
+              focusable={true}
+              hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
+              hoverBorderColor="hsla(218, 89%, 51%, 1)"
+              isFullWidth={true}
+              isLoading={false}
+              minHeight="36px"
+              motionDuration="duration.xquick"
+              motionEasing="easing.standard.effective"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "backgroundColor": "hsla(213, 89%, 56%, 1)",
+                    "borderColor": "hsla(213, 89%, 56%, 1)",
+                    "borderRadius": 2,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "cursor": "pointer",
+                    "minHeight": 36,
+                    "paddingBottom": 0,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  },
+                  Object {
+                    "backgroundColor": "hsla(213, 89%, 56%, 1)",
+                    "borderColor": "hsla(213, 89%, 56%, 1)",
+                  },
+                ]
+              }
+              text="Save"
+              type="button"
+            >
+              <View
+                alignItems="center"
+                display="flex"
+                flexDirection="row"
+                isHidden={false}
+                justifyContent="center"
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "center",
+                      "opacity": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  color="action.text.primary.default"
+                  fontSize={100}
+                  fontWeight="bold"
+                  lineHeight={100}
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(0, 0%, 100%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 14,
+                        "fontStyle": "normal",
+                        "fontWeight": "700",
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "center",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                  textAlign="center"
+                >
+                  Save
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Card /> should render a Card with Header 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    borderRadius="medium"
+    data-blade-component="card"
+    elevation={5}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderRadius": 4,
+          "display": "flex",
+          "flexDirection": "column",
+          "paddingBottom": 20,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 20,
+          "shadowColor": "hsla(216, 15%, 54%, 0.18)",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 2,
+          "width": "100%",
+        },
+      ]
+    }
+    surfaceLevel={2}
+  >
+    <View
+      data-blade-component="card-header"
+      style={
+        Array [
+          Object {
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <View
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 24,
+            },
+          ]
+        }
+      >
+        <View
+          display="flex"
+          flexDirection="row"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            alignSelf="center"
+            display="flex"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "display": "flex",
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="24px"
+              bbWidth="24px"
+              fill="none"
+              focusable={false}
+              height="24px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Array [
+                    Object {},
+                  ],
+                  Object {
+                    "flex": 0,
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width="24px"
+            >
+              <RNSVGGroup
+                fill={null}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              >
+                <RNSVGPath
+                  d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                  fill={4279445060}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                />
+                <RNSVGPath
+                  d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                  fill={4279445060}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                />
+                <RNSVGPath
+                  clipRule={0}
+                  d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                  fill={4279445060}
+                  fillRule={0}
+                  propList={
+                    Array [
+                      "fill",
+                      "fillRule",
+                    ]
+                  }
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
+          >
+            <View
+              alignItems="center"
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                  },
+                ]
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="heading"
+                fontFamily="text"
+                fontSize={200}
+                fontStyle="normal"
+                fontWeight="bold"
+                lineHeight={300}
+                style={
+                  Array [
+                    Object {
+                      "color": "hsla(217, 56%, 17%, 1)",
+                      "fontFamily": "Lato",
+                      "fontSize": 16,
+                      "fontStyle": "normal",
+                      "fontWeight": "700",
+                      "lineHeight": 24,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Card Header
+              </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "marginLeft": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  backgroundColor="feedback.background.neutral.lowContrast"
+                  platform="onMobile"
+                  size="medium"
+                  style={
+                    Array [
+                      Object {
+                        "alignSelf": "center",
+                        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                        "borderRadius": 9999,
+                        "display": "flex",
+                        "flexWrap": "nowrap",
+                        "maxWidth": 100,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="counter"
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="center"
+                    overflow="hidden"
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "overflow": "hidden",
+                          "paddingBottom": 2,
+                          "paddingLeft": 8,
+                          "paddingRight": 8,
+                          "paddingTop": 2,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      color="feedback.text.neutral.lowContrast"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={75}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      lineHeight={50}
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "hsla(216, 27%, 36%, 1)",
+                            "fontFamily": "Lato",
+                            "fontSize": 12,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "lineHeight": 16,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                          Object {},
+                        ]
+                      }
+                    >
+                      12
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
             <Text
-              color="feedback.text.neutral.lowContrast"
+              color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
-              numberOfLines={1}
               style={
                 Array [
                   Object {
-                    "color": "hsla(216, 27%, 36%, 1)",
+                    "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
                     "fontStyle": "normal",
@@ -898,139 +829,232 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 ]
               }
             >
-              NEW
+              Card subtitle
             </Text>
           </View>
         </View>
+        <View
+          alignSelf="center"
+          style={
+            Array [
+              Object {
+                "alignSelf": "center",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="feedback.background.neutral.lowContrast"
+            data-blade-component="badge"
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                  "borderRadius": 9999,
+                  "display": "flex",
+                  "flexWrap": "nowrap",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="center"
+              display="flex"
+              flexDirection="row"
+              justifyContent="center"
+              overflow="hidden"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "overflow": "hidden",
+                    "paddingBottom": 2,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 2,
+                  },
+                ]
+              }
+            >
+              <Text
+                color="feedback.text.neutral.lowContrast"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={75}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={50}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "hsla(216, 27%, 36%, 1)",
+                      "fontFamily": "Lato",
+                      "fontSize": 12,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "lineHeight": 16,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                NEW
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
+      <View
+        style={
+          Array [
+            Object {
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "borderColor": "hsla(216, 15%, 54%, 0.18)",
+            },
+          ]
+        }
+      />
     </View>
     <View
+      data-blade-component="card-body"
       style={
         Array [
-          Object {
-            "borderBottomStyle": "solid",
-            "borderBottomWidth": 1,
-            "borderColor": "hsla(216, 15%, 54%, 0.18)",
-          },
-        ]
-      }
-    />
-  </View>
-  <View
-    data-blade-component="card-body"
-    style={
-      Array [
-        Object {},
-      ]
-    }
-  >
-    <Text
-      color="surface.text.normal.lowContrast"
-      data-blade-component="text"
-      fontFamily="text"
-      fontSize={100}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={100}
-      style={
-        Array [
-          Object {
-            "color": "hsla(217, 56%, 17%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 14,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 20,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
-          },
           Object {},
         ]
       }
     >
-      Plain Card
-    </Text>
+      <Text
+        color="surface.text.normal.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Plain Card
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Card /> should render a plain Card 1`] = `
 <View
-  borderRadius="medium"
-  data-blade-component="card"
-  elevation={5}
   style={
-    Array [
-      Object {
-        "backgroundColor": "hsla(0, 0%, 100%, 1)",
-        "borderRadius": 4,
-        "display": "flex",
-        "flexDirection": "column",
-        "paddingBottom": 20,
-        "paddingLeft": 24,
-        "paddingRight": 24,
-        "paddingTop": 20,
-        "shadowColor": "hsla(216, 15%, 54%, 0.18)",
-        "shadowOffset": Object {
-          "height": 1,
-          "width": 0,
-        },
-        "shadowOpacity": 1,
-        "shadowRadius": 2,
-        "width": "100%",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
-  surfaceLevel={2}
 >
   <View
-    data-blade-component="card-body"
+    borderRadius="medium"
+    data-blade-component="card"
+    elevation={5}
     style={
       Array [
-        Object {},
+        Object {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderRadius": 4,
+          "display": "flex",
+          "flexDirection": "column",
+          "paddingBottom": 20,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 20,
+          "shadowColor": "hsla(216, 15%, 54%, 0.18)",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 2,
+          "width": "100%",
+        },
       ]
     }
+    surfaceLevel={2}
   >
-    <Text
-      color="surface.text.normal.lowContrast"
-      data-blade-component="text"
-      fontFamily="text"
-      fontSize={100}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={100}
+    <View
+      data-blade-component="card-body"
       style={
         Array [
-          Object {
-            "color": "hsla(217, 56%, 17%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 14,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 20,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
-          },
           Object {},
         ]
       }
     >
-      Plain Card
-    </Text>
+      <Text
+        color="surface.text.normal.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Plain Card
+      </Text>
+    </View>
   </View>
 </View>
 `;

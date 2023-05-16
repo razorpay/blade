@@ -17,23 +17,31 @@ describe('<Box />', () => {
     );
     expect(toJSON()).toMatchInlineSnapshot(`
       <View
-        data-blade-component="box"
-        display="flex"
         style={
-          Array [
-            Object {
-              "display": "flex",
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
+          Object {
+            "flex": 1,
+          }
         }
       >
-        <Text>
-          children test!
-        </Text>
+        <View
+          data-blade-component="box"
+          display="flex"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ]
+          }
+        >
+          <Text>
+            children test!
+          </Text>
+        </View>
       </View>
     `);
   });

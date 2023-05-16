@@ -1,3 +1,4 @@
+import type { CSSObject } from 'styled-components';
 import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
@@ -118,15 +119,10 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'action'>
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
+    touchAction: CSSObject['touchAction'];
+    userSelect: CSSObject['userSelect'];
   } & PickCSSByPlatform<
-    | 'border'
-    | 'borderLeft'
-    | 'borderRight'
-    | 'borderTop'
-    | 'borderBottom'
-    | 'touchAction'
-    | 'userSelect'
-    | 'opacity'
+    'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom' | 'opacity'
   >
 >;
 

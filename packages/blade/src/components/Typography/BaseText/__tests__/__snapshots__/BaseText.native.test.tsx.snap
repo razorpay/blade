@@ -1,97 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BaseText /> should render regular text 1`] = `
-<Text
-  color="surface.text.normal.highContrast"
-  fontFamily="text"
-  fontSize={25}
-  fontWeight="regular"
-  lineHeight={100}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(0, 0%, 100%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 10,
-        "fontStyle": "normal",
-        "fontWeight": "400",
-        "lineHeight": 20,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Displaying some text
-</Text>
+  <Text
+    color="surface.text.normal.highContrast"
+    fontFamily="text"
+    fontSize={25}
+    fontWeight="regular"
+    lineHeight={100}
+    style={
+      Array [
+        Object {
+          "color": "hsla(0, 0%, 100%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying some text
+  </Text>
+</View>
 `;
 
 exports[`<BaseText /> should render text in italics style with line-through 1`] = `
-<Text
-  color="surface.text.normal.highContrast"
-  fontFamily="text"
-  fontSize={25}
-  fontStyle="italic"
-  fontWeight="regular"
-  lineHeight={100}
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(0, 0%, 100%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 10,
-        "fontStyle": "italic",
-        "fontWeight": "400",
-        "lineHeight": 20,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "line-through",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
-  textDecorationLine="line-through"
 >
-  Displaying some text
-</Text>
+  <Text
+    color="surface.text.normal.highContrast"
+    fontFamily="text"
+    fontSize={25}
+    fontStyle="italic"
+    fontWeight="regular"
+    lineHeight={100}
+    style={
+      Array [
+        Object {
+          "color": "hsla(0, 0%, 100%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 10,
+          "fontStyle": "italic",
+          "fontWeight": "400",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "line-through",
+        },
+      ]
+    }
+    textDecorationLine="line-through"
+  >
+    Displaying some text
+  </Text>
+</View>
 `;
 
 exports[`<BaseText /> should render text with default properties 1`] = `
-<Text
+<View
   style={
-    Array [
-      Object {
-        "color": "hsla(217, 56%, 17%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 16,
-        "fontStyle": "normal",
-        "fontWeight": "400",
-        "lineHeight": 20,
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "textDecorationLine": "none",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  Displaying some text
-</Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 16,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying some text
+  </Text>
+</View>
 `;

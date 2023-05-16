@@ -2,36 +2,44 @@
 
 exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
 <View
-  data-blade-component="visually-hidden"
   style={
-    Array [
-      Object {
-        "borderColor": "black",
-        "borderStyle": "solid",
-        "borderWidth": 0,
-        "clip": "rect(0 0 0 0)",
-        "clipPath": "inset(50%)",
-        "height": 1,
-        "left": -10000,
-        "marginBottom": -1,
-        "marginLeft": 0,
-        "marginRight": -1,
-        "marginTop": 0,
-        "overflow": "hidden",
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "position": "absolute",
-        "whiteSpace": "nowrap",
-        "width": 1,
-        "wordWrap": "normal",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <Text>
-    Text only visible to screen readers
-  </Text>
+  <View
+    data-blade-component="visually-hidden"
+    style={
+      Array [
+        Object {
+          "borderColor": "black",
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "clip": "rect(0 0 0 0)",
+          "clipPath": "inset(50%)",
+          "height": 1,
+          "left": -10000,
+          "marginBottom": -1,
+          "marginLeft": 0,
+          "marginRight": -1,
+          "marginTop": 0,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "position": "absolute",
+          "whiteSpace": "nowrap",
+          "width": 1,
+          "wordWrap": "normal",
+        },
+      ]
+    }
+  >
+    <Text>
+      Text only visible to screen readers
+    </Text>
+  </View>
 </View>
 `;
