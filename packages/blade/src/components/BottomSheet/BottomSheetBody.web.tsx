@@ -42,7 +42,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
     <BaseBox
       {...metaAttribute({
         testID: 'bottomsheet-body',
-        name: ComponentIds.BottomSheet,
+        name: ComponentIds.BottomSheetBody,
       })}
       ref={scrollRef}
       flexGrow={1}
