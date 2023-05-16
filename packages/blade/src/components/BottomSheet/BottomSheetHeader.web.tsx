@@ -6,7 +6,7 @@ import type { BottomSheetHeaderProps } from './types';
 import { useBottomSheetHeaderTrailingRestriction } from './utils';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~utils';
+import { assignWithoutSideEffects, metaAttribute } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
@@ -31,7 +31,12 @@ const _BottomSheetHeader = ({
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
 
   return (
-    <BaseBox ref={ref} overflow={isHeaderEmpty ? 'visible' : 'auto'} flexShrink={0}>
+    <BaseBox
+      ref={ref}
+      overflow={isHeaderEmpty ? 'visible' : 'auto'}
+      flexShrink={0}
+      {...metaAttribute({ name: 'BottomSheetHeader' })}
+    >
       {isHeaderEmpty ? (
         <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />
       ) : (

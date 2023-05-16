@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable consistent-return */
@@ -21,7 +20,13 @@ import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
 
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, assignWithoutSideEffects, makeSize, makeAccessible } from '~utils';
+import {
+  makeMotionTime,
+  assignWithoutSideEffects,
+  makeSize,
+  makeAccessible,
+  metaAttribute,
+} from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
@@ -431,8 +436,8 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
+        {...metaAttribute({ name: 'BottomSheet' })}
         {...makeAccessible({ modal: true, role: 'dialog' })}
-        data-surface
         windowHeight={dimensions.height}
         isDragging={isDragging}
         style={{
@@ -445,7 +450,11 @@ const _BottomSheet = ({
         }}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
-          <BottomSheetGrabHandle ref={grabHandleRef} {...bind()} />
+          <BottomSheetGrabHandle
+            ref={grabHandleRef}
+            {...metaAttribute({ name: 'BottomSheetGrabHandle' })}
+            {...bind()}
+          />
           {children}
         </BaseBox>
       </BottomSheetSurface>
