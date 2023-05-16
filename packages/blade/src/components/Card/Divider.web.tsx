@@ -1,12 +1,8 @@
 import styled from 'styled-components';
-import { makeSize } from '~utils';
+import { getDividerStyles } from './getDividerStyles';
 
 const Divider = styled.div(({ theme }) => {
-  return {
-    borderBottomWidth: makeSize(theme.border.width.thin),
-    borderBottomStyle: 'solid',
-    borderColor: theme.colors.surface.border.normal.lowContrast,
-  };
+  return getDividerStyles(theme);
 });
 
 export { Divider };

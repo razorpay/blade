@@ -1,5 +1,121 @@
 # @razorpay/blade
 
+## 7.2.0
+
+### Minor Changes
+
+- 1333e756: feat(blade): added bottomsheet component
+
+  > For react-native consumers make sure to [go through the installation guide](https://blade.razorpay.com/?path=/docs/guides-installation--page#-add-blade-to-your-application) on how to setup the peer dependencies
+
+  <details>
+    <summary>⚠️ Migration guide from prerelease version</summary>
+
+  Update the imports:
+
+  ```diff
+  import {
+  -  BottomSheet_PRE_RELEASE,
+  +  BottomSheet,
+    BottomSheetHeader,
+    BottomSheetBody,
+    BottomSheetFooter
+  } from "@razorpay/blade/components"
+  ```
+
+  Changed Header Footer API:
+
+  **Header**
+
+  Prop changes:
+
+  - Removed prefix/suffix props and added new props
+
+  ```diff
+  -  title: string;
+  +  title?: string;
+    subtitle?: string;
+  -  prefix?: React.ReactNode;
+  -  suffix?: React.ReactNode;
+  +  leading?: React.ReactNode;
+  +  trailing?: React.ReactNode;
+  +  titleSuffix?: React.ReactNode;
+  +  showBackButton?: boolean;
+  +  onBackButtonClick?: () => void;
+  +  closeButtonRef: React.MutableRefObject<any>;
+  ```
+
+  **Footer**
+
+  Footer component now accepts JSX content
+
+  Before:
+
+  ```jsx
+  <BottomSheetFooter
+    trailing={{
+      primary: {
+        text: 'Hello',
+        onClick: () => {},
+      },
+      secondary: {
+        text: 'World',
+        onClick: () => {},
+      },
+    }}
+  />
+  ```
+
+  After:
+
+  ```jsx
+  <BottomSheetFooter>
+    <Button isFullWidth variant="secondary" onClick={() => {}}>
+      Hello
+    </Button>
+    <Button isFullWidth marginTop="spacing.5" onClick={() => {}}>
+      World
+    </Button>
+  </BottomSheetFooter>
+  ```
+
+  </details>
+
+## 7.1.3
+
+### Patch Changes
+
+- 73011827: fix(BottomSheet): ensure that the BottomSheet's lower snappoint will have a buffer
+- f2130469: fix(blade): bottomsheet isOpen state, simplify isOpen logic & glue code
+
+  Previously if users did not changed the isOpen state to false inside `onDismiss` the bottomsheet's internal state will still remain "open", but the bottomsheet would visually be hidden and the backdrop will still remain, this fixes the bug so that internally we won't modify the bottomsheet's position instead we will just call the `onDismiss`. [Check the loom](https://www.loom.com/share/f24fcb51b245431fbf1a0aeb53cea287) video here for more info.
+
+- 24d2a0b0: fix(cardFooter): alignment issue
+
+## 7.1.2
+
+### Patch Changes
+
+- 69ef5042: fix(blade): BottomSheet unable to scroll content
+
+## 7.1.1
+
+### Patch Changes
+
+- 85737340: fix(SelectInput): dropdown without label takes up margin space
+
+  A dropdown without any label will now correctly take no extra space for the margin
+
+## 7.1.0
+
+### Minor Changes
+
+- 85289118: feat(blade): BottomSheet prerelease
+
+  > **Warning**
+  >
+  > The final `BottomSheet` API isn't final and subjected to change as we work on stabilizing the component.
+
 ## 7.0.4
 
 ### Patch Changes

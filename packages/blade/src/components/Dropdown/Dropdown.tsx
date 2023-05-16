@@ -4,6 +4,8 @@ import type { DropdownContextType } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
 import { isValidAllowedChildren } from '~utils';
+import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
+import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
@@ -59,6 +61,8 @@ const _Dropdown = ({
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
+  // keep track if dropdown contains bottomsheet
+  const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
 
@@ -68,7 +72,8 @@ const _Dropdown = ({
     if (React.isValidElement(child)) {
       if (
         !isValidAllowedChildren(child, 'SelectInput') &&
-        !isValidAllowedChildren(child, componentIds.DropdownOverlay)
+        !isValidAllowedChildren(child, componentIds.DropdownOverlay) &&
+        !isValidAllowedChildren(child, bottomSheetComponentIds.BottomSheet)
       ) {
         throw new Error(
           `[Dropdown]: Dropdown can only have \`SelectInput\` and \`DropdownOverlay\` as children\n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
@@ -122,12 +127,29 @@ const _Dropdown = ({
     ],
   );
 
+  // This is the dismiss function which will be injected into the BottomSheet
+  // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
+  const onBottomSheetDismiss = React.useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
+    return {
+      isOpen,
+      dropdownHasBottomSheet,
+      setDropdownHasBottomSheet,
+      onBottomSheetDismiss,
+    };
+  }, [dropdownHasBottomSheet, isOpen, onBottomSheetDismiss]);
+
   return (
-    <DropdownContext.Provider value={contextValue}>
-      <BaseBox position="relative" {...getStyledProps(styledProps)}>
-        {children}
-      </BaseBox>
-    </DropdownContext.Provider>
+    <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
+      <DropdownContext.Provider value={contextValue}>
+        <BaseBox position="relative" {...getStyledProps(styledProps)}>
+          {children}
+        </BaseBox>
+      </DropdownContext.Provider>
+    </BottomSheetAndDropdownGlueContext.Provider>
   );
 };
 

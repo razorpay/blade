@@ -1,0 +1,1 @@
+export { transformIcon } from './icon';

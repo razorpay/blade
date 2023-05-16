@@ -1,0 +1,1 @@
+export { transformSpinner } from './spinner';
