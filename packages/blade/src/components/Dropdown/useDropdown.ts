@@ -31,6 +31,11 @@ type DropdownContextType = {
   selectedIndices: number[];
   setSelectedIndices: (value: number[]) => void;
   /**
+   * contains the indexes of selected items during controlled selection
+   */
+  controlledValueIndices: number[];
+  setControlledValueIndices: (value: number[]) => void;
+  /**
    * contains information about all the options inside actionlist
    */
   options: OptionsType;
@@ -70,6 +75,25 @@ type DropdownContextType = {
    */
   hasLabelOnLeft: boolean;
   setHasLabelOnLeft: (value: boolean) => void;
+
+  /**
+   * A value that can be used in dependency array to know when Dropdown value is changed.
+   *
+   * E.g.
+   * ```ts
+   * useEffect(() => {
+   *  console.log('Uncontrolled value change');
+   * }, [changeCallbackTriggerer])
+   * ```
+   */
+  changeCallbackTriggerer: number;
+  setChangeCallbackTriggerer: (changeCallbackTriggerer: number) => void;
+
+  /**
+   * true when SelectInput has `value` prop (when it is controlled)
+   */
+  isControlled: boolean;
+  setIsControlled: (isControlled: boolean) => void;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -77,6 +101,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setIsOpen: noop,
   selectedIndices: [],
   setSelectedIndices: noop,
+  controlledValueIndices: [],
+  setControlledValueIndices: noop,
   options: [],
   setOptions: noop,
   activeIndex: -1,
@@ -91,6 +117,10 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setHasLabelOnLeft: noop,
   isKeydownPressed: false,
   setIsKeydownPressed: noop,
+  changeCallbackTriggerer: 0,
+  setChangeCallbackTriggerer: noop,
+  isControlled: false,
+  setIsControlled: noop,
   dropdownBaseId: '',
   actionListItemRef: {
     current: null,
@@ -169,6 +199,10 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsKeydownPressed,
     options,
     selectionType,
+    changeCallbackTriggerer,
+    setChangeCallbackTriggerer,
+    isControlled,
+    setControlledValueIndices,
     ...rest
   } = React.useContext(DropdownContext);
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
@@ -179,6 +213,14 @@ const useDropdown = (): UseDropdownReturnValue => {
       closeOnSelection?: boolean;
     },
   ) => void;
+
+  const setIndices = (indices: number[]): void => {
+    if (isControlled) {
+      setControlledValueIndices(indices);
+    } else {
+      setSelectedIndices(indices);
+    }
+  };
   /**
    * Marks the given index as selected.
    *
@@ -199,16 +241,19 @@ const useDropdown = (): UseDropdownReturnValue => {
       if (selectedIndices.includes(index)) {
         // remove existing item
         const existingItemIndex = selectedIndices.indexOf(index);
-        setSelectedIndices([
+        setIndices([
           ...selectedIndices.slice(0, existingItemIndex),
           ...selectedIndices.slice(existingItemIndex + 1),
         ]);
       } else {
-        setSelectedIndices([...selectedIndices, index]);
+        setIndices([...selectedIndices, index]);
       }
     } else {
-      setSelectedIndices([index]);
+      setIndices([index]);
     }
+
+    // Triggers `onChange` on SelectInput
+    setChangeCallbackTriggerer(changeCallbackTriggerer + 1);
 
     if (activeIndex !== index) {
       setActiveIndex(index);
@@ -374,6 +419,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setIsOpen,
     selectedIndices,
     setSelectedIndices,
+    setControlledValueIndices,
     onTriggerClick,
     onTriggerKeydown,
     onTriggerBlur,
@@ -384,6 +430,9 @@ const useDropdown = (): UseDropdownReturnValue => {
     setShouldIgnoreBlur,
     isKeydownPressed,
     setIsKeydownPressed,
+    changeCallbackTriggerer,
+    setChangeCallbackTriggerer,
+    isControlled,
     options,
     value: makeInputValue(selectedIndices, options),
     displayValue: makeInputDisplayValue(selectedIndices, options),

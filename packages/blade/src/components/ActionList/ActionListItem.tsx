@@ -51,10 +51,6 @@ type ActionListItemProps = {
    * Valid elements - `<ActionListItemText />`, `<ActionListItemIcon />`
    */
   trailing?: React.ReactNode;
-  /**
-   * If item is selected on page load
-   */
-  isDefaultSelected?: boolean;
   isDisabled?: boolean;
   intent?: Extract<Feedback, 'negative'>;
   /**
@@ -311,9 +307,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
 
   const renderOnWebAs = props.href ? 'a' : 'button';
   const isSelected =
-    typeof props._index === 'number'
-      ? selectedIndices.includes(props._index)
-      : props.isDefaultSelected;
+    typeof props._index === 'number' ? selectedIndices.includes(props._index) : undefined;
 
   React.useEffect(() => {
     validateActionListItemProps({

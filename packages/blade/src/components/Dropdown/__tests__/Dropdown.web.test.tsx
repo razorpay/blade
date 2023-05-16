@@ -399,6 +399,102 @@ describe('<Dropdown />', () => {
     expect(applyClickHandler).toBeCalledTimes(1);
   });
 
+  it('should handle controlled props with single select', async () => {
+    const ControlledDropdown = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+
+      return (
+        <>
+          <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+          <Dropdown selectionType="single">
+            <SelectInput
+              label="Select City"
+              value={currentSelection}
+              onChange={(args) => {
+                setCurrentSelection(args.values[0]);
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+
+    const selectInput = getByRole('combobox', { name: 'Select City' });
+    expect(selectInput).toHaveTextContent('Select Option');
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveTextContent('Bangalore');
+
+    await user.click(selectInput);
+    await user.click(getByRole('option', { name: 'Pune' }));
+    expect(selectInput).toHaveTextContent('Pune');
+
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveTextContent('Bangalore');
+  });
+
+  it('should handle controlled props with multi select', async () => {
+    const ControlledDropdown = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+
+      return (
+        <>
+          <Button
+            onClick={() => {
+              if (!currentSelection.includes('bangalore')) {
+                setCurrentSelection([...currentSelection, 'bangalore']);
+              }
+            }}
+          >
+            Select Bangalore
+          </Button>
+          <Dropdown selectionType="multiple">
+            <SelectInput
+              label="Select City"
+              value={currentSelection}
+              onChange={(args) => {
+                if (args) {
+                  setCurrentSelection(args.values);
+                }
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+
+    const selectInput = getByRole('combobox', { name: 'Select City' });
+    expect(selectInput).toHaveTextContent('Select Option');
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveTextContent('Bangalore');
+
+    await user.click(selectInput);
+    await user.click(getByRole('option', { name: 'Pune' }));
+    expect(selectInput).toHaveTextContent('2 items selected');
+
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveTextContent('2 items selected');
+  });
+
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(
       <Dropdown>

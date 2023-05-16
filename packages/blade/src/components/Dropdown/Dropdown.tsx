@@ -53,6 +53,9 @@ const _Dropdown = ({
   const [selectedIndices, setSelectedIndices] = React.useState<
     DropdownContextType['selectedIndices']
   >([]);
+  const [controlledValueIndices, setControlledValueIndices] = React.useState<
+    DropdownContextType['selectedIndices']
+  >([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
@@ -61,6 +64,10 @@ const _Dropdown = ({
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
+  const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
+    DropdownContextType['changeCallbackTriggerer']
+  >(0);
+  const [isControlled, setIsControlled] = React.useState(false);
   // keep track if dropdown contains bottomsheet
   const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
 
@@ -92,6 +99,8 @@ const _Dropdown = ({
       setIsOpen,
       selectedIndices,
       setSelectedIndices,
+      controlledValueIndices,
+      setControlledValueIndices,
       options,
       setOptions,
       activeIndex,
@@ -111,11 +120,16 @@ const _Dropdown = ({
       hasLabelOnLeft,
       setHasLabelOnLeft,
       dropdownTriggerer: dropdownTriggerer.current,
+      changeCallbackTriggerer,
+      setChangeCallbackTriggerer,
+      isControlled,
+      setIsControlled,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       isOpen,
       selectedIndices,
+      controlledValueIndices,
       options,
       activeIndex,
       shouldIgnoreBlur,
@@ -124,6 +138,8 @@ const _Dropdown = ({
       hasFooterAction,
       hasLabelOnLeft,
       isKeydownPressed,
+      changeCallbackTriggerer,
+      isControlled,
     ],
   );
 
