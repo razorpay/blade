@@ -19,15 +19,15 @@ A switch component is used to quickly switch between two possible states. These 
 
 ## `Switch` API
 
-| Prop                | Type       | Required | Default   | Description                                                                                                                                              |
-| ------------------- | ---------- | -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| isChecked           | `boolean`  | No       | false     | state of the switch, if explicitly set the switch will become [controlled component](https://reactjs.org/docs/forms.html#controlled-components)                                                                                 |
-| defaultChecked      | `boolean`  | No       | false     | default state of the switch, if isChecked is not provided the switch will become [uncontrolled component](https://reactjs.org/docs/uncontrolled-components.html)                                                            |
-| onChange            | `({ event, isChecked, value }) => void` | No       | `undefined` | The function to be called when the switch state changes.                                                                                               |
-| isDisabled          | `boolean`  | No       | `false`   | Control whether the checkbox is disabled or not.                                                                                                         |
-| accessibilityLabel          | `string`  | No       | `undefined`   | Provides accessible label for internal checkbox component that sets the aria-label prop for screen readers.                                                                                                         |
-| name (html native)  | `string`   | No       | `undefined` | The name of the input field in a switch, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)            |
-| value (html native) | `string`   | No       | `undefined` | The value of the input field in a switch, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |
+| Prop       | Type              | Default     | Description                 | Required |
+| ---------- | ----------------- | ----------- | --------------------------- | -------- |
+| isChecked | `boolean` | `false` | State of the switch, if explicitly set the switch will become [controlled component](https://reactjs.org/docs/forms.html#controlled-components) |        |
+| defaultChecked | `boolean` | `false` | Default state of the switch, if isChecked is not provided the switch will become [uncontrolled component](https://reactjs.org/docs/uncontrolled-components.html) |        |
+| onChange | `({ event, isChecked, value }) => void` | `undefined` | The function to be called when the switch state changes. |        |
+| isDisabled | `boolean` | `false` | Control whether the switch is disabled or not. |        |
+| accessibilityLabel | `string` | `undefined` | Provides accessible label for internal checkbox component that sets the aria-label prop for screen readers. |        |
+| name (html) | `string` | `undefined` | The name of the input field in a switch, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |        |
+| value (html) | `string` | `undefined` | The value of the input field in a switch, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |        |
 
 ### Examples:
 
