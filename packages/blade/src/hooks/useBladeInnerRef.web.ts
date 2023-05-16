@@ -1,8 +1,6 @@
 import React from 'react';
-import type { TextInput as TextInputReactNative, View } from 'react-native';
-import { getPlatformType } from '~utils';
-
-type BladeElementRef = Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View, 'focus'>;
+import type { TextInput as TextInputReactNative } from 'react-native';
+import type { BladeElementRef } from './types';
 
 /**
  * A hook which only exposes the properties of html input element via imparative hook
@@ -23,17 +21,11 @@ const useBladeInnerRef = (
   React.useImperativeHandle(
     targetRef,
     (): BladeElementRef => {
-      const element = innerRef.current;
-      if (getPlatformType() !== 'react-native' && element instanceof HTMLElement) {
-        return {
-          focus: (opts) => (handlers?.onFocus ? handlers.onFocus(opts) : element.focus(opts)),
-          scrollIntoView: (opts) => element.scrollIntoView(opts),
-        };
-      } else {
-        return {
-          focus: () => element?.focus(),
-        };
-      }
+      const element = innerRef.current as HTMLInputElement;
+      return {
+        focus: (opts) => (handlers?.onFocus ? handlers.onFocus(opts) : element?.focus?.(opts)),
+        scrollIntoView: (opts) => element?.scrollIntoView?.(opts),
+      };
     },
     [innerRef, handlers],
   );

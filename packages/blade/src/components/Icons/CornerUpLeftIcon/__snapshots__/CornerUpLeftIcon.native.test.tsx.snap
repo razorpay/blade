@@ -1,55 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CornerUpLeftIcon /> should render CornerUpLeftIcon 1`] = `
-<RNSVGSvgView
-  accessibilityElementsHidden={true}
-  align="xMidYMid"
-  bbHeight="20px"
-  bbWidth="20px"
-  fill="none"
-  focusable={false}
-  height="20px"
-  importantForAccessibility="no-hide-descendants"
-  meetOrSlice={0}
-  minX={0}
-  minY={0}
+<View
   style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderWidth": 0,
-      },
-      Array [
-        Object {},
-      ],
-      Object {
-        "flex": 0,
-        "height": 20,
-        "width": 20,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
-  vbHeight={24}
-  vbWidth={24}
-  width="20px"
 >
-  <RNSVGGroup
-    fill={null}
-    propList={
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="20px"
+    bbWidth="20px"
+    fill="none"
+    focusable={false}
+    height="20px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
       Array [
-        "fill",
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Array [
+          Object {},
+        ],
+        Object {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
       ]
     }
+    vbHeight={24}
+    vbWidth={24}
+    width="20px"
   >
-    <RNSVGPath
-      d="M9.70711 4.70711C10.0976 4.31658 10.0976 3.68342 9.70711 3.29289C9.31658 2.90237 8.68342 2.90237 8.29289 3.29289L3.29289 8.29289C2.90237 8.68342 2.90237 9.31658 3.29289 9.70711L8.29289 14.7071C8.68342 15.0976 9.31658 15.0976 9.70711 14.7071C10.0976 14.3166 10.0976 13.6834 9.70711 13.2929L6.41421 10H16C17.6569 10 19 11.3431 19 13V20C19 20.5523 19.4477 21 20 21C20.5523 21 21 20.5523 21 20V13C21 10.2386 18.7614 8 16 8H6.41421L9.70711 4.70711Z"
-      fill={4282603381}
+    <RNSVGGroup
+      fill={null}
       propList={
         Array [
           "fill",
         ]
       }
-    />
-  </RNSVGGroup>
-</RNSVGSvgView>
+    >
+      <RNSVGPath
+        d="M9.70711 4.70711C10.0976 4.31658 10.0976 3.68342 9.70711 3.29289C9.31658 2.90237 8.68342 2.90237 8.29289 3.29289L3.29289 8.29289C2.90237 8.68342 2.90237 9.31658 3.29289 9.70711L8.29289 14.7071C8.68342 15.0976 9.31658 15.0976 9.70711 14.7071C10.0976 14.3166 10.0976 13.6834 9.70711 13.2929L6.41421 10H16C17.6569 10 19 11.3431 19 13V20C19 20.5523 19.4477 21 20 21C20.5523 21 21 20.5523 21 20V13C21 10.2386 18.7614 8 16 8H6.41421L9.70711 4.70711Z"
+        fill={4282603381}
+        propList={
+          Array [
+            "fill",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;

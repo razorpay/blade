@@ -2,84 +2,64 @@
 
 exports[`<Amount /> should render Amount with default props 1`] = `
 <View
-  alignItems="baseline"
-  display="flex"
-  flexDirection="row"
   style={
-    Array [
-      Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "paddingLeft": 4,
-        "paddingRight": 4,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="bold"
-    marginRight="spacing.1"
+  <View
+    alignItems="baseline"
+    display="flex"
+    flexDirection="row"
     style={
       Array [
         Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 2,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    ₹
-  </Text>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 16,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
+          "alignItems": "baseline",
+          "display": "flex",
+          "flexDirection": "row",
+          "paddingLeft": 4,
+          "paddingRight": 4,
         },
       ]
     }
   >
     <Text
-      color="surface.text.normal.lowContrast"
-      fontSize={100}
-      fontWeight="regular"
-      lineHeight={100}
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="bold"
+      marginRight="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 20,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 2,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      ₹
+    </Text>
+    <Text
       style={
         Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 14,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 20,
@@ -96,122 +76,130 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         ]
       }
     >
-      1,000
-      .
+      <Text
+        color="surface.text.normal.lowContrast"
+        fontSize={100}
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        1,000
+        .
+      </Text>
+      <Text
+        color="surface.text.muted.lowContrast"
+        fontSize={75}
+        fontWeight="regular"
+        marginLeft="spacing.1"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 16%, 60%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 2,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        00
+      </Text>
     </Text>
-    <Text
-      color="surface.text.muted.lowContrast"
-      fontSize={75}
-      fontWeight="regular"
-      marginLeft="spacing.1"
-      style={
-        Array [
-          Object {
-            "color": "hsla(216, 16%, 60%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 20,
-            "marginBottom": 0,
-            "marginLeft": 2,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-    >
-      00
-    </Text>
-  </Text>
+  </View>
 </View>
 `;
 
 exports[`<Amount /> should render MYR currency Amount  1`] = `
 <View
-  alignItems="baseline"
-  display="flex"
-  flexDirection="row"
   style={
-    Array [
-      Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "paddingLeft": 4,
-        "paddingRight": 4,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="bold"
-    marginRight="spacing.1"
+  <View
+    alignItems="baseline"
+    display="flex"
+    flexDirection="row"
     style={
       Array [
         Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 2,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    RM
-  </Text>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 16,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
+          "alignItems": "baseline",
+          "display": "flex",
+          "flexDirection": "row",
+          "paddingLeft": 4,
+          "paddingRight": 4,
         },
       ]
     }
   >
     <Text
-      color="surface.text.normal.lowContrast"
-      fontSize={100}
-      fontWeight="regular"
-      lineHeight={100}
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="bold"
+      marginRight="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 20,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 2,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      RM
+    </Text>
+    <Text
       style={
         Array [
           Object {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 14,
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 20,
@@ -228,44 +216,78 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
         ]
       }
     >
-      1,000
-      .
+      <Text
+        color="surface.text.normal.lowContrast"
+        fontSize={100}
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        1,000
+        .
+      </Text>
+      <Text
+        color="surface.text.muted.lowContrast"
+        fontSize={75}
+        fontWeight="regular"
+        marginLeft="spacing.1"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 16%, 60%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 2,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        00
+      </Text>
     </Text>
-    <Text
-      color="surface.text.muted.lowContrast"
-      fontSize={75}
-      fontWeight="regular"
-      marginLeft="spacing.1"
-      style={
-        Array [
-          Object {
-            "color": "hsla(216, 16%, 60%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 20,
-            "marginBottom": 0,
-            "marginLeft": 2,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-    >
-      00
-    </Text>
-  </Text>
+  </View>
 </View>
 `;
 
 exports[`<Amount /> should render all sizes of Amount 1`] = `
-Array [
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
   <View
     alignItems="baseline"
     display="flex"
@@ -394,7 +416,7 @@ Array [
         00
       </Text>
     </Text>
-  </View>,
+  </View>
   <View
     alignItems="baseline"
     display="flex"
@@ -523,7 +545,7 @@ Array [
         00
       </Text>
     </Text>
-  </View>,
+  </View>
   <View
     alignItems="baseline"
     display="flex"
@@ -652,7 +674,7 @@ Array [
         00
       </Text>
     </Text>
-  </View>,
+  </View>
   <View
     alignItems="baseline"
     display="flex"
@@ -781,7 +803,7 @@ Array [
         00
       </Text>
     </Text>
-  </View>,
+  </View>
   <View
     alignItems="baseline"
     display="flex"
@@ -910,7 +932,7 @@ Array [
         00
       </Text>
     </Text>
-  </View>,
+  </View>
   <View
     alignItems="baseline"
     display="flex"
@@ -1039,7 +1061,7 @@ Array [
         00
       </Text>
     </Text>
-  </View>,
+  </View>
   <View
     alignItems="baseline"
     display="flex"
@@ -1168,7 +1190,7 @@ Array [
         00
       </Text>
     </Text>
-  </View>,
+  </View>
   <View
     alignItems="baseline"
     display="flex"
@@ -1297,7 +1319,7 @@ Array [
         00
       </Text>
     </Text>
-  </View>,
+  </View>
   <View
     alignItems="baseline"
     display="flex"
@@ -1426,84 +1448,64 @@ Array [
         00
       </Text>
     </Text>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<Amount /> should render amount with Decimal value 1`] = `
 <View
-  alignItems="baseline"
-  display="flex"
-  flexDirection="row"
   style={
-    Array [
-      Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "paddingLeft": 4,
-        "paddingRight": 4,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="bold"
-    marginRight="spacing.1"
+  <View
+    alignItems="baseline"
+    display="flex"
+    flexDirection="row"
     style={
       Array [
         Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 2,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    ₹
-  </Text>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 16,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
+          "alignItems": "baseline",
+          "display": "flex",
+          "flexDirection": "row",
+          "paddingLeft": 4,
+          "paddingRight": 4,
         },
       ]
     }
   >
     <Text
-      color="surface.text.normal.lowContrast"
-      fontSize={200}
-      fontWeight="regular"
-      lineHeight={300}
+      color="surface.text.muted.lowContrast"
+      fontSize={75}
+      fontWeight="bold"
+      marginRight="spacing.1"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 20,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 2,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      ₹
+    </Text>
+    <Text
       style={
         Array [
           Object {
@@ -1512,7 +1514,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
             "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 24,
+            "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1526,14 +1528,99 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         ]
       }
     >
-      1,000
-      .
+      <Text
+        color="surface.text.normal.lowContrast"
+        fontSize={200}
+        fontWeight="regular"
+        lineHeight={300}
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 16,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 24,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        1,000
+        .
+      </Text>
+      <Text
+        color="surface.text.muted.lowContrast"
+        fontSize={75}
+        fontWeight="regular"
+        marginLeft="spacing.1"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 16%, 60%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 2,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        22
+      </Text>
     </Text>
+  </View>
+</View>
+`;
+
+exports[`<Amount /> should render amount with Humanize value 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    alignItems="baseline"
+    display="flex"
+    flexDirection="row"
+    style={
+      Array [
+        Object {
+          "alignItems": "baseline",
+          "display": "flex",
+          "flexDirection": "row",
+          "paddingLeft": 4,
+          "paddingRight": 4,
+        },
+      ]
+    }
+  >
     <Text
       color="surface.text.muted.lowContrast"
       fontSize={75}
-      fontWeight="regular"
-      marginLeft="spacing.1"
+      fontWeight="bold"
+      marginRight="spacing.1"
       style={
         Array [
           Object {
@@ -1541,10 +1628,38 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
             "fontFamily": "Lato",
             "fontSize": 12,
             "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 20,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 2,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      ₹
+    </Text>
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontSize={200}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 16,
+            "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 20,
             "marginBottom": 0,
-            "marginLeft": 2,
+            "marginLeft": 0,
             "marginRight": 0,
             "marginTop": 0,
             "paddingBottom": 0,
@@ -1556,244 +1671,73 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         ]
       }
     >
-      22
+      1k
     </Text>
-  </Text>
-</View>
-`;
-
-exports[`<Amount /> should render amount with Humanize value 1`] = `
-<View
-  alignItems="baseline"
-  display="flex"
-  flexDirection="row"
-  style={
-    Array [
-      Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "paddingLeft": 4,
-        "paddingRight": 4,
-      },
-    ]
-  }
->
-  <Text
-    color="surface.text.muted.lowContrast"
-    fontSize={75}
-    fontWeight="bold"
-    marginRight="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 2,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    ₹
-  </Text>
-  <Text
-    color="surface.text.normal.lowContrast"
-    fontSize={200}
-    fontWeight="regular"
-    style={
-      Array [
-        Object {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 16,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    1k
-  </Text>
+  </View>
 </View>
 `;
 
 exports[`<Amount /> should render information intent Amount  1`] = `
 <View
-  alignItems="baseline"
-  display="flex"
-  flexDirection="row"
   style={
-    Array [
-      Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "paddingLeft": 4,
-        "paddingRight": 4,
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
-  <Text
-    color="feedback.text.information.lowContrast"
-    fontSize={100}
-    fontWeight="regular"
-    marginRight="spacing.1"
+  <View
+    alignItems="baseline"
+    display="flex"
+    flexDirection="row"
     style={
       Array [
         Object {
-          "color": "hsla(193, 100%, 35%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 14,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 2,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    ₹
-  </Text>
-  <Text
-    color="feedback.text.information.lowContrast"
-    fontSize={100}
-    fontWeight="regular"
-    style={
-      Array [
-        Object {
-          "color": "hsla(193, 100%, 35%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 14,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    1,000
-  </Text>
-</View>
-`;
-
-exports[`<Amount /> should render positive intent Amount  1`] = `
-<View
-  alignItems="baseline"
-  display="flex"
-  flexDirection="row"
-  style={
-    Array [
-      Object {
-        "alignItems": "baseline",
-        "display": "flex",
-        "flexDirection": "row",
-        "paddingLeft": 4,
-        "paddingRight": 4,
-      },
-    ]
-  }
->
-  <Text
-    color="feedback.text.positive.lowContrast"
-    fontSize={75}
-    fontWeight="bold"
-    marginRight="spacing.1"
-    style={
-      Array [
-        Object {
-          "color": "hsla(160, 100%, 26%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 2,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    ₹
-  </Text>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 16,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 20,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
+          "alignItems": "baseline",
+          "display": "flex",
+          "flexDirection": "row",
+          "paddingLeft": 4,
+          "paddingRight": 4,
         },
       ]
     }
   >
     <Text
-      color="feedback.text.positive.lowContrast"
+      color="feedback.text.information.lowContrast"
       fontSize={100}
       fontWeight="regular"
-      lineHeight={100}
+      marginRight="spacing.1"
       style={
         Array [
           Object {
-            "color": "hsla(160, 100%, 26%, 1)",
+            "color": "hsla(193, 100%, 35%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 14,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 20,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 2,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      ₹
+    </Text>
+    <Text
+      color="feedback.text.information.lowContrast"
+      fontSize={100}
+      fontWeight="regular"
+      style={
+        Array [
+          Object {
+            "color": "hsla(193, 100%, 35%, 1)",
             "fontFamily": "Lato",
             "fontSize": 14,
             "fontStyle": "normal",
@@ -1813,13 +1757,40 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       }
     >
       1,000
-      .
     </Text>
+  </View>
+</View>
+`;
+
+exports[`<Amount /> should render positive intent Amount  1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    alignItems="baseline"
+    display="flex"
+    flexDirection="row"
+    style={
+      Array [
+        Object {
+          "alignItems": "baseline",
+          "display": "flex",
+          "flexDirection": "row",
+          "paddingLeft": 4,
+          "paddingRight": 4,
+        },
+      ]
+    }
+  >
     <Text
       color="feedback.text.positive.lowContrast"
       fontSize={75}
-      fontWeight="regular"
-      marginLeft="spacing.1"
+      fontWeight="bold"
+      marginRight="spacing.1"
       style={
         Array [
           Object {
@@ -1827,10 +1798,35 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
             "fontFamily": "Lato",
             "fontSize": 12,
             "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 20,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 2,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      ₹
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 16,
+            "fontStyle": "normal",
             "fontWeight": "400",
             "lineHeight": 20,
             "marginBottom": 0,
-            "marginLeft": 2,
+            "marginLeft": 0,
             "marginRight": 0,
             "marginTop": 0,
             "paddingBottom": 0,
@@ -1842,8 +1838,66 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
         ]
       }
     >
-      00
+      <Text
+        color="feedback.text.positive.lowContrast"
+        fontSize={100}
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          Array [
+            Object {
+              "color": "hsla(160, 100%, 26%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        1,000
+        .
+      </Text>
+      <Text
+        color="feedback.text.positive.lowContrast"
+        fontSize={75}
+        fontWeight="regular"
+        marginLeft="spacing.1"
+        style={
+          Array [
+            Object {
+              "color": "hsla(160, 100%, 26%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 2,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        00
+      </Text>
     </Text>
-  </Text>
+  </View>
 </View>
 `;

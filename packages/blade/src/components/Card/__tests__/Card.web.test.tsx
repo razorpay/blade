@@ -21,9 +21,6 @@ import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';
 import { Badge } from '~components/Badge';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<Card />', () => {
   it('should render a plain Card', () => {
     const { container } = renderWithTheme(
@@ -103,6 +100,7 @@ describe('<Card />', () => {
   });
 
   it('should only accept allowed components in Card Header', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const cardTitle = 'Card Header';
     const cardSubtitle = 'Card subtitle';
     expect(() =>
@@ -146,9 +144,11 @@ describe('<Card />', () => {
     ).toThrow(
       '[Blade CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge` component is accepted in visual',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should throw error if any sub card components are used outside of Card', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() => renderWithTheme(<CardBody>body</CardBody>)).toThrow(
       '[Blade Card]: CardBody cannot be used outside of Card component',
     );
@@ -170,9 +170,11 @@ describe('<Card />', () => {
     expect(() => renderWithTheme(<CardFooterTrailing />)).toThrow(
       '[Blade Card]: CardFooterTrailing cannot be used outside of Card component',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should restrict childrens & only allow CardHeader, CardBody & CardFooter in Card', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <Card>
@@ -185,9 +187,11 @@ describe('<Card />', () => {
     ).toThrow(
       '[Blade Card]: Only one of `CardHeader, CardBody, CardFooter` component is accepted as Card children',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should restrict childrens in CardHeader', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <Card>
@@ -203,9 +207,11 @@ describe('<Card />', () => {
     ).toThrow(
       '[Blade Card]: Only one of `CardHeaderLeading, CardHeaderTrailing` component is accepted as CardHeader children',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should restrict childrens in CardFooter', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <Card>
@@ -221,6 +227,7 @@ describe('<Card />', () => {
     ).toThrow(
       '[Blade Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted as CardFooter children',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should not have accessibility violations', async () => {

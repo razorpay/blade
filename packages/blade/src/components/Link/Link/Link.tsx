@@ -4,6 +4,7 @@ import type { IconComponent } from '~components/Icons';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import type { Platform } from '~utils';
+import { assignWithoutSideEffects } from '~utils';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
@@ -101,7 +102,7 @@ type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
 */
 export type LinkProps = LinkAnchorVariantProps | LinkButtonVariantProps;
 
-const Link = ({
+const _Link = ({
   children,
   icon,
   iconPosition = 'left',
@@ -133,5 +134,10 @@ const Link = ({
     />
   );
 };
+
+const Link = assignWithoutSideEffects(_Link, {
+  displayName: 'Link',
+  componentId: 'Link',
+});
 
 export default Link;
