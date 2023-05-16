@@ -2,14 +2,11 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import { DropdownFooter, DropdownHeader } from './DropdownHeaderFooter';
 import { Dropdown, DropdownOverlay } from '.';
 import type { DropdownProps } from '.';
 import {
   ActionList,
-  ActionListFooter,
-  ActionListFooterIcon,
-  ActionListHeader,
-  ActionListHeaderIcon,
   ActionListItemAsset,
   ActionListItem,
   ActionListItemIcon,
@@ -22,8 +19,8 @@ import {
   SettingsIcon,
   InfoIcon,
   ArrowRightIcon,
-  HistoryIcon,
-  FileTextIcon,
+  // HistoryIcon,
+  // FileTextIcon,
   HomeIcon,
 } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
@@ -388,10 +385,10 @@ export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
         />
         <DropdownOverlay>
           <ActionList surfaceLevel={surfaceLevel}>
-            <ActionListHeader
+            {/* <ActionListHeader
               title="Recent Searches"
               leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
+            /> */}
             <ActionListItem
               // @ts-expect-error: for storybook we're typing icon as sting but its actually IconComponent
               leading={<ActionListItemIcon icon={actionListItemIcon} />}
@@ -418,11 +415,11 @@ export const WithHeaderFooter = (args: AllDropdownProps): JSX.Element => {
               title="Pricing"
               value="pricing"
             />
-            <ActionListFooter
+            {/* <ActionListFooter
               title="Search Tips"
               leading={<ActionListFooterIcon icon={FileTextIcon} />}
               trailing={<Button onClick={console.log}>Apply</Button>}
-            />
+            /> */}
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
@@ -454,11 +451,12 @@ export const WithScrollbar = (args: AllDropdownProps): JSX.Element => {
           {...selectInputArgs}
         />
         <DropdownOverlay>
+          <DropdownHeader title="Header Title" subtitle="Header Subtitle" />
           <ActionList surfaceLevel={surfaceLevel}>
-            <ActionListHeader
+            {/* <ActionListHeader
               title="Recent Searches"
               leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
+            /> */}
             <ActionListItem
               // @ts-expect-error: for storybook we're typing icon as sting but its actually IconComponent
               leading={<ActionListItemIcon icon={actionListItemIcon} />}
@@ -518,12 +516,16 @@ export const WithScrollbar = (args: AllDropdownProps): JSX.Element => {
               title="Pricing"
               value="pricing"
             />
-            <ActionListFooter
+            {/* <ActionListFooter
               title="Search Tips"
               leading={<ActionListFooterIcon icon={FileTextIcon} />}
               trailing={<Button onClick={console.log}>Apply</Button>}
-            />
+            /> */}
           </ActionList>
+          <DropdownFooter>
+            <Button>Cancel</Button>
+            <Button>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>
     </BaseBox>

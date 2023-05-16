@@ -95,8 +95,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
     childrenWithId,
     actionListOptions,
     defaultSelectedIndices,
-    actionListHeaderChild,
-    actionListFooterChild,
   } = React.useMemo(() => getActionListProperties(children), [children]);
 
   React.useEffect(() => {
@@ -147,7 +145,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
           })}
           {...metaAttribute({ name: MetaConstants.ActionList, testID })}
         >
-          {actionListHeaderChild}
           <ActionListBox
             isInBottomSheet={isInBottomSheet}
             actionListItemWrapperRole={actionListItemWrapperRole}
@@ -156,7 +153,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
             isMultiSelectable={isMultiSelectable}
             ref={actionListItemRef as any}
           />
-          {actionListFooterChild}
         </StyledActionList>
       )}
     </ActionListContext.Provider>

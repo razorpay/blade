@@ -38,12 +38,7 @@ const getActionListSectionPosition = (
   };
 };
 
-const actionListAllowedChildren = [
-  componentIds.ActionListFooter,
-  componentIds.ActionListHeader,
-  componentIds.ActionListItem,
-  componentIds.ActionListSection,
-];
+const actionListAllowedChildren = [componentIds.ActionListItem, componentIds.ActionListSection];
 
 export type SectionData = {
   title: string;
@@ -61,15 +56,11 @@ const getActionListProperties = (
   childrenWithId?: React.ReactNode[] | null;
   actionListOptions: OptionsType;
   defaultSelectedIndices: number[];
-  actionListHeaderChild: React.ReactElement | null;
-  actionListFooterChild: React.ReactElement | null;
 } => {
   const sectionData: SectionData = [];
   let currentSection: string | null = null;
   const actionListOptions: OptionsType = [];
   const defaultSelectedIndices: number[] = [];
-  let actionListHeaderChild: React.ReactElement | null = null;
-  let actionListFooterChild: React.ReactElement | null = null;
 
   const getActionListItemWithId = (
     child: React.ReactNode,
@@ -136,16 +127,6 @@ const getActionListProperties = (
   // Looping through ActionListItems to add index to them and get an options array for moving focus between items
   const childrenWithId = React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
-      if (isValidAllowedChildren(child, componentIds.ActionListHeader)) {
-        actionListHeaderChild = child;
-        return null;
-      }
-
-      if (isValidAllowedChildren(child, componentIds.ActionListFooter)) {
-        actionListFooterChild = child;
-        return null;
-      }
-
       if (isValidAllowedChildren(child, componentIds.ActionListSection)) {
         const shouldHideDivider =
           index === lastActionListSectionIndex && !isActionListItemPresentAfterSection;
@@ -178,8 +159,6 @@ const getActionListProperties = (
   return {
     sectionData,
     childrenWithId,
-    actionListFooterChild,
-    actionListHeaderChild,
     actionListOptions,
     defaultSelectedIndices,
   };
