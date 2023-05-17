@@ -38,6 +38,10 @@ type ActionListItemProps = {
    */
   href?: string;
   /**
+   * HTML target of the link
+   */
+  target?: string;
+  /**
    * Item that goes on left-side of item.
    *
    * Valid elements - `<ActionListItemIcon />`, `<ActionListItemAsset />`
@@ -356,6 +360,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
         type="button"
         tabIndex={-1}
         href={props.href}
+        target={props.target}
         className={activeIndex === props._index ? 'active-focus' : ''}
         {...makeAccessible({
           selected: isSelected,

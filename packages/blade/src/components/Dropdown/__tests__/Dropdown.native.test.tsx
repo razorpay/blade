@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Button } from 'react-native';
 import { fireEvent } from '@testing-library/react-native';
+import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownOverlay } from '../index';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { SelectInput } from '~components/Input/SelectInput';
@@ -14,6 +15,7 @@ import {
 } from '~components/ActionList';
 import { SearchIcon, HistoryIcon } from '~components/Icons';
 import { Button } from '~components/Button';
+import { Text } from '~components/Typography';
 
 describe('<Dropdown />', () => {
   it('should render dropdown', () => {
@@ -261,5 +263,75 @@ describe('<Dropdown />', () => {
 
     fireEvent.press(getByText('Select Bangalore'));
     expect(selectInput).toHaveTextContent('2 items selected');
+  });
+});
+
+describe('<Dropdown /> with <DropdownButton />', () => {
+  it('should click and select item', () => {
+    const profileClickHandler = jest.fn();
+
+    const { getByTestId, getByText } = renderWithTheme(
+      <Dropdown>
+        <DropdownButton>My Account</DropdownButton>
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Profile" value="profile" onClick={profileClickHandler} />
+            <ActionListItem title="Settings" value="settings" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+
+    // Click on combobox
+    fireEvent.press(getByText('My Account'));
+    expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
+
+    // Click on item
+    fireEvent.press(getByText('Profile'));
+    expect(profileClickHandler).toBeCalled();
+  });
+
+  it('should handle controlled selections', () => {
+    const ControlledDropdownMenu = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
+      return (
+        <>
+          <Text testID="current-selection-text">{currentSelection}</Text>
+          <Dropdown>
+            <DropdownButton>My Account</DropdownButton>
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem
+                  isSelected={currentSelection === 'profile'}
+                  onClick={() => setCurrentSelection('profile')}
+                  title="Profile"
+                  value="profile"
+                />
+                <ActionListItem
+                  isSelected={currentSelection === 'settings'}
+                  onClick={() => setCurrentSelection('settings')}
+                  title="Settings"
+                  value="settings"
+                />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const { getByTestId, getByText } = renderWithTheme(<ControlledDropdownMenu />);
+
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+
+    // Click on combobox
+    fireEvent.press(getByText('My Account'));
+    expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
+
+    // Click on item
+    fireEvent.press(getByText('Profile'));
+    expect(getByTestId('current-selection-text')).toHaveTextContent('profile');
   });
 });

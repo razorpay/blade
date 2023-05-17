@@ -63,9 +63,9 @@ export const getSeparatorRole = (): 'separator' | undefined => {
 export const getActionListItemWrapperRole = (
   hasFooterAction: boolean,
   dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
-): 'listbox' | 'menu' | undefined => {
+): 'listbox' | undefined => {
   if (isRoleMenu(dropdownTriggerer)) {
-    return 'menu';
+    return undefined;
   }
 
   if (hasFooterAction) {
