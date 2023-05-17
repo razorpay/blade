@@ -32,7 +32,9 @@ const _DropdownButton = (props: ButtonProps): JSX.Element => {
       })}
       onClick={(e) => {
         if (props.onClick) {
-          props.onClick(e as React.MouseEvent<HTMLButtonElement>);
+          // Setting it for web fails it on native typecheck and vice versa
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+          props.onClick(e as any);
         }
         onTriggerClick();
       }}
