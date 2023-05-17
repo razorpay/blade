@@ -15,5 +15,5 @@ export type { Motion } from './motion';
 export { default as motion } from './motion';
 export type { Size } from './size';
 export { default as size } from './size';
-export type { Shadows, ShadowsWithColorModes } from './shadows';
+export type { Shadows, ShadowsWithColorModes } from './shadows/types';
 export { shadows } from './shadows';

@@ -7,7 +7,6 @@ import { ActionListBox } from './ActionListBox';
 import { componentIds } from './componentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { assignWithoutSideEffects, makeAccessible, metaAttribute, MetaConstants } from '~utils';
-import { useTheme } from '~components/BladeProvider';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
 
@@ -87,7 +86,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
     hasFooterAction,
   } = useDropdown();
 
-  const { theme } = useTheme();
   const { isInBottomSheet } = useBottomSheetContext();
 
   const {
@@ -138,7 +136,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
         <StyledActionList
           isInBottomSheet={isInBottomSheet}
           surfaceLevel={surfaceLevel}
-          elevation={isInBottomSheet ? undefined : theme.shadows.androidElevation.level[2]}
           id={`${dropdownBaseId}-actionlist`}
           {...makeAccessible({
             role: actionListContainerRole,

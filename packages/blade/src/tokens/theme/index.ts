@@ -6,7 +6,6 @@ export { default as overrideTheme } from './overrideTheme';
 export type {
   ColorSchemeNames,
   ColorSchemeNamesInput,
-  Shadows,
   ColorsWithModes,
   ThemeTokens,
 } from './theme.d';

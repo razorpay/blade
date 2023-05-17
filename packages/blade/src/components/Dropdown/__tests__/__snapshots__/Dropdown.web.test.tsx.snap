@@ -440,7 +440,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   border-width: 1px;
   border-color: hsla(216,15%,54%,0.18);
   border-radius: 4px;
-  box-shadow: 0px 0px 2px 0px hsla(216,15%,54%,0.18),0px 3px 8px 0px hsla(216,15%,54%,0.18);
+  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
 .c23 {
@@ -712,7 +712,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           aria-labelledby="dropdown-7-label"
           class=" c19"
           data-blade-component="action-list"
-          elevation="5"
           id="dropdown-7-actionlist"
           role="dialog"
         >

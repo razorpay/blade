@@ -492,7 +492,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           <View
             accessibilityLabelledBy="dropdown-7-label"
             accessibilityRole="menu"
-            elevation={5}
+            elevation={12}
             id="dropdown-7-actionlist"
             isInBottomSheet={false}
             style={
@@ -502,12 +502,10 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   "borderColor": "hsla(216, 15%, 54%, 0.18)",
                   "borderRadius": 4,
                   "borderWidth": 1,
-                  "shadowColor": "hsla(216, 15%, 54%, 0.18)",
-                  "shadowOffset": Object {
-                    "height": 0,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 1,
+                  "elevation": 12,
+                  "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+                  "shadowOpacity": 0.1,
+                  "shadowRadius": 4,
                 },
               ]
             }

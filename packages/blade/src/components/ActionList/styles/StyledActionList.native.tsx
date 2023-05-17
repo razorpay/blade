@@ -1,19 +1,17 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { getBaseActionListStyles } from './getBaseActionListStyles';
 import type { StyledActionListProps } from './getBaseActionListStyles';
-import { makeSize, isAndroid } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
+import { castNativeType } from '~utils';
 
-const StyledActionList = styled(BaseBox)<StyledActionListProps>((props) => {
-  const shadowProps = {
-    shadowOpacity: '1',
-    shadowColor: isAndroid() ? undefined : props.theme.shadows.color.level[1],
-    shadowOffset: `${makeSize(props.theme.shadows.offsetX.level[1])} ${makeSize(0)}`,
-  };
-
+const StyledActionList = styled(BaseBox).attrs<StyledActionListProps>((props) => ({
+  elevation: props.isInBottomSheet
+    ? undefined
+    : castNativeType(props.theme.shadows.midRaised).elevation,
+}))<StyledActionListProps>((props) => {
   return {
     ...getBaseActionListStyles(props),
-    ...(props.isInBottomSheet ? undefined : shadowProps),
+    ...(props.isInBottomSheet ? undefined : castNativeType(props.theme.shadows.midRaised)),
   };
 });
 
