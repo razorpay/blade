@@ -1,12 +1,12 @@
 import React from 'react';
+import type { BaseButtonProps } from '../Button/BaseButton/BaseButton';
+import BaseButton from '../Button/BaseButton';
+import { getActionListContainerRole } from '../ActionList/getA11yRoles';
+import type { ButtonProps } from '../Button';
 import { useDropdown } from './useDropdown';
 import { componentIds } from './dropdownUtils';
-import type { ButtonProps } from '~components/Button';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils';
-import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
-import BaseButton from '~components/Button/BaseButton';
-import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 
 type DropdownButtonProps = ButtonProps & {
   onBlur?: BaseButtonProps['onBlur'];
