@@ -46,6 +46,7 @@ const actionListPropsTables: {
       note: 'For non-select menu triggers',
       type: 'string',
     },
+    target: 'string',
     onClick: {
       note: 'For controlled menu',
       type: <Code>{'({name, value}) => {}'}</Code>,

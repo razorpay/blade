@@ -631,6 +631,7 @@ const WithSimpleMenuStory = `
                   title="My Profile"
                   value="profile"
                   href="https://youtu.be/4qRZmFYdozY?t=33"
+                  target="_blank"
                 />
                 <ActionListItem
                   title="Dashboard"
