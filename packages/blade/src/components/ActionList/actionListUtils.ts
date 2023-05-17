@@ -85,9 +85,10 @@ const getActionListProperties = (
           });
 
           if (anchorLink) {
-            window.location.href = anchorLink;
+            const target = child.props.target ?? '_self';
+            window.open(anchorLink, target);
             if (window.top) {
-              window.top.location.href = anchorLink;
+              window.top.open(anchorLink, target);
             }
           }
         },

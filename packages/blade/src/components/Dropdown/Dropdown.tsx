@@ -14,6 +14,7 @@ import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
+  onDismiss?: () => void;
   children: React.ReactNode[];
 } & StyledPropsBlade;
 
@@ -46,6 +47,7 @@ type DropdownProps = {
 const _Dropdown = ({
   children,
   selectionType = 'single',
+  onDismiss,
   ...styledProps
 }: DropdownProps): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -74,12 +76,26 @@ const _Dropdown = ({
   const dropdownBaseId = useId('dropdown');
 
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
+  const isFirstRenderRef = React.useRef(true);
+
+  React.useEffect(() => {
+    // Ignoring the `onDismiss` call on first render
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false;
+      return;
+    }
+
+    if (!isOpen && onDismiss) {
+      onDismiss();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       if (
-        !isValidAllowedChildren(child, 'SelectInput') &&
-        !isValidAllowedChildren(child, 'DropdownButton') &&
+        !isValidAllowedChildren(child, componentIds.triggers.SelectInput) &&
+        !isValidAllowedChildren(child, componentIds.triggers.DropdownButton) &&
         !isValidAllowedChildren(child, componentIds.DropdownOverlay) &&
         !isValidAllowedChildren(child, bottomSheetComponentIds.BottomSheet)
       ) {
@@ -88,11 +104,11 @@ const _Dropdown = ({
         );
       }
 
-      if (isValidAllowedChildren(child, 'SelectInput')) {
+      if (isValidAllowedChildren(child, componentIds.triggers.SelectInput)) {
         dropdownTriggerer.current = 'SelectInput';
       }
 
-      if (isValidAllowedChildren(child, 'DropdownButton')) {
+      if (isValidAllowedChildren(child, componentIds.triggers.DropdownButton)) {
         dropdownTriggerer.current = 'DropdownButton';
       }
     }
@@ -148,15 +164,20 @@ const _Dropdown = ({
     ],
   );
 
-  const BottomSheetAndDropdownGlueContextValue = React.useMemo(() => {
+  // This is the dismiss function which will be injected into the BottomSheet
+  // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
+  const onBottomSheetDismiss = React.useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
     return {
       isOpen,
-      setIsOpen,
-      selectionType,
       dropdownHasBottomSheet,
       setDropdownHasBottomSheet,
+      onBottomSheetDismiss,
     };
-  }, [isOpen, setIsOpen, selectionType, dropdownHasBottomSheet, setDropdownHasBottomSheet]);
+  }, [dropdownHasBottomSheet, isOpen, onBottomSheetDismiss]);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>

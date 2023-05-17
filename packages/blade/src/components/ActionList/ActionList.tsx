@@ -111,32 +111,47 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
 
   const actionListContextValue = React.useMemo(() => ({ surfaceLevel }), [surfaceLevel]);
 
+  // If we are inside BottomSheet, we don't render The StyledActionList wrapper
+  // This is to ensure:
+  // 1. We don't render the box wrapper styles which includes shadows, padding, border etc
+  // 2. to ensure GorhomBottomSheetSectionList works as expected, if we add extra wrappers GorhomBottomSheet won't render the content inside
+  // NOTE: That this also means inside BottomSheet, ActionList won't render any ActionListHeader or Footer.
   return (
     <ActionListContext.Provider value={actionListContextValue}>
-      <StyledActionList
-        isInBottomSheet={isInBottomSheet}
-        surfaceLevel={surfaceLevel}
-        elevation={theme.shadows.androidElevation.level[2]}
-        id={`${dropdownBaseId}-actionlist`}
-        {...makeAccessible({
-          role: actionListContainerRole,
-          multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
-          labelledBy: `${dropdownBaseId}-label`,
-        })}
-        {...metaAttribute({ name: MetaConstants.ActionList, testID })}
-      >
-        {actionListHeaderChild}
+      {isInBottomSheet ? (
         <ActionListBox
           isInBottomSheet={isInBottomSheet}
           actionListItemWrapperRole={actionListItemWrapperRole}
           childrenWithId={childrenWithId}
           sectionData={sectionData}
           isMultiSelectable={isMultiSelectable}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ref={actionListItemRef as any}
         />
-        {actionListFooterChild}
-      </StyledActionList>
+      ) : (
+        <StyledActionList
+          isInBottomSheet={isInBottomSheet}
+          surfaceLevel={surfaceLevel}
+          elevation={isInBottomSheet ? undefined : theme.shadows.androidElevation.level[2]}
+          id={`${dropdownBaseId}-actionlist`}
+          {...makeAccessible({
+            role: actionListContainerRole,
+            multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
+            labelledBy: `${dropdownBaseId}-label`,
+          })}
+          {...metaAttribute({ name: MetaConstants.ActionList, testID })}
+        >
+          {actionListHeaderChild}
+          <ActionListBox
+            isInBottomSheet={isInBottomSheet}
+            actionListItemWrapperRole={actionListItemWrapperRole}
+            childrenWithId={childrenWithId}
+            sectionData={sectionData}
+            isMultiSelectable={isMultiSelectable}
+            ref={actionListItemRef as any}
+          />
+          {actionListFooterChild}
+        </StyledActionList>
+      )}
     </ActionListContext.Provider>
   );
 };

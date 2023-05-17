@@ -1,7 +1,6 @@
 import type { GestureResponderEvent } from 'react-native';
 import React from 'react';
 import BaseButton from '../BaseButton';
-import type { BaseButtonProps } from '../BaseButton/BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -22,8 +21,6 @@ type ButtonCommonProps = {
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
-  onBlur?: BaseButtonProps['onBlur'];
-  onKeyDown?: BaseButtonProps['onKeyDown'];
 } & TestID &
   StyledPropsBlade;
 
@@ -46,6 +43,7 @@ type ButtonWithIconProps = ButtonCommonProps & {
 export type ButtonProps = ButtonWithoutIconProps | ButtonWithIconProps;
 
 const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
+  // While adding any prop here, make sure to handle it in DropdownButton as well
   {
     children,
     icon,
@@ -54,8 +52,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isFullWidth = false,
     isLoading = false,
     onClick,
-    onBlur,
-    onKeyDown,
     size = 'medium',
     type = 'button',
     variant = 'primary',
@@ -80,12 +76,13 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       variant={variant}
       isLoading={isLoading}
       testID={testID}
-      onBlur={onBlur}
-      onKeyDown={onKeyDown}
     />
   );
 };
 
-const Button = assignWithoutSideEffects(React.forwardRef(_Button), { displayName: 'Button' });
+const Button = assignWithoutSideEffects(React.forwardRef(_Button), {
+  displayName: 'Button',
+  componentId: 'Button',
+});
 
 export default Button;

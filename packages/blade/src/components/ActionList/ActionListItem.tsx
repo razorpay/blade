@@ -38,6 +38,10 @@ type ActionListItemProps = {
    */
   href?: string;
   /**
+   * HTML target of the link
+   */
+  target?: string;
+  /**
    * Item that goes on left-side of item.
    *
    * Valid elements - `<ActionListItemIcon />`, `<ActionListItemAsset />`
@@ -313,6 +317,12 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
 
   const renderOnWebAs = props.href ? 'a' : 'button';
 
+  /**
+   * In SelectInput, returns the isSelected according to selected indexes in the state
+   *
+   * In Other Triggers (Menu Usecase), returns `props.isSelected` since passing the
+   * isSelected prop explicitly is the only way to select item in menu
+   */
   const getIsSelected = (): boolean | undefined => {
     if (dropdownTriggerer === 'SelectInput') {
       if (typeof props._index === 'number') {
@@ -350,6 +360,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
         type="button"
         tabIndex={-1}
         href={props.href}
+        target={props.target}
         className={activeIndex === props._index ? 'active-focus' : ''}
         {...makeAccessible({
           selected: isSelected,

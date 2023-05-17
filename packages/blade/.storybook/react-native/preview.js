@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import { StyleSheet } from 'react-native';
 import { View } from 'react-native';

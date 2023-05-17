@@ -1,24 +1,31 @@
-import type { ReactNode, ReactElement } from 'react';
-import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
-import { ThemeContext } from './useTheme';
-import type { Theme } from './';
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import type { Theme } from './index';
 import { useColorScheme, toTitleCase, useBreakpoint } from '~utils';
+import type { ColorSchemeNames, ColorSchemeNamesInput, ThemeTokens } from '~tokens/theme';
 import { colorSchemeNamesInput } from '~tokens/theme';
 import type { TypographyPlatforms } from '~tokens/global/typography';
-import type { ColorSchemeModes, ThemeTokens, ColorSchemeNamesInput } from '~tokens/theme/theme';
-import { BottomSheetStackProvider } from '~components/BottomSheet/BottomSheetStack';
+import type { ColorSchemeModes } from '~tokens/theme/theme';
 
-export type BladeProviderProps = {
-  themeTokens: ThemeTokens;
-  colorScheme?: ColorSchemeNamesInput;
-  children: ReactNode;
+type ThemeContextValue = {
+  theme: Theme;
+  colorScheme: ColorSchemeNames;
+  setColorScheme: (colorScheme: ColorSchemeNamesInput) => void;
+  platform: TypographyPlatforms;
 };
 
-const BladeProvider = ({
+/**
+ * Reusable hook to be used in BladeProvider.native & BladeProvider.web file
+ *
+ * This hook proccesses incoming themeTokens & initialColorScheme
+ * And validates & returns the theme values
+ */
+const useBladeProvider = ({
   themeTokens,
-  colorScheme: initialColorScheme,
-  children,
-}: BladeProviderProps): ReactElement => {
+  initialColorScheme,
+}: {
+  themeTokens: ThemeTokens;
+  initialColorScheme?: ColorSchemeNamesInput;
+}): { theme: Theme; themeContextValue: ThemeContextValue } => {
   if (!themeTokens) {
     throw new Error(
       `[BladeProvider]: Expected valid themeTokens of type ThemeTokens to be passed but found ${typeof themeTokens}`,
@@ -56,13 +63,7 @@ const BladeProvider = ({
     platform: onDeviceType,
   };
 
-  return (
-    <ThemeContext.Provider value={themeContextValue}>
-      <StyledComponentThemeProvider theme={theme}>
-        <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
-      </StyledComponentThemeProvider>
-    </ThemeContext.Provider>
-  );
+  return { themeContextValue, theme };
 };
 
-export default BladeProvider;
+export { useBladeProvider };
