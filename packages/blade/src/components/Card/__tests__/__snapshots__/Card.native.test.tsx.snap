@@ -10,23 +10,28 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 >
   <View
     borderRadius="medium"
-    elevation={4}
     style={
       Array [
         Object {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderRadius": 4,
           "display": "flex",
-          "elevation": 4,
           "flexDirection": "column",
           "paddingBottom": 20,
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 20,
+          "width": "100%",
+        },
+        Object {
+          "elevation": 4,
           "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+          "shadowOffset": Object {
+            "height": 3,
+            "width": 0,
+          },
           "shadowOpacity": 0.12,
           "shadowRadius": 2,
-          "width": "100%",
         },
       ]
     }
@@ -492,23 +497,28 @@ exports[`<Card /> should render a Card with Header 1`] = `
 >
   <View
     borderRadius="medium"
-    elevation={4}
     style={
       Array [
         Object {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderRadius": 4,
           "display": "flex",
-          "elevation": 4,
           "flexDirection": "column",
           "paddingBottom": 20,
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 20,
+          "width": "100%",
+        },
+        Object {
+          "elevation": 4,
           "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+          "shadowOffset": Object {
+            "height": 3,
+            "width": 0,
+          },
           "shadowOpacity": 0.12,
           "shadowRadius": 2,
-          "width": "100%",
         },
       ]
     }
@@ -963,23 +973,28 @@ exports[`<Card /> should render a plain Card 1`] = `
 >
   <View
     borderRadius="medium"
-    elevation={4}
     style={
       Array [
         Object {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderRadius": 4,
           "display": "flex",
-          "elevation": 4,
           "flexDirection": "column",
           "paddingBottom": 20,
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 20,
+          "width": "100%",
+        },
+        Object {
+          "elevation": 4,
           "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+          "shadowOffset": Object {
+            "height": 3,
+            "width": 0,
+          },
           "shadowOpacity": 0.12,
           "shadowRadius": 2,
-          "width": "100%",
         },
       ]
     }

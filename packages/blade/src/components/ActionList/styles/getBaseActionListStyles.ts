@@ -5,7 +5,6 @@ import { castWebType, isReactNative, makeSize } from '~utils';
 
 type StyledActionListProps = {
   surfaceLevel: ActionListProps['surfaceLevel'];
-  elevation?: number;
   id?: string;
   isInBottomSheet?: boolean;
 };

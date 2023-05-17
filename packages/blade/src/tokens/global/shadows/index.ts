@@ -1,2 +1,2 @@
-export { shadows } from './shadows';
 export * from './shadows';
+export * from './types';

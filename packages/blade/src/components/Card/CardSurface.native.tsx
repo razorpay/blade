@@ -5,18 +5,15 @@ import BaseBox from '~components/Box/BaseBox';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import { castNativeType } from '~utils';
 
-const CardSurfaceStyled = styled(BaseBox)<{ elevation: number; surfaceLevel: 2 | 3 }>(
-  ({ surfaceLevel, theme }) => {
-    const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
-    return {
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      ...castNativeType(theme.shadows.lowRaised),
-      backgroundColor,
-    };
-  },
-);
+const CardSurfaceStyled = styled(BaseBox)<{ surfaceLevel: 2 | 3 }>(({ surfaceLevel, theme }) => {
+  const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
+  return {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor,
+  };
+});
 
 type CardSurfaceProps = {
   children: React.ReactNode;
@@ -34,7 +31,7 @@ const CardSurface = ({
     <CardSurfaceStyled
       {...props}
       surfaceLevel={surfaceLevel}
-      elevation={castNativeType(theme.shadows.lowRaised).elevation}
+      style={castNativeType(theme.shadows.lowRaised)}
     >
       {children}
     </CardSurfaceStyled>

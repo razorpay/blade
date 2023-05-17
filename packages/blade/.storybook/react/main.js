@@ -2,12 +2,12 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  // typescript: {
-  //   check: true,
-  //   checkOptions: {
-  //     tsconfig: path.resolve('./tsconfig-typecheck.web.json'),
-  //   },
-  // },
+  typescript: {
+    check: true,
+    checkOptions: {
+      tsconfig: path.resolve('./tsconfig-typecheck.web.json'),
+    },
+  },
   refs: {
     '@storybook/design-system': { disable: true },
   },
