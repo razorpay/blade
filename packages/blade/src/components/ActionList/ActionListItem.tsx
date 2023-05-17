@@ -313,6 +313,12 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
 
   const renderOnWebAs = props.href ? 'a' : 'button';
 
+  /**
+   * In SelectInput, returns the isSelected according to selected indexes in the state
+   *
+   * In Other Triggers (Menu Usecase), returns `props.isSelected` since passing the
+   * isSelected prop explicitly is the only way to select item in menu
+   */
   const getIsSelected = (): boolean | undefined => {
     if (dropdownTriggerer === 'SelectInput') {
       if (typeof props._index === 'number') {

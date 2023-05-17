@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDropdown } from './useDropdown';
+import { componentIds } from './dropdownUtils';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
@@ -37,7 +38,7 @@ const _DropdownButton = (props: ButtonProps): JSX.Element => {
       }}
       onBlur={() => {
         // With button trigger, there is no "value" as such. It's just clickable items
-        onTriggerBlur?.({ name: '', value: '' });
+        onTriggerBlur?.({ name: undefined, value: undefined });
       }}
       onKeyDown={(e) => {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
@@ -47,6 +48,8 @@ const _DropdownButton = (props: ButtonProps): JSX.Element => {
   );
 };
 
-const DropdownButton = assignWithoutSideEffects(_DropdownButton, { componentId: 'DropdownButton' });
+const DropdownButton = assignWithoutSideEffects(_DropdownButton, {
+  componentId: componentIds.triggers.DropdownButton,
+});
 
 export { DropdownButton };

@@ -12,6 +12,7 @@ import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { componentIds } from '~components/Dropdown/dropdownUtils';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -259,7 +260,7 @@ const _SelectInput = (
  */
 
 const SelectInput = assignWithoutSideEffects(React.forwardRef(_SelectInput), {
-  componentId: 'SelectInput',
+  componentId: componentIds.triggers.SelectInput,
 });
 
 export { SelectInput, SelectInputProps };

@@ -94,8 +94,8 @@ const _Dropdown = ({
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       if (
-        !isValidAllowedChildren(child, 'SelectInput') &&
-        !isValidAllowedChildren(child, 'DropdownButton') &&
+        !isValidAllowedChildren(child, componentIds.triggers.SelectInput) &&
+        !isValidAllowedChildren(child, componentIds.triggers.DropdownButton) &&
         !isValidAllowedChildren(child, componentIds.DropdownOverlay) &&
         !isValidAllowedChildren(child, bottomSheetComponentIds.BottomSheet)
       ) {
@@ -104,11 +104,11 @@ const _Dropdown = ({
         );
       }
 
-      if (isValidAllowedChildren(child, 'SelectInput')) {
+      if (isValidAllowedChildren(child, componentIds.triggers.SelectInput)) {
         dropdownTriggerer.current = 'SelectInput';
       }
 
-      if (isValidAllowedChildren(child, 'DropdownButton')) {
+      if (isValidAllowedChildren(child, componentIds.triggers.DropdownButton)) {
         dropdownTriggerer.current = 'DropdownButton';
       }
     }

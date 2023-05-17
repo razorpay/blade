@@ -25,6 +25,10 @@ export type SelectActionsType =
 export const componentIds = {
   DropdownOverlay: 'DropdownOverlay',
   Dropdown: 'Dropdown',
+  triggers: {
+    SelectInput: 'SelectInput',
+    DropdownButton: 'DropdownButton',
+  },
 };
 
 // Save a list of named combobox actions, for future readability
@@ -211,12 +215,12 @@ type ActionsType = {
  */
 export const performAction = (
   action: SelectActionsType,
-  e: {
+  payload: {
     event: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
   },
   actions: ActionsType,
 ): boolean => {
-  const { event } = e;
+  const { event } = payload;
 
   switch (action) {
     case SelectActions.Last:
