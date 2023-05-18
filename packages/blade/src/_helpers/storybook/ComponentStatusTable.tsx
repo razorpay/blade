@@ -307,7 +307,7 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Modal',
-    status: 'in-design',
+    status: 'in-development',
     description:
       "Modal is a dialog that focuses the user's attention exclusively on an information via a window that is overlaid on primary content.",
   },
