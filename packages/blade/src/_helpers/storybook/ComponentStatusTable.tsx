@@ -328,9 +328,9 @@ const componentData: ComponentStatusData = [
     description: 'DataTable will allow you to display your data in tabular manner',
   },
   {
-    name: 'Data Picker',
-    status: 'planned-Q1-design',
-    description: 'DataTable will allow you to display your data in tabular manner',
+    name: 'Date Picker',
+    status: 'planned-Q2-design',
+    description: 'DatePicker will provide an easy way to input dates and ranges',
   },
   {
     name: 'AutoComplete',
