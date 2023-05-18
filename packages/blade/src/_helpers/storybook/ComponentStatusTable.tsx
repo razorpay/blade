@@ -271,6 +271,7 @@ const componentData: ComponentStatusData = [
     name: 'BottomSheet',
     status: 'released',
     releasedIn: '7.2.0',
+    storybookLink: 'Components/BottomSheet',
     description:
       'Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.',
   },
