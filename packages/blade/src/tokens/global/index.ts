@@ -7,7 +7,7 @@ export { default as colors } from './colors';
 export type { FontFamily } from './fontFamily';
 export type { Opacity } from './opacity';
 export { default as opacity } from './opacity';
-export type { Typography } from './typography';
+export type { Typography, TypographyWithPlatforms } from './typography';
 export { default as typography } from './typography';
 export type { Spacing } from './spacing';
 export { default as spacing } from './spacing';
