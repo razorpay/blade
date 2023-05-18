@@ -269,7 +269,8 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'BottomSheet',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '7.2.0',
     description:
       'Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.',
   },
