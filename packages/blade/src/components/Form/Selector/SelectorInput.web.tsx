@@ -4,7 +4,7 @@ import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import { castWebType, getIn, makeMotionTime } from '~utils';
+import { castWebType, getIn, makeAccessible, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
@@ -63,17 +63,19 @@ const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, ha
 
 const _SelectorInput: React.ForwardRefRenderFunction<
   BladeElementRef,
-  HoverProps & { inputProps: any; tabIndex?: number }
-> = ({ inputProps, isChecked, isDisabled, hasError, tabIndex }, ref) => {
+  HoverProps & { id?: string; inputProps: any; tabIndex?: number; accessibilityLabel?: string }
+> = ({ id, inputProps, isChecked, isDisabled, hasError, tabIndex, accessibilityLabel }, ref) => {
   const inputRef = useBladeInnerRef(ref);
 
   return (
     <StyledInput
+      id={id}
       isChecked={isChecked}
       isDisabled={isDisabled}
       hasError={hasError}
       tabIndex={tabIndex}
       {...inputProps}
+      {...makeAccessible({ label: accessibilityLabel })}
       // merging both refs because inputProps.ref needs to have access to indeterminate state
       // to be able to set the mixed value via setMixed() function
       // TODO: replace with a generic `mergeRefs()` util if we do this in other places

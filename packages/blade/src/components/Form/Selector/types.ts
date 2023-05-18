@@ -8,4 +8,5 @@ export type SelectorLabelProps = {
    */
   inputProps: any; // Partial<Extract<InputProps, { onPress: any }>>;
   componentName?: string;
+  isInline?: boolean;
 } & TestID;
