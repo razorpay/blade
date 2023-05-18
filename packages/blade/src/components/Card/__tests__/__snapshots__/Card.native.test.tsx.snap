@@ -10,6 +10,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 >
   <View
     borderRadius="medium"
+    data-blade-component="card"
     elevation={5}
     style={
       Array [
@@ -36,6 +37,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     surfaceLevel={2}
   >
     <View
+      data-blade-component="card-body"
       style={
         Array [
           Object {},
@@ -44,6 +46,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     >
       <Text
         color="surface.text.normal.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -76,6 +79,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       </Text>
     </View>
     <View
+      data-blade-component="card-footer"
       style={
         Array [
           Object {
@@ -130,6 +134,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         >
           <Text
             color="surface.text.normal.lowContrast"
+            data-blade-component="text"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
@@ -162,6 +167,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           </Text>
           <Text
             color="surface.text.normal.lowContrast"
+            data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
@@ -236,6 +242,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               buttonPaddingRight="20px"
               buttonPaddingTop="0px"
               collapsable={false}
+              data-blade-component="button"
               defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
               defaultBorderColor="hsla(213, 89%, 56%, 1)"
               focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
@@ -375,6 +382,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               buttonPaddingRight="20px"
               buttonPaddingTop="0px"
               collapsable={false}
+              data-blade-component="button"
               defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
               defaultBorderColor="hsla(213, 89%, 56%, 1)"
               focusBackgroundColor="hsla(223, 95%, 48%, 1)"
@@ -495,6 +503,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 >
   <View
     borderRadius="medium"
+    data-blade-component="card"
     elevation={5}
     style={
       Array [
@@ -521,6 +530,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
     surfaceLevel={2}
   >
     <View
+      data-blade-component="card-header"
       style={
         Array [
           Object {
@@ -671,6 +681,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               <Text
                 accessibilityRole="header"
                 color="surface.text.normal.lowContrast"
+                data-blade-component="heading"
                 fontFamily="text"
                 fontSize={200}
                 fontStyle="normal"
@@ -728,6 +739,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="counter"
                     display="flex"
                     flexDirection="row"
                     justifyContent="center"
@@ -750,6 +762,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   >
                     <Text
                       color="feedback.text.neutral.lowContrast"
+                      data-blade-component="text"
                       fontFamily="text"
                       fontSize={75}
                       fontStyle="normal"
@@ -787,6 +800,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
             </View>
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -831,6 +845,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         >
           <View
             backgroundColor="feedback.background.neutral.lowContrast"
+            data-blade-component="badge"
             size="medium"
             style={
               Array [
@@ -868,6 +883,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
             >
               <Text
                 color="feedback.text.neutral.lowContrast"
+                data-blade-component="text"
                 fontFamily="text"
                 fontSize={75}
                 fontStyle="normal"
@@ -916,6 +932,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       />
     </View>
     <View
+      data-blade-component="card-body"
       style={
         Array [
           Object {},
@@ -924,6 +941,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
     >
       <Text
         color="surface.text.normal.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -969,6 +987,7 @@ exports[`<Card /> should render a plain Card 1`] = `
 >
   <View
     borderRadius="medium"
+    data-blade-component="card"
     elevation={5}
     style={
       Array [
@@ -995,6 +1014,7 @@ exports[`<Card /> should render a plain Card 1`] = `
     surfaceLevel={2}
   >
     <View
+      data-blade-component="card-body"
       style={
         Array [
           Object {},
@@ -1003,6 +1023,7 @@ exports[`<Card /> should render a plain Card 1`] = `
     >
       <Text
         color="surface.text.normal.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
