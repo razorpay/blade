@@ -6,7 +6,7 @@ import {
   motion,
   spacing,
   typography,
-  shadows,
+  elevation,
 } from '~tokens/global';
 
 const colors: ColorsWithModes = {
@@ -2151,7 +2151,7 @@ const bankingTheme: ThemeTokens = {
   colors,
   motion,
   spacing,
-  shadows,
+  elevation,
   typography,
 };
 

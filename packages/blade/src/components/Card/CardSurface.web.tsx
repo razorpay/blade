@@ -9,7 +9,7 @@ const CardSurface = styled(BaseBox)<{ surfaceLevel: 2 | 3 }>(({ surfaceLevel, th
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    boxShadow: castWebType(theme.shadows.lowRaised),
+    boxShadow: castWebType(theme.elevation.lowRaised),
     backgroundColor,
     boxSizing: 'border-box',
   };

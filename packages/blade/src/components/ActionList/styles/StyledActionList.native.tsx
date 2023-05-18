@@ -22,7 +22,7 @@ const StyledActionList = ({
   return (
     <BaseStyledActionList
       {...props}
-      style={props.isInBottomSheet ? undefined : castNativeType(theme.shadows.midRaised)}
+      style={props.isInBottomSheet ? undefined : castNativeType(theme.elevation.midRaised)}
     >
       {children}
     </BaseStyledActionList>

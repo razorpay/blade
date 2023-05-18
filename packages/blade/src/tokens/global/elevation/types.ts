@@ -1,9 +1,9 @@
 import type { ColorSchemeModes } from '../../theme/theme.d';
 import type { Platform } from '~utils';
 
-export type ShadowLevels = 'none' | 'lowRaised' | 'midRaised' | 'highRaised';
+export type ElevationLevels = 'none' | 'lowRaised' | 'midRaised' | 'highRaised';
 
-type ShadowStyles = Readonly<{
+type ElevationStyles = Readonly<{
   elevation: number;
   shadowColor: string;
   shadowOpacity: number;
@@ -14,12 +14,12 @@ type ShadowStyles = Readonly<{
   };
 }>;
 
-export type Shadows = Record<
-  ShadowLevels,
+export type Elevation = Record<
+  ElevationLevels,
   Platform.Select<{
     web: string;
-    native: ShadowStyles;
+    native: ElevationStyles;
   }>
 >;
 
-export type ShadowsWithColorModes = Record<ColorSchemeModes, Shadows>;
+export type ElevationWithColorModes = Record<ColorSchemeModes, Elevation>;

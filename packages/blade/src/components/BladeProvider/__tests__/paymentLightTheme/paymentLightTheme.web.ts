@@ -8,7 +8,7 @@ const paymentLightTheme: Theme = {
   motion: paymentTheme.motion,
   spacing: paymentTheme.spacing,
   breakpoints: paymentTheme.breakpoints,
-  shadows: paymentTheme.shadows.onLight,
+  elevation: paymentTheme.elevation.onLight,
   typography: paymentTheme.typography.onMobile,
 };
 

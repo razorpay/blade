@@ -5,7 +5,7 @@ import type {
   Motion,
   Spacing,
   TypographyWithPlatforms,
-  ShadowsWithColorModes,
+  ElevationWithColorModes,
 } from '~tokens/global';
 
 export type ColorSchemeNames = 'dark' | 'light';
@@ -141,7 +141,7 @@ export type ThemeTokens = {
   breakpoints: Breakpoints;
   colors: ColorsWithModes;
   motion: Motion;
-  shadows: ShadowsWithColorModes;
+  elevation: ElevationWithColorModes;
   spacing: Spacing;
   typography: TypographyWithPlatforms;
 };

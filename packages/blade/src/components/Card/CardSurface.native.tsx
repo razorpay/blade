@@ -31,7 +31,7 @@ const CardSurface = ({
     <CardSurfaceStyled
       {...props}
       surfaceLevel={surfaceLevel}
-      style={castNativeType(theme.shadows.lowRaised)}
+      style={castNativeType(theme.elevation.lowRaised)}
     >
       {children}
     </CardSurfaceStyled>

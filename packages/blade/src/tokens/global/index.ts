@@ -14,5 +14,5 @@ export type { Motion } from './motion';
 export * from './motion';
 export type { Size } from './size';
 export { size } from './size';
-export type { Shadows, ShadowsWithColorModes } from './shadows';
-export * from './shadows';
+export type { Elevation, ElevationWithColorModes } from './elevation';
+export * from './elevation';

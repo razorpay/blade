@@ -1,5 +1,5 @@
 import type { Colors, ThemeTokens } from '~tokens/theme/theme';
-import type { Border, Breakpoints, Motion, Spacing, Typography, Shadows } from '~tokens/global';
+import type { Border, Breakpoints, Motion, Spacing, Typography, Elevation } from '~tokens/global';
 export { BladeProvider } from './BladeProvider';
 export * from './types';
 export * from './BladeProvider';
@@ -12,6 +12,6 @@ export type Theme = {
   colors: Colors;
   spacing: Spacing;
   motion: Motion;
-  shadows: Shadows;
+  elevation: Elevation;
   typography: Typography;
 };

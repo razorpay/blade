@@ -1,6 +1,6 @@
-import type { ShadowsWithColorModes } from './types';
+import type { ElevationWithColorModes } from './types';
 
-export const shadows: ShadowsWithColorModes = {
+export const elevation: ElevationWithColorModes = {
   onLight: {
     none: 'none',
     /** offset-x | offset-y | blur-radius | spread-radius | color, offset-x | offset-y | blur-radius | spread-radius | color */
