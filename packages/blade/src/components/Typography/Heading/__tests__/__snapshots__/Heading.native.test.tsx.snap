@@ -11,6 +11,7 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
   <Text
     accessibilityRole="header"
     color="surface.text.normal.lowContrast"
+    data-blade-component="heading"
     fontFamily="text"
     fontSize={200}
     fontStyle="normal"
@@ -54,6 +55,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
   <Text
     accessibilityRole="header"
     color="surface.text.subdued.lowContrast"
+    data-blade-component="heading"
     fontFamily="text"
     fontSize={400}
     fontStyle="normal"
@@ -97,6 +99,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
   <Text
     accessibilityRole="header"
     color="surface.text.muted.lowContrast"
+    data-blade-component="heading"
     fontFamily="text"
     fontSize={300}
     fontStyle="normal"
@@ -140,6 +143,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
   <Text
     accessibilityRole="header"
     color="surface.text.normal.lowContrast"
+    data-blade-component="heading"
     fontFamily="text"
     fontSize={200}
     fontStyle="normal"
@@ -183,6 +187,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
   <Text
     accessibilityRole="header"
     color="surface.text.normal.highContrast"
+    data-blade-component="heading"
     fontFamily="text"
     fontSize={200}
     fontStyle="normal"
@@ -226,6 +231,7 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
   <Text
     accessibilityRole="header"
     color="surface.text.subdued.lowContrast"
+    data-blade-component="heading"
     fontFamily="text"
     fontSize={75}
     fontStyle="normal"

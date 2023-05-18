@@ -24,6 +24,7 @@ describe('<Box />', () => {
         }
       >
         <View
+          data-blade-component="box"
           display="flex"
           style={
             Array [
