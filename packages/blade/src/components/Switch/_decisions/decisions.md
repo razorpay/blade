@@ -29,6 +29,7 @@ A switch component is used to quickly switch between two possible states. These 
 | size | `small, medium` | `medium` | Size of the switch component |        |
 | name (html) | `string` | `undefined` | The name of the input field in a switch, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |        |
 | value (html) | `string` | `undefined` | The value of the input field in a switch, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |        |
+| id (html) | `string` | `undefined` | The id of the input field in a switch, useful for associating a label element with the input via `htmlFor` prop |        |
 
 ### Examples:
 
@@ -55,6 +56,23 @@ const Uncontrolled = () => {
     <Switch defaultChecked={true} value="dark-mode" />
   );
 };
+```
+
+#### Custom Label
+
+Switch by default doesn't render any `<label>` element internally, if users want they can provide it: 
+
+```js
+<Box display="flex">
+  <label htmlFor="dark-mode">
+    Dark mode
+  </label>
+  <Switch id="dark-mode" />
+</Box>
+
+// or
+
+<label>Dark mode <Switch /></label>
 ```
 
 ## Accessibility
