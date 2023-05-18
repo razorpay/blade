@@ -269,7 +269,9 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'BottomSheet',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '7.2.0',
+    storybookLink: 'Components/BottomSheet',
     description:
       'Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.',
   },
@@ -306,7 +308,7 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Modal',
-    status: 'in-design',
+    status: 'in-development',
     description:
       "Modal is a dialog that focuses the user's attention exclusively on an information via a window that is overlaid on primary content.",
   },
@@ -328,9 +330,9 @@ const componentData: ComponentStatusData = [
     description: 'DataTable will allow you to display your data in tabular manner',
   },
   {
-    name: 'Data Picker',
-    status: 'planned-Q1-design',
-    description: 'DataTable will allow you to display your data in tabular manner',
+    name: 'Date Picker',
+    status: 'planned-Q2-design',
+    description: 'DatePicker will provide an easy way to input dates and ranges',
   },
   {
     name: 'AutoComplete',
