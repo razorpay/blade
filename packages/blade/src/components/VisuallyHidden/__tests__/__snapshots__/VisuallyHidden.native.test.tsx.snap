@@ -9,6 +9,7 @@ exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
   }
 >
   <View
+    data-blade-component="visually-hidden"
     style={
       Array [
         Object {

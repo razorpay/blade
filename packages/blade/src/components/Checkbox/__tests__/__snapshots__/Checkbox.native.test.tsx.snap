@@ -9,6 +9,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   }
 >
   <View
+    data-blade-component="checkbox"
     style={
       Array [
         Object {},
@@ -164,6 +165,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   }
 >
   <View
+    data-blade-component="checkbox"
     style={
       Array [
         Object {},
@@ -320,6 +322,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   }
 >
   <View
+    data-blade-component="checkbox"
     style={
       Array [
         Object {},

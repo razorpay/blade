@@ -9,6 +9,7 @@ exports[`<TextInput /> should render 1`] = `
   }
 >
   <View
+    data-blade-component="textinput"
     style={
       Array [
         Object {},
@@ -75,6 +76,7 @@ exports[`<TextInput /> should render 1`] = `
           >
             <Text
               color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -106,6 +108,7 @@ exports[`<TextInput /> should render 1`] = `
               Enter name
             </Text>
             <View
+              data-blade-component="visually-hidden"
               style={
                 Array [
                   Object {
@@ -135,6 +138,7 @@ exports[`<TextInput /> should render 1`] = `
             >
               <Text
                 color="surface.text.normal.lowContrast"
+                data-blade-component="text"
                 fontFamily="text"
                 fontSize={100}
                 fontStyle="normal"
@@ -301,6 +305,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   }
 >
   <View
+    data-blade-component="textinput"
     style={
       Array [
         Object {},
@@ -367,6 +372,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <Text
               color="surface.text.subdued.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -398,6 +404,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               Enter company website
             </Text>
             <View
+              data-blade-component="visually-hidden"
               style={
                 Array [
                   Object {
@@ -427,6 +434,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             >
               <Text
                 color="surface.text.normal.lowContrast"
+                data-blade-component="text"
                 fontFamily="text"
                 fontSize={100}
                 fontStyle="normal"
@@ -589,6 +597,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -706,6 +715,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
