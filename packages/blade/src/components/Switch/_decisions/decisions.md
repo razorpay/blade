@@ -77,9 +77,7 @@ Switch by default doesn't render any `<label>` element internally, if users want
 
 ## Accessibility
 
-Switch will follow the exact same accessibility pattern as Checkbox
-
-- Checkbox - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+Switch will work similarly as Checkbox, where the hidden input field will follow the [Checkbox accessibility](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/) pattern. But we will also have a visual button which will follow the [Switch accessibility](https://www.w3.org/WAI/ARIA/apg/patterns/switch/) pattern. 
 
 ## Open Questions
 
