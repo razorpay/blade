@@ -124,6 +124,20 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
     userSelect: CSSObject['userSelect'];
+    borderWidth: keyof Border['width'];
+    borderColor: BorderColorString<'surface'>;
+    borderTopWidth: keyof Border['width'];
+    borderTopColor: BorderColorString<'surface'>;
+    borderRightWidth: keyof Border['width'];
+    borderRightColor: BorderColorString<'surface'>;
+    borderBottomWidth: keyof Border['width'];
+    borderBottomColor: BorderColorString<'surface'>;
+    borderLeftWidth: keyof Border['width'];
+    borderLeftColor: BorderColorString<'surface'>;
+    borderTopLeftRadius: keyof Border['radius'];
+    borderTopRightRadius: keyof Border['radius'];
+    borderBottomRightRadius: keyof Border['radius'];
+    borderBottomLeftRadius: keyof Border['radius'];
   } & PickCSSByPlatform<
     'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom' | 'opacity'
   >
