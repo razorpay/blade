@@ -75,6 +75,8 @@ Sample usage:
 - aria-describedby
 - Modal traps focus inside its root element, which means that using any type of keyboard navigation will keep the focus inside the Backdrop while it's opened.
 - Modal triggers its onClose handler on Esc key press.
+- aria-modal="true"
+- aria-role='dialog'
 
 ## Open questions
 
