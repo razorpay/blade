@@ -242,7 +242,6 @@ const getAllProps = (
     borderBottomColor: getColorValue(props.borderBottomColor, props.theme, breakpoint),
     borderLeftWidth: getBorderWidthValue(props.borderLeftWidth, props.theme, breakpoint),
     borderLeftColor: getColorValue(props.borderLeftColor, props.theme, breakpoint),
-    borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, breakpoint),
     borderTopLeftRadius: getBorderRadiusValue(props.borderTopLeftRadius, props.theme, breakpoint),
     borderTopRightRadius: getBorderRadiusValue(props.borderTopRightRadius, props.theme, breakpoint),
     borderBottomRightRadius: getBorderRadiusValue(
