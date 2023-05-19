@@ -204,6 +204,7 @@ export function isScrollable(element: HTMLElement): boolean {
 
 type ActionsType = {
   setIsOpen: DropdownContextType['setIsOpen'];
+  close: DropdownContextType['close'];
   selectCurrentOption: () => void;
   onOptionChange: (action: SelectActionsType) => void;
   onComboType: (letter: string, action: SelectActionsType) => void;
@@ -241,7 +242,7 @@ export const performAction = (
       return true;
     case SelectActions.Close:
       event.preventDefault();
-      actions.setIsOpen(false);
+      actions.close();
       return true;
     case SelectActions.Type:
       actions.onComboType(event.key, action);

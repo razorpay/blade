@@ -76,20 +76,11 @@ const _Dropdown = ({
   const dropdownBaseId = useId('dropdown');
 
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
-  const isFirstRenderRef = React.useRef(true);
 
-  React.useEffect(() => {
-    // Ignoring the `onDismiss` call on first render
-    if (isFirstRenderRef.current) {
-      isFirstRenderRef.current = false;
-      return;
-    }
-
-    if (!isOpen && onDismiss) {
-      onDismiss();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  const close = React.useCallback(() => {
+    setIsOpen(false);
+    onDismiss?.();
+  }, [onDismiss]);
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -118,6 +109,7 @@ const _Dropdown = ({
     () => ({
       isOpen,
       setIsOpen,
+      close,
       selectedIndices,
       setSelectedIndices,
       controlledValueIndices,
@@ -167,8 +159,8 @@ const _Dropdown = ({
   // This is the dismiss function which will be injected into the BottomSheet
   // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
   const onBottomSheetDismiss = React.useCallback(() => {
-    setIsOpen(false);
-  }, []);
+    close();
+  }, [close]);
 
   const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
     return {

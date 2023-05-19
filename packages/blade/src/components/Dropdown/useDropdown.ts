@@ -28,6 +28,7 @@ type OptionsType = {
 type DropdownContextType = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  close: () => void;
   /**
    * contains the indexes of selected items
    */
@@ -102,6 +103,7 @@ type DropdownContextType = {
 const DropdownContext = React.createContext<DropdownContextType>({
   isOpen: false,
   setIsOpen: noop,
+  close: noop,
   selectedIndices: [],
   setSelectedIndices: noop,
   controlledValueIndices: [],
@@ -192,6 +194,7 @@ const useDropdown = (): UseDropdownReturnValue => {
   const {
     isOpen,
     setIsOpen,
+    close,
     selectedIndices,
     setSelectedIndices,
     activeIndex,
@@ -268,7 +271,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
 
     if (properties?.closeOnSelection && selectionType !== 'multiple') {
-      setIsOpen(false);
+      close();
     }
 
     return isSelected;
@@ -278,7 +281,11 @@ const useDropdown = (): UseDropdownReturnValue => {
    * Click listener for combobox (or any triggerer of the dropdown)
    */
   const onTriggerClick = (): void => {
-    setIsOpen(!isOpen);
+    if (isOpen) {
+      close();
+    } else {
+      setIsOpen(true);
+    }
   };
 
   /**
@@ -308,7 +315,7 @@ const useDropdown = (): UseDropdownReturnValue => {
         selectOption(activeIndex);
       }
       if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-        setIsOpen(false);
+        close();
       }
     }
   };
@@ -406,6 +413,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     if (actionType) {
       performAction(actionType, e, {
         setIsOpen,
+        close,
         onOptionChange,
         onComboType,
         selectCurrentOption: () => {
@@ -423,6 +431,7 @@ const useDropdown = (): UseDropdownReturnValue => {
   return {
     isOpen,
     setIsOpen,
+    close,
     selectedIndices,
     setSelectedIndices,
     setControlledValueIndices,
