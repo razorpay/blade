@@ -156,20 +156,16 @@ const _Dropdown = ({
     ],
   );
 
-  // This is the dismiss function which will be injected into the BottomSheet
-  // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
-  const onBottomSheetDismiss = React.useCallback(() => {
-    close();
-  }, [close]);
-
   const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
     return {
       isOpen,
       dropdownHasBottomSheet,
       setDropdownHasBottomSheet,
-      onBottomSheetDismiss,
+      // This is the dismiss function which will be injected into the BottomSheet
+      // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
+      onBottomSheetDismiss: close,
     };
-  }, [dropdownHasBottomSheet, isOpen, onBottomSheetDismiss]);
+  }, [dropdownHasBottomSheet, isOpen, close]);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
