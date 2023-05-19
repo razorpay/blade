@@ -14,8 +14,6 @@ module.exports = {
     'plugin:react-native-a11y/all',
   ],
   rules: {
-    'import/no-named-as-default': 'off',
-    'import/no-cycle': ['error', { maxDepth: '∞' }],
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
     'max-lines': 'off',
@@ -50,6 +48,9 @@ module.exports = {
           "Please define componentId using `assignWithoutSideEffects` instead. This will make sure the code doesn't create side-effects and tree-shaking continues to work",
       },
     ],
+    'react/display-name': 'off',
+    'import/no-named-as-default': 'off',
+    'import/no-cycle': ['error', { maxDepth: '∞' }],
   },
   env: {
     browser: true,
@@ -179,6 +180,7 @@ module.exports = {
             patterns: ['!lodash/*'],
           },
         ],
+        'react/display-name': 'off',
       },
     },
     {
