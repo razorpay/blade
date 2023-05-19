@@ -77,7 +77,21 @@ const getActionListProperties = (
       actionListOptions.push({
         title: child.props.title,
         value: child.props.value,
-        href: child.props.href,
+        onClickTrigger: (value) => {
+          const anchorLink = child.props.href;
+          child.props.onClick?.({
+            name: child.props.value,
+            value: child.props.isSelected ?? value,
+          });
+
+          if (anchorLink && !isReactNative()) {
+            const target = child.props.target ?? '_self';
+            window.open(anchorLink, target);
+            if (window.top) {
+              window.top.open(anchorLink, target);
+            }
+          }
+        },
       });
       const currentIndex = actionListOptions.length - 1;
 

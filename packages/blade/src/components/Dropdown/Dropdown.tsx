@@ -14,6 +14,7 @@ import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
+  onDismiss?: () => void;
   children: React.ReactNode[];
 } & StyledPropsBlade;
 
@@ -46,6 +47,7 @@ type DropdownProps = {
 const _Dropdown = ({
   children,
   selectionType = 'single',
+  onDismiss,
   ...styledProps
 }: DropdownProps): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -75,10 +77,16 @@ const _Dropdown = ({
 
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
 
+  const close = React.useCallback(() => {
+    setIsOpen(false);
+    onDismiss?.();
+  }, [onDismiss]);
+
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       if (
-        !isValidAllowedChildren(child, 'SelectInput') &&
+        !isValidAllowedChildren(child, componentIds.triggers.SelectInput) &&
+        !isValidAllowedChildren(child, componentIds.triggers.DropdownButton) &&
         !isValidAllowedChildren(child, componentIds.DropdownOverlay) &&
         !isValidAllowedChildren(child, bottomSheetComponentIds.BottomSheet)
       ) {
@@ -87,8 +95,12 @@ const _Dropdown = ({
         );
       }
 
-      if (isValidAllowedChildren(child, 'SelectInput')) {
+      if (isValidAllowedChildren(child, componentIds.triggers.SelectInput)) {
         dropdownTriggerer.current = 'SelectInput';
+      }
+
+      if (isValidAllowedChildren(child, componentIds.triggers.DropdownButton)) {
+        dropdownTriggerer.current = 'DropdownButton';
       }
     }
   });
@@ -97,6 +109,7 @@ const _Dropdown = ({
     () => ({
       isOpen,
       setIsOpen,
+      close,
       selectedIndices,
       setSelectedIndices,
       controlledValueIndices,
@@ -143,20 +156,16 @@ const _Dropdown = ({
     ],
   );
 
-  // This is the dismiss function which will be injected into the BottomSheet
-  // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
-  const onBottomSheetDismiss = React.useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
   const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
     return {
       isOpen,
       dropdownHasBottomSheet,
       setDropdownHasBottomSheet,
-      onBottomSheetDismiss,
+      // This is the dismiss function which will be injected into the BottomSheet
+      // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
+      onBottomSheetDismiss: close,
     };
-  }, [dropdownHasBottomSheet, isOpen, onBottomSheetDismiss]);
+  }, [dropdownHasBottomSheet, isOpen, close]);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
