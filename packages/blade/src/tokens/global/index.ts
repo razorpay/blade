@@ -4,7 +4,7 @@ import { colors } from './colors';
 import { opacity } from './opacity';
 import { typography } from './typography';
 import { spacing } from './spacing';
-// import { motion } from './motion';
+import { motion } from './motion';
 import { size } from './size';
 import { elevation } from './elevation';
 
@@ -30,8 +30,4 @@ export type {
 export type { Size } from './size';
 export type { Elevation, ElevationWithColorModes } from './elevation';
 
-// export { border, breakpoints, colors, elevation, motion, opacity, size, spacing, typography };
-
-export * from './motion';
-
-export { border, breakpoints, colors, elevation, opacity, size, spacing, typography };
+export { border, breakpoints, colors, elevation, opacity, size, spacing, typography, motion };

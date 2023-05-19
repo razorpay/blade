@@ -1,4 +1,4 @@
-import type { ColorSchemeModes } from '../../theme/theme.d';
+import type { ColorSchemeModes } from '../../theme/theme';
 import type { Platform } from '~utils';
 
 export type ElevationLevels = 'none' | 'lowRaised' | 'midRaised' | 'highRaised';

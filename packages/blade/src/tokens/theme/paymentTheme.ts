@@ -1,4 +1,4 @@
-import type { ThemeTokens, ColorsWithModes } from './theme.d';
+import type { ThemeTokens, ColorsWithModes } from './theme';
 import {
   border,
   breakpoints,

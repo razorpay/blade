@@ -2,6 +2,10 @@
  * @type {import("eslint").Linter.Config}
  */
 module.exports = {
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+  },
   extends: [
     'kentcdodds',
     'kentcdodds/react',
@@ -10,11 +14,11 @@ module.exports = {
     'plugin:react-native-a11y/all',
   ],
   rules: {
+    'import/no-cycle': ['error', { maxDepth: '∞' }],
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
     'max-lines': 'off',
     'no-console': 'off',
-    'import/no-cycle': 'error',
     'react-native-a11y/has-accessibility-hint': 'off',
     // need to turn this off because this rule is also being triggered on the web files as well
     'react-native-a11y/has-valid-accessibility-descriptors': 'off',
@@ -125,6 +129,7 @@ module.exports = {
       ],
       plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests'],
       rules: {
+        'import/no-cycle': ['error', { maxDepth: '∞' }],
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
         'no-use-before-define': 'off',

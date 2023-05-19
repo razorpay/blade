@@ -151,3 +151,5 @@ export type BorderWidthValues = `${Border['width'][keyof Border['width']]}px`;
 export type BorderRadiusValues =
   | `${Border['radius'][Exclude<keyof Border['radius'], 'round'>]}px`
   | `${Border['radius'][Extract<keyof Border['radius'], 'round'>]}`;
+
+export const colorSchemeNamesInput: ColorSchemeNamesInput[] = ['light', 'dark', 'system'];

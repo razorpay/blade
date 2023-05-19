@@ -179,8 +179,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-duration: undefinedms;
-  transition-duration: undefinedms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
   position: relative;
 }
 
@@ -204,8 +206,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c11 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
-  -webkit-transition-duration: undefinedms;
-  transition-duration: undefinedms;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c16 {
@@ -223,8 +227,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-duration: undefinedms;
-  transition-duration: undefinedms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
   position: relative;
 }
 
@@ -248,8 +254,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c16 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
-  -webkit-transition-duration: undefinedms;
-  transition-duration: undefinedms;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13 {
