@@ -160,6 +160,19 @@ const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   breakpoint?: keyof Breakpoints,
 ): CSSObject => {
+  const hasBorder =
+    props.borderBottom ||
+    props.borderTop ||
+    props.borderLeft ||
+    props.borderRight ||
+    props.borderBottomColor ||
+    props.borderTopColor ||
+    props.borderLeftColor ||
+    props.borderRightColor ||
+    props.borderBottomWidth ||
+    props.borderTopWidth ||
+    props.borderLeftWidth ||
+    props.borderRightWidth;
   return {
     display: getResponsiveValue(props.display, breakpoint),
     overflow: getResponsiveValue(props.overflow, breakpoint),
@@ -254,21 +267,7 @@ const getAllProps = (
       props.theme,
       breakpoint,
     ),
-    borderStyle:
-      props.borderBottom ||
-      props.borderTop ||
-      props.borderLeft ||
-      props.borderRight ||
-      props.borderBottomColor ||
-      props.borderTopColor ||
-      props.borderLeftColor ||
-      props.borderRightColor ||
-      props.borderBottomWidth ||
-      props.borderTopWidth ||
-      props.borderLeftWidth ||
-      props.borderRightWidth
-        ? 'solid'
-        : undefined,
+    borderStyle: hasBorder ? 'solid' : undefined,
     touchAction: getResponsiveValue(props.touchAction, breakpoint),
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
     opacity: getResponsiveValue(props.opacity, breakpoint),
