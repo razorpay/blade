@@ -14,6 +14,7 @@ module.exports = {
     'plugin:react-native-a11y/all',
   ],
   rules: {
+    'import/no-named-as-default': 'off',
     'import/no-cycle': ['error', { maxDepth: '∞' }],
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
