@@ -4,7 +4,7 @@ import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { getPlatformType, makeBorderSize, makeSpace } from '~utils';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 type GetInputStyles = Pick<
   BaseInputProps,

@@ -11,7 +11,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   <View
     borderRadius="medium"
     data-blade-component="card"
-    elevation={5}
     style={
       Array [
         Object {
@@ -506,11 +505,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 >
   <View
     borderRadius="medium"
-<<<<<<< HEAD
-=======
     data-blade-component="card"
-    elevation={5}
->>>>>>> 2a6b8c8974bb86022d48551326f99133965c8619
     style={
       Array [
         Object {
@@ -996,11 +991,7 @@ exports[`<Card /> should render a plain Card 1`] = `
 >
   <View
     borderRadius="medium"
-<<<<<<< HEAD
-=======
     data-blade-component="card"
-    elevation={5}
->>>>>>> 2a6b8c8974bb86022d48551326f99133965c8619
     style={
       Array [
         Object {

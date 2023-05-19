@@ -19,7 +19,7 @@ import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { Checkbox } from '~components/Checkbox';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 import type { DropdownProps } from '~components/Dropdown';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';

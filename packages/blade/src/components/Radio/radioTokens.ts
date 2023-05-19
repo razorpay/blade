@@ -1,6 +1,6 @@
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 const radioSizes = {
   group: {

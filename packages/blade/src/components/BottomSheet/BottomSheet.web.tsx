@@ -33,7 +33,7 @@ import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
 import { useId } from '~src/hooks/useId';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 

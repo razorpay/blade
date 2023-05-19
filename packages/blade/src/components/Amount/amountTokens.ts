@@ -1,5 +1,5 @@
-import type { FontSize, Typography } from './../../tokens/global/typography';
 import type { AmountProps } from './Amount';
+import type { FontSize, Typography } from '~tokens/global';
 
 const affixFontSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> = {
   'body-small': 75,

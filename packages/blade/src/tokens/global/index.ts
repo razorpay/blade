@@ -1,18 +1,37 @@
+import { border } from './border';
+import { breakpoints } from './breakpoints';
+import { colors } from './colors';
+import { opacity } from './opacity';
+import { typography } from './typography';
+import { spacing } from './spacing';
+// import { motion } from './motion';
+import { size } from './size';
+import { elevation } from './elevation';
+
 export type { Border } from './border';
-export { border } from './border';
 export type { Breakpoints } from './breakpoints';
-export { breakpoints } from './breakpoints';
 export type { Color } from './colors';
-export { colors } from './colors';
+export type { FontFamily } from './fontFamily';
 export type { Opacity } from './opacity';
-export { opacity } from './opacity';
-export type { Typography, TypographyWithPlatforms } from './typography';
-export { typography } from './typography';
+export type {
+  Typography,
+  TypographyWithPlatforms,
+  FontSize,
+  TypographyPlatforms,
+} from './typography';
 export type { Spacing } from './spacing';
-export { spacing } from './spacing';
-export type { Motion } from './motion';
-export * from './motion';
+export type {
+  Motion,
+  EasingFunctionFactory,
+  DurationString,
+  EasingString,
+  DelayString,
+} from './motion';
 export type { Size } from './size';
-export { size } from './size';
 export type { Elevation, ElevationWithColorModes } from './elevation';
-export * from './elevation';
+
+// export { border, breakpoints, colors, elevation, motion, opacity, size, spacing, typography };
+
+export * from './motion';
+
+export { border, breakpoints, colors, elevation, opacity, size, spacing, typography };

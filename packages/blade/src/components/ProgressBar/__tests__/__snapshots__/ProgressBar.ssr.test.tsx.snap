@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProgressBar /> should render ProgressBar with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dfFmJl\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 cShHSz Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">20%</p></div></div><div id=\\"progress-undefined\\" data-blade-component=\\"progress-bar\\" role=\\"progressbar\\" aria-valuenow=\\"20\\" aria-valuetext=\\"20%\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div height=\\"2px\\" overflow=\\"hidden\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bChsun\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 BXXoE kYqHzO cQNSjr\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  bHgVSx jPQGWt\\"></div></div></div></div></div></div>"`;
+exports[`<ProgressBar /> should render ProgressBar with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dfFmJl\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 cShHSz Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">20%</p></div></div><div id=\\"progress-undefined\\" data-blade-component=\\"progress-bar\\" role=\\"progressbar\\" aria-valuenow=\\"20\\" aria-valuetext=\\"20%\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div height=\\"2px\\" overflow=\\"hidden\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bChsun\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 BXXoE dnDJht cQNSjr\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  dnDJht cpfsQg\\"></div></div></div></div></div></div>"`;
 
 exports[`<ProgressBar /> should render ProgressBar with default properties 2`] = `
 <div
@@ -46,10 +46,10 @@ exports[`<ProgressBar /> should render ProgressBar with default properties 2`] =
         overflow="hidden"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 BXXoE kYqHzO cQNSjr"
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 BXXoE dnDJht cQNSjr"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  bHgVSx jPQGWt"
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  dnDJht cpfsQg"
           />
         </div>
       </div>

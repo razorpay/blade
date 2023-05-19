@@ -1,7 +1,7 @@
 import { useContext, createContext } from 'react';
 import type { UseColorScheme } from '../../utils/useColorScheme';
-import type { TypographyPlatforms } from '../../tokens/global/typography';
 import type { Theme } from './';
+import type { TypographyPlatforms } from '~tokens/global';
 
 export type ThemeContext = UseColorScheme & {
   theme: Theme;

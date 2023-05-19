@@ -498,11 +498,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           <View
             accessibilityLabelledBy="dropdown-7-label"
             accessibilityRole="menu"
-<<<<<<< HEAD
-=======
             data-blade-component="action-list"
-            elevation={5}
->>>>>>> 2a6b8c8974bb86022d48551326f99133965c8619
             id="dropdown-7-actionlist"
             isInBottomSheet={false}
             style={
