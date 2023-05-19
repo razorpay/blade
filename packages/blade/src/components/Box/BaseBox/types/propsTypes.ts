@@ -95,6 +95,9 @@ type ColorObjects = 'feedback' | 'surface' | 'action';
 type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationColorStringToken<
   Theme['colors'][T]['background']
 >}`;
+type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationColorStringToken<
+  Theme['colors'][T]['border']
+>}`;
 
 // Created this as an array so I can reuse it for runtime validation
 const validBoxAsValues = [
@@ -128,6 +131,26 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor: BackgroundColorString<'surface'>;
+  borderWidth: keyof Border['width'];
+  borderStyle: CSSObject['borderStyle'];
+  borderColor: BorderColorString<'surface'>;
+  borderTopWidth: keyof Border['width'];
+  borderTopStyle: CSSObject['borderStyle'];
+  borderTopColor: BorderColorString<'surface'>;
+  borderRightWidth: keyof Border['width'];
+  borderRightStyle: CSSObject['borderStyle'];
+  borderRightColor: BorderColorString<'surface'>;
+  borderBottomWidth: keyof Border['width'];
+  borderBottomStyle: CSSObject['borderStyle'];
+  borderBottomColor: BorderColorString<'surface'>;
+  borderLeftWidth: keyof Border['width'];
+  borderLeftStyle: CSSObject['borderStyle'];
+  borderLeftColor: BorderColorString<'surface'>;
+  borderRadius: keyof Border['radius'];
+  borderTopLeftRadius: keyof Border['radius'];
+  borderTopRightRadius: keyof Border['radius'];
+  borderBottomRightRadius: keyof Border['radius'];
+  borderBottomLeftRadius: keyof Border['radius'];
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
   // styled-components do not support passing `as` prop as an object

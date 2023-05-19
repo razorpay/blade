@@ -107,6 +107,26 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
 
     // Visual
     backgroundColor: props.backgroundColor,
+    borderWidth: props.borderWidth,
+    borderStyle: props.borderStyle,
+    borderColor: props.borderColor,
+    borderTopWidth: props.borderTopWidth,
+    borderTopStyle: props.borderTopStyle,
+    borderTopColor: props.borderTopColor,
+    borderRightWidth: props.borderRightWidth,
+    borderRightStyle: props.borderRightStyle,
+    borderRightColor: props.borderRightColor,
+    borderBottomWidth: props.borderBottomWidth,
+    borderBottomStyle: props.borderBottomStyle,
+    borderBottomColor: props.borderBottomColor,
+    borderLeftWidth: props.borderLeftWidth,
+    borderLeftStyle: props.borderLeftStyle,
+    borderLeftColor: props.borderLeftColor,
+    borderRadius: props.borderRadius,
+    borderTopLeftRadius: props.borderTopLeftRadius,
+    borderTopRightRadius: props.borderTopRightRadius,
+    borderBottomRightRadius: props.borderBottomRightRadius,
+    borderBottomLeftRadius: props.borderBottomLeftRadius,
     children: props.children,
     as: isReactNative() ? undefined : props.as, // as is not supported on react-native
   };
