@@ -132,19 +132,14 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor: BackgroundColorString<'surface'>;
   borderWidth: keyof Border['width'];
-  borderStyle: CSSObject['borderStyle'];
   borderColor: BorderColorString<'surface'>;
   borderTopWidth: keyof Border['width'];
-  borderTopStyle: CSSObject['borderStyle'];
   borderTopColor: BorderColorString<'surface'>;
   borderRightWidth: keyof Border['width'];
-  borderRightStyle: CSSObject['borderStyle'];
   borderRightColor: BorderColorString<'surface'>;
   borderBottomWidth: keyof Border['width'];
-  borderBottomStyle: CSSObject['borderStyle'];
   borderBottomColor: BorderColorString<'surface'>;
   borderLeftWidth: keyof Border['width'];
-  borderLeftStyle: CSSObject['borderStyle'];
   borderLeftColor: BorderColorString<'surface'>;
   borderRadius: keyof Border['radius'];
   borderTopLeftRadius: keyof Border['radius'];
