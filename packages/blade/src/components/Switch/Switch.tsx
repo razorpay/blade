@@ -1,7 +1,7 @@
 import isNumber from 'lodash/isNumber';
 import React from 'react';
 import styled from 'styled-components';
-import { CheckIcon } from './CheckIcon';
+import { ThumbIcon } from './ThumbIcon';
 import type { SwitchProps } from './types';
 import { switchIconColors, switchSizes } from './switchTokens';
 import { Thumb } from './Thumb';
@@ -50,7 +50,9 @@ const SwitchTrack = styled(BaseBox)<{
     borderRadius: makeSize(theme.border.radius.max),
     backgroundColor,
     transitionTimingFunction: `${theme.motion.easing.standard.effective}`,
-    transitionDuration: `${makeMotionTime(theme.motion.duration['2xquick'])}`,
+    transitionDuration: isReactNative()
+      ? undefined
+      : `${makeMotionTime(theme.motion.duration['2xquick'])}`,
   };
 });
 
@@ -114,7 +116,7 @@ const Switch = ({
               flexShrink={0}
               size={size}
             >
-              <CheckIcon isChecked={state.isChecked} isDisabled={isDisabled} size={size} />
+              <ThumbIcon isChecked={state.isChecked} isDisabled={isDisabled} size={size} />
             </AnimatedThumb>
           </Thumb>
         </SwitchTrack>

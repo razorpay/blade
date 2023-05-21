@@ -22,6 +22,7 @@ export default {
 const SwitchTemplate: ComponentStory<typeof SwitchComponent> = ({ ...args }) => {
   return (
     <BaseBox>
+      {/* TODO disabled state */}
       <SwitchComponent {...args} size="medium" accessibilityLabel="Toggle dark mode" />
       <SwitchComponent {...args} size="small" accessibilityLabel="Toggle dark mode" />
       {isReactNative() ? null : (

@@ -27,13 +27,15 @@ const StyledAnimatedThumb = styled(Animated.View)(({ theme }) => {
 const AnimatedThumb = ({
   isChecked,
   size = 'medium',
+  children,
 }: {
+  children: React.ReactNode;
   isChecked?: boolean;
   size: 'small' | 'medium';
 }) => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const translateX = useSharedValue(isChecked ? 0 : 1);
+  const translateX = useSharedValue(isChecked ? 1 : 0);
 
   const easingIn = (theme.motion.easing.standard.effective as unknown) as EasingFn;
   const easingOut = (theme.motion.easing.standard.effective as unknown) as EasingFn;
@@ -41,7 +43,7 @@ const AnimatedThumb = ({
   const finalWidth = isNumber(thumbWidth) ? thumbWidth : getIn(theme, thumbWidth);
 
   React.useEffect(() => {
-    translateX.value = withTiming(isChecked ? 0 : 1, {
+    translateX.value = withTiming(isChecked ? 1 : 0, {
       duration: theme.motion.duration.xquick,
       easing: isChecked ? easingIn : easingOut,
     });
@@ -67,7 +69,23 @@ const AnimatedThumb = ({
     };
   }, []);
 
-  return <StyledAnimatedThumb style={thumbAnimation} />;
+  return (
+    <StyledAnimatedThumb
+      style={[
+        {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+          borderRadius: theme.border.radius.max,
+          backgroundColor: theme.colors.brand.gray[700].highContrast,
+        },
+        thumbAnimation,
+      ]}
+    >
+      {children}
+    </StyledAnimatedThumb>
+  );
 };
 
 export { AnimatedThumb };

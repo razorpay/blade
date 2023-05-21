@@ -1,10 +1,10 @@
 import isNumber from 'lodash/isNumber';
-import styled from 'styled-components';
 import type { SwitchProps } from './types';
+import { AnimatedThumbIcon } from './AnimatedThumbIcon';
 import { useTheme } from '~components/BladeProvider';
-import { getIn, makeMotionTime, makeSize, makeSpace, useBreakpoint } from '~utils';
+import { getIn, makeSize, makeSpace, useBreakpoint } from '~utils';
 import size from '~tokens/global/size';
-import Svg, { Path } from '~components/Icons/_Svg';
+import { Path } from '~components/Icons/_Svg';
 
 const switchIconSize = {
   desktop: {
@@ -17,16 +17,7 @@ const switchIconSize = {
   },
 } as const;
 
-const AnimatedSvg = styled(Svg)<{ isChecked?: boolean }>(({ isChecked, theme }) => {
-  return {
-    transitionDuration: `${makeMotionTime(theme.motion.duration.xquick)}`,
-    transitionTimingFunction: theme.motion.easing.standard.effective as string,
-    transitionDelay: isChecked ? `${makeMotionTime(theme.motion.delay['2xshort'])}` : `0ms`,
-    opacity: isChecked ? 1 : 0,
-  };
-});
-
-const CheckIcon = ({
+const ThumbIcon = ({
   isChecked,
   isDisabled,
   size = 'medium',
@@ -40,7 +31,7 @@ const CheckIcon = ({
   const finalHeight = isNumber(height) ? makeSize(height) : makeSpace(getIn(theme, height));
 
   return (
-    <AnimatedSvg
+    <AnimatedThumbIcon
       isChecked={isChecked}
       width={finalWidth}
       height={finalHeight}
@@ -57,8 +48,8 @@ const CheckIcon = ({
             : theme.colors.brand.gray[200].highContrast
         }
       />
-    </AnimatedSvg>
+    </AnimatedThumbIcon>
   );
 };
 
-export { CheckIcon };
+export { ThumbIcon };
