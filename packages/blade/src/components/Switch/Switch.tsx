@@ -47,7 +47,15 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
 
   return (
     <BaseBox {...metaAttribute({ testID })} display={state.isReactNative ? 'flex' : 'inline-block'}>
-      <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
+      <SelectorLabel
+        inputProps={
+          state.isReactNative
+            ? // accessibility label for react-native needs to be added
+              //since there is no text children inside Switch
+              { ...inputProps, ...makeAccessible({ label: accessibilityLabel }) }
+            : {}
+        }
+      >
         <SelectorInput
           hoverStyles={switchHoverVariants}
           ref={ref}
@@ -59,11 +67,11 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
           accessibilityLabel={accessibilityLabel}
         />
         <SwitchTrack
-          {...makeAccessible({ hidden: true })}
           size={size}
           deviceType={matchedDeviceType}
           isDisabled={isDisabled}
           isChecked={state.isChecked}
+          {...makeAccessible({ hidden: true })}
         >
           <Thumb size={size} deviceType={matchedDeviceType} isChecked={state.isChecked}>
             <AnimatedThumb
