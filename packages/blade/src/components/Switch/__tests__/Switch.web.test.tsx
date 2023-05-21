@@ -1,0 +1,170 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+import userEvents from '@testing-library/user-event';
+import React from 'react';
+import { Switch } from '../Switch';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import { Button } from '~components/Button';
+
+describe('<Switch />', () => {
+  it('should render switch', () => {
+    const { container, getByRole } = renderWithTheme(<Switch />);
+    expect(container).toMatchSnapshot();
+    expect(getByRole('switch')).toBeInTheDocument();
+  });
+
+  it('should set disabled state with isDisabled', () => {
+    const name = 'Toggle Darkmode';
+    const { container, getByRole } = renderWithTheme(
+      <Switch accessibilityLabel={name} isDisabled />,
+    );
+    expect(container).toMatchSnapshot();
+    expect(getByRole('checkbox', { name })).toBeDisabled();
+    expect(getByRole('switch', { name })).toBeDisabled();
+  });
+
+  test('user should be able to toggle state', async () => {
+    const user = userEvents.setup();
+    const name = 'Toggle Darkmode';
+    const { getByRole } = renderWithTheme(<Switch accessibilityLabel={name} />);
+
+    expect(getByRole('checkbox', { name })).not.toBeChecked();
+    await user.click(getByRole('switch', { name }));
+    expect(getByRole('checkbox', { name })).toBeChecked();
+    await user.click(getByRole('switch', { name }));
+    expect(getByRole('checkbox', { name })).not.toBeChecked();
+  });
+
+  test('user should be able to toggle checkbox with keyboard', async () => {
+    const user = userEvents.setup();
+    const name = 'Toggle darkmode';
+    const { getByRole } = renderWithTheme(<Switch accessibilityLabel={name} />);
+
+    expect(getByRole('switch', { name })).not.toBeChecked();
+    await user.tab();
+    expect(getByRole('switch', { name })).toHaveFocus();
+    await user.keyboard('[Space]');
+    expect(getByRole('switch', { name })).toBeChecked();
+    await user.keyboard('[Space]');
+    expect(getByRole('switch', { name })).not.toBeChecked();
+  });
+
+  it('should set defaultChecked', () => {
+    const name = 'Toggle Darkmode';
+    const { getByRole } = renderWithTheme(<Switch defaultChecked accessibilityLabel={name} />);
+
+    expect(getByRole('checkbox', { name })).toBeChecked();
+  });
+
+  it('should support isChecked prop', async () => {
+    const user = userEvents.setup();
+    const name = 'Toggle Darkmode';
+    const { getByRole } = renderWithTheme(<Switch isChecked accessibilityLabel={name} />);
+
+    expect(getByRole('checkbox', { name })).toBeChecked();
+    // should not toggle
+    await user.click(getByRole('switch', { name }));
+    expect(getByRole('checkbox', { name })).toBeChecked();
+  });
+
+  it('should support uncontrolled state', async () => {
+    const user = userEvents.setup();
+    const checkFn = jest.fn();
+    const name = 'Toggle Darkmode';
+    const { getByRole } = renderWithTheme(
+      <Switch
+        value="darkmode"
+        name="darkmode-toggle"
+        accessibilityLabel={name}
+        defaultChecked={true}
+        onChange={checkFn}
+      />,
+    );
+
+    expect(getByRole('checkbox', { name })).toBeChecked();
+    expect(checkFn).not.toBeCalled();
+    await user.click(getByRole('switch', { name }));
+    expect(getByRole('checkbox', { name })).not.toBeChecked();
+    expect(checkFn).toBeCalledWith(
+      expect.objectContaining({
+        isChecked: false,
+        value: 'darkmode',
+        name: 'darkmode-toggle',
+      }),
+    );
+    await user.click(getByRole('switch', { name }));
+    expect(getByRole('checkbox', { name })).toBeChecked();
+    expect(checkFn).toBeCalledWith(
+      expect.objectContaining({
+        isChecked: true,
+        value: 'darkmode',
+        name: 'darkmode-toggle',
+      }),
+    );
+  });
+
+  it('should support controlled state', async () => {
+    const user = userEvents.setup();
+    const name = 'Toggle Darkmode';
+    const Example = () => {
+      const [checked, setChecked] = React.useState(false);
+      return (
+        <>
+          <Switch
+            accessibilityLabel={name}
+            isChecked={checked}
+            onChange={({ isChecked }) => setChecked(isChecked)}
+          />
+          <p data-testid="state">{checked ? 'checked' : 'unchecked'}</p>
+        </>
+      );
+    };
+    const { getByRole, getByTestId } = renderWithTheme(<Example />);
+
+    expect(getByTestId('state')).toHaveTextContent('unchecked');
+    await user.click(getByRole('switch', { name }));
+    expect(getByTestId('state')).toHaveTextContent('checked');
+    await user.click(getByRole('switch', { name }));
+    expect(getByTestId('state')).toHaveTextContent('unchecked');
+  });
+
+  it.skip(`should expose native element methods via ref`, async () => {
+    const name = 'Accept';
+    const focusButtonLabel = 'Focus';
+
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+
+      return (
+        <>
+          <Switch ref={ref} accessibilityLabel={name} />
+          <Button
+            onClick={() => {
+              ref.current?.focus();
+            }}
+          >
+            {focusButtonLabel}
+          </Button>
+        </>
+      );
+    };
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(name);
+    const button = getByRole('button', { name: focusButtonLabel });
+
+    expect(input).not.toHaveFocus();
+    expect(input).toHaveAttribute('type', 'checkbox');
+
+    await userEvents.click(button);
+    expect(input).toHaveFocus();
+  });
+
+  it('should accept testID', () => {
+    const name = 'Toggle Darkmode';
+    const { getByTestId } = renderWithTheme(
+      <Switch testID="switch-test" accessibilityLabel={name} />,
+    );
+    expect(getByTestId('switch-test')).toBeTruthy();
+  });
+});

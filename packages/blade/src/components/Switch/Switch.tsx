@@ -20,6 +20,7 @@ import {
   makeMotionTime,
   makeSize,
   makeSpace,
+  metaAttribute,
   useBreakpoint,
 } from '~utils';
 
@@ -66,6 +67,7 @@ const Switch = ({
   value,
   accessibilityLabel,
   id,
+  testID,
 }: SwitchProps): React.ReactElement => {
   const { state, inputProps } = useCheckbox({
     defaultChecked,
@@ -77,7 +79,6 @@ const Switch = ({
     isRequired: false,
     name,
     value,
-    onChange,
   });
 
   const { theme } = useTheme();
@@ -88,10 +89,18 @@ const Switch = ({
     <BaseBox display={isReactNative() ? 'flex' : 'inline-block'}>
       <SwitchButton
         id={id}
-        onClick={() => {
-          state.setChecked((prev) => !prev);
-        }}
         {...syntheticEvents}
+        onClick={() => {
+          state.setChecked((checked) => {
+            onChange?.({
+              isChecked: !checked,
+              name,
+              value,
+            });
+            return !checked;
+          });
+        }}
+        {...metaAttribute({ testID })}
         {...makeAccessible({
           role: 'switch',
           checked: state.isChecked,

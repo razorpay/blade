@@ -1,10 +1,9 @@
 type OnChange = ({
   isChecked,
-  event,
   value,
 }: {
   isChecked: boolean;
-  event?: React.ChangeEvent;
+  name?: string;
   value?: string;
 }) => void;
 
@@ -50,6 +49,7 @@ type SwitchProps = {
   size?: 'small' | 'medium';
   accessibilityLabel?: string;
   id?: string;
+  testID?: string;
 };
 
 type ThumbProps = {

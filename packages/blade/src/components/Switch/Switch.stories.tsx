@@ -23,7 +23,16 @@ const SwitchTemplate: ComponentStory<typeof SwitchComponent> = ({ ...args }) => 
   return (
     <BaseBox>
       <SwitchComponent {...args} size="medium" accessibilityLabel="Toggle dark mode" />
-      <SwitchComponent {...args} size="medium" accessibilityLabel="Toggle dark mode" />
+      <SwitchComponent
+        {...args}
+        name="darkmode"
+        value="hello"
+        size="medium"
+        onChange={(e) => {
+          console.log(e);
+        }}
+        accessibilityLabel="Toggle dark mode"
+      />
       {isReactNative() ? null : (
         <BaseBox style={{ display: 'flex', alignItems: 'center' }}>
           <label className="Label" htmlFor="airplane-mode" style={{ paddingRight: 15 }}>
