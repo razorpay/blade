@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { DefaultTheme } from 'styled-components';
 import styled, { keyframes, css } from 'styled-components';
+import { switchColors } from './switchTokens';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeBorderSize } from '~utils';
+import { makeMotionTime, makeBorderSize, getIn } from '~utils';
 
 const onAnimation = keyframes`
   0% {
@@ -47,17 +48,22 @@ const exit = (props: { theme: DefaultTheme }) => {
   `;
 };
 
-const AnimatedThumb = styled(BaseBox)<{ isChecked?: boolean; size: 'small' | 'medium' }>(
-  ({ theme, isChecked }) => {
-    return css`
-      width: 100%;
-      height: 100%;
-      border-radius: ${makeBorderSize(theme.border.radius.max)};
-      transform: translateX(0%);
-      animation: ${isChecked ? enter : exit};
-      background-color: ${theme.colors.brand.gray[700].highContrast};
-    `;
-  },
-);
+const AnimatedThumb = styled(BaseBox)<{
+  isChecked?: boolean;
+  isDisabled?: boolean;
+  size: 'small' | 'medium';
+}>(({ theme, isChecked, isDisabled }) => {
+  const variant = isDisabled ? 'disabled' : 'default';
+  const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
+
+  return css`
+    width: 100%;
+    height: 100%;
+    border-radius: ${makeBorderSize(theme.border.radius.max)};
+    transform: translateX(0%);
+    animation: ${isChecked ? enter : exit};
+    background-color: ${backgroundColor};
+  `;
+});
 
 export { AnimatedThumb };

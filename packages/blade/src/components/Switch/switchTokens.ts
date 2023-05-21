@@ -47,8 +47,8 @@ const switchSizes = {
   },
 } as const;
 
-const switchIconColors = {
-  variants: {
+const switchColors = {
+  track: {
     default: {
       background: {
         checked: 'colors.brand.primary.500',
@@ -57,8 +57,8 @@ const switchIconColors = {
     },
     disabled: {
       background: {
-        checked: 'colors.brand.gray.a100.lowContrast',
-        unchecked: 'transparent',
+        checked: 'colors.brand.primary.400',
+        unchecked: 'colors.brand.gray.a100.lowContrast',
       },
     },
     hover: {
@@ -74,6 +74,22 @@ const switchIconColors = {
       },
     },
   },
+  thumb: {
+    default: {
+      background: 'colors.brand.gray.200.lowContrast',
+    },
+    disabled: {
+      background: 'colors.brand.gray.700.highContrast',
+    },
+  },
+  thumbIcon: {
+    default: {
+      fill: 'colors.brand.gray.200.highContrast',
+    },
+    disabled: {
+      fill: 'colors.surface.text.placeholder.lowContrast',
+    },
+  },
 } as const;
 
-export { switchIconColors, switchSizes };
+export { switchColors, switchSizes };

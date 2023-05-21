@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled from 'styled-components/native';
 import React from 'react';
 import isNumber from 'lodash/isNumber';
@@ -10,29 +9,42 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { switchSizes } from './switchTokens';
+import { switchColors, switchSizes } from './switchTokens';
 import { getIn, makeBorderSize, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
-const StyledAnimatedThumb = styled(Animated.View)(({ theme }) => {
-  return {
-    width: '100%',
-    height: '100%',
-    borderRadius: makeBorderSize(theme.border.radius.max),
-    backgroundColor: theme.colors.brand.gray[700].highContrast,
-    position: 'absolute',
-  };
-});
+const StyledAnimatedThumb = styled(Animated.View)<{ isDisabled?: boolean }>(
+  ({ theme, isDisabled }) => {
+    const variant = isDisabled ? 'disabled' : 'default';
+    const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
+
+    return {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0,
+      width: '100%',
+      height: '100%',
+      borderRadius: makeBorderSize(theme.border.radius.max),
+      backgroundColor,
+      position: 'absolute',
+    };
+  },
+);
+
+type AnimatedThumbProps = {
+  children: React.ReactNode;
+  isChecked?: boolean;
+  isDisabled?: boolean;
+  size: 'small' | 'medium';
+};
 
 const AnimatedThumb = ({
   isChecked,
+  isDisabled,
   size = 'medium',
   children,
-}: {
-  children: React.ReactNode;
-  isChecked?: boolean;
-  size: 'small' | 'medium';
-}) => {
+}: AnimatedThumbProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const translateX = useSharedValue(isChecked ? 1 : 0);
@@ -70,19 +82,7 @@ const AnimatedThumb = ({
   }, []);
 
   return (
-    <StyledAnimatedThumb
-      style={[
-        {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0,
-          borderRadius: theme.border.radius.max,
-          backgroundColor: theme.colors.brand.gray[700].highContrast,
-        },
-        thumbAnimation,
-      ]}
-    >
+    <StyledAnimatedThumb style={thumbAnimation} isDisabled={isDisabled}>
       {children}
     </StyledAnimatedThumb>
   );

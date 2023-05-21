@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ThumbIcon } from './ThumbIcon';
 import type { SwitchProps } from './types';
-import { switchIconColors, switchSizes } from './switchTokens';
+import { switchColors, switchSizes } from './switchTokens';
 import { Thumb } from './Thumb';
 import { SwitchButton } from './SwitchButton';
 import { AnimatedThumb } from './AnimatedThumb';
@@ -35,7 +35,7 @@ const SwitchTrack = styled(BaseBox)<{
   if (currentInteraction === 'hover') variant = 'hover';
   if (currentInteraction === 'active') variant = 'focus';
   const checked = isChecked ? 'checked' : 'unchecked';
-  const background = switchIconColors.variants[variant].background[checked];
+  const background = switchColors.track[variant].background[checked];
   const backgroundColor = getIn(theme, background);
 
   const width = switchSizes.track[deviceType][size].width;
@@ -110,6 +110,7 @@ const Switch = ({
           <Thumb size={size} deviceType={matchedDeviceType} isChecked={state.isChecked}>
             <AnimatedThumb
               isChecked={state.isChecked}
+              isDisabled={isDisabled}
               display="flex"
               alignItems="center"
               justifyContent="center"
