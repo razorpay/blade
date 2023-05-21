@@ -3,6 +3,7 @@
 import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
+import type { HoverProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType, getIn, makeAccessible, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
@@ -10,61 +11,48 @@ import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
-type HoverProps = {
-  isChecked?: boolean;
-  isDisabled?: boolean;
-  hasError?: boolean;
-};
-
-const variants = {
-  default: {
-    background: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.a50.lowContrast',
-    },
-    border: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.500.lowContrast',
-    },
-  },
-};
-
 const getHoverStyles = ({
   theme,
   isDisabled,
   hasError,
   isChecked,
+  hoverStyles,
 }: { theme: Theme } & HoverProps): CSSObject => {
   if (isDisabled || hasError) return {};
 
   const checked = isChecked ? 'checked' : 'unchecked';
-  const backgroundColor = variants.default.background[checked];
-  const borderColor = variants.default.border[checked];
+  const backgroundColor = hoverStyles.default.background[checked];
+  const borderColor = hoverStyles.default.border?.[checked];
 
   return {
-    borderColor: getIn(theme, borderColor),
+    borderColor: borderColor ? getIn(theme, borderColor) : undefined,
     backgroundColor: getIn(theme, backgroundColor),
     transitionTimingFunction: theme.motion.easing.standard.effective as string,
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
   };
 };
 
-const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, hasError }) => ({
-  ...screenReaderStyles,
-  '&:focus + div': {
-    // TODO: Replace with focus outline token
-    outline: '1px solid white',
-    boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-  },
-  '&:hover + div, &:focus + div': {
-    ...getHoverStyles({ theme, isChecked, isDisabled, hasError }),
-  },
-}));
+const StyledInput = styled.input<HoverProps>(
+  ({ theme, isChecked, isDisabled, hasError, hoverStyles }) => ({
+    ...screenReaderStyles,
+    '&:focus + div': {
+      // TODO: Replace with focus outline token
+      outline: '1px solid white',
+      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+    },
+    '&:hover + div, &:focus + div': {
+      ...getHoverStyles({ theme, isChecked, isDisabled, hasError, hoverStyles }),
+    },
+  }),
+);
 
 const _SelectorInput: React.ForwardRefRenderFunction<
   BladeElementRef,
   HoverProps & { id?: string; inputProps: any; tabIndex?: number; accessibilityLabel?: string }
-> = ({ id, inputProps, isChecked, isDisabled, hasError, tabIndex, accessibilityLabel }, ref) => {
+> = (
+  { id, inputProps, isChecked, isDisabled, hasError, hoverStyles, tabIndex, accessibilityLabel },
+  ref,
+) => {
   const inputRef = useBladeInnerRef(ref);
 
   return (
@@ -74,6 +62,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<
       isDisabled={isDisabled}
       hasError={hasError}
       tabIndex={tabIndex}
+      hoverStyles={hoverStyles}
       {...inputProps}
       {...makeAccessible({ label: accessibilityLabel })}
       // merging both refs because inputProps.ref needs to have access to indeterminate state

@@ -1,4 +1,18 @@
+import type { Theme } from '~components/BladeProvider';
+import type { SelectorInputHoverVariants } from '~components/Form/Selector/types';
+import type { DotNotationColorStringToken } from '~src/_helpers/types';
 import size from '~tokens/global/size';
+
+type ColorTokens = `colors.${DotNotationColorStringToken<Theme['colors']>}` | 'transparent';
+type State = {
+  checked: ColorTokens;
+  unchecked: ColorTokens;
+};
+type SwitchColors = {
+  track: Record<'default' | 'disabled', Record<string, State>>;
+  thumb: Record<'default' | 'disabled', Record<string, ColorTokens>>;
+  thumbIcon: Record<'default' | 'disabled', Record<string, ColorTokens>>;
+};
 
 const switchSizes = {
   track: {
@@ -47,7 +61,7 @@ const switchSizes = {
   },
 } as const;
 
-const switchColors = {
+const switchColors: SwitchColors = {
   track: {
     default: {
       background: {
@@ -59,18 +73,6 @@ const switchColors = {
       background: {
         checked: 'colors.brand.primary.400',
         unchecked: 'colors.brand.gray.a100.lowContrast',
-      },
-    },
-    hover: {
-      background: {
-        checked: 'colors.brand.primary.600',
-        unchecked: 'colors.brand.gray.600.lowContrast',
-      },
-    },
-    focus: {
-      background: {
-        checked: 'colors.brand.primary.600',
-        unchecked: 'colors.brand.gray.600.lowContrast',
       },
     },
   },
@@ -90,6 +92,15 @@ const switchColors = {
       fill: 'colors.surface.text.placeholder.lowContrast',
     },
   },
-} as const;
+};
 
-export { switchColors, switchSizes };
+const switchHoverVariants: SelectorInputHoverVariants = {
+  default: {
+    background: {
+      checked: 'colors.brand.primary.600',
+      unchecked: 'colors.brand.gray.600.lowContrast',
+    },
+  },
+};
+
+export { switchColors, switchSizes, switchHoverVariants };

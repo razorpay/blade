@@ -1,75 +1,35 @@
-import isNumber from 'lodash/isNumber';
 import React from 'react';
-import styled from 'styled-components';
 import { ThumbIcon } from './ThumbIcon';
 import type { SwitchProps } from './types';
-import { switchColors, switchSizes } from './switchTokens';
+import { switchHoverVariants } from './switchTokens';
 import { Thumb } from './Thumb';
-import { SwitchButton } from './SwitchButton';
 import { AnimatedThumb } from './AnimatedThumb';
+import { SwitchTrack } from './SwitchTrack';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import useInteraction from '~src/hooks/useInteraction';
-import type { ActionStates } from '~tokens/theme/theme';
-import {
-  getIn,
-  isReactNative,
-  makeAccessible,
-  makeMotionTime,
-  makeSize,
-  makeSpace,
-  metaAttribute,
-  useBreakpoint,
-} from '~utils';
+import { assignWithoutSideEffects, makeAccessible, metaAttribute, useBreakpoint } from '~utils';
+import type { BladeElementRef } from '~src/hooks/types';
+import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 
-const SwitchTrack = styled(BaseBox)<{
-  size: 'small' | 'medium';
-  deviceType: 'mobile' | 'desktop';
-  isDisabled?: boolean;
-  isChecked?: boolean;
-  currentInteraction: keyof ActionStates;
-}>(({ currentInteraction, theme, size, deviceType, isDisabled, isChecked }) => {
-  let variant: 'default' | 'disabled' | 'hover' | 'focus' = 'default';
-  if (isDisabled) variant = 'disabled';
-  if (currentInteraction === 'hover') variant = 'hover';
-  if (currentInteraction === 'active') variant = 'focus';
-  const checked = isChecked ? 'checked' : 'unchecked';
-  const background = switchColors.track[variant].background[checked];
-  const backgroundColor = getIn(theme, background);
-
-  const width = switchSizes.track[deviceType][size].width;
-  const height = switchSizes.track[deviceType][size].height;
-
-  return {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    width: isNumber(width) ? makeSize(width) : makeSpace(getIn(theme, width)),
-    height: isNumber(height) ? makeSize(height) : makeSpace(getIn(theme, height)),
-    borderRadius: makeSize(theme.border.radius.max),
-    backgroundColor,
-    transitionTimingFunction: `${theme.motion.easing.standard.effective}`,
-    transitionDuration: isReactNative()
-      ? undefined
-      : `${makeMotionTime(theme.motion.duration['2xquick'])}`,
-  };
-});
-
-const Switch = ({
-  defaultChecked,
-  isChecked,
-  isDisabled,
-  name,
-  onChange,
-  size = 'medium',
-  value,
-  accessibilityLabel,
-  id,
-  testID,
-}: SwitchProps): React.ReactElement => {
+const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
+  {
+    defaultChecked,
+    isChecked,
+    isDisabled,
+    name,
+    onChange,
+    size = 'medium',
+    value,
+    accessibilityLabel,
+    id,
+    testID,
+  },
+  ref,
+): React.ReactElement => {
   const { state, inputProps } = useCheckbox({
+    role: 'switch',
     defaultChecked,
     isChecked,
     isIndeterminate: false,
@@ -79,42 +39,31 @@ const Switch = ({
     isRequired: false,
     name,
     value,
+    onChange,
   });
 
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
 
   return (
-    <BaseBox display={isReactNative() ? 'flex' : 'inline-block'}>
-      <SwitchButton
-        id={id}
-        {...syntheticEvents}
-        onClick={() => {
-          state.setChecked((checked) => {
-            onChange?.({
-              isChecked: !checked,
-              name,
-              value,
-            });
-            return !checked;
-          });
-        }}
-        {...metaAttribute({ testID })}
-        {...makeAccessible({
-          role: 'switch',
-          checked: state.isChecked,
-          disabled: isDisabled,
-          label: accessibilityLabel,
-        })}
-        disabled={isDisabled}
-      >
+    <BaseBox {...metaAttribute({ testID })} display={state.isReactNative ? 'flex' : 'inline-block'}>
+      <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
+        <SelectorInput
+          hoverStyles={switchHoverVariants}
+          ref={ref}
+          id={id}
+          isChecked={state.isChecked}
+          isDisabled={isDisabled}
+          hasError={false}
+          inputProps={inputProps}
+          accessibilityLabel={accessibilityLabel}
+        />
         <SwitchTrack
+          {...makeAccessible({ hidden: true })}
           size={size}
           deviceType={matchedDeviceType}
           isDisabled={isDisabled}
           isChecked={state.isChecked}
-          currentInteraction={currentInteraction}
         >
           <Thumb size={size} deviceType={matchedDeviceType} isChecked={state.isChecked}>
             <AnimatedThumb
@@ -130,17 +79,13 @@ const Switch = ({
             </AnimatedThumb>
           </Thumb>
         </SwitchTrack>
-      </SwitchButton>
-      <SelectorInput
-        tabIndex={-1}
-        isChecked={state.isChecked}
-        isDisabled={isDisabled}
-        hasError={false}
-        inputProps={inputProps}
-        accessibilityLabel={accessibilityLabel}
-      />
+      </SelectorLabel>
     </BaseBox>
   );
 };
+
+const Switch = assignWithoutSideEffects(React.forwardRef(_Switch), {
+  displayName: 'Switch',
+});
 
 export { Switch };

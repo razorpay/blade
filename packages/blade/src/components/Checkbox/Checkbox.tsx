@@ -4,6 +4,7 @@ import isUndefined from 'lodash/isUndefined';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
+import { checkboxHoverVariants } from './checkboxTokens';
 import { metaAttribute, isEmpty, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -213,6 +214,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
+              hoverStyles={checkboxHoverVariants}
               isChecked={state.isChecked || Boolean(isIndeterminate)}
               isDisabled={_isDisabled}
               hasError={_hasError}
