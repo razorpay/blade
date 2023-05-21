@@ -7,7 +7,7 @@ import { Switch } from '../Switch';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<Switch />', () => {
-  it('should render switchElement with label', () => {
+  it('should render switch with label', () => {
     const name = 'Toggle Darkmode';
     const { toJSON, getByRole } = renderWithTheme(<Switch accessibilityLabel={name} />);
     expect(toJSON()).toMatchSnapshot();
@@ -46,7 +46,7 @@ describe('<Switch />', () => {
     expect(switchElement.props.accessibilityState.checked).toBeTruthy();
   });
 
-  test('user should be able to toggle switchElement', () => {
+  test('user should be able to toggle switch', () => {
     const name = 'Toggle Darkmode';
     const { getByRole } = renderWithTheme(<Switch accessibilityLabel={name} />);
     const switchElement = getByRole('switch');
