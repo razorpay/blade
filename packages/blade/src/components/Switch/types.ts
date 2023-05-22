@@ -1,9 +1,10 @@
 type OnChange = ({
   isChecked,
   value,
+  event,
 }: {
   isChecked: boolean;
-  name?: string;
+  event?: React.ChangeEvent;
   value?: string;
 }) => void;
 
