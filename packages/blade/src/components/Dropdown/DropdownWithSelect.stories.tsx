@@ -198,7 +198,6 @@ const argsTable: ArgsTable = {
   'ActionListItem[0]/title': 'Home',
   'ActionListItem[0]/description': '',
   'ActionListItem[0]/value': 'home',
-  'ActionListItem[0]/isDefaultSelected': false,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   'ActionListItem[0]/onClick': () => {},
   'ActionListItem[0]/trailing': {},
@@ -213,6 +212,7 @@ const argsTable: ArgsTable = {
   isRequired: false,
   placeholder: 'Select Option',
   isDisabled: false,
+  defaultValue: '',
   prefix: {},
   suffix: {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -303,7 +303,6 @@ const DropdownTemplate: ComponentStory<typeof Playground> = (args) => {
     title = 'Home',
     description = '',
     value = 'home',
-    isDefaultSelected,
     actionListItemIcon,
     actionListItemIsDisabled,
     ...selectInputArgs
@@ -332,7 +331,6 @@ const DropdownTemplate: ComponentStory<typeof Playground> = (args) => {
               title={title}
               description={description}
               value={value}
-              isDefaultSelected={isDefaultSelected}
               isDisabled={actionListItemIsDisabled}
             />
             <ActionListItem
@@ -912,6 +910,113 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
       </DropdownOverlay>
     </Dropdown>
   );
+};
+
+export const ControlledDropdown = (args: AllDropdownProps): JSX.Element => {
+  const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
+
+  return (
+    <BaseBox minHeight="300px">
+      <Button marginBottom="spacing.4" onClick={() => setCurrentSelection('bangalore')}>
+        Select Bangalore
+      </Button>
+
+      <Dropdown selectionType="single">
+        <SelectInput
+          label="Select City"
+          {...selectInputArgs}
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values[0]);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title={title} value={value} />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </BaseBox>
+  );
+};
+
+ControlledDropdown.args = {
+  label: 'Select City',
+  title: 'Mumbai',
+  value: 'mumbai',
+};
+
+export const ControlledDropdownMultiSelect = (args: AllDropdownProps): JSX.Element => {
+  const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+
+  const {
+    selectionType,
+    surfaceLevel,
+    title = '',
+    description,
+    value = '',
+    actionListItemIcon,
+    ...selectInputArgs
+  } = args;
+
+  return (
+    <BaseBox minHeight="300px">
+      <Button
+        marginBottom="spacing.4"
+        onClick={() => {
+          if (!currentSelection.includes('bangalore')) {
+            setCurrentSelection([...currentSelection, 'bangalore']);
+          }
+        }}
+      >
+        Select Bangalore
+      </Button>
+
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="Select City"
+          {...selectInputArgs}
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title={title} value={value} />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </BaseBox>
+  );
+};
+
+ControlledDropdownMultiSelect.args = {
+  label: 'Select City',
+  title: 'Mumbai',
+  value: 'mumbai',
 };
 
 export default DropdownStoryMeta;
