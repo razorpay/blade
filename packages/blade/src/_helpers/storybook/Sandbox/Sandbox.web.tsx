@@ -36,8 +36,7 @@ const getBladeVersion = (): string => {
     return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
   }
 
-  // @TODO: revert
-  return 'https://pkg.csb.dev/razorpay/blade/commit/49d28626/@razorpay/blade';
+  return '*';
 };
 
 const bladeVersion = getBladeVersion();

@@ -10,7 +10,6 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
 import { Sandbox, VerticalSandbox } from '~src/_helpers/storybook/Sandbox';
 import { Box } from '~components/Box';
-// import BaseBox from '~components/Box/BaseBox';
 import { ArgsTable } from '~src/_helpers/storybook/ArgsTable';
 import { List, ListItem, ListItemLink } from '~components/List';
 import BaseBox from '~components/Box/BaseBox';

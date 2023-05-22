@@ -13,7 +13,6 @@ import {
   WithValueDisplayStory,
 } from './stories';
 
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import { SelectInput } from '~components/Input/SelectInput';
 import {
@@ -29,13 +28,6 @@ import { Button } from '~components/Button';
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/Stories/With Select',
   component: Dropdown,
-  args: {
-    selectionType: 'single',
-  },
-  argTypes: {
-    ...getStyledPropsArgTypes(),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  },
   parameters: {
     viewMode: 'story',
     options: {
