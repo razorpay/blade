@@ -70,6 +70,7 @@ const [isOpen, setIsOpen] = useState(false);
 | `children` | `React.ReactNode` | `undefined` | Content of the Modal | ✅       |
 
 ### `ModalHeader` API
+> `ModalHeader` API will be similar to [`BottomSheetHeader` API](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/BottomSheet/_decisions/decisions.md#bottomsheetheader-api) with the exception of `showBackButton` & `onBackButtonClick` props.
 
 | Prop      | Type            | Default     | Description                           | Required |
 | --------- | --------------- | ----------- | ------------------------------------- | -------- |
@@ -80,7 +81,7 @@ const [isOpen, setIsOpen] = useState(false);
 | `titleSuffix` | `Counter` | `undefined` | A component to be placed adjacent to the title text |          |
 
 ### `ModalFooter` API
-
+> `ModalFooter` API will be similar to [`BottomSheetFooter` API](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/BottomSheet/_decisions/decisions.md#bottomsheetfooter-api).
 
 | Prop       | Type              | Default     | Description                 | Required |
 | ---------- | ----------------- | ----------- | --------------------------- | -------- |
