@@ -50,7 +50,8 @@ const DropdownDocs = (): JSX.Element => {
             <ListItemLink href="/?path=/docs/components-dropdown-selectinput--default">
               SelectInput
             </ListItemLink>
-            , or <ListItemLink>DropdownButton</ListItemLink>
+            , or DropdownButton (Has same props as{' '}
+            <ListItemLink href="/?path=/docs/components-button--default">Button</ListItemLink>)
           </ListItem>
           <ListItem>
             <ListItemLink href="/?path=/docs/components-dropdown-actionlist--page">
@@ -86,6 +87,10 @@ const DropdownDocs = (): JSX.Element => {
             <ListItemLink target="_blank" href="/?path=/docs/components-dropdown-actionlist--page">
               ActionList Props
             </ListItemLink>
+          </ListItem>
+          <ListItem>
+            DropdownButton (Has same props as{' '}
+            <ListItemLink href="/?path=/docs/components-button--default">Button</ListItemLink>)
           </ListItem>
         </List>
       </BaseBox>
