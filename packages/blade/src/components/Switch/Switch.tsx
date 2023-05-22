@@ -88,7 +88,11 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
         >
           <Thumb size={size} deviceType={matchedDeviceType} isChecked={state.isChecked}>
             <AnimatedThumb
-              shouldRunAnimation={previousChecked !== state.isChecked}
+              shouldRunAnimation={
+                // do not run animation on first render
+                // or if the isChecked state hasn't been changed
+                previousChecked !== undefined && previousChecked !== state.isChecked
+              }
               isChecked={state.isChecked}
               isDisabled={isDisabled}
               size={size}
