@@ -75,7 +75,7 @@ const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
     setHasFooterAction,
     onTriggerKeydown,
     activeIndex,
-    setIsOpen,
+    close,
     selectionType,
   } = useDropdown();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
@@ -118,7 +118,7 @@ const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
         if (shouldIgnoreDropdownKeydown) {
           if (selectionType === 'single' && !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
             // We close the dropdown on clicks in single select
-            setIsOpen(false);
+            close();
           }
           return;
         }
@@ -134,7 +134,7 @@ const _ActionListFooter = (props: ActionListFooterProps): JSX.Element => {
           nextItemRole !== 'option' &&
           !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet
         ) {
-          setIsOpen(false);
+          close();
         }
       }}
       {...makeAccessible({
