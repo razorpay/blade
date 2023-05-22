@@ -5,7 +5,7 @@ Modal components are often used to present information, notifications, or reques
 This document outlines the API of `Modal` component.
 
 <!-- TODO: Add this -->
-<img src="./modal-thumbnail.png" width="380" alt="Thumbnail of modal" />
+<!-- <img src="./modal-thumbnail.png" width="380" alt="Thumbnail of modal" /> -->
 
 - [Design](#design)
 - [Anatomy](#anatomy)
@@ -71,12 +71,10 @@ Sample usage:
 | `children` | `React.ReactNode` | `undefined` | Contents of the ModalFooter | ✅       |
 
 ## Accessibility
-- aria-labelledby
-- aria-describedby
-- Modal traps focus inside its root element, which means that using any type of keyboard navigation will keep the focus inside the Backdrop while it's opened.
-- Modal triggers its onClose handler on Esc key press.
-- aria-modal="true"
-- aria-role='dialog'
+- Trap keyboard focus within the modal.
+- Close the modal when the user hits the `esc` key.
+- Add `aria-modal="true"`
+- Add `aria-role='dialog'`
 
 ## Open questions
 
