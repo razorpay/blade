@@ -14,6 +14,8 @@ import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { GlobeIcon, MapPinIcon, WifiIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
+import { Alert } from '~components/Alert';
+import { Link } from '~components/Link';
 
 const Page = (): React.ReactElement => {
   return (
@@ -86,7 +88,7 @@ DefaultChecked.args = {
 };
 
 export const Small = SwitchTemplate.bind({});
-Small.storyName = 'Small';
+Small.storyName = 'Small Size';
 Small.args = {
   size: 'small',
 };
@@ -94,6 +96,22 @@ Small.args = {
 const WithLabelTemplate: ComponentStory<typeof SwitchComponent> = () => {
   return (
     <Box>
+      <Alert
+        marginBottom="spacing.6"
+        isFullWidth
+        intent="notice"
+        title="Note"
+        description={
+          <>
+            Switch doesn't come with a label out of the box, consumers can create custom label if
+            needed, see the switch{' '}
+            <Link href="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=31919-629519&t=9TijeCLrhExSrH1z-0">
+              guidelines for more details
+            </Link>{' '}
+            on how to use labels.
+          </>
+        }
+      />
       <Text marginBottom="spacing.3">Right position:</Text>
       <Box as="label" display="flex" alignItems="center" gap="spacing.2">
         <SwitchComponent size="small" />
@@ -180,18 +198,27 @@ const ControlledAndUncontrolledComp = () => {
 
   return (
     <>
-      <SwitchComponent
-        accessibilityLabel="Toggle darkmode"
-        defaultChecked
-        onChange={(e) => console.log(e)}
-      />
-      <Text>&nbsp;</Text>
-      <SwitchComponent
-        accessibilityLabel="Toggle darkmode"
-        isChecked={checked}
-        onChange={(e) => setChecked(e.isChecked)}
-      />
-      <Text>Checked: {checked ? 'True' : 'False'}</Text>
+      <Box as="label" display="flex" alignItems="center" gap="spacing.2">
+        <SwitchComponent
+          accessibilityLabel="Toggle darkmode"
+          defaultChecked
+          onChange={(e) => console.log(e)}
+        />
+        <Text weight="regular" variant="body" size="medium">
+          Uncontrolled
+        </Text>
+      </Box>
+
+      <Box as="label" display="flex" alignItems="center" gap="spacing.2">
+        <SwitchComponent
+          accessibilityLabel="Toggle darkmode"
+          isChecked={checked}
+          onChange={(e) => setChecked(e.isChecked)}
+        />
+        <Text weight="regular" variant="body" size="medium">
+          Controlled - Checked: {checked ? 'True' : 'False'}
+        </Text>
+      </Box>
     </>
   );
 };
