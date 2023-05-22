@@ -37,22 +37,21 @@ const offAnimation = keyframes`
 
 const enter = (props: { theme: DefaultTheme }) => {
   return css`
-    ${onAnimation} ${makeMotionTime(props.theme.motion.duration.xquick)} ${props.theme.motion.easing
-      .standard.effective as string} forwards;
+    ${onAnimation} ${props.theme.motion.easing.standard.effective as string} forwards;
   `;
 };
 const exit = (props: { theme: DefaultTheme }) => {
   return css`
-    ${offAnimation} ${makeMotionTime(props.theme.motion.duration.xquick)} ${props.theme.motion
-      .easing.standard.effective as string} forwards;
+    ${offAnimation} ${props.theme.motion.easing.standard.effective as string} forwards;
   `;
 };
 
 const AnimatedThumb = styled(BaseBox)<{
   isChecked?: boolean;
   isDisabled?: boolean;
+  shouldRunAnimation?: boolean;
   size: 'small' | 'medium';
-}>(({ theme, isChecked, isDisabled }) => {
+}>(({ theme, isChecked, isDisabled, shouldRunAnimation }) => {
   const variant = isDisabled ? 'disabled' : 'default';
   const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
 
@@ -60,8 +59,10 @@ const AnimatedThumb = styled(BaseBox)<{
     width: 100%;
     height: 100%;
     border-radius: ${makeBorderSize(theme.border.radius.max)};
-    transform: translateX(0%);
     animation: ${isChecked ? enter : exit};
+    animation-duration: ${shouldRunAnimation
+      ? makeMotionTime(theme.motion.duration.xquick)
+      : '0ms'};
     background-color: ${backgroundColor};
   `;
 });

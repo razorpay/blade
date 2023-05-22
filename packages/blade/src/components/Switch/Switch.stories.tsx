@@ -22,7 +22,12 @@ export default {
 const SwitchTemplate: ComponentStory<typeof SwitchComponent> = ({ ...args }) => {
   return (
     <BaseBox>
-      <SwitchComponent {...args} size="medium" accessibilityLabel="Toggle dark mode" />
+      <SwitchComponent
+        {...args}
+        defaultChecked
+        size="medium"
+        accessibilityLabel="Toggle dark mode"
+      />
       <SwitchComponent
         {...args}
         name="darkmode"

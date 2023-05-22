@@ -9,7 +9,13 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import { assignWithoutSideEffects, makeAccessible, metaAttribute, useBreakpoint } from '~utils';
+import {
+  assignWithoutSideEffects,
+  makeAccessible,
+  metaAttribute,
+  useBreakpoint,
+  usePrevious,
+} from '~utils';
 import type { BladeElementRef } from '~src/hooks/types';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 
@@ -44,6 +50,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
 
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const previousChecked = usePrevious(state.isChecked);
 
   return (
     <BaseBox {...metaAttribute({ testID })} display={state.isReactNative ? 'flex' : 'inline-block'}>
@@ -75,6 +82,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
         >
           <Thumb size={size} deviceType={matchedDeviceType} isChecked={state.isChecked}>
             <AnimatedThumb
+              shouldRunAnimation={previousChecked !== state.isChecked}
               isChecked={state.isChecked}
               isDisabled={isDisabled}
               display="flex"
