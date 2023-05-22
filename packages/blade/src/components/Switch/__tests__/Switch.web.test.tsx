@@ -90,6 +90,7 @@ describe('<Switch />', () => {
         value: 'darkmode',
       }),
     );
+    expect(checkFn.mock.calls[0][0].event).not.toBeUndefined();
     await user.click(getByRole('switch', { name }));
     expect(getByRole('switch', { name })).toBeChecked();
     expect(checkFn).toBeCalledWith(
@@ -98,6 +99,7 @@ describe('<Switch />', () => {
         value: 'darkmode',
       }),
     );
+    expect(checkFn.mock.calls[0][0].event).not.toBeUndefined();
   });
 
   it('should support controlled state', async () => {
