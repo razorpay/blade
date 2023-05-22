@@ -17,6 +17,8 @@ This document outlines the API of `Modal` component.
 - [Behaviors](#behaviors)
   - [Modal Stacking](#modal-stacking)
   - [Modal Sizes \& Responsiveness](#modal-sizes--responsiveness)
+  - [Modal Height](#modal-height)
+  - [Modal for React Native](#modal-for-react-native)
 - [Accessibility](#accessibility)
 - [Open questions](#open-questions)
 - [References](#references)
@@ -88,6 +90,12 @@ Sample usage:
   - large: `1024px`
 - All the Modals will have a min-width of `320px` regardless of the size.
 - This would mean that the Modal will be responsive and will scale down to `320px` on smaller screens but will not scale up beyond the max-width as per its size mentioned above.
+
+### Modal Height
+- Each Modal will have a max-height of `80vh` (80% of viewport height) and will be scrollable if the content exceeds this height.
+
+### Modal for React Native
+TBD
 
 ## Accessibility
 - Trap keyboard focus within the modal.
