@@ -10,6 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { switchColors, switchSizes } from './switchTokens';
+import type { AnimatedThumbProps } from './types';
 import { getIn, makeBorderSize, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
@@ -31,13 +32,6 @@ const StyledAnimatedThumb = styled(Animated.View)<{ isDisabled?: boolean }>(
     };
   },
 );
-
-type AnimatedThumbProps = {
-  children: React.ReactNode;
-  isChecked?: boolean;
-  isDisabled?: boolean;
-  size: 'small' | 'medium';
-};
 
 const AnimatedThumb = ({
   isChecked,

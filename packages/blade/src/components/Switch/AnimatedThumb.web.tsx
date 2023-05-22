@@ -2,6 +2,7 @@
 import type { DefaultTheme } from 'styled-components';
 import styled, { keyframes, css } from 'styled-components';
 import { switchColors } from './switchTokens';
+import type { AnimatedThumbProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeBorderSize, getIn } from '~utils';
 
@@ -46,25 +47,22 @@ const exit = (props: { theme: DefaultTheme }) => {
   `;
 };
 
-const AnimatedThumb = styled(BaseBox)<{
-  isChecked?: boolean;
-  isDisabled?: boolean;
-  shouldRunAnimation?: boolean;
-  size: 'small' | 'medium';
-}>(({ theme, isChecked, isDisabled, shouldRunAnimation }) => {
-  const variant = isDisabled ? 'disabled' : 'default';
-  const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
+const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
+  ({ theme, isChecked, isDisabled, shouldRunAnimation }) => {
+    const variant = isDisabled ? 'disabled' : 'default';
+    const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
 
-  return css`
-    width: 100%;
-    height: 100%;
-    border-radius: ${makeBorderSize(theme.border.radius.max)};
-    animation: ${isChecked ? enter : exit};
-    animation-duration: ${shouldRunAnimation
-      ? makeMotionTime(theme.motion.duration.xquick)
-      : '0ms'};
-    background-color: ${backgroundColor};
-  `;
-});
+    return css`
+      width: 100%;
+      height: 100%;
+      border-radius: ${makeBorderSize(theme.border.radius.max)};
+      animation: ${isChecked ? enter : exit};
+      animation-duration: ${shouldRunAnimation
+        ? makeMotionTime(theme.motion.duration.xquick)
+        : '0ms'};
+      background-color: ${backgroundColor};
+    `;
+  },
+);
 
 export { AnimatedThumb };

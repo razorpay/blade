@@ -57,4 +57,13 @@ type ThumbProps = {
   deviceType: 'mobile' | 'desktop';
 } & Pick<SwitchProps, 'isChecked' | 'size'>;
 
-export type { OnChange, SwitchProps, ThumbProps };
+type AnimatedThumbProps = {
+  children: React.ReactNode;
+  isChecked?: boolean;
+  isDisabled?: boolean;
+  // eslint-disable-next-line react/no-unused-prop-types
+  shouldRunAnimation?: boolean;
+  size: 'small' | 'medium';
+};
+
+export type { OnChange, SwitchProps, ThumbProps, AnimatedThumbProps };
