@@ -35,10 +35,10 @@ const DropdownStoryMeta = {
   },
 };
 
-export const Default = (): JSX.Element => {
+export const Default = (args: DropdownProps): JSX.Element => {
   return (
     <Box minHeight="200px" width={{ base: '100%', m: '500px' }}>
-      <Dropdown>
+      <Dropdown {...args}>
         <DropdownButton icon={MyAccountIcon} variant="secondary">
           My Account
         </DropdownButton>
@@ -149,7 +149,7 @@ ControlledMenu.parameters = {
   },
 };
 
-export const ControlledMultiSelectMenu = (): JSX.Element => {
+export const ControlledMultiSelectMenu = (args: DropdownProps): JSX.Element => {
   const [filters, setFilters] = React.useState<string[]>([]);
 
   const selectItem = ({ name, value }: { name: string; value?: boolean }): void => {
@@ -171,7 +171,7 @@ export const ControlledMultiSelectMenu = (): JSX.Element => {
           </Badge>
         ))}
       </Box>
-      <Dropdown selectionType="multiple">
+      <Dropdown {...args}>
         <DropdownButton variant="tertiary">Filters: {filters.length} Applied</DropdownButton>
         <DropdownOverlay>
           <ActionList>
@@ -207,6 +207,9 @@ export const ControlledMultiSelectMenu = (): JSX.Element => {
       </Dropdown>
     </Box>
   );
+};
+ControlledMultiSelectMenu.args = {
+  selectionType: 'multiple',
 };
 
 ControlledMultiSelectMenu.parameters = {
