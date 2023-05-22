@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Switch /> should render switchElement with label 1`] = `
+exports[`<Switch /> should render switch with label 1`] = `
 <View
   style={
     Object {
