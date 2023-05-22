@@ -37,7 +37,7 @@ This document outlines the API of `Modal` component.
 Sample usage:
 
 ```jsx
-import { Modal, ModalHeader, ModalBody, ModalFooter } from '@razorpay/blade/components';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Text } from '@razorpay/blade/components';
 
 const [isOpen, setIsOpen] = useState(false);
 
@@ -47,8 +47,8 @@ const [isOpen, setIsOpen] = useState(false);
     <Text>This is the Modal Body</Text>
   </ModalBody>
   <ModalFooter>
-    <Button>Cancel</Button>
-    <Button>Save</Button>
+    <Button variant='secondary'>Cancel</Button>
+    <Button variant='primary'>Save</Button>
   </ModalFooter>
 </Modal>
 ```
