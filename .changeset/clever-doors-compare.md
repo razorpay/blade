@@ -4,6 +4,11 @@
 
 feat(Dropdown): Controlled Dropdown and Button Trigger
 
+- Adds API to seamlessly build controlled dropdown
+- Add DropdownButton component to trigger dropdown using Button
+- Removes `isDefaultSelected` from `ActionListItem` *(see migration guide below)*
+
+
 > **Warning**
 >
 > **Breaking change** for consumers who -
