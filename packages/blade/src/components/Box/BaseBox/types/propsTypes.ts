@@ -106,6 +106,7 @@ const validBoxAsValues = [
   'aside',
   'nav',
   'span',
+  'label',
 ] as const;
 
 type BoxAsType = typeof validBoxAsValues[number];
