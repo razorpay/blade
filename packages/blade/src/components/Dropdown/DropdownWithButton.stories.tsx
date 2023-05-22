@@ -1,5 +1,6 @@
 import React from 'react';
 import { DropdownButton } from './DropdownButton';
+import type { DropdownProps } from '.';
 import { Dropdown, DropdownOverlay } from '.';
 import {
   ActionList,
@@ -17,12 +18,21 @@ import {
 } from '~components/Icons';
 import { Box } from '~components/Box';
 import { Badge } from '~components/Badge';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Button',
   component: Dropdown,
-  subcomponents: { DropdownButton },
-  args: {},
+  args: {
+    selectionType: 'single',
+  },
+  argTypes: {
+    selectionType: {
+      options: ['single', 'multiple'],
+      control: 'radio',
+    },
+    ...getStyledPropsArgTypes(),
+  },
 };
 
 export const Default = (): JSX.Element => {
@@ -67,13 +77,14 @@ export const Default = (): JSX.Element => {
   );
 };
 
-export const ControlledMenu = (): JSX.Element => {
+export const ControlledMenu = (args: DropdownProps): JSX.Element => {
   const [status, setStatus] = React.useState<string | undefined>('in-progress');
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <Box minHeight="200px">
       <Dropdown
+        {...args}
         onDismiss={() => {
           setIsOpen(false);
         }}
@@ -127,6 +138,15 @@ export const ControlledMenu = (): JSX.Element => {
       </Dropdown>
     </Box>
   );
+};
+
+ControlledMenu.parameters = {
+  docs: {
+    description: {
+      story:
+        'Check out https://codesandbox.io/s/blade-controlled-select-vxg30b?file=/App.tsx for live example',
+    },
+  },
 };
 
 export const ControlledMultiSelectMenu = (): JSX.Element => {
@@ -187,6 +207,15 @@ export const ControlledMultiSelectMenu = (): JSX.Element => {
       </Dropdown>
     </Box>
   );
+};
+
+ControlledMultiSelectMenu.parameters = {
+  docs: {
+    description: {
+      story:
+        'Check out https://codesandbox.io/s/blade-controlled-select-vxg30b?file=/App.tsx for live example',
+    },
+  },
 };
 
 export default DropdownStoryMeta;

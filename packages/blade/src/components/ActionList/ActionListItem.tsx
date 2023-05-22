@@ -412,6 +412,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
 
 const ActionListItem = assignWithoutSideEffects(React.memo(_ActionListItem), {
   componentId: componentIds.ActionListItem,
+  displayName: componentIds.ActionListItem,
 });
 
 export {
