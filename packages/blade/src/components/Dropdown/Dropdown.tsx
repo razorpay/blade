@@ -91,6 +91,11 @@ const _Dropdown = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
+  const close = React.useCallback(() => {
+    setIsOpen(false);
+    onDismiss?.();
+  }, [onDismiss]);
+
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       if (
@@ -118,6 +123,7 @@ const _Dropdown = ({
     () => ({
       isOpen,
       setIsOpen,
+      close,
       selectedIndices,
       setSelectedIndices,
       controlledValueIndices,
@@ -164,20 +170,16 @@ const _Dropdown = ({
     ],
   );
 
-  // This is the dismiss function which will be injected into the BottomSheet
-  // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
-  const onBottomSheetDismiss = React.useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
   const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
     return {
       isOpen,
       dropdownHasBottomSheet,
       setDropdownHasBottomSheet,
-      onBottomSheetDismiss,
+      // This is the dismiss function which will be injected into the BottomSheet
+      // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
+      onBottomSheetDismiss: close,
     };
-  }, [dropdownHasBottomSheet, isOpen, onBottomSheetDismiss]);
+  }, [dropdownHasBottomSheet, isOpen, close]);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>

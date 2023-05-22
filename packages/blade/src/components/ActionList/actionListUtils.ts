@@ -84,7 +84,7 @@ const getActionListProperties = (
             value: child.props.isSelected ?? value,
           });
 
-          if (anchorLink) {
+          if (anchorLink && !isReactNative()) {
             const target = child.props.target ?? '_self';
             window.open(anchorLink, target);
             if (window.top) {
