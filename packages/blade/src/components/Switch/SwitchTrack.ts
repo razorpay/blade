@@ -1,14 +1,12 @@
 import isNumber from 'lodash/isNumber';
 import styled from 'styled-components';
 import { switchColors, switchSizes } from './switchTokens';
+import type { SwitchProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { getIn, makeSpace, makeSize, isReactNative, makeMotionTime } from '~utils';
 
-type TrackProps = {
-  size: 'small' | 'medium';
+type TrackProps = Required<Pick<SwitchProps, 'size' | 'isDisabled' | 'isChecked'>> & {
   deviceType: 'mobile' | 'desktop';
-  isDisabled?: boolean;
-  isChecked?: boolean;
 };
 
 const SwitchTrack = styled(BaseBox)<TrackProps>(

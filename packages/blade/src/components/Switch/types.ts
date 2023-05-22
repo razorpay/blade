@@ -48,7 +48,13 @@ type SwitchProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
+  /**
+   * Provides accessible label for internal checkbox component that sets the aria-label prop for screen readers.
+   */
   accessibilityLabel?: string;
+  /**
+   * The id of the input field in a switch, useful for associating a label element with the input via htmlFor prop
+   */
   id?: string;
   testID?: string;
 };
@@ -58,13 +64,10 @@ type ThumbProps = {
   deviceType: 'mobile' | 'desktop';
 } & Pick<SwitchProps, 'isChecked' | 'size'>;
 
-type AnimatedThumbProps = {
+type AnimatedThumbProps = Pick<SwitchProps, 'size' | 'isChecked' | 'isDisabled'> & {
   children: React.ReactNode;
-  isChecked?: boolean;
-  isDisabled?: boolean;
   // eslint-disable-next-line react/no-unused-prop-types
   shouldRunAnimation?: boolean;
-  size: 'small' | 'medium';
 };
 
 export type { OnChange, SwitchProps, ThumbProps, AnimatedThumbProps };

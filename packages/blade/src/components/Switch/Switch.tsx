@@ -82,7 +82,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
         <SwitchTrack
           size={size}
           deviceType={matchedDeviceType}
-          isDisabled={isDisabled}
+          isDisabled={Boolean(isDisabled)}
           isChecked={state.isChecked}
           {...makeAccessible({ hidden: true })}
         >
