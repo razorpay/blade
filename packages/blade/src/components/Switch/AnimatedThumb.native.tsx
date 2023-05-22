@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 import React from 'react';
 import isNumber from 'lodash/isNumber';
-import type { EasingFn } from 'react-native-reanimated';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -11,7 +10,7 @@ import Animated, {
 
 import { switchColors, switchSizes } from './switchTokens';
 import type { AnimatedThumbProps } from './types';
-import { getIn, makeBorderSize, useBreakpoint } from '~utils';
+import { castNativeType, getIn, makeBorderSize, useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 const StyledAnimatedThumb = styled(Animated.View)<{ isDisabled?: boolean }>(
@@ -43,8 +42,8 @@ const AnimatedThumb = ({
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const translateX = useSharedValue(isChecked ? 1 : 0);
 
-  const easingIn = (theme.motion.easing.standard.effective as unknown) as EasingFn;
-  const easingOut = (theme.motion.easing.standard.effective as unknown) as EasingFn;
+  const easingIn = castNativeType(theme.motion.easing.standard.effective);
+  const easingOut = castNativeType(theme.motion.easing.standard.effective);
   const thumbWidth = switchSizes.thumb[matchedDeviceType][size].width;
   const finalWidth = isNumber(thumbWidth) ? thumbWidth : getIn(theme, thumbWidth);
 

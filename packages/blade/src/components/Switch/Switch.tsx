@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 import React from 'react';
 import { ThumbIcon } from './ThumbIcon';
 import type { SwitchProps } from './types';
@@ -53,7 +55,11 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
   const previousChecked = usePrevious(state.isChecked);
 
   return (
-    <BaseBox {...metaAttribute({ testID })} display={state.isReactNative ? 'flex' : 'inline-block'}>
+    <BaseBox
+      {...metaAttribute({ testID })}
+      // @ts-ignore on rn inline-block is not valid but type here will be `flex | inline-block`
+      display={state.isReactNative ? 'flex' : 'inline-block'}
+    >
       <SelectorLabel
         inputProps={
           state.isReactNative
