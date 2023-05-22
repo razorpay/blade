@@ -274,6 +274,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   <div
     class="c0 c1"
     data-blade-component="card"
+    elevation="lowRaised"
   >
     <div
       class=""
@@ -614,6 +615,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   <div
     class="c0 c1"
     data-blade-component="card"
+    elevation="lowRaised"
   >
     <div
       class="c2"
@@ -783,8 +785,8 @@ exports[`<Card /> should render a plain Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
-  background-color: hsla(0,0%,100%,1);
+  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
+  background-color: hsla(220,27%,98%,1);
   box-sizing: border-box;
 }
 
@@ -792,6 +794,7 @@ exports[`<Card /> should render a plain Card 1`] = `
   <div
     class="c0 c1"
     data-blade-component="card"
+    elevation="highRaised"
   >
     <div
       class=""

@@ -23,6 +23,9 @@ export type ColorContrast = {
   [K in ColorContrastTypes as `${Extract<K, string>}Contrast`]: string;
 };
 
+// @TODO: this shall rather be Surface = 'level1' | 'level2' | 'level3' to keep in sync with color tokens
+export type SurfaceLevels = 1 | 2 | 3;
+
 export type ActionStates = {
   default: string;
   hover: string;

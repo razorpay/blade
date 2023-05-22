@@ -28,6 +28,8 @@ import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import type { Elevation } from '~tokens/global';
+import type { SurfaceLevels } from '~tokens/theme/theme';
 
 const Page = (): React.ReactElement => {
   return (
@@ -119,7 +121,8 @@ const propsCategory = {
 };
 
 type StoryControlProps = {
-  surfaceLevel: 2;
+  surfaceLevel: Exclude<SurfaceLevels, 1>;
+  elevation: keyof Elevation;
   headerTitle: string;
   headerSubtitle: string;
   prefix: IconComponent;
@@ -144,6 +147,7 @@ export default {
   component: Card,
   args: {
     surfaceLevel: 2,
+    elevation: 'lowRaised',
     headerTitle: 'Payment Links',
     headerSubtitle: 'Share payment link via an email, SMS, messenger, chatbot etc.',
     footerTitle: 'Built for Developers',
@@ -177,6 +181,9 @@ export default {
   },
   argTypes: {
     surfaceLevel: {
+      table: { category: propsCategory.CARD },
+    },
+    elevation: {
       table: { category: propsCategory.CARD },
     },
     headerTitle: {
@@ -237,7 +244,7 @@ export default {
 
 const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
-    <Card surfaceLevel={args.surfaceLevel}>
+    <Card surfaceLevel={args.surfaceLevel} elevation={args.elevation}>
       <CardHeader>
         <CardHeaderLeading
           title={args.headerTitle}

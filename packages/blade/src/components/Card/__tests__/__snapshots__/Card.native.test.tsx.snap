@@ -995,7 +995,7 @@ exports[`<Card /> should render a plain Card 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "backgroundColor": "hsla(220, 27%, 98%, 1)",
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "column",
@@ -1006,18 +1006,18 @@ exports[`<Card /> should render a plain Card 1`] = `
           "width": "100%",
         },
         Object {
-          "elevation": 4,
+          "elevation": 26,
           "shadowColor": "hsla(217, 56%, 17%, 0.64)",
           "shadowOffset": Object {
-            "height": 3,
+            "height": 18,
             "width": 0,
           },
-          "shadowOpacity": 0.12,
-          "shadowRadius": 2,
+          "shadowOpacity": 0.2,
+          "shadowRadius": 12,
         },
       ]
     }
-    surfaceLevel={2}
+    surfaceLevel={3}
   >
     <View
       data-blade-component="card-body"
