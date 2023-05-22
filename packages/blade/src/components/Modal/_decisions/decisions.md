@@ -37,6 +37,20 @@ This document outlines the API of `Modal` component.
 Sample usage:
 
 ```jsx
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '@razorpay/blade/components';
+
+const [isOpen, setIsOpen] = useState(false);
+
+<Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+  <ModalHeader title="Modal Title" />
+  <ModalBody>
+    <Text>This is the Modal Body</Text>
+  </ModalBody>
+  <ModalFooter>
+    <Button>Cancel</Button>
+    <Button>Save</Button>
+  </ModalFooter>
+</Modal>
 ```
 
 ### `Modal` API
@@ -45,7 +59,6 @@ Sample usage:
 | --------------- | -------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | isOpen          | `boolean`                  | `false`             | Toggles modal state                                                                                                                                                 |          |
 | size          | `small`, `medium`, `large`                  | `small`             | Size of the modal                                                                                                                                                 |          |
-| showOverflowContent          | `boolean`                  | `false`             | TBD                                                                                                                                                 |          |
 | onDismiss       | `Callback`                 | `undefined`         | Called when the modal is closed, either by user state, hitting `esc` or tapping backdrop                                                                            |          |
 | initialFocusRef | `React.Ref`                | `undefined`         | ref element you want to get keyboard focus when opening the modal                                                                                                          |          |
 | children | `React.ReactNode`                | `undefined`         | Accepts other Modal sub components like ModalHeader,ModalBody,ModalFooter                                                                                                          |          |
