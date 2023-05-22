@@ -14,6 +14,9 @@ This document outlines the API of `Modal` component.
   - [`ModalBody` API](#modalbody-api)
   - [`ModalHeader` API](#modalheader-api)
   - [`ModalFooter` API](#modalfooter-api)
+- [Behaviors](#behaviors)
+  - [Modal Stacking](#modal-stacking)
+  - [Modal Sizes \& Responsiveness](#modal-sizes--responsiveness)
 - [Accessibility](#accessibility)
 - [Open questions](#open-questions)
 - [References](#references)
@@ -70,13 +73,30 @@ Sample usage:
 | ---------- | ----------------- | ----------- | --------------------------- | -------- |
 | `children` | `React.ReactNode` | `undefined` | Contents of the ModalFooter | ✅       |
 
+## Behaviors
+### Modal Stacking
+- We're at consensus that we do need to support modal stacking.
+- Design is not yet aligned on how the modal should look like when stacked and what the motion should be.
+- As an interim solution we can implement a basic stacking behavior with the same exit/entry animations as the current modal and look into enhancing this motion later.
+
+### Modal Sizes & Responsiveness
+- We will offer Modal in 3 sizes - small, medium and large.
+- Each size corresponds to a max-width for the Modal
+- As of today these are the max-widths we're using for each size:
+  - small: `400px`
+  - medium: `760px`
+  - large: `1024px`
+- All the Modals will have a min-width of `320px` regardless of the size.
+- This would mean that the Modal will be responsive and will scale down to `320px` on smaller screens but will not scale up beyond the max-width as per its size mentioned above.
+
 ## Accessibility
 - Trap keyboard focus within the modal.
 - Close the modal when the user hits the `esc` key.
-- Add `aria-modal="true"`
+- Add `aria-modal='true'`
 - Add `aria-role='dialog'`
 
 ## Open questions
+- Should we have an upper limit on Modal stacking the same way we have an upper limit of 3 stacks on BottomSheet?
 
 ## References
 
