@@ -8,8 +8,18 @@ type SelectorLabelProps = {
    */
   inputProps: any; // Partial<Extract<InputProps, { onPress: any }>>;
   componentName?: string;
+  /**
+   * Changes the label to use `display: inline-block`
+   */
   isInline?: boolean;
 } & TestID;
+
+type SelectorInputProps = HoverProps & {
+  id?: string;
+  inputProps: any;
+  tabIndex?: number;
+  accessibilityLabel?: string;
+};
 
 type SelectorInputHoverVariants = {
   default: {
@@ -31,4 +41,4 @@ type HoverProps = {
   hoverStyles: SelectorInputHoverVariants;
 };
 
-export { SelectorLabelProps, HoverProps, SelectorInputHoverVariants };
+export { SelectorLabelProps, SelectorInputProps, HoverProps, SelectorInputHoverVariants };

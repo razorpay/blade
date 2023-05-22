@@ -53,6 +53,10 @@ const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
     const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
 
     return css`
+      display: flex;
+      alignitems: center;
+      justifycontent: center;
+      flexshrink: 0;
       width: 100%;
       height: 100%;
       border-radius: ${makeBorderSize(theme.border.radius.max)};

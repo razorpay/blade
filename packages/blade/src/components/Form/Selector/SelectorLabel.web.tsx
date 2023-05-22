@@ -23,14 +23,9 @@ const SelectorLabel = ({
   componentName,
   testID,
   isInline,
-  ...syntheticEvents
 }: SelectorLabelProps): React.ReactElement => {
   return (
-    <StyledSelectorLabel
-      {...syntheticEvents}
-      isInline={isInline}
-      {...metaAttribute({ name: componentName, testID })}
-    >
+    <StyledSelectorLabel isInline={isInline} {...metaAttribute({ name: componentName, testID })}>
       {children}
     </StyledSelectorLabel>
   );

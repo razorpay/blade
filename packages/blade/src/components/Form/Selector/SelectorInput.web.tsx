@@ -3,7 +3,7 @@
 import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
-import type { HoverProps } from './types';
+import type { HoverProps, SelectorInputProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType, getIn, makeAccessible, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
@@ -46,10 +46,7 @@ const StyledInput = styled.input<HoverProps>(
   }),
 );
 
-const _SelectorInput: React.ForwardRefRenderFunction<
-  BladeElementRef,
-  HoverProps & { id?: string; inputProps: any; tabIndex?: number; accessibilityLabel?: string }
-> = (
+const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorInputProps> = (
   { id, inputProps, isChecked, isDisabled, hasError, hoverStyles, tabIndex, accessibilityLabel },
   ref,
 ) => {

@@ -85,10 +85,6 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
               shouldRunAnimation={previousChecked !== state.isChecked}
               isChecked={state.isChecked}
               isDisabled={isDisabled}
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              flexShrink={0}
               size={size}
             >
               <ThumbIcon isChecked={state.isChecked} isDisabled={isDisabled} size={size} />

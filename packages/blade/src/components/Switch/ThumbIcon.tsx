@@ -35,7 +35,7 @@ const ThumbIcon = ({
 
   return (
     <AnimatedThumbIcon
-      isChecked={isChecked}
+      isChecked={Boolean(isChecked)}
       width={finalWidth}
       height={finalHeight}
       viewBox="0 0 11 8"
