@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 7.2.2
+
+### Patch Changes
+
+- 2a6b8c89: chore: add meta attribute `data-component-from-blade='true'` to native components
+
 ## 7.2.1
 
 ### Patch Changes
