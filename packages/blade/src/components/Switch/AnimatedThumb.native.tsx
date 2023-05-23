@@ -60,6 +60,7 @@ const AnimatedThumb = ({
       width: interpolate(
         translateX.value,
         [0, 0.3, 1],
+        // scale thumb by 25%, 1.25 comes from motion guidelines
         [finalWidth, finalWidth * 1.25, finalWidth],
       ),
       transform: [
@@ -67,6 +68,7 @@ const AnimatedThumb = ({
           translateX: interpolate(
             translateX.value,
             [0, 0.3, 1],
+            // quickly moves until thumb scale reaches 1.25x then moves to fill finalWidth
             [0 * finalWidth, 0.1 * finalWidth, 1 * finalWidth],
           ),
         },
