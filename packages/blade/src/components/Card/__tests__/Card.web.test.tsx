@@ -40,6 +40,15 @@ describe('<Card />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render a Card without 0 padding', () => {
+    const { container } = renderWithTheme(
+      <Card padding="spacing.0">
+        <CardBody>Plain Card</CardBody>
+      </Card>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render a Card with Header', () => {
     const cardTitle = 'Card Header';
     const cardSubtitle = 'Card subtitle';

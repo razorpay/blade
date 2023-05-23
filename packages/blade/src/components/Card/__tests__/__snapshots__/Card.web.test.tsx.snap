@@ -2,10 +2,7 @@
 
 exports[`<Card /> should render a Card with Footer 1`] = `
 .c0 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 24px;
-  padding-left: 24px;
+  padding: 24px;
   border-radius: 4px;
 }
 
@@ -396,10 +393,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 
 exports[`<Card /> should render a Card with Header 1`] = `
 .c0 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 24px;
-  padding-left: 24px;
+  padding: 24px;
   border-radius: 4px;
 }
 
@@ -767,12 +761,45 @@ exports[`<Card /> should render a Card with Header 1`] = `
 </div>
 `;
 
+exports[`<Card /> should render a Card without 0 padding 1`] = `
+.c0 {
+  padding: 0px;
+  border-radius: 4px;
+}
+
+.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
+  background-color: hsla(0,0%,100%,1);
+  box-sizing: border-box;
+}
+
+<div>
+  <div
+    class="c0 c1"
+    data-blade-component="card"
+    elevation="lowRaised"
+  >
+    <div
+      class=""
+      data-blade-component="card-body"
+    >
+      Plain Card
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 .c0 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 24px;
-  padding-left: 24px;
+  padding: 24px;
   border-radius: 4px;
 }
 
@@ -811,10 +838,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 
 exports[`<Card /> should render a plain Card 1`] = `
 .c0 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 24px;
-  padding-left: 24px;
+  padding: 24px;
   border-radius: 4px;
 }
 

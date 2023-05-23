@@ -19,10 +19,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "column",
-          "paddingBottom": 20,
+          "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
-          "paddingTop": 20,
+          "paddingTop": 24,
           "width": "100%",
         },
         Object {
@@ -515,10 +515,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "column",
-          "paddingBottom": 20,
+          "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
-          "paddingTop": 20,
+          "paddingTop": 24,
           "width": "100%",
         },
         Object {
@@ -983,6 +983,59 @@ exports[`<Card /> should render a Card with Header 1`] = `
 </View>
 `;
 
+exports[`<Card /> should render a Card without 0 padding 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    borderRadius="medium"
+    data-blade-component="card"
+    elevation="lowRaised"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderRadius": 4,
+          "display": "flex",
+          "flexDirection": "column",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "width": "100%",
+        },
+        Object {
+          "elevation": 4,
+          "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+          "shadowOffset": Object {
+            "height": 3,
+            "width": 0,
+          },
+          "shadowOpacity": 0.12,
+          "shadowRadius": 2,
+        },
+      ]
+    }
+    surfaceLevel={2}
+  >
+    <View
+      data-blade-component="card-body"
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      Plain Card
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 <View
   style={
@@ -1005,10 +1058,10 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
           "borderWidth": 1,
           "display": "flex",
           "flexDirection": "column",
-          "paddingBottom": 20,
+          "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
-          "paddingTop": 20,
+          "paddingTop": 24,
           "width": "100%",
         },
         Object {
@@ -1090,10 +1143,10 @@ exports[`<Card /> should render a plain Card 1`] = `
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "column",
-          "paddingBottom": 20,
+          "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
-          "paddingTop": 20,
+          "paddingTop": 24,
           "width": "100%",
         },
         Object {

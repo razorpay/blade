@@ -1,6 +1,7 @@
 import React from 'react';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -59,6 +60,14 @@ export type CardProps = {
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--page
    */
   elevation?: keyof Elevation;
+  /**
+   * Sets the padding equally on all sides. Only few `spacing` tokens are allowed deliberately
+   * @default `spacing.7`
+   *
+   * **Links:**
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
+   */
+  padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.3' | 'spacing.5' | 'spacing.7'>;
 } & TestID &
   StyledPropsBlade;
 
@@ -67,6 +76,7 @@ const Card = ({
   surfaceLevel = 2,
   elevation = 'lowRaised',
   testID,
+  padding = 'spacing.7',
   ...styledProps
 }: CardProps): React.ReactElement => {
   useVerifyAllowedComponents(children, 'Card', [
@@ -79,10 +89,7 @@ const Card = ({
     <CardProvider>
       <CardSurface
         {...metaAttribute({ name: MetaConstants.Card, testID })}
-        paddingLeft="spacing.7"
-        paddingRight="spacing.7"
-        paddingTop="spacing.6"
-        paddingBottom="spacing.6"
+        padding={padding}
         borderRadius="medium"
         surfaceLevel={surfaceLevel}
         elevation={elevation}
