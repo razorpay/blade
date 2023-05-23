@@ -76,6 +76,20 @@ const _Dropdown = ({
   const dropdownBaseId = useId('dropdown');
 
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
+  const isFirstRenderRef = React.useRef(true);
+
+  React.useEffect(() => {
+    // Ignoring the `onDismiss` call on first render
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false;
+      return;
+    }
+
+    if (!isOpen && onDismiss) {
+      onDismiss();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   const close = React.useCallback(() => {
     setIsOpen(false);
