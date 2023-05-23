@@ -32,6 +32,17 @@ describe('<Card />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render a border when elevation is `none`', () => {
+    const { toJSON } = renderWithTheme(
+      <Card elevation="none">
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+      </Card>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render a Card with Header', () => {
     const cardTitle = 'Card Header';
     const cardSubtitle = 'Card subtitle';

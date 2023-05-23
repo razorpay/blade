@@ -7,17 +7,22 @@ import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import { castNativeType } from '~utils';
 
-const CardSurfaceStyled = styled(BaseBox)<{ surfaceLevel: Exclude<SurfaceLevels, 1> }>(
-  ({ surfaceLevel, theme }) => {
-    const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
-    return {
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor,
-    };
-  },
-);
+const CardSurfaceStyled = styled(BaseBox)<{
+  surfaceLevel: Exclude<SurfaceLevels, 1>;
+  elevation: keyof Elevation;
+}>(({ surfaceLevel, elevation, theme }) => {
+  const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
+  return {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
+    borderStyle: elevation === 'none' ? 'solid' : undefined,
+    borderColor:
+      elevation === 'none' ? `${theme.colors.surface.border.normal.lowContrast}` : undefined,
+    backgroundColor,
+  };
+});
 
 type CardSurfaceProps = {
   children: React.ReactNode;
@@ -36,6 +41,7 @@ const CardSurface = ({
     <CardSurfaceStyled
       {...props}
       surfaceLevel={surfaceLevel}
+      elevation={elevation}
       style={castNativeType(theme.elevation[elevation])}
     >
       {children}
