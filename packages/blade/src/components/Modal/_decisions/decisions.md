@@ -34,7 +34,12 @@ This document outlines the API of `Modal` component.
 <img src="./modal-anatomy.png" alt="Modal Anatomy" width="100%" />
 
 ## Animation
-TBD
+**Entry:**
+<img src="./modal-entry.gif" alt="Modal Entry Animation" width="100%" />
+
+
+**Exit:**
+<img src="./modal-exit.gif" alt="Modal Exit Animation" width="100%" />
 
 ## API
 
