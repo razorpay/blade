@@ -4,7 +4,7 @@
   "version": "8.0.0",
   "license": "MIT",
   "engines": {
-    "node": ">=14.18.0"
+    "node": ">=18.2.1"
   },
   "bin": {
     "migrate-typography": "./codemods/migrate-typography/cli.js"
