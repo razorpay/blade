@@ -283,7 +283,7 @@
       "name": "Import Text only",
       "path": "./build/components/index.web.js",
       "import": "{ Text }",
-      "limit": "12 kb",
+      "limit": "13 kb",
       "running": false
     }
   ]

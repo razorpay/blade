@@ -8,7 +8,7 @@ describe('<Box />', () => {
         display="flex"
         padding="spacing.0"
         // @ts-expect-error: Intentional to test bad flow
-        borderRadius="small"
+        fontWeight="bold"
       >
         children test!
       </Box>,
