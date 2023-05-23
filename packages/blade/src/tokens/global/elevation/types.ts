@@ -9,8 +9,14 @@ type ElevationStyles = Readonly<{
   shadowOpacity: number;
   shadowRadius: number;
   shadowOffset: {
-    width: number; // x-axis
-    height: number; // y-axis
+    /**
+     * x-axis
+     */
+    width: number;
+    /**
+     * y-axis
+     */
+    height: number;
   };
 }>;
 
