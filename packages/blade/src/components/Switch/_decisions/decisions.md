@@ -75,6 +75,33 @@ Switch by default doesn't render any `<label>` element internally, if users want
 <label>Dark mode <Switch /></label>
 ```
 
+## Motion
+
+Check out the [motion guidelines](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=32964-635518&t=o6i2iy1dc6Xqv3aP-0) for Switch. 
+
+
+### Hover State Animations:
+
+Off Hover: 
+
+<img alt="Off Hover Animation" src="./motion/off-hover-state.gif" width="30%"/>
+
+On Hover: 
+
+<img alt="On Hover Animation" src="./motion/on-hover-state.gif" width="30%" />
+
+
+### Switch On Off Animations:
+
+
+On to Off: 
+
+<img alt="On to Off Animation" src="./motion/on-to-off.gif" width="30%" />
+
+Off to On: 
+
+<img alt="Off to On Animation" src="./motion/off-to-on.gif" width="30%" />
+
 ## Accessibility
 
 Switch will work similarly as Checkbox, where the hidden input field will follow the [Checkbox accessibility](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/) pattern. But we will also have a visual button which will follow the [Switch accessibility](https://www.w3.org/WAI/ARIA/apg/patterns/switch/) pattern. 
