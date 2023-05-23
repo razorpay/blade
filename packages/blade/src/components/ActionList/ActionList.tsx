@@ -81,7 +81,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
     actionListItemRef,
     selectionType,
     dropdownBaseId,
-    setSelectedIndices,
     dropdownTriggerer,
     hasFooterAction,
   } = useDropdown();
@@ -92,7 +91,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
     sectionData,
     childrenWithId,
     actionListOptions,
-    defaultSelectedIndices,
     actionListHeaderChild,
     actionListFooterChild,
   } = React.useMemo(() => getActionListProperties(children), [children]);
@@ -101,11 +99,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
     setOptions(actionListOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionListOptions]);
-
-  React.useEffect(() => {
-    setSelectedIndices(defaultSelectedIndices);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const actionListContainerRole = getActionListContainerRole(hasFooterAction, dropdownTriggerer);
   const actionListItemWrapperRole = getActionListItemWrapperRole(

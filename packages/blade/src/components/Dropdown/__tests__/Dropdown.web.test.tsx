@@ -1,6 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { Dropdown, DropdownOverlay } from '../index';
+import { DropdownButton } from '../DropdownButton';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
 import {
@@ -13,6 +14,7 @@ import {
 } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { HistoryIcon, SearchIcon } from '~components/Icons';
+import { Text } from '~components/Typography';
 
 const getActiveDescendant = (
   selectInput: HTMLElement,
@@ -399,6 +401,102 @@ describe('<Dropdown />', () => {
     expect(applyClickHandler).toBeCalledTimes(1);
   });
 
+  it('should handle controlled props with single select', async () => {
+    const ControlledDropdown = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+
+      return (
+        <>
+          <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+          <Dropdown selectionType="single">
+            <SelectInput
+              label="Select City"
+              value={currentSelection}
+              onChange={(args) => {
+                setCurrentSelection(args.values[0]);
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+
+    const selectInput = getByRole('combobox', { name: 'Select City' });
+    expect(selectInput).toHaveTextContent('Select Option');
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveTextContent('Bangalore');
+
+    await user.click(selectInput);
+    await user.click(getByRole('option', { name: 'Pune' }));
+    expect(selectInput).toHaveTextContent('Pune');
+
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveTextContent('Bangalore');
+  });
+
+  it('should handle controlled props with multi select', async () => {
+    const ControlledDropdown = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+
+      return (
+        <>
+          <Button
+            onClick={() => {
+              if (!currentSelection.includes('bangalore')) {
+                setCurrentSelection([...currentSelection, 'bangalore']);
+              }
+            }}
+          >
+            Select Bangalore
+          </Button>
+          <Dropdown selectionType="multiple">
+            <SelectInput
+              label="Select City"
+              value={currentSelection}
+              onChange={(args) => {
+                if (args) {
+                  setCurrentSelection(args.values);
+                }
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+
+    const selectInput = getByRole('combobox', { name: 'Select City' });
+    expect(selectInput).toHaveTextContent('Select Option');
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveTextContent('Bangalore');
+
+    await user.click(selectInput);
+    await user.click(getByRole('option', { name: 'Pune' }));
+    expect(selectInput).toHaveTextContent('2 items selected');
+
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveTextContent('2 items selected');
+  });
+
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(
       <Dropdown>
@@ -429,5 +527,120 @@ describe('<Dropdown />', () => {
     expect(getByTestId('action-list-header-test')).toBeTruthy();
     expect(getByTestId('action-list-item-test')).toBeTruthy();
     expect(getByTestId('action-list-footer-test')).toBeTruthy();
+  });
+});
+
+describe('<Dropdown /> with <DropdownButton />', () => {
+  it('should render menu and make items clickable', async () => {
+    const user = userEvent.setup();
+    const profileClickHandler = jest.fn();
+
+    const { container, getByRole } = renderWithTheme(
+      <Dropdown>
+        <DropdownButton>My Account</DropdownButton>
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Profile" value="profile" onClick={profileClickHandler} />
+            <ActionListItem title="Settings" value="settings" href="/settings" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const dropdownTrigger = getByRole('button', { name: 'My Account' });
+
+    expect(dropdownTrigger).toBeInTheDocument();
+    // testing library ignores the nodes because they are set to display none so using querySelector to select from dom instead.
+    // the node becomes accessible after click on selectInput
+    expect(container.querySelector('[role=menu]')).not.toBeVisible();
+    await user.click(dropdownTrigger);
+    expect(getByRole('menu')).toBeVisible();
+    expect(profileClickHandler).not.toBeCalled();
+    await user.click(getByRole('menuitem', { name: 'Profile' }));
+    expect(profileClickHandler).toBeCalled();
+    expect(getByRole('link', { name: 'Settings' })).toHaveAttribute('href', '/settings');
+    expect(getByRole('link', { name: 'Settings' }).tagName).toBe('A');
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should handle controlled selection in menu', async () => {
+    const user = userEvent.setup();
+
+    const ControlledDropdownMenu = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
+      return (
+        <>
+          <Text>selection: {currentSelection}</Text>
+          <Dropdown>
+            <DropdownButton>My Account</DropdownButton>
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem
+                  isSelected={currentSelection === 'profile'}
+                  onClick={() => setCurrentSelection('profile')}
+                  title="Profile"
+                  value="profile"
+                />
+                <ActionListItem
+                  isSelected={currentSelection === 'settings'}
+                  onClick={() => setCurrentSelection('settings')}
+                  title="Settings"
+                  value="settings"
+                />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const { getByRole, getByText } = renderWithTheme(<ControlledDropdownMenu />);
+
+    await user.click(getByRole('button', { name: 'My Account' }));
+    await user.click(getByRole('menuitem', { name: 'Settings' }));
+    expect(getByText('selection: settings')).toBeInTheDocument();
+  });
+
+  it('should render menu and allow keyboard navigations', async () => {
+    const user = userEvent.setup();
+    const profileClickHandler = jest.fn();
+
+    const { container, getByRole } = renderWithTheme(
+      <Dropdown>
+        <DropdownButton>My Account</DropdownButton>
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Profile" value="profile" onClick={profileClickHandler} />
+            <ActionListItem title="Settings" value="settings" href="/settings" target="_blank" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const dropdownTrigger = getByRole('button', { name: 'My Account' });
+
+    expect(dropdownTrigger).toBeInTheDocument();
+    // testing library ignores the nodes because they are set to display none so using querySelector to select from dom instead.
+    // the node becomes accessible after click on selectInput
+    expect(container.querySelector('[role=menu]')).not.toBeVisible();
+
+    dropdownTrigger.focus();
+    await user.keyboard('{ArrowDown}');
+
+    expect(getByRole('menu')).toBeVisible();
+    expect(profileClickHandler).not.toBeCalled();
+
+    // Move to first item
+    await user.keyboard('{ArrowDown}');
+    expect(getActiveDescendant(dropdownTrigger, container)).toBe('Profile');
+    await user.keyboard('[Space]');
+    expect(profileClickHandler).toBeCalled();
+
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{ArrowDown}');
+    expect(getActiveDescendant(dropdownTrigger, container)).toBe('Settings');
+    window.open = jest.fn();
+    await user.keyboard('[Space]');
+    expect(window.open).toBeCalledWith('/settings', '_blank');
   });
 });

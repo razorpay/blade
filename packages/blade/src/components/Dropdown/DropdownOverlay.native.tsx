@@ -25,14 +25,14 @@ const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((pro
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const { isOpen, setIsOpen } = useDropdown();
+  const { isOpen, close } = useDropdown();
 
   return (
     <BaseBox position="relative">
       <StyledCloseableArea
         display={isOpen ? 'flex' : 'none'}
         onPress={() => {
-          setIsOpen(false);
+          close();
         }}
         testID="closeable-area"
       >
