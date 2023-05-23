@@ -12,7 +12,7 @@ import { ActionList, ActionListItem, ActionListItemIcon } from '~components/Acti
 import { CheckIcon, ClockIcon, CloseIcon } from '~components/Icons';
 
 const DropdownStoryMeta = {
-  title: 'Components/Dropdown/Stories/With Button',
+  title: 'Components/Dropdown/With Button',
   component: Dropdown,
   subcomponents: { DropdownButton },
   args: {},
@@ -26,12 +26,17 @@ const DropdownStoryMeta = {
         hidden: true,
       },
     },
+    chromatic: { disableSnapshot: true },
   },
 };
 
 export const Default = (): JSX.Element => {
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
+    <Sandbox
+      padding="spacing.0"
+      editorHeight="100vh"
+      uri="https://blade.razorpay.com/iframe.html?id=components-dropdown-with-button--default&args=&viewMode=story"
+    >
       {WithSimpleMenuStory}
     </Sandbox>
   );
@@ -99,6 +104,12 @@ export const InternalMenu = (): JSX.Element => {
       </Dropdown>
     </Box>
   );
+};
+
+InternalMenu.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
 };
 
 export default DropdownStoryMeta;

@@ -25,6 +25,12 @@ type SandboxProps = {
   editorHeight?: number | string;
   editorWidthPercentage?: number;
   padding?: BaseBoxProps['padding'];
+  /**
+   * Renders link in react native stories to open storybook on web
+   *
+   * (Its workaround since sandpack doesn't work on native)
+   */
+  uri?: string;
 };
 
 const getBladeVersion = (): string => {

@@ -1,5 +1,6 @@
 import dedent from 'dedent';
 import type { CodeViewerProps } from '@codesandbox/sandpack-react';
+import { ScrollView } from 'react-native';
 import type { RecipeSandboxProps, SandboxProps } from './Sandbox.web';
 import { BaseText } from '~components/Typography/BaseText';
 import { Link } from '~components/Link';
@@ -7,8 +8,13 @@ import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 
 // In React Native, the codesandbox doesn't work. So replacing it with normal text display for native
-function Sandbox({ children }: SandboxProps): JSX.Element {
-  return <BaseText fontFamily="code">{dedent(children)}</BaseText>;
+function Sandbox({ children, uri }: SandboxProps): JSX.Element {
+  return (
+    <ScrollView>
+      {uri ? <Link href={uri}>Open Story in Web</Link> : null}
+      <BaseText fontFamily="code">{dedent(children)}</BaseText>
+    </ScrollView>
+  );
 }
 
 function SandboxHighlighter({ children }: { children: string } & CodeViewerProps): JSX.Element {

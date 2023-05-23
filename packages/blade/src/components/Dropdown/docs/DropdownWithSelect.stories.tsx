@@ -26,7 +26,7 @@ import { HomeIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 
 const DropdownStoryMeta: Meta = {
-  title: 'Components/Dropdown/Stories/With Select',
+  title: 'Components/Dropdown/With Select',
   component: Dropdown,
   parameters: {
     viewMode: 'story',
@@ -38,6 +38,7 @@ const DropdownStoryMeta: Meta = {
         hidden: true,
       },
     },
+    chromatic: { disableSnapshot: true },
   },
 };
 
@@ -167,6 +168,12 @@ export const InternalControlledSelect = (): JSX.Element => {
   );
 };
 
+InternalControlledSelect.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
+};
+
 export const InternalSectionListPerformance = (): React.ReactElement => {
   return (
     <Dropdown selectionType="multiple">
@@ -192,6 +199,12 @@ export const InternalSectionListPerformance = (): React.ReactElement => {
       </DropdownOverlay>
     </Dropdown>
   );
+};
+
+InternalSectionListPerformance.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
 };
 
 export const InternalDropdownPerformance = (): React.ReactElement => {
@@ -272,6 +285,12 @@ export const InternalDropdownPerformance = (): React.ReactElement => {
       </DropdownOverlay>
     </Dropdown>
   );
+};
+
+InternalDropdownPerformance.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
 };
 
 export default DropdownStoryMeta;
