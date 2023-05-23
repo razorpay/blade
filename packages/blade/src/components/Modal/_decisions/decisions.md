@@ -19,6 +19,7 @@ This document outlines the API of `Modal` component.
   - [Modal Sizes \& Responsiveness](#modal-sizes--responsiveness)
   - [Modal Height](#modal-height)
   - [Modal for React Native](#modal-for-react-native)
+  - [Modal Usage on mWeb \& native apps](#modal-usage-on-mweb--native-apps)
 - [Accessibility](#accessibility)
 - [Open questions](#open-questions)
 - [References](#references)
@@ -108,6 +109,11 @@ const [isOpen, setIsOpen] = useState(false);
 
 ### Modal for React Native
 TBD
+
+### Modal Usage on mWeb & native apps
+- We will not be using the Modal component on mWeb or native apps.
+- We will only use the BottomSheet component on mWeb and native apps.
+- Designers would need to be mindful of this while designing for mWeb and native apps.
 
 ## Accessibility
 - Trap keyboard focus within the modal.
