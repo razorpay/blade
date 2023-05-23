@@ -12,7 +12,9 @@ function Sandbox({ children, uri }: SandboxProps): JSX.Element {
   return (
     <ScrollView>
       {uri ? <Link href={uri}>Open Story in Web</Link> : null}
-      <BaseText fontFamily="code">{dedent(children)}</BaseText>
+      <BaseText marginTop="spacing.5" fontFamily="code">
+        {dedent(children)}
+      </BaseText>
     </ScrollView>
   );
 }
