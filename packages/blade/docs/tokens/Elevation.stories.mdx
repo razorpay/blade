@@ -36,12 +36,20 @@ import { paymentTheme, bankingTheme } from '../../src/tokens';
 
 export const Border = () => {
   const { theme } = useTheme();
+  console.log(theme.colors.surface.text);
   return (
     <table>
       <tbody>
         {Object.entries(theme.elevation).map(([key, value]) => (
-          <tr key={key} style={{ backgroundColor: '#fafafa' }}>
-            <td>{`theme.elevation.${key}`}</td>
+          <tr
+            key={key}
+            style={{
+              backgroundColor: theme.colors.surface.background.level1.lowContrast,
+            }}
+          >
+            <td
+              style={{ color: theme.colors.surface.text.normal.lowContrast }}
+            >{`theme.elevation.${key}`}</td>
             <td style={{ padding: '20px' }}>
               <div
                 style={{

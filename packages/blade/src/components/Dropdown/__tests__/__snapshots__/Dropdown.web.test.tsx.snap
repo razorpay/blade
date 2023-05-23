@@ -1097,7 +1097,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   border-width: 1px;
   border-color: hsla(216,15%,54%,0.18);
   border-radius: 4px;
-  box-shadow: 0px 0px 2px 0px hsla(216,15%,54%,0.18),0px 3px 8px 0px hsla(216,15%,54%,0.18);
+  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
 .c8 {
@@ -1138,8 +1138,8 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
     class="c0"
   >
     <button
-      aria-activedescendant="dropdown-883-0"
-      aria-controls="dropdown-883-actionlist"
+      aria-activedescendant="dropdown-876-0"
+      aria-controls="dropdown-876-actionlist"
       aria-expanded="false"
       aria-haspopup="menu"
       class="c1"
@@ -1172,11 +1172,10 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
         width="100%"
       >
         <div
-          aria-labelledby="dropdown-883-label"
+          aria-labelledby="dropdown-876-label"
           class=" c7"
           data-blade-component="action-list"
-          elevation="5"
-          id="dropdown-883-actionlist"
+          id="dropdown-876-actionlist"
           role="menu"
         >
           <div
@@ -1187,7 +1186,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
               data-blade-component="action-list-item"
               data-index="0"
               data-value="profile"
-              id="dropdown-883-0"
+              id="dropdown-876-0"
               role="menuitem"
               tabindex="-1"
               type="button"
@@ -1229,7 +1228,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
               data-index="1"
               data-value="settings"
               href="/settings"
-              id="dropdown-883-1"
+              id="dropdown-876-1"
               role="link"
               tabindex="-1"
               type="button"
