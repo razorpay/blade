@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+"@razorpay/blade": minor
 ---
 
 feat: add border support to Box component
