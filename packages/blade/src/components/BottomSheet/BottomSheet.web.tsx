@@ -46,6 +46,7 @@ const BottomSheetSurface = styled.div<{
     borderTopLeftRadius: makeSize(size[16]),
     borderTopRightRadius: makeSize(size[16]),
     borderColor: theme.colors.surface.border.normal.lowContrast,
+    // this is reverse top elevation of highRaised elevation token
     boxShadow: '0px -24px 48px -12px hsla(217, 56%, 17%, 0.18)',
     opacity: 0,
     pointerEvents: 'none',

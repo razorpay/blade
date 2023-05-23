@@ -238,6 +238,7 @@ const _BottomSheet = ({
         <BottomSheetContext.Provider value={contextValue}>
           <GorhomBottomSheet
             style={{
+              // this is reverse top elevation of highRaised elevation token
               shadowColor: 'hsla(217,56%,17%,0.64)',
               shadowOffset: {
                 width: 0,
