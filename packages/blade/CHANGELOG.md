@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.1.0
+
+### Minor Changes
+
+- 9f2dabfd: feat: add border support to Box component
+
 ## 8.0.0
 
 ### Major Changes
