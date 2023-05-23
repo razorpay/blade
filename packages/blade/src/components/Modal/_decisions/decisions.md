@@ -9,6 +9,7 @@ This document outlines the API of `Modal` component.
 
 - [Design](#design)
 - [Anatomy](#anatomy)
+- [Animation](#animation)
 - [API](#api)
   - [`Modal` API](#modal-api)
   - [`ModalBody` API](#modalbody-api)
@@ -32,6 +33,8 @@ This document outlines the API of `Modal` component.
 <!-- TODO: Add a better screenshot -->
 <img src="./modal-anatomy.png" alt="Modal Anatomy" width="100%" />
 
+## Animation
+TBD
 
 ## API
 
