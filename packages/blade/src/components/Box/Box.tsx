@@ -107,6 +107,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
 
     // Visual
     backgroundColor: props.backgroundColor,
+    // Border
     borderWidth: props.borderWidth,
     borderColor: props.borderColor,
     borderTopWidth: props.borderTopWidth,
@@ -122,6 +123,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     borderTopRightRadius: props.borderTopRightRadius,
     borderBottomRightRadius: props.borderBottomRightRadius,
     borderBottomLeftRadius: props.borderBottomLeftRadius,
+
     children: props.children,
     as: isReactNative() ? undefined : props.as, // as is not supported on react-native
   };
