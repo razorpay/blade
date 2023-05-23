@@ -47,13 +47,20 @@ const Controlled = () => {
   const [chceked, setChecked] = React.useState(false);
 
   return (
-    <Switch isChecked={checked} onChange={({isChecked}) => setChecked(isChecked)} value="dark-mode" />
+    <Switch 
+      isChecked={checked} 
+      onChange={({ isChecked }) => setChecked(isChecked)} 
+      value="dark-mode" />
   );
 };
 
 const Uncontrolled = () => {
   return (
-    <Switch defaultChecked={true} value="dark-mode" />
+    <Switch 
+      defaultChecked={true} 
+      onChange={({ isChecked }) => console.log(isChecked)} 
+      value="dark-mode" 
+    />
   );
 };
 ```
@@ -104,7 +111,10 @@ Off to On:
 
 ## Accessibility
 
-Switch will work similarly as Checkbox, where the hidden input field will follow the [Checkbox accessibility](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/) pattern. But we will also have a visual button which will follow the [Switch accessibility](https://www.w3.org/WAI/ARIA/apg/patterns/switch/) pattern. 
+Switch will work similarly as Checkbox, where the hidden input field will follow the [Checkbox accessibility](https://www.w3.org/WAI/ARIA/apg/patterns/switch/) pattern but will have `role=switch`.
+
+WAI-ARIA Example: [Switch Example Using HTML Checkbox Input](https://www.w3.org/WAI/ARIA/apg/patterns/switch/examples/switch-checkbox/)
+
 
 ## Open Questions
 
