@@ -9,7 +9,7 @@ describe('<Box />', () => {
         display="flex"
         padding="spacing.0"
         // @ts-expect-error: Intentional to test bad flow
-        borderRadius="small"
+        fontWeight="bold"
       >
         {/** Using React Native's text instead of our Text component to keep snapshots small. Our Text component is tested separately anyways */}
         <Text>children test!</Text>
@@ -24,6 +24,7 @@ describe('<Box />', () => {
         }
       >
         <View
+          data-blade-component="box"
           display="flex"
           style={
             Array [

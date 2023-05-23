@@ -11,6 +11,7 @@ exports[`<Indicator /> should render 1`] = `
   <View
     accessibilityLabel="Success"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -100,6 +101,7 @@ exports[`<Indicator /> should render 1`] = `
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -144,6 +146,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <View
     accessibilityLabel="Warning"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -233,6 +236,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -266,6 +270,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <View
     accessibilityLabel="Success"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -355,6 +360,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -388,6 +394,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <View
     accessibilityLabel="Error"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -477,6 +484,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -510,6 +518,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <View
     accessibilityLabel="Info"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -599,6 +608,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"

@@ -9,6 +9,7 @@ exports[`<OTPInput /> should render 1`] = `
   }
 >
   <View
+    data-blade-component="otp-input"
     style={
       Array [
         Object {},
@@ -59,6 +60,7 @@ exports[`<OTPInput /> should render 1`] = `
         >
           <Text
             color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
@@ -90,6 +92,7 @@ exports[`<OTPInput /> should render 1`] = `
             Enter OTP
           </Text>
           <View
+            data-blade-component="visually-hidden"
             style={
               Array [
                 Object {
@@ -119,6 +122,7 @@ exports[`<OTPInput /> should render 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
