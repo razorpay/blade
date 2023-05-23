@@ -26,6 +26,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
   {
     onClick,
     onBlur,
+    onKeyDown,
     children,
     minHeight,
     buttonPaddingTop,

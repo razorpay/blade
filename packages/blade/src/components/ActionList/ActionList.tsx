@@ -157,8 +157,7 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
 };
 
 const ActionList = assignWithoutSideEffects(React.memo(_ActionList), {
-  componentId: componentIds.ActionList,
-  displayName: 'ActionList',
+  displayName: componentIds.ActionList,
 });
 
 export { ActionList, useActionListContext, ActionListProps };
