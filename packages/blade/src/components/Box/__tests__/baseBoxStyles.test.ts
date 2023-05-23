@@ -1,6 +1,6 @@
 import {
   getSpacingValue,
-  getBackgroundValue,
+  getColorValue,
   getBaseBoxStyles,
   getBorderRadiusValue,
 } from '../BaseBox/baseBoxStyles';
@@ -9,14 +9,14 @@ import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightT
 export const removeUndefinedValues = (props: Record<string, unknown>): Record<string, unknown> =>
   JSON.parse(JSON.stringify(props));
 
-describe('getBackgroundValue', () => {
+describe('getColorValue', () => {
   it('should return correct background color value', () => {
     expect(
-      getBackgroundValue('action.background.primary.active', paymentLightTheme, 'base'),
+      getColorValue('action.background.primary.active', paymentLightTheme, 'base'),
     ).toMatchInlineSnapshot(`"hsla(227, 100%, 45%, 1)"`);
-    expect(getBackgroundValue('red', paymentLightTheme, 'base')).toBe('red');
-    expect(getBackgroundValue('red', paymentLightTheme, 'm')).toBe(undefined);
-    expect(getBackgroundValue({ base: 'red', s: '#f30' }, paymentLightTheme, 's')).toBe('#f30');
+    expect(getColorValue('red', paymentLightTheme, 'base')).toBe('red');
+    expect(getColorValue('red', paymentLightTheme, 'm')).toBe(undefined);
+    expect(getColorValue({ base: 'red', s: '#f30' }, paymentLightTheme, 's')).toBe('#f30');
   });
 });
 
