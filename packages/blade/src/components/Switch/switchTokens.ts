@@ -94,6 +94,17 @@ const switchColors: SwitchColors = {
   },
 };
 
+const switchMotion = {
+  easing: {
+    thumb: 'motion.easing.standard.effective',
+    thumbIcon: 'motion.easing.standard.effective',
+  },
+  duration: {
+    thumb: 'motion.duration.xquick',
+    thumbIcon: 'motion.duration.xquick',
+  },
+};
+
 const switchHoverTokens: SelectorInputHoverTokens = {
   default: {
     background: {
@@ -103,4 +114,4 @@ const switchHoverTokens: SelectorInputHoverTokens = {
   },
 };
 
-export { switchColors, switchSizes, switchHoverTokens };
+export { switchColors, switchSizes, switchHoverTokens, switchMotion };

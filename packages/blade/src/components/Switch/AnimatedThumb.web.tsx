@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { DefaultTheme } from 'styled-components';
+import type { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 import styled, { keyframes, css } from 'styled-components';
-import { switchColors } from './switchTokens';
+import { switchColors, switchMotion } from './switchTokens';
 import type { AnimatedThumbProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeBorderSize, getIn } from '~utils';
@@ -36,14 +35,14 @@ const offAnimation = keyframes`
   }
 `;
 
-const enter = (props: { theme: DefaultTheme }) => {
+const enter = (props: { theme: DefaultTheme }): FlattenSimpleInterpolation => {
   return css`
-    ${onAnimation} ${props.theme.motion.easing.standard.effective as string} forwards;
+    ${onAnimation} ${getIn(props.theme, switchMotion.easing.thumb)} forwards;
   `;
 };
-const exit = (props: { theme: DefaultTheme }) => {
+const exit = (props: { theme: DefaultTheme }): FlattenSimpleInterpolation => {
   return css`
-    ${offAnimation} ${props.theme.motion.easing.standard.effective as string} forwards;
+    ${offAnimation} ${getIn(props.theme, switchMotion.easing.thumb)} forwards;
   `;
 };
 
@@ -51,7 +50,7 @@ const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
   ({ theme, isChecked, isDisabled, shouldRunAnimation }) => {
     const variant = isDisabled ? 'disabled' : 'default';
     const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
-
+    const duration = makeMotionTime(getIn(theme, switchMotion.duration.thumb));
     return css`
       display: flex;
       align-items: center;
@@ -61,9 +60,7 @@ const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
       height: 100%;
       border-radius: ${makeBorderSize(theme.border.radius.max)};
       animation: ${isChecked ? enter : exit};
-      animation-duration: ${shouldRunAnimation
-        ? makeMotionTime(theme.motion.duration.xquick)
-        : '0ms'};
+      animation-duration: ${shouldRunAnimation ? duration : '0ms'};
       background-color: ${backgroundColor};
     `;
   },

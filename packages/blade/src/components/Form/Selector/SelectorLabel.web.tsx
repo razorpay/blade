@@ -4,13 +4,7 @@ import styled from 'styled-components';
 import type { SelectorLabelProps } from './types';
 import { makeSpace, metaAttribute } from '~utils';
 
-const StyledSelectorLabel = styled.label<{ isInline?: boolean }>(({ theme, isInline }) => {
-  if (isInline) {
-    return {
-      display: 'inline-block',
-    };
-  }
-
+const StyledSelectorLabel = styled.label(({ theme }) => {
   return {
     display: 'flex',
     marginTop: makeSpace(theme.spacing[1]),
@@ -22,10 +16,9 @@ const SelectorLabel = ({
   children,
   componentName,
   testID,
-  isInline,
 }: SelectorLabelProps): React.ReactElement => {
   return (
-    <StyledSelectorLabel isInline={isInline} {...metaAttribute({ name: componentName, testID })}>
+    <StyledSelectorLabel {...metaAttribute({ name: componentName, testID })}>
       {children}
     </StyledSelectorLabel>
   );

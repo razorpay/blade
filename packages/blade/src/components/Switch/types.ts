@@ -10,40 +10,40 @@ type OnChange = ({
 
 type SwitchProps = {
   /**
-   * If `true`, The checkbox will be checked. This also makes the checkbox controlled
+   * If `true`, The switch will be checked. This also makes the switch controlled
    * Use `onChange` to update its value
    *
    * @default false
    */
   isChecked?: boolean;
   /**
-   * If `true`, the checkbox will be initially checked. This also makes the checkbox uncontrolled
+   * If `true`, the switch will be initially checked. This also makes the switch uncontrolled
    *
    * @default false
    */
   defaultChecked?: boolean;
   /**
-   * The callback invoked when the checked state of the `Checkbox` changes.
+   * The callback invoked when the checked state of the `Switch` changes.
    */
   onChange?: OnChange;
   /**
-   * The name of the input field in a checkbox
+   * The name of the input field in a switch
    * (Useful for form submission).
    */
   name?: string;
   /**
-   * The value to be used in the checkbox input.
+   * The value to be used in the switch input.
    * This is the value that will be returned on form submission.
    */
   value?: string;
   /**
-   * If `true`, the checkbox will be disabled
+   * If `true`, the switch will be disabled
    *
    * @default false
    */
   isDisabled?: boolean;
   /**
-   * Size of the checkbox
+   * Size of the switch
    *
    * @default "medium"
    */

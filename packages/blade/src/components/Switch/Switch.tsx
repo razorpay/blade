@@ -56,7 +56,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
 
   return (
     <BaseBox
-      {...metaAttribute({ testID })}
+      {...metaAttribute({ testID, name: 'Switch' })}
       // @ts-ignore on rn inline-block is not valid but type here will be `flex | inline-block`
       display={state.isReactNative ? 'flex' : 'inline-block'}
     >
@@ -64,7 +64,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
         inputProps={
           state.isReactNative
             ? // accessibility label for react-native needs to be added
-              //since there is no text children inside Switch
+              // since there is no text children inside Switch
               { ...inputProps, ...makeAccessible({ label: accessibilityLabel }) }
             : {}
         }

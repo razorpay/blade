@@ -1,5 +1,4 @@
 import React from 'react';
-import type { EasingFunctionFactory } from 'react-native-reanimated';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -7,9 +6,11 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { switchMotion } from './switchTokens';
 import { useTheme } from '~components/BladeProvider';
 import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
 import Svg from '~components/Icons/_Svg';
+import { getIn } from '~utils';
 
 const AnimatedThumbIcon = ({
   children,
@@ -25,12 +26,16 @@ const AnimatedThumbIcon = ({
   const { theme } = useTheme();
   const opacity = useSharedValue(isChecked ? 1 : 0);
 
+  const easing = getIn(theme, switchMotion.easing.thumbIcon);
+  const duration = getIn(theme, switchMotion.duration.thumbIcon);
+
   React.useEffect(() => {
     opacity.value = withTiming(isChecked ? 1 : 0, {
-      duration: theme.motion.duration.xquick,
-      easing: theme.motion.easing.standard.effective as EasingFunctionFactory,
+      duration,
+      easing,
     });
-  }, [isChecked, opacity]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isChecked]);
 
   const opacityStyle = useAnimatedStyle(() => {
     return {
@@ -39,7 +44,7 @@ const AnimatedThumbIcon = ({
   }, []);
 
   return (
-    <Animated.View style={[opacityStyle]}>
+    <Animated.View style={opacityStyle}>
       <Svg width={width} height={height} viewBox={viewBox} fill={fill}>
         {children}
       </Svg>

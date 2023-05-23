@@ -59,7 +59,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
       isDisabled={isDisabled}
       hasError={hasError}
       tabIndex={tabIndex}
-      hoverStyles={hoverTokens}
+      hoverTokens={hoverTokens}
       {...inputProps}
       {...makeAccessible({ label: accessibilityLabel })}
       // merging both refs because inputProps.ref needs to have access to indeterminate state
