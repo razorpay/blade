@@ -1,5 +1,5 @@
 import type { Theme } from '~components/BladeProvider';
-import type { SelectorInputHoverVariants } from '~components/Form/Selector/types';
+import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
 import size from '~tokens/global/size';
 
@@ -83,7 +83,7 @@ const checkboxIconColors: CheckboxIconColors = {
   },
 } as const;
 
-const checkboxHoverVariants: SelectorInputHoverVariants = {
+const checkboxHoverTokens: SelectorInputHoverTokens = {
   default: {
     background: {
       checked: 'colors.brand.primary.600',
@@ -96,4 +96,4 @@ const checkboxHoverVariants: SelectorInputHoverVariants = {
   },
 };
 
-export { checkboxSizes, checkboxIconColors, checkboxHoverVariants };
+export { checkboxSizes, checkboxIconColors, checkboxHoverTokens };

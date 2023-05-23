@@ -3,7 +3,7 @@
 import React from 'react';
 import { ThumbIcon } from './ThumbIcon';
 import type { SwitchProps } from './types';
-import { switchHoverVariants } from './switchTokens';
+import { switchHoverTokens } from './switchTokens';
 import { Thumb } from './Thumb';
 import { AnimatedThumb } from './AnimatedThumb';
 import { SwitchTrack } from './SwitchTrack';
@@ -70,7 +70,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
         }
       >
         <SelectorInput
-          hoverStyles={switchHoverVariants}
+          hoverTokens={switchHoverTokens}
           ref={ref}
           id={id}
           isChecked={state.isChecked}

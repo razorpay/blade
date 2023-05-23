@@ -1,5 +1,5 @@
 import type { Theme } from '~components/BladeProvider';
-import type { SelectorInputHoverVariants } from '~components/Form/Selector/types';
+import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
 import size from '~tokens/global/size';
 
@@ -94,7 +94,7 @@ const switchColors: SwitchColors = {
   },
 };
 
-const switchHoverVariants: SelectorInputHoverVariants = {
+const switchHoverTokens: SelectorInputHoverTokens = {
   default: {
     background: {
       checked: 'colors.brand.primary.600',
@@ -103,4 +103,4 @@ const switchHoverVariants: SelectorInputHoverVariants = {
   },
 };
 
-export { switchColors, switchSizes, switchHoverVariants };
+export { switchColors, switchSizes, switchHoverTokens };

@@ -21,7 +21,7 @@ type SelectorInputProps = HoverProps & {
   accessibilityLabel?: string;
 };
 
-type SelectorInputHoverVariants = {
+type SelectorInputHoverTokens = {
   default: {
     background: {
       checked: string;
@@ -38,7 +38,7 @@ type HoverProps = {
   isChecked?: boolean;
   isDisabled?: boolean;
   hasError?: boolean;
-  hoverStyles: SelectorInputHoverVariants;
+  hoverTokens: SelectorInputHoverTokens;
 };
 
-export { SelectorLabelProps, SelectorInputProps, HoverProps, SelectorInputHoverVariants };
+export { SelectorLabelProps, SelectorInputProps, HoverProps, SelectorInputHoverTokens };

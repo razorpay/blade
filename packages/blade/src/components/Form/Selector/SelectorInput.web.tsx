@@ -16,13 +16,13 @@ const getHoverStyles = ({
   isDisabled,
   hasError,
   isChecked,
-  hoverStyles,
+  hoverTokens,
 }: { theme: Theme } & HoverProps): CSSObject => {
   if (isDisabled || hasError) return {};
 
   const checked = isChecked ? 'checked' : 'unchecked';
-  const backgroundColor = hoverStyles.default.background[checked];
-  const borderColor = hoverStyles.default.border?.[checked];
+  const backgroundColor = hoverTokens.default.background[checked];
+  const borderColor = hoverTokens.default.border?.[checked];
 
   return {
     borderColor: borderColor ? getIn(theme, borderColor) : undefined,
@@ -33,7 +33,7 @@ const getHoverStyles = ({
 };
 
 const StyledInput = styled.input<HoverProps>(
-  ({ theme, isChecked, isDisabled, hasError, hoverStyles }) => ({
+  ({ theme, isChecked, isDisabled, hasError, hoverTokens }) => ({
     ...screenReaderStyles,
     '&:focus + div': {
       // TODO: Replace with focus outline token
@@ -41,13 +41,13 @@ const StyledInput = styled.input<HoverProps>(
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
     },
     '&:hover + div, &:focus + div': {
-      ...getHoverStyles({ theme, isChecked, isDisabled, hasError, hoverStyles }),
+      ...getHoverStyles({ theme, isChecked, isDisabled, hasError, hoverTokens }),
     },
   }),
 );
 
 const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorInputProps> = (
-  { id, inputProps, isChecked, isDisabled, hasError, hoverStyles, tabIndex, accessibilityLabel },
+  { id, inputProps, isChecked, isDisabled, hasError, hoverTokens, tabIndex, accessibilityLabel },
   ref,
 ) => {
   const inputRef = useBladeInnerRef(ref);
@@ -59,7 +59,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
       isDisabled={isDisabled}
       hasError={hasError}
       tabIndex={tabIndex}
-      hoverStyles={hoverStyles}
+      hoverStyles={hoverTokens}
       {...inputProps}
       {...makeAccessible({ label: accessibilityLabel })}
       // merging both refs because inputProps.ref needs to have access to indeterminate state
