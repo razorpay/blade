@@ -1,6 +1,7 @@
 import type { Theme } from '~components/BladeProvider';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
+import type { DurationString, EasingString } from '~tokens/global/motion';
 import size from '~tokens/global/size';
 
 type ColorTokens = `colors.${DotNotationColorStringToken<Theme['colors']>}` | 'transparent';
@@ -94,7 +95,7 @@ const switchColors: SwitchColors = {
   },
 };
 
-const switchMotion = {
+const switchMotion: Record<string, Record<string, `motion.${EasingString | DurationString}`>> = {
   easing: {
     thumb: 'motion.easing.standard.effective',
     thumbIcon: 'motion.easing.standard.effective',
