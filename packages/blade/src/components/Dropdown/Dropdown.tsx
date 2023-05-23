@@ -96,11 +96,6 @@ const _Dropdown = ({
     onDismiss?.();
   }, [onDismiss]);
 
-  const close = React.useCallback(() => {
-    setIsOpen(false);
-    onDismiss?.();
-  }, [onDismiss]);
-
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       if (
