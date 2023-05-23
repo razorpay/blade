@@ -38,6 +38,10 @@ type ActionListItemProps = {
    */
   href?: string;
   /**
+   * HTML target of the link
+   */
+  target?: string;
+  /**
    * Item that goes on left-side of item.
    *
    * Valid elements - `<ActionListItemIcon />`, `<ActionListItemAsset />`
@@ -51,12 +55,14 @@ type ActionListItemProps = {
    * Valid elements - `<ActionListItemText />`, `<ActionListItemIcon />`
    */
   trailing?: React.ReactNode;
-  /**
-   * If item is selected on page load
-   */
-  isDefaultSelected?: boolean;
   isDisabled?: boolean;
   intent?: Extract<Feedback, 'negative'>;
+  /**
+   * Can be used in combination of `onClick` to highlight item as selected in Button Triggers.
+   *
+   * When trigger is SelectInput, Use `value` prop on SelectInput instead to make dropdown controlled.
+   */
+  isSelected?: boolean;
   /**
    * Internally passed from ActionList. No need to pass it explicitly
    *
@@ -310,10 +316,26 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
   const isMobile = platform === 'onMobile';
 
   const renderOnWebAs = props.href ? 'a' : 'button';
-  const isSelected =
-    typeof props._index === 'number'
-      ? selectedIndices.includes(props._index)
-      : props.isDefaultSelected;
+
+  /**
+   * In SelectInput, returns the isSelected according to selected indexes in the state
+   *
+   * In Other Triggers (Menu Usecase), returns `props.isSelected` since passing the
+   * isSelected prop explicitly is the only way to select item in menu
+   */
+  const getIsSelected = (): boolean | undefined => {
+    if (dropdownTriggerer === 'SelectInput') {
+      if (typeof props._index === 'number') {
+        return selectedIndices.includes(props._index);
+      }
+
+      return undefined;
+    }
+
+    return props.isSelected;
+  };
+
+  const isSelected = getIsSelected();
 
   React.useEffect(() => {
     validateActionListItemProps({
@@ -338,6 +360,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
         type="button"
         tabIndex={-1}
         href={props.href}
+        target={props.target}
         className={activeIndex === props._index ? 'active-focus' : ''}
         {...makeAccessible({
           selected: isSelected,
@@ -348,8 +371,8 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
           if (typeof props._index === 'number') {
             onOptionClick(e, props._index);
+            props.onClick?.({ name: props.value, value: isSelected });
           }
-          props.onClick?.({ name: props.value, value: isSelected });
         })}
         {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
         onMouseDown={() => {
@@ -389,6 +412,7 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
 
 const ActionListItem = assignWithoutSideEffects(React.memo(_ActionListItem), {
   componentId: componentIds.ActionListItem,
+  displayName: componentIds.ActionListItem,
 });
 
 export {

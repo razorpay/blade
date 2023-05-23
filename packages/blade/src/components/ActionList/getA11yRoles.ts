@@ -8,7 +8,6 @@ import { isReactNative } from '~utils';
 export const isRoleMenu = (
   dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
 ): boolean => {
-  // @TODO: check this logic once we introduce new triggerer. This may not stand true.
   return isReactNative() || dropdownTriggerer !== 'SelectInput';
 };
 
@@ -64,9 +63,9 @@ export const getSeparatorRole = (): 'separator' | undefined => {
 export const getActionListItemWrapperRole = (
   hasFooterAction: boolean,
   dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
-): 'listbox' | 'menu' | undefined => {
+): 'listbox' | undefined => {
   if (isRoleMenu(dropdownTriggerer)) {
-    return 'menu';
+    return undefined;
   }
 
   if (hasFooterAction) {
