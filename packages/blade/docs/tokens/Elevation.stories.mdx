@@ -3,7 +3,7 @@ import { useTheme, BladeProvider } from '../../src/components';
 import { paymentTheme, bankingTheme } from '../../src/tokens';
 
 <Meta
-  title="Tokens/Shadows"
+  title="Tokens/Elevation"
   parameters={{
     docs: {
       container: ({ children, context }) => {
@@ -32,16 +32,16 @@ import { paymentTheme, bankingTheme } from '../../src/tokens';
   }}
 />
 
-# 🪞 Shadows
+# 🪞 Elevation
 
 export const Border = () => {
   const { theme } = useTheme();
   return (
     <table>
       <tbody>
-        {Object.entries(theme.shadows).map(([key, value]) => (
+        {Object.entries(theme.elevation).map(([key, value]) => (
           <tr key={key} style={{ backgroundColor: '#fafafa' }}>
-            <td>{`theme.shadows.${key}`}</td>
+            <td>{`theme.elevation.${key}`}</td>
             <td style={{ padding: '20px' }}>
               <div
                 style={{

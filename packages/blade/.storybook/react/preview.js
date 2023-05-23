@@ -26,10 +26,10 @@ export const parameters = {
         [
           'Colors',
           'Typography',
-          'Breakpoints',
+          'Elevation',
           'Border',
           'Spacing',
-          'Shadows',
+          'Breakpoints',
           'Motion',
           'CSS Variables',
         ],
