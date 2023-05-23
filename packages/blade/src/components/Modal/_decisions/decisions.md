@@ -18,8 +18,8 @@ This document outlines the API of `Modal` component.
   - [Modal Stacking](#modal-stacking)
   - [Modal Sizes \& Responsiveness](#modal-sizes--responsiveness)
   - [Modal Height](#modal-height)
-  - [Modal for React Native](#modal-for-react-native)
   - [Modal Usage on mWeb \& native apps](#modal-usage-on-mweb--native-apps)
+  - [Modal for React Native](#modal-for-react-native)
 - [Accessibility](#accessibility)
 - [Open questions](#open-questions)
 - [References](#references)
@@ -107,13 +107,20 @@ const [isOpen, setIsOpen] = useState(false);
 ### Modal Height
 - Each Modal will have a max-height of `80vh` (80% of viewport height) and will be scrollable if the content exceeds this height.
 
-### Modal for React Native
-TBD
 
 ### Modal Usage on mWeb & native apps
 - We will not be using the Modal component on mWeb or native apps.
 - We will only use the BottomSheet component on mWeb and native apps.
+- Our Modal will be responsive and will not break up till 320px on mWeb but will not be usable on native apps.
+- We will throw a warning when a Modal is opened on smaller screens.
 - Designers would need to be mindful of this while designing for mWeb and native apps.
+- On Figma, we have added guardrails to ensure that when screenSize is selected Mobile on Figma, Modal component will turn into a BottomSheet component.
+- We are not automatically changing our Modal to BottomSheet on code to avoid bundle size overhead as well as to avoid any flow to break unless mindfully implemented with BottomSheet on code.
+
+### Modal for React Native
+- Since we want to restrict the usage of Modals on native apps, we will not be implementing the Modal component for React Native.
+- We will implement a dummy export which will only warn the consumer that this component is not supported on native apps.
+- We will also add this to our documentation.
 
 ## Accessibility
 - Trap keyboard focus within the modal.
