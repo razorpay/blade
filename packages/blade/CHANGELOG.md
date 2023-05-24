@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.2.3
+
+### Patch Changes
+
+- ec18776c: fix: blade builds on npm & github
+
 ## 8.2.2
 
 ### Patch Changes
