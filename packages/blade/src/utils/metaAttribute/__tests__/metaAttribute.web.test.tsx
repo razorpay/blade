@@ -1,6 +1,7 @@
 import { metaAttribute } from '..';
 import { Button } from '~components/Button';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+// import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('metaAttribute', () => {
   it('add the correct meta attributes', () => {

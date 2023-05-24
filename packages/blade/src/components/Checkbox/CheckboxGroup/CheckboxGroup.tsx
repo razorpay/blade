@@ -10,7 +10,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 
 type CheckboxGroupProps = {

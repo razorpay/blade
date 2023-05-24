@@ -2,7 +2,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { Dropdown, DropdownOverlay } from '../index';
 import { DropdownButton } from '../DropdownButton';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
 import {
   ActionList,

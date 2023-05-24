@@ -11,7 +11,7 @@ import { metaAttribute, MetaConstants } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
 

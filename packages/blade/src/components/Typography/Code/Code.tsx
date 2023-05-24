@@ -5,7 +5,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { metaAttribute, getPlatformType, MetaConstants, makeTypographySize } from '~utils';
 import type { FontSize, Typography } from '~tokens/global';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~utils/types';
 import { makeSpace } from '~utils/makeSpace';
 
 export type CodeProps = {

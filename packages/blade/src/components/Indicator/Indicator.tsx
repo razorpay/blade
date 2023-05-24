@@ -7,7 +7,7 @@ import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 import { size as sizeToken } from '~tokens/global';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~utils/types';
 
 import type { Feedback } from '~tokens/theme/theme';
 import { metaAttribute, getPlatformType, MetaConstants } from '~utils';

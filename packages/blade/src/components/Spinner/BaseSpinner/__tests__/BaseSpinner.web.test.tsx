@@ -1,6 +1,6 @@
 import { BaseSpinner } from '../BaseSpinner';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<BaseSpinner />', () => {
   it('should render BaseSpinner with default props', () => {

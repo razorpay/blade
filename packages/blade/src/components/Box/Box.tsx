@@ -2,7 +2,7 @@ import React from 'react';
 import BaseBox from './BaseBox';
 import type { BoxProps, MakeValueResponsive } from './BaseBox/types';
 import { validBoxAsValues } from './BaseBox/types/propsTypes';
-import type { KeysRequired } from '~src/_helpers/types';
+import type { KeysRequired } from '~utils/types';
 import { isReactNative, metaAttribute, MetaConstants } from '~utils';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {

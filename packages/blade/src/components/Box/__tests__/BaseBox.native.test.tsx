@@ -1,5 +1,5 @@
 import BaseBox from '../BaseBox';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BaseBox />', () => {
   it('should render BaseBox component with the correct styles', () => {

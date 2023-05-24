@@ -5,7 +5,7 @@ import type { BoxProps } from '..';
 import { Box } from '..';
 import type { StyledPropsBlade as StyledPropsType } from './getStyledProps';
 import { Text, Title } from '~components/Typography';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Link } from '~components/Link';
 import { Button } from '~components/Button';
 import { Alert } from '~components/Alert';

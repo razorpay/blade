@@ -39,8 +39,8 @@ import { Box } from '~components/Box';
 import { Checkbox } from '~components/Checkbox';
 import { OTPInput } from '~components/Input/OTPInput';
 import { Link } from '~components/Link';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 const Page = (): React.ReactElement => {
   return (

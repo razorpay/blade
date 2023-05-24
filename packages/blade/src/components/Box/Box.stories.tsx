@@ -4,8 +4,8 @@ import { getBoxArgTypes } from './BaseBox/storybookArgTypes';
 import type { BoxProps } from '.';
 import { Box } from '.';
 import { Text, Title } from '~components/Typography';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { LinkToStorybook } from '~src/_helpers/storybook/LinkToStorybook';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { LinkToStorybook } from '~utils/storybook/LinkToStorybook';
 import { isReactNative } from '~utils';
 
 // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.

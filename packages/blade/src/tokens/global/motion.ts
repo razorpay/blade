@@ -1,4 +1,4 @@
-import type { DotNotationMotionStringToken } from '~src/_helpers/types';
+import type { DotNotationMotionStringToken } from '~utils/types';
 import type { Platform } from '~utils';
 // Todo : confirm the default import points to .web
 import { makeBezier } from '~utils/makeBezier';

@@ -1,7 +1,7 @@
 import type { CodeProps } from '../Typography';
 import type { ListProps } from './List';
 import type { TypographyPlatforms } from '~tokens/global';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import { makeSize } from '~utils/makeSize';
 import { size } from '~tokens/global';

@@ -7,8 +7,8 @@ import { Indicator as IndicatorComponent } from './Indicator';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { getPlatformType } from '~utils';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {

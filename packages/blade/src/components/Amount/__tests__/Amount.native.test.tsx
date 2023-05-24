@@ -5,7 +5,7 @@ import {
   getFlooredFixed,
   getHumanizedAmount,
 } from '../Amount';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Amount />', () => {
   it('should render Amount with default props', () => {

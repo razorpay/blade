@@ -5,7 +5,7 @@ import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme
 import { getPlatformType } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~utils/types';
 
 export type TitleProps = {
   size?: 'small' | 'medium' | 'large' | 'xlarge';

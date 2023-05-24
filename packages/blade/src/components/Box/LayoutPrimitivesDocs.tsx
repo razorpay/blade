@@ -2,9 +2,9 @@ import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbo
 import type { BaseBoxProps } from './BaseBox';
 import BaseBox from './BaseBox';
 import { Box } from '.';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
-import { Sandbox, SandboxProvider, SandboxHighlighter } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox, SandboxProvider, SandboxHighlighter } from '~utils/storybook/Sandbox';
 import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
 import { castWebType } from '~utils';

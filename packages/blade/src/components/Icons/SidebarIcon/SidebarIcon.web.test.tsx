@@ -1,5 +1,5 @@
 import SidebarIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SidebarIcon />', () => {
   it('should render SidebarIcon', () => {

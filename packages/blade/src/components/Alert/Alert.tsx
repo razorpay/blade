@@ -26,7 +26,7 @@ import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
-import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 
 type Nullable<Type> = Type | null;

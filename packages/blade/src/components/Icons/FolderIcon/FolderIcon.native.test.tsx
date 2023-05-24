@@ -1,5 +1,5 @@
 import FolderIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<FolderIcon />', () => {
   it('should render FolderIcon', () => {

@@ -4,7 +4,7 @@ import userEvents from '@testing-library/user-event';
 import React from 'react';
 import { Checkbox } from '../Checkbox';
 import { Link } from '~components/Link';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
 
 describe('<Checkbox />', () => {

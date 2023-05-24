@@ -1,5 +1,5 @@
 import { Box } from '../Box';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Box />', () => {
   it('should render Box component with supported styles', () => {

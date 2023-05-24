@@ -1,6 +1,6 @@
 import { Text } from 'react-native';
 import { Box } from '../Box';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Box />', () => {
   it('should render Box component with supported styles', () => {

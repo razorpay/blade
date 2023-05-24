@@ -1,5 +1,5 @@
 import SmartCollectIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SmartCollectIcon />', () => {
   it('should render SmartCollectIcon', () => {

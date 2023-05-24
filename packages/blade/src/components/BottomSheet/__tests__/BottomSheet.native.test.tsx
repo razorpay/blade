@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { BottomSheet, BottomSheetHeader, BottomSheetFooter } from '../BottomSheet';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import { Counter } from '~components/Counter';

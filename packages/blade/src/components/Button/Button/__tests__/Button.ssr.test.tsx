@@ -1,5 +1,5 @@
 import Button from '../Button';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { CreditCardIcon } from '~components/Icons';
 
 describe('<Button />', () => {

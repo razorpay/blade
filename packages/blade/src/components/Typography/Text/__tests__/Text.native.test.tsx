@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Text />', () => {
   it('should render Text with default properties', () => {

@@ -13,7 +13,7 @@ import {
   WithValueDisplayStory,
 } from './stories';
 
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { SelectInput } from '~components/Input/SelectInput';
 import {
   ActionList,

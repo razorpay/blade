@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 
 import type { PasswordInputProps } from './PasswordInput';
 import { PasswordInput } from './PasswordInput';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';

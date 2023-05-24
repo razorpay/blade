@@ -5,7 +5,7 @@ import userEvents from '@testing-library/user-event';
 import { mockViewport } from 'jsdom-testing-mocks';
 import { fireEvent, within } from '@testing-library/react';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
 import { Dropdown } from '~components/Dropdown';

@@ -1,5 +1,5 @@
 import TargetIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<TargetIcon />', () => {
   it('should render TargetIcon', () => {

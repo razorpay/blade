@@ -4,9 +4,9 @@ import { getStyledPropsArgTypes } from '../Box/BaseBox/storybookArgTypes';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
 import BaseBox from '~components/Box/BaseBox';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { Text } from '~components/Typography';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 const Page = (): React.ReactElement => {
   return (

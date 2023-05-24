@@ -1,6 +1,6 @@
 import React from 'react';
 import { Code } from '../Code';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { makeTypographySize } from '~utils';
 import { makeSpace } from '~utils/makeSpace';
 import { spacing, typography } from '~tokens/global';

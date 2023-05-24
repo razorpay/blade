@@ -3,7 +3,7 @@ import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
 import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownOverlay } from '../index';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { SelectInput } from '~components/Input/SelectInput';
 import {
   ActionList,

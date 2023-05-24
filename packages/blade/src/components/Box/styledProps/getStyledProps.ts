@@ -1,5 +1,5 @@
 import type { StyledPropsBlade } from '../BaseBox/types';
-import type { KeysRequired } from '~src/_helpers/types';
+import type { KeysRequired } from '~utils/types';
 
 /**
  * The input type to these styledProps utilities can be anything as we can just pass all the props and then get the filtered styledProps out of it

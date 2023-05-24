@@ -21,7 +21,7 @@ import { isReactNative, metaAttribute, MetaConstants } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import { size } from '~tokens/global';
 import type { DropdownProps } from '~components/Dropdown';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~utils/types';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';

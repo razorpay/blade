@@ -1,4 +1,4 @@
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type SelectorLabelProps = {

@@ -5,7 +5,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';

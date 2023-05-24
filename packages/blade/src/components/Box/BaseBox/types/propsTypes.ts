@@ -3,7 +3,7 @@ import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
-import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~src/_helpers/types';
+import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~utils/types';
 
 type LayoutProps = MakeObjectResponsive<
   {

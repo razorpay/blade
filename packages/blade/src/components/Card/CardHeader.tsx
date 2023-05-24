@@ -17,7 +17,7 @@ import type { CounterProps } from '~components/Counter';
 import { Counter } from '~components/Counter';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
 import { metaAttribute, MetaConstants, getComponentId } from '~utils';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';

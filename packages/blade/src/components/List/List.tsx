@@ -8,7 +8,7 @@ import { OrderedList } from './OrderedList';
 import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
 import { metaAttribute, MetaConstants } from '~utils';
-import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';

@@ -5,8 +5,8 @@ import {
   getFlooredFixed,
   getHumanizedAmount,
 } from '../Amount';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<Amount />', () => {
   it('should render Amount with default props', () => {

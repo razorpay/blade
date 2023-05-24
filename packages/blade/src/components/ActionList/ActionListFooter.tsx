@@ -11,7 +11,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { isReactNative, MetaConstants, metaAttribute } from '~utils';
 import { Text } from '~components/Typography';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
