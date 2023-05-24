@@ -105,18 +105,18 @@ describe('<Switch />', () => {
             onChange={({ isChecked }) => setChecked(isChecked)}
             accessibilityLabel={name}
           />
-          <Text testID="state">{checked ? 'checked' : 'unchecked'}</Text>
+          <Text>{checked ? 'checked' : 'unchecked'}</Text>
         </>
       );
     };
-    const { getByTestId, getByRole } = renderWithTheme(<Example />);
+    const { getByText, getByRole } = renderWithTheme(<Example />);
     const switchElement = getByRole('switch');
 
-    expect(getByTestId('state').children[0]).toBe('unchecked');
+    expect(getByText('unchecked')).toBeTruthy();
     fireEvent.press(switchElement);
-    expect(getByTestId('state').children[0]).toBe('checked');
+    expect(getByText('checked')).toBeTruthy();
     fireEvent.press(switchElement);
-    expect(getByTestId('state').children[0]).toBe('unchecked');
+    expect(getByText('unchecked')).toBeTruthy();
   });
 
   it('should expose native element methods via ref', () => {
@@ -125,6 +125,7 @@ describe('<Switch />', () => {
       const ref = React.useRef<HTMLInputElement>(null);
       return (
         <Switch
+          accessibilityLabel="Toggle darkmode"
           ref={(value) => {
             console.log(value);
             // @ts-expect-error

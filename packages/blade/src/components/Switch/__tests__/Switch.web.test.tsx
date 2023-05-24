@@ -8,7 +8,8 @@ import { Button } from '~components/Button';
 
 describe('<Switch />', () => {
   it('should render switch', () => {
-    const { container, getByRole } = renderWithTheme(<Switch />);
+    const name = 'Toggle Darkmode';
+    const { container, getByRole } = renderWithTheme(<Switch accessibilityLabel={name} />);
     expect(container).toMatchSnapshot();
     expect(getByRole('switch')).toBeInTheDocument();
   });
@@ -114,17 +115,17 @@ describe('<Switch />', () => {
             isChecked={checked}
             onChange={({ isChecked }) => setChecked(isChecked)}
           />
-          <p data-testid="state">{checked ? 'checked' : 'unchecked'}</p>
+          <p>{checked ? 'checked' : 'unchecked'}</p>
         </>
       );
     };
-    const { getByRole, getByTestId } = renderWithTheme(<Example />);
+    const { getByRole, getByText } = renderWithTheme(<Example />);
 
-    expect(getByTestId('state')).toHaveTextContent('unchecked');
+    expect(getByText('unchecked')).toBeInTheDocument();
     await user.click(getByRole('switch', { name }));
-    expect(getByTestId('state')).toHaveTextContent('checked');
+    expect(getByText('checked')).toBeInTheDocument();
     await user.click(getByRole('switch', { name }));
-    expect(getByTestId('state')).toHaveTextContent('unchecked');
+    expect(getByText('unchecked')).toBeInTheDocument();
   });
 
   it(`should expose native element methods via ref`, async () => {

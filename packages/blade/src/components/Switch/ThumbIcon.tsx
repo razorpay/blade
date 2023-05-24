@@ -38,6 +38,7 @@ const ThumbIcon = ({
       isChecked={Boolean(isChecked)}
       width={finalWidth}
       height={finalHeight}
+      // Switch uses a custom svg, this viewbox is copied from design
       viewBox="0 0 11 8"
       fill="none"
     >

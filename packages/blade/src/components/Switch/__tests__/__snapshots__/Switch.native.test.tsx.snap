@@ -57,6 +57,7 @@ exports[`<Switch /> should render switch with label 1`] = `
         deviceType="mobile"
         importantForAccessibility="no-hide-descendants"
         isChecked={false}
+        isDisabled={false}
         size="medium"
         style={
           Array [
@@ -126,11 +127,9 @@ exports[`<Switch /> should render switch with label 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
-                    "opacity": undefined,
-                  },
-                ]
+                Object {
+                  "opacity": undefined,
+                }
               }
             >
               <RNSVGSvgView
@@ -324,11 +323,9 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
-                    "opacity": undefined,
-                  },
-                ]
+                Object {
+                  "opacity": undefined,
+                }
               }
             >
               <RNSVGSvgView
