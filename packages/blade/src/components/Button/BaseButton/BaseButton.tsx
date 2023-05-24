@@ -22,7 +22,7 @@ import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~toke
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
-import { MetaConstants, metaAttribute, makeAccessible, makeSpace } from '~utils';
+import { MetaConstants, metaAttribute } from '~utils';
 
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
@@ -43,6 +43,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { usePrevious } from '~utils/usePrevious';
 import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import { makeAccessible } from '~utils/makeAccessible';
+import { makeSpace } from '~utils/makeSpace';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';

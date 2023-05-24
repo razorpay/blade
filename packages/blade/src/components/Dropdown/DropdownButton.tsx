@@ -5,8 +5,8 @@ import { getActionListContainerRole } from '../ActionList/getA11yRoles';
 import type { ButtonProps } from '../Button';
 import { useDropdown } from './useDropdown';
 import { componentIds } from './dropdownUtils';
-import { makeAccessible } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type DropdownButtonProps = ButtonProps & {
   onBlur?: BaseButtonProps['onBlur'];

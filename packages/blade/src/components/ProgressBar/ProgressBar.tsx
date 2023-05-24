@@ -3,7 +3,7 @@ import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { FormLabel } from '~components/Form';
 import type { AccessibilityProps } from '~utils';
-import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography/Text';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -14,6 +14,7 @@ import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import size from '~tokens/global/size';
 import type { TestID } from '~src/_helpers/types';
 import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type ProgressBarCommonProps = {
   /**

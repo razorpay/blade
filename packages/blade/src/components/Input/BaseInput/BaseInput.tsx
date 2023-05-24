@@ -16,13 +16,7 @@ import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import {
-  isReactNative,
-  metaAttribute,
-  getPlatformType,
-  makeAccessible,
-  useBreakpoint,
-} from '~utils';
+import { isReactNative, metaAttribute, getPlatformType, useBreakpoint } from '~utils';
 import type { AriaAttributes, Platform } from '~utils';
 
 import { useFormId } from '~components/Form/useFormId';
@@ -34,6 +28,7 @@ import type {
 } from '~components/Form/FormTypes';
 import type { TestID } from '~src/_helpers/types';
 import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
 
 export type BaseInputProps = FormInputLabelProps &
   FormInputValidationProps & {

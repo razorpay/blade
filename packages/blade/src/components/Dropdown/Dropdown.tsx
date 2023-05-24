@@ -3,7 +3,6 @@ import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { useId } from '~src/hooks/useId';
-import { isValidAllowedChildren } from '~utils';
 import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
 import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -11,6 +10,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';

@@ -16,13 +16,14 @@ import type {
   StringChildrenType,
   TestID,
 } from '~src/_helpers/types';
-import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { FontSize, Typography } from '~tokens/global/typography';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';

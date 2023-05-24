@@ -4,7 +4,8 @@ import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { useControllableState } from '~src/hooks/useControllable';
 import { useId } from '~src/hooks/useId';
-import { getPlatformType, makeAccessible } from '~src/utils';
+import { getPlatformType } from '~src/utils';
+import { makeAccessible } from '~utils/makeAccessible';
 
 export type OnChange = ({
   isChecked,

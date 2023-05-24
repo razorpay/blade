@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { componentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
-import { isValidAllowedChildren, metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
 import { Text } from '~components/Typography';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 const StyledActionListHeader = styled(BaseBox)((props) => {
   return {

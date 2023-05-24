@@ -17,7 +17,7 @@ import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
-import { isReactNative, makeAccessible, metaAttribute, MetaConstants } from '~utils';
+import { isReactNative, metaAttribute, MetaConstants } from '~utils';
 import { Checkbox } from '~components/Checkbox';
 import size from '~tokens/global/size';
 import type { DropdownProps } from '~components/Dropdown';
@@ -25,6 +25,7 @@ import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type ActionListItemProps = {
   title: string;

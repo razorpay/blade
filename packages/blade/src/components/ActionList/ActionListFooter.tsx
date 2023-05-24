@@ -8,18 +8,14 @@ import { getActionListFooterRole } from './getA11yRoles';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import {
-  isReactNative,
-  makeAccessible,
-  MetaConstants,
-  metaAttribute,
-  isValidAllowedChildren,
-} from '~utils';
+import { isReactNative, MetaConstants, metaAttribute } from '~utils';
 import { Text } from '~components/Typography';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 type ActionListFooterProps = {
   title?: string;

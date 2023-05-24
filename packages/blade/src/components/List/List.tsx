@@ -7,18 +7,15 @@ import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
 import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
-import {
-  isValidAllowedChildren,
-  makeAccessible,
-  metaAttribute,
-  MetaConstants,
-} from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
 import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
+import { makeAccessible } from '~utils/makeAccessible';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 type ListCommonProps = {
   /**

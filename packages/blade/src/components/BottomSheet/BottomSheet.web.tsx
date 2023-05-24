@@ -20,7 +20,7 @@ import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
 
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeAccessible, metaAttribute } from '~utils';
+import { makeMotionTime, metaAttribute } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
@@ -30,6 +30,7 @@ import { useId } from '~src/hooks/useId';
 import size from '~tokens/global/size';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 

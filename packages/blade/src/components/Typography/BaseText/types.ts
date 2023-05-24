@@ -1,5 +1,5 @@
 import type { Theme } from '~components/BladeProvider';
-import type { AccessibilityProps } from '~src/utils/makeAccessible/types';
+import type { AccessibilityProps } from '~utils/makeAccessible/types';
 import type { DotNotationColorStringToken, TestID } from '~src/_helpers/types';
 import type { Feedback } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
