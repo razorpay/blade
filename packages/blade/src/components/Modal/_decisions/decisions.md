@@ -111,6 +111,7 @@ const [isOpen, setIsOpen] = useState(false);
   - large: `1024px`
 - All the Modals will have a min-width of `320px` regardless of the size.
 - This would mean that the Modal will be responsive and will scale down to `320px` on smaller screens but will not scale up beyond the max-width as per its size mentioned above.
+- POC Link: https://codesandbox.io/s/eloquent-lalande-jvxwno
 
 ### Modal Height
 - Each Modal will have a max-height of `80vh` (80% of viewport height) and will be scrollable if the content exceeds this height.
@@ -135,9 +136,11 @@ const [isOpen, setIsOpen] = useState(false);
 - Close the modal when the user hits the `esc` key.
 - Add `aria-modal='true'`
 - Add `aria-role='dialog'`
+- Expose `accessibilityLabel` prop
+- Ref: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
 
 ## Open questions
-- Should we have an upper limit on Modal stacking the same way we have an upper limit of 3 stacks on BottomSheet?
+- Do we need a different animation for Modal stacking? Yet to explore on design
 
 ## References
 
