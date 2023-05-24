@@ -1,6 +1,7 @@
 import type { DotNotationMotionStringToken } from '~src/_helpers/types';
 import type { Platform } from '~utils';
-import { makeBezier } from '~utils';
+// Todo : confirm the default import points to .web
+import { makeBezier } from '~utils/makeBezier';
 
 type Duration = {
   /** `70` milliseconds */
