@@ -1,11 +1,17 @@
 # @razorpay/blade
 
+## 8.2.1
+
+### Patch Changes
+
+- 1ab67fc7: fix: css vars build script with new elevation tokens
+
 ## 8.2.0
 
 ### Minor Changes
 
 - 16d0e9e3: feat: add new `elevation` tokens
-This release adds new shadow tokens. Previously we had the following shadow tokens
+  This release adds new shadow tokens. Previously we had the following shadow tokens
 
 1. `level1`
 2. `level2`
@@ -16,13 +22,16 @@ This release adds new shadow tokens. Previously we had the following shadow toke
 Plus we didn't had proper ways of using tokens across web and native like we have for our other tokens like Colors, Typography, Spacing, Motion, etc.
 
 Now the new introduced levels are:
+
 1. `none`
 2. `lowRaised`
 3. `midRasied`
 4. `highRaised`
 
-These tokens now will work across ios, android and web and will add all the require properties automatically for eg: 
+These tokens now will work across ios, android and web and will add all the require properties automatically for eg:
+
 - on web we have 2 layers of shadow as per new token values
+
 ```
 {
   /** offset-x | offset-y | blur-radius | spread-radius | color, offset-x | offset-y | blur-radius | spread-radius | color */
@@ -31,11 +40,13 @@ These tokens now will work across ios, android and web and will add all the requ
   highRaised: `0 24px 48px -12px hsla(217, 56%, 17%, 0.18)`
 }
 ```
+
 - for RN, we can't have multi-layer shadows plus android and iOS both treat shadows differently, but now we have parity
+
 ```
 {
   // android only
-  elevation: 4, 
+  elevation: 4,
   shadowColor: 'hsla(217, 56%, 17%, 0.64)', // works on both
   // ios only
   shadowOpacity: 0.12,
@@ -46,7 +57,9 @@ These tokens now will work across ios, android and web and will add all the requ
   },
 }
 ```
+
 but all this is now abstracted and as a developer, you can do this across platforms:
+
 ```
 theme.elevation.lowRaised // this will add necessary props based on the platform
 ```
