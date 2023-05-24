@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.2.0
+
+### Minor Changes
+
+- 16d0e9e3: feat: add new `elevation` tokens
+
 ## 8.1.0
 
 ### Minor Changes
