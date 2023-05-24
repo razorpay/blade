@@ -51,7 +51,7 @@ type SwitchProps = {
   /**
    * Provides accessible label for internal checkbox component that sets the aria-label prop for screen readers.
    */
-  accessibilityLabel?: string;
+  accessibilityLabel: string;
   /**
    * The id of the input field in a switch, useful for associating a label element with the input via htmlFor prop
    */

@@ -31,7 +31,6 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
     size = 'medium',
     value,
     accessibilityLabel,
-    id,
     testID,
   },
   ref,
@@ -72,7 +71,6 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
         <SelectorInput
           hoverTokens={switchHoverTokens}
           ref={ref}
-          id={id}
           isChecked={state.isChecked}
           isDisabled={isDisabled}
           hasError={false}

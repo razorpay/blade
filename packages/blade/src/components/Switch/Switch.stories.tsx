@@ -114,7 +114,7 @@ const WithLabelTemplate: ComponentStory<typeof SwitchComponent> = () => {
       />
       <Text marginBottom="spacing.3">Right position:</Text>
       <Box as="label" display="flex" alignItems="center" gap="spacing.2">
-        <SwitchComponent size="small" />
+        <SwitchComponent accessibilityLabel="Toggle Darkmode" size="small" />
         <Text weight="regular" variant="body" size="medium">
           Toggle Darkmode
         </Text>
@@ -126,7 +126,7 @@ const WithLabelTemplate: ComponentStory<typeof SwitchComponent> = () => {
         <Text weight="regular" variant="body" size="medium">
           Toggle Darkmode
         </Text>
-        <SwitchComponent size="small" />
+        <SwitchComponent accessibilityLabel="Toggle Darkmode" size="small" />
       </Box>
 
       <Text marginTop="spacing.7" marginBottom="spacing.3">
@@ -152,7 +152,7 @@ const WithLabelTemplate: ComponentStory<typeof SwitchComponent> = () => {
                     International transaction
                   </Text>
                 </Box>
-                <SwitchComponent size="small" />
+                <SwitchComponent accessibilityLabel="International transaction" size="small" />
               </Box>
               <Box
                 as="label"
@@ -167,7 +167,7 @@ const WithLabelTemplate: ComponentStory<typeof SwitchComponent> = () => {
                     Online transaction
                   </Text>
                 </Box>
-                <SwitchComponent size="small" />
+                <SwitchComponent accessibilityLabel="Online transaction" size="small" />
               </Box>
               <Box
                 as="label"
@@ -182,7 +182,7 @@ const WithLabelTemplate: ComponentStory<typeof SwitchComponent> = () => {
                     Contactless Transaction
                   </Text>
                 </Box>
-                <SwitchComponent size="small" />
+                <SwitchComponent accessibilityLabel="Contactless Transaction" size="small" />
               </Box>
             </Box>
           </CardBody>
@@ -232,7 +232,7 @@ export const SwitchRef: ComponentStory<typeof SwitchComponent> = () => {
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="center">
-      <SwitchComponent ref={switchRef} />
+      <SwitchComponent accessibilityLabel="Toggle darkmode" ref={switchRef} />
       <Button onClick={() => switchRef?.current?.focus()}>Click to focus the switch</Button>
     </BaseBox>
   );
