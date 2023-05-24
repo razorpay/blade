@@ -9,6 +9,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { assignWithoutSideEffects, makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
+import type { SurfaceLevels } from '~tokens/theme/theme';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
@@ -28,7 +29,7 @@ type ActionListProps = {
   /**
    * Decides the backgroundColor of ActionList
    */
-  surfaceLevel?: 2 | 3;
+  surfaceLevel?: Exclude<SurfaceLevels, 1>;
 } & TestID;
 
 /**
