@@ -20,6 +20,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { getComponentId, getPlatformType, metaAttribute, MetaConstants } from '~utils';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 type ListItemProps = {
   /**
