@@ -70,7 +70,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
     <View
       style={
         Array [
-          undefined,
+          Object {
+            "shadowColor": "hsla(217,56%,17%,0.64)",
+            "shadowOffset": Object {
+              "height": -18,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 12,
+          },
           Object {
             "flexDirection": "column-reverse",
             "left": 0,
