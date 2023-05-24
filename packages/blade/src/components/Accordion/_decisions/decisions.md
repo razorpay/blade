@@ -14,6 +14,14 @@ This document outlines the API of `Accordion` component.
 
 ## Interactions
 
+### Accordion open
+
+![](./accordion-open.mp4)
+
+### Accordion close
+
+![](./accordion-close.mp4)
+
 ## API
 
 Annotated component with props ([figma](https://www.figma.com/file/wzCTQ9kMjWWHKFu7kCzYGi/Accordion-breakdown?type=design&node-id=0-1&t=GfrkTz89y2M46wQN-0)):
