@@ -11,7 +11,7 @@ import { useId } from '~src/hooks/useId';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 import type { TestID } from '~src/_helpers/types';
 
 type ProgressBarCommonProps = {

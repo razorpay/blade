@@ -3,7 +3,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { IconProps } from '~components/Icons';
 import type { SpinnerProps } from '~components/Spinner';
 import type { Size } from '~tokens/global';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 export type ButtonMinHeight = Size[28] | Size[32] | Size[36] | Size[48];
 

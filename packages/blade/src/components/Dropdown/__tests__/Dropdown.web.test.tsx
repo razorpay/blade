@@ -303,7 +303,7 @@ describe('<Dropdown />', () => {
         <SelectInput label="Fruits" />
         <DropdownOverlay>
           <ActionList>
-            <ActionListItem title="Mingo" value="mingo" />
+            <ActionListItem title="Apple" value="apple" />
             <ActionListItem title="Mango" value="mango" />
           </ActionList>
         </DropdownOverlay>

@@ -68,7 +68,7 @@ export type Breakpoints = Readonly<{
   xl: number;
 }>;
 
-const breakpoints: Breakpoints = {
+export const breakpoints: Breakpoints = {
   base: 0,
   xs: 320,
   s: 480,
@@ -76,5 +76,3 @@ const breakpoints: Breakpoints = {
   l: 1024,
   xl: 1200,
 };
-
-export default breakpoints;

@@ -27,7 +27,7 @@ describe('<Card />', () => {
     const footerTitle = 'Card Footer';
     const footerSubtitle = 'Card footer subtitle';
     const { getByText, container } = renderWithSSR(
-      <Card surfaceLevel={2}>
+      <Card>
         <CardHeader>
           <CardHeaderLeading
             title={cardTitle}
