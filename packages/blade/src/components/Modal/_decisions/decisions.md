@@ -82,6 +82,7 @@ const [isOpen, setIsOpen] = useState(false);
 | onDismiss       | `Callback`                 | `undefined`         | Called when the modal is closed, either by user state, hitting `esc` or tapping backdrop                                                                            |          |
 | initialFocusRef | `React.Ref`                | `undefined`         | ref element you want to get keyboard focus when opening the modal                                                                                                          |          |
 | children | `React.ReactNode`                | `undefined`         | Accepts only Modal sub components like ModalHeader,ModalBody,ModalFooter                                                                                                          |          |
+| accessibilityLabel | `string` | `undefined` | The accessibility label (aria-label) for the Modal. |                                                                                                     |          |
 
 #### Controlled State
 - Modal will always be a controlled component which means that the consumer will have to pass the `isOpen` prop and handle the state of the Modal themselves. 
@@ -199,12 +200,14 @@ const App = () => {
 - We will also add this to our documentation.
 
 ## Accessibility
-- Trap keyboard focus within the modal.
-- Close the modal when the user hits the `esc` key.
-- Add `aria-modal='true'`
-- Add `aria-role='dialog'`
-- Expose `accessibilityLabel` prop
 - Ref: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+- We will trap the keyboard focus within the Modal.
+- We will close the modal when the user hits the `esc` key.
+- We will expose `accessibilityLabel` prop
+- We will set `aria-modal='true'` & `aria-role='dialog'`
+- We will lock the page-scroll when the Modal is open
+  - Further technical research will be done during implementation.
+  - Ref: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
 
 ## Open questions
 - Do we need a different animation for Modal stacking? Yet to explore on design
