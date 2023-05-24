@@ -5,6 +5,7 @@ import React from 'react';
 import { Switch } from '../Switch';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
+import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 
 describe('<Switch />', () => {
   it('should render switch', () => {
@@ -166,5 +167,21 @@ describe('<Switch />', () => {
       <Switch testID="switch-test" accessibilityLabel={name} />,
     );
     expect(getByTestId('switch-test')).toBeTruthy();
+  });
+
+  it('should pass a11y', async () => {
+    const name = 'Toggle Darkmode';
+    const { getByRole } = renderWithTheme(
+      <Switch testID="switch-test" accessibilityLabel={name} />,
+    );
+    await assertAccessible(getByRole('switch', { name }), {
+      rules: {
+        // axe doesn't like that we are setting aria-required=false to role=switch
+        // This should not cause any a11y regression, so ignoring it because
+        // in https://www.w3.org/TR/wai-aria-1.2/#switch it says that switch inherits checkbox's props
+        // which also includes aria-required.
+        'aria-allowed-attr': { enabled: false },
+      },
+    });
   });
 });
