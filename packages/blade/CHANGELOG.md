@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.2.2
+
+### Patch Changes
+
+- e4dcdfc4: build: fix npm publish by generating .npmrc in monorepo root
+
 ## 8.2.1
 
 ### Patch Changes
