@@ -3,15 +3,10 @@ import { BaseText } from '../BaseText';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import {
-  metaAttribute,
-  getPlatformType,
-  makeSpace,
-  MetaConstants,
-  makeTypographySize,
-} from '~utils';
+import { metaAttribute, getPlatformType, MetaConstants, makeTypographySize } from '~utils';
 import type { FontSize, Typography } from '~tokens/global/typography';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import { makeSpace } from '~utils/makeSpace';
 
 export type CodeProps = {
   children: StringChildrenType;

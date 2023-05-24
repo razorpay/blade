@@ -1,3 +1,4 @@
+import getIn from 'lodash/get';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import type { IconComponent } from '../Icons';
@@ -7,10 +8,8 @@ import { OrderedList } from './OrderedList';
 import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
 import {
-  getIn,
   isValidAllowedChildren,
   makeAccessible,
-  makeSpace,
   metaAttribute,
   MetaConstants,
 } from '~utils';
@@ -18,7 +17,8 @@ import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types'
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSpace } from '~utils/makeSpace';
 
 type ListCommonProps = {
   /**

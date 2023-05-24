@@ -7,9 +7,11 @@ import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { isReactNative, makeSize, makeSpace } from '~utils';
+import { isReactNative } from '~utils';
 import size from '~tokens/global/size';
 import { useTheme } from '~components/BladeProvider';
+import { makeSpace } from '~utils/makeSpace';
+import { makeSize } from '~utils/makeSize';
 
 type BottomSheetEmptyHeaderProps = Pick<
   ReactDOMAttributes,

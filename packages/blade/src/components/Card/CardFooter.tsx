@@ -11,7 +11,7 @@ import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
 import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 export type CardFooterAction = Pick<
   ButtonProps,

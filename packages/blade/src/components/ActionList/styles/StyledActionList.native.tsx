@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getBaseActionListStyles } from './getBaseActionListStyles';
 import type { StyledActionListProps } from './getBaseActionListStyles';
-import { makeSize, isAndroid } from '~utils';
+import { isAndroid } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 
 const StyledActionList = styled(BaseBox)<StyledActionListProps>((props) => {

@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
+import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import { castWebType, getIn, makeMotionTime } from '~utils';
+import { castWebType, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type HoverProps = {
   isChecked?: boolean;

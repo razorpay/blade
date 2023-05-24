@@ -1,8 +1,10 @@
+import getIn from 'lodash/get';
 import styled from 'styled-components';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
-import { castWebType, getIn, makeBorderSize, makeMotionTime } from '~utils';
+import { castWebType, makeMotionTime } from '~utils';
 import { useStyledProps } from '~components/Box/styledProps';
+import { makeBorderSize } from '~utils/makeBorderSize';
 
 const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
   ...props.accessibilityProps,

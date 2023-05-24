@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import getIn from 'lodash/get';
 import type { ReactElement, SyntheticEvent } from 'react';
 import { useState } from 'react';
 import type { CSSObject } from 'styled-components';
@@ -15,7 +16,7 @@ import type {
   StringChildrenType,
   TestID,
 } from '~src/_helpers/types';
-import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
+import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';

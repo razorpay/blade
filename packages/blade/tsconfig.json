@@ -4,7 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~utils": ["src/utils"],
+      "~utils/*": ["src/utils/*"],
       "~components/*": ["src/components/*"],
       "~tokens/*": ["src/tokens/*"],
       "~src/*": ["src/*"]

@@ -2,11 +2,13 @@ import React from 'react';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType, makeSize, makeSpace, useBreakpoint } from '~utils';
+import { getPlatformType, useBreakpoint } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 import size from '~tokens/global/size';
+import { makeSpace } from '~utils/makeSpace';
+import { makeSize } from '~utils/makeSize';
 
 type CommonProps = {
   as: 'span' | 'label';

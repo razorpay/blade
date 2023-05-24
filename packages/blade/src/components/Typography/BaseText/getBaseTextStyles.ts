@@ -1,6 +1,7 @@
+import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import type { StyledBaseTextProps } from './types';
-import { getIn, makeTypographySize } from '~utils';
+import { makeTypographySize } from '~utils';
 
 const getBaseTextStyles = ({
   color = 'surface.text.normal.lowContrast',

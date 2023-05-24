@@ -6,10 +6,11 @@ import type { BaseTextProps } from '../BaseText/types';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { assignWithoutSideEffects, getPlatformType } from '~utils';
+import { getPlatformType } from '~utils';
 
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import type { TestID } from '~src/_helpers/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type TextCommonProps = {
   type?: TextTypes;

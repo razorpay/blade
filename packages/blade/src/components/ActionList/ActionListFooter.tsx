@@ -10,7 +10,6 @@ import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import {
   isReactNative,
-  makeSize,
   makeAccessible,
   MetaConstants,
   metaAttribute,
@@ -19,7 +18,8 @@ import {
 import { Text } from '~components/Typography';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSize } from '~utils/makeSize';
 
 type ActionListFooterProps = {
   title?: string;

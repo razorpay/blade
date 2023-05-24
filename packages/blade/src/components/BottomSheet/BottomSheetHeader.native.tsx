@@ -7,8 +7,8 @@ import type { BottomSheetHeaderProps } from './types';
 import { useBottomSheetHeaderTrailingRestriction } from './utils';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _BottomSheetHeader = ({
   title,

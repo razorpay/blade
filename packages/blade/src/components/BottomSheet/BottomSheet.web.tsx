@@ -20,13 +20,7 @@ import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
 
 import BaseBox from '~components/Box/BaseBox';
-import {
-  makeMotionTime,
-  assignWithoutSideEffects,
-  makeSize,
-  makeAccessible,
-  metaAttribute,
-} from '~utils';
+import { makeMotionTime, makeAccessible, metaAttribute } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
@@ -34,6 +28,8 @@ import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect'
 import { useTheme } from '~components/BladeProvider';
 import { useId } from '~src/hooks/useId';
 import size from '~tokens/global/size';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSize } from '~utils/makeSize';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 

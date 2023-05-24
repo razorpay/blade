@@ -1,10 +1,11 @@
+import getIn from 'lodash/get';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
 import type { ProgressBarFilledProps } from './types';
 import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, getIn, makeMotionTime } from '~utils';
+import { castWebType, makeMotionTime } from '~utils';
 
 const pulseKeyframes = keyframes`
   0% {

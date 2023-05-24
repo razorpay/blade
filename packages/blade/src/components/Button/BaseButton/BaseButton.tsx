@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import getIn from 'lodash/get';
 import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
@@ -21,16 +22,7 @@ import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~toke
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
-import {
-  MetaConstants,
-  metaAttribute,
-  makeAccessible,
-  usePrevious,
-  makeSize,
-  makeSpace,
-  makeBorderSize,
-  getIn,
-} from '~utils';
+import { MetaConstants, metaAttribute, makeAccessible, makeSpace } from '~utils';
 
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
@@ -47,7 +39,10 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { usePrevious } from '~utils/usePrevious';
+import { makeSize } from '~utils/makeSize';
+import { makeBorderSize } from '~utils/makeBorderSize';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';

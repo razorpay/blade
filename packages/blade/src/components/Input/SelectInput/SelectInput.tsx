@@ -11,8 +11,8 @@ import { isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type SelectInputProps = Pick<
   BaseInputProps,

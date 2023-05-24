@@ -7,8 +7,8 @@ import { Code, Heading, Text, Title } from '~components/Typography';
 import { Sandbox, SandboxProvider, SandboxHighlighter } from '~src/_helpers/storybook/Sandbox';
 import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { castWebType } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();

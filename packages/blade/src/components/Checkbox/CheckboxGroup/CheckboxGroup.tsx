@@ -7,10 +7,11 @@ import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { makeSize, useBreakpoint } from '~utils';
+import { useBreakpoint } from '~utils';
 
 import { useTheme } from '~components/BladeProvider';
 import type { TestID } from '~src/_helpers/types';
+import { makeSize } from '~utils/makeSize';
 
 type CheckboxGroupProps = {
   /**

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import getIn from 'lodash/get';
 import React from 'react';
 import { Text } from '../Typography';
 import type { IconComponent } from '../Icons';
@@ -18,14 +19,13 @@ import { getOrderedListItemBullet } from './getOrderedListItemBullet';
 import BaseBox from '~components/Box/BaseBox';
 import {
   getComponentId,
-  getIn,
   getPlatformType,
   isValidAllowedChildren,
   metaAttribute,
   MetaConstants,
 } from '~utils';
 import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type ListItemProps = {
   /**

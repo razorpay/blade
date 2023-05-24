@@ -3,8 +3,8 @@ import type { ListProps } from './List';
 import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import { makeSize } from '~utils';
 import size from '~tokens/global/size';
+import { makeSize } from '~utils/makeSize';
 
 const listItemMarginLeft: Record<
   NonNullable<ListProps['variant'] | 'unorderedWithIcon'>,

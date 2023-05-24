@@ -13,7 +13,7 @@ import { getBaseInputStyles } from './baseInputStyles';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
 import size from '~tokens/global/size';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'

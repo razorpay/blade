@@ -2,7 +2,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import type { SelectorLabelProps } from './types';
-import { makeSpace, metaAttribute } from '~utils';
+import { metaAttribute } from '~utils';
+import { makeSpace } from '~utils/makeSpace';
 
 const StyledSelectorLabel = styled.Pressable(({ theme }) => ({
   display: 'flex',

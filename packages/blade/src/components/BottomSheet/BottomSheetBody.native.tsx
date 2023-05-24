@@ -5,9 +5,9 @@ import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { isValidAllowedChildren } from '~utils';
 import { componentIds } from '~components/ActionList/componentIds';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { footerHeight, setContentHeight } = useBottomSheetContext();

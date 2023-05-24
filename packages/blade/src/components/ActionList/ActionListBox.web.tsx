@@ -3,8 +3,8 @@ import React from 'react';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import type { SectionData } from './actionListUtils';
 import { makeAccessible } from '~utils';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;

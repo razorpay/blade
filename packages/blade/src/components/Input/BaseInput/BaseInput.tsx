@@ -22,7 +22,6 @@ import {
   getPlatformType,
   makeAccessible,
   useBreakpoint,
-  makeSize,
 } from '~utils';
 import type { AriaAttributes, Platform } from '~utils';
 
@@ -34,6 +33,7 @@ import type {
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
 import type { TestID } from '~src/_helpers/types';
+import { makeSize } from '~utils/makeSize';
 
 export type BaseInputProps = FormInputLabelProps &
   FormInputValidationProps & {
