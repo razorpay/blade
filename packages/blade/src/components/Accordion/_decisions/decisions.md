@@ -16,11 +16,11 @@ This document outlines the API of `Accordion` component.
 
 ### Accordion open
 
-![](./accordion-open.mp4)
+https://github.com/razorpay/blade/assets/6682655/1a02d680-1832-4a70-a0a3-1a1f56f2b8b9
 
 ### Accordion close
 
-![](./accordion-close.mp4)
+https://github.com/razorpay/blade/assets/6682655/b54eaeb9-7257-4da4-bf3b-89e10785e4f9
 
 ## API
 
