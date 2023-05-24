@@ -2,8 +2,6 @@ const { getLeaves } = require('any-leaf');
 const StyleDictionary = require('style-dictionary');
 const set = require('lodash/set');
 const cloneDeep = require('lodash/cloneDeep');
-const chalk = require('chalk');
-const figures = require('figures');
 
 const { paymentTheme, bankingTheme } = require('../build/js-bundle-for-css/tokensBundle');
 const {
@@ -18,10 +16,7 @@ const getThemeFromTokens = ({ onColorMode, onDeviceType, themeTokens }) => {
   return {
     ...themeTokens,
     colors: themeTokens.colors[onColorMode],
-    shadows: {
-      ...themeTokens.shadows,
-      color: themeTokens.shadows.color[onColorMode],
-    },
+    elevation: themeTokens.elevation[onColorMode],
     typography: themeTokens.typography[onDeviceType],
   };
 };
@@ -183,13 +178,7 @@ const getThemeFromTokensCSSTokens = () => {
       }),
     ).buildAllPlatforms();
   } catch (error) {
-    console.log(
-      '\n',
-      chalk.red(`${figures.cross} error while generating CSS theme variables`),
-      '\n',
-      chalk.red(error),
-      '\n',
-    );
+    throw new Error(`Error while generating CSS theme variables:`, error);
   }
 };
 
