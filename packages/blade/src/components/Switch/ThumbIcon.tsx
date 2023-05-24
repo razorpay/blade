@@ -4,8 +4,8 @@ import { AnimatedThumbIcon } from './AnimatedThumbIcon';
 import { switchColors } from './switchTokens';
 import { useTheme } from '~components/BladeProvider';
 import { getIn, makeSize, makeSpace, useBreakpoint } from '~utils';
-import size from '~tokens/global/size';
 import { Path } from '~components/Icons/_Svg';
+import size from '~tokens/global/size';
 
 const switchIconSize = {
   desktop: {
