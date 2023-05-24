@@ -3,6 +3,7 @@ import { getBaseActionListStyles } from './getBaseActionListStyles';
 import type { StyledActionListProps } from './getBaseActionListStyles';
 import { isAndroid } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
+import { makeSize } from '~utils/makeSize';
 
 const StyledActionList = styled(BaseBox)<StyledActionListProps>((props) => {
   const shadowProps = {
