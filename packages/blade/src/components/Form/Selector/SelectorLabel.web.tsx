@@ -18,7 +18,12 @@ const SelectorLabel = ({
   testID,
 }: SelectorLabelProps): React.ReactElement => {
   return (
-    <StyledSelectorLabel {...metaAttribute({ name: componentName, testID })}>
+    <StyledSelectorLabel
+      onMouseDown={(e) => {
+        e.preventDefault();
+      }}
+      {...metaAttribute({ name: componentName, testID })}
+    >
       {children}
     </StyledSelectorLabel>
   );
