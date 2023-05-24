@@ -7,7 +7,7 @@ import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';

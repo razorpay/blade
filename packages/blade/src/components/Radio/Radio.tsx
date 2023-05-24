@@ -13,7 +13,7 @@ import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 

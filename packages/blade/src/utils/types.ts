@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import type React from 'react';
-import type { ViewStyle } from 'react-native';
+import type { ViewStyle, View } from 'react-native';
 import type { CSSObject } from 'styled-components';
 import type { Spacing, EasingFunctionFactory } from '~tokens/global';
 import type { Platform } from '~utils';
@@ -117,6 +119,11 @@ type PickCSSByPlatform<T extends keyof React.CSSProperties | keyof ViewStyle> = 
   native: PickIfExist<ViewStyle, T>;
 }>;
 
+type BladeElementRef = Platform.Select<{
+  web: Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View, 'focus'>;
+  native: React.MutableRefObject<any>;
+}>;
+
 export {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
@@ -127,4 +134,5 @@ export {
   TestID,
   PickIfExist,
   PickCSSByPlatform,
+  BladeElementRef,
 };

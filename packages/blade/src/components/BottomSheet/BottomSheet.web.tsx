@@ -22,11 +22,11 @@ import { useBottomSheetStack } from './BottomSheetStack';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, metaAttribute } from '~utils';
 
-import { useScrollLock } from '~src/hooks/useScrollLock';
-import { useWindowSize } from '~src/hooks/useWindowSize';
-import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { useScrollLock } from '~utils/useScrollLock';
+import { useWindowSize } from '~utils/useWindowSize';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
-import { useId } from '~src/hooks/useId';
+import { useId } from '~utils/useId';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';

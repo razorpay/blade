@@ -7,8 +7,8 @@ import styled from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type HoverProps = {

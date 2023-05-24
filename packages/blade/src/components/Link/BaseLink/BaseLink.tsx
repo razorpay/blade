@@ -5,7 +5,7 @@ import type { ReactElement, SyntheticEvent } from 'react';
 import { useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import StyledBaseLink from './StyledBaseLink';
-import useInteraction from '~src/hooks/useInteraction';
+import useInteraction from '~utils/useInteraction';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';

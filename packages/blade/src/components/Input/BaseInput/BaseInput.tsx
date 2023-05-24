@@ -21,7 +21,7 @@ import type { AriaAttributes, Platform } from '~utils';
 
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
-import useInteraction from '~src/hooks/useInteraction';
+import useInteraction from '~utils/useInteraction';
 import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
