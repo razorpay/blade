@@ -18,10 +18,7 @@ const getThemeFromTokens = ({ onColorMode, onDeviceType, themeTokens }) => {
   return {
     ...themeTokens,
     colors: themeTokens.colors[onColorMode],
-    shadows: {
-      ...themeTokens.shadows,
-      color: themeTokens.shadows.color[onColorMode],
-    },
+    elevation: themeTokens.elevation[onColorMode],
     typography: themeTokens.typography[onDeviceType],
   };
 };
