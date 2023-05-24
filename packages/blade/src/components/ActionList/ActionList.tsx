@@ -6,11 +6,13 @@ import { StyledActionList } from './styles/StyledActionList';
 import { ActionListBox } from './ActionListBox';
 import { componentIds } from './componentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { assignWithoutSideEffects, metaAttribute, MetaConstants } from '~utils';
-import { useTheme } from '~components/BladeProvider';
+
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
-import { makeAccessible } from '~utils/makeAccessible';
+import type { SurfaceLevels } from '~tokens/theme/theme';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
@@ -30,7 +32,7 @@ type ActionListProps = {
   /**
    * Decides the backgroundColor of ActionList
    */
-  surfaceLevel?: 2 | 3;
+  surfaceLevel?: Exclude<SurfaceLevels, 1>;
 } & TestID;
 
 /**
@@ -87,7 +89,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
     hasFooterAction,
   } = useDropdown();
 
-  const { theme } = useTheme();
   const { isInBottomSheet } = useBottomSheetContext();
 
   const {
@@ -132,7 +133,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
         <StyledActionList
           isInBottomSheet={isInBottomSheet}
           surfaceLevel={surfaceLevel}
-          elevation={isInBottomSheet ? undefined : theme.shadows.androidElevation.level[2]}
           id={`${dropdownBaseId}-actionlist`}
           {...makeAccessible({
             role: actionListContainerRole,

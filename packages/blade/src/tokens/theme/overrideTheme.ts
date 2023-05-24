@@ -3,7 +3,7 @@ import isEqual from 'lodash/isEqual';
 import merge from 'lodash/merge';
 import paymentTheme from './paymentTheme';
 import bankingTheme from './bankingTheme';
-import type { ThemeTokens } from './theme.d';
+import type { ThemeTokens } from './theme';
 import { isPartialMatchObjectKeys } from '~utils/isPartialMatchObjectKeys';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 

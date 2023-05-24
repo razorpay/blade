@@ -6,6 +6,7 @@ import type {
   BladeGroupNode,
 } from '../types/Blade';
 import type { TransformFunctionReturnType } from '../types/TransformFunction';
+// eslint-disable-next-line import/no-cycle
 import {
   generateBladeComponentInstanceCode,
   generateBladeFrameCode,

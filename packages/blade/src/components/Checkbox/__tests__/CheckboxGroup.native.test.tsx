@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';

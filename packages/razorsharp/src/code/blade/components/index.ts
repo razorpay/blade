@@ -1,6 +1,7 @@
 import { isIconInstance } from '../utils/iconUtils';
 import { transformAlert } from './alert';
 import { transformBadge } from './badge';
+// eslint-disable-next-line import/no-cycle
 import { transformFrameOrGroup } from './box';
 import { transformButton } from './button';
 import { transformCheckbox, transformCheckboxGroup } from './checkbox';

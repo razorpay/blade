@@ -17,7 +17,7 @@ import {
 } from './buttonTokens';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '~components/Icons';
-import type { DurationString, EasingString } from '~tokens/global/motion';
+import type { DurationString, EasingString } from '~tokens/global';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';

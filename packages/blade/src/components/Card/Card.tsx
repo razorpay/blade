@@ -1,12 +1,15 @@
 import React from 'react';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { Elevation } from '~tokens/global';
+import type { SurfaceLevels } from '~tokens/theme/theme';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -34,6 +37,8 @@ export type CardProps = {
    *
    * eg: `theme.colors.surface.background.level1`
    *
+   * @default `2`
+   *
    * **Description:**
    *
    * - 2: Used in layouts which are on top of the main background
@@ -43,14 +48,35 @@ export type CardProps = {
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-colors--page#-theme-tokens
    * - Figma: https://shorturl.at/fsvwK
    */
-  surfaceLevel?: 2 | 3;
+  surfaceLevel?: Exclude<SurfaceLevels, 1>;
+  /**
+   * Sets the elevation for Cards
+   *
+   * eg: `theme.elevation.midRaised`
+   *
+   * @default `theme.elevation.lowRaised`
+   *
+   * **Links:**
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--page
+   */
+  elevation?: keyof Elevation;
+  /**
+   * Sets the padding equally on all sides. Only few `spacing` tokens are allowed deliberately
+   * @default `spacing.7`
+   *
+   * **Links:**
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
+   */
+  padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.3' | 'spacing.5' | 'spacing.7'>;
 } & TestID &
   StyledPropsBlade;
 
 const Card = ({
   children,
-  surfaceLevel = 3,
+  surfaceLevel = 2,
+  elevation = 'lowRaised',
   testID,
+  padding = 'spacing.7',
   ...styledProps
 }: CardProps): React.ReactElement => {
   useVerifyAllowedComponents(children, 'Card', [
@@ -63,12 +89,10 @@ const Card = ({
     <CardProvider>
       <CardSurface
         {...metaAttribute({ name: MetaConstants.Card, testID })}
-        paddingLeft="spacing.7"
-        paddingRight="spacing.7"
-        paddingTop="spacing.6"
-        paddingBottom="spacing.6"
+        padding={padding}
         borderRadius="medium"
         surfaceLevel={surfaceLevel}
+        elevation={elevation}
         {...getStyledProps(styledProps)}
       >
         {children}

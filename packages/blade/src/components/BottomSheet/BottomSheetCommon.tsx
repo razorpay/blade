@@ -8,7 +8,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { isReactNative } from '~utils';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';

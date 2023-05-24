@@ -8,9 +8,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
-import spacing from '~tokens/global/spacing';
+import { spacing, size } from '~tokens/global';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import size from '~tokens/global/size';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';

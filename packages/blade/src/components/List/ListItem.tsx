@@ -69,10 +69,10 @@ const ListItemContentChildren = ({
    */
   return getPlatformType() === 'react-native' ? (
     <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
-      {children.map((child) => {
+      {children.map((child, index) => {
         if (typeof child === 'string') {
           return (
-            <Text variant="body" size={size}>
+            <Text key={index} variant="body" size={size}>
               {child}
             </Text>
           );

@@ -2,9 +2,8 @@ import React from 'react';
 import { Code } from '../Code';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { makeTypographySize } from '~utils';
-import typography from '~tokens/global/typography';
-import spacing from '~tokens/global/spacing';
 import { makeSpace } from '~utils/makeSpace';
+import { spacing, typography } from '~tokens/global';
 
 describe('<Code />', () => {
   it('should render Code with default properties', () => {

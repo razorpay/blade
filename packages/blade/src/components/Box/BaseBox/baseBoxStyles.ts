@@ -7,8 +7,8 @@ import type {
   SpacingValueType,
   ArrayOfMaxLength4,
 } from './types';
-import type { Breakpoints } from '~tokens/global/breakpoints';
-import breakpoints from '~tokens/global/breakpoints';
+import type { Breakpoints } from '~tokens/global';
+import { breakpoints } from '~tokens/global';
 import { getMediaQuery } from '~src/utils/getMediaQuery';
 import { isReactNative } from '~utils';
 import type { Theme } from '~components/BladeProvider';

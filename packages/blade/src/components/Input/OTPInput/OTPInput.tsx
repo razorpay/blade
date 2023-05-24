@@ -12,8 +12,8 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { metaAttribute, getPlatformType, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
-import size from '~tokens/global/size';
 import { makeSize } from '~utils/makeSize';
+import { size } from '~tokens/global';
 
 type FormInputOnEventWithIndex = ({
   name,

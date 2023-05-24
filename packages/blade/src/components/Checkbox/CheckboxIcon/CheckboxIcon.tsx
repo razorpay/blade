@@ -7,8 +7,8 @@ import { CheckboxIconWrapper } from './CheckboxIconWrapper';
 import { Fade } from './Fade';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
-import size from '~tokens/global/size';
 import { makeSpace } from '~utils/makeSpace';
+import { size } from '~tokens/global';
 
 const svgSize = {
   small: {

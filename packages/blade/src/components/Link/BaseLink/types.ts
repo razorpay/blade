@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction, SyntheticEvent } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { BaseLinkProps } from './BaseLink';
-import type { DurationString, EasingString } from '~tokens/global/motion';
+import type { DurationString, EasingString } from '~tokens/global';
 import type { ActionStates } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
