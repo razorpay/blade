@@ -101,7 +101,6 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
         >
           <Thumb size={size} deviceType={matchedDeviceType} isChecked={state.isChecked}>
             <AnimatedThumb
-              deviceType={matchedDeviceType}
               isPressed={isPressed}
               isChecked={state.isChecked}
               isDisabled={isDisabled}
