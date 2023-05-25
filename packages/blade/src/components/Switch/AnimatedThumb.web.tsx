@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { switchColors, switchMotion } from './switchTokens';
 import type { AnimatedThumbProps } from './types';
 import { BaseBox } from '~components/Box/BaseBox';
-import { makeMotionTime, makeBorderSize, getIn, makeSpace } from '~utils';
+import { makeMotionTime, makeBorderSize, getIn } from '~utils';
 
 const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
   ({ theme, isChecked, isDisabled, isPressed }) => {
