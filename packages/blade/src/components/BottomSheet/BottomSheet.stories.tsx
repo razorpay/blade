@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import type { BottomSheetProps } from './';
+import type { BottomSheetHeaderProps, BottomSheetProps } from './';
 import {
   BottomSheetBody,
   BottomSheet as BottomSheetComponent,
@@ -14,6 +14,7 @@ import {
 import {
   ClockIcon,
   CustomersIcon,
+  InfoIcon,
   ThumbsUpIcon,
   TrendingDownIcon,
   TrendingUpIcon,
@@ -29,7 +30,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Dropdown } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
-import { Text, Title } from '~components/Typography';
+import { Heading, Text, Title } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -132,15 +133,83 @@ const Page = (): React.ReactElement => {
   );
 };
 
+const propsCategory = { HEADER: 'Header Props' };
+const headerTrailingMap = {
+  Badge: <Badge variant="positive">Action Needed</Badge>,
+  Text: <Text>$12,000</Text>,
+  Link: <Link href="#">Link</Link>,
+  IconButton: <Button icon={InfoIcon} accessibilityLabel="Trailing icon" />,
+};
+
+const headerTitleSuffixMap = {
+  None: undefined,
+  Counter: <Counter value={12} intent="positive" />,
+};
+
+type StoryControlProps = BottomSheetProps & BottomSheetHeaderProps;
 export default {
   title: 'Components/BottomSheet',
   component: BottomSheetComponent,
+  args: {
+    isOpen: undefined,
+    children: undefined,
+    snapPoints: undefined,
+    initialFocusRef: undefined,
+    onDismiss: undefined,
+    showBackButton: undefined,
+    leading: undefined,
+    onBackButtonClick: undefined,
+    subtitle: undefined,
+    title: undefined,
+    titleSuffix: undefined,
+    trailing: undefined,
+  },
+  argTypes: {
+    showBackButton: {
+      defaultValue: false,
+      table: {
+        category: propsCategory.HEADER,
+      },
+    },
+    title: {
+      table: {
+        category: propsCategory.HEADER,
+      },
+    },
+    subtitle: {
+      table: {
+        category: propsCategory.HEADER,
+      },
+    },
+    trailing: {
+      control: {
+        type: 'select',
+      },
+      mapping: headerTrailingMap,
+      options: Object.keys(headerTrailingMap),
+      defaultValue: 'Badge',
+      table: {
+        category: propsCategory.HEADER,
+      },
+    },
+    titleSuffix: {
+      control: {
+        type: 'select',
+      },
+      mapping: headerTitleSuffixMap,
+      options: Object.keys(headerTitleSuffixMap),
+      defaultValue: 'Counter',
+      table: {
+        category: propsCategory.HEADER,
+      },
+    },
+  },
   parameters: {
     docs: {
       page: () => <Page />,
     },
   },
-} as Meta<BottomSheetProps>;
+} as Meta<StoryControlProps>;
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -217,18 +286,22 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
 
 export const Default = BottomSheetTemplate.bind({});
 
-const WithHeaderFooterTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithHeaderFooterTemplate: ComponentStory<any> = (args: StoryControlProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <BaseBox>
+      <Text marginBottom="spacing.4">
+        Play around with the Header props in the storybook controls panel
+      </Text>
       <Button onClick={() => setIsOpen(true)}>Open</Button>
-      <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+      <BottomSheetComponent {...args} isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
         <BottomSheetHeader
-          title="Address Details"
-          subtitle="Saving addresses will improve your checkout experience"
-          trailing={<Badge variant="positive">Action Needed</Badge>}
-          titleSuffix={<Counter intent="positive" value={2} />}
+          showBackButton={args.showBackButton}
+          title={args.title}
+          subtitle={args.subtitle}
+          trailing={args.trailing}
+          titleSuffix={args.titleSuffix}
         />
         <BottomSheetBody>
           <RadioGroup label="Addresses">
@@ -251,6 +324,13 @@ const WithHeaderFooterTemplate: ComponentStory<typeof BottomSheetComponent> = ()
 };
 
 export const WithHeaderFooter = WithHeaderFooterTemplate.bind({});
+WithHeaderFooter.args = {
+  title: 'Address Details',
+  subtitle: 'Saving addresses will improve your checkout experience',
+  trailing: 'Badge',
+  titleSuffix: 'Counter',
+  showBackButton: false,
+};
 
 const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   return (
@@ -633,20 +713,93 @@ const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
 
   return (
     <BaseBox>
-      <Text marginBottom="spacing.5">Custom SnapPoints at 50%, 80%, 100%</Text>
-      <Dropdown selectionType="multiple">
-        <SelectInput label="Cuisines Filter" />
-        <BottomSheetComponent snapPoints={[0.5, 0.8, 1]}>
-          <BottomSheetHeader title="Fruits" />
-          <BottomSheetBody>
-            <ActionList>
-              {fruites.map((fruit) => {
-                return <ActionListItem key={fruit} title={fruit} value={fruit} />;
-              })}
-            </ActionList>
-          </BottomSheetBody>
-        </BottomSheetComponent>
-      </Dropdown>
+      <Box marginBottom="spacing.5">
+        <Text marginBottom="spacing.4">Example of Custom SnapPoints at [50%, 80%, 100%]</Text>
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Cuisines Filter" />
+          <BottomSheetComponent snapPoints={[0.5, 0.8, 1]}>
+            <BottomSheetHeader title="Fruits" />
+            <BottomSheetBody>
+              <ActionList>
+                {fruites.map((fruit) => {
+                  return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+                })}
+              </ActionList>
+            </BottomSheetBody>
+          </BottomSheetComponent>
+        </Dropdown>
+      </Box>
+      <Heading marginBottom="spacing.3">SnapPoint Behaviour</Heading>
+
+      <Box display="flex" gap="spacing.2" flexWrap="wrap">
+        <Text>By default BottomSheet's SnapPoints are</Text>
+        <Text weight="bold">[35%, 50%, 85%]</Text>
+      </Box>
+
+      <Text>
+        Below is the behaviour BottomSheet follows to inteligently open the content at the optimal
+        SnapPoint initially
+      </Text>
+
+      <Box marginTop="spacing.3">
+        <Text weight="bold">At SnapPoint 1: 35% Screen Height</Text>
+        <List>
+          <ListItem>
+            If content height is less than 35% of screen height - then bottom sheet takes the height
+            of the content.
+          </ListItem>
+          <ListItem>
+            If content height is {'>'}35% screen height (and {'<'}50% of screen’s height) - then
+            bottom sheet’s initial snap point should be 35%.
+            <List>
+              <ListItem>
+                Bottom sheet will extend till the height of the content on upwards drag.
+              </ListItem>
+            </List>
+          </ListItem>
+        </List>
+
+        <Text weight="bold">At SnapPoint 2: 50% Screen Height</Text>
+        <List>
+          <ListItem>
+            If content height {'>'}35% but {'<'}50% screen height - the bottom sheet extends till
+            the height of the content.
+          </ListItem>
+          <ListItem>
+            If content height {'>'}50% (but {'<'}85% screen height) then bottom sheet’s initial snap
+            point should be at 50% screen height.
+            <List>
+              <ListItem>
+                The bottom sheet extends till the height of the content on upwards drag.
+              </ListItem>
+            </List>
+          </ListItem>
+        </List>
+
+        <Text weight="bold">At SnapPoint 3: 85% Screen Height</Text>
+        <List>
+          <ListItem>
+            If content height {'>'}50% but {'<'}85% screen height - the bottom sheet extends till
+            the height of the content.
+          </ListItem>
+          <ListItem>Bottom Sheet’s height can extend maximum until 85% screen size.</ListItem>
+          <ListItem>
+            If content height {'>'}85% of screen height then bottom sheet’s initial snap point
+            should be at 85% of screen height.
+            <List>
+              <ListItem>On further scroll or drag, contents scrolls internally.</ListItem>
+            </List>
+          </ListItem>
+        </List>
+
+        <Text>
+          Checkout the{' '}
+          <Link href="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=1-583405&t=1Fde8E8CnBaRPGsV-0">
+            design guideline
+          </Link>{' '}
+          here for more details
+        </Text>
+      </Box>
     </BaseBox>
   );
 };
