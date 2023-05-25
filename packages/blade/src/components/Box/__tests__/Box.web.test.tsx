@@ -1,5 +1,8 @@
+import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { Box } from '../Box';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import { Text } from '~components/Typography';
 
 describe('<Box />', () => {
   it('should render Box component with supported styles', () => {
@@ -95,5 +98,29 @@ describe('<Box />', () => {
       );
     }
     console.error = tempConsoleError;
+  });
+
+  it('should support ref on Box', async () => {
+    const user = userEvent.setup();
+    const boxClickHandler = jest.fn();
+
+    const BoxWithRef = (): JSX.Element => {
+      const ref = React.useRef<HTMLDivElement>(null);
+
+      React.useEffect(() => {
+        ref.current?.addEventListener('click', boxClickHandler);
+      }, []);
+
+      return (
+        <Box ref={ref} marginTop="500px">
+          <Text>lower box</Text>
+        </Box>
+      );
+    };
+
+    const { getByText } = renderWithTheme(<BoxWithRef />);
+    expect(boxClickHandler).not.toBeCalled();
+    await user.click(getByText('lower box'));
+    expect(boxClickHandler).toBeCalled();
   });
 });
