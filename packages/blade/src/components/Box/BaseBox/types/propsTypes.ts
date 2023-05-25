@@ -210,8 +210,7 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
 
 // ref prop type
 type BoxRefType = Platform.Select<{
-  web: Omit<HTMLDivElement, 'style'>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  web: Omit<HTMLElement, 'style'>;
   native: View;
 }>;
 

@@ -100,7 +100,7 @@ AsSection.args = {
 } as BoxProps;
 
 export const WithRef = (args: BoxProps): JSX.Element => {
-  const ref: React.Ref<BoxRefType> = React.useRef(null);
+  const ref = React.useRef<BoxRefType>(null);
 
   return (
     <Box height="300px" overflow="auto" backgroundColor="surface.background.level2.lowContrast">

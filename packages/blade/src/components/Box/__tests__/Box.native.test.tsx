@@ -1,3 +1,4 @@
+import React from 'react';
 import { Text } from 'react-native';
 import { Box } from '../Box';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
@@ -79,5 +80,27 @@ describe('<Box />', () => {
       );
     }
     console.error = tempConsoleError;
+  });
+
+  it('should support ref on Box', () => {
+    const refHasFocusProp = jest.fn();
+
+    const BoxWithRef = (): JSX.Element => {
+      const ref = React.useRef<HTMLDivElement>(null);
+
+      React.useEffect(() => {
+        refHasFocusProp(Boolean(ref.current?.focus));
+      }, []);
+
+      return (
+        <Box ref={ref} marginTop="500px">
+          <Text>lower box</Text>
+        </Box>
+      );
+    };
+
+    renderWithTheme(<BoxWithRef />);
+    // we just check if the ref value has focus prop to make sure it's not null and has appropriate values loaded
+    expect(refHasFocusProp).toBeCalledWith(true);
   });
 });
