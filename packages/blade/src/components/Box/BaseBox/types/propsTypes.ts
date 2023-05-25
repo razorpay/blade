@@ -187,6 +187,43 @@ type StyledPropsBlade = Partial<
   >
 >;
 
+type BoxCallbackProps = Omit<
+  Platform.Select<{
+    web: {
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseOver: React.MouseEventHandler<HTMLElement>;
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseEnter: React.MouseEventHandler<HTMLElement>;
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseLeave: React.MouseEventHandler<HTMLElement>;
+      onScroll: React.UIEventHandler<HTMLElement>;
+    };
+    native: Record<'onMouseOver' | 'onMouseEnter' | 'onMouseLeave' | 'onScroll', undefined>;
+  }>,
+  '__brand__'
+>;
+
 type BoxProps = Partial<
   PaddingProps &
     MarginProps &
@@ -194,6 +231,7 @@ type BoxProps = Partial<
     FlexboxProps &
     PositionProps &
     GridProps &
+    BoxCallbackProps &
     BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] } & TestID
 >;
 
