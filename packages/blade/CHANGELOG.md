@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.4.0
+
+### Minor Changes
+
+- 4fb0f3fe: feat(Box): add `onScroll`, `onMouseOver`, `onMouseEnter`, `onMouseLeave` events
+
 ## 8.3.0
 
 ### Minor Changes
