@@ -10,8 +10,7 @@ const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
     const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
     const duration = makeMotionTime(getIn(theme, switchMotion.duration.thumb));
     // offset the thumb 10% left because we change the width
-    // TODO: refactor
-    const offset = isChecked ? '-38%' : '14%';
+    const offset = isChecked ? '-39%' : '14%';
     // TODO: check if shouldRunAnimation is needed anymore
     return css`
       display: flex;
@@ -22,6 +21,7 @@ const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
       height: 100%;
       position: relative;
       will-change: transform, left;
+      transition-property: transform, width;
       width: ${isPressed ? '125%' : '100%'};
       left: ${isPressed ? offset : '0%'};
       transform: translateX(${isChecked ? '100%' : '0%'});

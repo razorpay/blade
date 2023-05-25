@@ -75,6 +75,10 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
             setIsPressed(false);
           }
         }}
+        onMouseOut={() => {
+          if (isDisabled) return;
+          setIsPressed(false);
+        }}
         inputProps={
           state.isReactNative
             ? // accessibility label for react-native needs to be added

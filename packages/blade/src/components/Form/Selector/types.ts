@@ -10,6 +10,7 @@ type SelectorLabelProps = {
   componentName?: string;
   onMouseDown?: React.MouseEventHandler<HTMLLabelElement>;
   onMouseUp?: React.MouseEventHandler<HTMLLabelElement>;
+  onMouseOut?: React.MouseEventHandler<HTMLLabelElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLLabelElement>;
   onKeyUp?: React.KeyboardEventHandler<HTMLLabelElement>;
 } & TestID;
