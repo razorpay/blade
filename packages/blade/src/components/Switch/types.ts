@@ -68,6 +68,7 @@ type AnimatedThumbProps = Pick<SwitchProps, 'size' | 'isChecked' | 'isDisabled'>
   children: React.ReactNode;
   // eslint-disable-next-line react/no-unused-prop-types
   shouldRunAnimation?: boolean;
+  isPressed?: boolean;
 };
 
 export type { OnChange, SwitchProps, ThumbProps, AnimatedThumbProps };

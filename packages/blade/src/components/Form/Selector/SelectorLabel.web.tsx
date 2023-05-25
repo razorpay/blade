@@ -16,12 +16,20 @@ const SelectorLabel = ({
   children,
   componentName,
   testID,
+  onMouseDown,
+  onMouseUp,
+  onKeyDown,
+  onKeyUp,
 }: SelectorLabelProps): React.ReactElement => {
   return (
     <StyledSelectorLabel
       onMouseDown={(e) => {
         e.preventDefault();
+        onMouseDown?.(e);
       }}
+      onMouseUp={onMouseUp}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
       {...metaAttribute({ name: componentName, testID })}
     >
       {children}

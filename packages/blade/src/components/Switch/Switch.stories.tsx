@@ -9,7 +9,7 @@ import { Switch as SwitchComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import BaseBox from '~components/Box/BaseBox';
+import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { GlobeIcon, MapPinIcon, WifiIcon } from '~components/Icons';

@@ -8,7 +8,7 @@ import { Thumb } from './Thumb';
 import { AnimatedThumb } from './AnimatedThumb';
 import { SwitchTrack } from './SwitchTrack';
 import { useTheme } from '~components/BladeProvider';
-import BaseBox from '~components/Box/BaseBox';
+import { BaseBox } from '~components/Box/BaseBox';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import {
@@ -35,6 +35,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
   },
   ref,
 ): React.ReactElement => {
+  const [isPressed, setIsPressed] = React.useState(false);
   const { state, inputProps } = useCheckbox({
     role: 'switch',
     defaultChecked,
@@ -60,6 +61,27 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
       display={state.isReactNative ? 'flex' : 'inline-block'}
     >
       <SelectorLabel
+        // TODO: handle disabled state
+        onMouseDown={() => {
+          if (isDisabled) return;
+          setIsPressed(true);
+        }}
+        onMouseUp={() => {
+          if (isDisabled) return;
+          setIsPressed(false);
+        }}
+        onKeyDown={(e) => {
+          if (isDisabled) return;
+          if (e.key === ' ') {
+            setIsPressed(true);
+          }
+        }}
+        onKeyUp={(e) => {
+          if (isDisabled) return;
+          if (e.key === ' ') {
+            setIsPressed(false);
+          }
+        }}
         inputProps={
           state.isReactNative
             ? // accessibility label for react-native needs to be added
@@ -86,6 +108,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
         >
           <Thumb size={size} deviceType={matchedDeviceType} isChecked={state.isChecked}>
             <AnimatedThumb
+              isPressed={isPressed}
               shouldRunAnimation={
                 // do not run animation on first render
                 // or if the isChecked state hasn't been changed

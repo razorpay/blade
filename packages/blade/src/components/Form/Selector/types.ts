@@ -8,6 +8,10 @@ type SelectorLabelProps = {
    */
   inputProps: any; // Partial<Extract<InputProps, { onPress: any }>>;
   componentName?: string;
+  onMouseDown?: React.MouseEventHandler<HTMLLabelElement>;
+  onMouseUp?: React.MouseEventHandler<HTMLLabelElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLLabelElement>;
+  onKeyUp?: React.KeyboardEventHandler<HTMLLabelElement>;
 } & TestID;
 
 type SelectorInputProps = HoverProps & {
