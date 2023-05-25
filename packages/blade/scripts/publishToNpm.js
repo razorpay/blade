@@ -20,8 +20,8 @@ const path = require('path');
 const execa = require('execa');
 
 const BLADE_ROOT = path.join(__dirname, '..');
-const NPMRC_PATH = path.join(BLADE_ROOT, '.npmrc');
 const MONOREPO_ROOT = path.join(BLADE_ROOT, '../..');
+const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
 const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:always-auth=true

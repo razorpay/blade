@@ -1,5 +1,8 @@
+import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { Box } from '../Box';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import { Text } from '~components/Typography';
 
 describe('<Box />', () => {
   it('should render Box component with supported styles', () => {
@@ -8,7 +11,7 @@ describe('<Box />', () => {
         display="flex"
         padding="spacing.0"
         // @ts-expect-error: Intentional to test bad flow
-        borderRadius="small"
+        fontWeight="bold"
       >
         children test!
       </Box>,
@@ -95,5 +98,55 @@ describe('<Box />', () => {
       );
     }
     console.error = tempConsoleError;
+  });
+
+  it('should support ref on Box', async () => {
+    const user = userEvent.setup();
+    const boxClickHandler = jest.fn();
+
+    const BoxWithRef = (): JSX.Element => {
+      const ref = React.useRef<HTMLDivElement>(null);
+
+      React.useEffect(() => {
+        ref.current?.addEventListener('click', boxClickHandler);
+      }, []);
+
+      return (
+        <Box ref={ref} marginTop="500px">
+          <Text>lower box</Text>
+        </Box>
+      );
+    };
+
+    const { getByText } = renderWithTheme(<BoxWithRef />);
+    expect(boxClickHandler).not.toBeCalled();
+    await user.click(getByText('lower box'));
+    expect(boxClickHandler).toBeCalled();
+  });
+
+  it('should support onMouse* callbacks', async () => {
+    const user = userEvent.setup();
+    const onMouseOverCallback = jest.fn();
+    const onMouseEnterCallback = jest.fn();
+    const onMouseLeaveCallback = jest.fn();
+
+    const { getByText } = renderWithTheme(
+      <Box
+        onMouseOver={onMouseOverCallback}
+        onMouseEnter={onMouseEnterCallback}
+        onMouseLeave={onMouseLeaveCallback}
+      >
+        <Text>Hoverable Text</Text>
+      </Box>,
+    );
+
+    expect(onMouseOverCallback).not.toBeCalled();
+    expect(onMouseEnterCallback).not.toBeCalled();
+    await user.hover(getByText('Hoverable Text'));
+    expect(onMouseOverCallback).toBeCalled();
+    expect(onMouseEnterCallback).toBeCalled();
+    expect(onMouseLeaveCallback).not.toBeCalled();
+    await user.unhover(getByText('Hoverable Text'));
+    expect(onMouseLeaveCallback).toBeCalled();
   });
 });

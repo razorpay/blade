@@ -16,7 +16,7 @@ import {
 } from './buttonTokens';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '~components/Icons';
-import type { DurationString, EasingString } from '~tokens/global/motion';
+import type { DurationString, EasingString } from '~tokens/global';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -54,6 +54,14 @@ type BaseButtonCommonProps = {
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
+  onBlur?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  }>;
+  onKeyDown?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  }>;
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -297,6 +305,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     isFullWidth = false,
     isLoading = false,
     onClick,
+    onBlur,
+    onKeyDown,
     type = 'button',
     children,
     accessibilityLabel,
@@ -384,6 +394,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       hoverBackgroundColor={hoverBackgroundColor}
       isFullWidth={isFullWidth}
       onClick={onClick}
+      onBlur={onBlur}
+      onKeyDown={onKeyDown}
       type={type}
       borderWidth={borderWidth}
       borderRadius={borderRadius}

@@ -141,10 +141,8 @@ const easing: Easing = {
   },
 };
 
-const motion: Motion = {
+export const motion: Motion = {
   delay,
   duration,
   easing,
 };
-
-export default motion;

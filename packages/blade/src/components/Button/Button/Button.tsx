@@ -43,6 +43,7 @@ type ButtonWithIconProps = ButtonCommonProps & {
 export type ButtonProps = ButtonWithoutIconProps | ButtonWithIconProps;
 
 const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
+  // While adding any prop here, make sure to handle it in DropdownButton as well
   {
     children,
     icon,

@@ -1,47 +1,30 @@
 import type { StringWithAutocomplete } from '~src/_helpers/types';
-import type { Border } from '~tokens/global/border';
-import type { Breakpoints } from '~tokens/global/breakpoints';
-import type { Motion } from '~tokens/global/motion';
-import type { Spacing } from '~tokens/global/spacing';
-import type { TypographyWithPlatforms } from '~tokens/global/typography';
+import type {
+  Border,
+  Breakpoints,
+  Motion,
+  Spacing,
+  TypographyWithPlatforms,
+  ElevationWithColorModes,
+} from '~tokens/global';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
 export type ColorSchemeModes = 'onDark' | 'onLight';
 
-export type ShadowLevels = 1 | 2 | 3 | 4 | 5;
-
 export type TextTypes = 'muted' | 'normal' | 'placeholder' | 'subdued' | 'subtle';
 
 export type ColorContrastTypes = 'low' | 'high';
-
-export type Shadows = {
-  offsetX: {
-    level: Record<ShadowLevels, number>;
-  };
-  offsetY: {
-    level: Record<ShadowLevels, number>;
-  };
-  blurRadius: {
-    level: Record<ShadowLevels, number>;
-  };
-  color: Record<
-    ColorSchemeModes,
-    {
-      level: Record<ShadowLevels, string>;
-    }
-  >;
-  androidElevation: {
-    level: Record<ShadowLevels, number>;
-  };
-};
 
 export type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
 export type ColorContrast = {
   [K in ColorContrastTypes as `${Extract<K, string>}Contrast`]: string;
 };
+
+// @TODO: this shall rather be Surface = 'level1' | 'level2' | 'level3' to keep in sync with color tokens
+export type SurfaceLevels = 1 | 2 | 3;
 
 export type ActionStates = {
   default: string;
@@ -161,8 +144,8 @@ export type ThemeTokens = {
   breakpoints: Breakpoints;
   colors: ColorsWithModes;
   motion: Motion;
+  elevation: ElevationWithColorModes;
   spacing: Spacing;
-  shadows: Shadows;
   typography: TypographyWithPlatforms;
 };
 
@@ -171,3 +154,5 @@ export type BorderWidthValues = `${Border['width'][keyof Border['width']]}px`;
 export type BorderRadiusValues =
   | `${Border['radius'][Exclude<keyof Border['radius'], 'round'>]}px`
   | `${Border['radius'][Extract<keyof Border['radius'], 'round'>]}`;
+
+export const colorSchemeNamesInput: ColorSchemeNamesInput[] = ['light', 'dark', 'system'];

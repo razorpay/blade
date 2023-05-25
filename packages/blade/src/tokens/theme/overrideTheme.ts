@@ -1,6 +1,6 @@
 import paymentTheme from './paymentTheme';
 import bankingTheme from './bankingTheme';
-import type { ThemeTokens } from './theme.d';
+import type { ThemeTokens } from './theme';
 import type { DeepPartial } from '~utils';
 import { isEqual, merge, cloneDeep, isPartialMatchObjectKeys } from '~utils';
 

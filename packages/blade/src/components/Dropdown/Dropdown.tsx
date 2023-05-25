@@ -14,6 +14,7 @@ import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type DropdownProps = {
   selectionType?: 'single' | 'multiple';
+  onDismiss?: () => void;
   children: React.ReactNode[];
 } & StyledPropsBlade;
 
@@ -46,11 +47,15 @@ type DropdownProps = {
 const _Dropdown = ({
   children,
   selectionType = 'single',
+  onDismiss,
   ...styledProps
 }: DropdownProps): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
+    DropdownContextType['selectedIndices']
+  >([]);
+  const [controlledValueIndices, setControlledValueIndices] = React.useState<
     DropdownContextType['selectedIndices']
   >([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
@@ -61,17 +66,41 @@ const _Dropdown = ({
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
+  const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
+    DropdownContextType['changeCallbackTriggerer']
+  >(0);
+  const [isControlled, setIsControlled] = React.useState(false);
   // keep track if dropdown contains bottomsheet
   const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
 
   const dropdownBaseId = useId('dropdown');
 
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
+  const isFirstRenderRef = React.useRef(true);
+
+  React.useEffect(() => {
+    // Ignoring the `onDismiss` call on first render
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false;
+      return;
+    }
+
+    if (!isOpen && onDismiss) {
+      onDismiss();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
+  const close = React.useCallback(() => {
+    setIsOpen(false);
+    onDismiss?.();
+  }, [onDismiss]);
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       if (
-        !isValidAllowedChildren(child, 'SelectInput') &&
+        !isValidAllowedChildren(child, componentIds.triggers.SelectInput) &&
+        !isValidAllowedChildren(child, componentIds.triggers.DropdownButton) &&
         !isValidAllowedChildren(child, componentIds.DropdownOverlay) &&
         !isValidAllowedChildren(child, bottomSheetComponentIds.BottomSheet)
       ) {
@@ -80,8 +109,12 @@ const _Dropdown = ({
         );
       }
 
-      if (isValidAllowedChildren(child, 'SelectInput')) {
+      if (isValidAllowedChildren(child, componentIds.triggers.SelectInput)) {
         dropdownTriggerer.current = 'SelectInput';
+      }
+
+      if (isValidAllowedChildren(child, componentIds.triggers.DropdownButton)) {
+        dropdownTriggerer.current = 'DropdownButton';
       }
     }
   });
@@ -90,8 +123,11 @@ const _Dropdown = ({
     () => ({
       isOpen,
       setIsOpen,
+      close,
       selectedIndices,
       setSelectedIndices,
+      controlledValueIndices,
+      setControlledValueIndices,
       options,
       setOptions,
       activeIndex,
@@ -111,11 +147,16 @@ const _Dropdown = ({
       hasLabelOnLeft,
       setHasLabelOnLeft,
       dropdownTriggerer: dropdownTriggerer.current,
+      changeCallbackTriggerer,
+      setChangeCallbackTriggerer,
+      isControlled,
+      setIsControlled,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       isOpen,
       selectedIndices,
+      controlledValueIndices,
       options,
       activeIndex,
       shouldIgnoreBlur,
@@ -124,23 +165,21 @@ const _Dropdown = ({
       hasFooterAction,
       hasLabelOnLeft,
       isKeydownPressed,
+      changeCallbackTriggerer,
+      isControlled,
     ],
   );
-
-  // This is the dismiss function which will be injected into the BottomSheet
-  // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
-  const onBottomSheetDismiss = React.useCallback(() => {
-    setIsOpen(false);
-  }, []);
 
   const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
     return {
       isOpen,
       dropdownHasBottomSheet,
       setDropdownHasBottomSheet,
-      onBottomSheetDismiss,
+      // This is the dismiss function which will be injected into the BottomSheet
+      // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
+      onBottomSheetDismiss: close,
     };
-  }, [dropdownHasBottomSheet, isOpen, onBottomSheetDismiss]);
+  }, [dropdownHasBottomSheet, isOpen, close]);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
