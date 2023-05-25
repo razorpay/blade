@@ -2,4 +2,4 @@
 "@razorpay/blade": minor
 ---
 
-feat(Box): add `onMouseOver`, `onMouseEnter`, `onMouseLeave` events
+feat(Box): add `onScroll`, `onMouseOver`, `onMouseEnter`, `onMouseLeave` events
