@@ -50,7 +50,7 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 | -------------------- | ---------- | ----------- | -------------------------------------------------------------- | -------- |
 | defaultExpandedIndex | `number`   | `undefined` | Makes the passed item index expanded by default (uncontrolled) |          |
 | expandedIndex        | `number`   | `undefined` | Expands the passed index (controlled)                          |          |
-| onChange             | `function` | `undefined` | Callback for change in any item's expanded state (controlled)  |          |
+| onChange             | `function` | `undefined` | Callback for change in any item's expanded state               |          |
 | showNumberPrefix     | `boolean`  | `false`     | Adds numeric index at the beginning of items                   |          |
 
 > **Note**
