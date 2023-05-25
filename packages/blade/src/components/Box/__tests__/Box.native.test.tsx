@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { Box } from '../Box';
+import type { BoxRefType } from '../index';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<Box />', () => {
@@ -86,7 +87,7 @@ describe('<Box />', () => {
     const refHasFocusProp = jest.fn();
 
     const BoxWithRef = (): JSX.Element => {
-      const ref = React.useRef<HTMLDivElement>(null);
+      const ref = React.useRef<BoxRefType>(null);
 
       React.useEffect(() => {
         refHasFocusProp(Boolean(ref.current?.focus));
