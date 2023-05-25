@@ -2,7 +2,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import type { DotNotationColorStringToken } from '~src/_helpers/types';
 import type { DurationString, EasingString } from '~tokens/global/motion';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 type ColorTokens = `colors.${DotNotationColorStringToken<Theme['colors']>}` | 'transparent';
 type State = {

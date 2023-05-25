@@ -5,7 +5,7 @@ import { switchColors } from './switchTokens';
 import { useTheme } from '~components/BladeProvider';
 import { getIn, makeSize, makeSpace, useBreakpoint } from '~utils';
 import { Path } from '~components/Icons/_Svg';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 const switchIconSize = {
   desktop: {

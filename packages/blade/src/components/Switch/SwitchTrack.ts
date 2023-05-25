@@ -25,10 +25,12 @@ const SwitchTrack = styled(BaseBox)<TrackProps>(
       : makeSpace(getIn(theme, heightToken));
 
     return {
+      pointerEvents: 'none',
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
       margin: makeSpace(theme.spacing[1]),
+      padding: makeSpace(theme.spacing[1]),
       width,
       height,
       borderRadius: makeSize(theme.border.radius.max),
