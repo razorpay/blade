@@ -123,4 +123,30 @@ describe('<Box />', () => {
     await user.click(getByText('lower box'));
     expect(boxClickHandler).toBeCalled();
   });
+
+  it('should support onMouse* callbacks', async () => {
+    const user = userEvent.setup();
+    const onMouseOverCallback = jest.fn();
+    const onMouseEnterCallback = jest.fn();
+    const onMouseLeaveCallback = jest.fn();
+
+    const { getByText } = renderWithTheme(
+      <Box
+        onMouseOver={onMouseOverCallback}
+        onMouseEnter={onMouseEnterCallback}
+        onMouseLeave={onMouseLeaveCallback}
+      >
+        <Text>Hoverable Text</Text>
+      </Box>,
+    );
+
+    expect(onMouseOverCallback).not.toBeCalled();
+    expect(onMouseEnterCallback).not.toBeCalled();
+    await user.hover(getByText('Hoverable Text'));
+    expect(onMouseOverCallback).toBeCalled();
+    expect(onMouseEnterCallback).toBeCalled();
+    expect(onMouseLeaveCallback).not.toBeCalled();
+    await user.unhover(getByText('Hoverable Text'));
+    expect(onMouseLeaveCallback).toBeCalled();
+  });
 });

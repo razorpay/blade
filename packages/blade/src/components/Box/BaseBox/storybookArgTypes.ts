@@ -132,7 +132,8 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
         ([key]) =>
           !Object.keys(getStyledPropsArgTypes()).includes(key) &&
           !key.includes('padding') &&
-          !key.includes('backgroundColor'),
+          !key.includes('backgroundColor') &&
+          !key.startsWith('onMouse'),
       )
       .map(([key, _value]) => {
         const cssPropertyName = key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
@@ -193,6 +194,11 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
     ...getStyledPropsArgTypes({ descriptionLength: 'long', category: null }),
     ...restBoxArgTypes,
     children: {
+      table: {
+        disable: true,
+      },
+    },
+    __brand__: {
       table: {
         disable: true,
       },
