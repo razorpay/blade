@@ -1,9 +1,11 @@
+import type { View } from 'react-native';
 import type { CSSObject } from 'styled-components';
 import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~src/_helpers/types';
+import type { Platform } from '~utils';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -206,4 +208,10 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
     }
   >;
 
-export { BaseBoxProps, BoxProps, StyledPropsBlade, validBoxAsValues };
+// ref prop type
+type BoxRefType = Platform.Select<{
+  web: Omit<HTMLElement, 'style'>;
+  native: View;
+}>;
+
+export { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, validBoxAsValues };

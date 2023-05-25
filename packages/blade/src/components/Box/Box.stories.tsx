@@ -1,12 +1,14 @@
 import type { Meta } from '@storybook/react';
 import React from 'react';
 import { getBoxArgTypes } from './BaseBox/storybookArgTypes';
+import type { BoxRefType } from './BaseBox/types';
 import type { BoxProps } from '.';
 import { Box } from '.';
 import { Text, Title } from '~components/Typography';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { LinkToStorybook } from '~src/_helpers/storybook/LinkToStorybook';
-import { isReactNative } from '~utils';
+import { castWebType, isReactNative } from '~utils';
+import { Button } from '~components/Button';
 
 // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
 // So we manually read location.hash of parent window and scroll to that section on load
@@ -95,6 +97,31 @@ export const AsSection = (args: BoxProps): JSX.Element => {
 
 AsSection.args = {
   as: 'section',
+} as BoxProps;
+
+export const WithRef = (args: BoxProps): JSX.Element => {
+  const ref = React.useRef<BoxRefType>(null);
+
+  return (
+    <Box height="300px" overflow="auto" backgroundColor="surface.background.level2.lowContrast">
+      <Button
+        onClick={() => {
+          if (!isReactNative()) {
+            castWebType(ref.current).scrollIntoView();
+          }
+        }}
+      >
+        Click to Scroll
+      </Button>
+      <Box ref={ref} {...args}>
+        <Text>Hi from Box with ref</Text>
+      </Box>
+    </Box>
+  );
+};
+
+WithRef.args = {
+  marginTop: '800px',
 } as BoxProps;
 
 export default BoxStoryMeta;
