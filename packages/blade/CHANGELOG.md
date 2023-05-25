@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.3.0
+
+### Minor Changes
+
+- 06da7a2f: feat(Box): add `ref` support
+
 ## 8.2.3
 
 ### Patch Changes
