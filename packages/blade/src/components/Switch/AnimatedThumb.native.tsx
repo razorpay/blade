@@ -77,15 +77,15 @@ const AnimatedThumb = ({
         // scale thumb by 25%, 1.25 comes from motion guidelines
         [finalWidth, finalWidth * 1.25],
       ),
-      left: interpolate(sharedLeft.value, [0, 1], [0, finalWidth]),
+      left: withTiming(
+        // While on checked state, shift the thumb 25% to left because
+        // We elongate the width 25% to right.
+        sharedShouldShiftOffset.value ? finalWidth * -0.25 : 0,
+        { easing, duration },
+      ),
       transform: [
         {
-          translateX: withTiming(
-            // While on checked state, shift the thumb 25% to left because
-            // We elongate the width 25% to right.
-            sharedShouldShiftOffset.value ? finalWidth * -0.25 : finalWidth * 0,
-            { easing, duration },
-          ),
+          translateX: interpolate(sharedLeft.value, [0, 1], [0, finalWidth]),
         },
       ],
     };
