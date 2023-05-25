@@ -131,10 +131,16 @@ export const WithMouseEvents = (args: BoxProps): JSX.Element => {
       onMouseOver={(e) => console.log('onMouseOver', e)}
       onMouseEnter={(e) => console.log('onMouseEnter', e)}
       onMouseLeave={(e) => console.log('onMouseLeave', e)}
+      onScroll={(e) => console.log('onScroll', e)}
     >
-      <Text>Move mouse over this text and check console</Text>
+      <Text marginY="300px">Move mouse over this text and check console</Text>
     </Box>
   );
 };
+
+WithMouseEvents.args = {
+  overflowY: 'auto',
+  height: '300px',
+} as BoxProps;
 
 export default BoxStoryMeta;

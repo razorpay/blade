@@ -217,8 +217,9 @@ type BoxCallbackProps = Omit<
        * Use this for hoverable containers in cases like custom menus.
        */
       onMouseLeave: React.MouseEventHandler<HTMLElement>;
+      onScroll: React.UIEventHandler<HTMLElement>;
     };
-    native: Record<'onMouseOver' | 'onMouseEnter' | 'onMouseLeave', undefined>;
+    native: Record<'onMouseOver' | 'onMouseEnter' | 'onMouseLeave' | 'onScroll', undefined>;
   }>,
   '__brand__'
 >;

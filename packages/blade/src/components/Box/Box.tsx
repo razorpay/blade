@@ -128,6 +128,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     onMouseEnter: props.onMouseEnter,
     onMouseLeave: props.onMouseLeave,
     onMouseOver: props.onMouseOver,
+    onScroll: props.onScroll,
 
     children: props.children,
     as: isReactNative() ? undefined : props.as, // as is not supported on react-native

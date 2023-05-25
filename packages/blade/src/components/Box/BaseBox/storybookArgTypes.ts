@@ -133,7 +133,7 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
           !Object.keys(getStyledPropsArgTypes()).includes(key) &&
           !key.includes('padding') &&
           !key.includes('backgroundColor') &&
-          !key.startsWith('onMouse'),
+          !key.startsWith('on'),
       )
       .map(([key, _value]) => {
         const cssPropertyName = key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
