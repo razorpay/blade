@@ -124,4 +124,23 @@ WithRef.args = {
   marginTop: '800px',
 } as BoxProps;
 
+export const WithMouseEvents = (args: BoxProps): JSX.Element => {
+  return (
+    <Box
+      {...args}
+      onMouseOver={(e) => console.log('onMouseOver', e)}
+      onMouseEnter={(e) => console.log('onMouseEnter', e)}
+      onMouseLeave={(e) => console.log('onMouseLeave', e)}
+      onScroll={(e) => console.log('onScroll', e)}
+    >
+      <Text marginY="300px">Move mouse over this text and check console</Text>
+    </Box>
+  );
+};
+
+WithMouseEvents.args = {
+  overflowY: 'auto',
+  height: '300px',
+} as BoxProps;
+
 export default BoxStoryMeta;
