@@ -33,7 +33,7 @@ Sample usage, composes `Accordion` and `AccordionItem`:
 ```jsx
 import { Accordion, AccordionItem } from '@razorpay/blade';
 
-<Accordion variant="ordered" defaultIndex={0}>
+<Accordion showNumberPrefix defaultExpandedIndex={0}>
   <AccordionItem
     title="Can I create linked accounts using Route?"
     description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers."
@@ -46,29 +46,29 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 
 ### Accordion
 
-| Prop         | Type                   | Default     | Description                                                    | Required |
-| ------------ | ---------------------- | ----------- | -------------------------------------------------------------- | -------- |
-| variant      | `unordered`, `ordered` | `unordered` | `ordered` shows a numeric prefix to titles                     |          |
-| defaultIndex | `number`               | `undefined` | Makes the passed item index expanded by default (uncontrolled) |          |
-| index        | `number`               | `undefined` | Expands the passed index (controlled)                          |          |
-| onChange     | `function`             | `undefined` | Callback for change in any item's expanded state (controlled)  |          |
+| Prop                 | Type       | Default     | Description                                                    | Required |
+| -------------------- | ---------- | ----------- | -------------------------------------------------------------- | -------- |
+| defaultExpandedIndex | `number`   | `undefined` | Makes the passed item index expanded by default (uncontrolled) |          |
+| expandedIndex        | `number`   | `undefined` | Expands the passed index (controlled)                          |          |
+| onChange             | `function` | `undefined` | Callback for change in any item's expanded state (controlled)  |          |
+| showNumberPrefix     | `boolean`  | `false`     | Adds numeric index at the beginning of items                   |          |
 
 > **Note**
 >
 > - Also includes layout based styling props
 > - By default the accordion renders in all items collapsed state, at max only one item can be expanded at a time (design restriction)
-> - `defaultIndex` can accept an accordion item index to render the accordion in an uncontrolled state
+> - `defaultExpandedIndex` can accept an accordion item index to render the accordion in an uncontrolled state
 > - For using accordion in controlled state, use `index` coupled with `onChange`
-> - `onChange` callback signature `({ index }) => {}`, `index` represents the expanded item's index
+> - `onChange` callback signature `({ expandedIndex }) => {}`, `expandedIndex` represents the expanded item's index
 
 ### AccordionItem
 
-| Key         | Type            | Default     | Description                                                         | Required |
-| ----------- | --------------- | ----------- | ------------------------------------------------------------------- | -------- |
-| title       | `string`        | `undefined` | Title text content                                                  | ✅       |
-| description | `string`        | `undefined` | Body text content                                                   |          |
-| icon        | `IconComponent` | `undefined` | Renders a Blade icon as title prefix (requires `unordered` variant) |          |
-| children    | `JSX`           | `undefined` | Slot, renders any custom content                                    |          |
+| Key         | Type            | Default     | Description                                                                | Required |
+| ----------- | --------------- | ----------- | -------------------------------------------------------------------------- | -------- |
+| title       | `string`        | `undefined` | Title text content                                                         | ✅       |
+| description | `string`        | `undefined` | Body text content                                                          | ✅       |
+| icon        | `IconComponent` | `undefined` | Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`) |          |
+| children    | `JSX`           | `undefined` | Slot, renders any custom content                                           |          |
 
 ## a11y
 
@@ -94,7 +94,7 @@ Native:
 </div>
 
 ```tsx
-<Accordion defaultIndex={0}>
+<Accordion defaultExpandedIndex={0}>
   <AccordionItem
     title="How can I setup Route?"
     description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers."
@@ -113,10 +113,10 @@ Native:
 ```tsx
 const App = () => {
   const [index, setIndex] = useState(0);
-  const onChange = ({ index }) => setIndex(index);
+  const onChange = ({ expandedIndex }) => setIndex(expandedIndex);
 
   return (
-    <Accordion index={index} onChange={onChange}>
+    <Accordion expandedIndex={index} onChange={onChange}>
       <AccordionItem title="Can I use a payment gateway?" description="Just use Razorpay" />
       <AccordionItem
         title="How can I transfer money to customers?"
@@ -129,8 +129,8 @@ const App = () => {
 
 ## Alternatives
 
-- Instead of `index`, `defaultIndex` considered `value`, `defaultValue`, however it doesn't co-relate well with how these APIs work in other components where they're mostly being used for user inputs (eg. in forms) and therefore termed values. On the other hand, accordion is mostly a presentational component and shouldn't be used for user inputs _(what do we treat as value in accordion)_.
-- Instead of `index`, `defaultIndex` on the root `Accordion` component, considered an approach to instead put relatable props such as `isExpanded`, `isDefaultExpanded` on the child `AccordionItem` component. However, with this, controlled usecase becomes tricky since we would still ideally want a single callback listener for `onChange`:
+- Instead of `expandedIndex`, `defaultExpandedIndex` considered `value`, `defaultValue`, however it doesn't co-relate well with how these APIs work in other components where they're mostly being used for user inputs (eg. in forms) and therefore termed values. On the other hand, accordion is mostly a presentational component and shouldn't be used for user inputs _(what do we treat as value in accordion)_.
+- Instead of `expandedIndex`, `defaultExpandedIndex` on the root `Accordion` component, considered an approach to instead put relatable props such as `isExpanded`, `isDefaultExpanded` on the child `AccordionItem` component. However, with this, controlled usecase becomes tricky since we would still ideally want a single callback listener for `onChange`:
   - if we put this `onChange` at the root `Accordion`, we would still need some sort of `index` or value in the callback
   - if we put this `onChange` on individual `AccordionItem` components, either a user would need to pass different callback handlers to each or we would need to pass an `index` or some value (same dilemma)
   - it's slightly inconvenient to have callback handlers and the expanded index value at different places (one at root and one at child)
@@ -138,6 +138,8 @@ const App = () => {
 ## Implementation notes
 
 For SEO purposes the collapsed content can be hidden with CSS.
+
+Behavior wise Accordion's interaction is similar to Radio / Checkbox _with slight differences_
 
 Accordion shares the toggle interaction with Collapsible. We can create abstractions that work for both plus other components such as tabs, switch, etc. (different from this public API spec):
 
