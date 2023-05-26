@@ -16,15 +16,14 @@ const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      width: 100%;
       height: 100%;
       position: relative;
       will-change: transform, left;
-      transition-property: transform, width;
       width: ${isPressed ? '125%' : '100%'};
       left: ${isPressed ? offset : '0%'};
       transform: translateX(${isChecked ? '100%' : '0%'});
-      transition: ${duration};
+      transition-property: transform, width;
+      transition-duration: ${duration};
       border-radius: ${makeBorderSize(theme.border.radius.max)};
       animation-duration: ${duration};
       background-color: ${backgroundColor};
