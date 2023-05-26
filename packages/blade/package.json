@@ -95,7 +95,7 @@
     "test:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js",
     "start:ios": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:ios",
     "start:android": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android",
-    "start:native": "run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
+    "start:native": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
     "start:web": "NODE_OPTIONS=--openssl-legacy-provider yarn react",
     "start:all": "run-p start:native start:web",
     "watch:test": "run-p watch:test:*",
