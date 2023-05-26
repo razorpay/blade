@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { getColorScheme } from '../getColorScheme';
-import { colorSchemeNamesInput } from '~tokens/theme';
+import { colorSchemeNamesInput } from '~tokens/theme/theme';
 import type { ColorSchemeNames, ColorSchemeNamesInput } from '~tokens/theme';
 
 export type UseColorScheme = {

@@ -1,7 +1,7 @@
 /**
  * Size tokens are currently not exposed for users (therefore not available in theme)
  */
-const size = {
+export const size = {
   /** 0 px */
   0: 0,
   /** 1 px */
@@ -40,6 +40,8 @@ const size = {
   40: 40,
   /** 48 px */
   48: 48,
+  /** 60 px */
+  56: 56,
   /** 100 px */
   100: 100,
   /** 120 px */
@@ -51,5 +53,3 @@ const size = {
 } as const;
 
 export type Size = typeof size;
-
-export default size;

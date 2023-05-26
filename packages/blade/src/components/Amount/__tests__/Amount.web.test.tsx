@@ -8,9 +8,6 @@ import {
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<Amount />', () => {
   it('should render Amount with default props', () => {
     const { container } = renderWithTheme(<Amount value={1000} />);
@@ -24,10 +21,12 @@ describe('<Amount />', () => {
   });
 
   it('should throw an error when a string is passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     // @ts-expect-error testing failure case when value is passed as a string
-    expect(() => renderWithTheme(<Amount value={'10000'} />)).toThrow(
+    expect(() => renderWithTheme(<Amount value="10000" />)).toThrow(
       '[Blade: Amount]: `value` prop must be of type `number` for Amount.',
     );
+    mockConsoleError.mockRestore();
   });
 
   it('should render body-small size Amount', () => {

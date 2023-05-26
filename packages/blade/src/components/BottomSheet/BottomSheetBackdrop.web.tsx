@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useBottomSheetContext } from './BottomSheetContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime } from '~utils';
+import { castWebType, makeMotionTime, metaAttribute } from '~utils';
 
 const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme, isOpen }) => {
   return {
@@ -23,6 +23,7 @@ const BottomSheetBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement
 
   return (
     <StyledBottomSheetBackdrop
+      {...metaAttribute({ testID: 'bottomsheet-backdrop' })}
       onClick={() => {
         close();
       }}

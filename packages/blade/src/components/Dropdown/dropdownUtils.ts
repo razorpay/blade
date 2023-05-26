@@ -8,7 +8,6 @@
  */
 
 import type { DropdownContextType, OptionsType } from './useDropdown';
-import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 export type SelectActionsType =
   | 'Close'
@@ -26,6 +25,10 @@ export type SelectActionsType =
 export const componentIds = {
   DropdownOverlay: 'DropdownOverlay',
   Dropdown: 'Dropdown',
+  triggers: {
+    SelectInput: 'SelectInput',
+    DropdownButton: 'DropdownButton',
+  },
 };
 
 // Save a list of named combobox actions, for future readability
@@ -201,6 +204,7 @@ export function isScrollable(element: HTMLElement): boolean {
 
 type ActionsType = {
   setIsOpen: DropdownContextType['setIsOpen'];
+  close: DropdownContextType['close'];
   selectCurrentOption: () => void;
   onOptionChange: (action: SelectActionsType) => void;
   onComboType: (letter: string, action: SelectActionsType) => void;
@@ -212,10 +216,12 @@ type ActionsType = {
  */
 export const performAction = (
   action: SelectActionsType,
-  e: FormInputOnKeyDownEvent,
+  payload: {
+    event: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+  },
   actions: ActionsType,
 ): boolean => {
-  const { event } = e;
+  const { event } = payload;
 
   switch (action) {
     case SelectActions.Last:
@@ -236,7 +242,7 @@ export const performAction = (
       return true;
     case SelectActions.Close:
       event.preventDefault();
-      actions.setIsOpen(false);
+      actions.close();
       return true;
     case SelectActions.Type:
       actions.onComboType(event.key, action);

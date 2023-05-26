@@ -10,7 +10,7 @@ import {
   MetaConstants,
   makeTypographySize,
 } from '~utils';
-import type { FontSize, Typography } from '~tokens/global/typography';
+import type { FontSize, Typography } from '~tokens/global';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type CodeProps = {

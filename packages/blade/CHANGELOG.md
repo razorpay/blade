@@ -1,5 +1,300 @@
 # @razorpay/blade
 
+## 8.4.0
+
+### Minor Changes
+
+- 4fb0f3fe: feat(Box): add `onScroll`, `onMouseOver`, `onMouseEnter`, `onMouseLeave` events
+
+## 8.3.0
+
+### Minor Changes
+
+- 06da7a2f: feat(Box): add `ref` support
+
+## 8.2.3
+
+### Patch Changes
+
+- ec18776c: fix: blade builds on npm & github
+
+## 8.2.2
+
+> **Warning**
+>
+> There were some build issues associated with this release, please upgrade to version >= 8.2.3 where this issue was resolved
+
+### Patch Changes
+
+- e4dcdfc4: build: fix npm publish by generating .npmrc in monorepo root
+
+## 8.2.1
+
+> **Warning**
+>
+> There were some build issues associated with this release, please upgrade to version >= 8.2.3 where this issue was resolved
+
+### Patch Changes
+
+- 1ab67fc7: fix: css vars build script with new elevation tokens
+
+## 8.2.0
+
+> **Warning**
+>
+> There were some build issues associated with this release, please upgrade to version >= 8.2.3 where this issue was resolved
+
+### Minor Changes
+
+- 16d0e9e3: feat: add new `elevation` tokens
+  This release adds new shadow tokens. Previously we had the following shadow tokens
+
+1. `level1`
+2. `level2`
+3. `level3`
+4. `level4`
+5. `level5`
+
+Plus we didn't had proper ways of using tokens across web and native like we have for our other tokens like Colors, Typography, Spacing, Motion, etc.
+
+Now the new introduced levels are:
+
+1. `none`
+2. `lowRaised`
+3. `midRasied`
+4. `highRaised`
+
+These tokens now will work across ios, android and web and will add all the require properties automatically for eg:
+
+- on web we have 2 layers of shadow as per new token values
+
+```
+{
+  /** offset-x | offset-y | blur-radius | spread-radius | color, offset-x | offset-y | blur-radius | spread-radius | color */
+  lowRaised: `0 4px 8px -2px hsla(217, 56%, 17%, 0.1), 0 2px 4px -2px hsla(217, 56%, 17%, 0.06)`,
+  midRaised: `0 12px 16px -4px hsla(217, 56%, 17%, 0.08), 0 4px 6px -2px hsla(217, 56%, 17%, 0.03)`,
+  highRaised: `0 24px 48px -12px hsla(217, 56%, 17%, 0.18)`
+}
+```
+
+- for RN, we can't have multi-layer shadows plus android and iOS both treat shadows differently, but now we have parity
+
+```
+{
+  // android only
+  elevation: 4,
+  shadowColor: 'hsla(217, 56%, 17%, 0.64)', // works on both
+  // ios only
+  shadowOpacity: 0.12,
+  shadowRadius: 2,
+  shadowOffset: {
+    width: 0,
+    height: 3,
+  },
+}
+```
+
+but all this is now abstracted and as a developer, you can do this across platforms:
+
+```
+theme.elevation.lowRaised // this will add necessary props based on the platform
+```
+
+Read the entire decision [doc here](https://docs.google.com/document/d/1GQEd-1JXFDbv3JsBMB2TgiSn8EJE43Gtm_Xtb_8dn04/edit)
+
+## 8.1.0
+
+### Minor Changes
+
+- 9f2dabfd: feat: add border support to Box component
+
+## 8.0.0
+
+### Major Changes
+
+- 9917a5cd: feat(Dropdown): Controlled Dropdown and Button Trigger
+
+  - Adds API to seamlessly build controlled dropdown
+  - Add DropdownButton component to trigger dropdown using Button
+  - Removes `isDefaultSelected` from `ActionListItem` _(see migration guide below)_
+
+  > **Warning**
+  >
+  > **Breaking change** for consumers who -
+  >
+  > - Use `isDefaultSelected` on `ActionListItem` component
+  > - Use `onChange` on `SelectInput` (under some scenarios. Check migration guide below)
+  >
+  > Rest of the consumers can safely upgrade without any migration
+
+  ### Migration Guide
+
+  #### `isDefaultSelected` Migration
+
+  We have removed `isDefaultSelected` from `<ActionListItem />` component. [Check out API decision](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/controlled-dropdown.md) for reasoning
+
+  If you were using it as a workaround for controlled selection,
+
+  - We now have a first class controlled selection support with `value` and `onChange` prop on `SelectInput`.
+
+    Checkout CodeSandbox Example for new API - https://codesandbox.io/s/blade-controlled-select-vxg30b
+
+  If you were using `isDefaultSelected` for default selections, you can now use `defaultValue` on SelectInput
+
+  - Remove `isDefaultSelected` and use `defaultValue` on SelectInput. You can pass array of values to `defaultValue` in case of multiselect
+    ```diff
+    <Dropdown>
+      <SelectInput
+        label="Select City"
+    +   defaultValue="mumbai"
+      />
+      <DropdownOverlay>
+        <ActionListItem
+          title="Mumbai"
+          value="mumbai"
+    -     isDefaultSelected
+         />
+        <ActionListItem title="Bangalore" value="bangalore" />
+      </DropdownOverlay>
+    </Dropdown>
+    ```
+
+  #### `onChange` on SelectInput Migration
+
+  As a part of [bug fix](https://github.com/razorpay/blade/issues/1102), `onChange` will now **NOT** be called on initial render
+  like it previously did. This will only require migration if you were earlier relying on `onChange` to set initial value.
+
+  If you were relying on `onChange` to set initial value, you can now move those values to your `useState`'s initial value.
+
+  ```tsx
+  const Example = (): JSX.Element => {
+    const [cities, setCities] = React.useState();
+    return (
+      <>
+        <Dropdown>
+          <SelectInput label="Cities" onChange={({values}) => setCities(values) } />
+          <DropdownOverlay>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+          </DropdownOverlay>
+        </Dropdown>
+        <Text>{cities}</Text>
+        {/*
+          In earlier versions, value of `cities` would've been `['']`
+          (because onChange would've been called initially to set array with empty string value)
+
+          Now it will output undefined (anything you pass in your useState) as the onChange wouldn't be called on initial render
+        */}
+      <>
+    )
+  }
+  ```
+
+## 7.2.2
+
+### Patch Changes
+
+- 2a6b8c89: chore: add meta attribute `data-component-from-blade='true'` to native components
+
+## 7.2.1
+
+### Patch Changes
+
+- 40a16da7: fix(blade): BottomSheet body dynamic height
+- e0f80522: feat(blade): added bottomsheet component ids
+
+## 7.2.0
+
+### Minor Changes
+
+- 1333e756: feat(blade): added bottomsheet component
+
+  > For react-native consumers make sure to [go through the installation guide](https://blade.razorpay.com/?path=/docs/guides-installation--page#-add-blade-to-your-application) on how to setup the peer dependencies
+
+  <details>
+    <summary>⚠️ Migration guide from prerelease version</summary>
+
+  Update the imports:
+
+  ```diff
+  import {
+  -  BottomSheet_PRE_RELEASE,
+  +  BottomSheet,
+    BottomSheetHeader,
+    BottomSheetBody,
+    BottomSheetFooter
+  } from "@razorpay/blade/components"
+  ```
+
+  Changed Header Footer API:
+
+  **Header**
+
+  Prop changes:
+
+  - Removed prefix/suffix props and added new props
+
+  ```diff
+  -  title: string;
+  +  title?: string;
+    subtitle?: string;
+  -  prefix?: React.ReactNode;
+  -  suffix?: React.ReactNode;
+  +  leading?: React.ReactNode;
+  +  trailing?: React.ReactNode;
+  +  titleSuffix?: React.ReactNode;
+  +  showBackButton?: boolean;
+  +  onBackButtonClick?: () => void;
+  +  closeButtonRef: React.MutableRefObject<any>;
+  ```
+
+  **Footer**
+
+  Footer component now accepts JSX content
+
+  Before:
+
+  ```jsx
+  <BottomSheetFooter
+    trailing={{
+      primary: {
+        text: 'Hello',
+        onClick: () => {},
+      },
+      secondary: {
+        text: 'World',
+        onClick: () => {},
+      },
+    }}
+  />
+  ```
+
+  After:
+
+  ```jsx
+  <BottomSheetFooter>
+    <Button isFullWidth variant="secondary" onClick={() => {}}>
+      Hello
+    </Button>
+    <Button isFullWidth marginTop="spacing.5" onClick={() => {}}>
+      World
+    </Button>
+  </BottomSheetFooter>
+  ```
+
+  </details>
+
+## 7.1.3
+
+### Patch Changes
+
+- 73011827: fix(BottomSheet): ensure that the BottomSheet's lower snappoint will have a buffer
+- f2130469: fix(blade): bottomsheet isOpen state, simplify isOpen logic & glue code
+
+  Previously if users did not changed the isOpen state to false inside `onDismiss` the bottomsheet's internal state will still remain "open", but the bottomsheet would visually be hidden and the backdrop will still remain, this fixes the bug so that internally we won't modify the bottomsheet's position instead we will just call the `onDismiss`. [Check the loom](https://www.loom.com/share/f24fcb51b245431fbf1a0aeb53cea287) video here for more info.
+
+- 24d2a0b0: fix(cardFooter): alignment issue
+
 ## 7.1.2
 
 ### Patch Changes

@@ -1,5 +1,6 @@
 import { Description } from '@storybook/addon-docs';
 import dedent from 'dedent';
+import React from 'react';
 
 function FigmaEmbed(props: { src: string; title: string }): JSX.Element {
   return (

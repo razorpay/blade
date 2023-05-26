@@ -1,85 +1,61 @@
-import styled from 'styled-components';
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
 import { ComponentIds } from './componentIds';
-import { Divider } from './Divider';
 import { useBottomSheetContext } from './BottomSheetContext';
+import type { BottomSheetHeaderProps } from './types';
+import { useBottomSheetHeaderTrailingRestriction } from './utils';
+import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading, Text } from '~components/Typography';
-import { makeSpace, assignWithoutSideEffects } from '~utils';
+import { assignWithoutSideEffects, metaAttribute } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
-
-type BottomSheetHeaderTrailingProps = {
-  visual: React.ReactNode;
-};
-
-type BottomSheetHeaderProps = {
-  title: string;
-  subtitle?: string;
-  prefix?: React.ReactNode;
-  suffix?: React.ReactNode;
-};
+import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
 const _BottomSheetHeader = ({
-  prefix,
-  suffix,
   title,
   subtitle,
+  leading,
+  titleSuffix,
+  trailing,
+  showBackButton = false,
+  onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
-  const { setHeaderHeight, isOpen, bind } = useBottomSheetContext();
+  const { setHeaderHeight, isOpen, close, bind, defaultInitialFocusRef } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
+  const validatedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
 
   useIsomorphicLayoutEffect(() => {
     if (!ref.current) return;
     setHeaderHeight(ref.current.getBoundingClientRect().height);
   }, [ref, isOpen]);
 
+  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
+
   return (
-    <BaseBox ref={ref} overflow="auto" flexShrink={0}>
-      <BaseBox
-        data-header
-        overflow="auto"
-        marginTop="spacing.5"
-        marginBottom="spacing.5"
-        paddingLeft="spacing.6"
-        paddingRight="spacing.6"
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        touchAction="none"
-        {...bind?.()}
-      >
-        <BaseBox
-          flex={1}
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          userSelect="none"
-          maxWidth="90%"
-        >
-          <BaseBox
-            marginRight="spacing.4"
-            marginTop="spacing.2"
-            alignSelf="flex-start"
-            display="flex"
-          >
-            {prefix}
-          </BaseBox>
-          <BaseBox>
-            <BaseBox display="flex" flexDirection="row" alignItems="center">
-              <Heading size="small" variant="regular" type="normal">
-                {title}
-              </Heading>
-              <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
-            </BaseBox>
-            {subtitle && (
-              <Text variant="body" size="small" weight="regular">
-                {subtitle}
-              </Text>
-            )}
-          </BaseBox>
-        </BaseBox>
-      </BaseBox>
-      <Divider />
+    <BaseBox
+      ref={ref}
+      overflow={isHeaderEmpty ? 'visible' : 'auto'}
+      flexShrink={0}
+      {...metaAttribute({ name: ComponentIds.BottomSheetHeader })}
+    >
+      {isHeaderEmpty ? (
+        <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />
+      ) : (
+        <BaseHeader
+          title={title}
+          subtitle={subtitle}
+          leading={leading}
+          trailing={validatedTrailingComponent}
+          titleSuffix={titleSuffix}
+          // back button
+          closeButtonRef={defaultInitialFocusRef}
+          showBackButton={showBackButton}
+          onBackButtonClick={onBackButtonClick}
+          // close button
+          showCloseButton={true}
+          onCloseButtonClick={close}
+          {...bind?.()}
+        />
+      )}
     </BaseBox>
   );
 };
@@ -88,31 +64,4 @@ const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
   componentId: ComponentIds.BottomSheetHeader,
 });
 
-const BottomSheetGrabHandle = styled.div(({ theme }) => {
-  return {
-    flexShrink: 0,
-    paddingTop: makeSpace(theme.spacing[5]),
-    touchAction: 'none',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ':after': {
-      margin: 'auto',
-      content: "''",
-      // TODO: refactor to size tokens
-      width: makeSpace(60),
-      height: makeSpace(4),
-      backgroundColor: theme.colors.brand.gray.a100.lowContrast,
-      // TODO: we do not have 16px radius token
-      borderRadius: makeSpace(theme.spacing[5]),
-    },
-  };
-});
-
-export {
-  BottomSheetGrabHandle,
-  BottomSheetHeader,
-  BottomSheetHeaderProps,
-  BottomSheetHeaderTrailingProps,
-};
+export { BottomSheetHeader };

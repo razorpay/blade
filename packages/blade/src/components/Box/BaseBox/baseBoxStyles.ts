@@ -5,8 +5,8 @@ import type {
   SpacingValueType,
   ArrayOfMaxLength4,
 } from './types';
-import type { Breakpoints } from '~tokens/global/breakpoints';
-import breakpoints from '~tokens/global/breakpoints';
+import type { Breakpoints } from '~tokens/global';
+import { breakpoints } from '~tokens/global';
 import { getMediaQuery } from '~src/utils/getMediaQuery';
 import { isReactNative, isEmpty, getIn, makeSpace, makeBorderSize } from '~utils';
 import type { Theme } from '~components/BladeProvider';
@@ -124,12 +124,12 @@ const getSpacingValue = (
   return responsiveSpacingValue;
 };
 
-const getBackgroundValue = (
-  backgroundColor: BaseBoxProps['backgroundColor'],
+const getColorValue = (
+  color: BaseBoxProps['backgroundColor'] | BaseBoxProps['borderColor'],
   theme: Theme,
   breakpoint?: keyof Breakpoints,
 ): string => {
-  const responsiveBackgroundValue = getResponsiveValue(backgroundColor, breakpoint);
+  const responsiveBackgroundValue = getResponsiveValue(color, breakpoint);
   const tokenValue = getIn(theme, `colors.${responsiveBackgroundValue}`);
   return tokenValue ?? responsiveBackgroundValue;
 };
@@ -145,10 +145,34 @@ const getBorderRadiusValue = (
     : makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
 };
 
+const getBorderWidthValue = (
+  borderWidth: BaseBoxProps['borderWidth'],
+  theme: Theme,
+  breakpoint?: keyof Breakpoints,
+): string | undefined => {
+  const responsiveBorderWidthValue = getResponsiveValue(borderWidth, breakpoint);
+  return isEmpty(responsiveBorderWidthValue)
+    ? undefined
+    : makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
+};
+
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   breakpoint?: keyof Breakpoints,
 ): CSSObject => {
+  const hasBorder =
+    props.borderBottom ||
+    props.borderTop ||
+    props.borderLeft ||
+    props.borderRight ||
+    props.borderBottomColor ||
+    props.borderTopColor ||
+    props.borderLeftColor ||
+    props.borderRightColor ||
+    props.borderBottomWidth ||
+    props.borderTopWidth ||
+    props.borderLeftWidth ||
+    props.borderRightWidth;
   return {
     display: getResponsiveValue(props.display, breakpoint),
     overflow: getResponsiveValue(props.overflow, breakpoint),
@@ -213,7 +237,7 @@ const getAllProps = (
     left: getSpacingValue(props.left, props.theme, breakpoint),
 
     // Visual props
-    backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, breakpoint),
+    backgroundColor: getColorValue(props.backgroundColor, props.theme, breakpoint),
     borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, breakpoint),
     lineHeight: getSpacingValue(props.lineHeight, props.theme, breakpoint),
     border: getResponsiveValue(props.border, breakpoint),
@@ -221,6 +245,29 @@ const getAllProps = (
     borderRight: getResponsiveValue(props.borderRight, breakpoint),
     borderBottom: getResponsiveValue(props.borderBottom, breakpoint),
     borderLeft: getResponsiveValue(props.borderLeft, breakpoint),
+    borderWidth: getBorderWidthValue(props.borderWidth, props.theme, breakpoint),
+    borderColor: getColorValue(props.borderColor, props.theme, breakpoint),
+    borderTopWidth: getBorderWidthValue(props.borderTopWidth, props.theme, breakpoint),
+    borderTopColor: getColorValue(props.borderTopColor, props.theme, breakpoint),
+    borderRightWidth: getBorderWidthValue(props.borderRightWidth, props.theme, breakpoint),
+    borderRightColor: getColorValue(props.borderRightColor, props.theme, breakpoint),
+    borderBottomWidth: getBorderWidthValue(props.borderBottomWidth, props.theme, breakpoint),
+    borderBottomColor: getColorValue(props.borderBottomColor, props.theme, breakpoint),
+    borderLeftWidth: getBorderWidthValue(props.borderLeftWidth, props.theme, breakpoint),
+    borderLeftColor: getColorValue(props.borderLeftColor, props.theme, breakpoint),
+    borderTopLeftRadius: getBorderRadiusValue(props.borderTopLeftRadius, props.theme, breakpoint),
+    borderTopRightRadius: getBorderRadiusValue(props.borderTopRightRadius, props.theme, breakpoint),
+    borderBottomRightRadius: getBorderRadiusValue(
+      props.borderBottomRightRadius,
+      props.theme,
+      breakpoint,
+    ),
+    borderBottomLeftRadius: getBorderRadiusValue(
+      props.borderBottomLeftRadius,
+      props.theme,
+      breakpoint,
+    ),
+    borderStyle: hasBorder ? 'solid' : undefined,
     touchAction: getResponsiveValue(props.touchAction, breakpoint),
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
     opacity: getResponsiveValue(props.opacity, breakpoint),
@@ -267,7 +314,7 @@ export {
   getBaseBoxStyles,
   getResponsiveValue,
   getSpacingValue,
-  getBackgroundValue,
+  getColorValue,
   getBorderRadiusValue,
   shouldAddBreakpoint,
   getAllMediaQueries,

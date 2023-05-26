@@ -6,7 +6,7 @@ import type { BaseTextProps } from '../BaseText/types';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType } from '~utils';
+import { assignWithoutSideEffects, getPlatformType } from '~utils';
 
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import type { TestID } from '~src/_helpers/types';
@@ -131,7 +131,7 @@ const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
   return {};
 });
 
-const Text = <T extends { variant: TextVariant }>({
+const _Text = <T extends { variant: TextVariant }>({
   variant = 'body',
   weight = 'regular',
   size = 'medium',
@@ -163,5 +163,10 @@ const Text = <T extends { variant: TextVariant }>({
     </StyledText>
   );
 };
+
+const Text = assignWithoutSideEffects(_Text, {
+  displayName: 'Text',
+  componentId: 'Text',
+});
 
 export { Text, getTextProps };

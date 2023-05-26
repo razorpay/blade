@@ -2,1434 +2,1614 @@
 
 exports[`<Badge /> should render Badge with Icon 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
     <View
+      alignItems="center"
       display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
+            "alignItems": "center",
             "display": "flex",
-            "paddingRight": 4,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
         ]
       }
     >
-      <RNSVGSvgView
-        accessibilityElementsHidden={true}
-        align="xMidYMid"
-        bbHeight="12px"
-        bbWidth="12px"
-        fill="none"
-        focusable={false}
-        height="12px"
-        importantForAccessibility="no-hide-descendants"
-        meetOrSlice={0}
-        minX={0}
-        minY={0}
+      <View
+        display="flex"
         style={
           Array [
             Object {
-              "backgroundColor": "transparent",
-              "borderWidth": 0,
-            },
-            Array [
-              Object {},
-            ],
-            Object {
-              "flex": 0,
-              "height": 12,
-              "width": 12,
+              "display": "flex",
+              "paddingRight": 4,
             },
           ]
         }
-        vbHeight={24}
-        vbWidth={24}
-        width="12px"
       >
-        <RNSVGGroup
-          fill={null}
-          propList={
+        <RNSVGSvgView
+          accessibilityElementsHidden={true}
+          align="xMidYMid"
+          bbHeight="12px"
+          bbWidth="12px"
+          fill="none"
+          focusable={false}
+          height="12px"
+          importantForAccessibility="no-hide-descendants"
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
             Array [
-              "fill",
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Array [
+                Object {},
+              ],
+              Object {
+                "flex": 0,
+                "height": 12,
+                "width": 12,
+              },
             ]
           }
+          vbHeight={24}
+          vbWidth={24}
+          width="12px"
         >
-          <RNSVGPath
-            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-            fill={4282603381}
+          <RNSVGGroup
+            fill={null}
             propList={
               Array [
                 "fill",
               ]
             }
-          />
-          <RNSVGPath
-            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-            fill={4282603381}
-            propList={
-              Array [
-                "fill",
-              ]
-            }
-          />
-          <RNSVGPath
-            clipRule={0}
-            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-            fill={4282603381}
-            fillRule={0}
-            propList={
-              Array [
-                "fill",
-                "fillRule",
-              ]
-            }
-          />
-        </RNSVGGroup>
-      </RNSVGSvgView>
+          >
+            <RNSVGPath
+              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+              fill={4282603381}
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
+            />
+            <RNSVGPath
+              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+              fill={4282603381}
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
+            />
+            <RNSVGPath
+              clipRule={0}
+              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+              fill={4282603381}
+              fillRule={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillRule",
+                ]
+              }
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
     </View>
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
-          },
-          Object {},
-        ]
-      }
-    >
-      Label
-    </Text>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render Badge with bold font 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="bold"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      LABEL
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="bold"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        LABEL
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render Badge with default props 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 <View
-  backgroundColor="badge.background.blue.highContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(218, 89%, 51%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="badge.background.blue.highContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="badge.text.blue.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="badge.text.blue.highContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.information.highContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(193, 100%, 35%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.information.highContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.information.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.information.highContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.negative.highContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(8, 73%, 47%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.negative.highContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(8, 73%, 47%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.negative.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.negative.highContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.highContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 33%, 29%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.highContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 33%, 29%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.neutral.highContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.notice.highContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(38, 97%, 38%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.notice.highContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(38, 97%, 38%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.notice.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.notice.highContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.positive.highContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(160, 100%, 26%, 1)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.positive.highContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(160, 100%, 26%, 1)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.positive.highContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.positive.highContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render large size Badge 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  size="large"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="badge"
+    size="large"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 4,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 4,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 4,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 4,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 <View
-  backgroundColor="badge.background.blue.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="badge.background.blue.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="badge.text.blue.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(218, 89%, 51%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="badge.text.blue.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(218, 89%, 51%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.information.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.information.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.information.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(193, 100%, 35%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.information.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(193, 100%, 35%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.negative.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.negative.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.negative.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(8, 73%, 47%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.negative.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(8, 73%, 47%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.notice.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.notice.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.notice.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(38, 97%, 38%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.notice.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(38, 97%, 38%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.positive.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.positive.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.positive.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(160, 100%, 26%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.positive.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(160, 100%, 26%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render medium size Badge 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  size="medium"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="badge"
+    size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Badge /> should render small size Badge 1`] = `
 <View
-  backgroundColor="feedback.background.neutral.lowContrast"
-  size="small"
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        "borderRadius": 9999,
-        "display": "flex",
-        "flexWrap": "nowrap",
-      },
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    justifyContent="center"
-    overflow="hidden"
+    backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="badge"
+    size="small"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderRadius": 9999,
           "display": "flex",
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 0,
+          "flexWrap": "nowrap",
         },
       ]
     }
   >
-    <Text
-      color="feedback.text.neutral.lowContrast"
-      fontFamily="text"
-      fontSize={25}
-      fontStyle="normal"
-      fontWeight="regular"
-      lineHeight={50}
-      numberOfLines={1}
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 10,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
             "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
+            "paddingLeft": 8,
+            "paddingRight": 8,
             "paddingTop": 0,
-            "textDecorationLine": "none",
           },
-          Object {},
         ]
       }
     >
-      Label
-    </Text>
+      <Text
+        color="feedback.text.neutral.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={25}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 10,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Label
+      </Text>
+    </View>
   </View>
 </View>
 `;

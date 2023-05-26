@@ -1,5 +1,7 @@
+import React from 'react';
 import { Text } from 'react-native';
 import { Box } from '../Box';
+import type { BoxRefType } from '../index';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<Box />', () => {
@@ -9,7 +11,7 @@ describe('<Box />', () => {
         display="flex"
         padding="spacing.0"
         // @ts-expect-error: Intentional to test bad flow
-        borderRadius="small"
+        fontWeight="bold"
       >
         {/** Using React Native's text instead of our Text component to keep snapshots small. Our Text component is tested separately anyways */}
         <Text>children test!</Text>
@@ -17,22 +19,31 @@ describe('<Box />', () => {
     );
     expect(toJSON()).toMatchInlineSnapshot(`
       <View
-        display="flex"
         style={
-          Array [
-            Object {
-              "display": "flex",
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
+          Object {
+            "flex": 1,
+          }
         }
       >
-        <Text>
-          children test!
-        </Text>
+        <View
+          data-blade-component="box"
+          display="flex"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ]
+          }
+        >
+          <Text>
+            children test!
+          </Text>
+        </View>
       </View>
     `);
   });
@@ -70,5 +81,27 @@ describe('<Box />', () => {
       );
     }
     console.error = tempConsoleError;
+  });
+
+  it('should support ref on Box', () => {
+    const refHasFocusProp = jest.fn();
+
+    const BoxWithRef = (): JSX.Element => {
+      const ref = React.useRef<BoxRefType>(null);
+
+      React.useEffect(() => {
+        refHasFocusProp(Boolean(ref.current?.focus));
+      }, []);
+
+      return (
+        <Box ref={ref} marginTop="500px">
+          <Text>lower box</Text>
+        </Box>
+      );
+    };
+
+    renderWithTheme(<BoxWithRef />);
+    // we just check if the ref value has focus prop to make sure it's not null and has appropriate values loaded
+    expect(refHasFocusProp).toBeCalledWith(true);
   });
 });

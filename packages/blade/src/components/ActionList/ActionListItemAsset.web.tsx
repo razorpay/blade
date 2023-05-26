@@ -1,5 +1,5 @@
 import { componentIds } from './componentIds';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ActionListItemAssetProps = {

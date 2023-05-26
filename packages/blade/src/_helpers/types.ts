@@ -1,8 +1,7 @@
 import type React from 'react';
 import type { ViewStyle } from 'react-native';
 import type { CSSObject } from 'styled-components';
-import type { Spacing } from '~tokens/global';
-import type { EasingFunctionFactory } from '~tokens/global/motion';
+import type { Spacing, EasingFunctionFactory } from '~tokens/global';
 import type { Platform } from '~utils';
 
 /**

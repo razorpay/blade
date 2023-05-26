@@ -1,4 +1,4 @@
-import opacity from './opacity';
+import { opacity } from './opacity';
 
 type ColorChromaticScale = Readonly<{
   50: string;
@@ -63,7 +63,7 @@ export type Color = Readonly<{
   };
 }>;
 
-const colors: Color = {
+export const colors: Color = {
   chromatic: {
     azure: {
       50: `hsla(222, 100%, 96%, ${opacity[9]})`,
@@ -332,5 +332,3 @@ const colors: Color = {
     },
   },
 };
-
-export default colors;

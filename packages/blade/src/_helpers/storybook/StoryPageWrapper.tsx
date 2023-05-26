@@ -1,12 +1,5 @@
-import {
-  ArgsTable,
-  Primary,
-  PRIMARY_STORY,
-  Stories,
-  Subtitle,
-  Title,
-  Description,
-} from '@storybook/addon-docs';
+import React from 'react';
+import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
 import styled from 'styled-components';
 import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
@@ -28,6 +21,7 @@ type StoryPageWrapperTypes = {
   children?: React.ReactNode;
   note?: string;
   showStorybookControls?: boolean;
+  showArgsTable?: boolean;
   /**
    * Use this to override default imports
    */
@@ -72,13 +66,29 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
     },
   ]);
 
-  const { showStorybookControls = true } = props;
+  React.useEffect(() => {
+    // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
+    // So we manually read location.hash of parent window and scroll to that section on load
+    if (window.top?.location.hash) {
+      document.querySelector(window.top.location.hash)?.scrollIntoView();
+    }
+  }, []);
+
+  const { showStorybookControls = true, showArgsTable = true } = props;
 
   return (
     <WithGlobalStyles>
       <Title>{props.componentName}</Title>
       <Subtitle>{props.componentDescription}</Subtitle>
-      {props.note ? <Description markdown={`> **Note** <br/>${props.note}`} /> : null}
+      {props.note ? (
+        <Alert
+          description={props.note}
+          isFullWidth
+          isDismissible={false}
+          intent="notice"
+          marginBottom="spacing.5"
+        />
+      ) : null}
       {figmaURL !== '#' ? (
         <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
       ) : null}
@@ -102,21 +112,26 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             {`This is the default ${props.componentName}. You can change the properties using the controls below.`}
           </Subtitle>
           <Primary />
-          <BaseBox id="properties-ref">
-            <Title>Properties</Title>
-            {props.propsDescription ? (
-              // adding box with surface background so that when theme of storybook is changed, the alert doesn't become invisible
-              <Box backgroundColor="surface.background.level3.lowContrast">
-                <Alert
-                  isFullWidth
-                  marginTop="spacing.5"
-                  isDismissible={false}
-                  description={props.propsDescription}
-                />
-              </Box>
-            ) : null}
-          </BaseBox>
-          <ArgsTable story={PRIMARY_STORY} />
+          {showArgsTable ? (
+            <>
+              <BaseBox id="properties-ref">
+                <Title>Properties</Title>
+                {props.propsDescription ? (
+                  // adding box with surface background so that when theme of storybook is changed, the alert doesn't become invisible
+                  <Box backgroundColor="surface.background.level3.lowContrast">
+                    <Alert
+                      isFullWidth
+                      marginTop="spacing.5"
+                      isDismissible={false}
+                      description={props.propsDescription}
+                    />
+                  </Box>
+                ) : null}
+              </BaseBox>
+              <ArgsTable story={PRIMARY_STORY} />
+            </>
+          ) : null}
+
           <Stories />
         </>
       ) : null}
