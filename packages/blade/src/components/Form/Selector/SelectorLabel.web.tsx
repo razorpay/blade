@@ -21,9 +21,13 @@ const SelectorLabel = ({
   onMouseOut,
   onKeyDown,
   onKeyUp,
+  onTouchStart,
+  onTouchEnd,
 }: SelectorLabelProps): React.ReactElement => {
   return (
     <StyledSelectorLabel
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       onMouseDown={(e) => {
         e.preventDefault();
         onMouseDown?.(e);

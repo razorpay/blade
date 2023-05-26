@@ -29,6 +29,8 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
   },
   ref,
 ): React.ReactElement => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const [isPressed, setIsPressed] = React.useState(false);
   const { state, inputProps } = useCheckbox({
     role: 'switch',
@@ -44,8 +46,35 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
     onChange,
   });
 
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const handlePointerPressedIn = React.useCallback(() => {
+    if (isDisabled) return;
+    setIsPressed(true);
+  }, [isDisabled]);
+
+  const handlePointerPressedOut = React.useCallback(() => {
+    if (isDisabled) return;
+    setIsPressed(false);
+  }, [isDisabled]);
+
+  const handleKeyboardPressedIn = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (isDisabled) return;
+      if (e.key === ' ') {
+        setIsPressed(true);
+      }
+    },
+    [isDisabled],
+  );
+
+  const handleKeyboardPressedOut = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (isDisabled) return;
+      if (e.key === ' ') {
+        setIsPressed(false);
+      }
+    },
+    [isDisabled],
+  );
 
   return (
     <BaseBox
@@ -54,31 +83,13 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
       display={state.isReactNative ? 'flex' : 'inline-block'}
     >
       <SelectorLabel
-        // TODO: handle disabled state
-        onMouseDown={() => {
-          if (isDisabled) return;
-          setIsPressed(true);
-        }}
-        onMouseUp={() => {
-          if (isDisabled) return;
-          setIsPressed(false);
-        }}
-        onKeyDown={(e) => {
-          if (isDisabled) return;
-          if (e.key === ' ') {
-            setIsPressed(true);
-          }
-        }}
-        onKeyUp={(e) => {
-          if (isDisabled) return;
-          if (e.key === ' ') {
-            setIsPressed(false);
-          }
-        }}
-        onMouseOut={() => {
-          if (isDisabled) return;
-          setIsPressed(false);
-        }}
+        onTouchStart={handlePointerPressedIn}
+        onTouchEnd={handlePointerPressedOut}
+        onMouseDown={handlePointerPressedIn}
+        onMouseUp={handlePointerPressedOut}
+        onMouseOut={handlePointerPressedOut}
+        onKeyDown={handleKeyboardPressedIn}
+        onKeyUp={handleKeyboardPressedOut}
         inputProps={
           state.isReactNative
             ? // accessibility label for react-native needs to be added
