@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 8.4.0
+
+### Minor Changes
+
+- 4fb0f3fe: feat(Box): add `onScroll`, `onMouseOver`, `onMouseEnter`, `onMouseLeave` events
+
+## 8.3.0
+
+### Minor Changes
+
+- 06da7a2f: feat(Box): add `ref` support
+
 ## 8.2.3
 
 ### Patch Changes
@@ -8,17 +20,29 @@
 
 ## 8.2.2
 
+> **Warning**
+>
+> There were some build issues associated with this release, please upgrade to version >= 8.2.3 where this issue was resolved
+
 ### Patch Changes
 
 - e4dcdfc4: build: fix npm publish by generating .npmrc in monorepo root
 
 ## 8.2.1
 
+> **Warning**
+>
+> There were some build issues associated with this release, please upgrade to version >= 8.2.3 where this issue was resolved
+
 ### Patch Changes
 
 - 1ab67fc7: fix: css vars build script with new elevation tokens
 
 ## 8.2.0
+
+> **Warning**
+>
+> There were some build issues associated with this release, please upgrade to version >= 8.2.3 where this issue was resolved
 
 ### Minor Changes
 

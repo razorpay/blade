@@ -1,12 +1,14 @@
 import type { Meta } from '@storybook/react';
 import React from 'react';
 import { getBoxArgTypes } from './BaseBox/storybookArgTypes';
+import type { BoxRefType } from './BaseBox/types';
 import type { BoxProps } from '.';
 import { Box } from '.';
 import { Text, Title } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { LinkToStorybook } from '~utils/storybook/LinkToStorybook';
-import { isReactNative } from '~utils';
+import { castWebType, isReactNative } from '~utils';
+import { Button } from '~components/Button';
 
 // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
 // So we manually read location.hash of parent window and scroll to that section on load
@@ -95,6 +97,50 @@ export const AsSection = (args: BoxProps): JSX.Element => {
 
 AsSection.args = {
   as: 'section',
+} as BoxProps;
+
+export const WithRef = (args: BoxProps): JSX.Element => {
+  const ref = React.useRef<BoxRefType>(null);
+
+  return (
+    <Box height="300px" overflow="auto" backgroundColor="surface.background.level2.lowContrast">
+      <Button
+        onClick={() => {
+          if (!isReactNative()) {
+            castWebType(ref.current).scrollIntoView();
+          }
+        }}
+      >
+        Click to Scroll
+      </Button>
+      <Box ref={ref} {...args}>
+        <Text>Hi from Box with ref</Text>
+      </Box>
+    </Box>
+  );
+};
+
+WithRef.args = {
+  marginTop: '800px',
+} as BoxProps;
+
+export const WithMouseEvents = (args: BoxProps): JSX.Element => {
+  return (
+    <Box
+      {...args}
+      onMouseOver={(e) => console.log('onMouseOver', e)}
+      onMouseEnter={(e) => console.log('onMouseEnter', e)}
+      onMouseLeave={(e) => console.log('onMouseLeave', e)}
+      onScroll={(e) => console.log('onScroll', e)}
+    >
+      <Text marginY="300px">Move mouse over this text and check console</Text>
+    </Box>
+  );
+};
+
+WithMouseEvents.args = {
+  overflowY: 'auto',
+  height: '300px',
 } as BoxProps;
 
 export default BoxStoryMeta;

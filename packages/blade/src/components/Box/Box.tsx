@@ -1,9 +1,10 @@
 import React from 'react';
 import BaseBox from './BaseBox';
-import type { BoxProps, MakeValueResponsive } from './BaseBox/types';
+import type { BoxProps, BoxRefType, MakeValueResponsive } from './BaseBox/types';
 import { validBoxAsValues } from './BaseBox/types/propsTypes';
 import type { KeysRequired } from '~utils/types';
 import { isReactNative, metaAttribute, MetaConstants } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
   if (!stringBackgroundColorValue.startsWith('surface.background')) {
@@ -124,6 +125,12 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     borderBottomRightRadius: props.borderBottomRightRadius,
     borderBottomLeftRadius: props.borderBottomLeftRadius,
 
+    // callbacks
+    onMouseEnter: props.onMouseEnter,
+    onMouseLeave: props.onMouseLeave,
+    onMouseOver: props.onMouseOver,
+    onScroll: props.onScroll,
+
     children: props.children,
     as: isReactNative() ? undefined : props.as, // as is not supported on react-native
   };
@@ -164,7 +171,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-box Box Documentation}
  * 
  */
-const Box = (props: BoxProps): JSX.Element => {
+const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) => {
   React.useEffect(() => {
     validateBackgroundProp(props.backgroundColor);
   }, [props.backgroundColor]);
@@ -187,10 +194,16 @@ const Box = (props: BoxProps): JSX.Element => {
 
   return (
     <BaseBox
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
       {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
       {...makeBoxProps(props)}
     />
   );
 };
+
+const Box = assignWithoutSideEffects(React.forwardRef(_Box), {
+  displayName: 'Box',
+});
 
 export { Box, makeBoxProps };

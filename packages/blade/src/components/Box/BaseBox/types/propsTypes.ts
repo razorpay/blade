@@ -1,9 +1,11 @@
+import type { View } from 'react-native';
 import type { CSSObject } from 'styled-components';
 import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~utils/types';
+import type { Platform } from '~utils';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -185,6 +187,43 @@ type StyledPropsBlade = Partial<
   >
 >;
 
+type BoxCallbackProps = Omit<
+  Platform.Select<{
+    web: {
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseOver: React.MouseEventHandler<HTMLElement>;
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseEnter: React.MouseEventHandler<HTMLElement>;
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseLeave: React.MouseEventHandler<HTMLElement>;
+      onScroll: React.UIEventHandler<HTMLElement>;
+    };
+    native: Record<'onMouseOver' | 'onMouseEnter' | 'onMouseLeave' | 'onScroll', undefined>;
+  }>,
+  '__brand__'
+>;
+
 type BoxProps = Partial<
   PaddingProps &
     MarginProps &
@@ -192,6 +231,7 @@ type BoxProps = Partial<
     FlexboxProps &
     PositionProps &
     GridProps &
+    BoxCallbackProps &
     BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] } & TestID
 >;
 
@@ -206,4 +246,10 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
     }
   >;
 
-export { BaseBoxProps, BoxProps, StyledPropsBlade, validBoxAsValues };
+// ref prop type
+type BoxRefType = Platform.Select<{
+  web: Omit<HTMLElement, 'style'>;
+  native: View;
+}>;
+
+export { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, validBoxAsValues };
