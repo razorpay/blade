@@ -4,3 +4,8 @@ export * from './getPlatformType';
 export * from './useBreakpoint';
 export * from './useColorScheme';
 export * from './platform';
+export * from './makeBorderSize';
+export * from './makeSpace';
+export * from './makeMotionTime';
+export * from './makeTypographySize';
+export * from './makeSize';
