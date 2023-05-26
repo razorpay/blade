@@ -214,7 +214,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
     >
       <span
         id="radio-group-15-label"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
@@ -637,7 +637,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
     >
       <span
         id="radio-group-7-label"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"

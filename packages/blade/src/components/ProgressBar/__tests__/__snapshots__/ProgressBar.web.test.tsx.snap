@@ -147,7 +147,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
     >
       <label
         for="progress-1"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
@@ -1879,7 +1879,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
     >
       <label
         for="progress-6"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
@@ -2192,7 +2192,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
     >
       <label
         for="progress-5"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
@@ -2528,7 +2528,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     >
       <label
         for="progress-3"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c5"
@@ -2864,7 +2864,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     >
       <label
         for="progress-3"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c5"
