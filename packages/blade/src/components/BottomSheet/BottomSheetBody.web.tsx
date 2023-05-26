@@ -4,10 +4,10 @@ import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
-import { isValidAllowedChildren } from '~utils';
 import { componentIds } from '~components/ActionList/componentIds';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute } from '~utils/metaAttribute';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 const bodyStyles: React.CSSProperties = {
   WebkitTapHighlightColor: 'revert',
