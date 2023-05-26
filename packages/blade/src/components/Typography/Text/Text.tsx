@@ -18,7 +18,9 @@ type TextCommonProps = {
   children: React.ReactNode;
   weight?: keyof Theme['typography']['fonts']['weight'];
   /**
-   * **For Internal use only**:  Sets the color of the Text component
+   * Sets the color of the Text component.
+   *
+   * **Note** This takes priority over `type` and `constrast` prop to decide color of text
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
@@ -58,13 +60,14 @@ type TextForwardedAs = {
 type GetTextPropsReturn = Omit<BaseTextProps, 'children'> & TextForwardedAs;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'testID' | 'textAlign'
+  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'color' | 'testID' | 'textAlign'
 >;
 const getTextProps = <T extends { variant: TextVariant }>({
   variant,
   type,
   weight,
   size,
+  color,
   contrast,
   testID,
   textAlign,
@@ -72,7 +75,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: GetTextPropsReturn = {
-    color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
+    color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
     fontSize: 100,
     fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
@@ -150,12 +153,12 @@ const _Text = <T extends { variant: TextVariant }>({
       variant,
       type,
       weight,
+      color,
       size,
       contrast,
       testID,
       textAlign,
     }),
-    ...(color ? { color } : {}),
   };
   return (
     <StyledText {...props} {...getStyledProps(styledProps)}>

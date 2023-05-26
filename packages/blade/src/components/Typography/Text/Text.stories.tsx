@@ -64,9 +64,3 @@ const TextTemplate: ComponentStory<typeof TextComponent> = (args) => {
 
 export default TextStoryMeta;
 export const Text = TextTemplate.bind({});
-// ignore private props like _color
-Text.parameters = {
-  controls: {
-    exclude: 'color',
-  },
-};

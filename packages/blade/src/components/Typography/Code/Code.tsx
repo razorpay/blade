@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
+import type { BaseTextProps } from '../BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -14,6 +15,12 @@ import type { FontSize, Typography } from '~tokens/global';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type CodeProps = {
+  /**
+   * Sets the color of the Heading component.
+   *
+   * **Note** This takes priority over `type` and `constrast` prop to decide color of heading
+   */
+  color?: BaseTextProps['color'];
   children: StringChildrenType;
   /**
    * Decides the fontSize and padding of Code
@@ -88,6 +95,7 @@ const Code = ({
   children,
   size = 'small',
   weight = 'regular',
+  color = 'surface.text.subtle.lowContrast',
   testID,
   ...styledProps
 }: CodeProps): JSX.Element => {
@@ -101,7 +109,7 @@ const Code = ({
       {...getStyledProps(styledProps)}
     >
       <BaseText
-        color="surface.text.subtle.lowContrast"
+        color={color}
         fontFamily="code"
         fontSize={fontSize}
         fontWeight={weight}
