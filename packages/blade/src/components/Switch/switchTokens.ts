@@ -79,10 +79,10 @@ const switchColors: SwitchColors = {
   },
   thumb: {
     default: {
-      background: 'colors.brand.gray.200.lowContrast',
+      background: 'colors.brand.gray.700.highContrast',
     },
     disabled: {
-      background: 'colors.brand.gray.700.highContrast',
+      background: 'colors.brand.gray.200.lowContrast',
     },
   },
   thumbIcon: {

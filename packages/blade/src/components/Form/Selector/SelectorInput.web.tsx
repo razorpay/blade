@@ -37,7 +37,6 @@ const StyledInput = styled.input<HoverProps>(
     ...screenReaderStyles,
     '&:focus + div': {
       // TODO: Replace with focus outline token
-      outline: '1px solid white',
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
     },
     '&:hover + div, &:focus + div': {
