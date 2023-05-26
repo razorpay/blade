@@ -22,8 +22,7 @@ const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
       width: ${isPressed ? '125%' : '100%'};
       left: ${isPressed ? offset : '0%'};
       transform: translateX(${isChecked ? '100%' : '0%'});
-      transition-property: transform, width;
-      transition-duration: ${duration};
+      transition: ${duration};
       border-radius: ${makeBorderSize(theme.border.radius.max)};
       animation-duration: ${duration};
       background-color: ${backgroundColor};
