@@ -1,5 +1,6 @@
 import type React from 'react';
-import type { TestID } from '~src/_helpers/types';
+import type { Theme } from '~components/BladeProvider';
+import type { DotNotationColorStringToken, TestID } from '~src/_helpers/types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type SelectorLabelProps = {
@@ -26,15 +27,16 @@ type SelectorInputProps = HoverProps & {
   accessibilityLabel?: string;
 };
 
+type ColorTokens = `colors.${DotNotationColorStringToken<Theme['colors']>}`;
 type SelectorInputHoverTokens = {
   default: {
     background: {
-      checked: string;
-      unchecked: string;
+      checked: ColorTokens;
+      unchecked: ColorTokens;
     };
     border?: {
-      checked: string;
-      unchecked: string;
+      checked: ColorTokens;
+      unchecked: ColorTokens;
     };
   };
 };
