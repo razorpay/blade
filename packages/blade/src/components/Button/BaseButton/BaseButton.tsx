@@ -387,12 +387,19 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     hasIcon: Boolean(Icon),
   });
 
+  const renderElement = React.useMemo(() => getRenderElement(href), [href]);
+
   return (
     <StyledBaseButton
       ref={buttonRef as any}
-      as={getRenderElement(href)}
+      as={renderElement}
       href={href}
-      accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
+      accessibilityProps={{
+        ...makeAccessible({
+          role: renderElement === 'a' ? 'link' : 'button',
+          label: accessibilityLabel,
+        }),
+      }}
       isLoading={isLoading}
       disabled={disabled}
       activeBorderColor={activeBorderColor}
