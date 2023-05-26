@@ -111,6 +111,18 @@ type BaseButtonColorTokenModifiers = {
  */
 type IconColor = Exclude<IconProps['color'], 'currentColor'>;
 
+const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
+  if (isReactNative()) {
+    return undefined; // as property doesn't work with react native
+  }
+
+  if (href) {
+    return 'a';
+  }
+
+  return 'button';
+};
+
 const getColorToken = ({
   property,
   variant,
@@ -378,7 +390,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   return (
     <StyledBaseButton
       ref={buttonRef as any}
-      as={isReactNative() ? undefined : href ? 'a' : 'button'}
+      as={getRenderElement(href)}
       href={href}
       accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
       isLoading={isLoading}
