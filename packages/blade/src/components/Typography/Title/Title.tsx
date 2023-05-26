@@ -9,7 +9,7 @@ import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type TitleProps = {
   /**
-   * Sets the color of the Title component.
+   * Overrides the color of the Title component.
    *
    * **Note** This takes priority over `type` and `constrast` prop to decide color of title
    */

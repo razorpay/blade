@@ -18,7 +18,7 @@ type TextCommonProps = {
   children: React.ReactNode;
   weight?: keyof Theme['typography']['fonts']['weight'];
   /**
-   * Sets the color of the Text component.
+   * Overrides the color of the Text component.
    *
    * **Note** This takes priority over `type` and `constrast` prop to decide color of text
    */

@@ -17,8 +17,6 @@ import type { StringChildrenType, TestID } from '~src/_helpers/types';
 export type CodeProps = {
   /**
    * Sets the color of the Heading component.
-   *
-   * **Note** This takes priority over `type` and `constrast` prop to decide color of heading
    */
   color?: BaseTextProps['color'];
   children: StringChildrenType;

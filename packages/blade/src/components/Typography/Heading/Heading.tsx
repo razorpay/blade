@@ -15,7 +15,7 @@ type HeadingSize = 'small' | 'medium' | 'large';
 
 type HeadingCommonProps = {
   /**
-   * Sets the color of the Heading component.
+   * Overrides the color of the Heading component.
    *
    * **Note** This takes priority over `type` and `constrast` prop to decide color of heading
    */
