@@ -81,6 +81,9 @@ exports[`<Switch /> should render switch with label 1`] = `
               "transitionTimingFunction": "0.3 0 0.2 1",
               "width": 44,
             },
+            Object {
+              "backgroundColor": undefined,
+            },
           ]
         }
       >
@@ -282,6 +285,9 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
               "position": "relative",
               "transitionTimingFunction": "0.3 0 0.2 1",
               "width": 44,
+            },
+            Object {
+              "backgroundColor": undefined,
             },
           ]
         }
