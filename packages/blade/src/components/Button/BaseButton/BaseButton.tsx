@@ -49,9 +49,12 @@ import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { BaseLinkProps } from '~components/Link/BaseLink';
 
 type BaseButtonCommonProps = {
-  href?: string;
+  href?: BaseLinkProps['href'];
+  target?: BaseLinkProps['target'];
+  rel?: BaseLinkProps['rel'];
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
@@ -310,6 +313,8 @@ const ButtonContent = styled(BaseBox)<{ isHidden: boolean }>(({ isHidden }) => (
 const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonProps> = (
   {
     href,
+    target,
+    rel,
     variant = 'primary',
     intent,
     contrast = 'low',
@@ -394,6 +399,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       ref={buttonRef as any}
       as={renderElement}
       href={href}
+      target={target}
+      rel={rel}
       accessibilityProps={{
         ...makeAccessible({
           role: renderElement === 'a' ? 'link' : 'button',

@@ -1,6 +1,7 @@
 import type { GestureResponderEvent } from 'react-native';
 import React from 'react';
 import BaseButton from '../BaseButton';
+import type { BaseButtonProps } from '../BaseButton/BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -9,7 +10,22 @@ import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ButtonCommonProps = {
-  href?: string;
+  /**
+   * Automatically renders button with `a` tag with `href` on web
+   */
+  href?: BaseButtonProps['href'];
+  /**
+   * anchor target attribute
+   *
+   * Should only be used alongside `href`
+   */
+  target?: BaseButtonProps['target'];
+  /**
+   * anchor rel attribute
+   *
+   * Should only be used alongside `href`
+   */
+  rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
@@ -53,6 +69,8 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isFullWidth = false,
     isLoading = false,
     href,
+    target,
+    rel,
     onClick,
     size = 'medium',
     type = 'button',
@@ -69,6 +87,8 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       {...styledProps}
       ref={ref}
       href={href}
+      target={target}
+      rel={rel}
       accessibilityLabel={accessibilityLabel}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
