@@ -3,6 +3,7 @@
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
+import type { ReactTestInstance } from 'react-test-renderer';
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
@@ -139,13 +140,13 @@ describe('<RadioGroup />', () => {
 
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).not.toBeCalled();
-    fireEvent.press(mango!);
+    fireEvent.press(mango as ReactTestInstance);
     expect(mango?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith({ value: 'mango', name: 'fruits' });
-    fireEvent.press(orange!);
+    fireEvent.press(orange as ReactTestInstance);
     expect(orange?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith({ value: 'orange', name: 'fruits' });
-    fireEvent.press(apple!);
+    fireEvent.press(apple as ReactTestInstance);
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith({ value: 'apple', name: 'fruits' });
   });
@@ -185,13 +186,13 @@ describe('<RadioGroup />', () => {
 
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).not.toBeCalled();
-    fireEvent.press(mango!);
+    fireEvent.press(mango as ReactTestInstance);
     expect(mango?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith('mango');
-    fireEvent.press(orange!);
+    fireEvent.press(orange as ReactTestInstance);
     expect(orange?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith('orange');
-    fireEvent.press(apple!);
+    fireEvent.press(apple as ReactTestInstance);
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith('apple');
     expect(getByTestId('values').children[0]).toBe('apple');
