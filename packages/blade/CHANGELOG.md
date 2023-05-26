@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.4.1
+
+### Patch Changes
+
+- d30a7fd4: fix(blade): fix code & amount typography alignment issues
+
 ## 8.4.0
 
 ### Minor Changes
