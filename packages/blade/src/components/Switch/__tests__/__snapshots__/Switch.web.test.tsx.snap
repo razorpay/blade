@@ -136,6 +136,7 @@ exports[`<Switch /> should render switch 1`] = `
   >
     <label
       class="c1"
+      style="cursor: pointer;"
     >
       <input
         aria-checked="false"
@@ -309,6 +310,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   >
     <label
       class="c1"
+      style="cursor: pointer;"
     >
       <input
         aria-checked="false"
