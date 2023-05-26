@@ -69,4 +69,8 @@ type AnimatedThumbProps = Pick<SwitchProps, 'size' | 'isChecked' | 'isDisabled'>
   isPressed?: boolean;
 };
 
-export type { OnChange, SwitchProps, ThumbProps, AnimatedThumbProps };
+type TrackProps = Required<Pick<SwitchProps, 'size' | 'isDisabled' | 'isChecked'>> & {
+  deviceType: 'mobile' | 'desktop';
+};
+
+export type { OnChange, SwitchProps, ThumbProps, AnimatedThumbProps, TrackProps };

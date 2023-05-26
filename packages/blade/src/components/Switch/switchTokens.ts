@@ -99,10 +99,12 @@ const switchMotion: Record<string, Record<string, `motion.${EasingString | Durat
   easing: {
     thumb: 'motion.easing.standard.effective',
     thumbIcon: 'motion.easing.standard.effective',
+    track: 'motion.easing.standard.effective',
   },
   duration: {
     thumb: 'motion.duration.xquick',
     thumbIcon: 'motion.duration.xquick',
+    track: 'motion.duration.xquick',
   },
 };
 
