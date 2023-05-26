@@ -49,13 +49,9 @@ exports[`<Switch /> should render switch 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 100%;
   height: 100%;
   position: relative;
   will-change: transform,left;
-  -webkit-transition-property: -webkit-transform,width;
-  -webkit-transition-property: transform,width;
-  transition-property: transform,width;
   width: 100%;
   left: 0%;
   -webkit-transform: translateX(0%);
@@ -66,7 +62,7 @@ exports[`<Switch /> should render switch 1`] = `
   border-radius: 9999px;
   -webkit-animation-duration: 150ms;
   animation-duration: 150ms;
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(220,30%,96%,1);
 }
 
 .c3 {
@@ -110,7 +106,7 @@ exports[`<Switch /> should render switch 1`] = `
 }
 
 .c2:focus + div {
-  outline: 1px solid white;
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -235,13 +231,9 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 100%;
   height: 100%;
   position: relative;
   will-change: transform,left;
-  -webkit-transition-property: -webkit-transform,width;
-  -webkit-transition-property: transform,width;
-  transition-property: transform,width;
   width: 100%;
   left: 0%;
   -webkit-transform: translateX(0%);
@@ -252,7 +244,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   border-radius: 9999px;
   -webkit-animation-duration: 150ms;
   animation-duration: 150ms;
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(220,27%,98%,1);
 }
 
 .c3 {
@@ -296,7 +288,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
 }
 
 .c2:focus + div {
-  outline: 1px solid white;
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 

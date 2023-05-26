@@ -111,7 +111,7 @@ exports[`<Switch /> should render switch with label 1`] = `
               Array [
                 Object {
                   "alignItems": "center",
-                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                  "backgroundColor": "hsla(220, 30%, 96%, 1)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -314,7 +314,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
               Array [
                 Object {
                   "alignItems": "center",
-                  "backgroundColor": "hsla(220, 30%, 96%, 1)",
+                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
