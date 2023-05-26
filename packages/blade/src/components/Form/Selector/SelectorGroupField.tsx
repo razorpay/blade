@@ -2,8 +2,8 @@ import React from 'react';
 import type { CSSObject } from 'styled-components';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
-import type { AriaRoles } from '~utils';
 import type { TestID } from '~utils/types';
+import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { getPlatformType } from '~utils/getPlatformType';
 

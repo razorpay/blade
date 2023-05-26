@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import { makeSize } from '~utils';
+import { makeSize } from '~utils/makeSize';
 
 const getDividerStyles = (theme: Theme): CSSObject => {
   return {

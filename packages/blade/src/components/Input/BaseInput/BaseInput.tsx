@@ -18,7 +18,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType, isReactNative, useBreakpoint } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
-import type { AriaAttributes, Platform } from '~utils';
+import type { Platform } from '~utils';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~utils/useInteraction';
@@ -28,6 +28,7 @@ import type {
 } from '~components/Form/FormTypes';
 import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
+import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 
 export type BaseInputProps = FormInputLabelProps &

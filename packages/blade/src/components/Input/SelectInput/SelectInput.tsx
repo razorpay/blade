@@ -7,12 +7,13 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { isReactNative, MetaConstants } from '~utils';
+import { isReactNative } from '~utils';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute/metaConstants';
 
 type SelectInputProps = Pick<
   BaseInputProps,

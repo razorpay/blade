@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { getComponentId } from '~utils';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 type SnapPoints = [number, number, number];
 

@@ -11,9 +11,9 @@ import type {
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
 import { Text } from '~components/Typography';
-import { makeSize } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
