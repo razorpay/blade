@@ -209,7 +209,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 2.5rem;
   margin: 0;
   padding: 0;
 }
