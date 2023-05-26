@@ -23,6 +23,7 @@ const SelectorLabel = ({
   onKeyUp,
   onTouchStart,
   onTouchEnd,
+  style,
 }: SelectorLabelProps): React.ReactElement => {
   return (
     <StyledSelectorLabel
@@ -36,6 +37,7 @@ const SelectorLabel = ({
       onMouseOut={onMouseOut}
       onKeyDown={onKeyDown}
       onKeyUp={onKeyUp}
+      style={style}
       {...metaAttribute({ name: componentName, testID })}
     >
       {children}

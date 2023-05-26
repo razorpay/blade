@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { TestID } from '~src/_helpers/types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -15,6 +16,7 @@ type SelectorLabelProps = {
   onKeyUp?: React.KeyboardEventHandler<HTMLLabelElement>;
   onTouchStart?: React.TouchEventHandler<HTMLLabelElement>;
   onTouchEnd?: React.TouchEventHandler<HTMLLabelElement>;
+  style?: React.CSSProperties;
 } & TestID;
 
 type SelectorInputProps = HoverProps & {
