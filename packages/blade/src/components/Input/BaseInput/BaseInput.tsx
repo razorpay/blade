@@ -16,9 +16,8 @@ import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { isReactNative, metaAttribute, getPlatformType, useBreakpoint } from '~utils';
+import { getPlatformType, isReactNative, metaAttribute, useBreakpoint } from '~utils';
 import type { AriaAttributes, Platform } from '~utils';
-
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~utils/useInteraction';

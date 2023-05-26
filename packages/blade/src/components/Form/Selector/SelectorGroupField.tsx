@@ -1,10 +1,11 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
-import { metaAttribute, getPlatformType } from '~utils';
+import { metaAttribute } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { AriaRoles } from '~utils';
 import type { TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
+import { getPlatformType } from '~utils/getPlatformType';
 
 type SelectorGroupFieldProps = {
   children: React.ReactNode;

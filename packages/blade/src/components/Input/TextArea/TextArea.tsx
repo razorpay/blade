@@ -8,11 +8,11 @@ import { BaseInput } from '../BaseInput';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getPlatformType } from '~utils';
 
 type TextAreaProps = Pick<
   BaseInputProps,

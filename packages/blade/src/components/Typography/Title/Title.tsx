@@ -2,10 +2,10 @@ import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import { getPlatformType } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~utils/types';
+import { getPlatformType } from '~utils';
 
 export type TitleProps = {
   size?: 'small' | 'medium' | 'large' | 'xlarge';

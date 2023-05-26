@@ -17,10 +17,11 @@ import {
 import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
 import BaseBox from '~components/Box/BaseBox';
-import { getComponentId, getPlatformType, metaAttribute, MetaConstants } from '~utils';
+import { getComponentId, metaAttribute, MetaConstants } from '~utils';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { getPlatformType } from '~utils/getPlatformType';
 
 type ListItemProps = {
   /**

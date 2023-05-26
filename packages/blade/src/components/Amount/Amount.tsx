@@ -13,7 +13,7 @@ import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
-import { getPlatformType, metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants, getPlatformType } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 

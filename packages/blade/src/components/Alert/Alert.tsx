@@ -12,10 +12,10 @@ import {
 import {
   castNativeType,
   castWebType,
-  getPlatformType,
   metaAttribute,
   MetaConstants,
   useBreakpoint,
+  getPlatformType,
 } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';

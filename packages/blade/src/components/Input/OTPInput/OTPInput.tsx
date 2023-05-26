@@ -10,7 +10,7 @@ import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { metaAttribute, getPlatformType, MetaConstants } from '~utils';
+import { getPlatformType, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { makeSize } from '~utils/makeSize';
 import { size } from '~tokens/global';

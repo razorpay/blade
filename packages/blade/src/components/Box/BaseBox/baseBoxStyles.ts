@@ -9,8 +9,7 @@ import type {
 } from './types';
 import type { Breakpoints } from '~tokens/global';
 import { breakpoints } from '~tokens/global';
-import { getMediaQuery } from '~src/utils/getMediaQuery';
-import { isReactNative } from '~utils';
+import { isReactNative, getMediaQuery } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';

@@ -12,10 +12,10 @@ import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportTe
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType } from '~utils';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getPlatformType } from '~utils';
 
 type RadioProps = {
   /**

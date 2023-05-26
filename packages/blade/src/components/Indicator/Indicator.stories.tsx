@@ -1,15 +1,14 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-
 import type { IndicatorProps } from './Indicator';
 import { Indicator as IndicatorComponent } from './Indicator';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
-import { getPlatformType } from '~utils';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { getPlatformType } from '~utils';
 
 const Page = (): ReactElement => {
   return (

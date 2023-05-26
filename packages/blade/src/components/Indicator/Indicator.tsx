@@ -10,7 +10,7 @@ import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StringChildrenType, TestID } from '~utils/types';
 
 import type { Feedback } from '~tokens/theme/theme';
-import { metaAttribute, getPlatformType, MetaConstants } from '~utils';
+import { getPlatformType, metaAttribute, MetaConstants } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
