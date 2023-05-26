@@ -162,7 +162,11 @@ const [isOpen, setIsOpen] = useState(false);
 - This would require our consumers to add some logic to handle this switch from Modal to BottomSheet on mWeb.
 - This decision also enables our consumers to save on bundle size so that the mWeb's bundle only contains BottomSheet and the dWeb's bundle only contains Modal.
 
+
 **Example usage:**
+
+> You can use Lazy Loading to load the Modal component only on dWeb and BottomSheet component only on mWeb.
+
 ```jsx
 import { useTheme, BottomSheet, Modal } from '@razorpay/blade';
 
