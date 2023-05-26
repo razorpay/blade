@@ -48,7 +48,8 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
     padding,
     backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
     borderRadius: props.theme.border.radius.medium,
-    display: isPlatformWeb ? 'inline-block' : undefined,
+    display: isPlatformWeb ? 'inline-block' : 'flex',
+    alignSelf: isPlatformWeb ? undefined : 'center',
     verticalAlign: 'middle',
     lineHeight: makeTypographySize(props.theme.typography.lineHeights[0]),
   };
