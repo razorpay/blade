@@ -3,7 +3,8 @@ import BaseBox from './BaseBox';
 import type { BoxProps, BoxRefType, MakeValueResponsive } from './BaseBox/types';
 import { validBoxAsValues } from './BaseBox/types/propsTypes';
 import type { KeysRequired } from '~utils/types';
-import { isReactNative, metaAttribute, MetaConstants } from '~utils';
+import { isReactNative } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {

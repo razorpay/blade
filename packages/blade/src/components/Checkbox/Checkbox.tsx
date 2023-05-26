@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';

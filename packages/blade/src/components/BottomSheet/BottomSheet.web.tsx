@@ -18,10 +18,8 @@ import { ComponentIds } from './componentIds';
 import type { BottomSheetProps } from './types';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
-
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, metaAttribute } from '~utils';
-
+import { makeMotionTime, metaAttribute } from '~utils/metaAttribute';
 import { useScrollLock } from '~utils/useScrollLock';
 import { useWindowSize } from '~utils/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';

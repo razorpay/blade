@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { componentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Text } from '~components/Typography';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';

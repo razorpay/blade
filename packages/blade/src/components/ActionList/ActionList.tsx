@@ -9,10 +9,10 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { metaAttribute, MetaConstants } from '~utils';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~utils/types';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });

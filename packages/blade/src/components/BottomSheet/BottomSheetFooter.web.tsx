@@ -6,7 +6,7 @@ import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
-import { metaAttribute } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 
 const BottomSheetFooter = ({ children }: BaseFooterProps): React.ReactElement => {
   const { theme } = useTheme();

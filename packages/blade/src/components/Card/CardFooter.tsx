@@ -7,8 +7,8 @@ import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
-
+import { useBreakpoint } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';

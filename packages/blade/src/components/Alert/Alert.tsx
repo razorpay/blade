@@ -9,14 +9,8 @@ import {
   CloseIcon,
   InfoIcon,
 } from '~components/Icons';
-import {
-  castNativeType,
-  castWebType,
-  metaAttribute,
-  MetaConstants,
-  useBreakpoint,
-  getPlatformType,
-} from '~utils';
+import { castNativeType, castWebType, useBreakpoint, getPlatformType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';

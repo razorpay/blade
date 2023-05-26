@@ -7,7 +7,7 @@ import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
 import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';

@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 import styled from 'styled-components/native';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 import { useStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 

@@ -5,7 +5,8 @@ import { componentIds } from './dropdownUtils';
 import type { DropdownOverlayProps } from './DropdownOverlay.web';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, MetaConstants } from '~utils';
+// TODO : this being a native in pointing to .web import now
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 

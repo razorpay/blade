@@ -21,9 +21,7 @@ import type { DurationString, EasingString } from '~tokens/global';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-
-import { MetaConstants, metaAttribute } from '~utils';
-
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';

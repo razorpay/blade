@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { useBottomSheetContext } from './BottomSheetContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, metaAttribute } from '~utils';
+import { castWebType, makeMotionTime } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 
 const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme, isOpen }) => {
   return {

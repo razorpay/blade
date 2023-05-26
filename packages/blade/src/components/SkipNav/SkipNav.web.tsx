@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { StringChildrenType, TestID } from '~utils/types';

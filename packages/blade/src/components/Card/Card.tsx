@@ -3,7 +3,7 @@ import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';

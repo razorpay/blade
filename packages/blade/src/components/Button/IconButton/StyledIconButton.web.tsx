@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import type { ReactElement } from 'react';
 import React from 'react';
 import type { StyledIconButtonProps } from './types';
-import { castWebType, metaAttribute, makeMotionTime, MetaConstants } from '~utils';
+import { castWebType, makeMotionTime } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 import { makeAccessible } from '~utils/makeAccessible';
 

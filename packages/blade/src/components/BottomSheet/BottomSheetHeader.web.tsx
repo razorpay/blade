@@ -6,7 +6,7 @@ import type { BottomSheetHeaderProps } from './types';
 import { useBottomSheetHeaderTrailingRestriction } from './utils';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
