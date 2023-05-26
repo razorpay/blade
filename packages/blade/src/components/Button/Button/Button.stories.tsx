@@ -199,6 +199,7 @@ ButtonAsLink.args = {
   children: 'I am Link!',
   href: 'https://razorpay.com/',
   target: '_blank',
+  rel: 'noopener noreferrer',
 };
 
 export const DisabledButton = ButtonWithVariantTemplate.bind({});
