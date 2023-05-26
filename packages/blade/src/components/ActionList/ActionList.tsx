@@ -13,7 +13,6 @@ import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContex
 import type { TestID } from '~utils/types';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
 const useActionListContext = (): ActionListContextProp => {
