@@ -1,8 +1,8 @@
-import { Pressable } from 'react-native';
+import { Linking, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import React from 'react';
-import type { TextInput } from 'react-native';
+import type { TextInput, GestureResponderEvent } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
 import { getIn } from '~utils';
@@ -22,9 +22,21 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   };
 });
 
+const openURL = async (href: string): Promise<void> => {
+  try {
+    const canOpen = await Linking.canOpenURL(href);
+    if (canOpen) {
+      await Linking.openURL(href);
+    }
+  } catch {
+    console.warn(`[Blade: BaseLink]: Could not open the link "href=${href}"`);
+  }
+};
+
 const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseButtonProps> = (
   {
     onClick,
+    href,
     onBlur,
     onKeyDown,
     children,
@@ -75,13 +87,27 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     };
   });
 
+  const handleOnPress = (event: GestureResponderEvent): void => {
+    if (href) {
+      void openURL(href);
+    }
+
+    if (onClick) {
+      /*
+      React Native's Pressable's onClick returns a GestureResponderEvent but our types expect a SyntheticEvent.
+      Until we have a way to handle platform specific types, we will have to ignore this TS error.
+      */
+      onClick(event);
+    }
+  };
+
   return (
     <StyledPressable
       {...styledProps}
       {...accessibilityProps}
       ref={ref}
       isLoading={isLoading}
-      onPress={onClick}
+      onPress={handleOnPress}
       style={animatedStyles}
       minHeight={minHeight}
       buttonPaddingTop={buttonPaddingTop}

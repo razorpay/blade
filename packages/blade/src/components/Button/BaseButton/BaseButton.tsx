@@ -30,6 +30,7 @@ import {
   makeSpace,
   makeBorderSize,
   getIn,
+  isReactNative,
 } from '~utils';
 
 import { BaseText } from '~components/Typography/BaseText';
@@ -50,6 +51,7 @@ import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type BaseButtonCommonProps = {
+  href?: string;
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
@@ -295,6 +297,7 @@ const ButtonContent = styled(BaseBox)<{ isHidden: boolean }>(({ isHidden }) => (
 
 const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonProps> = (
   {
+    href,
     variant = 'primary',
     intent,
     contrast = 'low',
@@ -375,6 +378,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   return (
     <StyledBaseButton
       ref={buttonRef as any}
+      as={isReactNative() ? undefined : href ? 'a' : 'button'}
+      href={href}
       accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
       isLoading={isLoading}
       disabled={disabled}

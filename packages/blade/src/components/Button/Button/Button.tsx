@@ -9,6 +9,7 @@ import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type ButtonCommonProps = {
+  href?: string;
   variant?: 'primary' | 'secondary' | 'tertiary';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
@@ -51,6 +52,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    href,
     onClick,
     size = 'medium',
     type = 'button',
@@ -66,6 +68,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       {...(icon ? { icon, children } : { children })}
       {...styledProps}
       ref={ref}
+      href={href}
       accessibilityLabel={accessibilityLabel}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
