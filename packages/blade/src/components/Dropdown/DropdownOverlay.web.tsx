@@ -5,7 +5,7 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime } from '~utils';
+import { castWebType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
@@ -14,6 +14,7 @@ import type { SpacingValueType } from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 const dropdownFadeIn = keyframes`
 from {

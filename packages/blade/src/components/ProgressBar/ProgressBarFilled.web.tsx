@@ -5,7 +5,8 @@ import React from 'react';
 import type { ProgressBarFilledProps } from './types';
 import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime } from '~utils';
+import { castWebType } from '~utils';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 const pulseKeyframes = keyframes`
   0% {

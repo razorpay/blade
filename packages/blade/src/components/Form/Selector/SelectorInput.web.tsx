@@ -5,11 +5,12 @@ import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import { castWebType, makeMotionTime } from '~utils';
+import { castWebType } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 type HoverProps = {
   isChecked?: boolean;

@@ -4,8 +4,9 @@ import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, getPlatformType, makeMotionTime } from '~utils';
+import { castWebType, getPlatformType } from '~utils';
 import type { ActionStates } from '~tokens/theme/theme';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 type BaseInputWrapperProps = Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
   isFocused?: boolean;

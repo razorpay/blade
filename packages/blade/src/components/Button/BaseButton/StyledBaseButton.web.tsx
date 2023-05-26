@@ -2,8 +2,9 @@ import getIn from 'lodash/get';
 import styled from 'styled-components';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
-import { castWebType, makeMotionTime } from '~utils';
+import { castWebType } from '~utils';
 import { useStyledProps } from '~components/Box/styledProps';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => ({
   ...props.accessibilityProps,

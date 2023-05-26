@@ -6,7 +6,7 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import type { FadeProps } from './types';
 import { useTheme } from '~components/BladeProvider';
-import { makeMotionTime } from '~utils';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 const fadeIn = keyframes`
   from {

@@ -2,7 +2,6 @@ import type { ReactElement } from 'react';
 import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import { FormLabel } from '~components/Form';
-import type { AccessibilityProps } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Text } from '~components/Typography/Text';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -14,6 +13,7 @@ import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { size } from '~tokens/global';
 import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
+import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 
 type ProgressBarCommonProps = {
