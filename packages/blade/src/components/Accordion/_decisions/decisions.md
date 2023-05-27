@@ -58,8 +58,8 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 > - Also includes layout based styling props
 > - By default the accordion renders in all items collapsed state, at max only one item can be expanded at a time (design restriction)
 > - `defaultExpandedIndex` can accept an accordion item index to render the accordion in an uncontrolled state
-> - For using accordion in controlled state, use `index` coupled with `onChange`
-> - `onChange` callback signature `({ expandedIndex }) => {}`, `expandedIndex` represents the expanded item's index
+> - For using accordion in controlled state, use `expandedIndex` coupled with `onChange`
+> - `onChange` callback signature `({ expandedIndex }) => {}`, `expandedIndex` represents the expanded item's index, if there are no expanded items it'll be `undefined`
 
 ### AccordionItem
 
@@ -152,11 +152,9 @@ Find in page (automatically expanding the accordion if someone does <kbd>Cmd</kb
 
 **Q1.** Is the deviation in props and using index for controlled state a fine tradeoff? Please post alternatives with usecase and rationale otherwise.
 
-**A1.** To be concluded.
+**A1.** Yes.
 
 ## References
-
-Further reading:
 
 Prior art:
 
