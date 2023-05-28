@@ -7,7 +7,6 @@ import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet
 import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';

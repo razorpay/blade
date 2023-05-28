@@ -1,1 +1,1 @@
-export * from './Sandbox.web';
+export * from './Sandbox';

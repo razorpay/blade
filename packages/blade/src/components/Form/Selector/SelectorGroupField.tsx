@@ -5,7 +5,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
 import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
-import { getPlatformType } from '~utils/getPlatformType';
+import { getPlatformType } from '~utils';
 
 type SelectorGroupFieldProps = {
   children: React.ReactNode;
