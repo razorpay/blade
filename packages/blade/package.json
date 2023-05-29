@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "8.4.0",
+  "version": "8.5.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -93,10 +93,10 @@
     "react:storybook:build": "NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
     "test:react": "FRAMEWORK=REACT jest -c ./jest.web.config.js",
     "test:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js",
-    "start:ios": "run-p react-native:storybook:start react-native:storybook:ios",
-    "start:android": "run-p react-native:storybook:start react-native:storybook:android",
-    "start:native": "run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
-    "start:web": "yarn react",
+    "start:ios": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:ios",
+    "start:android": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android",
+    "start:native": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
+    "start:web": "NODE_OPTIONS=--openssl-legacy-provider yarn react",
     "start:all": "run-p start:native start:web",
     "watch:test": "run-p watch:test:*",
     "watch:test:react": "yarn test:react --watch --onlyChanged",

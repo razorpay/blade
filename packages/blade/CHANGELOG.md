@@ -1,5 +1,21 @@
 # @razorpay/blade
 
+## 8.5.0
+
+### Minor Changes
+
+- 4a6ae99c: feat(Switch): add Switch component
+
+### Patch Changes
+
+- 245f677c: chore(blade): export switch
+
+## 8.4.1
+
+### Patch Changes
+
+- d30a7fd4: fix(blade): fix code & amount typography alignment issues
+
 ## 8.4.0
 
 ### Minor Changes
