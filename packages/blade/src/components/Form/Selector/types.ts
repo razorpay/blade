@@ -1,11 +1,51 @@
-import type { TestID } from '~src/_helpers/types';
+import type React from 'react';
+import type { Theme } from '~components/BladeProvider';
+import type { DotNotationColorStringToken, TestID } from '~src/_helpers/types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export type SelectorLabelProps = {
+type SelectorLabelProps = {
   children: React.ReactNode;
   /**
    * Pass only on react-native
    */
   inputProps: any; // Partial<Extract<InputProps, { onPress: any }>>;
   componentName?: string;
+  onMouseDown?: React.MouseEventHandler<HTMLLabelElement>;
+  onMouseUp?: React.MouseEventHandler<HTMLLabelElement>;
+  onMouseOut?: React.MouseEventHandler<HTMLLabelElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLLabelElement>;
+  onKeyUp?: React.KeyboardEventHandler<HTMLLabelElement>;
+  onTouchStart?: React.TouchEventHandler<HTMLLabelElement>;
+  onTouchEnd?: React.TouchEventHandler<HTMLLabelElement>;
+  style?: React.CSSProperties;
 } & TestID;
+
+type SelectorInputProps = HoverProps & {
+  id?: string;
+  inputProps: any;
+  tabIndex?: number;
+  accessibilityLabel?: string;
+};
+
+type ColorTokens = `colors.${DotNotationColorStringToken<Theme['colors']>}`;
+type SelectorInputHoverTokens = {
+  default: {
+    background: {
+      checked: ColorTokens;
+      unchecked: ColorTokens;
+    };
+    border?: {
+      checked: ColorTokens;
+      unchecked: ColorTokens;
+    };
+  };
+};
+
+type HoverProps = {
+  isChecked?: boolean;
+  isDisabled?: boolean;
+  hasError?: boolean;
+  hoverTokens: SelectorInputHoverTokens;
+};
+
+export { SelectorLabelProps, SelectorInputProps, HoverProps, SelectorInputHoverTokens };
