@@ -66,7 +66,7 @@
   "scripts": {
     "typecheck": "run-p types:typecheck:*",
     "test": "run-p test:*",
-    "test:ci": "run-s test-ci:*",
+    "test:ci": "run-p test-ci:*",
     "prepare": "yarn build",
     "build": "run-s build:*",
     "clearCache": "jest --clearCache",
