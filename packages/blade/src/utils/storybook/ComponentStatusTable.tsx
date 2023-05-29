@@ -277,7 +277,7 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Tags',
-    status: 'in-design',
+    status: 'in-development',
     description: 'A tag labels UI objects for quick recognition and navigation.',
   },
   {
@@ -289,11 +289,12 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Switch',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '8.5.0',
+    storybookLink: 'Components/Switch',
     description:
       'Switch component is used as an alternative for the checkbox component, It can be used to switch between two states: often on or off.',
   },
-
   {
     name: 'Accordion',
     status: 'in-development',
@@ -301,8 +302,14 @@ const componentData: ComponentStatusData = [
       'Accordion component allows the user to show and hide sections of related content on a page',
   },
   {
+    name: 'Collapsible',
+    status: 'in-development',
+    description:
+      'Collapsibles are used to allow users to toggle the visibility of hidden content within a container.',
+  },
+  {
     name: 'Tooltip',
-    status: 'in-design',
+    status: 'in-development',
     description:
       'Tooltip is a brief, informative message that appears when a user interacts with an element.',
   },
@@ -313,16 +320,27 @@ const componentData: ComponentStatusData = [
       "Modal is a dialog that focuses the user's attention exclusively on an information via a window that is overlaid on primary content.",
   },
   {
-    name: 'Carousel',
+    name: 'SkeletonLoader',
     status: 'planned-Q1-dev',
+    description:
+      'Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view.',
+  },
+  {
+    name: 'Carousel',
+    status: 'planned-Q1-design',
     description:
       'Carousel is a component to one-by-one display multiple blocks of information in circular manner',
   },
   {
     name: 'Tabs',
-    status: 'planned-Q1-dev',
+    status: 'planned-Q1-design',
     description:
       'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
+  },
+  {
+    name: 'Divider',
+    status: 'planned-Q1-design',
+    description: 'Dividers are used to visually separate content in a list or group.',
   },
   {
     name: 'Data Table',
