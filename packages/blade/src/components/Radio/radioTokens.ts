@@ -1,5 +1,6 @@
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken } from '~utils/types';
+import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import { size } from '~tokens/global';
 
 const radioSizes = {
@@ -100,4 +101,17 @@ const radioIconColors: RadioIconColors = {
   },
 } as const;
 
-export { radioSizes, radioIconColors };
+const radioHoverTokens: SelectorInputHoverTokens = {
+  default: {
+    background: {
+      checked: 'colors.brand.primary.600',
+      unchecked: 'colors.brand.gray.a50.lowContrast',
+    },
+    border: {
+      checked: 'colors.brand.primary.600',
+      unchecked: 'colors.brand.gray.500.lowContrast',
+    },
+  },
+};
+
+export { radioSizes, radioIconColors, radioHoverTokens };

@@ -5,19 +5,42 @@ import type { SelectorLabelProps } from './types';
 import { metaAttribute } from '~utils/metaAttribute';
 import { makeSpace } from '~utils/makeSpace';
 
-const StyledSelectorLabel = styled.label(({ theme }) => ({
-  display: 'flex',
-  marginTop: makeSpace(theme.spacing[1]),
-  marginBottom: makeSpace(theme.spacing[1]),
-}));
+const StyledSelectorLabel = styled.label(({ theme }) => {
+  return {
+    display: 'flex',
+    marginTop: makeSpace(theme.spacing[1]),
+    marginBottom: makeSpace(theme.spacing[1]),
+  };
+});
 
 const SelectorLabel = ({
   children,
   componentName,
   testID,
+  onMouseDown,
+  onMouseUp,
+  onMouseOut,
+  onKeyDown,
+  onKeyUp,
+  onTouchStart,
+  onTouchEnd,
+  style,
 }: SelectorLabelProps): React.ReactElement => {
   return (
-    <StyledSelectorLabel {...metaAttribute({ name: componentName, testID })}>
+    <StyledSelectorLabel
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+      onMouseDown={(e) => {
+        e.preventDefault();
+        onMouseDown?.(e);
+      }}
+      onMouseUp={onMouseUp}
+      onMouseOut={onMouseOut}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
+      style={style}
+      {...metaAttribute({ name: componentName, testID })}
+    >
       {children}
     </StyledSelectorLabel>
   );

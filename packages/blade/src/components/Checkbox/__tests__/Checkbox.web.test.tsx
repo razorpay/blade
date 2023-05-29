@@ -135,17 +135,17 @@ describe('<Checkbox />', () => {
           <Checkbox isChecked={checked} onChange={({ isChecked }) => setChecked(isChecked)}>
             {labelText}
           </Checkbox>
-          <p data-testid="state">{checked ? 'checked' : 'unchecked'}</p>
+          <p>{checked ? 'checked' : 'unchecked'}</p>
         </>
       );
     };
-    const { getByTestId, getByLabelText } = renderWithTheme(<Example />);
+    const { getByText, getByLabelText } = renderWithTheme(<Example />);
 
-    expect(getByTestId('state')).toHaveTextContent('unchecked');
+    expect(getByText('unchecked')).toBeInTheDocument();
     await user.click(getByLabelText(labelText));
-    expect(getByTestId('state')).toHaveTextContent('checked');
+    expect(getByText('checked')).toBeInTheDocument();
     await user.click(getByLabelText(labelText));
-    expect(getByTestId('state')).toHaveTextContent('unchecked');
+    expect(getByText('unchecked')).toBeInTheDocument();
   });
 
   it('should set to indeterminate state of checkbox', () => {

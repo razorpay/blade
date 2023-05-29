@@ -19,6 +19,7 @@ type UseCheckboxProps = Pick<
   | 'name'
   | 'value'
 > & {
+  role?: 'checkbox' | 'switch';
   hasError?: boolean;
   hasHelperText?: boolean;
 };
@@ -36,6 +37,7 @@ function setMixed(element: HTMLInputElement, mixed?: boolean) {
 }
 
 const useCheckbox = ({
+  role = 'checkbox',
   isChecked,
   defaultChecked,
   isIndeterminate,
@@ -93,7 +95,7 @@ const useCheckbox = ({
   const { inputId, errorTextId, helpTextId } = useFormId('checkbox');
 
   const accessibilityProps = makeAccessible({
-    role: 'checkbox',
+    role,
     required: Boolean(isRequired),
     invalid: Boolean(hasError),
     disabled: Boolean(isDisabled),

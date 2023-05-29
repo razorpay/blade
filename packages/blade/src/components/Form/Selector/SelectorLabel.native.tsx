@@ -16,9 +16,16 @@ const SelectorLabel = ({
   children,
   inputProps,
   testID,
+  onMouseDown,
+  onMouseUp,
 }: SelectorLabelProps): React.ReactElement => {
   return (
-    <StyledSelectorLabel {...inputProps} {...metaAttribute({ testID })}>
+    <StyledSelectorLabel
+      onPressIn={onMouseDown}
+      onPressOut={onMouseUp}
+      {...inputProps}
+      {...metaAttribute({ testID })}
+    >
       {children}
     </StyledSelectorLabel>
   );
