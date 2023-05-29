@@ -188,6 +188,8 @@ export default {
       mapping: headerTrailingMap,
       options: Object.keys(headerTrailingMap),
       defaultValue: 'Badge',
+      description:
+        'Trailing element to be rendered in the Header, Accepts one of `Badge`, `Text`, `Button`, `Link`',
       table: {
         category: propsCategory.HEADER,
       },
@@ -199,6 +201,7 @@ export default {
       mapping: headerTitleSuffixMap,
       options: Object.keys(headerTitleSuffixMap),
       defaultValue: 'Counter',
+      description: 'Renders an adornment besides the title, Accepts `Counter`',
       table: {
         category: propsCategory.HEADER,
       },
