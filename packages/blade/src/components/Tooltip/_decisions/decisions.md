@@ -19,13 +19,14 @@ The tooltip typically provides additional context about the element or its funct
 
 ## `Tooltip` API
 
-| Prop          | Type              | Default     | Description                                                               | Required |
-| ------------- | ----------------- | ----------- | ------------------------------------------------------------------------- | -------- |
-| content       | `string`          | `undefined` | Content of the tooltip                                                    | ✅       |
-| children      | `React.ReactNode` | `undefined` | Trigger component for tooltip, Accepts any interactive element            | ✅       |
-| isOpen        | `boolean`         | `undefined` | Controls the tooltip state                                                |          |
-| defaultIsOpen | `boolean`         | `undefined` | If true, the tooltip will be visible initially                            |          |
-| onDismiss     | `Callback`        | `undefined` | Called when tooltip is closed, either by mouseout or users pressing `Esc` |          |
+| Prop          | Type                                                                     | Default     | Description                                                               | Required |
+| ------------- | ------------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------- | -------- |
+| content       | `string`                                                                 | `undefined` | Content of the tooltip                                                    | ✅       |
+| placement     | `top, top-start, top-end, left, right, bottom, bottom-start, bottom-end` | `top`       | Placement of tooltip                                                      | ✅       |
+| children      | `React.ReactNode`                                                        | `undefined` | Trigger component for tooltip, Accepts any interactive element            | ✅       |
+| isOpen        | `boolean`                                                                | `undefined` | Controls the tooltip state                                                |          |
+| defaultIsOpen | `boolean`                                                                | `undefined` | If true, the tooltip will be visible initially                            |          |
+| onDismiss     | `Callback`                                                               | `undefined` | Called when tooltip is closed, either by mouseout or users pressing `Esc` |          |
 
 ### Examples:
 
