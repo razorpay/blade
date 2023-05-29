@@ -66,6 +66,7 @@
   "scripts": {
     "typecheck": "run-p types:typecheck:*",
     "test": "run-p test:*",
+    "test:ci": "run-s test-ci:*",
     "prepare": "yarn build",
     "build": "run-s build:*",
     "clearCache": "jest --clearCache",
@@ -93,6 +94,8 @@
     "react:storybook:build": "NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
     "test:react": "FRAMEWORK=REACT jest -c ./jest.web.config.js",
     "test:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js",
+    "test-ci:react": "FRAMEWORK=REACT jest -c ./jest.web.config.js --runInBand",
+    "test-ci:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js --runInBand",
     "start:ios": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:ios",
     "start:android": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android",
     "start:native": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
