@@ -29,7 +29,7 @@ jobs:
         run: yarn typecheck
         working-directory: packages/blade
       - name: Run Web & Native Tests
-        run: yarn test
+        run: yarn test:ci
         working-directory: packages/blade
       - name: Check Bundle Size
         run: yarn bundlemon
