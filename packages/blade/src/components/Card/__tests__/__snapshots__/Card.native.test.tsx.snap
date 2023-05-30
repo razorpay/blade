@@ -23,6 +23,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 24,
+          "textAlign": "left",
           "width": "100%",
         },
         Object {
@@ -38,6 +39,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       ]
     }
     surfaceLevel={2}
+    textAlign="left"
   >
     <View
       data-blade-component="card-body"
@@ -522,6 +524,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 24,
+          "textAlign": "left",
           "width": "100%",
         },
         Object {
@@ -537,6 +540,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       ]
     }
     surfaceLevel={2}
+    textAlign="left"
   >
     <View
       data-blade-component="card-header"
@@ -868,9 +872,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexWrap": "nowrap",
+                  "textAlign": "left",
                 },
               ]
             }
+            textAlign="left"
           >
             <View
               alignItems="center"
@@ -920,13 +926,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                     Object {},
                   ]
                 }
-                textAlign="left"
               >
                 NEW
               </Text>
@@ -1015,6 +1019,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textAlign": "left",
           "width": "100%",
         },
         Object {
@@ -1030,6 +1035,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
       ]
     }
     surfaceLevel={2}
+    textAlign="left"
   >
     <View
       data-blade-component="card-body"
@@ -1071,6 +1077,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 24,
+          "textAlign": "left",
           "width": "100%",
         },
         Object {
@@ -1086,6 +1093,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
       ]
     }
     surfaceLevel={2}
+    textAlign="left"
   >
     <View
       data-blade-component="card-body"
@@ -1156,6 +1164,7 @@ exports[`<Card /> should render a plain Card 1`] = `
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 24,
+          "textAlign": "left",
           "width": "100%",
         },
         Object {
@@ -1171,6 +1180,7 @@ exports[`<Card /> should render a plain Card 1`] = `
       ]
     }
     surfaceLevel={3}
+    textAlign="left"
   >
     <View
       data-blade-component="card-body"

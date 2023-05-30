@@ -687,9 +687,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             "borderRadius": 9999,
                             "display": "flex",
                             "flexWrap": "nowrap",
+                            "textAlign": "left",
                           },
                         ]
                       }
+                      textAlign="left"
                     >
                       <View
                         alignItems="center"
@@ -739,13 +741,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textAlign": "left",
                                 "textDecorationLine": "none",
                               },
                               Object {},
                             ]
                           }
-                          textAlign="left"
                         >
                           Action Needed
                         </Text>
