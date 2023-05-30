@@ -107,6 +107,7 @@ const _SelectInput = (
 
   const selectValues = (valuesToSelect: string | string[]): void => {
     if (options.length > 0) {
+      // we use empty `''` for clearing the input
       if (isEmpty(valuesToSelect)) {
         setSelectedIndices([]);
       } else if (typeof valuesToSelect === 'string') {
