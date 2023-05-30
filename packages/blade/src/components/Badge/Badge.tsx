@@ -125,6 +125,7 @@ const _Badge = ({
     <StyledBadge
       backgroundColor={backgroundColor}
       size={size}
+      textAlign="left"
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
       {...getStyledProps(styledProps)}
     >
@@ -146,7 +147,6 @@ const _Badge = ({
         ) : null}
         <Text
           {...badgeTextSizes[size]}
-          textAlign="left"
           type="normal"
           weight={fontWeight}
           truncateAfterLines={1}

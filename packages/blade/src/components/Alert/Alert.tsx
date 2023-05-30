@@ -185,7 +185,7 @@ const Alert = ({
   );
 
   const _title = title ? (
-    <BaseBox marginBottom="spacing.2" textAlign="left">
+    <BaseBox marginBottom="spacing.2">
       {isFullWidth ? (
         <Heading type="subtle" size="small" contrast={contrast}>
           {title}
@@ -200,7 +200,7 @@ const Alert = ({
 
   const _description = (
     <BaseBox marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
-      <Text textAlign="left" type="subtle" size={textSize} contrast={contrast}>
+      <Text type="subtle" size={textSize} contrast={contrast}>
         {description}
       </Text>
     </BaseBox>
@@ -263,7 +263,7 @@ const Alert = ({
 
   const actionsVertical =
     !showActionsHorizontal && (primaryAction || secondaryAction) ? (
-      <BaseBox marginTop="spacing.4" flexDirection="row" alignItems="center" textAlign="left">
+      <BaseBox marginTop="spacing.4" flexDirection="row" alignItems="center">
         {primaryAction}
         {secondaryAction}
       </BaseBox>
@@ -304,6 +304,7 @@ const Alert = ({
       contrastType={contrastType}
       isFullWidth={isFullWidth}
       isDesktop={isDesktop}
+      textAlign="left"
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Alert, testID })}
       {...getStyledProps(styledProps)}

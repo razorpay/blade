@@ -8,6 +8,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -107,7 +108,11 @@ const meta: Meta<AlertProps> = {
 };
 
 const AlertTemplate: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
-  return <AlertComponent {...args} />;
+  return (
+    <Box textAlign="right">
+      <AlertComponent {...args} />
+    </Box>
+  );
 };
 
 export const Default = AlertTemplate.bind({});
