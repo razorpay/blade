@@ -185,13 +185,13 @@ const Alert = ({
   );
 
   const _title = title ? (
-    <BaseBox marginBottom="spacing.2">
+    <BaseBox marginBottom="spacing.2" textAlign="left">
       {isFullWidth ? (
-        <Heading textAlign="left" type="subtle" size="small" contrast={contrast}>
+        <Heading type="subtle" size="small" contrast={contrast}>
           {title}
         </Heading>
       ) : (
-        <Text textAlign="left" type="subtle" weight="bold" contrast={contrast}>
+        <Text type="subtle" weight="bold" contrast={contrast}>
           {title}
         </Text>
       )}
@@ -263,7 +263,7 @@ const Alert = ({
 
   const actionsVertical =
     !showActionsHorizontal && (primaryAction || secondaryAction) ? (
-      <BaseBox marginTop="spacing.4" flexDirection="row" alignItems="center">
+      <BaseBox marginTop="spacing.4" flexDirection="row" alignItems="center" textAlign="left">
         {primaryAction}
         {secondaryAction}
       </BaseBox>
