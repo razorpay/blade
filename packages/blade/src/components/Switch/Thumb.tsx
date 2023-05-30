@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import isNumber from 'lodash/isNumber';
+import getIn from 'lodash/get';
 import styled from 'styled-components';
 import type { ThumbProps } from './types';
 import { switchSizes } from './switchTokens';
 import BaseBox from '~components/Box/BaseBox';
-import { makeSize, makeSpace, getIn, isReactNative } from '~utils';
+import { isReactNative } from '~utils';
+import { makeSpace } from '~utils/makeSpace';
+import { makeSize } from '~utils/makeSize';
 
 const Thumb = styled(BaseBox)<ThumbProps>(({ theme, size = 'medium', deviceType }) => {
   const width = switchSizes.thumb[deviceType][size].width;
