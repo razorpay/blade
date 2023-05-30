@@ -143,7 +143,7 @@ Native:
 ```tsx
 const App = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const onChange = ({ isExpanded }) => setIndex(isExpanded);
+  const onChange = ({ isExpanded }) => setIsExpanded(isExpanded);
 
   return (
     <Collapsible isExpanded={isExpanded} onChange={onChange}>
