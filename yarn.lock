@@ -2403,6 +2403,13 @@
   dependencies:
     "@floating-ui/dom" "^1.2.7"
 
+"@floating-ui/react-native@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-native/-/react-native-0.10.0.tgz#bcef1365c389b17c81ccc12f688766fddd5beb13"
+  integrity sha512-hjjVjXr19b1kzEAVq+iGNbNFc9/WmmE/QpJtZAFGrLsQVnd1Tuv+VEBesKHfWnKO5oF7QBAkwFxn5iys5aOC2w==
+  dependencies:
+    "@floating-ui/core" "^1.2.6"
+
 "@floating-ui/react@0.24.2":
   version "0.24.2"
   resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.24.2.tgz#1f2e596da122341a3fa65667a6f26ed126d32cc0"

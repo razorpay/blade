@@ -111,7 +111,8 @@
     "@use-gesture/react": "10.2.24",
     "body-scroll-lock": "4.0.0-beta.0",
     "use-presence": "1.1.0",
-    "@floating-ui/react": "0.24.2"
+    "@floating-ui/react": "0.24.2",
+    "@floating-ui/react-native": "0.10.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
@@ -212,6 +213,7 @@
     "@gorhom/bottom-sheet": "^4",
     "@gorhom/portal": "1.0.14",
     "@floating-ui/react": "0.24.2",
+    "@floating-ui/react-native": "0.10.0",
     "react": ">=17",
     "react-dom": ">=17",
     "react-native": "^0.66.5",
