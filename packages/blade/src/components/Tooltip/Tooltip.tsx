@@ -8,7 +8,6 @@ type TooltipProps = {
 
 const Tooltip = ({ content, children }: TooltipProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState(false);
-
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
@@ -19,7 +18,6 @@ const Tooltip = ({ content, children }: TooltipProps): React.ReactElement => {
 
   const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus]);
 
-  console.log(getReferenceProps());
   return (
     <>
       {React.cloneElement(children, { ref: refs.setReference, ...getReferenceProps() })}

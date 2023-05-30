@@ -311,6 +311,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     children,
     accessibilityLabel,
     testID,
+    onFocus,
+    onMouseLeave,
+    onMouseMove,
+    onPointerDown,
+    onPointerEnter,
     ...styledProps
   },
   ref,
@@ -395,6 +400,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       isFullWidth={isFullWidth}
       onClick={onClick}
       onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
       onKeyDown={onKeyDown}
       type={type}
       borderWidth={borderWidth}

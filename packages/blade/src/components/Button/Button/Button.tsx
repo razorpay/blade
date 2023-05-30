@@ -57,6 +57,12 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     variant = 'primary',
     accessibilityLabel,
     testID,
+    onBlur,
+    onFocus,
+    onMouseLeave,
+    onMouseMove,
+    onPointerDown,
+    onPointerEnter,
     ...styledProps
   },
   ref,
@@ -76,6 +82,12 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       variant={variant}
       isLoading={isLoading}
       testID={testID}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
     />
   );
 };
