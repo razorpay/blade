@@ -2,11 +2,9 @@
  * For browser we have `window`, for node we have `process` as globals, for React Native it's `global.navigator.product: ReactNative`
  **/
 
-Object.defineProperty(global.navigator, 'product', {
-  get() {
-    return 'ReactNative';
-  },
-});
+global.navigator = {
+  product: 'ReactNative',
+};
 require('react-native-reanimated/lib/reanimated2/jestUtils').setUpTests();
 jest.mock('react-native-reanimated', () => ({
   ...require('react-native-reanimated/mock'),
