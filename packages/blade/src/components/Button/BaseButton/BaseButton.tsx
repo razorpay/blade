@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
+import type { BaseLinkProps } from '../../Link/BaseLink';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
@@ -49,7 +50,6 @@ import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import type { BaseLinkProps } from '~components/Link/BaseLink';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];

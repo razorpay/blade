@@ -29,7 +29,6 @@ const getBaseButtonStyles = ({
   paddingBottom: buttonPaddingBottom,
   paddingLeft: buttonPaddingLeft,
   paddingRight: buttonPaddingRight,
-  display: 'inline-flex',
   justifyContent: 'center',
   alignItems: 'center',
   textDecoration: 'none',
