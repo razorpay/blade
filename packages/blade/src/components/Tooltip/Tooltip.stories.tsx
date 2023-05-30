@@ -13,9 +13,17 @@ export default {
 
 const TooltipTemplate: ComponentStory<typeof TooltipComponent> = () => {
   return (
-    <TooltipComponent content="Hello world">
-      <Button>Hover</Button>
-    </TooltipComponent>
+    <>
+      <TooltipComponent content="Hello world">
+        <Button>Hover</Button>
+      </TooltipComponent>
+      <TooltipComponent content="Hello world 1">
+        <Button>Hover</Button>
+      </TooltipComponent>
+      <TooltipComponent content="Hello world 2">
+        <Button>Hover</Button>
+      </TooltipComponent>
+    </>
   );
 };
 

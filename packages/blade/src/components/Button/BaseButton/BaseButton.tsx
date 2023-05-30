@@ -45,7 +45,6 @@ import type {
 } from '~src/_helpers/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
@@ -321,7 +320,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   ref,
 ) => {
   const childrenString = getStringFromReactText(children);
-  const buttonRef = useBladeInnerRef(ref);
   const disabled = isLoading || isDisabled;
   const { theme } = useTheme();
   if (!Icon && !childrenString?.trim()) {
@@ -379,7 +377,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   return (
     <StyledBaseButton
-      ref={buttonRef as any}
+      ref={ref}
       accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
       isLoading={isLoading}
       disabled={disabled}
