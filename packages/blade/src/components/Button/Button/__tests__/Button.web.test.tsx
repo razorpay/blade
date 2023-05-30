@@ -155,4 +155,25 @@ describe('<Button />', () => {
     const { getByTestId } = renderWithTheme(<Button testID="button-test">{buttonText}</Button>);
     expect(getByTestId('button-test')).toBeInTheDocument();
   });
+
+  it('should render button as link', () => {
+    const { getByRole } = renderWithTheme(
+      <Button href="https://youtu.be/gu3KzCWoons" target="_blank">
+        I am Anchor Tag!
+      </Button>,
+    );
+    expect(getByRole('link').tagName).toBe('A');
+    expect(getByRole('link')).toHaveAttribute('href', 'https://youtu.be/gu3KzCWoons');
+    expect(getByRole('link')).toHaveAttribute('target', '_blank');
+    expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer noopener');
+  });
+
+  it('should be able to override rel prop', () => {
+    const { getByRole } = renderWithTheme(
+      <Button href="https://youtu.be/gu3KzCWoons" target="_blank" rel="noopener">
+        I am Anchor Tag!
+      </Button>,
+    );
+    expect(getByRole('link')).toHaveAttribute('rel', 'noopener');
+  });
 });

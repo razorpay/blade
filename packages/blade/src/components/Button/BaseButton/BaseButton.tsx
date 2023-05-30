@@ -406,7 +406,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       rel={rel ?? defaultRel}
       accessibilityProps={{
         ...makeAccessible({
-          role: renderElement === 'a' ? 'link' : 'button',
+          role: href ? 'link' : 'button',
           label: accessibilityLabel,
         }),
       }}
