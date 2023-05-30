@@ -59,6 +59,24 @@ const [isOpen, setIsOpen] = React.useState(false);
 
 We will be using [FloatingUI](https://floating-ui.com/) to position the tooltip & handle the basic tooltip logic. Floating UI supports both Web & ReactNative.
 
+## Implementation detail nuances:
+
+To make FloatingUI work with Blade components seamlessly there are few things we need to modify:
+
+1. Expose interaction props in all the trigger components
+- Web:
+  - onBlur
+  - onFocus
+  - onMouseLeave
+  - onMouseMove
+  - onPointerDown
+  - onPointerEnter
+- Native:
+  - onTouchStart
+  - onTouchEnd
+
+2. Expose the actual DOM node from ref instead of only exposing [certain methods via our useBladeInnerRef](https://github.com/razorpay/blade/blob/69a1bcef2f09ceaf6f910eaaca3076055fb059a2/packages/blade/src/hooks/useBladeInnerRef.web.ts#L26-L27) hook which we used to prevent component styling misuses. We need to expose the actual DOM node because FloatingUI internally does this [isElement() check](https://github.com/floating-ui/floating-ui/blob/b8990250568043b876e1c8fe42358fe337847ede/packages/react/src/hooks/useFloating.ts#L59) on the tooltip trigger element.
+
 ## Motion
 
 Check out the [motion guidelines] for Tooltip.
@@ -80,7 +98,7 @@ Resources:
 
 ## Open Questions
 
-N/A
+- Which components should and should not be qualify as trigger? 
 
 ## References
 
