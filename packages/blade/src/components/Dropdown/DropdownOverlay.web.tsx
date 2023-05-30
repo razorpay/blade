@@ -12,6 +12,7 @@ import { spacing, size } from '~tokens/global';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 const dropdownFadeIn = keyframes`
 from {
@@ -47,19 +48,25 @@ const StyledDropdownOverlay = styled(BaseBox)<{
       transform: translateY(${makeSize(props.theme.spacing[3])});
       opacity: 0;
       z-index: 99;
+      min-width: max-content;
     `,
 );
 
 type DropdownOverlayProps = {
   children: React.ReactNode;
-} & TestID;
+} & TestID &
+  StyledPropsBlade;
 
 /**
  * Overlay of dropdown
  *
  * Wrap your ActionList within this component
  */
-const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
+const _DropdownOverlay = ({
+  children,
+  testID,
+  ...styledProps
+}: DropdownOverlayProps): JSX.Element => {
   const { isOpen, triggererRef, hasLabelOnLeft } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
@@ -129,6 +136,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         transition={isOpen ? fadeIn : fadeOut}
         onAnimationEnd={onAnimationEnd}
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+        {...styledProps}
       >
         {children}
       </StyledDropdownOverlay>
