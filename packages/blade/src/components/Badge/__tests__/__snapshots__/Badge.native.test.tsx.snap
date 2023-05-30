@@ -156,11 +156,13 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -241,11 +243,13 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         LABEL
       </Text>
@@ -326,11 +330,13 @@ exports[`<Badge /> should render Badge with default props 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -411,11 +417,13 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -496,11 +504,13 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -581,11 +591,13 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -666,11 +678,13 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -751,11 +765,13 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -836,11 +852,13 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -921,11 +939,13 @@ exports[`<Badge /> should render large size Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -1006,11 +1026,13 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -1091,11 +1113,13 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -1176,11 +1200,13 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -1261,11 +1287,13 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -1346,11 +1374,13 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -1431,11 +1461,13 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -1516,11 +1548,13 @@ exports[`<Badge /> should render medium size Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>
@@ -1601,11 +1635,13 @@ exports[`<Badge /> should render small size Badge 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       >
         Label
       </Text>

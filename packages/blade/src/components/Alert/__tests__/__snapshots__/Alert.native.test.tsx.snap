@@ -167,11 +167,13 @@ exports[`<Alert /> should render 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
               Object {},
             ]
           }
+          textAlign="left"
         >
           Currently you can only accept payments in international currencies using PayPal.
         </Text>
@@ -443,11 +445,13 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
               Object {},
             ]
           }
+          textAlign="left"
         >
           Currently you can only accept payments in international currencies using PayPal.
         </Text>

@@ -14,9 +14,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
       Array [
         Object {
           "position": "relative",
+          "textAlign": "left",
         },
       ]
     }
+    textAlign="left"
   >
     <View
       position="relative"

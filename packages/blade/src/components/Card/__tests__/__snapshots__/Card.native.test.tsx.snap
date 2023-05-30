@@ -160,11 +160,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
                 Object {},
               ]
             }
+            textAlign="left"
           >
             Card Header
           </Text>
@@ -193,11 +195,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
                 Object {},
               ]
             }
+            textAlign="left"
           >
             Card subtitle
           </Text>
@@ -792,11 +796,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "textAlign": "center",
                             "textDecorationLine": "none",
                           },
                           Object {},
                         ]
                       }
+                      textAlign="center"
                     >
                       12
                     </Text>
@@ -829,11 +835,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                   Object {},
                 ]
               }
+              textAlign="left"
             >
               Card subtitle
             </Text>
@@ -913,11 +921,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                     Object {},
                   ]
                 }
+                textAlign="left"
               >
                 NEW
               </Text>

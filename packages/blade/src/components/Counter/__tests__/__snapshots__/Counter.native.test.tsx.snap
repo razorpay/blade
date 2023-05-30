@@ -74,11 +74,13 @@ exports[`<Counter /> should render Counter with default props 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -161,11 +163,13 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -248,11 +252,13 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -335,11 +341,13 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -422,11 +430,13 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -509,11 +519,13 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -596,11 +608,13 @@ exports[`<Counter /> should render large size Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -683,11 +697,13 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -770,11 +786,13 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -857,11 +875,13 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -944,11 +964,13 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -1031,11 +1053,13 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -1118,11 +1142,13 @@ exports[`<Counter /> should render medium size Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
@@ -1205,11 +1231,13 @@ exports[`<Counter /> should render small size Counter 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "center",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="center"
       >
         20
       </Text>
