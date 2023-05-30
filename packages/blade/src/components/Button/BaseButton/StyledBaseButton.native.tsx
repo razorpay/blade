@@ -29,7 +29,7 @@ const openURL = async (href: string): Promise<void> => {
       await Linking.openURL(href);
     }
   } catch {
-    console.warn(`[Blade: BaseLink]: Could not open the link "href=${href}"`);
+    console.warn(`[Blade: BaseButton]: Could not open the link "href=${href}"`);
   }
 };
 
@@ -93,10 +93,6 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     }
 
     if (onClick) {
-      /*
-      React Native's Pressable's onClick returns a GestureResponderEvent but our types expect a SyntheticEvent.
-      Until we have a way to handle platform specific types, we will have to ignore this TS error.
-      */
       onClick(event);
     }
   };
