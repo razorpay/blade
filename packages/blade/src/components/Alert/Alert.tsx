@@ -188,7 +188,7 @@ const Alert = ({
     <BaseBox marginBottom="spacing.2">
       {isFullWidth ? (
         <Heading textAlign="left" type="subtle" size="small" contrast={contrast}>
-          hello
+          {title}
         </Heading>
       ) : (
         <Text textAlign="left" type="subtle" weight="bold" contrast={contrast}>

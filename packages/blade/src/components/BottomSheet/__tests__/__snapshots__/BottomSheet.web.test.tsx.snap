@@ -112,7 +112,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding-left: 8px;
 }
 
-.c22 {
+.c23 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -122,7 +122,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   flex-shrink: 1;
 }
 
-.c23 {
+.c24 {
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -130,7 +130,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding-left: 16px;
 }
 
-.c25 {
+.c26 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -141,14 +141,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   touch-action: none;
 }
 
-.c26 {
+.c27 {
   padding-top: 16px;
   padding-bottom: 16px;
   padding-right: 20px;
   padding-left: 20px;
 }
 
-.c28 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -184,7 +184,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   opacity: 1;
 }
 
-.c20 {
+.c21 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -211,21 +211,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c20:hover {
+.c21:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c20:focus {
+.c21:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c20:active {
+.c21:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c21 {
+.c22 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
@@ -253,6 +253,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
@@ -270,7 +271,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding: 0;
 }
 
-.c24 {
+.c25 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -283,7 +284,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding: 0;
 }
 
-.c30 {
+.c31 {
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -293,6 +294,20 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c20 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -383,7 +398,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   overflow: hidden;
 }
 
-.c27 {
+.c28 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -405,24 +420,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   position: relative;
 }
 
-.c27:hover {
+.c28:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(213,89%,56%,1);
 }
 
-.c27:active {
+.c28:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(213,89%,56%,1);
 }
 
-.c27:focus {
+.c28:focus {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(213,89%,56%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c27 * {
+.c28 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -431,7 +446,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c29 {
+.c30 {
   opacity: 1;
 }
 
@@ -578,7 +593,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     overflow="hidden"
                   >
                     <p
-                      class="c15 c16"
+                      class="c20 c16"
                       color="feedback.text.positive.lowContrast"
                       data-blade-component="text"
                       font-family="text"
@@ -593,7 +608,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               </div>
               <button
                 aria-label="Close"
-                class="c20"
+                class="c21"
                 data-blade-component="icon-button"
                 type="button"
               >
@@ -615,22 +630,22 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             </div>
           </div>
           <div
-            class="c21"
+            class="c22"
           />
         </div>
       </div>
       <div
-        class="c22"
+        class="c23"
         data-blade-component="BottomSheetBody"
         data-testid="bottomsheet-body"
         style="user-select: auto; overflow: auto;"
       >
         <div
-          class="c23"
+          class="c24"
           overflow="auto"
         >
           <p
-            class="c24 "
+            class="c25 "
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -643,28 +658,28 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         </div>
       </div>
       <div
-        class="c25"
+        class="c26"
         data-blade-component="BottomSheetFooter"
         width="100%"
       >
         <div
-          class="c21"
+          class="c22"
         />
         <div
-          class="c26"
+          class="c27"
         >
           <button
-            class="c27"
+            class="c28"
             data-blade-component="button"
             role="button"
             type="button"
           >
             <div
-              class="c28 c29"
+              class="c29 c30"
               display="flex"
             >
               <div
-                class="c30"
+                class="c31"
                 color="action.text.secondary.default"
                 font-size="100"
                 font-weight="bold"

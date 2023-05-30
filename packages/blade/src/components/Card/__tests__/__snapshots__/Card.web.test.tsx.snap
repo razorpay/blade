@@ -116,6 +116,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -129,6 +130,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
+  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -545,6 +547,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
@@ -558,11 +561,26 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
+  text-align: left;
   margin: 0;
   padding: 0;
 }
 
-.c18 {
+.c17 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c19 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -583,7 +601,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c17 {
+.c18 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
@@ -723,7 +741,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               overflow="hidden"
             >
               <p
-                class="c12 c13"
+                class="c17 c13"
                 color="feedback.text.neutral.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -738,7 +756,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </div>
       </div>
       <div
-        class="c17"
+        class="c18"
       />
     </div>
     <div
@@ -746,7 +764,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       data-blade-component="card-body"
     >
       <p
-        class="c18 "
+        class="c19 "
         color="surface.text.normal.lowContrast"
         data-blade-component="text"
         font-family="text"
