@@ -89,8 +89,8 @@ const _DropdownLink = ({
   );
 };
 
-const DropdownButton = assignWithoutSideEffects(_DropdownLink, {
+const DropdownLink = assignWithoutSideEffects(_DropdownLink, {
   componentId: componentIds.triggers.DropdownLink,
 });
 
-export { DropdownButton };
+export { DropdownLink };
