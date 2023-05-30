@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
+import { FloatingFocusManager, useFloating } from '@floating-ui/react';
 import { ModalPortal } from './ModalPortal';
 import { ModalHeader } from './ModalHeader';
 import type { ModalHeaderProps } from './ModalHeader';
@@ -27,17 +29,49 @@ type ModalProps = {
   children: React.ReactNode;
   isOpen: boolean;
   onDismiss: () => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  initialFocusRef?: React.MutableRefObject<any>;
 };
 
-const Modal = (props: ModalProps): React.ReactElement => {
+const Modal = ({
+  isOpen,
+  children,
+  onDismiss,
+  initialFocusRef,
+}: ModalProps): React.ReactElement => {
+  const { refs, context } = useFloating({
+    open: isOpen,
+  });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const defaultInitialFocusRef = React.useRef<any>(null);
+  const focusOnInitialRef = React.useCallback(() => {
+    if (!initialFocusRef) {
+      // focus on close button
+      defaultInitialFocusRef.current?.focus();
+    } else {
+      // focus on the initialRef passed by the user
+      initialFocusRef.current?.focus();
+    }
+  }, [initialFocusRef]);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      focusOnInitialRef();
+    }
+  }, [isOpen, focusOnInitialRef]);
+
   return (
     <ModalPortal>
-      <ModalContext.Provider value={{ isOpen: props.isOpen, close: props.onDismiss }}>
-        {props.isOpen ? (
-          <>
-            <ModalBackdrop zIndex={999} />
-            <ModalContent isOpen={props.isOpen}>{props.children}</ModalContent>
-          </>
+      <ModalContext.Provider value={{ isOpen, close: onDismiss, defaultInitialFocusRef }}>
+        {isOpen ? (
+          <FloatingFocusManager context={context} modal={true} initialFocus={-1}>
+            <>
+              <ModalBackdrop zIndex={999} />
+              <ModalContent ref={refs.setFloating} isOpen={isOpen}>
+                {children}
+              </ModalContent>
+            </>
+          </FloatingFocusManager>
         ) : null}
       </ModalContext.Provider>
     </ModalPortal>

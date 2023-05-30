@@ -2384,6 +2384,34 @@
   resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.58.0.tgz#88ae0e57e2ac74203d401f2a70e95e93c470e093"
   integrity sha512-to6hFysqZYACz4VNgaBXflOVS+1pbXGNVcezDmQEMcADDkIZeAZ71Zfqf/B2YDRmU3sM1xX5Q5NkRGhjCuLOLg==
 
+"@floating-ui/core@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.6.tgz#d21ace437cc919cdd8f1640302fa8851e65e75c0"
+  integrity sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==
+
+"@floating-ui/dom@^1.2.7":
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.2.9.tgz#b9ed1c15d30963419a6736f1b7feb350dd49c603"
+  integrity sha512-sosQxsqgxMNkV3C+3UqTS6LxP7isRLwX8WMepp843Rb3/b0Wz8+MdUkxJksByip3C2WwLugLHN1b4ibn//zKwQ==
+  dependencies:
+    "@floating-ui/core" "^1.2.6"
+
+"@floating-ui/react-dom@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-2.0.0.tgz#7514baac526c818892bbcc84e1c3115008c029f9"
+  integrity sha512-Ke0oU3SeuABC2C4OFu2mSAwHIP5WUiV98O9YWoHV4Q5aT6E9k06DV0Khi5uYspR8xmmBk08t8ZDcz3TR3ARkEg==
+  dependencies:
+    "@floating-ui/dom" "^1.2.7"
+
+"@floating-ui/react@0.24.2":
+  version "0.24.2"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.24.2.tgz#1f2e596da122341a3fa65667a6f26ed126d32cc0"
+  integrity sha512-8sdLmcC85J6M2H0AL8yOQuiWD4T0gNMSLpuJjmXyEA6ndfmxXR0hwKFkczB4xRNFhKbwoQeuh8z561HE2vOdZw==
+  dependencies:
+    "@floating-ui/react-dom" "^2.0.0"
+    aria-hidden "^1.1.3"
+    tabbable "^6.0.1"
+
 "@gar/promisify@^1.0.1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
@@ -7501,6 +7529,13 @@ args-parser@1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/args-parser/-/args-parser-1.3.0.tgz#c52280e7a454df00ff35bc37ab7cfb543f28d304"
   integrity sha512-If3Zi4BSjlQIJ9fgAhSiKi0oJtgMzSqh0H4wvl7XSeO16FKx7QqaHld8lZeEajPX7y1C5qKKeNgyrfyvmjmjUQ==
+
+aria-hidden@^1.1.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/aria-hidden/-/aria-hidden-1.2.3.tgz#14aeb7fb692bbb72d69bebfa47279c1fd725e954"
+  integrity sha512-xcLxITLe2HYa1cnYnwCjkOO1PqUHQpozB8x9AR0OgWN2woOBi5kSDVxKfd0b7sb1hw5qFeJhXm9H1nu3xSfLeQ==
+  dependencies:
+    tslib "^2.0.0"
 
 aria-query@^4.2.2:
   version "4.2.2"
@@ -24148,6 +24183,11 @@ synckit@^0.8.5:
   dependencies:
     "@pkgr/utils" "^2.3.1"
     tslib "^2.5.0"
+
+tabbable@^6.0.1:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.1.2.tgz#b0d3ca81d582d48a80f71b267d1434b1469a3703"
+  integrity sha512-qCN98uP7i9z0fIS4amQ5zbGBOq+OSigYeGvPy7NDk8Y9yncqDZ9pRPgfsc2PJIVM9RrJj7GIfuRgmjoUU9zTHQ==
 
 table@^6.0.9, table@^6.6.0:
   version "6.8.0"

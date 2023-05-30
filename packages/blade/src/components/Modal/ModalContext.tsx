@@ -13,13 +13,13 @@ type ModalContextProps = {
   /**
    * The element that will get focused when the Modal first opens
    */
-  // defaultInitialFocusRef: React.MutableRefObject<any>;
+  defaultInitialFocusRef: React.MutableRefObject<any>;
 };
 
 const ModalContext = React.createContext<ModalContextProps>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   close: () => {},
-  // defaultInitialFocusRef: { current: null },
+  defaultInitialFocusRef: { current: null },
   isOpen: false,
 });
 

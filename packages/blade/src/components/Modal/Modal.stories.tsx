@@ -35,6 +35,9 @@ const ModalTemplate: ComponentStory<typeof Modal> = (args) => {
       <Button ref={buttonRef} onClick={() => setIsOpen(!isOpen)}>
         Open Modal
       </Button>
+      <Button marginLeft="spacing.3" variant="secondary">
+        Dummy Button
+      </Button>
       <Text>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur porttitor ante sit
         amet tristique. Nam vel urna metus. Nam ac elit molestie, semper lorem eget, fringilla

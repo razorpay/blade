@@ -1,15 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useModalContext } from './ModalContext';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
-import { useModalContext } from './ModalContext';
 
-type ModalHeaderProps = BaseHeaderProps & {
-  //   close: () => void;
-  defaultInitialFocusRef: React.MutableRefObject<any>;
-};
+type ModalHeaderProps = BaseHeaderProps;
 
 const ModalHeader = (props: ModalHeaderProps): React.ReactElement => {
-  const { close } = useModalContext();
+  const { close, defaultInitialFocusRef } = useModalContext();
   return (
     <BaseHeader
       title={props.title}
@@ -17,7 +13,7 @@ const ModalHeader = (props: ModalHeaderProps): React.ReactElement => {
       leading={props.leading}
       trailing={props.trailing}
       titleSuffix={props.titleSuffix}
-      closeButtonRef={props.defaultInitialFocusRef}
+      closeButtonRef={defaultInitialFocusRef}
       showCloseButton={true}
       onCloseButtonClick={close}
     />
