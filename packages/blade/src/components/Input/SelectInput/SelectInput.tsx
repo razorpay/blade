@@ -7,7 +7,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { isReactNative, MetaConstants } from '~utils';
+import { isEmpty, isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
@@ -107,7 +107,9 @@ const _SelectInput = (
 
   const selectValues = (valuesToSelect: string | string[]): void => {
     if (options.length > 0) {
-      if (typeof valuesToSelect === 'string') {
+      if (isEmpty(valuesToSelect)) {
+        setSelectedIndices([]);
+      } else if (typeof valuesToSelect === 'string') {
         // single select control
         const selectedItemIndex = options.findIndex((option) => option.value === valuesToSelect);
         if (selectedItemIndex >= 0) {
@@ -140,7 +142,7 @@ const _SelectInput = (
 
   // Handles `value` prop
   React.useEffect(() => {
-    if (options.length > 0 && props.value) {
+    if (options.length > 0 && props.value !== undefined) {
       if (!isControlled) {
         setIsControlled(true);
       }
