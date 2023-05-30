@@ -14,6 +14,8 @@ export type StyledBaseLinkProps = {
   target?: string;
   rel?: string;
   onClick?: (e: SyntheticEvent) => void;
+  onBlur?: BaseLinkProps['onBlur'];
+  onKeyDown?: BaseLinkProps['onKeyDown'];
   focusRingColor: string;
   disabled: boolean;
   motionDuration: DurationString;

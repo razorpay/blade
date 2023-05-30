@@ -89,7 +89,7 @@ type LinkAnchorVariantProps = LinkPropsWithOrWithoutIcon & {
 /*
   Link Props when variant is button
 */
-type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
+export type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
   variant?: 'button';
   isDisabled?: boolean;
   href?: undefined;
