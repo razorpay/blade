@@ -82,12 +82,12 @@ const _CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.
   return (
     <BaseBox>
       {title && (
-        <Text variant="body" size="medium" weight="bold">
+        <Text textAlign="left" variant="body" size="medium" weight="bold">
           {title}
         </Text>
       )}
       {subtitle && (
-        <Text variant="body" size="small" weight="regular">
+        <Text textAlign="left" variant="body" size="small" weight="regular">
           {subtitle}
         </Text>
       )}

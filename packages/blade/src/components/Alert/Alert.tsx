@@ -187,11 +187,11 @@ const Alert = ({
   const _title = title ? (
     <BaseBox marginBottom="spacing.2">
       {isFullWidth ? (
-        <Heading type="subtle" size="small" contrast={contrast}>
-          {title}
+        <Heading textAlign="left" type="subtle" size="small" contrast={contrast}>
+          hello
         </Heading>
       ) : (
-        <Text type="subtle" weight="bold" contrast={contrast}>
+        <Text textAlign="left" type="subtle" weight="bold" contrast={contrast}>
           {title}
         </Text>
       )}
@@ -200,7 +200,7 @@ const Alert = ({
 
   const _description = (
     <BaseBox marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
-      <Text type="subtle" size={textSize} contrast={contrast}>
+      <Text textAlign="left" type="subtle" size={textSize} contrast={contrast}>
         {description}
       </Text>
     </BaseBox>

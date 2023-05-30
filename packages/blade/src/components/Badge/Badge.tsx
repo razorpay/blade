@@ -146,6 +146,7 @@ const _Badge = ({
         ) : null}
         <Text
           {...badgeTextSizes[size]}
+          textAlign="left"
           type="normal"
           weight={fontWeight}
           truncateAfterLines={1}
