@@ -21,7 +21,6 @@ const ModalContent = styled.div<{ isOpen: boolean }>`
   max-width: 760px;
   min-width: 320px;
   transform: translate(-50%, -50%);
-  z-index: 1000;
   visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
 `;
 

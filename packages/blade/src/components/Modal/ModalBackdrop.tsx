@@ -1,12 +1,11 @@
 /* eslint-disable react/display-name */
 import React from 'react';
 import styled from 'styled-components';
+import { FloatingOverlay } from '@floating-ui/react';
 import { useModalContext } from './ModalContext';
-import { useTheme } from '~components/BladeProvider';
-import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, metaAttribute } from '~utils';
 
-const StyledModalBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme, isOpen }) => {
+const StyledModalBackdrop = styled(FloatingOverlay)<{ isOpen: boolean }>(({ theme, isOpen }) => {
   return {
     transitionDuration: `${makeMotionTime(theme.motion.duration.moderate)}`,
     transitionTimingFunction: isOpen
@@ -14,12 +13,12 @@ const StyledModalBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme, isOpe
       : castWebType(theme.motion.easing.exit.revealing),
     pointerEvents: isOpen ? 'all' : 'none',
     transitionProperty: 'opacity',
-    // visibility: isOpen ? 'visible' : 'hidden',
+    opacity: isOpen ? 1 : 0,
+    backgroundColor: theme.colors.overlay.background,
   };
 });
 
-const ModalBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement => {
-  const { theme } = useTheme();
+const ModalBackdrop = (): React.ReactElement => {
   const { close, isOpen } = useModalContext();
 
   return (
@@ -29,14 +28,7 @@ const ModalBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement => {
         close();
       }}
       isOpen={isOpen}
-      opacity={isOpen ? 1 : 0}
-      position="fixed"
-      left="spacing.0"
-      top="spacing.0"
-      bottom="spacing.0"
-      right="spacing.0"
-      zIndex={zIndex}
-      backgroundColor={theme.colors.overlay.background}
+      lockScroll={true}
     />
   );
 };
