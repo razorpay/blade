@@ -12,7 +12,7 @@ describe('<Button />', () => {
   it('should render button as anchor tag', () => {
     const buttonText = 'Pay Now';
     const { container } = renderWithSSR(
-      <Button href="https://youtu.be/gu3KzCWoons" target="_blank" icon={CreditCardIcon}>
+      <Button href="https://youtu.be/iPaBUhIsslA" target="_blank" icon={CreditCardIcon}>
         {buttonText}
       </Button>,
     );

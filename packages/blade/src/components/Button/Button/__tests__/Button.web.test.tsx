@@ -158,19 +158,19 @@ describe('<Button />', () => {
 
   it('should render button as link', () => {
     const { getByRole } = renderWithTheme(
-      <Button href="https://youtu.be/gu3KzCWoons" target="_blank">
+      <Button href="https://youtu.be/iPaBUhIsslA" target="_blank">
         I am Anchor Tag!
       </Button>,
     );
     expect(getByRole('link').tagName).toBe('A');
-    expect(getByRole('link')).toHaveAttribute('href', 'https://youtu.be/gu3KzCWoons');
+    expect(getByRole('link')).toHaveAttribute('href', 'https://youtu.be/iPaBUhIsslA');
     expect(getByRole('link')).toHaveAttribute('target', '_blank');
     expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer noopener');
   });
 
   it('should be able to override rel prop', () => {
     const { getByRole } = renderWithTheme(
-      <Button href="https://youtu.be/gu3KzCWoons" target="_blank" rel="noopener">
+      <Button href="https://youtu.be/iPaBUhIsslA" target="_blank" rel="noopener">
         I am Anchor Tag!
       </Button>,
     );

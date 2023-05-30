@@ -146,12 +146,12 @@ describe('<Button />', () => {
 
   it('should open URL when Button is pressed with href', async () => {
     const { getByRole } = renderWithTheme(
-      <Button href="https://youtu.be/gu3KzCWoons">Learn More</Button>,
+      <Button href="https://youtu.be/iPaBUhIsslA">Learn More</Button>,
     );
     const button = getByRole('link');
     fireEvent.press(button);
     await waitFor(() =>
-      expect(Linking.openURL).toHaveBeenCalledWith('https://youtu.be/gu3KzCWoons'),
+      expect(Linking.openURL).toHaveBeenCalledWith('https://youtu.be/iPaBUhIsslA'),
     );
   });
 
