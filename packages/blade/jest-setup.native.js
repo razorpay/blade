@@ -3,7 +3,9 @@
  **/
 
 Object.defineProperty(global.navigator, 'product', {
-  value: 'ReactNative',
+  get() {
+    return 'ReactNative';
+  },
 });
 require('react-native-reanimated/lib/reanimated2/jestUtils').setUpTests();
 jest.mock('react-native-reanimated', () => ({
