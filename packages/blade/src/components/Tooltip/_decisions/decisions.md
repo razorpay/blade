@@ -26,7 +26,7 @@ The tooltip typically provides additional context about the element or its funct
 | ------------- | ------------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------- | -------- |
 | content       | `string`                                                                 | `undefined` | Content of the tooltip                                                    | ✅       |
 | placement     | `top, top-start, top-end, left, right, bottom, bottom-start, bottom-end` | `top`       | Placement of tooltip                                                      | ✅       |
-| children      | `React.ReactNode`                                                        | `undefined` | Trigger component for tooltip, Accepts any interactive element            | ✅       |
+| children      | `React.ReactNode`                                                        | `undefined` | Trigger component for tooltip, Accepts any interactive element or icons   | ✅       |
 | isOpen        | `boolean`                                                                | `undefined` | Controls the tooltip state                                                |          |
 | defaultIsOpen | `boolean`                                                                | `undefined` | If true, the tooltip will be visible initially                            |          |
 | onDismiss     | `Callback`                                                               | `undefined` | Called when tooltip is closed, either by mouseout or users pressing `Esc` |          |
@@ -64,11 +64,11 @@ We will be using [FloatingUI](https://floating-ui.com/) to position the tooltip 
 
 ### Bundle Size
 
-With all the neccessary middlewares and features included for our usecase FloatingUI will be around **10kb** gzip. 
+With all the neccessary middlewares and features included for our usecase FloatingUI will be around **10kb** gzip.
 
 Check the [BundleJS Analysis](https://bundlejs.com/?q=%40floating-ui%2Freact&treeshake=%5B%7B%0A++arrow%2Cflip%2CFloatingArrow%2Coffset%2CuseFloating%2CuseFocus%2CuseHover%2CuseInteractions%2CuseTransitionStyles%2C%7D%5D&config=%7B%22esbuild%22%3A%7B%22external%22%3A%5B%22react%22%2C%22react-dom%22%5D%7D%7D)
 
-This is worth the size becaue: 
+This is worth the size becaue:
 
 - FloatingUI supports both react / react-native
 - It handles
@@ -83,6 +83,7 @@ This is worth the size becaue:
 To make FloatingUI work with Blade components seamlessly there are few things we need to modify:
 
 1. Expose interaction props in all the trigger components
+
 - Web:
   - onBlur
   - onFocus
@@ -117,7 +118,7 @@ Resources:
 
 ## Open Questions
 
-- Which components should and should not be qualify as trigger? 
+- Which components should and should not be qualify as trigger?
 
 ## References
 
