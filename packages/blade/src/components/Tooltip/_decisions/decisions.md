@@ -7,11 +7,13 @@ The tooltip typically provides additional context about the element or its funct
 - [Design](#design)
 - [`Tooltip` API](#tooltip-api)
   - [Examples:](#examples)
-    - [Basic](#basic)
+    - [Usage](#usage)
 - [Library](#library)
+- [Implementation detail nuances:](#implementation-detail-nuances)
 - [Motion](#motion)
 - [Accessibility](#accessibility)
 - [Open Questions](#open-questions)
+- [References](#references)
 
 ## Design
 
@@ -58,6 +60,22 @@ const [isOpen, setIsOpen] = React.useState(false);
 ## Library
 
 We will be using [FloatingUI](https://floating-ui.com/) to position the tooltip & handle the basic tooltip logic. Floating UI supports both Web & ReactNative.
+
+### Bundle Size
+
+With all the neccessary middlewares and features included for our usecase FloatingUI will be around **10kb** gzip. 
+
+Check the [BundleJS Analysis](https://bundlejs.com/?q=%40floating-ui%2Freact&treeshake=%5B%7B%0A++arrow%2Cflip%2CFloatingArrow%2Coffset%2CuseFloating%2CuseFocus%2CuseHover%2CuseInteractions%2CuseTransitionStyles%2C%7D%5D&config=%7B%22esbuild%22%3A%7B%22external%22%3A%5B%22react%22%2C%22react-dom%22%5D%7D%7D)
+
+This is worth the size becaue: 
+
+- FloatingUI supports both react / react-native
+- It handles
+  - Animations (mount/unmount)
+  - Automatic collision aware placements
+  - Interactions (hover, focus)
+  - Tooltip Arrow
+  - Middlewares
 
 ## Implementation detail nuances:
 
