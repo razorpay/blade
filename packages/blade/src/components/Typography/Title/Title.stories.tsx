@@ -60,3 +60,7 @@ const TitleTemplate: ComponentStory<typeof TitleComponent> = (args) => {
 
 export default TitleStoryMeta;
 export const Title = TitleTemplate.bind({});
+export const WithColor = TitleTemplate.bind({});
+WithColor.args = {
+  color: 'feedback.positive.action.text.primary.default.lowContrast',
+};

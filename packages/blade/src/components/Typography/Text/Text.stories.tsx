@@ -64,3 +64,7 @@ const TextTemplate: ComponentStory<typeof TextComponent> = (args) => {
 
 export default TextStoryMeta;
 export const Text = TextTemplate.bind({});
+export const WithColor = TextTemplate.bind({});
+WithColor.args = {
+  color: 'feedback.positive.action.text.primary.default.lowContrast',
+};

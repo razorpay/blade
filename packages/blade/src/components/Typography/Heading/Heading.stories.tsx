@@ -71,3 +71,7 @@ const HeadingTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
 
 export default HeadingStoryMeta;
 export const Heading = HeadingTemplate.bind({});
+export const WithColor = HeadingTemplate.bind({});
+WithColor.args = {
+  color: 'feedback.notice.action.text.primary.default.lowContrast',
+};

@@ -10,6 +10,11 @@ describe('<Code />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render Code with color', () => {
+    const { toJSON } = renderWithTheme(<Code color="action.text.link.disabled">TEST_TOKEN</Code>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render small Code', () => {
     const { getByText, toJSON } = renderWithTheme(<Code size="small">SMALL</Code>);
     const renderedCode = getByText('SMALL');
