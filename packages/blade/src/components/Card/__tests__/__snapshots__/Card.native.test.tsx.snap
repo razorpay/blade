@@ -271,6 +271,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               style={
                 Array [
                   Object {
+                    "alignItems": "center",
                     "alignSelf": "center",
                     "backgroundColor": "hsla(218, 89%, 51%, 0)",
                     "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -278,11 +279,16 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     "borderStyle": "solid",
                     "borderWidth": 1,
                     "cursor": "pointer",
+                    "display": "flex",
+                    "justifyContent": "center",
                     "minHeight": 36,
                     "paddingBottom": 0,
                     "paddingLeft": 20,
                     "paddingRight": 20,
                     "paddingTop": 0,
+                    "textDecorationColor": "black",
+                    "textDecorationLine": "none",
+                    "textDecorationStyle": "solid",
                     "width": "100%",
                   },
                   Object {
@@ -411,6 +417,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               style={
                 Array [
                   Object {
+                    "alignItems": "center",
                     "alignSelf": "center",
                     "backgroundColor": "hsla(213, 89%, 56%, 1)",
                     "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -418,11 +425,16 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     "borderStyle": "solid",
                     "borderWidth": 1,
                     "cursor": "pointer",
+                    "display": "flex",
+                    "justifyContent": "center",
                     "minHeight": 36,
                     "paddingBottom": 0,
                     "paddingLeft": 20,
                     "paddingRight": 20,
                     "paddingTop": 0,
+                    "textDecorationColor": "black",
+                    "textDecorationLine": "none",
+                    "textDecorationStyle": "solid",
                     "width": "100%",
                   },
                   Object {
