@@ -2,4 +2,5 @@
 "@razorpay/blade": patch
 ---
 
-fix: added min-width & styled props support for dropdown overlay
+fix: add min-width and max-width in Menu trigger Dropdown to fix width issues
+
