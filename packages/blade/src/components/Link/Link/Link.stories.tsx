@@ -232,7 +232,7 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
           <Heading>Button variant</Heading>
         </BaseBox>
         <LinkComponent size="xsmall" variant="button" onClick={onClick} icon={DownloadIcon}>
-          Small link button
+          XSmall link button
         </LinkComponent>
         <LinkComponent size="small" variant="button" onClick={onClick} icon={DownloadIcon}>
           Small link button
