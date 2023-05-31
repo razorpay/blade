@@ -29,6 +29,9 @@ const getBaseButtonStyles = ({
   paddingBottom: buttonPaddingBottom,
   paddingLeft: buttonPaddingLeft,
   paddingRight: buttonPaddingRight,
+  justifyContent: 'center',
+  alignItems: 'center',
+  textDecoration: 'none',
 });
 
 export default getBaseButtonStyles;
