@@ -335,9 +335,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   },
   ref,
 ) => {
+  const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
   const buttonRef = useBladeInnerRef(ref);
-  const disabled = isLoading || isDisabled;
+  // Button cannot be disabled when its rendered as Link
+  const disabled = isLoading || (isDisabled && !isLink);
   const { theme } = useTheme();
   if (!Icon && !childrenString?.trim()) {
     throw new Error(
@@ -406,7 +408,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       rel={rel ?? defaultRel}
       accessibilityProps={{
         ...makeAccessible({
-          role: href ? 'link' : 'button',
+          role: isLink ? 'link' : 'button',
           label: accessibilityLabel,
         }),
       }}
