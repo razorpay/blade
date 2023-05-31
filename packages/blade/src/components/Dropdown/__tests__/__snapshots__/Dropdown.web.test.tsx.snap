@@ -209,6 +209,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   display: block;
   position: absolute;
   width: 100%;
+  min-width: 240px;
   right: 0px;
 }
 
@@ -991,8 +992,9 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 .c5 {
   display: block;
   position: absolute;
-  width: 100%;
-  right: 0px;
+  min-width: 240px;
+  max-width: 400px;
+  left: 0px;
 }
 
 .c6 {
@@ -1169,7 +1171,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
         data-blade-component="dropdown-overlay"
         display="block"
         style="opacity: 0;"
-        width="100%"
       >
         <div
           aria-labelledby="dropdown-876-label"
