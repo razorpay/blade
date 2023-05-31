@@ -104,7 +104,7 @@ const DropdownDocs = (): JSX.Element => {
         <Title size="small">With SelectInput</Title>
         <Text marginY="spacing.3">
           Check out more Select examples at{' '}
-          <Link href="/?path=/docs/components-dropdown-stories-with-select--with-single-select">
+          <Link href="/?path=/docs/components-dropdown-with-select--with-single-select">
             Dropdown with SelectInput Stories
           </Link>
         </Text>
@@ -123,7 +123,7 @@ const DropdownDocs = (): JSX.Element => {
         </Title>
         <Text marginY="spacing.3">
           Check out more Menu examples at{' '}
-          <Link href="/?path=/docs/components-dropdown-stories-with-button--default">
+          <Link href="/?path=/docs/components-dropdown-with-button--default">
             Dropdown with Button Stories
           </Link>
         </Text>
