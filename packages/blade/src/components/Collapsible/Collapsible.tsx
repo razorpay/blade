@@ -1,0 +1,80 @@
+import type { ReactElement, ReactNode } from 'react';
+import { useState, useMemo } from 'react';
+
+import { CollapsibleButton } from './CollapsibleButton';
+import { CollapsibleBody } from './CollapsibleBody';
+import type { CollapsibleContextState } from './CollapsibleContext';
+import { CollapsibleContext } from './CollapsibleContext';
+import BaseBox from '~components/Box/BaseBox';
+import type { TestID } from '~src/_helpers/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+
+type CollapsibleProps = {
+  /**
+   * Composes `CollapsibleButton`, `CollapsibleLink`, `CollapsibleBody`
+   */
+  children: ReactNode;
+
+  /**
+   * Direction in which the content expands
+   *
+   * @default bottom
+   */
+  direction: 'bottom' | 'top';
+
+  /**
+   * Expands the collapsible content by default (uncontrolled)
+   *
+   * @default true
+   */
+  defaultIsExpanded: boolean;
+
+  /**
+   * Expands the collapsible content (controlled)
+   *
+   * @default undefined
+   */
+  isExpanded: boolean;
+
+  /**
+   * Callback for change in collapsible's expanded state
+   *
+   * @default undefined
+   */
+  onChange: ({ isExpanded }: { isExpanded: boolean }) => void;
+} & TestID &
+  StyledPropsBlade;
+
+const Collapsible = ({
+  children,
+  direction = 'bottom',
+  defaultIsExpanded = true,
+  isExpanded,
+  onChange,
+  testID,
+  ...styledProps
+}: CollapsibleProps): ReactElement => {
+  const [isBodyExpanded, setIsBodyExpanded] = useState(defaultIsExpanded);
+
+  const contextValue = useMemo<CollapsibleContextState>(
+    () => ({
+      isExpanded: isBodyExpanded,
+      setIsExpanded: setIsBodyExpanded,
+    }),
+    [isBodyExpanded],
+  );
+
+  return (
+    <CollapsibleContext.Provider value={contextValue}>
+      <BaseBox display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
+        <CollapsibleButton>Toggle me</CollapsibleButton>
+        <CollapsibleBody />
+        {children}
+      </BaseBox>
+    </CollapsibleContext.Provider>
+  );
+};
+
+// todo - handle meta attributes, styled props
+
+export { Collapsible, CollapsibleProps };
