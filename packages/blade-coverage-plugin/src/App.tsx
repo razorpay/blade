@@ -34,9 +34,8 @@ const App = () => {
         minWidth="320px"
         backgroundColor="surface.background.level1.lowContrast"
       >
-        <Heading marginBottom="spacing.8">Get Blade coverage</Heading>
-        <Button onClick={getBladeCoverage}>Hello</Button>
-        <Text>Is dark mode enabled {isDarkMode.toString()}</Text>
+        <Heading marginBottom="spacing.8">Blade coverage extension</Heading>
+        <Button onClick={getBladeCoverage}>Get Coverage</Button>
         {
           coverage ? (
             <Text>Blade coverage for this page is {coverage}</Text>
