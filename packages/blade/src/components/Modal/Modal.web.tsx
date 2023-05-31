@@ -11,7 +11,8 @@ import { ModalBody } from './ModalBody';
 import type { ModalBodyProps } from './ModalBody';
 import { ModalContext } from './ModalContext';
 import { ModalBackdrop } from './ModalBackdrop';
-import { castWebType, makeMotionTime } from '~utils';
+import { modalMaxWidth, modalMinWidth } from './modalTokens';
+import { castWebType, makeMotionTime, makeSize } from '~utils';
 
 const entry = keyframes`
   from {
@@ -35,16 +36,17 @@ const exit = keyframes`
   }
 `;
 
-const ModalContent = styled.div<{ isVisible: boolean }>(({ isVisible, theme }) => {
-  return css`
+const ModalContent = styled.div<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
+  ({ isVisible, theme, size }) => {
+    return css`
     position: absolute;
     top: 50%;
     left: 50%;
     background-color: #fff;
     border-radius: 12px;
     width: calc(100vw - 32px);
-    max-width: 760px;
-    min-width: 320px;
+    max-width: ${makeSize(modalMaxWidth[size])};
+    min-width: ${makeSize(modalMinWidth)};
     transform: translate(-50%, -50%);
     opacity: ${isVisible ? 1 : 0};
     animation: ${isVisible ? entry : exit}
@@ -55,7 +57,8 @@ const ModalContent = styled.div<{ isVisible: boolean }>(({ isVisible, theme }) =
           : castWebType(theme.motion.easing.exit.revealing)
       }};
   `;
-});
+  },
+);
 
 type ModalProps = {
   children: React.ReactNode;
@@ -63,6 +66,8 @@ type ModalProps = {
   onDismiss: () => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialFocusRef?: React.MutableRefObject<any>;
+  size?: 'small' | 'medium' | 'large';
+  // accessibilityLabel?: string;
 };
 
 const Modal = ({
@@ -70,6 +75,7 @@ const Modal = ({
   children,
   onDismiss,
   initialFocusRef,
+  size = 'small',
 }: ModalProps): React.ReactElement => {
   const { isMounted, isVisible } = usePresence(isOpen, {
     transitionDuration: 1000,
@@ -126,7 +132,7 @@ const Modal = ({
           <FloatingFocusManager context={context} modal={true}>
             <>
               <ModalBackdrop />
-              <ModalContent ref={refs.setFloating} isVisible={isVisible}>
+              <ModalContent ref={refs.setFloating} isVisible={isVisible} size={size}>
                 {children}
               </ModalContent>
             </>

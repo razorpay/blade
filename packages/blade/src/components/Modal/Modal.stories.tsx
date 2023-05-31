@@ -47,7 +47,7 @@ const ModalTemplate: ComponentStory<typeof Modal> = (args) => {
         Curabitur tincidunt est vitae neque pulvinar, at auctor tortor fringilla. Suspendisse
         tristique pretium lorem vitae hendrerit. Nulla facilisi.
       </Text>
-      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="large">
         <ModalHeader closeButtonRef={buttonRef} title="Modal Title" />
         <ModalBody>
           <Text>
@@ -72,32 +72,7 @@ const ModalTemplate: ComponentStory<typeof Modal> = (args) => {
           </Box>
         </ModalFooter>
       </Modal>
-      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
-        <ModalHeader closeButtonRef={buttonRef} title="Modal Title" />
-        <ModalBody>
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur porttitor ante sit
-            amet tristique. Nam vel urna metus. Nam ac elit molestie, semper lorem eget, fringilla
-            massa. Proin rutrum massa diam, id commodo nisi cursus ut. Vestibulum arcu enim, viverra
-            sit amet mi vitae, varius semper justo. Fusce sodales quis elit ut condimentum. Nulla
-            facilisi. Curabitur tincidunt est vitae neque pulvinar, at auctor tortor fringilla.
-            Suspendisse tristique pretium lorem vitae hendrerit. Nulla facilisi.
-          </Text>
-        </ModalBody>
-        <ModalFooter>
-          <Box
-            display="flex"
-            flex={1}
-            justifyContent="flex-end"
-            alignItems="center"
-            gap="spacing.4"
-          >
-            <Button variant="secondary">Cancel</Button>
-            <Button onClick={() => setIs2ndModalOpen(true)}>Open 2nd Modal</Button>
-          </Box>
-        </ModalFooter>
-      </Modal>
-      <Modal isOpen={is2ndModalOpen} onDismiss={() => setIs2ndModalOpen(false)}>
+      <Modal isOpen={is2ndModalOpen} onDismiss={() => setIs2ndModalOpen(false)} size="small">
         <ModalHeader closeButtonRef={buttonRef} title="Modal Title" />
         <ModalBody>
           <Text>Another Modal</Text>
