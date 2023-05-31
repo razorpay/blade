@@ -67,7 +67,9 @@ const ModalTemplate: ComponentStory<typeof Modal> = (args) => {
             alignItems="center"
             gap="spacing.4"
           >
-            <Button variant="secondary">Cancel</Button>
+            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
             <Button onClick={() => setIs2ndModalOpen(true)}>Open 2nd Modal</Button>
           </Box>
         </ModalFooter>
@@ -85,7 +87,9 @@ const ModalTemplate: ComponentStory<typeof Modal> = (args) => {
             alignItems="center"
             gap="spacing.4"
           >
-            <Button variant="secondary">Cancel</Button>
+            <Button variant="secondary" onClick={() => setIs2ndModalOpen(false)}>
+              Cancel
+            </Button>
             <Button>Save</Button>
           </Box>
         </ModalFooter>

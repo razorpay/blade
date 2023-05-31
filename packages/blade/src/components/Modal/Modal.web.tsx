@@ -13,12 +13,18 @@ import { ModalContext } from './ModalContext';
 import { ModalBackdrop } from './ModalBackdrop';
 import {
   modalBorderRadius,
-  modalContentPadding,
   modalMaxWidth,
   modalMinWidth,
   modalResponsiveScreenGap,
 } from './modalTokens';
-import { castWebType, makeMotionTime, makeSize } from '~utils';
+import {
+  MetaConstants,
+  castWebType,
+  isValidAllowedChildren,
+  makeMotionTime,
+  makeSize,
+  metaAttribute,
+} from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 
@@ -135,6 +141,19 @@ const Modal = ({
       onDismiss();
     }
   };
+  const validChildren = React.Children.map(children, (child) => {
+    if (
+      isValidAllowedChildren(child, MetaConstants.ModalHeader) ||
+      isValidAllowedChildren(child, MetaConstants.ModalBody) ||
+      isValidAllowedChildren(child, MetaConstants.ModalFooter)
+    ) {
+      return child;
+    } else {
+      throw new Error(
+        '[Blade Modal] Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
+      );
+    }
+  });
 
   return (
     <ModalPortal>
@@ -144,6 +163,9 @@ const Modal = ({
             <>
               <ModalBackdrop />
               <ModalContent
+                {...metaAttribute({
+                  name: MetaConstants.Modal,
+                })}
                 onKeyDown={handleKeyDown}
                 isVisible={isVisible}
                 ref={refs.setFloating}
@@ -154,10 +176,9 @@ const Modal = ({
                 left="50%"
                 backgroundColor={theme.colors.surface.background.level2.lowContrast}
                 borderRadius={modalBorderRadius}
-                padding={modalContentPadding}
                 width={`calc(100vw - ${makeSize(modalResponsiveScreenGap)})`}
               >
-                {children}
+                {validChildren}
               </ModalContent>
             </>
           </FloatingFocusManager>

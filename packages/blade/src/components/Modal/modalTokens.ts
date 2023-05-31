@@ -13,7 +13,7 @@ const modalMinWidth = 320;
 
 const modalResponsiveScreenGap: Size[keyof Size] = size[48];
 
-const modalContentPadding: DotNotationSpacingStringToken = 'spacing.6';
+const modalBodyPadding: DotNotationSpacingStringToken = 'spacing.6';
 
 const modalBorderRadius: keyof Border['radius'] = 'large';
 
@@ -22,5 +22,5 @@ export {
   modalMinWidth,
   modalResponsiveScreenGap,
   modalBorderRadius,
-  modalContentPadding,
+  modalBodyPadding,
 };

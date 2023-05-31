@@ -1,13 +1,15 @@
 import { useModalContext } from './ModalContext';
+import { MetaConstants, assignWithoutSideEffects } from '~utils';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
 type ModalHeaderProps = BaseHeaderProps;
 
-const ModalHeader = (props: ModalHeaderProps): React.ReactElement => {
+const _ModalHeader = (props: ModalHeaderProps): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useModalContext();
   return (
     <BaseHeader
+      metaDataComponentName={MetaConstants.ModalHeader}
       title={props.title}
       subtitle={props.subtitle}
       leading={props.leading}
@@ -19,6 +21,9 @@ const ModalHeader = (props: ModalHeaderProps): React.ReactElement => {
     />
   );
 };
+const ModalHeader = assignWithoutSideEffects(_ModalHeader, {
+  componentId: MetaConstants.ModalHeader,
+});
 
 export { ModalHeader };
 export type { ModalHeaderProps };
