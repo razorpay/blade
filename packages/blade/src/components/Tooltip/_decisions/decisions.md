@@ -9,6 +9,7 @@ The tooltip typically provides additional context about the element or its funct
   - [Examples:](#examples)
     - [Usage](#usage)
 - [Library](#library)
+  - [Bundle Size](#bundle-size)
 - [Implementation detail nuances:](#implementation-detail-nuances)
 - [Motion](#motion)
 - [Accessibility](#accessibility)
@@ -97,7 +98,7 @@ To make FloatingUI work with Blade components seamlessly there are few things we
 
 ## Motion
 
-Check out the [motion guidelines] for Tooltip.
+TBD
 
 ## Accessibility
 
