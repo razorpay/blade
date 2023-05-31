@@ -121,12 +121,19 @@ const Modal = ({
       returnFocus();
     }
   }, [isOpen, returnFocus]);
+  const modalContext = React.useMemo(
+    () => ({
+      isOpen,
+      close: onDismiss,
+      defaultInitialFocusRef,
+      isVisible,
+    }),
+    [isOpen, onDismiss, defaultInitialFocusRef, isVisible],
+  );
 
   return (
     <ModalPortal>
-      <ModalContext.Provider
-        value={{ isOpen, close: onDismiss, defaultInitialFocusRef, isVisible }}
-      >
+      <ModalContext.Provider value={modalContext}>
         {isMounted ? (
           <FloatingFocusManager context={context} modal={true}>
             <>
