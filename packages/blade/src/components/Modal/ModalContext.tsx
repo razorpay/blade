@@ -14,6 +14,10 @@ type ModalContextProps = {
    * The element that will get focused when the Modal first opens
    */
   defaultInitialFocusRef: React.MutableRefObject<any>;
+  /**
+   * Indicates if the Modal is visible according to the usePresence hook
+   */
+  isVisible: boolean;
 };
 
 const ModalContext = React.createContext<ModalContextProps>({
@@ -21,6 +25,7 @@ const ModalContext = React.createContext<ModalContextProps>({
   close: () => {},
   defaultInitialFocusRef: { current: null },
   isOpen: false,
+  isVisible: false,
 });
 
 const useModalContext = (): ModalContextProps => {

@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { FloatingFocusManager, useFloating } from '@floating-ui/react';
+import usePresence from 'use-presence';
 import { ModalPortal } from './ModalPortal';
 import { ModalHeader } from './ModalHeader';
 import type { ModalHeaderProps } from './ModalHeader';
@@ -10,19 +11,51 @@ import { ModalBody } from './ModalBody';
 import type { ModalBodyProps } from './ModalBody';
 import { ModalContext } from './ModalContext';
 import { ModalBackdrop } from './ModalBackdrop';
+import { castWebType, makeMotionTime } from '~utils';
 
-const ModalContent = styled.div<{ isOpen: boolean }>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: #fff;
-  border-radius: 12px;
-  width: calc(100vw - 32px);
-  max-width: 760px;
-  min-width: 320px;
-  transform: translate(-50%, -50%);
-  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
+const entry = keyframes`
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) translateY(0px);
+  }
 `;
+
+const exit = keyframes`
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) translateY(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9) translateY(20px);
+  }
+`;
+
+const ModalContent = styled.div<{ isVisible: boolean }>(({ isVisible, theme }) => {
+  return css`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    border-radius: 12px;
+    width: calc(100vw - 32px);
+    max-width: 760px;
+    min-width: 320px;
+    transform: translate(-50%, -50%);
+    opacity: ${isVisible ? 1 : 0};
+    animation: ${isVisible ? entry : exit}
+      ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
+      ${
+        isVisible
+          ? castWebType(theme.motion.easing.entrance.revealing)
+          : castWebType(theme.motion.easing.exit.revealing)
+      }};
+  `;
+});
 
 type ModalProps = {
   children: React.ReactNode;
@@ -33,13 +66,17 @@ type ModalProps = {
 };
 
 const Modal = ({
-  isOpen,
+  isOpen = false,
   children,
   onDismiss,
   initialFocusRef,
 }: ModalProps): React.ReactElement => {
+  const { isMounted, isVisible } = usePresence(isOpen, {
+    transitionDuration: 1000,
+    initialEnter: true,
+  });
   const { refs, context } = useFloating({
-    open: isOpen,
+    open: isMounted,
   });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const defaultInitialFocusRef = React.useRef<any>(null);
@@ -82,12 +119,14 @@ const Modal = ({
 
   return (
     <ModalPortal>
-      <ModalContext.Provider value={{ isOpen, close: onDismiss, defaultInitialFocusRef }}>
-        {isOpen ? (
-          <FloatingFocusManager context={context} modal={true} initialFocus={-1}>
+      <ModalContext.Provider
+        value={{ isOpen, close: onDismiss, defaultInitialFocusRef, isVisible }}
+      >
+        {isMounted ? (
+          <FloatingFocusManager context={context} modal={true}>
             <>
-              <ModalBackdrop zIndex={999} />
-              <ModalContent ref={refs.setFloating} isOpen={isOpen}>
+              <ModalBackdrop />
+              <ModalContent ref={refs.setFloating} isVisible={isVisible}>
                 {children}
               </ModalContent>
             </>
