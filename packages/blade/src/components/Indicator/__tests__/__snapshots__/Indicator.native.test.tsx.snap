@@ -124,11 +124,13 @@ exports[`<Indicator /> should render 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>
@@ -259,11 +261,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>
@@ -383,11 +387,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>
@@ -507,11 +513,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>
@@ -631,11 +639,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>

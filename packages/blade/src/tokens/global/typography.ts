@@ -1,4 +1,4 @@
-import fontFamily from './fontFamily';
+import { fontFamily } from './fontFamily';
 import type { FontFamily } from './fontFamily/types';
 
 type FontWeight = {
@@ -166,7 +166,7 @@ export type TypographyPlatforms = 'onDesktop' | 'onMobile';
 
 export type TypographyWithPlatforms = Record<TypographyPlatforms, Typography>;
 
-const typography: TypographyWithPlatforms = {
+export const typography: TypographyWithPlatforms = {
   onDesktop: {
     fonts: {
       family: {
@@ -250,5 +250,3 @@ const typography: TypographyWithPlatforms = {
     // letterSpacings: {},
   },
 };
-
-export default typography;

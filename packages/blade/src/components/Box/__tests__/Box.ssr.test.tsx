@@ -9,7 +9,7 @@ describe('<Box />', () => {
         display="flex"
         padding="spacing.0"
         // @ts-expect-error: Intentional to test bad flow
-        borderRadius="small"
+        fontWeight="bold"
       >
         children test!
       </Box>,
@@ -86,7 +86,7 @@ describe('<Box />', () => {
       );
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(
-        `[Error: [Blade - Box]: Invalid \`as\` prop value - button. Only div, section, footer, header, main, aside, nav, span are valid values]`,
+        `[Error: [Blade - Box]: Invalid \`as\` prop value - button. Only div, section, footer, header, main, aside, nav, span, label are valid values]`,
       );
     }
     console.error = tempConsoleError;

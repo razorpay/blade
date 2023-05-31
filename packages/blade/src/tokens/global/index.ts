@@ -1,10 +1,30 @@
 export type { Border } from './border';
+export { border } from './border';
 export type { Breakpoints } from './breakpoints';
-export { default as colors } from './colors';
+export { breakpoints } from './breakpoints';
 export type { Color } from './colors';
-export type { FontFamily } from './fontFamily/types';
+export { colors } from './colors';
 export type { Opacity } from './opacity';
-export type { Typography } from './typography';
+export { opacity } from './opacity';
+export type { FontFamily } from './fontFamily';
+export type {
+  Typography,
+  TypographyWithPlatforms,
+  FontSize,
+  TypographyPlatforms,
+} from './typography';
+export { typography } from './typography';
 export type { Spacing } from './spacing';
-export type { Motion } from './motion';
+export { spacing } from './spacing';
+export type {
+  Motion,
+  EasingFunctionFactory,
+  DurationString,
+  EasingString,
+  DelayString,
+} from './motion';
+export { motion } from './motion';
 export type { Size } from './size';
+export { size } from './size';
+export type { Elevation, ElevationWithColorModes } from './elevation';
+export { elevation } from './elevation';

@@ -11,7 +11,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   <View
     borderRadius="medium"
     data-blade-component="card"
-    elevation={5}
+    elevation="lowRaised"
     style={
       Array [
         Object {
@@ -19,22 +19,27 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "column",
-          "paddingBottom": 20,
+          "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
-          "paddingTop": 20,
-          "shadowColor": "hsla(216, 15%, 54%, 0.18)",
+          "paddingTop": 24,
+          "textAlign": "left",
+          "width": "100%",
+        },
+        Object {
+          "elevation": 4,
+          "shadowColor": "hsla(217, 56%, 17%, 0.64)",
           "shadowOffset": Object {
-            "height": 1,
+            "height": 3,
             "width": 0,
           },
-          "shadowOpacity": 1,
+          "shadowOpacity": 0.12,
           "shadowRadius": 2,
-          "width": "100%",
         },
       ]
     }
     surfaceLevel={2}
+    textAlign="left"
   >
     <View
       data-blade-component="card-body"
@@ -128,9 +133,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         <View
           style={
             Array [
-              Object {},
+              Object {
+                "textAlign": "left",
+              },
             ]
           }
+          textAlign="left"
         >
           <Text
             color="surface.text.normal.lowContrast"
@@ -268,6 +276,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               style={
                 Array [
                   Object {
+                    "alignItems": "center",
                     "alignSelf": "center",
                     "backgroundColor": "hsla(218, 89%, 51%, 0)",
                     "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -275,11 +284,16 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     "borderStyle": "solid",
                     "borderWidth": 1,
                     "cursor": "pointer",
+                    "display": "flex",
+                    "justifyContent": "center",
                     "minHeight": 36,
                     "paddingBottom": 0,
                     "paddingLeft": 20,
                     "paddingRight": 20,
                     "paddingTop": 0,
+                    "textDecorationColor": "black",
+                    "textDecorationLine": "none",
+                    "textDecorationStyle": "solid",
                     "width": "100%",
                   },
                   Object {
@@ -408,6 +422,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               style={
                 Array [
                   Object {
+                    "alignItems": "center",
                     "alignSelf": "center",
                     "backgroundColor": "hsla(213, 89%, 56%, 1)",
                     "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -415,11 +430,16 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     "borderStyle": "solid",
                     "borderWidth": 1,
                     "cursor": "pointer",
+                    "display": "flex",
+                    "justifyContent": "center",
                     "minHeight": 36,
                     "paddingBottom": 0,
                     "paddingLeft": 20,
                     "paddingRight": 20,
                     "paddingTop": 0,
+                    "textDecorationColor": "black",
+                    "textDecorationLine": "none",
+                    "textDecorationStyle": "solid",
                     "width": "100%",
                   },
                   Object {
@@ -504,7 +524,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   <View
     borderRadius="medium"
     data-blade-component="card"
-    elevation={5}
+    elevation="lowRaised"
     style={
       Array [
         Object {
@@ -512,22 +532,27 @@ exports[`<Card /> should render a Card with Header 1`] = `
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "column",
-          "paddingBottom": 20,
+          "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
-          "paddingTop": 20,
-          "shadowColor": "hsla(216, 15%, 54%, 0.18)",
+          "paddingTop": 24,
+          "textAlign": "left",
+          "width": "100%",
+        },
+        Object {
+          "elevation": 4,
+          "shadowColor": "hsla(217, 56%, 17%, 0.64)",
           "shadowOffset": Object {
-            "height": 1,
+            "height": 3,
             "width": 0,
           },
-          "shadowOpacity": 1,
+          "shadowOpacity": 0.12,
           "shadowRadius": 2,
-          "width": "100%",
         },
       ]
     }
     surfaceLevel={2}
+    textAlign="left"
   >
     <View
       data-blade-component="card-header"
@@ -786,11 +811,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "textAlign": "center",
                             "textDecorationLine": "none",
                           },
                           Object {},
                         ]
                       }
+                      textAlign="center"
                     >
                       12
                     </Text>
@@ -823,11 +850,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                   Object {},
                 ]
               }
+              textAlign="left"
             >
               Card subtitle
             </Text>
@@ -855,9 +884,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexWrap": "nowrap",
+                  "textAlign": "left",
                 },
               ]
             }
+            textAlign="left"
           >
             <View
               alignItems="center"
@@ -977,6 +1008,151 @@ exports[`<Card /> should render a Card with Header 1`] = `
 </View>
 `;
 
+exports[`<Card /> should render a Card without 0 padding 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    borderRadius="medium"
+    data-blade-component="card"
+    elevation="lowRaised"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderRadius": 4,
+          "display": "flex",
+          "flexDirection": "column",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textAlign": "left",
+          "width": "100%",
+        },
+        Object {
+          "elevation": 4,
+          "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+          "shadowOffset": Object {
+            "height": 3,
+            "width": 0,
+          },
+          "shadowOpacity": 0.12,
+          "shadowRadius": 2,
+        },
+      ]
+    }
+    surfaceLevel={2}
+    textAlign="left"
+  >
+    <View
+      data-blade-component="card-body"
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      Plain Card
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    borderRadius="medium"
+    data-blade-component="card"
+    elevation="none"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "display": "flex",
+          "flexDirection": "column",
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "textAlign": "left",
+          "width": "100%",
+        },
+        Object {
+          "elevation": 0,
+          "shadowColor": "",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+          "shadowRadius": 0,
+        },
+      ]
+    }
+    surfaceLevel={2}
+    textAlign="left"
+  >
+    <View
+      data-blade-component="card-body"
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <Text
+        color="surface.text.normal.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          Array [
+            Object {
+              "color": "hsla(217, 56%, 17%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+            Object {},
+          ]
+        }
+      >
+        Plain Card
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Card /> should render a plain Card 1`] = `
 <View
   style={
@@ -988,30 +1164,35 @@ exports[`<Card /> should render a plain Card 1`] = `
   <View
     borderRadius="medium"
     data-blade-component="card"
-    elevation={5}
+    elevation="highRaised"
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "backgroundColor": "hsla(220, 27%, 98%, 1)",
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "column",
-          "paddingBottom": 20,
+          "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
-          "paddingTop": 20,
-          "shadowColor": "hsla(216, 15%, 54%, 0.18)",
+          "paddingTop": 24,
+          "textAlign": "left",
+          "width": "100%",
+        },
+        Object {
+          "elevation": 26,
+          "shadowColor": "hsla(217, 56%, 17%, 0.64)",
           "shadowOffset": Object {
-            "height": 1,
+            "height": 18,
             "width": 0,
           },
-          "shadowOpacity": 1,
-          "shadowRadius": 2,
-          "width": "100%",
+          "shadowOpacity": 0.2,
+          "shadowRadius": 12,
         },
       ]
     }
-    surfaceLevel={2}
+    surfaceLevel={3}
+    textAlign="left"
   >
     <View
       data-blade-component="card-body"

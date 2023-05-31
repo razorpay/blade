@@ -1,9 +1,11 @@
+import type { View } from 'react-native';
 import type { CSSObject } from 'styled-components';
 import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~src/_helpers/types';
+import type { Platform } from '~utils';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -13,7 +15,7 @@ type LayoutProps = MakeObjectResponsive<
     width: SpacingValueType;
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
-  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY'>
+  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign'>
 >;
 
 type FlexboxProps = MakeObjectResponsive<
@@ -95,6 +97,9 @@ type ColorObjects = 'feedback' | 'surface' | 'action';
 type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationColorStringToken<
   Theme['colors'][T]['background']
 >}`;
+type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationColorStringToken<
+  Theme['colors'][T]['border']
+>}`;
 
 // Created this as an array so I can reuse it for runtime validation
 const validBoxAsValues = [
@@ -106,6 +111,7 @@ const validBoxAsValues = [
   'aside',
   'nav',
   'span',
+  'label',
 ] as const;
 
 type BoxAsType = typeof validBoxAsValues[number];
@@ -121,6 +127,20 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
     userSelect: CSSObject['userSelect'];
+    borderWidth: keyof Border['width'];
+    borderColor: BorderColorString<'surface'>;
+    borderTopWidth: keyof Border['width'];
+    borderTopColor: BorderColorString<'surface'>;
+    borderRightWidth: keyof Border['width'];
+    borderRightColor: BorderColorString<'surface'>;
+    borderBottomWidth: keyof Border['width'];
+    borderBottomColor: BorderColorString<'surface'>;
+    borderLeftWidth: keyof Border['width'];
+    borderLeftColor: BorderColorString<'surface'>;
+    borderTopLeftRadius: keyof Border['radius'];
+    borderTopRightRadius: keyof Border['radius'];
+    borderBottomRightRadius: keyof Border['radius'];
+    borderBottomLeftRadius: keyof Border['radius'];
   } & PickCSSByPlatform<
     'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom' | 'opacity'
   >
@@ -128,6 +148,21 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor: BackgroundColorString<'surface'>;
+  borderWidth: keyof Border['width'];
+  borderColor: BorderColorString<'surface'>;
+  borderTopWidth: keyof Border['width'];
+  borderTopColor: BorderColorString<'surface'>;
+  borderRightWidth: keyof Border['width'];
+  borderRightColor: BorderColorString<'surface'>;
+  borderBottomWidth: keyof Border['width'];
+  borderBottomColor: BorderColorString<'surface'>;
+  borderLeftWidth: keyof Border['width'];
+  borderLeftColor: BorderColorString<'surface'>;
+  borderRadius: keyof Border['radius'];
+  borderTopLeftRadius: keyof Border['radius'];
+  borderTopRightRadius: keyof Border['radius'];
+  borderBottomRightRadius: keyof Border['radius'];
+  borderBottomLeftRadius: keyof Border['radius'];
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
   // styled-components do not support passing `as` prop as an object
@@ -153,6 +188,43 @@ type StyledPropsBlade = Partial<
   >
 >;
 
+type BoxCallbackProps = Omit<
+  Platform.Select<{
+    web: {
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseOver: React.MouseEventHandler<HTMLElement>;
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseEnter: React.MouseEventHandler<HTMLElement>;
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseLeave: React.MouseEventHandler<HTMLElement>;
+      onScroll: React.UIEventHandler<HTMLElement>;
+    };
+    native: Record<'onMouseOver' | 'onMouseEnter' | 'onMouseLeave' | 'onScroll', undefined>;
+  }>,
+  '__brand__'
+>;
+
 type BoxProps = Partial<
   PaddingProps &
     MarginProps &
@@ -160,6 +232,7 @@ type BoxProps = Partial<
     FlexboxProps &
     PositionProps &
     GridProps &
+    BoxCallbackProps &
     BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] } & TestID
 >;
 
@@ -174,4 +247,10 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
     }
   >;
 
-export { BaseBoxProps, BoxProps, StyledPropsBlade, validBoxAsValues };
+// ref prop type
+type BoxRefType = Platform.Select<{
+  web: Omit<HTMLElement, 'style'>;
+  native: View;
+}>;
+
+export { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, validBoxAsValues };

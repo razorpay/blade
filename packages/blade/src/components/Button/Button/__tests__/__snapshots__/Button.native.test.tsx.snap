@@ -51,6 +51,7 @@ exports[`<Button /> should render button with default properties 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -58,11 +59,16 @@ exports[`<Button /> should render button with default properties 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -181,6 +187,7 @@ exports[`<Button /> should render button with full width 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -188,11 +195,16 @@ exports[`<Button /> should render button with full width 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "100%",
         },
         Object {
@@ -311,6 +323,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -318,11 +331,16 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -511,6 +529,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -518,11 +537,16 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -711,6 +735,7 @@ exports[`<Button /> should render disabled button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
@@ -718,11 +743,16 @@ exports[`<Button /> should render disabled button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -841,6 +871,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 44%, 23%, 0)",
           "borderColor": "hsla(218, 19%, 81%, 1)",
@@ -848,11 +879,16 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -971,6 +1007,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
@@ -978,11 +1015,16 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1101,6 +1143,7 @@ exports[`<Button /> should render large size button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -1108,11 +1151,16 @@ exports[`<Button /> should render large size button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 48,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1231,6 +1279,7 @@ exports[`<Button /> should render medium size button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -1238,11 +1287,16 @@ exports[`<Button /> should render medium size button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1361,6 +1415,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 0)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -1368,11 +1423,16 @@ exports[`<Button /> should render secondary variant button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1491,6 +1551,7 @@ exports[`<Button /> should render small size button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -1498,11 +1559,16 @@ exports[`<Button /> should render small size button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 32,
           "paddingBottom": 0,
           "paddingLeft": 12,
           "paddingRight": 12,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1621,6 +1687,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
@@ -1628,11 +1695,16 @@ exports[`<Button /> should render tertiary variant button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1751,6 +1823,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -1758,11 +1831,16 @@ exports[`<Button /> should render xsmall size button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 28,
           "paddingBottom": 0,
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {

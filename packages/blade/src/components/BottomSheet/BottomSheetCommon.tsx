@@ -8,7 +8,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { isReactNative, makeSize, makeSpace } from '~utils';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 import { useTheme } from '~components/BladeProvider';
 
 type BottomSheetEmptyHeaderProps = Pick<

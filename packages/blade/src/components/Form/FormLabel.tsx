@@ -6,7 +6,7 @@ import { getPlatformType, makeSize, makeSpace, useBreakpoint } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 type CommonProps = {
   as: 'span' | 'label';

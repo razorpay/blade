@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 import { isReactNative, makeSize, makeSpace } from '~utils';
 
 const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
