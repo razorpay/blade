@@ -665,6 +665,7 @@ const WithSimpleMenuStory = `
 `;
 
 const WithLinkStory = `
+  import React from 'react';
   import {
     Dropdown,
     DropdownOverlay,
