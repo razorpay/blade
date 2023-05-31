@@ -1,4 +1,5 @@
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import { SelectChevronIcon } from './SelectChevronIcon';
@@ -8,12 +9,12 @@ import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { isReactNative } from '~utils';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
+import type { BladeElementRef } from '~utils/types';
+import { useBladeInnerRef } from '~utils/useBladeInnerRef';
+import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { MetaConstants } from '~utils/metaAttribute/metaConstants';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -108,7 +109,10 @@ const _SelectInput = (
 
   const selectValues = (valuesToSelect: string | string[]): void => {
     if (options.length > 0) {
-      if (typeof valuesToSelect === 'string') {
+      // we use empty `''` for clearing the input
+      if (isEmpty(valuesToSelect)) {
+        setSelectedIndices([]);
+      } else if (typeof valuesToSelect === 'string') {
         // single select control
         const selectedItemIndex = options.findIndex((option) => option.value === valuesToSelect);
         if (selectedItemIndex >= 0) {
@@ -141,7 +145,7 @@ const _SelectInput = (
 
   // Handles `value` prop
   React.useEffect(() => {
-    if (options.length > 0 && props.value) {
+    if (options.length > 0 && props.value !== undefined) {
       if (!isControlled) {
         setIsControlled(true);
       }
