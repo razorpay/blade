@@ -510,6 +510,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
   border-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
   border-radius: 4px;
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
@@ -1134,6 +1135,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
   border-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
   border-radius: 4px;
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
