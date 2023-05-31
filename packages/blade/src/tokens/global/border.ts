@@ -7,6 +7,8 @@ type BorderRadius = Readonly<{
   medium: 4;
   /** large: 8(px/rem/pt) */
   large: 8;
+  /** xlarge: 12(px/rem/pt) */
+  xlarge: 12;
   /** max: 9999(px/rem/pt). This will round the left and right side of the box element */
   max: 9999;
   /** round: 50%(pt). This will turn the box element into a circle */
@@ -33,6 +35,7 @@ export const border: Border = {
     small: 2,
     medium: 4,
     large: 8,
+    xlarge: 12,
     max: 9999,
     round: '50%', // this needs to be in % but need to figure out how will we store unitless things
   },

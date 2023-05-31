@@ -1,14 +1,13 @@
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-import type { Platform } from '~utils';
 
 type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
-type SpaceUnits = Platform.Select<{
-  web: 'px' | '%' | 'fr' | 'rem' | 'em' | 'vh' | 'vw';
-  native: 'px' | '%';
-}>;
-type SpacingValueType = DotNotationSpacingStringToken | `${string}${SpaceUnits}` | 'auto';
-
+type SpaceUnits = 'px' | '%' | 'fr' | 'rem' | 'em' | 'vh' | 'vw';
+type SpacingValueType =
+  | DotNotationSpacingStringToken
+  | `${string}${SpaceUnits}`
+  | `calc(${string})`
+  | 'auto';
 /**
  * @IMPORTANT
  *

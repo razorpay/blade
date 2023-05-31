@@ -11,8 +11,16 @@ import { ModalBody } from './ModalBody';
 import type { ModalBodyProps } from './ModalBody';
 import { ModalContext } from './ModalContext';
 import { ModalBackdrop } from './ModalBackdrop';
-import { modalMaxWidth, modalMinWidth } from './modalTokens';
+import {
+  modalBorderRadius,
+  modalContentPadding,
+  modalMaxWidth,
+  modalMinWidth,
+  modalResponsiveScreenGap,
+} from './modalTokens';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
+import { BaseBox } from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
 
 const entry = keyframes`
   from {
@@ -36,17 +44,8 @@ const exit = keyframes`
   }
 `;
 
-const ModalContent = styled.div<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
-  ({ isVisible, theme, size }) => {
-    return css`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background-color: #fff;
-    border-radius: 12px;
-    width: calc(100vw - 32px);
-    max-width: ${makeSize(modalMaxWidth[size])};
-    min-width: ${makeSize(modalMinWidth)};
+const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme }) => {
+  return css`
     transform: translate(-50%, -50%);
     opacity: ${isVisible ? 1 : 0};
     animation: ${isVisible ? entry : exit}
@@ -57,8 +56,7 @@ const ModalContent = styled.div<{ isVisible: boolean; size: NonNullable<ModalPro
           : castWebType(theme.motion.easing.exit.revealing)
       }};
   `;
-  },
-);
+});
 
 type ModalProps = {
   children: React.ReactNode;
@@ -77,6 +75,7 @@ const Modal = ({
   initialFocusRef,
   size = 'small',
 }: ModalProps): React.ReactElement => {
+  const { theme } = useTheme();
   const { isMounted, isVisible } = usePresence(isOpen, {
     transitionDuration: 1000,
     initialEnter: true,
@@ -132,7 +131,19 @@ const Modal = ({
           <FloatingFocusManager context={context} modal={true}>
             <>
               <ModalBackdrop />
-              <ModalContent ref={refs.setFloating} isVisible={isVisible} size={size}>
+              <ModalContent
+                isVisible={isVisible}
+                ref={refs.setFloating}
+                maxWidth={makeSize(modalMaxWidth[size])}
+                minWidth={makeSize(modalMinWidth)}
+                position="absolute"
+                top="50%"
+                left="50%"
+                backgroundColor={theme.colors.surface.background.level2.lowContrast}
+                borderRadius={modalBorderRadius}
+                padding={modalContentPadding}
+                width={`calc(100vw - ${makeSize(modalResponsiveScreenGap)})`}
+              >
                 {children}
               </ModalContent>
             </>
