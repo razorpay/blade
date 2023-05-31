@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { Dropdown, DropdownOverlay } from '../index';
+import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
 import { DropdownButton } from '../DropdownButton';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
@@ -577,6 +577,44 @@ describe('<Dropdown /> with <DropdownButton />', () => {
           <Text>selection: {currentSelection}</Text>
           <Dropdown>
             <DropdownButton>My Account</DropdownButton>
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem
+                  isSelected={currentSelection === 'profile'}
+                  onClick={() => setCurrentSelection('profile')}
+                  title="Profile"
+                  value="profile"
+                />
+                <ActionListItem
+                  isSelected={currentSelection === 'settings'}
+                  onClick={() => setCurrentSelection('settings')}
+                  title="Settings"
+                  value="settings"
+                />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const { getByRole, getByText } = renderWithTheme(<ControlledDropdownMenu />);
+
+    await user.click(getByRole('button', { name: 'My Account' }));
+    await user.click(getByRole('menuitem', { name: 'Settings' }));
+    expect(getByText('selection: settings')).toBeInTheDocument();
+  });
+
+  it('should handle controlled selection in link trigger menu', async () => {
+    const user = userEvent.setup();
+
+    const ControlledDropdownMenu = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
+      return (
+        <>
+          <Text>selection: {currentSelection}</Text>
+          <Dropdown>
+            <DropdownLink>My Account</DropdownLink>
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem
