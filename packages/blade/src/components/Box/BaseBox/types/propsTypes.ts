@@ -15,11 +15,7 @@ type LayoutProps = MakeObjectResponsive<
     width: SpacingValueType;
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
-    /**
-     * Only works on web
-     */
-    textAlign: CSSObject['textAlign'];
-  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY'>
+  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign'>
 >;
 
 type FlexboxProps = MakeObjectResponsive<

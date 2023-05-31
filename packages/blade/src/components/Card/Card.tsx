@@ -93,7 +93,7 @@ const Card = ({
         borderRadius="medium"
         surfaceLevel={surfaceLevel}
         elevation={elevation}
-        textAlign="left"
+        textAlign={'left' as never}
         {...getStyledProps(styledProps)}
       >
         {children}

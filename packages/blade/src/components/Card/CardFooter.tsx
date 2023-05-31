@@ -80,7 +80,7 @@ const _CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.
   useVerifyInsideCard('CardFooterLeading');
 
   return (
-    <BaseBox textAlign="left">
+    <BaseBox textAlign={'left' as never}>
       {title && (
         <Text variant="body" size="medium" weight="bold">
           {title}

@@ -125,7 +125,7 @@ const _Badge = ({
     <StyledBadge
       backgroundColor={backgroundColor}
       size={size}
-      textAlign="left"
+      textAlign={'left' as never}
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
       {...getStyledProps(styledProps)}
     >
