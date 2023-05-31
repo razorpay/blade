@@ -130,6 +130,11 @@ const Modal = ({
     }),
     [isOpen, onDismiss, defaultInitialFocusRef, isVisible],
   );
+  const handleKeyDown = (event: React.KeyboardEvent): void => {
+    if (event?.key === 'Escape' || event?.code === 'Escape') {
+      onDismiss();
+    }
+  };
 
   return (
     <ModalPortal>
@@ -139,6 +144,7 @@ const Modal = ({
             <>
               <ModalBackdrop />
               <ModalContent
+                onKeyDown={handleKeyDown}
                 isVisible={isVisible}
                 ref={refs.setFloating}
                 maxWidth={makeSize(modalMaxWidth[size])}
