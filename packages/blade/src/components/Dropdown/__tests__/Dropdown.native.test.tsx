@@ -2,7 +2,7 @@ import React from 'react';
 // import { Button } from 'react-native';
 import { fireEvent } from '@testing-library/react-native';
 import { DropdownButton } from '../DropdownButton';
-import { Dropdown, DropdownOverlay } from '../index';
+import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { SelectInput } from '~components/Input/SelectInput';
 import {
@@ -301,6 +301,48 @@ describe('<Dropdown /> with <DropdownButton />', () => {
           <Text testID="current-selection-text">{currentSelection}</Text>
           <Dropdown>
             <DropdownButton>My Account</DropdownButton>
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem
+                  isSelected={currentSelection === 'profile'}
+                  onClick={() => setCurrentSelection('profile')}
+                  title="Profile"
+                  value="profile"
+                />
+                <ActionListItem
+                  isSelected={currentSelection === 'settings'}
+                  onClick={() => setCurrentSelection('settings')}
+                  title="Settings"
+                  value="settings"
+                />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const { getByTestId, getByText } = renderWithTheme(<ControlledDropdownMenu />);
+
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+
+    // Click on combobox
+    fireEvent.press(getByText('My Account'));
+    expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
+
+    // Click on item
+    fireEvent.press(getByText('Profile'));
+    expect(getByTestId('current-selection-text')).toHaveTextContent('profile');
+  });
+
+  it('should handle controlled selections in DropdownLink', () => {
+    const ControlledDropdownMenu = (): JSX.Element => {
+      const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
+      return (
+        <>
+          <Text testID="current-selection-text">{currentSelection}</Text>
+          <Dropdown>
+            <DropdownLink>My Account</DropdownLink>
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem
