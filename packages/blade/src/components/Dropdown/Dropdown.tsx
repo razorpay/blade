@@ -184,7 +184,7 @@ const _Dropdown = ({
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
-        <BaseBox position="relative" {...getStyledProps(styledProps)}>
+        <BaseBox position="relative" textAlign={'left' as never} {...getStyledProps(styledProps)}>
           {children}
         </BaseBox>
       </DropdownContext.Provider>
