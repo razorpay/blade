@@ -337,7 +337,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               display="flex"
             >
               <button
-                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fbGQuk"
+                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bvHuNB"
                 data-blade-component="button"
                 role="button"
                 type="button"

@@ -408,6 +408,7 @@ describe('<Dropdown />', () => {
       return (
         <>
           <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+          <Button onClick={() => setCurrentSelection('')}>Clear Selection</Button>
           <Dropdown selectionType="single">
             <SelectInput
               label="Select City"
@@ -442,6 +443,9 @@ describe('<Dropdown />', () => {
 
     await user.click(getByRole('button', { name: 'Select Bangalore' }));
     expect(selectInput).toHaveTextContent('Bangalore');
+
+    await user.click(getByRole('button', { name: 'Clear Selection' }));
+    expect(selectInput).toHaveTextContent('Select Option');
   });
 
   it('should handle controlled props with multi select', async () => {
