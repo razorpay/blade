@@ -22,38 +22,21 @@ The tooltip typically provides additional context about the element or its funct
 
 ## `Tooltip` API
 
-| Prop          | Type                                                                     | Default     | Description                                                               | Required |
-| ------------- | ------------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------- | -------- |
-| content       | `string`                                                                 | `undefined` | Content of the tooltip                                                    | ✅       |
-| placement     | `top, top-start, top-end, left, right, bottom, bottom-start, bottom-end` | `top`       | Placement of tooltip                                                      | ✅       |
-| children      | `React.ReactNode`                                                        | `undefined` | Trigger component for tooltip, Accepts any interactive element or icons   | ✅       |
-| isOpen        | `boolean`                                                                | `undefined` | Controls the tooltip state                                                |          |
-| defaultIsOpen | `boolean`                                                                | `undefined` | If true, the tooltip will be visible initially                            |          |
-| onDismiss     | `Callback`                                                               | `undefined` | Called when tooltip is closed, either by mouseout or users pressing `Esc` |          |
+| Prop      | Type                                                                     | Default     | Description                                                             | Required |
+| --------- | ------------------------------------------------------------------------ | ----------- | ----------------------------------------------------------------------- | -------- |
+| content   | `string`                                                                 | `undefined` | Content of the tooltip                                                  | ✅       |
+| placement | `top, top-start, top-end, left, right, bottom, bottom-start, bottom-end` | `top`       | Placement of tooltip                                                    | ✅       |
+| children  | `React.ReactNode`                                                        | `undefined` | Trigger component for tooltip, Accepts any interactive element or icons | ✅       |
+| onOpen    | `Callback`                                                               | `undefined` | Called when tooltip is opened                                           |          |
+| onClose   | `Callback`                                                               | `undefined` | Called when tooltip is closed                                           |          |
 
 ### Examples:
 
 #### Usage
 
 ```js
-// basic, uncontrolled
+// basic example
 <Tooltip content="Amount reversed to customer bank account" placement="top">
-  <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
-</Tooltip>;
-
-// controlled
-const [isOpen, setIsOpen] = React.useState(false);
-
-<Tooltip
-  onDismiss={() => setIsOpen(false)}
-  isOpen={isOpen}
-  content="Amount reversed to customer bank account"
->
-  <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
-</Tooltip>;
-
-// default open
-<Tooltip defaultIsOpen={true} content="Amount reversed to customer bank account">
   <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
 </Tooltip>;
 ```
