@@ -16,6 +16,13 @@ describe('<Code />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Code with color', () => {
+    const { container } = renderWithTheme(
+      <Code color="action.text.link.disabled">TEST_TOKEN</Code>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render small Code', () => {
     const { container, getByText } = renderWithTheme(<Code size="small">SMALL</Code>);
     expect(getByText('SMALL')).toHaveStyle(

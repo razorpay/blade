@@ -70,6 +70,11 @@ const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
 export default CodeStoryMeta;
 export const Code = CodeTemplate.bind({});
 
+export const WithColor = CodeTemplate.bind({});
+WithColor.args = {
+  color: 'surface.text.placeholder.lowContrast',
+};
+
 export const SizeMedium = (): JSX.Element => {
   return <CodeComponent size="medium">mediumCode</CodeComponent>;
 };
