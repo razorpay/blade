@@ -47,16 +47,13 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { TooltipTriggerProps } from '~components/Tooltip/types';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
-  onBlur?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
-    web: (event: React.FocusEvent<HTMLButtonElement>) => void;
-  }>;
   onKeyDown?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
@@ -72,7 +69,8 @@ type BaseButtonCommonProps = {
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  TooltipTriggerProps;
 
 /*
 Mandatory children prop when icon is not provided

@@ -1,10 +1,13 @@
 import type { ReactElement, SyntheticEvent } from 'react';
+import React from 'react';
 import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import type { Platform } from '~utils';
 import { assignWithoutSideEffects } from '~utils';
+import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import type { BladeElementRef } from '~src/hooks/types';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
@@ -24,6 +27,7 @@ type LinkCommonProps = {
   size?: 'small' | 'medium' | 'large';
 } & TestID &
   StyledPropsBlade &
+  TooltipTriggerProps &
   Platform.Select<{
     native: {
       /**
@@ -102,27 +106,37 @@ type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
 */
 export type LinkProps = LinkAnchorVariantProps | LinkButtonVariantProps;
 
-const _Link = ({
-  children,
-  icon,
-  iconPosition = 'left',
-  isDisabled = false,
-  onClick,
-  variant = 'anchor',
-  href,
-  target,
-  rel,
-  accessibilityLabel,
-  size = 'medium',
-  testID,
-  hitSlop,
-  htmlTitle,
-  ...styledProps
-}: LinkProps): ReactElement => {
+const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
+  {
+    children,
+    icon,
+    iconPosition = 'left',
+    isDisabled = false,
+    onClick,
+    variant = 'anchor',
+    href,
+    target,
+    rel,
+    accessibilityLabel,
+    size = 'medium',
+    testID,
+    hitSlop,
+    htmlTitle,
+    onBlur,
+    onFocus,
+    onMouseLeave,
+    onMouseMove,
+    onPointerDown,
+    onPointerEnter,
+    ...styledProps
+  },
+  ref,
+): ReactElement => {
   return (
     <BaseLink
       {...(icon ? { icon, children } : { children })}
       {...(variant === 'anchor' ? { variant, href, target, rel } : { variant, isDisabled })}
+      ref={ref as never}
       iconPosition={iconPosition}
       onClick={onClick}
       accessibilityLabel={accessibilityLabel}
@@ -130,12 +144,18 @@ const _Link = ({
       testID={testID}
       hitSlop={hitSlop}
       htmlTitle={htmlTitle}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
       {...styledProps}
     />
   );
 };
 
-const Link = assignWithoutSideEffects(_Link, {
+const Link = assignWithoutSideEffects(React.forwardRef(_Link), {
   displayName: 'Link',
   componentId: 'Link',
 });

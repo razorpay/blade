@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { ReactElement, SyntheticEvent } from 'react';
-import { useState } from 'react';
+import type { SyntheticEvent } from 'react';
+import React, { useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import StyledBaseLink from './StyledBaseLink';
 import useInteraction from '~src/hooks/useInteraction';
@@ -15,12 +15,20 @@ import type {
   StringChildrenType,
   TestID,
 } from '~src/_helpers/types';
-import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
+import {
+  makeAccessible,
+  getIn,
+  metaAttribute,
+  MetaConstants,
+  assignWithoutSideEffects,
+} from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import type { BladeElementRef } from '~src/hooks/types';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -52,7 +60,8 @@ type BaseLinkCommonProps = {
    */
   htmlTitle?: string;
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  TooltipTriggerProps;
 
 /*
   Mandatory children prop when icon is not provided
@@ -231,29 +240,38 @@ const getProps = ({
   return props;
 };
 
-const BaseLink = ({
-  children,
-  icon: Icon,
-  iconPosition = 'left',
-  isDisabled = false,
-  onClick,
-  variant = 'anchor',
-  href,
-  target,
-  rel,
-  intent,
-  contrast = 'low',
-  accessibilityLabel,
-  // @ts-expect-error avoiding exposing to public
-  className,
-  // @ts-expect-error avoiding exposing to public
-  style,
-  size = 'medium',
-  testID,
-  hitSlop,
-  htmlTitle,
-  ...styledProps
-}: BaseLinkProps): ReactElement => {
+const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> = (
+  {
+    children,
+    icon: Icon,
+    iconPosition = 'left',
+    isDisabled = false,
+    onClick,
+    variant = 'anchor',
+    href,
+    target,
+    rel,
+    intent,
+    contrast = 'low',
+    accessibilityLabel,
+    // @ts-expect-error avoiding exposing to public
+    className,
+    // @ts-expect-error avoiding exposing to public
+    style,
+    size = 'medium',
+    testID,
+    hitSlop,
+    htmlTitle,
+    onBlur,
+    onFocus,
+    onMouseLeave,
+    onMouseMove,
+    onPointerDown,
+    onPointerEnter,
+    ...styledProps
+  },
+  ref,
+) => {
   const [isVisited, setIsVisited] = useState(false);
   const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
@@ -306,6 +324,8 @@ const BaseLink = ({
 
   return (
     <StyledBaseLink
+      ref={ref as never}
+      // TODO Check if this is overriden
       {...syntheticEvents}
       {...metaAttribute({ name: MetaConstants.Link, testID })}
       accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
@@ -315,6 +335,12 @@ const BaseLink = ({
       target={target}
       rel={rel ?? defaultRel}
       onClick={handleOnClick}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
       disabled={disabled}
       type={type}
       cursor={cursor}
@@ -354,5 +380,10 @@ const BaseLink = ({
     </StyledBaseLink>
   );
 };
+
+const BaseLink = assignWithoutSideEffects(React.forwardRef(_BaseLink), {
+  displayName: 'BaseLink',
+  componentId: 'BaseLink',
+});
 
 export default BaseLink;
