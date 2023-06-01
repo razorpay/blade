@@ -509,6 +509,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   "backgroundColor": "hsla(0, 0%, 100%, 1)",
                   "borderColor": "hsla(216, 15%, 54%, 0.18)",
                   "borderRadius": 4,
+                  "borderStyle": "solid",
                   "borderWidth": 1,
                 },
                 Object {
