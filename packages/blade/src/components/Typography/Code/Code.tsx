@@ -177,8 +177,4 @@ const Code = ({
   );
 };
 
-<Code isHighlighted={false} color="action.text.link.disabled">
-  Hi
-</Code>;
-
 export { Code };
