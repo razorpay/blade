@@ -5,21 +5,30 @@ import { modalBodyPadding, scrollOverlayHeight } from './modalTokens';
 import { useModalContext } from './ModalContext';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { MetaConstants, makeSize, metaAttribute } from '~utils';
+import { MetaConstants, makeMotionTime, makeSize, metaAttribute } from '~utils';
 
 type ModalBodyProps = {
   children: React.ReactNode;
 };
 
-const OverflowOverlay = styled(BaseBox)<{ scrollbarWidth: number; footerHeight: number }>`
+const OverflowOverlay = styled(BaseBox)<{
+  scrollbarWidth: number;
+  footerHeight: number;
+  showOverlay: boolean;
+}>`
   position: absolute;
   left: 0%;
   right: ${({ scrollbarWidth }) => `${scrollbarWidth}px`};
   bottom: ${({ footerHeight }) => `${footerHeight}px`};
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 58.7%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 70%);
   height: ${makeSize(scrollOverlayHeight)};
   z-index: 999;
   pointer-events: none;
+  opacity: ${({ showOverlay }) => (showOverlay ? 1 : 0)};
+  transition: ${({ theme }) =>
+    `opacity ${makeMotionTime(theme.motion.duration.moderate)} ${
+      theme.motion.easing.standard.effective
+    }`};
 `;
 
 const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {
@@ -27,6 +36,7 @@ const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {
   const { footerHeight } = useModalContext();
   const [hasScrollbar, setHasScrollbar] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
+  const [scrollEnd, setScrollEnd] = useState(false);
 
   const checkForScrollbar = useCallback(() => {
     // Checks if the content has a scrollbar
@@ -55,6 +65,15 @@ const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {
     return () => resizeObserver.disconnect();
   }, []);
 
+  const hideOverlayOnScrollEnd = (e: any): void => {
+    const bottom = e?.target?.scrollHeight - e?.target?.scrollTop === e?.target?.clientHeight;
+    if (bottom && !scrollEnd) {
+      setScrollEnd(true);
+    } else if (!bottom && scrollEnd) {
+      setScrollEnd(false);
+    }
+  };
+
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.ModalBody })}
@@ -62,10 +81,14 @@ const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {
       ref={contentRef}
       overflowY="auto"
       overflowX="hidden"
+      onScroll={hideOverlayOnScrollEnd}
     >
-      {hasScrollbar && (
-        <OverflowOverlay scrollbarWidth={scrollbarWidth} footerHeight={footerHeight} />
-      )}
+      <OverflowOverlay
+        {...metaAttribute({ name: 'modal-scroll-overlay' })}
+        scrollbarWidth={scrollbarWidth}
+        footerHeight={footerHeight}
+        showOverlay={hasScrollbar && !scrollEnd}
+      />
       {children}
     </BaseBox>
   );
