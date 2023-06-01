@@ -135,7 +135,6 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       : undefined,
   };
 
-  console.log('HEREEE', commonProps.autoComplete, autoCompleteSuggestionType);
 
   return props.as === 'button' ? (
     <StyledBaseNativeButton
