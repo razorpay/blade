@@ -28,6 +28,7 @@ import {
 } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
+import { Box } from '~components/Box';
 
 const entry = keyframes`
   from {
@@ -54,6 +55,7 @@ const exit = keyframes`
 const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme }) => {
   return css`
     box-shadow: ${theme.elevation.highRaised};
+    position: fixed;
     transform: translate(-50%, -50%);
     opacity: ${isVisible ? 1 : 0};
     animation: ${isVisible ? entry : exit}
@@ -165,7 +167,7 @@ const Modal = ({
       <ModalContext.Provider value={modalContext}>
         {isMounted ? (
           <FloatingFocusManager context={context} modal={true}>
-            <>
+            <Box zIndex={999} position="fixed">
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({
@@ -188,7 +190,7 @@ const Modal = ({
               >
                 {validChildren}
               </ModalContent>
-            </>
+            </Box>
           </FloatingFocusManager>
         ) : null}
       </ModalContext.Provider>
