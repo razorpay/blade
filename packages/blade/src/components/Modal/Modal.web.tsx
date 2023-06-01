@@ -22,6 +22,7 @@ import {
   MetaConstants,
   castWebType,
   isValidAllowedChildren,
+  makeAccessible,
   makeMotionTime,
   makeSize,
   metaAttribute,
@@ -75,7 +76,7 @@ type ModalProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialFocusRef?: React.MutableRefObject<any>;
   size?: 'small' | 'medium' | 'large';
-  // accessibilityLabel?: string;
+  accessibilityLabel?: string;
 };
 
 const Modal = ({
@@ -84,6 +85,7 @@ const Modal = ({
   onDismiss,
   initialFocusRef,
   size = 'small',
+  accessibilityLabel,
 }: ModalProps): React.ReactElement => {
   const { theme } = useTheme();
   const [footerHeight, setFooterHeight] = useState(0);
@@ -172,6 +174,11 @@ const Modal = ({
               <ModalContent
                 {...metaAttribute({
                   name: MetaConstants.Modal,
+                })}
+                {...makeAccessible({
+                  role: 'dialog',
+                  modal: true,
+                  label: accessibilityLabel,
                 })}
                 maxWidth={makeSize(modalMaxWidth[size])}
                 minWidth={makeSize(modalMinWidth)}
