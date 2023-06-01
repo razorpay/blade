@@ -14,8 +14,10 @@ exports[`<Code /> should render Code with color 1`] = `
     style={
       Array [
         Object {
+          "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderRadius": 4,
+          "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
           "paddingLeft": 4,
