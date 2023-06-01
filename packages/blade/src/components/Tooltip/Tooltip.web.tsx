@@ -4,11 +4,11 @@ import {
   flip,
   FloatingArrow,
   offset,
-  safePolygon,
   useFloating,
   useFocus,
   useHover,
   useInteractions,
+  useRole,
   useTransitionStyles,
 } from '@floating-ui/react';
 import React from 'react';
@@ -16,11 +16,12 @@ import styled from 'styled-components';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { castWebType, makeBorderSize } from '~utils';
+import { castWebType, makeAccessible, makeBorderSize } from '~utils';
 
 type TooltipProps = {
   content: string;
   children: React.ReactElement;
+  shouldWrapChildren?: boolean;
 };
 
 const TooltipContentWrapper = styled(BaseBox)(({ theme }) => {
@@ -34,13 +35,23 @@ const TooltipContentWrapper = styled(BaseBox)(({ theme }) => {
   };
 });
 
+const TooltipInteractiveWrapper = styled.span(({ theme }) => {
+  return {
+    '&:focus': {
+      borderRadius: makeBorderSize(theme.border.radius.medium),
+      // TODO: Replace with focus outline token
+      outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
+      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+    },
+  };
+});
+
 type TooltipContentProps = {
   children: React.ReactNode;
   style: React.CSSProperties;
 };
 const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
   ({ children, style }, ref) => {
-    const { theme } = useTheme();
     return (
       <TooltipContentWrapper
         paddingTop="spacing.3"
@@ -67,7 +78,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
 const ARROW_WIDTH = 14;
 const ARROW_HEIGHT = 7;
 
-const Tooltip = ({ content, children }: TooltipProps): React.ReactElement => {
+const Tooltip = ({ content, children, shouldWrapChildren }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const GAP = theme.spacing[2];
   const [isOpen, setIsOpen] = React.useState(false);
@@ -84,7 +95,7 @@ const Tooltip = ({ content, children }: TooltipProps): React.ReactElement => {
     ],
   });
   const { isMounted, styles } = useTransitionStyles(context, {
-    duration: theme.motion.duration.quick,
+    duration: theme.motion.duration.xquick,
     initial: {
       opacity: 0,
     },
@@ -98,11 +109,23 @@ const Tooltip = ({ content, children }: TooltipProps): React.ReactElement => {
   });
 
   const focus = useFocus(context);
-  const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus]);
+  const role = useRole(context, { role: 'tooltip' });
+  const { getReferenceProps, getFloatingProps } = useInteractions([role, hover, focus]);
 
   return (
     <>
-      {React.cloneElement(children, { ref: refs.setReference, ...getReferenceProps() })}
+      {shouldWrapChildren ? (
+        <TooltipInteractiveWrapper
+          tabIndex={0}
+          ref={refs.setReference}
+          {...makeAccessible({ label: content })}
+          {...getReferenceProps()}
+        >
+          {children}
+        </TooltipInteractiveWrapper>
+      ) : (
+        React.cloneElement(children, { ref: refs.setReference, ...getReferenceProps() })
+      )}
       {isMounted && (
         <BaseBox ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
           <TooltipContent style={styles}>
