@@ -26,15 +26,14 @@ describe('<Code />', () => {
   });
 
   it('should throw error when color is set without isHighlighted false', () => {
-    const tempConsoleError = console.error;
-    console.error = jest.fn();
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         // @ts-expect-error: expected error for negative test case
         <Code color="action.text.link.disabled">TEST_TOKEN</Code>,
       ),
     ).toThrow(`[Blade: Code]: \`color\` prop cannot be used without \`isHighlighted={false}\``);
-    console.error = tempConsoleError;
+    mockConsoleError.mockRestore();
   });
 
   it('should render small Code', () => {

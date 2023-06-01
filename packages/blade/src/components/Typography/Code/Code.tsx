@@ -34,7 +34,7 @@ type CodeCommonProps = {
 
 type CodeHighlightedProps = CodeCommonProps & {
   /**
-   * Adds code background to highlight the text
+   * Adds background color to highlight the text
    *
    * @default true
    */
@@ -47,7 +47,7 @@ type CodeHighlightedProps = CodeCommonProps & {
 
 type CodeNonHighlightedProps = CodeCommonProps & {
   /**
-   * Adds code background to highlight the text
+   * Adds background color to highlight the text
    *
    * @default true
    */
@@ -150,7 +150,7 @@ const Code = ({
   ...styledProps
 }: CodeProps): JSX.Element => {
   const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size);
-  const codeTextColor: CodeProps['color'] = React.useMemo(
+  const codeTextColor = React.useMemo<CodeProps['color']>(
     () => getCodeColor({ isHighlighted, color }),
     [isHighlighted, color],
   );
