@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 import type { StyledBaseLinkProps } from './types';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import { useStyledProps } from '~components/Box/styledProps';
-import type { BladeElementRef } from '~src/hooks/types';
+import type { BladeElementRef } from '~utils/types';
 
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);
