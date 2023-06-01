@@ -1,5 +1,34 @@
 # @razorpay/blade
 
+## 8.6.0
+
+### Minor Changes
+
+- 8348634c: feat(Link): add `xsmall` Link size
+- 26a7d38c: feat(Button): Support `href`, `target`, and `rel` on Button component.
+
+  You can now use `href` on Button which renders as `a` tag instead of button automatically.
+
+  ```jsx
+  <Button href="https://youtu.be/iPaBUhIsslA" target="_blank" rel="noopener noreferrer">
+    I am Link!
+  </Button>
+  ```
+
+- 4ff72975: feat(DropdownLink): add `DropdownLink` trigger for Dropdown
+
+  Checkout [Checkout DropdownLink Documentation](https://blade.razorpay.com/?path=/story/components-dropdown-with-button-and-link--with-link&globals=measureEnabled:false)
+
+- 3fe1ff8f: feat(blade): add textAlign to Box
+
+### Patch Changes
+
+- 14e5057e: fix: add min-width and max-width in Menu trigger Dropdown to fix width issues
+- 69a1bcef: chore(blade): improve BottomSheet documentation & added jsdoc
+- 4df0b721: fix(SelectInput): single select value clear
+
+  - You can pass `''` (empty string) in single select `value` prop to clear the selected value now.
+
 ## 8.5.0
 
 ### Minor Changes
