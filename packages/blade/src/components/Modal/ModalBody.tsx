@@ -17,7 +17,8 @@ const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {
       {...metaAttribute({ name: MetaConstants.ModalBody })}
       padding={modalBodyPadding}
       ref={contentRef}
-      // overflow="auto"
+      overflowY="auto"
+      overflowX="hidden"
     >
       {children}
     </BaseBox>

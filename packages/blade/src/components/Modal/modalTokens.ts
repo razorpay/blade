@@ -11,6 +11,8 @@ const modalMaxWidth: Record<NonNullable<ModalProps['size']>, Size[keyof Size]> =
 
 const modalMinWidth = 320;
 
+const modalMaxHeight = '80vh';
+
 const modalResponsiveScreenGap: Size[keyof Size] = size[48];
 
 const modalBodyPadding: DotNotationSpacingStringToken = 'spacing.6';
@@ -23,4 +25,5 @@ export {
   modalResponsiveScreenGap,
   modalBorderRadius,
   modalBodyPadding,
+  modalMaxHeight,
 };

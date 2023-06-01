@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { FloatingFocusManager, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
@@ -13,6 +13,7 @@ import { ModalContext } from './ModalContext';
 import { ModalBackdrop } from './ModalBackdrop';
 import {
   modalBorderRadius,
+  modalMaxHeight,
   modalMaxWidth,
   modalMinWidth,
   modalResponsiveScreenGap,
@@ -166,17 +167,20 @@ const Modal = ({
                 {...metaAttribute({
                   name: MetaConstants.Modal,
                 })}
+                maxWidth={makeSize(modalMaxWidth[size])}
+                minWidth={makeSize(modalMinWidth)}
+                maxHeight={modalMaxHeight}
+                width={`calc(100vw - ${makeSize(modalResponsiveScreenGap)})`}
+                borderRadius={modalBorderRadius}
+                backgroundColor={theme.colors.surface.background.level2.lowContrast}
+                position="absolute"
+                display="flex"
+                flexDirection="column"
+                top="50%"
+                left="50%"
                 onKeyDown={handleKeyDown}
                 isVisible={isVisible}
                 ref={refs.setFloating}
-                maxWidth={makeSize(modalMaxWidth[size])}
-                minWidth={makeSize(modalMinWidth)}
-                position="absolute"
-                top="50%"
-                left="50%"
-                backgroundColor={theme.colors.surface.background.level2.lowContrast}
-                borderRadius={modalBorderRadius}
-                width={`calc(100vw - ${makeSize(modalResponsiveScreenGap)})`}
               >
                 {validChildren}
               </ModalContent>
