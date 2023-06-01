@@ -32,7 +32,7 @@ type StyledComponentAutoCompleteAndroid =
 
 const autoCompleteSuggestionTypeAndroid = {
   none: 'off',
-  generic: 'off', // there isn't autocomplete="on" equivalent on ios
+  generic: 'off', // there isn't autocomplete="on" equivalent on android
   name: 'name',
   email: 'email',
   username: 'username',
