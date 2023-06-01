@@ -1,0 +1,412 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Switch /> should render switch with label 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="Switch"
+    display="flex"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityInvalid={false}
+      accessibilityLabel="Toggle Darkmode"
+      accessibilityRequired={false}
+      accessibilityRole="switch"
+      accessibilityState={
+        Object {
+          "checked": false,
+          "disabled": false,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "marginBottom": 2,
+            "marginTop": 2,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityElementsHidden={true}
+        deviceType="mobile"
+        importantForAccessibility="no-hide-descendants"
+        isChecked={false}
+        isDisabled={false}
+        size="medium"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "hsla(214, 18%, 69%, 1)",
+              "borderRadius": 9999,
+              "display": "flex",
+              "height": 24,
+              "marginBottom": 2,
+              "marginLeft": 2,
+              "marginRight": 2,
+              "marginTop": 2,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "pointerEvents": "none",
+              "position": "relative",
+              "transitionTimingFunction": "0.3 0 0.2 1",
+              "width": 44,
+            },
+            Object {
+              "backgroundColor": undefined,
+            },
+          ]
+        }
+      >
+        <View
+          deviceType="mobile"
+          isChecked={false}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "height": 20,
+                "justifyContent": "center",
+                "left": 0,
+                "marginBottom": 2,
+                "marginLeft": 2,
+                "marginRight": 2,
+                "marginTop": 2,
+                "position": "absolute",
+                "width": 20,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "hsla(220, 30%, 96%, 1)",
+                  "borderRadius": 9999,
+                  "display": "flex",
+                  "flexShrink": 0,
+                  "height": "100%",
+                  "justifyContent": "center",
+                  "position": "absolute",
+                  "width": "100%",
+                },
+                Object {
+                  "left": 0,
+                  "transform": Array [
+                    Object {
+                      "translateX": undefined,
+                    },
+                  ],
+                  "width": undefined,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Object {
+                  "opacity": undefined,
+                }
+              }
+            >
+              <RNSVGSvgView
+                accessibilityElementsHidden={true}
+                align="xMidYMid"
+                bbHeight="10px"
+                bbWidth="10px"
+                fill="none"
+                focusable={false}
+                height="10px"
+                importantForAccessibility="no-hide-descendants"
+                meetOrSlice={0}
+                minX={0}
+                minY={0}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    Array [
+                      Object {},
+                    ],
+                    Object {
+                      "flex": 0,
+                      "height": 10,
+                      "width": 10,
+                    },
+                  ]
+                }
+                vbHeight={8}
+                vbWidth={11}
+                width="10px"
+              >
+                <RNSVGGroup
+                  fill={null}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                >
+                  <RNSVGPath
+                    clipRule={0}
+                    d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
+                    fill={4281484642}
+                    fillRule={0}
+                    propList={
+                      Array [
+                        "fill",
+                        "fillRule",
+                      ]
+                    }
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Switch /> should set disabled state with isDisabled 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="Switch"
+    display="flex"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityInvalid={false}
+      accessibilityLabel="Toggle Darkmode"
+      accessibilityRequired={false}
+      accessibilityRole="switch"
+      accessibilityState={
+        Object {
+          "checked": false,
+          "disabled": true,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "marginBottom": 2,
+            "marginTop": 2,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityElementsHidden={true}
+        deviceType="mobile"
+        importantForAccessibility="no-hide-descendants"
+        isChecked={false}
+        isDisabled={true}
+        size="medium"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+              "borderRadius": 9999,
+              "display": "flex",
+              "height": 24,
+              "marginBottom": 2,
+              "marginLeft": 2,
+              "marginRight": 2,
+              "marginTop": 2,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "pointerEvents": "none",
+              "position": "relative",
+              "transitionTimingFunction": "0.3 0 0.2 1",
+              "width": 44,
+            },
+            Object {
+              "backgroundColor": undefined,
+            },
+          ]
+        }
+      >
+        <View
+          deviceType="mobile"
+          isChecked={false}
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "height": 20,
+                "justifyContent": "center",
+                "left": 0,
+                "marginBottom": 2,
+                "marginLeft": 2,
+                "marginRight": 2,
+                "marginTop": 2,
+                "position": "absolute",
+                "width": 20,
+              },
+            ]
+          }
+        >
+          <View
+            isDisabled={true}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                  "borderRadius": 9999,
+                  "display": "flex",
+                  "flexShrink": 0,
+                  "height": "100%",
+                  "justifyContent": "center",
+                  "position": "absolute",
+                  "width": "100%",
+                },
+                Object {
+                  "left": 0,
+                  "transform": Array [
+                    Object {
+                      "translateX": undefined,
+                    },
+                  ],
+                  "width": undefined,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Object {
+                  "opacity": undefined,
+                }
+              }
+            >
+              <RNSVGSvgView
+                accessibilityElementsHidden={true}
+                align="xMidYMid"
+                bbHeight="10px"
+                bbWidth="10px"
+                fill="none"
+                focusable={false}
+                height="10px"
+                importantForAccessibility="no-hide-descendants"
+                meetOrSlice={0}
+                minX={0}
+                minY={0}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    Array [
+                      Object {},
+                    ],
+                    Object {
+                      "flex": 0,
+                      "height": 10,
+                      "width": 10,
+                    },
+                  ]
+                }
+                vbHeight={8}
+                vbWidth={11}
+                width="10px"
+              >
+                <RNSVGGroup
+                  fill={null}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                >
+                  <RNSVGPath
+                    clipRule={0}
+                    d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
+                    fill={4288851646}
+                    fillRule={0}
+                    propList={
+                      Array [
+                        "fill",
+                        "fillRule",
+                      ]
+                    }
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ReactElement, SyntheticEvent } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import type { CSSObject } from 'styled-components';
+import type { GestureResponderEvent } from 'react-native';
 import StyledBaseLink from './StyledBaseLink';
 import useInteraction from '~src/hooks/useInteraction';
 import type { IconComponent, IconProps } from '~components/Icons';
@@ -15,12 +16,14 @@ import type {
   StringChildrenType,
   TestID,
 } from '~src/_helpers/types';
+import type { Platform } from '~utils';
 import { makeAccessible, getIn, metaAttribute, MetaConstants } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BladeElementRef } from '~src/hooks/types';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -28,6 +31,14 @@ type BaseLinkCommonProps = {
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
   onClick?: (event: SyntheticEvent) => void;
+  onBlur?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  }>;
+  onKeyDown?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  }>;
   accessibilityLabel?: string;
 
   /**
@@ -35,7 +46,7 @@ type BaseLinkCommonProps = {
    *
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /**
    * Defines how far your touch can start away from the link. This is a react-native only prop and has no effect on web.
    */
@@ -182,11 +193,13 @@ const getProps = ({
     lineHeight: Record<NonNullable<BaseLinkProps['size']>, keyof Typography['lineHeights']>;
   } = {
     fontSize: {
+      xsmall: 25,
       small: 75,
       medium: 100,
       large: 200,
     },
     lineHeight: {
+      xsmall: 50,
       small: 50,
       medium: 100,
       large: 300,
@@ -231,29 +244,34 @@ const getProps = ({
   return props;
 };
 
-const BaseLink = ({
-  children,
-  icon: Icon,
-  iconPosition = 'left',
-  isDisabled = false,
-  onClick,
-  variant = 'anchor',
-  href,
-  target,
-  rel,
-  intent,
-  contrast = 'low',
-  accessibilityLabel,
-  // @ts-expect-error avoiding exposing to public
-  className,
-  // @ts-expect-error avoiding exposing to public
-  style,
-  size = 'medium',
-  testID,
-  hitSlop,
-  htmlTitle,
-  ...styledProps
-}: BaseLinkProps): ReactElement => {
+const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> = (
+  {
+    children,
+    icon: Icon,
+    iconPosition = 'left',
+    isDisabled = false,
+    onClick,
+    onBlur,
+    onKeyDown,
+    variant = 'anchor',
+    href,
+    target,
+    rel,
+    intent,
+    contrast = 'low',
+    accessibilityLabel,
+    // @ts-expect-error avoiding exposing to public
+    className,
+    // @ts-expect-error avoiding exposing to public
+    style,
+    size = 'medium',
+    testID,
+    hitSlop,
+    htmlTitle,
+    ...styledProps
+  },
+  ref,
+): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
   const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
@@ -306,6 +324,8 @@ const BaseLink = ({
 
   return (
     <StyledBaseLink
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
       {...syntheticEvents}
       {...metaAttribute({ name: MetaConstants.Link, testID })}
       accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
@@ -315,6 +335,8 @@ const BaseLink = ({
       target={target}
       rel={rel ?? defaultRel}
       onClick={handleOnClick}
+      onBlur={onBlur}
+      onKeyDown={onKeyDown}
       disabled={disabled}
       type={type}
       cursor={cursor}
@@ -354,5 +376,7 @@ const BaseLink = ({
     </StyledBaseLink>
   );
 };
+
+const BaseLink = React.forwardRef(_BaseLink);
 
 export default BaseLink;

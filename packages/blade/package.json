@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "8.4.0",
+  "version": "8.5.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -87,16 +87,16 @@
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-android",
     "react-native:storybook:ios": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-ios",
-    "react-native:storybook:start": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
+    "react-native:storybook:start": "yarn react-native:get-stories && NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
     "react": "yarn run react:storybook",
     "react:storybook": "NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
     "react:storybook:build": "NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
     "test:react": "FRAMEWORK=REACT jest -c ./jest.web.config.js",
     "test:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js",
-    "start:ios": "run-p react-native:storybook:start react-native:storybook:ios",
-    "start:android": "run-p react-native:storybook:start react-native:storybook:android",
-    "start:native": "run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
-    "start:web": "yarn react",
+    "start:ios": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:ios",
+    "start:android": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android",
+    "start:native": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
+    "start:web": "NODE_OPTIONS=--openssl-legacy-provider yarn react",
     "start:all": "run-p start:native start:web",
     "watch:test": "run-p watch:test:*",
     "watch:test:react": "yarn test:react --watch --onlyChanged",
@@ -276,7 +276,7 @@
       "name": "Import Button only",
       "path": "./build/components/index.web.js",
       "import": "{ Button }",
-      "limit": "17 kb",
+      "limit": "17.5 kb",
       "running": false
     },
     {

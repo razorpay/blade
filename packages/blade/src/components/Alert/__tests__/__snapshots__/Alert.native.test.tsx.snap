@@ -32,9 +32,11 @@ exports[`<Alert /> should render 1`] = `
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 8,
+          "textAlign": "left",
         },
       ]
     }
+    textAlign="left"
   >
     <View
       display="flex"
@@ -297,10 +299,12 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
           "paddingLeft": 16,
           "paddingRight": 16,
           "paddingTop": 12,
+          "textAlign": "left",
           "width": "100%",
         },
       ]
     }
+    textAlign="left"
   >
     <View
       display="flex"

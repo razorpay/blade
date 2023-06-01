@@ -5,6 +5,7 @@ import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon/RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
+import { radioHoverTokens } from './radioTokens';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
@@ -94,6 +95,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
+              hoverTokens={radioHoverTokens}
               isChecked={state.isChecked}
               isDisabled={_isDisabled}
               hasError={hasError}

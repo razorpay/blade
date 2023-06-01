@@ -57,9 +57,14 @@ const CodeStoryMeta: Meta = {
 
 const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
   // For React Native, use flex to align items correctly
-  <Text>
-    Lorem ipsum normal text <CodeComponent {...args} /> component
-  </Text>
+  <>
+    <Text size="medium">
+      Lorem ipsum normal text <CodeComponent {...args} size="medium" /> component
+    </Text>
+    <Text size="small">
+      Lorem ipsum normal text <CodeComponent {...args} size="small" /> component
+    </Text>
+  </>
 );
 
 export default CodeStoryMeta;

@@ -74,8 +74,10 @@ exports[`<Code /> should render Code with default properties 1`] = `
     style={
       Array [
         Object {
+          "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderRadius": 4,
+          "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
           "paddingLeft": 4,
@@ -134,8 +136,10 @@ exports[`<Code /> should render medium Code 1`] = `
     style={
       Array [
         Object {
+          "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderRadius": 4,
+          "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
           "paddingLeft": 4,
@@ -194,8 +198,10 @@ exports[`<Code /> should render small Code 1`] = `
     style={
       Array [
         Object {
+          "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderRadius": 4,
+          "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
           "paddingLeft": 4,
