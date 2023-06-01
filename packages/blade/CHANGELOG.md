@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.6.1
+
+### Patch Changes
+
+- 93626965: fix: ActionList border style
+
 ## 8.6.0
 
 ### Minor Changes
