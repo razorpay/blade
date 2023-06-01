@@ -170,6 +170,10 @@ export type BaseInputProps = FormInputLabelProps &
      * - iOS: `textContentType`
      * - android: `autoComplete`
      *
+     * **Note:** `generic` autoCompleteSuggestionType becomes
+     * - `none` in Native
+     * - `on` in Web
+     *
      */
     autoCompleteSuggestionType?:
       | 'none'
@@ -186,7 +190,8 @@ export type BaseInputProps = FormInputLabelProps &
       | 'creditCardCSC'
       | 'creditCardExpiry'
       | 'creditCardExpiryMonth'
-      | 'creditCardExpiryYear';
+      | 'creditCardExpiryYear'
+      | 'generic';
     /**
      * Element to be rendered on the trailing slot of input field label
      */
@@ -261,6 +266,7 @@ export type BaseInputProps = FormInputLabelProps &
 
 const autoCompleteSuggestionTypeValues = [
   'none',
+  'generic',
   'name',
   'email',
   'username',
