@@ -101,7 +101,9 @@ Resources:
 
 ## Open Questions
 
-- Which components should and should not be qualify as trigger?
+- Q1: Which components should and should not be qualify as trigger?
+- A1: Discussed with designers, we will allow all elements interactive, non-interactive to be used as triggers (eg, badge, counter, icons) because there can be many genuine usecases which we can't predict.
+
 
 ## References
 
