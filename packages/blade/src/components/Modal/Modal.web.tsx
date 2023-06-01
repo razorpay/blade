@@ -53,6 +53,7 @@ const exit = keyframes`
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme }) => {
   return css`
+    box-shadow: ${theme.elevation.highRaised};
     transform: translate(-50%, -50%);
     opacity: ${isVisible ? 1 : 0};
     animation: ${isVisible ? entry : exit}
