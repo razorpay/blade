@@ -1,18 +1,20 @@
 import React from 'react';
 import { DropdownButton } from '../DropdownButton';
-import { Dropdown, DropdownOverlay } from '..';
+import { Dropdown, DropdownLink, DropdownOverlay } from '..';
 import {
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
+  WithLinkStory,
   WithSimpleMenuStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
-import { CheckIcon, ClockIcon, CloseIcon } from '~components/Icons';
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon, ClockIcon, CloseIcon } from '~components/Icons';
+import { Text } from '~components/Typography';
 
 const DropdownStoryMeta = {
-  title: 'Components/Dropdown/With Button',
+  title: 'Components/Dropdown/With Button and Link',
   component: Dropdown,
   subcomponents: { DropdownButton },
   args: {},
@@ -38,6 +40,14 @@ export const Default = (): JSX.Element => {
       uri="https://blade.razorpay.com/iframe.html?id=components-dropdown-with-button--default&args=&viewMode=story"
     >
       {WithSimpleMenuStory}
+    </Sandbox>
+  );
+};
+
+export const WithLink = (): JSX.Element => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {WithLinkStory}
     </Sandbox>
   );
 };
@@ -107,6 +117,66 @@ export const InternalMenu = (): JSX.Element => {
 };
 
 InternalMenu.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
+};
+
+export const InternalLinkDropdown = (): JSX.Element => {
+  const [status, setStatus] = React.useState<string | undefined>('latest-added');
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  return (
+    <Box padding="spacing.10" display="flex" alignItems="center" gap="spacing.2">
+      <Text>Sort By</Text>
+      <Box flex="1">
+        <Dropdown onDismiss={() => setIsDropdownOpen(false)}>
+          <DropdownLink
+            icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
+            iconPosition="right"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            {status ?? ''}
+          </DropdownLink>
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                isSelected={status === 'latest-added'}
+                title="Latest Added"
+                value="latest-added"
+              />
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                isSelected={status === 'latest-invoice'}
+                title="Latest Invoice"
+                value="latest-invoice"
+              />
+
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                isSelected={status === 'oldest-due-date'}
+                title="Oldest Due Date"
+                value="oldest-due-date"
+              />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    </Box>
+  );
+};
+
+InternalLinkDropdown.parameters = {
   chromatic: {
     disableSnapshot: false,
   },

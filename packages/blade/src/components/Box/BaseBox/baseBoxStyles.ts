@@ -181,6 +181,7 @@ const getAllProps = (
     overflow: getResponsiveValue(props.overflow, breakpoint),
     overflowX: getResponsiveValue(props.overflowX, breakpoint),
     overflowY: getResponsiveValue(props.overflowY, breakpoint),
+    textAlign: getResponsiveValue(props.textAlign, breakpoint),
 
     // Flex
     flex: getResponsiveValue(props.flex, breakpoint),

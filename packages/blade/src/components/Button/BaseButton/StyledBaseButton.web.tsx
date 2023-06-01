@@ -12,6 +12,7 @@ const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => (
   const styledPropsCSSObject = useStyledProps(props);
   return {
     ...getStyledBaseButtonStyles(props),
+    display: 'inline-flex',
     transitionProperty: 'background-color, border-color, box-shadow',
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
     transitionDuration: castWebType(

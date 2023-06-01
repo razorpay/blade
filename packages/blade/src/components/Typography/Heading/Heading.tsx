@@ -16,6 +16,7 @@ type HeadingCommonProps = {
   type?: TextTypes;
   contrast?: ColorContrastTypes;
   children: StringChildrenType;
+  textAlign?: BaseTextProps['textAlign'];
 } & TestID &
   StyledPropsBlade;
 
@@ -116,11 +117,12 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   contrast = 'low',
   children,
   testID,
+  textAlign,
   ...styledProps
 }: HeadingProps<T>): ReactElement => {
   const props = getProps({ variant, size, type, weight, contrast, testID });
   return (
-    <BaseText {...props} {...getStyledProps(styledProps)}>
+    <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>
       {children}
     </BaseText>
   );

@@ -19,7 +19,7 @@ const DropdownDocs = (): JSX.Element => {
   return (
     <StoryPageWrapper
       componentName="Dropdown"
-      componentDescription="Dropdown component to help you create select menu or action menu. To create a menu, you would have to use this component + Trigger (SelectInput, DropdownButton) + ActionList"
+      componentDescription="Dropdown component to help you create select menu or action menu. To create a menu, you would have to use this component + Trigger (SelectInput, DropdownButton, DropdownLink) + ActionList"
       imports=""
       showStorybookControls={false}
       figmaURL={{
@@ -50,8 +50,10 @@ const DropdownDocs = (): JSX.Element => {
             <ListItemLink href="/?path=/docs/components-dropdown-selectinput--default">
               SelectInput
             </ListItemLink>
-            , or DropdownButton (Has same props as{' '}
-            <ListItemLink href="/?path=/docs/components-button--default">Button</ListItemLink>)
+            , DropdownButton (Has same props as{' '}
+            <ListItemLink href="/?path=/docs/components-button--default">Button</ListItemLink>, or
+            DropdownLink (Has same props as{' '}
+            <ListItemLink href="/?path=/docs/components-link--link-button">Link</ListItemLink>)
           </ListItem>
           <ListItem>
             <ListItemLink href="/?path=/docs/components-dropdown-actionlist--page">
@@ -67,8 +69,8 @@ const DropdownDocs = (): JSX.Element => {
             selectionType: "'single' | 'multiple'",
             children: (
               <Text>
-                [<Code>{'<SelectInput />'}</Code> | <Code>{'<DropdownButton />'}</Code>,{' '}
-                <Code>{'<DropdownOverlay />'}</Code>]
+                [<Code>{'<SelectInput />'}</Code> | <Code>{'<DropdownButton />'}</Code> |{' '}
+                <Code>{'<DropdownLink />'}</Code>, <Code>{'<DropdownOverlay />'}</Code>]
               </Text>
             ),
           }}
@@ -92,13 +94,17 @@ const DropdownDocs = (): JSX.Element => {
             DropdownButton (Has same props as{' '}
             <ListItemLink href="/?path=/docs/components-button--default">Button</ListItemLink>)
           </ListItem>
+          <ListItem>
+            DropdownLink (Has same props as{' '}
+            <ListItemLink href="/?path=/docs/components-link--link-button">Link</ListItemLink>)
+          </ListItem>
         </List>
       </BaseBox>
       <BaseBox as="section">
         <Title size="small">With SelectInput</Title>
         <Text marginY="spacing.3">
           Check out more Select examples at{' '}
-          <Link href="/?path=/docs/components-dropdown-stories-with-select--with-single-select">
+          <Link href="/?path=/docs/components-dropdown-with-select--with-single-select">
             Dropdown with SelectInput Stories
           </Link>
         </Text>
@@ -117,7 +123,7 @@ const DropdownDocs = (): JSX.Element => {
         </Title>
         <Text marginY="spacing.3">
           Check out more Menu examples at{' '}
-          <Link href="/?path=/docs/components-dropdown-stories-with-button--default">
+          <Link href="/?path=/docs/components-dropdown-with-button--default">
             Dropdown with Button Stories
           </Link>
         </Text>

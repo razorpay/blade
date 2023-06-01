@@ -117,6 +117,7 @@ const Counter = ({
       >
         <Text
           {...counterTextSizes[size]}
+          textAlign="center"
           type="normal"
           weight="regular"
           truncateAfterLines={1}
