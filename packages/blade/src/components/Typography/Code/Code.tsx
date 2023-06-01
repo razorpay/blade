@@ -86,11 +86,11 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * In React Native, you would have to align it using flex to make sure the Code and the surrounding text is correctly aligned
  *
  * ```tsx
- *  <BaseBox flexWrap="wrap" flexDirection="row" alignItems="flex-start">
+ *  <Box flexWrap="wrap" flexDirection="row" alignItems="flex-start">
  *   <Text>Lorem ipsum </Text>
  *   <Code>SENTRY_TOKEN</Code>
  *   <Text> normal text</Text>
- * </BaseBox>
+ * </Box>
  * ```
  */
 
