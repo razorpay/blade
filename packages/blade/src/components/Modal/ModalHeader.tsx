@@ -3,7 +3,10 @@ import { MetaConstants, assignWithoutSideEffects } from '~utils';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
-type ModalHeaderProps = BaseHeaderProps;
+type ModalHeaderProps = Pick<
+  BaseHeaderProps,
+  'title' | 'subtitle' | 'leading' | 'trailing' | 'titleSuffix'
+>;
 
 const _ModalHeader = (props: ModalHeaderProps): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useModalContext();

@@ -18,6 +18,8 @@ const OverflowOverlay = styled(BaseBox)<{ scrollbarWidth: number; footerHeight: 
   bottom: ${({ footerHeight }) => `${footerHeight}px`};
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 58.7%);
   height: ${makeSize(scrollOverlayHeight)};
+  z-index: 999;
+  pointer-events: none;
 `;
 
 const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {

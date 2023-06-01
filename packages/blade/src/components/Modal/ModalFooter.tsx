@@ -5,7 +5,7 @@ import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
 import { MetaConstants, assignWithoutSideEffects } from '~utils';
 
-type ModalFooterProps = BaseFooterProps;
+type ModalFooterProps = Pick<BaseFooterProps, 'children'>;
 
 const _ModalFooter = (props: ModalFooterProps): React.ReactElement => {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -24,7 +24,7 @@ const _ModalFooter = (props: ModalFooterProps): React.ReactElement => {
       <BaseFooter
         metaDataComponentName={MetaConstants.ModalFooter}
         children={props.children}
-        showDivider={props.showDivider}
+        showDivider={true}
       />
     </Box>
   );
