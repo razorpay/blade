@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { FloatingFocusManager, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
@@ -83,6 +83,7 @@ const Modal = ({
   size = 'small',
 }: ModalProps): React.ReactElement => {
   const { theme } = useTheme();
+  const [footerHeight, setFooterHeight] = useState(0);
   const { isMounted, isVisible } = usePresence(isOpen, {
     transitionDuration: 1000,
     initialEnter: true,
@@ -134,8 +135,10 @@ const Modal = ({
       close: onDismiss,
       defaultInitialFocusRef,
       isVisible,
+      footerHeight,
+      setFooterHeight,
     }),
-    [isOpen, onDismiss, defaultInitialFocusRef, isVisible],
+    [isOpen, onDismiss, defaultInitialFocusRef, isVisible, footerHeight, setFooterHeight],
   );
   const handleKeyDown = (event: React.KeyboardEvent): void => {
     if (event?.key === 'Escape' || event?.code === 'Escape') {

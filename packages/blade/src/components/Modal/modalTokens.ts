@@ -19,6 +19,8 @@ const modalBodyPadding: DotNotationSpacingStringToken = 'spacing.6';
 
 const modalBorderRadius: keyof Border['radius'] = 'large';
 
+const scrollOverlayHeight: Size[keyof Size] = size[56];
+
 export {
   modalMaxWidth,
   modalMinWidth,
@@ -26,4 +28,5 @@ export {
   modalBorderRadius,
   modalBodyPadding,
   modalMaxHeight,
+  scrollOverlayHeight,
 };
