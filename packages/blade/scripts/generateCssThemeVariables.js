@@ -4,7 +4,6 @@ const set = require('lodash/set');
 const cloneDeep = require('lodash/cloneDeep');
 
 const { paymentTheme, bankingTheme } = require('../build/js-bundle-for-css/tokensBundle');
-// Todo : confirm if any change is needed for these imports
 const {
   makeBorderSize,
   makeMotionTime,
