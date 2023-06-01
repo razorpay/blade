@@ -18,9 +18,22 @@ describe('<Code />', () => {
 
   it('should render Code with color', () => {
     const { container } = renderWithTheme(
-      <Code color="action.text.link.disabled">TEST_TOKEN</Code>,
+      <Code isHighlighted={false} color="action.text.link.disabled">
+        TEST_TOKEN
+      </Code>,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  it('should throw error when color is set without isHighlighted false', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    expect(() =>
+      renderWithTheme(
+        // @ts-expect-error: expected error for negative test case
+        <Code color="action.text.link.disabled">TEST_TOKEN</Code>,
+      ),
+    ).toThrow(`[Blade: Code]: \`color\` prop cannot be used without \`isHighlighted={false}\``);
+    mockConsoleError.mockRestore();
   });
 
   it('should render small Code', () => {
@@ -36,6 +49,11 @@ describe('<Code />', () => {
     expect(getByText('MEDIUM')).toHaveStyle(
       `font-size: ${makeTypographySize(typography.onDesktop.fonts.size[75])}`,
     );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render isHighlighted false Code', () => {
+    const { container } = renderWithTheme(<Code isHighlighted={false}>NON-HIGHLIGHTED</Code>);
     expect(container).toMatchSnapshot();
   });
 

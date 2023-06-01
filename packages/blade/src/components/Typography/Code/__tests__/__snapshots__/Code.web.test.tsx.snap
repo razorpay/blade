@@ -16,7 +16,6 @@ exports[`<Code /> should render Code with color 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.09);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -57,7 +56,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(216,15%,54%,0.18);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -82,6 +81,46 @@ exports[`<Code /> should render Code with default properties 1`] = `
 </div>
 `;
 
+exports[`<Code /> should render isHighlighted false Code 1`] = `
+.c1 {
+  color: hsla(217,56%,17%,1);
+  font-family: monospace;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  padding: 0px 4px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0rem;
+}
+
+<div>
+  <span
+    class=" c0"
+    data-blade-component="code"
+  >
+    <code
+      class="c1"
+      color="surface.text.normal.lowContrast"
+      font-family="code"
+      font-size="25"
+      font-weight="regular"
+    >
+      NON-HIGHLIGHTED
+    </code>
+  </span>
+</div>
+`;
+
 exports[`<Code /> should render medium Code 1`] = `
 .c1 {
   color: hsla(216,27%,36%,1);
@@ -98,7 +137,7 @@ exports[`<Code /> should render medium Code 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(216,15%,54%,0.18);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -139,7 +178,7 @@ exports[`<Code /> should render small Code 1`] = `
 
 .c0 {
   padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(216,15%,54%,0.18);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
