@@ -1,5 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
+import type { BaseTextProps } from '../BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -13,7 +15,10 @@ import {
 import type { FontSize, Typography } from '~tokens/global';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
-export type CodeProps = {
+type CodeCommonProps = {
+  /**
+   * Sets the color of the Heading component.
+   */
   children: StringChildrenType;
   /**
    * Decides the fontSize and padding of Code
@@ -22,13 +27,28 @@ export type CodeProps = {
    */
   size?: 'small' | 'medium';
   weight?: 'regular' | 'bold';
+};
+
+type CodeHighlightedProps = CodeCommonProps & {
   /**
    * Adds code background to highlight the text
    *
    * @default true
    */
-  isHighlighted?: boolean;
-} & TestID &
+  isHighlighted?: true;
+  /**
+   * color prop can only be added when `isHighlighted` is set to `false`
+   */
+  color: undefined;
+};
+
+type CodeNonHighlightedProps = CodeCommonProps & {
+  isHighlighted: false;
+  color?: BaseTextProps['color'];
+};
+
+export type CodeProps = (CodeHighlightedProps | CodeNonHighlightedProps) &
+  TestID &
   StyledPropsBlade;
 
 type CodeContainerProps = {
@@ -67,6 +87,26 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
   };
 });
 
+const getCodeColor = ({
+  isHighlighted,
+  color,
+}: Pick<CodeProps, 'isHighlighted' | 'color'>): CodeProps['color'] => {
+  if (isHighlighted) {
+    if (color) {
+      throw new Error(
+        '[Blade - Code]: `color` prop cannot be used without `isHighlighted={false}`',
+      );
+    }
+
+    return 'surface.text.subtle.lowContrast';
+  }
+
+  if (color) {
+    return color;
+  }
+
+  return 'surface.text.normal.lowContrast';
+};
 /**
  * Code component can be used for displaying token, variable names, or inlined code snippets.
  *
@@ -93,16 +133,20 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * </Box>
  * ```
  */
-
 const Code = ({
   children,
   size = 'small',
   weight = 'regular',
   isHighlighted = true,
+  color,
   testID,
   ...styledProps
 }: CodeProps): JSX.Element => {
   const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size);
+  const codeTextColor: CodeProps['color'] = React.useMemo(
+    () => getCodeColor({ isHighlighted, color }),
+    [isHighlighted, color],
+  );
 
   return (
     <CodeContainer
@@ -113,7 +157,7 @@ const Code = ({
       {...getStyledProps(styledProps)}
     >
       <BaseText
-        color="surface.text.subtle.lowContrast"
+        color={codeTextColor}
         fontFamily="code"
         fontSize={fontSize}
         fontWeight={weight}
@@ -125,5 +169,9 @@ const Code = ({
     </CodeContainer>
   );
 };
+
+<Code isHighlighted={false} color="action.text.link.disabled">
+  Hi
+</Code>;
 
 export { Code };
