@@ -22,11 +22,18 @@ export type CodeProps = {
    */
   size?: 'small' | 'medium';
   weight?: 'regular' | 'bold';
+  /**
+   * Adds code background to highlight the text
+   *
+   * @default true
+   */
+  isHighlighted?: boolean;
 } & TestID &
   StyledPropsBlade;
 
 type CodeContainerProps = {
   size: CodeProps['size'];
+  isHighlighted: CodeProps['isHighlighted'];
 };
 
 const platformType = getPlatformType();
@@ -49,7 +56,9 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
   const padding = `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`;
   return {
     padding,
-    backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
+    backgroundColor: props.isHighlighted
+      ? props.theme.colors.brand.gray.a100.lowContrast
+      : undefined,
     borderRadius: props.theme.border.radius.medium,
     display: isPlatformWeb ? 'inline-block' : 'flex',
     alignSelf: isPlatformWeb ? undefined : 'center',
@@ -89,6 +98,7 @@ const Code = ({
   children,
   size = 'small',
   weight = 'regular',
+  isHighlighted = true,
   testID,
   ...styledProps
 }: CodeProps): JSX.Element => {
@@ -97,6 +107,7 @@ const Code = ({
   return (
     <CodeContainer
       size={size}
+      isHighlighted={isHighlighted}
       as={isPlatformWeb ? 'span' : undefined}
       {...metaAttribute({ name: MetaConstants.Code, testID })}
       {...getStyledProps(styledProps)}

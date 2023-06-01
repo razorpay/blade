@@ -24,6 +24,11 @@ describe('<Code />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render isHighlighted false Code', () => {
+    const { toJSON } = renderWithTheme(<Code isHighlighted={false}>NON-HIGHLIGHTED</Code>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(<Code testID="code-test">TEST_TOKEN</Code>);
     expect(getByTestId('code-test')).toBeTruthy();
