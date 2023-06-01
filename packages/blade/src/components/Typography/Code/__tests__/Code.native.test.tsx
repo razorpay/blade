@@ -11,8 +11,24 @@ describe('<Code />', () => {
   });
 
   it('should render Code with color', () => {
-    const { toJSON } = renderWithTheme(<Code color="action.text.link.disabled">TEST_TOKEN</Code>);
+    const { toJSON } = renderWithTheme(
+      <Code isHighlighted={false} color="action.text.link.disabled">
+        TEST_TOKEN
+      </Code>,
+    );
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should throw error when color is set without isHighlighted false', () => {
+    const tempConsoleError = console.error;
+    console.error = jest.fn();
+    expect(() =>
+      renderWithTheme(
+        // @ts-expect-error: expected error for negative test case
+        <Code color="action.text.link.disabled">TEST_TOKEN</Code>,
+      ),
+    ).toThrow(`[Blade: Code]: \`color\` prop cannot be used without \`isHighlighted={false}\``);
+    console.error = tempConsoleError;
   });
 
   it('should render small Code', () => {

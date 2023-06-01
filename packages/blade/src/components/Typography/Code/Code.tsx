@@ -27,7 +27,10 @@ type CodeCommonProps = {
    */
   size?: 'small' | 'medium';
   weight?: 'regular' | 'bold';
-};
+  isHighlighted?: boolean;
+  color?: BaseTextProps['color'];
+} & TestID &
+  StyledPropsBlade;
 
 type CodeHighlightedProps = CodeCommonProps & {
   /**
@@ -39,17 +42,23 @@ type CodeHighlightedProps = CodeCommonProps & {
   /**
    * color prop can only be added when `isHighlighted` is set to `false`
    */
-  color: undefined;
+  color?: undefined;
 };
 
 type CodeNonHighlightedProps = CodeCommonProps & {
+  /**
+   * Adds code background to highlight the text
+   *
+   * @default true
+   */
   isHighlighted: false;
+  /**
+   * color prop to set color of text when `isHighlighted` is set to false
+   */
   color?: BaseTextProps['color'];
 };
 
-export type CodeProps = (CodeHighlightedProps | CodeNonHighlightedProps) &
-  TestID &
-  StyledPropsBlade;
+export type CodeProps = CodeHighlightedProps | CodeNonHighlightedProps;
 
 type CodeContainerProps = {
   size: CodeProps['size'];
@@ -93,9 +102,7 @@ const getCodeColor = ({
 }: Pick<CodeProps, 'isHighlighted' | 'color'>): CodeProps['color'] => {
   if (isHighlighted) {
     if (color) {
-      throw new Error(
-        '[Blade - Code]: `color` prop cannot be used without `isHighlighted={false}`',
-      );
+      throw new Error('[Blade: Code]: `color` prop cannot be used without `isHighlighted={false}`');
     }
 
     return 'surface.text.subtle.lowContrast';

@@ -10,12 +10,14 @@ exports[`<Code /> should render Code with color 1`] = `
 >
   <View
     data-blade-component="code"
+    isHighlighted={false}
     size="small"
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "alignSelf": "center",
           "borderRadius": 4,
+          "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
           "paddingLeft": 4,
@@ -152,7 +154,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
     }
   >
     <Text
-      color="surface.text.subtle.lowContrast"
+      color="surface.text.normal.lowContrast"
       fontFamily="code"
       fontSize={25}
       fontWeight="regular"
@@ -160,7 +162,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
+            "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Courier",
             "fontSize": 10,
             "fontStyle": "normal",
