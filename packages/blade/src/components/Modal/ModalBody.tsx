@@ -37,7 +37,7 @@ const OverflowOverlay = styled(BaseBox)<{
 `;
 
 const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<any>(null);
   const { footerHeight } = useModalContext();
   const [hasScrollbar, setHasScrollbar] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
