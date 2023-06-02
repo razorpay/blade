@@ -17,17 +17,31 @@ export default {
 
 const TooltipTemplate: ComponentStory<typeof TooltipComponent> = () => {
   return (
-    <Box display="flex" gap="spacing.11">
-      <TooltipComponent content="Hello world">
-        <Button>Hover</Button>
+    <Box marginLeft="spacing.11" display="flex" gap="spacing.11">
+      <TooltipComponent placement="right-end" content="Hello world">
+        <Button
+          onClick={() => {
+            alert(1);
+          }}
+        >
+          Hover
+        </Button>
       </TooltipComponent>
-      <TooltipComponent content="Hello world 1">
-        <Link href="#">Hover</Link>
+      <TooltipComponent placement="left" content="Hello world 1">
+        <Link onClick={() => console.log(1)} href="#">
+          Hover
+        </Link>
       </TooltipComponent>
-      <TooltipComponent content="Hello world 2">
-        <IconButton onClick={() => 1} icon={InfoIcon} accessibilityLabel="Info" />
+      <TooltipComponent placement="top" content="Hello world 2">
+        <IconButton onClick={() => console.log(1)} icon={InfoIcon} accessibilityLabel="Info" />
       </TooltipComponent>
-      <TooltipComponent content="Hello world 2" shouldWrapChildren>
+      <TooltipComponent
+        placement="bottom"
+        onOpen={() => console.log('open')}
+        onClose={() => console.log('close')}
+        content="Hello world 2"
+        shouldWrapChildren
+      >
         <InfoIcon size="2xlarge" color="action.icon.link.visited" />
       </TooltipComponent>
     </Box>

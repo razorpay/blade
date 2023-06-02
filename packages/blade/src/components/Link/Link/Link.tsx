@@ -128,6 +128,8 @@ const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
     onMouseMove,
     onPointerDown,
     onPointerEnter,
+    onTouchStart,
+    onTouchEnd,
     ...styledProps
   },
   ref,
@@ -150,6 +152,8 @@ const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
       onMouseMove={onMouseMove}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       {...styledProps}
     />
   );

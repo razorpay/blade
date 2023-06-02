@@ -5,6 +5,8 @@ import styled from 'styled-components/native';
 import type { StyledBaseLinkProps } from './types';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import { useStyledProps } from '~components/Box/styledProps';
+import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import { castNativeType } from '~utils';
 
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);
@@ -38,7 +40,9 @@ const StyledLink = ({
   style,
   testID,
   hitSlop,
-}: StyledBaseLinkProps & { children: React.ReactNode }): ReactElement => {
+  onTouchStart,
+  onTouchEnd,
+}: StyledBaseLinkProps & TooltipTriggerProps & { children: React.ReactNode }): ReactElement => {
   const handleOnPress = (event: GestureResponderEvent): void => {
     if (href && variant === 'anchor') {
       void openURL(href);
@@ -62,9 +66,12 @@ const StyledLink = ({
       onPress={handleOnPress}
       onPressIn={(): void => setCurrentInteraction('active')}
       onPressOut={(): void => setCurrentInteraction('default')}
+      onTouchStart={castNativeType(onTouchStart)}
+      onTouchEnd={castNativeType(onTouchEnd)}
       style={style}
       testID={testID}
       hitSlop={hitSlop}
+      collapsable={false}
     >
       {children}
     </StyledNativeLink>

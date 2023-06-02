@@ -4,6 +4,7 @@ import {
   flip,
   FloatingArrow,
   offset,
+  shift,
   useFloating,
   useFocus,
   useHover,
@@ -13,27 +14,12 @@ import {
 } from '@floating-ui/react';
 import React from 'react';
 import styled from 'styled-components';
+import { TooltipProps } from './types';
+import { TooltipContent } from './TooltipContentWrapper';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { Text } from '~components/Typography';
-import { castWebType, makeAccessible, makeBorderSize } from '~utils';
-
-type TooltipProps = {
-  content: string;
-  children: React.ReactElement;
-  shouldWrapChildren?: boolean;
-};
-
-const TooltipContentWrapper = styled(BaseBox)(({ theme }) => {
-  return {
-    backgroundColor: theme.colors.brand.gray[200].highContrast,
-    borderWidth: makeBorderSize(theme.border.width.thin),
-    borderRadius: makeBorderSize(theme.border.radius.medium),
-    borderColor: theme.colors.brand.gray[300].highContrast,
-    borderStyle: 'solid',
-    boxShadow: castWebType(theme.elevation.lowRaised),
-  };
-});
+import { makeAccessible, makeBorderSize } from '~utils';
 
 const TooltipInteractiveWrapper = styled.span(({ theme }) => {
   return {
@@ -46,52 +32,35 @@ const TooltipInteractiveWrapper = styled.span(({ theme }) => {
   };
 });
 
-type TooltipContentProps = {
-  children: React.ReactNode;
-  style: React.CSSProperties;
-};
-const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
-  ({ children, style }, ref) => {
-    return (
-      <TooltipContentWrapper
-        paddingTop="spacing.3"
-        paddingBottom="spacing.3"
-        paddingLeft="spacing.4"
-        paddingRight="spacing.4"
-        ref={ref}
-        style={style}
-      >
-        <Text
-          variant="body"
-          size="small"
-          weight="regular"
-          contrast="high"
-          color="feedback.text.neutral.highContrast"
-        >
-          {children}
-        </Text>
-      </TooltipContentWrapper>
-    );
-  },
-);
-
-const ARROW_WIDTH = 14;
-const ARROW_HEIGHT = 7;
-
-const Tooltip = ({ content, children, shouldWrapChildren }: TooltipProps): React.ReactElement => {
+const Tooltip = ({
+  content,
+  children,
+  placement,
+  shouldWrapChildren,
+  onOpen,
+  onClose,
+}: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const GAP = theme.spacing[2];
   const [isOpen, setIsOpen] = React.useState(false);
   const arrowRef = React.useRef<SVGSVGElement>(null);
   const { refs, floatingStyles, context } = useFloating({
+    placement,
     open: isOpen,
-    onOpenChange: setIsOpen,
+    onOpenChange: (open) => {
+      if (open) {
+        setIsOpen(true);
+        onOpen?.();
+      } else {
+        setIsOpen(false);
+        onClose?.();
+      }
+    },
     middleware: [
+      flip({ crossAxis: false }),
+      shift({ padding: GAP }),
       offset(GAP + ARROW_HEIGHT),
-      flip(),
-      arrow({
-        element: arrowRef,
-      }),
+      arrow({ element: arrowRef }),
     ],
   });
   const { isMounted, styles } = useTransitionStyles(context, {
@@ -128,19 +97,23 @@ const Tooltip = ({ content, children, shouldWrapChildren }: TooltipProps): React
       )}
       {isMounted && (
         <BaseBox ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
-          <TooltipContent style={styles}>
+          <TooltipContent
+            style={styles}
+            arrow={
+              <FloatingArrow
+                ref={arrowRef}
+                context={context}
+                width={ARROW_WIDTH}
+                height={ARROW_HEIGHT}
+                fill={theme.colors.brand.gray[200].highContrast}
+                stroke={theme.colors.brand.gray[300].highContrast}
+                strokeWidth={theme.border.width.thin}
+                // push the arrow a bit downwards to the border cutoff doesn't show up
+                style={{ marginBottom: -1.5 }}
+              />
+            }
+          >
             {content}
-            <FloatingArrow
-              ref={arrowRef}
-              context={context}
-              width={ARROW_WIDTH}
-              height={ARROW_HEIGHT}
-              fill={theme.colors.brand.gray[200].highContrast}
-              stroke={theme.colors.brand.gray[300].highContrast}
-              strokeWidth={theme.border.width.thin}
-              // push the arrow a bit downwards to the border cutoff doesn't show up
-              style={{ marginBottom: -1.5 }}
-            />
           </TooltipContent>
         </BaseBox>
       )}

@@ -1,5 +1,15 @@
+import type { UseFloatingOptions } from '@floating-ui/react';
 import type { GestureResponderEvent } from 'react-native';
 import type { Platform } from '~utils';
+
+type TooltipProps = {
+  content: string;
+  placement?: UseFloatingOptions['placement'];
+  children: React.ReactElement;
+  shouldWrapChildren?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
+};
 
 type TooltipTriggerProps = {
   onBlur?: Platform.Select<{
@@ -18,4 +28,4 @@ type TooltipTriggerProps = {
   onTouchEnd?: React.TouchEventHandler;
 };
 
-export { TooltipTriggerProps };
+export { TooltipProps, TooltipTriggerProps };

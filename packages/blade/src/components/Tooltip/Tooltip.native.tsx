@@ -1,40 +1,77 @@
-import { arrow, shift, useFloating, flip } from '@floating-ui/react-native';
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
+import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Modal, Pressable, TouchableOpacity } from 'react-native';
+import { TooltipArrow } from './TooltipArrow.native';
+import { TooltipContent } from './TooltipContentWrapper';
+import { TooltipProps } from './types';
+import { ARROW_HEIGHT } from './constants';
+import { useTheme } from '~components/BladeProvider';
 
-type TooltipProps = {
-  content: string;
-  children: React.ReactNode;
-};
+const Tooltip = ({
+  content,
+  children,
+  onClose,
+  onOpen,
+  placement = 'left',
+}: TooltipProps): React.ReactElement => {
+  const { theme } = useTheme();
+  const gap = theme.spacing[2];
 
-const Tooltip = ({ content, children }: TooltipProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState(false);
   const arrowRef = React.useRef();
-  const { refs, floatingStyles } = useFloating({
-    middleware: [shift(), arrow({ element: arrowRef })],
-    placement: 'top',
+  const context = useFloating({
+    sameScrollView: false,
+    middleware: [
+      flip(),
+      shift({ padding: gap }),
+      offset(gap + ARROW_HEIGHT),
+      arrow({ element: arrowRef }),
+    ],
+    placement,
   });
 
+  const { refs, floatingStyles } = context;
+
+  const handleOpen = React.useCallback(() => {
+    setIsOpen(true);
+    onOpen?.();
+  }, [onOpen]);
+
+  const handleClose = React.useCallback(() => {
+    setIsOpen(false);
+    onClose?.();
+  }, [onClose]);
+
   return (
-    <View>
+    <>
       <Pressable
-        style={{ backgroundColor: 'red', alignSelf: 'flex-start' }}
-        onTouchStart={() => setIsOpen(true)}
-        onTouchEnd={() => {
-          setIsOpen(false);
-        }}
+        style={{ alignSelf: 'flex-start' }}
+        onTouchStart={handleOpen}
         ref={refs.setReference}
         collapsable={false}
       >
-        <Text>Reference</Text>
+        {children}
       </Pressable>
-      {isOpen ? (
-        <View ref={refs.setFloating} collapsable={false} style={floatingStyles}>
-          <View ref={arrowRef} style={{ width: 10, height: 10, backgroundColor: 'green' }} />
-          <Text>Floating</Text>
-        </View>
-      ) : null}
-    </View>
+      <Modal collapsable={false} transparent visible={isOpen} animationType="fade">
+        <TouchableOpacity
+          style={{
+            flexShrink: 0,
+            flex: 1,
+          }}
+          onPress={handleClose}
+          activeOpacity={1}
+        >
+          <TooltipContent
+            ref={refs.setFloating}
+            style={floatingStyles}
+            arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
+          >
+            {content}
+          </TooltipContent>
+        </TouchableOpacity>
+      </Modal>
+    </>
   );
 };
 
