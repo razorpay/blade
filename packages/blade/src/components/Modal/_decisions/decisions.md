@@ -75,14 +75,14 @@ const [isOpen, setIsOpen] = useState(false);
 
 ### `Modal` API
 
-| Prop            | Type                       | Default             | Description                                                                                                                                                                | Required |
-| --------------- | -------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| isOpen          | `boolean`                  | `false`             | Toggles modal state | ✅                                                                                                                                                 |          |
-| onDismiss       | `Callback`                 | `undefined`         | Called when the modal is closed, either by user state, hitting `esc` or tapping backdrop                                                                            |     ✅     |
-| size          | `small`, `medium`, `large`                  | `small`             | Size of the modal. Each size corresponds to a max-width for the Modal. Each size will have a fixed min-width of `320px`. See the [Modal Sizes & Responsiveness](#modal-sizes--responsiveness) section for more details.                                                                                                                                                 |          |
-| initialFocusRef | `React.Ref`                | `undefined`         | ref element you want to get keyboard focus when opening the modal                                                                                                          |          |
-| children | `React.ReactNode`                | `undefined`         | Accepts only Modal sub components like ModalHeader,ModalBody,ModalFooter                                                                                                          |          |
-| accessibilityLabel | `string` | `undefined` | The accessibility label (aria-label) for the Modal. |                                                                                                     |          |
+| Prop               | Type                       | Default     | Description                                                                                                                                                                                                             | Required |
+| ------------------ | -------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| isOpen             | `boolean`                  | `false`     | Toggles modal state                                                                                                                                                                                                     | ✅        |  |
+| onDismiss          | `Callback`                 | `undefined` | Called when the modal is closed, either by user state, hitting `esc` or tapping backdrop                                                                                                                                | ✅        |
+| size               | `small`, `medium`, `large` | `small`     | Size of the modal. Each size corresponds to a max-width for the Modal. Each size will have a fixed min-width of `320px`. See the [Modal Sizes & Responsiveness](#modal-sizes--responsiveness) section for more details. |          |
+| initialFocusRef    | `React.Ref`                | `undefined` | ref element you want to get keyboard focus when opening the modal                                                                                                                                                       |          |
+| children           | `React.ReactNode`          | `undefined` | Accepts only Modal sub components like ModalHeader,ModalBody,ModalFooter                                                                                                                                                |          |
+| accessibilityLabel | `string`                   | `undefined` | The accessibility label (aria-label) for the Modal.                                                                                                                                                                     |          |  |
 
 #### Controlled State
 - Modal will always be a controlled component which means that the consumer will have to pass the `isOpen` prop and handle the state of the Modal themselves. 
@@ -90,27 +90,27 @@ const [isOpen, setIsOpen] = useState(false);
 
 ### `ModalBody` API
 
-| Prop       | Type              | Default     | Description                 | Required |
-| ---------- | ----------------- | ----------- | --------------------------- | -------- |
-| `children` | `React.ReactNode` | `undefined` | Content of the Modal | ✅       |
+| Prop       | Type              | Default     | Description          | Required |
+| ---------- | ----------------- | ----------- | -------------------- | -------- |
+| `children` | `React.ReactNode` | `undefined` | Content of the Modal | ✅        |
 
 ### `ModalHeader` API
 > `ModalHeader` API will be similar to [`BottomSheetHeader` API](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/BottomSheet/_decisions/decisions.md#bottomsheetheader-api) with the exception of `showBackButton` & `onBackButtonClick` props.
 
-| Prop      | Type            | Default     | Description                           | Required |
-| --------- | --------------- | ----------- | ------------------------------------- | -------- |
-| `title`   | `string`        | `undefined` | Title of the Header                   |       |
-| `subtitle`   | `string`        | `undefined` | Subtitle of the Header                   |       |
-| `leading` | `React.ReactNode` | `undefined` | leading asset or icon to be placed at the left most side of the ModalHeader |          |
-| `trailing` | `Badge, Link, Text, IconButton`, `undefined` | undefined  |     trailing component to be placed at the right most side of the ModalHeader     |    |
-| `titleSuffix` | `Counter` | `undefined` | A component to be placed adjacent to the title text |          |
+| Prop          | Type                                         | Default     | Description                                                                 | Required |
+| ------------- | -------------------------------------------- | ----------- | --------------------------------------------------------------------------- | -------- |
+| `title`       | `string`                                     | `undefined` | Title of the Header                                                         |          |
+| `subtitle`    | `string`                                     | `undefined` | Subtitle of the Header                                                      |          |
+| `leading`     | `React.ReactNode`                            | `undefined` | leading asset or icon to be placed at the left most side of the ModalHeader |          |
+| `trailing`    | `Badge, Link, Text, IconButton`, `undefined` | undefined   | trailing component to be placed at the right most side of the ModalHeader   |          |
+| `titleSuffix` | `Counter`                                    | `undefined` | A component to be placed adjacent to the title text                         |          |
 
 ### `ModalFooter` API
 > `ModalFooter` API will be similar to [`BottomSheetFooter` API](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/BottomSheet/_decisions/decisions.md#bottomsheetfooter-api).
 
 | Prop       | Type              | Default     | Description                 | Required |
 | ---------- | ----------------- | ----------- | --------------------------- | -------- |
-| `children` | `React.ReactNode` | `undefined` | Contents of the ModalFooter | ✅       |
+| `children` | `React.ReactNode` | `undefined` | Contents of the ModalFooter | ✅        |
 
 ## Behaviors
 ### Modal Closing
@@ -214,8 +214,8 @@ const App = () => {
   - Ref: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
 
 ## Open questions
-- Do we need a different animation for Modal stacking? Yet to explore on design
-- Do we need a back button on Modal Header? Check with design
+- ~Do we need a different animation for Modal stacking?~ We will have a basic animation for Modal stacking.
+- ~Do we need a back button on Modal Header?~ No, we do not.
 
 ## References
 
