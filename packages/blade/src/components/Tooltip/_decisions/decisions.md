@@ -55,7 +55,7 @@ To make tooltip apear on hovering over non-interactive elements such as icons, b
 
 > Note: If users don't wrap the non-interactive elements the tooltip won't apear
 
-## Custom Triggers
+### Custom Triggers
 
 Users will be able to use their own custom components as triggers:
 
