@@ -31,6 +31,16 @@ import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { Box } from '~components/Box';
 
+type ModalProps = {
+  children: React.ReactNode;
+  isOpen: boolean;
+  onDismiss: () => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  initialFocusRef?: React.MutableRefObject<any>;
+  size?: 'small' | 'medium' | 'large';
+  accessibilityLabel?: string;
+};
+
 const entry = keyframes`
   from {
     opacity: 0;
@@ -69,16 +79,6 @@ const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme
   `;
 });
 
-type ModalProps = {
-  children: React.ReactNode;
-  isOpen: boolean;
-  onDismiss: () => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  initialFocusRef?: React.MutableRefObject<any>;
-  size?: 'small' | 'medium' | 'large';
-  accessibilityLabel?: string;
-};
-
 const Modal = ({
   isOpen = false,
   children,
@@ -90,16 +90,19 @@ const Modal = ({
   const { theme } = useTheme();
   const [footerHeight, setFooterHeight] = useState(0);
   const { isMounted, isVisible } = usePresence(isOpen, {
-    transitionDuration: 1000,
+    transitionDuration: theme.motion.duration.xmoderate,
     initialEnter: true,
   });
+
+  // required by floating ui to handle focus
   const { refs, context } = useFloating({
     open: isMounted,
   });
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const defaultInitialFocusRef = React.useRef<any>(null);
-
   const originalFocusElement = React.useRef<HTMLElement | null>(null);
+
   const returnFocus = React.useCallback(() => {
     if (!originalFocusElement.current) return;
     originalFocusElement.current.focus();
@@ -130,10 +133,12 @@ const Modal = ({
   }, [isOpen, focusOnInitialRef]);
 
   React.useEffect(() => {
+    // Return focus to the element that originally had it
     if (!isOpen) {
       returnFocus();
     }
   }, [isOpen, returnFocus]);
+
   const modalContext = React.useMemo(
     () => ({
       isOpen,
@@ -146,10 +151,13 @@ const Modal = ({
     [isOpen, onDismiss, defaultInitialFocusRef, isVisible, footerHeight, setFooterHeight],
   );
   const handleKeyDown = (event: React.KeyboardEvent): void => {
+    // close modal on escape key press
     if (event?.key === 'Escape' || event?.code === 'Escape') {
       onDismiss();
     }
   };
+
+  // Only allow ModalHeader, ModalBody and ModalFooter as children
   const validChildren = React.Children.map(children, (child) => {
     if (
       isValidAllowedChildren(child, MetaConstants.ModalHeader) ||

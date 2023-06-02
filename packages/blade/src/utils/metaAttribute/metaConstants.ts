@@ -40,5 +40,6 @@ export const MetaConstants = {
   ModalBody: 'modal-body',
   ModalHeader: 'modal-header',
   ModalFooter: 'modal-footer',
+  ModalBackdrop: 'modal-backdrop',
   VisuallyHidden: 'visually-hidden',
 } as const;
