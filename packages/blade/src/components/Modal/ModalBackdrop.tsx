@@ -5,23 +5,23 @@ import { FloatingOverlay } from '@floating-ui/react';
 import { useModalContext } from './ModalContext';
 import { MetaConstants, castWebType, makeMotionTime, metaAttribute } from '~utils';
 
-const StyledModalBackdrop = styled(FloatingOverlay)<{ isVisible: boolean }>(
-  ({ theme, isVisible }) => {
-    return {
-      transitionDuration: `${makeMotionTime(theme.motion.duration.xmoderate)}`,
-      transitionTimingFunction: isVisible
-        ? castWebType(theme.motion.easing.entrance.revealing)
-        : castWebType(theme.motion.easing.exit.revealing),
-      pointerEvents: isVisible ? 'all' : 'none',
-      transitionProperty: 'opacity',
-      opacity: isVisible ? 1 : 0,
-      backgroundColor: theme.colors.overlay.background,
-    };
-  },
-);
+const StyledModalBackdrop = styled(FloatingOverlay)(({ theme }) => {
+  const { isVisible } = useModalContext();
+
+  return {
+    transitionDuration: `${makeMotionTime(theme.motion.duration.xmoderate)}`,
+    transitionTimingFunction: isVisible
+      ? castWebType(theme.motion.easing.entrance.revealing)
+      : castWebType(theme.motion.easing.exit.revealing),
+    pointerEvents: isVisible ? 'all' : 'none',
+    transitionProperty: 'opacity',
+    opacity: isVisible ? 1 : 0,
+    backgroundColor: theme.colors.overlay.background,
+  };
+});
 
 const ModalBackdrop = (): React.ReactElement => {
-  const { close, isVisible } = useModalContext();
+  const { close } = useModalContext();
 
   return (
     <StyledModalBackdrop
@@ -29,7 +29,6 @@ const ModalBackdrop = (): React.ReactElement => {
       onClick={() => {
         close();
       }}
-      isVisible={isVisible}
       lockScroll={true}
     />
   );
