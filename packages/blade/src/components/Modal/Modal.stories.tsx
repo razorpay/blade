@@ -65,13 +65,10 @@ const ModalWithHeaderFooterTemplate: ComponentStory<typeof Modal> = ({ size }) =
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
-      <Button onClick={() => setIsOpen(!isOpen)}>Open Modal with Header & Footer</Button>
-      <Modal
-        isOpen={isOpen}
-        onDismiss={() => setIsOpen(false)}
-        size={size}
-        initialFocusRef={buttonRef}
-      >
+      <Button ref={buttonRef} onClick={() => setIsOpen(!isOpen)}>
+        Open Modal with Header & Footer
+      </Button>
+      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size={size}>
         <ModalHeader
           title="Address Details"
           subtitle="Saving addresses will improve your checkout experience"
@@ -88,7 +85,7 @@ const ModalWithHeaderFooterTemplate: ComponentStory<typeof Modal> = ({ size }) =
         <ModalFooter>
           <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
             <Button variant="secondary">Remove address</Button>
-            <Button ref={buttonRef}>Add address</Button>
+            <Button>Add address</Button>
           </Box>
         </ModalFooter>
       </Modal>
