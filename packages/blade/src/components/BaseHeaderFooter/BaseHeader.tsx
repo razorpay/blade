@@ -9,7 +9,13 @@ import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 
 type BaseHeaderProps = {
+  /**
+   * Title of the header
+   */
   title?: string;
+  /**
+   * Subtitle of the header
+   */
   subtitle?: string;
   /**
    * Leading part of the header placed at the left most side of the header

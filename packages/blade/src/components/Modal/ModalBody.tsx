@@ -22,8 +22,8 @@ const OverflowOverlay = styled(BaseBox)<{
   bottom: ${({ footerHeight }) => `${footerHeight}px`};
   background: linear-gradient(
     180deg,
-    ${(props) => props.theme.colors.surface.background.level1} 0%,
-    ${(props) => props.theme.colors.surface.background.level1} 47.66%,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 47.66%,
     #ffffff 115.17%
   );
   height: ${makeSize(scrollOverlayHeight)};
