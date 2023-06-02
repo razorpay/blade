@@ -23,10 +23,30 @@ import BaseBox from '~components/Box/BaseBox';
 describe('<Card />', () => {
   it('should render a plain Card', () => {
     const { toJSON } = renderWithTheme(
-      <Card surfaceLevel={2}>
+      <Card surfaceLevel={3} elevation="highRaised">
         <CardBody>
           <Text>Plain Card</Text>
         </CardBody>
+      </Card>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render a border when elevation is `none`', () => {
+    const { toJSON } = renderWithTheme(
+      <Card elevation="none">
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+      </Card>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render a Card without 0 padding', () => {
+    const { toJSON } = renderWithTheme(
+      <Card padding="spacing.0">
+        <CardBody>Plain Card</CardBody>
       </Card>,
     );
     expect(toJSON()).toMatchSnapshot();
@@ -36,7 +56,7 @@ describe('<Card />', () => {
     const cardTitle = 'Card Header';
     const cardSubtitle = 'Card subtitle';
     const { getByText, toJSON } = renderWithTheme(
-      <Card surfaceLevel={2}>
+      <Card>
         <CardHeader>
           <CardHeaderLeading
             title={cardTitle}
@@ -63,7 +83,7 @@ describe('<Card />', () => {
     const primaryFn = jest.fn();
     const secondaryFn = jest.fn();
     const { getByText, toJSON } = renderWithTheme(
-      <Card surfaceLevel={2}>
+      <Card>
         <CardBody>
           <Text>Plain Card</Text>
         </CardBody>
@@ -106,7 +126,7 @@ describe('<Card />', () => {
     const cardSubtitle = 'Card subtitle';
     expect(() =>
       renderWithTheme(
-        <Card surfaceLevel={2}>
+        <Card>
           <CardHeader>
             <CardHeaderLeading
               title={cardTitle}
@@ -120,7 +140,7 @@ describe('<Card />', () => {
 
     expect(() =>
       renderWithTheme(
-        <Card surfaceLevel={2}>
+        <Card>
           <CardHeader>
             <CardHeaderLeading
               title={cardTitle}
@@ -136,7 +156,7 @@ describe('<Card />', () => {
 
     expect(() =>
       renderWithTheme(
-        <Card surfaceLevel={2}>
+        <Card>
           <CardHeader>
             <CardHeaderTrailing visual={<Badge>NEW</Badge>} />
           </CardHeader>
@@ -233,7 +253,7 @@ describe('<Card />', () => {
 
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(
-      <Card surfaceLevel={2} testID="card-test">
+      <Card testID="card-test">
         <CardBody>
           <Text>Plain Card</Text>
         </CardBody>

@@ -70,7 +70,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
     <View
       style={
         Array [
-          undefined,
+          Object {
+            "shadowColor": "hsla(217,56%,17%,0.64)",
+            "shadowOffset": Object {
+              "height": -18,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 12,
+          },
           Object {
             "flexDirection": "column-reverse",
             "left": 0,
@@ -260,6 +268,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     style={
                       Array [
                         Object {
+                          "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "hsla(218, 89%, 51%, 0)",
                           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -267,11 +276,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           "borderStyle": "solid",
                           "borderWidth": 1,
                           "cursor": "pointer",
+                          "display": "flex",
+                          "justifyContent": "center",
                           "minHeight": 36,
                           "paddingBottom": 0,
                           "paddingLeft": 20,
                           "paddingRight": 20,
                           "paddingTop": 0,
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
                           "width": "100%",
                         },
                         Object {
@@ -609,11 +623,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                       "paddingLeft": 0,
                                       "paddingRight": 0,
                                       "paddingTop": 0,
+                                      "textAlign": "center",
                                       "textDecorationLine": "none",
                                     },
                                     Object {},
                                   ]
                                 }
+                                textAlign="center"
                               >
                                 2
                               </Text>
@@ -677,9 +693,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             "borderRadius": 9999,
                             "display": "flex",
                             "flexWrap": "nowrap",
+                            "textAlign": "left",
                           },
                         ]
                       }
+                      textAlign="left"
                     >
                       <View
                         alignItems="center"

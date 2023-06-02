@@ -1,5 +1,5 @@
-import motion from '../../tokens/global/motion';
 import { makeMotionTime } from '.';
+import { motion } from '~tokens/global';
 
 describe('makeMotionTime', () => {
   it('should return the duration value in `number`', () => {

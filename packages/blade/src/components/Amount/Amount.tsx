@@ -141,7 +141,12 @@ const AmountValue = ({
     );
   }
   return (
-    <BaseText fontSize={amountFontSizes[size]} fontWeight={valueForWeight} color={amountValueColor}>
+    <BaseText
+      fontSize={amountFontSizes[size]}
+      fontWeight={valueForWeight}
+      color={amountValueColor}
+      lineHeight={amountLineHeights[size]}
+    >
       {value}
     </BaseText>
   );

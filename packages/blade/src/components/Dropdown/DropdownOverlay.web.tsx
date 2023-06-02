@@ -8,9 +8,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
-import spacing from '~tokens/global/spacing';
+import { spacing, size } from '~tokens/global';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import size from '~tokens/global/size';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
@@ -61,10 +60,12 @@ type DropdownOverlayProps = {
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const { isOpen, triggererRef, hasLabelOnLeft } = useDropdown();
+  const { isOpen, triggererRef, hasLabelOnLeft, dropdownTriggerer } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
+
+  const isMenu = dropdownTriggerer !== 'SelectInput';
 
   const fadeIn = css`
     animation: ${dropdownFadeIn} ${makeMotionTime(theme.motion.duration.quick)}
@@ -87,6 +88,11 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
 
   // We want to set width of overlay as per width of the SelectInput
   React.useEffect(() => {
+    // We don't set width according to trigger when trigger is Button or other menu trigger
+    if (isMenu) {
+      return undefined;
+    }
+
     const setOverlayWidth = throttle((): void => {
       if (triggererRef.current?.clientWidth && hasLabelOnLeft) {
         const svgWidth: number = size[16];
@@ -122,10 +128,14 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   return (
     <BaseBox position="relative">
       <StyledDropdownOverlay
-        width={width}
+        width={isMenu ? undefined : width}
+        minWidth="240px"
+        // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
+        maxWidth={isMenu ? '400px' : undefined}
+        left={isMenu ? 'spacing.0' : undefined}
+        right={isMenu ? undefined : 'spacing.0'}
         style={styles}
         display={castWebType(display)}
-        right="0px"
         position="absolute"
         transition={isOpen ? fadeIn : fadeOut}
         onAnimationEnd={onAnimationEnd}

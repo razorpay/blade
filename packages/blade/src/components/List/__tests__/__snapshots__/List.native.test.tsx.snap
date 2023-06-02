@@ -680,12 +680,15 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             </Text>
             <View
               data-blade-component="code"
+              isHighlighted={true}
               size="small"
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                    "alignSelf": "center",
+                    "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderRadius": 4,
+                    "display": "flex",
                     "lineHeight": 0,
                     "paddingBottom": 0,
                     "paddingLeft": 4,

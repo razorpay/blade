@@ -1,7 +1,7 @@
 import type { JSXValue } from '~/code/types/Blade';
 
 export const isJSXValueEmpty = (jsxValue: JSXValue): boolean => {
-  if (!jsxValue || !jsxValue.type) return true;
+  if (!jsxValue?.type) return true;
 
   if (
     typeof jsxValue.value === 'undefined' ||

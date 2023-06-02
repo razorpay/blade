@@ -1,24 +1,25 @@
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
+import type { Elevation } from '~tokens/global';
+import { castWebType } from '~utils';
 
-const CardSurface = styled(BaseBox)<{ surfaceLevel: 2 | 3 }>(({ surfaceLevel, theme }) => {
-  const offsetX = theme.shadows.offsetX.level[1];
-  const offsetY = theme.shadows.offsetY.level[1];
-  const blur = theme.shadows.blurRadius.level[1];
-  const shadowColor = theme.shadows.color.level[1];
+const CardSurface = styled(BaseBox)<{ surfaceLevel: 2 | 3; elevation: keyof Elevation }>(
+  ({ surfaceLevel, elevation, theme }) => {
+    const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
 
-  const shadow1 = `${offsetX}px ${offsetY}px ${blur}px 0px ${shadowColor}`;
-  const shadow2 = `0px 0px 1px 0px ${shadowColor}`;
-  const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
-
-  return {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    boxShadow: `${shadow1}, ${shadow2}`,
-    backgroundColor,
-    boxSizing: 'border-box',
-  };
-});
+    return {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      boxShadow: castWebType(theme.elevation[elevation]),
+      borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
+      borderStyle: elevation === 'none' ? 'solid' : undefined,
+      borderColor:
+        elevation === 'none' ? `${theme.colors.surface.border.normal.lowContrast}` : undefined,
+      backgroundColor,
+      boxSizing: 'border-box',
+    };
+  },
+);
 
 export { CardSurface };

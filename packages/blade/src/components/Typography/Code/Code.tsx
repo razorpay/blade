@@ -1,5 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
+import type { BaseTextProps } from '../BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -10,10 +12,13 @@ import {
   MetaConstants,
   makeTypographySize,
 } from '~utils';
-import type { FontSize, Typography } from '~tokens/global/typography';
+import type { FontSize, Typography } from '~tokens/global';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
-export type CodeProps = {
+type CodeCommonProps = {
+  /**
+   * Sets the color of the Heading component.
+   */
   children: StringChildrenType;
   /**
    * Decides the fontSize and padding of Code
@@ -22,11 +27,42 @@ export type CodeProps = {
    */
   size?: 'small' | 'medium';
   weight?: 'regular' | 'bold';
+  isHighlighted?: boolean;
+  color?: BaseTextProps['color'];
 } & TestID &
   StyledPropsBlade;
 
+type CodeHighlightedProps = CodeCommonProps & {
+  /**
+   * Adds background color to highlight the text
+   *
+   * @default true
+   */
+  isHighlighted?: true;
+  /**
+   * color prop can only be added when `isHighlighted` is set to `false`
+   */
+  color?: undefined;
+};
+
+type CodeNonHighlightedProps = CodeCommonProps & {
+  /**
+   * Adds background color to highlight the text
+   *
+   * @default true
+   */
+  isHighlighted: false;
+  /**
+   * color prop to set color of text when `isHighlighted` is set to false
+   */
+  color?: BaseTextProps['color'];
+};
+
+export type CodeProps = CodeHighlightedProps | CodeNonHighlightedProps;
+
 type CodeContainerProps = {
   size: CodeProps['size'];
+  isHighlighted: CodeProps['isHighlighted'];
 };
 
 const platformType = getPlatformType();
@@ -49,14 +85,35 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
   const padding = `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`;
   return {
     padding,
-    backgroundColor: props.theme.colors.brand.gray.a50.lowContrast,
+    backgroundColor: props.isHighlighted
+      ? props.theme.colors.brand.gray.a100.lowContrast
+      : undefined,
     borderRadius: props.theme.border.radius.medium,
-    display: isPlatformWeb ? 'inline-block' : undefined,
+    display: isPlatformWeb ? 'inline-block' : 'flex',
+    alignSelf: isPlatformWeb ? undefined : 'center',
     verticalAlign: 'middle',
     lineHeight: makeTypographySize(props.theme.typography.lineHeights[0]),
   };
 });
 
+const getCodeColor = ({
+  isHighlighted,
+  color,
+}: Pick<CodeProps, 'isHighlighted' | 'color'>): CodeProps['color'] => {
+  if (isHighlighted) {
+    if (color) {
+      throw new Error('[Blade: Code]: `color` prop cannot be used without `isHighlighted={false}`');
+    }
+
+    return 'surface.text.subtle.lowContrast';
+  }
+
+  if (color) {
+    return color;
+  }
+
+  return 'surface.text.normal.lowContrast';
+};
 /**
  * Code component can be used for displaying token, variable names, or inlined code snippets.
  *
@@ -76,32 +133,38 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
  * In React Native, you would have to align it using flex to make sure the Code and the surrounding text is correctly aligned
  *
  * ```tsx
- *  <BaseBox flexWrap="wrap" flexDirection="row" alignItems="flex-start">
+ *  <Box flexWrap="wrap" flexDirection="row" alignItems="flex-start">
  *   <Text>Lorem ipsum </Text>
  *   <Code>SENTRY_TOKEN</Code>
  *   <Text> normal text</Text>
- * </BaseBox>
+ * </Box>
  * ```
  */
-
 const Code = ({
   children,
   size = 'small',
   weight = 'regular',
+  isHighlighted = true,
+  color,
   testID,
   ...styledProps
 }: CodeProps): JSX.Element => {
   const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size);
+  const codeTextColor = React.useMemo<CodeProps['color']>(
+    () => getCodeColor({ isHighlighted, color }),
+    [isHighlighted, color],
+  );
 
   return (
     <CodeContainer
       size={size}
+      isHighlighted={isHighlighted}
       as={isPlatformWeb ? 'span' : undefined}
       {...metaAttribute({ name: MetaConstants.Code, testID })}
       {...getStyledProps(styledProps)}
     >
       <BaseText
-        color="surface.text.subtle.lowContrast"
+        color={codeTextColor}
         fontFamily="code"
         fontSize={fontSize}
         fontWeight={weight}

@@ -7,11 +7,12 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { isReactNative, MetaConstants } from '~utils';
+import { isEmpty, isReactNative, MetaConstants } from '~utils';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { componentIds } from '~components/Dropdown/dropdownUtils';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -35,6 +36,16 @@ type SelectInputProps = Pick<
   | 'testID'
 > & {
   icon?: IconComponent;
+  /**
+   * Controlled value of the Select. Use it in combination of `onChange`.
+   *
+   * Check out [Controlled Dropdown Documentation](https://blade.razorpay.com/?path=/story/components-dropdown-with-select--controlled-dropdown&globals=measureEnabled:false) for example.
+   */
+  value?: string | string[];
+  /**
+   * Used to set the default value of SelectInput when it's uncontrolled. Use `value` instead for controlled SelectInput
+   */
+  defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
 };
 
@@ -56,6 +67,14 @@ const _SelectInput = (
     dropdownTriggerer,
     shouldIgnoreBlurAnimation,
     setHasLabelOnLeft,
+    setSelectedIndices,
+    controlledValueIndices,
+    options,
+    changeCallbackTriggerer,
+    isControlled,
+    setIsControlled,
+    selectionType,
+    selectedIndices,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -64,12 +83,91 @@ const _SelectInput = (
     },
   });
 
-  const { icon, onChange, placeholder = 'Select Option', onBlur, ...baseInputProps } = props;
+  const {
+    icon,
+    onChange,
+    defaultValue,
+    placeholder = 'Select Option',
+    onBlur,
+    ...baseInputProps
+  } = props;
+
+  const getValuesArrayFromIndices = (): string[] => {
+    let indices: number[] = [];
+    if (isControlled) {
+      indices = controlledValueIndices;
+    } else {
+      indices = selectedIndices;
+    }
+
+    return indices.map((selectionIndex) => options[selectionIndex].value);
+  };
+
+  const isFirstRenderRef = React.useRef(true);
+
+  const selectValues = (valuesToSelect: string | string[]): void => {
+    if (options.length > 0) {
+      // we use empty `''` for clearing the input
+      if (isEmpty(valuesToSelect)) {
+        setSelectedIndices([]);
+      } else if (typeof valuesToSelect === 'string') {
+        // single select control
+        const selectedItemIndex = options.findIndex((option) => option.value === valuesToSelect);
+        if (selectedItemIndex >= 0) {
+          setSelectedIndices([selectedItemIndex]);
+        }
+      } else {
+        // multiselect control
+
+        // Handles repeated values in user state
+        const uniqueValues = Array.from(new Set(valuesToSelect));
+        // Handle selectionType single with multiselect values
+        const userValues = selectionType === 'single' ? [valuesToSelect?.[0]] : uniqueValues;
+
+        const selectedItemIndices = userValues
+          .map((optionValue) => options.findIndex((option) => option.value === optionValue))
+          .filter((value) => value >= 0);
+
+        setSelectedIndices(selectedItemIndices);
+      }
+    }
+  };
+
+  // Handles `defaultValue` prop
+  React.useEffect(() => {
+    if (options.length > 0 && props.defaultValue) {
+      selectValues(props.defaultValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [options.length]);
+
+  // Handles `value` prop
+  React.useEffect(() => {
+    if (options.length > 0 && props.value !== undefined) {
+      if (!isControlled) {
+        setIsControlled(true);
+      }
+
+      selectValues(props.value);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.value, options]);
 
   React.useEffect(() => {
-    onChange?.({ name: props.name, values: value.split(', ') });
+    // Ignore calling onChange on mount
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false;
+      return;
+    }
+
+    if (props.onChange && !isFirstRenderRef.current) {
+      props.onChange({
+        name: props.name,
+        values: getValuesArrayFromIndices(),
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, props.name]);
+  }, [changeCallbackTriggerer]);
 
   React.useEffect(() => {
     setHasLabelOnLeft(props.labelPosition === 'left');
@@ -165,7 +263,7 @@ const _SelectInput = (
  */
 
 const SelectInput = assignWithoutSideEffects(React.forwardRef(_SelectInput), {
-  componentId: 'SelectInput',
+  componentId: componentIds.triggers.SelectInput,
 });
 
 export { SelectInput, SelectInputProps };

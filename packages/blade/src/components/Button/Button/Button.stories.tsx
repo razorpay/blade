@@ -15,6 +15,7 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { castWebType } from '~utils';
 
 const Page = (): ReactElement => {
   return (
@@ -192,6 +193,15 @@ TertiaryButton.parameters = {
   },
 };
 
+export const ButtonAsLink = ButtonTemplate.bind({});
+ButtonAsLink.args = {
+  variant: 'primary',
+  children: 'I am Link!',
+  href: 'https://razorpay.com/',
+  target: '_blank',
+  rel: 'noopener noreferrer',
+};
+
 export const DisabledButton = ButtonWithVariantTemplate.bind({});
 DisabledButton.storyName = 'Disabled';
 DisabledButton.args = {
@@ -321,7 +331,7 @@ export const ButtonRef: ComponentStory<typeof ButtonComponent> = () => {
   return (
     <BaseBox gap="spacing.3" display="flex">
       <ButtonComponent ref={buttonRef}>Button</ButtonComponent>
-      <ButtonComponent onClick={() => buttonRef?.current?.focus()}>
+      <ButtonComponent onClick={() => castWebType(buttonRef?.current)?.focus()}>
         Click to focus other button
       </ButtonComponent>
     </BaseBox>

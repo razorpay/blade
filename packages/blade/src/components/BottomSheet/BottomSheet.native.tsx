@@ -8,7 +8,8 @@ import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
 import { Dimensions, AccessibilityInfo, findNodeHandle, View, Keyboard } from 'react-native';
-import { BottomSheetGrabHandle, BottomSheetHeader } from './BottomSheetHeader';
+import { BottomSheetHeader } from './BottomSheetHeader';
+import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { BottomSheetBody } from './BottomSheetBody';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import type { BottomSheetProps } from './types';
@@ -236,6 +237,18 @@ const _BottomSheet = ({
       <DropdownContext.Provider value={dropdownProps}>
         <BottomSheetContext.Provider value={contextValue}>
           <GorhomBottomSheet
+            style={{
+              // this is reverse top elevation of highRaised elevation token
+              shadowColor: 'hsla(217,56%,17%,0.64)',
+              shadowOffset: {
+                width: 0,
+                height: -18,
+              },
+              shadowOpacity: 0.2,
+              shadowRadius: 12,
+              // this fails on andorid because its not handled on GorhomBottomSheet internally, hence tradeoff but its fine because visually this barely makes any difference its that nice design detail
+              // elevation: 40,
+            }}
             enablePanDownToClose
             enableOverDrag
             enableContentPanningGesture

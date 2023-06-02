@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
 import { ComponentIds } from './componentIds';
-import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
 import { useBottomSheetHeaderTrailingRestriction } from './utils';
@@ -51,4 +50,4 @@ const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
   componentId: ComponentIds.BottomSheetHeader,
 });
 
-export { BottomSheetGrabHandle, BottomSheetHeader, BottomSheetHeaderProps };
+export { BottomSheetHeader, BottomSheetHeaderProps };

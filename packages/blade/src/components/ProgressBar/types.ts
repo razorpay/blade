@@ -1,5 +1,5 @@
 import type { ProgressBarVariant } from './ProgressBar';
-import type { DelayString, DurationString, EasingString } from '~tokens/global/motion';
+import type { DelayString, DurationString, EasingString } from '~tokens/global';
 
 type ProgressBarFilledProps = {
   backgroundColor: string;

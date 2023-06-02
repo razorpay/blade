@@ -1,4 +1,4 @@
-import type { DurationString, EasingString } from '~tokens/global/motion';
+import type { DurationString, EasingString } from '~tokens/global';
 
 const dimensions = {
   medium: 16,
