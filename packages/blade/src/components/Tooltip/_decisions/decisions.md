@@ -8,6 +8,8 @@ The tooltip typically provides additional context about the element or its funct
 - [`Tooltip` API](#tooltip-api)
   - [Examples:](#examples)
     - [Usage](#usage)
+  - [Working with non-interactive triggers](#working-with-non-interactive-triggers)
+  - [Custom Triggers](#custom-triggers)
 - [Library](#library)
   - [Bundle Size](#bundle-size)
 - [Implementation detail nuances:](#implementation-detail-nuances)
@@ -79,7 +81,7 @@ import type { TooltipTriggerProps } from "@razorpay/blade/components";
 type MyCustomButtonProps = {} & TooltipTriggerProps
 const MyCustomButton = React.forwardRef(...);
 
-// non-interactive element as trigger
+// custom trigger
 <Tooltip content="Amount reversed to customer bank account" shouldWrapChildren>
   <MyCustomButton>Click me<MyCustomButton>
 </Tooltip>
@@ -106,11 +108,7 @@ This is worth the size becaue:
   - Middlewares
 
 <details>
-  <summary> 
-
-  ## Implementation detail nuances: 
-
-  </summary>
+  <summary>Implementation detail nuances:</summary>
 
 To make FloatingUI work with Blade components seamlessly there are few things we need to modify:
 
