@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { FloatingFocusManager, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
@@ -106,12 +106,21 @@ const Modal = ({
   size = 'small',
   accessibilityLabel,
 }: ModalProps): React.ReactElement => {
-  const { theme } = useTheme();
+  const { theme, platform } = useTheme();
   const [footerHeight, setFooterHeight] = useState(0);
   const { isMounted, isVisible } = usePresence(isOpen, {
     transitionDuration: theme.motion.duration.xmoderate,
     initialEnter: true,
   });
+
+  // Warn consumer if modal is opened on mobile
+  useEffect(() => {
+    if (platform === 'onMobile') {
+      console.warn(
+        '[Blade Modal] Modal is not supported on mobile devices. Please use BottomSheet instead.',
+      );
+    }
+  }, [platform]);
 
   // required by floating ui to handle focus
   const { refs, context } = useFloating({
