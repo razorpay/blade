@@ -8,7 +8,8 @@ import { MetaConstants, assignWithoutSideEffects } from '~utils';
 type ModalFooterProps = Pick<BaseFooterProps, 'children'>;
 
 const _ModalFooter = (props: ModalFooterProps): React.ReactElement => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const containerRef = React.useRef<any>(null);
   const { setFooterHeight } = useModalContext();
   React.useEffect(() => {
     // Set the footer height on mount
