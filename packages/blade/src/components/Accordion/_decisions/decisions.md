@@ -24,7 +24,7 @@ https://github.com/razorpay/blade/assets/6682655/b54eaeb9-7257-4da4-bf3b-89e1078
 
 ## API
 
-Annotated component with props ([figma](https://www.figma.com/file/wzCTQ9kMjWWHKFu7kCzYGi/Accordion-breakdown?type=design&node-id=0-1&t=GfrkTz89y2M46wQN-0)):
+Annotated component with props:
 
 ![Accordion breakdown](./accordion-breakdown.png)
 
