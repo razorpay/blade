@@ -7,7 +7,7 @@
     "node": ">=18.12.1"
   },
   "bin": {
-    "migrate-typography": "./codemods/migrate-typography/cli.js"
+    "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts"
   },
   "repository": {
     "type": "git",
