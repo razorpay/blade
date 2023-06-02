@@ -7,6 +7,7 @@ import { Box } from '~components/Box';
 import { ArgsTable } from '~src/_helpers/storybook/ArgsTable';
 import { List, ListItem } from '~components/List';
 import BaseBox from '~components/Box/BaseBox';
+import { Link } from '~components/Link';
 
 const ModalDocs = (): JSX.Element => {
   return (
@@ -26,6 +27,39 @@ const ModalDocs = (): JSX.Element => {
         <Title size="medium">Playground</Title>
         <Sandbox editorHeight={400}>{Playground}</Sandbox>
       </Box>
+
+      <Title size="medium" marginBottom="spacing.4">
+        ⚠️ Modal for mWeb and React Native
+      </Title>
+      <Text>
+        Modals should not be used on mWeb & React Native Apps. Instead we should use{' '}
+        <Link href="/?path=/story/components-bottomsheet--default">BottomSheet Component</Link> for
+        all the use-cases where you might want a Modal on mWeb or mobile apps built with React
+        Native.
+      </Text>
+      <List>
+        <ListItem>
+          We will not be exposing the Modal component for native apps (this is a design guideline)
+          instead we would encourage our teams be use BottomSheet for mWeb and native apps.
+        </ListItem>
+        <ListItem>
+          Even though usage on mWeb is discouraged by our design guideline, Modal will be responsive
+          and will not visually break till 320px on mWeb.
+        </ListItem>
+        <ListItem>
+          Designers would need to be mindful of this while designing for mWeb and native apps.
+        </ListItem>
+        <ListItem>
+          On Figma, we have added guardrails to ensure that when screenSize is selected Mobile on
+          Figma, Modal component will turn into a BottomSheet component.
+        </ListItem>
+        <ListItem>
+          We are not automatically changing our Modal to BottomSheet on code to avoid bundle size
+          overhead as well as to avoid any flow to break unless mindfully implemented with
+          BottomSheet on code.
+        </ListItem>
+      </List>
+
       <BaseBox id="modal" as="section">
         <Title size="medium" marginBottom="spacing.4">
           Modal
