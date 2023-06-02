@@ -1,4 +1,10 @@
 import React from 'react';
+import { ModalHeader } from './ModalHeader';
+import type { ModalHeaderProps } from './ModalHeader';
+import { ModalFooter } from './ModalFooter';
+import type { ModalFooterProps } from './ModalFooter';
+import { ModalBody } from './ModalBody';
+import type { ModalBodyProps } from './ModalBody';
 import { Text } from '~components/Typography';
 
 type ModalProps = {
@@ -20,5 +26,5 @@ const Modal = (): React.ReactElement => {
   );
 };
 
-export { Modal };
-export type { ModalProps };
+export { Modal, ModalHeader, ModalFooter, ModalBody };
+export type { ModalProps, ModalHeaderProps, ModalFooterProps, ModalBodyProps };
