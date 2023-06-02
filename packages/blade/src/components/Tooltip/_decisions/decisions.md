@@ -75,6 +75,7 @@ To make custom elements work the components needs to expose:
 
 ```jsx
 import type { TooltipTriggerProps } from "@razorpay/blade/components";
+
 type MyCustomButtonProps = {} & TooltipTriggerProps
 const MyCustomButton = React.forwardRef(...);
 
