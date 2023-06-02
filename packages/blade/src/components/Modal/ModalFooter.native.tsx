@@ -1,5 +1,5 @@
 import React from 'react';
-import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
+import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import { Text } from '~components/Typography';
 
 type ModalFooterProps = Pick<BaseFooterProps, 'children'>;

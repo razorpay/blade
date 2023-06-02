@@ -1,5 +1,5 @@
 import React from 'react';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
 import { Text } from '~components/Typography';
 
 type ModalHeaderProps = Pick<

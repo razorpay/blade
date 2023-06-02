@@ -1,6 +1,6 @@
+import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
 import { useModalContext } from './ModalContext';
 import { MetaConstants, assignWithoutSideEffects } from '~utils';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
 type ModalHeaderProps = Pick<
