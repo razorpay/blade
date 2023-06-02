@@ -22,13 +22,14 @@ The tooltip typically provides additional context about the element or its funct
 
 ## `Tooltip` API
 
-| Prop      | Type                                                                     | Default     | Description                                                             | Required |
-| --------- | ------------------------------------------------------------------------ | ----------- | ----------------------------------------------------------------------- | -------- |
-| content   | `string`                                                                 | `undefined` | Content of the tooltip                                                  | ✅       |
-| placement | `top, top-start, top-end, left, right, bottom, bottom-start, bottom-end` | `top`       | Placement of tooltip                                                    | ✅       |
-| children  | `React.ReactNode`                                                        | `undefined` | Trigger component for tooltip, Accepts any interactive element or icons | ✅       |
-| onOpen    | `Callback`                                                               | `undefined` | Called when tooltip is opened                                           |          |
-| onClose   | `Callback`                                                               | `undefined` | Called when tooltip is closed                                           |          |
+| Prop               | Type                                                                     | Default     | Description                                                                                                                                              | Required |
+| ------------------ | ------------------------------------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| content            | `string`                                                                 | `undefined` | Content of the tooltip                                                                                                                                   | ✅       |
+| placement          | `top, top-start, top-end, left, right, bottom, bottom-start, bottom-end` | `top`       | Placement of tooltip                                                                                                                                     | ✅       |
+| shouldWrapChildren | `boolean`                                                                | `false`     | If set to true, the tooltip trigger will be wrapped in a interactive `<div>`, this is useful for making non-interactive elements work as tooltip trigger |          |
+| children           | `React.ReactNode`                                                        | `undefined` | Trigger component for tooltip, Accepts any interactive element or icons                                                                                  | ✅       |
+| onOpen             | `Callback`                                                               | `undefined` | Called when tooltip is opened                                                                                                                            |          |
+| onClose            | `Callback`                                                               | `undefined` | Called when tooltip is closed                                                                                                                            |          |
 
 ### Examples:
 
@@ -38,7 +39,49 @@ The tooltip typically provides additional context about the element or its funct
 // basic example
 <Tooltip content="Amount reversed to customer bank account" placement="top">
   <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
-</Tooltip>;
+</Tooltip>
+```
+
+### Working with non-interactive triggers
+
+To make tooltip apear on hovering over non-interactive elements such as icons, badges, counters etc. We will provide `shouldWrapChildren` prop which will wrap the trigger component in a interactive div element with all the trigger props
+
+```js
+// non-interactive element as trigger
+<Tooltip content="Amount reversed to customer bank account" shouldWrapChildren>
+  <Counter value={100} />
+</Tooltip>
+```
+
+> Note: If users don't wrap the non-interactive elements the tooltip won't apear
+
+## Custom Triggers
+
+Users will be able to use their own custom components as triggers:
+
+To make custom elements work the components needs to expose:
+
+- ref
+- Web:
+  - onBlur
+  - onFocus
+  - onMouseLeave
+  - onMouseMove
+  - onPointerDown
+  - onPointerEnter
+- Native:
+  - onTouchStart
+  - onTouchEnd
+
+```jsx
+import type { TooltipTriggerProps } from "@razorpay/blade/components";
+type MyCustomButtonProps = {} & TooltipTriggerProps
+const MyCustomButton = React.forwardRef(...);
+
+// non-interactive element as trigger
+<Tooltip content="Amount reversed to customer bank account" shouldWrapChildren>
+  <MyCustomButton>Click me<MyCustomButton>
+</Tooltip>
 ```
 
 ## Library
@@ -61,7 +104,12 @@ This is worth the size becaue:
   - Tooltip Arrow
   - Middlewares
 
-## Implementation detail nuances:
+<details>
+  <summary> 
+
+  ## Implementation detail nuances: 
+
+  </summary>
 
 To make FloatingUI work with Blade components seamlessly there are few things we need to modify:
 
@@ -79,6 +127,8 @@ To make FloatingUI work with Blade components seamlessly there are few things we
   - onTouchEnd
 
 2. Expose the actual DOM node from ref instead of only exposing [certain methods via our useBladeInnerRef](https://github.com/razorpay/blade/blob/69a1bcef2f09ceaf6f910eaaca3076055fb059a2/packages/blade/src/hooks/useBladeInnerRef.web.ts#L26-L27) hook which we used to prevent component styling misuses. We need to expose the actual DOM node because FloatingUI internally does this [isElement() check](https://github.com/floating-ui/floating-ui/blob/b8990250568043b876e1c8fe42358fe337847ede/packages/react/src/hooks/useFloating.ts#L59) on the tooltip trigger element.
+
+</details>
 
 ## Motion
 
@@ -103,7 +153,6 @@ Resources:
 
 - Q1: Which components should and should not be qualify as trigger?
 - A1: Discussed with designers, we will allow all elements interactive, non-interactive to be used as triggers (eg, badge, counter, icons) because there can be many genuine usecases which we can't predict.
-
 
 ## References
 
