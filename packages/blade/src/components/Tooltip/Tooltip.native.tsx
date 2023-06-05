@@ -14,6 +14,7 @@ const Tooltip = ({
   onClose,
   onOpen,
   placement = 'left',
+  shouldWrapChildren,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const gap = theme.spacing[2];
@@ -43,16 +44,36 @@ const Tooltip = ({
     onClose?.();
   }, [onClose]);
 
+  // TODO: Do we need shouldWrapChildren in ReactNative?
+  // We won't need to add shouldWrapChildren in RN, We will always wrap the children in a Pressable
+  // Because even if we support direct childrens the tooltip won't behave as expected
+  // In case if a interactive element is passed into it, Since we don't support long press event.
+  // This is inline with design: In mobile if we put tooltip around a interactive element like button
+  // that will be a wrong UX
+  // if (shouldWrapChildren) {
+  //   console.warn('[Blade Tooltip]: `shouldWrapChildren` prop does nothing on ReactNative');
+  // }
+
   return (
     <>
-      <Pressable
-        style={{ alignSelf: 'flex-start' }}
-        onTouchStart={handleOpen}
-        ref={refs.setReference}
-        collapsable={false}
-      >
-        {children}
-      </Pressable>
+      {shouldWrapChildren ? (
+        <Pressable
+          style={{ alignSelf: 'flex-start' }}
+          // using touch end instead of start so that if the the children is interactive
+          // it's events will get triggered also
+          onTouchEnd={handleOpen}
+          ref={refs.setReference}
+          collapsable={false}
+        >
+          {children}
+        </Pressable>
+      ) : (
+        React.cloneElement(children, {
+          onTouchEnd: handleOpen,
+          ref: refs.setReference,
+          style: { alignSelf: 'flex-start' },
+        })
+      )}
       <Modal collapsable={false} transparent visible={isOpen} animationType="fade">
         <TouchableOpacity
           style={{

@@ -170,6 +170,7 @@ const CustomTrigger = React.forwardRef<
       ref={ref}
       tabIndex={0}
       display={isReactNative() ? 'flex' : 'inline-block'}
+      alignSelf="flex-start"
       padding="spacing.4"
       borderRadius="medium"
       backgroundColor="surface.background.level2.lowContrast"

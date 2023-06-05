@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { UseFloatingOptions } from '@floating-ui/react';
-import type { GestureResponderEvent } from 'react-native';
+import type { GestureResponderEvent, NativeSyntheticEvent } from 'react-native';
 import type { Platform } from '~utils';
 
 type TooltipProps = {
@@ -13,19 +14,25 @@ type TooltipProps = {
 
 type TooltipTriggerProps = {
   onBlur?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
+    native: (event: NativeSyntheticEvent<any>) => void;
     web: React.FocusEventHandler;
   }>;
   onFocus?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
+    native: (event: NativeSyntheticEvent<any>) => void;
     web: React.FocusEventHandler;
   }>;
   onMouseLeave?: React.MouseEventHandler;
   onMouseMove?: React.MouseEventHandler;
   onPointerDown?: React.PointerEventHandler;
   onPointerEnter?: React.PointerEventHandler;
-  onTouchStart?: React.TouchEventHandler;
-  onTouchEnd?: React.TouchEventHandler;
+  onTouchStart?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: React.TouchEventHandler;
+  }>;
+  onTouchEnd?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: React.TouchEventHandler;
+  }>;
 };
 
 export { TooltipProps, TooltipTriggerProps };
