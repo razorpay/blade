@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 8.7.0
+
+### Minor Changes
+
+- fc46b240: feat(Code): add `isHighlighted` prop
+- f0b7a66b: feat(Typography): expose `color` from Typography components like `Text`, `Heading`, `Title`, `Code`
+
+### Patch Changes
+
+- b9394c66: fix: update migrate-typography script
+
 ## 8.6.1
 
 ### Patch Changes
