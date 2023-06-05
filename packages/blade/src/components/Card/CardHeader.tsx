@@ -6,7 +6,6 @@ import type { LinkProps } from '../Link';
 import { Link } from '../Link';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
-import { Divider } from './Divider';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
 import BaseBox from '~components/Box/BaseBox';
@@ -25,6 +24,7 @@ import {
 } from '~utils';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { Divider } from '~components/Divider';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
