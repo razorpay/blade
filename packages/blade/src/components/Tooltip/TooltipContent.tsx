@@ -1,23 +1,8 @@
+import type { CSSProperties } from 'react';
 import React from 'react';
-import type { CSSProperties } from 'styled-components';
-import styled from 'styled-components';
-import BaseBox from '~components/Box/BaseBox';
+import { TooltipContentWrapper } from './TooltipContextWrapper';
 import { Text } from '~components/Typography';
-import { makeBorderSize, castWebType, isReactNative } from '~utils';
-
-const TooltipContentWrapper = styled(BaseBox)<{ collapsable?: boolean; styles: CSSProperties }>(
-  ({ theme, styles }) => {
-    return {
-      backgroundColor: theme.colors.brand.gray[200].highContrast,
-      borderWidth: makeBorderSize(theme.border.width.thin),
-      borderRadius: makeBorderSize(theme.border.radius.medium),
-      borderColor: theme.colors.brand.gray[300].highContrast,
-      borderStyle: 'solid',
-      boxShadow: castWebType(theme.elevation.lowRaised),
-      ...styles,
-    };
-  },
-);
+import { isReactNative } from '~utils';
 
 type TooltipContentProps = {
   children: React.ReactNode;
@@ -52,4 +37,5 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
     );
   },
 );
+
 export { TooltipContent };

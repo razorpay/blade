@@ -2,8 +2,8 @@
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
 import { Modal, Pressable, TouchableOpacity } from 'react-native';
-import { TooltipArrow } from './TooltipArrow.native';
-import { TooltipContent } from './TooltipContentWrapper';
+import { TooltipArrow } from './TooltipArrowNative';
+import { TooltipContent } from './TooltipContent';
 import { TooltipProps } from './types';
 import { ARROW_HEIGHT } from './constants';
 import { useTheme } from '~components/BladeProvider';
