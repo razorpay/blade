@@ -152,7 +152,7 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "5.1.2",
     "@testing-library/react-native": "9.1.0",
-    "@testing-library/user-event": "14.4.1",
+    "@testing-library/user-event": "14.4.3",
     "@types/body-scroll-lock": "3.1.0",
     "@types/dedent": "0.7.0",
     "@types/jest": "26.0.23",

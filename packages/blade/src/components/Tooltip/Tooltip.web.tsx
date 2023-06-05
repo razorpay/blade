@@ -103,6 +103,7 @@ const Tooltip = ({
         <TooltipInteractiveWrapper
           tabIndex={0}
           ref={refs.setReference as never}
+          testID="tooltip-interactive-wrapper"
           {...makeAccessible({ label: content })}
           {...getReferenceProps()}
         >
