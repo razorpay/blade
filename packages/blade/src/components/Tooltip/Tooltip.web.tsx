@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
+import type { Side } from '@floating-ui/react';
 import {
   arrow,
   flip,
   FloatingArrow,
   offset,
   shift,
+  useDelayGroup,
+  useDelayGroupContext,
   useFloating,
   useFocus,
   useHover,
@@ -20,9 +23,11 @@ import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible, makeBorderSize } from '~utils';
+import { useId } from '~src/hooks/useId';
 
-const TooltipInteractiveWrapper = styled.span(({ theme }) => {
+const TooltipInteractiveWrapper = styled.div(({ theme }) => {
   return {
+    display: 'inline-block',
     '&:focus': {
       borderRadius: makeBorderSize(theme.border.radius.medium),
       // TODO: Replace with focus outline token
@@ -35,15 +40,21 @@ const TooltipInteractiveWrapper = styled.span(({ theme }) => {
 const Tooltip = ({
   content,
   children,
-  placement,
+  placement = 'top',
   shouldWrapChildren,
   onOpen,
   onClose,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
-  const GAP = theme.spacing[2];
+  const id = useId();
   const [isOpen, setIsOpen] = React.useState(false);
   const arrowRef = React.useRef<SVGSVGElement>(null);
+
+  const GAP = theme.spacing[2];
+  const [side] = placement.split('-') as [Side];
+  const isHorizontal = side === 'left' || side === 'right';
+  const isCrossAxis = side === 'right' || side === 'bottom';
+
   const { refs, floatingStyles, context } = useFloating({
     placement,
     open: isOpen,
@@ -60,23 +71,27 @@ const Tooltip = ({
       flip({ crossAxis: false }),
       shift({ padding: GAP }),
       offset(GAP + ARROW_HEIGHT),
-      arrow({ element: arrowRef }),
+      arrow({
+        element: arrowRef,
+        padding: isHorizontal ? 0 : ARROW_WIDTH,
+      }),
     ],
   });
+
   const { isMounted, styles } = useTransitionStyles(context, {
-    duration: theme.motion.duration.xquick,
+    duration: theme.motion.duration.quick,
     initial: {
       opacity: 0,
+      transform: `translate${isHorizontal ? 'X' : 'Y'}(${isCrossAxis ? -10 : 10}px)`,
     },
   });
 
+  useDelayGroup(context, { id });
+  const { delay } = useDelayGroupContext();
   const hover = useHover(context, {
-    delay: {
-      open: 400,
-      close: 1000,
-    },
+    delay,
+    move: false,
   });
-
   const focus = useFocus(context);
   const role = useRole(context, { role: 'tooltip' });
   const { getReferenceProps, getFloatingProps } = useInteractions([role, hover, focus]);
@@ -96,7 +111,11 @@ const Tooltip = ({
         React.cloneElement(children, { ref: refs.setReference, ...getReferenceProps() })
       )}
       {isMounted && (
-        <BaseBox ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
+        <BaseBox
+          ref={refs.setFloating}
+          style={{ ...floatingStyles, pointerEvents: 'none' }}
+          {...getFloatingProps()}
+        >
           <TooltipContent
             style={styles}
             arrow={
@@ -108,8 +127,6 @@ const Tooltip = ({
                 fill={theme.colors.brand.gray[200].highContrast}
                 stroke={theme.colors.brand.gray[300].highContrast}
                 strokeWidth={theme.border.width.thin}
-                // push the arrow a bit downwards to the border cutoff doesn't show up
-                style={{ marginBottom: -1.5 }}
               />
             }
           >

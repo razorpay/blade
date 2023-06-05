@@ -6,6 +6,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~src/_helpers/types';
 import type { Platform } from '~utils';
+import type { TooltipTriggerProps } from '~components/Tooltip/types';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -233,7 +234,11 @@ type BoxProps = Partial<
     PositionProps &
     GridProps &
     BoxCallbackProps &
-    BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] } & TestID
+    BoxVisualProps & {
+      children?: React.ReactNode | React.ReactNode[];
+      tabIndex?: number;
+    } & TestID &
+    TooltipTriggerProps
 >;
 
 // Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.
@@ -244,8 +249,10 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
     BaseBoxVisualProps & {
       className?: string;
       id?: string;
+      tabIndex?: number;
     }
-  >;
+  > &
+  TooltipTriggerProps;
 
 // ref prop type
 type BoxRefType = Platform.Select<{

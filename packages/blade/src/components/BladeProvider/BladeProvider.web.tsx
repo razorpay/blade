@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
+import { FloatingDelayGroup } from '@floating-ui/react';
 import { ThemeContext } from './useTheme';
 import { useBladeProvider } from './useBladeProvider';
 import type { BladeProviderProps } from './types';
@@ -14,9 +15,11 @@ const BladeProvider = ({
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
-      <StyledComponentThemeProvider theme={theme}>
-        <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
-      </StyledComponentThemeProvider>
+      <FloatingDelayGroup delay={{ open: 400, close: 1000 }}>
+        <StyledComponentThemeProvider theme={theme}>
+          <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
+        </StyledComponentThemeProvider>
+      </FloatingDelayGroup>
     </ThemeContext.Provider>
   );
 };

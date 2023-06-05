@@ -131,6 +131,14 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     onScroll: props.onScroll,
 
     children: props.children,
+    tabIndex: props.tabIndex,
+    onBlur: props.onBlur,
+    onFocus: props.onFocus,
+    onMouseMove: props.onMouseMove,
+    onPointerDown: props.onPointerDown,
+    onPointerEnter: props.onPointerEnter,
+    onTouchEnd: props.onTouchEnd,
+    onTouchStart: props.onTouchStart,
     as: isReactNative() ? undefined : props.as, // as is not supported on react-native
   };
 };
