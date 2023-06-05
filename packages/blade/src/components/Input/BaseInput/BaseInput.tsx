@@ -35,6 +35,25 @@ import type {
 } from '~components/Form/FormTypes';
 import type { TestID } from '~src/_helpers/types';
 
+type CommonAutoCompleteSuggestionTypes =
+  | 'none'
+  | 'name'
+  | 'email'
+  | 'username'
+  | 'password'
+  | 'newPassword'
+  | 'oneTimeCode'
+  | 'telephone'
+  | 'postalCode'
+  | 'countryName'
+  | 'creditCardNumber'
+  | 'creditCardCSC'
+  | 'creditCardExpiry'
+  | 'creditCardExpiryMonth'
+  | 'creditCardExpiryYear';
+
+type WebAutoCompleteSuggestionType = CommonAutoCompleteSuggestionTypes | 'on';
+
 export type BaseInputProps = FormInputLabelProps &
   FormInputValidationProps & {
     /**
@@ -162,37 +181,6 @@ export type BaseInputProps = FormInputLabelProps &
      */
     keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
     /**
-     * determines what autoComplete suggestion type to show
-     *
-     * Internally it'll render platform specific attributes:
-     *
-     * - web: `autocomplete`
-     * - iOS: `textContentType`
-     * - android: `autoComplete`
-     *
-     * **Note:** `generic` autoCompleteSuggestionType becomes
-     * - `none` in Native
-     * - `on` in Web
-     *
-     */
-    autoCompleteSuggestionType?:
-      | 'none'
-      | 'name'
-      | 'email'
-      | 'username'
-      | 'password'
-      | 'newPassword'
-      | 'oneTimeCode'
-      | 'telephone'
-      | 'postalCode'
-      | 'countryName'
-      | 'creditCardNumber'
-      | 'creditCardCSC'
-      | 'creditCardExpiry'
-      | 'creditCardExpiryMonth'
-      | 'creditCardExpiryYear'
-      | 'generic';
-    /**
      * Element to be rendered on the trailing slot of input field label
      */
     trailingHeaderSlot?: (value?: string) => ReactNode;
@@ -254,19 +242,41 @@ export type BaseInputProps = FormInputLabelProps &
        * The callback function to be invoked when the value of the input field is submitted.
        */
       onSubmit?: FormInputOnEvent;
+      /**
+       * determines what autoComplete suggestion type to show
+       *
+       * Internally it'll render platform specific attributes:
+       *
+       * - web: `autocomplete`
+       * - iOS: `textContentType`
+       * - android: `autoComplete`
+       *
+       */
+      autoCompleteSuggestionType?: CommonAutoCompleteSuggestionTypes;
     };
     web: {
       /**
        * This is a react-native only prop and has no effect on web.
        */
       onSubmit?: undefined;
+      /**
+       * determines what autoComplete suggestion type to show
+       *
+       * Internally it'll render platform specific attributes:
+       *
+       * - web: `autocomplete`
+       * - iOS: `textContentType`
+       * - android: `autoComplete`
+       *
+       */
+      autoCompleteSuggestionType?: WebAutoCompleteSuggestionType;
     };
   }> &
   StyledPropsBlade;
 
 const autoCompleteSuggestionTypeValues = [
   'none',
-  'generic',
+  'on',
   'name',
   'email',
   'username',

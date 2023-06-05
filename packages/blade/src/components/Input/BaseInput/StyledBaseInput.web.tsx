@@ -66,7 +66,7 @@ const StyledBaseNativeButton = styled.button<
 
 const autoCompleteSuggestionTypeMap = {
   none: 'off',
-  generic: 'on',
+  on: 'on',
   name: 'name',
   email: 'email',
   username: 'username',
@@ -134,8 +134,6 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
       : undefined,
   };
-
-  console.log('HEREEE', commonProps.autoComplete, autoCompleteSuggestionType);
 
   return props.as === 'button' ? (
     <StyledBaseNativeButton
