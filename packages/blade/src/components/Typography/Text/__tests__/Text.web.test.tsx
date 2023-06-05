@@ -29,6 +29,14 @@ describe('<Text />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Text with color', () => {
+    const displayText = 'Displaying some text';
+    const { container } = renderWithTheme(
+      <Text color="action.text.link.default">{displayText}</Text>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render Text with variant "caption"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(

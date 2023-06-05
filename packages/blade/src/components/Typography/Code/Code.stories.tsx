@@ -46,6 +46,7 @@ const CodeStoryMeta: Meta = {
     size: 'small',
     weight: 'regular',
     children: 'SENTRY_AUTH_TOKEN',
+    isHighlighted: true,
   },
   parameters: {
     docs: {
@@ -70,12 +71,24 @@ const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
 export default CodeStoryMeta;
 export const Code = CodeTemplate.bind({});
 
+export const WithBoldColor = CodeTemplate.bind({});
+WithBoldColor.args = {
+  color: 'feedback.positive.action.text.primary.default.lowContrast',
+  isHighlighted: false,
+  weight: 'bold',
+};
+
 export const SizeMedium = (): JSX.Element => {
   return <CodeComponent size="medium">mediumCode</CodeComponent>;
 };
 
 export const SizeSmall = (): JSX.Element => {
   return <CodeComponent size="small">smallCode</CodeComponent>;
+};
+
+export const NonHighlighted = CodeTemplate.bind({});
+NonHighlighted.args = {
+  isHighlighted: false,
 };
 
 export const ParagraphUse = (): JSX.Element => {

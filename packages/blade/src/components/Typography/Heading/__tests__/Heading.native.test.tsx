@@ -13,6 +13,15 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render Heading with color', () => {
+    const displayText = 'Get Started With Payment Gateway';
+    const { toJSON, getByText } = renderWithTheme(
+      <Heading color="surface.text.placeholder.lowContrast">{displayText}</Heading>,
+    );
+    expect(getByText(displayText)).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Heading with size "small" and contrast "high"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
