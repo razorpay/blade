@@ -18,7 +18,7 @@ import {
 import React from 'react';
 import styled from 'styled-components';
 import { TooltipProps } from './types';
-import { TooltipContent } from './TooltipContentWrapper';
+import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';

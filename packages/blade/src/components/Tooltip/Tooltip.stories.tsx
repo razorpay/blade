@@ -12,6 +12,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { List, ListItem } from '~components/List';
+import { isReactNative } from '~utils';
 
 export default {
   title: 'Components/Tooltip',
@@ -63,12 +64,13 @@ const PlacementBox = React.forwardRef<
 });
 
 const PlacementTemplate: ComponentStory<typeof TooltipComponent> = () => {
+  // fix syling of this in RN
   return (
     <Center>
       <Box
         width="60%"
         display="flex"
-        justifyContent="spacing-between"
+        justifyContent="space-between"
         flexWrap="wrap"
         gap="spacing.4"
       >
@@ -167,7 +169,7 @@ const CustomTrigger = React.forwardRef<
     <Box
       ref={ref}
       tabIndex={0}
-      display="inline-block"
+      display={isReactNative() ? 'flex' : 'inline-block'}
       padding="spacing.4"
       borderRadius="medium"
       backgroundColor="surface.background.level2.lowContrast"
