@@ -47,13 +47,21 @@ const Tooltip = ({
     <>
       <Pressable
         style={{ alignSelf: 'flex-start' }}
-        onTouchStart={handleOpen}
+        // TODO: check if we need onPress or onTouchStart
+        onPress={handleOpen}
         ref={refs.setReference}
         collapsable={false}
+        testID="tooltip-interactive-wrapper"
       >
         {children}
       </Pressable>
-      <Modal collapsable={false} transparent visible={isOpen} animationType="fade">
+      <Modal
+        accessibilityLabel={content}
+        collapsable={false}
+        transparent
+        visible={isOpen}
+        animationType="fade"
+      >
         <TouchableOpacity
           style={{
             flexShrink: 0,
@@ -61,6 +69,7 @@ const Tooltip = ({
           }}
           onPress={handleClose}
           activeOpacity={1}
+          testID="tooltip-modal-backdrop"
         >
           <TooltipContent
             ref={refs.setFloating}
