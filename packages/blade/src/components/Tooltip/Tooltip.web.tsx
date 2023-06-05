@@ -24,15 +24,16 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible, makeBorderSize } from '~utils';
 import { useId } from '~src/hooks/useId';
+import { Box } from '~components/Box';
 
-const TooltipInteractiveWrapper = styled.div(({ theme }) => {
+const TooltipInteractiveWrapper = styled(Box)((props) => {
   return {
     display: 'inline-block',
     '&:focus': {
-      borderRadius: makeBorderSize(theme.border.radius.medium),
+      borderRadius: makeBorderSize(props.theme.border.radius.medium),
       // TODO: Replace with focus outline token
-      outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+      outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
+      boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
     },
   };
 });
@@ -101,7 +102,7 @@ const Tooltip = ({
       {shouldWrapChildren ? (
         <TooltipInteractiveWrapper
           tabIndex={0}
-          ref={refs.setReference}
+          ref={refs.setReference as never}
           {...makeAccessible({ label: content })}
           {...getReferenceProps()}
         >
