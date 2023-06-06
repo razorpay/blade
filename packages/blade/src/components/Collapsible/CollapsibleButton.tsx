@@ -16,7 +16,7 @@ type CollapsibleButtonProps = Pick<
   | 'children'
 >;
 
-// todo: ask anurag about this type problem
+// TODO: ask anurag about this type problem
 
 const CollapsibleButton = ({
   children,

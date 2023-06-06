@@ -1,8 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 import { useState, useMemo } from 'react';
 
-import { CollapsibleButton } from './CollapsibleButton';
-import { CollapsibleBody } from './CollapsibleBody';
 import type { CollapsibleContextState } from './CollapsibleContext';
 import { CollapsibleContext } from './CollapsibleContext';
 import BaseBox from '~components/Box/BaseBox';
@@ -25,7 +23,7 @@ type CollapsibleProps = {
   /**
    * Expands the collapsible content by default (uncontrolled)
    *
-   * @default true
+   * @default false
    */
   defaultIsExpanded: boolean;
 
@@ -48,7 +46,7 @@ type CollapsibleProps = {
 const Collapsible = ({
   children,
   direction = 'bottom',
-  defaultIsExpanded = true,
+  defaultIsExpanded = false,
   isExpanded,
   onChange,
   testID,
@@ -60,21 +58,26 @@ const Collapsible = ({
     () => ({
       isExpanded: isBodyExpanded,
       setIsExpanded: setIsBodyExpanded,
+      defaultIsExpanded,
     }),
-    [isBodyExpanded],
+    [isBodyExpanded, defaultIsExpanded],
   );
 
   return (
     <CollapsibleContext.Provider value={contextValue}>
-      <BaseBox display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
-        <CollapsibleButton>Toggle me</CollapsibleButton>
-        <CollapsibleBody />
+      <BaseBox
+        display="flex"
+        flexDirection={direction === 'bottom' ? 'column' : 'column-reverse'}
+        gap="spacing.5"
+        alignItems="flex-start"
+      >
         {children}
       </BaseBox>
     </CollapsibleContext.Provider>
   );
 };
 
-// todo - handle meta attributes, styled props
+// TODO: - handle meta attributes, styled props
+// TODO: - handle valid children checks
 
 export { Collapsible, CollapsibleProps };

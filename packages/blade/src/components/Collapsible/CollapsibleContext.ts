@@ -3,6 +3,7 @@ import { createContext, useContext } from 'react';
 
 type CollapsibleContextState = {
   isExpanded: boolean;
+  defaultIsExpanded: boolean;
   setIsExpanded: Dispatch<SetStateAction<boolean>>;
 };
 
@@ -10,7 +11,8 @@ type CollapsibleContextState = {
 const noop = (): void => {};
 
 const CollapsibleContext = createContext<CollapsibleContextState>({
-  isExpanded: true,
+  isExpanded: false,
+  defaultIsExpanded: false,
   setIsExpanded: noop,
 });
 
