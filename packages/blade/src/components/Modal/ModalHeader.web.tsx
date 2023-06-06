@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
 import { useModalContext } from './ModalContext';
-import { MetaConstants, assignWithoutSideEffects, makeSize } from '~utils';
+import { MetaConstants, assignWithoutSideEffects } from '~utils';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
 type ModalHeaderProps = Pick<
