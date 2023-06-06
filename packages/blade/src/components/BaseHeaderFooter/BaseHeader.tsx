@@ -4,11 +4,9 @@ import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/sr
 import { Divider } from './Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
-import { assignWithoutSideEffects, isReactNative, makeSize, metaAttribute } from '~utils';
+import { assignWithoutSideEffects, isReactNative, metaAttribute } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
-import { size } from '~tokens/global';
-import { useTheme } from '~components/BladeProvider';
 
 type BaseHeaderProps = {
   title?: string;
@@ -75,7 +73,6 @@ const _BaseHeader = ({
   onPointerUp,
   metaDataComponentName,
 }: BaseHeaderProps): React.ReactElement => {
-  const { theme } = useTheme();
   const webOnlyEventHandlers = isReactNative()
     ? {}
     : {
@@ -89,106 +86,77 @@ const _BaseHeader = ({
         onPointerUp,
       };
 
-  const isHeaderEmpty = !title && !subtitle && !leading && !trailing && !titleSuffix;
-
   return (
     <BaseBox {...metaAttribute({ name: metaDataComponentName })}>
-      {isHeaderEmpty ? (
-        <BaseBox
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          position="absolute"
-          right="spacing.5"
-          top="spacing.5"
-          width={makeSize(size[28])}
-          height={makeSize(size[28])}
-          flexShrink={0}
-          backgroundColor={theme.colors.surface.background.level2.lowContrast}
-          borderRadius="max"
-          zIndex={1000}
-        >
-          <IconButton
-            ref={closeButtonRef}
-            size="large"
-            icon={CloseIcon}
-            accessibilityLabel="Close"
-            onClick={() => onCloseButtonClick?.()}
-          />
-        </BaseBox>
-      ) : (
-        <>
+      <BaseBox
+        marginTop="spacing.4"
+        marginBottom="spacing.5"
+        paddingLeft="spacing.5"
+        paddingRight="spacing.5"
+        touchAction="none"
+        {...webOnlyEventHandlers}
+      >
+        <BaseBox display="flex" flexDirection="row" alignItems="center" userSelect="none">
+          {showBackButton ? (
+            <BaseBox overflow="visible" marginRight="spacing.5">
+              <IconButton
+                size="large"
+                icon={ChevronLeftIcon}
+                onClick={() => onBackButtonClick?.()}
+                accessibilityLabel="Back"
+              />
+            </BaseBox>
+          ) : null}
           <BaseBox
-            marginTop="spacing.4"
-            marginBottom="spacing.5"
-            paddingLeft="spacing.5"
             paddingRight="spacing.5"
-            touchAction="none"
-            {...webOnlyEventHandlers}
+            marginRight="auto"
+            flex="auto"
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
           >
-            <BaseBox display="flex" flexDirection="row" alignItems="center" userSelect="none">
-              {showBackButton ? (
-                <BaseBox overflow="visible" marginRight="spacing.5">
-                  <IconButton
-                    size="large"
-                    icon={ChevronLeftIcon}
-                    onClick={() => onBackButtonClick?.()}
-                    accessibilityLabel="Back"
-                  />
-                </BaseBox>
-              ) : null}
+            {leading ? (
               <BaseBox
-                paddingRight="spacing.5"
-                marginRight="auto"
-                flex="auto"
-                display="flex"
-                flexDirection="row"
+                width="spacing.8"
+                height="spacing.8"
+                flexShrink={0}
+                marginRight="spacing.3"
+                justifyContent="center"
                 alignItems="center"
+                display="flex"
               >
-                {leading ? (
-                  <BaseBox
-                    width="spacing.8"
-                    height="spacing.8"
-                    flexShrink={0}
-                    marginRight="spacing.3"
-                    justifyContent="center"
-                    alignItems="center"
-                    display="flex"
-                  >
-                    {leading}
-                  </BaseBox>
-                ) : null}
-                <BaseBox>
-                  <BaseBox flexShrink={0} display="flex" flexDirection="row" alignItems="center">
-                    {title ? (
-                      <Heading size="small" variant="regular" type="normal">
-                        {title}
-                      </Heading>
-                    ) : null}
-                    {titleSuffix && <BaseBox marginLeft="spacing.3">{titleSuffix}</BaseBox>}
-                  </BaseBox>
-                  {subtitle ? (
-                    <Text variant="body" size="small" weight="regular">
-                      {subtitle}
-                    </Text>
-                  ) : null}
-                </BaseBox>
+                {leading}
               </BaseBox>
-              {trailing ? <BaseBox marginRight="spacing.5">{trailing}</BaseBox> : null}
-              {showCloseButton ? (
-                <IconButton
-                  ref={closeButtonRef}
-                  size="large"
-                  icon={CloseIcon}
-                  accessibilityLabel="Close"
-                  onClick={() => onCloseButtonClick?.()}
-                />
+            ) : null}
+            <BaseBox>
+              <BaseBox flexShrink={0} display="flex" flexDirection="row" alignItems="center">
+                {title ? (
+                  <Heading size="small" variant="regular" type="normal">
+                    {title}
+                  </Heading>
+                ) : null}
+                {titleSuffix && <BaseBox marginLeft="spacing.3">{titleSuffix}</BaseBox>}
+              </BaseBox>
+              {subtitle ? (
+                <Text variant="body" size="small" weight="regular">
+                  {subtitle}
+                </Text>
               ) : null}
             </BaseBox>
           </BaseBox>
-          {showDivider ? <Divider /> : null}
-        </>
-      )}
+          {trailing ? <BaseBox marginRight="spacing.5">{trailing}</BaseBox> : null}
+          {showCloseButton ? (
+            <IconButton
+              ref={closeButtonRef}
+              size="large"
+              icon={CloseIcon}
+              accessibilityLabel="Close"
+              onClick={() => onCloseButtonClick?.()}
+            />
+          ) : null}
+        </BaseBox>
+      </BaseBox>
+      {showDivider ? <Divider /> : null}
     </BaseBox>
   );
 };

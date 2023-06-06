@@ -4,11 +4,11 @@ import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
 import { useBottomSheetHeaderTrailingRestriction } from './utils';
+import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects, makeSize, metaAttribute } from '~utils';
+import { assignWithoutSideEffects, metaAttribute } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
-import { size } from '~tokens/global';
 
 const _BottomSheetHeader = ({
   title,
@@ -38,30 +38,24 @@ const _BottomSheetHeader = ({
       {...metaAttribute({ name: ComponentIds.BottomSheetHeader })}
     >
       {isHeaderEmpty ? (
-        <BaseBox
-          position="relative"
-          // bottomsheet empty header suppose to be 28px in height
-          // the grab handle height is 20px & here we are adding 8px
-          // total = 28px
-          height={makeSize(size[8])}
-          touchAction="none"
+        <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />
+      ) : (
+        <BaseHeader
+          title={title}
+          subtitle={subtitle}
+          leading={leading}
+          trailing={validatedTrailingComponent}
+          titleSuffix={titleSuffix}
+          // back button
+          closeButtonRef={defaultInitialFocusRef}
+          showBackButton={showBackButton}
+          onBackButtonClick={onBackButtonClick}
+          // close button
+          showCloseButton={true}
+          onCloseButtonClick={close}
+          {...bind?.()}
         />
-      ) : null}
-      <BaseHeader
-        title={title}
-        subtitle={subtitle}
-        leading={leading}
-        trailing={validatedTrailingComponent}
-        titleSuffix={titleSuffix}
-        // back button
-        closeButtonRef={defaultInitialFocusRef}
-        showBackButton={showBackButton}
-        onBackButtonClick={onBackButtonClick}
-        // close button
-        showCloseButton={true}
-        onCloseButtonClick={close}
-        {...bind?.()}
-      />
+      )}
     </BaseBox>
   );
 };
