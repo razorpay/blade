@@ -15,7 +15,7 @@ const BladeProvider = ({
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
-      <FloatingDelayGroup delay={{ open: 400, close: 1000 }}>
+      <FloatingDelayGroup delay={{ open: 300, close: 300 }}>
         <StyledComponentThemeProvider theme={theme}>
           <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
         </StyledComponentThemeProvider>

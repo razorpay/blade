@@ -5,7 +5,10 @@ import type { Platform } from '~utils';
 
 type TooltipProps = {
   content: string;
-  placement?: UseFloatingOptions['placement'];
+  placement?: Exclude<
+    UseFloatingOptions['placement'],
+    'left-end' | 'left-start' | 'right-end' | 'right-start'
+  >;
   children: React.ReactElement;
   shouldWrapChildren?: boolean;
   onOpen?: () => void;
