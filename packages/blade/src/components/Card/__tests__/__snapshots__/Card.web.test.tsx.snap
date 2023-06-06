@@ -637,12 +637,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c19 {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-}
-
 .c10 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
@@ -657,6 +651,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.c19 {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: hsla(216,15%,54%,0.18);
 }
 
 <div>
