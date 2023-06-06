@@ -12,7 +12,7 @@ const createModalRootWrapper = (id: string): HTMLElement => {
 };
 
 const ModalPortal = ({ children }: ModalPortalProps): React.ReactElement => {
-  const wrapperID = 'modal-root-portal';
+  const wrapperID = 'blade-modal-root-portal';
   let element = document.getElementById(wrapperID);
   if (!element) {
     element = createModalRootWrapper(wrapperID);

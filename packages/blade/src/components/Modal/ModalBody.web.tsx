@@ -89,7 +89,7 @@ const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {
       onScroll={hideOverlayOnScrollEnd}
     >
       <OverflowOverlay
-        {...metaAttribute({ name: 'modal-scroll-overlay' })}
+        {...metaAttribute({ name: MetaConstants.ModalScrollOverlay })}
         scrollbarWidth={scrollbarWidth}
         footerHeight={footerHeight}
         showOverlay={hasScrollbar && !scrollEnd}
