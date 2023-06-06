@@ -2,11 +2,13 @@ import type { ReactElement } from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { Linking } from 'react-native';
 import styled from 'styled-components/native';
+import React from 'react';
 import type { StyledBaseLinkProps } from './types';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import { useStyledProps } from '~components/Box/styledProps';
 import type { TooltipTriggerProps } from '~components/Tooltip/types';
 import { castNativeType } from '~utils';
+import type { BladeElementRef } from '~src/hooks/types';
 
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);
@@ -28,54 +30,63 @@ const openURL = async (href: string): Promise<void> => {
   }
 };
 
-const StyledLink = ({
-  variant,
-  disabled,
-  href,
-  onClick,
-  children,
-  setCurrentInteraction,
-  accessibilityProps,
-  // @ts-expect-error avoid exposing to public
-  style,
-  testID,
-  hitSlop,
-  onTouchStart,
-  onTouchEnd,
-}: StyledBaseLinkProps & TooltipTriggerProps & { children: React.ReactNode }): ReactElement => {
-  const handleOnPress = (event: GestureResponderEvent): void => {
-    if (href && variant === 'anchor') {
-      void openURL(href);
-    }
+const StyledLink = React.forwardRef<
+  BladeElementRef,
+  StyledBaseLinkProps & TooltipTriggerProps & { children: React.ReactNode }
+>(
+  (
+    {
+      variant,
+      disabled,
+      href,
+      onClick,
+      children,
+      setCurrentInteraction,
+      accessibilityProps,
+      // @ts-expect-error avoid exposing to public
+      style,
+      testID,
+      hitSlop,
+      onTouchStart,
+      onTouchEnd,
+    },
+    ref,
+  ): ReactElement => {
+    const handleOnPress = (event: GestureResponderEvent): void => {
+      if (href && variant === 'anchor') {
+        void openURL(href);
+      }
 
-    if (onClick) {
-      /*
+      if (onClick) {
+        /*
       React Native's Pressable's onClick returns a GestureResponderEvent but our types expect a SyntheticEvent.
       Until we have a way to handle platform specific types, we will have to ignore this TS error.
       */
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-expect-error
-      onClick(event);
-    }
-  };
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-expect-error
+        onClick(event);
+      }
+    };
 
-  return (
-    <StyledNativeLink
-      {...accessibilityProps}
-      disabled={disabled}
-      onPress={handleOnPress}
-      onPressIn={(): void => setCurrentInteraction('active')}
-      onPressOut={(): void => setCurrentInteraction('default')}
-      onTouchStart={castNativeType(onTouchStart)}
-      onTouchEnd={castNativeType(onTouchEnd)}
-      style={style}
-      testID={testID}
-      hitSlop={hitSlop}
-      collapsable={false}
-    >
-      {children}
-    </StyledNativeLink>
-  );
-};
+    return (
+      <StyledNativeLink
+        {...accessibilityProps}
+        ref={ref as never}
+        disabled={disabled}
+        onPress={handleOnPress}
+        onPressIn={(): void => setCurrentInteraction('active')}
+        onPressOut={(): void => setCurrentInteraction('default')}
+        onTouchStart={castNativeType(onTouchStart)}
+        onTouchEnd={castNativeType(onTouchEnd)}
+        style={style}
+        testID={testID}
+        hitSlop={hitSlop}
+        collapsable={false}
+      >
+        {children}
+      </StyledNativeLink>
+    );
+  },
+);
 
 export default StyledLink;

@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import { makeBorderSize, castWebType } from '~utils';
+import { makeBorderSize, castWebType, isReactNative } from '~utils';
 
 const getTooltipContentWrapperStyles = ({
   theme,
@@ -16,7 +16,8 @@ const getTooltipContentWrapperStyles = ({
     borderRadius: makeBorderSize(theme.border.radius.medium),
     borderColor: theme.colors.brand.gray[300].highContrast,
     borderStyle: 'solid',
-    boxShadow: castWebType(theme.elevation.lowRaised),
+    // TODO: fix RN shadow
+    boxShadow: isReactNative() ? undefined : castWebType(theme.elevation.lowRaised),
     ...styles,
   };
 };

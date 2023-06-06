@@ -21,7 +21,7 @@ export default {
 
 const Center = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Box height="100%" display="flex" alignItems="center" justifyContent="center">
+    <Box width="100%" height="100%" display="flex" alignItems="center" justifyContent="center">
       {children}
     </Box>
   );
@@ -51,11 +51,11 @@ const PlacementBox = React.forwardRef<
       display="flex"
       justifyContent="center"
       alignItems="center"
-      flex={1}
+      flex={isReactNative() ? undefined : 1}
+      width={isReactNative() ? '40%' : '100%'}
       flexShrink={0}
-      flexBasis="25%"
       padding="spacing.5"
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.level3.lowContrast"
       {...props}
     >
       <Text contrast="low">{children}</Text>
@@ -64,64 +64,74 @@ const PlacementBox = React.forwardRef<
 });
 
 const PlacementTemplate: ComponentStory<typeof TooltipComponent> = () => {
-  // fix syling of this in RN
+  const tooltipContent = 'Hello world';
+
+  if (isReactNative()) {
+    return (
+      <Center>
+        <Box alignItems="center" justifyContent="center" flexDirection="row" flexWrap="wrap">
+          <TooltipComponent placement="top-start" content={tooltipContent}>
+            <PlacementBox>top-start</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="left" content={tooltipContent}>
+            <PlacementBox>left</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="bottom-start" content={tooltipContent}>
+            <PlacementBox>bottom-start</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="top" content={tooltipContent}>
+            <PlacementBox>top</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="bottom" content={tooltipContent}>
+            <PlacementBox>bottom</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="top-end" content={tooltipContent}>
+            <PlacementBox>top-end</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="right" content={tooltipContent}>
+            <PlacementBox>right</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="bottom-end" content={tooltipContent}>
+            <PlacementBox>bottom-end</PlacementBox>
+          </TooltipComponent>
+        </Box>
+      </Center>
+    );
+  }
+
   return (
     <Center>
-      <Box
-        width="60%"
-        display="flex"
-        justifyContent="space-between"
-        flexWrap="wrap"
-        gap="spacing.4"
-      >
-        <TooltipComponent placement="top-start" content="Hello world">
-          <PlacementBox>top-start</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent placement="top" content="Hello world">
-          <PlacementBox>top</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent placement="top-end" content="Hello world">
-          <PlacementBox>top-end</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent
-          placement="left-start"
-          content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        >
-          <PlacementBox>left-start</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent placement="right" content="Hello world">
-          <PlacementBox>right</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent
-          placement="right-start"
-          content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        >
-          <PlacementBox>right-start</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent
-          placement="left-end"
-          content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        >
-          <PlacementBox>left-end</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent placement="left" content="Hello world">
-          <PlacementBox>left</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent
-          placement="right-end"
-          content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        >
-          <PlacementBox>right-end</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent placement="bottom-start" content="Hello world">
-          <PlacementBox>bottom-start</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent placement="bottom" content="Hello world">
-          <PlacementBox>bottom</PlacementBox>
-        </TooltipComponent>
-        <TooltipComponent placement="bottom-end" content="Hello world">
-          <PlacementBox>bottom-end</PlacementBox>
-        </TooltipComponent>
+      <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap="spacing.4">
+        <Box display="flex" alignItems="center" flexDirection="column" gap="spacing.4">
+          <TooltipComponent placement="top-start" content={tooltipContent}>
+            <PlacementBox>top-start</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="left" content={tooltipContent}>
+            <PlacementBox>left</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="bottom-start" content={tooltipContent}>
+            <PlacementBox>bottom-start</PlacementBox>
+          </TooltipComponent>
+        </Box>
+        <Box display="flex" alignItems="center" flexDirection="column" gap="spacing.4">
+          <TooltipComponent placement="top" content={tooltipContent}>
+            <PlacementBox>top</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="bottom" content={tooltipContent}>
+            <PlacementBox>bottom</PlacementBox>
+          </TooltipComponent>
+        </Box>
+        <Box display="flex" alignItems="center" flexDirection="column" gap="spacing.4">
+          <TooltipComponent placement="top-end" content={tooltipContent}>
+            <PlacementBox>top-end</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="right" content={tooltipContent}>
+            <PlacementBox>right</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="bottom-end" content={tooltipContent}>
+            <PlacementBox>bottom-end</PlacementBox>
+          </TooltipComponent>
+        </Box>
       </Box>
     </Center>
   );
@@ -142,7 +152,7 @@ const TooltipTriggersTemplate = () => {
             Hover
           </Link>
         </TooltipComponent>
-        <TooltipComponent placement="top" content="Hello world">
+        <TooltipComponent placement="top-end" content="Hello world">
           <IconButton onClick={() => console.log(1)} icon={InfoIcon} accessibilityLabel="Info" />
         </TooltipComponent>
         <TooltipComponent
@@ -170,6 +180,7 @@ const CustomTrigger = React.forwardRef<
       ref={ref}
       tabIndex={0}
       display={isReactNative() ? 'flex' : 'inline-block'}
+      alignSelf="flex-start"
       padding="spacing.4"
       borderRadius="medium"
       backgroundColor="surface.background.level2.lowContrast"

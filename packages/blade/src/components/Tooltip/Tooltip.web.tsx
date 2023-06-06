@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import type { Side } from '@floating-ui/react';
+import type { Alignment, Side } from '@floating-ui/react';
 import {
+  FloatingPortal,
   arrow,
   flip,
   FloatingArrow,
   offset,
-  shift,
   useDelayGroup,
   useDelayGroupContext,
   useFloating,
@@ -52,13 +52,15 @@ const Tooltip = ({
   const arrowRef = React.useRef<SVGSVGElement>(null);
 
   const GAP = theme.spacing[2];
-  const [side] = placement.split('-') as [Side];
+  const [side, alignment] = placement.split('-') as [Side, Alignment];
   const isHorizontal = side === 'left' || side === 'right';
   const isCrossAxis = side === 'right' || side === 'bottom';
+  const hasAlignment = alignment === 'start' || alignment === 'end';
 
   const { refs, floatingStyles, context } = useFloating({
     placement,
     open: isOpen,
+    strategy: 'fixed',
     onOpenChange: (open) => {
       if (open) {
         setIsOpen(true);
@@ -69,8 +71,7 @@ const Tooltip = ({
       }
     },
     middleware: [
-      flip({ crossAxis: false }),
-      shift({ padding: GAP }),
+      flip({ padding: GAP }),
       offset(GAP + ARROW_HEIGHT),
       arrow({
         element: arrowRef,
@@ -113,28 +114,36 @@ const Tooltip = ({
         React.cloneElement(children, { ref: refs.setReference, ...getReferenceProps() })
       )}
       {isMounted && (
-        <BaseBox
-          ref={refs.setFloating}
-          style={{ ...floatingStyles, pointerEvents: 'none' }}
-          {...getFloatingProps()}
-        >
-          <TooltipContent
-            style={styles}
-            arrow={
-              <FloatingArrow
-                ref={arrowRef}
-                context={context}
-                width={ARROW_WIDTH}
-                height={ARROW_HEIGHT}
-                fill={theme.colors.brand.gray[200].highContrast}
-                stroke={theme.colors.brand.gray[300].highContrast}
-                strokeWidth={theme.border.width.thin}
-              />
-            }
+        <FloatingPortal>
+          <BaseBox
+            ref={refs.setFloating}
+            style={{ ...floatingStyles, pointerEvents: 'none' }}
+            {...getFloatingProps()}
           >
-            {content}
-          </TooltipContent>
-        </BaseBox>
+            <TooltipContent
+              style={styles}
+              arrow={
+                <FloatingArrow
+                  ref={arrowRef}
+                  context={context}
+                  width={ARROW_WIDTH}
+                  height={ARROW_HEIGHT}
+                  fill={theme.colors.brand.gray[200].highContrast}
+                  stroke={theme.colors.brand.gray[300].highContrast}
+                  strokeWidth={theme.border.width.thin}
+                  // by default the floating UI will always try to position
+                  // the content within the bounding box of reference
+                  // this causes the arrow to be always in the middle
+                  // this overriding the staticOffset to ensure the
+                  // left/right positioned trigger arrow will be properly positioned
+                  staticOffset={hasAlignment ? ARROW_WIDTH : undefined}
+                />
+              }
+            >
+              {content}
+            </TooltipContent>
+          </BaseBox>
+        </FloatingPortal>
       )}
     </>
   );
