@@ -18,6 +18,9 @@ type ModalProps = {
 };
 
 const Modal = (): React.ReactElement => {
+  console.warn(
+    '[Blade Modal] Modal is not supported on mobile devices. Please use BottomSheet instead.',
+  );
   return (
     <Text>
       Modal Component is not available for Native mobile apps and we should use BottomSheet
