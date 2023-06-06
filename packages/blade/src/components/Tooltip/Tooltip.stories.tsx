@@ -21,7 +21,7 @@ export default {
 
 const Center = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Box height="100%" display="flex" alignItems="center" justifyContent="center">
+    <Box width="100%" height="100%" display="flex" alignItems="center" justifyContent="center">
       {children}
     </Box>
   );
@@ -51,11 +51,11 @@ const PlacementBox = React.forwardRef<
       display="flex"
       justifyContent="center"
       alignItems="center"
-      flex={1}
-      width="200px"
+      flex={isReactNative() ? undefined : 1}
+      width={isReactNative() ? '40%' : '100%'}
       flexShrink={0}
       padding="spacing.5"
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.level3.lowContrast"
       {...props}
     >
       <Text contrast="low">{children}</Text>
@@ -66,7 +66,39 @@ const PlacementBox = React.forwardRef<
 const PlacementTemplate: ComponentStory<typeof TooltipComponent> = () => {
   const tooltipContent = 'Hello world';
 
-  // fix syling of this in RN
+  if (isReactNative()) {
+    return (
+      <Center>
+        <Box alignItems="center" justifyContent="center" flexDirection="row" flexWrap="wrap">
+          <TooltipComponent placement="top-start" content={tooltipContent}>
+            <PlacementBox>top-start</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="left" content={tooltipContent}>
+            <PlacementBox>left</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="bottom-start" content={tooltipContent}>
+            <PlacementBox>bottom-start</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="top" content={tooltipContent}>
+            <PlacementBox>top</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="bottom" content={tooltipContent}>
+            <PlacementBox>bottom</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="top-end" content={tooltipContent}>
+            <PlacementBox>top-end</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="right" content={tooltipContent}>
+            <PlacementBox>right</PlacementBox>
+          </TooltipComponent>
+          <TooltipComponent placement="bottom-end" content={tooltipContent}>
+            <PlacementBox>bottom-end</PlacementBox>
+          </TooltipComponent>
+        </Box>
+      </Center>
+    );
+  }
+
   return (
     <Center>
       <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap="spacing.4">

@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
+import type { Side } from '@floating-ui/react-native';
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
 import { Modal, Pressable, TouchableOpacity } from 'react-native';
 import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
 import { TooltipProps } from './types';
-import { ARROW_HEIGHT } from './constants';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { useTheme } from '~components/BladeProvider';
 
 const Tooltip = ({
@@ -17,9 +18,11 @@ const Tooltip = ({
   shouldWrapChildren,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
-  const gap = theme.spacing[2];
-
   const [isOpen, setIsOpen] = React.useState(false);
+
+  const gap = theme.spacing[2];
+  const [side] = placement.split('-') as [Side];
+  const isHorizontal = side === 'left' || side === 'right';
   const arrowRef = React.useRef();
   const context = useFloating({
     sameScrollView: false,
@@ -27,7 +30,7 @@ const Tooltip = ({
       flip(),
       shift({ padding: gap }),
       offset(gap + ARROW_HEIGHT),
-      arrow({ element: arrowRef }),
+      arrow({ element: arrowRef, padding: isHorizontal ? 0 : ARROW_WIDTH }),
     ],
     placement,
   });
