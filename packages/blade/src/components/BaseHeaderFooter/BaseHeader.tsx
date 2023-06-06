@@ -106,6 +106,7 @@ const _BaseHeader = ({
           flexShrink={0}
           backgroundColor={theme.colors.surface.background.level2.lowContrast}
           borderRadius="max"
+          zIndex={1000}
         >
           <IconButton
             ref={closeButtonRef}
