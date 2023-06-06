@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { modalBodyPadding, scrollOverlayHeight } from './modalTokens';
+import { modalBodyPadding, modalHighestZIndex, scrollOverlayHeight } from './modalTokens';
 import { useModalContext } from './ModalContext';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
@@ -27,7 +27,7 @@ const OverflowOverlay = styled(BaseBox)<{
     #ffffff 115.17%
   );
   height: ${makeSize(scrollOverlayHeight)};
-  z-index: 999;
+  z-index: ${modalHighestZIndex};
   pointer-events: none;
   opacity: ${({ showOverlay }) => (showOverlay ? 1 : 0)};
   transition: ${({ theme }) =>

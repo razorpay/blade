@@ -21,6 +21,8 @@ const modalBorderRadius: keyof Border['radius'] = 'large';
 
 const scrollOverlayHeight: Size[keyof Size] = size[56];
 
+const modalHighestZIndex = 1000;
+
 export {
   modalMaxWidth,
   modalMinWidth,
@@ -29,4 +31,5 @@ export {
   modalBodyPadding,
   modalMaxHeight,
   scrollOverlayHeight,
+  modalHighestZIndex,
 };
