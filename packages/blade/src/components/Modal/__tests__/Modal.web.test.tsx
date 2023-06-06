@@ -104,7 +104,6 @@ describe('Modal', () => {
           <Modal
             isOpen={isOpen}
             onDismiss={() => {
-              console.log('OOONNNNNDISMISS');
               onDismiss();
             }}
             accessibilityLabel="Test Modal"
@@ -168,7 +167,6 @@ describe('Modal', () => {
           <Modal
             isOpen={isOpen}
             onDismiss={() => {
-              console.log('onDismiss');
               setIsOpen(false);
             }}
             accessibilityLabel="Test Modal"
@@ -202,7 +200,6 @@ describe('Modal', () => {
           <Modal
             isOpen={isOpen}
             onDismiss={() => {
-              console.log('onDismiss');
               setIsOpen(false);
             }}
             accessibilityLabel="Test Modal"
