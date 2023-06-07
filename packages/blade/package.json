@@ -108,7 +108,7 @@
   "dependencies": {
     "@babel/runtime": "7.16.5",
     "@types/body-scroll-lock": "3.1.0",
-    "@floating-ui/react":"0.24.2",
+    "@floating-ui/react": "0.24.2",
     "@use-gesture/react": "10.2.24",
     "body-scroll-lock": "4.0.0-beta.0",
     "use-presence": "1.1.0"

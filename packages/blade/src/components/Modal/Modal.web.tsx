@@ -152,14 +152,14 @@ const Modal = ({
   }, [initialFocusRef]);
 
   React.useEffect(() => {
-    if (isOpen) {
+    if (isMounted) {
       // set the original focus element where the focus will return to after closing the modal
       originalFocusElement.current =
         originalFocusElement.current ?? (document.activeElement as HTMLElement);
       // focus on an element on Modal, if initialFocusRef is not passed, focus on the close button
       focusOnInitialRef();
     }
-  }, [isOpen, focusOnInitialRef]);
+  }, [isMounted, focusOnInitialRef]);
 
   React.useEffect(() => {
     // Return focus to the element that originally had it
@@ -206,7 +206,7 @@ const Modal = ({
       <ModalContext.Provider value={modalContext}>
         {isMounted ? (
           <FloatingFocusManager context={context} modal={true}>
-            <Box zIndex={modalHighestZIndex} position="fixed">
+            <Box zIndex={modalHighestZIndex} position="fixed" testID="modal-wrapper">
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({
