@@ -172,11 +172,9 @@ https://github.com/razorpay/blade/assets/35374649/51b8db65-7c46-4d7b-b388-61ab4f
 
 **Immediately press (Razorpay icon tooltip):**
 
+Immediately shows tooltip on clicking on the icon for more info.
 
 https://github.com/razorpay/blade/assets/35374649/612a96b9-34e1-492b-8e81-e04b896d79db
-
-
-Immediately shows tooltip on clicking on the icon for more info.
 
 Immediate tooltips makes sense when the tooltip trigger doesn't do any extra action on clicking, for example imagine in that search icon button if an immediate tooltip is used the tooltip will never have a chance to show up since the screen changes and it opens a new dialog/page.
 
