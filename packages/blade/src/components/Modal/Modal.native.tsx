@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { ModalHeader } from './ModalHeader';
 import type { ModalHeaderProps } from './ModalHeader';
@@ -18,7 +20,7 @@ type ModalProps = {
   accessibilityLabel?: string;
 };
 
-const Modal = (): React.ReactElement => {
+const Modal = (props: ModalProps): React.ReactElement => {
   console.warn(
     '[Blade Modal] Modal is not supported on mobile devices. Please use BottomSheet instead.',
   );
