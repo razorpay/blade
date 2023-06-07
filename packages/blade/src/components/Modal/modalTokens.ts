@@ -1,7 +1,6 @@
 import type { ModalProps } from './Modal';
 import { size } from '~tokens/global';
 import type { Border, Size } from '~tokens/global';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 const modalMaxWidth: Record<NonNullable<ModalProps['size']>, Size[keyof Size]> = {
   small: size[400],
