@@ -5,6 +5,7 @@ import {
   BasicModalStory,
   ModalStackingStory,
   ModalWithHeaderFooterStory,
+  ModalWithNoBodyPaddingStory,
   ModalWithScrollableBackgroundStory,
   ModalWithScrollableContentStory,
 } from './stories';
@@ -65,6 +66,14 @@ export const ModalStacking = (): JSX.Element => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {ModalStackingStory}
+    </Sandbox>
+  );
+};
+
+export const ModalWithNoBodyPadding = (): JSX.Element => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {ModalWithNoBodyPaddingStory}
     </Sandbox>
   );
 };

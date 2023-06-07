@@ -493,6 +493,63 @@ function App(): JSX.Element {
 export default App;
 `;
 
+const ModalWithNoBodyPaddingStory = `
+import {
+  Box,
+  Button,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Text
+} from "@razorpay/blade/components";
+import React from "react";
+
+function App(): JSX.Element {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="large">
+        <ModalHeader title="First Modal" />
+        <ModalBody padding="spacing.0">
+          <Box display="flex" flexDirection="column">
+            <img
+              width="100%"
+              height="300px"
+              src="https://d6xcmfyh68wv8.cloudfront.net/assets/case-studies/common-card/pg_breathingroom.png"
+              alt="Breathing Room"
+            />
+            <Box padding="spacing.7" display="flex" flexDirection="column">
+              <Text marginTop="spacing.5">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s
+              </Text>
+            </Box>
+          </Box>
+        </ModalBody>
+        <ModalFooter>
+          <Box
+            display="flex"
+            gap="spacing.3"
+            justifyContent="flex-end"
+            width="100%"
+          >
+            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button>Save</Button>
+          </Box>
+        </ModalFooter>
+      </Modal>
+    </>
+  );
+}
+
+export default App;
+`;
+
 export {
   Playground,
   BasicModalStory,
@@ -500,4 +557,5 @@ export {
   ModalWithScrollableBackgroundStory,
   ModalWithScrollableContentStory,
   ModalStackingStory,
+  ModalWithNoBodyPaddingStory,
 };
