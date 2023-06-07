@@ -209,6 +209,7 @@
     "jsdom-testing-mocks": "1.9.0"
   },
   "peerDependencies": {
+    "@floating-ui/react": "^0.24",
     "@gorhom/bottom-sheet": "^4",
     "@gorhom/portal": "1.0.14",
     "react": ">=17",
