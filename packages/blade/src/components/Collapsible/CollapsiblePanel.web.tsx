@@ -83,6 +83,8 @@ const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => 
           /**
            * After this we want to wait for the animation to finish
            * before setting the height back to auto
+           *
+           * `onTransitionEnd` takes over
            */
         });
       });
