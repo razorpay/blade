@@ -90,9 +90,10 @@ const [isOpen, setIsOpen] = useState(false);
 
 ### `ModalBody` API
 
-| Prop       | Type              | Default     | Description          | Required |
-| ---------- | ----------------- | ----------- | -------------------- | -------- |
-| `children` | `React.ReactNode` | `undefined` | Content of the Modal | ✅        |
+| Prop       | Type                         | Default       | Description                | Required |
+| ---------- | ---------------------------- | ------------- | -------------------------- | -------- |
+| `children` | `React.ReactNode`            | `undefined`   | Content of the Modal       | ✅        |
+| `padding`  | `'spacing.0'`, `'spacing.6`' | `'spacing.6'` | Padding for the Modal Body |          |
 
 ### `ModalHeader` API
 > `ModalHeader` API will be similar to [`BottomSheetHeader` API](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/BottomSheet/_decisions/decisions.md#bottomsheetheader-api) with the exception of `showBackButton` & `onBackButtonClick` props.
