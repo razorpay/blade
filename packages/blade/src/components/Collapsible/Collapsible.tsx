@@ -50,6 +50,7 @@ const Collapsible = ({
   isExpanded,
   onChange,
   testID,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ...styledProps
 }: CollapsibleProps): ReactElement => {
   const [isBodyExpanded, setIsBodyExpanded] = useState(defaultIsExpanded);
