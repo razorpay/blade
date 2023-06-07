@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import type { Alignment, Side } from '@floating-ui/react';
 import {
+  shift,
   FloatingPortal,
   arrow,
   flip,
@@ -71,6 +72,7 @@ const Tooltip = ({
       }
     },
     middleware: [
+      shift({ crossAxis: false, padding: GAP }),
       flip({ padding: GAP }),
       offset(GAP + ARROW_HEIGHT),
       arrow({
