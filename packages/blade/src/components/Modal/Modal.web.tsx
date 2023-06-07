@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { FloatingFocusManager, useFloating } from '@floating-ui/react';
@@ -50,7 +51,6 @@ type ModalProps = {
   /**
    *  Ref to the element to be focused on opening the modal.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialFocusRef?: React.MutableRefObject<any>;
   /**
    *  Size of the modal
