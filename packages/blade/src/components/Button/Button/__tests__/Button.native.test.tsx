@@ -1,12 +1,18 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { fireEvent } from '@testing-library/react-native';
+import { fireEvent, waitFor } from '@testing-library/react-native';
 import React from 'react';
+import { Linking } from 'react-native';
 import Button from '../Button';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+jest.mock('react-native/Libraries/Linking/Linking', () => ({
+  openURL: jest.fn((href) => Promise.resolve(href)),
+  canOpenURL: jest.fn(() => Promise.resolve(true)),
+}));
 
 describe('<Button />', () => {
   it('should render button with default properties', () => {
@@ -136,6 +142,17 @@ describe('<Button />', () => {
 
     renderWithTheme(<Example />);
     expect(refValue).toHaveProperty('focus');
+  });
+
+  it('should open URL when Button is pressed with href', async () => {
+    const { getByRole } = renderWithTheme(
+      <Button href="https://youtu.be/iPaBUhIsslA">Learn More</Button>,
+    );
+    const button = getByRole('link');
+    fireEvent.press(button);
+    await waitFor(() =>
+      expect(Linking.openURL).toHaveBeenCalledWith('https://youtu.be/iPaBUhIsslA'),
+    );
   });
 
   it('should accept testID', () => {
