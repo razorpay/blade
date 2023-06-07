@@ -450,7 +450,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   left: 0;
   right: 0;
   opacity: 0;
-  margin-left: 0;
   background-color: hsla(213,89%,56%,1);
   border-width: 1px;
   height: 1px;
@@ -706,12 +705,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               </div>
             </div>
             <div
-              class=" c14"
+              class=" c15"
             />
           </div>
-          <div
-            class=" c15"
-          />
         </div>
         <div
           class="c16"
