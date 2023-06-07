@@ -153,6 +153,39 @@ Resources:
 - Q1: Which components should and should not be qualify as trigger?
 - A1: Discussed with designers, we will allow all elements interactive, non-interactive to be used as triggers (eg, badge, counter, icons) because there can be many genuine usecases which we can't predict.
 
+- Q2: How will the Tooltip behave on mobile? 
+
+Should tooltips on mobile have open delay? eg: long press to open?
+
+There are certain cases where long press makes sense and certain places where immediate.
+
+**Long press example:**
+
+Google interactive icons, a search icon button might be clickable which shows a search input on clicked, but on long pressing it shows a tooltip.
+
+![](./assets/google-tv-tooltip.mp4)
+
+**Immediately press (Razorpay icon tooltip):**
+
+![](./assets/razorpay-mobile-tooltip.mp4)
+
+Immediately shows tooltip on clicking on the icon for more info.
+
+Immediate tooltips only makes sense when the tooltip trigger doesn't do any extra action on clicking, for example imagine in that search icon button if an immediate tooltip is used the tooltip will never have a chance to show up since the screen changes and it opens a new dialog/page.
+
+**A2:** We will go ahead with Immediate press, because long pressing to open tooltip will have behaviour discoverability issues. And we will have guidelines in design side about the tooltip UX on mobile so that designers use tooltips sparingly/accordingly based on usecases.
+
+
+**Q3: Auto dismissal:**
+
+Another UX we need to think about is,
+
+In the long press example, once you release the press the tooltip automatically dismisses after 1s.
+
+But with the immediate example, the tooltip never dismisses automatically. Users are required to click outside to dismiss.
+
+What should we do?
+
 ## References
 
 - https://chakra-ui.com/docs/components/tooltip/props
