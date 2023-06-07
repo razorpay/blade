@@ -5,15 +5,9 @@ import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { Text } from '~components/Typography';
 
 describe('Modal', () => {
-  beforeEach(() => {
-    jest.spyOn(console, 'warn').mockImplementation(() => {});
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
   it('renders proper information on unavailability of Modal on native', () => {
+    const mockConsoleWarn = jest.spyOn(console, 'warn').mockImplementation();
+
     const { getByText } = renderWithTheme(
       <Modal isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Modal">
         <ModalBody>
@@ -29,5 +23,6 @@ describe('Modal', () => {
     expect(console.warn).toHaveBeenCalledWith(
       '[Blade Modal] Modal is not supported on mobile devices. Please use BottomSheet instead.',
     );
+    mockConsoleWarn.mockRestore();
   });
 });
