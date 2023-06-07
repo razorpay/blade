@@ -5,20 +5,20 @@ import { assignWithoutSideEffects, metaAttribute } from '~utils';
 
 type BaseFooterProps = {
   children: React.ReactNode;
-  metaDataComponentName?: string;
+  metaComponentName?: string;
   showDivider?: boolean;
 };
 
 const _BaseFooter = ({
   children,
   showDivider = true,
-  metaDataComponentName,
+  metaComponentName,
 }: BaseFooterProps): React.ReactElement => {
   return (
     <>
       {showDivider && <Divider />}
       <BaseBox
-        {...metaAttribute({ name: metaDataComponentName })}
+        {...metaAttribute({ name: metaComponentName })}
         paddingLeft="spacing.6"
         paddingRight="spacing.6"
         paddingTop="spacing.5"

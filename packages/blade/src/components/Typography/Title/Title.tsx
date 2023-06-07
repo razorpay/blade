@@ -8,6 +8,12 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 
 export type TitleProps = {
+  /**
+   * Overrides the color of the Title component.
+   *
+   * **Note** This takes priority over `type` and `constrast` prop to decide color of title
+   */
+  color?: BaseTextProps['color'];
   size?: 'small' | 'medium' | 'large' | 'xlarge';
   contrast?: ColorContrastTypes;
   type?: TextTypes;
@@ -19,12 +25,16 @@ const getProps = ({
   size,
   type,
   contrast,
+  color,
   testID,
-}: Pick<TitleProps, 'size' | 'type' | 'contrast' | 'testID'>): Omit<BaseTextProps, 'children'> => {
+}: Pick<TitleProps, 'size' | 'type' | 'color' | 'contrast' | 'testID'>): Omit<
+  BaseTextProps,
+  'children'
+> => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
-    color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
+    color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
     fontSize: 600,
     fontWeight: 'bold',
     fontStyle: 'normal',
@@ -60,11 +70,12 @@ export const Title = ({
   size = 'small',
   type = 'normal',
   contrast = 'low',
+  color,
   children,
   testID,
   ...styledProps
 }: TitleProps): ReactElement => {
-  const props = getProps({ size, type, contrast, testID });
+  const props = getProps({ size, type, contrast, color, testID });
   return (
     <BaseText {...props} {...getStyledProps(styledProps)}>
       {children}

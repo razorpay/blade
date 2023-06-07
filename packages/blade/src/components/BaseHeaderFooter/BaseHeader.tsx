@@ -38,7 +38,7 @@ type BaseHeaderProps = {
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
   closeButtonRef: React.MutableRefObject<any>;
-  metaDataComponentName?: string;
+  metaComponentName?: string;
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -71,7 +71,7 @@ const _BaseHeader = ({
   onPointerDown,
   onPointerMove,
   onPointerUp,
-  metaDataComponentName,
+  metaComponentName,
 }: BaseHeaderProps): React.ReactElement => {
   const webOnlyEventHandlers = isReactNative()
     ? {}
@@ -87,7 +87,7 @@ const _BaseHeader = ({
       };
 
   return (
-    <BaseBox {...metaAttribute({ name: metaDataComponentName })}>
+    <BaseBox {...metaAttribute({ name: metaComponentName })}>
       <BaseBox
         marginTop="spacing.4"
         marginBottom="spacing.5"

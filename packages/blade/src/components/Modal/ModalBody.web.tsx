@@ -1,14 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { modalBodyPadding, scrollOverlayHeight } from './modalTokens';
 import { useModalContext } from './ModalContext';
-import BaseBox from '~components/Box/BaseBox';
+import { modalHighestZIndex, scrollOverlayHeight } from './modalTokens';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, makeMotionTime, makeSize, metaAttribute } from '~utils';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 
 type ModalBodyProps = {
   children: React.ReactNode;
+  /**
+   * Sets the padding equally on all sides. Only few `spacing` tokens are allowed deliberately
+   * @default `spacing.6`
+   *
+   * **Links:**
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
+   */
+  padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.6'>;
 };
 
 const OverflowOverlay = styled(BaseBox)<{
@@ -27,7 +36,7 @@ const OverflowOverlay = styled(BaseBox)<{
     #ffffff 115.17%
   );
   height: ${makeSize(scrollOverlayHeight)};
-  z-index: 999;
+  z-index: ${modalHighestZIndex};
   pointer-events: none;
   opacity: ${({ showOverlay }) => (showOverlay ? 1 : 0)};
   transition: ${({ theme }) =>
@@ -36,7 +45,7 @@ const OverflowOverlay = styled(BaseBox)<{
     }`};
 `;
 
-const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {
+const _ModalBody = ({ children, padding = 'spacing.6' }: ModalBodyProps): React.ReactElement => {
   const contentRef = React.useRef<any>(null);
   const { footerHeight } = useModalContext();
   const [hasScrollbar, setHasScrollbar] = useState(false);
@@ -82,7 +91,7 @@ const _ModalBody = ({ children }: ModalBodyProps): React.ReactElement => {
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.ModalBody })}
-      padding={modalBodyPadding}
+      padding={padding}
       ref={contentRef}
       overflowY="auto"
       overflowX="hidden"

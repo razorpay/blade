@@ -23,7 +23,7 @@ const _ModalFooter = (props: ModalFooterProps): React.ReactElement => {
   return (
     <Box ref={containerRef}>
       <BaseFooter
-        metaDataComponentName={MetaConstants.ModalFooter}
+        metaComponentName={MetaConstants.ModalFooter}
         children={props.children}
         showDivider={true}
       />

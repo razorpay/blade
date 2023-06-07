@@ -14,9 +14,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
       Array [
         Object {
           "position": "relative",
+          "textAlign": "left",
         },
       ]
     }
+    textAlign="left"
   >
     <View
       position="relative"
@@ -507,6 +509,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   "backgroundColor": "hsla(0, 0%, 100%, 1)",
                   "borderColor": "hsla(216, 15%, 54%, 0.18)",
                   "borderRadius": 4,
+                  "borderStyle": "solid",
                   "borderWidth": 1,
                 },
                 Object {
@@ -1162,6 +1165,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "alignSelf": "center",
                         "backgroundColor": "hsla(213, 89%, 56%, 1)",
                         "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -1169,11 +1173,16 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "cursor": "pointer",
+                        "display": "flex",
+                        "justifyContent": "center",
                         "minHeight": 36,
                         "paddingBottom": 0,
                         "paddingLeft": 20,
                         "paddingRight": 20,
                         "paddingTop": 0,
+                        "textDecorationColor": "black",
+                        "textDecorationLine": "none",
+                        "textDecorationStyle": "solid",
                         "width": "auto",
                       },
                       Object {

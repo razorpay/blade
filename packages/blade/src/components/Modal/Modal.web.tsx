@@ -13,6 +13,7 @@ import { ModalContext } from './ModalContext';
 import { ModalBackdrop } from './ModalBackdrop';
 import {
   modalBorderRadius,
+  modalHighestZIndex,
   modalMaxHeight,
   modalMaxWidth,
   modalMinWidth,
@@ -205,7 +206,7 @@ const Modal = ({
       <ModalContext.Provider value={modalContext}>
         {isMounted ? (
           <FloatingFocusManager context={context} modal={true}>
-            <Box zIndex={999} position="fixed" testID="modal-wrapper">
+            <Box zIndex={modalHighestZIndex} position="fixed" testID="modal-wrapper">
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({

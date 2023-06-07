@@ -7,6 +7,7 @@ import { ModalBody } from './ModalBody';
 import type { ModalBodyProps } from './ModalBody';
 import { Text } from '~components/Typography';
 
+// Dummy type to avoid build time errors for native. This type is not used anywhere for native.
 type ModalProps = {
   children: React.ReactNode;
   isOpen: boolean;
