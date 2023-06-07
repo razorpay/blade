@@ -30,7 +30,7 @@ const ModalMeta: Meta = {
 
 const ModalTemplate: ComponentStory<typeof Modal> = () => {
   return (
-    <Sandbox showConsole padding="spacing.0" editorHeight="90vh">
+    <Sandbox padding="spacing.0" editorHeight="90vh">
       {BasicModalStory}
     </Sandbox>
   );
