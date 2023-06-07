@@ -12,6 +12,7 @@ import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { ForwardRefReturnType } from '~src/_helpers/types';
 
 type TextAreaProps = Pick<
   BaseInputProps,
@@ -172,10 +173,11 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   );
 };
 
-const TextArea: React.ForwardRefExoticComponent<
-  TextAreaProps & React.RefAttributes<BladeElementRef>
-> = assignWithoutSideEffects(React.forwardRef(_TextArea), {
-  displayName: 'TextArea',
-});
+const TextArea: ForwardRefReturnType<TextAreaProps, BladeElementRef> = assignWithoutSideEffects(
+  React.forwardRef(_TextArea),
+  {
+    displayName: 'TextArea',
+  },
+);
 
 export { TextArea, TextAreaProps };

@@ -117,6 +117,23 @@ type PickCSSByPlatform<T extends keyof React.CSSProperties | keyof ViewStyle> = 
   native: PickIfExist<ViewStyle, T>;
 }>;
 
+/**
+ * JSDoc sometimes break unless return type of forwardRef is not explicitly defines
+ * (It tries to redefine the types in object rather than just pointing to existing type
+ *  and strips away jsdoc from it for some reason)
+ *
+ * This can be fixed using explicitly defining the prop type before exporting with -
+ * ```jsx
+ * const TextArea: ForwardRefReturnType<TextAreaProps, BladeElementRef> = React.forwardRef(_TextArea);
+ * ```
+ */
+type ForwardRefReturnType<
+  BladeElementPropsType,
+  BladeElementRefType
+> = React.ForwardRefExoticComponent<
+  BladeElementPropsType & React.RefAttributes<BladeElementRefType>
+>;
+
 export {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
@@ -127,4 +144,5 @@ export {
   TestID,
   PickIfExist,
   PickCSSByPlatform,
+  ForwardRefReturnType,
 };

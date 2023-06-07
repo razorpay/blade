@@ -2,7 +2,7 @@ import React from 'react';
 import BaseBox from './BaseBox';
 import type { BoxProps, BoxRefType, MakeValueResponsive } from './BaseBox/types';
 import { validBoxAsValues } from './BaseBox/types/propsTypes';
-import type { KeysRequired } from '~src/_helpers/types';
+import type { ForwardRefReturnType, KeysRequired } from '~src/_helpers/types';
 import { assignWithoutSideEffects, isReactNative, metaAttribute, MetaConstants } from '~utils';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
@@ -202,10 +202,11 @@ const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) 
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-box Box Documentation}
  * 
  */
-const Box: React.ForwardRefExoticComponent<
-  BoxProps & React.RefAttributes<BoxRefType>
-> = assignWithoutSideEffects(React.forwardRef(_Box), {
-  displayName: 'Box',
-});
+const Box: ForwardRefReturnType<BoxProps, BoxRefType> = assignWithoutSideEffects(
+  React.forwardRef(_Box),
+  {
+    displayName: 'Box',
+  },
+);
 
 export { Box, makeBoxProps };

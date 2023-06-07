@@ -9,6 +9,7 @@ import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { ForwardRefReturnType } from '~src/_helpers/types';
 
 type PasswordInputExtraProps = {
   /**
@@ -169,7 +170,10 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
 };
 
 // nosemgrep
-const PasswordInput = assignWithoutSideEffects(React.forwardRef(_PasswordInput), {
+const PasswordInput: ForwardRefReturnType<
+  PasswordInputProps,
+  BladeElementRef
+> = assignWithoutSideEffects(React.forwardRef(_PasswordInput), {
   displayName: 'PasswordInput',
 });
 
