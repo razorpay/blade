@@ -39,6 +39,15 @@ describe('<Title />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Title with color', () => {
+    const displayText = 'Displaying Landing Page Title';
+    const { container, getByRole } = renderWithTheme(
+      <Title color="surface.text.subtle.highContrast">{displayText}</Title>,
+    );
+    expect(getByRole('heading', { level: 3 })).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render Title with variant "medium"', () => {
     const displayText = 'Displaying Landing Page Title';
     const { container, getByRole, getByText } = renderWithTheme(

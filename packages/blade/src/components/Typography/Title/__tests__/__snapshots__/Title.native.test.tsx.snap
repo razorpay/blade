@@ -1,5 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Title /> should render Title with color 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    color="surface.text.subtle.highContrast"
+    data-blade-component="title"
+    fontFamily="text"
+    fontSize={600}
+    fontStyle="normal"
+    fontWeight="bold"
+    lineHeight={500}
+    style={
+      Array [
+        Object {
+          "color": "hsla(220, 30%, 96%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 20,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 28,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Displaying Landing Page Title
+  </Text>
+</View>
+`;
+
 exports[`<Title /> should render Title with default properties 1`] = `
 <View
   style={

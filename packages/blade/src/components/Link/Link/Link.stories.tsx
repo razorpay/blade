@@ -185,18 +185,27 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
         <BaseBox marginBottom="spacing.3">
           <Heading>Anchor variant</Heading>
         </BaseBox>
-        <BaseBox marginBottom="spacing.2">
-          <LinkComponent
-            variant="anchor"
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            size="small"
-            icon={DownloadIcon}
-          >
-            Small anchor link
-          </LinkComponent>
-        </BaseBox>
+
+        <LinkComponent
+          variant="anchor"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="xsmall"
+          icon={DownloadIcon}
+        >
+          XSmall anchor link
+        </LinkComponent>
+        <LinkComponent
+          variant="anchor"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="small"
+          icon={DownloadIcon}
+        >
+          Small anchor link
+        </LinkComponent>
         <LinkComponent
           variant="anchor"
           href={href}
@@ -222,11 +231,12 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
         <BaseBox marginBottom="spacing.3">
           <Heading>Button variant</Heading>
         </BaseBox>
-        <BaseBox marginBottom="spacing.2">
-          <LinkComponent size="small" variant="button" onClick={onClick} icon={DownloadIcon}>
-            Small link button
-          </LinkComponent>
-        </BaseBox>
+        <LinkComponent size="xsmall" variant="button" onClick={onClick} icon={DownloadIcon}>
+          XSmall link button
+        </LinkComponent>
+        <LinkComponent size="small" variant="button" onClick={onClick} icon={DownloadIcon}>
+          Small link button
+        </LinkComponent>
         <LinkComponent size="medium" variant="button" onClick={onClick} icon={DownloadIcon}>
           Medium link button
         </LinkComponent>
