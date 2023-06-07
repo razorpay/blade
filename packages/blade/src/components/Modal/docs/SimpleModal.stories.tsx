@@ -37,7 +37,10 @@ const ModalTemplate: ComponentStory<typeof Modal> = ({ size }) => {
         }}
         size={size}
       >
-        <ModalHeader title="Address Details" />
+        <ModalHeader
+          title="Address Details"
+          subtitle="This example is created for Modal snapshot testing"
+        />
         <ModalBody>
           <RadioGroup label="Addresses">
             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
