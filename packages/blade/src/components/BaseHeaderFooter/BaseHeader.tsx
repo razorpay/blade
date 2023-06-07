@@ -95,7 +95,7 @@ const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
       for (const prop of restrictedPropKeys) {
         if (trailing?.props?.hasOwnProperty(prop)) {
           console.warn(
-            `[Blade BottomSheetHeader]: Do not pass "${prop}" to "${trailingComponentType}" while inside BottomSheetHeader trailing, because we override it.`,
+            `[Blade Header]: Do not pass "${prop}" to "${trailingComponentType}" while inside Header trailing, because we override it.`,
           );
         }
       }
