@@ -150,10 +150,15 @@ Resources:
 
 ## Open Questions
 
-- Q1: Which components should and should not be qualify as trigger?
-- A1: Discussed with designers, we will allow all elements interactive, non-interactive to be used as triggers (eg, badge, counter, icons) because there can be many genuine usecases which we can't predict.
+<details>
+  <summary>Q1: Which components should and should not be qualify as trigger?</summary>
 
-- Q2: How will the Tooltip behave on mobile? 
+Discussed with designers, we will allow all elements interactive, non-interactive to be used as triggers (eg, badge, counter, icons) because there can be many genuine usecases which we can't predict.
+
+</details>
+
+<details>
+  <summary>Q2: Mobile UX</summary>
 
 Should tooltips on mobile have open delay? eg: long press to open?
 
@@ -171,12 +176,9 @@ Google interactive icons, a search icon button might be clickable which shows a 
 
 Immediately shows tooltip on clicking on the icon for more info.
 
-Immediate tooltips only makes sense when the tooltip trigger doesn't do any extra action on clicking, for example imagine in that search icon button if an immediate tooltip is used the tooltip will never have a chance to show up since the screen changes and it opens a new dialog/page.
+Immediate tooltips makes sense when the tooltip trigger doesn't do any extra action on clicking, for example imagine in that search icon button if an immediate tooltip is used the tooltip will never have a chance to show up since the screen changes and it opens a new dialog/page.
 
-**A2:** We will go ahead with Immediate press, because long pressing to open tooltip will have behaviour discoverability issues. And we will have guidelines in design side about the tooltip UX on mobile so that designers use tooltips sparingly/accordingly based on usecases.
-
-
-**Q3: Auto dismissal:**
+**Auto dismissal:**
 
 Another UX we need to think about is,
 
@@ -184,7 +186,11 @@ In the long press example, once you release the press the tooltip automatically 
 
 But with the immediate example, the tooltip never dismisses automatically. Users are required to click outside to dismiss.
 
-What should we do?
+**Answer:**
+
+We will go ahead with Immediate press, because long pressing to open will have discoverability issues. And we will have guidelines in design side about when/where to use Tooltip and the tooltip UX on mobile so that designers use tooltips sparingly/accordingly based on usecases.
+
+</details>
 
 ## References
 
