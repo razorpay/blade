@@ -59,7 +59,7 @@ import { Collapsible, CollapsibleButton, CollapsibleLink, CollapsibleBody } from
 | ----------------- | --------------- | ----------- | ------------------------------------------------------------------ | -------- |
 | children          | `JSX`           | `undefined` | Composes `CollapsibleButton`, `CollapsibleLink`, `CollapsibleBody` | ✅       |
 | direction         | `bottom`, `top` | `bottom`    | Direction in which the content expands                             |          |
-| defaultIsExpanded | `boolean`       | `true`      | Expands the collapsible content by default (uncontrolled)          |          |
+| defaultIsExpanded | `boolean`       | `false`     | Expands the collapsible content by default (uncontrolled)          |          |
 | isExpanded        | `boolean`       | `undefined` | Expands the collapsible content (controlled)                       |          |
 | onChange          | `function`      | `undefined` | Callback for change in collapsible's expanded state                |          |
 
