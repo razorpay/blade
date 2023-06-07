@@ -3,7 +3,6 @@ import React from 'react';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
-import { useBottomSheetHeaderTrailingRestriction } from './utils';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects, metaAttribute } from '~utils';
@@ -21,7 +20,6 @@ const _BottomSheetHeader = ({
 }: BottomSheetHeaderProps): React.ReactElement => {
   const { setHeaderHeight, isOpen, close, bind, defaultInitialFocusRef } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
-  const validatedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
 
   useIsomorphicLayoutEffect(() => {
     if (!ref.current) return;
@@ -44,7 +42,7 @@ const _BottomSheetHeader = ({
           title={title}
           subtitle={subtitle}
           leading={leading}
-          trailing={validatedTrailingComponent}
+          trailing={trailing}
           titleSuffix={titleSuffix}
           // back button
           closeButtonRef={defaultInitialFocusRef}
