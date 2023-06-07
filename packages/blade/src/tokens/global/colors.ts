@@ -43,6 +43,11 @@ type ColorNeutralScale = Readonly<{
   a500: string;
 }>;
 
+type AshGrayColorNeutralScale = ColorNeutralScale &
+  Readonly<{
+    a1100: string;
+  }>;
+
 export type Color = Readonly<{
   chromatic: {
     azure: ColorChromaticScale;
@@ -58,8 +63,8 @@ export type Color = Readonly<{
     blueGrayDark: ColorNeutralScale;
     navyGrayLight: ColorNeutralScale;
     navyGrayDark: ColorNeutralScale;
-    ashGrayLight: ColorNeutralScale;
-    ashGrayDark: ColorNeutralScale;
+    ashGrayLight: AshGrayColorNeutralScale;
+    ashGrayDark: AshGrayColorNeutralScale;
   };
 }>;
 
@@ -305,6 +310,7 @@ export const colors: Color = {
       a300: `hsla(210, 6%, 94%, ${opacity[1]})`,
       a400: `hsla(210, 6%, 94%, ${opacity[2]})`,
       a500: `hsla(210, 6%, 94%, ${opacity[3]})`,
+      a1100: `hsla(214, 15%, 18%, ${opacity[4]})`,
     },
     ashGrayDark: {
       0: `hsla(0, 0%, 99%, ${opacity[9]})`,
@@ -329,6 +335,7 @@ export const colors: Color = {
       a300: `hsla(228, 4%, 76%, ${opacity[1]})`,
       a400: `hsla(228, 4%, 76%, ${opacity[2]})`,
       a500: `hsla(228, 4%, 76%, ${opacity[3]})`,
+      a1100: `hsla(231, 11%, 12%, ${opacity[5]})`,
     },
   },
 };
