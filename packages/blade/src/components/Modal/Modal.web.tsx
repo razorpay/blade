@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { FloatingFocusManager, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
@@ -108,7 +108,6 @@ const Modal = ({
   accessibilityLabel,
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
-  const [footerHeight, setFooterHeight] = useState(0);
   const { isMounted, isVisible } = usePresence(isOpen, {
     transitionDuration: theme.motion.duration.xmoderate,
     initialEnter: true,
@@ -174,10 +173,8 @@ const Modal = ({
       close: onDismiss,
       defaultInitialFocusRef,
       isVisible,
-      footerHeight,
-      setFooterHeight,
     }),
-    [isOpen, onDismiss, defaultInitialFocusRef, isVisible, footerHeight, setFooterHeight],
+    [isOpen, onDismiss, defaultInitialFocusRef, isVisible],
   );
   const handleKeyDown = (event: React.KeyboardEvent): void => {
     // close modal on escape key press

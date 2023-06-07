@@ -18,15 +18,6 @@ type ModalContextProps = {
    * Indicates if the Modal is visible according to the usePresence hook
    */
   isVisible: boolean;
-  /**
-   * The height of the Modal's footer
-   */
-  footerHeight: number;
-  /**
-   * Sets the height of the Modal's footer
-   * @param height - The height of the Modal's footer
-   */
-  setFooterHeight: (height: number) => void;
 };
 
 const ModalContext = React.createContext<ModalContextProps>({
@@ -35,9 +26,6 @@ const ModalContext = React.createContext<ModalContextProps>({
   defaultInitialFocusRef: { current: null },
   isOpen: false,
   isVisible: false,
-  footerHeight: 0,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setFooterHeight: () => {},
 });
 
 const useModalContext = (): ModalContextProps => {
