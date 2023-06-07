@@ -15,8 +15,6 @@ const modalMaxHeight = '80vh';
 
 const modalResponsiveScreenGap: Size[keyof Size] = size[48];
 
-const modalBodyPadding: DotNotationSpacingStringToken = 'spacing.6';
-
 const modalBorderRadius: keyof Border['radius'] = 'large';
 
 const scrollOverlayHeight: Size[keyof Size] = size[56];
@@ -28,7 +26,6 @@ export {
   modalMinWidth,
   modalResponsiveScreenGap,
   modalBorderRadius,
-  modalBodyPadding,
   modalMaxHeight,
   scrollOverlayHeight,
   modalHighestZIndex,
