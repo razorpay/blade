@@ -118,11 +118,11 @@ type PickCSSByPlatform<T extends keyof React.CSSProperties | keyof ViewStyle> = 
 }>;
 
 /**
- * JSDoc sometimes break unless return type of forwardRef is not explicitly defines
- * (It tries to redefine the types in object rather than just pointing to existing type
- *  and strips away jsdoc from it for some reason)
+ * JSDoc sometimes break unless return type of forwardRef is not explicitly defined
+ * (It tries to redefine the types again rather than just pointing to existing type variable
+ *  and strips away jsdoc while redefining)
  *
- * This can be fixed using explicitly defining the prop type before exporting with -
+ * This can be fixed by explicitly defining the prop type before exporting using this type utility -
  * ```jsx
  * const TextArea: ForwardRefReturnType<TextAreaProps, BladeElementRef> = React.forwardRef(_TextArea);
  * ```
