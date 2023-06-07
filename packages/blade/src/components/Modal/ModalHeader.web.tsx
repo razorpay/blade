@@ -51,7 +51,7 @@ const _ModalHeader = ({
     </BaseBox>
   ) : (
     <BaseHeader
-      metaDataComponentName={MetaConstants.ModalHeader}
+      metaComponentName={MetaConstants.ModalHeader}
       title={title}
       subtitle={subtitle}
       leading={leading}
