@@ -136,6 +136,37 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
   };
 };
 
+const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) => {
+  React.useEffect(() => {
+    validateBackgroundProp(props.backgroundColor);
+  }, [props.backgroundColor]);
+
+  React.useEffect(() => {
+    if (props.as) {
+      if (isReactNative()) {
+        throw new Error('[Blade - Box]: `as` prop is not supported on React Native');
+      }
+
+      if (!validBoxAsValues.includes(props.as)) {
+        throw new Error(
+          `[Blade - Box]: Invalid \`as\` prop value - ${props.as}. Only ${validBoxAsValues.join(
+            ', ',
+          )} are valid values`,
+        );
+      }
+    }
+  }, [props.as]);
+
+  return (
+    <BaseBox
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
+      {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
+      {...makeBoxProps(props)}
+    />
+  );
+};
+
 /**
  * ## Box
  * 
@@ -171,38 +202,9 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-box Box Documentation}
  * 
  */
-const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) => {
-  React.useEffect(() => {
-    validateBackgroundProp(props.backgroundColor);
-  }, [props.backgroundColor]);
-
-  React.useEffect(() => {
-    if (props.as) {
-      if (isReactNative()) {
-        throw new Error('[Blade - Box]: `as` prop is not supported on React Native');
-      }
-
-      if (!validBoxAsValues.includes(props.as)) {
-        throw new Error(
-          `[Blade - Box]: Invalid \`as\` prop value - ${props.as}. Only ${validBoxAsValues.join(
-            ', ',
-          )} are valid values`,
-        );
-      }
-    }
-  }, [props.as]);
-
-  return (
-    <BaseBox
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
-      {...makeBoxProps(props)}
-    />
-  );
-};
-
-const Box = assignWithoutSideEffects(React.forwardRef(_Box), {
+const Box: React.ForwardRefExoticComponent<
+  BoxProps & React.RefAttributes<BoxRefType>
+> = assignWithoutSideEffects(React.forwardRef(_Box), {
   displayName: 'Box',
 });
 

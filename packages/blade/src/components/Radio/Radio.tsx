@@ -123,6 +123,8 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   );
 };
 
-const Radio = assignWithoutSideEffects(React.forwardRef(_Radio), { displayName: 'Radio' });
+const Radio: React.ForwardRefExoticComponent<
+  RadioProps & React.RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_Radio), { displayName: 'Radio' });
 
 export { Radio, RadioProps };

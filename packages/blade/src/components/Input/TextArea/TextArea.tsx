@@ -172,7 +172,9 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   );
 };
 
-const TextArea = assignWithoutSideEffects(React.forwardRef(_TextArea), {
+const TextArea: React.ForwardRefExoticComponent<
+  TextAreaProps & React.RefAttributes<BladeElementRef>
+> = assignWithoutSideEffects(React.forwardRef(_TextArea), {
   displayName: 'TextArea',
 });
 
