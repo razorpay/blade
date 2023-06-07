@@ -9,7 +9,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 .c0 {
   position: fixed;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .c2 {
@@ -124,14 +124,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding-left: 8px;
 }
 
-.c16 {
-  margin-right: 16px;
-}
-
-.c17 {
-  background-color: hsla(36,100%,44%,0.09);
-}
-
 .c22 {
   overflow-x: hidden;
   overflow-y: auto;
@@ -166,6 +158,15 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   justify-content: center;
 }
 
+.c16 {
+  margin-right: 16px;
+}
+
+.c17 {
+  text-align: left;
+  background-color: hsla(36,100%,44%,0.09);
+}
+
 .c8 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -188,25 +189,13 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
 
 .c15 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c19 {
-  color: hsla(38,97%,38%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
   font-weight: 400;
@@ -241,6 +230,19 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c19 {
+  color: hsla(38,97%,38%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -301,7 +303,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   bottom: 0px;
   background: linear-gradient( 180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 47.66%,#ffffff 115.17% );
   height: 56px;
-  z-index: 999;
+  z-index: 1000;
   pointer-events: none;
   opacity: 0;
   -webkit-transition: opacity 250ms cubic-bezier(0.3,0,0.2,1);
@@ -374,6 +376,20 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding-bottom: 0px;
   padding-left: 20px;
   padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -622,7 +638,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 exports[`Modal renders a basic Modal 1`] = `
 .c0 {
   position: fixed;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .c2 {
@@ -670,7 +686,7 @@ exports[`Modal renders a basic Modal 1`] = `
   bottom: 0px;
   background: linear-gradient( 180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 47.66%,#ffffff 115.17% );
   height: 56px;
-  z-index: 999;
+  z-index: 1000;
   pointer-events: none;
   opacity: 0;
   -webkit-transition: opacity 250ms cubic-bezier(0.3,0,0.2,1);
@@ -749,7 +765,7 @@ exports[`Modal renders a basic Modal 1`] = `
 exports[`Modal renders a basic Modal of large size 1`] = `
 .c0 {
   position: fixed;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .c2 {
@@ -797,7 +813,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   bottom: 0px;
   background: linear-gradient( 180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 47.66%,#ffffff 115.17% );
   height: 56px;
-  z-index: 999;
+  z-index: 1000;
   pointer-events: none;
   opacity: 0;
   -webkit-transition: opacity 250ms cubic-bezier(0.3,0,0.2,1);
@@ -876,7 +892,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 exports[`Modal renders a basic Modal of medium size 1`] = `
 .c0 {
   position: fixed;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .c2 {
@@ -924,7 +940,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   bottom: 0px;
   background: linear-gradient( 180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 47.66%,#ffffff 115.17% );
   height: 56px;
-  z-index: 999;
+  z-index: 1000;
   pointer-events: none;
   opacity: 0;
   -webkit-transition: opacity 250ms cubic-bezier(0.3,0,0.2,1);
