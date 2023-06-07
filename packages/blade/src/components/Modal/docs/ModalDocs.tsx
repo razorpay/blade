@@ -183,6 +183,12 @@ const ModalDocs = (): JSX.Element => {
               </Text>
             </Text>
           ),
+          padding: (
+            <Text size="small" type="subdued">
+              <Text size="small">{`'spacing.0' | 'spacing.6'`}</Text>
+              {`Padding for the Modal Body. Default : 'spacing.6'`}
+            </Text>
+          ),
         }}
       />
 
