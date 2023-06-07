@@ -15,7 +15,8 @@ const StyledModalBackdrop = styled(FloatingOverlay)(({ theme }) => {
       : castWebType(theme.motion.easing.exit.revealing),
     transitionProperty: 'opacity',
     opacity: isVisible ? 1 : 0,
-    backgroundColor: theme.colors.overlay.background,
+    // TODO: Use tokens once updated via tokens plugin
+    backgroundColor: 'hsla(214, 15%, 18%, 0.64)',
   };
 });
 
