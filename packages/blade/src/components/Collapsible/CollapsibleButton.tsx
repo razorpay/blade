@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { useCollapsibleContext } from './CollapsibleContext';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
+import type { IconComponent } from '~components/Icons';
 
 type CollapsibleButtonProps = Pick<
   ButtonProps,
@@ -15,8 +16,6 @@ type CollapsibleButtonProps = Pick<
   | 'icon'
   | 'children'
 >;
-
-// TODO: ask anurag about this type problem
 
 const CollapsibleButton = ({
   children,
@@ -38,7 +37,8 @@ const CollapsibleButton = ({
     <Button
       variant={variant}
       size={size}
-      icon={icon}
+      // Button handles case of icon and children so we don't care about icon type safety here
+      icon={icon as IconComponent}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       testID={testID}

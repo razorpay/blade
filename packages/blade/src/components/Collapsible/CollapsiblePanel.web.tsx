@@ -1,10 +1,8 @@
-import type { ReactElement, ReactNode } from 'react';
-import { useEffect, useRef } from 'react';
+import type { ReactElement, ReactNode, TransitionEventHandler } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
-import usePresence from 'use-presence';
 import { useCollapsibleContext } from './CollapsibleContext';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
-import { useTheme } from '~components/BladeProvider';
 import { useDidUpdate } from '~src/hooks/useDidUpdate';
 
 type CollapsiblePanelProps = {
@@ -39,6 +37,7 @@ const StyledCollapsiblePanel = styled.div<StyledCollapsiblePanelProps>((props) =
      * Otherwise, changing `height` both here and in inline styles sometimes causes animation flickers due to styles mismatch.
      */
     height: defaultIsExpanded ? HEIGHT_EXPANDED : HEIGHT_COLLAPSED,
+    display: defaultIsExpanded ? 'block' : 'none',
     overflowY: 'hidden',
   };
 });
@@ -46,10 +45,6 @@ const StyledCollapsiblePanel = styled.div<StyledCollapsiblePanelProps>((props) =
 const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => {
   const { isExpanded, defaultIsExpanded } = useCollapsibleContext();
   const collapsiblePanelRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
-  const { isVisible, isAnimating } = usePresence(isExpanded, {
-    transitionDuration: theme.motion.duration.xmoderate,
-  });
 
   /**
    * This effect imperatively updates height to make css transitions work:
@@ -64,7 +59,10 @@ const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => 
       return;
     }
 
+    // In collapsed state display is set to none, change it back to block
+    collapsiblePanelElement.style.display = 'block';
     const actualHeight = collapsiblePanelElement.scrollHeight;
+
     if (!isExpanded) {
       // collapse
       requestAnimationFrame(() => {
@@ -72,13 +70,11 @@ const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => 
 
         requestAnimationFrame(() => {
           collapsiblePanelElement.style.height = makeSize(0);
-          // collapsiblePanelElement.style.display = 'none';
         });
       });
     } else {
       // expand
       requestAnimationFrame(() => {
-        // collapsiblePanelElement.style.display = 'block';
         collapsiblePanelElement.style.height = makeSize(0);
 
         requestAnimationFrame(() => {
@@ -97,25 +93,29 @@ const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => 
    * When expanding, waits for the animation to finish first.
    * Then sets the height of expanded item to auto from actual height.
    */
-  useEffect(() => {
-    if (isVisible && !isAnimating) {
-      // Panel has expanded and finished animating at this point
-      const collapsiblePanelElement = collapsiblePanelRef.current;
-      if (collapsiblePanelElement) {
+  const onTransitionEnd: TransitionEventHandler = ({ propertyName }) => {
+    const collapsiblePanelElement = collapsiblePanelRef.current;
+    if (propertyName === 'height' && collapsiblePanelElement) {
+      if (isExpanded) {
+        // Panel has expanded and finished animating at this point
         requestAnimationFrame(() => {
           collapsiblePanelElement.style.height = HEIGHT_EXPANDED;
         });
+      } else {
+        // Panel has collapsed
+        requestAnimationFrame(() => {
+          collapsiblePanelElement.style.display = 'none';
+        });
       }
     }
-  }, [isVisible, isAnimating]);
+  };
 
   return (
     <StyledCollapsiblePanel
       ref={collapsiblePanelRef}
       isExpanded={isExpanded}
       defaultIsExpanded={defaultIsExpanded}
-      // TODO: extract and cleanup
-      // style={isAnimating || isVisible ? { display: 'block' } : { display: 'none' }}
+      onTransitionEnd={onTransitionEnd}
     >
       {children}
     </StyledCollapsiblePanel>
