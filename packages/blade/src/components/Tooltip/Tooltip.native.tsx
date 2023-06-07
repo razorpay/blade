@@ -29,10 +29,13 @@ const Tooltip = ({
   const context = useFloating({
     sameScrollView: false,
     middleware: [
-      flip(),
-      shift({ padding: gap }),
+      shift({ crossAxis: false, padding: gap }),
+      flip({ padding: gap }),
       offset(gap + ARROW_HEIGHT),
-      arrow({ element: arrowRef, padding: isHorizontal ? 0 : ARROW_WIDTH }),
+      arrow({
+        element: arrowRef,
+        padding: isHorizontal ? 0 : ARROW_WIDTH,
+      }),
     ],
     placement,
   });
@@ -205,6 +208,7 @@ const Tooltip = ({
           onTouchEnd: handleOpen,
           ref: refs.setReference,
           style: { alignSelf: 'flex-start' },
+          collapse: false,
         })
       )}
       <Modal collapsable={false} transparent visible={isVisible}>
