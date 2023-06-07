@@ -304,6 +304,7 @@ const Alert = ({
       contrastType={contrastType}
       isFullWidth={isFullWidth}
       isDesktop={isDesktop}
+      textAlign={'left' as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Alert, testID })}
       {...getStyledProps(styledProps)}

@@ -124,18 +124,18 @@ describe('<Checkbox />', () => {
           <Checkbox isChecked={checked} onChange={({ isChecked }) => setChecked(isChecked)}>
             {labelText}
           </Checkbox>
-          <Text testID="state">{checked ? 'checked' : 'unchecked'}</Text>
+          <Text>{checked ? 'checked' : 'unchecked'}</Text>
         </>
       );
     };
-    const { getByTestId, getByRole } = renderWithTheme(<Example />);
+    const { getByText, getByRole } = renderWithTheme(<Example />);
     const checkbox = getByRole('checkbox');
 
-    expect(getByTestId('state').children[0]).toBe('unchecked');
+    expect(getByText('unchecked')).toBeTruthy();
     fireEvent.press(checkbox);
-    expect(getByTestId('state').children[0]).toBe('checked');
+    expect(getByText('checked')).toBeTruthy();
     fireEvent.press(checkbox);
-    expect(getByTestId('state').children[0]).toBe('unchecked');
+    expect(getByText('unchecked')).toBeTruthy();
   });
 
   it('should expose native element methods via ref', () => {

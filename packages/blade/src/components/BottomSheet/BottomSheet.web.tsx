@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable consistent-return */
@@ -21,14 +20,20 @@ import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
 
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, assignWithoutSideEffects, makeSize, makeAccessible } from '~utils';
+import {
+  makeMotionTime,
+  assignWithoutSideEffects,
+  makeSize,
+  makeAccessible,
+  metaAttribute,
+} from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
 import { useWindowSize } from '~src/hooks/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
 import { useId } from '~src/hooks/useId';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 
@@ -36,20 +41,13 @@ const BottomSheetSurface = styled.div<{
   windowHeight: number;
   isDragging: boolean;
 }>(({ theme, windowHeight, isDragging }) => {
-  const offsetX = theme.shadows.offsetX.level[1];
-  const offsetY = theme.shadows.offsetY.level[1];
-  const blur = theme.shadows.blurRadius.level[1];
-  const shadowColor = theme.shadows.color.level[1];
-
-  const shadowLayer1 = `${offsetX}px ${offsetY}px ${blur}px 0px ${shadowColor}`;
-  const shadowLayer2 = `0px 0px 1px 0px ${shadowColor}`;
-
   return {
     background: theme.colors.surface.background.level2.lowContrast,
     borderTopLeftRadius: makeSize(size[16]),
     borderTopRightRadius: makeSize(size[16]),
     borderColor: theme.colors.surface.border.normal.lowContrast,
-    boxShadow: `${shadowLayer1}, ${shadowLayer2}`,
+    // this is reverse top elevation of highRaised elevation token
+    boxShadow: '0px -24px 48px -12px hsla(217, 56%, 17%, 0.18)',
     opacity: 0,
     pointerEvents: 'none',
     transitionDuration: isDragging
@@ -431,8 +429,8 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
+        {...metaAttribute({ name: ComponentIds.BottomSheet })}
         {...makeAccessible({ modal: true, role: 'dialog' })}
-        data-surface
         windowHeight={dimensions.height}
         isDragging={isDragging}
         style={{
@@ -445,7 +443,11 @@ const _BottomSheet = ({
         }}
       >
         <BaseBox height="100%" display="flex" flexDirection="column">
-          <BottomSheetGrabHandle ref={grabHandleRef} {...bind()} />
+          <BottomSheetGrabHandle
+            ref={grabHandleRef}
+            {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
+            {...bind()}
+          />
           {children}
         </BaseBox>
       </BottomSheetSurface>

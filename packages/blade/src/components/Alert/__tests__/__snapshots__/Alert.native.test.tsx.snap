@@ -11,6 +11,7 @@ exports[`<Alert /> should render 1`] = `
   <View
     accessibilityRole="alert"
     contrastType="lowContrast"
+    data-blade-component="alert"
     intent="neutral"
     isDesktop={false}
     isFullWidth={false}
@@ -31,9 +32,11 @@ exports[`<Alert /> should render 1`] = `
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 8,
+          "textAlign": "left",
         },
       ]
     }
+    textAlign="left"
   >
     <View
       display="flex"
@@ -143,6 +146,7 @@ exports[`<Alert /> should render 1`] = `
       >
         <Text
           color="surface.text.subtle.lowContrast"
+          data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
@@ -274,6 +278,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   <View
     accessibilityRole="alert"
     contrastType="lowContrast"
+    data-blade-component="alert"
     intent="positive"
     isDesktop={false}
     isFullWidth={true}
@@ -294,10 +299,12 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
           "paddingLeft": 16,
           "paddingRight": 16,
           "paddingTop": 12,
+          "textAlign": "left",
           "width": "100%",
         },
       ]
     }
+    textAlign="left"
   >
     <View
       display="flex"
@@ -417,6 +424,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       >
         <Text
           color="surface.text.subtle.lowContrast"
+          data-blade-component="text"
           fontFamily="text"
           fontSize={100}
           fontStyle="normal"

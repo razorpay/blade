@@ -11,6 +11,7 @@ exports[`<Indicator /> should render 1`] = `
   <View
     accessibilityLabel="Success"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -100,6 +101,7 @@ exports[`<Indicator /> should render 1`] = `
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -122,11 +124,13 @@ exports[`<Indicator /> should render 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>
@@ -144,6 +148,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <View
     accessibilityLabel="Warning"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -233,6 +238,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={75}
         fontStyle="normal"
@@ -255,17 +261,20 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>
   <View
     accessibilityLabel="Success"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -355,6 +364,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -377,17 +387,20 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>
   <View
     accessibilityLabel="Error"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -477,6 +490,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -499,17 +513,20 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>
   <View
     accessibilityLabel="Info"
     alignItems="center"
+    data-blade-component="indicator"
     display="flex"
     flexDirection="row"
     style={
@@ -599,6 +616,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <Text
         color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
         fontFamily="text"
         fontSize={100}
         fontStyle="normal"
@@ -621,11 +639,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
             Object {},
           ]
         }
+        textAlign="left"
       />
     </View>
   </View>

@@ -10,6 +10,7 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 >
   <Text
     color="surface.text.normal.lowContrast"
+    data-blade-component="text"
     fontFamily="text"
     fontSize={100}
     fontStyle="normal"
@@ -45,6 +46,50 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 </View>
 `;
 
+exports[`<Text /> should render Text with color 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="surface.text.muted.lowContrast"
+    data-blade-component="text"
+    fontFamily="text"
+    fontSize={100}
+    fontStyle="normal"
+    fontWeight="regular"
+    lineHeight={100}
+    style={
+      Array [
+        Object {
+          "color": "hsla(216, 16%, 60%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 14,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 20,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+        Object {},
+      ]
+    }
+  >
+    Displaying some text
+  </Text>
+</View>
+`;
+
 exports[`<Text /> should render Text with default properties 1`] = `
 <View
   style={
@@ -55,6 +100,7 @@ exports[`<Text /> should render Text with default properties 1`] = `
 >
   <Text
     color="surface.text.normal.lowContrast"
+    data-blade-component="text"
     fontFamily="text"
     fontSize={100}
     fontStyle="normal"
@@ -98,6 +144,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 >
   <Text
     color="surface.text.normal.lowContrast"
+    data-blade-component="text"
     fontFamily="text"
     fontSize={100}
     fontStyle="normal"
@@ -142,6 +189,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 >
   <Text
     color="surface.text.normal.highContrast"
+    data-blade-component="text"
     fontFamily="text"
     fontSize={100}
     fontStyle="normal"
@@ -186,6 +234,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 >
   <Text
     color="surface.text.normal.lowContrast"
+    data-blade-component="text"
     fontFamily="text"
     fontSize={75}
     fontStyle="normal"
@@ -230,6 +279,7 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
 >
   <Text
     color="surface.text.normal.lowContrast"
+    data-blade-component="text"
     fontFamily="text"
     fontSize={100}
     fontStyle="normal"

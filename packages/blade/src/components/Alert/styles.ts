@@ -2,7 +2,7 @@ import type { CSSObject, StyledProps } from 'styled-components';
 
 import type { StyledAlertProps } from './types';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 const MAX_WIDTH = size[584];
 

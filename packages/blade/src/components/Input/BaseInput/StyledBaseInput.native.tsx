@@ -8,11 +8,13 @@ import type {
   TouchableHighlightProps,
   GestureResponderEvent,
 } from 'react-native';
+import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
 import { Text } from '~components/Typography';
+import type { Platform } from '~utils';
 import { makeSize } from '~utils';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type StyledComponentAutoCompleteAndroid =
@@ -218,7 +220,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       autoCompleteType={
         autoCompleteSuggestionType
           ? (autoCompleteSuggestionTypeAndroid[
-              autoCompleteSuggestionType
+              autoCompleteSuggestionType as Platform.CastNative<
+                BaseInputProps['autoCompleteSuggestionType']
+              >
             ] as StyledComponentAutoCompleteAndroid)
           : undefined
       }
@@ -226,7 +230,11 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       isTextArea={isTextArea}
       textContentType={
         autoCompleteSuggestionType
-          ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
+          ? autoCompleteSuggestionTypeIOS[
+              autoCompleteSuggestionType as Platform.CastNative<
+                BaseInputProps['autoCompleteSuggestionType']
+              >
+            ]
           : undefined
       }
       autoCapitalize={autoCapitalize}

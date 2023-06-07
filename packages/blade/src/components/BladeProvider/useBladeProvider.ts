@@ -2,8 +2,8 @@
 import type { Theme } from './index';
 import { useColorScheme, toTitleCase, useBreakpoint } from '~utils';
 import type { ColorSchemeNames, ColorSchemeNamesInput, ThemeTokens } from '~tokens/theme';
-import { colorSchemeNamesInput } from '~tokens/theme';
-import type { TypographyPlatforms } from '~tokens/global/typography';
+import { colorSchemeNamesInput } from '~tokens/theme/theme';
+import type { TypographyPlatforms } from '~tokens/global';
 import type { ColorSchemeModes } from '~tokens/theme/theme';
 
 type ThemeContextValue = {
@@ -49,10 +49,7 @@ const useBladeProvider = ({
   const theme: Theme = {
     ...themeTokens,
     colors: themeTokens.colors[onColorMode],
-    shadows: {
-      ...themeTokens.shadows,
-      color: themeTokens.shadows.color[onColorMode],
-    },
+    elevation: themeTokens.elevation[onColorMode],
     typography: themeTokens.typography[onDeviceType],
   };
 

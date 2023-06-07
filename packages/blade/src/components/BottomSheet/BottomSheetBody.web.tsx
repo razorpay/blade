@@ -27,7 +27,7 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
   useIsomorphicLayoutEffect(() => {
     if (!contentRef.current) return;
     setContentHeight(contentRef.current.getBoundingClientRect().height);
-  }, [contentRef, isOpen]);
+  }, [contentRef, isOpen, children]);
 
   React.useEffect(() => {
     setBottomSheetHasActionList(false);
@@ -40,7 +40,10 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
 
   return (
     <BaseBox
-      {...metaAttribute({ testID: 'bottomsheet-body' })}
+      {...metaAttribute({
+        testID: 'bottomsheet-body',
+        name: ComponentIds.BottomSheetBody,
+      })}
       ref={scrollRef}
       flexGrow={1}
       flexShrink={1}

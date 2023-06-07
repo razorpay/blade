@@ -1,5 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Code /> should render Code with color 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="code"
+    isHighlighted={false}
+    size="small"
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "borderRadius": 4,
+          "display": "flex",
+          "lineHeight": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 0,
+          "verticalAlign": "middle",
+        },
+      ]
+    }
+  >
+    <Text
+      color="action.text.link.disabled"
+      fontFamily="code"
+      fontSize={25}
+      fontWeight="regular"
+      lineHeight={25}
+      style={
+        Array [
+          Object {
+            "color": "hsla(218, 19%, 81%, 1)",
+            "fontFamily": "Courier",
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 14,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      TEST_TOKEN
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`<Code /> should render Code with default properties 1`] = `
 <View
   style={
@@ -9,12 +71,16 @@ exports[`<Code /> should render Code with default properties 1`] = `
   }
 >
   <View
+    data-blade-component="code"
+    isHighlighted={true}
     size="small"
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
           "borderRadius": 4,
+          "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
           "paddingLeft": 4,
@@ -59,6 +125,68 @@ exports[`<Code /> should render Code with default properties 1`] = `
 </View>
 `;
 
+exports[`<Code /> should render isHighlighted false Code 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="code"
+    isHighlighted={false}
+    size="small"
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "borderRadius": 4,
+          "display": "flex",
+          "lineHeight": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 0,
+          "verticalAlign": "middle",
+        },
+      ]
+    }
+  >
+    <Text
+      color="surface.text.normal.lowContrast"
+      fontFamily="code"
+      fontSize={25}
+      fontWeight="regular"
+      lineHeight={25}
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Courier",
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 14,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      NON-HIGHLIGHTED
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`<Code /> should render medium Code 1`] = `
 <View
   style={
@@ -68,12 +196,16 @@ exports[`<Code /> should render medium Code 1`] = `
   }
 >
   <View
+    data-blade-component="code"
+    isHighlighted={true}
     size="medium"
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
           "borderRadius": 4,
+          "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
           "paddingLeft": 4,
@@ -127,12 +259,16 @@ exports[`<Code /> should render small Code 1`] = `
   }
 >
   <View
+    data-blade-component="code"
+    isHighlighted={true}
     size="small"
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
           "borderRadius": 4,
+          "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
           "paddingLeft": 4,

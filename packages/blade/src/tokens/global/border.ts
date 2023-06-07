@@ -27,7 +27,7 @@ export type Border = Readonly<{
   width: BorderWidth;
 }>;
 
-const border: Border = {
+export const border: Border = {
   radius: {
     none: 0,
     small: 2,
@@ -42,5 +42,3 @@ const border: Border = {
     thick: 1.5,
   },
 };
-
-export default border;

@@ -14,9 +14,16 @@ type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
 
 type HeadingCommonProps = {
+  /**
+   * Overrides the color of the Heading component.
+   *
+   * **Note** This takes priority over `type` and `constrast` prop to decide color of heading
+   */
+  color?: BaseTextProps['color'];
   type?: TextTypes;
   contrast?: ColorContrastTypes;
   children: StringChildrenType;
+  textAlign?: BaseTextProps['textAlign'];
 } & TestID &
   StyledPropsBlade;
 
@@ -59,15 +66,16 @@ const getProps = <T extends { variant: HeadingVariant }>({
   type,
   weight,
   contrast,
+  color,
   testID,
-}: Pick<HeadingProps<T>, 'variant' | 'size' | 'type' | 'weight' | 'contrast' | 'testID'>): Omit<
-  BaseTextProps,
-  'children'
-> => {
+}: Pick<
+  HeadingProps<T>,
+  'variant' | 'size' | 'type' | 'weight' | 'contrast' | 'color' | 'testID'
+>): Omit<BaseTextProps, 'children'> => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
-    color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
+    color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
     fontSize: 200,
     fontWeight: weight ?? 'bold',
     fontStyle: 'normal',
@@ -115,13 +123,15 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   type = 'normal',
   weight = 'bold',
   contrast = 'low',
+  color,
   children,
   testID,
+  textAlign,
   ...styledProps
 }: HeadingProps<T>): ReactElement => {
-  const props = getProps({ variant, size, type, weight, contrast, testID });
+  const props = getProps({ variant, size, type, weight, color, contrast, testID });
   return (
-    <BaseText {...props} {...getStyledProps(styledProps)}>
+    <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>
       {children}
     </BaseText>
   );

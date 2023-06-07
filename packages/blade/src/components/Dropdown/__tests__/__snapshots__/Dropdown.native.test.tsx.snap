@@ -14,9 +14,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
       Array [
         Object {
           "position": "relative",
+          "textAlign": "left",
         },
       ]
     }
+    textAlign="left"
   >
     <View
       position="relative"
@@ -29,6 +31,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
       }
     >
       <View
+        data-blade-component="select-input"
         style={
           Array [
             Object {},
@@ -95,6 +98,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               >
                 <Text
                   color="surface.text.subdued.lowContrast"
+                  data-blade-component="text"
                   fontFamily="text"
                   fontSize={75}
                   fontStyle="normal"
@@ -126,6 +130,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   Fruits
                 </Text>
                 <View
+                  data-blade-component="visually-hidden"
                   style={
                     Array [
                       Object {
@@ -155,6 +160,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 >
                   <Text
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={100}
                     fontStyle="normal"
@@ -254,6 +260,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             >
               <Text
                 color="surface.text.placeholder.lowContrast"
+                data-blade-component="text"
                 fontFamily="text"
                 fontSize={100}
                 fontStyle="normal"
@@ -470,6 +477,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         testID="closeable-area"
       >
         <View
+          data-blade-component="dropdown-overlay"
           display="none"
           position="absolute"
           style={
@@ -492,7 +500,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           <View
             accessibilityLabelledBy="dropdown-7-label"
             accessibilityRole="menu"
-            elevation={5}
+            data-blade-component="action-list"
             id="dropdown-7-actionlist"
             isInBottomSheet={false}
             style={
@@ -501,19 +509,25 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   "backgroundColor": "hsla(0, 0%, 100%, 1)",
                   "borderColor": "hsla(216, 15%, 54%, 0.18)",
                   "borderRadius": 4,
+                  "borderStyle": "solid",
                   "borderWidth": 1,
-                  "shadowColor": "hsla(216, 15%, 54%, 0.18)",
+                },
+                Object {
+                  "elevation": 12,
+                  "shadowColor": "hsla(217, 56%, 17%, 0.64)",
                   "shadowOffset": Object {
-                    "height": 0,
+                    "height": 8,
                     "width": 0,
                   },
-                  "shadowOpacity": 1,
+                  "shadowOpacity": 0.1,
+                  "shadowRadius": 4,
                 },
               ]
             }
             surfaceLevel={2}
           >
             <View
+              data-blade-component="action-list-header"
               style={
                 Array [
                   Object {
@@ -603,6 +617,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               >
                 <Text
                   color="surface.text.subdued.lowContrast"
+                  data-blade-component="text"
                   fontFamily="text"
                   fontSize={50}
                   fontStyle="italic"
@@ -636,7 +651,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </View>
             </View>
             <RCTScrollView
-              accessibilityRole="menu"
               data={
                 Array [
                   Object {
@@ -773,6 +787,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       >
                         <Text
                           color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
                           fontStyle="normal"
@@ -906,6 +921,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       >
                         <Text
                           color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
                           fontStyle="normal"
@@ -965,6 +981,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             </RCTScrollView>
             <View
               accessibilityLabel="Search Tips"
+              data-blade-component="action-list-footer"
               onBlur={[Function]}
               onKeyDown={[Function]}
               onMouseDown={[Function]}
@@ -1060,6 +1077,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               >
                 <Text
                   color="surface.text.subdued.lowContrast"
+                  data-blade-component="text"
                   fontFamily="text"
                   fontSize={50}
                   fontStyle="italic"
@@ -1121,6 +1139,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   buttonPaddingRight="20px"
                   buttonPaddingTop="0px"
                   collapsable={false}
+                  data-blade-component="button"
                   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
                   defaultBorderColor="hsla(213, 89%, 56%, 1)"
                   focusBackgroundColor="hsla(223, 95%, 48%, 1)"
@@ -1146,6 +1165,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "alignSelf": "center",
                         "backgroundColor": "hsla(213, 89%, 56%, 1)",
                         "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -1153,11 +1173,16 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "cursor": "pointer",
+                        "display": "flex",
+                        "justifyContent": "center",
                         "minHeight": 36,
                         "paddingBottom": 0,
                         "paddingLeft": 20,
                         "paddingRight": 20,
                         "paddingTop": 0,
+                        "textDecorationColor": "black",
+                        "textDecorationLine": "none",
+                        "textDecorationStyle": "solid",
                         "width": "auto",
                       },
                       Object {

@@ -17,6 +17,7 @@ exports[`<List /> should render List with default properties 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -27,6 +28,7 @@ exports[`<List /> should render List with default properties 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -137,6 +139,7 @@ exports[`<List /> should render List with default properties 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -178,6 +181,7 @@ exports[`<List /> should render List with default properties 1`] = `
         >
           <View
             accessibilityRole="list"
+            data-blade-component="list"
             style={
               Array [
                 Object {},
@@ -185,6 +189,7 @@ exports[`<List /> should render List with default properties 1`] = `
             }
           >
             <View
+              data-blade-component="list-item"
               hasIcon={false}
               level={2}
               style={
@@ -295,6 +300,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 >
                   <Text
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={100}
                     fontStyle="normal"
@@ -336,6 +342,7 @@ exports[`<List /> should render List with default properties 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  data-blade-component="list"
                   style={
                     Array [
                       Object {},
@@ -343,6 +350,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   }
                 >
                   <View
+                    data-blade-component="list-item"
                     hasIcon={false}
                     level={3}
                     style={
@@ -455,6 +463,7 @@ exports[`<List /> should render List with default properties 1`] = `
                       >
                         <Text
                           color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
                           fontStyle="normal"
@@ -516,6 +525,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -526,6 +536,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -636,6 +647,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -667,12 +679,16 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               Level 1 
             </Text>
             <View
+              data-blade-component="code"
+              isHighlighted={true}
               size="small"
               style={
                 Array [
                   Object {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                    "alignSelf": "center",
+                    "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderRadius": 4,
+                    "display": "flex",
                     "lineHeight": 0,
                     "paddingBottom": 0,
                     "paddingLeft": 4,
@@ -718,6 +734,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -828,6 +845,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -883,6 +901,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -893,6 +912,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -1003,6 +1023,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -1125,6 +1146,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -1235,6 +1257,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -1290,6 +1313,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -1300,6 +1324,7 @@ exports[`<List /> should render medium ordered List 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -1352,6 +1377,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -1399,6 +1425,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -1440,6 +1467,7 @@ exports[`<List /> should render medium ordered List 1`] = `
         >
           <View
             accessibilityRole="list"
+            data-blade-component="list"
             style={
               Array [
                 Object {},
@@ -1447,6 +1475,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             }
           >
             <View
+              data-blade-component="list-item"
               hasIcon={false}
               level={2}
               style={
@@ -1557,6 +1586,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 >
                   <Text
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={100}
                     fontStyle="normal"
@@ -1598,6 +1628,7 @@ exports[`<List /> should render medium ordered List 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  data-blade-component="list"
                   style={
                     Array [
                       Object {},
@@ -1605,6 +1636,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                   }
                 >
                   <View
+                    data-blade-component="list-item"
                     hasIcon={false}
                     level={3}
                     style={
@@ -1717,6 +1749,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                       >
                         <Text
                           color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
                           fontStyle="normal"
@@ -1778,6 +1811,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -1788,6 +1822,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -1844,6 +1879,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
@@ -1891,6 +1927,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -1925,6 +1962,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -1981,6 +2019,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
@@ -2028,6 +2067,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -2062,6 +2102,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -2118,6 +2159,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
@@ -2165,6 +2207,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -2220,6 +2263,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -2230,6 +2274,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={true}
         level={1}
         style={
@@ -2338,6 +2383,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
@@ -2379,6 +2425,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         >
           <View
             accessibilityRole="list"
+            data-blade-component="list"
             style={
               Array [
                 Object {},
@@ -2386,6 +2433,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             }
           >
             <View
+              data-blade-component="list-item"
               hasIcon={true}
               level={2}
               style={
@@ -2494,6 +2542,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 >
                   <Text
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={100}
                     fontStyle="normal"
@@ -2535,6 +2584,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  data-blade-component="list"
                   style={
                     Array [
                       Object {},
@@ -2542,6 +2592,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   }
                 >
                   <View
+                    data-blade-component="list-item"
                     hasIcon={false}
                     level={3}
                     style={
@@ -2654,6 +2705,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       >
                         <Text
                           color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
                           fontStyle="normal"
@@ -2715,6 +2767,7 @@ exports[`<List /> should render small ordered List 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -2725,6 +2778,7 @@ exports[`<List /> should render small ordered List 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -2777,6 +2831,7 @@ exports[`<List /> should render small ordered List 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -2824,6 +2879,7 @@ exports[`<List /> should render small ordered List 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -2865,6 +2921,7 @@ exports[`<List /> should render small ordered List 1`] = `
         >
           <View
             accessibilityRole="list"
+            data-blade-component="list"
             style={
               Array [
                 Object {},
@@ -2872,6 +2929,7 @@ exports[`<List /> should render small ordered List 1`] = `
             }
           >
             <View
+              data-blade-component="list-item"
               hasIcon={false}
               level={2}
               style={
@@ -2982,6 +3040,7 @@ exports[`<List /> should render small ordered List 1`] = `
                 >
                   <Text
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={75}
                     fontStyle="normal"
@@ -3023,6 +3082,7 @@ exports[`<List /> should render small ordered List 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  data-blade-component="list"
                   style={
                     Array [
                       Object {},
@@ -3030,6 +3090,7 @@ exports[`<List /> should render small ordered List 1`] = `
                   }
                 >
                   <View
+                    data-blade-component="list-item"
                     hasIcon={false}
                     level={3}
                     style={
@@ -3142,6 +3203,7 @@ exports[`<List /> should render small ordered List 1`] = `
                       >
                         <Text
                           color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={75}
                           fontStyle="normal"
@@ -3203,6 +3265,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -3213,6 +3276,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -3269,6 +3333,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
@@ -3316,6 +3381,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -3350,6 +3416,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -3406,6 +3473,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
@@ -3453,6 +3521,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -3487,6 +3556,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -3543,6 +3613,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
@@ -3590,6 +3661,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -3645,6 +3717,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -3655,6 +3728,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={true}
         level={1}
         style={
@@ -3763,6 +3837,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -3804,6 +3879,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         >
           <View
             accessibilityRole="list"
+            data-blade-component="list"
             style={
               Array [
                 Object {},
@@ -3811,6 +3887,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             }
           >
             <View
+              data-blade-component="list-item"
               hasIcon={true}
               level={2}
               style={
@@ -3919,6 +3996,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 >
                   <Text
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={75}
                     fontStyle="normal"
@@ -3960,6 +4038,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  data-blade-component="list"
                   style={
                     Array [
                       Object {},
@@ -3967,6 +4046,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   }
                 >
                   <View
+                    data-blade-component="list-item"
                     hasIcon={false}
                     level={3}
                     style={
@@ -4079,6 +4159,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       >
                         <Text
                           color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={75}
                           fontStyle="normal"
@@ -4140,6 +4221,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   >
     <View
       accessibilityRole="list"
+      data-blade-component="list"
       marginTop="spacing.3"
       style={
         Array [
@@ -4150,6 +4232,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
       }
     >
       <View
+        data-blade-component="list-item"
         hasIcon={false}
         level={1}
         style={
@@ -4260,6 +4343,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
           >
             <Text
               color="surface.text.normal.lowContrast"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
@@ -4301,6 +4385,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
         >
           <View
             accessibilityRole="list"
+            data-blade-component="list"
             style={
               Array [
                 Object {},
@@ -4308,6 +4393,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             }
           >
             <View
+              data-blade-component="list-item"
               hasIcon={false}
               level={2}
               style={
@@ -4418,6 +4504,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 >
                   <Text
                     color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={75}
                     fontStyle="normal"
@@ -4459,6 +4546,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  data-blade-component="list"
                   style={
                     Array [
                       Object {},
@@ -4466,6 +4554,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   }
                 >
                   <View
+                    data-blade-component="list-item"
                     hasIcon={false}
                     level={3}
                     style={
@@ -4578,6 +4667,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       >
                         <Text
                           color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={75}
                           fontStyle="normal"

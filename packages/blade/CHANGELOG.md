@@ -1,5 +1,270 @@
 # @razorpay/blade
 
+## 8.7.0
+
+### Minor Changes
+
+- fc46b240: feat(Code): add `isHighlighted` prop
+- f0b7a66b: feat(Typography): expose `color` from Typography components like `Text`, `Heading`, `Title`, `Code`
+
+### Patch Changes
+
+- b9394c66: fix: update migrate-typography script
+
+## 8.6.1
+
+### Patch Changes
+
+- 93626965: fix: ActionList border style
+
+## 8.6.0
+
+### Minor Changes
+
+- 8348634c: feat(Link): add `xsmall` Link size
+- 26a7d38c: feat(Button): Support `href`, `target`, and `rel` on Button component.
+
+  You can now use `href` on Button which renders as `a` tag instead of button automatically.
+
+  ```jsx
+  <Button href="https://youtu.be/iPaBUhIsslA" target="_blank" rel="noopener noreferrer">
+    I am Link!
+  </Button>
+  ```
+
+- 4ff72975: feat(DropdownLink): add `DropdownLink` trigger for Dropdown
+
+  Checkout [Checkout DropdownLink Documentation](https://blade.razorpay.com/?path=/story/components-dropdown-with-button-and-link--with-link&globals=measureEnabled:false)
+
+- 3fe1ff8f: feat(blade): add textAlign to Box
+
+### Patch Changes
+
+- 14e5057e: fix: add min-width and max-width in Menu trigger Dropdown to fix width issues
+- 69a1bcef: chore(blade): improve BottomSheet documentation & added jsdoc
+- 4df0b721: fix(SelectInput): single select value clear
+
+  - You can pass `''` (empty string) in single select `value` prop to clear the selected value now.
+
+## 8.5.0
+
+### Minor Changes
+
+- 4a6ae99c: feat(Switch): add Switch component
+
+### Patch Changes
+
+- 245f677c: chore(blade): export switch
+
+## 8.4.1
+
+### Patch Changes
+
+- d30a7fd4: fix(blade): fix code & amount typography alignment issues
+
+## 8.4.0
+
+### Minor Changes
+
+- 4fb0f3fe: feat(Box): add `onScroll`, `onMouseOver`, `onMouseEnter`, `onMouseLeave` events
+
+## 8.3.0
+
+### Minor Changes
+
+- 06da7a2f: feat(Box): add `ref` support
+
+## 8.2.3
+
+### Patch Changes
+
+- ec18776c: fix: blade builds on npm & github
+
+## 8.2.2
+
+> **Warning**
+>
+> There were some build issues associated with this release, please upgrade to version >= 8.2.3 where this issue was resolved
+
+### Patch Changes
+
+- e4dcdfc4: build: fix npm publish by generating .npmrc in monorepo root
+
+## 8.2.1
+
+> **Warning**
+>
+> There were some build issues associated with this release, please upgrade to version >= 8.2.3 where this issue was resolved
+
+### Patch Changes
+
+- 1ab67fc7: fix: css vars build script with new elevation tokens
+
+## 8.2.0
+
+> **Warning**
+>
+> There were some build issues associated with this release, please upgrade to version >= 8.2.3 where this issue was resolved
+
+### Minor Changes
+
+- 16d0e9e3: feat: add new `elevation` tokens
+  This release adds new shadow tokens. Previously we had the following shadow tokens
+
+1. `level1`
+2. `level2`
+3. `level3`
+4. `level4`
+5. `level5`
+
+Plus we didn't had proper ways of using tokens across web and native like we have for our other tokens like Colors, Typography, Spacing, Motion, etc.
+
+Now the new introduced levels are:
+
+1. `none`
+2. `lowRaised`
+3. `midRasied`
+4. `highRaised`
+
+These tokens now will work across ios, android and web and will add all the require properties automatically for eg:
+
+- on web we have 2 layers of shadow as per new token values
+
+```
+{
+  /** offset-x | offset-y | blur-radius | spread-radius | color, offset-x | offset-y | blur-radius | spread-radius | color */
+  lowRaised: `0 4px 8px -2px hsla(217, 56%, 17%, 0.1), 0 2px 4px -2px hsla(217, 56%, 17%, 0.06)`,
+  midRaised: `0 12px 16px -4px hsla(217, 56%, 17%, 0.08), 0 4px 6px -2px hsla(217, 56%, 17%, 0.03)`,
+  highRaised: `0 24px 48px -12px hsla(217, 56%, 17%, 0.18)`
+}
+```
+
+- for RN, we can't have multi-layer shadows plus android and iOS both treat shadows differently, but now we have parity
+
+```
+{
+  // android only
+  elevation: 4,
+  shadowColor: 'hsla(217, 56%, 17%, 0.64)', // works on both
+  // ios only
+  shadowOpacity: 0.12,
+  shadowRadius: 2,
+  shadowOffset: {
+    width: 0,
+    height: 3,
+  },
+}
+```
+
+but all this is now abstracted and as a developer, you can do this across platforms:
+
+```
+theme.elevation.lowRaised // this will add necessary props based on the platform
+```
+
+Read the entire decision [doc here](https://docs.google.com/document/d/1GQEd-1JXFDbv3JsBMB2TgiSn8EJE43Gtm_Xtb_8dn04/edit)
+
+## 8.1.0
+
+### Minor Changes
+
+- 9f2dabfd: feat: add border support to Box component
+
+## 8.0.0
+
+### Major Changes
+
+- 9917a5cd: feat(Dropdown): Controlled Dropdown and Button Trigger
+
+  - Adds API to seamlessly build controlled dropdown
+  - Add DropdownButton component to trigger dropdown using Button
+  - Removes `isDefaultSelected` from `ActionListItem` _(see migration guide below)_
+
+  > **Warning**
+  >
+  > **Breaking change** for consumers who -
+  >
+  > - Use `isDefaultSelected` on `ActionListItem` component
+  > - Use `onChange` on `SelectInput` (under some scenarios. Check migration guide below)
+  >
+  > Rest of the consumers can safely upgrade without any migration
+
+  ### Migration Guide
+
+  #### `isDefaultSelected` Migration
+
+  We have removed `isDefaultSelected` from `<ActionListItem />` component. [Check out API decision](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/controlled-dropdown.md) for reasoning
+
+  If you were using it as a workaround for controlled selection,
+
+  - We now have a first class controlled selection support with `value` and `onChange` prop on `SelectInput`.
+
+    Checkout CodeSandbox Example for new API - https://codesandbox.io/s/blade-controlled-select-vxg30b
+
+  If you were using `isDefaultSelected` for default selections, you can now use `defaultValue` on SelectInput
+
+  - Remove `isDefaultSelected` and use `defaultValue` on SelectInput. You can pass array of values to `defaultValue` in case of multiselect
+    ```diff
+    <Dropdown>
+      <SelectInput
+        label="Select City"
+    +   defaultValue="mumbai"
+      />
+      <DropdownOverlay>
+        <ActionListItem
+          title="Mumbai"
+          value="mumbai"
+    -     isDefaultSelected
+         />
+        <ActionListItem title="Bangalore" value="bangalore" />
+      </DropdownOverlay>
+    </Dropdown>
+    ```
+
+  #### `onChange` on SelectInput Migration
+
+  As a part of [bug fix](https://github.com/razorpay/blade/issues/1102), `onChange` will now **NOT** be called on initial render
+  like it previously did. This will only require migration if you were earlier relying on `onChange` to set initial value.
+
+  If you were relying on `onChange` to set initial value, you can now move those values to your `useState`'s initial value.
+
+  ```tsx
+  const Example = (): JSX.Element => {
+    const [cities, setCities] = React.useState();
+    return (
+      <>
+        <Dropdown>
+          <SelectInput label="Cities" onChange={({values}) => setCities(values) } />
+          <DropdownOverlay>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+          </DropdownOverlay>
+        </Dropdown>
+        <Text>{cities}</Text>
+        {/*
+          In earlier versions, value of `cities` would've been `['']`
+          (because onChange would've been called initially to set array with empty string value)
+
+          Now it will output undefined (anything you pass in your useState) as the onChange wouldn't be called on initial render
+        */}
+      <>
+    )
+  }
+  ```
+
+## 7.2.2
+
+### Patch Changes
+
+- 2a6b8c89: chore: add meta attribute `data-component-from-blade='true'` to native components
+
+## 7.2.1
+
+### Patch Changes
+
+- 40a16da7: fix(blade): BottomSheet body dynamic height
+- e0f80522: feat(blade): added bottomsheet component ids
+
 ## 7.2.0
 
 ### Minor Changes

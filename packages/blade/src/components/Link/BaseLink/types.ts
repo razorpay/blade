@@ -1,7 +1,7 @@
-import type { Dispatch, SetStateAction, SyntheticEvent } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { BaseLinkProps } from './BaseLink';
-import type { DurationString, EasingString } from '~tokens/global/motion';
+import type { DurationString, EasingString } from '~tokens/global';
 import type { ActionStates } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
@@ -13,7 +13,9 @@ export type StyledBaseLinkProps = {
   href?: string;
   target?: string;
   rel?: string;
-  onClick?: (e: SyntheticEvent) => void;
+  onClick?: BaseLinkProps['onClick'];
+  onBlur?: BaseLinkProps['onBlur'];
+  onKeyDown?: BaseLinkProps['onKeyDown'];
   focusRingColor: string;
   disabled: boolean;
   motionDuration: DurationString;

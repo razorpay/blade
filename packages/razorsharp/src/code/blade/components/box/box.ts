@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { generateBladeCode } from '../../main';
 import { convertStyleNameToBladeName, isBackgroundColorToken } from '../../utils/color';
 import { component } from '../../utils/component';

@@ -10,6 +10,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 >
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -150,6 +151,7 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
 >
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -290,6 +292,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
 >
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -419,6 +422,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -548,6 +552,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -677,6 +682,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -806,6 +812,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -935,6 +942,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -1064,6 +1072,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -1193,6 +1202,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -1322,6 +1332,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -1462,6 +1473,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
 >
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -1602,6 +1614,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 >
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -1649,6 +1662,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
       color="surface.text.normal.lowContrast"
       fontSize={200}
       fontWeight="regular"
+      lineHeight={300}
       style={
         Array [
           Object {
@@ -1657,7 +1671,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
             "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
-            "lineHeight": 20,
+            "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -1687,6 +1701,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
 >
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={
@@ -1734,6 +1749,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
       color="feedback.text.information.lowContrast"
       fontSize={100}
       fontWeight="regular"
+      lineHeight={100}
       style={
         Array [
           Object {
@@ -1772,6 +1788,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 >
   <View
     alignItems="baseline"
+    data-blade-component="amount"
     display="flex"
     flexDirection="row"
     style={

@@ -7,7 +7,7 @@ import { Fade } from './Fade';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
 import { getIn, makeSpace } from '~utils';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
 
 const svgSize = {
   small: {
