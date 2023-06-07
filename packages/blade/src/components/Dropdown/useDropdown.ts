@@ -298,6 +298,8 @@ const useDropdown = (): UseDropdownReturnValue => {
       setActiveIndex(-1);
     }
 
+    console.log('trigger blur is here');
+
     if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
       setShouldIgnoreBlur(true);
       return;

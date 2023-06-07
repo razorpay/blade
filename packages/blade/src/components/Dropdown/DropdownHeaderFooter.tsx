@@ -20,7 +20,7 @@ const _DropdownHeader = ({
   trailing,
 }: DropdownHeaderProps): React.ReactElement => {
   return (
-    <BaseBox overflow="auto" flexShrink={0}>
+    <BaseBox overflow={'auto' as never} flexShrink={0}>
       <BaseHeader
         title={title}
         subtitle={subtitle}
@@ -43,11 +43,7 @@ const DropdownHeader = assignWithoutSideEffects(_DropdownHeader, {
 type DropdownFooter = Pick<BaseFooterProps, 'children'>;
 
 const _DropdownFooter = ({ children }: DropdownFooter): React.ReactElement => {
-  return (
-    <BaseBox width="100%" backgroundColor="surface.background.level2.lowContrast">
-      <BaseFooter>{children}</BaseFooter>
-    </BaseBox>
-  );
+  return <BaseFooter>{children}</BaseFooter>;
 };
 
 const DropdownFooter = assignWithoutSideEffects(_DropdownFooter, {

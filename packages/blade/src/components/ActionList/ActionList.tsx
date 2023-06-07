@@ -2,7 +2,6 @@
 import React from 'react';
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
-import { StyledActionList } from './styles/StyledActionList';
 import { ActionListBox } from './ActionListBox';
 import { componentIds } from './componentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -10,6 +9,7 @@ import { assignWithoutSideEffects, makeAccessible, metaAttribute, MetaConstants 
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import BaseBox from '~components/Box/BaseBox';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
@@ -124,9 +124,9 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
           ref={actionListItemRef as any}
         />
       ) : (
-        <StyledActionList
-          isInBottomSheet={isInBottomSheet}
-          surfaceLevel={surfaceLevel}
+        <BaseBox
+          // isInBottomSheet={isInBottomSheet}
+          // surfaceLevel={surfaceLevel}
           id={`${dropdownBaseId}-actionlist`}
           {...makeAccessible({
             role: actionListContainerRole,
@@ -143,7 +143,7 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
             isMultiSelectable={isMultiSelectable}
             ref={actionListItemRef as any}
           />
-        </StyledActionList>
+        </BaseBox>
       )}
     </ActionListContext.Provider>
   );
