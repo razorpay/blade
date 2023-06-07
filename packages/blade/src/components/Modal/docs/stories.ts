@@ -493,7 +493,7 @@ function App(): JSX.Element {
 export default App;
 `;
 
-const ModalWithNoPaddingStory = `
+const ModalWithNoBodyPaddingStory = `
 import {
   Box,
   Button,
@@ -557,5 +557,5 @@ export {
   ModalWithScrollableBackgroundStory,
   ModalWithScrollableContentStory,
   ModalStackingStory,
-  ModalWithNoPaddingStory,
+  ModalWithNoBodyPaddingStory,
 };
