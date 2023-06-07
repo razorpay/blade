@@ -13,7 +13,7 @@ import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
-import { getPlatformType } from '~utils';
+import { castNativeType, castWebType, getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -252,7 +252,8 @@ const Amount = ({
     <BaseBox
       paddingLeft="spacing.2"
       paddingRight="spacing.2"
-      display="flex"
+      // @TODO: fix casting of platform types. currently they all become `never` type
+      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
       alignItems="baseline"
       flexDirection="row"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
