@@ -35,6 +35,14 @@ describe('<Title />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render Title with color', () => {
+    const displayText = 'Displaying Landing Page Title';
+    const { toJSON } = renderWithTheme(
+      <Title color="surface.text.subtle.highContrast">{displayText}</Title>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Title with variant "medium"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(

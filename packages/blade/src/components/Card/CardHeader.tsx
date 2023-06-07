@@ -56,7 +56,7 @@ const CardHeaderBadge = assignWithoutSideEffects(_CardHeaderBadge, {
 const _CardHeaderText = (props: TextProps<{ variant: TextVariant }>): React.ReactElement => {
   useVerifyInsideCard('CardHeaderText');
 
-  return <Text {...props} />;
+  return <Text textAlign="left" {...props} />;
 };
 const CardHeaderText = assignWithoutSideEffects(_CardHeaderText, {
   componentId: ComponentIds.CardHeaderText,
@@ -170,7 +170,7 @@ const _CardHeaderLeading = ({
           <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
         </BaseBox>
         {subtitle && (
-          <Text variant="body" size="small" weight="regular">
+          <Text textAlign="left" variant="body" size="small" weight="regular">
             {subtitle}
           </Text>
         )}

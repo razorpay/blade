@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
+import type { BaseLinkProps } from '../../Link/BaseLink';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
@@ -30,6 +31,7 @@ import {
   makeSpace,
   makeBorderSize,
   getIn,
+  isReactNative,
 } from '~utils';
 
 import { BaseText } from '~components/Typography/BaseText';
@@ -50,6 +52,9 @@ import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type BaseButtonCommonProps = {
+  href?: BaseLinkProps['href'];
+  target?: BaseLinkProps['target'];
+  rel?: BaseLinkProps['rel'];
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
@@ -108,6 +113,18 @@ type BaseButtonColorTokenModifiers = {
  * All possible icon colors, derived from `IconProps` minus `currentColor` because possible values should only be from tokens
  */
 type IconColor = Exclude<IconProps['color'], 'currentColor'>;
+
+const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
+  if (isReactNative()) {
+    return undefined; // as property doesn't work with react native
+  }
+
+  if (href) {
+    return 'a';
+  }
+
+  return 'button';
+};
 
 const getColorToken = ({
   property,
@@ -295,6 +312,9 @@ const ButtonContent = styled(BaseBox)<{ isHidden: boolean }>(({ isHidden }) => (
 
 const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonProps> = (
   {
+    href,
+    target,
+    rel,
     variant = 'primary',
     intent,
     contrast = 'low',
@@ -315,9 +335,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   },
   ref,
 ) => {
+  const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
   const buttonRef = useBladeInnerRef(ref);
-  const disabled = isLoading || isDisabled;
+  // Button cannot be disabled when its rendered as Link
+  const disabled = isLoading || (isDisabled && !isLink);
   const { theme } = useTheme();
   if (!Icon && !childrenString?.trim()) {
     throw new Error(
@@ -372,10 +394,24 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     hasIcon: Boolean(Icon),
   });
 
+  const renderElement = React.useMemo(() => getRenderElement(href), [href]);
+  const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
+
   return (
     <StyledBaseButton
       ref={buttonRef as any}
-      accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+      // @ts-ignore: On React Native it will always be undefined but TS doesn't understand that
+      as={renderElement}
+      href={href}
+      target={target}
+      rel={rel ?? defaultRel}
+      accessibilityProps={{
+        ...makeAccessible({
+          role: isLink ? 'link' : 'button',
+          label: accessibilityLabel,
+        }),
+      }}
       isLoading={isLoading}
       disabled={disabled}
       activeBorderColor={activeBorderColor}

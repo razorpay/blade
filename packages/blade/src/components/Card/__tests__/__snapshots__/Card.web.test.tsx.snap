@@ -2,6 +2,7 @@
 
 exports[`<Card /> should render a Card with Footer 1`] = `
 .c0 {
+  text-align: left;
   padding: 24px;
   border-radius: 4px;
 }
@@ -33,7 +34,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-top: 24px;
 }
 
-.c9 {
+.c7 {
+  text-align: left;
+}
+
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,14 +53,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-left: 16px;
 }
 
-.c10 {
+.c11 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -76,7 +81,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   justify-content: center;
 }
 
-.c15 {
+.c16 {
   margin-left: 16px;
 }
 
@@ -107,7 +112,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c8 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -120,7 +125,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c8 {
+.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -133,7 +138,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c14 {
+.c15 {
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -147,7 +152,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c17 {
+.c18 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -161,7 +166,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c11 {
+.c12 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -174,6 +179,20 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding-bottom: 0px;
   padding-left: 20px;
   padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -183,24 +202,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   position: relative;
 }
 
-.c11:hover {
+.c12:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(213,89%,56%,1);
 }
 
-.c11:active {
+.c12:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(213,89%,56%,1);
 }
 
-.c11:focus {
+.c12:focus {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(213,89%,56%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c11 * {
+.c12 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -209,7 +228,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16 {
+.c17 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -222,6 +241,20 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding-bottom: 0px;
   padding-left: 20px;
   padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -231,24 +264,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   position: relative;
 }
 
-.c16:hover {
+.c17:hover {
   background-color: hsla(218,89%,51%,1);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c16:active {
+.c17:active {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
 }
 
-.c16:focus {
+.c17:focus {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c16 * {
+.c17 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -257,7 +290,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13 {
+.c14 {
   opacity: 1;
 }
 
@@ -304,10 +337,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         display="flex"
       >
         <div
-          class=""
+          class="c7"
         >
           <p
-            class="c7 Text__StyledText-wkh56f-0"
+            class="c8 Text__StyledText-wkh56f-0"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -318,7 +351,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             Card Footer
           </p>
           <p
-            class="c8 Text__StyledText-wkh56f-0"
+            class="c9 Text__StyledText-wkh56f-0"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -330,24 +363,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           </p>
         </div>
         <div
-          class="c9"
+          class="c10"
           display="flex"
         >
           <div
-            class="c10"
+            class="c11"
           >
             <button
-              class="c11"
+              class="c12"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class="c12 c13"
+                class="c13 c14"
                 display="flex"
               >
                 <div
-                  class="c14"
+                  class="c15"
                   color="action.text.secondary.default"
                   font-size="100"
                   font-weight="bold"
@@ -358,23 +391,23 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             </button>
           </div>
           <div
-            class="c15"
+            class="c16"
           />
           <div
-            class="c10"
+            class="c11"
           >
             <button
-              class="c16"
+              class="c17"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class="c12 c13"
+                class="c13 c14"
                 display="flex"
               >
                 <div
-                  class="c17"
+                  class="c18"
                   color="action.text.primary.default"
                   font-size="100"
                   font-weight="bold"
@@ -393,6 +426,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 
 exports[`<Card /> should render a Card with Header 1`] = `
 .c0 {
+  text-align: left;
   padding: 24px;
   border-radius: 4px;
 }
@@ -494,6 +528,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
   align-self: center;
 }
 
+.c16 {
+  text-align: left;
+  background-color: hsla(216,15%,54%,0.09);
+}
+
 .c1 {
   width: 100%;
   display: -webkit-box;
@@ -508,7 +547,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   box-sizing: border-box;
 }
 
-.c16 {
+.c17 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -545,6 +584,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
@@ -558,11 +598,25 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
+  text-align: left;
   margin: 0;
   padding: 0;
 }
 
 .c18 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c20 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -583,7 +637,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c17 {
+.c19 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
@@ -714,7 +768,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           class="c15"
         >
           <div
-            class="c9 c16"
+            class="c16 c17"
             data-blade-component="badge"
           >
             <div
@@ -723,7 +777,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               overflow="hidden"
             >
               <p
-                class="c12 c13"
+                class="c18 c13"
                 color="feedback.text.neutral.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -738,7 +792,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </div>
       </div>
       <div
-        class="c17"
+        class="c19"
       />
     </div>
     <div
@@ -746,7 +800,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       data-blade-component="card-body"
     >
       <p
-        class="c18 "
+        class="c20 "
         color="surface.text.normal.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -763,6 +817,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 
 exports[`<Card /> should render a Card without 0 padding 1`] = `
 .c0 {
+  text-align: left;
   padding: 0px;
   border-radius: 4px;
 }
@@ -799,6 +854,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 
 exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 .c0 {
+  text-align: left;
   padding: 24px;
   border-radius: 4px;
 }
@@ -838,6 +894,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 
 exports[`<Card /> should render a plain Card 1`] = `
 .c0 {
+  text-align: left;
   padding: 24px;
   border-radius: 4px;
 }

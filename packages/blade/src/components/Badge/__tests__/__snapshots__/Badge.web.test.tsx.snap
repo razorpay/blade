@@ -2,6 +2,7 @@
 
 exports[`<Badge /> should render Badge with Icon 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 
@@ -129,6 +130,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 
 exports[`<Badge /> should render Badge with bold font 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 
@@ -219,6 +221,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 
 exports[`<Badge /> should render Badge with default props 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 
@@ -309,6 +312,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 
 exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -399,6 +403,7 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(193,100%,35%,1);
 }
 
@@ -489,6 +494,7 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(8,73%,47%,1);
 }
 
@@ -579,6 +585,7 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(216,33%,29%,1);
 }
 
@@ -669,6 +676,7 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(38,97%,38%,1);
 }
 
@@ -759,6 +767,7 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(160,100%,26%,1);
 }
 
@@ -849,6 +858,7 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 
 exports[`<Badge /> should render large size Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 
@@ -939,6 +949,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
 
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(218,89%,51%,0.09);
 }
 
@@ -1029,6 +1040,7 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(193,100%,35%,0.09);
 }
 
@@ -1119,6 +1131,7 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(9,91%,56%,0.09);
 }
 
@@ -1209,6 +1222,7 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 
@@ -1299,6 +1313,7 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(36,100%,44%,0.09);
 }
 
@@ -1389,6 +1404,7 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(155,100%,31%,0.09);
 }
 
@@ -1479,6 +1495,7 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 
 exports[`<Badge /> should render medium size Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 
@@ -1569,6 +1586,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 
 exports[`<Badge /> should render small size Badge 1`] = `
 .c0 {
+  text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 

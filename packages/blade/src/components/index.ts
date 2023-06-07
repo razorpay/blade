@@ -24,6 +24,7 @@ export * from './ProgressBar';
 export * from './Radio';
 export * from './Spinner';
 export * from './SkipNav';
+export * from './Switch';
 export * from './Typography';
 export * from './VisuallyHidden';
 export * from './Amount';
