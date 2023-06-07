@@ -310,7 +310,7 @@ export const colors: Color = {
       a300: `hsla(210, 6%, 94%, ${opacity[1]})`,
       a400: `hsla(210, 6%, 94%, ${opacity[2]})`,
       a500: `hsla(210, 6%, 94%, ${opacity[3]})`,
-      a1100: `hsla(214, 15%, 18%, ${opacity[4]})`,
+      a1100: `hsla(214, 15%, 18%, ${opacity[6]})`,
     },
     ashGrayDark: {
       0: `hsla(0, 0%, 99%, ${opacity[9]})`,
@@ -335,7 +335,7 @@ export const colors: Color = {
       a300: `hsla(228, 4%, 76%, ${opacity[1]})`,
       a400: `hsla(228, 4%, 76%, ${opacity[2]})`,
       a500: `hsla(228, 4%, 76%, ${opacity[3]})`,
-      a1100: `hsla(231, 11%, 12%, ${opacity[5]})`,
+      a1100: `hsla(231, 11%, 12%, ${opacity[7]})`,
     },
   },
 };
