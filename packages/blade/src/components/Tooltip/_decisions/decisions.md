@@ -168,11 +168,13 @@ There are certain cases where long press makes sense and certain places where im
 
 Google interactive icons, a search icon button might be clickable which shows a search input on clicked, but on long pressing it shows a tooltip.
 
-![](./assets/google-tv-tooltip.mp4)
+https://github.com/razorpay/blade/assets/35374649/51b8db65-7c46-4d7b-b388-61ab4fae8727
 
 **Immediately press (Razorpay icon tooltip):**
 
-![](./assets/razorpay-mobile-tooltip.mp4)
+
+https://github.com/razorpay/blade/assets/35374649/612a96b9-34e1-492b-8e81-e04b896d79db
+
 
 Immediately shows tooltip on clicking on the icon for more info.
 
