@@ -2658,6 +2658,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -2665,11 +2666,16 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -3047,6 +3053,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(213, 89%, 56%, 1)",
           "borderColor": "hsla(213, 89%, 56%, 1)",
@@ -3054,11 +3061,16 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {

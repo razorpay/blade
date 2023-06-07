@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ReactElement } from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { Linking } from 'react-native';
@@ -5,6 +6,7 @@ import styled from 'styled-components/native';
 import type { StyledBaseLinkProps } from './types';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import { useStyledProps } from '~components/Box/styledProps';
+import type { BladeElementRef } from '~src/hooks/types';
 
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);
@@ -26,19 +28,25 @@ const openURL = async (href: string): Promise<void> => {
   }
 };
 
-const StyledLink = ({
-  variant,
-  disabled,
-  href,
-  onClick,
-  children,
-  setCurrentInteraction,
-  accessibilityProps,
-  // @ts-expect-error avoid exposing to public
-  style,
-  testID,
-  hitSlop,
-}: StyledBaseLinkProps & { children: React.ReactNode }): ReactElement => {
+const _StyledLink: React.ForwardRefRenderFunction<
+  BladeElementRef,
+  StyledBaseLinkProps & { children: React.ReactNode }
+> = (
+  {
+    variant,
+    disabled,
+    href,
+    onClick,
+    children,
+    setCurrentInteraction,
+    accessibilityProps,
+    // @ts-expect-error avoid exposing to public
+    style,
+    testID,
+    hitSlop,
+  },
+  ref,
+): ReactElement => {
   const handleOnPress = (event: GestureResponderEvent): void => {
     if (href && variant === 'anchor') {
       void openURL(href);
@@ -57,6 +65,8 @@ const StyledLink = ({
 
   return (
     <StyledNativeLink
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
       {...accessibilityProps}
       disabled={disabled}
       onPress={handleOnPress}
@@ -70,5 +80,7 @@ const StyledLink = ({
     </StyledNativeLink>
   );
 };
+
+const StyledLink = React.forwardRef(_StyledLink);
 
 export default StyledLink;

@@ -43,10 +43,10 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -62,7 +62,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -136,10 +136,10 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -155,7 +155,7 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -215,10 +215,10 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -234,7 +234,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -299,10 +299,10 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -318,7 +318,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -552,10 +552,10 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -571,7 +571,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -602,7 +602,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -633,7 +633,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -664,7 +664,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -695,7 +695,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c7"
@@ -726,7 +726,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c7"
@@ -757,7 +757,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -788,7 +788,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -819,7 +819,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c13"
@@ -893,10 +893,10 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -912,7 +912,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -986,10 +986,10 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1005,7 +1005,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -1065,10 +1065,10 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1084,7 +1084,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"
@@ -1149,10 +1149,10 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1168,7 +1168,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="flex"
+    display="inline-flex"
   >
     <span
       class="c1"

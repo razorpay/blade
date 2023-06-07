@@ -1,13 +1,13 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "8.5.0",
+  "version": "8.7.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
   },
   "bin": {
-    "migrate-typography": "./codemods/migrate-typography/cli.js"
+    "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts"
   },
   "repository": {
     "type": "git",
@@ -87,7 +87,7 @@
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-android",
     "react-native:storybook:ios": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-ios",
-    "react-native:storybook:start": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
+    "react-native:storybook:start": "yarn react-native:get-stories && NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
     "react": "yarn run react:storybook",
     "react:storybook": "NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
     "react:storybook:build": "NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
@@ -108,6 +108,7 @@
   "dependencies": {
     "@babel/runtime": "7.16.5",
     "@types/body-scroll-lock": "3.1.0",
+    "@floating-ui/react": "0.24.2",
     "@use-gesture/react": "10.2.24",
     "body-scroll-lock": "4.0.0-beta.0",
     "use-presence": "1.1.0"
@@ -276,7 +277,7 @@
       "name": "Import Button only",
       "path": "./build/components/index.web.js",
       "import": "{ Button }",
-      "limit": "17 kb",
+      "limit": "17.5 kb",
       "running": false
     },
     {
