@@ -3,6 +3,8 @@ import type { Side } from '@floating-ui/react-native';
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
 import { Modal, Pressable, TouchableOpacity } from 'react-native';
+import type { EasingFn } from 'react-native-reanimated';
+import Animated, { Keyframe } from 'react-native-reanimated';
 import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
 import { TooltipProps } from './types';
@@ -47,15 +49,143 @@ const Tooltip = ({
     onClose?.();
   }, [onClose]);
 
-  // TODO: Do we need shouldWrapChildren in ReactNative?
-  // We won't need to add shouldWrapChildren in RN, We will always wrap the children in a Pressable
-  // Because even if we support direct childrens the tooltip won't behave as expected
-  // In case if a interactive element is passed into it, Since we don't support long press event.
-  // This is inline with design: In mobile if we put tooltip around a interactive element like button
-  // that will be a wrong UX
-  // if (shouldWrapChildren) {
-  //   console.warn('[Blade Tooltip]: `shouldWrapChildren` prop does nothing on ReactNative');
-  // }
+  // wait for animation to finish before unmounting modal
+  const [isVisible, setIsVisible] = React.useState(() => isOpen);
+  React.useEffect(() => {
+    const id = setTimeout(() => {
+      if (!isOpen) {
+        setIsVisible(false);
+      }
+    }, theme.motion.duration.gentle);
+
+    if (isOpen) {
+      setIsVisible(true);
+    }
+    return () => clearTimeout(id);
+  }, [isOpen]);
+
+  // Animations
+  const easing = (theme.motion.easing.entrance.effective as unknown) as EasingFn;
+  const duration = theme.motion.duration.quick;
+
+  const FadeInTop = new Keyframe({
+    from: {
+      opacity: 0,
+      transform: [{ translateY: 0 }],
+      easing,
+    },
+    to: {
+      opacity: 1,
+      transform: [{ translateY: 10 }],
+      easing,
+    },
+  });
+
+  const FadeInBottom = new Keyframe({
+    from: {
+      opacity: 0,
+      transform: [{ translateY: 10 }],
+      easing,
+    },
+    to: {
+      opacity: 1,
+      transform: [{ translateY: 0 }],
+      easing,
+    },
+  });
+
+  const FadeOutTop = new Keyframe({
+    from: {
+      opacity: 1,
+      transform: [{ translateY: 10 }],
+      easing,
+    },
+    to: {
+      opacity: 0,
+      transform: [{ translateY: 0 }],
+      easing,
+    },
+  });
+
+  const FadeOutBottom = new Keyframe({
+    from: {
+      opacity: 1,
+      transform: [{ translateY: 0 }],
+      easing,
+    },
+    to: {
+      opacity: 0,
+      transform: [{ translateY: 10 }],
+      easing,
+    },
+  });
+
+  const FadeInLeft = new Keyframe({
+    from: {
+      opacity: 0,
+      transform: [{ translateX: 0 }],
+      easing,
+    },
+    to: {
+      opacity: 1,
+      transform: [{ translateX: 10 }],
+      easing,
+    },
+  });
+
+  const FadeInRight = new Keyframe({
+    from: {
+      opacity: 0,
+      transform: [{ translateX: 10 }],
+      easing,
+    },
+    to: {
+      opacity: 1,
+      transform: [{ translateX: 0 }],
+      easing,
+    },
+  });
+
+  const FadeOutLeft = new Keyframe({
+    from: {
+      opacity: 1,
+      transform: [{ translateX: 10 }],
+      easing,
+    },
+    to: {
+      opacity: 0,
+      transform: [{ translateX: 0 }],
+      easing,
+    },
+  });
+
+  const FadeOutRight = new Keyframe({
+    from: {
+      opacity: 1,
+      transform: [{ translateX: 0 }],
+      easing,
+    },
+    to: {
+      opacity: 0,
+      transform: [{ translateX: 10 }],
+      easing,
+    },
+  });
+
+  const animations = {
+    enter: {
+      left: FadeInLeft.duration(duration),
+      right: FadeInRight.duration(duration),
+      top: FadeInTop.duration(duration),
+      bottom: FadeInBottom.duration(duration),
+    },
+    exit: {
+      left: FadeOutLeft.duration(duration),
+      right: FadeOutRight.duration(duration),
+      top: FadeOutTop.duration(duration),
+      bottom: FadeOutBottom.duration(duration),
+    },
+  };
 
   return (
     <>
@@ -77,7 +207,7 @@ const Tooltip = ({
           style: { alignSelf: 'flex-start' },
         })
       )}
-      <Modal collapsable={false} transparent visible={isOpen} animationType="fade">
+      <Modal collapsable={false} transparent visible={isVisible}>
         <TouchableOpacity
           style={{
             flexShrink: 0,
@@ -86,13 +216,17 @@ const Tooltip = ({
           onPress={handleClose}
           activeOpacity={1}
         >
-          <TooltipContent
-            ref={refs.setFloating}
-            style={floatingStyles}
-            arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
-          >
-            {content}
-          </TooltipContent>
+          {isOpen ? (
+            <Animated.View entering={animations.enter[side]} exiting={animations.exit[side]}>
+              <TooltipContent
+                ref={refs.setFloating}
+                style={floatingStyles}
+                arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
+              >
+                {content}
+              </TooltipContent>
+            </Animated.View>
+          ) : null}
         </TouchableOpacity>
       </Modal>
     </>
