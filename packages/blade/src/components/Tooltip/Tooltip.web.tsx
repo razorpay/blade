@@ -44,8 +44,7 @@ const Tooltip = ({
   children,
   placement = 'top',
   shouldWrapChildren,
-  onOpen,
-  onClose,
+  onOpenChange,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const id = useId();
@@ -65,10 +64,10 @@ const Tooltip = ({
     onOpenChange: (open) => {
       if (open) {
         setIsOpen(true);
-        onOpen?.();
+        onOpenChange?.({ isOpen: open });
       } else {
         setIsOpen(false);
-        onClose?.();
+        onOpenChange?.({ isOpen: open });
       }
     },
     middleware: [

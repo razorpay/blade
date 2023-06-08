@@ -157,10 +157,11 @@ const TooltipTriggersTemplate = () => {
         </TooltipComponent>
         <TooltipComponent
           placement="top"
-          onOpen={() => console.log('open')}
-          onClose={() => console.log('close')}
           content="Hello world"
           shouldWrapChildren
+          onOpenChange={({ isOpen }) => {
+            console.log(isOpen ? 'open' : 'closed');
+          }}
         >
           <InfoIcon size="2xlarge" color="action.icon.link.visited" />
         </TooltipComponent>

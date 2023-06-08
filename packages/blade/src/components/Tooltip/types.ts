@@ -11,8 +11,7 @@ type TooltipProps = {
   >;
   children: React.ReactElement;
   shouldWrapChildren?: boolean;
-  onOpen?: () => void;
-  onClose?: () => void;
+  onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
 };
 
 type TooltipTriggerProps = {

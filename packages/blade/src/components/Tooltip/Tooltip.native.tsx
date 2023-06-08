@@ -14,10 +14,9 @@ import { useTheme } from '~components/BladeProvider';
 const Tooltip = ({
   content,
   children,
-  onClose,
-  onOpen,
   placement = 'left',
   shouldWrapChildren,
+  onOpenChange,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = React.useState(false);
@@ -44,13 +43,13 @@ const Tooltip = ({
 
   const handleOpen = React.useCallback(() => {
     setIsOpen(true);
-    onOpen?.();
-  }, [onOpen]);
+    onOpenChange?.({ isOpen: true });
+  }, [onOpenChange]);
 
   const handleClose = React.useCallback(() => {
     setIsOpen(false);
-    onClose?.();
-  }, [onClose]);
+    onOpenChange?.({ isOpen: false });
+  }, [onOpenChange]);
 
   // wait for animation to finish before unmounting modal
   const [isVisible, setIsVisible] = React.useState(() => isOpen);
