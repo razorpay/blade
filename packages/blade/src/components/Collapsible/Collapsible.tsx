@@ -60,8 +60,9 @@ const Collapsible = ({
       isExpanded: isBodyExpanded,
       setIsExpanded: setIsBodyExpanded,
       defaultIsExpanded,
+      direction,
     }),
-    [isBodyExpanded, defaultIsExpanded],
+    [isBodyExpanded, defaultIsExpanded, direction],
   );
 
   return (
@@ -69,7 +70,6 @@ const Collapsible = ({
       <BaseBox
         display="flex"
         flexDirection={direction === 'bottom' ? 'column' : 'column-reverse'}
-        gap="spacing.5"
         alignItems="flex-start"
       >
         {children}

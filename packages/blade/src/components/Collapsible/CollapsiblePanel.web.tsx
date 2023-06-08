@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useCollapsibleContext } from './CollapsibleContext';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { useDidUpdate } from '~src/hooks/useDidUpdate';
+import { Box } from '~components/Box';
 
 type CollapsiblePanelProps = {
   children: ReactNode;
@@ -119,7 +120,12 @@ const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => 
       defaultIsExpanded={defaultIsExpanded}
       onTransitionEnd={onTransitionEnd}
     >
-      {children}
+      <Box
+        // need margin here to prevent jank
+        marginY="spacing.5"
+      >
+        {children}
+      </Box>
     </StyledCollapsiblePanel>
   );
 };

@@ -6,6 +6,7 @@ import type { CollapsibleProps } from './Collapsible';
 import { Collapsible as CollapsibleComponent } from './Collapsible';
 import { CollapsibleButton } from './CollapsibleButton';
 import { CollapsibleBody } from './CollapsibleBody';
+import { CollapsibleLink } from './CollapsibleLink';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -61,10 +62,29 @@ const meta: Meta<CollapsibleProps> = {
   },
 };
 
-const CollapsibleTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
+const CollapsibleButtonTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
   return (
     <CollapsibleComponent {...args}>
-      <CollapsibleButton>Answer to life, universe and everything</CollapsibleButton>
+      <CollapsibleButton>Greatest song ever</CollapsibleButton>
+      <CollapsibleBody>
+        <Text>And as we wind on down the road</Text>
+        <Text>Our shadows taller than our soul</Text>
+        <Text>There walks a lady we all know</Text>
+        <Text>Who shines white light and wants to show</Text>
+        <Text>How everything still turns to gold</Text>
+        <Text>And if you listen very hard</Text>
+        <Text>The tune will come to you at last</Text>
+        <Text>When all are one, and one is all</Text>
+        <Text>To be a rock and not to roll</Text>
+      </CollapsibleBody>
+    </CollapsibleComponent>
+  );
+};
+
+const CollapsibleLinkTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
+  return (
+    <CollapsibleComponent {...args}>
+      <CollapsibleLink>Answer to life, universe and everything</CollapsibleLink>
       <CollapsibleBody>
         <Text>42</Text>
       </CollapsibleBody>
@@ -72,6 +92,8 @@ const CollapsibleTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...a
   );
 };
 
-export const Default = CollapsibleTemplate.bind({});
+export const WithCollapsibleButton = CollapsibleButtonTemplate.bind({});
+
+export const WithCollapsibleLink = CollapsibleLinkTemplate.bind({});
 
 export default meta;
