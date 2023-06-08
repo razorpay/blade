@@ -12,7 +12,6 @@ The tooltip typically provides additional context about the element or its funct
   - [Custom Triggers](#custom-triggers)
 - [Library](#library)
   - [Bundle Size](#bundle-size)
-- [Implementation detail nuances:](#implementation-detail-nuances)
 - [Motion](#motion)
 - [Accessibility](#accessibility)
 - [Open Questions](#open-questions)
@@ -80,10 +79,13 @@ To make custom elements work the components needs to expose:
 ```jsx
 import type { TooltipTriggerProps } from "@razorpay/blade/components";
 
-type MyCustomButtonProps = {} & TooltipTriggerProps
+type MyCustomButtonProps = { 
+  children: React.ReactNode 
+} & TooltipTriggerProps
+
 const MyCustomButton = React.forwardRef<
   HTMLDivElement,
-  { children: React.ReactNode } & TooltipTriggerProps
+  MyCustomButtonProps
 >(({ children, ...props }, ref) => {
   return (
     <button
