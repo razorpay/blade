@@ -20,18 +20,13 @@ import {
   modalMinWidth,
   modalResponsiveScreenGap,
 } from './modalTokens';
-import {
-  MetaConstants,
-  castWebType,
-  isValidAllowedChildren,
-  makeAccessible,
-  makeMotionTime,
-  makeSize,
-  metaAttribute,
-} from '~utils';
+import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { Box } from '~components/Box';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type ModalProps = {
   /**
