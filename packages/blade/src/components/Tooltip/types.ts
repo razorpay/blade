@@ -10,7 +10,6 @@ type TooltipProps = {
     'left-end' | 'left-start' | 'right-end' | 'right-start'
   >;
   children: React.ReactElement;
-  shouldWrapChildren?: boolean;
   onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
 };
 

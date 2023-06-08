@@ -2,7 +2,7 @@
 import type { Side } from '@floating-ui/react-native';
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
-import { Modal, Pressable, TouchableOpacity } from 'react-native';
+import { Modal, TouchableOpacity } from 'react-native';
 import type { EasingFn } from 'react-native-reanimated';
 import Animated, { Keyframe } from 'react-native-reanimated';
 import { TooltipArrow } from './TooltipArrowNative';
@@ -15,7 +15,6 @@ const Tooltip = ({
   content,
   children,
   placement = 'left',
-  shouldWrapChildren,
   onOpenChange,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
@@ -191,25 +190,10 @@ const Tooltip = ({
 
   return (
     <>
-      {shouldWrapChildren ? (
-        <Pressable
-          style={{ alignSelf: 'flex-start' }}
-          // using touch end instead of start so that if the the children is interactive
-          // it's events will get triggered also
-          onTouchEnd={handleOpen}
-          ref={refs.setReference}
-          collapsable={false}
-        >
-          {children}
-        </Pressable>
-      ) : (
-        React.cloneElement(children, {
-          onTouchEnd: handleOpen,
-          ref: refs.setReference,
-          style: { alignSelf: 'flex-start' },
-          collapse: false,
-        })
-      )}
+      {React.cloneElement(children, {
+        onTouchEnd: handleOpen,
+        ref: refs.setReference,
+      })}
       <Modal collapsable={false} transparent visible={isVisible}>
         <TouchableOpacity
           style={{

@@ -17,33 +17,18 @@ import {
   useTransitionStyles,
 } from '@floating-ui/react';
 import React from 'react';
-import styled from 'styled-components';
 import { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { makeAccessible, makeBorderSize } from '~utils';
+import { makeAccessible } from '~utils';
 import { useId } from '~src/hooks/useId';
-import { Box } from '~components/Box';
-
-const TooltipInteractiveWrapper = styled(Box)((props) => {
-  return {
-    display: 'inline-block',
-    '&:focus': {
-      borderRadius: makeBorderSize(props.theme.border.radius.medium),
-      // TODO: Replace with focus outline token
-      outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
-      boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
-    },
-  };
-});
 
 const Tooltip = ({
   content,
   children,
   placement = 'top',
-  shouldWrapChildren,
   onOpenChange,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
@@ -101,18 +86,11 @@ const Tooltip = ({
 
   return (
     <>
-      {shouldWrapChildren ? (
-        <TooltipInteractiveWrapper
-          tabIndex={0}
-          ref={refs.setReference as never}
-          {...makeAccessible({ label: content })}
-          {...getReferenceProps()}
-        >
-          {children}
-        </TooltipInteractiveWrapper>
-      ) : (
-        React.cloneElement(children, { ref: refs.setReference, ...getReferenceProps() })
-      )}
+      {React.cloneElement(children, {
+        ref: refs.setReference,
+        ...getReferenceProps(),
+        ...makeAccessible({ label: content }),
+      })}
       {isMounted && (
         <FloatingPortal>
           <BaseBox
