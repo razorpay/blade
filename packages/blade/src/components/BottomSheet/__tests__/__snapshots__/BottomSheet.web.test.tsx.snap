@@ -185,7 +185,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(214,15%,18%,0.64);
   opacity: 1;
 }
 

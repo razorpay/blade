@@ -300,7 +300,7 @@ describe('<BottomSheet />', () => {
       );
     };
     expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade BottomSheetHeader]: Only one of `Button, Badge, Link, Text` component is accepted as trailing',
+      '[Blade Header]: Only one of `Button, Badge, Link, Text` component is accepted as trailing',
     );
     mockConsoleError.mockRestore();
   });
@@ -320,7 +320,7 @@ describe('<BottomSheet />', () => {
 
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining(
-        '[Blade BottomSheetHeader]: Do not pass "size" to "Badge" while inside BottomSheetHeader trailing, because we override it.',
+        '[Blade Header]: Do not pass "size" to "Badge" while inside Header trailing, because we override it.',
       ),
     );
 

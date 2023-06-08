@@ -47,6 +47,13 @@ type MakeValueResponsive<T> = [T] extends [never]
  * }
  * ```
  */
-type MakeObjectResponsive<T> = { [P in keyof T]: MakeValueResponsive<T[P]> };
+type MakeObjectResponsive<
+  T,
+  // using this workaround to preserve the jsdocs
+  // https://github.com/microsoft/TypeScript/issues/31992
+  K extends keyof T = Extract<keyof T, string>
+> = {
+  [P in K]: MakeValueResponsive<T[P]>;
+};
 
 export { MakeObjectResponsive, MakeValueResponsive };

@@ -48,6 +48,8 @@ const getStories = () => {
     require('../../src/components/Link/BaseLink/BaseLink.stories.tsx'),
     require('../../src/components/Link/Link/Link.stories.tsx'),
     require('../../src/components/List/List.stories.tsx'),
+    require('../../src/components/Modal/docs/ModalExamples.stories.tsx'),
+    require('../../src/components/Modal/docs/SimpleModal.stories.tsx'),
     require('../../src/components/ProgressBar/ProgressBar.stories.tsx'),
     require('../../src/components/Radio/Radio.stories.tsx'),
     require('../../src/components/SkipNav/SkipNav.stories.tsx'),
