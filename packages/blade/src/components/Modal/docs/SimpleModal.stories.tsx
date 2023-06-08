@@ -2,7 +2,7 @@ import React from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
 import type { ModalProps } from '../Modal';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
