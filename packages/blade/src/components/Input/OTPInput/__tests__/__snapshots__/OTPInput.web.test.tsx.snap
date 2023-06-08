@@ -60,6 +60,7 @@ exports[`<OTPInput /> should render 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  position: relative;
   width: 100%;
 }
 
@@ -195,7 +196,6 @@ exports[`<OTPInput /> should render 1`] = `
   left: 0;
   right: 0;
   opacity: 0;
-  margin-left: 0;
   background-color: hsla(213,89%,56%,1);
   border-width: 1px;
   height: 1px;
@@ -262,7 +262,7 @@ exports[`<OTPInput /> should render 1`] = `
     >
       <label
         for="otp-37-input-38"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
@@ -339,10 +339,10 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class=" c11"
+                />
               </div>
-              <div
-                class=" c11"
-              />
             </div>
           </div>
         </div>
@@ -376,10 +376,10 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class=" c11"
+                />
               </div>
-              <div
-                class=" c11"
-              />
             </div>
           </div>
         </div>
@@ -413,10 +413,10 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class=" c11"
+                />
               </div>
-              <div
-                class=" c11"
-              />
             </div>
           </div>
         </div>
@@ -450,10 +450,10 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class=" c11"
+                />
               </div>
-              <div
-                class=" c11"
-              />
             </div>
           </div>
         </div>
@@ -487,10 +487,10 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class=" c11"
+                />
               </div>
-              <div
-                class=" c11"
-              />
             </div>
           </div>
         </div>
@@ -524,10 +524,10 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class=" c11"
+                />
               </div>
-              <div
-                class=" c11"
-              />
             </div>
           </div>
         </div>
