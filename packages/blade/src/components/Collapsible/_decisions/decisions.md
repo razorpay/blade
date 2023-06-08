@@ -97,7 +97,6 @@ Built-in trigger for `Collapsible`, provides a subset of `Link` [properties](../
 Supports ✅
 
 - `children`
-- `icon`
 - `isDisabled`
 - `size`
 - `accessibilityLabel`
@@ -105,7 +104,8 @@ Supports ✅
 
 Doesn't support ❌
 
-- `iconPosition` - will be `left` for passed `icon` since the `CollapsibleLink` renders a rotating chevron icon to its right
+- `icon` - renders a chevron icon always
+- `iconPosition` - will be `right` always for the chevron icon (which animates)
 - `htmlTitle`
 - `variant` - will always be `button`
 - `onClick`
