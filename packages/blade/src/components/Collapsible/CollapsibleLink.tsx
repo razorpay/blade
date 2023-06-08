@@ -25,11 +25,11 @@ const StyledCollapsibleLinkIcon = styled(BaseBox)<StyledCollapsibleLinkIconProps
   const { isExpanded, direction, theme } = props;
   let transformExpanded, transformCollapsed;
   if (direction === 'bottom') {
-    transformExpanded = 'rotate(0.5turn)';
+    transformExpanded = 'rotate(-0.5turn)';
     transformCollapsed = undefined;
   } else {
     transformExpanded = undefined;
-    transformCollapsed = 'rotate(0.5turn)';
+    transformCollapsed = 'rotate(-0.5turn)';
   }
 
   return {

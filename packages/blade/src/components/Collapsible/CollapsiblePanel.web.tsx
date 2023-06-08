@@ -44,7 +44,7 @@ const StyledCollapsiblePanel = styled.div<StyledCollapsiblePanelProps>((props) =
 });
 
 const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => {
-  const { isExpanded, defaultIsExpanded } = useCollapsibleContext();
+  const { isExpanded, defaultIsExpanded, direction } = useCollapsibleContext();
   const collapsiblePanelRef = useRef<HTMLDivElement>(null);
 
   /**
@@ -121,8 +121,12 @@ const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => 
       onTransitionEnd={onTransitionEnd}
     >
       <Box
-        // need margin here to prevent jank
-        marginY="spacing.5"
+        /**
+         * Need a margin inside the outside wrapper so this is
+         * included in height calculations and prevents jank
+         */
+        marginTop={direction === 'bottom' ? 'spacing.5' : 'spacing.0'}
+        marginBottom={direction === 'top' ? 'spacing.5' : 'spacing.0'}
       >
         {children}
       </Box>

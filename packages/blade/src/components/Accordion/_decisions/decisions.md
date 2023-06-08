@@ -66,7 +66,7 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 | Key         | Type            | Default     | Description                                                                | Required |
 | ----------- | --------------- | ----------- | -------------------------------------------------------------------------- | -------- |
 | title       | `string`        | `undefined` | Title text content                                                         | ✅       |
-| description | `string`        | `undefined` | Body text content                                                          | ✅       |
+| description | `string`        | `undefined` | Body text content                                                          |          |
 | icon        | `IconComponent` | `undefined` | Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`) |          |
 | children    | `JSX`           | `undefined` | Slot, renders any custom content                                           |          |
 
