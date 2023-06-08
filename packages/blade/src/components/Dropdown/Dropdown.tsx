@@ -67,7 +67,6 @@ const _Dropdown = ({
     DropdownContextType['selectedIndices']
   >([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
-  const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const triggererRef = React.useRef<HTMLButtonElement>(null);
   const actionListItemRef = React.useRef<HTMLDivElement>(null);
@@ -137,8 +136,6 @@ const _Dropdown = ({
       setOptions,
       activeIndex,
       setActiveIndex,
-      shouldIgnoreBlur,
-      setShouldIgnoreBlur,
       shouldIgnoreBlurAnimation,
       setShouldIgnoreBlurAnimation,
       isKeydownPressed,
@@ -164,7 +161,6 @@ const _Dropdown = ({
       controlledValueIndices,
       options,
       activeIndex,
-      shouldIgnoreBlur,
       shouldIgnoreBlurAnimation,
       selectionType,
       hasFooterAction,

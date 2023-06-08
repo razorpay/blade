@@ -27,6 +27,7 @@ const _DropdownHeader = ({
         leading={leading}
         trailing={trailing}
         titleSuffix={titleSuffix}
+        metaComponentName="DropdownHeader"
         // back button
         showBackButton={false}
         // close button

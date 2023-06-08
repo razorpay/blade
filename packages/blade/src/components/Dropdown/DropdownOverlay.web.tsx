@@ -2,6 +2,7 @@ import React from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
+import { FloatingOverlay } from '@floating-ui/react';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
@@ -51,6 +52,12 @@ const AnimatedDropdownOverlay = styled(StyledDropdownOverlay)<{
     `,
 );
 
+const DropdownBackdrop = styled(FloatingOverlay)<{ display?: 'block' | 'none' }>((props) => {
+  return {
+    display: props.display,
+  };
+});
+
 type DropdownOverlayProps = {
   children: React.ReactNode;
 } & TestID;
@@ -63,10 +70,10 @@ type DropdownOverlayProps = {
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
   const {
     isOpen,
+    close,
     triggererRef,
     hasLabelOnLeft,
     dropdownTriggerer,
-    setShouldIgnoreBlur,
     setShouldIgnoreBlurAnimation,
   } = useDropdown();
   const { theme } = useTheme();
@@ -138,7 +145,6 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
       position="relative"
       onMouseDown={() => {
         console.log('here!!');
-        setShouldIgnoreBlur(true);
         // We want to keep focus on Dropdown's trigger while option is being clicked
         // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
         setShouldIgnoreBlurAnimation(true);
@@ -149,6 +155,12 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         setShouldIgnoreBlurAnimation(false);
       }}
     >
+      <DropdownBackdrop
+        display={display}
+        onClick={() => {
+          close();
+        }}
+      />
       <AnimatedDropdownOverlay
         width={isMenu ? undefined : width}
         minWidth="240px"

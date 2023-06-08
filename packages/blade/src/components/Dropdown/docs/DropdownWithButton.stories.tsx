@@ -115,12 +115,12 @@ export const InternalMenu = (): JSX.Element => {
             />
           </ActionList>
           <DropdownFooter>
-            <Box display="flex" alignItems="center" justifyContent="center">
-              <Box flex="3" display="flex">
-                <Checkbox>I agree terms</Checkbox>
+            <Box display="flex" alignItems="center" justifyContent="center" minWidth="300px">
+              <Box flex="5" display="flex">
+                <Checkbox>I agree terms and conditions</Checkbox>
               </Box>
               <Box flex="2">
-                <Button>Apply</Button>
+                <Button isFullWidth>Apply</Button>
               </Box>
             </Box>
           </DropdownFooter>

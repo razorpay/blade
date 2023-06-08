@@ -243,7 +243,7 @@ export const performAction = (
       return true;
     case SelectActions.Close:
       event.preventDefault();
-      actions.close();
+      // actions.close();
       return true;
     case SelectActions.Type:
       actions.onComboType(event.key, action);
