@@ -158,6 +158,7 @@ And give relavant feedback for [motion in this thread](https://razorpay.slack.co
 - `Esc` should close the tooltip
 - When using keyboard tooltip will apear when target element is focused
 - Tooltip's must not contain interactive elements
+- Tooltip trigger will also have aria-labelledby property which will be set to the TooltipContent's id
 
 Resources:
 
