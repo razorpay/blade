@@ -24,13 +24,12 @@ The tooltip typically provides additional context about the element or its funct
 
 ## `Tooltip` API
 
-| Prop                            | Type                                                                     | Default     | Description                                                                                                                                              | Required |
-| ------------------------------- | ------------------------------------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| content                         | `string`                                                                 | `undefined` | Content of the tooltip                                                                                                                                   | ✅       |
-| children                        | `React.ReactNode`                                                        | `undefined` | Trigger component for tooltip, Accepts any interactive element or icons                                                                                  | ✅       |
-| placement                       | `top, top-start, top-end, left, right, bottom, bottom-start, bottom-end` | `top`       | Placement of tooltip, the tooltip avoid collision with the edge of the screen and flip to the oppisite side even when placement is set.                  |          |
-| shouldWrapNonInteractiveElement | `boolean`                                                                | `false`     | If set to true, the tooltip trigger will be wrapped in a interactive `<div>`, this is useful for making non-interactive elements work as tooltip trigger |          |
-| onOpenChange                    | `({ isOpen }) => void`                                                   | `undefined` | Called when tooltip isOpen state is changed, this can be used to detect when tooltip opens or closed                                                     |          |
+| Prop         | Type                                                                     | Default     | Description                                                                                                                             | Required |
+| ------------ | ------------------------------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| content      | `string`                                                                 | `undefined` | Content of the tooltip                                                                                                                  | ✅       |
+| children     | `React.ReactNode`                                                        | `undefined` | Trigger component for tooltip, Accepts any interactive element or icons                                                                 | ✅       |
+| placement    | `top, top-start, top-end, left, right, bottom, bottom-start, bottom-end` | `top`       | Placement of tooltip, the tooltip avoid collision with the edge of the screen and flip to the oppisite side even when placement is set. |          |
+| onOpenChange | `({ isOpen }) => void`                                                   | `undefined` | Called when tooltip isOpen state is changed, this can be used to detect when tooltip opens or closed                                    |          |
 
 ### Examples:
 
@@ -45,13 +44,17 @@ The tooltip typically provides additional context about the element or its funct
 
 ### Working with non-interactive triggers
 
-To make tooltip apear on hovering over non-interactive elements such as icons, badges, counters etc. We will provide `shouldWrapNonInteractiveElement` prop which will wrap the trigger component in a interactive div element with all the trigger props
+To make tooltip apear on hovering over non-interactive elements such as icons, badges, counters etc. We will provide a `TooltipInteractiveWrapper` component which will work as a minimal trigger:
 
 ```js
+import { Tooltip, TooltipInteractiveWrapper } from '@razorpay/blade';
+
 // non-interactive element as trigger
-<Tooltip content="Amount reversed to customer bank account" shouldWrapNonInteractiveElement>
-  <Counter value={100} />
-</Tooltip>
+<Tooltip content="Amount reversed to customer bank account">
+  <TooltipInteractiveWrapper>
+    <Counter value={100} />
+  </TooltipInteractiveWrapper>
+</Tooltip>;
 ```
 
 > Note: If users don't wrap the non-interactive elements the tooltip won't apear
@@ -78,10 +81,25 @@ To make custom elements work the components needs to expose:
 import type { TooltipTriggerProps } from "@razorpay/blade/components";
 
 type MyCustomButtonProps = {} & TooltipTriggerProps
-const MyCustomButton = React.forwardRef(...);
+const MyCustomButton = React.forwardRef<
+  HTMLDivElement,
+  { children: React.ReactNode } & TooltipTriggerProps
+>(({ children, ...props }, ref) => {
+  return (
+    <button
+      ref={ref}
+      tabIndex={0}
+      // you can either spread the props
+      // or pick the onFocus, onMouse.. etc events and add them individually
+      {...props}
+    >
+       {children}
+    </button>
+  );
+});
 
 // custom trigger
-<Tooltip content="Amount reversed to customer bank account" shouldWrapNonInteractiveElement>
+<Tooltip content="Amount reversed to customer bank account">
   <MyCustomButton>Click me<MyCustomButton>
 </Tooltip>
 ```
