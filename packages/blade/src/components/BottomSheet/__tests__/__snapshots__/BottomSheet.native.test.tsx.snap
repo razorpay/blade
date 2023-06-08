@@ -33,7 +33,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             "top": 0,
           },
           Object {
-            "backgroundColor": "hsla(216, 15%, 54%, 0.32)",
+            "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
             "zIndex": 100,
           },
         ],
