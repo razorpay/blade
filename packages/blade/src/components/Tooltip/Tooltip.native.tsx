@@ -3,8 +3,6 @@ import type { Side } from '@floating-ui/react-native';
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
 import { Modal, TouchableOpacity } from 'react-native';
-import type { EasingFn } from 'react-native-reanimated';
-import Animated, { Keyframe } from 'react-native-reanimated';
 import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
 import { TooltipProps } from './types';
@@ -65,129 +63,6 @@ const Tooltip = ({
     return () => clearTimeout(id);
   }, [isOpen]);
 
-  // Animations
-  const easing = (theme.motion.easing.entrance.effective as unknown) as EasingFn;
-  const duration = theme.motion.duration.quick;
-
-  const FadeInTop = new Keyframe({
-    from: {
-      opacity: 0,
-      transform: [{ translateY: 0 }],
-      easing,
-    },
-    to: {
-      opacity: 1,
-      transform: [{ translateY: 10 }],
-      easing,
-    },
-  });
-
-  const FadeInBottom = new Keyframe({
-    from: {
-      opacity: 0,
-      transform: [{ translateY: 10 }],
-      easing,
-    },
-    to: {
-      opacity: 1,
-      transform: [{ translateY: 0 }],
-      easing,
-    },
-  });
-
-  const FadeOutTop = new Keyframe({
-    from: {
-      opacity: 1,
-      transform: [{ translateY: 10 }],
-      easing,
-    },
-    to: {
-      opacity: 0,
-      transform: [{ translateY: 0 }],
-      easing,
-    },
-  });
-
-  const FadeOutBottom = new Keyframe({
-    from: {
-      opacity: 1,
-      transform: [{ translateY: 0 }],
-      easing,
-    },
-    to: {
-      opacity: 0,
-      transform: [{ translateY: 10 }],
-      easing,
-    },
-  });
-
-  const FadeInLeft = new Keyframe({
-    from: {
-      opacity: 0,
-      transform: [{ translateX: 0 }],
-      easing,
-    },
-    to: {
-      opacity: 1,
-      transform: [{ translateX: 10 }],
-      easing,
-    },
-  });
-
-  const FadeInRight = new Keyframe({
-    from: {
-      opacity: 0,
-      transform: [{ translateX: 10 }],
-      easing,
-    },
-    to: {
-      opacity: 1,
-      transform: [{ translateX: 0 }],
-      easing,
-    },
-  });
-
-  const FadeOutLeft = new Keyframe({
-    from: {
-      opacity: 1,
-      transform: [{ translateX: 10 }],
-      easing,
-    },
-    to: {
-      opacity: 0,
-      transform: [{ translateX: 0 }],
-      easing,
-    },
-  });
-
-  const FadeOutRight = new Keyframe({
-    from: {
-      opacity: 1,
-      transform: [{ translateX: 0 }],
-      easing,
-    },
-    to: {
-      opacity: 0,
-      transform: [{ translateX: 10 }],
-      easing,
-    },
-  });
-
-  const animations = {
-    enter: {
-      left: FadeInLeft.duration(duration),
-      right: FadeInRight.duration(duration),
-      top: FadeInTop.duration(duration),
-      bottom: FadeInBottom.duration(duration),
-    },
-    exit: {
-      left: FadeOutLeft.duration(duration),
-      right: FadeOutRight.duration(duration),
-      top: FadeOutTop.duration(duration),
-      bottom: FadeOutBottom.duration(duration),
-    },
-  };
-
   return (
     <>
       {React.cloneElement(children, {
@@ -197,33 +72,28 @@ const Tooltip = ({
       <Modal collapsable={false} transparent visible={isVisible}>
         <TouchableOpacity
           style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+            flexShrink: 0,
+            flex: 1,
           }}
           onPress={handleClose}
           activeOpacity={1}
         >
-          {isOpen ? (
-            <Animated.View entering={animations.enter[side]} exiting={animations.exit[side]}>
-              <TooltipContent
-                ref={refs.setFloating}
-                style={{
-                  ...floatingStyles,
-                  // To avoid flash of floating ui content at top, this only happens in RN <70
-                  // if the position is zero move the floating element outside of the viewport
-                  // this happens because measure is async and it takes few miliseconds to calculate the positions.
-                  left: floatingStyles.left || -200,
-                  top: floatingStyles.top || -200,
-                }}
-                arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
-              >
-                {content}
-              </TooltipContent>
-            </Animated.View>
-          ) : null}
+          <TooltipContent
+            isVisible={isOpen}
+            ref={refs.setFloating}
+            side={side}
+            style={{
+              ...floatingStyles,
+              // To avoid flash of floating ui content at top, this only happens in RN <70
+              // if the position is zero move the floating element outside of the viewport
+              // this happens because measure is async and it takes few miliseconds to calculate the positions.
+              left: floatingStyles.left || -200,
+              top: floatingStyles.top || -200,
+            }}
+            arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
+          >
+            {content}
+          </TooltipContent>
         </TouchableOpacity>
       </Modal>
     </>

@@ -8,6 +8,7 @@ type TooltipContentProps = {
   style: CSSProperties;
   arrow: React.ReactNode;
 };
+
 const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
   ({ children, arrow, style }, ref) => {
     return (
