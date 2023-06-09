@@ -11,8 +11,7 @@
       "packages/blade",
       "packages/tools/*",
       "packages/token-publisher",
-      "packages/razorsharp",
-      "packages/blade-coverage-plugin"
+      "packages/razorsharp"
     ],
     "nohoist": [
       "**"
