@@ -26,6 +26,7 @@ const Tooltip = ({
   const arrowRef = React.useRef();
   const context = useFloating({
     sameScrollView: false,
+    placement,
     middleware: [
       shift({ crossAxis: false, padding: gap }),
       flip({ padding: gap }),
@@ -35,7 +36,6 @@ const Tooltip = ({
         padding: isHorizontal ? 0 : ARROW_WIDTH,
       }),
     ],
-    placement,
   });
 
   const { refs, floatingStyles } = context;
@@ -197,8 +197,11 @@ const Tooltip = ({
       <Modal collapsable={false} transparent visible={isVisible}>
         <TouchableOpacity
           style={{
-            flexShrink: 0,
-            flex: 1,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
           }}
           onPress={handleClose}
           activeOpacity={1}
@@ -207,7 +210,14 @@ const Tooltip = ({
             <Animated.View entering={animations.enter[side]} exiting={animations.exit[side]}>
               <TooltipContent
                 ref={refs.setFloating}
-                style={floatingStyles}
+                style={{
+                  ...floatingStyles,
+                  // To avoid flash of floating ui content at top, this only happens in RN <70
+                  // if the position is zero move the floating element outside of the viewport
+                  // this happens because measure is async and it takes few miliseconds to calculate the positions.
+                  left: floatingStyles.left || -200,
+                  top: floatingStyles.top || -200,
+                }}
                 arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
               >
                 {content}

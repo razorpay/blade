@@ -147,6 +147,9 @@ const TooltipTriggersTemplate = () => {
         <TooltipComponent placement="top" content="Hello world">
           <Button>Hover</Button>
         </TooltipComponent>
+        <TooltipComponent placement="bottom" content="Hello world">
+          <Button>Hover</Button>
+        </TooltipComponent>
         <TooltipComponent placement="top" content="Hello world">
           <Link onClick={() => console.log(1)} href="#">
             Hover
@@ -156,7 +159,7 @@ const TooltipTriggersTemplate = () => {
           <IconButton onClick={() => console.log(1)} icon={InfoIcon} accessibilityLabel="Info" />
         </TooltipComponent>
         <TooltipComponent
-          placement="top"
+          placement="bottom"
           content="Hello world"
           onOpenChange={({ isOpen }) => {
             console.log(isOpen ? 'open' : 'closed');
@@ -185,7 +188,7 @@ const CustomTrigger = React.forwardRef<
       alignSelf="flex-start"
       padding="spacing.4"
       borderRadius="medium"
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.level1.lowContrast"
       {...props}
     >
       <Text contrast="low">{children}</Text>
