@@ -2,7 +2,7 @@
 
 The tooltip typically provides additional context about the element or its function. A tooltip is always triggered by a `mouse hover` on desktop and `on tap` on mobile.
 
-<img src="./tooltip-thumbnail.png" width="380" alt="" />
+<img src="./assets/tooltip-thumbnail.png" width="380" alt="Tooltip Thumbnail" />
 
 - [Design](#design)
 - [`Tooltip` API](#tooltip-api)
