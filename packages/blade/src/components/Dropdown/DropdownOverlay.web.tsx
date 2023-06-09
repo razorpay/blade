@@ -2,6 +2,7 @@ import React from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
+import { useFloating, flip } from '@floating-ui/react';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
@@ -65,6 +66,14 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
 
+  const { refs, floatingStyles, context } = useFloating({
+    open: isOpen,
+    elements: {
+      reference: triggererRef.current,
+    },
+    middleware: [flip()],
+  });
+
   const isMenu = dropdownTriggerer !== 'SelectInput';
 
   const fadeIn = css`
@@ -126,7 +135,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <BaseBox position="relative">
+    <BaseBox position="relative" ref={refs.setFloating} style={floatingStyles}>
       <StyledDropdownOverlay
         width={isMenu ? undefined : width}
         minWidth="240px"
