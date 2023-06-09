@@ -2,7 +2,7 @@ import React from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
-import { useFloating, flip } from '@floating-ui/react';
+import { useFloating, flip, FloatingPortal } from '@floating-ui/react';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
@@ -135,24 +135,26 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <BaseBox position="relative" ref={refs.setFloating} style={floatingStyles}>
-      <StyledDropdownOverlay
-        width={isMenu ? undefined : width}
-        minWidth="240px"
-        // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
-        maxWidth={isMenu ? '400px' : undefined}
-        left={isMenu ? 'spacing.0' : undefined}
-        right={isMenu ? undefined : 'spacing.0'}
-        style={styles}
-        display={castWebType(display)}
-        position="absolute"
-        transition={isOpen ? fadeIn : fadeOut}
-        onAnimationEnd={onAnimationEnd}
-        {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
-      >
-        {children}
-      </StyledDropdownOverlay>
-    </BaseBox>
+    <FloatingPortal>
+      <BaseBox position="relative" ref={refs.setFloating} style={floatingStyles}>
+        <StyledDropdownOverlay
+          width={isMenu ? undefined : width}
+          minWidth="240px"
+          // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
+          maxWidth={isMenu ? '400px' : undefined}
+          left={isMenu ? 'spacing.0' : undefined}
+          right={isMenu ? undefined : 'spacing.0'}
+          style={styles}
+          display={castWebType(display)}
+          position="absolute"
+          transition={isOpen ? fadeIn : fadeOut}
+          onAnimationEnd={onAnimationEnd}
+          {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+        >
+          {children}
+        </StyledDropdownOverlay>
+      </BaseBox>
+    </FloatingPortal>
   );
 };
 
