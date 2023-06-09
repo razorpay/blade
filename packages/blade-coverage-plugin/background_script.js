@@ -66,7 +66,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
         func: calculateBladeCoverage
       });
       console.log('response', response);
-      chrome.runtime.sendMessage({ action: 'blade-coverage', coverage: response[0].result.bladeCoverage });
+      chrome.runtime.sendMessage({ action: 'blade-coverage', coverage: response[0].result });
     });
   }
 });

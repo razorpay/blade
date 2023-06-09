@@ -1,15 +1,30 @@
 /* eslint-disable no-undef */
 import { useState } from 'react';
-import { BladeProvider, Button, Heading, Box, Text } from '@razorpay/blade/components';
+import { ActivityIcon, BladeProvider, Button, Box, Heading, Text } from '@razorpay/blade/components';
 import { paymentTheme } from '@razorpay/blade/tokens';
+import styled from 'styled-components';
 import '@fontsource/lato/400.css';
 import '@fontsource/lato/400-italic.css';
 import '@fontsource/lato/700.css';
 import '@fontsource/lato/700-italic.css';
+import BarChartImg from './bar-chart.png';
 import { useMediaQuery } from './useMediaQuery';
 
+const StyledImg = styled.img`
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  opacity: 0.4;
+`;
+
+type BladeCoverage = {
+  bladeCoverage: number;
+  totalNodes: number;
+  bladeNodes: number;
+};
+
 const App = () => {
-  const [coverage, setCoverage] = useState(0);
+  const [coverage, setCoverage] = useState<BladeCoverage | undefined>(undefined);
   const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   console.log('Is dark mode in app', isDarkMode);
   const getBladeCoverage = () => {
@@ -25,23 +40,36 @@ const App = () => {
   });
   return (
     <BladeProvider themeTokens={paymentTheme} colorScheme={isDarkMode ? 'dark' : 'light'}>
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        flexDirection="column"
-        padding="spacing.4"
-        minWidth="320px"
-        backgroundColor="surface.background.level1.lowContrast"
-      >
-        <Heading marginBottom="spacing.8">Blade coverage extension</Heading>
-        <Button onClick={getBladeCoverage}>Get Coverage</Button>
-        {
-          coverage ? (
-            <Text>Blade coverage for this page is {coverage}</Text>
-          ) : null
-        }
-      </Box>
+      <Box height="312px" width="656px" padding="spacing.7">
+        <Box
+          position="relative"
+          backgroundColor="surface.background.level3.lowContrast"
+          alignItems="center"
+          justifyContent="center"
+          marginBottom="spacing.7"
+          display="flex"
+          flexDirection="column"
+          height="251px"
+        >
+          {
+            coverage ? (
+              <>
+                <Heading marginBottom="spacing.5">Blade Coverage: {coverage.bladeCoverage}%</Heading>
+                <Heading size="small" type="subdued" contrast="low" marginBottom="spacing.5" weight="regular">Total DOM Nodes: {coverage.totalNodes}</Heading>
+                <Heading size="small" type="subdued" contrast="low" weight="regular">Total Blade Nodes: {coverage.bladeNodes}</Heading>
+              </>
+            ) : (
+              <Text>Open a page which uses Blade then click the calculate Button below</Text>
+            )
+          }
+          
+          <StyledImg src={BarChartImg} alt="bar-chart" />
+        </Box>
+        <Box display="flex" justifyContent="center">
+          <Button icon={ActivityIcon} iconPosition="left" onClick={getBladeCoverage}>Calculate Blade Coverage</Button>
+        </Box>
+        
+      </Box>    
     </BladeProvider>
   );
 }
