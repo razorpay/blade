@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Blade Coverage Plugin",
+    "name": "Blade Coverage Extension",
     "version": "1.0",
     "permissions": ["activeTab", "scripting", "tabs"],
     "background": {

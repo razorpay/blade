@@ -10,7 +10,7 @@
 
 # production
 /build
-/chrome-plugin
+/chrome-extension
 
 # misc
 .DS_Store

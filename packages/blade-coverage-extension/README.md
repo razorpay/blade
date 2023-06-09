@@ -25,9 +25,9 @@ Plugin is made of two parts:
 
 ### How To Make Changes
 - Make relevant changes.
-- Run yarn build, it will generate a new folder named chrome-plugin in blade-coverage-plugin folder.
+- Run yarn build, it will generate a new folder named chrome-extension in blade-coverage-extensio  folder.
 - Open chrome://extensions.
 - Enable developer mode in top right.
-- Click on Load Unpacked extension and open blade-coverage-plugin/chrome-plugin.
+- Click on Load Unpacked extension and open blade-coverage-extension/chrome-extension.
 - Open x.razorpay.com
 - Open blade coverage plugin and verify your changes. 
