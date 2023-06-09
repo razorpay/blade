@@ -147,23 +147,18 @@ const TooltipTriggersTemplate = () => {
         <TooltipComponent placement="top" content="Hello world">
           <Button>Hover</Button>
         </TooltipComponent>
-        <TooltipComponent placement="bottom" content="Hello world">
-          <Button>Hover</Button>
-        </TooltipComponent>
-        <TooltipComponent placement="left" content="Hello world">
-          <Button>Hover</Button>
-        </TooltipComponent>
-        <TooltipComponent placement="right" content="Hello world">
-          <Button>Hover</Button>
-        </TooltipComponent>
+        <Box marginTop="spacing.8" />
         <TooltipComponent placement="top" content="Hello world">
           <Link onClick={() => console.log(1)} href="#">
             Hover
           </Link>
         </TooltipComponent>
+        <Box marginTop="spacing.8" />
+
         <TooltipComponent placement="top-end" content="Hello world">
           <IconButton onClick={() => console.log(1)} icon={InfoIcon} accessibilityLabel="Info" />
         </TooltipComponent>
+        <Box marginTop="spacing.8" />
         <TooltipComponent
           placement="bottom"
           content="Hello world"
