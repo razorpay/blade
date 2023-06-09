@@ -1,5 +1,5 @@
 {
-  "name": "blade-coverage-plugin",
+  "name": "blade-coverage-extension",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,11 +25,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf chrome-plugin",
-    "mkdirs": "mkdir -p chrome-plugin",
-    "copy:assets": "cp -r build/ chrome-plugin",
-    "copy:pluginAssets": "cp manifest.json chrome-plugin && cp background_script.js chrome-plugin",
-    "copy": "yarn run copy:assets && yarn run copy:pluginAssets",
+    "clean": "rimraf chrome-extension",
+    "mkdirs": "mkdir -p chrome-extension",
+    "copy:assets": "cp -r build/ chrome-extension",
+    "copy:extensionAssets": "cp manifest.json chrome-extension && cp background_script.js chrome-extension",
+    "copy": "yarn run copy:assets && yarn run copy:extensionAssets",
     "postbuild": "yarn run clean && yarn run mkdirs && yarn run copy"
   },
   "eslintConfig": {
