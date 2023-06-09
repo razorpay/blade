@@ -255,7 +255,7 @@ exports[`<TextArea /> should render 1`] = `
           style={
             Array [
               Object {
-                "backgroundColor": "hsla(213, 89%, 56%, 1)",
+                "backgroundColor": "hsla(218, 89%, 51%, 1)",
                 "bottom": 0,
                 "height": 1,
                 "left": 0,
