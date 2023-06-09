@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 8.8.1
+
+### Patch Changes
+
+- 9456e9d3: fix(BaseInput): large label alignment
+- c8727e89: fix(tokens): update primary color theme tokens
+- 19749c7a: fix(blade): jsdoc comments
+
 ## 8.8.0
 
 ### Minor Changes
