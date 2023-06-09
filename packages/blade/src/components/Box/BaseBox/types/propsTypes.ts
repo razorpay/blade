@@ -128,6 +128,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
     userSelect: CSSObject['userSelect'];
+    pointerEvents: CSSObject['pointerEvents'];
     borderWidth: keyof Border['width'];
     borderColor: BorderColorString<'surface'>;
     borderTopWidth: keyof Border['width'];

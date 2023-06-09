@@ -1,28 +1,35 @@
 import type { CSSProperties } from 'react';
-import React from 'react';
+import styled from 'styled-components/native';
 import type { EasingFn } from 'react-native-reanimated';
 import Animated, {
-  withDelay,
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withTiming,
 } from 'react-native-reanimated';
+import React from 'react';
 import type { Side } from '@floating-ui/react';
-import { TooltipContentWrapper } from './TooltipContextWrapper';
-import { Text } from '~components/Typography';
+import { getTooltipContentWrapperStyles } from './getTooltipContentWrapperStyles';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
+import type { BoxProps } from '~components/Box';
 
-type TooltipContentProps = {
-  children: React.ReactNode;
-  style: CSSProperties;
-  arrow: React.ReactNode;
-  isVisible: boolean;
-  side: Side;
-};
+const StyledTooltipContentWrapper = styled(BaseBox)<{ collapse?: boolean; styles: CSSProperties }>(
+  ({ theme, styles }) => {
+    return getTooltipContentWrapperStyles({ theme, styles });
+  },
+);
 
-const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
-  ({ children, arrow, side, style, isVisible }, ref) => {
+type TooltipContentWrapperProps = {
+  styles: CSSProperties;
+  side?: Side;
+  isVisible?: boolean;
+} & BaseBoxProps;
+
+const TooltipContentWrapper = React.forwardRef<HTMLDivElement, TooltipContentWrapperProps>(
+  ({ children, styles, side, isVisible, ...props }, ref) => {
     const { theme } = useTheme();
 
     const isCrossAxis = side === 'right' || side === 'bottom';
@@ -53,31 +60,19 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
 
     return (
       <Animated.View style={animatedStyles}>
-        <TooltipContentWrapper
-          position="absolute"
-          paddingTop="spacing.3"
-          paddingBottom="spacing.3"
-          paddingLeft="spacing.4"
-          paddingRight="spacing.4"
-          maxWidth={{ base: '120px', l: '160px' }}
+        <StyledTooltipContentWrapper
+          styles={styles}
           ref={ref as never}
-          styles={style}
-          collapsable={false}
+          collapse={false}
+          // if I don't assert this TS throws error
+          // I think because of the intersection type in TooltipContentWrapperProps
+          {...(props as BoxProps)}
         >
-          <Text
-            variant="body"
-            size="small"
-            weight="regular"
-            contrast="high"
-            color="feedback.text.neutral.highContrast"
-          >
-            {children}
-          </Text>
-          {arrow}
-        </TooltipContentWrapper>
+          {children}
+        </StyledTooltipContentWrapper>
       </Animated.View>
     );
   },
 );
 
-export { TooltipContent };
+export { TooltipContentWrapper };

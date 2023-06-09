@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { UseFloatingOptions } from '@floating-ui/react';
+import type { Side, UseFloatingOptions } from '@floating-ui/react';
 import type { GestureResponderEvent, NativeSyntheticEvent } from 'react-native';
+import type { CSSProperties } from 'react';
 import type { Platform } from '~utils';
 
 type TooltipProps = {
@@ -36,4 +37,18 @@ type TooltipTriggerProps = {
   }>;
 };
 
-export { TooltipProps, TooltipTriggerProps };
+type TooltipContentProps = {
+  children: React.ReactNode;
+  style: CSSProperties;
+  arrow: React.ReactNode;
+  /**
+   * react-native only
+   */
+  isVisible?: boolean;
+  /**
+   * react-native only
+   */
+  side?: Side;
+};
+
+export { TooltipProps, TooltipTriggerProps, TooltipContentProps };

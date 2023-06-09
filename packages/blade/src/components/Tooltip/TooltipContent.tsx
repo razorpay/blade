@@ -1,19 +1,14 @@
-import type { CSSProperties } from 'react';
 import React from 'react';
 import { TooltipContentWrapper } from './TooltipContextWrapper';
+import type { TooltipContentProps } from './types';
 import { Text } from '~components/Typography';
-
-type TooltipContentProps = {
-  children: React.ReactNode;
-  style: CSSProperties;
-  arrow: React.ReactNode;
-};
+import { isReactNative } from '~utils';
 
 const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
-  ({ children, arrow, style }, ref) => {
+  ({ children, arrow, side, style, isVisible }, ref) => {
     return (
       <TooltipContentWrapper
-        position="relative"
+        position={isReactNative() ? 'absolute' : 'relative'}
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         paddingLeft="spacing.4"
@@ -21,7 +16,8 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
         maxWidth={{ base: '120px', l: '160px' }}
         ref={ref as never}
         styles={style}
-        collapse={false}
+        side={side}
+        isVisible={isVisible}
       >
         <Text
           variant="body"

@@ -24,6 +24,7 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils';
 import { useId } from '~src/hooks/useId';
+import { size } from '~tokens/global';
 
 const Tooltip = ({
   content,
@@ -66,11 +67,12 @@ const Tooltip = ({
     ],
   });
 
+  const animationOffset = isCrossAxis ? -size[4] : size[4];
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,
     initial: {
       opacity: 0,
-      transform: `translate${isHorizontal ? 'X' : 'Y'}(${isCrossAxis ? -10 : 10}px)`,
+      transform: `translate${isHorizontal ? 'X' : 'Y'}(${animationOffset}px)`,
     },
   });
 
@@ -95,7 +97,8 @@ const Tooltip = ({
         <FloatingPortal>
           <BaseBox
             ref={refs.setFloating}
-            style={{ ...floatingStyles, pointerEvents: 'none' }}
+            style={floatingStyles}
+            pointerEvents="none"
             {...getFloatingProps()}
           >
             <TooltipContent
