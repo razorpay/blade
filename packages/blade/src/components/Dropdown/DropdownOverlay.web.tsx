@@ -66,7 +66,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
 
-  const { refs, floatingStyles, context } = useFloating({
+  const { refs, floatingStyles } = useFloating({
     open: isOpen,
     elements: {
       reference: triggererRef.current,
