@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import type { Alignment, Side } from '@floating-ui/react';
 import {
   shift,
   FloatingPortal,
@@ -20,6 +19,7 @@ import React from 'react';
 import { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
+import { getPlacementParts } from './utils';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils';
@@ -38,9 +38,9 @@ const Tooltip = ({
   const arrowRef = React.useRef<SVGSVGElement>(null);
 
   const GAP = theme.spacing[2];
-  const [side, alignment] = placement.split('-') as [Side, Alignment];
+  const [side, alignment] = getPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
-  const isCrossAxis = side === 'right' || side === 'bottom';
+  const isOppositeAxis = side === 'right' || side === 'bottom';
   const hasAlignment = alignment === 'start' || alignment === 'end';
 
   const { refs, floatingStyles, context } = useFloating({
@@ -67,7 +67,7 @@ const Tooltip = ({
     ],
   });
 
-  const animationOffset = isCrossAxis ? -size[4] : size[4];
+  const animationOffset = isOppositeAxis ? -size[4] : size[4];
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,
     initial: {
@@ -88,6 +88,7 @@ const Tooltip = ({
 
   return (
     <>
+      {/* Cloning the trigger children, so enhance it with ref and event handler */}
       {React.cloneElement(children, {
         ref: refs.setReference,
         ...getReferenceProps(),

@@ -2,7 +2,8 @@ import React from 'react';
 import { TooltipContentWrapper } from './TooltipContextWrapper';
 import type { TooltipContentProps } from './types';
 import { Text } from '~components/Typography';
-import { isReactNative } from '~utils';
+import { isReactNative, makeSize } from '~utils';
+import { size } from '~tokens/global';
 
 const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
   ({ children, arrow, side, style, isVisible }, ref) => {
@@ -13,7 +14,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
         paddingBottom="spacing.3"
         paddingLeft="spacing.4"
         paddingRight="spacing.4"
-        maxWidth={{ base: '120px', l: '160px' }}
+        maxWidth={{ base: makeSize(size[120]), l: makeSize(size[140]) }}
         ref={ref as never}
         styles={style}
         side={side}

@@ -1,12 +1,17 @@
 import React from 'react';
 import type { PressableProps, View } from 'react-native';
 import { Pressable } from 'react-native';
+import styled from 'styled-components/native';
+
+const StyledPressable = styled(Pressable)(() => {
+  return { alignSelf: 'flex-start' };
+});
 
 const TooltipInteractiveWrapper = React.forwardRef<View, PressableProps>((props, ref) => {
   return (
-    <Pressable ref={ref} style={{ alignSelf: 'flex-start' }} collapsable={false} {...props}>
+    <StyledPressable ref={ref} collapsable={false} {...props}>
       {props.children}
-    </Pressable>
+    </StyledPressable>
   );
 });
 

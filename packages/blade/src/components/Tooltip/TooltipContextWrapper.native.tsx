@@ -32,9 +32,9 @@ const TooltipContentWrapper = React.forwardRef<HTMLDivElement, TooltipContentWra
   ({ children, styles, side, isVisible, ...props }, ref) => {
     const { theme } = useTheme();
 
-    const isCrossAxis = side === 'right' || side === 'bottom';
+    const isOppositeAxis = side === 'right' || side === 'bottom';
     const isHorizontal = side === 'left' || side === 'right';
-    const offset = isCrossAxis ? -size[4] : size[4];
+    const offset = isOppositeAxis ? -size[4] : size[4];
 
     const translate = useSharedValue(offset);
     const opacity = useSharedValue(0);

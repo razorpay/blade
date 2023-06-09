@@ -1,15 +1,17 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-import type { Side } from '@floating-ui/react';
 import * as React from 'react';
 import styled from 'styled-components/native';
 import type { UseFloatingReturn } from '@floating-ui/react-native';
 import { View } from 'react-native';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
+import { getPlacementParts } from './utils';
 import Svg, { Path } from '~components/Icons/_Svg';
 import { useTheme } from '~components/BladeProvider';
 import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
+import { makeSize } from '~utils';
+import { size } from '~tokens/global';
 
 type TooltipArrowProps = {
   context: UseFloatingReturn;
@@ -19,6 +21,8 @@ const StyledSvg = styled(Svg)(({ styles }) => {
   return styles;
 });
 
+// modified version of FloatingArrow
+// https://github.com/floating-ui/floating-ui/blob/master/packages/react/src/components/FloatingArrow.tsx
 const TooltipArrow = React.forwardRef<SvgProps, TooltipArrowProps>(
   ({ context }, ref): React.ReactElement => {
     const { theme } = useTheme();
@@ -39,7 +43,7 @@ const TooltipArrow = React.forwardRef<SvgProps, TooltipArrowProps>(
       return <></>;
     }
 
-    const [side] = placement.split('-') as [Side];
+    const [side] = getPlacementParts(placement);
 
     const svgX = width / 2;
     const svgY = 0;
@@ -68,8 +72,8 @@ const TooltipArrow = React.forwardRef<SvgProps, TooltipArrowProps>(
     if (arrow) {
       const { x, y } = arrow;
       newStyles = {
-        width: '20px',
-        height: '20px',
+        width: makeSize(size[20]),
+        height: makeSize(size[20]),
         position: 'absolute',
         left: x != null ? `${x}px` : undefined,
         top: y != null ? `${y}px` : undefined,

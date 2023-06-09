@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import type { Side } from '@floating-ui/react-native';
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
 import { Modal, TouchableOpacity } from 'react-native';
@@ -7,6 +6,7 @@ import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
 import { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
+import { getPlacementParts } from './utils';
 import { useTheme } from '~components/BladeProvider';
 
 const Tooltip = ({
@@ -19,7 +19,7 @@ const Tooltip = ({
   const [isOpen, setIsOpen] = React.useState(false);
 
   const gap = theme.spacing[2];
-  const [side] = placement.split('-') as [Side];
+  const [side] = getPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const arrowRef = React.useRef();
   const context = useFloating({
@@ -65,6 +65,7 @@ const Tooltip = ({
 
   return (
     <>
+      {/* Cloning the trigger children, so enhance it with ref and event handler */}
       {React.cloneElement(children, {
         onTouchEnd: handleOpen,
         ref: refs.setReference,
