@@ -3,7 +3,6 @@ import React from 'react';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
-import { useBottomSheetHeaderTrailingRestriction } from './utils';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
@@ -19,7 +18,6 @@ const _BottomSheetHeader = ({
   onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useBottomSheetContext();
-  const validatedTrailingComponent = useBottomSheetHeaderTrailingRestriction(trailing);
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
 
   return (
@@ -31,7 +29,7 @@ const _BottomSheetHeader = ({
           title={title}
           subtitle={subtitle}
           leading={leading}
-          trailing={validatedTrailingComponent}
+          trailing={trailing}
           titleSuffix={titleSuffix}
           // back button
           closeButtonRef={defaultInitialFocusRef}

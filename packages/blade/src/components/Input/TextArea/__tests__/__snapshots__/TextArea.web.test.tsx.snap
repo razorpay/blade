@@ -65,6 +65,7 @@ exports[`<TextArea /> should render 1`] = `
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
+  position: relative;
   width: 100%;
 }
 
@@ -200,8 +201,7 @@ exports[`<TextArea /> should render 1`] = `
   left: 0;
   right: 0;
   opacity: 0;
-  margin-left: 0;
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   border-width: 1px;
   height: 1px;
 }
@@ -271,7 +271,7 @@ exports[`<TextArea /> should render 1`] = `
       >
         <label
           for="textarea-1-input-2"
-          style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+          style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
             class="c2"
@@ -324,10 +324,10 @@ exports[`<TextArea /> should render 1`] = `
           rows="2"
           type="text"
         />
+        <div
+          class=" c10"
+        />
       </div>
-      <div
-        class=" c10"
-      />
     </div>
     <div
       class="c11"
@@ -406,6 +406,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
+  position: relative;
   width: 100%;
 }
 
@@ -541,8 +542,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   left: 0;
   right: 0;
   opacity: 0;
-  margin-left: 0;
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   border-width: 1px;
   height: 1px;
 }
@@ -612,7 +612,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
       >
         <label
           for="textarea-91-input-92"
-          style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+          style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
             class="c2"
@@ -665,10 +665,10 @@ exports[`<TextArea /> should set number of lines 1`] = `
           rows="3"
           type="text"
         />
+        <div
+          class=" c10"
+        />
       </div>
-      <div
-        class=" c10"
-      />
     </div>
     <div
       class="c11"

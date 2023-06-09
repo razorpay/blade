@@ -46,7 +46,7 @@ type BaseLinkCommonProps = {
    *
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /**
    * Defines how far your touch can start away from the link. This is a react-native only prop and has no effect on web.
    */
@@ -193,11 +193,13 @@ const getProps = ({
     lineHeight: Record<NonNullable<BaseLinkProps['size']>, keyof Typography['lineHeights']>;
   } = {
     fontSize: {
+      xsmall: 25,
       small: 75,
       medium: 100,
       large: 200,
     },
     lineHeight: {
+      xsmall: 50,
       small: 50,
       medium: 100,
       large: 300,

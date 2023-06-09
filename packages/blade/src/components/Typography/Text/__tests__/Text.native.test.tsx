@@ -32,6 +32,15 @@ describe('<Text />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render Text with color', () => {
+    const displayText = 'Displaying some text';
+    const { toJSON, getByText } = renderWithTheme(
+      <Text color="surface.text.muted.lowContrast">{displayText}</Text>,
+    );
+    expect(getByText('Displaying some text')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Text with variant "caption"', () => {
     const displayText = 'Displaying some text';
     const { toJSON, getByText } = renderWithTheme(

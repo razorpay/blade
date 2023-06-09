@@ -197,6 +197,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             currentInteraction="default"
             display="flex"
             flexDirection="row"
+            position="relative"
             style={
               Array [
                 Object {
@@ -208,6 +209,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   "borderTopRightRadius": 2,
                   "display": "flex",
                   "flexDirection": "row",
+                  "position": "relative",
                   "width": "100%",
                 },
               ]
@@ -393,26 +395,26 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                    "bottom": 0,
+                    "height": 1,
+                    "left": 0,
+                    "opacity": 1,
+                    "position": "absolute",
+                    "right": 0,
+                  },
+                  Object {
+                    "opacity": undefined,
+                    "width": "undefined%",
+                  },
+                ]
+              }
+            />
           </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                  "bottom": 0,
-                  "height": 1,
-                  "left": 0,
-                  "opacity": 1,
-                  "position": "absolute",
-                  "right": 0,
-                },
-                Object {
-                  "opacity": undefined,
-                  "width": "undefined%",
-                },
-              ]
-            }
-          />
         </View>
         <View
           style={
@@ -509,6 +511,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   "backgroundColor": "hsla(0, 0%, 100%, 1)",
                   "borderColor": "hsla(216, 15%, 54%, 0.18)",
                   "borderRadius": 4,
+                  "borderStyle": "solid",
                   "borderWidth": 1,
                 },
                 Object {
@@ -1129,8 +1132,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     }
                   }
                   accessible={true}
-                  activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-                  activeBorderColor="hsla(227, 100%, 45%, 1)"
+                  activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+                  activeBorderColor="hsla(230, 100%, 42%, 1)"
                   borderRadius="2px"
                   borderWidth="1px"
                   buttonPaddingBottom="0px"
@@ -1139,14 +1142,14 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   buttonPaddingTop="0px"
                   collapsable={false}
                   data-blade-component="button"
-                  defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-                  defaultBorderColor="hsla(213, 89%, 56%, 1)"
-                  focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-                  focusBorderColor="hsla(223, 95%, 48%, 1)"
+                  defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+                  defaultBorderColor="hsla(218, 89%, 51%, 1)"
+                  focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+                  focusBorderColor="hsla(227, 100%, 45%, 1)"
                   focusRingColor="hsla(218, 89%, 51%, 0.18)"
                   focusable={true}
-                  hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-                  hoverBorderColor="hsla(218, 89%, 51%, 1)"
+                  hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+                  hoverBorderColor="hsla(223, 95%, 48%, 1)"
                   isFullWidth={false}
                   isLoading={false}
                   minHeight="36px"
@@ -1166,8 +1169,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       Object {
                         "alignItems": "center",
                         "alignSelf": "center",
-                        "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                        "borderColor": "hsla(213, 89%, 56%, 1)",
+                        "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                        "borderColor": "hsla(218, 89%, 51%, 1)",
                         "borderRadius": 2,
                         "borderStyle": "solid",
                         "borderWidth": 1,
@@ -1185,8 +1188,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "width": "auto",
                       },
                       Object {
-                        "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                        "borderColor": "hsla(213, 89%, 56%, 1)",
+                        "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                        "borderColor": "hsla(218, 89%, 51%, 1)",
                       },
                     ]
                   }

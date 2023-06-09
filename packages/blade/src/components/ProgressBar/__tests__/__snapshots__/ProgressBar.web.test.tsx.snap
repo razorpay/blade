@@ -45,7 +45,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 }
 
 .c8 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c9 {
@@ -65,7 +65,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 }
 
 .c10 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
@@ -147,7 +147,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
     >
       <label
         for="progress-1"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
@@ -252,7 +252,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 }
 
 .c2 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c3 {
@@ -272,7 +272,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 }
 
 .c4 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 50%;
 }
@@ -351,7 +351,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 }
 
 .c4 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c5 {
@@ -371,7 +371,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 }
 
 .c6 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
@@ -1777,7 +1777,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 }
 
 .c8 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c9 {
@@ -1797,7 +1797,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 }
 
 .c10 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
@@ -1879,7 +1879,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
     >
       <label
         for="progress-6"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
@@ -1984,7 +1984,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 }
 
 .c2 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c3 {
@@ -2004,7 +2004,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 }
 
 .c4 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 70%;
 }
@@ -2090,7 +2090,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 }
 
 .c8 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c9 {
@@ -2110,7 +2110,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 }
 
 .c10 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
@@ -2192,7 +2192,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
     >
       <label
         for="progress-5"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
@@ -2340,7 +2340,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 }
 
 .c12 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c13 {
@@ -2360,7 +2360,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 }
 
 .c14 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 0%;
 }
@@ -2450,8 +2450,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2483,18 +2483,18 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2542,7 +2542,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     >
       <label
         for="progress-3"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c5"
@@ -2690,7 +2690,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 }
 
 .c12 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c13 {
@@ -2710,7 +2710,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 }
 
 .c14 {
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 60%;
 }
@@ -2800,8 +2800,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2833,18 +2833,18 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2892,7 +2892,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     >
       <label
         for="progress-3"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c5"

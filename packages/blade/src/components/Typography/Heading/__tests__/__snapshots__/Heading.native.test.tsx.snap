@@ -1,5 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Heading /> should render Heading with color 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    color="surface.text.placeholder.lowContrast"
+    data-blade-component="heading"
+    fontFamily="text"
+    fontSize={200}
+    fontStyle="normal"
+    fontWeight="bold"
+    lineHeight={300}
+    style={
+      Array [
+        Object {
+          "color": "hsla(214, 18%, 69%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 16,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Get Started With Payment Gateway
+  </Text>
+</View>
+`;
+
 exports[`<Heading /> should render Heading with default properties 1`] = `
 <View
   style={

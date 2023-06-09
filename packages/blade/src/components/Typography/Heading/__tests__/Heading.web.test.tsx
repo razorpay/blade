@@ -27,6 +27,14 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Heading with color', () => {
+    const displayText = 'Get Started With Payment Gateway';
+    const { container } = renderWithTheme(
+      <Heading color="surface.text.placeholder.lowContrast">{displayText}</Heading>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render Heading with size "small"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { container, getByRole, getByText } = renderWithTheme(

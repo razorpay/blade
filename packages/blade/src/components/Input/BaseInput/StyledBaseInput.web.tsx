@@ -66,6 +66,7 @@ const StyledBaseNativeButton = styled.button<
 
 const autoCompleteSuggestionTypeMap = {
   none: 'off',
+  on: 'on',
   name: 'name',
   email: 'email',
   username: 'username',
