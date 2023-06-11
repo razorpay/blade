@@ -8,7 +8,7 @@ import { ChevronDownIcon } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
 import { Link } from '~components/Link';
 import { BaseBox } from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime } from '~utils';
+import { castWebType, makeAccessible, makeMotionTime } from '~utils';
 
 type CollapsibleLinkProps = Pick<
   LinkProps,
@@ -47,7 +47,11 @@ const StyledCollapsibleLinkIcon = styled(BaseBox)<StyledCollapsibleLinkIconProps
 const CollapsibleLinkIcon: IconComponent = (props) => {
   const { isExpanded, direction } = useCollapsibleContext();
   return (
-    <StyledCollapsibleLinkIcon isExpanded={isExpanded} direction={direction}>
+    <StyledCollapsibleLinkIcon
+      isExpanded={isExpanded}
+      direction={direction}
+      {...makeAccessible({ hidden: true })}
+    >
       <ChevronDownIcon {...props} />
     </StyledCollapsibleLinkIcon>
   );
