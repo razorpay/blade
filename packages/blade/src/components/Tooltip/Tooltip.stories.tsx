@@ -4,15 +4,15 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import type { TooltipTriggerProps } from './types';
 import type { TooltipProps } from './';
-import { Tooltip as TooltipComponent } from './';
+import { TooltipInteractiveWrapper, Tooltip as TooltipComponent } from './';
 import { Button } from '~components/Button';
 import { InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
-import { IconButton } from '~components/Button/IconButton';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
-import { List, ListItem } from '~components/List';
 import { isReactNative } from '~utils';
+import { List, ListItem } from '~components/List';
+import { IconButton } from '~components/Button/IconButton';
 
 export default {
   title: 'Components/Tooltip',
@@ -147,22 +147,28 @@ const TooltipTriggersTemplate = () => {
         <TooltipComponent placement="top" content="Hello world">
           <Button>Hover</Button>
         </TooltipComponent>
+        <Box marginTop="spacing.8" />
         <TooltipComponent placement="top" content="Hello world">
           <Link onClick={() => console.log(1)} href="#">
             Hover
           </Link>
         </TooltipComponent>
+        <Box marginTop="spacing.8" />
+
         <TooltipComponent placement="top-end" content="Hello world">
           <IconButton onClick={() => console.log(1)} icon={InfoIcon} accessibilityLabel="Info" />
         </TooltipComponent>
+        <Box marginTop="spacing.8" />
         <TooltipComponent
-          placement="top"
-          onOpen={() => console.log('open')}
-          onClose={() => console.log('close')}
+          placement="bottom"
           content="Hello world"
-          shouldWrapChildren
+          onOpenChange={({ isOpen }) => {
+            console.log(isOpen ? 'open' : 'closed');
+          }}
         >
-          <InfoIcon size="2xlarge" color="action.icon.link.visited" />
+          <TooltipInteractiveWrapper>
+            <InfoIcon size="2xlarge" color="action.icon.link.visited" />
+          </TooltipInteractiveWrapper>
         </TooltipComponent>
       </Box>
     </Center>
@@ -183,7 +189,7 @@ const CustomTrigger = React.forwardRef<
       alignSelf="flex-start"
       padding="spacing.4"
       borderRadius="medium"
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.level1.lowContrast"
       {...props}
     >
       <Text contrast="low">{children}</Text>

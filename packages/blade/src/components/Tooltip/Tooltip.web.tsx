@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import type { Alignment, Side } from '@floating-ui/react';
 import {
+  shift,
   FloatingPortal,
   arrow,
   flip,
@@ -16,35 +16,21 @@ import {
   useTransitionStyles,
 } from '@floating-ui/react';
 import React from 'react';
-import styled from 'styled-components';
 import { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
+import { getPlacementParts } from './utils';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { makeAccessible, makeBorderSize } from '~utils';
+import { makeAccessible } from '~utils';
 import { useId } from '~src/hooks/useId';
-import { Box } from '~components/Box';
-
-const TooltipInteractiveWrapper = styled(Box)((props) => {
-  return {
-    display: 'inline-block',
-    '&:focus': {
-      borderRadius: makeBorderSize(props.theme.border.radius.medium),
-      // TODO: Replace with focus outline token
-      outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
-      boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
-    },
-  };
-});
+import { size } from '~tokens/global';
 
 const Tooltip = ({
   content,
   children,
   placement = 'top',
-  shouldWrapChildren,
-  onOpen,
-  onClose,
+  onOpenChange,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const id = useId();
@@ -52,9 +38,9 @@ const Tooltip = ({
   const arrowRef = React.useRef<SVGSVGElement>(null);
 
   const GAP = theme.spacing[2];
-  const [side, alignment] = placement.split('-') as [Side, Alignment];
+  const [side, alignment] = getPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
-  const isCrossAxis = side === 'right' || side === 'bottom';
+  const isOppositeAxis = side === 'right' || side === 'bottom';
   const hasAlignment = alignment === 'start' || alignment === 'end';
 
   const { refs, floatingStyles, context } = useFloating({
@@ -64,13 +50,14 @@ const Tooltip = ({
     onOpenChange: (open) => {
       if (open) {
         setIsOpen(true);
-        onOpen?.();
+        onOpenChange?.({ isOpen: open });
       } else {
         setIsOpen(false);
-        onClose?.();
+        onOpenChange?.({ isOpen: open });
       }
     },
     middleware: [
+      shift({ crossAxis: false, padding: GAP }),
       flip({ padding: GAP }),
       offset(GAP + ARROW_HEIGHT),
       arrow({
@@ -80,11 +67,12 @@ const Tooltip = ({
     ],
   });
 
+  const animationOffset = isOppositeAxis ? -size[4] : size[4];
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,
     initial: {
       opacity: 0,
-      transform: `translate${isHorizontal ? 'X' : 'Y'}(${isCrossAxis ? -10 : 10}px)`,
+      transform: `translate${isHorizontal ? 'X' : 'Y'}(${animationOffset}px)`,
     },
   });
 
@@ -100,24 +88,18 @@ const Tooltip = ({
 
   return (
     <>
-      {shouldWrapChildren ? (
-        <TooltipInteractiveWrapper
-          tabIndex={0}
-          ref={refs.setReference as never}
-          testID="tooltip-interactive-wrapper"
-          {...makeAccessible({ label: content })}
-          {...getReferenceProps()}
-        >
-          {children}
-        </TooltipInteractiveWrapper>
-      ) : (
-        React.cloneElement(children, { ref: refs.setReference, ...getReferenceProps() })
-      )}
+      {/* Cloning the trigger children, so enhance it with ref and event handler */}
+      {React.cloneElement(children, {
+        ref: refs.setReference,
+        ...getReferenceProps(),
+        ...makeAccessible({ label: content }),
+      })}
       {isMounted && (
         <FloatingPortal>
           <BaseBox
             ref={refs.setFloating}
-            style={{ ...floatingStyles, pointerEvents: 'none' }}
+            style={floatingStyles}
+            pointerEvents="none"
             {...getFloatingProps()}
           >
             <TooltipContent

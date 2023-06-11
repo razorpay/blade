@@ -28,6 +28,7 @@ export const componentIds = {
   triggers: {
     SelectInput: 'SelectInput',
     DropdownButton: 'DropdownButton',
+    DropdownLink: 'DropdownLink',
   },
 };
 

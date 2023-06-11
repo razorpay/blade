@@ -37,6 +37,15 @@ const Page = (): ReactElement => {
   );
 };
 
+const getHeadingArgTypes = (): Meta['argTypes'] => {
+  return {
+    size: {
+      description: 'Decides the size of the heading',
+    },
+    ...getStyledPropsArgTypes(),
+  };
+};
+
 const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>> = {
   title: 'Components/Typography/Heading',
   component: HeadingComponent,
@@ -48,12 +57,7 @@ const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>
     weight: 'bold',
     contrast: 'low',
   },
-  argTypes: {
-    size: {
-      description: 'Decides size of the Heading',
-    },
-    ...getStyledPropsArgTypes(),
-  },
+  argTypes: getHeadingArgTypes(),
   parameters: {
     docs: {
       page: () => <Page />,
@@ -67,3 +71,7 @@ const HeadingTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
 
 export default HeadingStoryMeta;
 export const Heading = HeadingTemplate.bind({});
+export const WithColor = HeadingTemplate.bind({});
+WithColor.args = {
+  color: 'feedback.notice.action.text.primary.default.lowContrast',
+};

@@ -178,6 +178,7 @@ const getAllProps = (
     overflow: getResponsiveValue(props.overflow, breakpoint),
     overflowX: getResponsiveValue(props.overflowX, breakpoint),
     overflowY: getResponsiveValue(props.overflowY, breakpoint),
+    textAlign: getResponsiveValue(props.textAlign, breakpoint),
 
     // Flex
     flex: getResponsiveValue(props.flex, breakpoint),
@@ -270,6 +271,7 @@ const getAllProps = (
     borderStyle: hasBorder ? 'solid' : undefined,
     touchAction: getResponsiveValue(props.touchAction, breakpoint),
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
+    pointerEvents: getResponsiveValue(props.pointerEvents),
     opacity: getResponsiveValue(props.opacity, breakpoint),
   };
 };

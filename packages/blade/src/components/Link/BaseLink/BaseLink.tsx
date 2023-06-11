@@ -3,6 +3,7 @@
 import type { SyntheticEvent } from 'react';
 import React, { useState } from 'react';
 import type { CSSObject } from 'styled-components';
+import type { GestureResponderEvent } from 'react-native';
 import StyledBaseLink from './StyledBaseLink';
 import useInteraction from '~src/hooks/useInteraction';
 import type { IconComponent, IconProps } from '~components/Icons';
@@ -15,12 +16,13 @@ import type {
   StringChildrenType,
   TestID,
 } from '~src/_helpers/types';
+import type { Platform } from '~utils';
 import {
+  assignWithoutSideEffects,
   makeAccessible,
   getIn,
   metaAttribute,
   MetaConstants,
-  assignWithoutSideEffects,
 } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
@@ -36,6 +38,14 @@ type BaseLinkCommonProps = {
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
   onClick?: (event: SyntheticEvent) => void;
+  onBlur?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  }>;
+  onKeyDown?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  }>;
   accessibilityLabel?: string;
 
   /**
@@ -43,7 +53,7 @@ type BaseLinkCommonProps = {
    *
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   /**
    * Defines how far your touch can start away from the link. This is a react-native only prop and has no effect on web.
    */
@@ -191,11 +201,13 @@ const getProps = ({
     lineHeight: Record<NonNullable<BaseLinkProps['size']>, keyof Typography['lineHeights']>;
   } = {
     fontSize: {
+      xsmall: 25,
       small: 75,
       medium: 100,
       large: 200,
     },
     lineHeight: {
+      xsmall: 50,
       small: 50,
       medium: 100,
       large: 300,
@@ -247,6 +259,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     iconPosition = 'left',
     isDisabled = false,
     onClick,
+    onKeyDown,
     variant = 'anchor',
     href,
     target,
@@ -328,6 +341,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     <StyledBaseLink
       ref={ref as never}
       // TODO Check if this is overriden
+      // TODO: Fix this is overriden
       {...syntheticEvents}
       {...metaAttribute({ name: MetaConstants.Link, testID })}
       accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
@@ -345,6 +359,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       onPointerEnter={onPointerEnter}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
+      onKeyDown={onKeyDown}
       disabled={disabled}
       type={type}
       cursor={cursor}

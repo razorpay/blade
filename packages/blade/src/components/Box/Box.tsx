@@ -44,6 +44,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     width: props.width,
     minWidth: props.minWidth,
     maxWidth: props.maxWidth,
+    textAlign: props.textAlign,
 
     // Flex
     flex: props.flex,

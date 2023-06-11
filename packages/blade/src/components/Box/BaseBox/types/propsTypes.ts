@@ -16,7 +16,7 @@ type LayoutProps = MakeObjectResponsive<
     width: SpacingValueType;
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
-  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY'>
+  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign'>
 >;
 
 type FlexboxProps = MakeObjectResponsive<
@@ -128,6 +128,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
     userSelect: CSSObject['userSelect'];
+    pointerEvents: CSSObject['pointerEvents'];
     borderWidth: keyof Border['width'];
     borderColor: BorderColorString<'surface'>;
     borderTopWidth: keyof Border['width'];
@@ -237,8 +238,7 @@ type BoxProps = Partial<
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];
       tabIndex?: number;
-    } & TestID &
-    TooltipTriggerProps
+    } & TestID
 >;
 
 // Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.

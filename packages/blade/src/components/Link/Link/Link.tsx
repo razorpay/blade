@@ -1,5 +1,6 @@
 import type { ReactElement, SyntheticEvent } from 'react';
 import React from 'react';
+import type { BaseLinkProps } from '../BaseLink';
 import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -24,7 +25,7 @@ type LinkCommonProps = {
    *
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: BaseLinkProps['size'];
 } & TestID &
   StyledPropsBlade &
   TooltipTriggerProps &
@@ -93,7 +94,7 @@ type LinkAnchorVariantProps = LinkPropsWithOrWithoutIcon & {
 /*
   Link Props when variant is button
 */
-type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
+export type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
   variant?: 'button';
   isDisabled?: boolean;
   href?: undefined;
