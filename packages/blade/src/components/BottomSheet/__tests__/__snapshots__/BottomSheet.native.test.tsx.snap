@@ -117,6 +117,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               "borderTopLeftRadius": 16,
               "borderTopRightRadius": 16,
               "justifyContent": "center",
+              "pointerEvents": "none",
               "position": "relative",
             },
             Object {

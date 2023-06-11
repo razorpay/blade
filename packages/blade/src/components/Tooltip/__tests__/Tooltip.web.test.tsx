@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { act, fireEvent, screen } from '@testing-library/react';
 import React from 'react';
-import { Tooltip } from '..';
+import { Tooltip, TooltipInteractiveWrapper } from '..';
 import type { TooltipTriggerProps } from '../types';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
@@ -51,16 +51,16 @@ describe('<Tooltip />', () => {
     });
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-    // should open after 400ms
+    // should open after 300ms
     await act(async () => {
-      jest.advanceTimersByTime(399);
+      jest.advanceTimersByTime(299);
     });
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
 
-    // close
+    // close after 300ms
     fireEvent.mouseLeave(getByRole('button', { name: buttonText }));
     await act(async () => {
-      jest.advanceTimersByTime(999 + animationDuration);
+      jest.advanceTimersByTime(299 + animationDuration);
     });
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
 
@@ -99,8 +99,10 @@ describe('<Tooltip />', () => {
   it('should open/close on hovering over with non-interactive trigger element', async () => {
     const tooltipContent = 'Hello world';
     const { getByTestId } = renderWithTheme(
-      <Tooltip content={tooltipContent} shouldWrapChildren>
-        <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+      <Tooltip content={tooltipContent}>
+        <TooltipInteractiveWrapper>
+          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+        </TooltipInteractiveWrapper>
       </Tooltip>,
     );
     await waitForPosition();
@@ -114,16 +116,16 @@ describe('<Tooltip />', () => {
     });
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-    // should open after 400ms
+    // should open after 300ms
     await act(async () => {
-      jest.advanceTimersByTime(399);
+      jest.advanceTimersByTime(299);
     });
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
 
-    // close
+    // close afrer 300ms
     fireEvent.mouseLeave(wrapper);
     await act(async () => {
-      jest.advanceTimersByTime(999 + animationDuration);
+      jest.advanceTimersByTime(299 + animationDuration);
     });
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
 
@@ -136,8 +138,10 @@ describe('<Tooltip />', () => {
 
   it('should open/close on focus/blur with non-interactive trigger element', async () => {
     const { getByTestId } = renderWithTheme(
-      <Tooltip content="Hello world" shouldWrapChildren>
-        <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+      <Tooltip content="Hello world">
+        <TooltipInteractiveWrapper>
+          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+        </TooltipInteractiveWrapper>
       </Tooltip>,
     );
     await waitForPosition();
@@ -214,9 +218,9 @@ describe('<Tooltip />', () => {
     });
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
-    // should open after 400ms
+    // should open after 300ms
     await act(async () => {
-      jest.advanceTimersByTime(399);
+      jest.advanceTimersByTime(299);
     });
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
 
