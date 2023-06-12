@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Blade Coverage Extension",
+  "version": "1.0",
+  "permissions": ["activeTab", "scripting"],
+  "background": {
+    "service_worker": "background_script.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "./index.html"
+  }
+}
