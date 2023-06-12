@@ -3,11 +3,17 @@ import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
 type SpaceUnits = 'px' | '%' | 'fr' | 'rem' | 'em' | 'vh' | 'vw';
+
+// Adding all possible values here is bit cumbersome, we should add support for all possible values or allow string
 type SpacingValueType =
   | DotNotationSpacingStringToken
   | `${string}${SpaceUnits}`
   | `calc(${string})`
-  | 'auto';
+  | `min(${string})`
+  | `max(${string})`
+  | 'auto'
+  | 'none';
+
 /**
  * @IMPORTANT
  *

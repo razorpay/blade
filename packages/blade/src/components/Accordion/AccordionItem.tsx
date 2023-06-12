@@ -57,7 +57,12 @@ const AccordionItem = ({
 
   return (
     <>
-      <Collapsible isExpanded={isExpanded} onExpandChange={handleExpandChange}>
+      <Collapsible
+        isExpanded={isExpanded}
+        onExpandChange={handleExpandChange}
+        // Accordion has its own width restrictions
+        _shouldApplyWidthRestrictions={false}
+      >
         <AccordionButton index={_index} icon={icon}>
           {title}
         </AccordionButton>

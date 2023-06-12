@@ -5,6 +5,9 @@ import { AccordionContext } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
+import type { BoxProps } from '~components/Box';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils';
 
 type AccordionProps = {
   /**
@@ -36,6 +39,18 @@ type AccordionProps = {
   children: ReactElement | ReactElement[];
 } & TestID &
   StyledPropsBlade;
+
+const MIN_WIDTH: BoxProps['minWidth'] = {
+  s: makeSize(size[200]),
+  m: makeSize(size[360]),
+  l: makeSize(size[400]),
+};
+
+const MAX_WIDTH: BoxProps['maxWidth'] = {
+  s: `min(${makeSize(size[320])}, 100vw - ${makeSize(size[40])})`,
+  m: makeSize(size[640]),
+  l: makeSize(size[800]),
+};
 
 const Accordion = ({
   defaultExpandedIndex,
@@ -73,7 +88,7 @@ const Accordion = ({
 
   return (
     <AccordionContext.Provider value={accordionContext}>
-      <BaseBox>
+      <BaseBox minWidth={MIN_WIDTH} maxWidth={MAX_WIDTH}>
         {Children.map(children, (child, index) =>
           cloneElement(child, { _index: index, key: index }),
         )}

@@ -6,6 +6,9 @@ import { CollapsibleContext } from './CollapsibleContext';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~src/_helpers/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BoxProps } from '~components/Box';
+import { makeSize } from '~utils';
+import { size } from '~tokens/global';
 
 type CollapsibleProps = {
   /**
@@ -40,8 +43,21 @@ type CollapsibleProps = {
    * @default undefined
    */
   onExpandChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
+
+  /**
+   * **Internal**: used to override responsive width restrictions
+   */
+  _shouldApplyWidthRestrictions?: boolean;
 } & TestID &
   StyledPropsBlade;
+
+const MIN_WIDTH: BoxProps['minWidth'] = makeSize(size[200]);
+
+const MAX_WIDTH: BoxProps['maxWidth'] = {
+  s: `min(${makeSize(size[328])}, calc(100vw - ${makeSize(size[40])}))`,
+  m: makeSize(size[640]),
+  l: makeSize(size[1136]),
+};
 
 const Collapsible = ({
   children,
@@ -50,6 +66,7 @@ const Collapsible = ({
   isExpanded,
   onExpandChange,
   testID,
+  _shouldApplyWidthRestrictions = true,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ...styledProps
 }: CollapsibleProps): ReactElement => {
@@ -89,6 +106,8 @@ const Collapsible = ({
         display="flex"
         flexDirection={direction === 'bottom' ? 'column' : 'column-reverse'}
         alignItems="flex-start"
+        minWidth={_shouldApplyWidthRestrictions ? MIN_WIDTH : makeSize(size[0])}
+        maxWidth={_shouldApplyWidthRestrictions ? MAX_WIDTH : 'none'}
       >
         {children}
       </BaseBox>
