@@ -135,9 +135,9 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <FloatingPortal>
-      <BaseBox position="relative">
-        <div ref={refs.setFloating}>
+    <BaseBox position="relative">
+      <FloatingPortal>
+        <div ref={refs.setFloating} style={floatingStyles}>
           <StyledDropdownOverlay
             width={isMenu ? undefined : width}
             minWidth="240px"
@@ -145,7 +145,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
             maxWidth={isMenu ? '400px' : undefined}
             left={isMenu ? 'spacing.0' : undefined}
             right={isMenu ? undefined : 'spacing.0'}
-            style={{ ...styles, ...floatingStyles }}
+            style={styles}
             display={castWebType(display)}
             position="absolute"
             transition={isOpen ? fadeIn : fadeOut}
@@ -155,8 +155,8 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
             {children}
           </StyledDropdownOverlay>
         </div>
-      </BaseBox>
-    </FloatingPortal>
+      </FloatingPortal>
+    </BaseBox>
   );
 };
 
