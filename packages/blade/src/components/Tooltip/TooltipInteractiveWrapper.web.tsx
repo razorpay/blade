@@ -3,7 +3,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { makeBorderSize } from '~utils';
 
 const TooltipInteractiveWrapper = styled(BaseBox).attrs(() => {
-  return { tabIndex: 0 };
+  return { tabIndex: -1 };
 })((props) => {
   return {
     display: 'inline-block',

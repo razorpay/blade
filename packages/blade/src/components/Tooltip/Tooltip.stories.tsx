@@ -2,21 +2,67 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
+import { Title } from '@storybook/addon-docs';
 import type { TooltipTriggerProps } from './types';
 import type { TooltipProps } from './';
 import { TooltipInteractiveWrapper, Tooltip as TooltipComponent } from './';
 import { Button } from '~components/Button';
-import { InfoIcon } from '~components/Icons';
+import { BankIcon, InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { List, ListItem } from '~components/List';
 import { IconButton } from '~components/Button/IconButton';
+import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+
+const Page = (): React.ReactElement => {
+  return (
+    <StoryPageWrapper
+      componentName="Switch"
+      componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230354',
+      }}
+    >
+      <Title>Usage</Title>
+      <Sandbox showConsole>
+        {`
+        import { Switch } from '@razorpay/blade/components'
+        
+        function App(): JSX.Element {
+          return (
+            // Check console
+            <Switch onChange={(e) => console.log(e.isChecked)} accessibilityLabel="Toggle DarkMode" />
+          )
+        }
+
+        export default App;
+      `}
+      </Sandbox>
+    </StoryPageWrapper>
+  );
+};
 
 export default {
   title: 'Components/Tooltip',
   component: TooltipComponent,
+  args: {
+    placement: 'bottom',
+    content: 'Amount reversed to customer bank account',
+    onOpenChange: ({ isOpen }) => {
+      console.log(isOpen);
+    },
+  },
+  parameters: {
+    docs: {
+      page: Page,
+    },
+  },
 } as Meta<TooltipProps>;
 
 const Center = ({ children }: { children: React.ReactNode }): React.ReactElement => {
@@ -27,10 +73,10 @@ const Center = ({ children }: { children: React.ReactNode }): React.ReactElement
   );
 };
 
-const TooltipTemplate: ComponentStory<typeof TooltipComponent> = () => {
+const TooltipTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
   return (
     <Center>
-      <TooltipComponent content="Hello World">
+      <TooltipComponent {...args}>
         <Button>Hover over me</Button>
       </TooltipComponent>
     </Center>
@@ -140,34 +186,54 @@ const PlacementTemplate: ComponentStory<typeof TooltipComponent> = () => {
 export const Placement = PlacementTemplate.bind({});
 Placement.storyName = 'Placement';
 
-const TooltipTriggersTemplate = () => {
+const NonInteractiveTriggerTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
+  return (
+    <Box>
+      <Text>
+        When using non-interactive elements as Tooltip triggers, like Icons, Badges, Counters
+      </Text>
+      <Text>You can wrap the element in TooltipInteractiveWrapper component provided by blade</Text>
+      <Box marginTop="spacing.5" display="flex" alignItems="center" gap="spacing.2">
+        <Text>Refunds</Text>
+        <TooltipComponent {...args} placement="bottom-start">
+          <TooltipInteractiveWrapper>
+            <InfoIcon marginTop="spacing.2" size="medium" color="surface.text.muted.lowContrast" />
+          </TooltipInteractiveWrapper>
+        </TooltipComponent>
+      </Box>
+    </Box>
+  );
+};
+
+export const NonInteractiveTrigger = NonInteractiveTriggerTemplate.bind({});
+
+const TooltipTriggersTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
   return (
     <Center>
       <Box display="flex" gap="spacing.11" alignItems="center">
-        <TooltipComponent placement="top" content="Hello world">
-          <Button>Hover</Button>
+        <TooltipComponent {...args} placement="top">
+          <Button>Button</Button>
         </TooltipComponent>
         <Box marginTop="spacing.8" />
-        <TooltipComponent placement="top" content="Hello world">
+        <TooltipComponent {...args} placement="top">
           <Link onClick={() => console.log(1)} href="#">
-            Hover
+            Link
           </Link>
         </TooltipComponent>
         <Box marginTop="spacing.8" />
 
-        <TooltipComponent placement="top-end" content="Hello world">
-          <IconButton onClick={() => console.log(1)} icon={InfoIcon} accessibilityLabel="Info" />
+        <TooltipComponent {...args} content="With IconButton" placement="top-end">
+          <IconButton
+            size="large"
+            onClick={() => console.log(1)}
+            icon={BankIcon}
+            accessibilityLabel="IconButton"
+          />
         </TooltipComponent>
         <Box marginTop="spacing.8" />
-        <TooltipComponent
-          placement="bottom"
-          content="Hello world"
-          onOpenChange={({ isOpen }) => {
-            console.log(isOpen ? 'open' : 'closed');
-          }}
-        >
+        <TooltipComponent {...args} content="With non-interactive icon" placement="bottom">
           <TooltipInteractiveWrapper>
-            <InfoIcon size="2xlarge" color="action.icon.link.visited" />
+            <InfoIcon size="large" color="surface.text.muted.lowContrast" />
           </TooltipInteractiveWrapper>
         </TooltipComponent>
       </Box>
@@ -184,12 +250,16 @@ const CustomTrigger = React.forwardRef<
   return (
     <Box
       ref={ref}
-      tabIndex={0}
+      tabIndex={-1}
       display={isReactNative() ? 'flex' : 'inline-block'}
       alignSelf="flex-start"
       padding="spacing.4"
       borderRadius="medium"
-      backgroundColor="surface.background.level1.lowContrast"
+      backgroundColor={
+        isReactNative()
+          ? 'surface.background.level1.lowContrast'
+          : 'surface.background.level2.lowContrast'
+      }
       {...props}
     >
       <Text contrast="low">{children}</Text>
@@ -207,7 +277,7 @@ const CustomTriggerTemplate = () => {
         <ListItem>To expose ref</ListItem>
         <ListItem>To accept TooltipTriggerProps (You can import this type from blade)</ListItem>
         <ListItem>
-          tabIndex={'{'}0{'}'} to be set on the trigger
+          tabIndex={'{'}-1{'}'} to be set on the trigger
         </ListItem>
       </List>
       <TooltipComponent placement="bottom" content="A custom trigger">

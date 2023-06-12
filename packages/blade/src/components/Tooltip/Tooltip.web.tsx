@@ -38,10 +38,9 @@ const Tooltip = ({
   const arrowRef = React.useRef<SVGSVGElement>(null);
 
   const GAP = theme.spacing[2];
-  const [side, alignment] = getPlacementParts(placement);
+  const [side] = getPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const isOppositeAxis = side === 'right' || side === 'bottom';
-  const hasAlignment = alignment === 'start' || alignment === 'end';
 
   const { refs, floatingStyles, context } = useFloating({
     placement,
@@ -113,12 +112,6 @@ const Tooltip = ({
                   fill={theme.colors.brand.gray[200].highContrast}
                   stroke={theme.colors.brand.gray[300].highContrast}
                   strokeWidth={theme.border.width.thin}
-                  // by default the floating UI will always try to position
-                  // the content within the bounding box of reference
-                  // this causes the arrow to be always in the middle
-                  // this overriding the staticOffset to ensure the
-                  // left/right positioned trigger arrow will be properly positioned
-                  staticOffset={hasAlignment ? ARROW_WIDTH : undefined}
                 />
               }
             >
