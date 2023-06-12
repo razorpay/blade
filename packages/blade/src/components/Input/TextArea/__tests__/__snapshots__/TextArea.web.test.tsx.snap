@@ -201,7 +201,7 @@ exports[`<TextArea /> should render 1`] = `
   left: 0;
   right: 0;
   opacity: 0;
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   border-width: 1px;
   height: 1px;
 }
@@ -542,7 +542,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   left: 0;
   right: 0;
   opacity: 0;
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   border-width: 1px;
   height: 1px;
 }

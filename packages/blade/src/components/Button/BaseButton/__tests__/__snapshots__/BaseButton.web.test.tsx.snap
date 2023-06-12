@@ -5,8 +5,8 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -38,18 +38,18 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -331,8 +331,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -364,18 +364,18 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -457,8 +457,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -490,18 +490,18 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -583,8 +583,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -616,18 +616,18 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -746,8 +746,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -779,18 +779,18 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -909,8 +909,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -942,18 +942,18 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1072,8 +1072,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1105,18 +1105,18 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3115,8 +3115,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
   min-height: 48px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3148,18 +3148,18 @@ exports[`<BaseButton /> should render large size button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3241,8 +3241,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3274,18 +3274,18 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -4376,7 +4376,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,0);
-  border-color: hsla(213,89%,56%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -4409,17 +4409,17 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
 
 .c0:hover {
   background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(213,89%,56%,1);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c0:active {
   background-color: hsla(218,89%,51%,0.32);
-  border-color: hsla(213,89%,56%,1);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c0:focus {
   background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(213,89%,56%,1);
+  border-color: hsla(218,89%,51%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -4434,7 +4434,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
 }
 
 .c3 {
-  color: hsla(213,89%,56%,1);
+  color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -4501,8 +4501,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
   min-height: 32px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -4534,18 +4534,18 @@ exports[`<BaseButton /> should render small size button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -4753,8 +4753,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   min-height: 28px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -4786,18 +4786,18 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
