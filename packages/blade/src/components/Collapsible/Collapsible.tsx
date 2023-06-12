@@ -39,7 +39,7 @@ type CollapsibleProps = {
    *
    * @default undefined
    */
-  onChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
+  onExpandChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
 } & TestID &
   StyledPropsBlade;
 
@@ -48,7 +48,7 @@ const Collapsible = ({
   direction = 'bottom',
   defaultIsExpanded = false,
   isExpanded,
-  onChange,
+  onExpandChange,
   testID,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ...styledProps

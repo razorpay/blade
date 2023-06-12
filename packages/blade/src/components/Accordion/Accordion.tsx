@@ -18,7 +18,7 @@ type AccordionProps = {
   /**
    * Callback for change in any item's expanded state
    */
-  onChange?: ({ expandedIndex }: { expandedIndex: number | undefined }) => void;
+  onExpandChange?: ({ expandedIndex }: { expandedIndex: number | undefined }) => void;
 
   /**
    * Adds numeric index at the beginning of items
@@ -41,7 +41,7 @@ const Accordion = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   expandedIndex,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onChange,
+  onExpandChange,
   showNumberPrefix = false,
   children,
 }: AccordionProps): ReactElement => {
