@@ -16,13 +16,13 @@ This document outlines the API of `Collapsible` component. This shares similarit
 
 Collapsible shares the opening / closing interaction with Accordion:
 
-### Accordion open
+### Collapsible button
 
-https://github.com/razorpay/blade/assets/6682655/1a02d680-1832-4a70-a0a3-1a1f56f2b8b9
+https://github.com/razorpay/blade/assets/6682655/e37daea8-4cbb-42df-b33b-4d32dc0eab65
 
-### Accordion close
+### Collapsible link
 
-https://github.com/razorpay/blade/assets/6682655/b54eaeb9-7257-4da4-bf3b-89e10785e4f9
+https://github.com/razorpay/blade/assets/6682655/eec42564-4a43-4449-96e1-7c81639d60e7
 
 ## API
 
@@ -61,13 +61,13 @@ import { Collapsible, CollapsibleButton, CollapsibleLink, CollapsibleBody } from
 | direction         | `bottom`, `top` | `bottom`    | Direction in which the content expands                             |          |
 | defaultIsExpanded | `boolean`       | `false`     | Expands the collapsible content by default (uncontrolled)          |          |
 | isExpanded        | `boolean`       | `undefined` | Expands the collapsible content (controlled)                       |          |
-| onChange          | `function`      | `undefined` | Callback for change in collapsible's expanded state                |          |
+| onExpandChange    | `function`      | `undefined` | Callback for change in collapsible's expanded state                |          |
 
 > **Note**
 >
 > - Also includes layout based styling props
-> - For using collapsible in controlled state, use `isExpanded` coupled with `onChange`
-> - `onChange` callback signature `({ isExpanded }) => {}`, `isExpanded` represents the collapsible's current state
+> - For using collapsible in controlled state, use `isExpanded` coupled with `onExpandChange`
+> - `onExpandChange` callback signature `({ isExpanded }) => {}`, `isExpanded` represents the collapsible's current state
 
 ### CollapsibleButton
 
@@ -87,7 +87,7 @@ Supports ✅
 Doesn't support ❌
 
 - `isFullWidth` - can visually break UI
-- `onClick`, `isLoading` - using `onClick` will break built-in interactions (unless we provide additional hooks), `onChange` should already provide a way for users to listen-in on `Collapsible` state. This might have usage for async with `isLoading` in the future but for now not exposing the prop
+- `onClick`, `isLoading` - using `onClick` will break built-in interactions (unless we provide additional hooks), `onExpandChange` should already provide a way for users to listen-in on `Collapsible` state. This might have usage for async with `isLoading` in the future but for now not exposing the prop
 - `type` - will be `button` always
 
 ### CollapsibleLink
@@ -143,10 +143,10 @@ Native:
 ```tsx
 const App = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const onChange = ({ isExpanded }) => setIsExpanded(isExpanded);
+  const onExpandChange = ({ isExpanded }) => setIsExpanded(isExpanded);
 
   return (
-    <Collapsible isExpanded={isExpanded} onChange={onChange}>
+    <Collapsible isExpanded={isExpanded} onExpandChange={onExpandChange}>
       <CollapsibleLink>Answer to life, universe and everything</CollapsibleLink>
       <CollapsibleBody>
         <Text>42</Text>
