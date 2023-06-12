@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Side, UseFloatingOptions } from '@floating-ui/react';
-import type { GestureResponderEvent } from 'react-native';
 import type { CSSProperties } from 'react';
 import type { Platform } from '~utils';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
@@ -29,11 +28,11 @@ type TooltipTriggerProps = {
   onPointerDown?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
   onPointerEnter?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
   onTouchStart?: Platform.Select<{
-    native: undefined | ((event: GestureResponderEvent) => void);
+    native: undefined | ((event: any) => void);
     web: React.TouchEventHandler;
   }>;
   onTouchEnd?: Platform.Select<{
-    native: undefined | ((event: GestureResponderEvent) => void);
+    native: undefined | ((event: any) => void);
     web: React.TouchEventHandler;
   }>;
 };
