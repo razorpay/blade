@@ -136,7 +136,6 @@ const FormLabel = ({
         width,
         flexShrink: 0,
         marginRight: makeSpace(theme.spacing[5]),
-        wordBreak: 'break-all',
       }}
       id={id}
     >

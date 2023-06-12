@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { CSSProperties } from 'react';
 import styled from 'styled-components/native';
 import type { EasingFn } from 'react-native-reanimated';
@@ -8,13 +10,12 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import React from 'react';
-import type { Side } from '@floating-ui/react';
+import type { View } from 'react-native';
 import { getTooltipContentWrapperStyles } from './getTooltipContentWrapperStyles';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { TooltipContentWrapperProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
-import type { BoxProps } from '~components/Box';
 
 const StyledTooltipContentWrapper = styled(BaseBox)<{ collapse?: boolean; styles: CSSProperties }>(
   ({ theme, styles }) => {
@@ -22,13 +23,7 @@ const StyledTooltipContentWrapper = styled(BaseBox)<{ collapse?: boolean; styles
   },
 );
 
-type TooltipContentWrapperProps = {
-  styles: CSSProperties;
-  side?: Side;
-  isVisible?: boolean;
-} & BaseBoxProps;
-
-const TooltipContentWrapper = React.forwardRef<HTMLDivElement, TooltipContentWrapperProps>(
+const TooltipContentWrapper = React.forwardRef<View, TooltipContentWrapperProps>(
   ({ children, styles, side, isVisible, ...props }, ref) => {
     const { theme } = useTheme();
 
@@ -66,7 +61,7 @@ const TooltipContentWrapper = React.forwardRef<HTMLDivElement, TooltipContentWra
           collapse={false}
           // if I don't assert this TS throws error
           // I think because of the intersection type in TooltipContentWrapperProps
-          {...(props as BoxProps)}
+          {...(props as any)}
         >
           {children}
         </StyledTooltipContentWrapper>

@@ -215,7 +215,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
     >
       <span
         id="checkbox-group-49-label-54"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
@@ -726,7 +726,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
     >
       <span
         id="checkbox-group-19-label-24"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+        style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"

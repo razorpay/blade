@@ -4,7 +4,7 @@ import { makeBorderSize, metaAttribute } from '~utils';
 
 const TooltipInteractiveWrapper = styled(BaseBox).attrs(() => {
   return {
-    tabIndex: 0,
+    tabIndex: -1,
     ...metaAttribute({ testID: 'tooltip-interactive-wrapper' }),
   };
 })((props) => {

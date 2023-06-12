@@ -19,6 +19,7 @@ export * from './Indicator';
 export * from './Link';
 export * from './List';
 export * from './LiveAnnouncer';
+export * from './Modal';
 export * from './ProgressBar';
 export * from './Radio';
 export * from './Spinner';

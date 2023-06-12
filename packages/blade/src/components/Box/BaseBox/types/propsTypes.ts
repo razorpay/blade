@@ -128,7 +128,6 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
     userSelect: CSSObject['userSelect'];
-    pointerEvents: CSSObject['pointerEvents'];
     borderWidth: keyof Border['width'];
     borderColor: BorderColorString<'surface'>;
     borderTopWidth: keyof Border['width'];
@@ -144,7 +143,13 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     borderBottomRightRadius: keyof Border['radius'];
     borderBottomLeftRadius: keyof Border['radius'];
   } & PickCSSByPlatform<
-    'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom' | 'opacity'
+    | 'border'
+    | 'borderLeft'
+    | 'borderRight'
+    | 'borderTop'
+    | 'borderBottom'
+    | 'opacity'
+    | 'pointerEvents'
   >
 >;
 
@@ -238,7 +243,8 @@ type BoxProps = Partial<
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];
       tabIndex?: number;
-    } & TestID
+    } & TestID &
+    TooltipTriggerProps
 >;
 
 // Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.

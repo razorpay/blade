@@ -4,7 +4,7 @@ import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/sr
 import { Divider } from './Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
-import { assignWithoutSideEffects, isReactNative } from '~utils';
+import { assignWithoutSideEffects, getComponentId, isReactNative, metaAttribute } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 
@@ -38,6 +38,7 @@ type BaseHeaderProps = {
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
   closeButtonRef: React.MutableRefObject<any>;
+  metaComponentName?: string;
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -49,6 +50,63 @@ type BaseHeaderProps = {
   | 'onPointerMove'
   | 'onPointerUp'
 >;
+
+type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text';
+
+// prop restriction map for corresponding sub components
+const propRestrictionMap = {
+  Button: {
+    size: 'xsmall',
+    variant: 'tertiary',
+  },
+  Badge: {
+    size: 'medium',
+  },
+  Link: {
+    size: 'medium',
+  },
+  Text: {
+    size: 'medium',
+    variant: 'body',
+  },
+} as const;
+
+const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
+  const [
+    validatedTrailingComponent,
+    setValidatedTrailingComponent,
+  ] = React.useState<React.ReactElement | null>(null);
+
+  // validate and restrict sub component props in trailing prop
+  React.useEffect(() => {
+    if (React.isValidElement(trailing)) {
+      const trailingComponentType = getComponentId(trailing) as TrailingComponents;
+      const restrictedProps = propRestrictionMap[trailingComponentType];
+      const allowedComponents = Object.keys(propRestrictionMap);
+      if (!restrictedProps) {
+        throw new Error(
+          `[Blade Header]: Only one of \`${allowedComponents.join(
+            ', ',
+          )}\` component is accepted as trailing`,
+        );
+      }
+
+      const restrictedPropKeys = Object.keys(propRestrictionMap[trailingComponentType]);
+      for (const prop of restrictedPropKeys) {
+        if (trailing?.props?.hasOwnProperty(prop)) {
+          console.warn(
+            `[Blade Header]: Do not pass "${prop}" to "${trailingComponentType}" while inside Header trailing, because we override it.`,
+          );
+        }
+      }
+      setValidatedTrailingComponent(
+        React.cloneElement(trailing as React.ReactElement, restrictedProps),
+      );
+    }
+  }, [trailing]);
+
+  return validatedTrailingComponent;
+};
 
 const _BaseHeader = ({
   title,
@@ -70,8 +128,11 @@ const _BaseHeader = ({
   onPointerDown,
   onPointerMove,
   onPointerUp,
+  metaComponentName,
 }: BaseHeaderProps): React.ReactElement => {
-  const webOnlyEventHandlers = isReactNative()
+  const validatedTrailingComponent = useTrailingRestriction(trailing);
+
+  const webOnlyEventHandlers: Record<string, any> = isReactNative()
     ? {}
     : {
         onClickCapture,
@@ -85,7 +146,7 @@ const _BaseHeader = ({
       };
 
   return (
-    <BaseBox>
+    <BaseBox {...metaAttribute({ name: metaComponentName })}>
       <BaseBox
         marginTop="spacing.4"
         marginBottom="spacing.5"
@@ -142,7 +203,9 @@ const _BaseHeader = ({
               ) : null}
             </BaseBox>
           </BaseBox>
-          {trailing ? <BaseBox marginRight="spacing.5">{trailing}</BaseBox> : null}
+          {validatedTrailingComponent ? (
+            <BaseBox marginRight="spacing.5">{validatedTrailingComponent}</BaseBox>
+          ) : null}
           {showCloseButton ? (
             <IconButton
               ref={closeButtonRef}
