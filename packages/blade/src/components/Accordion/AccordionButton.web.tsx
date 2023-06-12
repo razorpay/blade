@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import { StyledAccordionButton } from './StyledAccordionButton';
 import type { AccordionButtonProps } from './types';
+import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils';
 import { Heading } from '~components/Typography';
@@ -9,11 +10,12 @@ import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevr
 
 const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded } = useCollapsible();
+  const { showNumberPrefix, expandedIndex } = useAccordion();
 
   const onClick = (): void => onExpandChange(!isExpanded);
 
   const _index =
-    typeof index === 'number' ? (
+    typeof index === 'number' && showNumberPrefix ? (
       <Heading size="small" marginRight="spacing.2">
         {index + 1}.
       </Heading>
@@ -31,6 +33,7 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
     <BaseBox
       // a11y guidelines suggest having an apt heading surround a button but heading level is hardcoded here
       {...makeAccessible({ role: 'heading', level: 3 })}
+      width="100%"
     >
       <StyledAccordionButton
         /**
@@ -42,8 +45,8 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
          */
         {...makeAccessible({ role: 'button' })}
         tabIndex={0}
-        // TODO: add logic
-        isExpanded={false}
+        isExpanded={expandedIndex === index}
+        // TODO: also handle keyboard
         onClick={onClick}
       >
         <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">

@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { useMemo, useState, cloneElement, Children } from 'react';
+import { useCallback, useMemo, useState, cloneElement, Children } from 'react';
 import type { AccordionContextState } from './AccordionContext';
 import { AccordionContext } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
@@ -13,12 +13,13 @@ type AccordionProps = {
   defaultExpandedIndex?: number;
 
   /**
-   * Expands the passed index (controlled)
+   * Expands the passed index (controlled), `-1` implies no expanded items
    */
   expandedIndex?: number;
 
   /**
-   * Callback for change in any item's expanded state
+   * Callback for change in any item's expanded state,
+   * `-1` implies no expanded items
    */
   onExpandChange?: ({ expandedIndex }: { expandedIndex: number | undefined }) => void;
 
@@ -37,12 +38,8 @@ type AccordionProps = {
   StyledPropsBlade;
 
 const Accordion = ({
-  // TODO: implement
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   defaultExpandedIndex,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   expandedIndex,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onExpandChange,
   showNumberPrefix = false,
   children,
@@ -50,25 +47,37 @@ const Accordion = ({
   const [expandedAccordionItemIndex, setExpandedAccordionItemIndex] = useState<number | undefined>(
     defaultExpandedIndex,
   );
+
+  const handleExpandChange = useCallback(
+    (nextExpandedIndex: number) => {
+      if (typeof expandedIndex !== 'undefined') {
+        // controlled
+        onExpandChange?.({ expandedIndex: nextExpandedIndex });
+      } else {
+        // uncontrolled
+        setExpandedAccordionItemIndex(nextExpandedIndex);
+        onExpandChange?.({ expandedIndex: nextExpandedIndex });
+      }
+    },
+    [onExpandChange, expandedIndex],
+  );
+
   const accordionContext = useMemo<AccordionContextState>(
     () => ({
-      expandedIndex: expandedAccordionItemIndex,
-      setExpandedIndex: setExpandedAccordionItemIndex,
+      expandedIndex: expandedIndex ?? expandedAccordionItemIndex,
+      onExpandChange: handleExpandChange,
+      showNumberPrefix,
     }),
-    [expandedAccordionItemIndex],
+    [expandedAccordionItemIndex, handleExpandChange, expandedIndex, showNumberPrefix],
   );
 
   return (
     <AccordionContext.Provider value={accordionContext}>
-      {showNumberPrefix ? (
-        <BaseBox>
-          {Children.map(children, (child, index) =>
-            cloneElement(child, { _index: index, key: index }),
-          )}
-        </BaseBox>
-      ) : (
-        <BaseBox>{children}</BaseBox>
-      )}
+      <BaseBox>
+        {Children.map(children, (child, index) =>
+          cloneElement(child, { _index: index, key: index }),
+        )}
+      </BaseBox>
     </AccordionContext.Provider>
   );
 };

@@ -66,9 +66,7 @@ const Collapsible = ({
       } else {
         // uncontrolled
         setIsBodyExpanded(nextIsExpanded);
-        if (onExpandChange) {
-          onExpandChange({ isExpanded: nextIsExpanded });
-        }
+        onExpandChange?.({ isExpanded: nextIsExpanded });
       }
     },
     [onExpandChange, isExpanded],

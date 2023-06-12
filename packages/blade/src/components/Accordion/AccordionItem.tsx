@@ -1,5 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 import { AccordionButton } from './AccordionButton';
+import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import type { TestID } from '~src/_helpers/types';
@@ -42,11 +43,21 @@ const AccordionItem = ({
   children,
   _index,
 }: AccordionItemProps): ReactElement => {
+  const { expandedIndex, onExpandChange } = useAccordion();
+  const isExpanded = expandedIndex === _index;
+
   const _description = description && <Text type="subtle">{description}</Text>;
+  const handleExpandChange = ({ isExpanded }: { isExpanded: boolean }): void => {
+    if (isExpanded && typeof _index !== 'undefined') {
+      onExpandChange(_index);
+    } else {
+      onExpandChange(-1);
+    }
+  };
 
   return (
     <>
-      <Collapsible>
+      <Collapsible isExpanded={isExpanded} onExpandChange={handleExpandChange}>
         <AccordionButton index={_index} icon={icon}>
           {title}
         </AccordionButton>
