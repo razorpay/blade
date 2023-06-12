@@ -1,5 +1,7 @@
 import type { ReactElement } from 'react';
-import { cloneElement, Children } from 'react';
+import { useMemo, useState, cloneElement, Children } from 'react';
+import type { AccordionContextState } from './AccordionContext';
+import { AccordionContext } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
@@ -45,12 +47,29 @@ const Accordion = ({
   showNumberPrefix = false,
   children,
 }: AccordionProps): ReactElement => {
-  return showNumberPrefix ? (
-    <BaseBox>
-      {Children.map(children, (child, index) => cloneElement(child, { _index: index, key: index }))}
-    </BaseBox>
-  ) : (
-    <BaseBox>{children}</BaseBox>
+  const [expandedAccordionItemIndex, setExpandedAccordionItemIndex] = useState<number | undefined>(
+    defaultExpandedIndex,
+  );
+  const accordionContext = useMemo<AccordionContextState>(
+    () => ({
+      expandedIndex: expandedAccordionItemIndex,
+      setExpandedIndex: setExpandedAccordionItemIndex,
+    }),
+    [expandedAccordionItemIndex],
+  );
+
+  return (
+    <AccordionContext.Provider value={accordionContext}>
+      {showNumberPrefix ? (
+        <BaseBox>
+          {Children.map(children, (child, index) =>
+            cloneElement(child, { _index: index, key: index }),
+          )}
+        </BaseBox>
+      ) : (
+        <BaseBox>{children}</BaseBox>
+      )}
+    </AccordionContext.Provider>
   );
 };
 
