@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { SyntheticEvent } from 'react';
@@ -42,6 +43,10 @@ type BaseLinkCommonProps = {
     native: (event: GestureResponderEvent) => void;
     web: (event: React.FocusEvent<HTMLButtonElement>) => void;
   }>;
+  onMouseLeave?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  }>;
   onKeyDown?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
@@ -71,7 +76,7 @@ type BaseLinkCommonProps = {
   htmlTitle?: string;
 } & TestID &
   StyledPropsBlade &
-  TooltipTriggerProps;
+  Omit<TooltipTriggerProps, 'onBlur' | 'onMouseLeave'>;
 
 /*
   Mandatory children prop when icon is not provided
@@ -340,9 +345,6 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
   return (
     <StyledBaseLink
       ref={ref as never}
-      // TODO Check if this is overriden
-      // TODO: Fix this is overriden
-      {...syntheticEvents}
       {...metaAttribute({ name: MetaConstants.Link, testID })}
       accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
       variant={variant}
@@ -351,9 +353,21 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       target={target}
       rel={rel ?? defaultRel}
       onClick={handleOnClick}
-      onBlur={onBlur}
-      onFocus={onFocus}
-      onMouseLeave={onMouseLeave}
+      {...syntheticEvents}
+      onBlur={(event: any) => {
+        onBlur?.(event);
+        syntheticEvents.onBlur();
+      }}
+      onFocus={(event: any) => {
+        onFocus?.(event);
+        syntheticEvents.onFocus();
+      }}
+      onMouseLeave={(event: any) => {
+        if (onMouseLeave) {
+          onMouseLeave(event);
+        }
+        syntheticEvents.onMouseLeave();
+      }}
       onMouseMove={onMouseMove}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}

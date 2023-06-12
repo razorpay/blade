@@ -87,7 +87,7 @@ const Tooltip = ({
 
   return (
     <>
-      {/* Cloning the trigger children, so enhance it with ref and event handler */}
+      {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
         ref: refs.setReference,
         ...getReferenceProps(),

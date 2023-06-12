@@ -6,7 +6,6 @@ import styled from 'styled-components/native';
 import type { StyledBaseLinkProps } from './types';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import { useStyledProps } from '~components/Box/styledProps';
-import type { TooltipTriggerProps } from '~components/Tooltip/types';
 import { castNativeType } from '~utils';
 import type { BladeElementRef } from '~src/hooks/types';
 
@@ -32,7 +31,7 @@ const openURL = async (href: string): Promise<void> => {
 
 const _StyledLink: React.ForwardRefRenderFunction<
   BladeElementRef,
-  StyledBaseLinkProps & TooltipTriggerProps & { children: React.ReactNode }
+  StyledBaseLinkProps & { children: React.ReactNode }
 > = (
   {
     variant,
