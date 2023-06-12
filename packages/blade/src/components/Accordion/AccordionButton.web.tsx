@@ -4,8 +4,8 @@ import type { AccordionButtonProps } from './types';
 import { BaseBox } from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils';
 import { Heading } from '~components/Typography';
-import { ChevronDownIcon } from '~components/Icons';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
+import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 
 const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
   const { setIsExpanded } = useCollapsible();
@@ -46,12 +46,12 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
         isExpanded={false}
         onClick={onClick}
       >
-        <BaseBox display="flex" flexDirection="row" alignItems="flex-start">
+        <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">
           {_index}
           {_icon}
           <Heading size="small">{children}</Heading>
         </BaseBox>
-        <ChevronDownIcon color="currentColor" size="large" marginLeft="spacing.4" />
+        <CollapsibleChevronIcon color="currentColor" size="large" />
       </StyledAccordionButton>
     </BaseBox>
   );
