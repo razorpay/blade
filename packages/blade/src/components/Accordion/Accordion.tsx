@@ -21,7 +21,7 @@ type AccordionProps = {
    * Callback for change in any item's expanded state,
    * `-1` implies no expanded items
    */
-  onExpandChange?: ({ expandedIndex }: { expandedIndex: number | undefined }) => void;
+  onExpandChange?: ({ expandedIndex }: { expandedIndex: number }) => void;
 
   /**
    * Adds numeric index at the beginning of items

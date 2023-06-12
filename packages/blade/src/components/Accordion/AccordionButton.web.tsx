@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import type { KeyboardEventHandler, ReactElement } from 'react';
 import { StyledAccordionButton } from './StyledAccordionButton';
 import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
@@ -12,7 +12,14 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
   const { onExpandChange, isExpanded } = useCollapsible();
   const { showNumberPrefix, expandedIndex } = useAccordion();
 
-  const onClick = (): void => onExpandChange(!isExpanded);
+  const toggleCollapse = (): void => onExpandChange(!isExpanded);
+  const onClick = (): void => toggleCollapse();
+  const onKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
+    const SPACE_KEY = ' ';
+    if (event.key === SPACE_KEY || event.key === 'Enter') {
+      toggleCollapse();
+    }
+  };
 
   const _index =
     typeof index === 'number' && showNumberPrefix ? (
@@ -48,6 +55,7 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
         isExpanded={expandedIndex === index}
         // TODO: also handle keyboard
         onClick={onClick}
+        onKeyDown={onKeyDown}
       >
         <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">
           {_index}

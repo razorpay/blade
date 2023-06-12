@@ -1,6 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
+import { useState } from 'react';
 
 import type { AccordionProps } from './Accordion';
 import { Accordion as AccordionComponent } from './Accordion';
@@ -9,6 +10,8 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { MusicIcon, PauseCircleIcon, PlayIcon } from '~components/Icons';
+import { Button } from '~components/Button';
+import { Box } from '~components/Box';
 
 // TODO: udpate
 const Page = (): ReactElement => {
@@ -105,5 +108,45 @@ const AccordionWithIconsTemplate: ComponentStory<typeof AccordionComponent> = ({
 export const Default = AccordionTemplate.bind({});
 
 export const WithIcons = AccordionWithIconsTemplate.bind({});
+
+const AccordionControlledTemplate: ComponentStory<typeof AccordionComponent> = ({
+  expandedIndex: _expandedIndex,
+  onExpandChange,
+  defaultExpandedIndex,
+  ...rest
+}) => {
+  const [expandedIndex, setExpandedIndex] = useState(-1);
+
+  return (
+    <>
+      <Box display="flex" flexDirection="row" gap="spacing.4" marginBottom="spacing.6">
+        <Button onClick={() => setExpandedIndex(0)}>Expand First</Button>
+        <Button onClick={() => setExpandedIndex(1)}>Expand Second</Button>
+        <Button onClick={() => setExpandedIndex(2)}>Expand Third</Button>
+        <Button onClick={() => setExpandedIndex(-1)}>Collapse</Button>
+      </Box>
+      <AccordionComponent
+        {...rest}
+        expandedIndex={expandedIndex}
+        onExpandChange={({ expandedIndex }) => setExpandedIndex(expandedIndex)}
+      >
+        <AccordionItem
+          title="Appetite for Destruction"
+          description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        />
+        <AccordionItem
+          title="Appetite for Destruction"
+          description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        />
+        <AccordionItem
+          title="Appetite for Destruction"
+          description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        />
+      </AccordionComponent>
+    </>
+  );
+};
+
+export const ControlledExample = AccordionControlledTemplate.bind({});
 
 export default meta;
