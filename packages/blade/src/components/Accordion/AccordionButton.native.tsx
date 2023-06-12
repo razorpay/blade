@@ -1,10 +1,7 @@
 import type { ReactElement } from 'react';
 import { StyledAccordionButton } from './StyledAccordionButton';
+import type { AccordionButtonProps } from './types';
 import { Heading } from '~components/Typography';
-
-type AccordionButtonProps = {
-  children: string;
-};
 
 // TODO: implement with reanimated, pressable
 const AccordionButton = ({ children }: AccordionButtonProps): ReactElement => {
@@ -18,4 +15,4 @@ const AccordionButton = ({ children }: AccordionButtonProps): ReactElement => {
   );
 };
 
-export { AccordionButton, AccordionButtonProps };
+export { AccordionButton };

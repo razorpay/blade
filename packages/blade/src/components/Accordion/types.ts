@@ -1,5 +1,13 @@
+import type { IconComponent } from '~components/Icons';
+
 type StyledAccordionButtonProps = {
   isExpanded: boolean;
 };
 
-export { StyledAccordionButtonProps };
+type AccordionButtonProps = {
+  index?: number;
+  icon?: IconComponent;
+  children: string;
+};
+
+export { StyledAccordionButtonProps, AccordionButtonProps };

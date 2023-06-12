@@ -1,17 +1,11 @@
 import type { ReactElement } from 'react';
 import { StyledAccordionButton } from './StyledAccordionButton';
+import type { AccordionButtonProps } from './types';
 import { BaseBox } from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils';
 import { Heading } from '~components/Typography';
-import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon } from '~components/Icons';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
-
-type AccordionButtonProps = {
-  index?: number;
-  icon?: IconComponent;
-  children: string;
-};
 
 const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
   const { setIsExpanded } = useCollapsible();

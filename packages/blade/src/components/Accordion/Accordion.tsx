@@ -35,8 +35,12 @@ type AccordionProps = {
   StyledPropsBlade;
 
 const Accordion = ({
+  // TODO: implement
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   defaultExpandedIndex,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   expandedIndex,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChange,
   showNumberPrefix = false,
   children,
