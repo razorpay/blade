@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
 import styled from 'styled-components';
-import { useCollapsibleContext } from './CollapsibleContext';
+import { useCollapsible } from './CollapsibleContext';
 import type { CollapsibleProps } from './Collapsible';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon } from '~components/Icons';
@@ -45,7 +45,7 @@ const StyledCollapsibleLinkIcon = styled(BaseBox)<StyledCollapsibleLinkIconProps
 
 // Not really an IconComponent, a wrapper is needed for animating the icon inside
 const CollapsibleLinkIcon: IconComponent = (props) => {
-  const { isExpanded, direction } = useCollapsibleContext();
+  const { isExpanded, direction } = useCollapsible();
   return (
     <StyledCollapsibleLinkIcon
       isExpanded={isExpanded}
@@ -65,7 +65,7 @@ const CollapsibleLink = ({
   testID,
   accessibilityLabel,
 }: CollapsibleLinkProps): ReactElement => {
-  const { setIsExpanded } = useCollapsibleContext();
+  const { setIsExpanded } = useCollapsible();
 
   const toggleIsExpanded = useCallback(() => setIsExpanded((prevIsExpanded) => !prevIsExpanded), [
     setIsExpanded,

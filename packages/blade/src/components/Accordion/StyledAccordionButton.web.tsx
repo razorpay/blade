@@ -3,6 +3,7 @@ import type { StyledAccordionButtonProps } from './types';
 import { castWebType, makeMotionTime } from '~utils';
 
 // TODO: refactor common tokens after native implementation
+// TODO: svg icon colors based on state
 const StyledAccordionButton = styled.div<StyledAccordionButtonProps>((props) => {
   const { theme, isExpanded } = props;
   return {
@@ -12,6 +13,10 @@ const StyledAccordionButton = styled.div<StyledAccordionButtonProps>((props) => 
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
     transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
     cursor: 'pointer',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
 
     '&:hover, &:focus': {
       backgroundColor: isExpanded

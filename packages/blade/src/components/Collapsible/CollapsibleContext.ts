@@ -19,6 +19,6 @@ const CollapsibleContext = createContext<CollapsibleContextState>({
   direction: 'bottom',
 });
 
-const useCollapsibleContext = (): CollapsibleContextState => useContext(CollapsibleContext);
+const useCollapsible = (): CollapsibleContextState => useContext(CollapsibleContext);
 
-export { CollapsibleContext, useCollapsibleContext, CollapsibleContextState };
+export { CollapsibleContext, useCollapsible, CollapsibleContextState };

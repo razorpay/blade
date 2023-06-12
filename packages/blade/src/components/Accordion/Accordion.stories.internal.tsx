@@ -8,6 +8,7 @@ import { AccordionItem } from './AccordionItem';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { MusicIcon, PauseCircleIcon, PlayIcon } from '~components/Icons';
 
 // TODO: udpate
 const Page = (): ReactElement => {
@@ -63,11 +64,46 @@ const meta: Meta<AccordionProps> = {
 const AccordionTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args }) => {
   return (
     <AccordionComponent {...args}>
-      <AccordionItem title="Title" description="description" />
+      <AccordionItem
+        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
+        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+      />
+      <AccordionItem
+        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
+        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+      />
+      <AccordionItem
+        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
+        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+      />
     </AccordionComponent>
   );
 };
 
-export const WithCollapsibleButton = AccordionTemplate.bind({});
+const AccordionWithIconsTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args }) => {
+  return (
+    <AccordionComponent {...args}>
+      <AccordionItem
+        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
+        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        icon={MusicIcon}
+      />
+      <AccordionItem
+        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
+        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        icon={PlayIcon}
+      />
+      <AccordionItem
+        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
+        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        icon={PauseCircleIcon}
+      />
+    </AccordionComponent>
+  );
+};
+
+export const Default = AccordionTemplate.bind({});
+
+export const WithIcons = AccordionWithIconsTemplate.bind({});
 
 export default meta;

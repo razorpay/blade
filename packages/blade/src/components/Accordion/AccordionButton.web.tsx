@@ -3,16 +3,39 @@ import { StyledAccordionButton } from './StyledAccordionButton';
 import { BaseBox } from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils';
 import { Heading } from '~components/Typography';
+import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon } from '~components/Icons';
+import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 
 type AccordionButtonProps = {
+  index?: number;
+  icon?: IconComponent;
   children: string;
 };
 
-const AccordionButton = ({ children }: AccordionButtonProps): ReactElement => {
+const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
+  const { setIsExpanded } = useCollapsible();
+
+  const onClick = (): void => setIsExpanded((prev) => !prev);
+
+  const _index =
+    typeof index === 'number' ? (
+      <Heading size="small" marginRight="spacing.2">
+        {index + 1}.
+      </Heading>
+    ) : null;
+
+  const _icon = Icon && (
+    <Icon size="medium" color="currentColor" marginRight="spacing.3" marginY="spacing.2" />
+  );
+
+  if (_index && _icon) {
+    console.warn(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
+  }
+
   return (
     <BaseBox
-      // a11y guidelines suggest having a heading surround a button but heading level is hardcoded here
+      // a11y guidelines suggest having an apt heading surround a button but heading level is hardcoded here
       {...makeAccessible({ role: 'heading', level: 3 })}
     >
       <StyledAccordionButton
@@ -27,9 +50,14 @@ const AccordionButton = ({ children }: AccordionButtonProps): ReactElement => {
         tabIndex={0}
         // TODO: add logic
         isExpanded={false}
+        onClick={onClick}
       >
-        <Heading size="small">{children}</Heading>
-        <ChevronDownIcon color="currentColor" size="large" />
+        <BaseBox display="flex" flexDirection="row" alignItems="flex-start">
+          {_index}
+          {_icon}
+          <Heading size="small">{children}</Heading>
+        </BaseBox>
+        <ChevronDownIcon color="currentColor" size="large" marginLeft="spacing.4" />
       </StyledAccordionButton>
     </BaseBox>
   );

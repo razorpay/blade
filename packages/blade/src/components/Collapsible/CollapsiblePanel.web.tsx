@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode, TransitionEventHandler } from 'react';
 import { useRef } from 'react';
 import styled from 'styled-components';
-import { useCollapsibleContext } from './CollapsibleContext';
+import { useCollapsible } from './CollapsibleContext';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { useDidUpdate } from '~src/hooks/useDidUpdate';
 import { Box } from '~components/Box';
@@ -44,7 +44,7 @@ const StyledCollapsiblePanel = styled.div<StyledCollapsiblePanelProps>((props) =
 });
 
 const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => {
-  const { isExpanded, defaultIsExpanded, direction } = useCollapsibleContext();
+  const { isExpanded, defaultIsExpanded, direction } = useCollapsible();
   const collapsiblePanelRef = useRef<HTMLDivElement>(null);
 
   /**

@@ -18,28 +18,28 @@ type CollapsibleProps = {
    *
    * @default bottom
    */
-  direction: 'bottom' | 'top';
+  direction?: 'bottom' | 'top';
 
   /**
    * Expands the collapsible content by default (uncontrolled)
    *
    * @default false
    */
-  defaultIsExpanded: boolean;
+  defaultIsExpanded?: boolean;
 
   /**
    * Expands the collapsible content (controlled)
    *
    * @default undefined
    */
-  isExpanded: boolean;
+  isExpanded?: boolean;
 
   /**
    * Callback for change in collapsible's expanded state
    *
    * @default undefined
    */
-  onChange: ({ isExpanded }: { isExpanded: boolean }) => void;
+  onChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
 } & TestID &
   StyledPropsBlade;
 

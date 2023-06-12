@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
-import { useCollapsibleContext } from './CollapsibleContext';
+import { useCollapsible } from './CollapsibleContext';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import type { IconComponent } from '~components/Icons';
@@ -27,7 +27,7 @@ const CollapsibleButton = ({
   testID,
   accessibilityLabel,
 }: CollapsibleButtonProps): ReactElement => {
-  const { setIsExpanded } = useCollapsibleContext();
+  const { setIsExpanded } = useCollapsible();
 
   const toggleIsExpanded = useCallback(() => setIsExpanded((prevIsExpanded) => !prevIsExpanded), [
     setIsExpanded,

@@ -1,4 +1,5 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactElement } from 'react';
+import { cloneElement, Children } from 'react';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
@@ -29,7 +30,7 @@ type AccordionProps = {
   /**
    * Accepts `AccordionItem` child nodes
    */
-  children: ReactNode;
+  children: ReactElement | ReactElement[];
 } & TestID &
   StyledPropsBlade;
 
@@ -37,10 +38,16 @@ const Accordion = ({
   defaultExpandedIndex,
   expandedIndex,
   onChange,
-  showNumberPrefix,
+  showNumberPrefix = false,
   children,
 }: AccordionProps): ReactElement => {
-  return <BaseBox>{children}</BaseBox>;
+  return showNumberPrefix ? (
+    <BaseBox>
+      {Children.map(children, (child, index) => cloneElement(child, { _index: index, key: index }))}
+    </BaseBox>
+  ) : (
+    <BaseBox>{children}</BaseBox>
+  );
 };
 
 export { AccordionProps, Accordion };
