@@ -8,9 +8,9 @@ import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 
 const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
-  const { setIsExpanded } = useCollapsible();
+  const { onExpandChange, isExpanded } = useCollapsible();
 
-  const onClick = (): void => setIsExpanded((prev) => !prev);
+  const onClick = (): void => onExpandChange(!isExpanded);
 
   const _index =
     typeof index === 'number' ? (

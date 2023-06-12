@@ -1,11 +1,10 @@
-import type { Dispatch, SetStateAction } from 'react';
 import { createContext, useContext } from 'react';
 import type { CollapsibleProps } from './Collapsible';
 
 type CollapsibleContextState = {
   isExpanded: boolean;
   defaultIsExpanded: boolean;
-  setIsExpanded: Dispatch<SetStateAction<boolean>>;
+  onExpandChange: (isExpanded: boolean) => void;
   direction: CollapsibleProps['direction'];
 };
 
@@ -15,7 +14,7 @@ const noop = (): void => {};
 const CollapsibleContext = createContext<CollapsibleContextState>({
   isExpanded: false,
   defaultIsExpanded: false,
-  setIsExpanded: noop,
+  onExpandChange: noop,
   direction: 'bottom',
 });
 

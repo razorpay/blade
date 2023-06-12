@@ -1,6 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
+import { useState } from 'react';
 
 import type { CollapsibleProps } from './Collapsible';
 import { Collapsible as CollapsibleComponent } from './Collapsible';
@@ -11,6 +12,7 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
+import { Link } from '~components/Link';
 
 const Page = (): ReactElement => {
   return (
@@ -81,6 +83,8 @@ const CollapsibleButtonTemplate: ComponentStory<typeof CollapsibleComponent> = (
   );
 };
 
+export const WithCollapsibleButton = CollapsibleButtonTemplate.bind({});
+
 const CollapsibleLinkTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
   return (
     <CollapsibleComponent {...args}>
@@ -92,8 +96,35 @@ const CollapsibleLinkTemplate: ComponentStory<typeof CollapsibleComponent> = ({ 
   );
 };
 
-export const WithCollapsibleButton = CollapsibleButtonTemplate.bind({});
-
 export const WithCollapsibleLink = CollapsibleLinkTemplate.bind({});
+
+const CollapsibleControlledTemplate: ComponentStory<typeof CollapsibleComponent> = ({
+  isExpanded: _isExpanded,
+  onExpandChange,
+  defaultIsExpanded,
+  ...rest
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  return (
+    <CollapsibleComponent
+      {...rest}
+      isExpanded={isExpanded}
+      onExpandChange={({ isExpanded }) => setIsExpanded(isExpanded)}
+    >
+      <CollapsibleButton>Click to {isExpanded ? 'collapse' : 'expand'}</CollapsibleButton>
+      <CollapsibleBody>
+        <Link
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Check this
+        </Link>
+      </CollapsibleBody>
+    </CollapsibleComponent>
+  );
+};
+
+export const ControlledExample = CollapsibleControlledTemplate.bind({});
 
 export default meta;

@@ -1,5 +1,5 @@
 import type { ReactElement, ReactNode } from 'react';
-import { useState, useMemo } from 'react';
+import { useCallback, useRef, useState, useMemo } from 'react';
 
 import type { CollapsibleContextState } from './CollapsibleContext';
 import { CollapsibleContext } from './CollapsibleContext';
@@ -53,16 +53,36 @@ const Collapsible = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ...styledProps
 }: CollapsibleProps): ReactElement => {
-  const [isBodyExpanded, setIsBodyExpanded] = useState(defaultIsExpanded);
+  const [isBodyExpanded, setIsBodyExpanded] = useState(isExpanded ?? defaultIsExpanded);
+
+  // Maintain a ref to the initial value of `defaultExpanded` so changing it has no effect
+  const initialDefaultExpanded = useRef(defaultIsExpanded);
+
+  const handleExpandChange = useCallback(
+    (nextIsExpanded: boolean) => {
+      if (typeof isExpanded !== 'undefined') {
+        // controlled
+        onExpandChange?.({ isExpanded: nextIsExpanded });
+      } else {
+        // uncontrolled
+        setIsBodyExpanded(nextIsExpanded);
+        if (onExpandChange) {
+          onExpandChange({ isExpanded: nextIsExpanded });
+        }
+      }
+    },
+    [onExpandChange, isExpanded],
+  );
 
   const contextValue = useMemo<CollapsibleContextState>(
     () => ({
-      isExpanded: isBodyExpanded,
-      setIsExpanded: setIsBodyExpanded,
-      defaultIsExpanded,
+      // controlled behavior if isExpanded is provided
+      isExpanded: isExpanded ?? isBodyExpanded,
+      onExpandChange: handleExpandChange,
+      defaultIsExpanded: initialDefaultExpanded.current,
       direction,
     }),
-    [isBodyExpanded, defaultIsExpanded, direction],
+    [isBodyExpanded, direction, handleExpandChange, isExpanded],
   );
 
   return (
