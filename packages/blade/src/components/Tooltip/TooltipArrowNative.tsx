@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import * as React from 'react';
 import styled from 'styled-components/native';
 import type { UseFloatingReturn } from '@floating-ui/react-native';
 import { View } from 'react-native';
+import type { CSSObject } from 'styled-components';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts } from './utils';
 import Svg, { Path } from '~components/Icons/_Svg';
@@ -17,7 +16,7 @@ type TooltipArrowProps = {
   context: UseFloatingReturn;
 };
 
-const StyledSvg = styled(Svg)(({ styles }) => {
+const StyledSvg = styled(Svg)<{ styles?: CSSObject }>(({ styles }) => {
   return styles;
 });
 
@@ -93,7 +92,9 @@ const TooltipArrow = React.forwardRef<SvgProps, TooltipArrowProps>(
         style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }}
       >
         <StyledSvg
-          ref={ref as never}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+          // @ts-ignore this file is native only
+          ref={ref}
           width={`${width}px`}
           height={`${width}px`}
           viewBox={`0 0 ${width} ${width}`}

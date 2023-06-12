@@ -3,6 +3,7 @@ import type { Side, UseFloatingOptions } from '@floating-ui/react';
 import type { GestureResponderEvent, NativeSyntheticEvent } from 'react-native';
 import type { CSSProperties } from 'react';
 import type { Platform } from '~utils';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 type TooltipProps = {
   content: string;
@@ -51,4 +52,10 @@ type TooltipContentProps = {
   side?: Side;
 };
 
-export { TooltipProps, TooltipTriggerProps, TooltipContentProps };
+type TooltipContentWrapperProps = {
+  styles: CSSProperties;
+  side?: Side;
+  isVisible?: boolean;
+} & BaseBoxProps;
+
+export { TooltipProps, TooltipTriggerProps, TooltipContentProps, TooltipContentWrapperProps };

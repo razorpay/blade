@@ -238,7 +238,8 @@ type BoxProps = Partial<
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];
       tabIndex?: number;
-    } & TestID
+    } & TestID &
+    TooltipTriggerProps
 >;
 
 // Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.

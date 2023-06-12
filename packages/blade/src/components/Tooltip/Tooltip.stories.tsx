@@ -210,7 +210,7 @@ export const NonInteractiveTrigger = NonInteractiveTriggerTemplate.bind({});
 const TooltipTriggersTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
   return (
     <Center>
-      <Box display="flex" gap="spacing.11" alignItems="center">
+      <Box display="flex" gap="spacing.11" alignItems="center" flexWrap="wrap">
         <TooltipComponent {...args} placement="top">
           <Button>Button</Button>
         </TooltipComponent>
