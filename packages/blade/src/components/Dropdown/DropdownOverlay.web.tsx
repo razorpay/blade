@@ -136,8 +136,8 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
 
   return (
     <FloatingPortal>
-      <div ref={refs.setFloating} style={floatingStyles}>
-        <BaseBox position="relative">
+      <BaseBox position="relative">
+        <div ref={refs.setFloating} style={floatingStyles}>
           <StyledDropdownOverlay
             width={isMenu ? undefined : width}
             minWidth="240px"
@@ -154,8 +154,8 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
           >
             {children}
           </StyledDropdownOverlay>
-        </BaseBox>
-      </div>
+        </div>
+      </BaseBox>
     </FloatingPortal>
   );
 };
