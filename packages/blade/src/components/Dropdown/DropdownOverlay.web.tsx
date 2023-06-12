@@ -137,23 +137,24 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   return (
     <FloatingPortal>
       <BaseBox position="relative">
-        <StyledDropdownOverlay
-          width={isMenu ? undefined : width}
-          minWidth="240px"
-          // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
-          maxWidth={isMenu ? '400px' : undefined}
-          left={isMenu ? 'spacing.0' : undefined}
-          right={isMenu ? undefined : 'spacing.0'}
-          style={{ ...styles, ...floatingStyles }}
-          ref={refs.setFloating}
-          display={castWebType(display)}
-          position="absolute"
-          transition={isOpen ? fadeIn : fadeOut}
-          onAnimationEnd={onAnimationEnd}
-          {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
-        >
-          {children}
-        </StyledDropdownOverlay>
+        <div ref={refs.setFloating}>
+          <StyledDropdownOverlay
+            width={isMenu ? undefined : width}
+            minWidth="240px"
+            // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
+            maxWidth={isMenu ? '400px' : undefined}
+            left={isMenu ? 'spacing.0' : undefined}
+            right={isMenu ? undefined : 'spacing.0'}
+            style={{ ...styles, ...floatingStyles }}
+            display={castWebType(display)}
+            position="absolute"
+            transition={isOpen ? fadeIn : fadeOut}
+            onAnimationEnd={onAnimationEnd}
+            {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+          >
+            {children}
+          </StyledDropdownOverlay>
+        </div>
       </BaseBox>
     </FloatingPortal>
   );
