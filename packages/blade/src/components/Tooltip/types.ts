@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Side, UseFloatingOptions } from '@floating-ui/react';
-import type { GestureResponderEvent, NativeSyntheticEvent } from 'react-native';
+import type { GestureResponderEvent } from 'react-native';
 import type { CSSProperties } from 'react';
 import type { Platform } from '~utils';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
@@ -17,23 +17,23 @@ type TooltipProps = {
 
 type TooltipTriggerProps = {
   onBlur?: Platform.Select<{
-    native: (event: NativeSyntheticEvent<any>) => void;
+    native: undefined | ((event: any) => void);
     web: React.FocusEventHandler;
   }>;
   onFocus?: Platform.Select<{
-    native: (event: NativeSyntheticEvent<any>) => void;
+    native: undefined | ((event: any) => void);
     web: React.FocusEventHandler;
   }>;
-  onMouseLeave?: React.MouseEventHandler;
-  onMouseMove?: React.MouseEventHandler;
-  onPointerDown?: React.PointerEventHandler;
-  onPointerEnter?: React.PointerEventHandler;
+  onMouseLeave?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+  onMouseMove?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+  onPointerDown?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
+  onPointerEnter?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
   onTouchStart?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
+    native: undefined | ((event: GestureResponderEvent) => void);
     web: React.TouchEventHandler;
   }>;
   onTouchEnd?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
+    native: undefined | ((event: GestureResponderEvent) => void);
     web: React.TouchEventHandler;
   }>;
 };
