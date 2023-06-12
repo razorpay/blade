@@ -12,6 +12,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { MusicIcon, PauseCircleIcon, PlayIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
+import { Alert } from '~components/Alert';
 
 // TODO: udpate
 const Page = (): ReactElement => {
@@ -148,5 +149,35 @@ const AccordionControlledTemplate: ComponentStory<typeof AccordionComponent> = (
 };
 
 export const ControlledExample = AccordionControlledTemplate.bind({});
+
+const AccordionWithSlotTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args }) => {
+  return (
+    <AccordionComponent {...args}>
+      <AccordionItem
+        title="Appetite for Destruction"
+        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+      >
+        <Alert
+          title="Custom slot"
+          description="You can render anything here along with description"
+        />
+      </AccordionItem>
+      <AccordionItem title="Appetite for Destruction">
+        <Alert
+          title="Custom slot"
+          description="Or you can skip description altogether and just render a custom component here"
+          isDismissible={false}
+          isFullWidth
+        />
+      </AccordionItem>
+      <AccordionItem
+        title="Appetite for Destruction"
+        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+      />
+    </AccordionComponent>
+  );
+};
+
+export const CustomSlot = AccordionWithSlotTemplate.bind({});
 
 export default meta;

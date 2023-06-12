@@ -62,7 +62,13 @@ const AccordionItem = ({
           {title}
         </AccordionButton>
         <CollapsibleBody>
-          <BaseBox gap="spacing.5" marginBottom="spacing.5" marginX="spacing.5">
+          <BaseBox
+            display="flex"
+            flexDirection="column"
+            gap="spacing.5"
+            marginBottom="spacing.5"
+            marginX="spacing.5"
+          >
             {_description}
             {children}
           </BaseBox>
