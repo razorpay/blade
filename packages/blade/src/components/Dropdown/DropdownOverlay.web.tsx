@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
