@@ -16,8 +16,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -26,14 +26,14 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -51,23 +51,29 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -146,8 +152,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -156,14 +162,14 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={true}
     isLoading={false}
     minHeight="36px"
@@ -181,23 +187,29 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "100%",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -276,8 +288,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -286,14 +298,14 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -311,23 +323,29 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -476,8 +494,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -486,14 +504,14 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -511,23 +529,29 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -676,8 +700,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -686,14 +710,14 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -711,23 +735,29 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -876,8 +906,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -886,14 +916,14 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -911,23 +941,29 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -1079,6 +1115,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
@@ -1086,11 +1123,16 @@ exports[`<BaseButton /> should render disabled button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1209,6 +1251,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 1)",
           "borderColor": "hsla(187, 68%, 52%, 1)",
@@ -1216,11 +1259,16 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1339,6 +1387,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
           "borderColor": "hsla(193, 100%, 35%, 0.32)",
@@ -1346,11 +1395,16 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1469,6 +1523,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(8, 73%, 47%, 1)",
           "borderColor": "hsla(8, 99%, 65%, 1)",
@@ -1476,11 +1531,16 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1599,6 +1659,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
           "borderColor": "hsla(9, 91%, 56%, 0.32)",
@@ -1606,11 +1667,16 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1729,6 +1795,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 33%, 29%, 1)",
           "borderColor": "hsla(216, 15%, 54%, 1)",
@@ -1736,11 +1803,16 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1859,6 +1931,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 15%, 54%, 0.32)",
@@ -1866,11 +1939,16 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -1989,6 +2067,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(38, 97%, 38%, 1)",
           "borderColor": "hsla(35, 84%, 54%, 1)",
@@ -1996,11 +2075,16 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -2119,6 +2203,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
           "borderColor": "hsla(36, 100%, 44%, 0.32)",
@@ -2126,11 +2211,16 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -2249,6 +2339,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(160, 100%, 26%, 1)",
           "borderColor": "hsla(149, 99%, 35%, 1)",
@@ -2256,11 +2347,16 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -2379,6 +2475,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
           "borderColor": "hsla(155, 100%, 31%, 0.32)",
@@ -2386,11 +2483,16 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -2509,6 +2611,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 44%, 23%, 0)",
           "borderColor": "hsla(218, 19%, 81%, 1)",
@@ -2516,11 +2619,16 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -2639,6 +2747,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
@@ -2646,11 +2755,16 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -2769,6 +2883,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 1)",
           "borderColor": "hsla(180, 100%, 97%, 1)",
@@ -2776,11 +2891,16 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -2899,6 +3019,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
           "borderColor": "hsla(193, 100%, 35%, 0.32)",
@@ -2906,11 +3027,16 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -2994,8 +3120,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -3004,14 +3130,14 @@ exports[`<BaseButton /> should render large size button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="48px"
@@ -3029,23 +3155,29 @@ exports[`<BaseButton /> should render large size button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 48,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -3159,6 +3291,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
@@ -3166,11 +3299,16 @@ exports[`<BaseButton /> should render loading button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -3402,8 +3540,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -3412,14 +3550,14 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -3437,23 +3575,29 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -3567,6 +3711,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(8, 73%, 47%, 1)",
           "borderColor": "hsla(0, 100%, 97%, 1)",
@@ -3574,11 +3719,16 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -3697,6 +3847,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
           "borderColor": "hsla(9, 91%, 56%, 0.32)",
@@ -3704,11 +3855,16 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -3827,6 +3983,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 33%, 29%, 1)",
           "borderColor": "hsla(214, 18%, 69%, 1)",
@@ -3834,11 +3991,16 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -3957,6 +4119,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 15%, 54%, 0.32)",
@@ -3964,11 +4127,16 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -4087,6 +4255,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(38, 97%, 38%, 1)",
           "borderColor": "hsla(32, 100%, 94%, 1)",
@@ -4094,11 +4263,16 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -4217,6 +4391,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
           "borderColor": "hsla(36, 100%, 44%, 0.32)",
@@ -4224,11 +4399,16 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -4347,6 +4527,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(160, 100%, 26%, 1)",
           "borderColor": "hsla(107, 100%, 96%, 1)",
@@ -4354,11 +4535,16 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -4477,6 +4663,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
           "borderColor": "hsla(155, 100%, 31%, 0.32)",
@@ -4484,11 +4671,16 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -4573,7 +4765,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
     }
     accessible={true}
     activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
-    activeBorderColor="hsla(213, 89%, 56%, 1)"
+    activeBorderColor="hsla(218, 89%, 51%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -4583,13 +4775,13 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
     collapsable={false}
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
     focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-    focusBorderColor="hsla(213, 89%, 56%, 1)"
+    focusBorderColor="hsla(218, 89%, 51%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
-    hoverBorderColor="hsla(213, 89%, 56%, 1)"
+    hoverBorderColor="hsla(218, 89%, 51%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -4607,23 +4799,29 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 0)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
           "backgroundColor": "hsla(218, 89%, 51%, 0)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4658,7 +4856,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
         style={
           Array [
             Object {
-              "color": "hsla(213, 89%, 56%, 1)",
+              "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -4702,8 +4900,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -4712,14 +4910,14 @@ exports[`<BaseButton /> should render small size button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="32px"
@@ -4737,23 +4935,29 @@ exports[`<BaseButton /> should render small size button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 32,
           "paddingBottom": 0,
           "paddingLeft": 12,
           "paddingRight": 12,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -4867,6 +5071,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
@@ -4874,11 +5079,16 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
@@ -4962,8 +5172,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(227, 100%, 45%, 1)"
-    activeBorderColor="hsla(227, 100%, 45%, 1)"
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -4972,14 +5182,14 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
-    defaultBorderColor="hsla(213, 89%, 56%, 1)"
-    focusBackgroundColor="hsla(223, 95%, 48%, 1)"
-    focusBorderColor="hsla(223, 95%, 48%, 1)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 1)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="28px"
@@ -4997,23 +5207,29 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
           "minHeight": 28,
           "paddingBottom": 0,
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
           "width": "auto",
         },
         Object {
-          "backgroundColor": "hsla(213, 89%, 56%, 1)",
-          "borderColor": "hsla(213, 89%, 56%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }

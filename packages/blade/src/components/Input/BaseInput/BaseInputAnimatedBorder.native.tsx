@@ -26,11 +26,9 @@ const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
 export const BaseInputAnimatedBorder = ({
   currentInteraction,
   validationState,
-  isLabelLeftPositioned: _,
 }: {
   currentInteraction: keyof ActionStates;
   validationState: BaseInputProps['validationState'];
-  isLabelLeftPositioned?: boolean;
 }): ReactElement => {
   const { theme } = useTheme();
   const borderAnimationEasing = (theme.motion.easing.standard.effective as unknown) as EasingFn;

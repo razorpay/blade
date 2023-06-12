@@ -1,5 +1,93 @@
 # @razorpay/blade
 
+## 8.8.1
+
+### Patch Changes
+
+- 9456e9d3: fix(BaseInput): large label alignment
+- c8727e89: fix(tokens): update primary color theme tokens
+- 19749c7a: fix(blade): jsdoc comments
+
+## 8.8.0
+
+### Minor Changes
+
+- 20c9fc03: feat(Input): add `generic` value in `autoCompleteSuggestionType`
+- 9db8c219: feat: add Modal component
+
+### Patch Changes
+
+- 9db8c219: chore: update overlay color tokens
+- f78834ea: fix(Amount): Make Amount display `inline-flex`
+
+## 8.7.0
+
+### Minor Changes
+
+- fc46b240: feat(Code): add `isHighlighted` prop
+- f0b7a66b: feat(Typography): expose `color` from Typography components like `Text`, `Heading`, `Title`, `Code`
+
+### Patch Changes
+
+- b9394c66: fix: update migrate-typography script
+
+## 8.6.1
+
+### Patch Changes
+
+- 93626965: fix: ActionList border style
+
+## 8.6.0
+
+### Minor Changes
+
+- 8348634c: feat(Link): add `xsmall` Link size
+- 26a7d38c: feat(Button): Support `href`, `target`, and `rel` on Button component.
+
+  You can now use `href` on Button which renders as `a` tag instead of button automatically.
+
+  ```jsx
+  <Button href="https://youtu.be/iPaBUhIsslA" target="_blank" rel="noopener noreferrer">
+    I am Link!
+  </Button>
+  ```
+
+- 4ff72975: feat(DropdownLink): add `DropdownLink` trigger for Dropdown
+
+  Checkout [Checkout DropdownLink Documentation](https://blade.razorpay.com/?path=/story/components-dropdown-with-button-and-link--with-link&globals=measureEnabled:false)
+
+- 3fe1ff8f: feat(blade): add textAlign to Box
+
+### Patch Changes
+
+- 14e5057e: fix: add min-width and max-width in Menu trigger Dropdown to fix width issues
+- 69a1bcef: chore(blade): improve BottomSheet documentation & added jsdoc
+- 4df0b721: fix(SelectInput): single select value clear
+
+  - You can pass `''` (empty string) in single select `value` prop to clear the selected value now.
+
+## 8.5.0
+
+### Minor Changes
+
+- 4a6ae99c: feat(Switch): add Switch component
+
+### Patch Changes
+
+- 245f677c: chore(blade): export switch
+
+## 8.4.1
+
+### Patch Changes
+
+- d30a7fd4: fix(blade): fix code & amount typography alignment issues
+
+## 8.4.0
+
+### Minor Changes
+
+- 4fb0f3fe: feat(Box): add `onScroll`, `onMouseOver`, `onMouseEnter`, `onMouseLeave` events
+
 ## 8.3.0
 
 ### Minor Changes

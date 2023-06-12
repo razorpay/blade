@@ -76,7 +76,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 }
 
 .c9 {
-  color: hsla(213,89%,56%,1);
+  color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -116,7 +116,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 }
 
 .c3:focus + div {
-  outline: 1px solid white;
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -373,7 +373,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 }
 
 .c3:focus + div {
-  outline: 1px solid white;
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -582,7 +582,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 }
 
 .c3:focus + div {
-  outline: 1px solid white;
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -734,8 +734,8 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   border-style: solid;
   margin: 2px;
   border-radius: 2px;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c5 {
@@ -820,14 +820,14 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 }
 
 .c3:focus + div {
-  outline: 1px solid white;
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c3:hover + div,
 .c3:focus + div {
-  border-color: hsla(218,89%,51%,1);
-  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(223,95%,48%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;

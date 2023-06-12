@@ -1,0 +1,945 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders a Modal with Header and Footer 1`] = `
+.c21 {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: hsla(216,15%,54%,0.18);
+}
+
+.c0 {
+  position: fixed;
+  z-index: 1000;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: absolute;
+  max-height: 80vh;
+  width: calc(100vw - 48px);
+  min-width: 320px;
+  max-width: 400px;
+  top: 50%;
+  left: 50%;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+}
+
+.c4 {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 12px;
+  touch-action: none;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 16px;
+  margin-right: auto;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c9 {
+  margin-left: 8px;
+}
+
+.c10 {
+  background-color: hsla(155,100%,31%,0.09);
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c22 {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.c24 {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.c26 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c16 {
+  margin-right: 16px;
+}
+
+.c17 {
+  text-align: left;
+  background-color: hsla(36,100%,44%,0.09);
+}
+
+.c8 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c13 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c15 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c23 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c28 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c19 {
+  color: hsla(38,97%,38%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c14 {
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c20 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(214,18%,69%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c20:hover {
+  color: hsla(217,18%,45%,1);
+}
+
+.c20:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  color: hsla(217,18%,45%,1);
+}
+
+.c20:active {
+  color: hsla(217,18%,45%,1);
+}
+
+.c1 {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
+  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  opacity: 0;
+  background-color: hsla(214,15%,18%,0.64);
+}
+
+.c3 {
+  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
+  position: fixed;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  -webkit-animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+}
+
+.c18 {
+  background-color: hsla(36,100%,44%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c11 {
+  background-color: hsla(155,100%,31%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c25 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c25:hover {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+}
+
+.c25:active {
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
+}
+
+.c25:focus {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c25 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27 {
+  opacity: 1;
+}
+
+<div
+  class="c0"
+  data-blade-component="box"
+  data-testid="modal-wrapper"
+>
+  <div
+    aria-hidden="true"
+    class="c1"
+    data-aria-hidden="true"
+    data-blade-component="modal-backdrop"
+    data-testid="modal-backdrop"
+    style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
+  />
+  <div
+    aria-label="Test Modal"
+    aria-modal="true"
+    class="c2 c3"
+    data-blade-component="modal"
+    display="flex"
+    role="dialog"
+    tabindex="-1"
+    width="calc(100vw - 48px)"
+  >
+    <div
+      class=""
+      data-blade-component="modal-header"
+    >
+      <div
+        class="c4"
+      >
+        <div
+          class="c5"
+          display="flex"
+        >
+          <div
+            class="c6"
+            display="flex"
+          >
+            <div
+              class=""
+            >
+              <div
+                class="c7"
+                display="flex"
+              >
+                <h6
+                  class="c8"
+                  color="surface.text.normal.lowContrast"
+                  data-blade-component="heading"
+                  font-family="text"
+                  font-size="200"
+                  font-style="normal"
+                  font-weight="bold"
+                >
+                  Address Details
+                </h6>
+                <div
+                  class="c9"
+                >
+                  <div
+                    class="c10 c11"
+                  >
+                    <div
+                      class="c12"
+                      data-blade-component="counter"
+                      display="flex"
+                      overflow="hidden"
+                    >
+                      <p
+                        class="c13 c14"
+                        color="feedback.text.positive.lowContrast"
+                        data-blade-component="text"
+                        font-family="text"
+                        font-size="75"
+                        font-style="normal"
+                        font-weight="regular"
+                      >
+                        2
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p
+                class="c15 "
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="75"
+                font-style="normal"
+                font-weight="regular"
+              >
+                Saving addresses will improve your checkout experience
+              </p>
+            </div>
+          </div>
+          <div
+            class="c16"
+          >
+            <div
+              class="c17 c18"
+              data-blade-component="badge"
+            >
+              <div
+                class="c12"
+                display="flex"
+                overflow="hidden"
+              >
+                <p
+                  class="c19 c14"
+                  color="feedback.text.notice.lowContrast"
+                  data-blade-component="text"
+                  font-family="text"
+                  font-size="75"
+                  font-style="normal"
+                  font-weight="regular"
+                >
+                  Action Needed
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            aria-label="Close"
+            class="c20"
+            data-blade-component="icon-button"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="20px"
+              viewBox="0 0 24 24"
+              width="20px"
+            >
+              <path
+                d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        class="c21"
+      />
+    </div>
+    <div
+      class="c22"
+      data-blade-component="modal-body"
+    >
+      <p
+        class="c23 "
+        color="surface.text.normal.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="100"
+        font-style="normal"
+        font-weight="regular"
+      >
+        Test Content
+      </p>
+    </div>
+    <div
+      class=""
+      data-blade-component="box"
+    >
+      <div
+        class="c21"
+      />
+      <div
+        class="c24"
+        data-blade-component="modal-footer"
+      >
+        <button
+          class="c25"
+          data-blade-component="button"
+          role="button"
+          type="button"
+        >
+          <div
+            class="c26 c27"
+            display="flex"
+          >
+            <div
+              class="c28"
+              color="action.text.primary.default"
+              font-size="100"
+              font-weight="bold"
+            >
+              Save
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders a basic Modal 1`] = `
+.c0 {
+  position: fixed;
+  z-index: 1000;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: absolute;
+  max-height: 80vh;
+  width: calc(100vw - 48px);
+  min-width: 320px;
+  max-width: 400px;
+  top: 50%;
+  left: 50%;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+}
+
+.c4 {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
+  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  opacity: 0;
+  background-color: hsla(214,15%,18%,0.64);
+}
+
+.c3 {
+  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
+  position: fixed;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  -webkit-animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+}
+
+<div
+  class="c0"
+  data-blade-component="box"
+  data-testid="modal-wrapper"
+>
+  <div
+    aria-hidden="true"
+    class="c1"
+    data-aria-hidden="true"
+    data-blade-component="modal-backdrop"
+    data-testid="modal-backdrop"
+    style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
+  />
+  <div
+    aria-label="Test Modal"
+    aria-modal="true"
+    class="c2 c3"
+    data-blade-component="modal"
+    display="flex"
+    role="dialog"
+    tabindex="0"
+    width="calc(100vw - 48px)"
+  >
+    <div
+      class="c4"
+      data-blade-component="modal-body"
+    >
+      <p
+        class="c5 Text__StyledText-wkh56f-0"
+        color="surface.text.normal.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="100"
+        font-style="normal"
+        font-weight="regular"
+      >
+        Test Content
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders a basic Modal of large size 1`] = `
+.c0 {
+  position: fixed;
+  z-index: 1000;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: absolute;
+  max-height: 80vh;
+  width: calc(100vw - 48px);
+  min-width: 320px;
+  max-width: 1024px;
+  top: 50%;
+  left: 50%;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+}
+
+.c4 {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
+  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  opacity: 0;
+  background-color: hsla(214,15%,18%,0.64);
+}
+
+.c3 {
+  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
+  position: fixed;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  -webkit-animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+}
+
+<div
+  class="c0"
+  data-blade-component="box"
+  data-testid="modal-wrapper"
+>
+  <div
+    aria-hidden="true"
+    class="c1"
+    data-aria-hidden="true"
+    data-blade-component="modal-backdrop"
+    data-testid="modal-backdrop"
+    style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
+  />
+  <div
+    aria-label="Test Modal"
+    aria-modal="true"
+    class="c2 c3"
+    data-blade-component="modal"
+    display="flex"
+    role="dialog"
+    tabindex="0"
+    width="calc(100vw - 48px)"
+  >
+    <div
+      class="c4"
+      data-blade-component="modal-body"
+    >
+      <p
+        class="c5 Text__StyledText-wkh56f-0"
+        color="surface.text.normal.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="100"
+        font-style="normal"
+        font-weight="regular"
+      >
+        Test Content
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal renders a basic Modal of medium size 1`] = `
+.c0 {
+  position: fixed;
+  z-index: 1000;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: absolute;
+  max-height: 80vh;
+  width: calc(100vw - 48px);
+  min-width: 320px;
+  max-width: 760px;
+  top: 50%;
+  left: 50%;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+}
+
+.c4 {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
+  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  opacity: 0;
+  background-color: hsla(214,15%,18%,0.64);
+}
+
+.c3 {
+  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
+  position: fixed;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  -webkit-animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+}
+
+<div
+  class="c0"
+  data-blade-component="box"
+  data-testid="modal-wrapper"
+>
+  <div
+    aria-hidden="true"
+    class="c1"
+    data-aria-hidden="true"
+    data-blade-component="modal-backdrop"
+    data-testid="modal-backdrop"
+    style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
+  />
+  <div
+    aria-label="Test Modal"
+    aria-modal="true"
+    class="c2 c3"
+    data-blade-component="modal"
+    display="flex"
+    role="dialog"
+    tabindex="0"
+    width="calc(100vw - 48px)"
+  >
+    <div
+      class="c4"
+      data-blade-component="modal-body"
+    >
+      <p
+        class="c5 Text__StyledText-wkh56f-0"
+        color="surface.text.normal.lowContrast"
+        data-blade-component="text"
+        font-family="text"
+        font-size="100"
+        font-style="normal"
+        font-weight="regular"
+      >
+        Test Content
+      </p>
+    </div>
+  </div>
+</div>
+`;
