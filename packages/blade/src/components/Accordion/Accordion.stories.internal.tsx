@@ -105,7 +105,7 @@ const AccordionWithIconsTemplate: ComponentStory<typeof AccordionComponent> = ({
   );
 };
 
-export const Default = AccordionTemplate.bind({});
+export const BasicExample = AccordionTemplate.bind({});
 
 export const WithIcons = AccordionWithIconsTemplate.bind({});
 
