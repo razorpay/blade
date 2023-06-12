@@ -175,6 +175,7 @@ exports[`<TextInput /> should render 1`] = `
         currentInteraction="default"
         display="flex"
         flexDirection="row"
+        position="relative"
         style={
           Array [
             Object {
@@ -186,6 +187,7 @@ exports[`<TextInput /> should render 1`] = `
               "borderTopRightRadius": 2,
               "display": "flex",
               "flexDirection": "row",
+              "position": "relative",
               "width": "100%",
             },
           ]
@@ -247,26 +249,26 @@ exports[`<TextInput /> should render 1`] = `
           }
           textContentType="none"
         />
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                "bottom": 0,
+                "height": 1,
+                "left": 0,
+                "opacity": 1,
+                "position": "absolute",
+                "right": 0,
+              },
+              Object {
+                "opacity": undefined,
+                "width": "undefined%",
+              },
+            ]
+          }
+        />
       </View>
-      <View
-        style={
-          Array [
-            Object {
-              "backgroundColor": "hsla(213, 89%, 56%, 1)",
-              "bottom": 0,
-              "height": 1,
-              "left": 0,
-              "opacity": 1,
-              "position": "absolute",
-              "right": 0,
-            },
-            Object {
-              "opacity": undefined,
-              "width": "undefined%",
-            },
-          ]
-        }
-      />
     </View>
     <View
       style={
@@ -471,6 +473,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         currentInteraction="default"
         display="flex"
         flexDirection="row"
+        position="relative"
         style={
           Array [
             Object {
@@ -482,6 +485,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               "borderTopRightRadius": 2,
               "display": "flex",
               "flexDirection": "row",
+              "position": "relative",
               "width": "100%",
             },
           ]
@@ -748,26 +752,26 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             </Text>
           </View>
         </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                "bottom": 0,
+                "height": 1,
+                "left": 0,
+                "opacity": 1,
+                "position": "absolute",
+                "right": 0,
+              },
+              Object {
+                "opacity": undefined,
+                "width": "undefined%",
+              },
+            ]
+          }
+        />
       </View>
-      <View
-        style={
-          Array [
-            Object {
-              "backgroundColor": "hsla(213, 89%, 56%, 1)",
-              "bottom": 0,
-              "height": 1,
-              "left": 0,
-              "opacity": 1,
-              "position": "absolute",
-              "right": 0,
-            },
-            Object {
-              "opacity": undefined,
-              "width": "undefined%",
-            },
-          ]
-        }
-      />
     </View>
     <View
       style={

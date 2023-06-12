@@ -1,5 +1,25 @@
 # @razorpay/blade
 
+## 8.8.1
+
+### Patch Changes
+
+- 9456e9d3: fix(BaseInput): large label alignment
+- c8727e89: fix(tokens): update primary color theme tokens
+- 19749c7a: fix(blade): jsdoc comments
+
+## 8.8.0
+
+### Minor Changes
+
+- 20c9fc03: feat(Input): add `generic` value in `autoCompleteSuggestionType`
+- 9db8c219: feat: add Modal component
+
+### Patch Changes
+
+- 9db8c219: chore: update overlay color tokens
+- f78834ea: fix(Amount): Make Amount display `inline-flex`
+
 ## 8.7.0
 
 ### Minor Changes

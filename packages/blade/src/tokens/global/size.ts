@@ -56,8 +56,14 @@ export const size = {
   200: 200,
   /** 300 px */
   300: 300,
+  /** 400 px */
+  400: 400,
   /** 584 px */
   584: 584,
+  /** 760 px */
+  760: 760,
+  /** 1024 px */
+  1024: 1024,
 } as const;
 
 export type Size = typeof size;
