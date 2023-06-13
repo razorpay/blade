@@ -71,7 +71,7 @@ describe('<Tooltip />', () => {
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
   });
 
-  it('should open/close on focus/blur', async () => {
+  it('should open/close immediately on focus/blur without the default delay of 300ms', async () => {
     const buttonText = 'Hover me';
     const { getByRole } = renderWithTheme(
       <Tooltip content="Hello world">
@@ -235,14 +235,16 @@ describe('<Tooltip />', () => {
   it('should pass a11y', async () => {
     jest.useRealTimers();
 
+    const tooltipContent = 'Hello world';
     const buttonText = 'Hover me';
     const { getByRole } = renderWithTheme(
-      <Tooltip content="Hello world">
+      <Tooltip content={tooltipContent}>
         <Button>{buttonText}</Button>
       </Tooltip>,
     );
     fireEvent.focus(getByRole('button', { name: buttonText }));
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
+    expect(getByRole('button', { name: buttonText })).toHaveAccessibleDescription(tooltipContent);
     await assertAccessible(getByRole('tooltip'));
   });
 });
