@@ -126,4 +126,4 @@ const Tooltip = ({
   );
 };
 
-export { Tooltip, TooltipProps };
+export { Tooltip };

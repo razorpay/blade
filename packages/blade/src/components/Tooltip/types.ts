@@ -38,7 +38,7 @@ type TooltipTriggerProps = {
 };
 
 type TooltipContentProps = {
-  children: React.ReactNode;
+  children: string;
   style: CSSProperties;
   arrow: React.ReactNode;
   /**
