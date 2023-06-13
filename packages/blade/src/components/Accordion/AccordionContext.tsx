@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 
 type AccordionContextState = {
   expandedIndex?: number;
+  defaultExpandedIndex?: number;
   onExpandChange: (expandedIndex: number) => void;
   showNumberPrefix: boolean;
 };
@@ -11,6 +12,7 @@ const noop = (): void => {};
 
 const AccordionContext = createContext<AccordionContextState>({
   expandedIndex: undefined,
+  defaultExpandedIndex: undefined,
   onExpandChange: noop,
   showNumberPrefix: false,
 });

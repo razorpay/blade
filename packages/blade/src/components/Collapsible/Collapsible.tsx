@@ -72,8 +72,11 @@ const Collapsible = ({
 }: CollapsibleProps): ReactElement => {
   const [isBodyExpanded, setIsBodyExpanded] = useState(isExpanded ?? defaultIsExpanded);
 
-  // Maintain a ref to the initial value of `defaultExpanded` so changing it has no effect
-  const initialDefaultExpanded = useRef(defaultIsExpanded);
+  /**
+   * Maintain a ref to the initial value of `defaultExpanded || isExpanded` so changing it has no effect.
+   * This will help in determining the correct initial height of collapsing panel
+   */
+  const initialDefaultExpanded = useRef(Boolean(defaultIsExpanded || isExpanded));
 
   const handleExpandChange = useCallback(
     (nextIsExpanded: boolean) => {

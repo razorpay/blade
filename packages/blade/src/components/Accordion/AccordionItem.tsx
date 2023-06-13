@@ -43,8 +43,9 @@ const AccordionItem = ({
   children,
   _index,
 }: AccordionItemProps): ReactElement => {
-  const { expandedIndex, onExpandChange } = useAccordion();
+  const { expandedIndex, onExpandChange, defaultExpandedIndex } = useAccordion();
   const isExpanded = expandedIndex === _index;
+  const isDefaultExpanded = defaultExpandedIndex === _index;
 
   const _description = description && <Text type="subtle">{description}</Text>;
   const handleExpandChange = ({ isExpanded }: { isExpanded: boolean }): void => {
@@ -59,6 +60,7 @@ const AccordionItem = ({
     <>
       <Collapsible
         isExpanded={isExpanded}
+        defaultIsExpanded={isDefaultExpanded}
         onExpandChange={handleExpandChange}
         // Accordion has its own width restrictions
         _shouldApplyWidthRestrictions={false}

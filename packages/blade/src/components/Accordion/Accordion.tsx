@@ -80,10 +80,17 @@ const Accordion = ({
   const accordionContext = useMemo<AccordionContextState>(
     () => ({
       expandedIndex: expandedIndex ?? expandedAccordionItemIndex,
+      defaultExpandedIndex,
       onExpandChange: handleExpandChange,
       showNumberPrefix,
     }),
-    [expandedAccordionItemIndex, handleExpandChange, expandedIndex, showNumberPrefix],
+    [
+      expandedAccordionItemIndex,
+      handleExpandChange,
+      expandedIndex,
+      showNumberPrefix,
+      defaultExpandedIndex,
+    ],
   );
 
   return (
