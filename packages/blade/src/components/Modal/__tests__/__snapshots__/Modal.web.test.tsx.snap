@@ -102,10 +102,10 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c12 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -480,7 +480,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                     <div
                       class="c12"
                       data-blade-component="counter"
-                      display="flex"
+                      display="inline-flex"
                       overflow="hidden"
                     >
                       <p
@@ -520,7 +520,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             >
               <div
                 class="c12"
-                display="flex"
+                display="inline-flex"
                 overflow="hidden"
               >
                 <p

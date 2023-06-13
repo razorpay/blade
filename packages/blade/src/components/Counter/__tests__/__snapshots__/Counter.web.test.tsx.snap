@@ -6,10 +6,10 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -73,7 +73,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -98,10 +98,10 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -165,7 +165,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -190,10 +190,10 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -257,7 +257,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -282,10 +282,10 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -349,7 +349,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -374,10 +374,10 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -441,7 +441,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -466,10 +466,10 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -533,7 +533,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -558,10 +558,10 @@ exports[`<Counter /> should render large size Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -625,7 +625,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -650,10 +650,10 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -717,7 +717,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -742,10 +742,10 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -809,7 +809,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -834,10 +834,10 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -901,7 +901,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -926,10 +926,10 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -993,7 +993,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -1018,10 +1018,10 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -1085,7 +1085,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -1110,10 +1110,10 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -1177,7 +1177,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
@@ -1202,10 +1202,10 @@ exports[`<Counter /> should render small size Counter 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -1269,7 +1269,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="flex"
+      display="inline-flex"
       overflow="hidden"
     >
       <p
