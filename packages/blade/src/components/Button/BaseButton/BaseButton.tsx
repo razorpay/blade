@@ -397,6 +397,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
 
+  const accessibilityProps = makeAccessible({
+    role: isLink ? 'link' : 'button',
+    label: accessibilityLabel,
+  });
+
   return (
     <StyledBaseButton
       ref={buttonRef as any}
@@ -406,12 +411,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       href={href}
       target={target}
       rel={rel ?? defaultRel}
-      accessibilityProps={{
-        ...makeAccessible({
-          role: isLink ? 'link' : 'button',
-          label: accessibilityLabel,
-        }),
-      }}
+      accessibilityProps={accessibilityProps}
       isLoading={isLoading}
       disabled={disabled}
       activeBorderColor={activeBorderColor}
