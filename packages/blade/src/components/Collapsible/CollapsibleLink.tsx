@@ -18,7 +18,7 @@ const _CollapsibleLink = ({
   testID,
   accessibilityLabel,
 }: CollapsibleLinkProps): ReactElement => {
-  const { onExpandChange, isExpanded } = useCollapsible();
+  const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
   const toggleIsExpanded = useCallback(() => onExpandChange(!isExpanded), [
     onExpandChange,
@@ -34,6 +34,8 @@ const _CollapsibleLink = ({
       isDisabled={isDisabled}
       testID={testID}
       accessibilityLabel={accessibilityLabel}
+      accessibilityControls={collapsibleBodyId}
+      accessibilityExpanded={isExpanded}
       onClick={toggleIsExpanded}
     >
       {children}

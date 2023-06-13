@@ -10,6 +10,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
 import { MetaConstants, isValidAllowedChildren, makeSize, metaAttribute } from '~utils';
 import { size } from '~tokens/global';
+import { useId } from '~src/hooks/useId';
 
 type CollapsibleProps = {
   /**
@@ -66,12 +67,12 @@ const Collapsible = ({
   defaultIsExpanded = false,
   isExpanded,
   onExpandChange,
-  // TODO: add
   testID,
   _shouldApplyWidthRestrictions = true,
   ...styledProps
 }: CollapsibleProps): ReactElement => {
   const [isBodyExpanded, setIsBodyExpanded] = useState(isExpanded ?? defaultIsExpanded);
+  const collapsibleBodyId = useId(MetaConstants.CollapsibleBody);
 
   /**
    * Maintain a ref to the initial value of `defaultExpanded || isExpanded` so changing it has no effect.
@@ -100,8 +101,9 @@ const Collapsible = ({
       onExpandChange: handleExpandChange,
       defaultIsExpanded: initialDefaultExpanded.current,
       direction,
+      collapsibleBodyId,
     }),
-    [isBodyExpanded, direction, handleExpandChange, isExpanded],
+    [isBodyExpanded, direction, handleExpandChange, isExpanded, collapsibleBodyId],
   );
 
   Children.forEach(children, (child) => {
@@ -135,7 +137,5 @@ const Collapsible = ({
     </CollapsibleContext.Provider>
   );
 };
-
-// TODO: - handle valid children checks
 
 export { Collapsible, CollapsibleProps };

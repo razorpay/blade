@@ -74,6 +74,17 @@ type BaseButtonCommonProps = {
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
   accessibilityLabel?: string;
+
+  /**
+   * Determines if the associated content controlled by this button is expanded or not.
+   * Generally used along with `accessibilityControls` on web
+   */
+  accessibilityExpanded?: boolean;
+
+  /**
+   * **Web only**: Accepts the id of element which is controlled by this button
+   */
+  accessibilityControls?: string;
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -330,6 +341,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     type = 'button',
     children,
     accessibilityLabel,
+    accessibilityControls,
+    accessibilityExpanded,
     testID,
     ...styledProps
   },
@@ -410,6 +423,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         ...makeAccessible({
           role: isLink ? 'link' : 'button',
           label: accessibilityLabel,
+          controls: accessibilityControls,
+          expanded: accessibilityExpanded,
         }),
       }}
       isLoading={isLoading}

@@ -1,7 +1,8 @@
 import type { ReactElement, ReactNode } from 'react';
 import { CollapsiblePanel } from './CollapsiblePanel';
+import { useCollapsible } from './CollapsibleContext';
 import BaseBox from '~components/Box/BaseBox';
-import { MetaConstants, assignWithoutSideEffects, metaAttribute } from '~utils';
+import { MetaConstants, assignWithoutSideEffects, makeAccessible, metaAttribute } from '~utils';
 import type { TestID } from '~src/_helpers/types';
 
 type CollapsibleBodyProps = {
@@ -9,8 +10,13 @@ type CollapsibleBodyProps = {
 } & TestID;
 
 const _CollapsibleBody = ({ children, testID }: CollapsibleBodyProps): ReactElement => {
+  const { collapsibleBodyId } = useCollapsible();
   return (
-    <BaseBox {...metaAttribute({ name: MetaConstants.Alert, testID })}>
+    <BaseBox
+      id={collapsibleBodyId}
+      {...makeAccessible({ role: 'region' })}
+      {...metaAttribute({ name: MetaConstants.Alert, testID })}
+    >
       <CollapsiblePanel>{children}</CollapsiblePanel>
     </BaseBox>
   );

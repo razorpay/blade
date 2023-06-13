@@ -9,7 +9,7 @@ import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 
 const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
-  const { onExpandChange, isExpanded } = useCollapsible();
+  const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex } = useAccordion();
 
   const toggleCollapse = (): void => onExpandChange(!isExpanded);
@@ -36,6 +36,8 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
     console.warn(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
   }
 
+  const isButtonExpanded = expandedIndex === index;
+
   return (
     <BaseBox
       // a11y guidelines suggest having an apt heading surround a button but heading level is hardcoded here
@@ -52,9 +54,10 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
          */
         {...makeAccessible({ role: 'button' })}
         tabIndex={0}
-        isExpanded={expandedIndex === index}
+        isExpanded={isButtonExpanded}
         onClick={onClick}
         onKeyDown={onKeyDown}
+        {...makeAccessible({ expanded: isButtonExpanded, controls: collapsibleBodyId })}
         {...metaAttribute({ name: MetaConstants.AccordionButton })}
       >
         <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">

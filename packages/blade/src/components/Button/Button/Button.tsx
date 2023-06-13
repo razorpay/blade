@@ -33,12 +33,32 @@ type ButtonCommonProps = {
   isFullWidth?: boolean;
   isLoading?: boolean;
   accessibilityLabel?: string;
+
+  /**
+   * Determines if the associated content controlled by this button is expanded or not.
+   * Generally used along with `accessibilityControls` on web
+   */
+  accessibilityExpanded?: boolean;
   type?: 'button' | 'reset' | 'submit';
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
 } & TestID &
+  Platform.Select<{
+    native: {
+      /**
+       * **Web only**: Accepts the id of element which is controlled by this button
+       */
+      accessibilityControls?: undefined;
+    };
+    web: {
+      /**
+       * **Web only**: Accepts the id of element which is controlled by this button
+       */
+      accessibilityControls?: string;
+    };
+  }> &
   StyledPropsBlade;
 
 /*
@@ -76,6 +96,8 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     type = 'button',
     variant = 'primary',
     accessibilityLabel,
+    accessibilityControls,
+    accessibilityExpanded,
     testID,
     ...styledProps
   },
@@ -90,6 +112,8 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       target={target}
       rel={rel}
       accessibilityLabel={accessibilityLabel}
+      accessibilityControls={accessibilityControls}
+      accessibilityExpanded={accessibilityExpanded}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}

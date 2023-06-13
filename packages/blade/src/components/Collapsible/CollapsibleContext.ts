@@ -6,6 +6,7 @@ type CollapsibleContextState = {
   defaultIsExpanded: boolean;
   onExpandChange: (isExpanded: boolean) => void;
   direction: CollapsibleProps['direction'];
+  collapsibleBodyId: string;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -16,6 +17,7 @@ const CollapsibleContext = createContext<CollapsibleContextState>({
   defaultIsExpanded: false,
   onExpandChange: noop,
   direction: 'bottom',
+  collapsibleBodyId: '',
 });
 
 const useCollapsible = (): CollapsibleContextState => useContext(CollapsibleContext);

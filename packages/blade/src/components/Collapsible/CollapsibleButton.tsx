@@ -28,7 +28,7 @@ const _CollapsibleButton = ({
   testID,
   accessibilityLabel,
 }: CollapsibleButtonProps): ReactElement => {
-  const { onExpandChange, isExpanded } = useCollapsible();
+  const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
   const toggleIsExpanded = useCallback(() => onExpandChange(!isExpanded), [
     onExpandChange,
@@ -45,6 +45,8 @@ const _CollapsibleButton = ({
       isDisabled={isDisabled}
       testID={testID}
       accessibilityLabel={accessibilityLabel}
+      accessibilityControls={collapsibleBodyId}
+      accessibilityExpanded={isExpanded}
       onClick={toggleIsExpanded}
     >
       {children}

@@ -11,7 +11,6 @@ type StyledCollapsibleChevronIconProps = {
   direction: CollapsibleProps['direction'];
 };
 
-// TODO: refactor common transition properties
 const StyledCollapsibleChevronIcon = styled(BaseBox)<StyledCollapsibleChevronIconProps>((props) => {
   const { isExpanded, direction, theme } = props;
   let transformExpanded, transformCollapsed;
