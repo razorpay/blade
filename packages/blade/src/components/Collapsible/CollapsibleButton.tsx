@@ -45,6 +45,8 @@ const _CollapsibleButton = ({
       isDisabled={isDisabled}
       testID={testID}
       accessibilityLabel={accessibilityLabel}
+      // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment
+      // @ts-ignore ignore this for native where aria-controls has no effect
       accessibilityControls={collapsibleBodyId}
       accessibilityExpanded={isExpanded}
       onClick={toggleIsExpanded}
