@@ -1,5 +1,5 @@
 import type { IconComponent } from '~components/Icons';
-import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/Tooltip/types';
 import type { TestID } from '~src/_helpers/types';
 
 export type StyledIconButtonProps = {
@@ -9,4 +9,4 @@ export type StyledIconButtonProps = {
   contrast: 'low' | 'high';
   accessibilityLabel: string;
 } & TestID &
-  TooltipTriggerProps;
+  BladeCommonEvents;

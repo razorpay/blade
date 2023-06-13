@@ -49,7 +49,7 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/Tooltip/types';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -75,7 +75,7 @@ type BaseButtonCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade &
-  TooltipTriggerProps;
+  BladeCommonEvents;
 
 /*
 Mandatory children prop when icon is not provided

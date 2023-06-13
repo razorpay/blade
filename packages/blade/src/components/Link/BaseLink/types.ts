@@ -5,7 +5,7 @@ import type { DurationString, EasingString } from '~tokens/global';
 import type { ActionStates } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
-import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/Tooltip/types';
 
 export type StyledBaseLinkProps = {
   variant: BaseLinkProps['variant'];
@@ -29,4 +29,4 @@ export type StyledBaseLinkProps = {
   hitSlop?: BaseLinkProps['hitSlop'];
 } & TestID &
   StyledPropsBlade &
-  Omit<TooltipTriggerProps, 'onBlur' | 'onMouseLeave'>;
+  Omit<BladeCommonEvents, 'onBlur' | 'onMouseLeave'>;

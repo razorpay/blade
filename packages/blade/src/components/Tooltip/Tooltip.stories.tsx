@@ -3,7 +3,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
-import type { TooltipTriggerProps } from './types';
+import type { BladeCommonEvents } from './types';
 import type { TooltipProps } from './';
 import { TooltipInteractiveWrapper, Tooltip as TooltipComponent } from './';
 import { Button } from '~components/Button';
@@ -88,7 +88,7 @@ Default.storyName = 'Default';
 
 const PlacementBox = React.forwardRef<
   HTMLDivElement,
-  { children: React.ReactNode } & TooltipTriggerProps
+  { children: React.ReactNode } & BladeCommonEvents
 >(({ children, ...props }, ref) => {
   return (
     <Box
@@ -245,7 +245,7 @@ export const TooltipTriggers = TooltipTriggersTemplate.bind({});
 
 const CustomTrigger = React.forwardRef<
   HTMLDivElement,
-  { children: React.ReactNode } & TooltipTriggerProps
+  { children: React.ReactNode } & BladeCommonEvents
 >(({ children, ...props }, ref) => {
   return (
     <Box
@@ -275,7 +275,7 @@ const CustomTriggerTemplate = () => {
       </Text>
       <List>
         <ListItem>To expose ref</ListItem>
-        <ListItem>To accept TooltipTriggerProps (You can import this type from blade)</ListItem>
+        <ListItem>To accept BladeCommonEvents (You can import this type from blade)</ListItem>
         <ListItem>
           tabIndex={'{'}-1{'}'} to be set on the trigger
         </ListItem>

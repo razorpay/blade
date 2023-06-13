@@ -14,7 +14,7 @@ type TooltipProps = {
   onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
 };
 
-type TooltipTriggerProps = {
+type BladeCommonEvents = {
   onBlur?: Platform.Select<{
     native: undefined | ((event: any) => void);
     web: React.FocusEventHandler;
@@ -57,4 +57,4 @@ type TooltipContentWrapperProps = {
   isVisible?: boolean;
 } & BaseBoxProps;
 
-export { TooltipProps, TooltipTriggerProps, TooltipContentProps, TooltipContentWrapperProps };
+export { TooltipProps, BladeCommonEvents, TooltipContentProps, TooltipContentWrapperProps };

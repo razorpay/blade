@@ -30,7 +30,7 @@ import type { DurationString, EasingString, FontSize, Typography } from '~tokens
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/Tooltip/types';
 import type { BladeElementRef } from '~src/hooks/types';
 
 type BaseLinkCommonProps = {
@@ -76,7 +76,7 @@ type BaseLinkCommonProps = {
   htmlTitle?: string;
 } & TestID &
   StyledPropsBlade &
-  Omit<TooltipTriggerProps, 'onBlur' | 'onMouseLeave'>;
+  Omit<BladeCommonEvents, 'onBlur' | 'onMouseLeave'>;
 
 /*
   Mandatory children prop when icon is not provided

@@ -4,7 +4,7 @@ import React from 'react';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/Tooltip/types';
 
 type IconButtonProps = {
   /**
@@ -31,7 +31,7 @@ type IconButtonProps = {
    * Sets aria-label to help users know what the action does, eg 'Dismiss alert'
    */
   accessibilityLabel: string;
-} & TooltipTriggerProps;
+} & BladeCommonEvents;
 
 /**
  * Component for making clickable icons with transparent background.

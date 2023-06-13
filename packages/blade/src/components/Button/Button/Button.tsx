@@ -8,7 +8,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/Tooltip/types';
 
 type ButtonCommonProps = {
   /**
@@ -41,7 +41,7 @@ type ButtonCommonProps = {
   }>;
 } & TestID &
   StyledPropsBlade &
-  TooltipTriggerProps;
+  BladeCommonEvents;
 
 /*
   Mandatory children prop when icon is not provided

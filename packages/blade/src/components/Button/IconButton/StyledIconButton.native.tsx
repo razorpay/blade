@@ -7,14 +7,14 @@ import type { View } from 'react-native';
 import type { StyledIconButtonProps } from './types';
 import { makeAccessible } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
-import type { TooltipTriggerProps } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/Tooltip/types';
 
 type State = 'active' | 'default';
 type IconColorToken = `surface.action.icon.${State}.${ColorContrastTypes}Contrast`;
 
 type StyledPressableProps = {
   contrast: ColorContrastTypes;
-} & TooltipTriggerProps;
+} & BladeCommonEvents;
 
 const StyledPressable = styled.Pressable<StyledPressableProps>({
   alignSelf: 'center', // ensure button only takes needed width

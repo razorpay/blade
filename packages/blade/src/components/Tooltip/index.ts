@@ -1,3 +1,3 @@
 export * from './Tooltip';
 export * from './TooltipInteractiveWrapper';
-export type { TooltipProps, TooltipTriggerProps } from './types';
+export type { TooltipProps, BladeCommonEvents } from './types';
