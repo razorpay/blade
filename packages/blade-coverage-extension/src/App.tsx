@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-undef */
+import type { ReactElement } from 'react';
 import { useState } from 'react';
 import {
   ActivityIcon,
@@ -30,17 +32,17 @@ type BladeCoverage = {
   bladeNodes: number;
 };
 
-const App = () => {
+const App = (): ReactElement => {
   const [coverage, setCoverage] = useState<BladeCoverage | undefined>(undefined);
   const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   console.log('Is dark mode in app', isDarkMode);
-  const getBladeCoverage = () => {
-    // @ts-ignore
+  const getBladeCoverage = (): void => {
+    // @ts-expect-error
     chrome.runtime.sendMessage({ action: 'executeScript' });
   };
-  // @ts-ignore
+  // @ts-expect-error
   chrome.runtime.onMessage.addListener(
-    (message: { action: string; coverage: any }, sender: any, response: any) => {
+    (message: { action: string; coverage: BladeCoverage }, sender: unknown) => {
       console.log('message and sender in popup js', message, sender);
       if (message.action === 'blade-coverage') {
         setCoverage(message.coverage);

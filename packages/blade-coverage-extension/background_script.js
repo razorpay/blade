@@ -58,7 +58,7 @@ const calculateBladeCoverage = () => {
   };
 };
 
-chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(async (message) => {
   if (message.action === 'executeScript') {
     chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
       const response = await chrome.scripting.executeScript({
