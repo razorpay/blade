@@ -42,17 +42,6 @@ type BaseLinkCommonProps = {
   accessibilityLabel?: string;
 
   /**
-   * Determines if the associated content controlled by this button is expanded or not.
-   * Generally used along with `accessibilityControls` on web
-   */
-  accessibilityExpanded?: boolean;
-
-  /**
-   * **Web only**: Accepts the id of element which is controlled by this button
-   */
-  accessibilityControls?: string;
-
-  /**
    * Sets the size of the link
    *
    * @default medium
@@ -271,8 +260,6 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     intent,
     contrast = 'low',
     accessibilityLabel,
-    accessibilityControls,
-    accessibilityExpanded,
     // @ts-expect-error avoiding exposing to public
     className,
     // @ts-expect-error avoiding exposing to public
@@ -358,8 +345,6 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
         ...makeAccessible({
           role,
           label: accessibilityLabel,
-          controls: accessibilityControls,
-          expanded: accessibilityExpanded,
           disabled,
         }),
       }}

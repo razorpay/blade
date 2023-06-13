@@ -3,8 +3,8 @@ import { useCallback } from 'react';
 import { useCollapsible } from './CollapsibleContext';
 import { CollapsibleChevronIcon } from './CollapsibleChevronIcon';
 import type { LinkProps } from '~components/Link';
-import { Link } from '~components/Link';
-import { MetaConstants, assignWithoutSideEffects } from '~utils';
+import { MetaConstants, assignWithoutSideEffects, makeAccessible } from '~utils';
+import { BaseLink } from '~components/Link/BaseLink';
 
 type CollapsibleLinkProps = Pick<
   LinkProps,
@@ -26,7 +26,7 @@ const _CollapsibleLink = ({
   ]);
 
   return (
-    <Link
+    <BaseLink
       variant="button"
       size={size}
       icon={CollapsibleChevronIcon}
@@ -34,14 +34,11 @@ const _CollapsibleLink = ({
       isDisabled={isDisabled}
       testID={testID}
       accessibilityLabel={accessibilityLabel}
-      // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment
-      // @ts-ignore ignore this for native where aria-controls has no effect
-      accessibilityControls={collapsibleBodyId}
-      accessibilityExpanded={isExpanded}
       onClick={toggleIsExpanded}
+      {...makeAccessible({ controls: collapsibleBodyId, expanded: isExpanded })}
     >
       {children}
-    </Link>
+    </BaseLink>
   );
 };
 

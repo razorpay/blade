@@ -2,9 +2,9 @@ import type { ReactElement } from 'react';
 import { useCallback } from 'react';
 import { useCollapsible } from './CollapsibleContext';
 import type { ButtonProps } from '~components/Button';
-import { Button } from '~components/Button';
 import type { IconComponent } from '~components/Icons';
-import { MetaConstants, assignWithoutSideEffects } from '~utils';
+import { MetaConstants, assignWithoutSideEffects, makeAccessible } from '~utils';
+import BaseButton from '~components/Button/BaseButton';
 
 type CollapsibleButtonProps = Pick<
   ButtonProps,
@@ -36,7 +36,7 @@ const _CollapsibleButton = ({
   ]);
 
   return (
-    <Button
+    <BaseButton
       variant={variant}
       size={size}
       // Button handles case of icon and children so we don't care about icon type safety here
@@ -45,14 +45,11 @@ const _CollapsibleButton = ({
       isDisabled={isDisabled}
       testID={testID}
       accessibilityLabel={accessibilityLabel}
-      // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment
-      // @ts-ignore ignore this for native where aria-controls has no effect
-      accessibilityControls={collapsibleBodyId}
-      accessibilityExpanded={isExpanded}
       onClick={toggleIsExpanded}
+      {...makeAccessible({ controls: collapsibleBodyId, expanded: isExpanded })}
     >
       {children}
-    </Button>
+    </BaseButton>
   );
 };
 
