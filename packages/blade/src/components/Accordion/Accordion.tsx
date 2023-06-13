@@ -4,10 +4,11 @@ import type { AccordionContextState } from './AccordionContext';
 import { AccordionContext } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
 import type { BoxProps } from '~components/Box';
 import { size } from '~tokens/global';
-import { makeSize } from '~utils';
+import { MetaConstants, makeSize, metaAttribute } from '~utils';
 
 type AccordionProps = {
   /**
@@ -47,7 +48,7 @@ const MIN_WIDTH: BoxProps['minWidth'] = {
 };
 
 const MAX_WIDTH: BoxProps['maxWidth'] = {
-  s: `min(${makeSize(size[320])}, 100vw - ${makeSize(size[40])})`,
+  s: `calc(100vw - ${makeSize(size[40])})`,
   m: makeSize(size[640]),
   l: makeSize(size[800]),
 };
@@ -58,6 +59,8 @@ const Accordion = ({
   onExpandChange,
   showNumberPrefix = false,
   children,
+  testID,
+  ...styledProps
 }: AccordionProps): ReactElement => {
   const [expandedAccordionItemIndex, setExpandedAccordionItemIndex] = useState<number | undefined>(
     defaultExpandedIndex,
@@ -95,7 +98,12 @@ const Accordion = ({
 
   return (
     <AccordionContext.Provider value={accordionContext}>
-      <BaseBox minWidth={MIN_WIDTH} maxWidth={MAX_WIDTH}>
+      <BaseBox
+        minWidth={MIN_WIDTH}
+        maxWidth={MAX_WIDTH}
+        {...metaAttribute({ name: MetaConstants.Accordion, testID })}
+        {...getStyledProps(styledProps)}
+      >
         {Children.map(children, (child, index) =>
           cloneElement(child, { _index: index, key: index }),
         )}

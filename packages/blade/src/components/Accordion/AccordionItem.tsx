@@ -7,6 +7,7 @@ import type { TestID } from '~src/_helpers/types';
 import { Divider } from '~components/BaseHeaderFooter/Divider';
 import { Text } from '~components/Typography';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
+import { MetaConstants, metaAttribute } from '~utils';
 
 type AccordionItemProps = {
   /**
@@ -42,6 +43,7 @@ const AccordionItem = ({
   icon,
   children,
   _index,
+  testID,
 }: AccordionItemProps): ReactElement => {
   const { expandedIndex, onExpandChange, defaultExpandedIndex } = useAccordion();
   const isExpanded = expandedIndex === _index;
@@ -57,7 +59,7 @@ const AccordionItem = ({
   };
 
   return (
-    <>
+    <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}>
       <Collapsible
         isExpanded={isExpanded}
         defaultIsExpanded={isDefaultExpanded}
@@ -82,7 +84,7 @@ const AccordionItem = ({
         </CollapsibleBody>
       </Collapsible>
       <Divider />
-    </>
+    </BaseBox>
   );
 };
 

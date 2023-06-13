@@ -4,14 +4,14 @@ import { useCollapsible } from './CollapsibleContext';
 import { CollapsibleChevronIcon } from './CollapsibleChevronIcon';
 import type { LinkProps } from '~components/Link';
 import { Link } from '~components/Link';
+import { MetaConstants, assignWithoutSideEffects } from '~utils';
 
 type CollapsibleLinkProps = Pick<
   LinkProps,
   'size' | 'isDisabled' | 'testID' | 'accessibilityLabel' | 'children'
 >;
 
-// TODO: update API doc, can't take icon
-const CollapsibleLink = ({
+const _CollapsibleLink = ({
   children,
   size,
   isDisabled,
@@ -40,5 +40,9 @@ const CollapsibleLink = ({
     </Link>
   );
 };
+
+const CollapsibleLink = assignWithoutSideEffects(_CollapsibleLink, {
+  componentId: MetaConstants.CollapsibleLink,
+});
 
 export { CollapsibleLink, CollapsibleLinkProps };

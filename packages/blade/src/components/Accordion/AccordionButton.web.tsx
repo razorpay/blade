@@ -3,12 +3,12 @@ import { StyledAccordionButton } from './StyledAccordionButton';
 import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
-import { makeAccessible } from '~utils';
+import { MetaConstants, assignWithoutSideEffects, makeAccessible, metaAttribute } from '~utils';
 import { Heading } from '~components/Typography';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 
-const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
+const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded } = useCollapsible();
   const { showNumberPrefix, expandedIndex } = useAccordion();
 
@@ -56,6 +56,7 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
         // TODO: also handle keyboard
         onClick={onClick}
         onKeyDown={onKeyDown}
+        {...metaAttribute({ name: MetaConstants.AccordionButton })}
       >
         <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">
           {_index}
@@ -67,5 +68,9 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
     </BaseBox>
   );
 };
+
+const AccordionButton = assignWithoutSideEffects(_AccordionButton, {
+  componentId: MetaConstants.AccordionButton,
+});
 
 export { AccordionButton, AccordionButtonProps };

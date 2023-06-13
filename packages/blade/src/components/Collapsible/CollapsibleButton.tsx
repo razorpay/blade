@@ -4,6 +4,7 @@ import { useCollapsible } from './CollapsibleContext';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import type { IconComponent } from '~components/Icons';
+import { MetaConstants, assignWithoutSideEffects } from '~utils';
 
 type CollapsibleButtonProps = Pick<
   ButtonProps,
@@ -17,7 +18,7 @@ type CollapsibleButtonProps = Pick<
   | 'children'
 >;
 
-const CollapsibleButton = ({
+const _CollapsibleButton = ({
   children,
   variant,
   size,
@@ -50,5 +51,9 @@ const CollapsibleButton = ({
     </Button>
   );
 };
+
+const CollapsibleButton = assignWithoutSideEffects(_CollapsibleButton, {
+  componentId: MetaConstants.CollapsibleButton,
+});
 
 export { CollapsibleButton, CollapsibleButtonProps };
