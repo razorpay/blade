@@ -53,7 +53,6 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
         {...makeAccessible({ role: 'button' })}
         tabIndex={0}
         isExpanded={expandedIndex === index}
-        // TODO: also handle keyboard
         onClick={onClick}
         onKeyDown={onKeyDown}
         {...metaAttribute({ name: MetaConstants.AccordionButton })}

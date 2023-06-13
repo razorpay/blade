@@ -22,7 +22,6 @@ type StyledCollapsiblePanelProps = {
 const HEIGHT_EXPANDED = 'auto';
 const HEIGHT_COLLAPSED = '0px';
 
-// TODO: add max widths, also for accordion usage
 // TODO: move common styles when implementing native
 const StyledCollapsiblePanel = styled.div<StyledCollapsiblePanelProps>((props) => {
   const { theme, defaultIsExpanded, isExpanded } = props;
