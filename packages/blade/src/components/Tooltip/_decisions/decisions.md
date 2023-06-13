@@ -150,6 +150,8 @@ To make FloatingUI work with Blade components seamlessly there are few things we
 
 ## Motion
 
+https://github.com/razorpay/blade/assets/35374649/6ad26074-dad7-4076-95e3-c0ae073afcc8
+
 You can check the [Tooltip motion here](https://www.figma.com/proto/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=629-881474&scaling=min-zoom&page-id=175%3A811766).
 
 And give relavant feedback for [motion in this thread](https://razorpay.slack.com/archives/C0274H7QRC1/p1686043668193769).
