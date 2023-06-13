@@ -6,6 +6,8 @@ import type { LinkProps } from '../Link';
 import { Link } from '../Link';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
+import { Counter } from '../Counter';
+import type { CounterProps } from '../Counter';
 import { Divider } from './Divider';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
@@ -13,8 +15,6 @@ import BaseBox from '~components/Box/BaseBox';
 import type { TextProps, TextVariant } from '~components/Typography';
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
-import type { CounterProps } from '~components/Counter';
-import { Counter } from '~components/Counter';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
 import {
   metaAttribute,
