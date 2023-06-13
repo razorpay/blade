@@ -14,6 +14,7 @@ import {
   useInteractions,
   useRole,
   useTransitionStyles,
+  autoUpdate,
 } from '@floating-ui/react';
 import React from 'react';
 import { TooltipProps } from './types';
@@ -64,6 +65,7 @@ const Tooltip = ({
         padding: isHorizontal ? 0 : ARROW_WIDTH,
       }),
     ],
+    whileElementsMounted: autoUpdate,
   });
 
   const animationOffset = isOppositeAxis ? -size[4] : size[4];
