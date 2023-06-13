@@ -32,12 +32,6 @@
     "copy": "yarn run copy:assets && yarn run copy:extensionAssets",
     "postbuild": "yarn run clean && yarn run mkdirs && yarn run copy"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
