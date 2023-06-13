@@ -1,4 +1,5 @@
 import React from 'react';
+import { useFloating } from '@floating-ui/react';
 import { getActionListContainerRole } from '../ActionList/getA11yRoles';
 import { BaseLink } from '../Link/BaseLink';
 import type { BaseLinkProps } from '../Link/BaseLink';
@@ -39,8 +40,9 @@ const _DropdownLink = ({
     isOpen,
     activeIndex,
     hasFooterAction,
-    triggererRef,
   } = useDropdown();
+
+  const { refs } = useFloating();
 
   return (
     // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
@@ -57,7 +59,7 @@ const _DropdownLink = ({
       isDisabled={isDisabled}
       {...styledProps}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={triggererRef as any}
+      ref={refs.setReference as any}
       {...makeAccessible({
         hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
         expanded: isOpen,

@@ -68,9 +68,10 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
 
   const { refs, floatingStyles } = useFloating({
     open: isOpen,
-    elements: {
-      reference: triggererRef.current,
-    },
+    strategy: 'fixed',
+    // elements: {
+    //   reference: triggererRef.current,
+    // },
     middleware: [flip()],
   });
 
@@ -135,8 +136,8 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <BaseBox position="relative">
-      <FloatingPortal>
+    <FloatingPortal>
+      <BaseBox position="relative">
         <div ref={refs.setFloating} style={floatingStyles}>
           <StyledDropdownOverlay
             width={isMenu ? undefined : width}
@@ -155,8 +156,8 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
             {children}
           </StyledDropdownOverlay>
         </div>
-      </FloatingPortal>
-    </BaseBox>
+      </BaseBox>
+    </FloatingPortal>
   );
 };
 
