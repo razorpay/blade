@@ -17,7 +17,7 @@ import {
   autoUpdate,
 } from '@floating-ui/react';
 import React from 'react';
-import { TooltipProps } from './types';
+import type { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts } from './utils';

@@ -4,7 +4,7 @@ import React from 'react';
 import { Modal, TouchableOpacity } from 'react-native';
 import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
-import { TooltipProps } from './types';
+import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts } from './utils';
 import { useTheme } from '~components/BladeProvider';

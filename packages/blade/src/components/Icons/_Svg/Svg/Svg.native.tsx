@@ -12,22 +12,25 @@ const StyledSvg = styled(SvgNative)((props) => {
   return styledPropsCSSObject;
 });
 
-const Svg = React.forwardRef<SvgProps, any>(
-  ({ children, height, viewBox, width, fill, ...styledProps }, ref): ReactElement => {
-    return (
-      <StyledSvg
-        {...makeAccessible({ hidden: true })}
-        height={height}
-        viewBox={viewBox}
-        width={width}
-        fill={fill}
-        ref={ref}
-        {...styledProps}
-      >
-        {children}
-      </StyledSvg>
-    );
-  },
-);
+const _Svg: React.ForwardRefRenderFunction<any, SvgProps> = (
+  { children, height, viewBox, width, fill, ...styledProps },
+  ref,
+): ReactElement => {
+  return (
+    <StyledSvg
+      {...makeAccessible({ hidden: true })}
+      height={height}
+      viewBox={viewBox}
+      width={width}
+      fill={fill}
+      ref={ref}
+      {...styledProps}
+    >
+      {children}
+    </StyledSvg>
+  );
+};
+
+const Svg = React.forwardRef(_Svg);
 
 export default Svg;
