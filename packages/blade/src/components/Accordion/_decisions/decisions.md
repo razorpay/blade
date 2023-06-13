@@ -59,7 +59,7 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 > - By default the accordion renders in all items collapsed state, at max only one item can be expanded at a time (design restriction)
 > - `defaultExpandedIndex` can accept an accordion item index to render the accordion in an uncontrolled state
 > - For using accordion in controlled state, use `expandedIndex` coupled with `onExpandChange`
-> - `onExpandChange` callback signature `({ expandedIndex }) => {}`, `expandedIndex` represents the expanded item's index, if there are no expanded items it'll be `undefined`
+> - `onExpandChange` callback signature `({ expandedIndex }) => {}`, `expandedIndex` represents the expanded item's index, if there are no expanded items it'll be `-1`
 
 ### AccordionItem
 
