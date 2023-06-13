@@ -335,19 +335,19 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     }
   };
 
-  const accessibilityProps = makeAccessible({
-    role,
-    label: accessibilityLabel,
-    disabled,
-  });
-
   return (
     <StyledBaseLink
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       {...syntheticEvents}
       {...metaAttribute({ name: MetaConstants.Link, testID })}
-      accessibilityProps={accessibilityProps}
+      accessibilityProps={{
+        ...makeAccessible({
+          role,
+          label: accessibilityLabel,
+          disabled,
+        }),
+      }}
       variant={variant}
       as={as}
       href={href}
