@@ -1,11 +1,13 @@
-import {
-  Accordion as Accordion_PRE_RELEASE,
-  AccordionProps as AccordionProps_PRE_RELEASE,
-} from './Accordion';
-import {
-  AccordionItem as AccordionItem_PRE_RELEASE,
-  AccordionItemProps as AccordionItemProps_PRE_RELEASE,
-} from './AccordionItem';
+import type { AccordionProps } from './Accordion';
+import { Accordion } from './Accordion';
+import type { AccordionItemProps } from './AccordionItem';
+import { AccordionItem } from './AccordionItem';
+
+const Accordion_PRE_RELEASE = Accordion;
+type AccordionProps_PRE_RELEASE = AccordionProps;
+
+const AccordionItem_PRE_RELEASE = AccordionItem;
+type AccordionItemProps_PRE_RELEASE = AccordionItemProps;
 
 export {
   Accordion_PRE_RELEASE,

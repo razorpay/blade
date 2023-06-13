@@ -1,19 +1,23 @@
-import {
-  Collapsible as Collapsible_PRE_RELEASE,
-  CollapsibleProps as CollapsibleProps_PRE_RELEASE,
-} from './Collapsible';
-import {
-  CollapsibleButton as CollapsibleButton_PRE_RELEASE,
-  CollapsibleButtonProps as CollapsibleButtonProps_PRE_RELEASE,
-} from './CollapsibleButton';
-import {
-  CollapsibleLink as CollapsibleLink_PRE_RELEASE,
-  CollapsibleLinkProps as CollapsibleLinkProps_PRE_RELEASE,
-} from './CollapsibleLink';
-import {
-  CollapsibleBody as CollapsibleBody_PRE_RELEASE,
-  CollapsibleBodyProps as CollapsibleBodyProps_PRE_RELEASE,
-} from './CollapsibleBody';
+import type { CollapsibleProps } from './Collapsible';
+import { Collapsible } from './Collapsible';
+import type { CollapsibleButtonProps } from './CollapsibleButton';
+import { CollapsibleButton } from './CollapsibleButton';
+import type { CollapsibleLinkProps } from './CollapsibleLink';
+import { CollapsibleLink } from './CollapsibleLink';
+import type { CollapsibleBodyProps } from './CollapsibleBody';
+import { CollapsibleBody } from './CollapsibleBody';
+
+const Collapsible_PRE_RELEASE = Collapsible;
+type CollapsibleProps_PRE_RELEASE = CollapsibleProps;
+
+const CollapsibleButton_PRE_RELEASE = CollapsibleButton;
+type CollapsibleButtonProps_PRE_RELEASE = CollapsibleButtonProps;
+
+const CollapsibleLink_PRE_RELEASE = CollapsibleLink;
+type CollapsibleLinkProps_PRE_RELEASE = CollapsibleLinkProps;
+
+const CollapsibleBody_PRE_RELEASE = CollapsibleBody;
+type CollapsibleBodyProps_PRE_RELEASE = CollapsibleBodyProps;
 
 export {
   Collapsible_PRE_RELEASE,
