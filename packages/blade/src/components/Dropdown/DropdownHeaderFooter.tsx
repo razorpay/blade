@@ -2,7 +2,7 @@
 import React from 'react';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects, makeAccessible, MetaConstants } from '~utils';
+import { assignWithoutSideEffects, isReactNative, makeAccessible, MetaConstants } from '~utils';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
@@ -26,10 +26,15 @@ const _DropdownHeader = ({
     <BaseBox
       overflow={'auto' as never}
       flexShrink={0}
-      onMouseDown={(e) => {
-        // we don't want focus to ever move on header because its static element
-        e.preventDefault();
-      }}
+      {...(isReactNative()
+        ? {}
+        : {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onMouseDown: (e: any) => {
+              // we don't want focus to ever move on header because its static element
+              e.preventDefault();
+            },
+          })}
     >
       <BaseHeader
         title={title}
@@ -73,29 +78,36 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
 
   return (
     <BaseBox
-      ref={footerRef}
-      onMouseDown={() => {
-        setShouldIgnoreBlur(true);
-      }}
-      onKeyDown={(e) => {
-        const nativeEvent = e.nativeEvent;
-        const shouldIgnoreDropdownKeydown =
-          (nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={footerRef as any}
+      {...(isReactNative()
+        ? {}
+        : {
+            onMouseDown: () => {
+              setShouldIgnoreBlur(true);
+            },
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onKeyDown: (e: any) => {
+              const nativeEvent = e.nativeEvent;
+              const shouldIgnoreDropdownKeydown =
+                (nativeEvent.key === ' ' || nativeEvent.key === 'Enter') && activeIndex < 0;
 
-        if (!shouldIgnoreDropdownKeydown) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          onTriggerKeydown?.({ event: e.nativeEvent } as any);
-        }
-      }}
-      onBlur={(e) => {
-        const nextItem = e.relatedTarget;
-        if (
-          !dropdownOverlayRef.current?.contains(nextItem) &&
-          !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet
-        ) {
-          close();
-        }
-      }}
+              if (!shouldIgnoreDropdownKeydown) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                onTriggerKeydown?.({ event: e.nativeEvent } as any);
+              }
+            },
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onBlur: (e: any) => {
+              const nextItem = e.relatedTarget;
+              if (
+                !dropdownOverlayRef.current?.contains(nextItem) &&
+                !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet
+              ) {
+                close();
+              }
+            },
+          })}
       {...makeAccessible({
         role: 'group',
       })}
