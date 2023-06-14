@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import type { MiddlewareState } from '@floating-ui/react';
 import { useFloating, detectOverflow } from '@floating-ui/react';
-import { componentIds } from './dropdownUtils';
+import type { DropdownPosition } from './dropdownUtils';
+import { componentIds, getDropdownOverlayPosition } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
@@ -62,39 +63,32 @@ type DropdownOverlayProps = {
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const {
-    isOpen,
-    triggererRef,
-    hasLabelOnLeft,
-    dropdownTriggerer,
-    triggerEl,
-    setIsOpen,
-  } = useDropdown();
+  const { isOpen, triggererRef, hasLabelOnLeft, dropdownTriggerer, triggerEl } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
+  const [dropdownPosition, setDropdownPosition] = useState<DropdownPosition>({});
 
-  const middleware1 = {
-    name: 'middleware1',
+  const isMenu = dropdownTriggerer !== 'SelectInput';
+
+  const detectOverflowMiddleware = {
+    name: 'detectOverflowMiddleware',
     async fn(state: MiddlewareState) {
       const overflow = await detectOverflow(state, { elementContext: 'reference' });
-      console.log({ overflow });
+      const position = getDropdownOverlayPosition(overflow, isMenu);
+      setDropdownPosition(position);
       return {};
     },
   };
 
-  const { refs, floatingStyles } = useFloating({
+  const { refs } = useFloating({
     open: isOpen,
-    onOpenChange: setIsOpen,
     strategy: 'absolute',
-    placement: 'bottom',
     elements: {
       reference: triggerEl as Element,
     },
-    middleware: [middleware1],
+    middleware: [detectOverflowMiddleware],
   });
-
-  const isMenu = dropdownTriggerer !== 'SelectInput';
 
   const fadeIn = css`
     animation: ${dropdownFadeIn} ${makeMotionTime(theme.motion.duration.quick)}
@@ -155,15 +149,16 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <div ref={refs.setFloating} style={floatingStyles}>
+    <div ref={refs.setFloating}>
       <StyledDropdownOverlay
-        width={isMenu ? undefined : width}
+        width={isMenu ? 'max-content' : width}
         // In SelectInput, Overlay should always take width of Input
         minWidth={isMenu ? undefined : '240px'}
         // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
         maxWidth={isMenu ? '400px' : undefined}
-        left={isMenu ? 'spacing.0' : undefined}
-        right={isMenu ? undefined : 'spacing.0'}
+        left={dropdownPosition.left}
+        right={dropdownPosition.right}
+        bottom={dropdownPosition.bottom}
         style={styles}
         display={castWebType(display)}
         position="absolute"

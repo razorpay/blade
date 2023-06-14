@@ -8,6 +8,7 @@
  */
 
 import type { DropdownContextType, OptionsType } from './useDropdown';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 
 export type SelectActionsType =
   | 'Close'
@@ -323,4 +324,55 @@ export const makeInputDisplayValue = (selectedIndices: number[], options: Option
 
   // When more than one item is selected, we display the count of items
   return `${selectedIndices.length} items selected`;
+};
+
+interface PositionProp {
+  top: number;
+  left: number;
+  right: number;
+  bottom: number;
+}
+
+export interface DropdownPosition {
+  top?: SpacingValueType;
+  bottom?: SpacingValueType;
+  left?: SpacingValueType;
+  right?: SpacingValueType;
+}
+
+export const POSITION_THRESHOLDS = {
+  top: -400,
+  bottom: -400,
+  left: -400,
+  right: -400,
+};
+
+export const getDropdownOverlayPosition = (
+  position: PositionProp,
+  isMenu: boolean,
+): DropdownPosition => {
+  const zeroSpacing: SpacingValueType = 'spacing.0';
+  if (!isMenu) {
+    return { left: zeroSpacing };
+  }
+
+  const { top, bottom, left, right } = position;
+  const newPosition: DropdownPosition = { left: zeroSpacing };
+
+  if (right > POSITION_THRESHOLDS.right) {
+    newPosition.right = zeroSpacing;
+    newPosition.left = undefined;
+  } else if (left > POSITION_THRESHOLDS.left) {
+    newPosition.left = zeroSpacing;
+    newPosition.right = undefined;
+  }
+
+  if (bottom > POSITION_THRESHOLDS.bottom) {
+    newPosition.bottom = 'spacing.11';
+    newPosition.top = undefined;
+  } else if (top > POSITION_THRESHOLDS.top) {
+    newPosition.top = zeroSpacing;
+    newPosition.bottom = undefined;
+  }
+  return newPosition;
 };

@@ -82,8 +82,9 @@ export const InternalMenu = (): JSX.Element => {
   return (
     <Box
       display="flex"
-      alignItems="center"
+      // alignItems="flex-end"
       justifyContent="flex-end"
+      // height="100%"
       gap="spacing.3"
       marginY="spacing.5"
     >

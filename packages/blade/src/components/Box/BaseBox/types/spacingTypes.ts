@@ -7,7 +7,8 @@ type SpacingValueType =
   | DotNotationSpacingStringToken
   | `${string}${SpaceUnits}`
   | `calc(${string})`
-  | 'auto';
+  | 'auto'
+  | 'max-content';
 /**
  * @IMPORTANT
  *
