@@ -16,7 +16,6 @@ const getTooltipContentWrapperStyles = ({
     borderRadius: makeBorderSize(theme.border.radius.medium),
     borderColor: theme.colors.brand.gray[300].highContrast,
     borderStyle: 'solid',
-    // TODO: fix RN shadow
     boxShadow: isReactNative() ? undefined : castWebType(theme.elevation.lowRaised),
     ...styles,
   };

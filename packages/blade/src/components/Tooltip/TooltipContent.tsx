@@ -1,5 +1,5 @@
 import React from 'react';
-import { TooltipContentWrapper } from './TooltipContextWrapper';
+import { TooltipContentWrapper } from './TooltipContentWrapper';
 import type { TooltipContentProps } from './types';
 import { Text } from '~components/Typography';
 import { isReactNative, makeSize } from '~utils';

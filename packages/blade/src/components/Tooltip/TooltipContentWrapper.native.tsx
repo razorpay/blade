@@ -16,6 +16,7 @@ import type { TooltipContentWrapperProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
+import { castNativeType } from '~utils';
 
 const StyledTooltipContentWrapper = styled(BaseBox)<{ collapse?: boolean; styles: CSSProperties }>(
   ({ theme, styles }) => {
@@ -57,6 +58,10 @@ const TooltipContentWrapper = React.forwardRef<View, TooltipContentWrapperProps>
       <Animated.View style={animatedStyles}>
         <StyledTooltipContentWrapper
           styles={styles}
+          // Shadow styles need to be passed directly through native style prop
+          // Cannot be done via styled components
+          style={castNativeType(theme.elevation.lowRaised)}
+          elevation={20}
           ref={ref as never}
           collapse={false}
           // if I don't assert this TS throws error
