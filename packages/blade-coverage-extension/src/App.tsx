@@ -7,6 +7,8 @@ import {
   BladeProvider,
   Button,
   Box,
+  Card,
+  CardBody,
   Heading,
   Text,
 } from '@razorpay/blade/components';
@@ -23,7 +25,7 @@ const StyledImg = styled.img`
   position: absolute;
   left: 12px;
   bottom: 12px;
-  opacity: 0.4;
+  opacity: 0.2;
 `;
 
 type BladeCoverage = {
@@ -51,44 +53,50 @@ const App = (): ReactElement => {
   );
   return (
     <BladeProvider themeTokens={paymentTheme} colorScheme={isDarkMode ? 'dark' : 'light'}>
-      <Box height="312px" width="656px" padding="spacing.7">
-        <Box
-          position="relative"
-          backgroundColor="surface.background.level3.lowContrast"
-          alignItems="center"
-          justifyContent="center"
-          marginBottom="spacing.7"
-          display="flex"
-          flexDirection="column"
-          height="251px"
-        >
-          {coverage ? (
-            <>
-              <Heading marginBottom="spacing.5">Blade Coverage: {coverage.bladeCoverage}%</Heading>
-              <Heading
-                size="small"
-                type="subdued"
-                contrast="low"
-                marginBottom="spacing.5"
-                weight="regular"
-              >
-                Total DOM Nodes: {coverage.totalNodes}
-              </Heading>
-              <Heading size="small" type="subdued" contrast="low" weight="regular">
-                Total Blade Nodes: {coverage.bladeNodes}
-              </Heading>
-            </>
-          ) : (
-            <Text>Open a page which uses Blade then click the calculate Button below</Text>
-          )}
-
-          <StyledImg src={BarChartImg} alt="bar-chart" />
-        </Box>
-        <Box display="flex" justifyContent="center">
-          <Button icon={ActivityIcon} iconPosition="left" onClick={getBladeCoverage}>
-            Calculate Blade Coverage
-          </Button>
-        </Box>
+      <Box height="312px" width="500px">
+        <Card elevation="lowRaised" padding="spacing.7" surfaceLevel={2}>
+          <CardBody>
+            <Box
+              width="450px"
+              height="251px"
+              marginBottom="spacing.5"
+              backgroundColor="surface.background.level3.lowContrast"
+              position="relative"
+              alignItems="center"
+              justifyContent="center"
+              display="flex"
+              flexDirection="column"
+            >
+              {coverage ? (
+                <>
+                  <Heading marginBottom="spacing.5">
+                    Blade Coverage: {coverage.bladeCoverage}%
+                  </Heading>
+                  <Heading
+                    size="small"
+                    type="subdued"
+                    contrast="low"
+                    marginBottom="spacing.5"
+                    weight="regular"
+                  >
+                    Total DOM Nodes: {coverage.totalNodes}
+                  </Heading>
+                  <Heading size="small" type="subdued" contrast="low" weight="regular">
+                    Total Blade Nodes: {coverage.bladeNodes}
+                  </Heading>
+                </>
+              ) : (
+                <Text>Open a page which uses Blade then click the calculate Button below</Text>
+              )}
+              <StyledImg src={BarChartImg} alt="bar-chart" />
+            </Box>
+            <Box display="flex" justifyContent="center">
+              <Button icon={ActivityIcon} iconPosition="left" onClick={getBladeCoverage}>
+                Calculate Blade Coverage
+              </Button>
+            </Box>
+          </CardBody>
+        </Card>
       </Box>
     </BladeProvider>
   );
