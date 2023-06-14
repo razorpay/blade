@@ -5,6 +5,7 @@ import userEvents from '@testing-library/user-event';
 import { mockViewport } from 'jsdom-testing-mocks';
 import { fireEvent, within } from '@testing-library/react';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
+import { Counter } from '../../Counter';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
@@ -12,7 +13,6 @@ import { Dropdown } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Badge } from '~components/Badge';
-import { Counter } from '~components/Counter';
 
 export const sleep = (delay = 10): Promise<number> =>
   new Promise((resolve) => setTimeout(resolve, delay));

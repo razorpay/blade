@@ -410,6 +410,17 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
           validationState="none"
           helpText="Write your message"
         />
+
+        <TextInput
+          necessityIndicator="required"
+          label="Enter Your Residential Address"
+          placeholder="Enter your address"
+          name="fullName"
+          labelPosition="left"
+          maxCharacters={100}
+          validationState="none"
+          helpText="Write your message"
+        />
       </BaseBox>
     </>
   );

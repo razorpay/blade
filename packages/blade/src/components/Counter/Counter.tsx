@@ -10,6 +10,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
+import { isReactNative } from '~utils';
 
 export type CounterProps = {
   /**
@@ -108,7 +109,7 @@ const Counter = ({
         paddingLeft={horizontalPadding[size]}
         paddingTop={verticalPadding[size]}
         paddingBottom={verticalPadding[size]}
-        display="flex"
+        display={(isReactNative() ? 'flex' : 'inline-flex') as never}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"

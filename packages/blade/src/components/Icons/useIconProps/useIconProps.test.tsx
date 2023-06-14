@@ -10,7 +10,7 @@ describe('useIconProps', () => {
     );
     expect(result.current.height).toEqual('8px');
     expect(result.current.width).toEqual('8px');
-    expect(result.current.iconColor).toEqual('hsla(213, 89%, 56%, 1)');
+    expect(result.current.iconColor).toEqual('hsla(218, 89%, 51%, 1)');
   });
 
   it('should return a small icon with the correct color', () => {

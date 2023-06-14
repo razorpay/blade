@@ -61,23 +61,21 @@ export const BaseInputWrapper = ({
   children: ReactNode;
 }): ReactElement => {
   return (
-    <>
-      <StyledBaseInputWrapper
-        display="flex"
-        flexDirection="row"
-        width="100%"
-        alignItems={isTextArea ? 'flex-start' : undefined}
-        validationState={validationState}
-        currentInteraction={currentInteraction}
-        {...props}
-      >
-        {children}
-      </StyledBaseInputWrapper>
+    <StyledBaseInputWrapper
+      display="flex"
+      flexDirection="row"
+      width="100%"
+      alignItems={isTextArea ? 'flex-start' : undefined}
+      validationState={validationState}
+      currentInteraction={currentInteraction}
+      position="relative"
+      {...props}
+    >
+      {children}
       <BaseInputAnimatedBorder
         currentInteraction={currentInteraction}
         validationState={validationState}
-        isLabelLeftPositioned={isLabelLeftPositioned}
       />
-    </>
+    </StyledBaseInputWrapper>
   );
 };

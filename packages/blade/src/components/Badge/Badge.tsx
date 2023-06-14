@@ -13,6 +13,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { isReactNative } from '~utils';
 
 type BadgeProps = {
   /**
@@ -135,7 +136,7 @@ const _Badge = ({
         paddingLeft={horizontalPadding[size]}
         paddingTop={verticalPadding[size]}
         paddingBottom={verticalPadding[size]}
-        display="flex"
+        display={(isReactNative() ? 'flex' : 'inline-flex') as never}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"

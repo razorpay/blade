@@ -1,5 +1,20 @@
 # @razorpay/blade
 
+## 8.8.2
+
+### Patch Changes
+
+- 40f05a94: fix(blade): BottomSheet unable to find ActionList component
+- ab4f10c4: fix: make Badge and Counter display inline-flex
+
+## 8.8.1
+
+### Patch Changes
+
+- 9456e9d3: fix(BaseInput): large label alignment
+- c8727e89: fix(tokens): update primary color theme tokens
+- 19749c7a: fix(blade): jsdoc comments
+
 ## 8.8.0
 
 ### Minor Changes
