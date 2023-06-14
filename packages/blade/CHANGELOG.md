@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.8.4
+
+### Patch Changes
+
+- 333d0e7e: fix(DropdownOverlay): fix incorrect minWidth condition
+
 ## 8.8.3
 
 ### Patch Changes
