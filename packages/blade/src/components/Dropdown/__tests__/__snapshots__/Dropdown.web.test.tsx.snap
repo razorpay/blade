@@ -233,8 +233,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -266,18 +266,18 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c34:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c34:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c34:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -450,7 +450,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   left: 0;
   right: 0;
   opacity: 0;
-  background-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
   border-width: 1px;
   height: 1px;
   -webkit-animation: cAlpMa 250ms cubic-bezier(0.3,0,0.2,1) forwards;
@@ -1017,7 +1017,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 .c6 {
   display: block;
   position: absolute;
-  min-width: 240px;
   max-width: 400px;
   left: 0px;
 }
@@ -1036,8 +1035,8 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1069,18 +1068,18 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 }
 
 .c1:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c1:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c1:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
