@@ -15,7 +15,6 @@ runs:
           ~/.yarn
           ./node_modules
           ./packages/**/node_modules
-          ./website/node_modules
         key: ${{ runner.os }}-blade-${{ hashFiles('**/yarn.lock') }}
 
     # cache miss - install packages with `yarn install` which automatically builds packages with the postinstall script
