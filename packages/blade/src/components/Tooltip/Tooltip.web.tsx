@@ -20,7 +20,7 @@ import React from 'react';
 import type { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
-import { getPlacementParts } from './utils';
+import { getPlacementParts, mergeProps } from './utils';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils';
@@ -92,7 +92,7 @@ const Tooltip = ({
       {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
         ref: refs.setReference,
-        ...getReferenceProps(),
+        ...mergeProps(children.props, getReferenceProps()),
         ...makeAccessible({ label: content }),
       })}
       {isMounted && (

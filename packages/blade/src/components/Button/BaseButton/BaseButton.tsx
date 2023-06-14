@@ -400,7 +400,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   return (
     <StyledBaseButton
-      ref={ref as never}
+      ref={ref as any}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
       // @ts-ignore: On React Native it will always be undefined but TS doesn't understand that
       as={renderElement}

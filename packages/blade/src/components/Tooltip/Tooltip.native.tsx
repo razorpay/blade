@@ -6,7 +6,7 @@ import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
-import { getPlacementParts } from './utils';
+import { getPlacementParts, mergeProps } from './utils';
 import { useTheme } from '~components/BladeProvider';
 
 const Tooltip = ({
@@ -67,7 +67,12 @@ const Tooltip = ({
     <>
       {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
-        onTouchEnd: handleOpen,
+        ...mergeProps(
+          {
+            onTouchEnd: children.props.onTouchEnd,
+          },
+          { onTouchEnd: handleOpen },
+        ),
         ref: refs.setReference,
       })}
       <Modal accessibilityLabel={content} collapsable={false} transparent visible={isVisible}>
