@@ -9,17 +9,16 @@ import { AccordionItem } from './AccordionItem';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { MusicIcon, PauseCircleIcon, PlayIcon } from '~components/Icons';
+import { QRCodeIcon, RoutesIcon, SubscriptionsIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Alert } from '~components/Alert';
 
-// TODO: udpate
 const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
-      componentName="Collapsible"
-      componentDescription="Collapsible is used to allow users to toggle the visibility of hidden content within a container."
+      componentName="Accordion"
+      componentDescription="An accordion is used to allow users to toggle between different content sections in a compact vertical stack."
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=79-629874&t=sVxH3DOnx3L3F9rO-0',
@@ -30,16 +29,24 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { Collapsible, CollapsibleButton, CollapsibleBody, Text } from '@razorpay/blade/components';
+        import { Accordion, AccordionItem } from '@razorpay/blade/components';
 
         function App() {
           return (
-            <Collapsible>
-              <CollapsibleButton>Answer to life, universe and everything</CollapsibleButton>
-              <CollapsibleBody>
-                <Text>42</Text>
-              </CollapsibleBody>
-            </Collapsible>
+            <Accordion>
+              <AccordionItem
+                title="How can I setup Route?"
+                description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
+              />
+              <AccordionItem
+                title="How can I setup QR Codes?"
+                description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
+              />
+              <AccordionItem
+                title="How can I setup Subscriptions?"
+                description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
+              />
+            </Accordion>
           )
         }
 
@@ -50,7 +57,6 @@ const Page = (): ReactElement => {
   );
 };
 
-// TODO: Change this story from internal when releasing
 const meta: Meta<AccordionProps> = {
   title: 'Components/Accordion (Internal)',
   component: AccordionComponent,
@@ -69,16 +75,16 @@ const AccordionTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args 
   return (
     <AccordionComponent {...args}>
       <AccordionItem
-        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
-        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        title="How can I setup Route?"
+        description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
       />
       <AccordionItem
-        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
-        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        title="How can I setup QR Codes?"
+        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
       />
       <AccordionItem
-        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
-        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        title="How can I setup Subscriptions?"
+        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
       />
     </AccordionComponent>
   );
@@ -88,19 +94,19 @@ const AccordionWithIconsTemplate: ComponentStory<typeof AccordionComponent> = ({
   return (
     <AccordionComponent {...args}>
       <AccordionItem
-        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
-        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
-        icon={MusicIcon}
+        title="How can I setup Route?"
+        description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
+        icon={RoutesIcon}
       />
       <AccordionItem
-        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
-        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
-        icon={PlayIcon}
+        title="How can I setup QR Codes?"
+        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
+        icon={QRCodeIcon}
       />
       <AccordionItem
-        title="Appetite for Destruction Appetite for Destruction Appetite for Destruction Appetite for Destruction"
-        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
-        icon={PauseCircleIcon}
+        title="How can I setup Subscriptions?"
+        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
+        icon={SubscriptionsIcon}
       />
     </AccordionComponent>
   );
@@ -109,6 +115,15 @@ const AccordionWithIconsTemplate: ComponentStory<typeof AccordionComponent> = ({
 export const BasicExample = AccordionTemplate.bind({});
 
 export const WithIcons = AccordionWithIconsTemplate.bind({});
+
+WithIcons.parameters = {
+  docs: {
+    description: {
+      story:
+        'Use the `icon` prop in `AccordionItem` to pass blade icons. **Note:** this should not be used with `showNumberPrefix` on `Accordion`.',
+    },
+  },
+};
 
 const AccordionControlledTemplate: ComponentStory<typeof AccordionComponent> = ({
   expandedIndex: _expandedIndex,
@@ -132,16 +147,16 @@ const AccordionControlledTemplate: ComponentStory<typeof AccordionComponent> = (
         onExpandChange={({ expandedIndex }) => setExpandedIndex(expandedIndex)}
       >
         <AccordionItem
-          title="Appetite for Destruction"
-          description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+          title="How can I setup Route?"
+          description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
         />
         <AccordionItem
-          title="Appetite for Destruction"
-          description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+          title="How can I setup QR Codes?"
+          description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
         />
         <AccordionItem
-          title="Appetite for Destruction"
-          description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+          title="How can I setup Subscriptions?"
+          description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
         />
       </AccordionComponent>
     </>
@@ -150,19 +165,31 @@ const AccordionControlledTemplate: ComponentStory<typeof AccordionComponent> = (
 
 export const ControlledExample = AccordionControlledTemplate.bind({});
 
+ControlledExample.parameters = {
+  docs: {
+    description: {
+      story:
+        'Use `expandedIndex`: `number` and `onExpandChange`: `({ expandedIndex }) => void` to build controlled behavior. **Note:** a `-1` value signifies no expanded items.',
+    },
+  },
+};
+ControlledExample.args = {
+  showNumberPrefix: true,
+};
+
 const AccordionWithSlotTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args }) => {
   return (
     <AccordionComponent {...args}>
       <AccordionItem
-        title="Appetite for Destruction"
-        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        title="How can I setup Route?"
+        description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
       >
         <Alert
           title="Custom slot"
           description="You can render anything here along with description"
         />
       </AccordionItem>
-      <AccordionItem title="Appetite for Destruction">
+      <AccordionItem title="How can I setup QR Codes?">
         <Alert
           title="Custom slot"
           description="Or you can skip description altogether and just render a custom component here"
@@ -171,13 +198,21 @@ const AccordionWithSlotTemplate: ComponentStory<typeof AccordionComponent> = ({ 
         />
       </AccordionItem>
       <AccordionItem
-        title="Appetite for Destruction"
-        description={`Appetite for Destruction is the debut studio album by American hard rock band Guns N' Roses, released by Geffen Records on July 21, 1987. It initially received little mainstream attention, and it was not until the following year that Appetite for Destruction became a commercial success, after the band had toured and received significant airplay with the singles "Welcome to the Jungle", "Paradise City", and "Sweet Child o' Mine".`}
+        title="How can I setup Subscriptions?"
+        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
       />
     </AccordionComponent>
   );
 };
 
 export const CustomSlot = AccordionWithSlotTemplate.bind({});
+
+CustomSlot.parameters = {
+  docs: {
+    description: {
+      story: 'Pass a custom slot component / JSX as `children` in `AccordionItem`.',
+    },
+  },
+};
 
 export default meta;

@@ -12,7 +12,7 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
-import { Link } from '~components/Link';
+import { Amount } from '~components/Amount';
 
 const Page = (): ReactElement => {
   return (
@@ -29,14 +29,19 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { Collapsible, CollapsibleButton, CollapsibleBody, Text } from '@razorpay/blade/components';
+        import { Collapsible, CollapsibleButton, CollapsibleBody, Text, Amount } from '@razorpay/blade/components';
 
         function App() {
           return (
             <Collapsible>
-              <CollapsibleButton>Answer to life, universe and everything</CollapsibleButton>
+              <CollapsibleButton>View Price Breakdown</CollapsibleButton>
               <CollapsibleBody>
-                <Text>42</Text>
+                <Text>Actual amount</Text>
+                <Amount value={1000} intent="positive" />
+                <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+                <Text>2%</Text>
+                <Text marginTop="spacing.2">GST</Text>
+                <Text>18%</Text>
               </CollapsibleBody>
             </Collapsible>
           )
@@ -67,17 +72,14 @@ const meta: Meta<CollapsibleProps> = {
 const CollapsibleButtonTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
   return (
     <CollapsibleComponent {...args}>
-      <CollapsibleButton>Greatest song ever</CollapsibleButton>
+      <CollapsibleButton>View Price Breakdown</CollapsibleButton>
       <CollapsibleBody>
-        <Text>And as we wind on down the road</Text>
-        <Text>Our shadows taller than our soul</Text>
-        <Text>There walks a lady we all know</Text>
-        <Text>Who shines white light and wants to show</Text>
-        <Text>How everything still turns to gold</Text>
-        <Text>And if you listen very hard</Text>
-        <Text>The tune will come to you at last</Text>
-        <Text>When all are one, and one is all</Text>
-        <Text>To be a rock and not to roll</Text>
+        <Text>Actual amount</Text>
+        <Amount value={1000} intent="positive" />
+        <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+        <Text>2%</Text>
+        <Text marginTop="spacing.2">GST</Text>
+        <Text>18%</Text>
       </CollapsibleBody>
     </CollapsibleComponent>
   );
@@ -88,15 +90,28 @@ export const WithCollapsibleButton = CollapsibleButtonTemplate.bind({});
 const CollapsibleLinkTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
   return (
     <CollapsibleComponent {...args}>
-      <CollapsibleLink>Answer to life, universe and everything</CollapsibleLink>
+      <CollapsibleLink>View Price Breakdown</CollapsibleLink>
       <CollapsibleBody>
-        <Text>42</Text>
+        <Text>Actual amount</Text>
+        <Amount value={1000} intent="positive" />
+        <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+        <Text>2%</Text>
+        <Text marginTop="spacing.2">GST</Text>
+        <Text>18%</Text>
       </CollapsibleBody>
     </CollapsibleComponent>
   );
 };
 
 export const WithCollapsibleLink = CollapsibleLinkTemplate.bind({});
+
+WithCollapsibleLink.parameters = {
+  docs: {
+    description: {
+      story: 'Compose `Collapsible` with `CollapsibleLink` and `CollapsibleBody`',
+    },
+  },
+};
 
 const CollapsibleControlledTemplate: ComponentStory<typeof CollapsibleComponent> = ({
   isExpanded: _isExpanded,
@@ -111,20 +126,28 @@ const CollapsibleControlledTemplate: ComponentStory<typeof CollapsibleComponent>
       isExpanded={isExpanded}
       onExpandChange={({ isExpanded }) => setIsExpanded(isExpanded)}
     >
-      <CollapsibleButton>Click to {isExpanded ? 'collapse' : 'expand'}</CollapsibleButton>
+      <CollapsibleButton>{isExpanded ? 'Hide' : 'Show'} Price Breakdown</CollapsibleButton>
       <CollapsibleBody>
-        <Link
-          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Check this
-        </Link>
+        <Text>Actual amount</Text>
+        <Amount value={1000} intent="positive" />
+        <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+        <Text>2%</Text>
+        <Text marginTop="spacing.2">GST</Text>
+        <Text>18%</Text>
       </CollapsibleBody>
     </CollapsibleComponent>
   );
 };
 
 export const ControlledExample = CollapsibleControlledTemplate.bind({});
+
+ControlledExample.parameters = {
+  docs: {
+    description: {
+      story:
+        'Use in combination with `isExpanded`: `boolean` and `onExpandChange`: `({ isExpanded }) => void`',
+    },
+  },
+};
 
 export default meta;
