@@ -174,6 +174,7 @@ exports[`<Tooltip /> should render 1`] = `
       >
         <View
           collapse={false}
+          elevation={20}
           maxWidth="200px"
           position="absolute"
           style={
@@ -192,6 +193,16 @@ exports[`<Tooltip /> should render 1`] = `
                 "paddingTop": 8,
                 "position": "absolute",
                 "top": -200,
+              },
+              Object {
+                "elevation": 4,
+                "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+                "shadowOffset": Object {
+                  "height": 3,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.12,
+                "shadowRadius": 2,
               },
             ]
           }
