@@ -1017,7 +1017,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 .c6 {
   display: block;
   position: absolute;
-  min-width: 240px;
   max-width: 400px;
   left: 0px;
 }
