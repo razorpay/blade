@@ -2,7 +2,7 @@
 import React from 'react';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects, makeAccessible } from '~utils';
+import { assignWithoutSideEffects, makeAccessible, MetaConstants } from '~utils';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
@@ -20,6 +20,7 @@ const _DropdownHeader = ({
   leading,
   titleSuffix,
   trailing,
+  testID,
 }: DropdownHeaderProps): React.ReactElement => {
   return (
     <BaseBox
@@ -36,7 +37,8 @@ const _DropdownHeader = ({
         leading={leading}
         trailing={trailing}
         titleSuffix={titleSuffix}
-        metaComponentName="DropdownHeader"
+        metaComponentName={MetaConstants.DropdownHeader}
+        testID={testID}
         // back button
         showBackButton={false}
         // close button
@@ -52,7 +54,7 @@ const DropdownHeader = assignWithoutSideEffects(_DropdownHeader, {
 
 type DropdownFooter = Pick<BaseFooterProps, 'children' | 'testID'>;
 
-const _DropdownFooter = ({ children }: DropdownFooter): React.ReactElement => {
+const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactElement => {
   const {
     setHasFooterAction,
     setShouldIgnoreBlur,
@@ -98,7 +100,9 @@ const _DropdownFooter = ({ children }: DropdownFooter): React.ReactElement => {
         role: 'group',
       })}
     >
-      <BaseFooter>{children}</BaseFooter>
+      <BaseFooter metaComponentName={MetaConstants.DropdownFooter} testID={testID}>
+        {children}
+      </BaseFooter>
     </BaseBox>
   );
 };
