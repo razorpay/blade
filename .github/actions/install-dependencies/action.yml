@@ -17,8 +17,8 @@ runs:
           ./packages/**/node_modules
         key: ${{ runner.os }}-blade-${{ hashFiles('**/yarn.lock') }}
 
-    # cache miss - install packages with `yarn install` which automatically builds packages with the postinstall script
-    # cache hit - download packages from cache and explicitly build universe packages
+    # cache miss - install packages with `yarn --frozen-lockfile`
+    # cache hit - download packages from the cache
     - name: install packages if cache miss
       run: yarn --frozen-lockfile
       shell: bash
