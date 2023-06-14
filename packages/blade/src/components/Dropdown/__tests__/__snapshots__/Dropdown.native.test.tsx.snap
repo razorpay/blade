@@ -481,10 +481,16 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         <View
           data-blade-component="dropdown-overlay"
           display="none"
+          isInBottomSheet={false}
           position="absolute"
           style={
             Array [
               Object {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
                 "display": "none",
                 "position": "absolute",
                 "transform": Array [
@@ -500,158 +506,158 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           width="100%"
         >
           <View
-            accessibilityLabelledBy="dropdown-7-label"
-            accessibilityRole="menu"
-            data-blade-component="action-list"
-            id="dropdown-7-actionlist"
-            isInBottomSheet={false}
+            flexShrink={0}
+            overflow="auto"
             style={
               Array [
                 Object {
-                  "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                  "borderColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 4,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                },
-                Object {
-                  "elevation": 12,
-                  "shadowColor": "hsla(217, 56%, 17%, 0.64)",
-                  "shadowOffset": Object {
-                    "height": 8,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.1,
-                  "shadowRadius": 4,
+                  "flexShrink": 0,
+                  "overflow": "auto",
                 },
               ]
             }
-            surfaceLevel={2}
           >
             <View
-              data-blade-component="action-list-header"
+              data-blade-component="dropdown-header"
               style={
                 Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "paddingBottom": 8,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 8,
-                  },
+                  Object {},
                 ]
               }
             >
               <View
                 style={
                   Array [
-                    Object {},
+                    Object {
+                      "marginBottom": 16,
+                      "marginTop": 12,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "touchAction": "none",
+                    },
                   ]
                 }
+                touchAction="none"
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="12px"
-                  bbWidth="12px"
-                  fill="none"
-                  focusable={false}
-                  height="12px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
+                  alignItems="center"
+                  display="flex"
+                  flexDirection="row"
                   style={
                     Array [
                       Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Array [
-                        Object {},
-                      ],
-                      Object {
-                        "flex": 0,
-                        "height": 12,
-                        "width": 12,
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "userSelect": "none",
                       },
                     ]
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="12px"
+                  userSelect="none"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <View
+                    alignItems="center"
+                    display="flex"
+                    flexDirection="row"
+                    style={
                       Array [
-                        "fill",
+                        Object {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexBasis": "auto",
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": "auto",
+                          "paddingRight": 16,
+                        },
                       ]
                     }
                   >
-                    <RNSVGPath
-                      clipRule={0}
-                      d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
-                      fill={4287207081}
-                      fillRule={0}
-                      propList={
+                    <View
+                      style={
                         Array [
-                          "fill",
-                          "fillRule",
+                          Object {},
                         ]
                       }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <View
+                        alignItems="center"
+                        display="flex"
+                        flexDirection="row"
+                        flexShrink={0}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessibilityRole="header"
+                          color="surface.text.normal.lowContrast"
+                          data-blade-component="heading"
+                          fontFamily="text"
+                          fontSize={200}
+                          fontStyle="normal"
+                          fontWeight="bold"
+                          lineHeight={300}
+                          style={
+                            Array [
+                              Object {
+                                "color": "hsla(217, 56%, 17%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 16,
+                                "fontStyle": "normal",
+                                "fontWeight": "700",
+                                "lineHeight": 24,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Recent Searches
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
               </View>
               <View
                 style={
                   Array [
                     Object {
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "borderColor": "hsla(216, 15%, 54%, 0.18)",
                     },
                   ]
                 }
-              >
-                <Text
-                  color="surface.text.subdued.lowContrast"
-                  data-blade-component="text"
-                  fontFamily="text"
-                  fontSize={50}
-                  fontStyle="italic"
-                  fontWeight="regular"
-                  lineHeight={50}
-                  style={
-                    Array [
-                      Object {
-                        "color": "hsla(217, 18%, 45%, 1)",
-                        "fontFamily": "Lato",
-                        "fontSize": 11,
-                        "fontStyle": "italic",
-                        "fontWeight": "400",
-                        "lineHeight": 16,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "textDecorationLine": "none",
-                      },
-                      Object {},
-                    ]
-                  }
-                >
-                  Recent Searches
-                </Text>
-              </View>
+              />
             </View>
+          </View>
+          <View
+            accessibilityLabelledBy="dropdown-7-label"
+            data-blade-component="action-list"
+            id="dropdown-7-actionlist"
+            style={
+              Array [
+                Object {},
+              ]
+            }
+          >
             <RCTScrollView
               data={
                 Array [
@@ -981,273 +987,161 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 />
               </View>
             </RCTScrollView>
+          </View>
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
+          >
             <View
-              accessibilityLabel="Search Tips"
-              data-blade-component="action-list-footer"
-              onBlur={[Function]}
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "paddingBottom": 8,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 8,
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": 1,
+                    "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                  },
+                ]
+              }
+            />
+            <View
+              data-blade-component="dropdown-footer"
+              style={
+                Array [
+                  Object {
+                    "paddingBottom": 16,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 16,
                   },
                 ]
               }
             >
               <View
-                style={
-                  Array [
-                    Object {},
-                  ]
-                }
-              >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="12px"
-                  bbWidth="12px"
-                  fill="none"
-                  focusable={false}
-                  height="12px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Array [
-                        Object {},
-                      ],
-                      Object {
-                        "flex": 0,
-                        "height": 12,
-                        "width": 12,
-                      },
-                    ]
+                accessibilityRole="button"
+                accessibilityState={
+                  Object {
+                    "disabled": false,
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="12px"
-                >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGPath
-                      clipRule={0}
-                      d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
-                      fill={4287207081}
-                      fillRule={0}
-                      propList={
-                        Array [
-                          "fill",
-                          "fillRule",
-                        ]
-                      }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                    },
-                  ]
                 }
-              >
-                <Text
-                  color="surface.text.subdued.lowContrast"
-                  data-blade-component="text"
-                  fontFamily="text"
-                  fontSize={50}
-                  fontStyle="italic"
-                  fontWeight="regular"
-                  lineHeight={50}
-                  style={
-                    Array [
-                      Object {
-                        "color": "hsla(217, 18%, 45%, 1)",
-                        "fontFamily": "Lato",
-                        "fontSize": 11,
-                        "fontStyle": "italic",
-                        "fontWeight": "400",
-                        "lineHeight": 16,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "textDecorationLine": "none",
-                      },
-                      Object {},
-                    ]
-                  }
-                >
-                  Search Tips
-                </Text>
-              </View>
-              <View
-                alignItems="center"
-                display="flex"
+                accessible={true}
+                activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+                activeBorderColor="hsla(230, 100%, 42%, 1)"
+                borderRadius="2px"
+                borderWidth="1px"
+                buttonPaddingBottom="0px"
+                buttonPaddingLeft="20px"
+                buttonPaddingRight="20px"
+                buttonPaddingTop="0px"
+                collapsable={false}
+                data-blade-component="button"
+                defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+                defaultBorderColor="hsla(218, 89%, 51%, 1)"
+                focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+                focusBorderColor="hsla(227, 100%, 45%, 1)"
+                focusRingColor="hsla(218, 89%, 51%, 0.18)"
+                focusable={true}
+                hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+                hoverBorderColor="hsla(223, 95%, 48%, 1)"
+                isFullWidth={false}
+                isLoading={false}
+                minHeight="36px"
+                motionDuration="duration.xquick"
+                motionEasing="easing.standard.effective"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
+                      "alignSelf": "center",
+                      "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                      "borderColor": "hsla(218, 89%, 51%, 1)",
+                      "borderRadius": 2,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "cursor": "pointer",
                       "display": "flex",
-                      "marginLeft": "auto",
+                      "justifyContent": "center",
+                      "minHeight": 36,
+                      "paddingBottom": 0,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 0,
+                      "textDecorationColor": "black",
+                      "textDecorationLine": "none",
+                      "textDecorationStyle": "solid",
+                      "width": "auto",
+                    },
+                    Object {
+                      "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                      "borderColor": "hsla(218, 89%, 51%, 1)",
                     },
                   ]
                 }
+                type="button"
               >
                 <View
-                  accessibilityRole="button"
-                  accessibilityState={
-                    Object {
-                      "disabled": false,
-                    }
-                  }
-                  accessible={true}
-                  activeBackgroundColor="hsla(230, 100%, 42%, 1)"
-                  activeBorderColor="hsla(230, 100%, 42%, 1)"
-                  borderRadius="2px"
-                  borderWidth="1px"
-                  buttonPaddingBottom="0px"
-                  buttonPaddingLeft="20px"
-                  buttonPaddingRight="20px"
-                  buttonPaddingTop="0px"
-                  collapsable={false}
-                  data-blade-component="button"
-                  defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-                  defaultBorderColor="hsla(218, 89%, 51%, 1)"
-                  focusBackgroundColor="hsla(227, 100%, 45%, 1)"
-                  focusBorderColor="hsla(227, 100%, 45%, 1)"
-                  focusRingColor="hsla(218, 89%, 51%, 0.18)"
-                  focusable={true}
-                  hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
-                  hoverBorderColor="hsla(223, 95%, 48%, 1)"
-                  isFullWidth={false}
-                  isLoading={false}
-                  minHeight="36px"
-                  motionDuration="duration.xquick"
-                  motionEasing="easing.standard.effective"
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                  alignItems="center"
+                  display="flex"
+                  flexDirection="row"
+                  isHidden={false}
+                  justifyContent="center"
                   style={
                     Array [
                       Object {
                         "alignItems": "center",
-                        "alignSelf": "center",
-                        "backgroundColor": "hsla(218, 89%, 51%, 1)",
-                        "borderColor": "hsla(218, 89%, 51%, 1)",
-                        "borderRadius": 2,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "cursor": "pointer",
                         "display": "flex",
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "justifyContent": "center",
-                        "minHeight": 36,
-                        "paddingBottom": 0,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 0,
-                        "textDecorationColor": "black",
-                        "textDecorationLine": "none",
-                        "textDecorationStyle": "solid",
-                        "width": "auto",
-                      },
-                      Object {
-                        "backgroundColor": "hsla(218, 89%, 51%, 1)",
-                        "borderColor": "hsla(218, 89%, 51%, 1)",
+                        "opacity": 1,
                       },
                     ]
                   }
-                  type="button"
                 >
-                  <View
-                    alignItems="center"
-                    display="flex"
-                    flexDirection="row"
-                    isHidden={false}
-                    justifyContent="center"
+                  <Text
+                    color="action.text.primary.default"
+                    fontSize={100}
+                    fontWeight="bold"
+                    lineHeight={100}
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "opacity": 1,
+                          "color": "hsla(0, 0%, 100%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "700",
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textAlign": "center",
+                          "textDecorationLine": "none",
                         },
                       ]
                     }
+                    textAlign="center"
                   >
-                    <Text
-                      color="action.text.primary.default"
-                      fontSize={100}
-                      fontWeight="bold"
-                      lineHeight={100}
-                      style={
-                        Array [
-                          Object {
-                            "color": "hsla(0, 0%, 100%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "700",
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textAlign": "center",
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                      textAlign="center"
-                    >
-                      Apply
-                    </Text>
-                  </View>
+                    Apply
+                  </Text>
                 </View>
               </View>
             </View>

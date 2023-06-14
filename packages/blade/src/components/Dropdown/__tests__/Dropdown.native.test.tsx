@@ -93,7 +93,7 @@ describe('<Dropdown />', () => {
             <ActionListItem title="Banana" value="banana" />
           </ActionList>
           <DropdownFooter>
-            <Button>Apply</Button>
+            <Button onClick={applyClickHandler}>Apply</Button>
           </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>,

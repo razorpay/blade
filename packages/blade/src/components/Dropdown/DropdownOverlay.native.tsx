@@ -8,6 +8,7 @@ import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize, metaAttribute, MetaConstants } from '~utils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
 const AnimatedDropdownOverlay = styled(StyledDropdownOverlay)<{ testID: 'dropdown-overlay' }>(
   (props) => ({
@@ -29,6 +30,7 @@ const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((pro
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
   const { isOpen, close } = useDropdown();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   return (
     <BaseBox position="relative">
@@ -40,6 +42,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         testID="closeable-area"
       >
         <AnimatedDropdownOverlay
+          isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
           display={isOpen ? 'flex' : 'none'}
           position="absolute"
           width="100%"

@@ -27,8 +27,8 @@ describe('<Dropdown />', () => {
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
+          <DropdownHeader title="Recent Searches" />
           <ActionList>
-            <DropdownHeader title="Recent Searches" />
             <ActionListItem title="Apple" value="apple" />
             <ActionListItem title="Mango" value="mango" />
           </ActionList>
@@ -503,10 +503,10 @@ describe('<Dropdown />', () => {
           <ActionList testID="action-list-test">
             <ActionListItem title="Apple" value="apple" testID="action-list-item-test" />
             <ActionListItem title="Mango" value="mango" />
-            <DropdownFooter testID="action-list-footer-test">
-              <Button>Apply</Button>
-            </DropdownFooter>
           </ActionList>
+          <DropdownFooter testID="action-list-footer-test">
+            <Button>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>,
     );

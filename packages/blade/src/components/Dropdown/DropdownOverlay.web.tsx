@@ -13,6 +13,7 @@ import { spacing, size } from '~tokens/global';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
 const dropdownFadeIn = keyframes`
 from {
@@ -41,6 +42,7 @@ to {
 const AnimatedOverlay = styled(StyledDropdownOverlay)<{
   transition: FlattenSimpleInterpolation;
   onAnimationEnd: () => void;
+  isInBottomSheet?: boolean;
 }>(
   (props) =>
     css`
@@ -69,6 +71,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     dropdownOverlayRef,
   } = useDropdown();
   const { theme } = useTheme();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
 
@@ -136,6 +139,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <BaseBox ref={dropdownOverlayRef as any} position="relative">
       <AnimatedOverlay
+        isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
         width={isMenu ? undefined : width}
         minWidth="240px"
         // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
