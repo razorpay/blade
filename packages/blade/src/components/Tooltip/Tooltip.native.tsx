@@ -70,7 +70,7 @@ const Tooltip = ({
         onTouchEnd: handleOpen,
         ref: refs.setReference,
       })}
-      <Modal collapsable={false} transparent visible={isVisible}>
+      <Modal accessibilityLabel={content} collapsable={false} transparent visible={isVisible}>
         <TouchableOpacity
           style={{
             flexShrink: 0,
@@ -78,6 +78,7 @@ const Tooltip = ({
           }}
           onPress={handleClose}
           activeOpacity={1}
+          testID="tooltip-modal-backdrop"
         >
           <TooltipContent
             isVisible={isOpen}

@@ -9,7 +9,7 @@ const StyledPressable = styled(Pressable)(() => {
 
 const TooltipInteractiveWrapper = React.forwardRef<View, PressableProps>((props, ref) => {
   return (
-    <StyledPressable ref={ref} collapsable={false} {...props}>
+    <StyledPressable ref={ref} collapsable={false} testID="tooltip-interactive-wrapper" {...props}>
       {props.children}
     </StyledPressable>
   );

@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
-import { makeBorderSize } from '~utils';
+import { makeBorderSize, metaAttribute } from '~utils';
 
 const TooltipInteractiveWrapper = styled(BaseBox).attrs(() => {
-  return { tabIndex: -1 };
+  return {
+    tabIndex: -1,
+    ...metaAttribute({ testID: 'tooltip-interactive-wrapper' }),
+  };
 })((props) => {
   return {
     display: 'inline-block',
