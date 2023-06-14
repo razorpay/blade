@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 8.8.4
+
+### Patch Changes
+
+- 333d0e7e: fix(DropdownOverlay): fix incorrect minWidth condition
+
+## 8.8.3
+
+### Patch Changes
+
+- 163717cf: fix(DropdownOverlay): DropdownOverlay width in SelectInput trigger
+
 ## 8.8.2
 
 ### Patch Changes
