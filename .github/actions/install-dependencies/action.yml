@@ -1,0 +1,25 @@
+name: install npm packages
+description: Installs npm packages and manages it's cache
+runs:
+  using: composite
+  steps:
+    - name: Install Yarn
+      run: npm install -g yarn
+      shell: bash
+
+    - name: Cache setup for node modules
+      uses: actions/cache@v3
+      id: cache
+      with:
+        path: |
+          ~/.yarn
+          ./node_modules
+          ./packages/**/node_modules
+        key: ${{ runner.os }}-blade-${{ hashFiles('**/yarn.lock') }}
+
+    # cache miss - install packages with `yarn --frozen-lockfile`
+    # cache hit - download packages from the cache
+    - name: install packages if cache miss
+      run: yarn --frozen-lockfile
+      shell: bash
+      if: steps.cache.outputs.cache-hit != 'true'

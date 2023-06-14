@@ -237,18 +237,24 @@ const _BottomSheet = ({
       <DropdownContext.Provider value={dropdownProps}>
         <BottomSheetContext.Provider value={contextValue}>
           <GorhomBottomSheet
-            style={{
-              // this is reverse top elevation of highRaised elevation token
-              shadowColor: 'hsla(217,56%,17%,0.64)',
-              shadowOffset: {
-                width: 0,
-                height: -18,
-              },
-              shadowOpacity: 0.2,
-              shadowRadius: 12,
-              // this fails on andorid because its not handled on GorhomBottomSheet internally, hence tradeoff but its fine because visually this barely makes any difference its that nice design detail
-              // elevation: 40,
-            }}
+            style={
+              // only render shadow when the sheet is open,
+              // otherwise there is visible shadow leak from the bottom edge of the screen
+              isOpen
+                ? {
+                    // this is reverse top elevation of highRaised elevation token
+                    shadowColor: 'hsla(217,56%,17%,0.64)',
+                    shadowOffset: {
+                      width: 0,
+                      height: -18,
+                    },
+                    shadowOpacity: 0.2,
+                    shadowRadius: 12,
+                    // this fails on andorid because its not handled on GorhomBottomSheet internally, hence tradeoff but its fine because visually this barely makes any difference its that nice design detail
+                    // elevation: 40,
+                  }
+                : {}
+            }
             enablePanDownToClose
             enableOverDrag
             enableContentPanningGesture

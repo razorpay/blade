@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a data-blade-component=\\"link\\" href=\\"https://www.google.com/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" cursor=\\"pointer\\" class=\\"StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf\\" role=\\"link\\" aria-disabled=\\"false\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf content-container\\"><div color=\\"action.text.link.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bWvucQ\\">Learn More</div></div></a></div>"`;
+exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a data-blade-component=\\"link\\" href=\\"https://www.google.com/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" cursor=\\"pointer\\" class=\\"StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf\\" role=\\"link\\" aria-disabled=\\"false\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf content-container\\"><div color=\\"action.text.link.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gkQKHk\\">Learn More</div></div></a></div>"`;
 
 exports[`<BaseLink /> should render link with a default rel set when target is _blank 2`] = `
 <div
@@ -22,7 +22,7 @@ exports[`<BaseLink /> should render link with a default rel set when target is _
       display="flex"
     >
       <div
-        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bWvucQ"
+        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 gkQKHk"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"

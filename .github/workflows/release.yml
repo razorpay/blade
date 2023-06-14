@@ -14,17 +14,15 @@ jobs:
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout Codebase
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Use Node v14
-        uses: actions/setup-node@v1
+      - name: Use Node v18
+        uses: actions/setup-node@v3
         with:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
-        uses: bahmutov/npm-install@v1
-        with:
-          install-command: yarn --frozen-lockfile
+        uses: ./.github/actions/install-dependencies
       - name: Create Release Pull Request & Publish packages
         id: changesets
         uses: changesets/action@v1

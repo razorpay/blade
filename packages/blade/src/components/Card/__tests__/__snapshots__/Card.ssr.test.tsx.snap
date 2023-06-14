@@ -78,9 +78,9 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                   class="BaseBoxweb__BaseBox-sc-1icfu8j-0 StyledCounterweb__StyledCounter-sc-1itt9w6-0 qpuyI dTYmGd"
                 >
                   <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ldapnj"
+                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 joeDUX"
                     data-blade-component="counter"
-                    display="flex"
+                    display="inline-flex"
                     overflow="hidden"
                   >
                     <p
@@ -119,8 +119,8 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             data-blade-component="badge"
           >
             <div
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ldapnj"
-              display="flex"
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 joeDUX"
+              display="inline-flex"
               overflow="hidden"
             >
               <p
@@ -206,7 +206,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             class="BaseBoxweb__BaseBox-sc-1icfu8j-0 icZlVk"
           >
             <button
-              class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hAndPp"
+              class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hDfvuZ"
               data-blade-component="button"
               role="button"
               type="button"
@@ -216,7 +216,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                 display="flex"
               >
                 <div
-                  class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bWvucQ"
+                  class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 gkQKHk"
                   color="action.text.secondary.default"
                   font-size="100"
                   font-weight="bold"
@@ -233,7 +233,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             class="BaseBoxweb__BaseBox-sc-1icfu8j-0 icZlVk"
           >
             <button
-              class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jBXTKC"
+              class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fcmfVa"
               data-blade-component="button"
               role="button"
               type="button"

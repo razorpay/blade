@@ -5,6 +5,7 @@ import userEvents from '@testing-library/user-event';
 import { mockViewport } from 'jsdom-testing-mocks';
 import { fireEvent, within } from '@testing-library/react';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
+import { Counter } from '../../Counter';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
@@ -12,7 +13,6 @@ import { Dropdown } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Badge } from '~components/Badge';
-import { Counter } from '~components/Counter';
 
 export const sleep = (delay = 10): Promise<number> =>
   new Promise((resolve) => setTimeout(resolve, delay));
@@ -300,7 +300,7 @@ describe('<BottomSheet />', () => {
       );
     };
     expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade BottomSheetHeader]: Only one of `Button, Badge, Link, Text` component is accepted as trailing',
+      '[Blade Header]: Only one of `Button, Badge, Link, Text` component is accepted as trailing',
     );
     mockConsoleError.mockRestore();
   });
@@ -320,7 +320,7 @@ describe('<BottomSheet />', () => {
 
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining(
-        '[Blade BottomSheetHeader]: Do not pass "size" to "Badge" while inside BottomSheetHeader trailing, because we override it.',
+        '[Blade Header]: Do not pass "size" to "Badge" while inside Header trailing, because we override it.',
       ),
     );
 
