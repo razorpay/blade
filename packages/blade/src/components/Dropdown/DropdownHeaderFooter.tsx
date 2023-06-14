@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
+import { BaseFooter } from '../BaseHeaderFooter/BaseFooter';
+import { BaseHeader } from '../BaseHeaderFooter/BaseHeader';
+import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
+import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects, isReactNative, makeAccessible, MetaConstants } from '~utils';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
-import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
-import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
-import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
 type DropdownHeaderProps = Pick<
