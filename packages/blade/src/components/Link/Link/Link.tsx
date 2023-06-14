@@ -18,12 +18,6 @@ type LinkCommonProps = {
   accessibilityLabel?: string;
 
   /**
-   * Determines if the associated content controlled by this button is expanded or not.
-   * Generally used along with `accessibilityControls` on web
-   */
-  accessibilityExpanded?: boolean;
-
-  /**
    * Sets the size of the link
    *
    * @default medium
@@ -48,11 +42,6 @@ type LinkCommonProps = {
        * This is a web only prop and has no effect on react-native.
        */
       htmlTitle?: undefined;
-
-      /**
-       * **Web only**: Accepts the id of element which is controlled by this button
-       */
-      accessibilityControls?: undefined;
     };
     web: {
       /**
@@ -63,11 +52,6 @@ type LinkCommonProps = {
        * The title of the link which is displayed as a tooltip.
        */
       htmlTitle?: string;
-
-      /**
-       * **Web only**: Accepts the id of element which is controlled by this button
-       */
-      accessibilityControls?: string;
     };
   }>;
 
@@ -130,8 +114,6 @@ const _Link = ({
   target,
   rel,
   accessibilityLabel,
-  accessibilityControls,
-  accessibilityExpanded,
   size = 'medium',
   testID,
   hitSlop,
