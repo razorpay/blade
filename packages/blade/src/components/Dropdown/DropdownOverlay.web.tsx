@@ -130,7 +130,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
       <StyledDropdownOverlay
         width={isMenu ? undefined : width}
         // In SelectInput, Overlay should always take width of Input
-        minWidth={isMenu ? undefined : '240px'}
+        minWidth={isMenu ? '240px' : undefined}
         // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
         maxWidth={isMenu ? '400px' : undefined}
         left={isMenu ? 'spacing.0' : undefined}
