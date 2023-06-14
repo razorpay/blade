@@ -1,5 +1,4 @@
 import React from 'react';
-import { useFloating } from '@floating-ui/react';
 import { getActionListContainerRole } from '../ActionList/getA11yRoles';
 import { BaseLink } from '../Link/BaseLink';
 import type { BaseLinkProps } from '../Link/BaseLink';
@@ -40,54 +39,56 @@ const _DropdownLink = ({
     isOpen,
     activeIndex,
     hasFooterAction,
+    triggererRef,
+    setTriggerEl,
   } = useDropdown();
-
-  const { refs } = useFloating();
 
   return (
     // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
-    <BaseLink
-      variant="button"
-      {...(icon ? { icon, children } : { children })}
-      iconPosition={iconPosition}
-      accessibilityLabel={accessibilityLabel}
-      size={size}
-      testID={testID}
-      hitSlop={hitSlop}
-      htmlTitle={htmlTitle}
-      isDisabled={isDisabled}
-      {...styledProps}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={refs.setReference as any}
-      {...makeAccessible({
-        hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
-        expanded: isOpen,
-        controls: `${dropdownBaseId}-actionlist`,
-        role: 'combobox',
-        activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
-      })}
-      onClick={(e) => {
-        onTriggerClick();
-        // Setting it for web fails it on native typecheck and vice versa
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-        onClick?.(e as any);
-      }}
-      onBlur={(e) => {
-        // With button trigger, there is no "value" as such. It's just clickable items
-        onTriggerBlur?.({ name: undefined, value: undefined });
-        // Setting it for web fails it on native typecheck and vice versa
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-        onBlur?.(e as any);
-      }}
-      onKeyDown={(e) => {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-        onTriggerKeydown?.({ event: e as any });
-        // Setting it for web fails it on native typecheck and vice versa
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-        onKeyDown?.(e as any);
-      }}
-    />
+    <div ref={setTriggerEl}>
+      <BaseLink
+        variant="button"
+        {...(icon ? { icon, children } : { children })}
+        iconPosition={iconPosition}
+        accessibilityLabel={accessibilityLabel}
+        size={size}
+        testID={testID}
+        hitSlop={hitSlop}
+        htmlTitle={htmlTitle}
+        isDisabled={isDisabled}
+        {...styledProps}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={triggererRef as any}
+        {...makeAccessible({
+          hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
+          expanded: isOpen,
+          controls: `${dropdownBaseId}-actionlist`,
+          role: 'combobox',
+          activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
+        })}
+        onClick={(e) => {
+          onTriggerClick();
+          // Setting it for web fails it on native typecheck and vice versa
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+          onClick?.(e as any);
+        }}
+        onBlur={(e) => {
+          // With button trigger, there is no "value" as such. It's just clickable items
+          onTriggerBlur?.({ name: undefined, value: undefined });
+          // Setting it for web fails it on native typecheck and vice versa
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+          onBlur?.(e as any);
+        }}
+        onKeyDown={(e) => {
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+          onTriggerKeydown?.({ event: e as any });
+          // Setting it for web fails it on native typecheck and vice versa
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+          onKeyDown?.(e as any);
+        }}
+      />
+    </div>
   );
 };
 

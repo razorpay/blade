@@ -2,7 +2,8 @@ import React from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
-import { useFloating, flip, FloatingPortal } from '@floating-ui/react';
+import type { MiddlewareState } from '@floating-ui/react';
+import { useFloating, detectOverflow } from '@floating-ui/react';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
@@ -61,18 +62,36 @@ type DropdownOverlayProps = {
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const { isOpen, triggererRef, hasLabelOnLeft, dropdownTriggerer } = useDropdown();
+  const {
+    isOpen,
+    triggererRef,
+    hasLabelOnLeft,
+    dropdownTriggerer,
+    triggerEl,
+    setIsOpen,
+  } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
 
+  const middleware1 = {
+    name: 'middleware1',
+    async fn(state: MiddlewareState) {
+      const overflow = await detectOverflow(state, { elementContext: 'reference' });
+      console.log({ overflow });
+      return {};
+    },
+  };
+
   const { refs, floatingStyles } = useFloating({
     open: isOpen,
-    strategy: 'fixed',
-    // elements: {
-    //   reference: triggererRef.current,
-    // },
-    middleware: [flip()],
+    onOpenChange: setIsOpen,
+    strategy: 'absolute',
+    placement: 'bottom',
+    elements: {
+      reference: triggerEl as Element,
+    },
+    middleware: [middleware1],
   });
 
   const isMenu = dropdownTriggerer !== 'SelectInput';
@@ -136,29 +155,25 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <BaseBox position="relative">
-      <FloatingPortal>
-        <div ref={refs.setFloating} style={floatingStyles}>
-          <StyledDropdownOverlay
-            width={isMenu ? undefined : width}
-            // In SelectInput, Overlay should always take width of Input
-            minWidth={isMenu ? undefined : '240px'}
-            // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
-            maxWidth={isMenu ? '400px' : undefined}
-            left={isMenu ? 'spacing.0' : undefined}
-            right={isMenu ? undefined : 'spacing.0'}
-            style={styles}
-            display={castWebType(display)}
-            position="absolute"
-            transition={isOpen ? fadeIn : fadeOut}
-            onAnimationEnd={onAnimationEnd}
-            {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
-          >
-            {children}
-          </StyledDropdownOverlay>
-        </div>
-      </FloatingPortal>
-    </BaseBox>
+    <div ref={refs.setFloating} style={floatingStyles}>
+      <StyledDropdownOverlay
+        width={isMenu ? undefined : width}
+        // In SelectInput, Overlay should always take width of Input
+        minWidth={isMenu ? undefined : '240px'}
+        // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
+        maxWidth={isMenu ? '400px' : undefined}
+        left={isMenu ? 'spacing.0' : undefined}
+        right={isMenu ? undefined : 'spacing.0'}
+        style={styles}
+        display={castWebType(display)}
+        position="absolute"
+        transition={isOpen ? fadeIn : fadeOut}
+        onAnimationEnd={onAnimationEnd}
+        {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+      >
+        {children}
+      </StyledDropdownOverlay>
+    </div>
   );
 };
 

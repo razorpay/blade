@@ -9,9 +9,17 @@ import {
 } from './stories';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import { Box } from '~components/Box';
-import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon, ClockIcon, CloseIcon } from '~components/Icons';
+import { ActionList, ActionListItem, ActionListSection } from '~components/ActionList';
+import {
+  // CheckIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  // ClockIcon,
+  // CloseIcon,
+  MoreVerticalIcon,
+} from '~components/Icons';
 import { Text } from '~components/Typography';
+import { Button } from '~components/Button';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Button and Link',
@@ -72,46 +80,41 @@ export const InternalMenu = (): JSX.Element => {
   const [status, setStatus] = React.useState<string | undefined>();
 
   return (
-    <Box minHeight="200px" padding="spacing.10">
-      <Dropdown>
-        <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem
-              onClick={({ name, value }) => {
-                console.log({ name, value });
-                setStatus(name);
-              }}
-              leading={<ActionListItemIcon icon={CheckIcon} />}
-              isSelected={status === 'approve'}
-              title="Approve"
-              value="approve"
-            />
-            <ActionListItem
-              onClick={({ name, value }) => {
-                console.log({ name, value });
-                setStatus(name);
-              }}
-              leading={<ActionListItemIcon icon={ClockIcon} />}
-              isSelected={status === 'in-progress'}
-              title="In Progress"
-              value="in-progress"
-            />
-
-            <ActionListItem
-              onClick={({ name, value }) => {
-                console.log({ name, value });
-                setStatus(name);
-              }}
-              leading={<ActionListItemIcon icon={CloseIcon} />}
-              isSelected={status === 'reject'}
-              title="Reject"
-              value="reject"
-              intent="negative"
-            />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="flex-end"
+      gap="spacing.3"
+      marginY="spacing.5"
+    >
+      <Button variant="secondary">More Button</Button>
+      <Box marginRight="spacing.4">
+        <Dropdown selectionType="single">
+          <DropdownButton
+            variant="tertiary"
+            icon={MoreVerticalIcon}
+            // onClick={handleHelpClick}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListSection>
+                <ActionListItem title="Give Feedback" value="give Feedback" />
+                <ActionListItem title="View Documentation" value="view documentation" />
+                <ActionListItem
+                  title="User Guide"
+                  description="You can restart onboarding from here"
+                  value="User Guide"
+                />
+                <ActionListItem
+                  title="New Features"
+                  value="New Features"
+                  description="You can restart feature announcements from here"
+                />
+              </ActionListSection>
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
     </Box>
   );
 };

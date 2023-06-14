@@ -98,6 +98,14 @@ type DropdownContextType = {
    */
   isControlled: boolean;
   setIsControlled: (isControlled: boolean) => void;
+
+  /**
+   *
+   *
+   *
+   * */
+  triggerEl: React.ReactNode;
+  setTriggerEl: (element: React.ReactNode) => void;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -126,6 +134,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setChangeCallbackTriggerer: noop,
   isControlled: false,
   setIsControlled: noop,
+  triggerEl: null,
+  setTriggerEl: noop,
   dropdownBaseId: '',
   actionListItemRef: {
     current: null,
