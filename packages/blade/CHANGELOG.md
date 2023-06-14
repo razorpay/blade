@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.8.3
+
+### Patch Changes
+
+- 163717cf: fix(DropdownOverlay): DropdownOverlay width in SelectInput trigger
+
 ## 8.8.2
 
 ### Patch Changes
