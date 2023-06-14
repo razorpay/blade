@@ -13,6 +13,11 @@ type StyledCollapsibleChevronIconProps = {
 
 const StyledCollapsibleChevronIcon = styled(BaseBox)<StyledCollapsibleChevronIconProps>((props) => {
   const { isExpanded, direction, theme } = props;
+
+  /**
+   * The orientation of chevron icon inverts based on the direction collapsible expands in.
+   * `transformExpanded` and `transformCollapsed` therefore need to swap their corresponding expanded and collapsed values.
+   */
   let transformExpanded, transformCollapsed;
   if (direction === 'bottom') {
     transformExpanded = 'rotate(-0.5turn)';
