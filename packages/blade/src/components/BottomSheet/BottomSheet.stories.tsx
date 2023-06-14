@@ -21,7 +21,6 @@ import {
 } from '~components/Icons';
 import {
   ActionList,
-  ActionListFooter,
   ActionListItem,
   ActionListItemIcon,
   ActionListSection,
@@ -546,7 +545,6 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
             <ActionListItem title="Cuban" value="Cuban" />
             <ActionListItem title="German" value="German" />
             <ActionListItem title="Nigerian" value="Nigerian" />
-            <ActionListFooter />
           </ActionList>
         </BottomSheetBody>
         <BottomSheetFooter>

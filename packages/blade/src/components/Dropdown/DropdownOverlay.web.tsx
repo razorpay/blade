@@ -4,6 +4,7 @@ import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
+import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -37,7 +38,7 @@ to {
 }
 `;
 
-const StyledDropdownOverlay = styled(BaseBox)<{
+const AnimatedOverlay = styled(StyledDropdownOverlay)<{
   transition: FlattenSimpleInterpolation;
   onAnimationEnd: () => void;
 }>(
@@ -60,7 +61,13 @@ type DropdownOverlayProps = {
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const { isOpen, triggererRef, hasLabelOnLeft, dropdownTriggerer } = useDropdown();
+  const {
+    isOpen,
+    triggererRef,
+    hasLabelOnLeft,
+    dropdownTriggerer,
+    dropdownOverlayRef,
+  } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
@@ -126,8 +133,9 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <BaseBox position="relative">
-      <StyledDropdownOverlay
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    <BaseBox ref={dropdownOverlayRef as any} position="relative">
+      <AnimatedOverlay
         width={isMenu ? undefined : width}
         minWidth="240px"
         // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
@@ -142,7 +150,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
-      </StyledDropdownOverlay>
+      </AnimatedOverlay>
     </BaseBox>
   );
 };

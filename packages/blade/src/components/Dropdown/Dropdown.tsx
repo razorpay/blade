@@ -71,6 +71,7 @@ const _Dropdown = ({
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const triggererRef = React.useRef<HTMLButtonElement>(null);
   const actionListItemRef = React.useRef<HTMLDivElement>(null);
+  const dropdownOverlayRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
@@ -146,6 +147,7 @@ const _Dropdown = ({
       dropdownBaseId,
       triggererRef,
       actionListItemRef,
+      dropdownOverlayRef,
       selectionType,
       hasFooterAction,
       setHasFooterAction,

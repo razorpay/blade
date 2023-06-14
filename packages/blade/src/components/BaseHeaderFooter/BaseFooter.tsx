@@ -2,23 +2,25 @@ import React from 'react';
 import { Divider } from './Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects, metaAttribute } from '~utils';
+import type { TestID } from '~src/_helpers/types';
 
 type BaseFooterProps = {
   children: React.ReactNode;
   metaComponentName?: string;
   showDivider?: boolean;
-};
+} & TestID;
 
 const _BaseFooter = ({
   children,
   showDivider = true,
   metaComponentName,
+  testID,
 }: BaseFooterProps): React.ReactElement => {
   return (
     <>
       {showDivider && <Divider />}
       <BaseBox
-        {...metaAttribute({ name: metaComponentName })}
+        {...metaAttribute({ name: metaComponentName, testID })}
         paddingLeft="spacing.6"
         paddingRight="spacing.6"
         paddingTop="spacing.5"

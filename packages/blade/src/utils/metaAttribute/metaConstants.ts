@@ -1,7 +1,5 @@
 export const MetaConstants = {
   ActionList: 'action-list',
-  ActionListFooter: 'action-list-footer',
-  ActionListHeader: 'action-list-header',
   ActionListItem: 'action-list-item',
   ActionListSection: 'action-list-section',
   Alert: 'alert',

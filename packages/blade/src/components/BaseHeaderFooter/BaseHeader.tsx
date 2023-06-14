@@ -7,6 +7,7 @@ import { Heading, Text } from '~components/Typography';
 import { assignWithoutSideEffects, getComponentId, isReactNative, metaAttribute } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
+import type { TestID } from '~src/_helpers/types';
 
 type BaseHeaderProps = {
   title?: string;
@@ -37,7 +38,7 @@ type BaseHeaderProps = {
   showCloseButton?: boolean;
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
-  closeButtonRef: React.MutableRefObject<any>;
+  closeButtonRef?: React.MutableRefObject<any>;
   metaComponentName?: string;
 } & Pick<
   ReactDOMAttributes,
@@ -49,7 +50,8 @@ type BaseHeaderProps = {
   | 'onPointerDown'
   | 'onPointerMove'
   | 'onPointerUp'
->;
+> &
+  TestID;
 
 type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text';
 
@@ -120,6 +122,7 @@ const _BaseHeader = ({
   onBackButtonClick,
   onCloseButtonClick,
   closeButtonRef,
+  testID,
   onClickCapture,
   onKeyDown,
   onKeyUp,
@@ -146,7 +149,7 @@ const _BaseHeader = ({
       };
 
   return (
-    <BaseBox {...metaAttribute({ name: metaComponentName })}>
+    <BaseBox {...metaAttribute({ name: metaComponentName, testID })}>
       <BaseBox
         marginTop="spacing.4"
         marginBottom="spacing.5"

@@ -1,18 +1,11 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { Dropdown, DropdownOverlay } from '../index';
+import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
-import {
-  ActionList,
-  ActionListFooter,
-  ActionListHeader,
-  ActionListItem,
-  ActionListFooterIcon,
-  ActionListHeaderIcon,
-} from '~components/ActionList';
+import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
-import { HistoryIcon, SearchIcon } from '~components/Icons';
 
 describe('<Dropdown />', () => {
   it('should render dropdown and make it visible on click', async () => {
@@ -20,19 +13,14 @@ describe('<Dropdown />', () => {
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
+          <DropdownHeader title="Recent Searches" />
           <ActionList>
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
             <ActionListItem title="Apple" value="apple" />
             <ActionListItem title="Mango" value="mango" />
-            <ActionListFooter
-              title="Search Tips"
-              leading={<ActionListFooterIcon icon={SearchIcon} />}
-              trailing={<Button>Apply</Button>}
-            />
           </ActionList>
+          <DropdownFooter>
+            <Button isFullWidth>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>,
     );

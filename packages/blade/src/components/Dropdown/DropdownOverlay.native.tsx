@@ -4,13 +4,16 @@ import styled from 'styled-components/native';
 import { componentIds } from './dropdownUtils';
 import type { DropdownOverlayProps } from './DropdownOverlay.web';
 import { useDropdown } from './useDropdown';
+import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize, metaAttribute, MetaConstants } from '~utils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
-const StyledDropdownOverlay = styled(BaseBox)<{ testID: 'dropdown-overlay' }>((props) => ({
-  transform: `translateY(${makeSize(props.theme.spacing[3])})`,
-}));
+const AnimatedDropdownOverlay = styled(StyledDropdownOverlay)<{ testID: 'dropdown-overlay' }>(
+  (props) => ({
+    transform: `translateY(${makeSize(props.theme.spacing[3])})`,
+  }),
+);
 
 const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((props) => ({
   position: 'static',
@@ -36,7 +39,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         }}
         testID="closeable-area"
       >
-        <StyledDropdownOverlay
+        <AnimatedDropdownOverlay
           display={isOpen ? 'flex' : 'none'}
           position="absolute"
           width="100%"
@@ -44,7 +47,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
           {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
         >
           {children}
-        </StyledDropdownOverlay>
+        </AnimatedDropdownOverlay>
       </StyledCloseableArea>
     </BaseBox>
   );

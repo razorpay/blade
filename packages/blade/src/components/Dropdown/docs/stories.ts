@@ -4,15 +4,13 @@ const Playground = `
   import { 
     Dropdown, 
     DropdownOverlay,
+    DropdownHeader,
+    DropdownFooter,
     SelectInput,
     ActionList,
-    ActionListHeader,
-    ActionListHeaderIcon,
     ActionListItem,
     ActionListItemIcon,
     ActionListSection,
-    ActionListFooter,
-    ActionListFooterIcon,
     HistoryIcon,
     HomeIcon,
     ArrowRightIcon,
@@ -38,11 +36,11 @@ const Playground = `
           }}
         />
         <DropdownOverlay>
+          <DropdownHeader
+            title="Header Title"
+            subtitle="Header Subtitle"
+          />
           <ActionList>
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
             <ActionListItem
               leading={<ActionListItemIcon icon={HomeIcon} />}
               trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
@@ -62,18 +60,10 @@ const Playground = `
                 value="download"
               />
             </ActionListSection>
-            <ActionListFooter
-              title="Footer Tips"
-              leading={<ActionListFooterIcon icon={FileTextIcon} />}
-              trailing={
-                <Button onClick={() => {
-                  console.log('Apply button clicked')
-                }}>
-                  Apply
-                </Button>
-              }
-            />
           </ActionList>
+          <DropdownFooter>
+            <Button isFullWidth onClick={console.log}>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>
     )
@@ -123,16 +113,14 @@ const WithHeaderFooterScroll = `
   import { 
     Dropdown, 
     DropdownOverlay,
+    DropdownHeader,
+    DropdownFooter
     SelectInput,
     ActionList,
-    ActionListHeader,
-    ActionListHeaderIcon,
     ActionListItem,
     ActionListItemAsset,
     ActionListItemIcon,
     ActionListSection,
-    ActionListFooter,
-    ActionListFooterIcon,
     HistoryIcon,
     HomeIcon,
     ArrowRightIcon,
@@ -153,11 +141,10 @@ const WithHeaderFooterScroll = `
           }}
         />
         <DropdownOverlay>
+          <DropdownHeader
+            title="Header Title"
+          />
           <ActionList>
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
             <ActionListItem
               leading={<ActionListItemIcon icon={HomeIcon} />}
               trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
@@ -216,12 +203,10 @@ const WithHeaderFooterScroll = `
               title="Pricing"
               value="pricing"
             />
-            <ActionListFooter
-              title="Footer Tips"
-              leading={<ActionListFooterIcon icon={FileTextIcon} />}
-              trailing={<Button onClick={console.log}>Apply</Button>}
-            />
           </ActionList>
+          <DropdownFooter>
+            <Button isFullWidth onClick={console.log}>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>
     )

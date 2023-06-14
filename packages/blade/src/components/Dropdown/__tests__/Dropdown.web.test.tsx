@@ -2,19 +2,13 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
 import { DropdownButton } from '../DropdownButton';
+import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
-import {
-  ActionList,
-  ActionListFooter,
-  ActionListFooterIcon,
-  ActionListHeader,
-  ActionListHeaderIcon,
-  ActionListItem,
-} from '~components/ActionList';
+import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
-import { HistoryIcon, SearchIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
+import { Box } from '~components/Box';
 
 const getActiveDescendant = (
   selectInput: HTMLElement,
@@ -34,18 +28,15 @@ describe('<Dropdown />', () => {
         <SelectInput label="Fruits" />
         <DropdownOverlay>
           <ActionList>
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
+            <DropdownHeader title="Recent Searches" />
             <ActionListItem title="Apple" value="apple" />
             <ActionListItem title="Mango" value="mango" />
-            <ActionListFooter
-              title="Search Tips"
-              leading={<ActionListFooterIcon icon={SearchIcon} />}
-              trailing={<Button>Apply</Button>}
-            />
           </ActionList>
+          <DropdownFooter>
+            <Box>
+              <Button isFullWidth>Apply</Button>
+            </Box>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>,
     );
@@ -373,8 +364,10 @@ describe('<Dropdown />', () => {
           <ActionList>
             <ActionListItem title="Mingo" value="mingo" />
             <ActionListItem title="Mango" value="mango" />
-            <ActionListFooter trailing={<Button onClick={applyClickHandler}>Apply</Button>} />
           </ActionList>
+          <DropdownFooter>
+            <Button onClick={applyClickHandler}>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>,
     );
@@ -506,20 +499,13 @@ describe('<Dropdown />', () => {
       <Dropdown>
         <SelectInput label="Fruits" testID="select-test" />
         <DropdownOverlay testID="dropdown-overlay-test">
+          <DropdownHeader title="Recent Searches" testID="action-list-header-test" />
           <ActionList testID="action-list-test">
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-              testID="action-list-header-test"
-            />
             <ActionListItem title="Apple" value="apple" testID="action-list-item-test" />
             <ActionListItem title="Mango" value="mango" />
-            <ActionListFooter
-              title="Search Tips"
-              leading={<ActionListFooterIcon icon={SearchIcon} />}
-              trailing={<Button>Apply</Button>}
-              testID="action-list-footer-test"
-            />
+            <DropdownFooter testID="action-list-footer-test">
+              <Button>Apply</Button>
+            </DropdownFooter>
           </ActionList>
         </DropdownOverlay>
       </Dropdown>,

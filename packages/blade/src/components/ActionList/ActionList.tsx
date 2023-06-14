@@ -2,7 +2,6 @@
 import React from 'react';
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
-import { StyledActionList } from './styles/StyledActionList';
 import { ActionListBox } from './ActionListBox';
 import { componentIds } from './componentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -10,6 +9,7 @@ import { assignWithoutSideEffects, makeAccessible, metaAttribute, MetaConstants 
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~src/_helpers/types';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import BaseBox from '~components/Box/BaseBox';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
@@ -44,11 +44,8 @@ type ActionListProps = {
  * <Dropdown>
  *  <SelectInput label="Select Action" />
  *  <DropdownOverlay>
+ *    <DropdownHeader title="Header Title" />
  *    <ActionList>
- *      <ActionListHeader
- *        title="Recent Searches"
- *        leading={<ActionListHeaderIcon icon={HistoryIcon} />}
- *      />
  *      <ActionListItem
  *        title="Home"
  *        value="home"
@@ -59,18 +56,8 @@ type ActionListProps = {
  *        value="pricing"
  *        leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="India Flag" />}
  *      />
- *      <ActionListHeader
- *        title="Search Tips"
- *        leading={<ActionListFooterIcon icon={SearchIcon} />}
- *        trailing={
- *          <Button
- *            onClick={() => console.log('clicked')}
- *          >
- *            Apply
- *          </Button>
- *        }
- *      />
  *    </ActionList>
+ *    <DropdownFooter><Button>Apply</Button></DropdownFooter>
  *  </DropdownOverlay>
  * </Dropdown>
  * ```
@@ -88,13 +75,10 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
 
   const { isInBottomSheet } = useBottomSheetContext();
 
-  const {
-    sectionData,
-    childrenWithId,
-    actionListOptions,
-    actionListHeaderChild,
-    actionListFooterChild,
-  } = React.useMemo(() => getActionListProperties(children), [children]);
+  const { sectionData, childrenWithId, actionListOptions } = React.useMemo(
+    () => getActionListProperties(children),
+    [children],
+  );
 
   React.useEffect(() => {
     setOptions(actionListOptions);
@@ -127,9 +111,7 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
           ref={actionListItemRef as any}
         />
       ) : (
-        <StyledActionList
-          isInBottomSheet={isInBottomSheet}
-          surfaceLevel={surfaceLevel}
+        <BaseBox
           id={`${dropdownBaseId}-actionlist`}
           {...makeAccessible({
             role: actionListContainerRole,
@@ -138,7 +120,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
           })}
           {...metaAttribute({ name: MetaConstants.ActionList, testID })}
         >
-          {actionListHeaderChild}
           <ActionListBox
             isInBottomSheet={isInBottomSheet}
             actionListItemWrapperRole={actionListItemWrapperRole}
@@ -147,8 +128,7 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
             isMultiSelectable={isMultiSelectable}
             ref={actionListItemRef as any}
           />
-          {actionListFooterChild}
-        </StyledActionList>
+        </BaseBox>
       )}
     </ActionListContext.Provider>
   );
@@ -156,7 +136,6 @@ const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): J
 
 const ActionList = assignWithoutSideEffects(React.memo(_ActionList), {
   displayName: componentIds.ActionList,
-  componentId: componentIds.ActionList,
 });
 
 export { ActionList, useActionListContext, ActionListProps };
