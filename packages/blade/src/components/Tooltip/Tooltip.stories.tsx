@@ -20,24 +20,25 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentName="Switch"
-      componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
+      componentName="Tooltip"
+      componentDescription="The tooltip typically provides additional context about the element or its function. A tooltip is always triggered by a mouse hover on desktop and on tap on mobile."
       figmaURL={{
         paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=40636-559188&t=vaK9ZJskCpoIS07l-0',
         bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230354',
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=17121-718899&t=TtGMAUvsH8pUzTq9-0',
       }}
     >
       <Title>Usage</Title>
       <Sandbox showConsole>
         {`
-        import { Switch } from '@razorpay/blade/components'
+        import { Tooltip, Button } from '@razorpay/blade/components'
         
         function App(): JSX.Element {
           return (
-            // Check console
-            <Switch onChange={(e) => console.log(e.isChecked)} accessibilityLabel="Toggle DarkMode" />
+            <Tooltip content="Hello world" placement="bottom">
+              <Button>Hover over me</Button>
+            </Tooltip>
           )
         }
 
