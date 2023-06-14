@@ -16,17 +16,15 @@ jobs:
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout Codebase
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.CI_BOT_TOKEN }}
-      - name: Use Node v14
-        uses: actions/setup-node@v2
+      - name: Use Node v18
+        uses: actions/setup-node@v3
         with:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
-        uses: bahmutov/npm-install@v1
-        with:
-          install-command: yarn --frozen-lockfile
+        uses: ./.github/actions/install-dependencies
       - name: Upload Tokens
         working-directory: packages/blade
         run: node ./scripts/uploadTokens.js '${{ github.event.inputs.tokens }}'  # nosemgrep: yaml.github-actions.security.run-shell-injection.run-shell-injection
