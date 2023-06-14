@@ -215,7 +215,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   display: block;
   position: absolute;
   width: 100%;
-  min-width: 240px;
   right: 0px;
 }
 
@@ -1017,6 +1016,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 .c6 {
   display: block;
   position: absolute;
+  min-width: 240px;
   max-width: 400px;
   left: 0px;
 }
