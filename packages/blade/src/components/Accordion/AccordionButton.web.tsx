@@ -36,7 +36,7 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
     console.warn(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
   }
 
-  const isButtonExpanded = expandedIndex === index;
+  const isItemExpanded = expandedIndex === index;
 
   return (
     <BaseBox
@@ -54,10 +54,10 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
          */
         {...makeAccessible({ role: 'button' })}
         tabIndex={0}
-        isExpanded={isButtonExpanded}
+        isExpanded={isItemExpanded}
         onClick={onClick}
         onKeyDown={onKeyDown}
-        {...makeAccessible({ expanded: isButtonExpanded, controls: collapsibleBodyId })}
+        {...makeAccessible({ expanded: isItemExpanded, controls: collapsibleBodyId })}
         {...metaAttribute({ name: MetaConstants.AccordionButton })}
       >
         <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">
