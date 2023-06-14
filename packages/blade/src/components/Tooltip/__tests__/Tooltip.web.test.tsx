@@ -11,8 +11,8 @@ import { Button } from '~components/Button';
 import { paymentTheme } from '~tokens/theme';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import { InfoIcon } from '~components/Icons';
-import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+import BaseBox from '~components/Box/BaseBox';
 
 const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
@@ -184,7 +184,7 @@ describe('<Tooltip />', () => {
         ref,
       ) => {
         return (
-          <Box
+          <BaseBox
             ref={ref}
             tabIndex={0}
             onBlur={onBlur}
@@ -198,7 +198,7 @@ describe('<Tooltip />', () => {
             testID={testId}
           >
             <Text contrast="low">{children}</Text>
-          </Box>
+          </BaseBox>
         );
       },
     );

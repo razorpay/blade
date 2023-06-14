@@ -16,6 +16,7 @@ import { List, ListItem } from '~components/List';
 import { IconButton } from '~components/Button/IconButton';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import BaseBox from '~components/Box/BaseBox';
 
 const Page = (): React.ReactElement => {
   return (
@@ -249,7 +250,7 @@ const CustomTrigger = React.forwardRef<
   { children: React.ReactNode } & BladeCommonEvents
 >(({ children, ...props }, ref) => {
   return (
-    <Box
+    <BaseBox
       ref={ref}
       tabIndex={-1}
       display={isReactNative() ? 'flex' : 'inline-block'}
@@ -264,7 +265,7 @@ const CustomTrigger = React.forwardRef<
       {...props}
     >
       <Text contrast="low">{children}</Text>
-    </Box>
+    </BaseBox>
   );
 });
 
