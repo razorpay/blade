@@ -134,7 +134,7 @@ const ModalDocs = (): JSX.Element => {
               Title of the Header
             </Text>
           ),
-          subTitle: (
+          subtitle: (
             <Text size="small" type="subdued">
               <Text size="small" type="subdued">
                 <Code size="medium">string</Code>
