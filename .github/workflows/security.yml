@@ -14,7 +14,7 @@ jobs:
     name: Scan
     runs-on: ubuntu-latest                              # nosemgrep : semgrep.dev/s/swati31196:github_provided_runner
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: returntocorp/semgrep-action@v1
         with:
           publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
