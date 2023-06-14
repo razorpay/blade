@@ -114,7 +114,7 @@ const WithHeaderFooterScroll = `
     Dropdown, 
     DropdownOverlay,
     DropdownHeader,
-    DropdownFooter
+    DropdownFooter,
     SelectInput,
     ActionList,
     ActionListItem,
