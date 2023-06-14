@@ -195,7 +195,7 @@ describe('<Tooltip />', () => {
             onPointerEnter={onPointerEnter}
             onTouchEnd={onTouchEnd}
             onTouchStart={onTouchStart}
-            testID={testId}
+            data-testid={testId}
           >
             <Text contrast="low">{children}</Text>
           </BaseBox>
