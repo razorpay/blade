@@ -1,10 +1,13 @@
 import styled from 'styled-components';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, isReactNative, makeSize } from '~utils';
 
 const StyledDropdownOverlay = styled(BaseBox)((props) => {
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
+  const isInBottomSheet = bottomSheetAndDropdownGlue?.dropdownHasBottomSheet;
   const { theme } = props;
-  const isInBottomSheet = false;
+
   return {
     backgroundColor: theme.colors.surface.background.level2.lowContrast,
     borderWidth: isInBottomSheet ? undefined : theme.border.width.thin,
