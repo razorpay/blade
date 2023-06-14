@@ -7,16 +7,16 @@ type AccordionContextState = {
   showNumberPrefix: boolean;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop = (): void => {};
+const AccordionContext = createContext<AccordionContextState | null>(null);
 
-const AccordionContext = createContext<AccordionContextState>({
-  expandedIndex: undefined,
-  defaultExpandedIndex: undefined,
-  onExpandChange: noop,
-  showNumberPrefix: false,
-});
-
-const useAccordion = (): AccordionContextState => useContext(AccordionContext);
+const useAccordion = (): AccordionContextState => {
+  const accordionContext = useContext(AccordionContext);
+  if (!accordionContext) {
+    throw new Error(
+      `[Blade: AccordionContext]: useAccordion should be only used within AccordionContext`,
+    );
+  }
+  return accordionContext;
+};
 
 export { AccordionContext, useAccordion, AccordionContextState };

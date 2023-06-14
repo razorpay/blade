@@ -9,17 +9,16 @@ type CollapsibleContextState = {
   collapsibleBodyId: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop = (): void => {};
+const CollapsibleContext = createContext<CollapsibleContextState | null>(null);
 
-const CollapsibleContext = createContext<CollapsibleContextState>({
-  isExpanded: false,
-  defaultIsExpanded: false,
-  onExpandChange: noop,
-  direction: 'bottom',
-  collapsibleBodyId: '',
-});
-
-const useCollapsible = (): CollapsibleContextState => useContext(CollapsibleContext);
+const useCollapsible = (): CollapsibleContextState => {
+  const collapsibleContext = useContext(CollapsibleContext);
+  if (!collapsibleContext) {
+    throw new Error(
+      `[Blade: CollapsibleContext]: useCollapsible should be only used within CollapsibleContext`,
+    );
+  }
+  return collapsibleContext;
+};
 
 export { CollapsibleContext, useCollapsible, CollapsibleContextState };
