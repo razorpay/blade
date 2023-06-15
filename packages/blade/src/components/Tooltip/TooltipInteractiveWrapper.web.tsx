@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useTooltipContext } from './TooltipContext';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils';
 
@@ -11,6 +12,8 @@ const TooltipInteractiveWrapper = styled(BaseBox).attrs(() => {
     }),
   };
 })(() => {
+  useTooltipContext();
+
   return {
     display: 'inline-block',
   };

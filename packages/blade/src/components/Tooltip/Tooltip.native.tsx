@@ -7,6 +7,7 @@ import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts, mergeProps } from './utils';
+import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils';
 
@@ -65,7 +66,7 @@ const Tooltip = ({
   }, [isOpen]);
 
   return (
-    <>
+    <TooltipContext.Provider value={true}>
       {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
         ...mergeProps(
@@ -105,7 +106,7 @@ const Tooltip = ({
           </TooltipContent>
         </TouchableOpacity>
       </Modal>
-    </>
+    </TooltipContext.Provider>
   );
 };
 

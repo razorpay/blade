@@ -21,6 +21,7 @@ import type { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts, mergeProps } from './utils';
+import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
@@ -88,7 +89,7 @@ const Tooltip = ({
   const { getReferenceProps, getFloatingProps } = useInteractions([role, hover, focus]);
 
   return (
-    <>
+    <TooltipContext.Provider value={true}>
       {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
         ref: refs.setReference,
@@ -123,7 +124,7 @@ const Tooltip = ({
           </BaseBox>
         </FloatingPortal>
       )}
-    </>
+    </TooltipContext.Provider>
   );
 };
 
