@@ -76,7 +76,7 @@ const Collapsible = ({
 
   /**
    * Maintain a ref to the initial value of `defaultExpanded || isExpanded` so changing it has no effect.
-   * This will help in determining the correct initial height of collapsing panel
+   * This will help in determining the correct initial height of collapsing body content
    */
   const initialDefaultExpanded = useRef(Boolean(defaultIsExpanded || isExpanded));
 
