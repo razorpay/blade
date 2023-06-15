@@ -6,6 +6,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~src/_helpers/types';
 import type { Platform } from '~utils';
+import type { BladeCommonEvents } from '~components/types';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -142,7 +143,13 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     borderBottomRightRadius: keyof Border['radius'];
     borderBottomLeftRadius: keyof Border['radius'];
   } & PickCSSByPlatform<
-    'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom' | 'opacity'
+    | 'border'
+    | 'borderLeft'
+    | 'borderRight'
+    | 'borderTop'
+    | 'borderBottom'
+    | 'opacity'
+    | 'pointerEvents'
   >
 >;
 
@@ -233,7 +240,10 @@ type BoxProps = Partial<
     PositionProps &
     GridProps &
     BoxCallbackProps &
-    BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] } & TestID
+    BoxVisualProps & {
+      children?: React.ReactNode | React.ReactNode[];
+      tabIndex?: number;
+    } & TestID
 >;
 
 // Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.
@@ -244,8 +254,10 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
     BaseBoxVisualProps & {
       className?: string;
       id?: string;
+      tabIndex?: number;
     }
-  >;
+  > &
+  BladeCommonEvents;
 
 // ref prop type
 type BoxRefType = Platform.Select<{

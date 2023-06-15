@@ -132,6 +132,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     onScroll: props.onScroll,
 
     children: props.children,
+    tabIndex: props.tabIndex,
     as: isReactNative() ? undefined : props.as, // as is not supported on react-native
   };
 };
