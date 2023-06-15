@@ -63,14 +63,7 @@ type DropdownOverlayProps = {
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const {
-    isOpen,
-    triggererRef,
-    hasLabelOnLeft,
-    dropdownTriggerer,
-    triggerEl,
-    setIsOpen,
-  } = useDropdown();
+  const { isOpen, triggererRef, hasLabelOnLeft, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
@@ -98,7 +91,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     strategy: 'absolute',
     placement: 'bottom-start',
     elements: {
-      reference: triggerEl as Element,
+      reference: triggererRef.current,
     },
     middleware: [detectOverflowMiddleware],
   });

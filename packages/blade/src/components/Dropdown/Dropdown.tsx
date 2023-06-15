@@ -80,7 +80,6 @@ const _Dropdown = ({
   const [isControlled, setIsControlled] = React.useState(false);
   // keep track if dropdown contains bottomsheet
   const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
-  const [triggerEl, setTriggerEl] = React.useState<React.ReactNode>(null);
 
   const dropdownBaseId = useId('dropdown');
 
@@ -157,8 +156,6 @@ const _Dropdown = ({
       setChangeCallbackTriggerer,
       isControlled,
       setIsControlled,
-      triggerEl,
-      setTriggerEl,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
@@ -175,7 +172,6 @@ const _Dropdown = ({
       isKeydownPressed,
       changeCallbackTriggerer,
       isControlled,
-      triggerEl,
     ],
   );
 
