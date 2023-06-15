@@ -108,10 +108,11 @@
   "dependencies": {
     "@babel/runtime": "7.16.5",
     "@types/body-scroll-lock": "3.1.0",
-    "@floating-ui/react": "0.24.2",
     "@use-gesture/react": "10.2.24",
     "body-scroll-lock": "4.0.0-beta.0",
-    "use-presence": "1.1.0"
+    "use-presence": "1.1.0",
+    "@floating-ui/react": "0.24.2",
+    "@floating-ui/react-native": "0.10.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
@@ -151,7 +152,7 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "5.1.2",
     "@testing-library/react-native": "9.1.0",
-    "@testing-library/user-event": "14.4.1",
+    "@testing-library/user-event": "14.4.3",
     "@types/body-scroll-lock": "3.1.0",
     "@types/dedent": "0.7.0",
     "@types/jest": "26.0.23",
@@ -211,6 +212,8 @@
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",
     "@gorhom/portal": "1.0.14",
+    "@floating-ui/react": "0.24.2",
+    "@floating-ui/react-native": "0.10.0",
     "react": ">=17",
     "react-dom": ">=17",
     "react-native": "^0.66.5",

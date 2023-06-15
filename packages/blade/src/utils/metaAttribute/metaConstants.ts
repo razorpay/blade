@@ -28,6 +28,8 @@ export const MetaConstants = {
   SkipNav: 'skipnav',
   Spinner: 'spinner',
   SelectInput: 'select-input',
+  Tooltip: 'tooltip',
+  TooltipInteractiveWrapper: 'tooltip-interactive-wrapper',
   BottomSheet: 'bottom-sheet',
   BottomSheetBody: 'bottom-sheet-body',
   BottomSheetHeader: 'bottom-sheet-header',
