@@ -15,7 +15,7 @@ const _CollapsibleBody = ({ children, testID }: CollapsibleBodyProps): ReactElem
     <BaseBox
       id={collapsibleBodyId}
       {...makeAccessible({ role: 'region' })}
-      {...metaAttribute({ name: MetaConstants.Alert, testID })}
+      {...metaAttribute({ name: MetaConstants.CollapsibleBody, testID })}
     >
       <CollapsiblePanel>{children}</CollapsiblePanel>
     </BaseBox>
