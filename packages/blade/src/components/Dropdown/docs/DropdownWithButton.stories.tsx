@@ -82,9 +82,8 @@ export const InternalMenu = (): JSX.Element => {
   return (
     <Box
       display="flex"
-      // alignItems="flex-end"
+      alignItems="flex-end"
       justifyContent="flex-end"
-      // height="100%"
       gap="spacing.3"
       marginY="spacing.5"
     >
@@ -131,9 +130,16 @@ export const InternalLinkDropdown = (): JSX.Element => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
   return (
-    <Box padding="spacing.10" display="flex" alignItems="center" gap="spacing.2">
+    <Box
+      padding="spacing.10"
+      display="flex"
+      alignItems="flex-end"
+      justifyContent="flex-end"
+      height="100%"
+      gap="spacing.2"
+    >
       <Text>Sort By</Text>
-      <Box flex="1">
+      <Box>
         <Dropdown onDismiss={() => setIsDropdownOpen(false)}>
           <DropdownLink
             icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
