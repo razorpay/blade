@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.9.1
+
+### Patch Changes
+
+- 7613ca13: fix: show decimal upto 2 places when `isAfixSubtle:false`
+
 ## 8.9.0
 
 ### Minor Changes
