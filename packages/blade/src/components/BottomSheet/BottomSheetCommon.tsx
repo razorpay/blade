@@ -39,7 +39,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
   ) => {
     const { close } = useBottomSheetContext();
     const { theme } = useTheme();
-    const webOnlyEventHandlers = isReactNative()
+    const webOnlyEventHandlers: Record<string, any> = isReactNative()
       ? {}
       : {
           onClickCapture,
