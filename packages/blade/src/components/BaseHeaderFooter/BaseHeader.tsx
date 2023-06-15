@@ -200,7 +200,7 @@ const _BaseHeader = ({
                 {titleSuffix && <BaseBox marginLeft="spacing.3">{titleSuffix}</BaseBox>}
               </BaseBox>
               {subtitle ? (
-                <Text variant="body" size="small" weight="regular">
+                <Text variant="body" size="small" weight="regular" type="muted">
                   {subtitle}
                 </Text>
               ) : null}
