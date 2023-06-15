@@ -115,7 +115,7 @@ const Collapsible = ({
         isValidAllowedChildren(child, MetaConstants.AccordionButton)
       )
     ) {
-      console.warn(
+      throw new Error(
         `[Blade: Collapsible]: only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink`,
       );
     }

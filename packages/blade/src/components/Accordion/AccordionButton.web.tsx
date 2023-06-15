@@ -33,7 +33,7 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
   );
 
   if (_index && _icon) {
-    console.warn(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
+    throw new Error(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
   }
 
   const isItemExpanded = expandedIndex === index;
