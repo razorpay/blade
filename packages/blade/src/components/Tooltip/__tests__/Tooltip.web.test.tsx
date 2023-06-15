@@ -4,8 +4,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { act, fireEvent, screen } from '@testing-library/react';
 import React from 'react';
-import type { BladeCommonEvents } from '..';
 import { Tooltip, TooltipInteractiveWrapper } from '..';
+import type { BladeCommonEvents } from '~components/types';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
 import { paymentTheme } from '~tokens/theme';

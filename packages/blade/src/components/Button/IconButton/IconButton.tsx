@@ -4,7 +4,7 @@ import React from 'react';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import type { BladeCommonEvents } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/types';
 
 type IconButtonProps = {
   /**

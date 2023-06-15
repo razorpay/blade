@@ -7,7 +7,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import type { Platform } from '~utils';
 import { assignWithoutSideEffects } from '~utils';
-import type { BladeCommonEvents } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/types';
 import type { BladeElementRef } from '~src/hooks/types';
 
 type LinkCommonProps = {

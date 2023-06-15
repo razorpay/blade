@@ -7,7 +7,7 @@ import type { View } from 'react-native';
 import type { StyledIconButtonProps } from './types';
 import { makeAccessible } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
-import type { BladeCommonEvents } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/types';
 
 type State = 'active' | 'default';
 type IconColorToken = `surface.action.icon.${State}.${ColorContrastTypes}Contrast`;

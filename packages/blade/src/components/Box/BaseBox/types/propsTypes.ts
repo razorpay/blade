@@ -6,7 +6,7 @@ import type { Theme } from '~components/BladeProvider';
 import type { Border } from '~tokens/global';
 import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~src/_helpers/types';
 import type { Platform } from '~utils';
-import type { BladeCommonEvents } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/types';
 
 type LayoutProps = MakeObjectResponsive<
   {

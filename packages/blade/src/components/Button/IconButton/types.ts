@@ -1,5 +1,5 @@
 import type { IconComponent } from '~components/Icons';
-import type { BladeCommonEvents } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/types';
 import type { TestID } from '~src/_helpers/types';
 
 export type StyledIconButtonProps = {

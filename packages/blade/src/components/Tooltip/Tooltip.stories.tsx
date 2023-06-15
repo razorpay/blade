@@ -3,7 +3,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
-import type { BladeCommonEvents } from './types';
 import type { TooltipProps } from './';
 import { TooltipInteractiveWrapper, Tooltip as TooltipComponent } from './';
 import { Button } from '~components/Button';
@@ -17,6 +16,7 @@ import { IconButton } from '~components/Button/IconButton';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import BaseBox from '~components/Box/BaseBox';
+import type { BladeCommonEvents } from '~components/types';
 
 const Page = (): React.ReactElement => {
   return (

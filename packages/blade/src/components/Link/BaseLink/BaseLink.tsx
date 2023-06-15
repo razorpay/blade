@@ -30,7 +30,7 @@ import type { DurationString, EasingString, FontSize, Typography } from '~tokens
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BladeCommonEvents } from '~components/Tooltip/types';
+import type { BladeCommonEvents } from '~components/types';
 import type { BladeElementRef } from '~src/hooks/types';
 
 type BaseLinkCommonProps = {
