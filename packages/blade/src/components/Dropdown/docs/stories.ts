@@ -615,53 +615,48 @@ const WithSimpleMenuStory = `
     ActionListItem,
     ActionListSection,
     MyAccountIcon,
-    MoreVerticalIcon,
-    Button,
     Box,
   } from '@razorpay/blade/components';
 
   function App (): JSX.Element {
     return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="flex-end"
-        gap="spacing.3"
-        marginY="spacing.5"
-      >
-      <Button variant="secondary">More Button</Button>
-        <Box>
-          <Dropdown selectionType="single">
-            <DropdownButton
-              variant="tertiary"
-              icon={MoreVerticalIcon}
-              // onClick={handleHelpClick}
-            />
-            <DropdownOverlay>
-              <ActionList>
-                <ActionListSection>
-                  <ActionListItem title="Give Feedback" value="give Feedback" />
-                  <ActionListItem
-                    title="View Documentation"
-                    value="view documentation"
-                  />
-                  <ActionListItem
-                    title="User Guide"
-                    description="You can restart onboarding from here"
-                    value="User Guide"
-                  />
-                  <ActionListItem
-                    title="New Features"
-                    value="New Features"
-                    description="You can restart feature announcements from here"
-                  />
-                </ActionListSection>
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
-        </Box>
-
-        
+      <Box minHeight="200px" width={{ base: '100%', m: '500px' }}>
+        <Dropdown>
+          <DropdownButton icon={MyAccountIcon} variant="secondary">
+            My Account
+          </DropdownButton>
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListSection title="Account @saurabh">
+                <ActionListItem
+                  title="My Profile"
+                  value="profile"
+                  href="https://youtu.be/4qRZmFYdozY?t=33"
+                  target="_blank"
+                />
+                <ActionListItem
+                  title="Dashboard"
+                  value="dashboard"
+                  href="https://dashboard.razorpay.com/"
+                />
+                <ActionListItem
+                  title="Settings"
+                  value="settings"
+                  href="https://memezila.com/Me-changing-the-phone-language-just-for-fun-Couldnt-find-language-setting-now-meme-5150"
+                />
+              </ActionListSection>
+              <ActionListItem
+                intent="negative"
+                title="Log Out"
+                value="logout"
+                onClick={() => {
+                  // eslint-disable-next-line no-alert
+                  alert('Logging out');
+                }}
+              />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
       </Box>
     );
   };

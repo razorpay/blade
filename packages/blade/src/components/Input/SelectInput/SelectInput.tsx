@@ -75,6 +75,7 @@ const _SelectInput = (
     setIsControlled,
     selectionType,
     selectedIndices,
+    setTriggerEl,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -191,45 +192,47 @@ const _SelectInput = (
           />
         </VisuallyHidden>
       ) : null}
-      <BaseInput
-        {...baseInputProps}
-        as="button"
-        hideLabelText={props.label?.length === 0}
-        componentName={MetaConstants.SelectInput}
-        ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
-        textAlign="left"
-        value={displayValue}
-        placeholder={placeholder}
-        id={`${dropdownBaseId}-trigger`}
-        labelId={`${dropdownBaseId}-label`}
-        leadingIcon={icon}
-        hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
-        isPopupExpanded={isOpen}
-        onClick={(e) => {
-          onTriggerClick();
-          props?.onClick?.(e);
-        }}
-        onKeyDown={onTriggerKeydown}
-        onBlur={({ name }) => {
-          onTriggerBlur?.({ name, value, onBlurCallback: onBlur });
-        }}
-        activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
-        popupId={`${dropdownBaseId}-actionlist`}
-        shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
-        interactionElement={
-          <SelectChevronIcon
-            onClick={() => {
-              // Icon onClicks to the SelectInput itself
-              if (!isReactNative()) {
-                triggererRef.current?.focus();
-              }
-              onTriggerClick();
-            }}
-            icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
-          />
-        }
-        testID={props.testID}
-      />
+      <BaseBox ref={!isReactNative() ? setTriggerEl : null}>
+        <BaseInput
+          {...baseInputProps}
+          as="button"
+          hideLabelText={props.label?.length === 0}
+          componentName={MetaConstants.SelectInput}
+          ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
+          textAlign="left"
+          value={displayValue}
+          placeholder={placeholder}
+          id={`${dropdownBaseId}-trigger`}
+          labelId={`${dropdownBaseId}-label`}
+          leadingIcon={icon}
+          hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
+          isPopupExpanded={isOpen}
+          onClick={(e) => {
+            onTriggerClick();
+            props?.onClick?.(e);
+          }}
+          onKeyDown={onTriggerKeydown}
+          onBlur={({ name }) => {
+            onTriggerBlur?.({ name, value, onBlurCallback: onBlur });
+          }}
+          activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
+          popupId={`${dropdownBaseId}-actionlist`}
+          shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+          interactionElement={
+            <SelectChevronIcon
+              onClick={() => {
+                // Icon onClicks to the SelectInput itself
+                if (!isReactNative()) {
+                  triggererRef.current?.focus();
+                }
+                onTriggerClick();
+              }}
+              icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
+            />
+          }
+          testID={props.testID}
+        />
+      </BaseBox>
     </BaseBox>
   );
 };

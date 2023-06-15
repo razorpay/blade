@@ -7,6 +7,7 @@ import { useDropdown } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils';
+import { BaseBox } from '~components/Box/BaseBox';
 
 type DropdownLinkProps = LinkButtonVariantProps & {
   onBlur?: BaseLinkProps['onBlur'];
@@ -46,7 +47,7 @@ const _DropdownLink = ({
   return (
     // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
-    <div ref={setTriggerEl}>
+    <BaseBox ref={setTriggerEl}>
       <BaseLink
         variant="button"
         {...(icon ? { icon, children } : { children })}
@@ -88,7 +89,7 @@ const _DropdownLink = ({
           onKeyDown?.(e as any);
         }}
       />
-    </div>
+    </BaseBox>
   );
 };
 

@@ -7,6 +7,7 @@ import { useDropdown } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils';
+import { BaseBox } from '~components/Box/BaseBox';
 
 type DropdownButtonProps = ButtonProps & {
   onBlur?: BaseButtonProps['onBlur'];
@@ -45,7 +46,7 @@ const _DropdownButton = ({
   return (
     // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
     // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with
-    <div ref={setTriggerEl}>
+    <BaseBox ref={setTriggerEl}>
       <BaseButton
         {...styledProps}
         {...(icon ? { icon, children } : { children })}
@@ -88,7 +89,7 @@ const _DropdownButton = ({
           onKeyDown?.(e as any);
         }}
       />
-    </div>
+    </BaseBox>
   );
 };
 

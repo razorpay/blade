@@ -347,32 +347,36 @@ export const POSITION_THRESHOLDS = {
   right: -400,
 };
 
-export const getDropdownOverlayPosition = (
-  position: PositionProp,
-  isMenu: boolean,
-): DropdownPosition => {
+export const getDropdownOverlayPosition = ({
+  overflow: position,
+  isMenu,
+  triggererEl,
+}: {
+  overflow: PositionProp;
+  isMenu: boolean;
+  triggererEl: HTMLButtonElement | null;
+}): DropdownPosition => {
   const zeroSpacing: SpacingValueType = 'spacing.0';
-  if (!isMenu) {
-    return { left: zeroSpacing };
-  }
+  const { bottom, right } = position;
 
-  const { top, bottom, left, right } = position;
   const newPosition: DropdownPosition = { left: zeroSpacing };
+
+  if (!isMenu) {
+    if (bottom > POSITION_THRESHOLDS.bottom) {
+      newPosition.bottom = `${Number(triggererEl?.clientHeight) + 32}px`;
+    }
+    return newPosition;
+  }
 
   if (right > POSITION_THRESHOLDS.right) {
     newPosition.right = zeroSpacing;
     newPosition.left = undefined;
-  } else if (left > POSITION_THRESHOLDS.left) {
-    newPosition.left = zeroSpacing;
-    newPosition.right = undefined;
   }
 
   if (bottom > POSITION_THRESHOLDS.bottom) {
-    newPosition.bottom = 'spacing.11';
+    newPosition.bottom = `${Number(triggererEl?.clientHeight) + 20}px`;
     newPosition.top = undefined;
-  } else if (top > POSITION_THRESHOLDS.top) {
-    newPosition.top = zeroSpacing;
-    newPosition.bottom = undefined;
   }
+
   return newPosition;
 };

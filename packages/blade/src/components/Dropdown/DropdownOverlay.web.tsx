@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
-import type { MiddlewareState } from '@floating-ui/react';
 import { useFloating, detectOverflow } from '@floating-ui/react';
+import type { MiddlewareState } from '@floating-ui/react';
 import type { DropdownPosition } from './dropdownUtils';
 import { componentIds, getDropdownOverlayPosition } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
@@ -63,7 +63,14 @@ type DropdownOverlayProps = {
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const { isOpen, triggererRef, hasLabelOnLeft, dropdownTriggerer, triggerEl } = useDropdown();
+  const {
+    isOpen,
+    triggererRef,
+    hasLabelOnLeft,
+    dropdownTriggerer,
+    triggerEl,
+    setIsOpen,
+  } = useDropdown();
   const { theme } = useTheme();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
@@ -75,7 +82,11 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     name: 'detectOverflowMiddleware',
     async fn(state: MiddlewareState) {
       const overflow = await detectOverflow(state, { elementContext: 'reference' });
-      const position = getDropdownOverlayPosition(overflow, isMenu);
+      const position = getDropdownOverlayPosition({
+        overflow,
+        isMenu,
+        triggererEl: triggererRef.current,
+      });
       setDropdownPosition(position);
       return {};
     },
@@ -83,7 +94,9 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
 
   const { refs } = useFloating({
     open: isOpen,
+    onOpenChange: setIsOpen,
     strategy: 'absolute',
+    placement: 'bottom-start',
     elements: {
       reference: triggerEl as Element,
     },
@@ -149,7 +162,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <div ref={refs.setFloating}>
+    <BaseBox position="relative" ref={refs.setFloating}>
       <StyledDropdownOverlay
         width={isMenu ? 'max-content' : width}
         // In SelectInput, Overlay should always take width of Input
@@ -168,7 +181,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
       >
         {children}
       </StyledDropdownOverlay>
-    </div>
+    </BaseBox>
   );
 };
 
