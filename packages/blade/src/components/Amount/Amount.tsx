@@ -13,7 +13,14 @@ import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~src/_helpers/types';
-import { castNativeType, castWebType, getPlatformType, metaAttribute, MetaConstants } from '~utils';
+import {
+  assignWithoutSideEffects,
+  castNativeType,
+  castWebType,
+  getPlatformType,
+  metaAttribute,
+  MetaConstants,
+} from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
@@ -217,7 +224,7 @@ const getCurrencyWeight = (
   return 'regular';
 };
 
-const Amount = ({
+const _Amount = ({
   value,
   suffix = 'decimals',
   size = 'body-medium',
@@ -278,5 +285,10 @@ const Amount = ({
     </BaseBox>
   );
 };
+
+const Amount = assignWithoutSideEffects(_Amount, {
+  displayName: 'Amount',
+  componentId: 'Amount',
+});
 
 export { Amount, AmountProps };

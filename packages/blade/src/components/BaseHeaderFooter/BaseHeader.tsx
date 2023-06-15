@@ -53,7 +53,7 @@ type BaseHeaderProps = {
 > &
   TestID;
 
-type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text';
+type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text' | 'Amount';
 
 // prop restriction map for corresponding sub components
 const propRestrictionMap = {
@@ -70,6 +70,9 @@ const propRestrictionMap = {
   Text: {
     size: 'medium',
     variant: 'body',
+  },
+  Amount: {
+    size: 'body-medium',
   },
 } as const;
 
