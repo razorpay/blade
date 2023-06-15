@@ -13,6 +13,7 @@ import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+import { MetaConstants } from '~utils';
 
 const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
@@ -246,5 +247,31 @@ describe('<Tooltip />', () => {
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
     expect(getByRole('button', { name: buttonText })).toHaveAccessibleDescription(tooltipContent);
     await assertAccessible(getByRole('tooltip'));
+  });
+
+  it('should have proper meta attributes', async () => {
+    jest.useFakeTimers();
+    const tooltipContent = 'Hello world';
+    const { getByTestId } = renderWithTheme(
+      <Tooltip content={tooltipContent}>
+        <TooltipInteractiveWrapper>
+          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+        </TooltipInteractiveWrapper>
+      </Tooltip>,
+    );
+    const wrapper = getByTestId('tooltip-interactive-wrapper');
+    expect(wrapper).toHaveAttribute(
+      'data-blade-component',
+      MetaConstants.TooltipInteractiveWrapper,
+    );
+    fireEvent.mouseEnter(wrapper);
+    // should open after 300ms
+    await act(async () => {
+      jest.advanceTimersByTime(300);
+    });
+    expect(screen.queryByRole('tooltip')).toHaveAttribute(
+      'data-blade-component',
+      MetaConstants.Tooltip,
+    );
   });
 });

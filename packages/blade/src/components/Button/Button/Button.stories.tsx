@@ -15,7 +15,7 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import {
-  getCommonEventArgTypes,
+  getBladeCommonEventArgTypes,
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
 import { castWebType } from '~utils';
@@ -78,7 +78,7 @@ export default {
   },
   argTypes: {
     ...getStyledPropsArgTypes(),
-    ...getCommonEventArgTypes(),
+    ...getBladeCommonEventArgTypes(),
     icon: {
       name: 'icon',
       type: 'select',

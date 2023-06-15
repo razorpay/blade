@@ -8,6 +8,7 @@ import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts, mergeProps } from './utils';
 import { useTheme } from '~components/BladeProvider';
+import { metaAttribute, MetaConstants } from '~utils';
 
 const Tooltip = ({
   content,
@@ -84,6 +85,7 @@ const Tooltip = ({
           onPress={handleClose}
           activeOpacity={1}
           testID="tooltip-modal-backdrop"
+          {...metaAttribute({ name: MetaConstants.Tooltip })}
         >
           <TooltipContent
             isVisible={isOpen}

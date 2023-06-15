@@ -11,7 +11,7 @@ import { Heading, Text } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import {
-  getCommonEventArgTypes,
+  getBladeCommonEventArgTypes,
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
 
@@ -66,7 +66,7 @@ export default {
       mapping: iconMap,
     },
     ...getStyledPropsArgTypes(),
-    ...getCommonEventArgTypes(),
+    ...getBladeCommonEventArgTypes(),
   },
   parameters: {
     docs: {

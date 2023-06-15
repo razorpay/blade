@@ -253,7 +253,7 @@ const getBaseBoxArgTypes = (): StorybookArgTypes<
   };
 };
 
-const getCommonEventArgTypes = (): StorybookArgTypes<Record<string, string>> => {
+const getBladeCommonEventArgTypes = (): StorybookArgTypes<Record<string, string>> => {
   return {
     onMouseEnter: {
       table: {
@@ -318,4 +318,4 @@ const getCommonEventArgTypes = (): StorybookArgTypes<Record<string, string>> => 
   };
 };
 
-export { getBaseBoxArgTypes, getBoxArgTypes, getStyledPropsArgTypes, getCommonEventArgTypes };
+export { getBaseBoxArgTypes, getBoxArgTypes, getStyledPropsArgTypes, getBladeCommonEventArgTypes };

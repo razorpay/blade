@@ -23,7 +23,7 @@ import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts, mergeProps } from './utils';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { makeAccessible } from '~utils';
+import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
 import { useId } from '~src/hooks/useId';
 import { size } from '~tokens/global';
 
@@ -102,6 +102,7 @@ const Tooltip = ({
             style={floatingStyles}
             pointerEvents="none"
             {...getFloatingProps()}
+            {...metaAttribute({ name: MetaConstants.Tooltip })}
           >
             <TooltipContent
               style={styles}
