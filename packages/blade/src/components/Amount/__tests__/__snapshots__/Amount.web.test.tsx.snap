@@ -1100,7 +1100,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
       font-size="100"
       font-weight="regular"
     >
-      1,000
+      1,000.00
     </div>
   </div>
 </div>

@@ -50,7 +50,7 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 | -------------------- | ---------- | ----------- | -------------------------------------------------------------- | -------- |
 | defaultExpandedIndex | `number`   | `undefined` | Makes the passed item index expanded by default (uncontrolled) |          |
 | expandedIndex        | `number`   | `undefined` | Expands the passed index (controlled)                          |          |
-| onChange             | `function` | `undefined` | Callback for change in any item's expanded state               |          |
+| onExpandChange       | `function` | `undefined` | Callback for change in any item's expanded state               |          |
 | showNumberPrefix     | `boolean`  | `false`     | Adds numeric index at the beginning of items                   |          |
 
 > **Note**
@@ -58,8 +58,8 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 > - Also includes layout based styling props
 > - By default the accordion renders in all items collapsed state, at max only one item can be expanded at a time (design restriction)
 > - `defaultExpandedIndex` can accept an accordion item index to render the accordion in an uncontrolled state
-> - For using accordion in controlled state, use `expandedIndex` coupled with `onChange`
-> - `onChange` callback signature `({ expandedIndex }) => {}`, `expandedIndex` represents the expanded item's index, if there are no expanded items it'll be `undefined`
+> - For using accordion in controlled state, use `expandedIndex` coupled with `onExpandChange`
+> - `onExpandChange` callback signature `({ expandedIndex }) => {}`, `expandedIndex` represents the expanded item's index, if there are no expanded items it'll be `-1`
 
 ### AccordionItem
 
@@ -113,10 +113,10 @@ Native:
 ```tsx
 const App = () => {
   const [index, setIndex] = useState(0);
-  const onChange = ({ expandedIndex }) => setIndex(expandedIndex);
+  const onExpandChange = ({ expandedIndex }) => setIndex(expandedIndex);
 
   return (
-    <Accordion expandedIndex={index} onChange={onChange}>
+    <Accordion expandedIndex={index} onExpandChange={onExpandChange}>
       <AccordionItem title="Can I use a payment gateway?" description="Just use Razorpay" />
       <AccordionItem
         title="How can I transfer money to customers?"
@@ -130,9 +130,9 @@ const App = () => {
 ## Alternatives
 
 - Instead of `expandedIndex`, `defaultExpandedIndex` considered `value`, `defaultValue`, however it doesn't co-relate well with how these APIs work in other components where they're mostly being used for user inputs (eg. in forms) and therefore termed values. On the other hand, accordion is mostly a presentational component and shouldn't be used for user inputs _(what do we treat as value in accordion)_.
-- Instead of `expandedIndex`, `defaultExpandedIndex` on the root `Accordion` component, considered an approach to instead put relatable props such as `isExpanded`, `isDefaultExpanded` on the child `AccordionItem` component. However, with this, controlled usecase becomes tricky since we would still ideally want a single callback listener for `onChange`:
-  - if we put this `onChange` at the root `Accordion`, we would still need some sort of `index` or value in the callback
-  - if we put this `onChange` on individual `AccordionItem` components, either a user would need to pass different callback handlers to each or we would need to pass an `index` or some value (same dilemma)
+- Instead of `expandedIndex`, `defaultExpandedIndex` on the root `Accordion` component, considered an approach to instead put relatable props such as `isExpanded`, `isDefaultExpanded` on the child `AccordionItem` component. However, with this, controlled usecase becomes tricky since we would still ideally want a single callback listener for `onExpandChange`:
+  - if we put this `onExpandChange` at the root `Accordion`, we would still need some sort of `index` or value in the callback
+  - if we put this `onExpandChange` on individual `AccordionItem` components, either a user would need to pass different callback handlers to each or we would need to pass an `index` or some value (same dilemma)
   - it's slightly inconvenient to have callback handlers and the expanded index value at different places (one at root and one at child)
 
 ## Implementation notes
