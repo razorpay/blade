@@ -72,7 +72,6 @@ E.g. This is AutoComplete from Primer where the tags go into a slot and input ge
 <img width="419" alt="image" src="https://github.com/razorpay/blade/assets/30949385/be01cdfb-1171-4970-b381-76e4c44d1854">
 
 </details>
-<br/>
 
 ### Integration with SelectInput and AutoComplete
 
@@ -80,20 +79,23 @@ SelectInput and AutoComplete are not expected to have any changes in consumer AP
 
 ### Integration with TextInput and TextArea
 
+> **Warning**
+>
+> Open Question: Do we want to discuss this right now? or do I remove it from API decision itself?
+
 > **Note**
 >
-> This implementation is out of scope for initial release of Tag. Have added considered approaches below which we can refer back and confirm the feasibility while implementation. (Feel free to review and suggest any changes here though. We can consider them while imeplementation in future)
+> This implementation is out of scope for initial release of Tag.
+>
+> Have added considered approaches below which we can refer back and confirm the feasibility while implementation. (Feel free to review and suggest any changes here though. We can consider them while imeplementation in future)
 
 On consumer end, the APIs would look like -
 
 #### New `tagsSlot` prop on `TextInput` and `TextArea`
 
-New `tagsSlot` prop for Inputs that support rendering tags.
-
 - Can only be used in Controlled Input
   - Why?
     - This is comparitively a rare usecase so don't see any need of having another `hasTags` props that handles adding tags internally.
-    -
 
 ```jsx
 <TextInput tagsSlot={} value="" onChange={} />
@@ -101,7 +103,8 @@ New `tagsSlot` prop for Inputs that support rendering tags.
 
 **Alternate Prop Name**
 
-- `leading`
+- `leading` (felt confusing because it is leading to the invisible input tag and not the actual visible TextInput)
+- `valuePrefix` (Similar to `titleSuffix` from BaseHeader)
 
 <details>
 <summary>Full Controlled Example</summary>
@@ -167,9 +170,14 @@ We can extend our `value` prop to accept JSX
 
 </details>
 
-### References
+## References
 
 - [`TagsInput` component by PluralSight Design System](https://design-system.pluralsight.com/components/tagsinput)
 - [`tokens` prop by Primer AutoComplete.Input](https://primer.style/react/Autocomplete/)
 - [Carbon just putting everything outside of Inputs](https://carbondesignsystem.com/components/tag/usage)
 - [`elemBeforeInput` prop on Atlassian TextField](https://atlassian.design/components/textfield/examples#elements-before-and-after-input)
+
+## Open Questions
+
+1. Do we want to discuss Tag's integration with TextInput and TextArea? or should I remove it from API decision altogether?
+2. `<Tag />` or `<Tags />` 😅
