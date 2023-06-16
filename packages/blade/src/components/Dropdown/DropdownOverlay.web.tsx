@@ -8,7 +8,14 @@ import type { DropdownPosition } from './dropdownUtils';
 import { componentIds, getDropdownOverlayPosition } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
+import {
+  castWebType,
+  isReactNative,
+  makeMotionTime,
+  makeSize,
+  metaAttribute,
+  MetaConstants,
+} from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { spacing, size } from '~tokens/global';
@@ -155,7 +162,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <BaseBox position="relative" ref={refs.setFloating}>
+    <BaseBox position="relative" ref={!isReactNative() ? refs.setFloating : null}>
       <StyledDropdownOverlay
         width={isMenu ? 'max-content' : width}
         // In SelectInput, Overlay should always take width of Input
