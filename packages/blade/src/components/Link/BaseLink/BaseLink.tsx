@@ -274,7 +274,12 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
 ): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
   const childrenString = getStringFromReactText(children);
-  const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
+  const {
+    currentInteraction,
+    setCurrentInteraction,
+    onBlur: onBlurInteraction,
+    ...syntheticEvents
+  } = useInteraction();
   const { theme } = useTheme();
   if (!Icon && !childrenString?.trim()) {
     throw new Error(
@@ -322,20 +327,34 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleBlur = (event: any): void => {
+    onBlurInteraction();
+    if (onBlur) {
+      onBlur(event);
+    }
+  };
+
   return (
     <StyledBaseLink
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       {...syntheticEvents}
       {...metaAttribute({ name: MetaConstants.Link, testID })}
-      accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
+      accessibilityProps={{
+        ...makeAccessible({
+          role,
+          label: accessibilityLabel,
+          disabled,
+        }),
+      }}
       variant={variant}
       as={as}
       href={href}
       target={target}
       rel={rel ?? defaultRel}
       onClick={handleOnClick}
-      onBlur={onBlur}
+      onBlur={handleBlur}
       onKeyDown={onKeyDown}
       disabled={disabled}
       type={type}
