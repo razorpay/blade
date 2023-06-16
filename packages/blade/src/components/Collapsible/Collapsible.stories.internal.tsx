@@ -13,6 +13,7 @@ import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
 import { Amount } from '~components/Amount';
+import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -29,19 +30,42 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { Collapsible, CollapsibleButton, CollapsibleBody, Text, Amount } from '@razorpay/blade/components';
+        import { Collapsible, CollapsibleButton, CollapsibleBody, Text, Amount, Box } from '@razorpay/blade/components';
 
         function App() {
           return (
             <Collapsible>
               <CollapsibleButton>View Price Breakdown</CollapsibleButton>
               <CollapsibleBody>
-                <Text>Actual amount</Text>
-                <Amount value={1000} intent="positive" />
-                <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
-                <Text>2%</Text>
-                <Text marginTop="spacing.2">GST</Text>
-                <Text>18%</Text>
+                <Box display="flex" flexDirection="column" minWidth="200px">
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    alignItems="baseline"
+                  >
+                    <Text>Actual amount</Text>
+                    <Amount value={1000} intent="positive" />
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    alignItems="baseline"
+                  >
+                    <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+                    <Text>2%</Text>
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    alignItems="baseline"
+                  >
+                    <Text marginTop="spacing.2">GST</Text>
+                    <Text>18%</Text>
+                  </Box>
+                </Box>
               </CollapsibleBody>
             </Collapsible>
           )
@@ -74,12 +98,35 @@ const CollapsibleButtonTemplate: ComponentStory<typeof CollapsibleComponent> = (
     <CollapsibleComponent {...args}>
       <CollapsibleButton>View Price Breakdown</CollapsibleButton>
       <CollapsibleBody>
-        <Text>Actual amount</Text>
-        <Amount value={1000} intent="positive" />
-        <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
-        <Text>2%</Text>
-        <Text marginTop="spacing.2">GST</Text>
-        <Text>18%</Text>
+        <Box display="flex" flexDirection="column" minWidth="200px">
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text>Actual amount</Text>
+            <Amount value={1000} intent="positive" />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+            <Text>2%</Text>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">GST</Text>
+            <Text>18%</Text>
+          </Box>
+        </Box>
       </CollapsibleBody>
     </CollapsibleComponent>
   );
@@ -92,12 +139,35 @@ const CollapsibleLinkTemplate: ComponentStory<typeof CollapsibleComponent> = ({ 
     <CollapsibleComponent {...args}>
       <CollapsibleLink>View Price Breakdown</CollapsibleLink>
       <CollapsibleBody>
-        <Text>Actual amount</Text>
-        <Amount value={1000} intent="positive" />
-        <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
-        <Text>2%</Text>
-        <Text marginTop="spacing.2">GST</Text>
-        <Text>18%</Text>
+        <Box display="flex" flexDirection="column" minWidth="200px">
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text>Actual amount</Text>
+            <Amount value={1000} intent="positive" />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+            <Text>2%</Text>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">GST</Text>
+            <Text>18%</Text>
+          </Box>
+        </Box>
       </CollapsibleBody>
     </CollapsibleComponent>
   );
@@ -128,12 +198,35 @@ const CollapsibleControlledTemplate: ComponentStory<typeof CollapsibleComponent>
     >
       <CollapsibleButton>{isExpanded ? 'Hide' : 'Show'} Price Breakdown</CollapsibleButton>
       <CollapsibleBody>
-        <Text>Actual amount</Text>
-        <Amount value={1000} intent="positive" />
-        <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
-        <Text>2%</Text>
-        <Text marginTop="spacing.2">GST</Text>
-        <Text>18%</Text>
+        <Box display="flex" flexDirection="column" minWidth="200px">
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text>Actual amount</Text>
+            <Amount value={1000} intent="positive" />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+            <Text>2%</Text>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">GST</Text>
+            <Text>18%</Text>
+          </Box>
+        </Box>
       </CollapsibleBody>
     </CollapsibleComponent>
   );
