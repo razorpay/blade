@@ -19,7 +19,7 @@ const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Collapsible"
-      componentDescription="Collapsible is used to allow users to toggle the visibility of hidden content within a container."
+      componentDescription="[Only available for web PRE RELEASE currently]: Collapsible is used to allow users to toggle the visibility of hidden content within a container."
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=79-629874&t=sVxH3DOnx3L3F9rO-0',
@@ -30,7 +30,7 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { Collapsible, CollapsibleButton, CollapsibleBody, Text, Amount, Box } from '@razorpay/blade/components';
+        import { Collapsible_PRE_RELEASE as Collapsible, CollapsibleButton, CollapsibleBody, Text, Amount, Box } from '@razorpay/blade/components';
 
         function App() {
           return (
@@ -78,9 +78,8 @@ const Page = (): ReactElement => {
   );
 };
 
-// TODO: Change this story from internal when releasing
 const meta: Meta<CollapsibleProps> = {
-  title: 'Components/Collapsible (Internal)',
+  title: 'Components/Collapsible (PRE RELEASE)',
   component: CollapsibleComponent,
   args: {},
   argTypes: {
