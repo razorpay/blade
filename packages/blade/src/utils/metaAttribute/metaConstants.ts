@@ -1,4 +1,7 @@
 export const MetaConstants = {
+  Accordion: 'accordion',
+  AccordionButton: 'accordion-button',
+  AccordionItem: 'accordion-item',
   ActionList: 'action-list',
   ActionListFooter: 'action-list-footer',
   ActionListHeader: 'action-list-header',
@@ -38,6 +41,10 @@ export const MetaConstants = {
   CardBody: 'card-body',
   CardHeader: 'card-header',
   CardFooter: 'card-footer',
+  Collapsible: 'collapsible',
+  CollapsibleBody: 'collapsible-body',
+  CollapsibleButton: 'collapsible-button',
+  CollapsibleLink: 'collapsible-link',
   Modal: 'modal',
   ModalBody: 'modal-body',
   ModalHeader: 'modal-header',
