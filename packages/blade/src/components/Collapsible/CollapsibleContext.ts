@@ -1,24 +1,24 @@
-import type { Dispatch, SetStateAction } from 'react';
 import { createContext, useContext } from 'react';
 import type { CollapsibleProps } from './Collapsible';
 
 type CollapsibleContextState = {
   isExpanded: boolean;
   defaultIsExpanded: boolean;
-  setIsExpanded: Dispatch<SetStateAction<boolean>>;
+  onExpandChange: (isExpanded: boolean) => void;
   direction: CollapsibleProps['direction'];
+  collapsibleBodyId: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop = (): void => {};
+const CollapsibleContext = createContext<CollapsibleContextState | null>(null);
 
-const CollapsibleContext = createContext<CollapsibleContextState>({
-  isExpanded: false,
-  defaultIsExpanded: false,
-  setIsExpanded: noop,
-  direction: 'bottom',
-});
-
-const useCollapsible = (): CollapsibleContextState => useContext(CollapsibleContext);
+const useCollapsible = (): CollapsibleContextState => {
+  const collapsibleContext = useContext(CollapsibleContext);
+  if (!collapsibleContext) {
+    throw new Error(
+      `[Blade: CollapsibleContext]: You're trying to use Collapsible sub-components without Collapsible. useCollapsible should only be used within CollapsibleContext`,
+    );
+  }
+  return collapsibleContext;
+};
 
 export { CollapsibleContext, useCollapsible, CollapsibleContextState };

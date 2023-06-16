@@ -1,19 +1,28 @@
-import type { ReactElement } from 'react';
+import type { KeyboardEventHandler, ReactElement } from 'react';
 import { StyledAccordionButton } from './StyledAccordionButton';
 import type { AccordionButtonProps } from './types';
+import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
-import { makeAccessible } from '~utils';
+import { MetaConstants, assignWithoutSideEffects, makeAccessible, metaAttribute } from '~utils';
 import { Heading } from '~components/Typography';
-import { ChevronDownIcon } from '~components/Icons';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
+import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 
-const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
-  const { setIsExpanded } = useCollapsible();
+const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
+  const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
+  const { showNumberPrefix, expandedIndex } = useAccordion();
 
-  const onClick = (): void => setIsExpanded((prev) => !prev);
+  const toggleCollapse = (): void => onExpandChange(!isExpanded);
+  const onClick = (): void => toggleCollapse();
+  const onKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
+    const SPACE_KEY = ' ';
+    if (event.key === SPACE_KEY || event.key === 'Enter') {
+      toggleCollapse();
+    }
+  };
 
   const _index =
-    typeof index === 'number' ? (
+    typeof index === 'number' && showNumberPrefix ? (
       <Heading size="small" marginRight="spacing.2">
         {index + 1}.
       </Heading>
@@ -24,13 +33,16 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
   );
 
   if (_index && _icon) {
-    console.warn(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
+    throw new Error(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
   }
+
+  const isItemExpanded = expandedIndex === index;
 
   return (
     <BaseBox
       // a11y guidelines suggest having an apt heading surround a button but heading level is hardcoded here
       {...makeAccessible({ role: 'heading', level: 3 })}
+      width="100%"
     >
       <StyledAccordionButton
         /**
@@ -42,19 +54,25 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
          */
         {...makeAccessible({ role: 'button' })}
         tabIndex={0}
-        // TODO: add logic
-        isExpanded={false}
+        isExpanded={isItemExpanded}
         onClick={onClick}
+        onKeyDown={onKeyDown}
+        {...makeAccessible({ expanded: isItemExpanded, controls: collapsibleBodyId })}
+        {...metaAttribute({ name: MetaConstants.AccordionButton })}
       >
-        <BaseBox display="flex" flexDirection="row" alignItems="flex-start">
+        <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">
           {_index}
           {_icon}
           <Heading size="small">{children}</Heading>
         </BaseBox>
-        <ChevronDownIcon color="currentColor" size="large" marginLeft="spacing.4" />
+        <CollapsibleChevronIcon color="currentColor" size="large" />
       </StyledAccordionButton>
     </BaseBox>
   );
 };
+
+const AccordionButton = assignWithoutSideEffects(_AccordionButton, {
+  componentId: MetaConstants.AccordionButton,
+});
 
 export { AccordionButton, AccordionButtonProps };

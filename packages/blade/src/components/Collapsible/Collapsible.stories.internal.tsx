@@ -1,6 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
+import { useState } from 'react';
 
 import type { CollapsibleProps } from './Collapsible';
 import { Collapsible as CollapsibleComponent } from './Collapsible';
@@ -11,6 +12,8 @@ import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
+import { Amount } from '~components/Amount';
+import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -27,14 +30,42 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { Collapsible, CollapsibleButton, CollapsibleBody, Text } from '@razorpay/blade/components';
+        import { Collapsible, CollapsibleButton, CollapsibleBody, Text, Amount, Box } from '@razorpay/blade/components';
 
         function App() {
           return (
             <Collapsible>
-              <CollapsibleButton>Answer to life, universe and everything</CollapsibleButton>
+              <CollapsibleButton>View Price Breakdown</CollapsibleButton>
               <CollapsibleBody>
-                <Text>42</Text>
+                <Box display="flex" flexDirection="column" minWidth="200px">
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    alignItems="baseline"
+                  >
+                    <Text>Actual amount</Text>
+                    <Amount value={1000} intent="positive" />
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    alignItems="baseline"
+                  >
+                    <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+                    <Text>2%</Text>
+                  </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    alignItems="baseline"
+                  >
+                    <Text marginTop="spacing.2">GST</Text>
+                    <Text>18%</Text>
+                  </Box>
+                </Box>
               </CollapsibleBody>
             </Collapsible>
           )
@@ -65,28 +96,37 @@ const meta: Meta<CollapsibleProps> = {
 const CollapsibleButtonTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
   return (
     <CollapsibleComponent {...args}>
-      <CollapsibleButton>Greatest song ever</CollapsibleButton>
+      <CollapsibleButton>View Price Breakdown</CollapsibleButton>
       <CollapsibleBody>
-        <Text>And as we wind on down the road</Text>
-        <Text>Our shadows taller than our soul</Text>
-        <Text>There walks a lady we all know</Text>
-        <Text>Who shines white light and wants to show</Text>
-        <Text>How everything still turns to gold</Text>
-        <Text>And if you listen very hard</Text>
-        <Text>The tune will come to you at last</Text>
-        <Text>When all are one, and one is all</Text>
-        <Text>To be a rock and not to roll</Text>
-      </CollapsibleBody>
-    </CollapsibleComponent>
-  );
-};
-
-const CollapsibleLinkTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
-  return (
-    <CollapsibleComponent {...args}>
-      <CollapsibleLink>Answer to life, universe and everything</CollapsibleLink>
-      <CollapsibleBody>
-        <Text>42</Text>
+        <Box display="flex" flexDirection="column" minWidth="200px">
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text>Actual amount</Text>
+            <Amount value={1000} intent="positive" />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+            <Text>2%</Text>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">GST</Text>
+            <Text>18%</Text>
+          </Box>
+        </Box>
       </CollapsibleBody>
     </CollapsibleComponent>
   );
@@ -94,6 +134,113 @@ const CollapsibleLinkTemplate: ComponentStory<typeof CollapsibleComponent> = ({ 
 
 export const WithCollapsibleButton = CollapsibleButtonTemplate.bind({});
 
+const CollapsibleLinkTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
+  return (
+    <CollapsibleComponent {...args}>
+      <CollapsibleLink>View Price Breakdown</CollapsibleLink>
+      <CollapsibleBody>
+        <Box display="flex" flexDirection="column" minWidth="200px">
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text>Actual amount</Text>
+            <Amount value={1000} intent="positive" />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+            <Text>2%</Text>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">GST</Text>
+            <Text>18%</Text>
+          </Box>
+        </Box>
+      </CollapsibleBody>
+    </CollapsibleComponent>
+  );
+};
+
 export const WithCollapsibleLink = CollapsibleLinkTemplate.bind({});
+
+WithCollapsibleLink.parameters = {
+  docs: {
+    description: {
+      story: 'Compose `Collapsible` with `CollapsibleLink` and `CollapsibleBody`',
+    },
+  },
+};
+
+const CollapsibleControlledTemplate: ComponentStory<typeof CollapsibleComponent> = ({
+  isExpanded: _isExpanded,
+  onExpandChange,
+  defaultIsExpanded,
+  ...rest
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  return (
+    <CollapsibleComponent
+      {...rest}
+      isExpanded={isExpanded}
+      onExpandChange={({ isExpanded }) => setIsExpanded(isExpanded)}
+    >
+      <CollapsibleButton>{isExpanded ? 'Hide' : 'Show'} Price Breakdown</CollapsibleButton>
+      <CollapsibleBody>
+        <Box display="flex" flexDirection="column" minWidth="200px">
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text>Actual amount</Text>
+            <Amount value={1000} intent="positive" />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+            <Text>2%</Text>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">GST</Text>
+            <Text>18%</Text>
+          </Box>
+        </Box>
+      </CollapsibleBody>
+    </CollapsibleComponent>
+  );
+};
+
+export const ControlledExample = CollapsibleControlledTemplate.bind({});
+
+ControlledExample.parameters = {
+  docs: {
+    description: {
+      story:
+        'Use in combination with `isExpanded`: `boolean` and `onExpandChange`: `({ isExpanded }) => void`',
+    },
+  },
+};
 
 export default meta;

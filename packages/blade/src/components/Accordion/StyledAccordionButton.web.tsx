@@ -3,7 +3,6 @@ import type { StyledAccordionButtonProps } from './types';
 import { castWebType, makeMotionTime } from '~utils';
 
 // TODO: refactor common tokens after native implementation
-// TODO: svg icon colors based on state
 const StyledAccordionButton = styled.div<StyledAccordionButtonProps>((props) => {
   const { theme, isExpanded } = props;
   return {
@@ -17,6 +16,7 @@ const StyledAccordionButton = styled.div<StyledAccordionButtonProps>((props) => 
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    color: theme.colors.surface.action.icon.default.lowContrast,
 
     '&:hover, &:focus': {
       backgroundColor: isExpanded
@@ -24,11 +24,16 @@ const StyledAccordionButton = styled.div<StyledAccordionButtonProps>((props) => 
         : theme.colors.brand.gray.a50.lowContrast,
     },
 
+    '&:hover': {
+      color: theme.colors.surface.action.icon.hover.lowContrast,
+    },
+
     '&:focus': {
       outline: 'none',
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
       // only need border radius on the focus ring
       borderRadius: theme.border.radius.small,
+      color: theme.colors.surface.action.icon.focus.lowContrast,
     },
   };
 });

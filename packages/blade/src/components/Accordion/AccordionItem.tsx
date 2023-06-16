@@ -1,11 +1,14 @@
 import type { ReactElement, ReactNode } from 'react';
 import { AccordionButton } from './AccordionButton';
+import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import type { TestID } from '~src/_helpers/types';
 import { Divider } from '~components/BaseHeaderFooter/Divider';
 import { Text } from '~components/Typography';
-import { Collapsible, CollapsibleBody } from '~components/Collapsible';
+import { MetaConstants, metaAttribute } from '~utils';
+import { Collapsible } from '~components/Collapsible/Collapsible';
+import { CollapsibleBody } from '~components/Collapsible';
 
 type AccordionItemProps = {
   /**
@@ -41,24 +44,48 @@ const AccordionItem = ({
   icon,
   children,
   _index,
+  testID,
 }: AccordionItemProps): ReactElement => {
+  const { expandedIndex, onExpandChange, defaultExpandedIndex } = useAccordion();
+  const isExpanded = expandedIndex === _index;
+  const isDefaultExpanded = defaultExpandedIndex === _index;
+
   const _description = description && <Text type="subtle">{description}</Text>;
+  const handleExpandChange = ({ isExpanded }: { isExpanded: boolean }): void => {
+    if (isExpanded && typeof _index !== 'undefined') {
+      onExpandChange(_index);
+    } else {
+      onExpandChange(-1);
+    }
+  };
 
   return (
-    <>
-      <Collapsible>
+    <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}>
+      <Collapsible
+        isExpanded={isExpanded}
+        defaultIsExpanded={isDefaultExpanded}
+        onExpandChange={handleExpandChange}
+        // Accordion has its own width restrictions
+        _shouldApplyWidthRestrictions={false}
+      >
         <AccordionButton index={_index} icon={icon}>
           {title}
         </AccordionButton>
         <CollapsibleBody>
-          <BaseBox gap="spacing.5" marginBottom="spacing.5" marginX="spacing.5">
+          <BaseBox
+            display="flex"
+            flexDirection="column"
+            gap="spacing.5"
+            marginBottom="spacing.5"
+            marginX="spacing.5"
+          >
             {_description}
             {children}
           </BaseBox>
         </CollapsibleBody>
       </Collapsible>
       <Divider />
-    </>
+    </BaseBox>
   );
 };
 

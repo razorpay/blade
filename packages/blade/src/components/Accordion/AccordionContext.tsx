@@ -2,12 +2,21 @@ import { createContext, useContext } from 'react';
 
 type AccordionContextState = {
   expandedIndex?: number;
+  defaultExpandedIndex?: number;
+  onExpandChange: (expandedIndex: number) => void;
+  showNumberPrefix: boolean;
 };
 
-const AccordionContext = createContext<AccordionContextState>({
-  expandedIndex: undefined,
-});
+const AccordionContext = createContext<AccordionContextState | null>(null);
 
-const useAccordionContext = (): AccordionContextState => useContext(AccordionContext);
+const useAccordion = (): AccordionContextState => {
+  const accordionContext = useContext(AccordionContext);
+  if (!accordionContext) {
+    throw new Error(
+      `[Blade: AccordionContext]: useAccordion should be only used within AccordionContext`,
+    );
+  }
+  return accordionContext;
+};
 
-export { AccordionContext, useAccordionContext, AccordionContextState };
+export { AccordionContext, useAccordion, AccordionContextState };
