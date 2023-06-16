@@ -7,7 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
-import { assignWithoutSideEffects, metaAttribute, MetaConstants } from '~utils';
+import { assignWithoutSideEffects, metaAttribute, MetaConstants, isReactNative } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
@@ -134,7 +134,7 @@ const _Badge = ({
         paddingLeft={horizontalPadding[size]}
         paddingTop={verticalPadding[size]}
         paddingBottom={verticalPadding[size]}
-        display="flex"
+        display={(isReactNative() ? 'flex' : 'inline-flex') as never}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"

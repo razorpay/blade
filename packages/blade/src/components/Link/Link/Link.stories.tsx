@@ -10,7 +10,10 @@ import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import {
+  getBladeCommonEventArgTypes,
+  getStyledPropsArgTypes,
+} from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -54,7 +57,6 @@ export default {
   component: LinkComponent,
   args: {
     children: 'Learn More',
-    htmlTitle: 'Click to learn more',
   },
   argTypes: {
     icon: {
@@ -64,6 +66,7 @@ export default {
       mapping: iconMap,
     },
     ...getStyledPropsArgTypes(),
+    ...getBladeCommonEventArgTypes(),
   },
   parameters: {
     docs: {

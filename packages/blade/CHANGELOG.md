@@ -1,5 +1,70 @@
 # @razorpay/blade
 
+## 8.9.1
+
+### Patch Changes
+
+- 7613ca13: fix: show decimal upto 2 places when `isAfixSubtle:false`
+
+## 8.9.0
+
+### Minor Changes
+
+- d62a86d4: feat(blade): added tooltip component
+
+  Blade now has a peer dependency on [FloatingUI](https://floating-ui.com/), make sure to install it.
+
+  For web:
+
+  ```
+  yarn add @floating-ui/react
+  ```
+
+  For native:
+
+  ```
+  yarn add @floating-ui/react-native
+  ```
+
+## 8.8.4
+
+### Patch Changes
+
+- 333d0e7e: fix(DropdownOverlay): fix incorrect minWidth condition
+
+## 8.8.3
+
+### Patch Changes
+
+- 163717cf: fix(DropdownOverlay): DropdownOverlay width in SelectInput trigger
+
+## 8.8.2
+
+### Patch Changes
+
+- 40f05a94: fix(blade): BottomSheet unable to find ActionList component
+- ab4f10c4: fix: make Badge and Counter display inline-flex
+
+## 8.8.1
+
+### Patch Changes
+
+- 9456e9d3: fix(BaseInput): large label alignment
+- c8727e89: fix(tokens): update primary color theme tokens
+- 19749c7a: fix(blade): jsdoc comments
+
+## 8.8.0
+
+### Minor Changes
+
+- 20c9fc03: feat(Input): add `generic` value in `autoCompleteSuggestionType`
+- 9db8c219: feat: add Modal component
+
+### Patch Changes
+
+- 9db8c219: chore: update overlay color tokens
+- f78834ea: fix(Amount): Make Amount display `inline-flex`
+
 ## 8.7.0
 
 ### Minor Changes

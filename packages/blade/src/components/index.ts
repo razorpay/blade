@@ -31,3 +31,5 @@ export * from './Amount';
 export * from './BottomSheet';
 export * from './Accordion';
 export * from './Collapsible';
+export * from './Tooltip';
+export * from './types';

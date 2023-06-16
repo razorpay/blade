@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<OTPInput /> should have hidden input for form submissions 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"otp-input\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><label for=\\"otp-undefined-input-undefined\\" style=\\"width:auto;flex-shrink:0;margin-right:16px;word-break:break-all\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Enter OTP</p><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\"></p></div></div></div></label><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bUkekX\\"><input hidden=\\"\\" id=\\"otp-undefined-input-undefined\\" name=\\"otpInput\\" value=\\"\\" readonly=\\"\\"/><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dCKsdi\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-0-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\"Enter OTP character 1\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp\\"></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-1-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 2\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp\\"></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-2-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 3\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp\\"></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-3-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 4\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp\\"></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-4-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 5\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp\\"></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-5-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 6\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp\\"></div></div></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gShrQy\\"></div></div></div>"`;
+exports[`<OTPInput /> should have hidden input for form submissions 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"otp-input\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><label for=\\"otp-undefined-input-undefined\\" style=\\"width:auto;flex-shrink:0;margin-right:16px\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Enter OTP</p><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\"></p></div></div></div></label><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bUkekX\\"><input hidden=\\"\\" id=\\"otp-undefined-input-undefined\\" name=\\"otpInput\\" value=\\"\\" readonly=\\"\\"/><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dCKsdi\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-0-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\"Enter OTP character 1\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-1-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 2\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-2-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 3\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-3-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 4\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-4-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 5\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kQxywu\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne\\"><input type=\\"text\\" name=\\"otpInput\\" required=\\"\\" inputMode=\\"decimal\\" autoComplete=\\"one-time-code\\" id=\\"otp-undefined-input-undefined-5-undefined-input-undefined\\" value=\\"\\" placeholder=\\"\\" aria-required=\\"true\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-label=\\" character 6\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jSWunf\\"/><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gShrQy\\"></div></div></div>"`;
 
 exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 <div
@@ -17,7 +17,7 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
     >
       <label
         for="otp-37-input-38"
-        style="width:auto;flex-shrink:0;margin-right:16px;word-break:break-all"
+        style="width:auto;flex-shrink:0;margin-right:16px"
       >
         <div
           class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
@@ -76,7 +76,7 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
               display="flex"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne"
                 display="flex"
                 width="100%"
               >
@@ -96,10 +96,10 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
+                />
               </div>
-              <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp"
-              />
             </div>
           </div>
         </div>
@@ -114,7 +114,7 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
               display="flex"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne"
                 display="flex"
                 width="100%"
               >
@@ -134,10 +134,10 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
+                />
               </div>
-              <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp"
-              />
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
               display="flex"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne"
                 display="flex"
                 width="100%"
               >
@@ -172,10 +172,10 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
+                />
               </div>
-              <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp"
-              />
             </div>
           </div>
         </div>
@@ -190,7 +190,7 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
               display="flex"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne"
                 display="flex"
                 width="100%"
               >
@@ -210,10 +210,10 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
+                />
               </div>
-              <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp"
-              />
             </div>
           </div>
         </div>
@@ -228,7 +228,7 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
               display="flex"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne"
                 display="flex"
                 width="100%"
               >
@@ -248,10 +248,10 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
+                />
               </div>
-              <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp"
-              />
             </div>
           </div>
         </div>
@@ -266,7 +266,7 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
               display="flex"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bzcXbg iWQtne"
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne"
                 display="flex"
                 width="100%"
               >
@@ -286,10 +286,10 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
+                <div
+                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
+                />
               </div>
-              <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  uYOzp"
-              />
             </div>
           </div>
         </div>

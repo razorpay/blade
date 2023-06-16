@@ -52,7 +52,7 @@ const AmountDefaultTemplate: ComponentStory<typeof AmountComponent> = (args) => 
 
 export const Amount = AmountDefaultTemplate.bind({});
 Amount.args = {
-  value: 122345.678,
+  value: 12500.45,
 };
 Amount.storyName = 'Default';
 
@@ -69,7 +69,7 @@ const AmountTemplateWithText: ComponentStory<typeof AmountComponent> = (args) =>
 export const AmountWithText = AmountTemplateWithText.bind({});
 
 AmountWithText.args = {
-  value: 122345.678,
+  value: 12500.45,
   size: 'body-medium',
 };
 AmountWithText.storyName = 'With Text';

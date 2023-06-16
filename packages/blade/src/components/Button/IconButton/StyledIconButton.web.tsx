@@ -48,12 +48,38 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
 });
 
 const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonProps>(
-  ({ icon: Icon, onClick, size, contrast, accessibilityLabel, testID }, ref): ReactElement => (
+  (
+    {
+      icon: Icon,
+      onClick,
+      size,
+      contrast,
+      accessibilityLabel,
+      testID,
+      onBlur,
+      onFocus,
+      onMouseLeave,
+      onMouseMove,
+      onPointerDown,
+      onPointerEnter,
+      onTouchEnd,
+      onTouchStart,
+    },
+    ref,
+  ): ReactElement => (
     <StyledButton
       ref={ref}
       onClick={onClick}
       contrast={contrast}
       type="button"
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
+      onTouchEnd={onTouchEnd}
+      onTouchStart={onTouchStart}
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
     >

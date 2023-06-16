@@ -102,10 +102,10 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c12 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -353,8 +353,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(213,89%,56%,1);
-  border-color: hsla(213,89%,56%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -386,18 +386,18 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c25:hover {
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c25:active {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c25:focus {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -480,7 +480,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                     <div
                       class="c12"
                       data-blade-component="counter"
-                      display="flex"
+                      display="inline-flex"
                       overflow="hidden"
                     >
                       <p
@@ -520,7 +520,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             >
               <div
                 class="c12"
-                display="flex"
+                display="inline-flex"
                 overflow="hidden"
               >
                 <p
