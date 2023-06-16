@@ -15,7 +15,7 @@ const useCollapsible = (): CollapsibleContextState => {
   const collapsibleContext = useContext(CollapsibleContext);
   if (!collapsibleContext) {
     throw new Error(
-      `[Blade: CollapsibleContext]: useCollapsible should be only used within CollapsibleContext`,
+      `[Blade: CollapsibleContext]: You're trying to use Collapsible sub-components without Collapsible. useCollapsible should only be used within CollapsibleContext`,
     );
   }
   return collapsibleContext;
