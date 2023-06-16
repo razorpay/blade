@@ -3,13 +3,13 @@ import { StyledAccordionButton } from './StyledAccordionButton';
 import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
-import { makeAccessible } from '~utils';
+import { MetaConstants, assignWithoutSideEffects, makeAccessible, metaAttribute } from '~utils';
 import { Heading } from '~components/Typography';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 
-const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
-  const { onExpandChange, isExpanded } = useCollapsible();
+const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
+  const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex } = useAccordion();
 
   const toggleCollapse = (): void => onExpandChange(!isExpanded);
@@ -33,8 +33,10 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
   );
 
   if (_index && _icon) {
-    console.warn(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
+    throw new Error(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
   }
+
+  const isItemExpanded = expandedIndex === index;
 
   return (
     <BaseBox
@@ -52,10 +54,11 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
          */
         {...makeAccessible({ role: 'button' })}
         tabIndex={0}
-        isExpanded={expandedIndex === index}
-        // TODO: also handle keyboard
+        isExpanded={isItemExpanded}
         onClick={onClick}
         onKeyDown={onKeyDown}
+        {...makeAccessible({ expanded: isItemExpanded, controls: collapsibleBodyId })}
+        {...metaAttribute({ name: MetaConstants.AccordionButton })}
       >
         <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">
           {_index}
@@ -67,5 +70,9 @@ const AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps):
     </BaseBox>
   );
 };
+
+const AccordionButton = assignWithoutSideEffects(_AccordionButton, {
+  componentId: MetaConstants.AccordionButton,
+});
 
 export { AccordionButton, AccordionButtonProps };

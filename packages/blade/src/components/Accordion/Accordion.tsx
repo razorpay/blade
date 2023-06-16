@@ -4,7 +4,11 @@ import type { AccordionContextState } from './AccordionContext';
 import { AccordionContext } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
+import type { BoxProps } from '~components/Box';
+import { size } from '~tokens/global';
+import { MetaConstants, makeSize, metaAttribute } from '~utils';
 
 type AccordionProps = {
   /**
@@ -37,12 +41,27 @@ type AccordionProps = {
 } & TestID &
   StyledPropsBlade;
 
+const MIN_WIDTH: BoxProps['minWidth'] = {
+  s: makeSize(size[200]),
+  m: makeSize(size[360]),
+  l: makeSize(size[400]),
+};
+
+const MAX_WIDTH: BoxProps['maxWidth'] = {
+  // 100% of viewport width - 40px
+  s: `calc(100vw - ${makeSize(size[40])})`,
+  m: makeSize(size[640]),
+  l: makeSize(size[800]),
+};
+
 const Accordion = ({
   defaultExpandedIndex,
   expandedIndex,
   onExpandChange,
   showNumberPrefix = false,
   children,
+  testID,
+  ...styledProps
 }: AccordionProps): ReactElement => {
   const [expandedAccordionItemIndex, setExpandedAccordionItemIndex] = useState<number | undefined>(
     defaultExpandedIndex,
@@ -65,15 +84,27 @@ const Accordion = ({
   const accordionContext = useMemo<AccordionContextState>(
     () => ({
       expandedIndex: expandedIndex ?? expandedAccordionItemIndex,
+      defaultExpandedIndex,
       onExpandChange: handleExpandChange,
       showNumberPrefix,
     }),
-    [expandedAccordionItemIndex, handleExpandChange, expandedIndex, showNumberPrefix],
+    [
+      expandedAccordionItemIndex,
+      handleExpandChange,
+      expandedIndex,
+      showNumberPrefix,
+      defaultExpandedIndex,
+    ],
   );
 
   return (
     <AccordionContext.Provider value={accordionContext}>
-      <BaseBox>
+      <BaseBox
+        minWidth={MIN_WIDTH}
+        maxWidth={MAX_WIDTH}
+        {...metaAttribute({ name: MetaConstants.Accordion, testID })}
+        {...getStyledProps(styledProps)}
+      >
         {Children.map(children, (child, index) =>
           cloneElement(child, { _index: index, key: index }),
         )}

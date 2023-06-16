@@ -341,7 +341,13 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       ref={ref as any}
       {...syntheticEvents}
       {...metaAttribute({ name: MetaConstants.Link, testID })}
-      accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
+      accessibilityProps={{
+        ...makeAccessible({
+          role,
+          label: accessibilityLabel,
+          disabled,
+        }),
+      }}
       variant={variant}
       as={as}
       href={href}

@@ -1,24 +1,25 @@
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
+// This has to be a relative import otherwise plugin-dts will go 💥 https://github.com/razorpay/blade/issues/701
+import type { LinkProps } from '../Link';
 import { useCollapsible } from './CollapsibleContext';
 import { CollapsibleChevronIcon } from './CollapsibleChevronIcon';
-import type { LinkProps } from '~components/Link';
-import { Link } from '~components/Link';
+import { MetaConstants, assignWithoutSideEffects, makeAccessible } from '~utils';
+import { BaseLink } from '~components/Link/BaseLink';
 
 type CollapsibleLinkProps = Pick<
   LinkProps,
   'size' | 'isDisabled' | 'testID' | 'accessibilityLabel' | 'children'
 >;
 
-// TODO: update API doc, can't take icon
-const CollapsibleLink = ({
+const _CollapsibleLink = ({
   children,
   size,
   isDisabled,
   testID,
   accessibilityLabel,
 }: CollapsibleLinkProps): ReactElement => {
-  const { onExpandChange, isExpanded } = useCollapsible();
+  const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
   const toggleIsExpanded = useCallback(() => onExpandChange(!isExpanded), [
     onExpandChange,
@@ -26,7 +27,7 @@ const CollapsibleLink = ({
   ]);
 
   return (
-    <Link
+    <BaseLink
       variant="button"
       size={size}
       icon={CollapsibleChevronIcon}
@@ -35,10 +36,15 @@ const CollapsibleLink = ({
       testID={testID}
       accessibilityLabel={accessibilityLabel}
       onClick={toggleIsExpanded}
+      {...makeAccessible({ controls: collapsibleBodyId, expanded: isExpanded })}
     >
       {children}
-    </Link>
+    </BaseLink>
   );
 };
+
+const CollapsibleLink = assignWithoutSideEffects(_CollapsibleLink, {
+  componentId: MetaConstants.CollapsibleLink,
+});
 
 export { CollapsibleLink, CollapsibleLinkProps };

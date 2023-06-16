@@ -2,12 +2,12 @@ import type { ReactElement, ReactNode } from 'react';
 import { Text } from '~components/Typography';
 
 // TODO: implement
-type CollapsiblePanelProps = {
+type CollapsibleBodyContentProps = {
   children: ReactNode;
 };
 
-const CollapsiblePanel = ({ children }: CollapsiblePanelProps): ReactElement => (
+const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): ReactElement => (
   <Text>To implement {children}</Text>
 );
 
-export { CollapsiblePanel };
+export { CollapsibleBodyContent };
