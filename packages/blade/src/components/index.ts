@@ -29,3 +29,5 @@ export * from './Typography';
 export * from './VisuallyHidden';
 export * from './Amount';
 export * from './BottomSheet';
+export * from './Accordion';
+export * from './Collapsible';
