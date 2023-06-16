@@ -6,8 +6,9 @@ import type { IconComponent } from '~components/Icons';
 import type { TestID } from '~src/_helpers/types';
 import { Divider } from '~components/BaseHeaderFooter/Divider';
 import { Text } from '~components/Typography';
-import { Collapsible, CollapsibleBody } from '~components/Collapsible';
 import { MetaConstants, metaAttribute } from '~utils';
+import { Collapsible } from '~components/Collapsible/Collapsible';
+import { CollapsibleBody } from '~components/Collapsible';
 
 type AccordionItemProps = {
   /**
