@@ -55,7 +55,7 @@ _Didn't consider any alternate API. Kept `size` and `children` similar to `<Badg
 
 <img width="358" alt="image" src="https://github.com/razorpay/blade/assets/30949385/71cd236a-93e7-46f0-9da6-12d519b958d4">
 
-Tags can be added inside other input components -
+Tags can be added inside other input components such as -
 
 - TextArea
 - SelectInput (in Dropdown)
@@ -64,10 +64,6 @@ Tags can be added inside other input components -
 
 <details>
 <summary>Implementation Details</summary>
-
-> **Note**
->
-> This section goes into implementation details and does not impact the API of existing components or above proposed Tag component API in any way.
 
 This will require some refactor in BaseInput to add a slot before the actual Input element.
 
@@ -78,30 +74,102 @@ E.g. This is AutoComplete from Primer where the tags go into a slot and input ge
 </details>
 <br/>
 
-### Proposed API for Integration with Inputs
+### Integration with SelectInput and AutoComplete
+
+SelectInput and AutoComplete are not expected to have any changes in consumer API as rendering of tags will be handled internally based on the selected value.
+
+### Integration with TextInput and TextArea
+
+> **Note**
+>
+> This implementation is out of scope for initial release of Tag. Have added considered approaches below which we can refer back and confirm the feasibility while implementation. (Feel free to review and suggest any changes here though. We can consider them while imeplementation in future)
 
 On consumer end, the APIs would look like -
 
-// TODO
+#### New `tagsSlot` prop on `TextInput` and `TextArea`
 
 New `tagsSlot` prop for Inputs that support rendering tags.
+
+- Can only be used in Controlled Input
+  - Why?
+    - This is comparitively a rare usecase so don't see any need of having another `hasTags` props that handles adding tags internally.
+    -
 
 ```jsx
 <TextInput tagsSlot={} value="" onChange={} />
 ```
 
-Alternate names
+**Alternate Prop Name**
 
 - `leading`
-- `beforeInput`
+
+<details>
+<summary>Full Controlled Example</summary>
 
 ```jsx
-<TextInput hasTags value="tagone, tagtwo, tagthree" />
+function App() {
+  const [inputValue, setInputValue] = React.useState('');
+  const [tags, setTags] = React.useState([]);
+
+  const addTag = () => {
+    // Add input value to tags and clear the input value
+    setTags([...tags, inputValue]);
+    setInputValue('');
+  }
+
+  const removeTag = (tagName) => {
+    setTags(tags.filter(tagNameValue) => tagNameValue !== tagName);
+  }
+
+  return (
+    <TextInput
+      tagsSlot={tags.map((tagName, index) => (
+        <Tag onDismiss={() => removeTag(tagName)}>{tagName}</Tag>
+      ))}
+      value={inputValue}
+      onChange={({ value }) => setInputValue(value)}
+      onKeyDown={(e) => {
+        if (e.key === 'ENTER') {
+          addTag();
+        }
+      }}
+    />
+  );
+}
 ```
+
+</details>
+
+<details>
+<summary>Alternate Approach</summary>
+
+#### Alternate Approach: `value` prop
+
+We can extend our `value` prop to accept JSX
+
+```jsx
+<TextInput
+  value={
+    <>
+      <Tag onDismiss={}>kamlesh.chandnani@razorpay.com</Tag>
+      <Tag onDismiss={}>divyanshu.maithani@razopay.com</Tag>
+      saurabhdaw
+    </>
+  }
+  onChange={}
+/>
+```
+
+**Cons**
+
+- Requires us to loop on children and separate out Tags from written word and this will run on every `onChange` event.
+- Have not seen any other library handle it this way
+
+</details>
 
 ### References
 
-- `TagsInput` component by PluralSight Design System
-- `tokens` prop by Primer AutoComplete.Input
+- [`TagsInput` component by PluralSight Design System](https://design-system.pluralsight.com/components/tagsinput)
+- [`tokens` prop by Primer AutoComplete.Input](https://primer.style/react/Autocomplete/)
 - [Carbon just putting everything outside of Inputs](https://carbondesignsystem.com/components/tag/usage)
-- `elemBeforeInput` prop on Atlassian
+- [`elemBeforeInput` prop on Atlassian TextField](https://atlassian.design/components/textfield/examples#elements-before-and-after-input)
