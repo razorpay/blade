@@ -155,7 +155,8 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
-    <BaseBox position="relative" ref={refs.setFloating}>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    <BaseBox position="relative" ref={refs.setFloating as any}>
       <StyledDropdownOverlay
         width={isMenu ? 'max-content' : width}
         // In SelectInput, Overlay should always take width of Input

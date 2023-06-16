@@ -9,7 +9,7 @@ import {
 } from './stories';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import { Box } from '~components/Box';
-import { ActionList, ActionListItem, ActionListSection } from '~components/ActionList';
+import { ActionList, ActionListItem } from '~components/ActionList';
 import {
   // CheckIcon,
   ChevronDownIcon,
@@ -77,8 +77,6 @@ export const WithControlledMultiSelect = (): JSX.Element => {
 };
 // This is for Chromatic and react native testing
 export const InternalMenu = (): JSX.Element => {
-  const [status, setStatus] = React.useState<string | undefined>();
-
   return (
     <Box
       display="flex"
@@ -97,20 +95,18 @@ export const InternalMenu = (): JSX.Element => {
           />
           <DropdownOverlay>
             <ActionList>
-              <ActionListSection>
-                <ActionListItem title="Give Feedback" value="give Feedback" />
-                <ActionListItem title="View Documentation" value="view documentation" />
-                <ActionListItem
-                  title="User Guide"
-                  description="You can restart onboarding from here"
-                  value="User Guide"
-                />
-                <ActionListItem
-                  title="New Features"
-                  value="New Features"
-                  description="You can restart feature announcements from here"
-                />
-              </ActionListSection>
+              <ActionListItem title="Give Feedback" value="give Feedback" />
+              <ActionListItem title="View Documentation" value="view documentation" />
+              <ActionListItem
+                title="User Guide"
+                description="You can restart onboarding from here"
+                value="User Guide"
+              />
+              <ActionListItem
+                title="New Features"
+                value="New Features"
+                description="You can restart feature announcements from here"
+              />
             </ActionList>
           </DropdownOverlay>
         </Dropdown>
