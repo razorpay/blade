@@ -4,11 +4,10 @@ import type { BaseLinkProps } from '../BaseLink';
 import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { StringChildrenType, TestID, BladeElementRef } from '~utils/types';
 import type { Platform } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
-import type { BladeElementRef } from '~src/hooks/types';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';

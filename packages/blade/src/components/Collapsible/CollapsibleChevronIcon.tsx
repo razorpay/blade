@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import type { CollapsibleProps } from './Collapsible';
 import { useCollapsible } from './CollapsibleContext';
-import { castWebType, makeAccessible, makeMotionTime } from '~utils';
+import { castWebType, makeMotionTime } from '~utils';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type StyledCollapsibleChevronIconProps = {
   isExpanded: boolean;
