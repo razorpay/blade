@@ -120,7 +120,9 @@ type PickCSSByPlatform<T extends keyof React.CSSProperties | keyof ViewStyle> = 
 }>;
 
 type BladeElementRef = Platform.Select<{
-  web: Pick<HTMLElement, 'focus' | 'scrollIntoView'> | Pick<View, 'focus'>;
+  web:
+    | Pick<HTMLElement, 'focus' | 'scrollIntoView' | 'getBoundingClientRect'>
+    | Pick<View, 'focus'>;
   native: React.MutableRefObject<any>;
 }>;
 
