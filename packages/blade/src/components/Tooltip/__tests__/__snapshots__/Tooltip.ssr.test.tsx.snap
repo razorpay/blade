@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tooltip /> should render Tooltip ssr 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA\\"><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD\\">Hello world</div></div></button></div>"`;
+
+exports[`<Tooltip /> should render Tooltip ssr 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <button
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
+    <div
+      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA"
+      display="flex"
+    >
+      <div
+        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Hello world
+      </div>
+    </div>
+  </button>
+</div>
+`;

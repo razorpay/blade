@@ -7,6 +7,7 @@ import { IconButton as IconButtonComponent } from './IconButton';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { getBladeCommonEventArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
@@ -51,6 +52,7 @@ const meta: Meta<IconButtonProps> = {
     accessibilityLabel: 'Close',
   },
   argTypes: {
+    ...getBladeCommonEventArgTypes(),
     onClick: { action: 'onClick' },
     icon: {
       name: 'icon',

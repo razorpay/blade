@@ -7,6 +7,7 @@ import type { StyledBaseLinkProps } from './types';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import { useStyledProps } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~utils/types';
+import { castNativeType } from '~utils';
 
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);
@@ -44,6 +45,8 @@ const _StyledLink: React.ForwardRefRenderFunction<
     style,
     testID,
     hitSlop,
+    onTouchStart,
+    onTouchEnd,
   },
   ref,
 ): ReactElement => {
@@ -72,6 +75,8 @@ const _StyledLink: React.ForwardRefRenderFunction<
       onPress={handleOnPress}
       onPressIn={(): void => setCurrentInteraction('active')}
       onPressOut={(): void => setCurrentInteraction('default')}
+      onTouchStart={castNativeType(onTouchStart)}
+      onTouchEnd={castNativeType(onTouchEnd)}
       style={style}
       testID={testID}
       hitSlop={hitSlop}

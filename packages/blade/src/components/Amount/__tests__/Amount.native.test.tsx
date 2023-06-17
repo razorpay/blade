@@ -95,7 +95,7 @@ describe('<Amount />', () => {
       '1k',
     );
     expect(formatAmountWithSuffix({ value: 1000000, currency: 'INR', suffix: 'decimals' })).toBe(
-      '10,00,000',
+      '10,00,000.00',
     );
     expect(formatAmountWithSuffix({ value: 10000000, currency: 'INR', suffix: 'none' })).toBe(
       '1,00,00,000',
@@ -104,7 +104,7 @@ describe('<Amount />', () => {
       '1K',
     );
     expect(formatAmountWithSuffix({ value: 1000000, currency: 'MYR', suffix: 'decimals' })).toBe(
-      '1,000,000',
+      '1,000,000.00',
     );
     expect(formatAmountWithSuffix({ value: 10000000, currency: 'MYR', suffix: 'none' })).toBe(
       '10,000,000',

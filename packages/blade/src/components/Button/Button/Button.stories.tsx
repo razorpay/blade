@@ -14,7 +14,10 @@ import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import {
+  getBladeCommonEventArgTypes,
+  getStyledPropsArgTypes,
+} from '~components/Box/BaseBox/storybookArgTypes';
 import { castWebType } from '~utils';
 
 const Page = (): ReactElement => {
@@ -75,6 +78,7 @@ export default {
   },
   argTypes: {
     ...getStyledPropsArgTypes(),
+    ...getBladeCommonEventArgTypes(),
     icon: {
       name: 'icon',
       type: 'select',

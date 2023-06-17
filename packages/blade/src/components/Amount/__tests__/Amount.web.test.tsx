@@ -92,10 +92,11 @@ describe('<Amount />', () => {
 
   it('should check if getFlooredFixed is returning the floored value ', () => {
     expect(getFlooredFixed(1000.22, 2)).toBe(1000.22);
+    expect(getFlooredFixed(1000.0, 2)).toBe(1000.0);
   });
 
   it('should check if addCommas is returning the value with commas', () => {
-    expect(addCommas(1000.22, 'INR')).toBe('1,000.22');
+    expect(addCommas(1000.22, 'INR', 2)).toBe('1,000.22');
   });
 
   it('should check if getHumanizedAmount is returning the humanized value', () => {
@@ -111,8 +112,8 @@ describe('<Amount />', () => {
     expect(formatAmountWithSuffix({ value: 1000.22, currency: 'INR', suffix: 'humanize' })).toBe(
       '1k',
     );
-    expect(formatAmountWithSuffix({ value: 1000000, currency: 'INR', suffix: 'decimals' })).toBe(
-      '10,00,000',
+    expect(formatAmountWithSuffix({ value: 1000000.0, currency: 'INR', suffix: 'decimals' })).toBe(
+      '10,00,000.00',
     );
     expect(formatAmountWithSuffix({ value: 10000000, currency: 'INR', suffix: 'none' })).toBe(
       '1,00,00,000',
@@ -121,7 +122,7 @@ describe('<Amount />', () => {
       '1K',
     );
     expect(formatAmountWithSuffix({ value: 1000000, currency: 'MYR', suffix: 'decimals' })).toBe(
-      '1,000,000',
+      '1,000,000.00',
     );
     expect(formatAmountWithSuffix({ value: 10000000, currency: 'MYR', suffix: 'none' })).toBe(
       '10,000,000',

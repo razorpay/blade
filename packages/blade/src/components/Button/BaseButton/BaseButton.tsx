@@ -32,8 +32,6 @@ import BaseBox from '~components/Box/BaseBox';
 import type { DotNotationSpacingStringToken, StringChildrenType, TestID } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
-import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { usePrevious } from '~utils/usePrevious';
 import { makeSize } from '~utils/makeSize';
@@ -41,6 +39,8 @@ import { makeBorderSize } from '~utils/makeBorderSize';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeSpace } from '~utils/makeSpace';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
+import type { BladeCommonEvents } from '~components/types';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -50,10 +50,6 @@ type BaseButtonCommonProps = {
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
-  onBlur?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
-    web: (event: React.FocusEvent<HTMLButtonElement>) => void;
-  }>;
   onKeyDown?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
@@ -69,7 +65,8 @@ type BaseButtonCommonProps = {
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  BladeCommonEvents;
 
 /*
 Mandatory children prop when icon is not provided
@@ -322,13 +319,17 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     children,
     accessibilityLabel,
     testID,
+    onFocus,
+    onMouseLeave,
+    onMouseMove,
+    onPointerDown,
+    onPointerEnter,
     ...styledProps
   },
   ref,
 ) => {
   const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
-  const buttonRef = useBladeInnerRef(ref);
   // Button cannot be disabled when its rendered as Link
   const disabled = isLoading || (isDisabled && !isLink);
   const { theme } = useTheme();
@@ -390,7 +391,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   return (
     <StyledBaseButton
-      ref={buttonRef as any}
+      ref={ref as any}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
       // @ts-ignore: On React Native it will always be undefined but TS doesn't understand that
       as={renderElement}
@@ -422,6 +423,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       isFullWidth={isFullWidth}
       onClick={onClick}
       onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
       onKeyDown={onKeyDown}
       type={type}
       borderWidth={borderWidth}

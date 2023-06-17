@@ -1772,7 +1772,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         ]
       }
     >
-      1,000
+      1,000.00
     </Text>
   </View>
 </View>

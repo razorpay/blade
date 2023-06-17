@@ -296,6 +296,13 @@ const componentData: ComponentStatusData = [
       'Switch component is used as an alternative for the checkbox component, It can be used to switch between two states: often on or off.',
   },
   {
+    name: 'Tooltip',
+    status: 'released',
+    description:
+      'Tooltip is a brief, informative message that appears when a user interacts with an element.',
+    releasedIn: '8.9.0',
+  },
+  {
     name: 'Accordion',
     status: 'in-development',
     description:
@@ -306,12 +313,6 @@ const componentData: ComponentStatusData = [
     status: 'in-development',
     description:
       'Collapsibles are used to allow users to toggle the visibility of hidden content within a container.',
-  },
-  {
-    name: 'Tooltip',
-    status: 'in-development',
-    description:
-      'Tooltip is a brief, informative message that appears when a user interacts with an element.',
   },
   {
     name: 'Modal',

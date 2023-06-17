@@ -8,6 +8,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { BladeCommonEvents } from '~components/types';
 
 type ButtonCommonProps = {
   /**
@@ -39,7 +40,8 @@ type ButtonCommonProps = {
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  BladeCommonEvents;
 
 /*
   Mandatory children prop when icon is not provided
@@ -77,6 +79,12 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     variant = 'primary',
     accessibilityLabel,
     testID,
+    onBlur,
+    onFocus,
+    onMouseLeave,
+    onMouseMove,
+    onPointerDown,
+    onPointerEnter,
     ...styledProps
   },
   ref,
@@ -99,6 +107,12 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       variant={variant}
       isLoading={isLoading}
       testID={testID}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
     />
   );
 };

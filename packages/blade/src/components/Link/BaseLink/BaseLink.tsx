@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import getIn from 'lodash/get';
-import type { ReactElement, SyntheticEvent } from 'react';
+import type { SyntheticEvent } from 'react';
 import React, { useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
@@ -26,6 +27,8 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
+import type { BladeCommonEvents } from '~components/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -36,6 +39,10 @@ type BaseLinkCommonProps = {
   onBlur?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  }>;
+  onMouseLeave?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
   onKeyDown?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
@@ -65,7 +72,8 @@ type BaseLinkCommonProps = {
    */
   htmlTitle?: string;
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  Omit<BladeCommonEvents, 'onBlur' | 'onMouseLeave'>;
 
 /*
   Mandatory children prop when icon is not provided
@@ -253,7 +261,6 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     iconPosition = 'left',
     isDisabled = false,
     onClick,
-    onBlur,
     onKeyDown,
     variant = 'anchor',
     href,
@@ -270,10 +277,18 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     testID,
     hitSlop,
     htmlTitle,
+    onBlur,
+    onFocus,
+    onMouseLeave,
+    onMouseMove,
+    onPointerDown,
+    onPointerEnter,
+    onTouchStart,
+    onTouchEnd,
     ...styledProps
   },
   ref,
-): ReactElement => {
+) => {
   const [isVisited, setIsVisited] = useState(false);
   const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
@@ -326,18 +341,41 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
 
   return (
     <StyledBaseLink
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      {...syntheticEvents}
+      ref={ref as never}
       {...metaAttribute({ name: MetaConstants.Link, testID })}
-      accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
+      accessibilityProps={{
+        ...makeAccessible({
+          role,
+          label: accessibilityLabel,
+          disabled,
+        }),
+      }}
       variant={variant}
       as={as}
       href={href}
       target={target}
       rel={rel ?? defaultRel}
       onClick={handleOnClick}
-      onBlur={onBlur}
+      {...syntheticEvents}
+      onBlur={(event: any) => {
+        onBlur?.(event);
+        syntheticEvents.onBlur();
+      }}
+      onFocus={(event: any) => {
+        onFocus?.(event);
+        syntheticEvents.onFocus();
+      }}
+      onMouseLeave={(event: any) => {
+        if (onMouseLeave) {
+          onMouseLeave(event);
+        }
+        syntheticEvents.onMouseLeave();
+      }}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       onKeyDown={onKeyDown}
       disabled={disabled}
       type={type}
@@ -379,6 +417,9 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
   );
 };
 
-const BaseLink = React.forwardRef(_BaseLink);
+const BaseLink = assignWithoutSideEffects(React.forwardRef(_BaseLink), {
+  displayName: 'BaseLink',
+  componentId: 'BaseLink',
+});
 
 export default BaseLink;

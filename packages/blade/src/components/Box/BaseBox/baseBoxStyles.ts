@@ -274,6 +274,7 @@ const getAllProps = (
     borderStyle: hasBorder ? 'solid' : undefined,
     touchAction: getResponsiveValue(props.touchAction, breakpoint),
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
+    pointerEvents: getResponsiveValue(props.pointerEvents),
     opacity: getResponsiveValue(props.opacity, breakpoint),
   };
 };
