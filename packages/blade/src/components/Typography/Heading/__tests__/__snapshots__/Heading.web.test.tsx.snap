@@ -189,7 +189,7 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
 }
 
 <div>
-  <h6
+  <p
     class="c0"
     color="surface.text.subdued.lowContrast"
     data-blade-component="heading"
@@ -199,6 +199,6 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
     font-weight="bold"
   >
     Get Started With Payment Gateway
-  </h6>
+  </p>
 </div>
 `;

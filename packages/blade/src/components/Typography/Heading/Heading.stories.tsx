@@ -98,6 +98,7 @@ const AsPropTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
         <ListItem>small: h6</ListItem>
         <ListItem>medium: h5</ListItem>
         <ListItem>large: h4</ListItem>
+        <ListItem>subheading variant: p</ListItem>
       </List>
       <Text marginBottom="spacing.5">
         But you can also pass a custom as prop to override the rendered HTML:

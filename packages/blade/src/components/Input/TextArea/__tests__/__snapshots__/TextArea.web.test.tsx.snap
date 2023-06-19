@@ -281,7 +281,7 @@ exports[`<TextArea /> should render 1`] = `
               display="flex"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -296,7 +296,7 @@ exports[`<TextArea /> should render 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   font-family="text"
@@ -622,7 +622,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
               display="flex"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -637,7 +637,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   font-family="text"

@@ -138,7 +138,7 @@ export const Heading = <T extends { variant: HeadingVariant }>({
 }: HeadingProps<T>): ReactElement => {
   const props = getProps({ as, variant, size, type, weight, color, contrast, testID });
 
-  useValidateAsProp({ componentName: 'Text', as: props.as, validAsValues });
+  useValidateAsProp({ componentName: 'Heading', as, validAsValues });
 
   return (
     <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>
