@@ -241,7 +241,6 @@ exports[`<Tooltip /> should render 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >

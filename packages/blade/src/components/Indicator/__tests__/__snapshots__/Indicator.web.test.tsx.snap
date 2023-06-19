@@ -68,7 +68,7 @@ exports[`<Indicator /> should render 1`] = `
       class="c1"
     >
       <p
-        class="c2 Text__StyledText-wkh56f-0"
+        class="c2"
         color="surface.text.subtle.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -163,7 +163,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       class="c1"
     >
       <p
-        class="c2 Text__StyledText-wkh56f-0"
+        class="c2"
         color="surface.text.subtle.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -207,7 +207,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       class="c1"
     >
       <p
-        class="c3 Text__StyledText-wkh56f-0"
+        class="c3"
         color="surface.text.subtle.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -251,7 +251,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       class="c1"
     >
       <p
-        class="c3 Text__StyledText-wkh56f-0"
+        class="c3"
         color="surface.text.subtle.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -295,7 +295,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       class="c1"
     >
       <p
-        class="c3 Text__StyledText-wkh56f-0"
+        class="c3"
         color="surface.text.subtle.lowContrast"
         data-blade-component="text"
         font-family="text"
