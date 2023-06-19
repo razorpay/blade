@@ -5,6 +5,7 @@
 const filterProps = [
   'cursor',
   'display',
+  'overflow',
   'order',
   'color',
   'fontFamily',
