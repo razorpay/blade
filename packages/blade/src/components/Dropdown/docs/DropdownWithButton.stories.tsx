@@ -9,17 +9,9 @@ import {
 } from './stories';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import { Box } from '~components/Box';
-import { ActionList, ActionListItem } from '~components/ActionList';
-import {
-  // CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  // ClockIcon,
-  // CloseIcon,
-  MoreVerticalIcon,
-} from '~components/Icons';
+import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon, ClockIcon, CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
-import { Button } from '~components/Button';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Button and Link',
@@ -77,40 +69,49 @@ export const WithControlledMultiSelect = (): JSX.Element => {
 };
 // This is for Chromatic and react native testing
 export const InternalMenu = (): JSX.Element => {
+  const [status, setStatus] = React.useState<string | undefined>();
+
   return (
-    <Box
-      display="flex"
-      alignItems="flex-end"
-      justifyContent="flex-end"
-      gap="spacing.3"
-      marginY="spacing.5"
-    >
-      <Button variant="secondary">More Button</Button>
-      <Box marginRight="spacing.4">
-        <Dropdown selectionType="single">
-          <DropdownButton
-            variant="tertiary"
-            icon={MoreVerticalIcon}
-            // onClick={handleHelpClick}
-          />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListItem title="Give Feedback" value="give Feedback" />
-              <ActionListItem title="View Documentation" value="view documentation" />
-              <ActionListItem
-                title="User Guide"
-                description="You can restart onboarding from here"
-                value="User Guide"
-              />
-              <ActionListItem
-                title="New Features"
-                value="New Features"
-                description="You can restart feature announcements from here"
-              />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-      </Box>
+    <Box minHeight="200px" padding="spacing.10">
+      <Dropdown>
+        <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem
+              onClick={({ name, value }) => {
+                console.log({ name, value });
+                setStatus(name);
+              }}
+              leading={<ActionListItemIcon icon={CheckIcon} />}
+              isSelected={status === 'approve'}
+              title="Approve"
+              value="approve"
+            />
+            <ActionListItem
+              onClick={({ name, value }) => {
+                console.log({ name, value });
+                setStatus(name);
+              }}
+              leading={<ActionListItemIcon icon={ClockIcon} />}
+              isSelected={status === 'in-progress'}
+              title="In Progress"
+              value="in-progress"
+            />
+
+            <ActionListItem
+              onClick={({ name, value }) => {
+                console.log({ name, value });
+                setStatus(name);
+              }}
+              leading={<ActionListItemIcon icon={CloseIcon} />}
+              isSelected={status === 'reject'}
+              title="Reject"
+              value="reject"
+              intent="negative"
+            />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
     </Box>
   );
 };
@@ -126,16 +127,9 @@ export const InternalLinkDropdown = (): JSX.Element => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
   return (
-    <Box
-      padding="spacing.10"
-      display="flex"
-      alignItems="flex-end"
-      justifyContent="flex-end"
-      height="100%"
-      gap="spacing.2"
-    >
+    <Box padding="spacing.10" display="flex" alignItems="center" gap="spacing.2">
       <Text>Sort By</Text>
-      <Box>
+      <Box flex="1">
         <Dropdown onDismiss={() => setIsDropdownOpen(false)}>
           <DropdownLink
             icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}

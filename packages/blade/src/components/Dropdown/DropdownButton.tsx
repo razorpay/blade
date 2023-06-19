@@ -43,7 +43,7 @@ const _DropdownButton = ({
 
   return (
     // Using BaseButton here to avoid exporting onBlur and onKeyDown from Button
-    // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with
+    // If in future we decide to export onBlur and onKeyDown on Button, this can be replaced with Button
     <BaseButton
       {...styledProps}
       {...(icon ? { icon, children } : { children })}

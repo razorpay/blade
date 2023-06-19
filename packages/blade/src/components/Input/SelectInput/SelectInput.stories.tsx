@@ -216,18 +216,16 @@ export default {
 
 const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args }) => {
   return (
-    <Box minHeight="150px" display="flex" alignItems="flex-end" height="100%" width="100%">
-      <Box flex="1">
-        <Dropdown>
-          <SelectInput {...args} icon={iconMap[(icon as unknown) as string]} />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListItem title="Item 1" value="item-1" />
-              <ActionListItem title="Item 2" value="item-2" />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-      </Box>
+    <Box minHeight="150px">
+      <Dropdown>
+        <SelectInput {...args} icon={iconMap[(icon as unknown) as string]} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Item 1" value="item-1" />
+            <ActionListItem title="Item 2" value="item-2" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
     </Box>
   );
 };
