@@ -109,7 +109,6 @@ exports[`<Alert /> should render 1`] = `
   >
     <div
       class="c2"
-      display="flex"
     >
       <svg
         aria-hidden="true"
@@ -144,12 +143,7 @@ exports[`<Alert /> should render 1`] = `
       >
         <p
           class="c5 Text__StyledText-wkh56f-0"
-          color="surface.text.subtle.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           Currently you can only accept payments in international currencies using PayPal.
         </p>
@@ -290,7 +284,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   >
     <div
       class="c2"
-      display="flex"
     >
       <svg
         aria-hidden="true"
@@ -334,12 +327,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       >
         <p
           class="c5 Text__StyledText-wkh56f-0"
-          color="surface.text.subtle.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="100"
-          font-style="normal"
-          font-weight="regular"
         >
           Currently you can only accept payments in international currencies using PayPal.
         </p>

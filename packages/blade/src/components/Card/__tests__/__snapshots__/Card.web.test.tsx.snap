@@ -312,12 +312,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     >
       <p
         class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Plain Card
       </p>
@@ -334,37 +329,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       />
       <div
         class="c6"
-        display="flex"
       >
         <div
           class="c7"
         >
           <p
             class="c8 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="bold"
           >
             Card Footer
           </p>
           <p
             class="c9 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
             data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="regular"
           >
             Card footer subtitle
           </p>
         </div>
         <div
           class="c10"
-          display="flex"
         >
           <div
             class="c11"
@@ -377,13 +360,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             >
               <div
                 class="c13 c14"
-                display="flex"
               >
                 <div
                   class="c15"
-                  color="action.text.secondary.default"
-                  font-size="100"
-                  font-weight="bold"
                 >
                   Delete
                 </div>
@@ -404,13 +383,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             >
               <div
                 class="c13 c14"
-                display="flex"
               >
                 <div
                   class="c18"
-                  color="action.text.primary.default"
-                  font-size="100"
-                  font-weight="bold"
                 >
                   Save
                 </div>
@@ -671,15 +646,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
     >
       <div
         class="c3"
-        display="flex"
       >
         <div
           class="c4"
-          display="flex"
         >
           <div
             class="c5"
-            display="flex"
           >
             <svg
               aria-hidden="true"
@@ -711,16 +683,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
           >
             <div
               class="c6"
-              display="flex"
             >
               <h6
                 class="c7"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="heading"
-                font-family="text"
-                font-size="200"
-                font-style="normal"
-                font-weight="bold"
               >
                 Card Header
               </h6>
@@ -733,17 +699,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   <div
                     class="c11"
                     data-blade-component="counter"
-                    display="inline-flex"
                     overflow="hidden"
                   >
                     <p
                       class="c12 c13"
-                      color="feedback.text.neutral.lowContrast"
                       data-blade-component="text"
-                      font-family="text"
-                      font-size="75"
-                      font-style="normal"
-                      font-weight="regular"
                     >
                       12
                     </p>
@@ -753,12 +713,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
             </div>
             <p
               class="c14 "
-              color="surface.text.normal.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="regular"
             >
               Card subtitle
             </p>
@@ -773,17 +728,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
           >
             <div
               class="c11"
-              display="inline-flex"
               overflow="hidden"
             >
               <p
                 class="c18 c13"
-                color="feedback.text.neutral.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="75"
-                font-style="normal"
-                font-weight="regular"
               >
                 NEW
               </p>
@@ -801,12 +750,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
     >
       <p
         class="c20 "
-        color="surface.text.normal.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Plain Card
       </p>

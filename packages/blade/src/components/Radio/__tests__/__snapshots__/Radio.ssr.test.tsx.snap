@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Radio /> should render with help text 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" role=\\"group\\" aria-labelledby=\\"radio-group-undefined-label\\" data-blade-component=\\"radio-group\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><span style=\\"width:auto;flex-shrink:0;margin-right:16px\\" id=\\"radio-group-undefined-label\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Select fruit</p><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">,Select One</p></div></div></div></span><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><input type=\\"radio\\" name=\\"radio-group-undefined\\" value=\\"apple\\" role=\\"radio\\" aria-required=\\"false\\" aria-invalid=\\"false\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-describedby=\\"radio-undefined-helptext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk\\"/><div class=\\"RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 doUKpB\\"></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"></div><div color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz\\">Apple</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY\\"><span color=\\"surface.text.muted.lowContrast\\" font-family=\\"text\\" font-size=\\"50\\" font-style=\\"italic\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hLvFTc\\" id=\\"radio-undefined-helptext-undefined\\">Apple Help</span></div></div></label></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gtUzJy\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><input type=\\"radio\\" name=\\"radio-group-undefined\\" value=\\"mango\\" role=\\"radio\\" aria-required=\\"false\\" aria-invalid=\\"false\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-describedby=\\"radio-undefined-helptext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk\\"/><div class=\\"RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 doUKpB\\"></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna\\"></div><div color=\\"surface.text.subtle.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz\\">Mango</div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY\\"></div></div></label></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jDyOnG\\"><span style=\\"display:flex;flex-direction:row;align-items:center;word-break:break-all\\"><span color=\\"surface.text.muted.lowContrast\\" font-family=\\"text\\" font-size=\\"50\\" font-style=\\"italic\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hLvFTc\\">Select One</span></span></div></div></div></div></div>"`;
+exports[`<Radio /> should render with help text 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"sc-bczRLJ\\"><div role=\\"group\\" aria-labelledby=\\"radio-group-undefined-label\\" data-blade-component=\\"radio-group\\" class=\\"sc-bczRLJ dZTxXm\\"><span style=\\"width:auto;flex-shrink:0;margin-right:16px\\" id=\\"radio-group-undefined-label\\"><div class=\\"sc-bczRLJ eFylev\\"><div class=\\"sc-bczRLJ fVPUly\\"><p class=\\"sc-gsnTZi fkpojQ Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Select fruit</p><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p class=\\"sc-gsnTZi gIViOb Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">,Select One</p></div></div></div></span><div class=\\"sc-bczRLJ\\"><div class=\\"sc-bczRLJ dZTxXm\\"><div class=\\"sc-bczRLJ eFylev\\"><div class=\\"sc-bczRLJ\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div class=\\"sc-bczRLJ dZTxXm\\"><div class=\\"sc-bczRLJ cNLxsO\\"><input type=\\"radio\\" name=\\"radio-group-undefined\\" value=\\"apple\\" role=\\"radio\\" aria-required=\\"false\\" aria-invalid=\\"false\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-describedby=\\"radio-undefined-helptext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk\\"/><div class=\\"RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 doUKpB\\"></div><div class=\\"sc-bczRLJ lkdJUz\\"></div><div class=\\"sc-gsnTZi ksCfLr\\">Apple</div></div><div class=\\"sc-bczRLJ iwSyEB\\"><span class=\\"sc-gsnTZi gdbDlg\\" id=\\"radio-undefined-helptext-undefined\\">Apple Help</span></div></div></label></div></div><div class=\\"sc-bczRLJ dtHxvD\\"><div class=\\"sc-bczRLJ\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div class=\\"sc-bczRLJ dZTxXm\\"><div class=\\"sc-bczRLJ cNLxsO\\"><input type=\\"radio\\" name=\\"radio-group-undefined\\" value=\\"mango\\" role=\\"radio\\" aria-required=\\"false\\" aria-invalid=\\"false\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-describedby=\\"radio-undefined-helptext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk\\"/><div class=\\"RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 doUKpB\\"></div><div class=\\"sc-bczRLJ lkdJUz\\"></div><div class=\\"sc-gsnTZi ksCfLr\\">Mango</div></div><div class=\\"sc-bczRLJ iwSyEB\\"></div></div></label></div></div></div><div class=\\"sc-bczRLJ jquHfD\\"><span style=\\"display:flex;flex-direction:row;align-items:center;word-break:break-all\\"><span class=\\"sc-gsnTZi gdbDlg\\">Select One</span></span></div></div></div></div></div>"`;
 
 exports[`<Radio /> should render with help text 2`] = `
 <div
@@ -8,13 +8,12 @@ exports[`<Radio /> should render with help text 2`] = `
   id="root"
 >
   <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+    class="sc-bczRLJ"
   >
     <div
       aria-labelledby="radio-group-5-label"
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
+      class="sc-bczRLJ dZTxXm"
       data-blade-component="radio-group"
-      display="flex"
       role="group"
     >
       <span
@@ -22,20 +21,14 @@ exports[`<Radio /> should render with help text 2`] = `
         style="width:auto;flex-shrink:0;margin-right:16px"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
+          class="sc-bczRLJ eFylev"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf"
-            display="flex"
+            class="sc-bczRLJ fVPUly"
           >
             <p
-              class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
+              class="sc-gsnTZi fkpojQ Text__StyledText-wkh56f-0"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Select fruit
             </p>
@@ -44,13 +37,8 @@ exports[`<Radio /> should render with help text 2`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
+                class="sc-gsnTZi gIViOb Text__StyledText-wkh56f-0"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               >
                 ,Select One
               </p>
@@ -59,28 +47,25 @@ exports[`<Radio /> should render with help text 2`] = `
         </div>
       </span>
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+        class="sc-bczRLJ"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
-          display="flex"
+          class="sc-bczRLJ dZTxXm"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
+            class="sc-bczRLJ eFylev"
           >
             <div
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+              class="sc-bczRLJ"
             >
               <label
                 class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
               >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
-                  display="flex"
+                  class="sc-bczRLJ dZTxXm"
                 >
                   <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf"
-                    display="flex"
+                    class="sc-bczRLJ cNLxsO"
                   >
                     <input
                       aria-checked="false"
@@ -98,27 +83,19 @@ exports[`<Radio /> should render with help text 2`] = `
                       class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 doUKpB"
                     />
                     <div
-                      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna"
+                      class="sc-bczRLJ lkdJUz"
                     />
                     <div
-                      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      class="sc-gsnTZi ksCfLr"
                     >
                       Apple
                     </div>
                   </div>
                   <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY"
+                    class="sc-bczRLJ iwSyEB"
                   >
                     <span
-                      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hLvFTc"
-                      color="surface.text.muted.lowContrast"
-                      font-family="text"
-                      font-size="50"
-                      font-style="italic"
+                      class="sc-gsnTZi gdbDlg"
                       id="radio-1-helptext-2"
                     >
                       Apple Help
@@ -129,21 +106,19 @@ exports[`<Radio /> should render with help text 2`] = `
             </div>
           </div>
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gtUzJy"
+            class="sc-bczRLJ dtHxvD"
           >
             <div
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+              class="sc-bczRLJ"
             >
               <label
                 class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
               >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hxBBVP"
-                  display="flex"
+                  class="sc-bczRLJ dZTxXm"
                 >
                   <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf"
-                    display="flex"
+                    class="sc-bczRLJ cNLxsO"
                   >
                     <input
                       aria-checked="false"
@@ -161,20 +136,16 @@ exports[`<Radio /> should render with help text 2`] = `
                       class="RadioIconWrapperweb__RadioIconWrapper-sc-1memw5n-0 doUKpB"
                     />
                     <div
-                      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 kjlzna"
+                      class="sc-bczRLJ lkdJUz"
                     />
                     <div
-                      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bAgcz"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      class="sc-gsnTZi ksCfLr"
                     >
                       Mango
                     </div>
                   </div>
                   <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 frShTY"
+                    class="sc-bczRLJ iwSyEB"
                   />
                 </div>
               </label>
@@ -182,17 +153,13 @@ exports[`<Radio /> should render with help text 2`] = `
           </div>
         </div>
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jDyOnG"
+          class="sc-bczRLJ jquHfD"
         >
           <span
             style="display:flex;flex-direction:row;align-items:center;word-break:break-all"
           >
             <span
-              class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hLvFTc"
-              color="surface.text.muted.lowContrast"
-              font-family="text"
-              font-size="50"
-              font-style="italic"
+              class="sc-gsnTZi gdbDlg"
             >
               Select One
             </span>

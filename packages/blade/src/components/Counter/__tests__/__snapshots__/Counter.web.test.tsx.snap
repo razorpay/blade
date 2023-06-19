@@ -73,17 +73,11 @@ exports[`<Counter /> should render Counter with default props 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -165,17 +159,11 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.information.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -257,17 +245,11 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.negative.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -349,17 +331,11 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.neutral.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -441,17 +417,11 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.notice.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -533,17 +503,11 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.positive.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -625,17 +589,11 @@ exports[`<Counter /> should render large size Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -717,17 +675,11 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.information.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -809,17 +761,11 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.negative.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -901,17 +847,11 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -993,17 +933,11 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.notice.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -1085,17 +1019,11 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.positive.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -1177,17 +1105,11 @@ exports[`<Counter /> should render medium size Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>
@@ -1269,17 +1191,11 @@ exports[`<Counter /> should render small size Counter 1`] = `
     <div
       class="c2"
       data-blade-component="counter"
-      display="inline-flex"
       overflow="hidden"
     >
       <p
         class="c3 c4"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="25"
-        font-style="normal"
-        font-weight="regular"
       >
         20
       </p>

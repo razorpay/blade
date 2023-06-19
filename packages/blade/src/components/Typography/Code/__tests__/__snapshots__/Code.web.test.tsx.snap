@@ -29,10 +29,6 @@ exports[`<Code /> should render Code with color 1`] = `
   >
     <code
       class="c1"
-      color="action.text.link.disabled"
-      font-family="code"
-      font-size="25"
-      font-weight="regular"
     >
       TEST_TOKEN
     </code>
@@ -70,10 +66,6 @@ exports[`<Code /> should render Code with default properties 1`] = `
   >
     <code
       class="c1"
-      color="surface.text.subtle.lowContrast"
-      font-family="code"
-      font-size="25"
-      font-weight="regular"
     >
       TEST_TOKEN
     </code>
@@ -110,10 +102,6 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
   >
     <code
       class="c1"
-      color="surface.text.normal.lowContrast"
-      font-family="code"
-      font-size="25"
-      font-weight="regular"
     >
       NON-HIGHLIGHTED
     </code>
@@ -151,10 +139,6 @@ exports[`<Code /> should render medium Code 1`] = `
   >
     <code
       class="c1"
-      color="surface.text.subtle.lowContrast"
-      font-family="code"
-      font-size="75"
-      font-weight="regular"
     >
       MEDIUM
     </code>
@@ -192,10 +176,6 @@ exports[`<Code /> should render small Code 1`] = `
   >
     <code
       class="c1"
-      color="surface.text.subtle.lowContrast"
-      font-family="code"
-      font-size="25"
-      font-weight="regular"
     >
       SMALL
     </code>

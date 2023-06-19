@@ -433,7 +433,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     aria-modal="true"
     class="c2 c3"
     data-blade-component="modal"
-    display="flex"
     role="dialog"
     tabindex="-1"
     width="calc(100vw - 48px)"
@@ -447,27 +446,19 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       >
         <div
           class="c5"
-          display="flex"
         >
           <div
             class="c6"
-            display="flex"
           >
             <div
               class=""
             >
               <div
                 class="c7"
-                display="flex"
               >
                 <h6
                   class="c8"
-                  color="surface.text.normal.lowContrast"
                   data-blade-component="heading"
-                  font-family="text"
-                  font-size="200"
-                  font-style="normal"
-                  font-weight="bold"
                 >
                   Address Details
                 </h6>
@@ -480,17 +471,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                     <div
                       class="c12"
                       data-blade-component="counter"
-                      display="inline-flex"
                       overflow="hidden"
                     >
                       <p
                         class="c13 c14"
-                        color="feedback.text.positive.lowContrast"
                         data-blade-component="text"
-                        font-family="text"
-                        font-size="75"
-                        font-style="normal"
-                        font-weight="regular"
                       >
                         2
                       </p>
@@ -500,12 +485,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
               </div>
               <p
                 class="c15 "
-                color="surface.text.normal.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="75"
-                font-style="normal"
-                font-weight="regular"
               >
                 Saving addresses will improve your checkout experience
               </p>
@@ -520,17 +500,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             >
               <div
                 class="c12"
-                display="inline-flex"
                 overflow="hidden"
               >
                 <p
                   class="c19 c14"
-                  color="feedback.text.notice.lowContrast"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="75"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Action Needed
                 </p>
@@ -570,12 +544,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     >
       <p
         class="c23 "
-        color="surface.text.normal.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Test Content
       </p>
@@ -599,13 +568,9 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
         >
           <div
             class="c26 c27"
-            display="flex"
           >
             <div
               class="c28"
-              color="action.text.primary.default"
-              font-size="100"
-              font-weight="bold"
             >
               Save
             </div>
@@ -701,7 +666,6 @@ exports[`Modal renders a basic Modal 1`] = `
     aria-modal="true"
     class="c2 c3"
     data-blade-component="modal"
-    display="flex"
     role="dialog"
     tabindex="0"
     width="calc(100vw - 48px)"
@@ -712,12 +676,7 @@ exports[`Modal renders a basic Modal 1`] = `
     >
       <p
         class="c5 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Test Content
       </p>
@@ -810,7 +769,6 @@ exports[`Modal renders a basic Modal of large size 1`] = `
     aria-modal="true"
     class="c2 c3"
     data-blade-component="modal"
-    display="flex"
     role="dialog"
     tabindex="0"
     width="calc(100vw - 48px)"
@@ -821,12 +779,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
     >
       <p
         class="c5 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Test Content
       </p>
@@ -919,7 +872,6 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
     aria-modal="true"
     class="c2 c3"
     data-blade-component="modal"
-    display="flex"
     role="dialog"
     tabindex="0"
     width="calc(100vw - 48px)"
@@ -930,12 +882,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
     >
       <p
         class="c5 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Test Content
       </p>

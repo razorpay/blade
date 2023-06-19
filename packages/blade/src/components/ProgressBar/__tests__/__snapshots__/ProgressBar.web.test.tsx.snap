@@ -143,7 +143,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <label
         for="progress-1"
@@ -154,16 +153,10 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         >
           <div
             class="c2"
-            display="flex"
           >
             <p
               class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Label
             </p>
@@ -173,12 +166,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             >
               <p
                 class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               />
             </div>
           </div>
@@ -189,12 +177,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
       >
         <p
           class="c6 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -294,7 +277,6 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   >
     <div
       class="c0"
-      display="flex"
     />
     <div
       aria-valuemax="100"
@@ -406,19 +388,13 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -534,19 +510,13 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -662,19 +632,13 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -790,19 +754,13 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -918,19 +876,13 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -1046,19 +998,13 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.highContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -1174,19 +1120,13 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -1302,19 +1242,13 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -1430,19 +1364,13 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -1558,19 +1486,13 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -1686,19 +1608,13 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
       >
         <p
           class="c2 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -1875,7 +1791,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <label
         for="progress-6"
@@ -1886,16 +1801,10 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         >
           <div
             class="c2"
-            display="flex"
           >
             <p
               class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Label
             </p>
@@ -1905,12 +1814,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             >
               <p
                 class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               />
             </div>
           </div>
@@ -1921,12 +1825,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
       >
         <p
           class="c6 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -2015,7 +1914,6 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   >
     <div
       class="c0"
-      display="flex"
     />
     <div
       aria-valuemax="100"
@@ -2188,7 +2086,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <label
         for="progress-5"
@@ -2199,16 +2096,10 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         >
           <div
             class="c2"
-            display="flex"
           >
             <p
               class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Label
             </p>
@@ -2218,12 +2109,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             >
               <p
                 class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               />
             </div>
           </div>
@@ -2234,12 +2120,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
       >
         <p
           class="c6 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           20%
         </p>
@@ -2521,13 +2402,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Update Progress
       </div>
@@ -2538,7 +2415,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   >
     <div
       class="c4"
-      display="flex"
     >
       <label
         for="progress-3"
@@ -2549,16 +2425,10 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         >
           <div
             class="c6"
-            display="flex"
           >
             <p
               class="c7 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Label
             </p>
@@ -2568,12 +2438,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             >
               <p
                 class="c9 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               />
             </div>
           </div>
@@ -2584,12 +2449,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       >
         <p
           class="c10 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           0%
         </p>
@@ -2871,13 +2731,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Update Progress
       </div>
@@ -2888,7 +2744,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   >
     <div
       class="c4"
-      display="flex"
     >
       <label
         for="progress-3"
@@ -2899,16 +2754,10 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         >
           <div
             class="c6"
-            display="flex"
           >
             <p
               class="c7 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Label
             </p>
@@ -2918,12 +2767,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             >
               <p
                 class="c9 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               />
             </div>
           </div>
@@ -2934,12 +2778,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       >
         <p
           class="c10 Text__StyledText-wkh56f-0"
-          color="surface.text.subdued.lowContrast"
           data-blade-component="text"
-          font-family="text"
-          font-size="75"
-          font-style="normal"
-          font-weight="regular"
         >
           60%
         </p>

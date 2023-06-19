@@ -210,7 +210,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
       aria-labelledby="checkbox-group-49-label-54"
       class="c0"
       data-blade-component="checkbox-group"
-      display="flex"
       role="group"
     >
       <span
@@ -222,16 +221,10 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         >
           <div
             class="c2"
-            display="flex"
           >
             <p
               class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Select fruits
             </p>
@@ -241,12 +234,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             >
               <p
                 class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               >
                 , Select one
               </p>
@@ -259,7 +247,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
       >
         <div
           class="c0"
-          display="flex"
         >
           <div
             class="c1"
@@ -273,11 +260,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -327,10 +312,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Apple
                     </div>
@@ -354,11 +335,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -408,10 +387,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Mango
                     </div>
@@ -435,11 +410,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -489,10 +462,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Orange
                     </div>
@@ -513,10 +482,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           >
             <span
               class="c16"
-              color="surface.text.muted.lowContrast"
-              font-family="text"
-              font-size="50"
-              font-style="italic"
             >
               Select one
             </span>
@@ -721,7 +686,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       aria-labelledby="checkbox-group-19-label-24"
       class="c0"
       data-blade-component="checkbox-group"
-      display="flex"
       role="group"
     >
       <span
@@ -733,16 +697,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         >
           <div
             class="c2"
-            display="flex"
           >
             <p
               class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Select fruits
             </p>
@@ -752,12 +710,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             >
               <p
                 class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               >
                 , 
               </p>
@@ -770,7 +723,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       >
         <div
           class="c0"
-          display="flex"
         >
           <div
             class="c1"
@@ -784,11 +736,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -838,10 +788,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Apple
                     </div>
@@ -865,11 +811,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -919,10 +863,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Mango
                     </div>
@@ -946,11 +886,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -1000,10 +938,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Orange
                     </div>

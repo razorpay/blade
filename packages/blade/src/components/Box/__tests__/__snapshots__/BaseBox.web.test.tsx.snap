@@ -38,7 +38,6 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 1`]
 <div>
   <div
     class="c0"
-    display="flex"
     height="auto"
     overflow="hidden"
     width="auto"
