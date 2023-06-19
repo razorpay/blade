@@ -2,6 +2,7 @@
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
+import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -13,7 +14,9 @@ import type { StringChildrenType, TestID } from '~src/_helpers/types';
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
 
+const validAsValues = ['span', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 type HeadingCommonProps = {
+  as?: typeof validAsValues[number];
   /**
    * Overrides the color of the Heading component.
    *
@@ -61,6 +64,7 @@ export type HeadingProps<T> = T extends {
   : T;
 
 const getProps = <T extends { variant: HeadingVariant }>({
+  as,
   variant,
   size,
   type,
@@ -70,7 +74,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
   testID,
 }: Pick<
   HeadingProps<T>,
-  'variant' | 'size' | 'type' | 'weight' | 'contrast' | 'color' | 'testID'
+  'as' | 'variant' | 'size' | 'type' | 'weight' | 'contrast' | 'color' | 'testID'
 >): Omit<BaseTextProps, 'children'> => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
@@ -111,13 +115,16 @@ const getProps = <T extends { variant: HeadingVariant }>({
     }
     props.fontSize = 75;
     props.lineHeight = 50;
-    props.as = isPlatformWeb ? 'h6' : undefined;
+    props.as = isPlatformWeb ? 'p' : undefined;
   }
 
+  // override the computed `as` prop if user passed an `as` prop
+  props.as = as || props.as;
   return props;
 };
 
 export const Heading = <T extends { variant: HeadingVariant }>({
+  as,
   variant = 'regular',
   size, // Not setting default value since the `size` should be undefined with variant="subheading"
   type = 'normal',
@@ -129,7 +136,10 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   textAlign,
   ...styledProps
 }: HeadingProps<T>): ReactElement => {
-  const props = getProps({ variant, size, type, weight, color, contrast, testID });
+  const props = getProps({ as, variant, size, type, weight, color, contrast, testID });
+
+  useValidateAsProp({ componentName: 'Text', as: props.as, validAsValues });
+
   return (
     <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>
       {children}

@@ -3,6 +3,7 @@ import type { ReactElement } from 'react';
 import React from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
+import { useValidateAsProp } from '../utils';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -143,15 +144,7 @@ const _Text = <T extends { variant: TextVariant }>({
     }),
   };
 
-  React.useEffect(() => {
-    if (as && !validAsValues.includes(as)) {
-      throw new Error(
-        `[Blade Text]: Invalid \`as\` prop value - ${as}. Only ${validAsValues.join(
-          ', ',
-        )} are accepted`,
-      );
-    }
-  }, [as]);
+  useValidateAsProp({ componentName: 'Text', as, validAsValues });
 
   return (
     <BaseText {...props} {...getStyledProps(styledProps)}>

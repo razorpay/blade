@@ -1,11 +1,14 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title as StorybookTitle } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
+import { Text } from '../Text';
 import type { TitleProps } from './';
 import { Title as TitleComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { List, ListItem } from '~components/List';
 
 const Page = (): ReactElement => {
   return (
@@ -45,6 +48,7 @@ const TitleStoryMeta: Meta<TitleProps> = {
     type: 'normal',
     children: 'Power your finance, grow your business',
     contrast: 'low',
+    as: undefined,
   },
   parameters: {
     docs: {
@@ -63,4 +67,38 @@ export const Title = TitleTemplate.bind({});
 export const WithColor = TitleTemplate.bind({});
 WithColor.args = {
   color: 'feedback.positive.action.text.primary.default.lowContrast',
+};
+
+const AsPropTemplate: ComponentStory<typeof TitleComponent> = (args) => {
+  return (
+    <Box>
+      <Text>
+        By default{' '}
+        <Text as="span" weight="bold">
+          Title
+        </Text>{' '}
+        component automatically changes the rendered HTML based on the{' '}
+        <Text as="span" weight="bold">
+          size prop
+        </Text>{' '}
+        passed
+      </Text>
+      <List>
+        <ListItem>small: h3</ListItem>
+        <ListItem>medium: h2</ListItem>
+        <ListItem>large: h1</ListItem>
+        <ListItem>xlarge: h1</ListItem>
+      </List>
+      <Text marginBottom="spacing.5">
+        But you can also pass a custom as prop to override the rendered HTML:
+      </Text>
+      <TitleComponent {...args}>Tweak the storybook controls to see the dom change</TitleComponent>
+    </Box>
+  );
+};
+
+export const AsProp = AsPropTemplate.bind({});
+AsProp.args = {
+  size: 'small',
+  as: 'h1',
 };
