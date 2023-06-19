@@ -8,6 +8,11 @@ import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
+import { Link } from '~components/Link';
+import { Button } from '~components/Button';
+import { Badge } from '~components/Badge';
 
 const Page = (): ReactElement => {
   return (
@@ -234,6 +239,44 @@ FullWidthWithActions.parameters = {
         'A full width Alert with `actions` will render them inline if there is enough space and responsively wrap them to the next line in smaller displays.',
     },
   },
+};
+
+export const Test: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+  return (
+    <Box height="200px" display={{ s: 'flex', m: 'block' }} position="relative">
+      <AlertComponent {...args} />
+      <Button order="initial">Hello world</Button>
+      <Link key="1" margin="spacing.0" marginX="spacing.2" order="initial" href="">
+        Hello
+      </Link>
+      <Text
+        zIndex={1}
+        contrast="low"
+        position="relative"
+        placeSelf="-moz-initial"
+        size="large"
+        top="auto"
+        alignSelf="-moz-initial"
+        margin="spacing.10"
+        order="inherit"
+        marginBottom="spacing.1"
+      >
+        Change screen size to see flexDirection switch between row and column
+      </Text>
+      <Text color="feedback.negative.action.text.link.active.highContrast">
+        Change screen size to see flexDirection switch between row and column
+      </Text>
+      <Badge order="1">hello</Badge>
+      <Box {...args}>
+        <Box flex="1" backgroundColor="surface.background.level2.highContrast" padding="spacing.5">
+          <Text contrast="high">Box1</Text>
+        </Box>
+        <Box flex="1" backgroundColor="surface.background.level3.highContrast" padding="spacing.5">
+          <Text contrast="high">Box2</Text>
+        </Box>
+      </Box>
+    </Box>
+  );
 };
 
 export default meta;
