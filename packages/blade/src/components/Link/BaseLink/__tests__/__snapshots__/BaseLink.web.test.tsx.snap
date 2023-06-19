@@ -78,19 +78,19 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
     role="link"
     target="_blank"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.visited"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -171,19 +171,19 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
     role="button"
     type="button"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </button>
 </div>
 `;
@@ -264,19 +264,19 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
     role="button"
     type="button"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </button>
 </div>
 `;
@@ -358,19 +358,19 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
     role="button"
     type="button"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.disabled"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </button>
 </div>
 `;
@@ -450,19 +450,19 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.information.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -542,19 +542,19 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.information.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -634,19 +634,19 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.negative.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -726,19 +726,19 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.negative.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -818,19 +818,19 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.neutral.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -910,19 +910,19 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.neutral.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -1002,19 +1002,19 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.notice.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -1094,19 +1094,19 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.notice.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -1186,19 +1186,19 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.positive.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -1278,19 +1278,19 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.positive.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -1382,11 +1382,11 @@ exports[`<BaseLink /> should render icon only link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         display="flex"
       >
@@ -1414,14 +1414,14 @@ exports[`<BaseLink /> should render icon only link 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-      </div>
-      <div
+      </span>
+      <span
         class="c3"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       />
-    </div>
+    </span>
   </a>
 </div>
 `;
@@ -1501,19 +1501,19 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.information.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -1593,19 +1593,19 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.information.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -1685,19 +1685,19 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -1789,11 +1789,11 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         display="flex"
       >
@@ -1821,16 +1821,16 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
             fill-rule="evenodd"
           />
         </svg>
-      </div>
-      <div
+      </span>
+      <span
         class="c3"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -1922,11 +1922,11 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         display="flex"
       >
@@ -1954,16 +1954,16 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
             fill-rule="evenodd"
           />
         </svg>
-      </div>
-      <div
+      </span>
+      <span
         class="c3"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -2055,19 +2055,19 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-      <div
+      </span>
+      <span
         class="c3"
         display="flex"
       >
@@ -2095,8 +2095,8 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
             fill-rule="evenodd"
           />
         </svg>
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -2176,19 +2176,19 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.negative.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -2268,19 +2268,19 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.negative.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -2360,19 +2360,19 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.neutral.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -2452,19 +2452,19 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.neutral.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -2544,19 +2544,19 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.notice.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -2636,19 +2636,19 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.notice.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -2728,19 +2728,19 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.positive.action.text.link.default.highContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -2820,19 +2820,19 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="feedback.positive.action.text.link.default.lowContrast"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
