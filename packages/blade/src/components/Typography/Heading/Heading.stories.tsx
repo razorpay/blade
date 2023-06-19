@@ -102,7 +102,7 @@ const AsPropTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
       <Text marginBottom="spacing.5">
         But you can also pass a custom as prop to override the rendered HTML:
       </Text>
-      <HeadingComponent {...args}>
+      <HeadingComponent textAlign="center" {...args}>
         Tweak the storybook controls to see the dom change
       </HeadingComponent>
     </Box>

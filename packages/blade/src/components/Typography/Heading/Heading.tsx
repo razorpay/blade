@@ -14,7 +14,7 @@ import type { StringChildrenType, TestID } from '~src/_helpers/types';
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
 
-const validAsValues = ['span', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 type HeadingCommonProps = {
   as?: typeof validAsValues[number];
   /**
