@@ -388,13 +388,20 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       hitSlop={hitSlop}
       title={htmlTitle}
     >
-      <BaseBox display="flex" flexDirection="row" className="content-container" alignItems="center">
+      <BaseBox
+        as="span"
+        display="flex"
+        flexDirection="row"
+        className="content-container"
+        alignItems="center"
+      >
         {Icon && iconPosition == 'left' ? (
-          <BaseBox paddingRight={iconPadding} display="flex" alignItems="center">
+          <BaseBox as="span" paddingRight={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size={iconSize} />
           </BaseBox>
         ) : null}
         <BaseText
+          as="span"
           textDecorationLine={textDecorationLine}
           color={textColor}
           fontSize={fontSize}
@@ -405,7 +412,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
           {children}
         </BaseText>
         {Icon && iconPosition == 'right' ? (
-          <BaseBox paddingLeft={iconPadding} display="flex" alignItems="center">
+          <BaseBox as="span" paddingLeft={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size={iconSize} />
           </BaseBox>
         ) : null}
