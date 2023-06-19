@@ -2,9 +2,10 @@ import type { ReactElement } from 'react';
 import { StyledAccordionButton } from './StyledAccordionButton';
 import type { AccordionButtonProps } from './types';
 import { Heading } from '~components/Typography';
+import { MetaConstants, assignWithoutSideEffects } from '~utils';
 
 // TODO: implement with reanimated, pressable
-const AccordionButton = ({ children }: AccordionButtonProps): ReactElement => {
+const _AccordionButton = ({ children }: AccordionButtonProps): ReactElement => {
   return (
     <StyledAccordionButton
       // TODO: add logic
@@ -14,5 +15,9 @@ const AccordionButton = ({ children }: AccordionButtonProps): ReactElement => {
     </StyledAccordionButton>
   );
 };
+
+const AccordionButton = assignWithoutSideEffects(_AccordionButton, {
+  componentId: MetaConstants.AccordionButton,
+});
 
 export { AccordionButton };

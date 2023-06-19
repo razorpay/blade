@@ -3,6 +3,7 @@ import { Children, useCallback, useRef, useState, useMemo } from 'react';
 
 import type { CollapsibleContextState } from './CollapsibleContext';
 import { CollapsibleContext } from './CollapsibleContext';
+import { MAX_WIDTH } from './styles';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~src/_helpers/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -54,12 +55,6 @@ type CollapsibleProps = {
   StyledPropsBlade;
 
 const MIN_WIDTH: BoxProps['minWidth'] = makeSize(size[200]);
-
-const MAX_WIDTH: BoxProps['maxWidth'] = {
-  s: `calc(100vw - ${makeSize(size[40])})`,
-  m: makeSize(size[640]),
-  l: makeSize(size[1136]),
-};
 
 const Collapsible = ({
   children,

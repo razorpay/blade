@@ -1,14 +1,11 @@
-import type { ReactElement, ReactNode, TransitionEventHandler } from 'react';
+import type { ReactElement, TransitionEventHandler } from 'react';
 import { useRef } from 'react';
 import styled from 'styled-components';
 import { useCollapsible } from './CollapsibleContext';
 import { useDidUpdate } from './useDidUpdate';
+import type { CollapsibleBodyContentProps } from './types';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { Box } from '~components/Box';
-
-type CollapsibleBodyContentProps = {
-  children: ReactNode;
-};
 
 type StyledCollapsibleBodyContentProps = {
   defaultIsExpanded: boolean;

@@ -1,13 +1,40 @@
-import type { ReactElement, ReactNode } from 'react';
-import { Text } from '~components/Typography';
+import type { ReactElement } from 'react';
+import styled from 'styled-components/native';
+import Animated from 'react-native-reanimated';
+import type { CollapsibleBodyContentProps } from './types';
+import { useCollapsible } from './CollapsibleContext';
+import { Box } from '~components/Box';
 
-// TODO: implement
-type CollapsibleBodyContentProps = {
-  children: ReactNode;
+type AnimatedStyledCollapsibleBodyContentProps = {
+  isExpanded: boolean;
 };
 
-const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): ReactElement => (
-  <Text>To implement {children}</Text>
-);
+const AnimatedStyledCollapsibleBodyContent = styled(
+  Animated.View,
+)<AnimatedStyledCollapsibleBodyContentProps>((props) => {
+  const { isExpanded } = props;
+  return {
+    height: isExpanded ? 'auto' : 0,
+  };
+});
+
+const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): ReactElement => {
+  const { isExpanded, defaultIsExpanded, direction } = useCollapsible();
+
+  return (
+    <AnimatedStyledCollapsibleBodyContent isExpanded={isExpanded}>
+      <Box
+        /**
+         * Need a margin inside the outside wrapper so this is
+         * included in height calculations and prevents jank
+         */
+        marginTop={direction === 'bottom' ? 'spacing.5' : 'spacing.0'}
+        marginBottom={direction === 'top' ? 'spacing.5' : 'spacing.0'}
+      >
+        {children}
+      </Box>
+    </AnimatedStyledCollapsibleBodyContent>
+  );
+};
 
 export { CollapsibleBodyContent };
