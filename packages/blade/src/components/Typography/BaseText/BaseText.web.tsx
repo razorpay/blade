@@ -58,7 +58,6 @@ export const BaseText = ({
   testID,
   ...styledProps
 }: BaseTextProps): ReactElement => {
-  console.log(styledProps);
   return (
     <StyledBaseText
       {...styledProps}
