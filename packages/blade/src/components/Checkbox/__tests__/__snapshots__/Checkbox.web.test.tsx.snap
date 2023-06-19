@@ -246,19 +246,19 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
               href="#"
               role="link"
             >
-              <div
+              <span
                 class="c2 content-container"
                 display="flex"
               >
-                <div
+                <span
                   class="c9"
                   color="action.text.link.default"
                   font-size="100"
                   font-weight="bold"
                 >
                   Terms and Conditions
-                </div>
-              </div>
+                </span>
+              </span>
             </a>
           </div>
         </div>
