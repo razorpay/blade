@@ -2,14 +2,9 @@ import React, { useState } from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
-import { useFloating, detectOverflow } from '@floating-ui/react';
-import type { MiddlewareState } from '@floating-ui/react';
+import { useFloating } from '@floating-ui/react';
 import type { DropdownPosition } from './dropdownUtils';
-import {
-  componentIds,
-  getDropdownOverflowMiddleware,
-  getDropdownOverlayPosition,
-} from './dropdownUtils';
+import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
