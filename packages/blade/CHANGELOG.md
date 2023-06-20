@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 8.10.2
+
+### Patch Changes
+
+- 99016aff: feat(blade): add support for as prop for typography components
+- f08e6d4f: fix(blade): remove unnecessary attributes from dom
+
 ## 8.10.1
 
 ### Patch Changes
