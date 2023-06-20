@@ -164,7 +164,6 @@ exports[`<List /> should render List with default properties 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -325,7 +324,6 @@ exports[`<List /> should render List with default properties 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -488,7 +486,6 @@ exports[`<List /> should render List with default properties 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -672,7 +669,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -870,7 +866,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1048,7 +1043,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1282,7 +1276,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1402,7 +1395,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1450,7 +1442,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1611,7 +1602,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -1774,7 +1764,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -1904,7 +1893,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1952,7 +1940,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2044,7 +2031,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2092,7 +2078,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2184,7 +2169,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2232,7 +2216,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2408,7 +2391,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2567,7 +2549,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -2730,7 +2711,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -2856,7 +2836,6 @@ exports[`<List /> should render small ordered List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2904,7 +2883,6 @@ exports[`<List /> should render small ordered List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3065,7 +3043,6 @@ exports[`<List /> should render small ordered List 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -3228,7 +3205,6 @@ exports[`<List /> should render small ordered List 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -3358,7 +3334,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3406,7 +3381,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3498,7 +3472,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3546,7 +3519,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3638,7 +3610,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3686,7 +3657,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3862,7 +3832,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -4021,7 +3990,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -4184,7 +4152,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -4368,7 +4335,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -4529,7 +4495,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -4692,7 +4657,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >

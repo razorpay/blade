@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
-import { castWebType, getIn, makeMotionTime } from '~utils';
+import { castWebType, getIn, makeMotionTime, omitPropsFromHTML } from '~utils';
 import { useStyledProps } from '~components/Box/styledProps';
 
-const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => ({
-  ...props.accessibilityProps,
-}))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => {
+const StyledBaseButton = styled.button
+  .withConfig({
+    shouldForwardProp: omitPropsFromHTML,
+    displayName: 'StyledBaseButton',
+  })
+  .attrs((props: StyledBaseButtonProps) => ({
+    ...props.accessibilityProps,
+  }))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   return {
     ...getStyledBaseButtonStyles(props),
