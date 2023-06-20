@@ -5,7 +5,11 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import { useFloating, detectOverflow } from '@floating-ui/react';
 import type { MiddlewareState } from '@floating-ui/react';
 import type { DropdownPosition } from './dropdownUtils';
-import { componentIds, getDropdownOverlayPosition } from './dropdownUtils';
+import {
+  componentIds,
+  getDropdownOverflowMiddleware,
+  getDropdownOverlayPosition,
+} from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
@@ -71,20 +75,6 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
 
   const isMenu = dropdownTriggerer !== 'SelectInput';
 
-  const detectOverflowMiddleware = {
-    name: 'detectOverflowMiddleware',
-    async fn(state: MiddlewareState) {
-      const overflow = await detectOverflow(state, { elementContext: 'reference' });
-      const position = getDropdownOverlayPosition({
-        overflow,
-        isMenu,
-        triggererEl: triggererRef.current,
-      });
-      setDropdownPosition(position);
-      return {};
-    },
-  };
-
   const { refs } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
@@ -93,7 +83,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     elements: {
       reference: triggererRef.current,
     },
-    middleware: [detectOverflowMiddleware],
+    middleware: [getDropdownOverflowMiddleware({ isMenu, triggererRef, setDropdownPosition })],
   });
 
   const fadeIn = css`

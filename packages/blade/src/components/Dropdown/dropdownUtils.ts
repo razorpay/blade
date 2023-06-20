@@ -7,8 +7,11 @@
  * Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang)
  */
 
+import type { MiddlewareState } from '@floating-ui/react';
+import { detectOverflow } from '@floating-ui/react';
 import type { DropdownContextType, OptionsType } from './useDropdown';
 import type { SpacingValueType } from '~components/Box/BaseBox';
+import { size } from '~tokens/global';
 
 export type SelectActionsType =
   | 'Close'
@@ -340,6 +343,10 @@ export type DropdownPosition = {
   right?: SpacingValueType;
 };
 
+/**
+ * This object is used for calculating overflows in dropdown overlay.
+ * 400 is used since max-width of dropdown overlay is 400px.
+ */
 export const POSITION_THRESHOLDS = {
   top: -400,
   bottom: -400,
@@ -347,6 +354,12 @@ export const POSITION_THRESHOLDS = {
   right: -400,
 };
 
+/**
+ * This function calculates the position of dropdown overlay with respect to dropdown trigger element.
+ * For non-menus (e.g SelectInput), position is flipped if overflow is on bottom.
+ * For menus (e.g. DropdownButton), position is flipped if overflow is on right or bottom.
+ * Additional spacing is added to clientHeight to provide spacing above the dropdown trigger.
+ */
 export const getDropdownOverlayPosition = ({
   overflow: position,
   isMenu,
@@ -363,8 +376,9 @@ export const getDropdownOverlayPosition = ({
 
   if (!isMenu) {
     if (bottom > POSITION_THRESHOLDS.bottom) {
-      newPosition.bottom = `${Number(triggererEl?.clientHeight) + 32}px`;
+      newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[32])}px`;
     }
+    console.log({ newPosition });
     return newPosition;
   }
 
@@ -374,9 +388,33 @@ export const getDropdownOverlayPosition = ({
   }
 
   if (bottom > POSITION_THRESHOLDS.bottom) {
-    newPosition.bottom = `${Number(triggererEl?.clientHeight) + 20}px`;
+    newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[20])}px`;
     newPosition.top = undefined;
   }
 
   return newPosition;
+};
+
+export const getDropdownOverflowMiddleware = ({
+  isMenu,
+  triggererRef,
+  setDropdownPosition,
+}: {
+  setDropdownPosition: React.Dispatch<React.SetStateAction<DropdownPosition>>;
+  isMenu: boolean;
+  triggererRef: React.RefObject<HTMLButtonElement | null>;
+}): { name: string; fn: (state: MiddlewareState) => Promise<object> } => {
+  return {
+    name: 'detectOverflowMiddleware',
+    async fn(state: MiddlewareState) {
+      const overflow = await detectOverflow(state, { elementContext: 'reference' });
+      const position = getDropdownOverlayPosition({
+        overflow,
+        isMenu,
+        triggererEl: triggererRef.current,
+      });
+      setDropdownPosition(position);
+      return {};
+    },
+  };
 };
