@@ -157,7 +157,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             display="flex"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
@@ -172,7 +172,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -188,7 +188,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         class="c1"
       >
         <p
-          class="c6 Text__StyledText-wkh56f-0"
+          class="c6"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"
@@ -412,7 +412,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.highContrast"
           data-blade-component="text"
           font-family="text"
@@ -540,7 +540,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.highContrast"
           data-blade-component="text"
           font-family="text"
@@ -668,7 +668,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.highContrast"
           data-blade-component="text"
           font-family="text"
@@ -796,7 +796,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.highContrast"
           data-blade-component="text"
           font-family="text"
@@ -924,7 +924,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.highContrast"
           data-blade-component="text"
           font-family="text"
@@ -1052,7 +1052,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.highContrast"
           data-blade-component="text"
           font-family="text"
@@ -1180,7 +1180,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"
@@ -1308,7 +1308,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"
@@ -1436,7 +1436,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"
@@ -1564,7 +1564,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"
@@ -1692,7 +1692,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"
@@ -1889,7 +1889,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             display="flex"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
@@ -1904,7 +1904,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -1920,7 +1920,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         class="c1"
       >
         <p
-          class="c6 Text__StyledText-wkh56f-0"
+          class="c6"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"
@@ -2202,7 +2202,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             display="flex"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
@@ -2217,7 +2217,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -2233,7 +2233,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         class="c1"
       >
         <p
-          class="c6 Text__StyledText-wkh56f-0"
+          class="c6"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"
@@ -2552,7 +2552,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             display="flex"
           >
             <p
-              class="c7 Text__StyledText-wkh56f-0"
+              class="c7"
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
@@ -2567,7 +2567,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c9 Text__StyledText-wkh56f-0"
+                class="c9"
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -2583,7 +2583,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         class="c5"
       >
         <p
-          class="c10 Text__StyledText-wkh56f-0"
+          class="c10"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"
@@ -2902,7 +2902,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             display="flex"
           >
             <p
-              class="c7 Text__StyledText-wkh56f-0"
+              class="c7"
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
@@ -2917,7 +2917,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c9 Text__StyledText-wkh56f-0"
+                class="c9"
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -2933,7 +2933,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         class="c5"
       >
         <p
-          class="c10 Text__StyledText-wkh56f-0"
+          class="c10"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"

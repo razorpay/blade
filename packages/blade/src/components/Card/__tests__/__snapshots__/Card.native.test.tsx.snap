@@ -76,7 +76,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
       >
@@ -167,7 +166,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -200,7 +198,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -797,16 +794,21 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       style={
                         Array [
                           Object {
+                            "WebkitBoxOrient": "vertical",
+                            "WebkitLineClamp": 1,
                             "color": "hsla(216, 27%, 36%, 1)",
+                            "display": "-webkit-box",
                             "fontFamily": "Lato",
                             "fontSize": 12,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "lineClamp": 1,
                             "lineHeight": 16,
                             "marginBottom": 0,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 0,
+                            "overflow": "hidden",
                             "paddingBottom": 0,
                             "paddingLeft": 0,
                             "paddingRight": 0,
@@ -814,7 +816,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
                             "textAlign": "center",
                             "textDecorationLine": "none",
                           },
-                          Object {},
                         ]
                       }
                       textAlign="center"
@@ -853,7 +854,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     "textAlign": "left",
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
               textAlign="left"
@@ -924,23 +924,27 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 style={
                   Array [
                     Object {
+                      "WebkitBoxOrient": "vertical",
+                      "WebkitLineClamp": 1,
                       "color": "hsla(216, 27%, 36%, 1)",
+                      "display": "-webkit-box",
                       "fontFamily": "Lato",
                       "fontSize": 12,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "lineClamp": 1,
                       "lineHeight": 16,
                       "marginBottom": 0,
                       "marginLeft": 0,
                       "marginRight": 0,
                       "marginTop": 0,
+                      "overflow": "hidden",
                       "paddingBottom": 0,
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               >
@@ -997,7 +1001,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
       >
@@ -1142,7 +1145,6 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
       >
@@ -1229,7 +1231,6 @@ exports[`<Card /> should render a plain Card 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
       >

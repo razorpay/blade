@@ -272,7 +272,7 @@ exports[`<OTPInput /> should render 1`] = `
             display="flex"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               font-family="text"
@@ -287,7 +287,7 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 font-family="text"
