@@ -13,6 +13,11 @@ const filterProps = [
   'fontSize',
   'fontStyle',
   'lineHeight',
+  // width height are only accepted in few components,
+  // canvas, embed, iframe, input, object, video, img
+  // none of them are currently supported in Box
+  'width',
+  'height',
 ];
 
 type shouldForwardProp = <O extends object>(
