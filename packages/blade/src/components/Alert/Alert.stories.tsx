@@ -8,11 +8,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
-import { Link } from '~components/Link';
-import { Button } from '~components/Button';
-import { Badge } from '~components/Badge';
 
 const Page = (): ReactElement => {
   return (
