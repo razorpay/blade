@@ -76,19 +76,19 @@ exports[`<Link /> should render button variant of link 1`] = `
     role="button"
     type="button"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </button>
 </div>
 `;
@@ -170,19 +170,19 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
     role="button"
     type="button"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.disabled"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </button>
 </div>
 `;
@@ -262,19 +262,19 @@ exports[`<Link /> should render link with default properties 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -366,11 +366,11 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         display="flex"
       >
@@ -398,16 +398,16 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-      </div>
-      <div
+      </span>
+      <span
         class="c3"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -499,11 +499,11 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         display="flex"
       >
@@ -531,16 +531,16 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-      </div>
-      <div
+      </span>
+      <span
         class="c3"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -632,19 +632,19 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       >
         Learn More
-      </div>
-      <div
+      </span>
+      <span
         class="c3"
         display="flex"
       >
@@ -672,8 +672,8 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
@@ -765,11 +765,11 @@ exports[`<Link /> should render link with icon without text 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         display="flex"
       >
@@ -797,14 +797,14 @@ exports[`<Link /> should render link with icon without text 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-      </div>
-      <div
+      </span>
+      <span
         class="c3"
         color="action.text.link.default"
         font-size="100"
         font-weight="bold"
       />
-    </div>
+    </span>
   </a>
 </div>
 `;
@@ -896,11 +896,11 @@ exports[`<Link /> should render with small size 1`] = `
     data-blade-component="link"
     role="link"
   >
-    <div
+    <span
       class="c1 content-container"
       display="flex"
     >
-      <div
+      <span
         class="c2"
         display="flex"
       >
@@ -928,16 +928,16 @@ exports[`<Link /> should render with small size 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-      </div>
-      <div
+      </span>
+      <span
         class="c3"
         color="action.text.link.default"
         font-size="75"
         font-weight="bold"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;
