@@ -78,7 +78,8 @@ const AsPropTemplate: ComponentStory<typeof TitleComponent> = (args) => {
         <Text as="span" weight="bold">
           Title
         </Text>{' '}
-        component automatically changes the rendered HTML based on the{' '}
+        component automatically renders the respective <Code size="medium">h*</Code> tag based on
+        the{' '}
         <Text as="span" weight="bold">
           size prop
         </Text>{' '}
