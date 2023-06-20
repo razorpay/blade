@@ -2,6 +2,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title as StorybookTitle } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
+import { Code } from '../Code';
 import type { TitleProps } from './';
 import { Title as TitleComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
@@ -90,7 +91,7 @@ const AsPropTemplate: ComponentStory<typeof TitleComponent> = (args) => {
         <ListItem>xlarge: h1</ListItem>
       </List>
       <Text marginBottom="spacing.5">
-        But you can also pass a custom as prop to override the rendered HTML:
+        But you can also pass a custom <Code>as</Code> prop to override the rendered HTML:
       </Text>
       <TitleComponent {...args}>Tweak the storybook controls to see the dom change</TitleComponent>
     </Box>

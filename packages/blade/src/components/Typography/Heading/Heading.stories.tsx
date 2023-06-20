@@ -2,6 +2,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
+import { Code } from '../Code';
 import type { HeadingProps } from './';
 import { Heading as HeadingComponent } from './';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
@@ -88,7 +89,7 @@ const AsPropTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
         <Text as="span" weight="bold">
           Heading
         </Text>{' '}
-        component automatically changes the rendered HTML based on the{' '}
+        component automatically renders the respective `h*` tag based on the{' '}
         <Text as="span" weight="bold">
           size prop
         </Text>{' '}
@@ -101,9 +102,10 @@ const AsPropTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
         <ListItem>subheading variant: p</ListItem>
       </List>
       <Text marginBottom="spacing.5">
-        But you can also pass a custom as prop to override the rendered HTML:
+        But you can also pass a custom <Code size="medium">as</Code> prop to override the rendered
+        HTML:
       </Text>
-      <HeadingComponent textAlign="center" {...args}>
+      <HeadingComponent {...args}>
         Tweak the storybook controls to see the dom change
       </HeadingComponent>
     </Box>

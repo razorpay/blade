@@ -4,7 +4,7 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import { getPlatformType } from '~utils';
+import { isReactNative } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
@@ -76,7 +76,6 @@ const getProps = <T extends { variant: HeadingVariant }>({
   HeadingProps<T>,
   'as' | 'variant' | 'size' | 'type' | 'weight' | 'contrast' | 'color' | 'testID'
 >): Omit<BaseTextProps, 'children'> => {
-  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
     color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
@@ -85,7 +84,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
     fontStyle: 'normal',
     lineHeight: 300,
     fontFamily: 'text',
-    accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
+    accessibilityProps: isReactNative() ? { role: 'heading' } : {},
     componentName: 'heading',
     testID,
   };
@@ -94,15 +93,15 @@ const getProps = <T extends { variant: HeadingVariant }>({
     if (!size || size === 'small') {
       props.fontSize = 200;
       props.lineHeight = 300;
-      props.as = isPlatformWeb ? 'h6' : undefined;
+      props.as = 'h6';
     } else if (size === 'medium') {
       props.fontSize = 300;
       props.lineHeight = 200;
-      props.as = isPlatformWeb ? 'h5' : undefined;
+      props.as = 'h5';
     } else if (size === 'large') {
       props.fontSize = 400;
       props.lineHeight = 400;
-      props.as = isPlatformWeb ? 'h4' : undefined;
+      props.as = 'h4';
     }
   } else if (variant === 'subheading') {
     if (weight === 'regular') {
@@ -115,7 +114,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
     }
     props.fontSize = 75;
     props.lineHeight = 50;
-    props.as = isPlatformWeb ? 'p' : undefined;
+    props.as = 'p';
   }
 
   // override the computed `as` prop if user passed an `as` prop
@@ -136,9 +135,9 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   textAlign,
   ...styledProps
 }: HeadingProps<T>): ReactElement => {
-  const props = getProps({ as, variant, size, type, weight, color, contrast, testID });
-
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
+
+  const props = getProps({ as, variant, size, type, weight, color, contrast, testID });
 
   return (
     <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>

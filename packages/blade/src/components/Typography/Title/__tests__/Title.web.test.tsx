@@ -72,7 +72,7 @@ describe('<Title />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should accept as prop and render appropriate dom node', () => {
+  it('should accept as prop and render appropriate HTML tag', () => {
     const displayText = 'Displaying some text';
     const { getByText } = renderWithTheme(<Title as="span">{displayText}</Title>);
     expect(getByText(displayText).tagName).toBe('SPAN');

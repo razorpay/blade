@@ -78,7 +78,7 @@ describe('<Text />', () => {
     mockConsoleError.mockRestore();
   });
 
-  it('should accept as prop and render appropriate dom node', () => {
+  it('should accept as prop and render appropriate HTML tag', () => {
     const displayText = 'Displaying some text';
     const { getByText } = renderWithTheme(<Text as="span">{displayText}</Text>);
     expect(getByText(displayText).tagName).toBe('SPAN');

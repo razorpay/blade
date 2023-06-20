@@ -74,7 +74,7 @@ const AsPropTemplate: ComponentStory<typeof TextComponent> = (args) => {
   return (
     <TextComponent {...args} as="p">
       Power your{' '}
-      <TextComponent {...args} as="span" weight="bold">
+      <TextComponent {...args} color="feedback.text.positive.lowContrast" as="span" weight="bold">
         finance
       </TextComponent>
       , grow your{' '}

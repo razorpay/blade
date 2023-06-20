@@ -84,9 +84,9 @@ export const Title = ({
   textAlign,
   ...styledProps
 }: TitleProps): ReactElement => {
-  const props = getProps({ as, size, type, contrast, color, testID });
+  useValidateAsProp({ componentName: 'Title', as, validAsValues });
 
-  useValidateAsProp({ componentName: 'Title', as: props.as, validAsValues });
+  const props = getProps({ as, size, type, contrast, color, testID });
 
   return (
     <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>
