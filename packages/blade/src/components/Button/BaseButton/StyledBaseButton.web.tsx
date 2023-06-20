@@ -7,6 +7,7 @@ import { useStyledProps } from '~components/Box/styledProps';
 const StyledBaseButton = styled.button
   .withConfig({
     shouldForwardProp: omitPropsFromHTML,
+    displayName: 'StyledBaseButton',
   })
   .attrs((props: StyledBaseButtonProps) => ({
     ...props.accessibilityProps,

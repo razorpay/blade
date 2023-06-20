@@ -8,6 +8,7 @@ import { useStyledProps } from '~components/Box/styledProps';
 
 const StyledBaseText = styled.div.withConfig({
   shouldForwardProp: omitPropsFromHTML,
+  displayName: 'StyledBaseText',
 })<StyledBaseTextProps>(
   ({
     color,

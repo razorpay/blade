@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<List /> should render List with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"sc-bczRLJ\\"><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  bALAZM\\"><div class=\\"sc-bczRLJ kNguGn\\"><div class=\\"sc-bczRLJ itARkd\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"3px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p class=\\"sc-gsnTZi gIViOb Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 1</p></div><div class=\\"sc-bczRLJ\\"><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD\\"><div class=\\"sc-bczRLJ kNguGn\\"><div class=\\"sc-bczRLJ itARkd\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"2.5px\\" stroke=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p class=\\"sc-gsnTZi gIViOb Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 2</p></div><div class=\\"sc-bczRLJ\\"><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD\\"><div class=\\"sc-bczRLJ kNguGn\\"><div class=\\"sc-bczRLJ itARkd\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><rect height=\\"6px\\" width=\\"6px\\" rx=\\"1px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></rect></svg></div><p class=\\"sc-gsnTZi gIViOb Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 3</p></div></li></ul></div></li></ul></div></li></ul></div></div>"`;
+exports[`<List /> should render List with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"BaseBox-bmPWx\\"><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  bALAZM\\"><div class=\\"BaseBox-bmPWx dKbTtw\\"><div class=\\"BaseBox-bmPWx gXoKZy\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"3px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p class=\\"StyledBaseText-dVBfTO eIdQFo Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 1</p></div><div class=\\"BaseBox-bmPWx\\"><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD\\"><div class=\\"BaseBox-bmPWx dKbTtw\\"><div class=\\"BaseBox-bmPWx gXoKZy\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><circle cx=\\"3px\\" cy=\\"3px\\" r=\\"2.5px\\" stroke=\\"hsla(214, 18%, 69%, 1)\\"></circle></svg></div><p class=\\"StyledBaseText-dVBfTO eIdQFo Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 2</p></div><div class=\\"BaseBox-bmPWx\\"><ul data-blade-component=\\"list\\" role=\\"list\\" class=\\"UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu\\"><li data-blade-component=\\"list-item\\" class=\\"ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD\\"><div class=\\"BaseBox-bmPWx dKbTtw\\"><div class=\\"BaseBox-bmPWx gXoKZy\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"6px\\" viewBox=\\"0 0 6 6\\" width=\\"6px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><rect height=\\"6px\\" width=\\"6px\\" rx=\\"1px\\" fill=\\"hsla(214, 18%, 69%, 1)\\"></rect></svg></div><p class=\\"StyledBaseText-dVBfTO eIdQFo Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Level 3</p></div></li></ul></div></li></ul></div></li></ul></div></div>"`;
 
 exports[`<List /> should render List with default properties 2`] = `
 <div
@@ -8,7 +8,7 @@ exports[`<List /> should render List with default properties 2`] = `
   id="root"
 >
   <div
-    class="sc-bczRLJ"
+    class="BaseBox-bmPWx"
   >
     <ul
       class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF"
@@ -20,10 +20,10 @@ exports[`<List /> should render List with default properties 2`] = `
         data-blade-component="list-item"
       >
         <div
-          class="sc-bczRLJ kNguGn"
+          class="BaseBox-bmPWx dKbTtw"
         >
           <div
-            class="sc-bczRLJ itARkd"
+            class="BaseBox-bmPWx gXoKZy"
           >
             <svg
               aria-hidden="true"
@@ -43,14 +43,14 @@ exports[`<List /> should render List with default properties 2`] = `
             </svg>
           </div>
           <p
-            class="sc-gsnTZi gIViOb Text__StyledText-wkh56f-0"
+            class="StyledBaseText-dVBfTO eIdQFo Text__StyledText-wkh56f-0"
             data-blade-component="text"
           >
             Level 1
           </p>
         </div>
         <div
-          class="sc-bczRLJ"
+          class="BaseBox-bmPWx"
         >
           <ul
             class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
@@ -62,10 +62,10 @@ exports[`<List /> should render List with default properties 2`] = `
               data-blade-component="list-item"
             >
               <div
-                class="sc-bczRLJ kNguGn"
+                class="BaseBox-bmPWx dKbTtw"
               >
                 <div
-                  class="sc-bczRLJ itARkd"
+                  class="BaseBox-bmPWx gXoKZy"
                 >
                   <svg
                     aria-hidden="true"
@@ -85,14 +85,14 @@ exports[`<List /> should render List with default properties 2`] = `
                   </svg>
                 </div>
                 <p
-                  class="sc-gsnTZi gIViOb Text__StyledText-wkh56f-0"
+                  class="StyledBaseText-dVBfTO eIdQFo Text__StyledText-wkh56f-0"
                   data-blade-component="text"
                 >
                   Level 2
                 </p>
               </div>
               <div
-                class="sc-bczRLJ"
+                class="BaseBox-bmPWx"
               >
                 <ul
                   class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
@@ -104,10 +104,10 @@ exports[`<List /> should render List with default properties 2`] = `
                     data-blade-component="list-item"
                   >
                     <div
-                      class="sc-bczRLJ kNguGn"
+                      class="BaseBox-bmPWx dKbTtw"
                     >
                       <div
-                        class="sc-bczRLJ itARkd"
+                        class="BaseBox-bmPWx gXoKZy"
                       >
                         <svg
                           aria-hidden="true"
@@ -127,7 +127,7 @@ exports[`<List /> should render List with default properties 2`] = `
                         </svg>
                       </div>
                       <p
-                        class="sc-gsnTZi gIViOb Text__StyledText-wkh56f-0"
+                        class="StyledBaseText-dVBfTO eIdQFo Text__StyledText-wkh56f-0"
                         data-blade-component="text"
                       >
                         Level 3

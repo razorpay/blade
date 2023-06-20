@@ -5,6 +5,7 @@ import { omitPropsFromHTML } from '~utils';
 
 const BaseBox = styled.div.withConfig({
   shouldForwardProp: omitPropsFromHTML,
+  displayName: 'BaseBox',
 })<BaseBoxProps>((props) => {
   const cssObject = useMemoizedStyles(props);
   return cssObject;

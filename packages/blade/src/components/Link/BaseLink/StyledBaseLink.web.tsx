@@ -7,6 +7,7 @@ import { useStyledProps } from '~components/Box/styledProps';
 const StyledLink = styled.button
   .withConfig({
     shouldForwardProp: omitPropsFromHTML,
+    displayName: 'StyledLink',
   })
   .attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
     ...props.accessibilityProps,

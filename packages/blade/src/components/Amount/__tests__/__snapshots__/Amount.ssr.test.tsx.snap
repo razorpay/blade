@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"amount\\" class=\\"sc-gsnTZi bBhmsv\\"><span class=\\"sc-bczRLJ fESbeL\\">₹</span><span class=\\"sc-bczRLJ gSxrJh\\">10,000<!-- -->.</span><span class=\\"sc-bczRLJ bOqBYL\\">00</span></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"amount\\" class=\\"BaseBox-bmPWx iaZUuq\\"><span class=\\"StyledBaseText-dVBfTO cQGNSm\\">₹</span><span class=\\"StyledBaseText-dVBfTO eIdQFo\\">10,000<!-- -->.</span><span class=\\"StyledBaseText-dVBfTO ghBMue\\">00</span></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 <div
@@ -8,23 +8,23 @@ exports[`<Amount /> should render Amount on server 2`] = `
   id="root"
 >
   <div
-    class="sc-gsnTZi bBhmsv"
+    class="BaseBox-bmPWx iaZUuq"
     data-blade-component="amount"
   >
     <span
-      class="sc-bczRLJ fESbeL"
+      class="StyledBaseText-dVBfTO cQGNSm"
     >
       ₹
     </span>
     <span
-      class="sc-bczRLJ gSxrJh"
+      class="StyledBaseText-dVBfTO eIdQFo"
     >
       10,000
       <!-- -->
       .
     </span>
     <span
-      class="sc-bczRLJ bOqBYL"
+      class="StyledBaseText-dVBfTO ghBMue"
     >
       00
     </span>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a data-blade-component=\\"link\\" href=\\"https://www.google.com/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" class=\\"StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf\\" role=\\"link\\" aria-disabled=\\"false\\"><span class=\\"sc-bczRLJ cNLxsO content-container\\"><span class=\\"sc-gsnTZi kjdLFE\\">Learn More</span></span></a></div>"`;
+exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a data-blade-component=\\"link\\" href=\\"https://www.google.com/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" class=\\"StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf\\" role=\\"link\\" aria-disabled=\\"false\\"><span class=\\"BaseBox-bmPWx fSbYvl content-container\\"><span class=\\"StyledBaseText-dVBfTO jSaisz\\">Learn More</span></span></a></div>"`;
 
 exports[`<BaseLink /> should render link with a default rel set when target is _blank 2`] = `
 <div
@@ -17,10 +17,10 @@ exports[`<BaseLink /> should render link with a default rel set when target is _
     target="_blank"
   >
     <span
-      class="sc-bczRLJ cNLxsO content-container"
+      class="BaseBox-bmPWx fSbYvl content-container"
     >
       <span
-        class="sc-gsnTZi kjdLFE"
+        class="StyledBaseText-dVBfTO jSaisz"
       >
         Learn More
       </span>
