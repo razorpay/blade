@@ -311,7 +311,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       data-blade-component="card-body"
     >
       <p
-        class="c2 Text__StyledText-wkh56f-0"
+        class="c2"
         color="surface.text.normal.lowContrast"
         data-blade-component="text"
         font-family="text"
@@ -340,7 +340,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           class="c7"
         >
           <p
-            class="c8 Text__StyledText-wkh56f-0"
+            class="c8"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -351,7 +351,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             Card Footer
           </p>
           <p
-            class="c9 Text__StyledText-wkh56f-0"
+            class="c9"
             color="surface.text.normal.lowContrast"
             data-blade-component="text"
             font-family="text"
@@ -522,13 +522,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding-left: 8px;
 }
 
-.c15 {
+.c14 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
 }
 
-.c16 {
+.c15 {
   text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
@@ -547,7 +547,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   box-sizing: border-box;
 }
 
-.c17 {
+.c16 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -587,9 +587,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
-.c14 {
+.c13 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -603,7 +608,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding: 0;
 }
 
-.c18 {
+.c17 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -614,9 +619,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
-.c20 {
+.c19 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -627,14 +637,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
-}
-
-.c13 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
 .c10 {
@@ -653,7 +655,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   width: fit-content;
 }
 
-.c19 {
+.c18 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
@@ -737,7 +739,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     overflow="hidden"
                   >
                     <p
-                      class="c12 c13"
+                      class="c12"
                       color="feedback.text.neutral.lowContrast"
                       data-blade-component="text"
                       font-family="text"
@@ -752,7 +754,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               </div>
             </div>
             <p
-              class="c14 "
+              class="c13"
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               font-family="text"
@@ -765,10 +767,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
           </div>
         </div>
         <div
-          class="c15"
+          class="c14"
         >
           <div
-            class="c16 c17"
+            class="c15 c16"
             data-blade-component="badge"
           >
             <div
@@ -777,7 +779,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               overflow="hidden"
             >
               <p
-                class="c18 c13"
+                class="c17"
                 color="feedback.text.neutral.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -792,7 +794,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </div>
       </div>
       <div
-        class="c19"
+        class="c18"
       />
     </div>
     <div
@@ -800,7 +802,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       data-blade-component="card-body"
     >
       <p
-        class="c20 "
+        class="c19"
         color="surface.text.normal.lowContrast"
         data-blade-component="text"
         font-family="text"

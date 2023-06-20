@@ -275,7 +275,7 @@ exports[`<TextInput /> should render 1`] = `
               display="flex"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -290,7 +290,7 @@ exports[`<TextInput /> should render 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   font-family="text"
@@ -656,7 +656,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               display="flex"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
                 font-family="text"
@@ -671,7 +671,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   font-family="text"
@@ -726,7 +726,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             class="c11"
           >
             <p
-              class="c12 Text__StyledText-wkh56f-0"
+              class="c12"
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               font-family="text"
@@ -762,7 +762,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             class="c14"
           >
             <p
-              class="c12 Text__StyledText-wkh56f-0"
+              class="c12"
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               font-family="text"

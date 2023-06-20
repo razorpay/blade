@@ -254,7 +254,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
         class="c3"
       >
         <p
-          class="c4 Text__StyledText-wkh56f-0"
+          class="c4"
           color="surface.text.subdued.highContrast"
           data-blade-component="text"
           font-family="text"
@@ -919,7 +919,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
         class="c3"
       >
         <p
-          class="c4 Text__StyledText-wkh56f-0"
+          class="c4"
           color="surface.text.subdued.lowContrast"
           data-blade-component="text"
           font-family="text"

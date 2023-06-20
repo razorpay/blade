@@ -14,6 +14,7 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
     fontWeight,
     fontStyle,
     textDecorationLine,
+    numberOfLines,
     lineHeight,
     textAlign,
     ...props
@@ -27,6 +28,7 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
         fontWeight,
         fontStyle,
         textDecorationLine,
+        numberOfLines,
         lineHeight,
         textAlign,
         theme: props.theme,
