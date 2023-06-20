@@ -326,19 +326,19 @@ export const makeInputDisplayValue = (selectedIndices: number[], options: Option
   return `${selectedIndices.length} items selected`;
 };
 
-interface PositionProp {
+type PositionProp = {
   top: number;
   left: number;
   right: number;
   bottom: number;
-}
+};
 
-export interface DropdownPosition {
+export type DropdownPosition = {
   top?: SpacingValueType;
   bottom?: SpacingValueType;
   left?: SpacingValueType;
   right?: SpacingValueType;
-}
+};
 
 export const POSITION_THRESHOLDS = {
   top: -400,
