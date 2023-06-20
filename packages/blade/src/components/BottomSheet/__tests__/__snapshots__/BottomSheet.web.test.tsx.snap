@@ -514,7 +514,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   >
     <div
       class="c3"
-      height="100%"
     >
       <div
         class="c4"
@@ -523,7 +522,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       <div
         class="c5"
         data-blade-component="BottomSheetHeader"
-        overflow="auto"
       >
         <div
           class=""
@@ -558,7 +556,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         <div
                           class="c14"
                           data-blade-component="counter"
-                          overflow="hidden"
                         >
                           <p
                             class="c15 c16"
@@ -587,7 +584,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 >
                   <div
                     class="c14"
-                    overflow="hidden"
                   >
                     <p
                       class="c21 c16"
@@ -634,7 +630,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       >
         <div
           class="c25"
-          overflow="auto"
         >
           <p
             class="c26 "
@@ -647,7 +642,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       <div
         class="c27"
         data-blade-component="BottomSheetFooter"
-        width="100%"
       >
         <div
           class="c23"

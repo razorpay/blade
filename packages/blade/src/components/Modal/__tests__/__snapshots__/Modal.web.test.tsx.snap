@@ -435,7 +435,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     data-blade-component="modal"
     role="dialog"
     tabindex="-1"
-    width="calc(100vw - 48px)"
   >
     <div
       class=""
@@ -471,7 +470,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                     <div
                       class="c12"
                       data-blade-component="counter"
-                      overflow="hidden"
                     >
                       <p
                         class="c13 c14"
@@ -500,7 +498,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             >
               <div
                 class="c12"
-                overflow="hidden"
               >
                 <p
                   class="c19 c14"
@@ -668,7 +665,6 @@ exports[`Modal renders a basic Modal 1`] = `
     data-blade-component="modal"
     role="dialog"
     tabindex="0"
-    width="calc(100vw - 48px)"
   >
     <div
       class="c4"
@@ -771,7 +767,6 @@ exports[`Modal renders a basic Modal of large size 1`] = `
     data-blade-component="modal"
     role="dialog"
     tabindex="0"
-    width="calc(100vw - 48px)"
   >
     <div
       class="c4"
@@ -874,7 +869,6 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
     data-blade-component="modal"
     role="dialog"
     tabindex="0"
-    width="calc(100vw - 48px)"
   >
     <div
       class="c4"

@@ -298,7 +298,6 @@ exports[`<TextArea /> should render 1`] = `
       </div>
       <div
         class="c7 c8"
-        width="100%"
       >
         <textarea
           aria-describedby=""
@@ -624,7 +623,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
       </div>
       <div
         class="c7 c8"
-        width="100%"
       >
         <textarea
           aria-describedby=""

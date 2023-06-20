@@ -196,8 +196,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
     >
       <div
         class="c7"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c8 c9 c10"
@@ -290,8 +288,6 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
     >
       <div
         class="c1"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c2 c3 c4"
@@ -412,8 +408,6 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -534,8 +528,6 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -656,8 +648,6 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -778,8 +768,6 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -900,8 +888,6 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -1022,8 +1008,6 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -1144,8 +1128,6 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -1266,8 +1248,6 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -1388,8 +1368,6 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -1510,8 +1488,6 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -1632,8 +1608,6 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
     >
       <div
         class="c3"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c4 c5 c6"
@@ -1844,8 +1818,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
     >
       <div
         class="c7"
-        height="4px"
-        overflow="hidden"
       >
         <div
           class="c8 c9 c10"
@@ -1927,8 +1899,6 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
     >
       <div
         class="c1"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c2 c3 c4"
@@ -2139,8 +2109,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
     >
       <div
         class="c7"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c8 c9 c10"
@@ -2468,8 +2436,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     >
       <div
         class="c11"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c12 c13 c14"
@@ -2797,8 +2763,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     >
       <div
         class="c11"
-        height="2px"
-        overflow="hidden"
       >
         <div
           class="c12 c13 c14"

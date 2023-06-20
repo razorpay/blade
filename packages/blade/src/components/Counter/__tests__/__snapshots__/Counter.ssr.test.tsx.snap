@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Counter /> should limit value with max prop 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"sc-bczRLJ StyledCounterweb__StyledCounter-sc-1itt9w6-0 korXzt dTYmGd\\"><div overflow=\\"hidden\\" data-blade-component=\\"counter\\" class=\\"sc-bczRLJ hhUase\\"><p class=\\"sc-gsnTZi fSLVFh Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">10+</p></div></div></div>"`;
+exports[`<Counter /> should limit value with max prop 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"sc-bczRLJ StyledCounterweb__StyledCounter-sc-1itt9w6-0 korXzt dTYmGd\\"><div data-blade-component=\\"counter\\" class=\\"sc-bczRLJ hhUase\\"><p class=\\"sc-gsnTZi fSLVFh Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">10+</p></div></div></div>"`;

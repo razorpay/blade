@@ -307,7 +307,6 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <div
                 class="c8 c9"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -342,7 +341,6 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <div
                 class="c8 c9"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -377,7 +375,6 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <div
                 class="c8 c9"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -412,7 +409,6 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <div
                 class="c8 c9"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -447,7 +443,6 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <div
                 class="c8 c9"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -482,7 +477,6 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <div
                 class="c8 c9"
-                width="100%"
               >
                 <input
                   aria-describedby=""

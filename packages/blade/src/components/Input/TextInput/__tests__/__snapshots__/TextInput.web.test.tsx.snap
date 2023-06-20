@@ -292,7 +292,6 @@ exports[`<TextInput /> should render 1`] = `
       </div>
       <div
         class="c7 c8"
-        width="100%"
       >
         <input
           aria-describedby=""
@@ -658,7 +657,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       </div>
       <div
         class="c7 c8"
-        width="100%"
       >
         <div
           class="c9"

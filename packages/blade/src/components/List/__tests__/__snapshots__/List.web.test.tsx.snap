@@ -490,8 +490,6 @@ exports[`<List /> should render medium ordered List 1`] = `
         >
           <div
             class="c4"
-            height="20px"
-            width="20px"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -704,8 +702,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         >
           <div
             class="c4"
-            height="20px"
-            width="20px"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -731,8 +727,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         >
           <div
             class="c4"
-            height="20px"
-            width="20px"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -758,8 +752,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         >
           <div
             class="c4"
-            height="20px"
-            width="20px"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -1108,8 +1100,6 @@ exports[`<List /> should render small ordered List 1`] = `
         >
           <div
             class="c4"
-            height="16px"
-            width="16px"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -1322,8 +1312,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         >
           <div
             class="c4"
-            height="18px"
-            width="18px"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -1349,8 +1337,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         >
           <div
             class="c4"
-            height="18px"
-            width="18px"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"
@@ -1376,8 +1362,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         >
           <div
             class="c4"
-            height="18px"
-            width="18px"
           >
             <p
               class="c5 Text__StyledText-wkh56f-0"

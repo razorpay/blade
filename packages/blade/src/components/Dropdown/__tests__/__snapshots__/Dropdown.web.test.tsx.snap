@@ -639,7 +639,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           </div>
           <div
             class="c9 c10"
-            width="100%"
           >
             <button
               aria-controls="dropdown-7-actionlist"
@@ -707,7 +706,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
         class="c18 c19"
         data-blade-component="dropdown-overlay"
         style="opacity: 1;"
-        width="100%"
       >
         <div
           aria-labelledby="dropdown-7-label"
