@@ -271,7 +271,7 @@ exports[`<BaseInput /> should render 1`] = `
               class="c3"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 data-blade-component="text"
               >
                 Enter name
@@ -281,7 +281,7 @@ exports[`<BaseInput /> should render 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   data-blade-component="text"
                 />
               </div>
@@ -619,7 +619,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               class="c3"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 data-blade-component="text"
               >
                 Enter name
@@ -629,7 +629,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   data-blade-component="text"
                 />
               </div>

@@ -155,7 +155,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             class="c2"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               data-blade-component="text"
             >
               Label
@@ -165,7 +165,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 data-blade-component="text"
               />
             </div>
@@ -176,7 +176,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         class="c1"
       >
         <p
-          class="c6 Text__StyledText-wkh56f-0"
+          class="c6"
           data-blade-component="text"
         >
           20%
@@ -389,7 +389,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -509,7 +509,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -629,7 +629,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -749,7 +749,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -869,7 +869,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -989,7 +989,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -1109,7 +1109,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -1229,7 +1229,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -1349,7 +1349,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -1469,7 +1469,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -1589,7 +1589,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
         class="c1"
       >
         <p
-          class="c2 Text__StyledText-wkh56f-0"
+          class="c2"
           data-blade-component="text"
         >
           20%
@@ -1777,7 +1777,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             class="c2"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               data-blade-component="text"
             >
               Label
@@ -1787,7 +1787,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 data-blade-component="text"
               />
             </div>
@@ -1798,7 +1798,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         class="c1"
       >
         <p
-          class="c6 Text__StyledText-wkh56f-0"
+          class="c6"
           data-blade-component="text"
         >
           20%
@@ -2068,7 +2068,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             class="c2"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               data-blade-component="text"
             >
               Label
@@ -2078,7 +2078,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 data-blade-component="text"
               />
             </div>
@@ -2089,7 +2089,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         class="c1"
       >
         <p
-          class="c6 Text__StyledText-wkh56f-0"
+          class="c6"
           data-blade-component="text"
         >
           20%
@@ -2395,7 +2395,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             class="c6"
           >
             <p
-              class="c7 Text__StyledText-wkh56f-0"
+              class="c7"
               data-blade-component="text"
             >
               Label
@@ -2405,7 +2405,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c9 Text__StyledText-wkh56f-0"
+                class="c9"
                 data-blade-component="text"
               />
             </div>
@@ -2416,7 +2416,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         class="c5"
       >
         <p
-          class="c10 Text__StyledText-wkh56f-0"
+          class="c10"
           data-blade-component="text"
         >
           0%
@@ -2722,7 +2722,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             class="c6"
           >
             <p
-              class="c7 Text__StyledText-wkh56f-0"
+              class="c7"
               data-blade-component="text"
             >
               Label
@@ -2732,7 +2732,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c9 Text__StyledText-wkh56f-0"
+                class="c9"
                 data-blade-component="text"
               />
             </div>
@@ -2743,7 +2743,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         class="c5"
       >
         <p
-          class="c10 Text__StyledText-wkh56f-0"
+          class="c10"
           data-blade-component="text"
         >
           60%

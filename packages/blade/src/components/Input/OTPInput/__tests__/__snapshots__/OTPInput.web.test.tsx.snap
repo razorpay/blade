@@ -270,7 +270,7 @@ exports[`<OTPInput /> should render 1`] = `
             class="c2"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               data-blade-component="text"
             >
               Enter OTP
@@ -280,7 +280,7 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 data-blade-component="text"
               />
             </div>

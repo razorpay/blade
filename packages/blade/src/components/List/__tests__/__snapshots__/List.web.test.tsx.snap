@@ -96,7 +96,7 @@ exports[`<List /> should render List with default properties 1`] = `
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
+            class="c5"
             data-blade-component="text"
           >
             Level 1
@@ -138,7 +138,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c5 Text__StyledText-wkh56f-0"
+                  class="c5"
                   data-blade-component="text"
                 >
                   Level 2
@@ -180,7 +180,7 @@ exports[`<List /> should render List with default properties 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5 Text__StyledText-wkh56f-0"
+                        class="c5"
                         data-blade-component="text"
                       >
                         Level 3
@@ -312,7 +312,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
+            class="c5"
             data-blade-component="text"
           >
             Level 1 
@@ -357,7 +357,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
+            class="c5"
             data-blade-component="text"
           >
             Level 2
@@ -492,14 +492,14 @@ exports[`<List /> should render medium ordered List 1`] = `
             class="c4"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
+              class="c5"
               data-blade-component="text"
             >
               1.
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c6"
             data-blade-component="text"
           >
             Level 1
@@ -541,7 +541,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   data-blade-component="text"
                 >
                   Level 2
@@ -583,7 +583,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c6 Text__StyledText-wkh56f-0"
+                        class="c6"
                         data-blade-component="text"
                       >
                         Level 3
@@ -704,14 +704,14 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             class="c4"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
+              class="c5"
               data-blade-component="text"
             >
               1
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c6"
             data-blade-component="text"
           >
             Level 1
@@ -729,14 +729,14 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             class="c4"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
+              class="c5"
               data-blade-component="text"
             >
               2
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c6"
             data-blade-component="text"
           >
             Level 2
@@ -754,14 +754,14 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             class="c4"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
+              class="c5"
               data-blade-component="text"
             >
               3
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c6"
             data-blade-component="text"
           >
             Level 3
@@ -879,7 +879,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
+            class="c5"
             data-blade-component="text"
           >
             Level 1
@@ -919,7 +919,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c5 Text__StyledText-wkh56f-0"
+                  class="c5"
                   data-blade-component="text"
                 >
                   Level 2
@@ -961,7 +961,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5 Text__StyledText-wkh56f-0"
+                        class="c5"
                         data-blade-component="text"
                       >
                         Level 3
@@ -1102,14 +1102,14 @@ exports[`<List /> should render small ordered List 1`] = `
             class="c4"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
+              class="c5"
               data-blade-component="text"
             >
               1.
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c6"
             data-blade-component="text"
           >
             Level 1
@@ -1151,7 +1151,7 @@ exports[`<List /> should render small ordered List 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   data-blade-component="text"
                 >
                   Level 2
@@ -1193,7 +1193,7 @@ exports[`<List /> should render small ordered List 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c6 Text__StyledText-wkh56f-0"
+                        class="c6"
                         data-blade-component="text"
                       >
                         Level 3
@@ -1314,14 +1314,14 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             class="c4"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
+              class="c5"
               data-blade-component="text"
             >
               1
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c6"
             data-blade-component="text"
           >
             Level 1
@@ -1339,14 +1339,14 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             class="c4"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
+              class="c5"
               data-blade-component="text"
             >
               2
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c6"
             data-blade-component="text"
           >
             Level 2
@@ -1364,14 +1364,14 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             class="c4"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
+              class="c5"
               data-blade-component="text"
             >
               3
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
+            class="c6"
             data-blade-component="text"
           >
             Level 3
@@ -1489,7 +1489,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
+            class="c5"
             data-blade-component="text"
           >
             Level 1
@@ -1529,7 +1529,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c5 Text__StyledText-wkh56f-0"
+                  class="c5"
                   data-blade-component="text"
                 >
                   Level 2
@@ -1571,7 +1571,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5 Text__StyledText-wkh56f-0"
+                        class="c5"
                         data-blade-component="text"
                       >
                         Level 3
@@ -1685,7 +1685,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
+            class="c5"
             data-blade-component="text"
           >
             Level 1
@@ -1727,7 +1727,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c5 Text__StyledText-wkh56f-0"
+                  class="c5"
                   data-blade-component="text"
                 >
                   Level 2
@@ -1769,7 +1769,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5 Text__StyledText-wkh56f-0"
+                        class="c5"
                         data-blade-component="text"
                       >
                         Level 3

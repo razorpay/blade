@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"card\\" elevation=\\"lowRaised\\" class=\\"BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 gYdpns fVKOXi\\"><div data-blade-component=\\"card-header\\" class=\\"BaseBox-bmPWx gvTYQa\\"><div class=\\"BaseBox-bmPWx cEYTaO\\"><div class=\\"BaseBox-bmPWx iOdcTa\\"><div class=\\"BaseBox-bmPWx eFvDfp\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"24px\\" viewBox=\\"0 0 24 24\\" width=\\"24px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z\\" fill=\\"hsla(217, 56%, 17%, 1)\\"></path><path d=\\"M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z\\" fill=\\"hsla(217, 56%, 17%, 1)\\"></path><path d=\\"M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(217, 56%, 17%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div class=\\"BaseBox-bmPWx\\"><div class=\\"BaseBox-bmPWx bdZEQS\\"><h6 class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">Card Header</h6><div class=\\"BaseBox-bmPWx ktWMhw\\"><div class=\\"BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu dTYmGd\\"><div data-blade-component=\\"counter\\" class=\\"BaseBox-bmPWx KJLNh\\"><p class=\\"StyledBaseText-dVBfTO hYebEq Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">12</p></div></div></div></div><p class=\\"StyledBaseText-dVBfTO eCIRwe Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Card subtitle</p></div></div><div class=\\"BaseBox-bmPWx cxaWQL\\"><div data-blade-component=\\"badge\\" class=\\"BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ\\"><div class=\\"BaseBox-bmPWx KJLNh\\"><p class=\\"StyledBaseText-dVBfTO gOAMqV Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">NEW</p></div></div></div></div><div class=\\"Dividerweb__Divider-sc-11gx34j-0 hCmUnz\\"></div></div><div data-blade-component=\\"card-body\\" class=\\"BaseBox-bmPWx\\"><p class=\\"StyledBaseText-dVBfTO eIdQFo Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Plain Card</p></div><div data-blade-component=\\"card-footer\\" class=\\"BaseBox-bmPWx jWqAWn\\"><div class=\\"BaseBox-bmPWx ekWGYe\\"></div><div class=\\"Dividerweb__Divider-sc-11gx34j-0 hCmUnz\\"></div><div class=\\"BaseBox-bmPWx beNNrm\\"><div class=\\"BaseBox-bmPWx dUEwku\\"><p class=\\"StyledBaseText-dVBfTO ldPEnv Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Card Footer</p><p class=\\"StyledBaseText-dVBfTO fedBF Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Card footer subtitle</p></div><div class=\\"BaseBox-bmPWx cgOfrU\\"><div class=\\"BaseBox-bmPWx lawERa\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hDfvuZ\\"><div class=\\"BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA\\"><div class=\\"StyledBaseText-dVBfTO jSaisz\\">Delete</div></div></button></div><div class=\\"BaseBox-bmPWx hFfAen\\"></div><div class=\\"BaseBox-bmPWx lawERa\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fcmfVa\\"><div class=\\"BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA\\"><div class=\\"StyledBaseText-dVBfTO brGLEM\\">Save</div></div></button></div></div></div></div></div></div>"`;
+exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"card\\" elevation=\\"lowRaised\\" class=\\"BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 gYdpns fVKOXi\\"><div data-blade-component=\\"card-header\\" class=\\"BaseBox-bmPWx gvTYQa\\"><div class=\\"BaseBox-bmPWx cEYTaO\\"><div class=\\"BaseBox-bmPWx iOdcTa\\"><div class=\\"BaseBox-bmPWx eFvDfp\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"24px\\" viewBox=\\"0 0 24 24\\" width=\\"24px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z\\" fill=\\"hsla(217, 56%, 17%, 1)\\"></path><path d=\\"M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z\\" fill=\\"hsla(217, 56%, 17%, 1)\\"></path><path d=\\"M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(217, 56%, 17%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div class=\\"BaseBox-bmPWx\\"><div class=\\"BaseBox-bmPWx bdZEQS\\"><h6 class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">Card Header</h6><div class=\\"BaseBox-bmPWx ktWMhw\\"><div class=\\"BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu dTYmGd\\"><div data-blade-component=\\"counter\\" class=\\"BaseBox-bmPWx KJLNh\\"><p class=\\"StyledBaseText-dVBfTO hlMkHt\\" data-blade-component=\\"text\\">12</p></div></div></div></div><p class=\\"StyledBaseText-dVBfTO eCIRwe\\" data-blade-component=\\"text\\">Card subtitle</p></div></div><div class=\\"BaseBox-bmPWx cxaWQL\\"><div data-blade-component=\\"badge\\" class=\\"BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ\\"><div class=\\"BaseBox-bmPWx KJLNh\\"><p class=\\"StyledBaseText-dVBfTO fuxoMy\\" data-blade-component=\\"text\\">NEW</p></div></div></div></div><div class=\\"Dividerweb__Divider-sc-11gx34j-0 hCmUnz\\"></div></div><div data-blade-component=\\"card-body\\" class=\\"BaseBox-bmPWx\\"><p class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"text\\">Plain Card</p></div><div data-blade-component=\\"card-footer\\" class=\\"BaseBox-bmPWx jWqAWn\\"><div class=\\"BaseBox-bmPWx ekWGYe\\"></div><div class=\\"Dividerweb__Divider-sc-11gx34j-0 hCmUnz\\"></div><div class=\\"BaseBox-bmPWx beNNrm\\"><div class=\\"BaseBox-bmPWx dUEwku\\"><p class=\\"StyledBaseText-dVBfTO ldPEnv\\" data-blade-component=\\"text\\">Card Footer</p><p class=\\"StyledBaseText-dVBfTO fedBF\\" data-blade-component=\\"text\\">Card footer subtitle</p></div><div class=\\"BaseBox-bmPWx cgOfrU\\"><div class=\\"BaseBox-bmPWx lawERa\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hDfvuZ\\"><div class=\\"BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA\\"><div class=\\"StyledBaseText-dVBfTO jSaisz\\">Delete</div></div></button></div><div class=\\"BaseBox-bmPWx hFfAen\\"></div><div class=\\"BaseBox-bmPWx lawERa\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fcmfVa\\"><div class=\\"BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA\\"><div class=\\"StyledBaseText-dVBfTO brGLEM\\">Save</div></div></button></div></div></div></div></div></div>"`;
 
 exports[`<Card /> should render a Card with Header & Footer 2`] = `
 <div
@@ -73,7 +73,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                     data-blade-component="counter"
                   >
                     <p
-                      class="StyledBaseText-dVBfTO hYebEq Text__StyledText-wkh56f-0 hkbuMZ"
+                      class="StyledBaseText-dVBfTO hlMkHt"
                       data-blade-component="text"
                     >
                       12
@@ -83,7 +83,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               </div>
             </div>
             <p
-              class="StyledBaseText-dVBfTO eCIRwe Text__StyledText-wkh56f-0"
+              class="StyledBaseText-dVBfTO eCIRwe"
               data-blade-component="text"
             >
               Card subtitle
@@ -101,7 +101,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               class="BaseBox-bmPWx KJLNh"
             >
               <p
-                class="StyledBaseText-dVBfTO gOAMqV Text__StyledText-wkh56f-0 hkbuMZ"
+                class="StyledBaseText-dVBfTO fuxoMy"
                 data-blade-component="text"
               >
                 NEW
@@ -119,7 +119,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
       data-blade-component="card-body"
     >
       <p
-        class="StyledBaseText-dVBfTO eIdQFo Text__StyledText-wkh56f-0"
+        class="StyledBaseText-dVBfTO eIdQFo"
         data-blade-component="text"
       >
         Plain Card
@@ -142,13 +142,13 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
           class="BaseBox-bmPWx dUEwku"
         >
           <p
-            class="StyledBaseText-dVBfTO ldPEnv Text__StyledText-wkh56f-0"
+            class="StyledBaseText-dVBfTO ldPEnv"
             data-blade-component="text"
           >
             Card Footer
           </p>
           <p
-            class="StyledBaseText-dVBfTO fedBF Text__StyledText-wkh56f-0"
+            class="StyledBaseText-dVBfTO fedBF"
             data-blade-component="text"
           >
             Card footer subtitle

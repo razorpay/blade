@@ -84,6 +84,16 @@ describe('<Text />', () => {
     mockConsoleError.mockRestore();
   });
 
+  it('should render with as prop without errors', () => {
+    const displayText = 'Displaying Text Screen';
+    const { getByText } = renderWithTheme(
+      <Text as="figcaption" type="subdued" size="large">
+        {displayText}
+      </Text>,
+    );
+    expect(getByText(displayText)).toBeTruthy();
+  });
+
   it('should accept testID', () => {
     const displayText = 'Displaying some text';
     const { getByTestId } = renderWithTheme(<Text testID="text-test">{displayText}</Text>);

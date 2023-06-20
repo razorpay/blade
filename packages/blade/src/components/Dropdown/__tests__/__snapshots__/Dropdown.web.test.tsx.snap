@@ -329,6 +329,24 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
+.c29 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 .c37 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -341,14 +359,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   text-align: center;
   margin: 0;
   padding: 0;
-}
-
-.c29 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
 .c36 {
@@ -619,7 +629,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                   class="c6"
                 >
                   <p
-                    class="c7 "
+                    class="c7"
                     data-blade-component="text"
                   >
                     Fruits
@@ -629,7 +639,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                     data-blade-component="visually-hidden"
                   >
                     <p
-                      class="c8 "
+                      class="c8"
                       data-blade-component="text"
                     />
                   </div>
@@ -742,7 +752,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               class="c22"
             >
               <p
-                class="c23 "
+                class="c23"
                 data-blade-component="text"
               >
                 Recent Searches
@@ -775,7 +785,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                   class="c28"
                 >
                   <p
-                    class="c8 c29"
+                    class="c29"
                     data-blade-component="text"
                   >
                     Apple
@@ -810,7 +820,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                   class="c28"
                 >
                   <p
-                    class="c8 c29"
+                    class="c29"
                     data-blade-component="text"
                   >
                     Mango
@@ -855,7 +865,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               class="c32"
             >
               <p
-                class="c23 "
+                class="c23"
                 data-blade-component="text"
               >
                 Search Tips
@@ -959,7 +969,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   padding-left: 0px;
 }
 
-.c16 {
+.c15 {
   margin-left: auto;
 }
 
@@ -1068,9 +1078,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
-}
-
-.c15 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -1186,14 +1193,14 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                   class="c13"
                 >
                   <p
-                    class="c14 c15"
+                    class="c14"
                     data-blade-component="text"
                   >
                     Profile
                   </p>
                 </div>
                 <div
-                  class="c16"
+                  class="c15"
                 />
               </div>
               <div
@@ -1221,14 +1228,14 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                   class="c13"
                 >
                   <p
-                    class="c14 c15"
+                    class="c14"
                     data-blade-component="text"
                   >
                     Settings
                   </p>
                 </div>
                 <div
-                  class="c16"
+                  class="c15"
                 />
               </div>
               <div

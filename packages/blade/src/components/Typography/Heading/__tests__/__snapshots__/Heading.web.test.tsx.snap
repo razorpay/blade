@@ -159,11 +159,11 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
 }
 
 <div>
-  <h6
+  <p
     class="c0"
     data-blade-component="heading"
   >
     Get Started With Payment Gateway
-  </h6>
+  </p>
 </div>
 `;

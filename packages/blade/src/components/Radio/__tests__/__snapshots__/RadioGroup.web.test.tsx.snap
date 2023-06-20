@@ -222,7 +222,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             class="c2"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               data-blade-component="text"
             >
               Select fruits
@@ -232,7 +232,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 data-blade-component="text"
               >
                 ,Select one
@@ -610,7 +610,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             class="c2"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
+              class="c3"
               data-blade-component="text"
             >
               Select fav fruit
@@ -620,7 +620,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
+                class="c5"
                 data-blade-component="text"
               />
             </div>

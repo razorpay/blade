@@ -434,7 +434,6 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -1550,7 +1549,6 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >

@@ -142,7 +142,7 @@ exports[`<Alert /> should render 1`] = `
         class="c4"
       >
         <p
-          class="c5 Text__StyledText-wkh56f-0"
+          class="c5"
           data-blade-component="text"
         >
           Currently you can only accept payments in international currencies using PayPal.
@@ -326,7 +326,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         class="c4"
       >
         <p
-          class="c5 Text__StyledText-wkh56f-0"
+          class="c5"
           data-blade-component="text"
         >
           Currently you can only accept payments in international currencies using PayPal.

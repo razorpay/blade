@@ -17,7 +17,7 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -41,7 +41,7 @@ exports[`<Text /> should render Text with color 1`] = `
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -65,7 +65,7 @@ exports[`<Text /> should render Text with default properties 1`] = `
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -85,9 +85,6 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
-}
-
-.c1 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 3;
@@ -97,7 +94,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 
 <div>
   <p
-    class="c0 c1"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -117,9 +114,6 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
-}
-
-.c1 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 3;
@@ -129,7 +123,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 
 <div>
   <p
-    class="c0 c1"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -149,9 +143,6 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   line-height: 1rem;
   margin: 0;
   padding: 0;
-}
-
-.c1 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 3;
@@ -161,7 +152,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 
 <div>
   <p
-    class="c0 c1"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -185,7 +176,7 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text

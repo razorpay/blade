@@ -272,7 +272,7 @@ exports[`<TextInput /> should render 1`] = `
               class="c3"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 data-blade-component="text"
               >
                 Enter name
@@ -282,7 +282,7 @@ exports[`<TextInput /> should render 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   data-blade-component="text"
                 />
               </div>
@@ -637,7 +637,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               class="c3"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 data-blade-component="text"
               >
                 Enter company website
@@ -647,7 +647,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   data-blade-component="text"
                 />
               </div>
@@ -693,7 +693,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             class="c11"
           >
             <p
-              class="c12 Text__StyledText-wkh56f-0"
+              class="c12"
               data-blade-component="text"
             >
               https://
@@ -723,7 +723,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             class="c14"
           >
             <p
-              class="c12 Text__StyledText-wkh56f-0"
+              class="c12"
               data-blade-component="text"
             >
               .com

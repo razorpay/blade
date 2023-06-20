@@ -171,7 +171,6 @@ exports[`<Alert /> should render 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -449,7 +448,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >

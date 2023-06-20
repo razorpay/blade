@@ -278,7 +278,7 @@ exports[`<TextArea /> should render 1`] = `
               class="c3"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 data-blade-component="text"
               >
                 Enter name
@@ -288,7 +288,7 @@ exports[`<TextArea /> should render 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   data-blade-component="text"
                 />
               </div>
@@ -603,7 +603,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
               class="c3"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
+                class="c4"
                 data-blade-component="text"
               >
                 Enter name
@@ -613,7 +613,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
+                  class="c6"
                   data-blade-component="text"
                 />
               </div>

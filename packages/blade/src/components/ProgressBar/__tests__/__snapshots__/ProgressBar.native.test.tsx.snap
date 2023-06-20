@@ -84,7 +84,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -146,7 +145,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             />
@@ -189,7 +187,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -436,7 +433,6 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -581,7 +577,6 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -726,7 +721,6 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -871,7 +865,6 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -1016,7 +1009,6 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -1161,7 +1153,6 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -1306,7 +1297,6 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -1451,7 +1441,6 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -1596,7 +1585,6 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -1741,7 +1729,6 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -1886,7 +1873,6 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -2050,7 +2036,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -2112,7 +2097,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             />
@@ -2155,7 +2139,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -2421,7 +2404,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -2483,7 +2465,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             />
@@ -2526,7 +2507,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -2816,7 +2796,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -2878,7 +2857,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             />
@@ -2921,7 +2899,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -3211,7 +3188,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -3273,7 +3249,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             />
@@ -3316,7 +3291,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
