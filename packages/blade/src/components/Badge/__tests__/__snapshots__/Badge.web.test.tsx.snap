@@ -77,12 +77,9 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <div
         class="c3"
-        display="flex"
       >
         <svg
           aria-hidden="true"
@@ -111,12 +108,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
       </div>
       <p
         class="c4"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -194,17 +186,10 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="bold"
       >
         LABEL
       </p>
@@ -282,17 +267,10 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -370,17 +348,10 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="badge.text.blue.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -458,17 +429,10 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.information.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -546,17 +510,10 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.negative.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -634,17 +591,10 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.neutral.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -722,17 +672,10 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.notice.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -810,17 +753,10 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.positive.highContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -898,17 +834,10 @@ exports[`<Badge /> should render large size Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -986,17 +915,10 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="badge.text.blue.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -1074,17 +996,10 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.information.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -1162,17 +1077,10 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.negative.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -1250,17 +1158,10 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -1338,17 +1239,10 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.notice.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -1426,17 +1320,10 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.positive.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -1514,17 +1401,10 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>
@@ -1602,17 +1482,10 @@ exports[`<Badge /> should render small size Badge 1`] = `
   >
     <div
       class="c2"
-      display="inline-flex"
-      overflow="hidden"
     >
       <p
         class="c3"
-        color="feedback.text.neutral.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="25"
-        font-style="normal"
-        font-weight="regular"
       >
         Label
       </p>

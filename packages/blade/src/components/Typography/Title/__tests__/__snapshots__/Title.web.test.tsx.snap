@@ -17,12 +17,7 @@ exports[`<Title /> should render Title with color 1`] = `
 <div>
   <h3
     class="c0"
-    color="surface.text.subtle.highContrast"
     data-blade-component="title"
-    font-family="text"
-    font-size="600"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying Landing Page Title
   </h3>
@@ -46,12 +41,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
 <div>
   <h3
     class="c0"
-    color="surface.text.normal.lowContrast"
     data-blade-component="title"
-    font-family="text"
-    font-size="600"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying Landing Page Title
   </h3>
@@ -75,12 +65,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
 <div>
   <h1
     class="c0"
-    color="surface.text.subdued.lowContrast"
     data-blade-component="title"
-    font-family="text"
-    font-size="800"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying Landing Page Title
   </h1>
@@ -104,12 +89,7 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
 <div>
   <h2
     class="c0"
-    color="surface.text.muted.lowContrast"
     data-blade-component="title"
-    font-family="text"
-    font-size="700"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying Landing Page Title
   </h2>
@@ -133,12 +113,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
 <div>
   <h3
     class="c0"
-    color="surface.text.normal.lowContrast"
     data-blade-component="title"
-    font-family="text"
-    font-size="600"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying Landing Page Title
   </h3>
@@ -162,12 +137,7 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
 <div>
   <h3
     class="c0"
-    color="surface.text.normal.highContrast"
     data-blade-component="title"
-    font-family="text"
-    font-size="600"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying Landing Page Title
   </h3>

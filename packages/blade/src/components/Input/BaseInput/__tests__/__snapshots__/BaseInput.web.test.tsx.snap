@@ -256,11 +256,9 @@ exports[`<BaseInput /> should render 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
-        display="flex"
       >
         <label
           for="name-1-input-2"
@@ -271,16 +269,10 @@ exports[`<BaseInput /> should render 1`] = `
           >
             <div
               class="c3"
-              display="flex"
             >
               <p
                 class="c4"
-                color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="75"
-                font-style="normal"
-                font-weight="bold"
               >
                 Enter name
               </p>
@@ -290,12 +282,7 @@ exports[`<BaseInput /> should render 1`] = `
               >
                 <p
                   class="c6"
-                  color="surface.text.normal.lowContrast"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 />
               </div>
             </div>
@@ -304,8 +291,6 @@ exports[`<BaseInput /> should render 1`] = `
       </div>
       <div
         class="c7 c8"
-        display="flex"
-        width="100%"
       >
         <input
           aria-describedby=""
@@ -327,7 +312,6 @@ exports[`<BaseInput /> should render 1`] = `
     >
       <div
         class="c12"
-        display="flex"
       />
     </div>
   </div>
@@ -620,11 +604,9 @@ exports[`<BaseInput /> should render with icons 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
-        display="flex"
       >
         <label
           for="name-31-input-32"
@@ -635,16 +617,10 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <div
               class="c3"
-              display="flex"
             >
               <p
                 class="c4"
-                color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="75"
-                font-style="normal"
-                font-weight="bold"
               >
                 Enter name
               </p>
@@ -654,12 +630,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               >
                 <p
                   class="c6"
-                  color="surface.text.normal.lowContrast"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 />
               </div>
             </div>
@@ -668,16 +639,12 @@ exports[`<BaseInput /> should render with icons 1`] = `
       </div>
       <div
         class="c7 c8"
-        display="flex"
-        width="100%"
       >
         <div
           class="c9"
-          display="flex"
         >
           <div
             class="c10"
-            display="flex"
           >
             <svg
               aria-hidden="true"
@@ -716,11 +683,9 @@ exports[`<BaseInput /> should render with icons 1`] = `
         />
         <div
           class="c9"
-          display="flex"
         >
           <div
             class="c12"
-            display="flex"
           >
             <svg
               aria-hidden="true"
@@ -748,7 +713,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
     >
       <div
         class="c15"
-        display="flex"
       />
     </div>
   </div>
