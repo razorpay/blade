@@ -516,8 +516,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   >
     <div
       class="c3"
-      display="flex"
-      height="100%"
     >
       <div
         class="c4"
@@ -526,7 +524,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       <div
         class="c5"
         data-blade-component="BottomSheetHeader"
-        overflow="auto"
       >
         <div
           class=""
@@ -536,27 +533,19 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           >
             <div
               class="c7"
-              display="flex"
             >
               <div
                 class="c8"
-                display="flex"
               >
                 <div
                   class=""
                 >
                   <div
                     class="c9"
-                    display="flex"
                   >
                     <h6
                       class="c10"
-                      color="surface.text.normal.lowContrast"
                       data-blade-component="heading"
-                      font-family="text"
-                      font-size="200"
-                      font-style="normal"
-                      font-weight="bold"
                     >
                       Address Details
                     </h6>
@@ -569,17 +558,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         <div
                           class="c14"
                           data-blade-component="counter"
-                          display="inline-flex"
-                          overflow="hidden"
                         >
                           <p
                             class="c15"
-                            color="feedback.text.positive.lowContrast"
                             data-blade-component="text"
-                            font-family="text"
-                            font-size="75"
-                            font-style="normal"
-                            font-weight="regular"
                           >
                             2
                           </p>
@@ -589,12 +571,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   </div>
                   <p
                     class="c16"
-                    color="surface.text.normal.lowContrast"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="75"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Saving addresses will improve your checkout experience
                   </p>
@@ -609,17 +586,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 >
                   <div
                     class="c14"
-                    display="inline-flex"
-                    overflow="hidden"
                   >
                     <p
                       class="c20"
-                      color="feedback.text.positive.lowContrast"
                       data-blade-component="text"
-                      font-family="text"
-                      font-size="75"
-                      font-style="normal"
-                      font-weight="regular"
                     >
                       Action Needed
                     </p>
@@ -662,16 +632,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       >
         <div
           class="c24"
-          overflow="auto"
         >
           <p
             class="c25"
-            color="surface.text.normal.lowContrast"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="regular"
           >
             BottomSheet body
           </p>
@@ -680,7 +644,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       <div
         class="c26"
         data-blade-component="BottomSheetFooter"
-        width="100%"
       >
         <div
           class="c22"
@@ -696,13 +659,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           >
             <div
               class="c29 c30"
-              display="flex"
             >
               <div
                 class="c31"
-                color="action.text.secondary.default"
-                font-size="100"
-                font-weight="bold"
               >
                 Remove address
               </div>

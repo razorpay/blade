@@ -38,7 +38,6 @@ exports[`<Indicator /> should render 1`] = `
     aria-label="Success"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -69,12 +68,7 @@ exports[`<Indicator /> should render 1`] = `
     >
       <p
         class="c2"
-        color="surface.text.subtle.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>
@@ -133,7 +127,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     aria-label="Warning"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -164,12 +157,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <p
         class="c2"
-        color="surface.text.subtle.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>
@@ -177,7 +165,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     aria-label="Success"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -208,12 +195,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <p
         class="c3"
-        color="surface.text.subtle.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>
@@ -221,7 +203,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     aria-label="Error"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -252,12 +233,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <p
         class="c3"
-        color="surface.text.subtle.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>
@@ -265,7 +241,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     aria-label="Info"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -296,12 +271,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <p
         class="c3"
-        color="surface.text.subtle.lowContrast"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>

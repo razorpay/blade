@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"inline-flex\\" data-blade-component=\\"amount\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hQXHnM\\"><span color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dHJgVN\\">₹</span><span color=\\"surface.text.normal.lowContrast\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav\\">10,000<!-- -->.</span><span color=\\"surface.text.muted.lowContrast\\" font-size=\\"75\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hfiTkt\\">00</span></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"amount\\" class=\\"BaseBox-bmPWx iaZUuq\\"><span class=\\"StyledBaseText-dVBfTO cQGNSm\\">₹</span><span class=\\"StyledBaseText-dVBfTO eIdQFo\\">10,000<!-- -->.</span><span class=\\"StyledBaseText-dVBfTO ghBMue\\">00</span></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 <div
@@ -8,33 +8,23 @@ exports[`<Amount /> should render Amount on server 2`] = `
   id="root"
 >
   <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hQXHnM"
+    class="BaseBox-bmPWx iaZUuq"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
-      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dHJgVN"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
+      class="StyledBaseText-dVBfTO cQGNSm"
     >
       ₹
     </span>
     <span
-      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav"
-      color="surface.text.normal.lowContrast"
-      font-size="100"
-      font-weight="regular"
+      class="StyledBaseText-dVBfTO eIdQFo"
     >
       10,000
       <!-- -->
       .
     </span>
     <span
-      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hfiTkt"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
+      class="StyledBaseText-dVBfTO ghBMue"
     >
       00
     </span>

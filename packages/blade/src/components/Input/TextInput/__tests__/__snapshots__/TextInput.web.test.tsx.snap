@@ -257,11 +257,9 @@ exports[`<TextInput /> should render 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
-        display="flex"
       >
         <label
           for="textinput-1-input-2"
@@ -272,16 +270,10 @@ exports[`<TextInput /> should render 1`] = `
           >
             <div
               class="c3"
-              display="flex"
             >
               <p
                 class="c4"
-                color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="75"
-                font-style="normal"
-                font-weight="bold"
               >
                 Enter name
               </p>
@@ -291,12 +283,7 @@ exports[`<TextInput /> should render 1`] = `
               >
                 <p
                   class="c6"
-                  color="surface.text.normal.lowContrast"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 />
               </div>
             </div>
@@ -305,8 +292,6 @@ exports[`<TextInput /> should render 1`] = `
       </div>
       <div
         class="c7 c8"
-        display="flex"
-        width="100%"
       >
         <input
           aria-describedby=""
@@ -331,7 +316,6 @@ exports[`<TextInput /> should render 1`] = `
     >
       <div
         class="c12"
-        display="flex"
       />
     </div>
   </div>
@@ -638,11 +622,9 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
-        display="flex"
       >
         <label
           for="textinput-31-input-32"
@@ -653,16 +635,10 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <div
               class="c3"
-              display="flex"
             >
               <p
                 class="c4"
-                color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="75"
-                font-style="normal"
-                font-weight="bold"
               >
                 Enter company website
               </p>
@@ -672,12 +648,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               >
                 <p
                   class="c6"
-                  color="surface.text.normal.lowContrast"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 />
               </div>
             </div>
@@ -686,16 +657,12 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       </div>
       <div
         class="c7 c8"
-        display="flex"
-        width="100%"
       >
         <div
           class="c9"
-          display="flex"
         >
           <div
             class="c10"
-            display="flex"
           >
             <svg
               aria-hidden="true"
@@ -727,12 +694,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <p
               class="c12"
-              color="surface.text.subtle.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
             >
               https://
             </p>
@@ -756,19 +718,13 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         />
         <div
           class="c9"
-          display="flex"
         >
           <div
             class="c14"
           >
             <p
               class="c12"
-              color="surface.text.subtle.lowContrast"
               data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
             >
               .com
             </p>
@@ -784,7 +740,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
     >
       <div
         class="c17"
-        display="flex"
       />
     </div>
   </div>

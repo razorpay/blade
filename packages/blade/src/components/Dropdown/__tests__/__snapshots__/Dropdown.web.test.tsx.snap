@@ -613,11 +613,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       >
         <div
           class="c3"
-          display="flex"
         >
           <div
             class="c4"
-            display="flex"
           >
             <label
               for="dropdown-7-trigger-1-input-2"
@@ -629,16 +627,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               >
                 <div
                   class="c6"
-                  display="flex"
                 >
                   <p
                     class="c7"
-                    color="surface.text.subdued.lowContrast"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="75"
-                    font-style="normal"
-                    font-weight="bold"
                   >
                     Fruits
                   </p>
@@ -648,12 +640,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                   >
                     <p
                       class="c8"
-                      color="surface.text.normal.lowContrast"
                       data-blade-component="text"
-                      font-family="text"
-                      font-size="100"
-                      font-style="normal"
-                      font-weight="regular"
                     />
                   </div>
                 </div>
@@ -662,8 +649,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           </div>
           <div
             class="c9 c10"
-            display="flex"
-            width="100%"
           >
             <button
               aria-controls="dropdown-7-actionlist"
@@ -684,15 +669,12 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             </button>
             <div
               class="c12"
-              display="flex"
             >
               <div
                 class="c13"
-                display="flex"
               >
                 <div
                   class="c14"
-                  display="flex"
                 >
                   <svg
                     aria-hidden="true"
@@ -723,7 +705,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
         >
           <div
             class="c17"
-            display="flex"
           />
         </div>
       </div>
@@ -734,9 +715,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       <div
         class="c18 c19"
         data-blade-component="dropdown-overlay"
-        display="block"
         style="opacity: 1;"
-        width="100%"
       >
         <div
           aria-labelledby="dropdown-7-label"
@@ -774,12 +753,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             >
               <p
                 class="c23"
-                color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="50"
-                font-style="italic"
-                font-weight="regular"
               >
                 Recent Searches
               </p>
@@ -803,23 +777,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             >
               <div
                 class="c26"
-                display="flex"
               >
                 <div
                   class="c27"
-                  display="flex"
                 />
                 <div
                   class="c28"
                 >
                   <p
                     class="c29"
-                    color="surface.text.normal.lowContrast"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Apple
                   </p>
@@ -845,23 +812,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             >
               <div
                 class="c26"
-                display="flex"
               >
                 <div
                   class="c27"
-                  display="flex"
                 />
                 <div
                   class="c28"
                 >
                   <p
                     class="c29"
-                    color="surface.text.normal.lowContrast"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Mango
                   </p>
@@ -906,19 +866,13 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             >
               <p
                 class="c23"
-                color="surface.text.subdued.lowContrast"
                 data-blade-component="text"
-                font-family="text"
-                font-size="50"
-                font-style="italic"
-                font-weight="regular"
               >
                 Search Tips
               </p>
             </div>
             <div
               class="c33"
-              display="flex"
             >
               <button
                 class="c34"
@@ -928,13 +882,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               >
                 <div
                   class="c35 c36"
-                  display="flex"
                 >
                   <div
                     class="c37"
-                    color="action.text.primary.default"
-                    font-size="100"
-                    font-weight="bold"
                   >
                     Apply
                   </div>
@@ -1197,13 +1147,9 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
     >
       <div
         class="c2 c3"
-        display="flex"
       >
         <div
           class="c4"
-          color="action.text.primary.default"
-          font-size="100"
-          font-weight="bold"
         >
           My Account
         </div>
@@ -1215,7 +1161,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
       <div
         class="c6 c7"
         data-blade-component="dropdown-overlay"
-        display="block"
         style="opacity: 0;"
       >
         <div
@@ -1240,23 +1185,16 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
             >
               <div
                 class="c11"
-                display="flex"
               >
                 <div
                   class="c12"
-                  display="flex"
                 />
                 <div
                   class="c13"
                 >
                   <p
                     class="c14"
-                    color="surface.text.normal.lowContrast"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Profile
                   </p>
@@ -1282,23 +1220,16 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
             >
               <div
                 class="c11"
-                display="flex"
               >
                 <div
                   class="c12"
-                  display="flex"
                 />
                 <div
                   class="c13"
                 >
                   <p
                     class="c14"
-                    color="surface.text.normal.lowContrast"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Settings
                   </p>
