@@ -349,7 +349,7 @@ export type DropdownPosition = {
  */
 export const POSITION_THRESHOLDS = {
   top: -400,
-  bottom: -400,
+  bottom: -300,
   left: -400,
   right: -400,
 };
