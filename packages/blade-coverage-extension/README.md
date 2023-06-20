@@ -2,6 +2,9 @@
 
 Blade coverage plugin helps you in getting coverage of blade on a web page instantaneously.
 
+https://github.com/razorpay/blade/assets/6623629/53415eed-4681-4fe3-9ad5-235f5993181b
+
+
 ## Project structure
 
 Plugin is made of two parts:
