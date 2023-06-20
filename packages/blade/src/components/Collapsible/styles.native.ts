@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import type { BoxProps } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
@@ -9,4 +9,13 @@ const MAX_WIDTH: BoxProps['maxWidth'] = {
   l: makeSize(size[1136]),
 };
 
-export { MAX_WIDTH };
+const nativeStyles = StyleSheet.create({
+  collapsibleBodyExpanded: {
+    position: 'relative',
+  },
+  collapsibleBodyCollapsed: {
+    position: 'absolute',
+  },
+});
+
+export { MAX_WIDTH, nativeStyles };
