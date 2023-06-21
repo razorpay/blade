@@ -77,13 +77,19 @@ const WithMixedColorsTemplate: ComponentStory<typeof TitleComponent> = () => {
     <Box>
       <TitleComponent>
         Supercharge your business with the all‑powerful{' '}
-        <TitleComponent as="span" color="badge.text.blue.lowContrast">
+        <TitleComponent
+          as="span"
+          color="feedback.information.action.text.primary.default.lowContrast"
+        >
           Payment Gateway
         </TitleComponent>
       </TitleComponent>
       <TitleComponent marginTop="spacing.5">
         Start accepting{' '}
-        <TitleComponent as="span" color="badge.text.blue.lowContrast">
+        <TitleComponent
+          as="span"
+          color="feedback.information.action.text.primary.default.lowContrast"
+        >
           payments
         </TitleComponent>{' '}
         at just 2% <Sup>*</Sup>

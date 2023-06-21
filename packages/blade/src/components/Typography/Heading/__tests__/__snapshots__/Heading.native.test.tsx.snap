@@ -131,7 +131,7 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
      
     <Text
       accessibilityRole="header"
-      color="badge.text.blue.lowContrast"
+      color="feedback.information.action.text.primary.default.lowContrast"
       data-blade-component="heading"
       fontFamily="text"
       fontSize={200}
@@ -141,7 +141,7 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
       style={
         Array [
           Object {
-            "color": "hsla(218, 89%, 51%, 1)",
+            "color": "hsla(195, 100%, 31%, 1)",
             "fontFamily": "Lato",
             "fontSize": 16,
             "fontStyle": "normal",

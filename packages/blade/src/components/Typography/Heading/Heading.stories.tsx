@@ -88,13 +88,19 @@ const WithMixedColorsTemplate: ComponentStory<typeof HeadingComponent> = () => {
     <Box>
       <HeadingComponent>
         Supercharge your business with the all‑powerful{' '}
-        <HeadingComponent as="span" color="badge.text.blue.lowContrast">
+        <HeadingComponent
+          as="span"
+          color="feedback.information.action.text.primary.default.lowContrast"
+        >
           Payment Gateway
         </HeadingComponent>
       </HeadingComponent>
       <HeadingComponent marginTop="spacing.5">
         Start accepting{' '}
-        <HeadingComponent as="span" color="badge.text.blue.lowContrast">
+        <HeadingComponent
+          as="span"
+          color="feedback.information.action.text.primary.default.lowContrast"
+        >
           payments
         </HeadingComponent>{' '}
         at just 2% <Sup>*</Sup>
