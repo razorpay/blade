@@ -68,6 +68,7 @@ describe('Modal', () => {
   });
 
   it('should focus on passed initialFocusRef', () => {
+    jest.useFakeTimers();
     const Element = (): React.ReactElement => {
       const ref = React.useRef(null);
       return (
@@ -91,7 +92,9 @@ describe('Modal', () => {
     };
 
     const { getByLabelText } = renderWithTheme(<Element />);
+    jest.runAllTimers();
     expect(getByLabelText('save')).toHaveFocus();
+    jest.useRealTimers();
   });
 
   it('should handle controlled state of Modal', async () => {

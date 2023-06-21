@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import { FloatingFocusManager, useFloating } from '@floating-ui/react';
+import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
-import { ModalPortal } from './ModalPortal';
 import { ModalHeader } from './ModalHeader';
 import type { ModalHeaderProps } from './ModalHeader';
 import { ModalFooter } from './ModalFooter';
@@ -152,11 +151,16 @@ const Modal = ({
 
   React.useEffect(() => {
     if (isMounted) {
-      // set the original focus element where the focus will return to after closing the modal
-      originalFocusElement.current =
-        originalFocusElement.current ?? (document.activeElement as HTMLElement);
-      // focus on an element on Modal, if initialFocusRef is not passed, focus on the close button
-      focusOnInitialRef();
+      // because FloatingPortal saves the portalled node in state
+      // only updates it inside an useEffect, we need to delay focusing on initialFocusRef
+      // Until everything is mounted on the next frame
+      setTimeout(() => {
+        // set the original focus element where the focus will return to after closing the modal
+        originalFocusElement.current =
+          originalFocusElement.current ?? (document.activeElement as HTMLElement);
+        // focus on an element on Modal, if initialFocusRef is not passed, focus on the close button
+        focusOnInitialRef();
+      }, 0);
     }
   }, [isMounted, focusOnInitialRef]);
 
@@ -199,7 +203,7 @@ const Modal = ({
   });
 
   return (
-    <ModalPortal>
+    <FloatingPortal>
       <ModalContext.Provider value={modalContext}>
         {isMounted ? (
           <FloatingFocusManager context={context} modal={true}>
@@ -235,7 +239,7 @@ const Modal = ({
           </FloatingFocusManager>
         ) : null}
       </ModalContext.Provider>
-    </ModalPortal>
+    </FloatingPortal>
   );
 };
 
