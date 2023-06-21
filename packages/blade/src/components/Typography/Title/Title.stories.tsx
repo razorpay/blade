@@ -70,6 +70,28 @@ WithColor.args = {
   color: 'feedback.positive.action.text.primary.default.lowContrast',
 };
 
+const WithMixedColorsTemplate: ComponentStory<typeof TitleComponent> = () => {
+  return (
+    <Box>
+      <Title>
+        Supercharge your business with the all‑powerful{' '}
+        <Title as="span" color="badge.text.blue.lowContrast">
+          Payment Gateway
+        </Title>
+      </Title>
+      <Title marginTop="spacing.5">
+        Start accepting{' '}
+        <Title as="span" color="badge.text.blue.lowContrast">
+          payments
+        </Title>{' '}
+        at just 2% <sup>*</sup>
+      </Title>
+    </Box>
+  );
+};
+
+export const WithMixedColors = WithMixedColorsTemplate.bind({});
+
 const AsPropTemplate: ComponentStory<typeof TitleComponent> = (args) => {
   return (
     <Box>

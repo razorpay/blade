@@ -81,6 +81,28 @@ WithColor.args = {
   color: 'feedback.notice.action.text.primary.default.lowContrast',
 };
 
+const WithMixedColorsTemplate: ComponentStory<typeof HeadingComponent> = () => {
+  return (
+    <Box>
+      <Heading>
+        Supercharge your business with the all‑powerful{' '}
+        <Heading as="span" color="badge.text.blue.lowContrast">
+          Payment Gateway
+        </Heading>
+      </Heading>
+      <Heading marginTop="spacing.5">
+        Start accepting{' '}
+        <Heading as="span" color="badge.text.blue.lowContrast">
+          payments
+        </Heading>{' '}
+        at just 2% <sup>*</sup>
+      </Heading>
+    </Box>
+  );
+};
+
+export const WithMixedColors = WithMixedColorsTemplate.bind({});
+
 const AsPropTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
   return (
     <Box>

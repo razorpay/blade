@@ -6,7 +6,7 @@ import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme
 import { getPlatformType } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { TestID } from '~src/_helpers/types';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type TitleProps = {
@@ -20,7 +20,7 @@ export type TitleProps = {
   size?: 'small' | 'medium' | 'large' | 'xlarge';
   contrast?: ColorContrastTypes;
   type?: TextTypes;
-  children: StringChildrenType;
+  children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
 } & TestID &
   StyledPropsBlade;
