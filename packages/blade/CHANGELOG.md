@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.10.3
+
+### Patch Changes
+
+- 62522f3e: fix(dropdown): dropdown overlay positioning
+
 ## 8.10.2
 
 ### Patch Changes
