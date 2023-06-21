@@ -43,6 +43,18 @@ describe('<Title />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render Title with mixed color', () => {
+    const { toJSON } = renderWithTheme(
+      <Title>
+        Supercharge your business with the all‑powerful{' '}
+        <Title as="span" color="badge.text.blue.lowContrast">
+          Payment Gateway
+        </Title>
+      </Title>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Title with variant "medium"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(
