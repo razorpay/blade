@@ -263,11 +263,9 @@ exports[`<TextArea /> should render 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
-        display="flex"
       >
         <label
           for="textarea-1-input-2"
@@ -278,16 +276,10 @@ exports[`<TextArea /> should render 1`] = `
           >
             <div
               class="c3"
-              display="flex"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
-                color="surface.text.subdued.lowContrast"
+                class="c4"
                 data-blade-component="text"
-                font-family="text"
-                font-size="75"
-                font-style="normal"
-                font-weight="bold"
               >
                 Enter name
               </p>
@@ -296,13 +288,8 @@ exports[`<TextArea /> should render 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
-                  color="surface.text.normal.lowContrast"
+                  class="c6"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 />
               </div>
             </div>
@@ -311,8 +298,6 @@ exports[`<TextArea /> should render 1`] = `
       </div>
       <div
         class="c7 c8"
-        display="flex"
-        width="100%"
       >
         <textarea
           aria-describedby=""
@@ -334,7 +319,6 @@ exports[`<TextArea /> should render 1`] = `
     >
       <div
         class="c12"
-        display="flex"
       />
     </div>
   </div>
@@ -604,11 +588,9 @@ exports[`<TextArea /> should set number of lines 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <div
         class="c1"
-        display="flex"
       >
         <label
           for="textarea-91-input-92"
@@ -619,16 +601,10 @@ exports[`<TextArea /> should set number of lines 1`] = `
           >
             <div
               class="c3"
-              display="flex"
             >
               <p
-                class="c4 Text__StyledText-wkh56f-0"
-                color="surface.text.subdued.lowContrast"
+                class="c4"
                 data-blade-component="text"
-                font-family="text"
-                font-size="75"
-                font-style="normal"
-                font-weight="bold"
               >
                 Enter name
               </p>
@@ -637,13 +613,8 @@ exports[`<TextArea /> should set number of lines 1`] = `
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
-                  color="surface.text.normal.lowContrast"
+                  class="c6"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 />
               </div>
             </div>
@@ -652,8 +623,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
       </div>
       <div
         class="c7 c8"
-        display="flex"
-        width="100%"
       >
         <textarea
           aria-describedby=""
@@ -675,7 +644,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
     >
       <div
         class="c12"
-        display="flex"
       />
     </div>
   </div>

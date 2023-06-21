@@ -62,30 +62,20 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c2"
-      color="surface.text.normal.lowContrast"
-      font-size="100"
-      font-weight="regular"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -155,30 +145,20 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       RM
     </span>
     <span
       class="c2"
-      color="surface.text.normal.lowContrast"
-      font-size="100"
-      font-weight="regular"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -234,21 +214,14 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="400"
-      font-weight="bold"
     >
       ₹
     </span>
     <div
       class="c2"
-      color="surface.text.normal.lowContrast"
-      font-size="700"
-      font-weight="bold"
     >
       1k
     </div>
@@ -318,30 +291,20 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c2"
-      color="surface.text.normal.lowContrast"
-      font-size="100"
-      font-weight="regular"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -571,30 +534,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c2"
-      color="surface.text.normal.lowContrast"
-      font-size="100"
-      font-weight="regular"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -602,30 +555,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c4"
-      color="surface.text.normal.lowContrast"
-      font-size="100"
-      font-weight="bold"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -633,30 +576,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c5"
-      color="surface.text.normal.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -664,30 +597,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c6"
-      color="surface.text.normal.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -695,30 +618,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c7"
-      color="surface.text.muted.lowContrast"
-      font-size="100"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c8"
-      color="surface.text.normal.lowContrast"
-      font-size="400"
-      font-weight="regular"
     >
       1,000
       .
     </span>
     <span
       class="c9"
-      color="surface.text.muted.lowContrast"
-      font-size="100"
-      font-weight="regular"
     >
       00
     </span>
@@ -726,30 +639,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c7"
-      color="surface.text.muted.lowContrast"
-      font-size="100"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c10"
-      color="surface.text.normal.lowContrast"
-      font-size="400"
-      font-weight="bold"
     >
       1,000
       .
     </span>
     <span
       class="c9"
-      color="surface.text.muted.lowContrast"
-      font-size="100"
-      font-weight="regular"
     >
       00
     </span>
@@ -757,30 +660,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c11"
-      color="surface.text.normal.lowContrast"
-      font-size="200"
-      font-weight="regular"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -788,30 +681,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c12"
-      color="surface.text.normal.lowContrast"
-      font-size="200"
-      font-weight="bold"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -819,30 +702,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c13"
-      color="surface.text.muted.lowContrast"
-      font-size="400"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c14"
-      color="surface.text.normal.lowContrast"
-      font-size="700"
-      font-weight="bold"
     >
       1,000
       .
     </span>
     <span
       class="c15"
-      color="surface.text.muted.lowContrast"
-      font-size="400"
-      font-weight="regular"
     >
       00
     </span>
@@ -912,30 +785,20 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c2"
-      color="surface.text.normal.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -1005,30 +868,20 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c2"
-      color="surface.text.normal.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="surface.text.muted.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>
@@ -1084,23 +937,16 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="feedback.text.negative.lowContrast"
-      font-size="100"
-      font-weight="regular"
     >
       ₹
     </span>
     <div
       class="c2"
-      color="feedback.text.negative.lowContrast"
-      font-size="100"
-      font-weight="regular"
     >
-      1,000
+      1,000.00
     </div>
   </div>
 </div>
@@ -1168,30 +1014,20 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   <div
     class="c0"
     data-blade-component="amount"
-    display="inline-flex"
   >
     <span
       class="c1"
-      color="feedback.text.positive.lowContrast"
-      font-size="75"
-      font-weight="bold"
     >
       ₹
     </span>
     <span
       class="c2"
-      color="feedback.text.positive.lowContrast"
-      font-size="100"
-      font-weight="regular"
     >
       1,000
       .
     </span>
     <span
       class="c3"
-      color="feedback.text.positive.lowContrast"
-      font-size="75"
-      font-weight="regular"
     >
       00
     </span>

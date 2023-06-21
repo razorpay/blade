@@ -5,6 +5,7 @@ import type { DurationString, EasingString } from '~tokens/global';
 import type { ActionStates } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~src/_helpers/types';
+import type { BladeCommonEvents } from '~components/types';
 
 export type StyledBaseLinkProps = {
   variant: BaseLinkProps['variant'];
@@ -15,6 +16,7 @@ export type StyledBaseLinkProps = {
   rel?: string;
   onClick?: BaseLinkProps['onClick'];
   onBlur?: BaseLinkProps['onBlur'];
+  onMouseLeave?: BaseLinkProps['onMouseLeave'];
   onKeyDown?: BaseLinkProps['onKeyDown'];
   focusRingColor: string;
   disabled: boolean;
@@ -26,4 +28,5 @@ export type StyledBaseLinkProps = {
   size?: 'small' | 'medium';
   hitSlop?: BaseLinkProps['hitSlop'];
 } & TestID &
-  StyledPropsBlade;
+  StyledPropsBlade &
+  Omit<BladeCommonEvents, 'onBlur' | 'onMouseLeave'>;

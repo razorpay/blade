@@ -1,5 +1,59 @@
 # @razorpay/blade
 
+## 8.10.2
+
+### Patch Changes
+
+- 99016aff: feat(blade): add support for as prop for typography components
+- f08e6d4f: fix(blade): remove unnecessary attributes from dom
+
+## 8.10.1
+
+### Patch Changes
+
+- 17e5bae0: fix(patch-package): move to dependencies
+  - this should fix an issue with `patch-package` when trying to install latest version of blade
+- 33b507bc: fix(blade): invalid dom nesting in Link
+
+## 8.10.0
+
+### Minor Changes
+
+- ba05928c: feat: add `Accordion` and `Collapsible` pre-release
+
+  - `Accordion` and `Collapsible` are available on web as pre-release
+  - You may import and use the following: `Accordion_PRE_RELEASE` and `Collapsible_PRE_RELEASE`
+
+  > **Warning**
+  >
+  > These components are in pre-release which means there might be some changes by the stable release and there might be some rough edges.
+
+## 8.9.1
+
+### Patch Changes
+
+- 7613ca13: fix: show decimal upto 2 places when `isAfixSubtle:false`
+
+## 8.9.0
+
+### Minor Changes
+
+- d62a86d4: feat(blade): added tooltip component
+
+  Blade now has a peer dependency on [FloatingUI](https://floating-ui.com/), make sure to install it.
+
+  For web:
+
+  ```
+  yarn add @floating-ui/react
+  ```
+
+  For native:
+
+  ```
+  yarn add @floating-ui/react-native
+  ```
+
 ## 8.8.4
 
 ### Patch Changes

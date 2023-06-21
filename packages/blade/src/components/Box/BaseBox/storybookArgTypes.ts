@@ -5,7 +5,7 @@ import { validBoxAsValues } from './types/propsTypes';
 
 type StorybookArgTypes<T> = {
   [P in keyof T]: {
-    table?: { category?: 'StyledProps' | null; disable?: boolean };
+    table?: { category?: 'StyledProps' | 'CommonEvents' | null; disable?: boolean };
     control?: { type: string; options?: readonly string[] };
     description?: string;
   };
@@ -253,4 +253,69 @@ const getBaseBoxArgTypes = (): StorybookArgTypes<
   };
 };
 
-export { getBaseBoxArgTypes, getBoxArgTypes, getStyledPropsArgTypes };
+const getBladeCommonEventArgTypes = (): StorybookArgTypes<Record<string, string>> => {
+  return {
+    onMouseEnter: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when mouse enters',
+    },
+    onMouseLeave: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when mouse leaves',
+    },
+    onFocus: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when element is focus',
+    },
+    onBlur: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when element looses focus',
+    },
+    onMouseMove: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when mouse moves',
+    },
+    onMouseOver: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when mouse enters',
+    },
+    onPointerDown: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when pointer is down',
+    },
+    onPointerEnter: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when pointer enters',
+    },
+    onTouchEnd: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when touch ends',
+    },
+    onTouchStart: {
+      table: {
+        category: 'CommonEvents',
+      },
+      description: 'Event handler which triggers when touch starts',
+    },
+  };
+};
+
+export { getBaseBoxArgTypes, getBoxArgTypes, getStyledPropsArgTypes, getBladeCommonEventArgTypes };

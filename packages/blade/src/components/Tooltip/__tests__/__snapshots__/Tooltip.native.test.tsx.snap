@@ -1,0 +1,327 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tooltip /> should render 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      Object {
+        "disabled": false,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        Object {
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        color="action.text.primary.default"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Hover me
+      </Text>
+    </View>
+  </View>
+  <Modal
+    accessibilityLabel="Hello world"
+    collapsable={false}
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={true}
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flex": 1,
+          "flexShrink": 0,
+          "opacity": 1,
+        }
+      }
+      testID="tooltip-modal-backdrop"
+    >
+      <View
+        style={
+          Object {
+            "opacity": 0,
+            "transform": Array [
+              Object {
+                "translateX": 4,
+              },
+            ],
+          }
+        }
+      >
+        <View
+          collapse={false}
+          elevation={20}
+          maxWidth="200px"
+          position="absolute"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "hsla(216, 33%, 29%, 1)",
+                "borderColor": "hsla(216, 27%, 36%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "left": -200,
+                "maxWidth": 200,
+                "paddingBottom": 8,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 8,
+                "position": "absolute",
+                "top": -200,
+              },
+              Object {
+                "elevation": 4,
+                "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+                "shadowOffset": Object {
+                  "height": 3,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.12,
+                "shadowRadius": 2,
+              },
+            ]
+          }
+          styles={
+            Object {
+              "left": -200,
+              "position": "absolute",
+              "top": -200,
+            }
+          }
+        >
+          <Text
+            color="feedback.text.neutral.highContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={50}
+            style={
+              Array [
+                Object {
+                  "color": "hsla(0, 0%, 100%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Hello world
+          </Text>
+          <View
+            collapsable={false}
+            style={
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="14px"
+              bbWidth="14px"
+              focusable={false}
+              height="14px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Array [
+                    Object {},
+                    Object {},
+                  ],
+                  Object {
+                    "flex": 0,
+                    "height": 14,
+                    "width": 14,
+                  },
+                ]
+              }
+              styles={Object {}}
+              vbHeight={14}
+              vbWidth={14}
+              width="14px"
+            >
+              <RNSVGGroup>
+                <RNSVGPath
+                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  fill={null}
+                  propList={
+                    Array [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={4282603381}
+                  strokeWidth="2px"
+                />
+                <RNSVGPath
+                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  fill={4281484642}
+                  propList={
+                    Array [
+                      "fill",
+                      "stroke",
+                    ]
+                  }
+                  stroke={null}
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+        </View>
+      </View>
+    </View>
+  </Modal>
+</View>
+`;

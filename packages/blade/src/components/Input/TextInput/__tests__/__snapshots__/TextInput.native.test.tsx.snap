@@ -101,7 +101,6 @@ exports[`<TextInput /> should render 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -163,7 +162,6 @@ exports[`<TextInput /> should render 1`] = `
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               />
@@ -399,7 +397,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -461,7 +458,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               />
@@ -626,7 +622,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -744,7 +739,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >

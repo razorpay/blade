@@ -40,10 +40,14 @@ Before you install the package, make sure that you have performed following step
 
 ## ⬇ Add blade to your application
 
-1. Install blade as a dependency. Blade has a peer dependency on `styled-components`, you can skip adding it if you already have it installed in your project.
+1. Install blade as a dependency. 
+Blade has a peer dependency on few libraries, you can skip adding it if you already have it installed in your project.
+
+  - `styled-components`
+  - `@floating-ui/react`
 
    ```shell
-   yarn add @razorpay/blade styled-components
+   yarn add @razorpay/blade styled-components @floating-ui/react
    ```
 
 2. Follow [this guide](#-install-fonts) to install the fonts.
@@ -60,6 +64,8 @@ Before you install the package, make sure that you have performed following step
       - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
     - @gorhom/portal
       - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
+    - @floating-ui/react-native
+      - Add this as peer dependency, no need to do additional setup.
 
 ## 🔜 Add blade libraries to your figma project
 
