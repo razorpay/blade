@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import type { BaseBoxProps } from './types';
 import { useMemoizedStyles } from './useMemoizedStyles';
-import { omitPropsFromHTML } from '~utils';
+import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
 const BaseBox = styled.div.withConfig({
   shouldForwardProp: omitPropsFromHTML,
