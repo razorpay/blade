@@ -5,6 +5,7 @@ import {
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
   WithLinkStory,
+  WithRightAlignedMenuStory,
   WithSimpleMenuStory,
 } from './stories';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
@@ -52,6 +53,14 @@ export const WithLink = (): JSX.Element => {
   );
 };
 
+export const WithRightAlignedMenu = (): JSX.Element => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {WithRightAlignedMenuStory}
+    </Sandbox>
+  );
+};
+
 export const WithControlledMenu = (): JSX.Element => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
@@ -67,6 +76,7 @@ export const WithControlledMultiSelect = (): JSX.Element => {
     </Sandbox>
   );
 };
+
 // This is for Chromatic and react native testing
 export const InternalMenu = (): JSX.Element => {
   const [status, setStatus] = React.useState<string | undefined>();
