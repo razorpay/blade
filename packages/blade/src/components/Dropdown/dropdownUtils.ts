@@ -378,7 +378,7 @@ export const getDropdownOverlayPosition = ({
     if (bottom > POSITION_THRESHOLDS.bottom) {
       newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[32])}px`;
     }
-    console.log({ newPosition });
+
     return newPosition;
   }
 
@@ -391,6 +391,7 @@ export const getDropdownOverlayPosition = ({
     newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[20])}px`;
     newPosition.top = undefined;
   }
+  console.log({ position, newPosition });
 
   return newPosition;
 };
@@ -407,7 +408,9 @@ export const getDropdownOverflowMiddleware = ({
   return {
     name: 'detectOverflowMiddleware',
     async fn(state: MiddlewareState) {
-      const overflow = await detectOverflow(state, { elementContext: 'reference' });
+      const overflow = await detectOverflow(state, {
+        elementContext: 'reference',
+      });
       const position = getDropdownOverlayPosition({
         overflow,
         isMenu,

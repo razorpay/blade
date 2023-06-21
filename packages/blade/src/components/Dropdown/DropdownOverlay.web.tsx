@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
-import { useFloating } from '@floating-ui/react';
+import { autoUpdate, useFloating } from '@floating-ui/react';
 import type { DropdownPosition } from './dropdownUtils';
 import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
@@ -79,6 +79,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
       reference: triggererRef.current,
     },
     middleware: [getDropdownOverflowMiddleware({ isMenu, triggererRef, setDropdownPosition })],
+    whileElementsMounted: autoUpdate,
   });
 
   const fadeIn = css`
