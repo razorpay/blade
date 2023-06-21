@@ -24,9 +24,32 @@ const getTransitionDuration = (theme: Theme) => makeMotionTime(theme.motion.dura
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getTransitionEasing = (theme: Theme) => theme.motion.easing.standard.effective;
 
+type TransformRotation = -180 | 0;
+
+/**
+ * The orientation of chevron icon inverts based on the direction collapsible expands in.
+ * `transformExpanded` and `transformCollapsed` therefore need to swap their corresponding expanded and collapsed values.
+ */
+const getCollapsibleChevronIconTransforms = ({
+  direction,
+}: {
+  direction: CollapsibleProps['direction'];
+}): { transformExpanded: TransformRotation; transformCollapsed: TransformRotation } => {
+  let transformExpanded: TransformRotation, transformCollapsed: TransformRotation;
+  if (direction === 'bottom') {
+    transformExpanded = -180;
+    transformCollapsed = 0;
+  } else {
+    transformExpanded = 0;
+    transformCollapsed = -180;
+  }
+  return { transformExpanded, transformCollapsed };
+};
+
 export {
   getCollapsibleBodyContentBoxProps,
   getOpacity,
   getTransitionDuration,
   getTransitionEasing,
+  getCollapsibleChevronIconTransforms,
 };
