@@ -4,11 +4,11 @@ import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import type { TestID } from '~src/_helpers/types';
-import { Divider } from '~components/BaseHeaderFooter/Divider';
 import { Text } from '~components/Typography';
 import { MetaConstants, metaAttribute } from '~utils';
 import { Collapsible } from '~components/Collapsible/Collapsible';
 import { CollapsibleBody } from '~components/Collapsible';
+import { Divider } from '~components/Divider';
 
 type AccordionItemProps = {
   /**
