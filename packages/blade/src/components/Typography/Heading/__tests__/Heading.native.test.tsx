@@ -113,6 +113,16 @@ describe('<Heading />', () => {
     }
   });
 
+  it('should render with as prop without errors', () => {
+    const displayText = 'Displaying Landing Screen Heading';
+    const { getByText } = renderWithTheme(
+      <Heading as="span" type="subdued" size="large">
+        {displayText}
+      </Heading>,
+    );
+    expect(getByText(displayText)).toBeTruthy();
+  });
+
   it('should accept testID', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { getByTestId } = renderWithTheme(<Heading testID="heading-test">{displayText}</Heading>);

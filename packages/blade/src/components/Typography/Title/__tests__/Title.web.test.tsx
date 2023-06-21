@@ -72,6 +72,24 @@ describe('<Title />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should accept as prop and render appropriate HTML tag', () => {
+    const displayText = 'Displaying some text';
+    const { getByText } = renderWithTheme(<Title as="span">{displayText}</Title>);
+    expect(getByText(displayText).tagName).toBe('SPAN');
+  });
+
+  it('should throw error on invalid as prop', () => {
+    const displayText = 'Displaying some text';
+    expect(() =>
+      renderWithTheme(
+        // @ts-expect-error testing failure case as prop is invalid
+        <Title as="button">{displayText}</Title>,
+      ),
+    ).toThrow(
+      '[Blade Title]: Invalid `as` prop value - button. Only span, h1, h2, h3, h4, h5, h6 are accepted',
+    );
+  });
+
   it('should be accessible', async () => {
     const { container } = renderWithTheme(<Title>Text content</Title>);
     await assertAccessible(container);

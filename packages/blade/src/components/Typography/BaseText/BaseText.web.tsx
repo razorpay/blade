@@ -6,8 +6,12 @@ import type { BaseTextProps, StyledBaseTextProps } from './types';
 import { metaAttribute } from '~utils/metaAttribute';
 import { useStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
+import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
-const StyledBaseText = styled.div<StyledBaseTextProps>(
+const StyledBaseText = styled.div.withConfig({
+  shouldForwardProp: omitPropsFromHTML,
+  displayName: 'StyledBaseText',
+})<StyledBaseTextProps>(
   ({
     color,
     fontFamily,
@@ -15,6 +19,7 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
     fontWeight,
     fontStyle,
     textDecorationLine,
+    numberOfLines,
     lineHeight,
     textAlign,
     ...props
@@ -28,6 +33,7 @@ const StyledBaseText = styled.div<StyledBaseTextProps>(
         fontWeight,
         fontStyle,
         textDecorationLine,
+        numberOfLines,
         lineHeight,
         textAlign,
         theme: props.theme,

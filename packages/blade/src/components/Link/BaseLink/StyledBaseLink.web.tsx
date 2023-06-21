@@ -6,10 +6,16 @@ import { castWebType } from '~utils';
 import { useStyledProps } from '~components/Box/styledProps';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { makeMotionTime } from '~utils/makeMotionTime';
+import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
-const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
-  ...props.accessibilityProps,
-}))<StyledBaseLinkProps>((props) => {
+const StyledLink = styled.button
+  .withConfig({
+    shouldForwardProp: omitPropsFromHTML,
+    displayName: 'StyledLink',
+  })
+  .attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
+    ...props.accessibilityProps,
+  }))<StyledBaseLinkProps>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   return {
     ...getStyledLinkStyles(props),

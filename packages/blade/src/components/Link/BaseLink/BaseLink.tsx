@@ -21,6 +21,7 @@ import type {
 } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { Platform } from '~utils';
+import { isReactNative } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -339,6 +340,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     }
   };
 
+  const asProp = isReactNative() ? undefined : 'span';
   return (
     <StyledBaseLink
       ref={ref as never}
@@ -391,13 +393,20 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       hitSlop={hitSlop}
       title={htmlTitle}
     >
-      <BaseBox display="flex" flexDirection="row" className="content-container" alignItems="center">
+      <BaseBox
+        as={asProp}
+        display="flex"
+        flexDirection="row"
+        className="content-container"
+        alignItems="center"
+      >
         {Icon && iconPosition == 'left' ? (
-          <BaseBox paddingRight={iconPadding} display="flex" alignItems="center">
+          <BaseBox as={asProp} paddingRight={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size={iconSize} />
           </BaseBox>
         ) : null}
         <BaseText
+          as={asProp}
           textDecorationLine={textDecorationLine}
           color={textColor}
           fontSize={fontSize}
@@ -408,7 +417,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
           {children}
         </BaseText>
         {Icon && iconPosition == 'right' ? (
-          <BaseBox paddingLeft={iconPadding} display="flex" alignItems="center">
+          <BaseBox as={asProp} paddingLeft={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size={iconSize} />
           </BaseBox>
         ) : null}

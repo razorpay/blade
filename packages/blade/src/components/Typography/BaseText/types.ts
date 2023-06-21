@@ -18,6 +18,21 @@ type BadgeTextColors = `badge.text.${DotNotationColorStringToken<
   Theme['colors']['badge']['text']
 >}`;
 
+type As =
+  | 'code'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'p'
+  | 'span'
+  | 'abbr'
+  | 'q'
+  | 'cite'
+  | 'figcaption'
+  | 'div';
 export type BaseTextProps = {
   id?: string;
   color?: ActionColors | FeedbackColors | SurfaceColors | FeedbackActionColors | BadgeTextColors;
@@ -30,7 +45,7 @@ export type BaseTextProps = {
   /**
    * Web only
    */
-  as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+  as?: As;
   textAlign?: 'center' | 'justify' | 'left' | 'right';
   truncateAfterLines?: number;
   className?: string;
@@ -57,4 +72,5 @@ export type StyledBaseTextProps = Pick<
   | 'as'
   | 'textAlign'
   | 'numberOfLines'
+  | 'truncateAfterLines'
 > & { theme: Theme };

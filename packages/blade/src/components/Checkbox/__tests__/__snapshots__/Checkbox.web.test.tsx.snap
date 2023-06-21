@@ -178,11 +178,9 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
     >
       <div
         class="c1"
-        display="flex"
       >
         <div
           class="c2"
-          display="flex"
         >
           <input
             aria-checked="false"
@@ -232,33 +230,24 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           />
           <div
             class="c7"
-            color="surface.text.subtle.lowContrast"
-            font-family="text"
-            font-size="100"
-            font-weight="regular"
           >
             I accept 
             <a
               aria-disabled="false"
               class="c8"
-              cursor="pointer"
               data-blade-component="link"
               href="#"
               role="link"
             >
-              <div
+              <span
                 class="c2 content-container"
-                display="flex"
               >
-                <div
+                <span
                   class="c9"
-                  color="action.text.link.default"
-                  font-size="100"
-                  font-weight="bold"
                 >
                   Terms and Conditions
-                </div>
-              </div>
+                </span>
+              </span>
             </a>
           </div>
         </div>
@@ -387,11 +376,9 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
     >
       <div
         class="c1"
-        display="flex"
       >
         <div
           class="c2"
-          display="flex"
         >
           <input
             aria-checked="false"
@@ -442,10 +429,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           />
           <div
             class="c7"
-            color="surface.text.placeholder.lowContrast"
-            font-family="text"
-            font-size="100"
-            font-weight="regular"
           >
             Remember password
           </div>
@@ -596,11 +579,9 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     >
       <div
         class="c1"
-        display="flex"
       >
         <div
           class="c2"
-          display="flex"
         >
           <input
             aria-checked="false"
@@ -651,10 +632,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           />
           <div
             class="c7"
-            color="surface.text.subtle.lowContrast"
-            font-family="text"
-            font-size="100"
-            font-weight="regular"
           >
             Remember password
           </div>
@@ -699,10 +676,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         />
         <span
           class="c11"
-          color="feedback.text.negative.lowContrast"
-          font-family="text"
-          font-size="50"
-          font-style="italic"
           id="checkbox-19-errortext-21"
         >
           This has to be checked
@@ -844,11 +817,9 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
     >
       <div
         class="c1"
-        display="flex"
       >
         <div
           class="c2"
-          display="flex"
         >
           <input
             aria-checked="true"
@@ -920,10 +891,6 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
           />
           <div
             class="c8"
-            color="surface.text.subtle.lowContrast"
-            font-family="text"
-            font-size="100"
-            font-weight="regular"
           >
             Remember password
           </div>

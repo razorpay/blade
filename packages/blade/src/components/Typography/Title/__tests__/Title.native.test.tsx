@@ -65,6 +65,16 @@ describe('<Title />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render with as prop without errors', () => {
+    const displayText = 'Displaying Landing Screen Title';
+    const { getByText } = renderWithTheme(
+      <Title as="span" type="subdued" size="large">
+        {displayText}
+      </Title>,
+    );
+    expect(getByText(displayText)).toBeTruthy();
+  });
+
   it('should accept testID', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { getByTestId } = renderWithTheme(<Title testID="title-test">{displayText}</Title>);

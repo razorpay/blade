@@ -17,12 +17,7 @@ exports[`<Heading /> should render Heading with color 1`] = `
 <div>
   <h6
     class="c0"
-    color="surface.text.placeholder.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="200"
-    font-style="normal"
-    font-weight="bold"
   >
     Get Started With Payment Gateway
   </h6>
@@ -46,12 +41,7 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
 <div>
   <h6
     class="c0"
-    color="surface.text.normal.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="200"
-    font-style="normal"
-    font-weight="bold"
   >
     Get Started With Payment Gateway
   </h6>
@@ -75,12 +65,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
 <div>
   <h4
     class="c0"
-    color="surface.text.subdued.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="400"
-    font-style="normal"
-    font-weight="regular"
   >
     Get Started With Payment Gateway
   </h4>
@@ -104,12 +89,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
 <div>
   <h5
     class="c0"
-    color="surface.text.muted.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="300"
-    font-style="normal"
-    font-weight="regular"
   >
     Get Started With Payment Gateway
   </h5>
@@ -133,12 +113,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
 <div>
   <h6
     class="c0"
-    color="surface.text.normal.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="200"
-    font-style="normal"
-    font-weight="regular"
   >
     Get Started With Payment Gateway
   </h6>
@@ -162,12 +137,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
 <div>
   <h6
     class="c0"
-    color="surface.text.normal.highContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="200"
-    font-style="normal"
-    font-weight="regular"
   >
     Get Started With Payment Gateway
   </h6>
@@ -189,16 +159,11 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
 }
 
 <div>
-  <h6
+  <p
     class="c0"
-    color="surface.text.subdued.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="75"
-    font-style="normal"
-    font-weight="bold"
   >
     Get Started With Payment Gateway
-  </h6>
+  </p>
 </div>
 `;

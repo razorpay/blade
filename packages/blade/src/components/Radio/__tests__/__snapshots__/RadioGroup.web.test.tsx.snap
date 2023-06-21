@@ -209,7 +209,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       aria-labelledby="radio-group-15-label"
       class="c0"
       data-blade-component="radio-group"
-      display="flex"
       role="group"
     >
       <span
@@ -221,16 +220,10 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         >
           <div
             class="c2"
-            display="flex"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
+              class="c3"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Select fruits
             </p>
@@ -239,13 +232,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
+                class="c5"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               >
                 ,Select one
               </p>
@@ -258,7 +246,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       >
         <div
           class="c0"
-          display="flex"
         >
           <div
             class="c1"
@@ -271,11 +258,9 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -297,10 +282,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c11"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Apple
                     </div>
@@ -323,11 +304,9 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -349,10 +328,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c11"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Mango
                     </div>
@@ -375,11 +350,9 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -401,10 +374,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c11"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Orange
                     </div>
@@ -425,10 +394,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           >
             <span
               class="c15"
-              color="surface.text.muted.lowContrast"
-              font-family="text"
-              font-size="50"
-              font-style="italic"
             >
               Select one
             </span>
@@ -632,7 +597,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
       aria-labelledby="radio-group-7-label"
       class="c0"
       data-blade-component="radio-group"
-      display="flex"
       role="group"
     >
       <span
@@ -644,16 +608,10 @@ exports[`<RadioGroup /> should render with label 1`] = `
         >
           <div
             class="c2"
-            display="flex"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
+              class="c3"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Select fav fruit
             </p>
@@ -662,13 +620,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
+                class="c5"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               />
             </div>
           </div>
@@ -679,7 +632,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
       >
         <div
           class="c0"
-          display="flex"
         >
           <div
             class="c1"
@@ -692,11 +644,9 @@ exports[`<RadioGroup /> should render with label 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -718,10 +668,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c11"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Apple
                     </div>
@@ -744,11 +690,9 @@ exports[`<RadioGroup /> should render with label 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -770,10 +714,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c11"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Mango
                     </div>
@@ -796,11 +736,9 @@ exports[`<RadioGroup /> should render with label 1`] = `
               >
                 <div
                   class="c0"
-                  display="flex"
                 >
                   <div
                     class="c7"
-                    display="flex"
                   >
                     <input
                       aria-checked="false"
@@ -822,10 +760,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c11"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
                     >
                       Orange
                     </div>

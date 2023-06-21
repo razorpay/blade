@@ -100,7 +100,6 @@ exports[`<BaseInput /> should render 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -162,7 +161,6 @@ exports[`<BaseInput /> should render 1`] = `
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               />
@@ -393,7 +391,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -455,7 +452,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               />

@@ -1,5 +1,20 @@
 # @razorpay/blade
 
+## 8.10.2
+
+### Patch Changes
+
+- 99016aff: feat(blade): add support for as prop for typography components
+- f08e6d4f: fix(blade): remove unnecessary attributes from dom
+
+## 8.10.1
+
+### Patch Changes
+
+- 17e5bae0: fix(patch-package): move to dependencies
+  - this should fix an issue with `patch-package` when trying to install latest version of blade
+- 33b507bc: fix(blade): invalid dom nesting in Link
+
 ## 8.10.0
 
 ### Minor Changes

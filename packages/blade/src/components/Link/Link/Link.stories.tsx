@@ -103,7 +103,7 @@ const LinkInlineTemplate: ComponentStory<typeof LinkComponent> = ({
 }) => {
   return (
     <Text>
-      Find more details at the <LinkComponent {...args}>{children}</LinkComponent>.
+      Find more details at the <LinkComponent {...args}>{children}</LinkComponent>
     </Text>
   );
 };

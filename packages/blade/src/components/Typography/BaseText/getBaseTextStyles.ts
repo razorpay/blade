@@ -2,6 +2,7 @@ import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import type { StyledBaseTextProps } from './types';
 import { makeTypographySize } from '~utils/makeTypographySize';
+import { isReactNative } from '~utils';
 
 const getBaseTextStyles = ({
   color = 'surface.text.normal.lowContrast',
@@ -10,6 +11,7 @@ const getBaseTextStyles = ({
   fontWeight = 'regular',
   fontStyle = 'normal',
   textDecorationLine = 'none',
+  numberOfLines,
   lineHeight = 100,
   textAlign,
   theme,
@@ -19,6 +21,19 @@ const getBaseTextStyles = ({
   const themeFontSize = makeTypographySize(theme.typography.fonts.size[fontSize]);
   const themeFontWeight = theme.typography.fonts.weight[fontWeight];
   const themeLineHeight = makeTypographySize(theme.typography.lineHeights[lineHeight]);
+  let truncateStyles: CSSObject = {};
+  if (numberOfLines !== undefined) {
+    if (isReactNative()) {
+      truncateStyles = {};
+    }
+    truncateStyles = {
+      overflow: 'hidden',
+      display: '-webkit-box',
+      'line-clamp': `${numberOfLines}`,
+      '-webkit-line-clamp': `${numberOfLines}`,
+      '-webkit-box-orient': 'vertical',
+    };
+  }
 
   return {
     color: textColor,
@@ -31,6 +46,7 @@ const getBaseTextStyles = ({
     textAlign,
     margin: 0,
     padding: 0,
+    ...truncateStyles,
   };
 };
 

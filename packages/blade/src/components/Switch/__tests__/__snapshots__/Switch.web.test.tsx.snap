@@ -132,7 +132,6 @@ exports[`<Switch /> should render switch 1`] = `
   <div
     class="c0"
     data-blade-component="Switch"
-    display="inline-block"
   >
     <label
       class="c1"
@@ -306,7 +305,6 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   <div
     class="c0"
     data-blade-component="Switch"
-    display="inline-block"
   >
     <label
       class="c1"

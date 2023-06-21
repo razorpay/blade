@@ -1,11 +1,15 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
+import { Text } from '../Text';
+import { Code } from '../Code';
 import type { HeadingProps } from './';
 import { Heading as HeadingComponent } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { List, ListItem } from '~components/List';
 
 const Page = (): ReactElement => {
   return (
@@ -56,6 +60,7 @@ const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>
     children: 'Get Started With Payment Gateway',
     weight: 'bold',
     contrast: 'low',
+    as: undefined,
   },
   argTypes: getHeadingArgTypes(),
   parameters: {
@@ -74,4 +79,41 @@ export const Heading = HeadingTemplate.bind({});
 export const WithColor = HeadingTemplate.bind({});
 WithColor.args = {
   color: 'feedback.notice.action.text.primary.default.lowContrast',
+};
+
+const AsPropTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
+  return (
+    <Box>
+      <Text>
+        By default{' '}
+        <Text as="span" weight="bold">
+          Heading
+        </Text>{' '}
+        component automatically renders the respective <Code size="medium">h*</Code> tag based on
+        the{' '}
+        <Text as="span" weight="bold">
+          size prop
+        </Text>{' '}
+        passed
+      </Text>
+      <List>
+        <ListItem>small: h6</ListItem>
+        <ListItem>medium: h5</ListItem>
+        <ListItem>large: h4</ListItem>
+        <ListItem>subheading variant: p</ListItem>
+      </List>
+      <Text marginBottom="spacing.5">
+        But you can also pass a custom <Code size="medium">as</Code> prop to override the rendered
+        HTML:
+      </Text>
+      <HeadingComponent {...args}>
+        Tweak the storybook controls to see the dom change
+      </HeadingComponent>
+    </Box>
+  );
+};
+
+export const AsProp = AsPropTemplate.bind({});
+AsProp.args = {
+  as: 'h1',
 };

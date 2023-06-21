@@ -1,13 +1,16 @@
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
+import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { getPlatformType } from '~utils';
 
+const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type TitleProps = {
+  as?: typeof validAsValues[number];
   /**
    * Overrides the color of the Title component.
    *
@@ -18,16 +21,18 @@ export type TitleProps = {
   contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: StringChildrenType;
+  textAlign?: BaseTextProps['textAlign'];
 } & TestID &
   StyledPropsBlade;
 
 const getProps = ({
+  as,
   size,
   type,
   contrast,
   color,
   testID,
-}: Pick<TitleProps, 'size' | 'type' | 'color' | 'contrast' | 'testID'>): Omit<
+}: Pick<TitleProps, 'as' | 'size' | 'type' | 'color' | 'contrast' | 'testID'>): Omit<
   BaseTextProps,
   'children'
 > => {
@@ -63,21 +68,28 @@ const getProps = ({
     props.as = isPlatformWeb ? 'h1' : undefined;
   }
 
+  // override the computed `as` prop if user passed an `as` prop
+  props.as = as || props.as;
   return props;
 };
 
 export const Title = ({
+  as,
   size = 'small',
   type = 'normal',
   contrast = 'low',
   color,
   children,
   testID,
+  textAlign,
   ...styledProps
 }: TitleProps): ReactElement => {
-  const props = getProps({ size, type, contrast, color, testID });
+  useValidateAsProp({ componentName: 'Title', as, validAsValues });
+
+  const props = getProps({ as, size, type, contrast, color, testID });
+
   return (
-    <BaseText {...props} {...getStyledProps(styledProps)}>
+    <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>
       {children}
     </BaseText>
   );
