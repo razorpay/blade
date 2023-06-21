@@ -35,10 +35,12 @@ const AnimatedStyledCollapsibleBodyContent = styled(
 });
 
 const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): ReactElement => {
-  const { isExpanded, defaultIsExpanded, direction } = useCollapsible();
+  const { isExpanded, direction } = useCollapsible();
   const { theme } = useTheme();
 
   const opacity = useSharedValue(getOpacity({ isExpanded }));
+
+  // `undefined` implies no height restrictions which is analogous to `auto` on web
   const height = useSharedValue(isExpanded ? undefined : 0);
   const [layoutHeight, setLayoutHeight] = useState(0);
 

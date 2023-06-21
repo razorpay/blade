@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import { useCallback, useMemo, useState, cloneElement, Children } from 'react';
 import type { AccordionContextState } from './AccordionContext';
 import { AccordionContext } from './AccordionContext';
+import { MAX_WIDTH } from './styles';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -45,13 +46,6 @@ const MIN_WIDTH: BoxProps['minWidth'] = {
   s: makeSize(size[200]),
   m: makeSize(size[360]),
   l: makeSize(size[400]),
-};
-
-const MAX_WIDTH: BoxProps['maxWidth'] = {
-  // 100% of viewport width - 40px
-  s: `calc(100vw - ${makeSize(size[40])})`,
-  m: makeSize(size[640]),
-  l: makeSize(size[800]),
 };
 
 const Accordion = ({

@@ -3,11 +3,10 @@ import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 
 const MAX_WIDTH: BoxProps['maxWidth'] = {
+  // 100% of viewport width - 40px
   s: `calc(100vw - ${makeSize(size[40])})`,
   m: makeSize(size[640]),
-  l: makeSize(size[1136]),
+  l: makeSize(size[800]),
 };
 
-const MAX_WIDTH_NO_RESTRICTIONS = 'none';
-
-export { MAX_WIDTH, MAX_WIDTH_NO_RESTRICTIONS };
+export { MAX_WIDTH };

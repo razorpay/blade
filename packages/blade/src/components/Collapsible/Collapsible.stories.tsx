@@ -200,7 +200,7 @@ const CollapsibleControlledTemplate: ComponentStory<typeof CollapsibleComponent>
   defaultIsExpanded,
   ...rest
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   return (
     <CollapsibleComponent
       {...rest}

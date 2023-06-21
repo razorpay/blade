@@ -18,4 +18,6 @@ const nativeStyles = StyleSheet.create({
   },
 });
 
-export { MAX_WIDTH, nativeStyles };
+const MAX_WIDTH_NO_RESTRICTIONS = undefined;
+
+export { MAX_WIDTH, nativeStyles, MAX_WIDTH_NO_RESTRICTIONS };
