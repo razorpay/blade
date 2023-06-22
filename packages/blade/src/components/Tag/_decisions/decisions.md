@@ -98,7 +98,7 @@ On consumer end, the APIs would look like -
 <TextInput tagsSlot={} value="" onChange={} />
 ```
 
-**Alternate Prop Name**
+##### Alternate Prop Name
 
 - `leading` (felt confusing because it is leading to the invisible input tag and not the actual visible TextInput)
 - `valuePrefix` (Similar to `titleSuffix` from BaseHeader)
@@ -193,4 +193,4 @@ Refer to Keyboard Interactions of [react-select](https://react-select.com/home#g
 - Do we want to discuss Tag's integration with TextInput and TextArea? or should I remove it from API decision altogether?
   - We can discuss here
 - ~`<Tag />` or `<Tags />` 😅~ `<Tag />`
-- [`tagsSlot` vs `tagSlot` vs `valuePrefix` vs `leading` on Input components](#alternate-approach-value-prop)
+- [`tagsSlot` vs `tagSlot` vs `valuePrefix` vs `leading` on Input components](#alternate-prop-name)
