@@ -671,6 +671,42 @@ const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
 
 export const InitialFocus = InitialFocusTemplate.bind({});
 
+const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <BottomSheetComponent
+        isOpen={true}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+      >
+        <BottomSheetHeader />
+        <BottomSheetBody padding="spacing.0">
+          <Box display="flex" flexDirection="column">
+            <img
+              width="100%"
+              height="300px"
+              src="https://razorpay.com/build/browser/static/home-desktop.4a9233fc.jpg"
+              alt="Breathing Room"
+            />
+            <Box padding="spacing.7" display="flex" flexDirection="column">
+              <Text marginTop="spacing.5">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever since the 1500s
+              </Text>
+            </Box>
+          </Box>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
+
+export const ZeroPadding = ZeroPaddingTemplate.bind({});
+
 const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const fruites = [
     'Apple',

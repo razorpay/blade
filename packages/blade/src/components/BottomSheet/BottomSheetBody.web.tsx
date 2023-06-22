@@ -3,6 +3,7 @@ import React from 'react';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { isValidAllowedChildren, metaAttribute } from '~utils';
@@ -19,8 +20,23 @@ const bodyStyles: React.CSSProperties = {
   touchAction: 'none',
 };
 
-const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  const { scrollRef, setContentHeight, isOpen, bind } = useBottomSheetContext();
+type BottomSheetBodyProps = {
+  children: React.ReactNode;
+  /**
+   * Sets the padding equally on all sides. Only few `spacing` tokens are allowed deliberately
+   * @default `spacing.5`
+   *
+   * **Links:**
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
+   */
+  padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.5'>;
+};
+
+const _BottomSheetBody = ({
+  children,
+  padding = 'spacing.5',
+}: BottomSheetBodyProps): React.ReactElement => {
+  const { scrollRef, setContentHeight, setHasBodyPadding, isOpen, bind } = useBottomSheetContext();
   const contentRef = React.useRef<HTMLDivElement>(null);
   const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<boolean>(false);
 
@@ -38,6 +54,13 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
     });
   }, [children]);
 
+  React.useEffect(() => {
+    if (padding === 'spacing.0') {
+      setHasBodyPadding(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [padding]);
+
   return (
     <BaseBox
       {...metaAttribute({
@@ -53,10 +76,10 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
       {...bind?.({ isContentDragging: true })}
     >
       <BaseBox
-        paddingLeft={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
-        paddingRight={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
-        paddingTop={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
-        paddingBottom={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
+        paddingLeft={bottomSheetHasActionList ? 'spacing.3' : padding}
+        paddingRight={bottomSheetHasActionList ? 'spacing.3' : padding}
+        paddingTop={bottomSheetHasActionList ? 'spacing.3' : padding}
+        paddingBottom={bottomSheetHasActionList ? 'spacing.3' : padding}
         ref={contentRef}
         overflow="auto"
       >
