@@ -26,6 +26,7 @@ import {
   makeSize,
   makeAccessible,
   metaAttribute,
+  MetaConstants,
 } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
@@ -429,7 +430,7 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
-        {...metaAttribute({ name: ComponentIds.BottomSheet })}
+        {...metaAttribute({ name: MetaConstants.BottomSheet })}
         {...makeAccessible({ modal: true, role: 'dialog' })}
         windowHeight={dimensions.height}
         isDragging={isDragging}
@@ -445,7 +446,7 @@ const _BottomSheet = ({
         <BaseBox height="100%" display="flex" flexDirection="column">
           <BottomSheetGrabHandle
             ref={grabHandleRef}
-            {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
+            {...metaAttribute({ name: MetaConstants.BottomSheetGrabHandle })}
             {...bind()}
           />
           {children}

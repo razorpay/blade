@@ -6,7 +6,7 @@ import { CheckboxIconWrapper } from './CheckboxIconWrapper';
 import { Fade } from './Fade';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
-import { getIn, makeSpace } from '~utils';
+import { getIn, makeSpace, metaAttribute } from '~utils';
 import { size } from '~tokens/global';
 
 const svgSize = {
@@ -87,6 +87,7 @@ const CheckboxIcon = ({
       isDisabled={isDisabled}
       isNegative={isNegative}
       isChecked={!!(isChecked || isIndeterminate)}
+      {...metaAttribute({ name: 'checkbox-icon-wrapper' })}
     >
       <Fade show={isIndeterminate} styles={{ position: 'absolute', display: 'flex' }}>
         <IndeterminateIcon size={size} color={iconColor} />
