@@ -7,7 +7,7 @@ import type { DropdownPosition } from './dropdownUtils';
 import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
+import { makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { spacing, size } from '~tokens/global';
