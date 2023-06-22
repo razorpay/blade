@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
@@ -41,7 +41,7 @@ to {
 
 const StyledDropdownOverlay = styled(BaseBox)<{
   transition: FlattenSimpleInterpolation;
-  onAnimationEnd: () => void;
+  // onAnimationEnd: () => void;
 }>(
   (props) =>
     css`
@@ -53,7 +53,7 @@ const StyledDropdownOverlay = styled(BaseBox)<{
 );
 
 type DropdownOverlayProps = {
-  children: React.ReactNode;
+  children: React.ReactElement;
 } & TestID;
 
 /**
@@ -62,11 +62,18 @@ type DropdownOverlayProps = {
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const { isOpen, triggererRef, hasLabelOnLeft, dropdownTriggerer, setIsOpen } = useDropdown();
+  const {
+    isOpen,
+    triggererRef,
+    hasLabelOnLeft,
+    dropdownTriggerer,
+    setIsOpen,
+    actionListItemRef,
+  } = useDropdown();
   const { theme } = useTheme();
-  const [display, setDisplay] = React.useState<'none' | 'block'>('none');
+  // const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
-  const [dropdownPosition, setDropdownPosition] = useState<DropdownPosition>({});
+  const [dropdownPosition, setDropdownPosition] = React.useState<DropdownPosition>({});
 
   const isMenu = dropdownTriggerer !== 'SelectInput';
 
@@ -78,7 +85,14 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     elements: {
       reference: triggererRef.current,
     },
-    middleware: [getDropdownOverflowMiddleware({ isMenu, triggererRef, setDropdownPosition })],
+    middleware: [
+      getDropdownOverflowMiddleware({
+        isMenu,
+        triggererRef,
+        actionListItemRef,
+        setDropdownPosition,
+      }),
+    ],
     whileElementsMounted: autoUpdate,
   });
 
@@ -96,7 +110,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     if (isOpen) {
       // On Safari clicking on a non input element doesn't focuses it https://bugs.webkit.org/show_bug.cgi?id=22261
       triggererRef.current?.focus();
-      setDisplay('block');
+      // setDisplay('block');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
@@ -131,13 +145,13 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setWidth, triggererRef, hasLabelOnLeft]);
 
-  const onAnimationEnd = React.useCallback(() => {
-    if (isOpen) {
-      setDisplay('block');
-    } else {
-      setDisplay('none');
-    }
-  }, [isOpen]);
+  // const onAnimationEnd = React.useCallback(() => {
+  //   if (isOpen) {
+  //     setDisplay('block');
+  //   } else {
+  //     setDisplay('none');
+  //   }
+  // }, [isOpen]);
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
@@ -153,10 +167,10 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         right={dropdownPosition.right}
         bottom={dropdownPosition.bottom}
         style={styles}
-        display={castWebType(display)}
+        pointerEvents="none"
         position="absolute"
         transition={isOpen ? fadeIn : fadeOut}
-        onAnimationEnd={onAnimationEnd}
+        // onAnimationEnd={onAnimationEnd}
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}

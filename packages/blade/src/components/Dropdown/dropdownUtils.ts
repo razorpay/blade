@@ -347,12 +347,12 @@ export type DropdownPosition = {
  * This object is used for calculating overflows in dropdown overlay.
  * 400 is used since max-width of dropdown overlay is 400px.
  */
-export const POSITION_THRESHOLDS = {
-  top: -400,
-  bottom: -300,
-  left: -400,
-  right: -400,
-};
+// export const POSITION_THRESHOLDS = {
+//   top: -400,
+//   bottom: -300,
+//   left: -400,
+//   right: -400,
+// };
 
 /**
  * This function calculates the position of dropdown overlay with respect to dropdown trigger element.
@@ -364,34 +364,37 @@ export const getDropdownOverlayPosition = ({
   overflow: position,
   isMenu,
   triggererEl,
+  actionListItemEl,
 }: {
   overflow: PositionProp;
   isMenu: boolean;
   triggererEl: HTMLButtonElement | null;
+  actionListItemEl: HTMLDivElement | null;
 }): DropdownPosition => {
   const zeroSpacing: SpacingValueType = 'spacing.0';
   const { bottom, right } = position;
 
   const newPosition: DropdownPosition = { left: zeroSpacing };
 
+  const WIDTH_THRESHOLD = (Number(actionListItemEl?.clientWidth) + Number(size[16])) * -1;
+  const HEIGHT_THRESHOLD = (Number(actionListItemEl?.clientHeight) + Number(size[16])) * -1;
+
   if (!isMenu) {
-    if (bottom > POSITION_THRESHOLDS.bottom) {
+    if (bottom > HEIGHT_THRESHOLD) {
       newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[32])}px`;
     }
-
     return newPosition;
   }
 
-  if (right > POSITION_THRESHOLDS.right) {
+  if (right > WIDTH_THRESHOLD) {
     newPosition.right = zeroSpacing;
     newPosition.left = undefined;
   }
 
-  if (bottom > POSITION_THRESHOLDS.bottom) {
+  if (bottom > HEIGHT_THRESHOLD) {
     newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[20])}px`;
     newPosition.top = undefined;
   }
-  console.log({ position, newPosition });
 
   return newPosition;
 };
@@ -399,11 +402,13 @@ export const getDropdownOverlayPosition = ({
 export const getDropdownOverflowMiddleware = ({
   isMenu,
   triggererRef,
+  actionListItemRef,
   setDropdownPosition,
 }: {
   setDropdownPosition: React.Dispatch<React.SetStateAction<DropdownPosition>>;
   isMenu: boolean;
   triggererRef: React.RefObject<HTMLButtonElement | null>;
+  actionListItemRef: React.RefObject<HTMLDivElement | null>;
 }): { name: string; fn: (state: MiddlewareState) => Promise<object> } => {
   return {
     name: 'detectOverflowMiddleware',
@@ -415,6 +420,7 @@ export const getDropdownOverflowMiddleware = ({
         overflow,
         isMenu,
         triggererEl: triggererRef.current,
+        actionListItemEl: actionListItemRef.current,
       });
       setDropdownPosition(position);
       return {};
