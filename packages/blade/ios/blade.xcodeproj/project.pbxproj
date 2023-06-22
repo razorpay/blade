@@ -11,12 +11,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		4134B6B6BCCD310ED19441BD /* libPods-blade-bladeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ED6FE53366565E8AC0006C /* libPods-blade-bladeTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8CBB2088A5586B554EA7257F /* libPods-blade.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C607CC42D0197C11A7137E4 /* libPods-blade.a */; };
 		BE94BDCFE4A742E89E116690 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0A80DCDFF54BF28ED33285 /* Lato-Regular.ttf */; };
-		D85645E3259B883EF5197B97 /* libPods-blade.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60516A6D175EE990C0CCB7F8 /* libPods-blade.a */; };
 		DD50086558394F9D8B0F07DA /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2D9B3E1EEE34EC9AD42AA9C /* Lato-Italic.ttf */; };
 		F31095E142B84AD0A9E345EB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 856B36C0CBEA4725AD05BF92 /* Lato-Bold.ttf */; };
+		F566BE9AD968B375027D3A77 /* libPods-blade-bladeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ED8F1E5657903A7BECA931 /* libPods-blade-bladeTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,17 +39,17 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = blade/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = blade/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = blade/main.m; sourceTree = "<group>"; };
-		1FA6694D9F682BF777AB7D4B /* Pods-blade-bladeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade-bladeTests.release.xcconfig"; path = "Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests.release.xcconfig"; sourceTree = "<group>"; };
-		28CD0A0D944039E75990E6C1 /* Pods-blade.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade.debug.xcconfig"; path = "Target Support Files/Pods-blade/Pods-blade.debug.xcconfig"; sourceTree = "<group>"; };
-		2A7FB25BFD5F18B2E3D3A2E2 /* Pods-blade-bladeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade-bladeTests.debug.xcconfig"; path = "Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2E3207EA57DAB15DE2C61D04 /* Pods-blade.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade.debug.xcconfig"; path = "Target Support Files/Pods-blade/Pods-blade.debug.xcconfig"; sourceTree = "<group>"; };
+		46CF59EF3D1B158ED1583975 /* Pods-blade.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade.release.xcconfig"; path = "Target Support Files/Pods-blade/Pods-blade.release.xcconfig"; sourceTree = "<group>"; };
 		4C0A80DCDFF54BF28ED33285 /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../public/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
-		50ED6FE53366565E8AC0006C /* libPods-blade-bladeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-blade-bladeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		60516A6D175EE990C0CCB7F8 /* libPods-blade.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-blade.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C607CC42D0197C11A7137E4 /* libPods-blade.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-blade.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		603018C4EF64BC5F3F32A52E /* Pods-blade-bladeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade-bladeTests.debug.xcconfig"; path = "Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		78ED8F1E5657903A7BECA931 /* libPods-blade-bladeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-blade-bladeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = blade/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		856B36C0CBEA4725AD05BF92 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../public/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		9ADBD7A51BD8BAFD85CDA7C9 /* Pods-blade-bladeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade-bladeTests.release.xcconfig"; path = "Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests.release.xcconfig"; sourceTree = "<group>"; };
 		A2D9B3E1EEE34EC9AD42AA9C /* Lato-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Italic.ttf"; path = "../public/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FFCDC43F019DC789749DBF9B /* Pods-blade.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade.release.xcconfig"; path = "Target Support Files/Pods-blade/Pods-blade.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4134B6B6BCCD310ED19441BD /* libPods-blade-bladeTests.a in Frameworks */,
+				F566BE9AD968B375027D3A77 /* libPods-blade-bladeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D85645E3259B883EF5197B97 /* libPods-blade.a in Frameworks */,
+				8CBB2088A5586B554EA7257F /* libPods-blade.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				60516A6D175EE990C0CCB7F8 /* libPods-blade.a */,
-				50ED6FE53366565E8AC0006C /* libPods-blade-bladeTests.a */,
+				4C607CC42D0197C11A7137E4 /* libPods-blade.a */,
+				78ED8F1E5657903A7BECA931 /* libPods-blade-bladeTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,10 +157,10 @@
 		E233CBF5F47BEE60B243DCF8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				28CD0A0D944039E75990E6C1 /* Pods-blade.debug.xcconfig */,
-				FFCDC43F019DC789749DBF9B /* Pods-blade.release.xcconfig */,
-				2A7FB25BFD5F18B2E3D3A2E2 /* Pods-blade-bladeTests.debug.xcconfig */,
-				1FA6694D9F682BF777AB7D4B /* Pods-blade-bladeTests.release.xcconfig */,
+				2E3207EA57DAB15DE2C61D04 /* Pods-blade.debug.xcconfig */,
+				46CF59EF3D1B158ED1583975 /* Pods-blade.release.xcconfig */,
+				603018C4EF64BC5F3F32A52E /* Pods-blade-bladeTests.debug.xcconfig */,
+				9ADBD7A51BD8BAFD85CDA7C9 /* Pods-blade-bladeTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -172,11 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "bladeTests" */;
 			buildPhases = (
-				A50513C7C43CBAF7D7387481 /* [CP] Check Pods Manifest.lock */,
+				59534928F0C396F76E2A9E89 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C2CBD7765C12FC71E9865A4B /* [CP] Copy Pods Resources */,
+				019267423774071DAC1F9217 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,13 +192,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "blade" */;
 			buildPhases = (
-				4B485EB18744F686DD3AB9C3 /* [CP] Check Pods Manifest.lock */,
+				E8F571DD36ADE710589B7BCA /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				607272F7467A9CC2BF726C96 /* [CP] Copy Pods Resources */,
+				F80BC2141157A962A1B6B2E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,46 +282,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\nexport ENTRY_FILE=.storybook/react-native/Storybook.tsx\nexport FRAMEWORK=REACT_NATIVE\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		4B485EB18744F686DD3AB9C3 /* [CP] Check Pods Manifest.lock */ = {
+		019267423774071DAC1F9217 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-blade-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		607272F7467A9CC2BF726C96 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-blade/Pods-blade-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-blade/Pods-blade-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blade/Pods-blade-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A50513C7C43CBAF7D7387481 /* [CP] Check Pods Manifest.lock */ = {
+		59534928F0C396F76E2A9E89 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -343,21 +321,43 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C2CBD7765C12FC71E9865A4B /* [CP] Copy Pods Resources */ = {
+		E8F571DD36ADE710589B7BCA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-blade-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F80BC2141157A962A1B6B2E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blade/Pods-blade-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blade/Pods-blade-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blade/Pods-blade-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -412,7 +412,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A7FB25BFD5F18B2E3D3A2E2 /* Pods-blade-bladeTests.debug.xcconfig */;
+			baseConfigurationReference = 603018C4EF64BC5F3F32A52E /* Pods-blade-bladeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -439,7 +439,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FA6694D9F682BF777AB7D4B /* Pods-blade-bladeTests.release.xcconfig */;
+			baseConfigurationReference = 9ADBD7A51BD8BAFD85CDA7C9 /* Pods-blade-bladeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -463,7 +463,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28CD0A0D944039E75990E6C1 /* Pods-blade.debug.xcconfig */;
+			baseConfigurationReference = 2E3207EA57DAB15DE2C61D04 /* Pods-blade.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -489,7 +489,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFCDC43F019DC789749DBF9B /* Pods-blade.release.xcconfig */;
+			baseConfigurationReference = 46CF59EF3D1B158ED1583975 /* Pods-blade.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
