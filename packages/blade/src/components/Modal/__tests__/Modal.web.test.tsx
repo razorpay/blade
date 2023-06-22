@@ -67,6 +67,8 @@ describe('Modal', () => {
     expect(container).toMatchSnapshot();
   });
 
+  // Skipping initialFocusRef test because while
+  // using FloatingFocusManager's logic cause the focus to happen after few frames
   it.skip('should focus on passed initialFocusRef', () => {
     const Element = (): React.ReactElement => {
       const ref = React.useRef(null);

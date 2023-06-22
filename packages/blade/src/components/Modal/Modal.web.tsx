@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
@@ -166,7 +165,7 @@ const Modal = ({
         {isMounted ? (
           <FloatingFocusManager
             returnFocus
-            initialFocus={initialFocusRef || defaultInitialFocusRef}
+            initialFocus={initialFocusRef ?? defaultInitialFocusRef}
             context={context}
             modal={true}
           >
