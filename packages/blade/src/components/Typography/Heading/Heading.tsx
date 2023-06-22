@@ -9,7 +9,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 import type { Theme } from '~components/BladeProvider';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { TestID } from '~src/_helpers/types';
 
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
@@ -25,7 +25,7 @@ type HeadingCommonProps = {
   color?: BaseTextProps['color'];
   type?: TextTypes;
   contrast?: ColorContrastTypes;
-  children: StringChildrenType;
+  children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
 } & TestID &
   StyledPropsBlade;
