@@ -42,6 +42,7 @@ to {
 const StyledDropdownOverlay = styled(BaseBox)<{
   transition: FlattenSimpleInterpolation;
   // onAnimationEnd: () => void;
+  isOpen: boolean;
 }>(
   (props) =>
     css`
@@ -49,6 +50,7 @@ const StyledDropdownOverlay = styled(BaseBox)<{
       transform: translateY(${makeSize(props.theme.spacing[3])});
       opacity: 0;
       z-index: 99;
+      pointer-events: ${props.isOpen ? 'all' : 'none'};
     `,
 );
 
@@ -167,7 +169,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         right={dropdownPosition.right}
         bottom={dropdownPosition.bottom}
         style={styles}
-        pointerEvents={isOpen ? 'all' : 'none'}
+        isOpen={isOpen}
         position="absolute"
         transition={isOpen ? fadeIn : fadeOut}
         // onAnimationEnd={onAnimationEnd}
