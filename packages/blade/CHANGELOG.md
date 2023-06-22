@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 8.11.0
+
+### Minor Changes
+
+- acc35a2e: fix: support `min-content`, `none`, `fit-content` in SpacingValueType of Box and styled-props
+
+### Patch Changes
+
+- b08d09d8: fix(blade): fix modal portal ssr
+
 ## 8.10.3
 
 ### Patch Changes
