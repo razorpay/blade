@@ -6,7 +6,8 @@ These are set of interactive keywords that help organise & categorise objects. T
 
 ## Design
 
-- [Tags Figma Design](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=29210-567576&t=HLRjz3OTofBtFdDl-0)
+- [Tags - Figma Design](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=29210-567576&t=HLRjz3OTofBtFdDl-0)
+- [Tags - Motion](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=29744-568562&mode=design&t=KI2KRJMzUpz8Ymr8-0)
 
 ## Proposed API
 
@@ -41,15 +42,15 @@ type TagProps = {
    * Text that renders inside Tag
    */
   children: ReactText;
+
+  /**
+   * Disable tag
+   */
+  isDisabled?: boolean;
 };
 ```
 
 _Didn't consider any alternate API. Kept `size` and `children` similar to `<Badge />` and `onDismiss` similar to `<Alert />` and `<Dropdown />`_
-
-## Accessibility
-
-- Ensure Close Icon is focussable
-- Close Icon to have appropriate `aria-label`
 
 ## Integration with Inputs
 
@@ -78,10 +79,6 @@ E.g. This is AutoComplete from Primer where the tags go into a slot and input ge
 SelectInput and AutoComplete are not expected to have any changes in consumer API as rendering of tags will be handled internally based on the selected value.
 
 ### Integration with TextInput and TextArea
-
-> **Warning**
->
-> Open Question: Do we want to discuss this right now? or do I remove it from API decision itself?
 
 > **Note**
 >
@@ -170,8 +167,22 @@ We can extend our `value` prop to accept JSX
 
 </details>
 
+## Accessibility
+
+- Ensure Close Icon is focussable
+- Close Icon to have appropriate `aria-label`
+- Special keyboard interaction when used inside Input components
+  - Pressing `Tab` should move focus into the input and not Tag
+  - Tag is focussable with Left and Right Arrow Keys
+  - Pressing `Backspace` on Tag should remove it
+  - Clicking on Tag should bring focus on Input
+- Tag should be disabled when used inside a disabled input
+
+Refer to Keyboard Interactions of [react-select](https://react-select.com/home#getting-started) for reference. Other Input components with Tag also follow similar keyboard interactions.
+
 ## References
 
+- [react-select](https://react-select.com/home#getting-started)
 - [`TagsInput` component by PluralSight Design System](https://design-system.pluralsight.com/components/tagsinput)
 - [`tokens` prop by Primer AutoComplete.Input](https://primer.style/react/Autocomplete/)
 - [Carbon just putting everything outside of Inputs](https://carbondesignsystem.com/components/tag/usage)
@@ -179,5 +190,7 @@ We can extend our `value` prop to accept JSX
 
 ## Open Questions
 
-1. Do we want to discuss Tag's integration with TextInput and TextArea? or should I remove it from API decision altogether?
-2. `<Tag />` or `<Tags />` 😅
+- Do we want to discuss Tag's integration with TextInput and TextArea? or should I remove it from API decision altogether?
+  - We can discuss here
+- ~`<Tag />` or `<Tags />` 😅~ `<Tag />`
+- [`tagsSlot` vs `tagSlot` vs `valuePrefix` vs `leading` on Input components](#alternate-approach-value-prop)
