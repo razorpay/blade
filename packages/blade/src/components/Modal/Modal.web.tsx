@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
@@ -126,50 +127,7 @@ const Modal = ({
     open: isMounted,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const defaultInitialFocusRef = React.useRef<any>(null);
-  const originalFocusElement = React.useRef<HTMLElement | null>(null);
-
-  const returnFocus = React.useCallback(() => {
-    if (!originalFocusElement.current) return;
-    originalFocusElement.current.focus();
-    // After returning focus we will clear the original focus
-    // Because if modal can be opened up via multiple triggers
-    // We want to ensure the focus returns back to the most recent triggerer
-    originalFocusElement.current = null;
-  }, [originalFocusElement]);
-
-  const focusOnInitialRef = React.useCallback(() => {
-    if (!initialFocusRef) {
-      // focus on close button
-      defaultInitialFocusRef.current?.focus();
-    } else {
-      // focus on the initialRef passed by the user
-      initialFocusRef.current?.focus();
-    }
-  }, [initialFocusRef]);
-
-  React.useEffect(() => {
-    if (isMounted) {
-      // because FloatingPortal saves the portalled node in state
-      // only updates it inside an useEffect, we need to delay focusing on initialFocusRef
-      // Until everything is mounted on the next frame
-      setTimeout(() => {
-        // set the original focus element where the focus will return to after closing the modal
-        originalFocusElement.current =
-          originalFocusElement.current ?? (document.activeElement as HTMLElement);
-        // focus on an element on Modal, if initialFocusRef is not passed, focus on the close button
-        focusOnInitialRef();
-      }, 0);
-    }
-  }, [isMounted, focusOnInitialRef]);
-
-  React.useEffect(() => {
-    // Return focus to the element that originally had it
-    if (!isOpen) {
-      returnFocus();
-    }
-  }, [isOpen, returnFocus]);
 
   const modalContext = React.useMemo(
     () => ({
@@ -206,7 +164,12 @@ const Modal = ({
     <FloatingPortal>
       <ModalContext.Provider value={modalContext}>
         {isMounted ? (
-          <FloatingFocusManager context={context} modal={true}>
+          <FloatingFocusManager
+            returnFocus
+            initialFocus={initialFocusRef || defaultInitialFocusRef}
+            context={context}
+            modal={true}
+          >
             <Box zIndex={modalHighestZIndex} position="fixed" testID="modal-wrapper">
               <ModalBackdrop />
               <ModalContent
