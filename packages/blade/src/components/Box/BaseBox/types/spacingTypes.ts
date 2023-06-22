@@ -11,7 +11,6 @@ type SpacingValueType =
   | 'auto'
   | `min(${string})`
   | `max(${string})`
-  | 'auto'
   | 'none'
   | 'initial'
   | 'fit-content'
