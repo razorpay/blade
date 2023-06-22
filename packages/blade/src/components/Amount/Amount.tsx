@@ -167,9 +167,9 @@ export const getFlooredFixed = (value: number, decimalPlaces: number): number =>
   return Number(roundedValue.toFixed(decimalPlaces));
 };
 
-export const addCommas = (amountValue: number, currency: Currency): string => {
+export const addCommas = (amountValue: number, currency: Currency, decimalPlaces = 0): string => {
   const locale = currencyLocaleMapping[currency];
-  return amountValue.toLocaleString(locale);
+  return amountValue.toLocaleString(locale, { minimumFractionDigits: decimalPlaces });
 };
 /**
  * This function returns the humanized amount
@@ -203,7 +203,7 @@ export const formatAmountWithSuffix = ({
   switch (suffix) {
     case 'decimals': {
       const decimalNumber = getFlooredFixed(value, 2);
-      return addCommas(decimalNumber, currency);
+      return addCommas(decimalNumber, currency, 2);
     }
     case 'humanize': {
       return getHumanizedAmount(value, currency);

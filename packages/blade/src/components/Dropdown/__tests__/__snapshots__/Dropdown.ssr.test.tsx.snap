@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gGCNek\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jccGdX\\"><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><input tabindex=\\"-1\\" value=\\"\\" aria-hidden=\\"true\\"/></div><div data-blade-component=\\"select-input\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gssCED\\"><label for=\\"dropdown-undefined-trigger-undefined-input-undefined\\" style=\\"width:auto;flex-shrink:0;margin-right:16px\\" id=\\"dropdown-undefined-label\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf\\"><p color=\\"surface.text.subdued.lowContrast\\" font-family=\\"text\\" font-size=\\"75\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Fruits</p><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\"></p></div></div></div></label></div><div display=\\"flex\\" width=\\"100%\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo iWQtne\\"><button type=\\"button\\" id=\\"dropdown-undefined-trigger-undefined-input-undefined\\" value=\\"\\" placeholder=\\"Select Option\\" aria-required=\\"false\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-haspopup=\\"listbox\\" aria-expanded=\\"false\\" aria-controls=\\"dropdown-undefined-actionlist\\" role=\\"combobox\\" class=\\"StyledBaseInputweb__StyledBaseNativeButton-hsusrk-1 fERdBR\\">Select Option</button><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ckQLYJ\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hlRuxb\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(217, 56%, 17%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gShrQy\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dfFmJl\\"></div></div></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jccGdX\\"><div width=\\"100%\\" style=\\"opacity:0\\" display=\\"none\\" data-blade-component=\\"dropdown-overlay\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 StyledDropdownOverlay-sc-1dik5mo-0 DropdownOverlayweb__AnimatedOverlay-sc-9pwxtx-0 lpjSpj gEQWfr lHdE\\"><div overflow=\\"auto\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gmPIPj\\"><div data-blade-component=\\"dropdown-header\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ebhvXJ\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 cMpxQY\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 eHRHnp\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 jGBhRV\\"><h6 color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"200\\" font-weight=\\"bold\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 evDBOX\\" data-blade-component=\\"heading\\">Recent Searches</h6></div></div></div></div></div><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div></div></div><div id=\\"dropdown-undefined-actionlist\\" role=\\"listbox\\" aria-multiselectable=\\"false\\" aria-labelledby=\\"dropdown-undefined-label\\" data-blade-component=\\"action-list\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 StyledListBoxWrapperweb__StyledListBoxWrapper-sc-1eo4pr6-0  iclxbZ\\"><button id=\\"dropdown-undefined-0\\" type=\\"button\\" tabindex=\\"-1\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr\\" aria-selected=\\"false\\" role=\\"option\\" data-blade-component=\\"action-list-item\\" data-value=\\"apple\\" data-index=\\"0\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 juAoMG\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dIdXiX\\"></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ciMQWY\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">Apple</p></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hFCqKx\\"></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"></div></button><button id=\\"dropdown-undefined-1\\" type=\\"button\\" tabindex=\\"-1\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr\\" aria-selected=\\"false\\" role=\\"option\\" data-blade-component=\\"action-list-item\\" data-value=\\"mango\\" data-index=\\"1\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 juAoMG\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dIdXiX\\"></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ciMQWY\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0 hkbuMZ\\" data-blade-component=\\"text\\">Mango</p></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hFCqKx\\"></div></div><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"></div></button></div></div><div role=\\"group\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div><div data-blade-component=\\"dropdown-footer\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fqatQM\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fcmfVa\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA\\"><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD\\">Apply</div></div></button></div></div></div></div></div></div>"`;
+exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"BaseBox-bmPWx eoXGsO\\"><div class=\\"BaseBox-bmPWx epXLnJ\\"><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><input tabindex=\\"-1\\" value=\\"\\" aria-hidden=\\"true\\"/></div><div data-blade-component=\\"select-input\\" class=\\"BaseBox-bmPWx\\"><div class=\\"BaseBox-bmPWx etNGXF\\"><div class=\\"BaseBox-bmPWx fJyvvB\\"><label for=\\"dropdown-undefined-trigger-undefined-input-undefined\\" style=\\"width:auto;flex-shrink:0;margin-right:16px\\" id=\\"dropdown-undefined-label\\"><div class=\\"BaseBox-bmPWx bqWBik\\"><div class=\\"BaseBox-bmPWx loAJRp\\"><p class=\\"StyledBaseText-dVBfTO hcIYgT\\" data-blade-component=\\"text\\">Fruits</p><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"text\\"></p></div></div></div></label></div><div class=\\"BaseBox-bmPWx BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 kRxJZq iWQtne\\"><button type=\\"button\\" id=\\"dropdown-undefined-trigger-undefined-input-undefined\\" value=\\"\\" placeholder=\\"Select Option\\" aria-required=\\"false\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" aria-haspopup=\\"listbox\\" aria-expanded=\\"false\\" aria-controls=\\"dropdown-undefined-actionlist\\" role=\\"combobox\\" class=\\"StyledBaseInputweb__StyledBaseNativeButton-hsusrk-1 fERdBR\\">Select Option</button><div class=\\"BaseBox-bmPWx fSbYvl\\"><div class=\\"BaseBox-bmPWx ZITjD\\"><div class=\\"BaseBox-bmPWx fIMmEF\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(217, 56%, 17%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div></div></div><div class=\\"BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div><div class=\\"BaseBox-bmPWx jgxKDg\\"><div class=\\"BaseBox-bmPWx ctznZr\\"></div></div></div></div><div class=\\"BaseBox-bmPWx epXLnJ\\"><div style=\\"opacity:0\\" data-blade-component=\\"dropdown-overlay\\" class=\\"BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 DropdownOverlayweb__AnimatedOverlay-sc-9pwxtx-0 foRQYo gEQWfr lHdE\\"><div class=\\"BaseBox-bmPWx cImMcF\\"><div data-blade-component=\\"dropdown-header\\" class=\\"BaseBox-bmPWx\\"><div class=\\"BaseBox-bmPWx bIfCbj\\"><div class=\\"BaseBox-bmPWx eDJhIy\\"><div class=\\"BaseBox-bmPWx eMWyAr\\"><div class=\\"BaseBox-bmPWx\\"><div class=\\"BaseBox-bmPWx UkPeH\\"><h6 class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">Recent Searches</h6></div></div></div></div></div><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div></div></div><div id=\\"dropdown-undefined-actionlist\\" role=\\"listbox\\" aria-multiselectable=\\"false\\" aria-labelledby=\\"dropdown-undefined-label\\" data-blade-component=\\"action-list\\" class=\\"BaseBox-bmPWx\\"><div class=\\"BaseBox-bmPWx StyledListBoxWrapperweb__StyledListBoxWrapper-sc-1eo4pr6-0  iclxbZ\\"><button id=\\"dropdown-undefined-0\\" type=\\"button\\" tabindex=\\"-1\\" class=\\"BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr\\" aria-selected=\\"false\\" role=\\"option\\" data-blade-component=\\"action-list-item\\" data-value=\\"apple\\" data-index=\\"0\\"><div class=\\"BaseBox-bmPWx hVfznU\\"><div class=\\"BaseBox-bmPWx exgaAZ\\"></div><div class=\\"BaseBox-bmPWx icqJAq\\"><p class=\\"StyledBaseText-dVBfTO cwEniv\\" data-blade-component=\\"text\\">Apple</p></div><div class=\\"BaseBox-bmPWx eWDSVX\\"></div></div><div class=\\"BaseBox-bmPWx\\"></div></button><button id=\\"dropdown-undefined-1\\" type=\\"button\\" tabindex=\\"-1\\" class=\\"BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr\\" aria-selected=\\"false\\" role=\\"option\\" data-blade-component=\\"action-list-item\\" data-value=\\"mango\\" data-index=\\"1\\"><div class=\\"BaseBox-bmPWx hVfznU\\"><div class=\\"BaseBox-bmPWx exgaAZ\\"></div><div class=\\"BaseBox-bmPWx icqJAq\\"><p class=\\"StyledBaseText-dVBfTO cwEniv\\" data-blade-component=\\"text\\">Mango</p></div><div class=\\"BaseBox-bmPWx eWDSVX\\"></div></div><div class=\\"BaseBox-bmPWx\\"></div></button></div></div><div role=\\"group\\" class=\\"BaseBox-bmPWx\\"><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div><div data-blade-component=\\"dropdown-footer\\" class=\\"BaseBox-bmPWx kkBGdO\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fcmfVa\\"><div class=\\"BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA\\"><div class=\\"StyledBaseText-dVBfTO brGLEM\\">Apply</div></div></button></div></div></div></div></div></div>"`;
 
 exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = `
 <div
@@ -8,10 +8,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
   id="root"
 >
   <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gGCNek"
+    class="BaseBox-bmPWx eoXGsO"
   >
     <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jccGdX"
+      class="BaseBox-bmPWx epXLnJ"
     >
       <div
         class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
@@ -24,16 +24,14 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
         />
       </div>
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+        class="BaseBox-bmPWx"
         data-blade-component="select-input"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gDyCxD"
-          display="flex"
+          class="BaseBox-bmPWx etNGXF"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gssCED"
-            display="flex"
+            class="BaseBox-bmPWx fJyvvB"
           >
             <label
               for="dropdown-7-trigger-1-input-2"
@@ -41,20 +39,14 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               style="width:auto;flex-shrink:0;margin-right:16px"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fidMaG"
+                class="BaseBox-bmPWx bqWBik"
               >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fcaslf"
-                  display="flex"
+                  class="BaseBox-bmPWx loAJRp"
                 >
                   <p
-                    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 gHmizg Text__StyledText-wkh56f-0"
-                    color="surface.text.subdued.lowContrast"
+                    class="StyledBaseText-dVBfTO hcIYgT"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="75"
-                    font-style="normal"
-                    font-weight="bold"
                   >
                     Fruits
                   </p>
@@ -63,13 +55,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
                     data-blade-component="visually-hidden"
                   >
                     <p
-                      class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
-                      color="surface.text.normal.lowContrast"
+                      class="StyledBaseText-dVBfTO eIdQFo"
                       data-blade-component="text"
-                      font-family="text"
-                      font-size="100"
-                      font-style="normal"
-                      font-weight="regular"
                     />
                   </div>
                 </div>
@@ -77,9 +64,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
             </label>
           </div>
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 iGoaMo hChMrI"
-            display="flex"
-            width="100%"
+            class="BaseBox-bmPWx BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 kRxJZq hChMrI"
           >
             <button
               aria-controls="dropdown-7-actionlist"
@@ -99,16 +84,13 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               Select Option
             </button>
             <div
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf"
-              display="flex"
+              class="BaseBox-bmPWx fSbYvl"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ckQLYJ"
-                display="flex"
+                class="BaseBox-bmPWx ZITjD"
               >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hlRuxb"
-                  display="flex"
+                  class="BaseBox-bmPWx fIMmEF"
                 >
                   <svg
                     aria-hidden="true"
@@ -130,64 +112,52 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               </div>
             </div>
             <div
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  CvCIh"
+              class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  CvCIh"
             />
           </div>
         </div>
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gShrQy"
+          class="BaseBox-bmPWx jgxKDg"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 dfFmJl"
-            display="flex"
+            class="BaseBox-bmPWx ctznZr"
           />
         </div>
       </div>
     </div>
     <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jccGdX"
+      class="BaseBox-bmPWx epXLnJ"
     >
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 StyledDropdownOverlay-sc-1dik5mo-0 DropdownOverlayweb__AnimatedOverlay-sc-9pwxtx-0 dSECTY gEQWfr drlmNp"
+        class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 DropdownOverlayweb__AnimatedOverlay-sc-9pwxtx-0 blNaNe gEQWfr drlmNp"
         data-blade-component="dropdown-overlay"
-        display="block"
         style="opacity: 1;"
-        width="100%"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gmPIPj"
-          overflow="auto"
+          class="BaseBox-bmPWx cImMcF"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+            class="BaseBox-bmPWx"
             data-blade-component="dropdown-header"
           >
             <div
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ebhvXJ"
+              class="BaseBox-bmPWx bIfCbj"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 cMpxQY"
-                display="flex"
+                class="BaseBox-bmPWx eDJhIy"
               >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 eHRHnp"
-                  display="flex"
+                  class="BaseBox-bmPWx eMWyAr"
                 >
                   <div
-                    class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+                    class="BaseBox-bmPWx"
                   >
                     <div
-                      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 jGBhRV"
-                      display="flex"
+                      class="BaseBox-bmPWx UkPeH"
                     >
                       <h6
-                        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 evDBOX"
-                        color="surface.text.normal.lowContrast"
+                        class="StyledBaseText-dVBfTO dFejDk"
                         data-blade-component="heading"
-                        font-family="text"
-                        font-size="200"
-                        font-style="normal"
-                        font-weight="bold"
                       >
                         Recent Searches
                       </h6>
@@ -203,19 +173,19 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
         </div>
         <div
           aria-labelledby="dropdown-7-label"
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+          class="BaseBox-bmPWx"
           data-blade-component="action-list"
           id="dropdown-7-actionlist"
           role="dialog"
         >
           <div
             aria-multiselectable="false"
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 StyledListBoxWrapperweb__StyledListBoxWrapper-sc-1eo4pr6-0  iclxbZ"
+            class="BaseBox-bmPWx StyledListBoxWrapperweb__StyledListBoxWrapper-sc-1eo4pr6-0  iclxbZ"
             role="listbox"
           >
             <button
               aria-selected="false"
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr"
+              class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr"
               data-blade-component="action-list-item"
               data-index="0"
               data-value="apple"
@@ -225,39 +195,32 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               type="button"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 juAoMG"
-                display="flex"
+                class="BaseBox-bmPWx hVfznU"
               >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 dIdXiX"
-                  display="flex"
+                  class="BaseBox-bmPWx exgaAZ"
                 />
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ciMQWY"
+                  class="BaseBox-bmPWx icqJAq"
                 >
                   <p
-                    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0 hkbuMZ"
-                    color="surface.text.normal.lowContrast"
+                    class="StyledBaseText-dVBfTO cwEniv"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Apple
                   </p>
                 </div>
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hFCqKx"
+                  class="BaseBox-bmPWx eWDSVX"
                 />
               </div>
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+                class="BaseBox-bmPWx"
               />
             </button>
             <button
               aria-selected="false"
-              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr"
+              class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr"
               data-blade-component="action-list-item"
               data-index="1"
               data-value="mango"
@@ -267,47 +230,40 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               type="button"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 juAoMG"
-                display="flex"
+                class="BaseBox-bmPWx hVfznU"
               >
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 dIdXiX"
-                  display="flex"
+                  class="BaseBox-bmPWx exgaAZ"
                 />
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ciMQWY"
+                  class="BaseBox-bmPWx icqJAq"
                 >
                   <p
-                    class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0 hkbuMZ"
-                    color="surface.text.normal.lowContrast"
+                    class="StyledBaseText-dVBfTO cwEniv"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Mango
                   </p>
                 </div>
                 <div
-                  class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hFCqKx"
+                  class="BaseBox-bmPWx eWDSVX"
                 />
               </div>
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+                class="BaseBox-bmPWx"
               />
             </button>
           </div>
         </div>
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+          class="BaseBox-bmPWx"
           role="group"
         >
           <div
             class="Dividerweb__Divider-sc-7extwn-0 eRlzeO"
           />
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 fqatQM"
+            class="BaseBox-bmPWx kkBGdO"
             data-blade-component="dropdown-footer"
           >
             <button
@@ -317,14 +273,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               type="button"
             >
               <div
-                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA"
-                display="flex"
+                class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
               >
                 <div
-                  class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD"
-                  color="action.text.primary.default"
-                  font-size="100"
-                  font-weight="bold"
+                  class="StyledBaseText-dVBfTO brGLEM"
                 >
                   Apply
                 </div>

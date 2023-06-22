@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
-import { componentIds } from './dropdownUtils';
+import { useFloating } from '@floating-ui/react';
+import type { DropdownPosition } from './dropdownUtils';
+import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import BaseBox from '~components/Box/BaseBox';
@@ -68,14 +70,27 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     triggererRef,
     hasLabelOnLeft,
     dropdownTriggerer,
+    setIsOpen,
     dropdownOverlayRef,
   } = useDropdown();
   const { theme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
+  const [dropdownPosition, setDropdownPosition] = useState<DropdownPosition>({});
 
   const isMenu = dropdownTriggerer !== 'SelectInput';
+
+  const { refs } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    strategy: 'absolute',
+    placement: 'bottom-start',
+    elements: {
+      reference: triggererRef.current,
+    },
+    middleware: [getDropdownOverflowMiddleware({ isMenu, triggererRef, setDropdownPosition })],
+  });
 
   const fadeIn = css`
     animation: ${dropdownFadeIn} ${makeMotionTime(theme.motion.duration.quick)}
@@ -137,16 +152,19 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <BaseBox ref={dropdownOverlayRef as any} position="relative">
+    <BaseBox position="relative" ref={refs.setFloating as any}>
       <AnimatedOverlay
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={dropdownOverlayRef as any}
         isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
-        width={isMenu ? undefined : width}
+        width={isMenu ? 'max-content' : width}
         // In SelectInput, Overlay should always take width of Input
         minWidth={isMenu ? '240px' : undefined}
         // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
         maxWidth={isMenu ? '400px' : undefined}
-        left={isMenu ? 'spacing.0' : undefined}
-        right={isMenu ? undefined : 'spacing.0'}
+        left={dropdownPosition.left}
+        right={dropdownPosition.right}
+        bottom={dropdownPosition.bottom}
         style={styles}
         display={castWebType(display)}
         position="absolute"

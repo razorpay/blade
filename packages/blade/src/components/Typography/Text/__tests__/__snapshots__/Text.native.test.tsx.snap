@@ -36,7 +36,6 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
           "textAlign": "center",
           "textDecorationLine": "none",
         },
-        Object {},
       ]
     }
     textAlign="center"
@@ -81,7 +80,6 @@ exports[`<Text /> should render Text with color 1`] = `
           "paddingTop": 0,
           "textDecorationLine": "none",
         },
-        Object {},
       ]
     }
   >
@@ -125,7 +123,6 @@ exports[`<Text /> should render Text with default properties 1`] = `
           "paddingTop": 0,
           "textDecorationLine": "none",
         },
-        Object {},
       ]
     }
   >
@@ -154,23 +151,27 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
     style={
       Array [
         Object {
+          "WebkitBoxOrient": "vertical",
+          "WebkitLineClamp": 3,
           "color": "hsla(217, 56%, 17%, 1)",
+          "display": "-webkit-box",
           "fontFamily": "Lato",
           "fontSize": 14,
           "fontStyle": "normal",
           "fontWeight": "700",
+          "lineClamp": 3,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
           "marginTop": 0,
+          "overflow": "hidden",
           "paddingBottom": 0,
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
           "textDecorationLine": "none",
         },
-        Object {},
       ]
     }
   >
@@ -199,23 +200,27 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
     style={
       Array [
         Object {
+          "WebkitBoxOrient": "vertical",
+          "WebkitLineClamp": 3,
           "color": "hsla(0, 0%, 100%, 1)",
+          "display": "-webkit-box",
           "fontFamily": "Lato",
           "fontSize": 14,
           "fontStyle": "normal",
           "fontWeight": "700",
+          "lineClamp": 3,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
           "marginTop": 0,
+          "overflow": "hidden",
           "paddingBottom": 0,
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
           "textDecorationLine": "none",
         },
-        Object {},
       ]
     }
   >
@@ -244,23 +249,27 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
     style={
       Array [
         Object {
+          "WebkitBoxOrient": "vertical",
+          "WebkitLineClamp": 3,
           "color": "hsla(217, 56%, 17%, 1)",
+          "display": "-webkit-box",
           "fontFamily": "Lato",
           "fontSize": 12,
           "fontStyle": "normal",
           "fontWeight": "700",
+          "lineClamp": 3,
           "lineHeight": 16,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
           "marginTop": 0,
+          "overflow": "hidden",
           "paddingBottom": 0,
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
           "textDecorationLine": "none",
         },
-        Object {},
       ]
     }
   >
@@ -304,7 +313,6 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
           "paddingTop": 0,
           "textDecorationLine": "none",
         },
-        Object {},
       ]
     }
   >

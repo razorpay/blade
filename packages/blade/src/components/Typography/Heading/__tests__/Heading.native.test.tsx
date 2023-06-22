@@ -22,6 +22,18 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render Heading with mixed color', () => {
+    const { toJSON } = renderWithTheme(
+      <Heading>
+        Supercharge your business with the all‑powerful{' '}
+        <Heading as="span" color="feedback.information.action.text.primary.default.lowContrast">
+          Payment Gateway
+        </Heading>
+      </Heading>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Heading with size "small" and contrast "high"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
@@ -111,6 +123,16 @@ describe('<Heading />', () => {
         );
       }
     }
+  });
+
+  it('should render with as prop without errors', () => {
+    const displayText = 'Displaying Landing Screen Heading';
+    const { getByText } = renderWithTheme(
+      <Heading as="span" type="subdued" size="large">
+        {displayText}
+      </Heading>,
+    );
+    expect(getByText(displayText)).toBeTruthy();
   });
 
   it('should accept testID', () => {

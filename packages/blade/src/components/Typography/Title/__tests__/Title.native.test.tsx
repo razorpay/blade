@@ -43,6 +43,18 @@ describe('<Title />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render Title with mixed color', () => {
+    const { toJSON } = renderWithTheme(
+      <Title>
+        Supercharge your business with the all‑powerful{' '}
+        <Title as="span" color="feedback.information.action.text.primary.default.lowContrast">
+          Payment Gateway
+        </Title>
+      </Title>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Title with variant "medium"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(
@@ -63,6 +75,16 @@ describe('<Title />', () => {
     );
     expect(getByText('Displaying Landing Screen Title')).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render with as prop without errors', () => {
+    const displayText = 'Displaying Landing Screen Title';
+    const { getByText } = renderWithTheme(
+      <Title as="span" type="subdued" size="large">
+        {displayText}
+      </Title>,
+    );
+    expect(getByText(displayText)).toBeTruthy();
   });
 
   it('should accept testID', () => {

@@ -138,7 +138,7 @@ const _BaseHeader = ({
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction(trailing);
 
-  const webOnlyEventHandlers = isReactNative()
+  const webOnlyEventHandlers: Record<string, any> = isReactNative()
     ? {}
     : {
         onClickCapture,

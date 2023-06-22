@@ -60,16 +60,21 @@ exports[`<Counter /> should render Counter with default props 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(216, 27%, 36%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -77,7 +82,6 @@ exports[`<Counter /> should render Counter with default props 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -149,16 +153,21 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(0, 0%, 100%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -166,7 +175,6 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -238,16 +246,21 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(0, 0%, 100%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -255,7 +268,6 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -327,16 +339,21 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(0, 0%, 100%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -344,7 +361,6 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -416,16 +432,21 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(0, 0%, 100%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -433,7 +454,6 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -505,16 +525,21 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(0, 0%, 100%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -522,7 +547,6 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -594,16 +618,21 @@ exports[`<Counter /> should render large size Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(216, 27%, 36%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -611,7 +640,6 @@ exports[`<Counter /> should render large size Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -683,16 +711,21 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(193, 100%, 35%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -700,7 +733,6 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -772,16 +804,21 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(8, 73%, 47%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -789,7 +826,6 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -861,16 +897,21 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(216, 27%, 36%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -878,7 +919,6 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -950,16 +990,21 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(38, 97%, 38%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -967,7 +1012,6 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -1039,16 +1083,21 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(160, 100%, 26%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -1056,7 +1105,6 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -1128,16 +1176,21 @@ exports[`<Counter /> should render medium size Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(216, 27%, 36%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -1145,7 +1198,6 @@ exports[`<Counter /> should render medium size Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -1217,16 +1269,21 @@ exports[`<Counter /> should render small size Counter 1`] = `
         style={
           Array [
             Object {
+              "WebkitBoxOrient": "vertical",
+              "WebkitLineClamp": 1,
               "color": "hsla(216, 27%, 36%, 1)",
+              "display": "-webkit-box",
               "fontFamily": "Lato",
               "fontSize": 10,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineClamp": 1,
               "lineHeight": 16,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
               "marginTop": 0,
+              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -1234,7 +1291,6 @@ exports[`<Counter /> should render small size Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"

@@ -17,13 +17,8 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="regular"
   >
     Displaying some text
   </p>
@@ -46,13 +41,8 @@ exports[`<Text /> should render Text with color 1`] = `
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
-    color="action.text.link.default"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="regular"
   >
     Displaying some text
   </p>
@@ -75,13 +65,8 @@ exports[`<Text /> should render Text with default properties 1`] = `
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="regular"
   >
     Displaying some text
   </p>
@@ -100,9 +85,6 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
-}
-
-.c1 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 3;
@@ -112,13 +94,8 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 
 <div>
   <p
-    class="c0 c1"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying some text
   </p>
@@ -137,9 +114,6 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
-}
-
-.c1 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 3;
@@ -149,13 +123,8 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 
 <div>
   <p
-    class="c0 c1"
-    color="surface.text.normal.highContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying some text
   </p>
@@ -174,9 +143,6 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   line-height: 1rem;
   margin: 0;
   padding: 0;
-}
-
-.c1 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 3;
@@ -186,13 +152,8 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 
 <div>
   <p
-    class="c0 c1"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="75"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying some text
   </p>
@@ -215,13 +176,8 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
 
 <div>
   <p
-    class="c0 Text__StyledText-wkh56f-0"
-    color="surface.text.normal.lowContrast"
+    class="c0"
     data-blade-component="text"
-    font-family="text"
-    font-size="100"
-    font-style="normal"
-    font-weight="bold"
   >
     Displaying some text
   </p>
