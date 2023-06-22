@@ -26,6 +26,7 @@ const useBladeInnerRef = (
         focus: (opts) => (handlers?.onFocus ? handlers.onFocus(opts) : element?.focus?.(opts)),
         scrollIntoView: (opts) => element?.scrollIntoView?.(opts),
         getBoundingClientRect: () => element?.getBoundingClientRect(),
+        clientHeight: element.clientHeight,
       };
     },
     [innerRef, handlers],

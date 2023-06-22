@@ -23,3 +23,4 @@ export * from './useColorScheme';
 export * from './usePrevious';
 export * from './platform';
 export * from './assignWithoutSideEffects';
+export * from './omitPropsFromHTML';

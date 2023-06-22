@@ -8,12 +8,15 @@ type SpacingValueType =
   | DotNotationSpacingStringToken
   | `${string}${SpaceUnits}`
   | `calc(${string})`
+  | 'auto'
   | `min(${string})`
   | `max(${string})`
   | 'auto'
   | 'none'
   | 'initial'
-  | 'fit-content';
+  | 'fit-content'
+  | 'max-content';
+
 
 /**
  * @IMPORTANT

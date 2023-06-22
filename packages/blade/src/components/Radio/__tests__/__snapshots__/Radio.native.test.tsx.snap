@@ -85,7 +85,6 @@ exports[`<Radio /> should render radio with label 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -147,7 +146,6 @@ exports[`<Radio /> should render radio with label 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -425,7 +423,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -487,7 +484,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >

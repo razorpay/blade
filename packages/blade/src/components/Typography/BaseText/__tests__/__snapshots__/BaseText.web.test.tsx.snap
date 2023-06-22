@@ -17,10 +17,6 @@ exports[`<BaseText /> should render regular text 1`] = `
 <div>
   <div
     class="c0"
-    color="surface.text.normal.highContrast"
-    font-family="text"
-    font-size="25"
-    font-weight="regular"
   >
     Displaying some text
   </div>
@@ -44,11 +40,6 @@ exports[`<BaseText /> should render text as paragraph element 1`] = `
 <div>
   <p
     class="c0"
-    color="surface.text.normal.highContrast"
-    font-family="text"
-    font-size="25"
-    font-style="italic"
-    font-weight="regular"
   >
     Displaying some text
   </p>
@@ -72,11 +63,6 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
 <div>
   <div
     class="c0"
-    color="surface.text.normal.highContrast"
-    font-family="text"
-    font-size="25"
-    font-style="italic"
-    font-weight="regular"
   >
     Displaying some text
   </div>

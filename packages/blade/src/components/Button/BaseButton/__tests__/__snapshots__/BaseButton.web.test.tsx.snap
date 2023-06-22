@@ -245,13 +245,9 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Toggle loading
       </div>
@@ -266,17 +262,14 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   >
     <div
       class="c5"
-      display="flex"
     >
       <div
         class="c6"
         data-blade-component="spinner"
-        display="flex"
       >
         <div
           aria-label="Loading"
           class="c7"
-          display="flex"
           role="progressbar"
         >
           <div
@@ -311,13 +304,9 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
     </div>
     <div
       class="c1 c9"
-      display="flex"
     >
       <div
         class="c10"
-        color="action.text.primary.disabled"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -437,13 +426,9 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -563,13 +548,9 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -705,11 +686,9 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        display="flex"
       >
         <svg
           aria-hidden="true"
@@ -730,9 +709,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       </div>
       <div
         class="c4"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -868,11 +844,9 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        display="flex"
       >
         <svg
           aria-hidden="true"
@@ -893,9 +867,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       </div>
       <div
         class="c4"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1031,19 +1002,14 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
       <div
         class="c4"
-        display="flex"
       >
         <svg
           aria-hidden="true"
@@ -1179,11 +1145,9 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        display="flex"
       >
         <svg
           aria-hidden="true"
@@ -1319,13 +1283,9 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.disabled"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1446,13 +1406,9 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.information.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1573,13 +1529,9 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.information.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1700,13 +1652,9 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.negative.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1827,13 +1775,9 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.negative.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1954,13 +1898,9 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.neutral.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2081,13 +2021,9 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.neutral.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2208,13 +2144,9 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.notice.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2335,13 +2267,9 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.notice.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2462,13 +2390,9 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.positive.action.text.primary.disabled.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2589,13 +2513,9 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.positive.action.text.primary.disabled.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2716,13 +2636,9 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.secondary.disabled"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2843,13 +2759,9 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.tertiary.disabled"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2969,13 +2881,9 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.information.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3095,13 +3003,9 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.information.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3221,13 +3125,9 @@ exports[`<BaseButton /> should render large size button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="200"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3347,13 +3247,9 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3473,13 +3369,9 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.negative.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3599,13 +3491,9 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.negative.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3725,13 +3613,9 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.neutral.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3851,13 +3735,9 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.neutral.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3977,13 +3857,9 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.notice.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -4103,13 +3979,9 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.notice.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -4229,13 +4101,9 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.positive.action.text.primary.default.highContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -4355,13 +4223,9 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="feedback.positive.action.text.primary.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -4481,13 +4345,9 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.secondary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -4607,13 +4467,9 @@ exports[`<BaseButton /> should render small size button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="75"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -4733,13 +4589,9 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.tertiary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Pay Now
       </div>
@@ -4859,13 +4711,9 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="75"
-        font-weight="bold"
       >
         PAY NOW
       </div>

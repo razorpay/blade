@@ -127,7 +127,6 @@ exports[`<Indicator /> should render 1`] = `
               "textAlign": "left",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="left"
@@ -264,7 +263,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "textAlign": "left",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="left"
@@ -390,7 +388,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "textAlign": "left",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="left"
@@ -516,7 +513,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "textAlign": "left",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="left"
@@ -642,7 +638,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
               "textAlign": "left",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="left"

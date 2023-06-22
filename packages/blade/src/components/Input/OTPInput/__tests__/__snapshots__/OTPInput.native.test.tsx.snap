@@ -85,7 +85,6 @@ exports[`<OTPInput /> should render 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -147,7 +146,6 @@ exports[`<OTPInput /> should render 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             />
