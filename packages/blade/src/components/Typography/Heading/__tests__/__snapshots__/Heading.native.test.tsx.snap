@@ -88,6 +88,84 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
 </View>
 `;
 
+exports[`<Heading /> should render Heading with mixed color 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    color="surface.text.normal.lowContrast"
+    data-blade-component="heading"
+    fontFamily="text"
+    fontSize={200}
+    fontStyle="normal"
+    fontWeight="bold"
+    lineHeight={300}
+    style={
+      Array [
+        Object {
+          "color": "hsla(217, 56%, 17%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 16,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Supercharge your business with the all‑powerful
+     
+    <Text
+      accessibilityRole="header"
+      color="feedback.information.action.text.primary.default.lowContrast"
+      data-blade-component="heading"
+      fontFamily="text"
+      fontSize={200}
+      fontStyle="normal"
+      fontWeight="bold"
+      lineHeight={300}
+      style={
+        Array [
+          Object {
+            "color": "hsla(195, 100%, 31%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 16,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 24,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      Payment Gateway
+    </Text>
+  </Text>
+</View>
+`;
+
 exports[`<Heading /> should render Heading with size "large" 1`] = `
 <View
   style={
