@@ -15,7 +15,8 @@ type SpacingValueType =
   | 'none'
   | 'initial'
   | 'fit-content'
-  | 'max-content';
+  | 'max-content'
+  | 'min-content';
 
 
 /**
