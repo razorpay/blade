@@ -41,7 +41,7 @@ to {
 
 const StyledDropdownOverlay = styled(BaseBox)<{
   transition: FlattenSimpleInterpolation;
-  // onAnimationEnd: () => void;
+  onAnimationEnd: () => void;
   isOpen: boolean;
 }>(
   (props) =>
@@ -73,7 +73,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     actionListItemRef,
   } = useDropdown();
   const { theme } = useTheme();
-  // const [display, setDisplay] = React.useState<'none' | 'block'>('none');
+  const [showFadeOutAnimation, setShowFadeOutAnimation] = React.useState(false);
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
   const [dropdownPosition, setDropdownPosition] = React.useState<DropdownPosition>({});
 
@@ -108,11 +108,14 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
       ${String(theme.motion.easing.entrance.revealing)};
   `;
 
+  const noAnimation = css`
+    animation: none;
+  `;
+
   React.useEffect(() => {
     if (isOpen) {
       // On Safari clicking on a non input element doesn't focuses it https://bugs.webkit.org/show_bug.cgi?id=22261
       triggererRef.current?.focus();
-      // setDisplay('block');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
@@ -147,13 +150,14 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setWidth, triggererRef, hasLabelOnLeft]);
 
-  // const onAnimationEnd = React.useCallback(() => {
-  //   if (isOpen) {
-  //     setDisplay('block');
-  //   } else {
-  //     setDisplay('none');
-  //   }
-  // }, [isOpen]);
+  const onAnimationEnd = React.useCallback(() => {
+    if (isOpen) {
+      setShowFadeOutAnimation(true);
+    } else {
+      setShowFadeOutAnimation(false);
+    }
+  }, [isOpen]);
+
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
@@ -171,8 +175,8 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         style={styles}
         isOpen={isOpen}
         position="absolute"
-        transition={isOpen ? fadeIn : fadeOut}
-        // onAnimationEnd={onAnimationEnd}
+        transition={isOpen ? fadeIn : showFadeOutAnimation ? fadeOut : noAnimation}
+        onAnimationEnd={onAnimationEnd}
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
