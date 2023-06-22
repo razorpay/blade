@@ -376,6 +376,9 @@ export const getDropdownOverlayPosition = ({
 
   const newPosition: DropdownPosition = { left: zeroSpacing };
 
+  /**
+   * Calculating thresholds using the height & width of action list element with offset of 16px
+   */
   const WIDTH_THRESHOLD = (Number(actionListItemEl?.clientWidth) + Number(size[16])) * -1;
   const HEIGHT_THRESHOLD = (Number(actionListItemEl?.clientHeight) + Number(size[16])) * -1;
 
