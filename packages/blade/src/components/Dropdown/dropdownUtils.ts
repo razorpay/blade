@@ -344,17 +344,6 @@ export type DropdownPosition = {
 };
 
 /**
- * This object is used for calculating overflows in dropdown overlay.
- * 400 is used since max-width of dropdown overlay is 400px.
- */
-// export const POSITION_THRESHOLDS = {
-//   top: -400,
-//   bottom: -300,
-//   left: -400,
-//   right: -400,
-// };
-
-/**
  * This function calculates the position of dropdown overlay with respect to dropdown trigger element.
  * For non-menus (e.g SelectInput), position is flipped if overflow is on bottom.
  * For menus (e.g. DropdownButton), position is flipped if overflow is on right or bottom.
