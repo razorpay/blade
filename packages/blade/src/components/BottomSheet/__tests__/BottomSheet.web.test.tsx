@@ -85,6 +85,24 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
+  it('should render empty header with padding 0', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true}>
+          <BottomSheetHeader />
+          <BottomSheetBody padding="spacing.0">
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+        </BottomSheet>
+      );
+    };
+    const { container } = renderWithTheme(<Example />);
+    expect(container).toMatchSnapshot();
+    mockConsoleError.mockRestore();
+  });
+
   it('should open/close BottomSheet', async () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const user = userEvents.setup();
