@@ -361,7 +361,7 @@ export const getDropdownOverlayPosition = ({
   actionListItemEl: HTMLDivElement | null;
 }): DropdownPosition => {
   const zeroSpacing: SpacingValueType = 'spacing.0';
-  const { bottom, right } = position;
+  const { top, bottom, right } = position;
 
   const newPosition: DropdownPosition = { left: zeroSpacing };
 
@@ -374,6 +374,12 @@ export const getDropdownOverlayPosition = ({
   if (!isMenu) {
     if (bottom > HEIGHT_THRESHOLD) {
       newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[32])}px`;
+      newPosition.top = undefined;
+    }
+
+    if (top > HEIGHT_THRESHOLD) {
+      newPosition.top = zeroSpacing;
+      newPosition.bottom = undefined;
     }
     return newPosition;
   }
@@ -386,6 +392,11 @@ export const getDropdownOverlayPosition = ({
   if (bottom > HEIGHT_THRESHOLD) {
     newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[20])}px`;
     newPosition.top = undefined;
+  }
+
+  if (top > HEIGHT_THRESHOLD) {
+    newPosition.top = zeroSpacing;
+    newPosition.bottom = undefined;
   }
 
   return newPosition;
