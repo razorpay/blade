@@ -504,44 +504,52 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 <div>
   <div
     class="c0 c1"
+    data-blade-component="base-box"
     data-testid="bottomsheet-backdrop"
     opacity="1"
   />
   <div
     aria-modal="true"
     class="c2"
-    data-blade-component="BottomSheet"
+    data-blade-component="bottom-sheet"
     role="dialog"
     style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
   >
     <div
       class="c3"
+      data-blade-component="base-box"
     >
       <div
         class="c4"
-        data-blade-component="BottomSheetGrabHandle"
+        data-blade-component="bottomsheet-grab-handle"
       />
       <div
         class="c5"
-        data-blade-component="BottomSheetHeader"
+        data-blade-component="base-box"
       >
         <div
           class=""
+          data-blade-component="base-box"
         >
           <div
             class="c6"
+            data-blade-component="base-box"
           >
             <div
               class="c7"
+              data-blade-component="base-box"
             >
               <div
                 class="c8"
+                data-blade-component="base-box"
               >
                 <div
                   class=""
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c9"
+                    data-blade-component="base-box"
                   >
                     <h6
                       class="c10"
@@ -551,13 +559,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     </h6>
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c12 c13"
+                        data-blade-component="base-box"
                       >
                         <div
                           class="c14"
-                          data-blade-component="counter"
+                          data-blade-component="base-box"
                         >
                           <p
                             class="c15"
@@ -579,13 +589,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               </div>
               <div
                 class="c17"
+                data-blade-component="base-box"
               >
                 <div
                   class="c18 c19"
-                  data-blade-component="badge"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c14"
+                    data-blade-component="base-box"
                   >
                     <p
                       class="c20"
@@ -613,6 +625,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 >
                   <path
                     d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                    data-blade-component="svg-path"
                     fill="currentColor"
                   />
                 </svg>
@@ -626,12 +639,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       </div>
       <div
         class="c23"
-        data-blade-component="BottomSheetBody"
+        data-blade-component="base-box"
         data-testid="bottomsheet-body"
         style="user-select: auto; overflow: auto;"
       >
         <div
           class="c24"
+          data-blade-component="base-box"
         >
           <p
             class="c25"
@@ -643,13 +657,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       </div>
       <div
         class="c26"
-        data-blade-component="BottomSheetFooter"
+        data-blade-component="base-box"
       >
         <div
           class="c22"
         />
         <div
           class="c27"
+          data-blade-component="base-box"
         >
           <button
             class="c28"
@@ -659,9 +674,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           >
             <div
               class="c29 c30"
+              data-blade-component="base-box"
             >
               <div
                 class="c31"
+                data-blade-component="base-text"
               >
                 Remove address
               </div>

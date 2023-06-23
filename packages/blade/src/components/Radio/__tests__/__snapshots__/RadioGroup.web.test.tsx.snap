@@ -204,22 +204,26 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <div
       aria-labelledby="radio-group-15-label"
       class="c0"
-      data-blade-component="radio-group"
+      data-blade-component="base-box"
       role="group"
     >
       <span
+        data-blade-component="form-label"
         id="radio-group-15-label"
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
+          data-blade-component="base-box"
         >
           <div
             class="c2"
+            data-blade-component="base-box"
           >
             <p
               class="c3"
@@ -243,24 +247,31 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       </span>
       <div
         class=""
+        data-blade-component="base-box"
       >
         <div
           class="c0"
+          data-blade-component="base-box"
         >
           <div
             class="c1"
+            data-blade-component="base-box"
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <label
                 class="c6"
+                data-blade-component="radio-label"
               >
                 <div
                   class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -276,18 +287,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="radio-icon-wrapper"
                     />
                     <div
                       class="c10"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c11"
+                      data-blade-component="base-text"
                     >
                       Apple
                     </div>
                   </div>
                   <div
                     class="c12"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -295,18 +310,23 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           </div>
           <div
             class="c1"
+            data-blade-component="base-box"
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <label
                 class="c6"
+                data-blade-component="radio-label"
               >
                 <div
                   class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -322,18 +342,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="radio-icon-wrapper"
                     />
                     <div
                       class="c10"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c11"
+                      data-blade-component="base-text"
                     >
                       Mango
                     </div>
                   </div>
                   <div
                     class="c12"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -341,18 +365,23 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           </div>
           <div
             class="c13"
+            data-blade-component="base-box"
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <label
                 class="c6"
+                data-blade-component="radio-label"
               >
                 <div
                   class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -368,18 +397,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="radio-icon-wrapper"
                     />
                     <div
                       class="c10"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c11"
+                      data-blade-component="base-text"
                     >
                       Orange
                     </div>
                   </div>
                   <div
                     class="c12"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -388,16 +421,20 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         </div>
         <div
           class="c14"
+          data-blade-component="base-box"
         >
-          <span
-            style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
+          <div
+            class="c7"
+            data-blade-component="base-box"
+            style="word-break: break-all;"
           >
             <span
               class="c15"
+              data-blade-component="base-text"
             >
               Select one
             </span>
-          </span>
+          </div>
         </div>
       </div>
     </div>
@@ -592,22 +629,26 @@ exports[`<RadioGroup /> should render with label 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <div
       aria-labelledby="radio-group-7-label"
       class="c0"
-      data-blade-component="radio-group"
+      data-blade-component="base-box"
       role="group"
     >
       <span
+        data-blade-component="form-label"
         id="radio-group-7-label"
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
+          data-blade-component="base-box"
         >
           <div
             class="c2"
+            data-blade-component="base-box"
           >
             <p
               class="c3"
@@ -629,24 +670,31 @@ exports[`<RadioGroup /> should render with label 1`] = `
       </span>
       <div
         class=""
+        data-blade-component="base-box"
       >
         <div
           class="c0"
+          data-blade-component="base-box"
         >
           <div
             class="c1"
+            data-blade-component="base-box"
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <label
                 class="c6"
+                data-blade-component="radio-label"
               >
                 <div
                   class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -662,18 +710,22 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="radio-icon-wrapper"
                     />
                     <div
                       class="c10"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c11"
+                      data-blade-component="base-text"
                     >
                       Apple
                     </div>
                   </div>
                   <div
                     class="c12"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -681,18 +733,23 @@ exports[`<RadioGroup /> should render with label 1`] = `
           </div>
           <div
             class="c1"
+            data-blade-component="base-box"
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <label
                 class="c6"
+                data-blade-component="radio-label"
               >
                 <div
                   class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -708,18 +765,22 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="radio-icon-wrapper"
                     />
                     <div
                       class="c10"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c11"
+                      data-blade-component="base-text"
                     >
                       Mango
                     </div>
                   </div>
                   <div
                     class="c12"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -727,18 +788,23 @@ exports[`<RadioGroup /> should render with label 1`] = `
           </div>
           <div
             class="c13"
+            data-blade-component="base-box"
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <label
                 class="c6"
+                data-blade-component="radio-label"
               >
                 <div
                   class="c0"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -754,18 +820,22 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="radio-icon-wrapper"
                     />
                     <div
                       class="c10"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c11"
+                      data-blade-component="base-text"
                     >
                       Orange
                     </div>
                   </div>
                   <div
                     class="c12"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>

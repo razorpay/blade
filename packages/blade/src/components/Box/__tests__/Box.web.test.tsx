@@ -28,7 +28,7 @@ describe('<Box />', () => {
       <div>
         <div
           class="c0"
-          data-blade-component="box"
+          data-blade-component="base-box"
         >
           children test!
         </div>
@@ -50,7 +50,7 @@ describe('<Box />', () => {
       <div>
         <footer
           class="c0"
-          data-blade-component="box"
+          data-blade-component="base-box"
         >
           Footer test!
         </footer>

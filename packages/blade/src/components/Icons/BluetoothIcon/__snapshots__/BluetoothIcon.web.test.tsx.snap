@@ -13,20 +13,26 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
   >
     <g
       clip-path="url(#clip0_59_170)"
+      data-blade-component="svg-g"
     >
       <path
         d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"
+        data-blade-component="svg-path"
         stroke="hsla(216, 27%, 36%, 1)"
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2"
       />
     </g>
-    <defs>
+    <defs
+      data-blade-component="svg-defs"
+    >
       <clippath
+        data-blade-component="svg-clippath"
         id="clip0_59_170"
       >
         <rect
+          data-blade-component="svg-rect"
           fill="hsla(216, 27%, 36%, 1)"
           height="24"
           width="24"

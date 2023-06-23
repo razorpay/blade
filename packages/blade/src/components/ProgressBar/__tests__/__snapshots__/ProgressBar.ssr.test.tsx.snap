@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProgressBar /> should render ProgressBar with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div class=\\"BaseBox-bmPWx\\"><div class=\\"BaseBox-bmPWx ctznZr\\"><div class=\\"BaseBox-bmPWx bqWBik\\"><p class=\\"StyledBaseText-dVBfTO deSIOg\\" data-blade-component=\\"text\\">20%</p></div></div><div id=\\"progress-undefined\\" data-blade-component=\\"progress-bar\\" role=\\"progressbar\\" aria-valuenow=\\"20\\" aria-valuetext=\\"20%\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" class=\\"BaseBox-bmPWx\\"><div class=\\"BaseBox-bmPWx lbzRdB\\"><div class=\\"BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 fNXoki kYqHzO lplggX\\"><div class=\\"BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  bHgVSx jPQGWt\\"></div></div></div></div></div></div>"`;
+exports[`<ProgressBar /> should render ProgressBar with default properties 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx ctznZr\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx bqWBik\\"><p class=\\"StyledBaseText-dVBfTO deSIOg\\" data-blade-component=\\"text\\">20%</p></div></div><div id=\\"progress-undefined\\" data-blade-component=\\"base-box\\" role=\\"progressbar\\" aria-valuenow=\\"20\\" aria-valuetext=\\"20%\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx lbzRdB\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 fNXoki kYqHzO lplggX\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  bHgVSx jPQGWt\\"></div></div></div></div></div></div>"`;
 
 exports[`<ProgressBar /> should render ProgressBar with default properties 2`] = `
 <div
@@ -9,12 +9,15 @@ exports[`<ProgressBar /> should render ProgressBar with default properties 2`] =
 >
   <div
     class="BaseBox-bmPWx"
+    data-blade-component="base-box"
   >
     <div
       class="BaseBox-bmPWx ctznZr"
+      data-blade-component="base-box"
     >
       <div
         class="BaseBox-bmPWx bqWBik"
+        data-blade-component="base-box"
       >
         <p
           class="StyledBaseText-dVBfTO deSIOg"
@@ -30,18 +33,21 @@ exports[`<ProgressBar /> should render ProgressBar with default properties 2`] =
       aria-valuenow="20"
       aria-valuetext="20%"
       class="BaseBox-bmPWx"
-      data-blade-component="progress-bar"
+      data-blade-component="base-box"
       id="progress-1"
       role="progressbar"
     >
       <div
         class="BaseBox-bmPWx lbzRdB"
+        data-blade-component="base-box"
       >
         <div
           class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 fNXoki kYqHzO lplggX"
+          data-blade-component="base-box"
         >
           <div
             class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  bHgVSx jPQGWt"
+            data-blade-component="base-box"
           />
         </div>
       </div>

@@ -419,7 +419,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 <div
   class="c0"
-  data-blade-component="box"
+  data-blade-component="base-box"
   data-testid="modal-wrapper"
 >
   <div
@@ -434,28 +434,33 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     aria-label="Test Modal"
     aria-modal="true"
     class="c2 c3"
-    data-blade-component="modal"
+    data-blade-component="base-box"
     role="dialog"
     tabindex="-1"
   >
     <div
       class=""
-      data-blade-component="modal-header"
+      data-blade-component="base-box"
     >
       <div
         class="c4"
+        data-blade-component="base-box"
       >
         <div
           class="c5"
+          data-blade-component="base-box"
         >
           <div
             class="c6"
+            data-blade-component="base-box"
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <div
                 class="c7"
+                data-blade-component="base-box"
               >
                 <h6
                   class="c8"
@@ -465,13 +470,15 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                 </h6>
                 <div
                   class="c9"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c10 c11"
+                    data-blade-component="base-box"
                   >
                     <div
                       class="c12"
-                      data-blade-component="counter"
+                      data-blade-component="base-box"
                     >
                       <p
                         class="c13"
@@ -493,13 +500,15 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
           </div>
           <div
             class="c15"
+            data-blade-component="base-box"
           >
             <div
               class="c16 c17"
-              data-blade-component="badge"
+              data-blade-component="base-box"
             >
               <div
                 class="c12"
+                data-blade-component="base-box"
               >
                 <p
                   class="c18"
@@ -527,6 +536,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             >
               <path
                 d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                data-blade-component="svg-path"
                 fill="currentColor"
               />
             </svg>
@@ -539,7 +549,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     </div>
     <div
       class="c21"
-      data-blade-component="modal-body"
+      data-blade-component="base-box"
     >
       <p
         class="c22"
@@ -550,14 +560,14 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     </div>
     <div
       class=""
-      data-blade-component="box"
+      data-blade-component="base-box"
     >
       <div
         class="c20"
       />
       <div
         class="c23"
-        data-blade-component="modal-footer"
+        data-blade-component="base-box"
       >
         <button
           class="c24"
@@ -567,9 +577,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
         >
           <div
             class="c25 c26"
+            data-blade-component="base-box"
           >
             <div
               class="c27"
+              data-blade-component="base-text"
             >
               Save
             </div>
@@ -649,7 +661,7 @@ exports[`Modal renders a basic Modal 1`] = `
 
 <div
   class="c0"
-  data-blade-component="box"
+  data-blade-component="base-box"
   data-testid="modal-wrapper"
 >
   <div
@@ -664,13 +676,13 @@ exports[`Modal renders a basic Modal 1`] = `
     aria-label="Test Modal"
     aria-modal="true"
     class="c2 c3"
-    data-blade-component="modal"
+    data-blade-component="base-box"
     role="dialog"
     tabindex="0"
   >
     <div
       class="c4"
-      data-blade-component="modal-body"
+      data-blade-component="base-box"
     >
       <p
         class="c5"
@@ -751,7 +763,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 
 <div
   class="c0"
-  data-blade-component="box"
+  data-blade-component="base-box"
   data-testid="modal-wrapper"
 >
   <div
@@ -766,13 +778,13 @@ exports[`Modal renders a basic Modal of large size 1`] = `
     aria-label="Test Modal"
     aria-modal="true"
     class="c2 c3"
-    data-blade-component="modal"
+    data-blade-component="base-box"
     role="dialog"
     tabindex="0"
   >
     <div
       class="c4"
-      data-blade-component="modal-body"
+      data-blade-component="base-box"
     >
       <p
         class="c5"
@@ -853,7 +865,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 
 <div
   class="c0"
-  data-blade-component="box"
+  data-blade-component="base-box"
   data-testid="modal-wrapper"
 >
   <div
@@ -868,13 +880,13 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
     aria-label="Test Modal"
     aria-modal="true"
     class="c2 c3"
-    data-blade-component="modal"
+    data-blade-component="base-box"
     role="dialog"
     tabindex="0"
   >
     <div
       class="c4"
-      data-blade-component="modal-body"
+      data-blade-component="base-box"
     >
       <p
         class="c5"

@@ -14,6 +14,7 @@ exports[`<EditIcon /> should render EditIcon 1`] = `
     <path
       clip-rule="evenodd"
       d="M15.293 2.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-13 13A1 1 0 0 1 8 22H3a1 1 0 0 1-1-1v-5a1 1 0 0 1 .293-.707l13-13ZM4 16.414V20h3.586l12-12L16 4.414l-12 12Z"
+      data-blade-component="svg-path"
       fill="hsla(216, 27%, 36%, 1)"
       fill-rule="evenodd"
     />

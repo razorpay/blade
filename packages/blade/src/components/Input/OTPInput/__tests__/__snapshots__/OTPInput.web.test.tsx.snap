@@ -254,20 +254,24 @@ exports[`<OTPInput /> should render 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="otp-input"
+    data-blade-component="base-box"
   >
     <div
       class="c0"
+      data-blade-component="base-box"
     >
       <label
+        data-blade-component="form-label"
         for="otp-37-input-38"
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
+          data-blade-component="base-box"
         >
           <div
             class="c2"
+            data-blade-component="base-box"
           >
             <p
               class="c3"
@@ -289,6 +293,7 @@ exports[`<OTPInput /> should render 1`] = `
       </label>
       <div
         class="c6"
+        data-blade-component="base-box"
       >
         <input
           hidden=""
@@ -298,15 +303,19 @@ exports[`<OTPInput /> should render 1`] = `
         />
         <div
           class="c7"
+          data-blade-component="base-box"
         >
           <div
             class=""
+            data-blade-component="base-box"
           >
             <div
               class="c0"
+              data-blade-component="base-box"
             >
               <div
                 class="c8 c9"
+                data-blade-component="base-box"
               >
                 <input
                   aria-describedby=""
@@ -316,6 +325,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-required="true"
                   autocomplete="one-time-code"
                   class="c10"
+                  data-blade-component="styled-base-input"
                   id="otp-37-input-38-0-49-input-50"
                   inputmode="decimal"
                   placeholder=""
@@ -325,6 +335,7 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <div
                   class=" c11"
+                  data-blade-component="base-box"
                 />
               </div>
             </div>
@@ -332,15 +343,19 @@ exports[`<OTPInput /> should render 1`] = `
         </div>
         <div
           class="c12"
+          data-blade-component="base-box"
         >
           <div
             class=""
+            data-blade-component="base-box"
           >
             <div
               class="c0"
+              data-blade-component="base-box"
             >
               <div
                 class="c8 c9"
+                data-blade-component="base-box"
               >
                 <input
                   aria-describedby=""
@@ -350,6 +365,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-required="true"
                   autocomplete="one-time-code"
                   class="c10"
+                  data-blade-component="styled-base-input"
                   id="otp-37-input-38-1-55-input-56"
                   inputmode="decimal"
                   placeholder=""
@@ -359,6 +375,7 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <div
                   class=" c11"
+                  data-blade-component="base-box"
                 />
               </div>
             </div>
@@ -366,15 +383,19 @@ exports[`<OTPInput /> should render 1`] = `
         </div>
         <div
           class="c12"
+          data-blade-component="base-box"
         >
           <div
             class=""
+            data-blade-component="base-box"
           >
             <div
               class="c0"
+              data-blade-component="base-box"
             >
               <div
                 class="c8 c9"
+                data-blade-component="base-box"
               >
                 <input
                   aria-describedby=""
@@ -384,6 +405,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-required="true"
                   autocomplete="one-time-code"
                   class="c10"
+                  data-blade-component="styled-base-input"
                   id="otp-37-input-38-2-61-input-62"
                   inputmode="decimal"
                   placeholder=""
@@ -393,6 +415,7 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <div
                   class=" c11"
+                  data-blade-component="base-box"
                 />
               </div>
             </div>
@@ -400,15 +423,19 @@ exports[`<OTPInput /> should render 1`] = `
         </div>
         <div
           class="c12"
+          data-blade-component="base-box"
         >
           <div
             class=""
+            data-blade-component="base-box"
           >
             <div
               class="c0"
+              data-blade-component="base-box"
             >
               <div
                 class="c8 c9"
+                data-blade-component="base-box"
               >
                 <input
                   aria-describedby=""
@@ -418,6 +445,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-required="true"
                   autocomplete="one-time-code"
                   class="c10"
+                  data-blade-component="styled-base-input"
                   id="otp-37-input-38-3-67-input-68"
                   inputmode="decimal"
                   placeholder=""
@@ -427,6 +455,7 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <div
                   class=" c11"
+                  data-blade-component="base-box"
                 />
               </div>
             </div>
@@ -434,15 +463,19 @@ exports[`<OTPInput /> should render 1`] = `
         </div>
         <div
           class="c12"
+          data-blade-component="base-box"
         >
           <div
             class=""
+            data-blade-component="base-box"
           >
             <div
               class="c0"
+              data-blade-component="base-box"
             >
               <div
                 class="c8 c9"
+                data-blade-component="base-box"
               >
                 <input
                   aria-describedby=""
@@ -452,6 +485,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-required="true"
                   autocomplete="one-time-code"
                   class="c10"
+                  data-blade-component="styled-base-input"
                   id="otp-37-input-38-4-73-input-74"
                   inputmode="decimal"
                   placeholder=""
@@ -461,6 +495,7 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <div
                   class=" c11"
+                  data-blade-component="base-box"
                 />
               </div>
             </div>
@@ -468,15 +503,19 @@ exports[`<OTPInput /> should render 1`] = `
         </div>
         <div
           class="c12"
+          data-blade-component="base-box"
         >
           <div
             class=""
+            data-blade-component="base-box"
           >
             <div
               class="c0"
+              data-blade-component="base-box"
             >
               <div
                 class="c8 c9"
+                data-blade-component="base-box"
               >
                 <input
                   aria-describedby=""
@@ -486,6 +525,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-required="true"
                   autocomplete="one-time-code"
                   class="c10"
+                  data-blade-component="styled-base-input"
                   id="otp-37-input-38-5-79-input-80"
                   inputmode="decimal"
                   placeholder=""
@@ -495,6 +535,7 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <div
                   class=" c11"
+                  data-blade-component="base-box"
                 />
               </div>
             </div>
@@ -504,6 +545,7 @@ exports[`<OTPInput /> should render 1`] = `
     </div>
     <div
       class="c13"
+      data-blade-component="base-box"
     />
   </div>
 </div>

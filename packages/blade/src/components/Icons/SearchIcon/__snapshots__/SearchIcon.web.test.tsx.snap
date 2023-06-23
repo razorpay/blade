@@ -14,6 +14,7 @@ exports[`<SearchIcon /> should render SearchIcon 1`] = `
     <path
       clip-rule="evenodd"
       d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+      data-blade-component="svg-path"
       fill="hsla(216, 27%, 36%, 1)"
       fill-rule="evenodd"
     />
