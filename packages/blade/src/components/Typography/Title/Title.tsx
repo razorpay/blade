@@ -5,7 +5,7 @@ import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { TestID } from '~utils/types';
 import { getPlatformType } from '~utils';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
@@ -20,7 +20,7 @@ export type TitleProps = {
   size?: 'small' | 'medium' | 'large' | 'xlarge';
   contrast?: ColorContrastTypes;
   type?: TextTypes;
-  children: StringChildrenType;
+  children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
 } & TestID &
   StyledPropsBlade;

@@ -10,6 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { List, ListItem } from '~components/List';
+import { isReactNative } from '~utils';
 
 const Page = (): ReactElement => {
   return (
@@ -69,6 +70,35 @@ export const WithColor = TitleTemplate.bind({});
 WithColor.args = {
   color: 'feedback.positive.action.text.primary.default.lowContrast',
 };
+
+const Sup = isReactNative() ? TitleComponent : 'sup';
+const WithMixedColorsTemplate: ComponentStory<typeof TitleComponent> = () => {
+  return (
+    <Box>
+      <TitleComponent>
+        Supercharge your business with the all‑powerful{' '}
+        <TitleComponent
+          as="span"
+          color="feedback.information.action.text.primary.default.lowContrast"
+        >
+          Payment Gateway
+        </TitleComponent>
+      </TitleComponent>
+      <TitleComponent marginTop="spacing.5">
+        Start accepting{' '}
+        <TitleComponent
+          as="span"
+          color="feedback.information.action.text.primary.default.lowContrast"
+        >
+          payments
+        </TitleComponent>{' '}
+        at just 2% <Sup>*</Sup>
+      </TitleComponent>
+    </Box>
+  );
+};
+
+export const WithMixedColors = WithMixedColorsTemplate.bind({});
 
 const AsPropTemplate: ComponentStory<typeof TitleComponent> = (args) => {
   return (

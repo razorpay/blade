@@ -7,8 +7,8 @@ import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Theme } from '~components/BladeProvider';
-import type { StringChildrenType, TestID } from '~utils/types';
 import { isReactNative } from '~utils';
+import type { TestID } from '~utils/types';
 
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
@@ -24,7 +24,7 @@ type HeadingCommonProps = {
   color?: BaseTextProps['color'];
   type?: TextTypes;
   contrast?: ColorContrastTypes;
-  children: StringChildrenType;
+  children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
 } & TestID &
   StyledPropsBlade;

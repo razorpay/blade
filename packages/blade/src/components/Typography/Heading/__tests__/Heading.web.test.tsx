@@ -35,6 +35,18 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Heading with mixed color', () => {
+    const { container } = renderWithTheme(
+      <Heading>
+        Supercharge your business with the all‑powerful{' '}
+        <Heading as="span" color="feedback.information.action.text.primary.default.lowContrast">
+          Payment Gateway
+        </Heading>
+      </Heading>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render Heading with size "small"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { container, getByRole, getByText } = renderWithTheme(

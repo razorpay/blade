@@ -48,6 +48,18 @@ describe('<Title />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Title with mixed color', () => {
+    const { container } = renderWithTheme(
+      <Title>
+        Supercharge your business with the all‑powerful{' '}
+        <Title as="span" color="feedback.information.action.text.primary.default.lowContrast">
+          Payment Gateway
+        </Title>
+      </Title>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render Title with variant "medium"', () => {
     const displayText = 'Displaying Landing Page Title';
     const { container, getByRole, getByText } = renderWithTheme(

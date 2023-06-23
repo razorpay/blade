@@ -9,6 +9,7 @@ on:
 
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+  TOKENS_DATA: ${{ github.event.inputs.tokens }}
 
 jobs:
   token-upload:
@@ -27,7 +28,6 @@ jobs:
         uses: ./.github/actions/install-dependencies
       - name: Upload Tokens
         working-directory: packages/blade
-        run: node ./scripts/uploadTokens.js '${{ github.event.inputs.tokens }}'  # nosemgrep: yaml.github-actions.security.run-shell-injection.run-shell-injection
+        run: node ./scripts/uploadTokens.js '${{ env.TOKENS_DATA }}'
         env: 
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
-
