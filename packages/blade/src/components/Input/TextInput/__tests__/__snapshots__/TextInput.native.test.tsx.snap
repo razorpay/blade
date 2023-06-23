@@ -203,6 +203,7 @@ exports[`<TextInput /> should render 1`] = `
             }
           }
           autoCompleteType="off"
+          data-blade-component="styled-base-input"
           editable={true}
           id="textinput-1-input-2"
           interactionElement={null}
@@ -518,6 +519,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="16px"
@@ -641,6 +643,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           }
           autoCapitalize="none"
           autoCompleteType="off"
+          data-blade-component="styled-base-input"
           editable={true}
           id="textinput-31-input-32"
           interactionElement={null}

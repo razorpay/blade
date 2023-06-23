@@ -252,6 +252,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="radio-icon-wrapper"
                       isChecked={false}
                       isDisabled={false}
                       isNegative={false}
@@ -289,6 +290,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -410,6 +412,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="radio-icon-wrapper"
                       isChecked={false}
                       isDisabled={false}
                       isNegative={false}
@@ -447,6 +450,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -568,6 +572,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="radio-icon-wrapper"
                       isChecked={false}
                       isDisabled={false}
                       isNegative={false}
@@ -605,6 +610,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -658,16 +664,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           }
         >
           <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
             style={
-              Object {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                },
+              ]
             }
           >
             <Text
               color="surface.text.muted.lowContrast"
+              data-blade-component="base-text"
               fontFamily="text"
               fontSize={50}
               fontStyle="italic"
@@ -956,6 +968,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="radio-icon-wrapper"
                       isChecked={false}
                       isDisabled={false}
                       isNegative={false}
@@ -993,6 +1006,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -1114,6 +1128,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="radio-icon-wrapper"
                       isChecked={false}
                       isDisabled={false}
                       isNegative={false}
@@ -1151,6 +1166,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -1272,6 +1288,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="radio-icon-wrapper"
                       isChecked={false}
                       isDisabled={false}
                       isNegative={false}
@@ -1309,6 +1326,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"

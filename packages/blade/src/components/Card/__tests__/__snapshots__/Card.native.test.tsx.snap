@@ -325,6 +325,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               >
                 <Text
                   color="action.text.secondary.default"
+                  data-blade-component="base-text"
                   fontSize={100}
                   fontWeight="bold"
                   lineHeight={100}
@@ -471,6 +472,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               >
                 <Text
                   color="action.text.primary.default"
+                  data-blade-component="base-text"
                   fontSize={100}
                   fontWeight="bold"
                   lineHeight={100}
@@ -609,6 +611,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               align="xMidYMid"
               bbHeight="24px"
               bbWidth="24px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="24px"

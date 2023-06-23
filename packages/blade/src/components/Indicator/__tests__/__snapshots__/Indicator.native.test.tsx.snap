@@ -29,6 +29,7 @@ exports[`<Indicator /> should render 1`] = `
       align="xMidYMid"
       bbHeight="8"
       bbWidth="8"
+      data-blade-component="icon"
       fill="none"
       focusable={false}
       height="8"
@@ -165,6 +166,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       align="xMidYMid"
       bbHeight="6"
       bbWidth="6"
+      data-blade-component="icon"
       fill="none"
       focusable={false}
       height="6"
@@ -290,6 +292,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       align="xMidYMid"
       bbHeight="8"
       bbWidth="8"
+      data-blade-component="icon"
       fill="none"
       focusable={false}
       height="8"
@@ -415,6 +418,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       align="xMidYMid"
       bbHeight="10"
       bbWidth="10"
+      data-blade-component="icon"
       fill="none"
       focusable={false}
       height="10"
@@ -540,6 +544,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       align="xMidYMid"
       bbHeight="8"
       bbWidth="8"
+      data-blade-component="icon"
       fill="none"
       focusable={false}
       height="8"

@@ -9,7 +9,7 @@ exports[`<Switch /> should render switch with label 1`] = `
   }
 >
   <View
-    data-blade-component="Switch"
+    data-blade-component="switch"
     display="flex"
     style={
       Array [
@@ -147,6 +147,7 @@ exports[`<Switch /> should render switch with label 1`] = `
                 align="xMidYMid"
                 bbHeight="10px"
                 bbWidth="10px"
+                data-blade-component="icon"
                 fill="none"
                 focusable={false}
                 height="10px"
@@ -214,7 +215,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   }
 >
   <View
-    data-blade-component="Switch"
+    data-blade-component="switch"
     display="flex"
     style={
       Array [
@@ -353,6 +354,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                 align="xMidYMid"
                 bbHeight="10px"
                 bbWidth="10px"
+                data-blade-component="icon"
                 fill="none"
                 focusable={false}
                 height="10px"

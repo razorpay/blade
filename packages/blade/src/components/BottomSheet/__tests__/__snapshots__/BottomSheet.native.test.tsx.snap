@@ -320,6 +320,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     >
                       <Text
                         color="action.text.secondary.default"
+                        data-blade-component="base-text"
                         fontSize={100}
                         fontWeight="bold"
                         lineHeight={100}
@@ -795,6 +796,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       align="xMidYMid"
                       bbHeight="20px"
                       bbWidth="20px"
+                      data-blade-component="icon"
                       fill="none"
                       focusable={false}
                       height="20px"

@@ -250,6 +250,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
                       isNegative={false}
                       size="medium"
@@ -286,6 +287,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -406,6 +408,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
                       isNegative={false}
                       size="medium"
@@ -442,6 +445,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -562,6 +566,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
                       isNegative={false}
                       size="medium"
@@ -598,6 +603,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -897,6 +903,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     }
                   >
                     <View
+                      data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
                       isNegative={false}
                       size="medium"
@@ -933,6 +940,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -1053,6 +1061,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     }
                   >
                     <View
+                      data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
                       isNegative={false}
                       size="medium"
@@ -1089,6 +1098,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -1209,6 +1219,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     }
                   >
                     <View
+                      data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
                       isNegative={false}
                       size="medium"
@@ -1245,6 +1256,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -1298,16 +1310,22 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
         >
           <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
             style={
-              Object {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                },
+              ]
             }
           >
             <Text
               color="surface.text.muted.lowContrast"
+              data-blade-component="base-text"
               fontFamily="text"
               fontSize={50}
               fontStyle="italic"

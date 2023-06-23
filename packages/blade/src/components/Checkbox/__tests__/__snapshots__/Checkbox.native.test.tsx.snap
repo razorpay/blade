@@ -76,6 +76,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           }
         >
           <View
+            data-blade-component="checkbox-icon-wrapper"
             isChecked={false}
             isNegative={false}
             size="medium"
@@ -112,6 +113,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           />
           <Text
             color="surface.text.subtle.lowContrast"
+            data-blade-component="base-text"
             fontFamily="text"
             fontSize={100}
             fontWeight="regular"
@@ -232,6 +234,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           }
         >
           <View
+            data-blade-component="checkbox-icon-wrapper"
             isChecked={false}
             isDisabled={true}
             isNegative={false}
@@ -269,6 +272,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           />
           <Text
             color="surface.text.placeholder.lowContrast"
+            data-blade-component="base-text"
             fontFamily="text"
             fontSize={100}
             fontWeight="regular"
@@ -390,6 +394,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           }
         >
           <View
+            data-blade-component="checkbox-icon-wrapper"
             isChecked={false}
             isNegative={true}
             size="medium"
@@ -426,6 +431,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           />
           <Text
             color="surface.text.subtle.lowContrast"
+            data-blade-component="base-text"
             fontFamily="text"
             fontSize={100}
             fontWeight="regular"
@@ -476,12 +482,17 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       }
     >
       <View
+        alignItems="center"
+        display="flex"
+        flexDirection="row"
         style={
-          Object {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
         }
       >
         <RNSVGSvgView
@@ -489,6 +500,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           align="xMidYMid"
           bbHeight="12px"
           bbWidth="12px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="12px"
@@ -567,6 +579,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         />
         <Text
           color="feedback.text.negative.lowContrast"
+          data-blade-component="base-text"
           fontFamily="text"
           fontSize={50}
           fontStyle="italic"

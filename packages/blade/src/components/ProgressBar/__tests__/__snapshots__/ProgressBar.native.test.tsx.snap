@@ -2689,6 +2689,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -3081,6 +3082,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}

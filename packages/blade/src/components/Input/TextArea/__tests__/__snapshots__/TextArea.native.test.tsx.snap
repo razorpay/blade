@@ -206,6 +206,7 @@ exports[`<TextArea /> should render 1`] = `
               "expanded": undefined,
             }
           }
+          data-blade-component="styled-base-input"
           editable={true}
           id="textarea-1-input-2"
           interactionElement={null}

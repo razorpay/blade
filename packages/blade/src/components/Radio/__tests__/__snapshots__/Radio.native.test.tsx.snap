@@ -252,6 +252,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="radio-icon-wrapper"
                       isChecked={false}
                       isDisabled={false}
                       isNegative={false}
@@ -289,6 +290,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                     />
                     <Text
                       color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"
@@ -590,6 +592,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="radio-icon-wrapper"
                       isChecked={false}
                       isDisabled={true}
                       isNegative={false}
@@ -627,6 +630,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     />
                     <Text
                       color="surface.text.placeholder.lowContrast"
+                      data-blade-component="base-text"
                       fontFamily="text"
                       fontSize={100}
                       fontWeight="regular"

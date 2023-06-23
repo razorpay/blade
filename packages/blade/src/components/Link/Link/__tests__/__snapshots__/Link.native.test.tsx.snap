@@ -64,6 +64,7 @@ exports[`<Link /> should render button variant of link 1`] = `
     >
       <Text
         color="action.text.link.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -163,6 +164,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
     >
       <Text
         color="action.text.link.disabled"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -262,6 +264,7 @@ exports[`<Link /> should render link with default properties 1`] = `
     >
       <Text
         color="action.text.link.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -377,6 +380,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="16px"
@@ -447,6 +451,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
       </View>
       <Text
         color="action.text.link.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -562,6 +567,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="16px"
@@ -632,6 +638,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
       </View>
       <Text
         color="action.text.link.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -731,6 +738,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
     >
       <Text
         color="action.text.link.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -779,6 +787,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="16px"
@@ -932,6 +941,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="16px"
@@ -1002,6 +1012,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
       </View>
       <Text
         color="action.text.link.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -1115,6 +1126,7 @@ exports[`<Link /> should render with small size 1`] = `
           align="xMidYMid"
           bbHeight="12px"
           bbWidth="12px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="12px"
@@ -1185,6 +1197,7 @@ exports[`<Link /> should render with small size 1`] = `
       </View>
       <Text
         color="action.text.link.default"
+        data-blade-component="base-text"
         fontSize={75}
         fontWeight="bold"
         lineHeight={50}
