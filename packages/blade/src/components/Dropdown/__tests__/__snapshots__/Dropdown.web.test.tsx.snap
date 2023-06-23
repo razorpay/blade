@@ -212,10 +212,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c18 {
-  display: block;
   position: absolute;
   width: 100%;
-  right: 0px;
+  left: 0px;
 }
 
 .c19 {
@@ -226,6 +225,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transform: translateY(8px);
   opacity: 0;
   z-index: 99;
+  pointer-events: all;
 }
 
 .c34 {
@@ -974,21 +974,24 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 }
 
 .c6 {
-  display: block;
   position: absolute;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   min-width: 240px;
   max-width: 400px;
-  left: 0px;
+  right: 0px;
 }
 
 .c7 {
-  -webkit-animation: hMpNnn 200ms cubic-bezier(0,0,0,1);
-  animation: hMpNnn 200ms cubic-bezier(0,0,0,1);
+  -webkit-animation: none;
+  animation: none;
   -webkit-transform: translateY(8px);
   -ms-transform: translateY(8px);
   transform: translateY(8px);
   opacity: 0;
   z-index: 99;
+  pointer-events: none;
 }
 
 .c1 {
@@ -1136,8 +1139,8 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
     class="c0"
   >
     <button
-      aria-activedescendant="dropdown-897-0"
-      aria-controls="dropdown-897-actionlist"
+      aria-activedescendant="dropdown-898-0"
+      aria-controls="dropdown-898-actionlist"
       aria-expanded="false"
       aria-haspopup="menu"
       class="c1"
@@ -1164,10 +1167,10 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
         style="opacity: 0;"
       >
         <div
-          aria-labelledby="dropdown-897-label"
+          aria-labelledby="dropdown-898-label"
           class=" c8"
           data-blade-component="action-list"
-          id="dropdown-897-actionlist"
+          id="dropdown-898-actionlist"
           role="menu"
         >
           <div
@@ -1178,7 +1181,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
               data-blade-component="action-list-item"
               data-index="0"
               data-value="profile"
-              id="dropdown-897-0"
+              id="dropdown-898-0"
               role="menuitem"
               tabindex="-1"
               type="button"
@@ -1213,7 +1216,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
               data-index="1"
               data-value="settings"
               href="/settings"
-              id="dropdown-897-1"
+              id="dropdown-898-1"
               role="link"
               tabindex="-1"
               type="button"

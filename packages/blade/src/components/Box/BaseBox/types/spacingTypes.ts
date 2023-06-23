@@ -8,10 +8,14 @@ type SpacingValueType =
   | DotNotationSpacingStringToken
   | `${string}${SpaceUnits}`
   | `calc(${string})`
+  | 'auto'
   | `min(${string})`
   | `max(${string})`
-  | 'auto'
-  | 'none';
+  | 'none'
+  | 'initial'
+  | 'fit-content'
+  | 'max-content'
+  | 'min-content';
 
 /**
  * @IMPORTANT
