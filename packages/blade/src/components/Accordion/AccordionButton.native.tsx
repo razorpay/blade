@@ -61,12 +61,15 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
     ),
   }));
 
-  const _index =
-    typeof index === 'number' && showNumberPrefix ? (
-      <Heading size="small" marginRight="spacing.2">
-        {index + 1}.
-      </Heading>
-    ) : null;
+  const _showNumberPrefix = typeof index === 'number' && showNumberPrefix;
+
+  const _index = _showNumberPrefix ? (
+    <Heading size="small" marginRight="spacing.2">
+      {index + 1}.
+    </Heading>
+  ) : null;
+
+  const a11yLabel = _showNumberPrefix ? `${index + 1}. ${children}` : children;
 
   const renderChildren: PressableProps['children'] = ({ pressed }) => {
     isPressed.value = pressed;
@@ -119,8 +122,12 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
       isExpanded={isExpanded}
       onPress={toggleCollapse}
       style={animatedStyles}
-      {...makeAccessible({ role: 'button' })}
-      {...makeAccessible({ expanded: isItemExpanded, controls: collapsibleBodyId })}
+      {...makeAccessible({
+        role: 'button',
+        expanded: isItemExpanded,
+        controls: collapsibleBodyId,
+        label: a11yLabel,
+      })}
       {...metaAttribute({ name: MetaConstants.AccordionButton })}
     >
       {renderChildren}
