@@ -100,7 +100,7 @@ export const InternalMenu = (): JSX.Element => {
         <DropdownOverlay>
           <DropdownHeader
             leading={<StarIcon color="surface.text.normal.lowContrast" size="large" />}
-            title="Header Title"
+            title="Header Title Header Title Header Title Header Title Header Title"
             subtitle="Header Subtitle"
             titleSuffix={<Badge variant="positive">New</Badge>}
             trailing={<Amount value={1000} />}

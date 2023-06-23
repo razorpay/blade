@@ -8,6 +8,8 @@ import { assignWithoutSideEffects, getComponentId, isReactNative, metaAttribute 
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 import type { TestID } from '~src/_helpers/types';
+import type { BoxProps } from '~components/Box';
+import { Box } from '~components/Box';
 
 type BaseHeaderProps = {
   title?: string;
@@ -54,6 +56,17 @@ type BaseHeaderProps = {
   TestID;
 
 type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text' | 'Amount';
+
+const centerBoxProps: BoxProps = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  // We want to align title, icon, titleSuffix, trailing, closeButton to baseline
+  // But we also want to keep them center aligned to each other
+  // So we add a virtual Box around these slots with 28px and center align them to that box
+  // We have done similar thing in figma as well (which is where this 28px comes from)
+  height: '28px',
+};
 
 // prop restriction map for corresponding sub components
 const propRestrictionMap = {
@@ -161,15 +174,17 @@ const _BaseHeader = ({
         touchAction="none"
         {...webOnlyEventHandlers}
       >
-        <BaseBox display="flex" flexDirection="row" alignItems="center" userSelect="none">
+        <BaseBox display="flex" flexDirection="row" userSelect="none">
           {showBackButton ? (
             <BaseBox overflow="visible" marginRight="spacing.5">
-              <IconButton
-                size="large"
-                icon={ChevronLeftIcon}
-                onClick={() => onBackButtonClick?.()}
-                accessibilityLabel="Back"
-              />
+              <Box {...centerBoxProps}>
+                <IconButton
+                  size="large"
+                  icon={ChevronLeftIcon}
+                  onClick={() => onBackButtonClick?.()}
+                  accessibilityLabel="Back"
+                />
+              </Box>
             </BaseBox>
           ) : null}
           <BaseBox
@@ -178,7 +193,7 @@ const _BaseHeader = ({
             flex="auto"
             display="flex"
             flexDirection="row"
-            alignItems="center"
+            alignItems="flex-start"
           >
             {leading ? (
               <BaseBox
@@ -186,21 +201,23 @@ const _BaseHeader = ({
                 height="spacing.8"
                 flexShrink={0}
                 marginRight="spacing.3"
-                justifyContent="center"
-                alignItems="center"
-                display="flex"
+                {...centerBoxProps}
               >
                 {leading}
               </BaseBox>
             ) : null}
             <BaseBox>
-              <BaseBox flexShrink={0} display="flex" flexDirection="row" alignItems="center">
+              <BaseBox flexShrink={0} display="flex" flexDirection="row">
                 {title ? (
                   <Heading size="small" variant="regular" type="normal">
                     {title}
                   </Heading>
                 ) : null}
-                {titleSuffix && <BaseBox marginLeft="spacing.3">{titleSuffix}</BaseBox>}
+                {titleSuffix && (
+                  <BaseBox marginLeft="spacing.3">
+                    <Box {...centerBoxProps}>{titleSuffix}</Box>
+                  </BaseBox>
+                )}
               </BaseBox>
               {subtitle ? (
                 <Text variant="body" size="small" weight="regular" type="muted">
@@ -210,16 +227,20 @@ const _BaseHeader = ({
             </BaseBox>
           </BaseBox>
           {validatedTrailingComponent ? (
-            <BaseBox marginRight="spacing.5">{validatedTrailingComponent}</BaseBox>
+            <BaseBox marginRight="spacing.5">
+              <Box {...centerBoxProps}>{validatedTrailingComponent}</Box>
+            </BaseBox>
           ) : null}
           {showCloseButton ? (
-            <IconButton
-              ref={closeButtonRef}
-              size="large"
-              icon={CloseIcon}
-              accessibilityLabel="Close"
-              onClick={() => onCloseButtonClick?.()}
-            />
+            <Box {...centerBoxProps}>
+              <IconButton
+                ref={closeButtonRef}
+                size="large"
+                icon={CloseIcon}
+                accessibilityLabel="Close"
+                onClick={() => onCloseButtonClick?.()}
+              />
+            </Box>
           ) : null}
         </BaseBox>
       </BaseBox>
