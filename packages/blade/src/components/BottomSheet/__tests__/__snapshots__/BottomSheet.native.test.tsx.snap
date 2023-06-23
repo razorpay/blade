@@ -370,12 +370,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         onLayout={[Function]}
       >
         <View
+          left="spacing.0"
           onLayout={[Function]}
+          position="absolute"
+          right="spacing.0"
           style={
             Array [
-              Object {},
+              Object {
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
             ]
           }
+          top="spacing.0"
         >
           <View
             style={
@@ -398,6 +407,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     "justifyContent": "center",
                     "marginBottom": 4,
                     "paddingTop": 12,
+                    "position": "relative",
                     "touchAction": "none",
                     "width": "100%",
                   },

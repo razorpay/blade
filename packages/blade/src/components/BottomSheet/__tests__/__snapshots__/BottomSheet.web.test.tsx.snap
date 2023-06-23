@@ -337,6 +337,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 }
 
 .c4 {
+  position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
