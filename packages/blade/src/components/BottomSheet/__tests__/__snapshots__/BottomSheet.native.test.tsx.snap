@@ -610,21 +610,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "WebkitBoxOrient": "vertical",
-                                      "WebkitLineClamp": 1,
                                       "color": "hsla(160, 100%, 26%, 1)",
-                                      "display": "-webkit-box",
                                       "fontFamily": "Lato",
                                       "fontSize": 12,
                                       "fontStyle": "normal",
                                       "fontWeight": "400",
-                                      "lineClamp": 1,
                                       "lineHeight": 16,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
                                       "marginRight": 0,
                                       "marginTop": 0,
-                                      "overflow": "hidden",
                                       "paddingBottom": 0,
                                       "paddingLeft": 0,
                                       "paddingRight": 0,
@@ -737,21 +732,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           style={
                             Array [
                               Object {
-                                "WebkitBoxOrient": "vertical",
-                                "WebkitLineClamp": 1,
                                 "color": "hsla(160, 100%, 26%, 1)",
-                                "display": "-webkit-box",
                                 "fontFamily": "Lato",
                                 "fontSize": 12,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "lineClamp": 1,
                                 "lineHeight": 16,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 0,
-                                "overflow": "hidden",
                                 "paddingBottom": 0,
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
