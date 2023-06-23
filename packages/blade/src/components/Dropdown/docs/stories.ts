@@ -539,8 +539,6 @@ const WithControlledSelectStory = `
             <ActionList>
               <ActionListItem title="Mumbai" value="mumbai" />
               <ActionListItem title="Bangalore" value="bangalore" />
-              <ActionListItem title="Pune" value="pune" />
-              <ActionListItem title="Chennai" value="chennai" />
             </ActionList>
           </DropdownOverlay>
         </Dropdown>

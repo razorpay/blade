@@ -1,5 +1,22 @@
 # @razorpay/blade
 
+## 8.11.1
+
+### Patch Changes
+
+- 3f72c0df: fix: dynamic positioning of dropdown overlay
+
+## 8.11.0
+
+### Minor Changes
+
+- acc35a2e: fix: support `min-content`, `none`, `fit-content` in SpacingValueType of Box and styled-props
+
+### Patch Changes
+
+- 9fc66217: feat(blade): added support for React.ReactNode on Title & Heading component
+- b08d09d8: fix(blade): fix modal portal ssr
+
 ## 8.10.3
 
 ### Patch Changes
