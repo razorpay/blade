@@ -52,6 +52,13 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
           onPointerUp,
         };
 
+    let topOffset: 'spacing.5' | 'spacing.0' | undefined = isHeaderFloating
+      ? 'spacing.5'
+      : undefined;
+    if (isReactNative()) {
+      topOffset = 'spacing.0';
+    }
+
     return (
       <BaseBox
         position={isHeaderFloating ? 'absolute' : 'relative'}
@@ -60,7 +67,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
         // total = 28px
         height={makeSize(size[8])}
         touchAction="none"
-        top={isHeaderFloating ? 'spacing.5' : undefined}
+        top={topOffset}
         right="spacing.0"
         {...webOnlyEventHandlers}
       >
@@ -79,6 +86,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
           flexShrink={0}
           backgroundColor={theme.colors.surface.background.level2.lowContrast}
           borderRadius="max"
+          zIndex={100}
         >
           <IconButton
             ref={ref}

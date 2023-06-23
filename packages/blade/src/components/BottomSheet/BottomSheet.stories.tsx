@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -42,6 +43,7 @@ import { OTPInput } from '~components/Input/OTPInput';
 import { Link } from '~components/Link';
 import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { isReactNative } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -671,6 +673,47 @@ const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
 
 export const InitialFocus = InitialFocusTemplate.bind({});
 
+const HeadingBanner = (): React.ReactElement => {
+  if (isReactNative()) {
+    return (
+      <Box position="relative" height="250px" overflow="hidden">
+        <Box
+          position="absolute"
+          top="spacing.0"
+          left="spacing.0"
+          width="100%"
+          height="100%"
+          backgroundColor="surface.background.level1.highContrast"
+        />
+        <Box position="absolute" bottom="spacing.4" left="spacing.5">
+          <Heading color="surface.text.normal.highContrast">
+            All-in-one Escrow management platform
+          </Heading>
+        </Box>
+      </Box>
+    );
+  }
+
+  return (
+    <Box position="relative" height="250px" overflow="hidden">
+      <Box position="absolute" top="-150px" left="spacing.0">
+        <video
+          autoPlay
+          style={{ objectFit: 'cover' }}
+          width="100%"
+          height="100%"
+          src="https://cdn.razorpay.com/static/assets/razorpay.com/x/escrow-accounts/hero-illustration.mp4"
+        />
+      </Box>
+      <Box position="absolute" bottom="spacing.4" left="spacing.5">
+        <Heading color="surface.text.normal.highContrast">
+          All-in-one Escrow management platform
+        </Heading>
+      </Box>
+    </Box>
+  );
+};
+
 const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -686,20 +729,22 @@ const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
         <BottomSheetHeader />
         <BottomSheetBody padding="spacing.0">
           <Box display="flex" flexDirection="column">
-            {/* <img
-              width="100%"
-              height="300px"
-              src="https://razorpay.com/build/browser/static/home-desktop.4a9233fc.jpg"
-              alt="Breathing Room"
-            /> */}
-            <Box padding="spacing.0" display="flex" flexDirection="column">
-              <Text marginTop="spacing.0">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard dummy text ever since the 1500s
+            <HeadingBanner />
+            <Box padding="spacing.5" display="flex" flexDirection="column">
+              <Text>
+                We bring together Escrow account, Banks, Trusteeship services & Automation - all in
+                ONE place to deliver a seamless user experience for you. Work with our experts to
+                ensure your escrow money transfers are always compliant, safe & effortless.
+              </Text>
+              <Text marginTop="spacing.3" type="muted">
+                100% secure | Instant payouts | Unbeatable pricing
               </Text>
             </Box>
           </Box>
         </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button isFullWidth>Talk To Our Escrow Experts</Button>
+        </BottomSheetFooter>
       </BottomSheetComponent>
     </BaseBox>
   );

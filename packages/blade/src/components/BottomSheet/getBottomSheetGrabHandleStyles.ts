@@ -32,6 +32,7 @@ const getBottomSheetGrabHandleStyles = ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 100,
     ...(isReactNative() ? undefined : { ':after': getHandlePartStyles({ theme }) }),
   };
 };
