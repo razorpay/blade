@@ -129,7 +129,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
       class="BaseBox-bmPWx epXLnJ"
     >
       <div
-        class="BaseBox-bmPWx DropdownOverlayweb__StyledDropdownOverlay-sc-9pwxtx-0 eFwWJM lgsyEn"
+        class="BaseBox-bmPWx DropdownOverlayweb__StyledDropdownOverlay-sc-9pwxtx-0 bFxDPb lgsyEn"
         data-blade-component="dropdown-overlay"
         style="opacity: 1;"
       >

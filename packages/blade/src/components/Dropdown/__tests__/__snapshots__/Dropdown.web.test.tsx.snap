@@ -214,7 +214,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c18 {
   position: absolute;
   width: 100%;
-  bottom: 32px;
   left: 0px;
 }
 
@@ -982,7 +981,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   min-width: 240px;
   max-width: 400px;
   right: 0px;
-  bottom: 20px;
 }
 
 .c7 {
