@@ -44,9 +44,12 @@ const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): Reac
   const height = useSharedValue(isExpanded ? undefined : 0);
   const [layoutHeight, setLayoutHeight] = useState(0);
 
-  // Keeps track of running animation to control absolute / relative positioning
+  // Keeps track of running animation to control absolute / relative positioning and handling layout event
   const [isAnimating, setIsAnimating] = useState(false);
-  const onAnimationComplete = useCallback((): void => setIsAnimating(false), []);
+  const onAnimationComplete = useCallback((): void => {
+    // Only mark the animation complete before the next repaint, otherwise, sometimes leads to state update delays when you try to quickly toggle multiple times
+    requestAnimationFrame(() => setIsAnimating(false));
+  }, []);
 
   const duration = castNativeType(getTransitionDuration(theme));
   const easing = castNativeType(getTransitionEasing(theme));
@@ -82,20 +85,28 @@ const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): Reac
    */
   const onLayout: (event: LayoutChangeEvent) => void = useCallback(
     (event) => {
-      if (event.nativeEvent.layout.height > layoutHeight) {
+      if (isAnimating) {
+        if (event.nativeEvent.layout.height > layoutHeight) {
+          /**
+           * During animation, we set `layoutHeight` if the native event's layout height is larger.
+           *
+           * The greater than comparison is needed because sometimes the native event's layout height is smaller than actual content height 🤯
+           * For example, this happens if you try to render a lengthy `Text` that wraps onto multiple lines.
+           * In this case the initial native event's layout height only counts height of `Text` as if it were single line.
+           * So, when the `Text` actually renders on screen and wraps, another `nativeEvent` is triggered which gives us the actual content height.
+           * `nativeEvent` is triggered multiple times during animation but we only set `layoutHeight` if the height value is greater, hence the check.
+           */
+          setLayoutHeight(event.nativeEvent.layout.height);
+        }
+      } else if (event.nativeEvent.layout.height !== layoutHeight) {
         /**
-         * We set `layoutHeight` if the native event's layout height is larger.
-         *
-         * The greater than comparison is needed because sometimes the native event's layout height is smaller than actual content height 🤯
-         * For example, this happens if you try to render a lengthy `Text` that wraps onto multiple lines.
-         * In this case the initial native event's layout height only counts height of `Text` as if it were single line.
-         * So, when the `Text` actually renders on screen and wraps, another `nativeEvent` is triggered which gives us the actual content height.
-         * `nativeEvent` is triggered multiple times during animation but we only set `layoutHeight` if the height value is greater, hence the check.
+         * When not animating, we set `layoutHeight` anytime `nativeEvent` layout height changes.
+         * This handles userland dynamic content inside the slot.
          */
         setLayoutHeight(event.nativeEvent.layout.height);
       }
     },
-    [layoutHeight],
+    [layoutHeight, isAnimating],
   );
 
   return (

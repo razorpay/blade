@@ -6,7 +6,7 @@ import type { IconComponent } from '~components/Icons';
 import type { TestID } from '~src/_helpers/types';
 import { Divider } from '~components/BaseHeaderFooter/Divider';
 import { Text } from '~components/Typography';
-import { MetaConstants, metaAttribute } from '~utils';
+import { MetaConstants, isReactNative, makeAccessible, metaAttribute } from '~utils';
 import { Collapsible } from '~components/Collapsible/Collapsible';
 import { CollapsibleBody } from '~components/Collapsible';
 
@@ -38,6 +38,20 @@ type AccordionItemProps = {
   _index?: number;
 } & TestID;
 
+/**
+ * On React Native if the `AccordionItem` has a lengthy description which renders a `Text` spanning multiple lines,
+ * it sometimes messes up the layout calculation (it thinks of multiline as a single line before flowing in the UI).
+ * And during the expanding / collapsing animation, text reflows causing words to jump around across lines.
+ *
+ * Rendering a blank `Text` at the end seems to fix all this 🤯
+ */
+const reactNativeMultilineTextOverflowFix = (
+  // make this hidden from screen readers
+  <BaseBox {...makeAccessible({ hidden: true })}>
+    <Text> </Text>
+  </BaseBox>
+);
+
 const AccordionItem = ({
   title,
   description,
@@ -59,6 +73,25 @@ const AccordionItem = ({
     }
   };
 
+  const collapsibleBodyContent = isReactNative() ? (
+    <BaseBox marginX="spacing.5">
+      {_description}
+      <BaseBox marginTop={description && children ? 'spacing.5' : 'spacing.0'}>{children}</BaseBox>
+      {reactNativeMultilineTextOverflowFix}
+    </BaseBox>
+  ) : (
+    <BaseBox
+      display="flex"
+      flexDirection="column"
+      gap="spacing.5"
+      marginBottom="spacing.5"
+      marginX="spacing.5"
+    >
+      {_description}
+      {children}
+    </BaseBox>
+  );
+
   return (
     <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}>
       <Collapsible
@@ -71,17 +104,11 @@ const AccordionItem = ({
         <AccordionButton index={_index} icon={icon}>
           {title}
         </AccordionButton>
-        <CollapsibleBody>
-          <BaseBox
-            display="flex"
-            flexDirection="column"
-            gap="spacing.5"
-            marginBottom="spacing.5"
-            marginX="spacing.5"
-          >
-            {_description}
-            {children}
-          </BaseBox>
+        <CollapsibleBody
+          // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
+          _width={isReactNative() ? '100%' : undefined}
+        >
+          {collapsibleBodyContent}
         </CollapsibleBody>
       </Collapsible>
       <Divider />

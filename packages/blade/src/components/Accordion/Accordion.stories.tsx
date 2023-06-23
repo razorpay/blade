@@ -114,6 +114,21 @@ const AccordionWithIconsTemplate: ComponentStory<typeof AccordionComponent> = ({
 
 export const BasicExample = AccordionTemplate.bind({});
 
+export const WithShowNumberPrefix = AccordionTemplate.bind({});
+
+WithShowNumberPrefix.args = {
+  showNumberPrefix: true,
+};
+
+WithShowNumberPrefix.parameters = {
+  docs: {
+    description: {
+      story:
+        'Use the `showNumberPrefix` prop to automatically add numeric indexes. **Note:** this should not be used with `icon` prop in `AccordionItem`',
+    },
+  },
+};
+
 export const WithIcons = AccordionWithIconsTemplate.bind({});
 
 WithIcons.parameters = {
@@ -178,16 +193,20 @@ ControlledExample.args = {
 };
 
 const AccordionWithSlotTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args }) => {
+  const [isVisible, setIsVisible] = useState(true);
   return (
     <AccordionComponent {...args}>
       <AccordionItem
         title="How can I setup Route?"
         description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
       >
-        <Alert
-          title="Custom slot"
-          description="You can render anything here along with description"
-        />
+        {isVisible && (
+          <Alert
+            title="Custom slot"
+            description="You can render anything here along with description"
+            onDismiss={() => setIsVisible(false)}
+          />
+        )}
       </AccordionItem>
       <AccordionItem title="How can I setup QR Codes?">
         <Alert
