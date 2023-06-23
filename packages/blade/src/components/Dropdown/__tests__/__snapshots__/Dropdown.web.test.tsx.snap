@@ -986,8 +986,8 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 }
 
 .c7 {
-  -webkit-animation: hMpNnn 200ms cubic-bezier(0,0,0,1);
-  animation: hMpNnn 200ms cubic-bezier(0,0,0,1);
+  -webkit-animation: none;
+  animation: none;
   -webkit-transform: translateY(8px);
   -ms-transform: translateY(8px);
   transform: translateY(8px);
