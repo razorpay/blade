@@ -13,6 +13,7 @@ import { QRCodeIcon, RoutesIcon, SubscriptionsIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Alert } from '~components/Alert';
+import { isReactNative } from '~utils';
 
 const Page = (): ReactElement => {
   return (
@@ -147,14 +148,29 @@ const AccordionControlledTemplate: ComponentStory<typeof AccordionComponent> = (
   ...rest
 }) => {
   const [expandedIndex, setExpandedIndex] = useState(-1);
+  const gap = isReactNative() ? 'spacing.1' : 'spacing.0';
 
   return (
     <>
-      <Box display="flex" flexDirection="row" gap="spacing.4" marginBottom="spacing.6">
-        <Button onClick={() => setExpandedIndex(0)}>Expand First</Button>
-        <Button onClick={() => setExpandedIndex(1)}>Expand Second</Button>
-        <Button onClick={() => setExpandedIndex(2)}>Expand Third</Button>
-        <Button onClick={() => setExpandedIndex(-1)}>Collapse</Button>
+      <Box
+        display="flex"
+        flexDirection="row"
+        gap="spacing.4"
+        marginBottom="spacing.6"
+        flexWrap="wrap"
+      >
+        <Button marginX={gap} marginY={gap} onClick={() => setExpandedIndex(0)}>
+          Expand First
+        </Button>
+        <Button marginX={gap} marginY={gap} onClick={() => setExpandedIndex(1)}>
+          Expand Second
+        </Button>
+        <Button marginX={gap} marginY={gap} onClick={() => setExpandedIndex(2)}>
+          Expand Third
+        </Button>
+        <Button marginX={gap} marginY={gap} onClick={() => setExpandedIndex(-1)}>
+          Collapse
+        </Button>
       </Box>
       <AccordionComponent
         {...rest}
