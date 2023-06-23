@@ -27,6 +27,7 @@ type TextCommonProps = {
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
+  textDecorationLine?: BaseTextProps['textDecorationLine'];
 } & TestID &
   StyledPropsBlade;
 
@@ -50,16 +51,16 @@ export type TextProps<T> = T extends {
   variant: infer Variant;
 }
   ? Variant extends 'caption'
-    ? TextCaptionVariant
-    : Variant extends 'body'
-    ? TextBodyVariant
-    : T
+  ? TextCaptionVariant
+  : Variant extends 'body'
+  ? TextBodyVariant
+  : T
   : T;
 
 type GetTextPropsReturn = Omit<BaseTextProps, 'children'>;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'color' | 'testID' | 'textAlign'
+  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'color' | 'testID' | 'textAlign' | 'textDecorationLine'
 >;
 const getTextProps = <T extends { variant: TextVariant }>({
   variant,
@@ -70,6 +71,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
   contrast,
   testID,
   textAlign,
+  textDecorationLine,
 }: GetTextProps<T>): GetTextPropsReturn => {
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: GetTextPropsReturn = {
@@ -82,6 +84,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     componentName: 'text',
     testID,
     textAlign,
+    textDecorationLine,
   };
 
   if (variant === 'body') {
@@ -127,6 +130,7 @@ const _Text = <T extends { variant: TextVariant }>({
   color,
   testID,
   textAlign,
+  textDecorationLine,
   ...styledProps
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> = {
@@ -141,6 +145,7 @@ const _Text = <T extends { variant: TextVariant }>({
       contrast,
       testID,
       textAlign,
+      textDecorationLine,
     }),
   };
 
