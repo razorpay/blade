@@ -1,3 +1,5 @@
+import type { CSSObject, StyledProps } from 'styled-components';
+import type { StyledAccordionButtonProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 import { makeMotionTime } from '~utils';
 
@@ -33,4 +35,23 @@ const getBackgroundColor = ({
   return TRANSPARENT;
 };
 
-export { getTransitionDuration, getTransitionEasing, getBackgroundColor };
+const getCommonAccordionButtonStyles = (
+  props: StyledProps<StyledAccordionButtonProps>,
+): CSSObject => {
+  const { theme } = props;
+
+  return {
+    padding: theme.spacing[5],
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  };
+};
+
+export {
+  getTransitionDuration,
+  getTransitionEasing,
+  getBackgroundColor,
+  getCommonAccordionButtonStyles,
+};

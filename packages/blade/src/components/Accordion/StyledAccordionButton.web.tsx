@@ -1,21 +1,23 @@
 import styled from 'styled-components';
 import type { StyledAccordionButtonProps } from './types';
-import { getBackgroundColor, getTransitionDuration, getTransitionEasing } from './commonStyles';
+import {
+  getBackgroundColor,
+  getCommonAccordionButtonStyles,
+  getTransitionDuration,
+  getTransitionEasing,
+} from './commonStyles';
 import { castWebType } from '~utils';
 
 const StyledAccordionButton = styled.div<StyledAccordionButtonProps>((props) => {
   const { theme, isExpanded } = props;
+  const commonStyles = getCommonAccordionButtonStyles(props);
   return {
+    ...commonStyles,
     backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: false }),
-    padding: theme.spacing[5],
-    transitionProperty: 'background-color, box-shadow, border-radius',
+    transitionProperty: 'background-color, box-shadow, border-radius, color',
     transitionDuration: castWebType(getTransitionDuration(theme)),
     transitionTimingFunction: castWebType(getTransitionEasing(theme)),
     cursor: 'pointer',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     color: theme.colors.surface.action.icon.default.lowContrast,
 
     '&:hover, &:focus': {

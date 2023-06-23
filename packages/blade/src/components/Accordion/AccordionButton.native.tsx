@@ -18,6 +18,7 @@ import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
+import type { IconProps } from '~components/Icons';
 
 const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
@@ -67,16 +68,20 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
       </Heading>
     ) : null;
 
-  const _icon = Icon && (
-    <Icon size="medium" color="currentColor" marginRight="spacing.3" marginY="spacing.2" />
-  );
-
-  if (_index && _icon) {
-    throw new Error(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
-  }
-
   const renderChildren: PressableProps['children'] = ({ pressed }) => {
     isPressed.value = pressed;
+
+    const iconColor: IconProps['color'] = pressed
+      ? 'surface.action.icon.focus.lowContrast'
+      : 'surface.action.icon.default.lowContrast';
+
+    const _icon = Icon && (
+      <Icon size="medium" color={iconColor} marginRight="spacing.3" marginY="spacing.2" />
+    );
+
+    if (_index && _icon) {
+      throw new Error(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
+    }
 
     return (
       <BaseBox
@@ -103,7 +108,7 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
           <Heading size="small">{children}</Heading>
         </BaseBox>
         <BaseBox>
-          <CollapsibleChevronIcon color="currentColor" size="large" />
+          <CollapsibleChevronIcon color={iconColor} size="large" />
         </BaseBox>
       </BaseBox>
     );
