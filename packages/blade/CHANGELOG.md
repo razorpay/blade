@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.11.1
+
+### Patch Changes
+
+- 3f72c0df: fix: dynamic positioning of dropdown overlay
+
 ## 8.11.0
 
 ### Minor Changes
