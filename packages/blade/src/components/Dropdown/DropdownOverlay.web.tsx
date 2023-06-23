@@ -65,14 +65,7 @@ type DropdownOverlayProps = {
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const {
-    isOpen,
-    triggererRef,
-    hasLabelOnLeft,
-    dropdownTriggerer,
-    setIsOpen,
-    dropdownOverlayRef,
-  } = useDropdown();
+  const { isOpen, triggererRef, hasLabelOnLeft, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const [display, setDisplay] = React.useState<'none' | 'block'>('none');
@@ -153,9 +146,17 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <BaseBox position="relative" ref={refs.setFloating as any}>
+      {isOpen ? (
+        <BaseBox
+          position="fixed"
+          top="spacing.0"
+          left="spacing.0"
+          height="100%"
+          width="100%"
+          onClick={() => setIsOpen(false)}
+        />
+      ) : null}
       <AnimatedOverlay
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={dropdownOverlayRef as any}
         isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
         width={isMenu ? 'max-content' : width}
         // In SelectInput, Overlay should always take width of Input

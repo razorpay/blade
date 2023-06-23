@@ -66,7 +66,6 @@ type DropdownContextType = {
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
-  dropdownOverlayRef: React.RefObject<HTMLDivElement | null>;
   selectionType?: DropdownProps['selectionType'];
   /** whether footer has an action item.
    * certain a11y behaviour changes happen here
@@ -132,9 +131,6 @@ const DropdownContext = React.createContext<DropdownContextType>({
     current: null,
   },
   triggererRef: {
-    current: null,
-  },
-  dropdownOverlayRef: {
     current: null,
   },
 });

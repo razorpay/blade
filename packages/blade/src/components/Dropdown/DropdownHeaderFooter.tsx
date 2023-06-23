@@ -66,10 +66,10 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
     activeIndex,
     onTriggerKeydown,
     close,
-    dropdownOverlayRef,
   } = useDropdown();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const footerRef = React.useRef<HTMLDivElement>(null);
+  const [isClickedInsideFooter, setIsClickedInsideFooter] = React.useState(false);
 
   React.useEffect(() => {
     setHasFooterAction(true);
@@ -85,6 +85,12 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
         : {
             onMouseDown: () => {
               setShouldIgnoreBlur(true);
+              setIsClickedInsideFooter(true);
+              console.log('onMouseDown');
+            },
+            onMouseUp: () => {
+              setIsClickedInsideFooter(false);
+              console.log('onMouseUp');
             },
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onKeyDown: (e: any) => {
@@ -97,13 +103,8 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
                 onTriggerKeydown?.({ event: e.nativeEvent } as any);
               }
             },
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            onBlur: (e: any) => {
-              const nextItem = e.relatedTarget;
-              if (
-                !dropdownOverlayRef.current?.contains(nextItem) &&
-                !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet
-              ) {
+            onBlur: () => {
+              if (!isClickedInsideFooter && !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
                 close();
               }
             },
