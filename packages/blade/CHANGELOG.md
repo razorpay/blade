@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.11.2
+
+### Patch Changes
+
+- f828bc94: fix: react native display style bug
+
 ## 8.11.1
 
 ### Patch Changes
