@@ -678,7 +678,7 @@ const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
     <BaseBox>
       <Button onClick={() => setIsOpen(true)}>Open</Button>
       <BottomSheetComponent
-        isOpen={true}
+        isOpen={isOpen}
         onDismiss={() => {
           setIsOpen(false);
         }}
@@ -686,14 +686,14 @@ const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
         <BottomSheetHeader />
         <BottomSheetBody padding="spacing.0">
           <Box display="flex" flexDirection="column">
-            <img
+            {/* <img
               width="100%"
               height="300px"
               src="https://razorpay.com/build/browser/static/home-desktop.4a9233fc.jpg"
               alt="Breathing Room"
-            />
-            <Box padding="spacing.7" display="flex" flexDirection="column">
-              <Text marginTop="spacing.5">
+            /> */}
+            <Box padding="spacing.0" display="flex" flexDirection="column">
+              <Text marginTop="spacing.0">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                 Ipsum has been the industry's standard dummy text ever since the 1500s
               </Text>

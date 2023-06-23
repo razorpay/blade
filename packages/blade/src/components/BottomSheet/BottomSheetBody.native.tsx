@@ -4,12 +4,13 @@ import React from 'react';
 import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
+import type { BottomSheetBodyProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { isValidAllowedChildren } from '~utils';
 import { componentIds } from '~components/ActionList/componentIds';
 
-const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+const _BottomSheetBody = ({ children, padding }: BottomSheetBodyProps): React.ReactElement => {
   const { footerHeight, setContentHeight } = useBottomSheetContext();
   const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<
     boolean | undefined
@@ -40,10 +41,10 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
         >
           <BaseBox flexShrink={1} flexGrow={1} overflow="hidden">
             <BaseBox
-              paddingLeft={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
-              paddingRight={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
-              paddingTop={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
-              paddingBottom={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
+              paddingLeft={bottomSheetHasActionList ? 'spacing.3' : padding}
+              paddingRight={bottomSheetHasActionList ? 'spacing.3' : padding}
+              paddingTop={bottomSheetHasActionList ? 'spacing.3' : padding}
+              paddingBottom={bottomSheetHasActionList ? 'spacing.3' : padding}
               overflow="hidden"
             >
               {children}

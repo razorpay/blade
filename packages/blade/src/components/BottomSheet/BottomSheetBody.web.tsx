@@ -2,8 +2,8 @@
 import React from 'react';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
+import type { BottomSheetBodyProps } from './types';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { isValidAllowedChildren, metaAttribute } from '~utils';
@@ -18,18 +18,6 @@ const bodyStyles: React.CSSProperties = {
   userSelect: 'auto',
   overflow: 'auto',
   touchAction: 'none',
-};
-
-type BottomSheetBodyProps = {
-  children: React.ReactNode;
-  /**
-   * Sets the padding equally on all sides. Only few `spacing` tokens are allowed deliberately
-   * @default `spacing.5`
-   *
-   * **Links:**
-   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
-   */
-  padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.5'>;
 };
 
 const _BottomSheetBody = ({

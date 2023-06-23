@@ -21,7 +21,11 @@ const _BottomSheetHeader = ({
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
 
   return (
-    <BaseBox backgroundColor="white" overflow="visible" flexShrink={0}>
+    <BaseBox
+      backgroundColor={isHeaderEmpty ? undefined : 'white'}
+      overflow="visible"
+      flexShrink={0}
+    >
       {isHeaderEmpty ? (
         <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />
       ) : (

@@ -168,6 +168,10 @@ const _BottomSheet = ({
   const renderHandle = React.useCallback((): React.ReactElement => {
     return (
       <BaseBox
+        position="absolute"
+        top="spacing.0"
+        left="spacing.0"
+        right="spacing.0"
         onLayout={({ nativeEvent }) => {
           setHeaderHeight(nativeEvent.layout.height);
         }}
