@@ -7,8 +7,12 @@
   "dependencies": {
     "@create-figma-plugin/ui": "2.5.0",
     "@create-figma-plugin/utilities": "2.5.0",
+    "@floating-ui/react": "^0.24.3",
+    "@razorpay/blade": "^8.10.1",
+    "preact": "10.15.1",
     "react": "18.2.0",
-    "preact": "10.15.1"
+    "react-dom": "18.2.0",
+    "styled-components": "^6.0.0-rc.3"
   },
   "devDependencies": {
     "@create-figma-plugin/build": "2.5.0",
