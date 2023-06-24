@@ -185,7 +185,7 @@ const _SelectInput = (
             value={value}
             // Adding onChange to surpass no onChange on controlled component warning
             // eslint-disable-next-line @typescript-eslint/no-empty-function
-            onChange={() => {}}
+            onChange={() => { }}
             // Accessibility is covered in the select input itself so we hide this field from a11y tree
             aria-hidden={true}
           />
@@ -219,11 +219,13 @@ const _SelectInput = (
         interactionElement={
           <SelectChevronIcon
             onClick={() => {
-              // Icon onClicks to the SelectInput itself
-              if (!isReactNative()) {
-                triggererRef.current?.focus();
+              if (!props.isDisabled) {
+                // Icon onClicks to the SelectInput itself
+                if (!isReactNative()) {
+                  triggererRef.current?.focus();
+                }
+                onTriggerClick();
               }
-              onTriggerClick();
             }}
             icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />
