@@ -102,15 +102,21 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         }
       />
       <View
+        contrast="low"
+        orientation="horizontal"
         style={
           Array [
             Object {
               "borderBottomStyle": "solid",
               "borderBottomWidth": 1,
               "borderColor": "hsla(216, 15%, 54%, 0.18)",
+              "width": "100%",
             },
           ]
         }
+        thickness="thin"
+        type="solid"
+        variant="normal"
       />
       <View
         alignItems="stretch"
@@ -945,15 +951,21 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </View>
       </View>
       <View
+        contrast="low"
+        orientation="horizontal"
         style={
           Array [
             Object {
               "borderBottomStyle": "solid",
               "borderBottomWidth": 1,
               "borderColor": "hsla(216, 15%, 54%, 0.18)",
+              "width": "100%",
             },
           ]
         }
+        thickness="thin"
+        type="solid"
+        variant="normal"
       />
     </View>
     <View

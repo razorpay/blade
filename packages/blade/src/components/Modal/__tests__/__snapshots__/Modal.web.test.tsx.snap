@@ -296,6 +296,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
+  width: 100%;
 }
 
 .c1 {
@@ -535,6 +536,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       </div>
       <div
         class="c20"
+        orientation="horizontal"
+        type="solid"
       />
     </div>
     <div
@@ -554,6 +557,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     >
       <div
         class="c20"
+        orientation="horizontal"
+        type="solid"
       />
       <div
         class="c23"

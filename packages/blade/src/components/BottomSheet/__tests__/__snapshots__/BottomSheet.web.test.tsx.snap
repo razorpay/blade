@@ -324,6 +324,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
+  width: 100%;
 }
 
 .c1 {
@@ -621,6 +622,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           </div>
           <div
             class="c22"
+            orientation="horizontal"
+            type="solid"
           />
         </div>
       </div>
@@ -647,6 +650,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       >
         <div
           class="c22"
+          orientation="horizontal"
+          type="solid"
         />
         <div
           class="c27"

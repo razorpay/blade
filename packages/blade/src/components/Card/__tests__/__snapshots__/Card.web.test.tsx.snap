@@ -298,6 +298,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
+  width: 100%;
 }
 
 <div>
@@ -326,6 +327,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       />
       <div
         class="c5"
+        orientation="horizontal"
+        type="solid"
       />
       <div
         class="c6"
@@ -634,6 +637,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
+  width: 100%;
 }
 
 <div>
@@ -742,6 +746,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
       </div>
       <div
         class="c18"
+        orientation="horizontal"
+        type="solid"
       />
     </div>
     <div

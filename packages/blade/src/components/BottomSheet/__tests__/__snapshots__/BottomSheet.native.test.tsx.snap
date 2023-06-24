@@ -204,15 +204,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 zIndex={2}
               >
                 <View
+                  contrast="low"
+                  orientation="horizontal"
                   style={
                     Array [
                       Object {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
                         "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                        "width": "100%",
                       },
                     ]
                   }
+                  thickness="thin"
+                  type="solid"
+                  variant="normal"
                 />
                 <View
                   style={
@@ -835,15 +841,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 </View>
               </View>
               <View
+                contrast="low"
+                orientation="horizontal"
                 style={
                   Array [
                     Object {
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
                       "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                      "width": "100%",
                     },
                   ]
                 }
+                thickness="thin"
+                type="solid"
+                variant="normal"
               />
             </View>
           </View>
