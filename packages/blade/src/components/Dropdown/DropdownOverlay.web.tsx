@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
-import { useFloating } from '@floating-ui/react';
+import { autoUpdate, useFloating } from '@floating-ui/react';
 import type { DropdownPosition } from './dropdownUtils';
 import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType } from '~utils';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { spacing, size } from '~tokens/global';
 import type { SpacingValueType } from '~components/Box/BaseBox';
+import { makeMotionTime, makeSize } from '~utils';
 import type { TestID } from '~utils/types';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeSize } from '~utils/makeSize';
-import { makeMotionTime } from '~utils/makeMotionTime';
 
 const dropdownFadeIn = keyframes`
 from {
@@ -45,6 +43,7 @@ to {
 const StyledDropdownOverlay = styled(BaseBox)<{
   transition: FlattenSimpleInterpolation;
   onAnimationEnd: () => void;
+  isOpen: boolean;
 }>(
   (props) =>
     css`
@@ -52,11 +51,12 @@ const StyledDropdownOverlay = styled(BaseBox)<{
       transform: translateY(${makeSize(props.theme.spacing[3])});
       opacity: 0;
       z-index: 99;
+      pointer-events: ${props.isOpen ? 'all' : 'none'};
     `,
 );
 
 type DropdownOverlayProps = {
-  children: React.ReactNode;
+  children: React.ReactElement;
 } & TestID;
 
 /**
@@ -65,11 +65,18 @@ type DropdownOverlayProps = {
  * Wrap your ActionList within this component
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
-  const { isOpen, triggererRef, hasLabelOnLeft, dropdownTriggerer, setIsOpen } = useDropdown();
+  const {
+    isOpen,
+    triggererRef,
+    hasLabelOnLeft,
+    dropdownTriggerer,
+    setIsOpen,
+    actionListItemRef,
+  } = useDropdown();
   const { theme } = useTheme();
-  const [display, setDisplay] = React.useState<'none' | 'block'>('none');
+  const [showFadeOutAnimation, setShowFadeOutAnimation] = React.useState(false);
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
-  const [dropdownPosition, setDropdownPosition] = useState<DropdownPosition>({});
+  const [dropdownPosition, setDropdownPosition] = React.useState<DropdownPosition>({});
 
   const isMenu = dropdownTriggerer !== 'SelectInput';
 
@@ -81,7 +88,15 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     elements: {
       reference: triggererRef.current,
     },
-    middleware: [getDropdownOverflowMiddleware({ isMenu, triggererRef, setDropdownPosition })],
+    middleware: [
+      getDropdownOverflowMiddleware({
+        isMenu,
+        triggererRef,
+        actionListItemRef,
+        setDropdownPosition,
+      }),
+    ],
+    whileElementsMounted: autoUpdate,
   });
 
   const fadeIn = css`
@@ -94,11 +109,14 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
       ${String(theme.motion.easing.entrance.revealing)};
   `;
 
+  const noAnimation = css`
+    animation: none;
+  `;
+
   React.useEffect(() => {
     if (isOpen) {
       // On Safari clicking on a non input element doesn't focuses it https://bugs.webkit.org/show_bug.cgi?id=22261
       triggererRef.current?.focus();
-      setDisplay('block');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
@@ -135,11 +153,12 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
 
   const onAnimationEnd = React.useCallback(() => {
     if (isOpen) {
-      setDisplay('block');
+      setShowFadeOutAnimation(true);
     } else {
-      setDisplay('none');
+      setShowFadeOutAnimation(false);
     }
   }, [isOpen]);
+
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
@@ -155,9 +174,9 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         right={dropdownPosition.right}
         bottom={dropdownPosition.bottom}
         style={styles}
-        display={castWebType(display)}
+        isOpen={isOpen}
         position="absolute"
-        transition={isOpen ? fadeIn : fadeOut}
+        transition={isOpen ? fadeIn : showFadeOutAnimation ? fadeOut : noAnimation}
         onAnimationEnd={onAnimationEnd}
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >

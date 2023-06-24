@@ -123,7 +123,7 @@ const DropdownDocs = (): JSX.Element => {
         </Title>
         <Text marginY="spacing.3">
           Check out more Menu examples at{' '}
-          <Link href="/?path=/docs/components-dropdown-with-button--default">
+          <Link href="/?path=/docs/components-dropdown-with-button-and-link--default">
             Dropdown with Button Stories
           </Link>
         </Text>

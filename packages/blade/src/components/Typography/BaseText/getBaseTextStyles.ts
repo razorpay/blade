@@ -25,14 +25,15 @@ const getBaseTextStyles = ({
   if (numberOfLines !== undefined) {
     if (isReactNative()) {
       truncateStyles = {};
+    } else {
+      truncateStyles = {
+        overflow: 'hidden',
+        display: '-webkit-box',
+        'line-clamp': `${numberOfLines}`,
+        '-webkit-line-clamp': `${numberOfLines}`,
+        '-webkit-box-orient': 'vertical',
+      };
     }
-    truncateStyles = {
-      overflow: 'hidden',
-      display: '-webkit-box',
-      'line-clamp': `${numberOfLines}`,
-      '-webkit-line-clamp': `${numberOfLines}`,
-      '-webkit-box-orient': 'vertical',
-    };
   }
 
   return {
