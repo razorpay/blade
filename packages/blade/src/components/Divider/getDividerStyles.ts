@@ -1,13 +1,37 @@
 import type { CSSObject } from 'styled-components';
-import type { Theme } from '~components/BladeProvider';
+import type { Theme } from '..';
+import type { DividerProps } from './types';
 import { makeSize } from '~utils';
+import type { ColorContrast } from '~tokens/theme/theme';
 
-const getDividerStyles = (theme: Theme): CSSObject => {
+const makeStyledDividerProps = ({
+  orientation = 'horizontal',
+  type = 'solid',
+  variant = 'normal',
+  thickness = 'thin',
+  contrast = 'low',
+}: DividerProps): Required<DividerProps> => ({ orientation, type, variant, thickness, contrast });
+
+const getDividerStyles = ({
+  orientation,
+  type,
+  variant,
+  thickness,
+  contrast,
+  theme,
+}: Required<DividerProps> & { theme: Theme }): CSSObject => {
+  const borderPosition = orientation === 'horizontal' ? 'borderBottom' : 'borderLeft';
+  const borderWidth =
+    thickness === 'thinner' ? makeSize(0.5) : makeSize(theme.border.width[thickness]);
+  const colorContrast: keyof ColorContrast = `${contrast}Contrast`;
+  const dimension = orientation === 'vertical' ? { height: '100%' } : { width: '100%' };
+
   return {
-    borderBottomWidth: makeSize(theme.border.width.thin),
-    borderBottomStyle: 'solid',
-    borderColor: theme.colors.surface.border.normal.lowContrast,
+    [`${borderPosition}Width`]: borderWidth,
+    [`${borderPosition}Style`]: type,
+    borderColor: theme.colors.surface.border[variant][colorContrast],
+    ...dimension,
   };
 };
 
-export { getDividerStyles };
+export { getDividerStyles, makeStyledDividerProps };

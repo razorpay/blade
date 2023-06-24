@@ -69,6 +69,7 @@ const getStories = () => {
     require('../../src/tokens/theme/overrideTheme.stories.tsx'),
     require('../../src/components/Box/BaseBox/BaseBox.stories.internal.tsx'),
     require('../../src/components/Button/BaseButton/BaseButton.stories.internal.tsx'),
+    require('../../src/components/Divider/Divider.stories.tsx'),
   ];
 };
 
