@@ -2,7 +2,6 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
-
 import type { CollapsibleProps } from './Collapsible';
 import { Collapsible as CollapsibleComponent } from './Collapsible';
 import { CollapsibleButton } from './CollapsibleButton';
@@ -182,13 +181,26 @@ WithCollapsibleLink.parameters = {
   },
 };
 
+export const WithDirection = CollapsibleLinkTemplate.bind({});
+
+WithDirection.args = {
+  direction: 'top',
+};
+WithDirection.parameters = {
+  docs: {
+    description: {
+      story: 'Use `direction` prop to control in which direction the `Collapsible` expands in',
+    },
+  },
+};
+
 const CollapsibleControlledTemplate: ComponentStory<typeof CollapsibleComponent> = ({
   isExpanded: _isExpanded,
   onExpandChange,
   defaultIsExpanded,
   ...rest
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   return (
     <CollapsibleComponent
       {...rest}
