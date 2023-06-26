@@ -1,5 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
+import { waitFor } from '@testing-library/react';
 import { Collapsible } from '../Collapsible';
 import { CollapsibleBody } from '../CollapsibleBody';
 import { CollapsibleButton } from '../CollapsibleButton';
@@ -10,7 +11,6 @@ import { Amount } from '~components/Amount';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
-import { waitFor } from '@testing-library/react';
 
 describe('<Collapsible />', () => {
   it('should render with CollapsibleButton', () => {
