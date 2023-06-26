@@ -23,9 +23,11 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
+    require('../../src/components/Accordion/Accordion.stories.tsx'),
     require('../../src/components/Alert/Alert.stories.tsx'),
     require('../../src/components/Amount/Amount.stories.tsx'),
     require('../../src/components/Badge/Badge.stories.tsx'),
+    require('../../src/components/BaseHeaderFooter/BaseHeaderFooter.stories.tsx'),
     require('../../src/components/BottomSheet/BottomSheet.stories.tsx'),
     require('../../src/components/Box/Box.stories.tsx'),
     require('../../src/components/Box/styledProps/StyledProps.stories.tsx'),
@@ -34,6 +36,7 @@ const getStories = () => {
     require('../../src/components/Card/Card.stories.tsx'),
     require('../../src/components/Checkbox/Checkbox.stories.tsx'),
     require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
+    require('../../src/components/Collapsible/Collapsible.stories.tsx'),
     require('../../src/components/Counter/Counter.stories.tsx'),
     require('../../src/components/Dropdown/docs/DropdownWithButton.stories.tsx'),
     require('../../src/components/Dropdown/docs/DropdownWithSelect.stories.tsx'),

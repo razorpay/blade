@@ -7,6 +7,7 @@ import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Checkbox } from '~components/Checkbox';
+import { isReactNative } from '~utils';
 
 const HeaderContainer = ({ children }: { children: BoxProps['children'] }): JSX.Element => {
   return <Box padding={{ base: 'spacing.0', m: 'spacing.2' }}>{children}</Box>;
@@ -60,12 +61,14 @@ export const BaseHeaderKitchenSink = (): JSX.Element => {
       <HeaderContainer>
         <BaseHeader
           leading={
-            <img
-              src="https://flagcdn.com/w20/in.png"
-              srcSet="https://flagcdn.com/w40/in.png 2x"
-              width="20"
-              alt="India"
-            />
+            isReactNative() ? undefined : (
+              <img
+                src="https://flagcdn.com/w20/in.png"
+                srcSet="https://flagcdn.com/w40/in.png 2x"
+                width="20"
+                alt="India"
+              />
+            )
           }
           title="When The Title is So Large That It Goes On Next Line"
           subtitle="When The Subtitle of this BaseHeader is So Largeeeee That It Goes On Next Line"
