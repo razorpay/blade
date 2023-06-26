@@ -1,0 +1,829 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    alignItems="flex-start"
+    data-blade-component="collapsible"
+    display="flex"
+    flexDirection="column"
+    maxWidth={
+      Object {
+        "l": "1136px",
+        "m": "640px",
+        "s": "710px",
+      }
+    }
+    minWidth="200px"
+    style={
+      Array [
+        Object {
+          "alignItems": "flex-start",
+          "display": "flex",
+          "flexDirection": "column",
+          "maxWidth": 710,
+          "minWidth": 200,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityControls="collapsible-body-1"
+      accessibilityRole="button"
+      accessibilityState={
+        Object {
+          "disabled": false,
+          "expanded": false,
+        }
+      }
+      accessible={true}
+      activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+      activeBorderColor="hsla(230, 100%, 42%, 1)"
+      alignSelf="flex-start"
+      borderRadius="2px"
+      borderWidth="1px"
+      buttonPaddingBottom="0px"
+      buttonPaddingLeft="20px"
+      buttonPaddingRight="20px"
+      buttonPaddingTop="0px"
+      collapsable={false}
+      data-blade-component="button"
+      defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+      defaultBorderColor="hsla(218, 89%, 51%, 1)"
+      focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+      focusBorderColor="hsla(227, 100%, 45%, 1)"
+      focusRingColor="hsla(218, 89%, 51%, 0.18)"
+      focusable={true}
+      hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+      hoverBorderColor="hsla(223, 95%, 48%, 1)"
+      isFullWidth={false}
+      isLoading={false}
+      minHeight="36px"
+      motionDuration="duration.xquick"
+      motionEasing="easing.standard.effective"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+            "borderColor": "hsla(218, 89%, 51%, 1)",
+            "borderRadius": 2,
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "cursor": "pointer",
+            "display": "flex",
+            "justifyContent": "center",
+            "minHeight": 36,
+            "paddingBottom": 0,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 0,
+            "textDecorationColor": "black",
+            "textDecorationLine": "none",
+            "textDecorationStyle": "solid",
+            "width": "auto",
+          },
+          Object {
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+            "borderColor": "hsla(218, 89%, 51%, 1)",
+          },
+        ]
+      }
+      type="button"
+    >
+      <View
+        alignItems="center"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "opacity": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          color="action.text.primary.default"
+          fontSize={100}
+          fontWeight="bold"
+          lineHeight={100}
+          style={
+            Array [
+              Object {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "700",
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          View Price Breakdown
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityElementsHidden={true}
+      accessibilityRole="summary"
+      data-blade-component="collapsible-body"
+      id="collapsible-body-1"
+      importantForAccessibility="no-hide-descendants"
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <View
+        isExpanded={false}
+        style={
+          Array [
+            Object {
+              "overflow": "hidden",
+            },
+            Object {
+              "height": 0,
+              "opacity": 0.8,
+            },
+          ]
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <View
+            data-blade-component="box"
+            style={
+              Array [
+                Object {
+                  "marginBottom": 0,
+                  "marginTop": 16,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="box"
+              display="flex"
+              flexDirection="column"
+              minWidth="200px"
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "minWidth": 200,
+                  },
+                ]
+              }
+            >
+              <Text
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  Array [
+                    Object {
+                      "color": "hsla(217, 56%, 17%, 1)",
+                      "fontFamily": "Lato",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                Actual amount
+              </Text>
+              <View
+                alignItems="baseline"
+                data-blade-component="amount"
+                display="flex"
+                flexDirection="row"
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "baseline",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  color="feedback.text.positive.lowContrast"
+                  fontSize={75}
+                  fontWeight="bold"
+                  marginRight="spacing.1"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(160, 100%, 26%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 12,
+                        "fontStyle": "normal",
+                        "fontWeight": "700",
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 2,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  ₹
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(217, 56%, 17%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 16,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="feedback.text.positive.lowContrast"
+                    fontSize={100}
+                    fontWeight="regular"
+                    lineHeight={100}
+                    style={
+                      Array [
+                        Object {
+                          "color": "hsla(160, 100%, 26%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    1,000
+                    .
+                  </Text>
+                  <Text
+                    color="feedback.text.positive.lowContrast"
+                    fontSize={75}
+                    fontWeight="regular"
+                    marginLeft="spacing.1"
+                    style={
+                      Array [
+                        Object {
+                          "color": "hsla(160, 100%, 26%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 12,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 2,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    00
+                  </Text>
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    alignItems="flex-start"
+    data-blade-component="collapsible"
+    display="flex"
+    flexDirection="column"
+    maxWidth={
+      Object {
+        "l": "1136px",
+        "m": "640px",
+        "s": "710px",
+      }
+    }
+    minWidth="200px"
+    style={
+      Array [
+        Object {
+          "alignItems": "flex-start",
+          "display": "flex",
+          "flexDirection": "column",
+          "maxWidth": 710,
+          "minWidth": 200,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "backgroundColor": "transparent",
+            "borderColor": "black",
+            "borderStyle": "solid",
+            "borderWidth": 0,
+            "outline": "none",
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationColor": "black",
+            "textDecorationLine": "none",
+            "textDecorationStyle": "solid",
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        className="content-container"
+        display="flex"
+        flexDirection="row"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <Text
+          color="action.text.link.default"
+          fontSize={100}
+          fontWeight="bold"
+          lineHeight={100}
+          style={
+            Array [
+              Object {
+                "color": "hsla(218, 89%, 51%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "700",
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+          textDecorationLine="none"
+        >
+          View Price Breakdown
+        </Text>
+        <View
+          alignItems="center"
+          display="flex"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "paddingLeft": 4,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityElementsHidden={true}
+            importantForAccessibility="no-hide-descendants"
+            style={
+              Object {
+                "transform": Array [
+                  Object {
+                    "rotateZ": "0deg",
+                  },
+                ],
+              }
+            }
+          >
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="16px"
+              bbWidth="16px"
+              fill="none"
+              focusable={false}
+              height="16px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Array [
+                    Object {},
+                  ],
+                  Object {
+                    "flex": 0,
+                    "height": 16,
+                    "width": 16,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width="16px"
+            >
+              <RNSVGGroup
+                fill={null}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              >
+                <RNSVGPath
+                  clipRule={0}
+                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                  fill={4279461105}
+                  fillRule={0}
+                  propList={
+                    Array [
+                      "fill",
+                      "fillRule",
+                    ]
+                  }
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      accessibilityElementsHidden={true}
+      accessibilityRole="summary"
+      data-blade-component="collapsible-body"
+      id="collapsible-body-3"
+      importantForAccessibility="no-hide-descendants"
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <View
+        isExpanded={false}
+        style={
+          Array [
+            Object {
+              "overflow": "hidden",
+            },
+            Object {
+              "height": 0,
+              "opacity": 0.8,
+            },
+          ]
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <View
+            data-blade-component="box"
+            style={
+              Array [
+                Object {
+                  "marginBottom": 0,
+                  "marginTop": 16,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="box"
+              display="flex"
+              flexDirection="column"
+              minWidth="200px"
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "minWidth": 200,
+                  },
+                ]
+              }
+            >
+              <Text
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  Array [
+                    Object {
+                      "color": "hsla(217, 56%, 17%, 1)",
+                      "fontFamily": "Lato",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                Actual amount
+              </Text>
+              <View
+                alignItems="baseline"
+                data-blade-component="amount"
+                display="flex"
+                flexDirection="row"
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "baseline",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  color="feedback.text.positive.lowContrast"
+                  fontSize={75}
+                  fontWeight="bold"
+                  marginRight="spacing.1"
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(160, 100%, 26%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 12,
+                        "fontStyle": "normal",
+                        "fontWeight": "700",
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 2,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  ₹
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "hsla(217, 56%, 17%, 1)",
+                        "fontFamily": "Lato",
+                        "fontSize": 16,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="feedback.text.positive.lowContrast"
+                    fontSize={100}
+                    fontWeight="regular"
+                    lineHeight={100}
+                    style={
+                      Array [
+                        Object {
+                          "color": "hsla(160, 100%, 26%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    1,000
+                    .
+                  </Text>
+                  <Text
+                    color="feedback.text.positive.lowContrast"
+                    fontSize={75}
+                    fontWeight="regular"
+                    marginLeft="spacing.1"
+                    style={
+                      Array [
+                        Object {
+                          "color": "hsla(160, 100%, 26%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 12,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 2,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    00
+                  </Text>
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div display=\\"flex\\" data-blade-component=\\"collapsible\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 futVTV\\"><button type=\\"button\\" data-blade-component=\\"button\\" aria-controls=\\"collapsible-body-undefined\\" aria-expanded=\\"true\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA\\"><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD\\">View Price Breakdown</div></div></button><div id=\\"collapsible-body-undefined\\" role=\\"region\\" aria-hidden=\\"false\\" data-blade-component=\\"collapsible-body\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"><div class=\\"CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 gxKLCW\\"><div data-blade-component=\\"box\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 legZEk\\"><div data-blade-component=\\"box\\" display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 bPXjpd\\"><div data-blade-component=\\"box\\" display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 cbShUL\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Actual amount</p><div display=\\"inline-flex\\" data-blade-component=\\"amount\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hQXHnM\\"><span color=\\"feedback.text.positive.lowContrast\\" font-size=\\"75\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 ivkgBP\\">₹</span><span color=\\"feedback.text.positive.lowContrast\\" font-size=\\"100\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gPiczc\\">1,000<!-- -->.</span><span color=\\"feedback.text.positive.lowContrast\\" font-size=\\"75\\" font-weight=\\"regular\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 gcHMZb\\">00</span></div></div><div data-blade-component=\\"box\\" display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 cbShUL\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 fXaOGG Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">Razorpay Platform Fees</p><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">2%</p></div><div data-blade-component=\\"box\\" display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 cbShUL\\"><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 fXaOGG Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">GST</p><p color=\\"surface.text.normal.lowContrast\\" font-family=\\"text\\" font-size=\\"100\\" font-weight=\\"regular\\" font-style=\\"normal\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0\\" data-blade-component=\\"text\\">18%</p></div></div></div></div></div></div></div>"`;
+
+exports[`<Collapsible /> should render Collapsible on server 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <div
+    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 futVTV"
+    data-blade-component="collapsible"
+    display="flex"
+  >
+    <button
+      aria-controls="collapsible-body-1"
+      aria-expanded="true"
+      class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA"
+        display="flex"
+      >
+        <div
+          class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD"
+          color="action.text.primary.default"
+          font-size="100"
+          font-weight="bold"
+        >
+          View Price Breakdown
+        </div>
+      </div>
+    </button>
+    <div
+      aria-hidden="false"
+      class="BaseBoxweb__BaseBox-sc-1icfu8j-0"
+      data-blade-component="collapsible-body"
+      id="collapsible-body-1"
+      role="region"
+    >
+      <div
+        class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 gxKLCW"
+      >
+        <div
+          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 legZEk"
+          data-blade-component="box"
+        >
+          <div
+            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 bPXjpd"
+            data-blade-component="box"
+            display="flex"
+          >
+            <div
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 cbShUL"
+              data-blade-component="box"
+              display="flex"
+            >
+              <p
+                class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                Actual amount
+              </p>
+              <div
+                class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hQXHnM"
+                data-blade-component="amount"
+                display="inline-flex"
+              >
+                <span
+                  class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 ivkgBP"
+                  color="feedback.text.positive.lowContrast"
+                  font-size="75"
+                  font-weight="bold"
+                >
+                  ₹
+                </span>
+                <span
+                  class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 gPiczc"
+                  color="feedback.text.positive.lowContrast"
+                  font-size="100"
+                  font-weight="regular"
+                >
+                  1,000
+                  <!-- -->
+                  .
+                </span>
+                <span
+                  class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 gcHMZb"
+                  color="feedback.text.positive.lowContrast"
+                  font-size="75"
+                  font-weight="regular"
+                >
+                  00
+                </span>
+              </div>
+            </div>
+            <div
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 cbShUL"
+              data-blade-component="box"
+              display="flex"
+            >
+              <p
+                class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 fXaOGG Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                Razorpay Platform Fees
+              </p>
+              <p
+                class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                2%
+              </p>
+            </div>
+            <div
+              class="BaseBoxweb__BaseBox-sc-1icfu8j-0 cbShUL"
+              data-blade-component="box"
+              display="flex"
+            >
+              <p
+                class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 fXaOGG Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                GST
+              </p>
+              <p
+                class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 dxOnav Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                data-blade-component="text"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                18%
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
