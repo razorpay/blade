@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 8.11.2
+
+### Patch Changes
+
+- f828bc94: fix: react native display style bug
+
+## 8.11.1
+
+### Patch Changes
+
+- 3f72c0df: fix: dynamic positioning of dropdown overlay
+
 ## 8.11.0
 
 ### Minor Changes

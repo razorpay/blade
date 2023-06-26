@@ -122,14 +122,14 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   justify-content: flex-end;
 }
 
-.c21 {
+.c22 {
   overflow: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c22 {
+.c23 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -137,7 +137,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   touch-action: none;
 }
 
-.c23 {
+.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -145,17 +145,13 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-.c24 {
+.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -166,15 +162,15 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
   padding-right: 16px;
   margin-right: auto;
 }
 
-.c25 {
+.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -185,13 +181,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
-.c30 {
+.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -210,7 +202,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   max-height: 20px;
 }
 
-.c31 {
+.c32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -225,20 +217,20 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   justify-content: center;
 }
 
-.c32 {
+.c33 {
   padding-right: 8px;
   padding-left: 0px;
 }
 
-.c34 {
+.c35 {
   margin-left: auto;
 }
 
-.c35 {
+.c36 {
   padding: 16px;
 }
 
-.c37 {
+.c38 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -259,15 +251,21 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   justify-content: center;
 }
 
-.c18 {
-  display: block;
+.c19 {
   position: absolute;
   width: 100%;
-  bottom: 32px;
   left: 0px;
 }
 
-.c19 {
+.c18 {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+.c20 {
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
   border-color: hsla(216,15%,54%,0.18);
@@ -276,7 +274,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
-.c20 {
+.c21 {
   -webkit-animation: hEZwlf 200ms cubic-bezier(0,0,0,1);
   animation: hEZwlf 200ms cubic-bezier(0,0,0,1);
   -webkit-transform: translateY(8px);
@@ -284,9 +282,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transform: translateY(8px);
   opacity: 0;
   z-index: 99;
+  pointer-events: all;
 }
 
-.c36 {
+.c37 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -322,24 +321,24 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   position: relative;
 }
 
-.c36:hover {
+.c37:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c36:active {
+.c37:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c36:focus {
+.c37:focus {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c36 * {
+.c37 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -374,7 +373,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c26 {
+.c27 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -387,7 +386,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c33 {
+.c34 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -405,7 +404,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-box-orient: vertical;
 }
 
-.c39 {
+.c40 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -419,11 +418,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c38 {
+.c39 {
   opacity: 1;
 }
 
-.c27 {
+.c28 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
@@ -580,17 +579,17 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   word-wrap: normal;
 }
 
-.c28 {
+.c29 {
   overflow-y: auto;
   max-height: 300px;
   padding: 8px;
 }
 
-.c28 [role=group]:last-child > [role=separator]:last-child {
+.c29 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-.c29 {
+.c30 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -605,11 +604,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   display: block;
 }
 
-.c29:hover:not([aria-disabled=true]) {
+.c30:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c29[aria-selected=true] {
+.c30[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
@@ -736,34 +735,37 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       class="c1"
     >
       <div
-        class="c18 c19 c20"
+        class="c18"
+      />
+      <div
+        class="c19 c20 c21"
         data-blade-component="dropdown-overlay"
         style="opacity: 1;"
       >
         <div
-          class="c21"
+          class="c22"
         >
           <div
             class=""
             data-blade-component="dropdown-header"
           >
             <div
-              class="c22"
+              class="c23"
             >
               <div
-                class="c23"
+                class="c24"
               >
                 <div
-                  class="c24"
+                  class="c25"
                 >
                   <div
                     class=""
                   >
                     <div
-                      class="c25"
+                      class="c26"
                     >
                       <h6
-                        class="c26"
+                        class="c27"
                         data-blade-component="heading"
                       >
                         Recent Searches
@@ -774,7 +776,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               </div>
             </div>
             <div
-              class="c27"
+              class="c28"
             />
           </div>
         </div>
@@ -787,12 +789,12 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
         >
           <div
             aria-multiselectable="false"
-            class=" c28"
+            class=" c29"
             role="listbox"
           >
             <button
               aria-selected="false"
-              class=" c29"
+              class=" c30"
               data-blade-component="action-list-item"
               data-index="0"
               data-value="apple"
@@ -802,23 +804,23 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               type="button"
             >
               <div
-                class="c30"
+                class="c31"
               >
                 <div
-                  class="c31"
+                  class="c32"
                 />
                 <div
-                  class="c32"
+                  class="c33"
                 >
                   <p
-                    class="c33"
+                    class="c34"
                     data-blade-component="text"
                   >
                     Apple
                   </p>
                 </div>
                 <div
-                  class="c34"
+                  class="c35"
                 />
               </div>
               <div
@@ -827,7 +829,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             </button>
             <button
               aria-selected="false"
-              class=" c29"
+              class=" c30"
               data-blade-component="action-list-item"
               data-index="1"
               data-value="mango"
@@ -837,23 +839,23 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               type="button"
             >
               <div
-                class="c30"
+                class="c31"
               >
                 <div
-                  class="c31"
+                  class="c32"
                 />
                 <div
-                  class="c32"
+                  class="c33"
                 >
                   <p
-                    class="c33"
+                    class="c34"
                     data-blade-component="text"
                   >
                     Mango
                   </p>
                 </div>
                 <div
-                  class="c34"
+                  class="c35"
                 />
               </div>
               <div
@@ -867,10 +869,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           role="group"
         >
           <div
-            class="c27"
+            class="c28"
           />
           <div
-            class="c35"
+            class="c36"
             data-blade-component="dropdown-footer"
           >
             <div
@@ -878,16 +880,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               data-blade-component="box"
             >
               <button
-                class="c36"
+                class="c37"
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-                  class="c37 c38"
+                  class="c38 c39"
                 >
                   <div
-                    class="c39"
+                    class="c40"
                   >
                     Apply
                   </div>
@@ -977,7 +979,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 }
 
 .c6 {
-  display: block;
   position: absolute;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -985,7 +986,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   min-width: 240px;
   max-width: 400px;
   right: 0px;
-  bottom: 20px;
 }
 
 .c7 {
@@ -998,13 +998,14 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 }
 
 .c8 {
-  -webkit-animation: hMpNnn 200ms cubic-bezier(0,0,0,1);
-  animation: hMpNnn 200ms cubic-bezier(0,0,0,1);
+  -webkit-animation: none;
+  animation: none;
   -webkit-transform: translateY(8px);
   -ms-transform: translateY(8px);
   transform: translateY(8px);
   opacity: 0;
   z-index: 99;
+  pointer-events: none;
 }
 
 .c1 {
@@ -1143,8 +1144,8 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
     class="c0"
   >
     <button
-      aria-activedescendant="dropdown-890-0"
-      aria-controls="dropdown-890-actionlist"
+      aria-activedescendant="dropdown-891-0"
+      aria-controls="dropdown-891-actionlist"
       aria-expanded="false"
       aria-haspopup="menu"
       class="c1"
@@ -1171,10 +1172,10 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
         style="opacity: 0;"
       >
         <div
-          aria-labelledby="dropdown-890-label"
+          aria-labelledby="dropdown-891-label"
           class=""
           data-blade-component="action-list"
-          id="dropdown-890-actionlist"
+          id="dropdown-891-actionlist"
           role="menu"
         >
           <div
@@ -1185,7 +1186,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
               data-blade-component="action-list-item"
               data-index="0"
               data-value="profile"
-              id="dropdown-890-0"
+              id="dropdown-891-0"
               role="menuitem"
               tabindex="-1"
               type="button"
@@ -1220,7 +1221,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
               data-index="1"
               data-value="settings"
               href="/settings"
-              id="dropdown-890-1"
+              id="dropdown-891-1"
               role="link"
               tabindex="-1"
               type="button"
