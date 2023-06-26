@@ -1,6 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders a Modal with Header and Footer 1`] = `
+.c20 {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: hsla(216,15%,54%,0.18);
+  width: 100%;
+}
+
 .c0 {
   position: fixed;
   z-index: 1000;
@@ -290,13 +297,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 .c19:active {
   color: hsla(217,18%,45%,1);
-}
-
-.c20 {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-  width: 100%;
 }
 
 .c1 {
