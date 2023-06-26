@@ -176,7 +176,7 @@ const _BaseHeader = ({
       >
         <BaseBox display="flex" flexDirection="row" userSelect="none">
           {showBackButton ? (
-            <BaseBox overflow="visible" marginRight="spacing.5">
+            <BaseBox overflow="visible" marginRight={leading ? 'spacing.3' : 'spacing.5'}>
               <Box {...centerBoxProps}>
                 <IconButton
                   size="large"

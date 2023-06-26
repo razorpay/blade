@@ -57,6 +57,24 @@ export const BaseHeaderKitchenSink = (): JSX.Element => {
           showBackButton={true}
         />
       </HeaderContainer>
+      <HeaderContainer>
+        <BaseHeader
+          leading={
+            <img
+              src="https://flagcdn.com/w20/in.png"
+              srcSet="https://flagcdn.com/w40/in.png 2x"
+              width="20"
+              alt="India"
+            />
+          }
+          title="When The Title is So Large That It Goes On Next Line"
+          subtitle="When The Subtitle of this BaseHeader is So Largeeeee That It Goes On Next Line"
+          titleSuffix={<Badge variant="positive">New</Badge>}
+          trailing={<Amount value={1000} />}
+          showCloseButton={true}
+          showBackButton={true}
+        />
+      </HeaderContainer>
     </Box>
   );
 };
