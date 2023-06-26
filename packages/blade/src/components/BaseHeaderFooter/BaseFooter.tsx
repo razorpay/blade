@@ -1,6 +1,6 @@
 import React from 'react';
+import { Divider } from '../Divider';
 import BaseBox from '~components/Box/BaseBox';
-import { Divider } from '~components/Divider';
 import { assignWithoutSideEffects, metaAttribute } from '~utils';
 
 type BaseFooterProps = {

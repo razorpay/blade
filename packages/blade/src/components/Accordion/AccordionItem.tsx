@@ -1,4 +1,5 @@
 import type { ReactElement, ReactNode } from 'react';
+import { Divider } from '../Divider';
 import { AccordionButton } from './AccordionButton';
 import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
@@ -8,7 +9,6 @@ import { Text } from '~components/Typography';
 import { MetaConstants, metaAttribute } from '~utils';
 import { Collapsible } from '~components/Collapsible/Collapsible';
 import { CollapsibleBody } from '~components/Collapsible';
-import { Divider } from '~components/Divider';
 
 type AccordionItemProps = {
   /**

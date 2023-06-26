@@ -1,10 +1,10 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import StoryPageWrapper from '../../_helpers/storybook/StoryPageWrapper';
+import BaseBox from '../Box/BaseBox';
+import { Sandbox } from '../../_helpers/storybook/Sandbox';
 import { Divider as DividerComponent } from './Divider';
 import type { DividerProps } from './types';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import BaseBox from '~components/Box/BaseBox';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
 
 const Page = (): React.ReactElement => {
   return (
