@@ -537,13 +537,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 touchAction="none"
               >
                 <View
-                  alignItems="center"
                   display="flex"
                   flexDirection="row"
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
                         "display": "flex",
                         "flexDirection": "row",
                         "userSelect": "none",
@@ -553,13 +551,13 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   userSelect="none"
                 >
                   <View
-                    alignItems="center"
+                    alignItems="flex-start"
                     display="flex"
                     flexDirection="row"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
+                          "alignItems": "flex-start",
                           "display": "flex",
                           "flexBasis": "auto",
                           "flexDirection": "row",
@@ -574,19 +572,21 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     <View
                       style={
                         Array [
-                          Object {},
+                          Object {
+                            "flexBasis": "auto",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
                         ]
                       }
                     >
                       <View
-                        alignItems="center"
                         display="flex"
                         flexDirection="row"
                         flexShrink={0}
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "display": "flex",
                               "flexDirection": "row",
                               "flexShrink": 0,

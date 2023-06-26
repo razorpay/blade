@@ -300,7 +300,7 @@ describe('<BottomSheet />', () => {
       );
     };
     expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade Header]: Only one of `Button, Badge, Link, Text` component is accepted as trailing',
+      '[Blade Header]: Only one of `Button, Badge, Link, Text, Amount` component is accepted as trailing',
     );
     mockConsoleError.mockRestore();
   });
