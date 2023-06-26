@@ -185,7 +185,7 @@ const _SelectInput = (
             value={value}
             // Adding onChange to surpass no onChange on controlled component warning
             // eslint-disable-next-line @typescript-eslint/no-empty-function
-            onChange={() => { }}
+            onChange={() => {}}
             // Accessibility is covered in the select input itself so we hide this field from a11y tree
             aria-hidden={true}
           />
