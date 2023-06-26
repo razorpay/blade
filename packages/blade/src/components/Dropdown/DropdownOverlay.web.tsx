@@ -169,11 +169,13 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     <BaseBox position="relative" ref={refs.setFloating as any}>
       {isOpen ? (
         <BaseBox
-          position="fixed"
+          position={'fixed' as never}
           top="spacing.0"
           left="spacing.0"
           height="100%"
           width="100%"
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+          // @ts-ignore: throws TS error that onClick doesn't exist in native even though its just web file
           onClick={() => setIsOpen(false)}
         />
       ) : null}
