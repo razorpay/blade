@@ -150,6 +150,7 @@ const _BaseHeader = ({
   metaComponentName,
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction(trailing);
+  const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
 
   const webOnlyEventHandlers: Record<string, any> = isReactNative()
     ? {}
@@ -205,8 +206,16 @@ const _BaseHeader = ({
                 {leading}
               </BaseBox>
             ) : null}
-            <BaseBox>
-              <BaseBox flexShrink={0} display="flex" flexDirection="row">
+            <BaseBox flex="auto">
+              <BaseBox
+                // Explicitly setting maxWidth in React Native because text is not being wrapped properly when multiple fix width components are rendered in header
+                // In web, flex containers seem to work a expected
+                // @todo: resolve this if we figure out some better solution later
+                maxWidth={isReactNative() && shouldWrapTitle ? '100px' : undefined}
+                flexShrink={0}
+                display="flex"
+                flexDirection="row"
+              >
                 {title ? (
                   <Heading size="small" variant="regular" type="normal">
                     {title}

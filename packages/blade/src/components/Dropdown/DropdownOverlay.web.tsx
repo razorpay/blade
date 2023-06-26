@@ -58,7 +58,7 @@ const AnimatedOverlay = styled(StyledDropdownOverlay)<{
 );
 
 type DropdownOverlayProps = {
-  children: React.ReactElement;
+  children: React.ReactElement[] | React.ReactElement;
 } & TestID;
 
 /**
