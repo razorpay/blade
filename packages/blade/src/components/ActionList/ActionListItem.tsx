@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import styled from 'styled-components';
+import { Divider } from '../Divider';
+import { Box } from '../Box';
 import { StyledActionListItem } from './styles/StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
@@ -12,7 +14,6 @@ import {
   isRoleMenu,
 } from './getA11yRoles';
 import { useActionListContext } from './ActionList';
-import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -25,7 +26,6 @@ import type { DropdownProps } from '~components/Dropdown';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
-import { Divider } from '~components/Divider';
 
 type ActionListItemProps = {
   title: string;
