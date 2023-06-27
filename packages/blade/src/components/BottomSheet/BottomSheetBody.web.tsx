@@ -6,7 +6,7 @@ import type { BottomSheetBodyProps } from './types';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { isValidAllowedChildren, metaAttribute } from '~utils';
+import { isValidAllowedChildren, metaAttribute, MetaConstants } from '~utils';
 import { componentIds } from '~components/ActionList/componentIds';
 
 const bodyStyles: React.CSSProperties = {
@@ -53,7 +53,7 @@ const _BottomSheetBody = ({
     <BaseBox
       {...metaAttribute({
         testID: 'bottomsheet-body',
-        name: ComponentIds.BottomSheetBody,
+        name: MetaConstants.BottomSheetBody,
       })}
       ref={scrollRef}
       flexGrow={1}

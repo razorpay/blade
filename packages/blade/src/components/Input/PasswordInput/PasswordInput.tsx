@@ -9,6 +9,7 @@ import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { MetaConstants } from '~utils';
 
 type PasswordInputExtraProps = {
   /**
@@ -134,7 +135,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
   return (
     <BaseInput
       ref={inputRef as React.Ref<HTMLInputElement>}
-      componentName="password-input"
+      componentName={MetaConstants.PasswordInput}
       id="password-field"
       label={label}
       labelPosition={labelPosition}

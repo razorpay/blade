@@ -13,6 +13,7 @@ exports[`<ArrowLeftIcon /> should render ArrowLeftIcon 1`] = `
   >
     <path
       d="M10.707 6.707a1 1 0 0 0-1.414-1.414l-6 6a1 1 0 0 0 0 1.414l6 6a1 1 0 0 0 1.414-1.414L6.414 13H20a1 1 0 1 0 0-2H6.414l4.293-4.293Z"
+      data-blade-component="svg-path"
       fill="hsla(216, 27%, 36%, 1)"
     />
   </svg>

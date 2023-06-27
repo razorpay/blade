@@ -210,7 +210,10 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
       {...metaAttribute({ name: MetaConstants.Checkbox, testID })}
       {...getStyledProps(styledProps)}
     >
-      <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
+      <SelectorLabel
+        componentName={MetaConstants.CheckboxLabel}
+        inputProps={state.isReactNative ? inputProps : {}}
+      >
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput

@@ -93,6 +93,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -114,6 +115,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       />
       <View
         alignItems="stretch"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="column"
         justifyContent="space-between"
@@ -130,6 +132,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -206,6 +209,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         </View>
         <View
           alignSelf="auto"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -221,6 +225,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             flexGrow={1}
             style={
               Array [
@@ -304,6 +309,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             >
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 isHidden={false}
@@ -325,6 +331,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               >
                 <Text
                   color="action.text.secondary.default"
+                  data-blade-component="base-text"
                   fontSize={100}
                   fontWeight="bold"
                   lineHeight={100}
@@ -358,6 +365,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             </View>
           </View>
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -367,6 +375,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             }
           />
           <View
+            data-blade-component="base-box"
             flexGrow={1}
             style={
               Array [
@@ -450,6 +459,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             >
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 isHidden={false}
@@ -471,6 +481,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               >
                 <Text
                   color="action.text.primary.default"
+                  data-blade-component="base-text"
                   fontSize={100}
                   fontWeight="bold"
                   lineHeight={100}
@@ -562,6 +573,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
@@ -577,6 +589,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -593,6 +606,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         >
           <View
             alignSelf="center"
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -609,6 +623,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               align="xMidYMid"
               bbHeight="24px"
               bbWidth="24px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="24px"
@@ -678,6 +693,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -686,6 +702,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           >
             <View
               alignItems="center"
+              data-blade-component="base-box"
               display="flex"
               flexDirection="row"
               flexWrap="wrap"
@@ -734,6 +751,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 Card Header
               </Text>
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {
@@ -744,6 +762,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               >
                 <View
                   backgroundColor="feedback.background.neutral.lowContrast"
+                  data-blade-component="base-box"
                   platform="onMobile"
                   size="medium"
                   style={
@@ -859,6 +878,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </View>
         <View
           alignSelf="center"
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -887,6 +907,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           >
             <View
               alignItems="center"
+              data-blade-component="base-box"
               display="flex"
               flexDirection="row"
               justifyContent="center"

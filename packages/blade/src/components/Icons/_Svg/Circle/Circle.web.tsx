@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import type { CircleProps } from './types';
+import { metaAttribute } from '~utils';
 
 const Circle = ({ cx, cy, x, y, r, fill, stroke, strokeWidth }: CircleProps): ReactElement => {
   return (
@@ -12,6 +13,7 @@ const Circle = ({ cx, cy, x, y, r, fill, stroke, strokeWidth }: CircleProps): Re
       fill={fill}
       stroke={stroke}
       strokeWidth={strokeWidth}
+      {...metaAttribute({ name: 'svg-circle' })}
     />
   );
 };

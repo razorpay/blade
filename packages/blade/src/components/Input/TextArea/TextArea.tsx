@@ -7,7 +7,7 @@ import { BaseInput } from '../BaseInput';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, isEmpty } from '~utils';
+import { getPlatformType, isEmpty, MetaConstants } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
@@ -124,7 +124,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     <BaseInput
       as="textarea"
       id="textarea"
-      componentName="textarea"
+      componentName={MetaConstants.TextArea}
       autoFocus={autoFocus}
       ref={inputRef as React.Ref<HTMLInputElement>}
       label={label}
