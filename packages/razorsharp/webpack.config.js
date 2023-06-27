@@ -1,6 +1,4 @@
 const path = require('path');
-const InlineChunkHtmlPlugin = require('inline-chunk-html-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const webpack = require('webpack');
 
@@ -15,7 +13,6 @@ module.exports = {
   devtool: prod ? false : 'inline-source-map',
 
   entry: {
-    ui: './src/ui/index.tsx', // The entry point for your UI code
     code: './src/code/index.ts', // The entry point for your plugin code
   },
 
@@ -33,33 +30,6 @@ module.exports = {
           },
         ],
         exclude: /node_modules/,
-      },
-
-      // Enables including CSS by doing "import './file.css'" in your TypeScript code
-      {
-        // include files ending in .css but not .module.css
-        test: /^(?!.*\.module\.css$).*\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      // include files ending in .module.css
-      {
-        test: /\.module\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: true,
-            },
-          },
-        ],
-      },
-      // Allows you to use "<%= require('./file.svg') %>" in your HTML code to get a data URI
-      // { test: /\.(png|jpg|gif|webp|svg|zip)$/i, loader: [{ loader: 'url-loader' }] },
-      {
-        test: /\.svg/,
-        type: 'asset/inline',
       },
     ],
   },
@@ -84,14 +54,6 @@ module.exports = {
     new webpack.DefinePlugin({
       global: {}, // Fix missing symbol error when running in developer VM
     }),
-    new HtmlWebpackPlugin({
-      inject: 'body',
-      template: './src/ui/index.html',
-      filename: 'index.html',
-      chunks: ['ui'],
-      cache: false,
-    }),
-    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/ui/]),
   ],
 
   cache: {
