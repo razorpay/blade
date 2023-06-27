@@ -2,8 +2,9 @@ import type { ReactElement } from 'react';
 import { StyledAccordionButton } from './StyledAccordionButton.native';
 import type { AccordionButtonProps } from './types';
 import { Heading } from '~components/Typography';
-import { MetaConstants, assignWithoutSideEffects } from '~utils';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute';
 
 // TODO: implement with reanimated, pressable
 const _AccordionButton = ({ children }: AccordionButtonProps): ReactElement => {
