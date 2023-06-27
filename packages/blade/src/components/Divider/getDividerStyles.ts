@@ -1,8 +1,8 @@
 import type { CSSObject } from 'styled-components';
-import type { Theme } from '..';
 import { makeSize } from '../../utils/makeSize';
 import type { ColorContrast } from '../../tokens/theme/theme';
 import type { DividerProps } from './types';
+import type { Theme } from '~components/BladeProvider';
 
 const makeStyledDividerProps = ({
   orientation = 'horizontal',
