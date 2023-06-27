@@ -39,7 +39,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
     },
     ref,
   ) => {
-    const { close } = useBottomSheetContext();
+    const { close, isHeaderFloating } = useBottomSheetContext();
     const { theme } = useTheme();
     const webOnlyEventHandlers: Record<string, any> = isReactNative()
       ? {}
@@ -54,14 +54,23 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
           onPointerUp,
         };
 
+    let topOffset: 'spacing.5' | 'spacing.0' | undefined = isHeaderFloating
+      ? 'spacing.5'
+      : undefined;
+    if (isReactNative()) {
+      topOffset = 'spacing.0';
+    }
+
     return (
       <BaseBox
-        position="relative"
+        position={isHeaderFloating ? 'absolute' : 'relative'}
         // bottomsheet empty header suppose to be 28px in height
         // the grab handle height is 20px & here we are adding 8px
         // total = 28px
         height={makeSize(size[8])}
         touchAction="none"
+        top={topOffset}
+        right="spacing.0"
         {...webOnlyEventHandlers}
       >
         <BaseBox
@@ -72,13 +81,14 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
           // the bottomsheet handle has a height of 16px + 4px padding
           // we need to make put the close button at 16px from top so adjusting the 4px
           // cannot use position=fixed because RN won't support it
-          top={makeSpace(-size[4])}
+          top={isHeaderFloating ? 'spacing.0' : makeSpace(-size[4])}
           right="spacing.5"
           width={makeSize(size[28])}
           height={makeSize(size[28])}
           flexShrink={0}
           backgroundColor={theme.colors.surface.background.level2.lowContrast}
           borderRadius="max"
+          zIndex={100}
         >
           <IconButton
             ref={ref}

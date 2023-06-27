@@ -16,8 +16,15 @@ const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
     borderRadius: makeSpace(theme.spacing[5]),
   };
 };
-const getBottomSheetGrabHandleStyles = ({ theme }: { theme: Theme }): CSSObject => {
+const getBottomSheetGrabHandleStyles = ({
+  theme,
+  isHeaderFloating,
+}: {
+  theme: Theme;
+  isHeaderFloating?: boolean;
+}): CSSObject => {
   return {
+    position: isHeaderFloating ? 'absolute' : 'relative',
     flexShrink: 0,
     paddingTop: makeSpace(theme.spacing[4]),
     marginBottom: makeSpace(theme.spacing[2]),
@@ -27,6 +34,7 @@ const getBottomSheetGrabHandleStyles = ({ theme }: { theme: Theme }): CSSObject 
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 100,
     ...(isReactNative() ? undefined : { ':after': getHandlePartStyles({ theme }) }),
   };
 };

@@ -17,6 +17,7 @@ import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
 import { makeSpace } from '~utils/makeSpace';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 type ComponentStatuses =
   | 'released'
@@ -301,56 +302,90 @@ const componentData: ComponentStatusData = [
     description:
       'Tooltip is a brief, informative message that appears when a user interacts with an element.',
     releasedIn: '8.9.0',
+    storybookLink: 'Components/Tooltip',
   },
   {
     name: 'Accordion',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '8.12.0',
+    storybookLink: 'Components/Accordion',
     description:
       'Accordion component allows the user to show and hide sections of related content on a page',
   },
   {
     name: 'Collapsible',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '8.12.0',
+    storybookLink: 'Components/Collapsible',
     description:
       'Collapsibles are used to allow users to toggle the visibility of hidden content within a container.',
   },
   {
     name: 'Modal',
-    status: 'in-development',
+    status: 'released',
     description:
       "Modal is a dialog that focuses the user's attention exclusively on an information via a window that is overlaid on primary content.",
+    releasedIn: '8.8.0',
+    storybookLink: 'Components/Modal/SimpleModal',
+  },
+  {
+    name: 'Pill',
+    status: 'planned-Q2-dev',
+    description: '',
+  },
+  {
+    name: 'Pagination',
+    status: 'planned-Q2-dev',
+    description:
+      'Pagination component enables the user to select a specific page from a range of pages.',
+  },
+  {
+    name: 'FileUpload',
+    status: 'planned-Q2-dev',
+    description: 'FileUpload component allow users to select one or more files to upload.',
+  },
+  {
+    name: 'Drawer',
+    status: 'planned-Q2-design',
+    description: 'The Drawer component is a panel that slides out from the edge of the screen.',
+  },
+  {
+    name: 'Slot',
+    status: 'planned-Q2-design',
+    description:
+      'The Slot component is a generic component which can be used as container. (This is a design only component)',
   },
   {
     name: 'SkeletonLoader',
-    status: 'planned-Q1-dev',
+    status: 'in-development',
     description:
       'Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view.',
   },
   {
     name: 'Carousel',
-    status: 'planned-Q1-design',
+    status: 'in-design',
     description:
       'Carousel is a component to one-by-one display multiple blocks of information in circular manner',
   },
   {
     name: 'Tabs',
-    status: 'planned-Q1-design',
+    status: 'planned-Q2-dev',
     description:
       'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
   },
   {
     name: 'Divider',
-    status: 'planned-Q1-design',
+    status: 'planned-Q2-dev',
     description: 'Dividers are used to visually separate content in a list or group.',
   },
   {
     name: 'Data Table',
-    status: 'planned-Q1-design',
+    status: 'planned-Q2-dev',
     description: 'DataTable will allow you to display your data in tabular manner',
   },
   {
     name: 'Date Picker',
-    status: 'planned-Q2-design',
+    status: 'to-be-decided',
     description: 'DatePicker will provide an easy way to input dates and ranges',
   },
   {
@@ -361,17 +396,17 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Toast',
-    status: 'to-be-decided',
+    status: 'planned-Q2-dev',
     description: 'Toast is a component to show a simple floating messages to your users',
   },
   {
     name: 'Button Group',
-    status: 'to-be-decided',
-    description: '',
+    status: 'planned-Q2-dev',
+    description: 'ButtonGroup component can be used to group related buttons.',
   },
   {
     name: 'Popover',
-    status: 'to-be-decided',
+    status: 'planned-Q2-dev',
     description: 'Used for cases like guided tours',
   },
 ];
@@ -469,9 +504,13 @@ const ComponentStatusTable = (): React.ReactElement => {
       <Heading variant="regular">Lifecycle of a component</Heading>
       <br />
       <BaseBox display="flex" flexDirection="row" marginBottom="spacing.7" gap="spacing.2">
-        <Badge variant="information" icon={StampIcon}>
-          TBD
-        </Badge>
+        <Tooltip content="Not yet decided or planned" placement="bottom">
+          <TooltipInteractiveWrapper>
+            <Badge variant="information" icon={StampIcon}>
+              TBD
+            </Badge>
+          </TooltipInteractiveWrapper>
+        </Tooltip>
         ➡️
         <Badge variant="information" icon={ClockIcon}>
           Planned: Qn Design

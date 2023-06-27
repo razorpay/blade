@@ -26,7 +26,6 @@ const CollapsibleChevronIcon: IconComponent = (props) => {
     withTiming(isExpanded ? transformExpanded : transformCollapsed, { duration, easing }),
   );
   const animatedStyles = useAnimatedStyle(() => ({
-    // Interpolated string has to be passed, to make it work for both android and ios
     transform: [{ rotateZ: `${rotateZ.value}deg` }],
   }));
 
