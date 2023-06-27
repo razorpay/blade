@@ -627,7 +627,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                       "textAlign": "center",
                                       "textDecorationLine": "none",
                                     },
-                                    Object {},
                                   ]
                                 }
                                 textAlign="center"
@@ -665,7 +664,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               "paddingTop": 0,
                               "textDecorationLine": "none",
                             },
-                            Object {},
                           ]
                         }
                       >
@@ -750,7 +748,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >

@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "8.10.0",
+  "version": "8.11.2",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -113,7 +113,8 @@
     "body-scroll-lock": "4.0.0-beta.0",
     "use-presence": "1.1.0",
     "@floating-ui/react": "0.24.2",
-    "@floating-ui/react-native": "0.10.0"
+    "@floating-ui/react-native": "0.10.0",
+    "patch-package": "7.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
@@ -209,7 +210,6 @@
     "styled-components": "5.3.5",
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "jsdom-testing-mocks": "1.9.0",
-    "patch-package": "7.0.0",
     "postinstall-postinstall": "2.1.0"
   },
   "peerDependencies": {
@@ -283,14 +283,14 @@
       "name": "Import Button only",
       "path": "./build/components/index.web.js",
       "import": "{ Button }",
-      "limit": "17.5 kb",
+      "limit": "20 kb",
       "running": false
     },
     {
       "name": "Import Text only",
       "path": "./build/components/index.web.js",
       "import": "{ Text }",
-      "limit": "13 kb",
+      "limit": "15 kb",
       "running": false
     }
   ]

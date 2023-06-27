@@ -17,12 +17,7 @@ exports[`<Heading /> should render Heading with color 1`] = `
 <div>
   <h6
     class="c0"
-    color="surface.text.placeholder.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="200"
-    font-style="normal"
-    font-weight="bold"
   >
     Get Started With Payment Gateway
   </h6>
@@ -46,14 +41,53 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
 <div>
   <h6
     class="c0"
-    color="surface.text.normal.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="200"
-    font-style="normal"
-    font-weight="bold"
   >
     Get Started With Payment Gateway
+  </h6>
+</div>
+`;
+
+exports[`<Heading /> should render Heading with mixed color 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  color: hsla(195,100%,31%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h6
+    class="c0"
+    data-blade-component="heading"
+  >
+    Supercharge your business with the all‑powerful
+     
+    <span
+      class="c1"
+      data-blade-component="heading"
+    >
+      Payment Gateway
+    </span>
   </h6>
 </div>
 `;
@@ -75,12 +109,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
 <div>
   <h4
     class="c0"
-    color="surface.text.subdued.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="400"
-    font-style="normal"
-    font-weight="regular"
   >
     Get Started With Payment Gateway
   </h4>
@@ -104,12 +133,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
 <div>
   <h5
     class="c0"
-    color="surface.text.muted.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="300"
-    font-style="normal"
-    font-weight="regular"
   >
     Get Started With Payment Gateway
   </h5>
@@ -133,12 +157,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
 <div>
   <h6
     class="c0"
-    color="surface.text.normal.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="200"
-    font-style="normal"
-    font-weight="regular"
   >
     Get Started With Payment Gateway
   </h6>
@@ -162,12 +181,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
 <div>
   <h6
     class="c0"
-    color="surface.text.normal.highContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="200"
-    font-style="normal"
-    font-weight="regular"
   >
     Get Started With Payment Gateway
   </h6>
@@ -189,16 +203,11 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
 }
 
 <div>
-  <h6
+  <p
     class="c0"
-    color="surface.text.subdued.lowContrast"
     data-blade-component="heading"
-    font-family="text"
-    font-size="75"
-    font-style="normal"
-    font-weight="bold"
   >
     Get Started With Payment Gateway
-  </h6>
+  </p>
 </div>
 `;

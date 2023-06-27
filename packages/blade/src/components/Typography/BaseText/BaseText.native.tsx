@@ -13,30 +13,29 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
     fontWeight,
     fontStyle,
     textDecorationLine,
+    numberOfLines,
     lineHeight,
     textAlign,
     as,
     ...props
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
-    if (as) {
-      throw new Error(`[Blade: BaseText]: "as" prop is not supported for BaseText on React Native`);
-    } else {
-      return {
-        ...getBaseTextStyles({
-          color,
-          fontFamily,
-          fontSize,
-          fontWeight,
-          fontStyle,
-          textDecorationLine,
-          lineHeight,
-          textAlign,
-          theme: props.theme,
-        }),
-        ...styledPropsCSSObject,
-      };
-    }
+
+    return {
+      ...getBaseTextStyles({
+        color,
+        fontFamily,
+        fontSize,
+        fontWeight,
+        fontStyle,
+        textDecorationLine,
+        numberOfLines,
+        lineHeight,
+        textAlign,
+        theme: props.theme,
+      }),
+      ...styledPropsCSSObject,
+    };
   },
 );
 
@@ -49,7 +48,6 @@ export const BaseText = ({
   fontStyle,
   textDecorationLine,
   lineHeight,
-  as,
   textAlign,
   children,
   truncateAfterLines,
@@ -70,7 +68,7 @@ export const BaseText = ({
       fontStyle={fontStyle}
       textDecorationLine={textDecorationLine}
       lineHeight={lineHeight}
-      as={as}
+      as={undefined}
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
       className={className}

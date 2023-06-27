@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Box /> should render Box as footer tag 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><footer data-blade-component=\\"box\\" display=\\"block\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 gxRbfF\\">Footer test!</footer></div>"`;
+exports[`<Box /> should render Box as footer tag 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><footer data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx zgBJD\\">Footer test!</footer></div>"`;
 
-exports[`<Box /> should render Box component with supported styles 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"box\\" display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 cVhZTX\\">children test!</div></div>"`;
+exports[`<Box /> should render Box component with supported styles 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx jBndhd\\">children test!</div></div>"`;
 
-exports[`<Box /> should throw error for unsupport as prop 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><button data-blade-component=\\"box\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0\\"></button></div>"`;
+exports[`<Box /> should throw error for unsupport as prop 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><button data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx\\"></button></div>"`;
 
-exports[`<Box /> should throw error for unsupport values 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"box\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 fhGsWn\\"></div></div>"`;
+exports[`<Box /> should throw error for unsupport values 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx gqmjXZ\\"></div></div>"`;

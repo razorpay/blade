@@ -84,7 +84,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -146,7 +145,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -733,7 +731,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -795,7 +792,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
