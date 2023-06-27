@@ -22,6 +22,7 @@ export type TitleProps = {
   type?: TextTypes;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
+  textDecorationLine?: BaseTextProps['textDecorationLine'];
 } & TestID &
   StyledPropsBlade;
 
@@ -82,6 +83,7 @@ export const Title = ({
   children,
   testID,
   textAlign,
+  textDecorationLine,
   ...styledProps
 }: TitleProps): ReactElement => {
   useValidateAsProp({ componentName: 'Title', as, validAsValues });
@@ -89,7 +91,12 @@ export const Title = ({
   const props = getProps({ as, size, type, contrast, color, testID });
 
   return (
-    <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>
+    <BaseText
+      {...props}
+      textAlign={textAlign}
+      textDecorationLine={textDecorationLine}
+      {...getStyledProps(styledProps)}
+    >
       {children}
     </BaseText>
   );
