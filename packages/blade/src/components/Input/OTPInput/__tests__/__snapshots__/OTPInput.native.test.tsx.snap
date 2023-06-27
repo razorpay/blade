@@ -17,6 +17,7 @@ exports[`<OTPInput /> should render 1`] = `
     }
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       flexDirection="column"
       position="relative"
@@ -31,6 +32,7 @@ exports[`<OTPInput /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -42,6 +44,7 @@ exports[`<OTPInput /> should render 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
@@ -153,6 +156,7 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         style={
@@ -165,6 +169,7 @@ exports[`<OTPInput /> should render 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -179,6 +184,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -186,6 +192,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -201,6 +208,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -304,6 +312,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -318,6 +327,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -325,6 +335,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -340,6 +351,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -443,6 +455,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -457,6 +470,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -464,6 +478,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -479,6 +494,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -582,6 +598,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -596,6 +613,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -603,6 +621,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -618,6 +637,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -721,6 +741,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -735,6 +756,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -742,6 +764,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -757,6 +780,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -860,6 +884,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -874,6 +899,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -881,6 +907,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -896,6 +923,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -1001,6 +1029,7 @@ exports[`<OTPInput /> should render 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {

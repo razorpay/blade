@@ -92,6 +92,7 @@ exports[`<Indicator /> should render 1`] = `
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -229,6 +230,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -355,6 +357,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -481,6 +484,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -607,6 +611,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {

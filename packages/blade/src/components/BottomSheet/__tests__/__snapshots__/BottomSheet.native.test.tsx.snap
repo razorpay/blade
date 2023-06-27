@@ -108,6 +108,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             "value": 1334,
           }
         }
+        data-blade-component="base-box"
         pointerEvents="none"
         style={
           Array [
@@ -186,6 +187,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             >
               <View
                 backgroundColor="hsla(0, 0%, 100%, 1)"
+                data-blade-component="base-box"
                 flexShrink={0}
                 style={
                   Array [
@@ -215,6 +217,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   }
                 />
                 <View
+                  data-blade-component="base-box"
                   style={
                     Array [
                       Object {
@@ -299,6 +302,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       isHidden={false}
@@ -371,6 +375,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         onLayout={[Function]}
       >
         <View
+          data-blade-component="base-box"
           left="spacing.0"
           onLayout={[Function]}
           position="relative"
@@ -388,6 +393,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           top="spacing.0"
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -398,6 +404,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             zIndex={100}
           >
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {
@@ -417,6 +424,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               }
             >
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {
@@ -436,6 +444,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             </View>
           </View>
           <View
+            data-blade-component="base-box"
             flexShrink={0}
             overflow="visible"
             style={
@@ -448,6 +457,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {},
@@ -455,6 +465,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               }
             >
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {
@@ -470,6 +481,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               >
                 <View
                   alignItems="center"
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
                   style={
@@ -486,6 +498,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -504,6 +517,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {},
@@ -512,6 +526,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     >
                       <View
                         alignItems="center"
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         flexShrink={0}
@@ -560,6 +575,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           Address Details
                         </Text>
                         <View
+                          data-blade-component="base-box"
                           style={
                             Array [
                               Object {
@@ -570,6 +586,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         >
                           <View
                             backgroundColor="feedback.background.positive.lowContrast"
+                            data-blade-component="base-box"
                             platform="onMobile"
                             size="medium"
                             style={
@@ -682,6 +699,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     </View>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -710,6 +728,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     >
                       <View
                         alignItems="center"
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         justifyContent="center"
@@ -973,6 +992,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             "value": 1334,
           }
         }
+        data-blade-component="base-box"
         pointerEvents="none"
         style={
           Array [
@@ -1051,6 +1071,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             >
               <View
                 backgroundColor="hsla(0, 0%, 100%, 1)"
+                data-blade-component="base-box"
                 flexShrink={0}
                 style={
                   Array [
@@ -1080,6 +1101,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   }
                 />
                 <View
+                  data-blade-component="base-box"
                   style={
                     Array [
                       Object {
@@ -1164,6 +1186,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       isHidden={false}
@@ -1185,6 +1208,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     >
                       <Text
                         color="action.text.secondary.default"
+                        data-blade-component="base-text"
                         fontSize={100}
                         fontWeight="bold"
                         lineHeight={100}
@@ -1235,6 +1259,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
         onLayout={[Function]}
       >
         <View
+          data-blade-component="base-box"
           left="spacing.0"
           onLayout={[Function]}
           position="absolute"
@@ -1252,6 +1277,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
           top="spacing.0"
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -1262,6 +1288,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             zIndex={100}
           >
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {
@@ -1281,6 +1308,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
               }
             >
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {
@@ -1300,6 +1328,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             </View>
           </View>
           <View
+            data-blade-component="base-box"
             flexShrink={0}
             overflow="visible"
             style={
@@ -1312,6 +1341,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               height="8px"
               position="relative"
               right="spacing.0"
@@ -1333,6 +1363,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 alignItems="center"
                 backgroundColor="hsla(0, 0%, 100%, 1)"
                 borderRadius="max"
+                data-blade-component="base-box"
                 display="flex"
                 flexShrink={0}
                 height="28px"
@@ -1390,6 +1421,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     align="xMidYMid"
                     bbHeight="20px"
                     bbWidth="20px"
+                    data-blade-component="icon"
                     fill="none"
                     focusable={false}
                     height="20px"

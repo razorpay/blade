@@ -9,6 +9,7 @@ exports[`<BaseInput /> should render 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -16,6 +17,7 @@ exports[`<BaseInput /> should render 1`] = `
     }
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       flexDirection="column"
       position="relative"
@@ -30,6 +32,7 @@ exports[`<BaseInput /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
@@ -46,6 +49,7 @@ exports[`<BaseInput /> should render 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -57,6 +61,7 @@ exports[`<BaseInput /> should render 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -170,6 +175,7 @@ exports[`<BaseInput /> should render 1`] = `
       </View>
       <View
         currentInteraction="default"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         position="relative"
@@ -265,6 +271,7 @@ exports[`<BaseInput /> should render 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -274,6 +281,7 @@ exports[`<BaseInput /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="flex-end"
@@ -301,6 +309,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -308,6 +317,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
     }
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       flexDirection="column"
       position="relative"
@@ -322,6 +332,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
@@ -338,6 +349,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -349,6 +361,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -462,6 +475,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
       </View>
       <View
         currentInteraction="default"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         position="relative"
@@ -485,6 +499,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -498,6 +513,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -634,6 +650,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         />
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -647,6 +664,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -733,6 +751,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -742,6 +761,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="flex-end"

@@ -1,6 +1,6 @@
 import BaseBox from '../BaseBox';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import { MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils';
 
 describe('<BaseBox />', () => {
   it('should render BaseBox component with the correct styles', () => {
@@ -75,8 +75,14 @@ describe('<BaseBox />', () => {
   });
 
   it('should have proper meta attributes', () => {
-    jest.useFakeTimers();
     const { getByText } = renderWithTheme(<BaseBox>hello</BaseBox>);
     expect(getByText('hello')).toHaveAttribute('data-blade-component', MetaConstants.BaseBox);
+  });
+
+  it('passed in metaAttribute should override default one', () => {
+    const { getByText } = renderWithTheme(
+      <BaseBox {...metaAttribute({ name: 'test' })}>hello</BaseBox>,
+    );
+    expect(getByText('hello')).toHaveAttribute('data-blade-component', 'test');
   });
 });

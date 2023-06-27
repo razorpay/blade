@@ -9,6 +9,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -30,6 +31,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -41,6 +43,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
@@ -154,6 +157,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {},
@@ -161,6 +165,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           display="flex"
           flexDirection="column"
           style={
@@ -173,6 +178,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -224,6 +230,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 value="apple"
               >
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="column"
                   style={
@@ -237,6 +244,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -277,6 +285,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       }
                     />
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {
@@ -318,6 +327,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     </Text>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -331,6 +341,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             </View>
           </View>
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -382,6 +393,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 value="mango"
               >
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="column"
                   style={
@@ -395,6 +407,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -435,6 +448,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       }
                     />
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {
@@ -476,6 +490,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     </Text>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -489,6 +504,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             </View>
           </View>
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -540,6 +556,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 value="orange"
               >
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="column"
                   style={
@@ -553,6 +570,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -593,6 +611,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       }
                     />
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {
@@ -634,6 +653,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     </Text>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -662,6 +682,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -683,6 +704,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -694,6 +716,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
@@ -807,6 +830,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         </View>
       </View>
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {},
@@ -814,6 +838,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           display="flex"
           flexDirection="column"
           style={
@@ -826,6 +851,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -877,6 +903,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 value="apple"
               >
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="column"
                   style={
@@ -890,6 +917,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -930,6 +958,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       }
                     />
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {
@@ -971,6 +1000,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     </Text>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -984,6 +1014,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             </View>
           </View>
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -1035,6 +1066,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 value="mango"
               >
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="column"
                   style={
@@ -1048,6 +1080,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -1088,6 +1121,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       }
                     />
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {
@@ -1129,6 +1163,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     </Text>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -1142,6 +1177,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             </View>
           </View>
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -1193,6 +1229,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 value="orange"
               >
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="column"
                   style={
@@ -1206,6 +1243,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -1246,6 +1284,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       }
                     />
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {
@@ -1287,6 +1326,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     </Text>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -1301,6 +1341,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -1311,6 +1352,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             style={

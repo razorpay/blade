@@ -9,6 +9,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -31,6 +32,7 @@ exports[`<Radio /> should render radio with label 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -42,6 +44,7 @@ exports[`<Radio /> should render radio with label 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
@@ -155,6 +158,7 @@ exports[`<Radio /> should render radio with label 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {},
@@ -162,6 +166,7 @@ exports[`<Radio /> should render radio with label 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           display="flex"
           flexDirection="column"
           style={
@@ -174,6 +179,7 @@ exports[`<Radio /> should render radio with label 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -183,6 +189,7 @@ exports[`<Radio /> should render radio with label 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {},
@@ -226,6 +233,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                 value="a"
               >
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="column"
                   style={
@@ -239,6 +247,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -280,6 +289,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                       }
                     />
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {
@@ -321,6 +331,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                     </Text>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -349,6 +360,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -371,6 +383,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -382,6 +395,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
@@ -495,6 +509,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {},
@@ -502,6 +517,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           display="flex"
           flexDirection="column"
           style={
@@ -514,6 +530,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -523,6 +540,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {},
@@ -566,6 +584,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 value="a"
               >
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="column"
                   style={
@@ -579,6 +598,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -620,6 +640,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                       }
                     />
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {
@@ -661,6 +682,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     </Text>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {

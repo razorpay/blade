@@ -82,6 +82,7 @@ exports[`<Tooltip /> should render 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -175,6 +176,7 @@ exports[`<Tooltip /> should render 1`] = `
       >
         <View
           collapse={false}
+          data-blade-component="base-box"
           elevation={20}
           maxWidth="200px"
           position="absolute"

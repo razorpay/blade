@@ -23,6 +23,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
       accessibilityLabel="Loading"
       accessibilityRole="progressbar"
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -37,6 +38,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
     >
       <View
         alignSelf="center"
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -158,6 +160,7 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
       accessibilityLabel="Loading"
       accessibilityRole="progressbar"
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -172,6 +175,7 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
     >
       <View
         alignSelf="center"
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -293,6 +297,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
       accessibilityLabel="Loading"
       accessibilityRole="progressbar"
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -307,6 +312,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
     >
       <View
         alignSelf="center"
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -428,6 +434,7 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
       accessibilityLabel="Loading"
       accessibilityRole="progressbar"
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -442,6 +449,7 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
     >
       <View
         alignSelf="center"
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -563,6 +571,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
       accessibilityLabel="Loading"
       accessibilityRole="progressbar"
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -577,6 +586,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
     >
       <View
         alignSelf="center"
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -698,6 +708,7 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
       accessibilityLabel="Loading"
       accessibilityRole="progressbar"
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -712,6 +723,7 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
     >
       <View
         alignSelf="center"
+        data-blade-component="base-box"
         style={
           Array [
             Object {

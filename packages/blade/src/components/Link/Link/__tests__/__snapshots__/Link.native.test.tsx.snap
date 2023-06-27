@@ -50,6 +50,7 @@ exports[`<Link /> should render button variant of link 1`] = `
     <View
       alignItems="center"
       className="content-container"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -150,6 +151,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
     <View
       alignItems="center"
       className="content-container"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -250,6 +252,7 @@ exports[`<Link /> should render link with default properties 1`] = `
     <View
       alignItems="center"
       className="content-container"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -350,6 +353,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
     <View
       alignItems="center"
       className="content-container"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -364,6 +368,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
     >
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         style={
           Array [
@@ -537,6 +542,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
     <View
       alignItems="center"
       className="content-container"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -551,6 +557,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
     >
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         style={
           Array [
@@ -724,6 +731,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
     <View
       alignItems="center"
       className="content-container"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -771,6 +779,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
       </Text>
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         style={
           Array [
@@ -911,6 +920,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
     <View
       alignItems="center"
       className="content-container"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -925,6 +935,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
     >
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         style={
           Array [
@@ -1096,6 +1107,7 @@ exports[`<Link /> should render with small size 1`] = `
     <View
       alignItems="center"
       className="content-container"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       style={
@@ -1110,6 +1122,7 @@ exports[`<Link /> should render with small size 1`] = `
     >
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         style={
           Array [

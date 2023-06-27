@@ -88,6 +88,7 @@ exports[`<Switch /> should render switch with label 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           deviceType="mobile"
           isChecked={false}
           size="medium"
@@ -294,6 +295,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           deviceType="mobile"
           isChecked={false}
           size="medium"

@@ -81,6 +81,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -218,6 +219,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -355,6 +357,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -376,6 +379,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     >
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
@@ -563,6 +567,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -584,6 +589,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     >
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
@@ -771,6 +777,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -824,6 +831,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       </Text>
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
@@ -979,6 +987,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1000,6 +1009,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     >
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
@@ -1154,6 +1164,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1291,6 +1302,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1428,6 +1440,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1565,6 +1578,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1702,6 +1716,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1839,6 +1854,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1976,6 +1992,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -2113,6 +2130,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -2250,6 +2268,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -2387,6 +2406,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -2524,6 +2544,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -2661,6 +2682,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -2798,6 +2820,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -2935,6 +2958,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -3072,6 +3096,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -3209,6 +3234,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -3347,6 +3373,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
     <View
       alignItems="center"
       bottom="0px"
+      data-blade-component="base-box"
       display="flex"
       justifyContent="center"
       left="0px"
@@ -3383,6 +3410,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
           accessibilityLabel="Loading"
           accessibilityRole="progressbar"
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -3397,6 +3425,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
         >
           <View
             alignSelf="center"
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -3495,6 +3524,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
     </View>
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={true}
@@ -3632,6 +3662,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -3769,6 +3800,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -3906,6 +3938,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -4043,6 +4076,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -4180,6 +4214,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -4317,6 +4352,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -4454,6 +4490,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -4591,6 +4628,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -4728,6 +4766,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -4865,6 +4904,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -5002,6 +5042,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -5139,6 +5180,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -5276,6 +5318,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}

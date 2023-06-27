@@ -17,6 +17,7 @@ exports[`<TextInput /> should render 1`] = `
     }
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       flexDirection="column"
       position="relative"
@@ -31,6 +32,7 @@ exports[`<TextInput /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
@@ -47,6 +49,7 @@ exports[`<TextInput /> should render 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -58,6 +61,7 @@ exports[`<TextInput /> should render 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -171,6 +175,7 @@ exports[`<TextInput /> should render 1`] = `
       </View>
       <View
         currentInteraction="default"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         position="relative"
@@ -270,6 +275,7 @@ exports[`<TextInput /> should render 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -279,6 +285,7 @@ exports[`<TextInput /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="flex-end"
@@ -314,6 +321,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
     }
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       flexDirection="column"
       position="relative"
@@ -328,6 +336,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
@@ -344,6 +353,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -355,6 +365,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -468,6 +479,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       </View>
       <View
         currentInteraction="default"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         position="relative"
@@ -491,6 +503,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -504,6 +517,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -589,6 +603,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -694,6 +709,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         />
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -707,6 +723,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -771,6 +788,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -780,6 +798,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="flex-end"
