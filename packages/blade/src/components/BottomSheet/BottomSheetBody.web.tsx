@@ -2,6 +2,7 @@
 import React from 'react';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
+import type { BottomSheetBodyProps } from './types';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
@@ -19,8 +20,11 @@ const bodyStyles: React.CSSProperties = {
   touchAction: 'none',
 };
 
-const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  const { scrollRef, setContentHeight, isOpen, bind } = useBottomSheetContext();
+const _BottomSheetBody = ({
+  children,
+  padding = 'spacing.5',
+}: BottomSheetBodyProps): React.ReactElement => {
+  const { scrollRef, setContentHeight, setHasBodyPadding, isOpen, bind } = useBottomSheetContext();
   const contentRef = React.useRef<HTMLDivElement>(null);
   const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<boolean>(false);
 
@@ -38,6 +42,13 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
     });
   }, [children]);
 
+  React.useEffect(() => {
+    if (padding === 'spacing.0') {
+      setHasBodyPadding(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [padding]);
+
   return (
     <BaseBox
       {...metaAttribute({
@@ -53,10 +64,10 @@ const _BottomSheetBody = ({ children }: { children: React.ReactNode }): React.Re
       {...bind?.({ isContentDragging: true })}
     >
       <BaseBox
-        paddingLeft={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
-        paddingRight={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
-        paddingTop={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
-        paddingBottom={bottomSheetHasActionList ? 'spacing.3' : 'spacing.5'}
+        paddingLeft={bottomSheetHasActionList ? 'spacing.3' : padding}
+        paddingRight={bottomSheetHasActionList ? 'spacing.3' : padding}
+        paddingTop={bottomSheetHasActionList ? 'spacing.3' : padding}
+        paddingBottom={bottomSheetHasActionList ? 'spacing.3' : padding}
         ref={contentRef}
         overflow="auto"
       >
