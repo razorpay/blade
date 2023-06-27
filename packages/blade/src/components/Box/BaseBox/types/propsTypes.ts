@@ -125,6 +125,11 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'surface'>
       | BackgroundColorString<'action'>
       | (string & Record<never, never>);
+    backgroundImage: CSSObject['backgroundImage'];
+    backgroundSize: CSSObject['backgroundSize'];
+    backgroundPosition: CSSObject['backgroundPosition'];
+    backgroundOrigin: CSSObject['backgroundOrigin'];
+    backgroundRepeat: CSSObject['backgroundRepeat'];
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
     userSelect: CSSObject['userSelect'];
@@ -155,6 +160,11 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor: BackgroundColorString<'surface'>;
+  backgroundImage: CSSObject['backgroundImage'];
+  backgroundSize: CSSObject['backgroundSize'];
+  backgroundPosition: CSSObject['backgroundPosition'];
+  backgroundOrigin: CSSObject['backgroundOrigin'];
+  backgroundRepeat: CSSObject['backgroundRepeat'];
   borderWidth: keyof Border['width'];
   borderColor: BorderColorString<'surface'>;
   borderTopWidth: keyof Border['width'];

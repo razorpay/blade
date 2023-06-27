@@ -108,6 +108,11 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
 
     // Visual
     backgroundColor: props.backgroundColor,
+    backgroundImage: props.backgroundImage,
+    backgroundSize: props.backgroundSize,
+    backgroundPosition: props.backgroundPosition,
+    backgroundOrigin: props.backgroundOrigin,
+    backgroundRepeat: props.backgroundRepeat,
     // Border
     borderWidth: props.borderWidth,
     borderColor: props.borderColor,
