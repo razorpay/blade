@@ -1,7 +1,4 @@
-import {
-  attributes,
-  // generateHelperCode
-} from './attributes';
+import { attributes, generateHelperCode } from './attributes';
 import { indent } from './indent';
 import { isJSXValueEmpty } from './isJSXValueEmpty';
 import { newLine } from './newLine';
@@ -42,12 +39,7 @@ export const component = (
     helpers: {},
   },
 ): string => {
-  const {
-    props,
-    defaultValues,
-    children = '',
-    // helpers
-  } = options;
+  const { props, defaultValues, children = '', helpers } = options;
 
   let code = newLine(`<${componentName}`);
 
@@ -55,7 +47,9 @@ export const component = (
   const propsLength = Object.keys(filteredProps).length;
 
   code += attributes(filteredProps);
-  // if (PLUGIN_CONFIG.generateHelperCode) code += generateHelperCode(helpers || {});
+
+  const helperCodeEnabled = figma.codegen.preferences.customSettings.helperCodeEnabled;
+  if (helperCodeEnabled) code += generateHelperCode(helpers || {});
 
   const shouldUseNewLine = propsLength > 0;
 

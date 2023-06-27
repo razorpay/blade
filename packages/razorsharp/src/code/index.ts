@@ -25,4 +25,7 @@ if (figma.editorType === 'dev' && figma.mode === 'codegen') {
       },
     ];
   });
+} else {
+  figma.notify('Razorsharp can only be run in Dev mode.');
+  figma.closePlugin();
 }
