@@ -13,6 +13,7 @@ exports[`<PlusIcon /> should render PlusIcon 1`] = `
   >
     <path
       d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z"
+      data-blade-component="svg-path"
       fill="hsla(216, 27%, 36%, 1)"
     />
   </svg>

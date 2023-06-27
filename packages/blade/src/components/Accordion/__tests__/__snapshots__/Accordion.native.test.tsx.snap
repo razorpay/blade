@@ -101,6 +101,7 @@ exports[`<Accordion /> should render 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
@@ -120,6 +121,7 @@ exports[`<Accordion /> should render 1`] = `
           >
             <View
               alignItems="flex-start"
+              data-blade-component="base-box"
               display="flex"
               flexDirection="row"
               flexShrink={1}
@@ -170,6 +172,7 @@ exports[`<Accordion /> should render 1`] = `
               </Text>
             </View>
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {},
@@ -194,6 +197,7 @@ exports[`<Accordion /> should render 1`] = `
                   align="xMidYMid"
                   bbHeight="20px"
                   bbWidth="20px"
+                  data-blade-component="icon"
                   fill="none"
                   focusable={false}
                   height="20px"
@@ -296,6 +300,7 @@ exports[`<Accordion /> should render 1`] = `
                 }
               >
                 <View
+                  data-blade-component="base-box"
                   style={
                     Array [
                       Object {
@@ -338,6 +343,7 @@ exports[`<Accordion /> should render 1`] = `
                     You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
                   </Text>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -348,6 +354,7 @@ exports[`<Accordion /> should render 1`] = `
                   />
                   <View
                     accessibilityElementsHidden={true}
+                    data-blade-component="base-box"
                     importantForAccessibility="no-hide-descendants"
                     style={
                       Array [
@@ -474,6 +481,7 @@ exports[`<Accordion /> should render 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
@@ -493,6 +501,7 @@ exports[`<Accordion /> should render 1`] = `
           >
             <View
               alignItems="flex-start"
+              data-blade-component="base-box"
               display="flex"
               flexDirection="row"
               flexShrink={1}
@@ -543,6 +552,7 @@ exports[`<Accordion /> should render 1`] = `
               </Text>
             </View>
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {},
@@ -567,6 +577,7 @@ exports[`<Accordion /> should render 1`] = `
                   align="xMidYMid"
                   bbHeight="20px"
                   bbWidth="20px"
+                  data-blade-component="icon"
                   fill="none"
                   focusable={false}
                   height="20px"
@@ -669,6 +680,7 @@ exports[`<Accordion /> should render 1`] = `
                 }
               >
                 <View
+                  data-blade-component="base-box"
                   style={
                     Array [
                       Object {
@@ -711,6 +723,7 @@ exports[`<Accordion /> should render 1`] = `
                     Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
                   </Text>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -721,6 +734,7 @@ exports[`<Accordion /> should render 1`] = `
                   />
                   <View
                     accessibilityElementsHidden={true}
+                    data-blade-component="base-box"
                     importantForAccessibility="no-hide-descendants"
                     style={
                       Array [
@@ -847,6 +861,7 @@ exports[`<Accordion /> should render 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
@@ -866,6 +881,7 @@ exports[`<Accordion /> should render 1`] = `
           >
             <View
               alignItems="flex-start"
+              data-blade-component="base-box"
               display="flex"
               flexDirection="row"
               flexShrink={1}
@@ -916,6 +932,7 @@ exports[`<Accordion /> should render 1`] = `
               </Text>
             </View>
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {},
@@ -940,6 +957,7 @@ exports[`<Accordion /> should render 1`] = `
                   align="xMidYMid"
                   bbHeight="20px"
                   bbWidth="20px"
+                  data-blade-component="icon"
                   fill="none"
                   focusable={false}
                   height="20px"
@@ -1042,6 +1060,7 @@ exports[`<Accordion /> should render 1`] = `
                 }
               >
                 <View
+                  data-blade-component="base-box"
                   style={
                     Array [
                       Object {
@@ -1084,6 +1103,7 @@ exports[`<Accordion /> should render 1`] = `
                     Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
                   </Text>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -1094,6 +1114,7 @@ exports[`<Accordion /> should render 1`] = `
                   />
                   <View
                     accessibilityElementsHidden={true}
+                    data-blade-component="base-box"
                     importantForAccessibility="no-hide-descendants"
                     style={
                       Array [

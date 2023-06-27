@@ -13,9 +13,11 @@ exports[`<G /> should render html g component 1`] = `
   >
     <g
       clip-path="url(#prefix__clip0)"
+      data-blade-component="svg-g"
     >
       <path
         d="M2 2h2v2H2V2"
+        data-blade-component="svg-path"
         fill="#000"
       />
     </g>

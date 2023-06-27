@@ -23,6 +23,7 @@ import {
   makeAccessible,
   useBreakpoint,
   makeSize,
+  MetaConstants,
 } from '~utils';
 import type { AriaAttributes, Platform } from '~utils';
 
@@ -721,6 +722,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               hasPopup={hasPopup}
               shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
               autoCapitalize={autoCapitalize}
+              {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}

@@ -12,6 +12,7 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 1`]
     alignItems="center"
     alignSelf="center"
     bottom="0px"
+    data-blade-component="base-box"
     display="flex"
     height="auto"
     justifyContent="center"
