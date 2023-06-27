@@ -102,6 +102,8 @@ type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationColor
   Theme['colors'][T]['border']
 >}`;
 
+type BrandColorString = `brand.${DotNotationColorStringToken<Theme['colors']['brand']>}`;
+
 // Created this as an array so I can reuse it for runtime validation
 const validBoxAsValues = [
   'div',
@@ -124,6 +126,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'feedback'>
       | BackgroundColorString<'surface'>
       | BackgroundColorString<'action'>
+      | BrandColorString
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];

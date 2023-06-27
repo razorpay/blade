@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import React from 'react';
+import { StyledTag } from './StyledTag';
 import { Box } from '~components/Box';
-import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import type { StringChildrenType } from '~src/_helpers/types';
-import { makeSpace } from '~utils';
 
 type TagProps = {
   /**
@@ -19,7 +19,7 @@ type TagProps = {
   /**
    * Callback when close icon on Tag is clicked
    */
-  onDismiss?: () => void;
+  onDismiss?: ({ value }: { value: StringChildrenType }) => void;
 
   /**
    * Text that renders inside Tag
@@ -32,31 +32,32 @@ type TagProps = {
   isDisabled?: boolean;
 } & StyledPropsBlade;
 
-const StyledTag = styled(BaseBox)<Pick<TagProps, 'size' | 'isDisabled'>>((props) => {
-  return {
-    backgroundColor: props.theme.colors.brand.gray.a100.lowContrast,
-    // borderRadius: props.theme.border.radius.round,
-    // @TODO: check with designer which token should be used for borderRadius
-    borderRadius: '100px',
-    borderWidth: makeSpace(props.theme.border.width.none),
-    display: 'inline-block',
-    padding:
-      props.size === 'medium'
-        ? `${makeSpace(2)} ${makeSpace(4)} ${makeSpace(2)} ${makeSpace(8)}`
-        : `${makeSpace(4)} ${makeSpace(8)} ${makeSpace(4)} ${makeSpace(12)}`,
-  };
-});
-
 const Tag = ({
   size = 'medium',
   onDismiss,
   children,
   isDisabled,
   ...styledProps
-}: TagProps): React.ReactElement => {
+}: TagProps): React.ReactElement | null => {
+  const [isVisible, setIsVisible] = React.useState(true);
+
+  if (!isVisible) {
+    return null;
+  }
+
   return (
-    <StyledTag size={size} isDisabled={isDisabled} {...styledProps}>
-      <Box display="flex">
+    <StyledTag
+      backgroundColor="brand.gray.a100.lowContrast"
+      borderRadius="max"
+      borderWidth="none"
+      padding={
+        size === 'medium'
+          ? ['spacing.1', 'spacing.2', 'spacing.1', 'spacing.3']
+          : ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4']
+      }
+      {...getStyledProps(styledProps)}
+    >
+      <Box display="flex" flexDirection="row" flexWrap="nowrap">
         <Text marginRight="spacing.2" type="subtle" contrast="low" size="small">
           {children}
         </Text>
@@ -64,7 +65,10 @@ const Tag = ({
           size="small"
           icon={CloseIcon}
           accessibilityLabel={`Close ${children} tag`}
-          onClick={() => onDismiss?.()}
+          onClick={() => {
+            setIsVisible(false);
+            onDismiss?.({ value: children });
+          }}
         />
       </Box>
     </StyledTag>

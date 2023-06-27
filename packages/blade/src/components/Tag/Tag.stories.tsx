@@ -11,23 +11,23 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       figmaURL={{
         paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8110%3A417',
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=28435%3A581488',
         bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9727%3A118573',
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=15234%3A480939',
       }}
-      componentName="Badge"
-      componentDescription="Badges are used to show small amount of color coded metadata, which are ideal for getting user attention."
+      componentName="Tags"
+      componentDescription="These are set of interactive keywords that help organise & categorise objects. Tags can be added or removed from an object by the users."
     >
       <Title>Usage</Title>
       <Sandbox>
         {`
-        import { Badge, InfoIcon } from '@razorpay/blade/components';
+        import { Tag } from '@razorpay/blade/components';
         
         function App(): JSX.Element {
           return (
-            <Badge variant="neutral" icon={InfoIcon}>
-              Boop
-            </Badge>
+            <Tag onDismiss={({ value }) => console.log('Tag dismissed', value)}>
+              Unpaid
+            </Tag>
           )
         }
 
@@ -52,6 +52,8 @@ export default {
 } as Meta<TagProps>;
 
 export const Default = (props: TagProps): React.ReactElement => <Tag {...props} />;
+
 Default.args = {
   children: 'Unpaid',
-};
+  onDismiss: ({ value }) => console.log('dismiss tag', value),
+} as TagProps;
