@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+'@razorpay/blade': minor
 ---
 
 feat: add `Accordion` and `Collapsible` components
