@@ -109,6 +109,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
     >
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         isHidden={false}
@@ -130,6 +131,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
       >
         <Text
           color="action.text.primary.default"
+          data-blade-component="base-text"
           fontSize={100}
           fontWeight="bold"
           lineHeight={100}
@@ -272,6 +274,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
               >
                 <Text
                   color="feedback.text.positive.lowContrast"
+                  data-blade-component="base-text"
                   fontSize={75}
                   fontWeight="bold"
                   marginRight="spacing.1"
@@ -300,6 +303,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                   ₹
                 </Text>
                 <Text
+                  data-blade-component="base-text"
                   style={
                     Array [
                       Object {
@@ -324,6 +328,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 >
                   <Text
                     color="feedback.text.positive.lowContrast"
+                    data-blade-component="base-text"
                     fontSize={100}
                     fontWeight="regular"
                     lineHeight={100}
@@ -354,6 +359,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                   </Text>
                   <Text
                     color="feedback.text.positive.lowContrast"
+                    data-blade-component="base-text"
                     fontSize={75}
                     fontWeight="regular"
                     marginLeft="spacing.1"
@@ -467,6 +473,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       <View
         alignItems="center"
         className="content-container"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         style={
@@ -481,6 +488,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       >
         <Text
           color="action.text.link.default"
+          data-blade-component="base-text"
           fontSize={100}
           fontWeight="bold"
           lineHeight={100}
@@ -513,6 +521,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
         </Text>
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           style={
             Array [
@@ -542,6 +551,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="16px"
@@ -706,6 +716,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
               >
                 <Text
                   color="feedback.text.positive.lowContrast"
+                  data-blade-component="base-text"
                   fontSize={75}
                   fontWeight="bold"
                   marginRight="spacing.1"
@@ -734,6 +745,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                   ₹
                 </Text>
                 <Text
+                  data-blade-component="base-text"
                   style={
                     Array [
                       Object {
@@ -758,6 +770,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 >
                   <Text
                     color="feedback.text.positive.lowContrast"
+                    data-blade-component="base-text"
                     fontSize={100}
                     fontWeight="regular"
                     lineHeight={100}
@@ -788,6 +801,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                   </Text>
                   <Text
                     color="feedback.text.positive.lowContrast"
+                    data-blade-component="base-text"
                     fontSize={75}
                     fontWeight="regular"
                     marginLeft="spacing.1"
