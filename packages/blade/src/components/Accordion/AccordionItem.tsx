@@ -38,6 +38,8 @@ type AccordionItemProps = {
   _index?: number;
 } & TestID;
 
+const BLANK_SPACE = ' ';
+
 /**
  * On React Native if the `AccordionItem` has a lengthy description which renders a `Text` spanning multiple lines,
  * it sometimes messes up the layout calculation (it thinks of multiline as a single line before flowing in the UI).
@@ -48,7 +50,7 @@ type AccordionItemProps = {
 const reactNativeMultilineTextOverflowFix = (
   // make this hidden from screen readers
   <BaseBox {...makeAccessible({ hidden: true })}>
-    <Text> </Text>
+    <Text>{BLANK_SPACE}</Text>
   </BaseBox>
 );
 
