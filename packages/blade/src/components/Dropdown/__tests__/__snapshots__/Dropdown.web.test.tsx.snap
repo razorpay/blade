@@ -212,10 +212,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c18 {
-  display: block;
   position: absolute;
   width: 100%;
-  right: 0px;
+  left: 0px;
 }
 
 .c19 {
@@ -226,6 +225,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transform: translateY(8px);
   opacity: 0;
   z-index: 99;
+  pointer-events: all;
 }
 
 .c34 {
@@ -329,6 +329,24 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
+.c29 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 .c37 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -341,14 +359,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   text-align: center;
   margin: 0;
   padding: 0;
-}
-
-.c29 {
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
 .c36 {
@@ -603,11 +613,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       >
         <div
           class="c3"
-          display="flex"
         >
           <div
             class="c4"
-            display="flex"
           >
             <label
               for="dropdown-7-trigger-1-input-2"
@@ -619,16 +627,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               >
                 <div
                   class="c6"
-                  display="flex"
                 >
                   <p
-                    class="c7 "
-                    color="surface.text.subdued.lowContrast"
+                    class="c7"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="75"
-                    font-style="normal"
-                    font-weight="bold"
                   >
                     Fruits
                   </p>
@@ -637,13 +639,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                     data-blade-component="visually-hidden"
                   >
                     <p
-                      class="c8 "
-                      color="surface.text.normal.lowContrast"
+                      class="c8"
                       data-blade-component="text"
-                      font-family="text"
-                      font-size="100"
-                      font-style="normal"
-                      font-weight="regular"
                     />
                   </div>
                 </div>
@@ -652,8 +649,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           </div>
           <div
             class="c9 c10"
-            display="flex"
-            width="100%"
           >
             <button
               aria-controls="dropdown-7-actionlist"
@@ -674,15 +669,12 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             </button>
             <div
               class="c12"
-              display="flex"
             >
               <div
                 class="c13"
-                display="flex"
               >
                 <div
                   class="c14"
-                  display="flex"
                 >
                   <svg
                     aria-hidden="true"
@@ -713,7 +705,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
         >
           <div
             class="c17"
-            display="flex"
           />
         </div>
       </div>
@@ -724,9 +715,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       <div
         class="c18 c19"
         data-blade-component="dropdown-overlay"
-        display="block"
         style="opacity: 1;"
-        width="100%"
       >
         <div
           aria-labelledby="dropdown-7-label"
@@ -763,13 +752,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               class="c22"
             >
               <p
-                class="c23 "
-                color="surface.text.subdued.lowContrast"
+                class="c23"
                 data-blade-component="text"
-                font-family="text"
-                font-size="50"
-                font-style="italic"
-                font-weight="regular"
               >
                 Recent Searches
               </p>
@@ -793,23 +777,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             >
               <div
                 class="c26"
-                display="flex"
               >
                 <div
                   class="c27"
-                  display="flex"
                 />
                 <div
                   class="c28"
                 >
                   <p
-                    class="c8 c29"
-                    color="surface.text.normal.lowContrast"
+                    class="c29"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Apple
                   </p>
@@ -835,23 +812,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             >
               <div
                 class="c26"
-                display="flex"
               >
                 <div
                   class="c27"
-                  display="flex"
                 />
                 <div
                   class="c28"
                 >
                   <p
-                    class="c8 c29"
-                    color="surface.text.normal.lowContrast"
+                    class="c29"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Mango
                   </p>
@@ -895,20 +865,14 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               class="c32"
             >
               <p
-                class="c23 "
-                color="surface.text.subdued.lowContrast"
+                class="c23"
                 data-blade-component="text"
-                font-family="text"
-                font-size="50"
-                font-style="italic"
-                font-weight="regular"
               >
                 Search Tips
               </p>
             </div>
             <div
               class="c33"
-              display="flex"
             >
               <button
                 class="c34"
@@ -918,13 +882,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               >
                 <div
                   class="c35 c36"
-                  display="flex"
                 >
                   <div
                     class="c37"
-                    color="action.text.primary.default"
-                    font-size="100"
-                    font-weight="bold"
                   >
                     Apply
                   </div>
@@ -1009,26 +969,29 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   padding-left: 0px;
 }
 
-.c16 {
+.c15 {
   margin-left: auto;
 }
 
 .c6 {
-  display: block;
   position: absolute;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   min-width: 240px;
   max-width: 400px;
-  left: 0px;
+  right: 0px;
 }
 
 .c7 {
-  -webkit-animation: hMpNnn 200ms cubic-bezier(0,0,0,1);
-  animation: hMpNnn 200ms cubic-bezier(0,0,0,1);
+  -webkit-animation: none;
+  animation: none;
   -webkit-transform: translateY(8px);
   -ms-transform: translateY(8px);
   transform: translateY(8px);
   opacity: 0;
   z-index: 99;
+  pointer-events: none;
 }
 
 .c1 {
@@ -1118,9 +1081,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
-}
-
-.c15 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -1179,8 +1139,8 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
     class="c0"
   >
     <button
-      aria-activedescendant="dropdown-897-0"
-      aria-controls="dropdown-897-actionlist"
+      aria-activedescendant="dropdown-898-0"
+      aria-controls="dropdown-898-actionlist"
       aria-expanded="false"
       aria-haspopup="menu"
       class="c1"
@@ -1190,13 +1150,9 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
     >
       <div
         class="c2 c3"
-        display="flex"
       >
         <div
           class="c4"
-          color="action.text.primary.default"
-          font-size="100"
-          font-weight="bold"
         >
           My Account
         </div>
@@ -1208,14 +1164,13 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
       <div
         class="c6 c7"
         data-blade-component="dropdown-overlay"
-        display="block"
         style="opacity: 0;"
       >
         <div
-          aria-labelledby="dropdown-897-label"
+          aria-labelledby="dropdown-898-label"
           class=" c8"
           data-blade-component="action-list"
-          id="dropdown-897-actionlist"
+          id="dropdown-898-actionlist"
           role="menu"
         >
           <div
@@ -1226,36 +1181,29 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
               data-blade-component="action-list-item"
               data-index="0"
               data-value="profile"
-              id="dropdown-897-0"
+              id="dropdown-898-0"
               role="menuitem"
               tabindex="-1"
               type="button"
             >
               <div
                 class="c11"
-                display="flex"
               >
                 <div
                   class="c12"
-                  display="flex"
                 />
                 <div
                   class="c13"
                 >
                   <p
-                    class="c14 c15"
-                    color="surface.text.normal.lowContrast"
+                    class="c14"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Profile
                   </p>
                 </div>
                 <div
-                  class="c16"
+                  class="c15"
                 />
               </div>
               <div
@@ -1268,36 +1216,29 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
               data-index="1"
               data-value="settings"
               href="/settings"
-              id="dropdown-897-1"
+              id="dropdown-898-1"
               role="link"
               tabindex="-1"
               type="button"
             >
               <div
                 class="c11"
-                display="flex"
               >
                 <div
                   class="c12"
-                  display="flex"
                 />
                 <div
                   class="c13"
                 >
                   <p
-                    class="c14 c15"
-                    color="surface.text.normal.lowContrast"
+                    class="c14"
                     data-blade-component="text"
-                    font-family="text"
-                    font-size="100"
-                    font-style="normal"
-                    font-weight="regular"
                   >
                     Settings
                   </p>
                 </div>
                 <div
-                  class="c16"
+                  class="c15"
                 />
               </div>
               <div

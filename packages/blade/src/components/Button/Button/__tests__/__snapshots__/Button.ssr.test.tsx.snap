@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Button /> should render button as anchor tag 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a href=\\"https://youtu.be/iPaBUhIsslA\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" type=\\"button\\" data-blade-component=\\"button\\" role=\\"link\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hLhPpW\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(0, 0%, 100%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD\\">Pay Now</div></div></a></div>"`;
+exports[`<Button /> should render button as anchor tag 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a href=\\"https://youtu.be/iPaBUhIsslA\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" type=\\"button\\" data-blade-component=\\"button\\" role=\\"link\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh\\"><div class=\\"BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA\\"><div class=\\"BaseBox-bmPWx eqKXGg\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(0, 0%, 100%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div class=\\"StyledBaseText-dVBfTO brGLEM\\">Pay Now</div></div></a></div>"`;
 
 exports[`<Button /> should render button as anchor tag 2`] = `
 <div
@@ -17,12 +17,10 @@ exports[`<Button /> should render button as anchor tag 2`] = `
     type="button"
   >
     <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA"
-      display="flex"
+      class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
     >
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hLhPpW"
-        display="flex"
+        class="BaseBox-bmPWx eqKXGg"
       >
         <svg
           aria-hidden="true"
@@ -42,10 +40,7 @@ exports[`<Button /> should render button as anchor tag 2`] = `
         </svg>
       </div>
       <div
-        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
+        class="StyledBaseText-dVBfTO brGLEM"
       >
         Pay Now
       </div>
@@ -54,7 +49,7 @@ exports[`<Button /> should render button as anchor tag 2`] = `
 </div>
 `;
 
-exports[`<Button /> should render button with icon with default iconPosition 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 hLhPpW\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(0, 0%, 100%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div color=\\"action.text.primary.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD\\">Pay Now</div></div></button></div>"`;
+exports[`<Button /> should render button with icon with default iconPosition 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh\\"><div class=\\"BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA\\"><div class=\\"BaseBox-bmPWx eqKXGg\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"16px\\" viewBox=\\"0 0 24 24\\" width=\\"16px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(0, 0%, 100%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div><div class=\\"StyledBaseText-dVBfTO brGLEM\\">Pay Now</div></div></button></div>"`;
 
 exports[`<Button /> should render button with icon with default iconPosition 2`] = `
 <div
@@ -68,12 +63,10 @@ exports[`<Button /> should render button with icon with default iconPosition 2`]
     type="button"
   >
     <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 BaseButton__ButtonContent-zf1huq-0 kmyrE NIPoA"
-      display="flex"
+      class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
     >
       <div
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 hLhPpW"
-        display="flex"
+        class="BaseBox-bmPWx eqKXGg"
       >
         <svg
           aria-hidden="true"
@@ -93,10 +86,7 @@ exports[`<Button /> should render button with icon with default iconPosition 2`]
         </svg>
       </div>
       <div
-        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 hYSrfD"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
+        class="StyledBaseText-dVBfTO brGLEM"
       >
         Pay Now
       </div>

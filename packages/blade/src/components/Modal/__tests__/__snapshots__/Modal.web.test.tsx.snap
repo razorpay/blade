@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders a Modal with Header and Footer 1`] = `
-.c21 {
+.c20 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: hsla(216,15%,54%,0.18);
@@ -124,20 +124,20 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding-left: 8px;
 }
 
-.c22 {
+.c21 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c24 {
+.c23 {
   padding-top: 16px;
   padding-bottom: 16px;
   padding-right: 20px;
   padding-left: 20px;
 }
 
-.c26 {
+.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -158,11 +158,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   justify-content: center;
 }
 
-.c16 {
+.c15 {
   margin-right: 16px;
 }
 
-.c17 {
+.c16 {
   text-align: left;
   background-color: hsla(36,100%,44%,0.09);
 }
@@ -192,9 +192,14 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
-.c15 {
+.c14 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -207,7 +212,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c23 {
+.c22 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -220,7 +225,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c28 {
+.c27 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -234,7 +239,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c19 {
+.c18 {
   color: hsla(38,97%,38%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -245,9 +250,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
-}
-
-.c14 {
   overflow: hidden;
   display: -webkit-box;
   line-clamp: 1;
@@ -255,7 +257,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c20 {
+.c19 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -282,17 +284,17 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c20:hover {
+.c19:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c20:focus {
+.c19:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c20:active {
+.c19:active {
   color: hsla(217,18%,45%,1);
 }
 
@@ -318,7 +320,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
 }
 
-.c18 {
+.c17 {
   background-color: hsla(36,100%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -349,7 +351,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-.c25 {
+.c24 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -385,24 +387,24 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   position: relative;
 }
 
-.c25:hover {
+.c24:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c25:active {
+.c24:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c25:focus {
+.c24:focus {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c25 * {
+.c24 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -411,7 +413,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c27 {
+.c26 {
   opacity: 1;
 }
 
@@ -433,10 +435,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     aria-modal="true"
     class="c2 c3"
     data-blade-component="modal"
-    display="flex"
     role="dialog"
     tabindex="-1"
-    width="calc(100vw - 48px)"
   >
     <div
       class=""
@@ -447,27 +447,19 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       >
         <div
           class="c5"
-          display="flex"
         >
           <div
             class="c6"
-            display="flex"
           >
             <div
               class=""
             >
               <div
                 class="c7"
-                display="flex"
               >
                 <h6
                   class="c8"
-                  color="surface.text.normal.lowContrast"
                   data-blade-component="heading"
-                  font-family="text"
-                  font-size="200"
-                  font-style="normal"
-                  font-weight="bold"
                 >
                   Address Details
                 </h6>
@@ -480,17 +472,10 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                     <div
                       class="c12"
                       data-blade-component="counter"
-                      display="inline-flex"
-                      overflow="hidden"
                     >
                       <p
-                        class="c13 c14"
-                        color="feedback.text.positive.lowContrast"
+                        class="c13"
                         data-blade-component="text"
-                        font-family="text"
-                        font-size="75"
-                        font-style="normal"
-                        font-weight="regular"
                       >
                         2
                       </p>
@@ -499,38 +484,26 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                 </div>
               </div>
               <p
-                class="c15 "
-                color="surface.text.normal.lowContrast"
+                class="c14"
                 data-blade-component="text"
-                font-family="text"
-                font-size="75"
-                font-style="normal"
-                font-weight="regular"
               >
                 Saving addresses will improve your checkout experience
               </p>
             </div>
           </div>
           <div
-            class="c16"
+            class="c15"
           >
             <div
-              class="c17 c18"
+              class="c16 c17"
               data-blade-component="badge"
             >
               <div
                 class="c12"
-                display="inline-flex"
-                overflow="hidden"
               >
                 <p
-                  class="c19 c14"
-                  color="feedback.text.notice.lowContrast"
+                  class="c18"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="75"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Action Needed
                 </p>
@@ -539,7 +512,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
           </div>
           <button
             aria-label="Close"
-            class="c20"
+            class="c19"
             data-blade-component="icon-button"
             type="button"
           >
@@ -561,21 +534,16 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
         </div>
       </div>
       <div
-        class="c21"
+        class="c20"
       />
     </div>
     <div
-      class="c22"
+      class="c21"
       data-blade-component="modal-body"
     >
       <p
-        class="c23 "
-        color="surface.text.normal.lowContrast"
+        class="c22"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Test Content
       </p>
@@ -585,27 +553,23 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       data-blade-component="box"
     >
       <div
-        class="c21"
+        class="c20"
       />
       <div
-        class="c24"
+        class="c23"
         data-blade-component="modal-footer"
       >
         <button
-          class="c25"
+          class="c24"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class="c26 c27"
-            display="flex"
+            class="c25 c26"
           >
             <div
-              class="c28"
-              color="action.text.primary.default"
-              font-size="100"
-              font-weight="bold"
+              class="c27"
             >
               Save
             </div>
@@ -701,23 +665,16 @@ exports[`Modal renders a basic Modal 1`] = `
     aria-modal="true"
     class="c2 c3"
     data-blade-component="modal"
-    display="flex"
     role="dialog"
     tabindex="0"
-    width="calc(100vw - 48px)"
   >
     <div
       class="c4"
       data-blade-component="modal-body"
     >
       <p
-        class="c5 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
+        class="c5"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Test Content
       </p>
@@ -810,23 +767,16 @@ exports[`Modal renders a basic Modal of large size 1`] = `
     aria-modal="true"
     class="c2 c3"
     data-blade-component="modal"
-    display="flex"
     role="dialog"
     tabindex="0"
-    width="calc(100vw - 48px)"
   >
     <div
       class="c4"
       data-blade-component="modal-body"
     >
       <p
-        class="c5 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
+        class="c5"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Test Content
       </p>
@@ -919,23 +869,16 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
     aria-modal="true"
     class="c2 c3"
     data-blade-component="modal"
-    display="flex"
     role="dialog"
     tabindex="0"
-    width="calc(100vw - 48px)"
   >
     <div
       class="c4"
       data-blade-component="modal-body"
     >
       <p
-        class="c5 Text__StyledText-wkh56f-0"
-        color="surface.text.normal.lowContrast"
+        class="c5"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       >
         Test Content
       </p>

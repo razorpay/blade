@@ -258,7 +258,6 @@ exports[`<OTPInput /> should render 1`] = `
   >
     <div
       class="c0"
-      display="flex"
     >
       <label
         for="otp-37-input-38"
@@ -269,16 +268,10 @@ exports[`<OTPInput /> should render 1`] = `
         >
           <div
             class="c2"
-            display="flex"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
+              class="c3"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Enter OTP
             </p>
@@ -287,13 +280,8 @@ exports[`<OTPInput /> should render 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
+                class="c5"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               />
             </div>
           </div>
@@ -301,7 +289,6 @@ exports[`<OTPInput /> should render 1`] = `
       </label>
       <div
         class="c6"
-        display="flex"
       >
         <input
           hidden=""
@@ -317,12 +304,9 @@ exports[`<OTPInput /> should render 1`] = `
           >
             <div
               class="c0"
-              display="flex"
             >
               <div
                 class="c8 c9"
-                display="flex"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -354,12 +338,9 @@ exports[`<OTPInput /> should render 1`] = `
           >
             <div
               class="c0"
-              display="flex"
             >
               <div
                 class="c8 c9"
-                display="flex"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -391,12 +372,9 @@ exports[`<OTPInput /> should render 1`] = `
           >
             <div
               class="c0"
-              display="flex"
             >
               <div
                 class="c8 c9"
-                display="flex"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -428,12 +406,9 @@ exports[`<OTPInput /> should render 1`] = `
           >
             <div
               class="c0"
-              display="flex"
             >
               <div
                 class="c8 c9"
-                display="flex"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -465,12 +440,9 @@ exports[`<OTPInput /> should render 1`] = `
           >
             <div
               class="c0"
-              display="flex"
             >
               <div
                 class="c8 c9"
-                display="flex"
-                width="100%"
               >
                 <input
                   aria-describedby=""
@@ -502,12 +474,9 @@ exports[`<OTPInput /> should render 1`] = `
           >
             <div
               class="c0"
-              display="flex"
             >
               <div
                 class="c8 c9"
-                display="flex"
-                width="100%"
               >
                 <input
                   aria-describedby=""

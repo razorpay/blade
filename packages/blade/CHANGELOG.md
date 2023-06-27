@@ -1,5 +1,49 @@
 # @razorpay/blade
 
+## 8.11.2
+
+### Patch Changes
+
+- f828bc94: fix: react native display style bug
+
+## 8.11.1
+
+### Patch Changes
+
+- 3f72c0df: fix: dynamic positioning of dropdown overlay
+
+## 8.11.0
+
+### Minor Changes
+
+- acc35a2e: fix: support `min-content`, `none`, `fit-content` in SpacingValueType of Box and styled-props
+
+### Patch Changes
+
+- 9fc66217: feat(blade): added support for React.ReactNode on Title & Heading component
+- b08d09d8: fix(blade): fix modal portal ssr
+
+## 8.10.3
+
+### Patch Changes
+
+- 62522f3e: fix(dropdown): dropdown overlay positioning
+
+## 8.10.2
+
+### Patch Changes
+
+- 99016aff: feat(blade): add support for as prop for typography components
+- f08e6d4f: fix(blade): remove unnecessary attributes from dom
+
+## 8.10.1
+
+### Patch Changes
+
+- 17e5bae0: fix(patch-package): move to dependencies
+  - this should fix an issue with `patch-package` when trying to install latest version of blade
+- 33b507bc: fix(blade): invalid dom nesting in Link
+
 ## 8.10.0
 
 ### Minor Changes

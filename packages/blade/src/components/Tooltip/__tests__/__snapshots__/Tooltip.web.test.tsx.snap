@@ -132,13 +132,9 @@ exports[`<Tooltip /> should render 1`] = `
   >
     <div
       class="c1 c2"
-      display="flex"
     >
       <div
         class="c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
       >
         Hover me
       </div>
