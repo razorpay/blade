@@ -3,6 +3,7 @@ import { Children, useCallback, useRef, useState, useMemo } from 'react';
 
 import type { CollapsibleContextState } from './CollapsibleContext';
 import { CollapsibleContext } from './CollapsibleContext';
+import { MAX_WIDTH, MAX_WIDTH_NO_RESTRICTIONS } from './styles';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -56,12 +57,6 @@ type CollapsibleProps = {
   StyledPropsBlade;
 
 const MIN_WIDTH: BoxProps['minWidth'] = makeSize(size[200]);
-
-const MAX_WIDTH: BoxProps['maxWidth'] = {
-  s: `calc(100vw - ${makeSize(size[40])})`,
-  m: makeSize(size[640]),
-  l: makeSize(size[1136]),
-};
 
 const Collapsible = ({
   children,
@@ -130,7 +125,7 @@ const Collapsible = ({
         flexDirection={direction === 'bottom' ? 'column' : 'column-reverse'}
         alignItems="flex-start"
         minWidth={_shouldApplyWidthRestrictions ? MIN_WIDTH : makeSize(size[0])}
-        maxWidth={_shouldApplyWidthRestrictions ? MAX_WIDTH : 'none'}
+        maxWidth={_shouldApplyWidthRestrictions ? MAX_WIDTH : MAX_WIDTH_NO_RESTRICTIONS}
         {...metaAttribute({ name: MetaConstants.Collapsible, testID })}
         {...getStyledProps(styledProps)}
       >

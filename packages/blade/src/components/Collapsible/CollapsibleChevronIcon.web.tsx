@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import type { CollapsibleProps } from './Collapsible';
 import { useCollapsible } from './CollapsibleContext';
-import { castWebType, makeMotionTime } from '~utils';
+import {
+  getCollapsibleChevronIconTransforms,
+  getTransitionDuration,
+  getTransitionEasing,
+} from './commonStyles';
+import { castWebType } from '~utils';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
@@ -15,26 +20,19 @@ type StyledCollapsibleChevronIconProps = {
 const StyledCollapsibleChevronIcon = styled(BaseBox)<StyledCollapsibleChevronIconProps>((props) => {
   const { isExpanded, direction, theme } = props;
 
-  /**
-   * The orientation of chevron icon inverts based on the direction collapsible expands in.
-   * `transformExpanded` and `transformCollapsed` therefore need to swap their corresponding expanded and collapsed values.
-   */
-  let transformExpanded, transformCollapsed;
-  if (direction === 'bottom') {
-    transformExpanded = 'rotate(-0.5turn)';
-    transformCollapsed = undefined;
-  } else {
-    transformExpanded = undefined;
-    transformCollapsed = 'rotate(-0.5turn)';
-  }
+  const { transformExpanded, transformCollapsed } = getCollapsibleChevronIconTransforms({
+    direction,
+  });
+  const transitionDuration = castWebType(getTransitionDuration(theme));
+  const transitionTimingFunction = castWebType(getTransitionEasing(theme));
 
   return {
     display: 'flex',
     alignItems: 'center',
-    transform: isExpanded ? transformExpanded : transformCollapsed,
+    transform: isExpanded ? `rotate(${transformExpanded}deg)` : `rotate(${transformCollapsed}deg)`,
     transformOrigin: 'center center',
-    transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xmoderate)),
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    transitionDuration,
+    transitionTimingFunction,
     transitionProperty: 'transform',
   };
 });

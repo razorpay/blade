@@ -221,11 +221,13 @@ const _SelectInput = (
         interactionElement={
           <SelectChevronIcon
             onClick={() => {
-              // Icon onClicks to the SelectInput itself
-              if (!isReactNative()) {
-                triggererRef.current?.focus();
+              if (!props.isDisabled) {
+                // Icon onClicks to the SelectInput itself
+                if (!isReactNative()) {
+                  triggererRef.current?.focus();
+                }
+                onTriggerClick();
               }
-              onTriggerClick();
             }}
             icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />
