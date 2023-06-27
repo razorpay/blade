@@ -348,7 +348,8 @@ const componentData: ComponentStatusData = [
   {
     name: 'Slot',
     status: 'planned-Q2-design',
-    description: 'The Slot component is a generic component which can be used as container.',
+    description:
+      'The Slot component is a generic component which can be used as container. (This is a design only component)',
   },
   {
     name: 'SkeletonLoader',
