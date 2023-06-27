@@ -117,22 +117,10 @@ const validBoxAsValues = [
 
 type BoxAsType = typeof validBoxAsValues[number];
 
-type BaseBoxVisualProps = MakeObjectResponsive<
+// Visual props that are common for both Box and BaseBox
+type CommonBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
-    backgroundColor:
-      | BackgroundColorString<'feedback'>
-      | BackgroundColorString<'surface'>
-      | BackgroundColorString<'action'>
-      | (string & Record<never, never>);
-    backgroundImage: CSSObject['backgroundImage'];
-    backgroundSize: CSSObject['backgroundSize'];
-    backgroundPosition: CSSObject['backgroundPosition'];
-    backgroundOrigin: CSSObject['backgroundOrigin'];
-    backgroundRepeat: CSSObject['backgroundRepeat'];
-    lineHeight: SpacingValueType;
-    touchAction: CSSObject['touchAction'];
-    userSelect: CSSObject['userSelect'];
     borderWidth: keyof Border['width'];
     borderColor: BorderColorString<'surface'>;
     borderTopWidth: keyof Border['width'];
@@ -148,6 +136,32 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     borderBottomRightRadius: keyof Border['radius'];
     borderBottomLeftRadius: keyof Border['radius'];
   } & PickCSSByPlatform<
+    | 'backgroundImage'
+    | 'backgroundSize'
+    | 'backgroundPosition'
+    | 'backgroundOrigin'
+    | 'backgroundRepeat'
+  >
+>;
+
+// Visual props that are specific BaseBox
+// This is used to ensure some of the more flexible BaseBox props are not passed to Box
+type BaseBoxVisualProps = MakeObjectResponsive<
+  {
+    backgroundColor:
+      | BackgroundColorString<'feedback'>
+      | BackgroundColorString<'surface'>
+      | BackgroundColorString<'action'>
+      | (string & Record<never, never>);
+    backgroundImage: CSSObject['backgroundImage'];
+    backgroundSize: CSSObject['backgroundSize'];
+    backgroundPosition: CSSObject['backgroundPosition'];
+    backgroundOrigin: CSSObject['backgroundOrigin'];
+    backgroundRepeat: CSSObject['backgroundRepeat'];
+    lineHeight: SpacingValueType;
+    touchAction: CSSObject['touchAction'];
+    userSelect: CSSObject['userSelect'];
+  } & PickCSSByPlatform<
     | 'border'
     | 'borderLeft'
     | 'borderRight'
@@ -158,53 +172,9 @@ type BaseBoxVisualProps = MakeObjectResponsive<
   >
 >;
 
+// Visual props that are specific to Box
 type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor: BackgroundColorString<'surface'>;
-  /**
-   * **Warning**
-   *
-   * This prop is only supported for web. It will have no effect on react-native.
-   */
-  backgroundImage: CSSObject['backgroundImage'];
-  /**
-   * **Warning**
-   *
-   * This prop is only supported on the web. It will have no effect on react-native.
-   */
-  backgroundSize: CSSObject['backgroundSize'];
-  /**
-   * **Warning**
-   *
-   * This prop is only supported on the web. It will have no effect on react-native.
-   */
-  backgroundPosition: CSSObject['backgroundPosition'];
-  /**
-   * **Warning**
-   *
-   * This prop is only supported on the web. It will have no effect on react-native.
-   */
-  backgroundOrigin: CSSObject['backgroundOrigin'];
-  /**
-   * **Warning**
-   *
-   * This prop is only supported on the web. It will be ignored on react-native.
-   */
-  backgroundRepeat: CSSObject['backgroundRepeat'];
-  borderWidth: keyof Border['width'];
-  borderColor: BorderColorString<'surface'>;
-  borderTopWidth: keyof Border['width'];
-  borderTopColor: BorderColorString<'surface'>;
-  borderRightWidth: keyof Border['width'];
-  borderRightColor: BorderColorString<'surface'>;
-  borderBottomWidth: keyof Border['width'];
-  borderBottomColor: BorderColorString<'surface'>;
-  borderLeftWidth: keyof Border['width'];
-  borderLeftColor: BorderColorString<'surface'>;
-  borderRadius: keyof Border['radius'];
-  borderTopLeftRadius: keyof Border['radius'];
-  borderTopRightRadius: keyof Border['radius'];
-  borderBottomRightRadius: keyof Border['radius'];
-  borderBottomLeftRadius: keyof Border['radius'];
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
   // styled-components do not support passing `as` prop as an object
@@ -275,6 +245,7 @@ type BoxProps = Partial<
     PositionProps &
     GridProps &
     BoxCallbackProps &
+    CommonBoxVisualProps &
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];
       tabIndex?: number;
