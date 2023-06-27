@@ -31,6 +31,24 @@ describe('<BottomSheet />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  test('should render empty header', () => {
+    const Example = (): React.ReactElement => {
+      // Can't render BottomSheetBody because https://github.com/gorhom/react-native-bottom-sheet/issues/11#issuecomment-1283588472
+      return (
+        <BottomSheet isOpen={true}>
+          <BottomSheetHeader />
+          <BottomSheetFooter>
+            <Button isFullWidth variant="secondary">
+              Remove address
+            </Button>
+          </BottomSheetFooter>
+        </BottomSheet>
+      );
+    };
+    const { toJSON } = renderWithTheme(<Example />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   test('BottomSheetHeader trailing should not allow any random component', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 
