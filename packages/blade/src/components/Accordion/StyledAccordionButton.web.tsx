@@ -1,27 +1,27 @@
 import styled from 'styled-components';
 import type { StyledAccordionButtonProps } from './types';
-import { castWebType, makeMotionTime } from '~utils';
+import {
+  getBackgroundColor,
+  getCommonAccordionButtonStyles,
+  getTransitionDuration,
+  getTransitionEasing,
+} from './commonStyles';
+import { castWebType } from '~utils';
 
-// TODO: refactor common tokens after native implementation
 const StyledAccordionButton = styled.div<StyledAccordionButtonProps>((props) => {
   const { theme, isExpanded } = props;
+  const commonStyles = getCommonAccordionButtonStyles(props);
   return {
-    backgroundColor: isExpanded ? theme.colors.brand.gray.a50.lowContrast : undefined,
-    padding: theme.spacing[5],
-    transitionProperty: 'background-color, box-shadow, border-radius',
-    transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    ...commonStyles,
+    backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: false }),
+    transitionProperty: 'background-color, box-shadow, border-radius, color',
+    transitionDuration: castWebType(getTransitionDuration(theme)),
+    transitionTimingFunction: castWebType(getTransitionEasing(theme)),
     cursor: 'pointer',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     color: theme.colors.surface.action.icon.default.lowContrast,
 
     '&:hover, &:focus': {
-      backgroundColor: isExpanded
-        ? theme.colors.brand.gray.a100.lowContrast
-        : theme.colors.brand.gray.a50.lowContrast,
+      backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: true }),
     },
 
     '&:hover': {

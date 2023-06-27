@@ -13,6 +13,7 @@ import { QRCodeIcon, RoutesIcon, SubscriptionsIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Alert } from '~components/Alert';
+import { isReactNative } from '~utils';
 
 const Page = (): ReactElement => {
   return (
@@ -114,6 +115,21 @@ const AccordionWithIconsTemplate: ComponentStory<typeof AccordionComponent> = ({
 
 export const BasicExample = AccordionTemplate.bind({});
 
+export const WithShowNumberPrefix = AccordionTemplate.bind({});
+
+WithShowNumberPrefix.args = {
+  showNumberPrefix: true,
+};
+
+WithShowNumberPrefix.parameters = {
+  docs: {
+    description: {
+      story:
+        'Use the `showNumberPrefix` prop to automatically add numeric indexes. **Note:** this should not be used with `icon` prop in `AccordionItem`',
+    },
+  },
+};
+
 export const WithIcons = AccordionWithIconsTemplate.bind({});
 
 WithIcons.parameters = {
@@ -132,14 +148,29 @@ const AccordionControlledTemplate: ComponentStory<typeof AccordionComponent> = (
   ...rest
 }) => {
   const [expandedIndex, setExpandedIndex] = useState(-1);
+  const gap = isReactNative() ? 'spacing.1' : 'spacing.0';
 
   return (
     <>
-      <Box display="flex" flexDirection="row" gap="spacing.4" marginBottom="spacing.6">
-        <Button onClick={() => setExpandedIndex(0)}>Expand First</Button>
-        <Button onClick={() => setExpandedIndex(1)}>Expand Second</Button>
-        <Button onClick={() => setExpandedIndex(2)}>Expand Third</Button>
-        <Button onClick={() => setExpandedIndex(-1)}>Collapse</Button>
+      <Box
+        display="flex"
+        flexDirection="row"
+        gap="spacing.4"
+        marginBottom="spacing.6"
+        flexWrap="wrap"
+      >
+        <Button marginX={gap} marginY={gap} onClick={() => setExpandedIndex(0)}>
+          Expand First
+        </Button>
+        <Button marginX={gap} marginY={gap} onClick={() => setExpandedIndex(1)}>
+          Expand Second
+        </Button>
+        <Button marginX={gap} marginY={gap} onClick={() => setExpandedIndex(2)}>
+          Expand Third
+        </Button>
+        <Button marginX={gap} marginY={gap} onClick={() => setExpandedIndex(-1)}>
+          Collapse
+        </Button>
       </Box>
       <AccordionComponent
         {...rest}
@@ -178,16 +209,20 @@ ControlledExample.args = {
 };
 
 const AccordionWithSlotTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args }) => {
+  const [isVisible, setIsVisible] = useState(true);
   return (
     <AccordionComponent {...args}>
       <AccordionItem
         title="How can I setup Route?"
         description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
       >
-        <Alert
-          title="Custom slot"
-          description="You can render anything here along with description"
-        />
+        {isVisible && (
+          <Alert
+            title="Custom slot"
+            description="You can render anything here along with description"
+            onDismiss={() => setIsVisible(false)}
+          />
+        )}
       </AccordionItem>
       <AccordionItem title="How can I setup QR Codes?">
         <Alert
