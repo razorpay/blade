@@ -7,9 +7,12 @@ type BottomSheetContextProps = {
   headerHeight: number;
   contentHeight: number;
   footerHeight: number;
+  isHeaderFloating: boolean;
   setContentHeight: React.Dispatch<React.SetStateAction<number>>;
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
+  setHasBodyPadding: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsHeaderEmpty: React.Dispatch<React.SetStateAction<boolean>>;
   /**
    * Closes the bottomsheet
    */
@@ -52,9 +55,12 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   headerHeight: 0,
   contentHeight: 0,
   footerHeight: 0,
+  isHeaderFloating: false,
   setContentHeight: () => {},
   setHeaderHeight: () => {},
   setFooterHeight: () => {},
+  setHasBodyPadding: () => {},
+  setIsHeaderEmpty: () => {},
   close: () => {},
   scrollRef: null,
   bind: null,

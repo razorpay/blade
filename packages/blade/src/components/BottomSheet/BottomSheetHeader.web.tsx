@@ -18,7 +18,14 @@ const _BottomSheetHeader = ({
   showBackButton = false,
   onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
-  const { setHeaderHeight, isOpen, close, bind, defaultInitialFocusRef } = useBottomSheetContext();
+  const {
+    setHeaderHeight,
+    isOpen,
+    close,
+    bind,
+    setIsHeaderEmpty,
+    defaultInitialFocusRef,
+  } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -27,6 +34,11 @@ const _BottomSheetHeader = ({
   }, [ref, isOpen]);
 
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
+
+  React.useEffect(() => {
+    setIsHeaderEmpty(isHeaderEmpty);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isHeaderEmpty]);
 
   return (
     <BaseBox

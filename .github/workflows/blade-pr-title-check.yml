@@ -1,7 +1,7 @@
 name: Blade PR Title Check
 
 on:
-  pull_request:
+  pull_request_target:
     types: [open, edited, synchronize]
 
 concurrency: # cancel previously running workflows when a new workflow is re-run
@@ -10,7 +10,7 @@ concurrency: # cancel previously running workflows when a new workflow is re-run
 
 jobs:
   pr-title-check:
-    name: Check
+    name: PR Title Check
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     env:
       GITHUB_TOKEN: ${{ github.token }}

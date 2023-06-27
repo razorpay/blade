@@ -344,17 +344,6 @@ export type DropdownPosition = {
 };
 
 /**
- * This object is used for calculating overflows in dropdown overlay.
- * 400 is used since max-width of dropdown overlay is 400px.
- */
-export const POSITION_THRESHOLDS = {
-  top: -400,
-  bottom: -300,
-  left: -400,
-  right: -400,
-};
-
-/**
  * This function calculates the position of dropdown overlay with respect to dropdown trigger element.
  * For non-menus (e.g SelectInput), position is flipped if overflow is on bottom.
  * For menus (e.g. DropdownButton), position is flipped if overflow is on right or bottom.
@@ -364,32 +353,50 @@ export const getDropdownOverlayPosition = ({
   overflow: position,
   isMenu,
   triggererEl,
+  actionListItemEl,
 }: {
   overflow: PositionProp;
   isMenu: boolean;
   triggererEl: HTMLButtonElement | null;
+  actionListItemEl: HTMLDivElement | null;
 }): DropdownPosition => {
   const zeroSpacing: SpacingValueType = 'spacing.0';
-  const { bottom, right } = position;
+  const { top, bottom, right } = position;
 
   const newPosition: DropdownPosition = { left: zeroSpacing };
 
+  /**
+   * Calculating thresholds using the height & width of action list element with offset of 16px
+   */
+  const WIDTH_THRESHOLD = (Number(actionListItemEl?.clientWidth) + Number(size[16])) * -1;
+  const HEIGHT_THRESHOLD = (Number(actionListItemEl?.clientHeight) + Number(size[16])) * -1;
+
   if (!isMenu) {
-    if (bottom > POSITION_THRESHOLDS.bottom) {
+    if (bottom > HEIGHT_THRESHOLD) {
       newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[32])}px`;
+      newPosition.top = undefined;
     }
-    console.log({ newPosition });
+
+    if (top > HEIGHT_THRESHOLD) {
+      newPosition.top = zeroSpacing;
+      newPosition.bottom = undefined;
+    }
     return newPosition;
   }
 
-  if (right > POSITION_THRESHOLDS.right) {
+  if (right > WIDTH_THRESHOLD) {
     newPosition.right = zeroSpacing;
     newPosition.left = undefined;
   }
 
-  if (bottom > POSITION_THRESHOLDS.bottom) {
+  if (bottom > HEIGHT_THRESHOLD) {
     newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[20])}px`;
     newPosition.top = undefined;
+  }
+
+  if (top > HEIGHT_THRESHOLD) {
+    newPosition.top = zeroSpacing;
+    newPosition.bottom = undefined;
   }
 
   return newPosition;
@@ -398,20 +405,25 @@ export const getDropdownOverlayPosition = ({
 export const getDropdownOverflowMiddleware = ({
   isMenu,
   triggererRef,
+  actionListItemRef,
   setDropdownPosition,
 }: {
   setDropdownPosition: React.Dispatch<React.SetStateAction<DropdownPosition>>;
   isMenu: boolean;
   triggererRef: React.RefObject<HTMLButtonElement | null>;
+  actionListItemRef: React.RefObject<HTMLDivElement | null>;
 }): { name: string; fn: (state: MiddlewareState) => Promise<object> } => {
   return {
     name: 'detectOverflowMiddleware',
     async fn(state: MiddlewareState) {
-      const overflow = await detectOverflow(state, { elementContext: 'reference' });
+      const overflow = await detectOverflow(state, {
+        elementContext: 'reference',
+      });
       const position = getDropdownOverlayPosition({
         overflow,
         isMenu,
         triggererEl: triggererRef.current,
+        actionListItemEl: actionListItemRef.current,
       });
       setDropdownPosition(position);
       return {};
