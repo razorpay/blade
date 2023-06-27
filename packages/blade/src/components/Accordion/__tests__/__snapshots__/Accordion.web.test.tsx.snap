@@ -27,6 +27,9 @@ exports[`<Accordion /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
   color: hsla(214,18%,69%,1);
+  width: 100%;
+  border: none;
+  text-align: left;
 }
 
 .c3:hover,
@@ -201,37 +204,27 @@ exports[`<Accordion /> should render 1`] = `
       <div
         class="c1"
         data-blade-component="collapsible"
-        display="flex"
       >
         <div
           aria-level="3"
           class="c2"
           role="heading"
-          width="100%"
         >
-          <div
+          <button
             aria-controls="collapsible-body-1"
             aria-expanded="false"
             class="c3"
             data-blade-component="accordion-button"
-            role="button"
-            tabindex="0"
           >
             <div
               class="c4"
-              display="flex"
             >
-              <h6
+              <span
                 class="c5"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="heading"
-                font-family="text"
-                font-size="200"
-                font-style="normal"
-                font-weight="bold"
               >
                 How can I setup Route?
-              </h6>
+              </span>
             </div>
             <div
               aria-hidden="true"
@@ -255,7 +248,7 @@ exports[`<Accordion /> should render 1`] = `
                 />
               </svg>
             </div>
-          </div>
+          </button>
         </div>
         <div
           aria-hidden="true"
@@ -273,16 +266,10 @@ exports[`<Accordion /> should render 1`] = `
             >
               <div
                 class="c9"
-                display="flex"
               >
                 <p
-                  class="c10 Text__StyledText-wkh56f-0"
-                  color="surface.text.subtle.lowContrast"
+                  class="c10"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
                 </p>
@@ -302,37 +289,27 @@ exports[`<Accordion /> should render 1`] = `
       <div
         class="c1"
         data-blade-component="collapsible"
-        display="flex"
       >
         <div
           aria-level="3"
           class="c2"
           role="heading"
-          width="100%"
         >
-          <div
+          <button
             aria-controls="collapsible-body-2"
             aria-expanded="false"
             class="c3"
             data-blade-component="accordion-button"
-            role="button"
-            tabindex="0"
           >
             <div
               class="c4"
-              display="flex"
             >
-              <h6
+              <span
                 class="c5"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="heading"
-                font-family="text"
-                font-size="200"
-                font-style="normal"
-                font-weight="bold"
               >
                 How can I setup QR Codes?
-              </h6>
+              </span>
             </div>
             <div
               aria-hidden="true"
@@ -356,7 +333,7 @@ exports[`<Accordion /> should render 1`] = `
                 />
               </svg>
             </div>
-          </div>
+          </button>
         </div>
         <div
           aria-hidden="true"
@@ -374,16 +351,10 @@ exports[`<Accordion /> should render 1`] = `
             >
               <div
                 class="c9"
-                display="flex"
               >
                 <p
-                  class="c10 Text__StyledText-wkh56f-0"
-                  color="surface.text.subtle.lowContrast"
+                  class="c10"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
                 </p>
@@ -403,37 +374,27 @@ exports[`<Accordion /> should render 1`] = `
       <div
         class="c1"
         data-blade-component="collapsible"
-        display="flex"
       >
         <div
           aria-level="3"
           class="c2"
           role="heading"
-          width="100%"
         >
-          <div
+          <button
             aria-controls="collapsible-body-3"
             aria-expanded="false"
             class="c3"
             data-blade-component="accordion-button"
-            role="button"
-            tabindex="0"
           >
             <div
               class="c4"
-              display="flex"
             >
-              <h6
+              <span
                 class="c5"
-                color="surface.text.normal.lowContrast"
                 data-blade-component="heading"
-                font-family="text"
-                font-size="200"
-                font-style="normal"
-                font-weight="bold"
               >
                 How can I setup Subscriptions?
-              </h6>
+              </span>
             </div>
             <div
               aria-hidden="true"
@@ -457,7 +418,7 @@ exports[`<Accordion /> should render 1`] = `
                 />
               </svg>
             </div>
-          </div>
+          </button>
         </div>
         <div
           aria-hidden="true"
@@ -475,16 +436,10 @@ exports[`<Accordion /> should render 1`] = `
             >
               <div
                 class="c9"
-                display="flex"
               >
                 <p
-                  class="c10 Text__StyledText-wkh56f-0"
-                  color="surface.text.subtle.lowContrast"
+                  class="c10"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Just use Razorpay.
                 </p>

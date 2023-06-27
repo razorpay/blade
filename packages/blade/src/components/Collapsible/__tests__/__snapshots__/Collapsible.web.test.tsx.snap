@@ -238,7 +238,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   <div
     class="c0"
     data-blade-component="collapsible"
-    display="flex"
   >
     <button
       aria-controls="collapsible-body-1"
@@ -250,13 +249,9 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
     >
       <div
         class="c2 c3"
-        display="flex"
       >
         <div
           class="c4"
-          color="action.text.primary.default"
-          font-size="100"
-          font-weight="bold"
         >
           View Price Breakdown
         </div>
@@ -279,46 +274,30 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
           <div
             class="c7"
             data-blade-component="box"
-            display="flex"
           >
             <p
-              class="c8 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c8"
               data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
             >
               Actual amount
             </p>
             <div
               class="c9"
               data-blade-component="amount"
-              display="inline-flex"
             >
               <span
                 class="c10"
-                color="feedback.text.positive.lowContrast"
-                font-size="75"
-                font-weight="bold"
               >
                 ₹
               </span>
               <span
                 class="c11"
-                color="feedback.text.positive.lowContrast"
-                font-size="100"
-                font-weight="regular"
               >
                 1,000
                 .
               </span>
               <span
                 class="c12"
-                color="feedback.text.positive.lowContrast"
-                font-size="75"
-                font-weight="regular"
               >
                 00
               </span>
@@ -570,33 +549,26 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   <div
     class="c0"
     data-blade-component="collapsible"
-    display="flex"
   >
     <button
       aria-controls="collapsible-body-3"
       aria-disabled="false"
       aria-expanded="false"
       class="c1"
-      cursor="pointer"
       data-blade-component="link"
       role="button"
       type="button"
     >
-      <div
+      <span
         class="c2 content-container"
-        display="flex"
       >
-        <div
+        <span
           class="c3"
-          color="action.text.link.default"
-          font-size="100"
-          font-weight="bold"
         >
           View Price Breakdown
-        </div>
-        <div
+        </span>
+        <span
           class="c4"
-          display="flex"
         >
           <div
             aria-hidden="true"
@@ -620,8 +592,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
               />
             </svg>
           </div>
-        </div>
-      </div>
+        </span>
+      </span>
     </button>
     <div
       aria-hidden="true"
@@ -640,46 +612,30 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
           <div
             class="c8"
             data-blade-component="box"
-            display="flex"
           >
             <p
-              class="c9 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
+              class="c9"
               data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
             >
               Actual amount
             </p>
             <div
               class="c10"
               data-blade-component="amount"
-              display="inline-flex"
             >
               <span
                 class="c11"
-                color="feedback.text.positive.lowContrast"
-                font-size="75"
-                font-weight="bold"
               >
                 ₹
               </span>
               <span
                 class="c12"
-                color="feedback.text.positive.lowContrast"
-                font-size="100"
-                font-weight="regular"
               >
                 1,000
                 .
               </span>
               <span
                 class="c13"
-                color="feedback.text.positive.lowContrast"
-                font-size="75"
-                font-weight="regular"
               >
                 00
               </span>

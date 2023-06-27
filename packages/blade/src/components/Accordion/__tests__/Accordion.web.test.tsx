@@ -175,8 +175,7 @@ describe('<Accordion />', () => {
     getByTestId('accordion-item-2');
   });
 
-  // This test is skipped because it fails heading levels a11y since Heading renders as `h6` https://github.com/razorpay/blade/issues/812
-  it.skip('should pass general a11y', async () => {
+  it('should pass general a11y', async () => {
     const { getAllByRole } = renderWithTheme(
       <Accordion>
         <AccordionItem

@@ -248,7 +248,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               >
@@ -683,7 +682,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               >

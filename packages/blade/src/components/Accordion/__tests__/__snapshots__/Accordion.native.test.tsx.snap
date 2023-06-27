@@ -332,7 +332,6 @@ exports[`<Accordion /> should render 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -383,7 +382,6 @@ exports[`<Accordion /> should render 1`] = `
                             "paddingTop": 0,
                             "textDecorationLine": "none",
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -707,7 +705,6 @@ exports[`<Accordion /> should render 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -758,7 +755,6 @@ exports[`<Accordion /> should render 1`] = `
                             "paddingTop": 0,
                             "textDecorationLine": "none",
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -1082,7 +1078,6 @@ exports[`<Accordion /> should render 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -1133,7 +1128,6 @@ exports[`<Accordion /> should render 1`] = `
                             "paddingTop": 0,
                             "textDecorationLine": "none",
                           },
-                          Object {},
                         ]
                       }
                     >
