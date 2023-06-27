@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { Rect as RectNative } from 'react-native-svg';
 import type { RectProps } from './types';
-import { metaAttribute } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 
 const Rect = ({ height, width, fill, rx, ry, x, y }: RectProps): ReactElement => {
   return (

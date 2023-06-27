@@ -2,7 +2,7 @@
 import { Collapsible } from '../Collapsible';
 import { CollapsibleButton } from '../CollapsibleButton';
 import { CollapsibleBody } from '../CollapsibleBody';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Amount } from '~components/Amount';
