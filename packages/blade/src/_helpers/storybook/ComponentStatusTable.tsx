@@ -304,13 +304,17 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Accordion',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '8.12.0',
+    storybookLink: 'Components/Accordion',
     description:
       'Accordion component allows the user to show and hide sections of related content on a page',
   },
   {
     name: 'Collapsible',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '8.12.0',
+    storybookLink: 'Components/Collapsible',
     description:
       'Collapsibles are used to allow users to toggle the visibility of hidden content within a container.',
   },

@@ -8,7 +8,7 @@ import {
 } from './commonStyles';
 import { castWebType } from '~utils';
 
-const StyledAccordionButton = styled.div<StyledAccordionButtonProps>((props) => {
+const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) => {
   const { theme, isExpanded } = props;
   const commonStyles = getCommonAccordionButtonStyles(props);
   return {
@@ -19,6 +19,9 @@ const StyledAccordionButton = styled.div<StyledAccordionButtonProps>((props) => 
     transitionTimingFunction: castWebType(getTransitionEasing(theme)),
     cursor: 'pointer',
     color: theme.colors.surface.action.icon.default.lowContrast,
+    width: '100%',
+    border: 'none',
+    textAlign: 'left',
 
     '&:hover, &:focus': {
       backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: true }),

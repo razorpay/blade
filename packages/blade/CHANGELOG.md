@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 8.12.0
+
+### Minor Changes
+
+- 0478669a: feat: add `Accordion` and `Collapsible` components
+
+  > **Note**
+  >
+  > If you're upgrading from earlier PRE_RELEASE, there are no breaking changes in the API, however there are some changes in the rendered markup which may require updating any snapshots (if any) at your end
+
+- dd0695d7: feat(blade): added bottomsheet body zero padding option
+
 ## 8.11.3
 
 ### Patch Changes
