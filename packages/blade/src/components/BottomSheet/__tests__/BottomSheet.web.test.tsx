@@ -86,8 +86,6 @@ describe('<BottomSheet />', () => {
   });
 
   it('should render empty header with padding 0', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-
     const Example = (): React.ReactElement => {
       return (
         <BottomSheet isOpen={true}>
@@ -100,7 +98,6 @@ describe('<BottomSheet />', () => {
     };
     const { container } = renderWithTheme(<Example />);
     expect(container).toMatchSnapshot();
-    mockConsoleError.mockRestore();
   });
 
   it('should open/close BottomSheet', async () => {

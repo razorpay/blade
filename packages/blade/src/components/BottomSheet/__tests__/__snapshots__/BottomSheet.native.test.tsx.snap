@@ -435,13 +435,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             </View>
           </View>
           <View
-            backgroundColor="white"
             flexShrink={0}
             overflow="visible"
             style={
               Array [
                 Object {
-                  "backgroundColor": "white",
                   "flexShrink": 0,
                   "overflow": "visible",
                 },

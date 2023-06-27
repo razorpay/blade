@@ -26,11 +26,7 @@ const _BottomSheetHeader = ({
   }, [isHeaderEmpty]);
 
   return (
-    <BaseBox
-      backgroundColor={isHeaderEmpty ? undefined : 'white'}
-      overflow="visible"
-      flexShrink={0}
-    >
+    <BaseBox overflow="visible" flexShrink={0}>
       {isHeaderEmpty ? (
         <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />
       ) : (
