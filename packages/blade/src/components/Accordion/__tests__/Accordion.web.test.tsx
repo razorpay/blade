@@ -176,7 +176,7 @@ describe('<Accordion />', () => {
   });
 
   it('should pass general a11y', async () => {
-    const { getAllByRole } = renderWithTheme(
+    const { container } = renderWithTheme(
       <Accordion>
         <AccordionItem
           title="How can I setup Route?"
@@ -190,7 +190,6 @@ describe('<Accordion />', () => {
       </Accordion>,
     );
 
-    await assertAccessible(getAllByRole('button')[0]);
-    await assertAccessible(getAllByRole('region', { hidden: true })[0]);
+    await assertAccessible(container);
   });
 });
