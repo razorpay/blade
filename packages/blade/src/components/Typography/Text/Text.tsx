@@ -51,16 +51,24 @@ export type TextProps<T> = T extends {
   variant: infer Variant;
 }
   ? Variant extends 'caption'
-  ? TextCaptionVariant
-  : Variant extends 'body'
-  ? TextBodyVariant
-  : T
+    ? TextCaptionVariant
+    : Variant extends 'body'
+    ? TextBodyVariant
+    : T
   : T;
 
 type GetTextPropsReturn = Omit<BaseTextProps, 'children'>;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'color' | 'testID' | 'textAlign' | 'textDecorationLine'
+  | 'type'
+  | 'variant'
+  | 'weight'
+  | 'size'
+  | 'contrast'
+  | 'color'
+  | 'testID'
+  | 'textAlign'
+  | 'textDecorationLine'
 >;
 const getTextProps = <T extends { variant: TextVariant }>({
   variant,
