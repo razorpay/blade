@@ -19,7 +19,7 @@ const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Accordion"
-      componentDescription="[Only available for web PRE RELEASE currently]: An accordion is used to allow users to toggle between different content sections in a compact vertical stack."
+      componentDescription="An accordion is used to allow users to toggle between different content sections in a compact vertical stack."
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=79-629874&t=sVxH3DOnx3L3F9rO-0',
@@ -30,7 +30,7 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { Accordion_PRE_RELEASE as Accordion, AccordionItem } from '@razorpay/blade/components';
+        import { Accordion, AccordionItem } from '@razorpay/blade/components';
 
         function App() {
           return (
@@ -59,7 +59,7 @@ const Page = (): ReactElement => {
 };
 
 const meta: Meta<AccordionProps> = {
-  title: 'Components/Accordion (PRE RELEASE)',
+  title: 'Components/Accordion',
   component: AccordionComponent,
   args: {},
   argTypes: {
