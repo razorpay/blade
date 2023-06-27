@@ -6,7 +6,8 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
-import type { StringChildrenType } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import { metaAttribute, MetaConstants } from '~utils';
 
 type TagProps = {
   /**
@@ -30,13 +31,15 @@ type TagProps = {
    * Disable tag
    */
   isDisabled?: boolean;
-} & StyledPropsBlade;
+} & StyledPropsBlade &
+  TestID;
 
 const Tag = ({
   size = 'medium',
   onDismiss,
   children,
   isDisabled,
+  testID,
   ...styledProps
 }: TagProps): React.ReactElement | null => {
   const [isVisible, setIsVisible] = React.useState(true);
@@ -56,6 +59,7 @@ const Tag = ({
           : ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4']
       }
       {...getStyledProps(styledProps)}
+      {...metaAttribute({ name: MetaConstants.Tag, testID })}
     >
       <Box display="flex" flexDirection="row" flexWrap="nowrap">
         <Text marginRight="spacing.2" type="subtle" contrast="low" size="small">
