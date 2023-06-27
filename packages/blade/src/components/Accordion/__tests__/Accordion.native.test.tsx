@@ -98,19 +98,16 @@ describe('<Accordion />', () => {
     const button2 = 'How can I setup QR Codes?';
     const description2 =
       'Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.';
-    const externalButton1 = 'Expand First';
-    const externalButton2 = 'Expand Second';
-    const externalButtonCollapse = 'Collapse';
 
     const ControlledAccordionExample = (): JSX.Element => {
       const [expandedIndex, setExpandedIndex] = useState(-1);
 
       return (
         <>
-          <Button onClick={() => setExpandedIndex(0)}>{externalButton1}</Button>
-          <Button onClick={() => setExpandedIndex(1)}>{externalButton2}</Button>
+          <Button onClick={() => setExpandedIndex(0)}>Expand First</Button>
+          <Button onClick={() => setExpandedIndex(1)}>Expand Second</Button>
           <Button onClick={() => setExpandedIndex(2)}>Expand Third</Button>
-          <Button onClick={() => setExpandedIndex(-1)}>{externalButtonCollapse}</Button>
+          <Button onClick={() => setExpandedIndex(-1)}>Collapse</Button>
           <Accordion
             expandedIndex={expandedIndex}
             onExpandChange={({ expandedIndex }) => setExpandedIndex(expandedIndex)}
@@ -129,15 +126,10 @@ describe('<Accordion />', () => {
 
     const { getByText, getAllByRole } = renderWithTheme(<ControlledAccordionExample />);
 
-    /**
-     * - Button 1 -> External Button 1
-     * - Button 2 -> External Button 2
-     * - Button 3 -> External Button 3
-     * - Button 4 -> External Button Collapse
-     * - Button 5 -> AccordionItem button 1
-     * - Button 6 -> AccordionItem button 2
-     */
-    const trigger1 = getAllByRole('button')[4];
+    const [, externalButton2, , externalButtonCollapse, trigger1, trigger2] = getAllByRole(
+      'button',
+    );
+
     expect(trigger1).toHaveAccessibilityState({ expanded: false });
     expect(getByText(description1)).not.toBeVisible();
 
@@ -149,10 +141,10 @@ describe('<Accordion />', () => {
     expect(getByText(description1)).toBeVisible();
 
     // test second external button to toggle second accordion item
-    fireEvent.press(getAllByRole('button')[1]);
+    fireEvent.press(externalButton2);
     await waitFor(() => expect(getByText(description2)).toBeVisible());
 
-    expect(getAllByRole('button')[5]).toHaveAccessibilityState({ expanded: true });
+    expect(trigger2).toHaveAccessibilityState({ expanded: true });
 
     // first item should be collapsed now
     expect(trigger1).toHaveAccessibilityState({ expanded: false });
@@ -160,11 +152,11 @@ describe('<Accordion />', () => {
     expect(getByText(description2)).toBeVisible();
 
     // test collapse external button to collapse all accordion items
-    fireEvent.press(getAllByRole('button')[3]);
+    fireEvent.press(externalButtonCollapse);
     await waitFor(() => expect(trigger1).toHaveAccessibilityState({ expanded: false }));
 
-    expect(getAllByRole('button')[4]).toHaveAccessibilityState({ expanded: false });
-    expect(getAllByRole('button')[5]).toHaveAccessibilityState({ expanded: false });
+    expect(trigger1).toHaveAccessibilityState({ expanded: false });
+    expect(trigger2).toHaveAccessibilityState({ expanded: false });
     expect(getByText(description1)).not.toBeVisible();
     expect(getByText(description2)).not.toBeVisible();
 

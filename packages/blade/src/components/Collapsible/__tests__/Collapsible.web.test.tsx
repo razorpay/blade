@@ -186,7 +186,7 @@ describe('<Collapsible />', () => {
   });
 
   it('should pass general a11y with CollapsibleButton', async () => {
-    const { getByRole } = renderWithTheme(
+    const { container } = renderWithTheme(
       <Collapsible defaultIsExpanded>
         <CollapsibleButton>View Price Breakdown</CollapsibleButton>
         <CollapsibleBody>
@@ -198,10 +198,6 @@ describe('<Collapsible />', () => {
       </Collapsible>,
     );
 
-    const collapsibleTrigger = getByRole('button');
-    const collapsiblePanel = getByRole('region');
-
-    await assertAccessible(collapsibleTrigger);
-    await assertAccessible(collapsiblePanel);
+    await assertAccessible(container);
   });
 });
