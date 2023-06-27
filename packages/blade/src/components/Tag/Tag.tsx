@@ -36,6 +36,7 @@ const StyledTag = styled(BaseBox)<Pick<TagProps, 'size' | 'isDisabled'>>((props)
   return {
     backgroundColor: props.theme.colors.brand.gray.a100.lowContrast,
     // borderRadius: props.theme.border.radius.round,
+    // @TODO: check with designer which token should be used for borderRadius
     borderRadius: '100px',
     borderWidth: makeSpace(props.theme.border.width.none),
     display: 'inline-block',
@@ -60,7 +61,7 @@ const Tag = ({
           {children}
         </Text>
         <IconButton
-          size="medium"
+          size="small"
           icon={CloseIcon}
           accessibilityLabel={`Close ${children} tag`}
           onClick={() => onDismiss?.()}

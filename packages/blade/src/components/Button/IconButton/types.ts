@@ -5,7 +5,7 @@ import type { TestID } from '~src/_helpers/types';
 export type StyledIconButtonProps = {
   icon: IconComponent;
   onClick: () => void;
-  size: 'medium' | 'large';
+  size: 'small' | 'medium' | 'large';
   contrast: 'low' | 'high';
   accessibilityLabel: string;
 } & TestID &

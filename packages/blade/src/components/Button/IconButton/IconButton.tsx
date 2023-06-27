@@ -18,7 +18,7 @@ type IconButtonProps = {
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * Icon contrast
