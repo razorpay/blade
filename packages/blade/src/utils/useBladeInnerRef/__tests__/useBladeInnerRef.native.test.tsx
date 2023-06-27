@@ -1,8 +1,8 @@
 /* eslint-disable react/display-name */
 import React from 'react';
 import { View } from 'react-native';
-import type { BladeElementRef } from '../useBladeInnerRef.web';
-import { useBladeInnerRef } from '../useBladeInnerRef.web';
+import type { BladeElementRef } from '../useBladeInnerRef';
+import { useBladeInnerRef } from '../useBladeInnerRef';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('useBladeInnerRef', () => {
