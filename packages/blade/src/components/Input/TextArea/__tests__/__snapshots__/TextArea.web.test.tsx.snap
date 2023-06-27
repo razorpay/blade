@@ -259,7 +259,7 @@ exports[`<TextArea /> should render 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="base-box"
+    data-blade-component="textarea"
   >
     <div
       class="c0"
@@ -594,7 +594,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="base-box"
+    data-blade-component="textarea"
   >
     <div
       class="c0"

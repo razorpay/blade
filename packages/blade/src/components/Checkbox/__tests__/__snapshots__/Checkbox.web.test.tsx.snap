@@ -171,7 +171,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="base-box"
+    data-blade-component="checkbox"
   >
     <label
       class="c0"
@@ -379,7 +379,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="base-box"
+    data-blade-component="checkbox"
   >
     <label
       class="c0"
@@ -590,7 +590,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="base-box"
+    data-blade-component="checkbox"
   >
     <label
       class="c0"
@@ -844,7 +844,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="base-box"
+    data-blade-component="checkbox"
   >
     <label
       class="c0"

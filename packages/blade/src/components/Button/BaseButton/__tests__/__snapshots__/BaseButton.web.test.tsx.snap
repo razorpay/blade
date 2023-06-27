@@ -268,7 +268,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
     >
       <div
         class="c6"
-        data-blade-component="base-box"
+        data-blade-component="spinner"
       >
         <div
           aria-label="Loading"

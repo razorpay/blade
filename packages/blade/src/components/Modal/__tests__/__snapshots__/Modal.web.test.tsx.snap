@@ -419,7 +419,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 <div
   class="c0"
-  data-blade-component="base-box"
+  data-blade-component="box"
   data-testid="modal-wrapper"
 >
   <div
@@ -434,13 +434,13 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     aria-label="Test Modal"
     aria-modal="true"
     class="c2 c3"
-    data-blade-component="base-box"
+    data-blade-component="modal"
     role="dialog"
     tabindex="-1"
   >
     <div
       class=""
-      data-blade-component="base-box"
+      data-blade-component="modal-header"
     >
       <div
         class="c4"
@@ -478,7 +478,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                   >
                     <div
                       class="c12"
-                      data-blade-component="base-box"
+                      data-blade-component="counter"
                     >
                       <p
                         class="c13"
@@ -504,7 +504,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
           >
             <div
               class="c16 c17"
-              data-blade-component="base-box"
+              data-blade-component="badge"
             >
               <div
                 class="c12"
@@ -549,7 +549,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     </div>
     <div
       class="c21"
-      data-blade-component="base-box"
+      data-blade-component="modal-body"
     >
       <p
         class="c22"
@@ -560,14 +560,14 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     </div>
     <div
       class=""
-      data-blade-component="base-box"
+      data-blade-component="box"
     >
       <div
         class="c20"
       />
       <div
         class="c23"
-        data-blade-component="base-box"
+        data-blade-component="modal-footer"
       >
         <button
           class="c24"
@@ -661,7 +661,7 @@ exports[`Modal renders a basic Modal 1`] = `
 
 <div
   class="c0"
-  data-blade-component="base-box"
+  data-blade-component="box"
   data-testid="modal-wrapper"
 >
   <div
@@ -676,13 +676,13 @@ exports[`Modal renders a basic Modal 1`] = `
     aria-label="Test Modal"
     aria-modal="true"
     class="c2 c3"
-    data-blade-component="base-box"
+    data-blade-component="modal"
     role="dialog"
     tabindex="0"
   >
     <div
       class="c4"
-      data-blade-component="base-box"
+      data-blade-component="modal-body"
     >
       <p
         class="c5"
@@ -763,7 +763,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 
 <div
   class="c0"
-  data-blade-component="base-box"
+  data-blade-component="box"
   data-testid="modal-wrapper"
 >
   <div
@@ -778,13 +778,13 @@ exports[`Modal renders a basic Modal of large size 1`] = `
     aria-label="Test Modal"
     aria-modal="true"
     class="c2 c3"
-    data-blade-component="base-box"
+    data-blade-component="modal"
     role="dialog"
     tabindex="0"
   >
     <div
       class="c4"
-      data-blade-component="base-box"
+      data-blade-component="modal-body"
     >
       <p
         class="c5"
@@ -865,7 +865,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 
 <div
   class="c0"
-  data-blade-component="base-box"
+  data-blade-component="box"
   data-testid="modal-wrapper"
 >
   <div
@@ -880,13 +880,13 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
     aria-label="Test Modal"
     aria-modal="true"
     class="c2 c3"
-    data-blade-component="base-box"
+    data-blade-component="modal"
     role="dialog"
     tabindex="0"
   >
     <div
       class="c4"
-      data-blade-component="base-box"
+      data-blade-component="modal-body"
     >
       <p
         class="c5"

@@ -611,7 +611,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       </div>
       <div
         class=""
-        data-blade-component="base-box"
+        data-blade-component="select-input"
       >
         <div
           class="c3"
@@ -731,19 +731,19 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
     >
       <div
         class="c18 c19"
-        data-blade-component="base-box"
+        data-blade-component="dropdown-overlay"
         style="opacity: 1;"
       >
         <div
           aria-labelledby="dropdown-7-label"
           class=" c20"
-          data-blade-component="base-box"
+          data-blade-component="action-list"
           id="dropdown-7-actionlist"
           role="dialog"
         >
           <div
             class=" c21"
-            data-blade-component="base-box"
+            data-blade-component="action-list-header"
           >
             <div
               class=""
@@ -788,7 +788,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             <button
               aria-selected="false"
               class=" c25"
-              data-blade-component="base-box"
+              data-blade-component="action-list-item"
               data-index="0"
               data-value="apple"
               id="dropdown-7-0"
@@ -828,7 +828,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             <button
               aria-selected="false"
               class=" c25"
-              data-blade-component="base-box"
+              data-blade-component="action-list-item"
               data-index="1"
               data-value="mango"
               id="dropdown-7-1"
@@ -869,7 +869,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           <div
             aria-label="Search Tips"
             class=" c31"
-            data-blade-component="base-box"
+            data-blade-component="action-list-footer"
             role="group"
           >
             <div
@@ -1204,13 +1204,13 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
     >
       <div
         class="c6 c7"
-        data-blade-component="base-box"
+        data-blade-component="dropdown-overlay"
         style="opacity: 0;"
       >
         <div
           aria-labelledby="dropdown-898-label"
           class=" c8"
-          data-blade-component="base-box"
+          data-blade-component="action-list"
           id="dropdown-898-actionlist"
           role="menu"
         >
@@ -1220,7 +1220,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
           >
             <button
               class=" c10 active-focus"
-              data-blade-component="base-box"
+              data-blade-component="action-list-item"
               data-index="0"
               data-value="profile"
               id="dropdown-898-0"
@@ -1259,7 +1259,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
             </button>
             <a
               class=" c10"
-              data-blade-component="base-box"
+              data-blade-component="action-list-item"
               data-index="1"
               data-value="settings"
               href="/settings"

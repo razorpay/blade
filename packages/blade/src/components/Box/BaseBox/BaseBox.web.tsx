@@ -4,9 +4,11 @@ import { useMemoizedStyles } from './useMemoizedStyles';
 import { metaAttribute, MetaConstants, omitPropsFromHTML } from '~utils';
 
 const BaseBox = styled.div
-  .attrs<BaseBoxProps>(() => {
+  .attrs<BaseBoxProps>((props) => {
     return {
-      ...metaAttribute({ name: MetaConstants.BaseBox }),
+      ...metaAttribute({
+        name: (props as never)['data-blade-component'] || MetaConstants.BaseBox,
+      }),
     };
   })
   .withConfig({

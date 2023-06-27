@@ -334,7 +334,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             Level 1 
             <span
               class=" c6"
-              data-blade-component="base-box"
+              data-blade-component="code"
             >
               <code
                 class="c7"

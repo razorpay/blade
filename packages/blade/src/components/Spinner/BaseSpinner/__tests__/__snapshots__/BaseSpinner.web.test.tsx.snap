@@ -38,7 +38,7 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -120,7 +120,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -220,7 +220,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -313,7 +313,7 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -395,7 +395,7 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -477,7 +477,7 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -559,7 +559,7 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -641,7 +641,7 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -723,7 +723,7 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -805,7 +805,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -905,7 +905,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -998,7 +998,7 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -1080,7 +1080,7 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -1162,7 +1162,7 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -1244,7 +1244,7 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -1326,7 +1326,7 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -1408,7 +1408,7 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -1490,7 +1490,7 @@ exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"

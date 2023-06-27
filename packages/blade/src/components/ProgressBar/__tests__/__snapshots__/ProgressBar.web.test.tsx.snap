@@ -196,7 +196,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-1"
       role="progressbar"
     >
@@ -293,7 +293,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
       aria-valuenow="50"
       aria-valuetext="50%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-7"
       role="progressbar"
     >
@@ -419,7 +419,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-9"
       role="progressbar"
     >
@@ -545,7 +545,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-17"
       role="progressbar"
     >
@@ -671,7 +671,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-13"
       role="progressbar"
     >
@@ -797,7 +797,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-19"
       role="progressbar"
     >
@@ -923,7 +923,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-15"
       role="progressbar"
     >
@@ -1049,7 +1049,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-11"
       role="progressbar"
     >
@@ -1175,7 +1175,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-16"
       role="progressbar"
     >
@@ -1301,7 +1301,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-12"
       role="progressbar"
     >
@@ -1427,7 +1427,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-18"
       role="progressbar"
     >
@@ -1553,7 +1553,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-14"
       role="progressbar"
     >
@@ -1679,7 +1679,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-10"
       role="progressbar"
     >
@@ -1898,7 +1898,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-6"
       role="progressbar"
     >
@@ -1984,7 +1984,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
       aria-valuenow="70"
       aria-valuetext="70"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="meter-8"
       role="meter"
     >
@@ -2203,7 +2203,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
       aria-valuenow="20"
       aria-valuetext="20%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-5"
       role="progressbar"
     >
@@ -2541,7 +2541,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       aria-valuenow="0"
       aria-valuetext="0%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-3"
       role="progressbar"
     >
@@ -2879,7 +2879,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       aria-valuenow="60"
       aria-valuetext="60%"
       class=""
-      data-blade-component="base-box"
+      data-blade-component="progress-bar"
       id="progress-3"
       role="progressbar"
     >

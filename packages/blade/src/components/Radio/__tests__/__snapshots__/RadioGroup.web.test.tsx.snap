@@ -209,7 +209,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
     <div
       aria-labelledby="radio-group-15-label"
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="radio-group"
       role="group"
     >
       <span
@@ -634,7 +634,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
     <div
       aria-labelledby="radio-group-7-label"
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="radio-group"
       role="group"
     >
       <span

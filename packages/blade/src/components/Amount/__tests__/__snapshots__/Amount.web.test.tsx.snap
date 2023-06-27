@@ -61,7 +61,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -147,7 +147,7 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -219,7 +219,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -298,7 +298,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -544,7 +544,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -568,7 +568,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   </div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -592,7 +592,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   </div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -616,7 +616,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   </div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -640,7 +640,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   </div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c7"
@@ -664,7 +664,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   </div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c7"
@@ -688,7 +688,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   </div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -712,7 +712,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   </div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -736,7 +736,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   </div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c13"
@@ -822,7 +822,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -908,7 +908,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -980,7 +980,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"
@@ -1059,7 +1059,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="c1"

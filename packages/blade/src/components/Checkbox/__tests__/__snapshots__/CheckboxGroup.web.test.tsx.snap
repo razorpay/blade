@@ -210,7 +210,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
     <div
       aria-labelledby="checkbox-group-49-label-54"
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="checkbox-group"
       role="group"
     >
       <span
@@ -260,7 +260,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           >
             <div
               class=""
-              data-blade-component="base-box"
+              data-blade-component="checkbox"
             >
               <label
                 class="c6"
@@ -344,7 +344,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           >
             <div
               class=""
-              data-blade-component="base-box"
+              data-blade-component="checkbox"
             >
               <label
                 class="c6"
@@ -428,7 +428,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           >
             <div
               class=""
-              data-blade-component="base-box"
+              data-blade-component="checkbox"
             >
               <label
                 class="c6"
@@ -723,7 +723,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
     <div
       aria-labelledby="checkbox-group-19-label-24"
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="checkbox-group"
       role="group"
     >
       <span
@@ -773,7 +773,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           >
             <div
               class=""
-              data-blade-component="base-box"
+              data-blade-component="checkbox"
             >
               <label
                 class="c6"
@@ -857,7 +857,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           >
             <div
               class=""
-              data-blade-component="base-box"
+              data-blade-component="checkbox"
             >
               <label
                 class="c6"
@@ -941,7 +941,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           >
             <div
               class=""
-              data-blade-component="base-box"
+              data-blade-component="checkbox"
             >
               <label
                 class="c6"

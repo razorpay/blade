@@ -254,7 +254,7 @@ exports[`<OTPInput /> should render 1`] = `
 <div>
   <div
     class=""
-    data-blade-component="base-box"
+    data-blade-component="otp-input"
   >
     <div
       class="c0"

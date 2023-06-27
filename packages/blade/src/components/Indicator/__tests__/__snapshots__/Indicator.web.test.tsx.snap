@@ -37,7 +37,7 @@ exports[`<Indicator /> should render 1`] = `
   <div
     aria-label="Success"
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="indicator"
     role="status"
   >
     <svg
@@ -129,7 +129,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <div
     aria-label="Warning"
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="indicator"
     role="status"
   >
     <svg
@@ -170,7 +170,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <div
     aria-label="Success"
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="indicator"
     role="status"
   >
     <svg
@@ -211,7 +211,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <div
     aria-label="Error"
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="indicator"
     role="status"
   >
     <svg
@@ -252,7 +252,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <div
     aria-label="Info"
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="indicator"
     role="status"
   >
     <svg

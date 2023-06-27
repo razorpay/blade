@@ -38,7 +38,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -120,7 +120,7 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -202,7 +202,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -284,7 +284,7 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -366,7 +366,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
@@ -448,7 +448,7 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="spinner"
   >
     <div
       aria-label="Loading"

@@ -104,7 +104,7 @@ exports[`<Alert /> should render 1`] = `
 <div>
   <div
     class="c0 c1"
-    data-blade-component="base-box"
+    data-blade-component="alert"
     role="status"
   >
     <div
@@ -286,7 +286,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
 <div>
   <div
     class="c0 c1"
-    data-blade-component="base-box"
+    data-blade-component="alert"
     role="status"
   >
     <div

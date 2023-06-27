@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx iaZUuq\\"><span class=\\"StyledBaseText-dVBfTO cQGNSm\\" data-blade-component=\\"base-text\\">₹</span><span class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"base-text\\">10,000<!-- -->.</span><span class=\\"StyledBaseText-dVBfTO ghBMue\\" data-blade-component=\\"base-text\\">00</span></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"amount\\" class=\\"BaseBox-bmPWx iaZUuq\\"><span class=\\"StyledBaseText-dVBfTO cQGNSm\\" data-blade-component=\\"base-text\\">₹</span><span class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"base-text\\">10,000<!-- -->.</span><span class=\\"StyledBaseText-dVBfTO ghBMue\\" data-blade-component=\\"base-text\\">00</span></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 <div
@@ -9,7 +9,7 @@ exports[`<Amount /> should render Amount on server 2`] = `
 >
   <div
     class="BaseBox-bmPWx iaZUuq"
-    data-blade-component="base-box"
+    data-blade-component="amount"
   >
     <span
       class="StyledBaseText-dVBfTO cQGNSm"
