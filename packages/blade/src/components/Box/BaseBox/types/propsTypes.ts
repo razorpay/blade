@@ -160,10 +160,35 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 type BoxVisualProps = MakeObjectResponsive<{
   backgroundColor: BackgroundColorString<'surface'>;
+  /**
+   * **Warning**
+   *
+   * This prop is only supported for web. It will have no effect on react-native.
+   */
   backgroundImage: CSSObject['backgroundImage'];
+  /**
+   * **Warning**
+   *
+   * This prop is only supported on the web. It will have no effect on react-native.
+   */
   backgroundSize: CSSObject['backgroundSize'];
+  /**
+   * **Warning**
+   *
+   * This prop is only supported on the web. It will have no effect on react-native.
+   */
   backgroundPosition: CSSObject['backgroundPosition'];
+  /**
+   * **Warning**
+   *
+   * This prop is only supported on the web. It will have no effect on react-native.
+   */
   backgroundOrigin: CSSObject['backgroundOrigin'];
+  /**
+   * **Warning**
+   *
+   * This prop is only supported on the web. It will be ignored on react-native.
+   */
   backgroundRepeat: CSSObject['backgroundRepeat'];
   borderWidth: keyof Border['width'];
   borderColor: BorderColorString<'surface'>;
