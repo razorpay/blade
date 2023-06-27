@@ -62,6 +62,7 @@ exports[`<List /> should render List with default properties 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
       class="c0 c1"
@@ -74,9 +75,11 @@ exports[`<List /> should render List with default properties 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -90,6 +93,7 @@ exports[`<List /> should render List with default properties 1`] = `
               <circle
                 cx="3px"
                 cy="3px"
+                data-blade-component="svg-circle"
                 fill="hsla(214, 18%, 69%, 1)"
                 r="3px"
               />
@@ -104,6 +108,7 @@ exports[`<List /> should render List with default properties 1`] = `
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
             class="c0"
@@ -116,9 +121,11 @@ exports[`<List /> should render List with default properties 1`] = `
             >
               <div
                 class="c3"
+                data-blade-component="base-box"
               >
                 <div
                   class="c4"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -132,6 +139,7 @@ exports[`<List /> should render List with default properties 1`] = `
                     <circle
                       cx="3px"
                       cy="3px"
+                      data-blade-component="svg-circle"
                       r="2.5px"
                       stroke="hsla(214, 18%, 69%, 1)"
                     />
@@ -146,6 +154,7 @@ exports[`<List /> should render List with default properties 1`] = `
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
                   class="c0"
@@ -158,9 +167,11 @@ exports[`<List /> should render List with default properties 1`] = `
                   >
                     <div
                       class="c3"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c4"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -172,6 +183,7 @@ exports[`<List /> should render List with default properties 1`] = `
                           width="6px"
                         >
                           <rect
+                            data-blade-component="svg-rect"
                             fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
                             rx="1px"
@@ -278,6 +290,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
       class="c0 c1"
@@ -290,9 +303,11 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -306,6 +321,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               <circle
                 cx="3px"
                 cy="3px"
+                data-blade-component="svg-circle"
                 fill="hsla(214, 18%, 69%, 1)"
                 r="3px"
               />
@@ -322,6 +338,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             >
               <code
                 class="c7"
+                data-blade-component="base-text"
               >
                 Google
               </code>
@@ -335,9 +352,11 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -351,6 +370,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               <circle
                 cx="3px"
                 cy="3px"
+                data-blade-component="svg-circle"
                 fill="hsla(214, 18%, 69%, 1)"
                 r="3px"
               />
@@ -475,6 +495,7 @@ exports[`<List /> should render medium ordered List 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ol
       class="c0 c1"
@@ -487,9 +508,11 @@ exports[`<List /> should render medium ordered List 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <p
               class="c5"
@@ -507,6 +530,7 @@ exports[`<List /> should render medium ordered List 1`] = `
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
             class="List__StyledUnorderedList-bqf6r7-1 c7"
@@ -519,9 +543,11 @@ exports[`<List /> should render medium ordered List 1`] = `
             >
               <div
                 class="c3"
+                data-blade-component="base-box"
               >
                 <div
                   class="c9"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -535,6 +561,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                     <circle
                       cx="3px"
                       cy="3px"
+                      data-blade-component="svg-circle"
                       r="2.5px"
                       stroke="hsla(214, 18%, 69%, 1)"
                     />
@@ -549,6 +576,7 @@ exports[`<List /> should render medium ordered List 1`] = `
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
                   class="List__StyledUnorderedList-bqf6r7-1 c7"
@@ -561,9 +589,11 @@ exports[`<List /> should render medium ordered List 1`] = `
                   >
                     <div
                       class="c3"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c9"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -575,6 +605,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                           width="6px"
                         >
                           <rect
+                            data-blade-component="svg-rect"
                             fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
                             rx="1px"
@@ -687,6 +718,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ol
       class="c0 c1"
@@ -699,9 +731,11 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <p
               class="c5"
@@ -724,9 +758,11 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <p
               class="c5"
@@ -749,9 +785,11 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <p
               class="c5"
@@ -847,6 +885,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
       class="c0 c1"
@@ -859,9 +898,11 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -874,6 +915,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             >
               <path
                 d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
+                data-blade-component="svg-path"
                 fill="hsla(217, 18%, 45%, 1)"
               />
             </svg>
@@ -887,6 +929,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
             class="c0"
@@ -899,9 +942,11 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             >
               <div
                 class="c3"
+                data-blade-component="base-box"
               >
                 <div
                   class="c4"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -914,6 +959,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   >
                     <path
                       d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
+                      data-blade-component="svg-path"
                       fill="hsla(217, 18%, 45%, 1)"
                     />
                   </svg>
@@ -927,6 +973,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
                   class="c0"
@@ -939,9 +986,11 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   >
                     <div
                       class="c3"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c7"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -953,6 +1002,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           width="6px"
                         >
                           <rect
+                            data-blade-component="svg-rect"
                             fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
                             rx="1px"
@@ -1085,6 +1135,7 @@ exports[`<List /> should render small ordered List 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ol
       class="c0 c1"
@@ -1097,9 +1148,11 @@ exports[`<List /> should render small ordered List 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <p
               class="c5"
@@ -1117,6 +1170,7 @@ exports[`<List /> should render small ordered List 1`] = `
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
             class="List__StyledUnorderedList-bqf6r7-1 c7"
@@ -1129,9 +1183,11 @@ exports[`<List /> should render small ordered List 1`] = `
             >
               <div
                 class="c3"
+                data-blade-component="base-box"
               >
                 <div
                   class="c9"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -1145,6 +1201,7 @@ exports[`<List /> should render small ordered List 1`] = `
                     <circle
                       cx="3px"
                       cy="3px"
+                      data-blade-component="svg-circle"
                       r="2.5px"
                       stroke="hsla(214, 18%, 69%, 1)"
                     />
@@ -1159,6 +1216,7 @@ exports[`<List /> should render small ordered List 1`] = `
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
                   class="List__StyledUnorderedList-bqf6r7-1 c7"
@@ -1171,9 +1229,11 @@ exports[`<List /> should render small ordered List 1`] = `
                   >
                     <div
                       class="c3"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c9"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -1185,6 +1245,7 @@ exports[`<List /> should render small ordered List 1`] = `
                           width="6px"
                         >
                           <rect
+                            data-blade-component="svg-rect"
                             fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
                             rx="1px"
@@ -1297,6 +1358,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ol
       class="c0 c1"
@@ -1309,9 +1371,11 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <p
               class="c5"
@@ -1334,9 +1398,11 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <p
               class="c5"
@@ -1359,9 +1425,11 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <p
               class="c5"
@@ -1457,6 +1525,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
       class="c0 c1"
@@ -1469,9 +1538,11 @@ exports[`<List /> should render small unordered List with icon 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -1484,6 +1555,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             >
               <path
                 d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
+                data-blade-component="svg-path"
                 fill="hsla(217, 18%, 45%, 1)"
               />
             </svg>
@@ -1497,6 +1569,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
             class="c0"
@@ -1509,9 +1582,11 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             >
               <div
                 class="c3"
+                data-blade-component="base-box"
               >
                 <div
                   class="c4"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -1524,6 +1599,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   >
                     <path
                       d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
+                      data-blade-component="svg-path"
                       fill="hsla(217, 18%, 45%, 1)"
                     />
                   </svg>
@@ -1537,6 +1613,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
                   class="c0"
@@ -1549,9 +1626,11 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   >
                     <div
                       class="c3"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c7"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -1563,6 +1642,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           width="6px"
                         >
                           <rect
+                            data-blade-component="svg-rect"
                             fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
                             rx="1px"
@@ -1651,6 +1731,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
       class="c0 c1"
@@ -1663,9 +1744,11 @@ exports[`<List /> should render unordered List of small size 1`] = `
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -1679,6 +1762,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
               <circle
                 cx="3px"
                 cy="3px"
+                data-blade-component="svg-circle"
                 fill="hsla(214, 18%, 69%, 1)"
                 r="3px"
               />
@@ -1693,6 +1777,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
             class="c0"
@@ -1705,9 +1790,11 @@ exports[`<List /> should render unordered List of small size 1`] = `
             >
               <div
                 class="c3"
+                data-blade-component="base-box"
               >
                 <div
                   class="c4"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -1721,6 +1808,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     <circle
                       cx="3px"
                       cy="3px"
+                      data-blade-component="svg-circle"
                       r="2.5px"
                       stroke="hsla(214, 18%, 69%, 1)"
                     />
@@ -1735,6 +1823,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
                   class="c0"
@@ -1747,9 +1836,11 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   >
                     <div
                       class="c3"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c4"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -1761,6 +1852,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           width="6px"
                         >
                           <rect
+                            data-blade-component="svg-rect"
                             fill="hsla(214, 18%, 69%, 1)"
                             height="6px"
                             rx="1px"

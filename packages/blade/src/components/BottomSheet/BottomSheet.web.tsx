@@ -20,7 +20,7 @@ import type { BottomSheetProps } from './types';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute } from '~utils/metaAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useScrollLock } from '~utils/useScrollLock';
 import { useWindowSize } from '~utils/useWindowSize';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
@@ -435,7 +435,7 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
-        {...metaAttribute({ name: ComponentIds.BottomSheet })}
+        {...metaAttribute({ name: MetaConstants.BottomSheet })}
         {...makeAccessible({ modal: true, role: 'dialog' })}
         windowHeight={dimensions.height}
         isDragging={isDragging}

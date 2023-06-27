@@ -36,6 +36,7 @@ describe('styledProps with getStyledProps', () => {
       <div>
         <div
           class="c0"
+          data-blade-component="base-box"
         >
           Hello!
         </div>

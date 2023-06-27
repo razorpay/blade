@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Accordion /> should render Accordion on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"accordion\\" class=\\"BaseBox-bmPWx dEqnQe\\"><div data-blade-component=\\"accordion-item\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"collapsible\\" class=\\"BaseBox-bmPWx ctIUBs\\"><div role=\\"heading\\" aria-level=\\"3\\" class=\\"BaseBox-bmPWx iGUFMG\\"><button aria-expanded=\\"false\\" aria-controls=\\"collapsible-body-undefined\\" data-blade-component=\\"accordion-button\\" class=\\"StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 gIhPca\\"><div class=\\"BaseBox-bmPWx iIWYyh\\"><span class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">How can I setup Route?</span></div><div direction=\\"bottom\\" aria-hidden=\\"true\\" class=\\"BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"20px\\" viewBox=\\"0 0 24 24\\" width=\\"20px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"currentColor\\" fill-rule=\\"evenodd\\"></path></svg></div></button></div><div id=\\"collapsible-body-undefined\\" role=\\"region\\" aria-hidden=\\"true\\" data-blade-component=\\"collapsible-body\\" class=\\"BaseBox-bmPWx\\"><div class=\\"CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 zckFh\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hgWdUa\\"><div class=\\"BaseBox-bmPWx bYimaU\\"><p class=\\"StyledBaseText-dVBfTO ktUwvA\\" data-blade-component=\\"text\\">You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.</p></div></div></div></div></div><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div></div><div data-blade-component=\\"accordion-item\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"collapsible\\" class=\\"BaseBox-bmPWx ctIUBs\\"><div role=\\"heading\\" aria-level=\\"3\\" class=\\"BaseBox-bmPWx iGUFMG\\"><button aria-expanded=\\"false\\" aria-controls=\\"collapsible-body-undefined\\" data-blade-component=\\"accordion-button\\" class=\\"StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 gIhPca\\"><div class=\\"BaseBox-bmPWx iIWYyh\\"><span class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">How can I setup QR Codes?</span></div><div direction=\\"bottom\\" aria-hidden=\\"true\\" class=\\"BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"20px\\" viewBox=\\"0 0 24 24\\" width=\\"20px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"currentColor\\" fill-rule=\\"evenodd\\"></path></svg></div></button></div><div id=\\"collapsible-body-undefined\\" role=\\"region\\" aria-hidden=\\"true\\" data-blade-component=\\"collapsible-body\\" class=\\"BaseBox-bmPWx\\"><div class=\\"CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 zckFh\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hgWdUa\\"><div class=\\"BaseBox-bmPWx bYimaU\\"><p class=\\"StyledBaseText-dVBfTO ktUwvA\\" data-blade-component=\\"text\\">Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.</p></div></div></div></div></div><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div></div><div data-blade-component=\\"accordion-item\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"collapsible\\" class=\\"BaseBox-bmPWx ctIUBs\\"><div role=\\"heading\\" aria-level=\\"3\\" class=\\"BaseBox-bmPWx iGUFMG\\"><button aria-expanded=\\"false\\" aria-controls=\\"collapsible-body-undefined\\" data-blade-component=\\"accordion-button\\" class=\\"StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 gIhPca\\"><div class=\\"BaseBox-bmPWx iIWYyh\\"><span class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">How can I setup Subscriptions?</span></div><div direction=\\"bottom\\" aria-hidden=\\"true\\" class=\\"BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"20px\\" viewBox=\\"0 0 24 24\\" width=\\"20px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"currentColor\\" fill-rule=\\"evenodd\\"></path></svg></div></button></div><div id=\\"collapsible-body-undefined\\" role=\\"region\\" aria-hidden=\\"true\\" data-blade-component=\\"collapsible-body\\" class=\\"BaseBox-bmPWx\\"><div class=\\"CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 zckFh\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hgWdUa\\"><div class=\\"BaseBox-bmPWx bYimaU\\"><p class=\\"StyledBaseText-dVBfTO ktUwvA\\" data-blade-component=\\"text\\">Just use Razorpay.</p></div></div></div></div></div><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div></div></div></div>"`;
+exports[`<Accordion /> should render Accordion on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"accordion\\" class=\\"BaseBox-bmPWx dEqnQe\\"><div data-blade-component=\\"accordion-item\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"collapsible\\" class=\\"BaseBox-bmPWx ctIUBs\\"><div role=\\"heading\\" aria-level=\\"3\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx iGUFMG\\"><button aria-expanded=\\"false\\" aria-controls=\\"collapsible-body-undefined\\" data-blade-component=\\"accordion-button\\" class=\\"StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 gIhPca\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx iIWYyh\\"><span class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">How can I setup Route?</span></div><div direction=\\"bottom\\" aria-hidden=\\"true\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"20px\\" viewBox=\\"0 0 24 24\\" width=\\"20px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"currentColor\\" fill-rule=\\"evenodd\\" data-blade-component=\\"svg-path\\"></path></svg></div></button></div><div id=\\"collapsible-body-undefined\\" role=\\"region\\" aria-hidden=\\"true\\" data-blade-component=\\"collapsible-body\\" class=\\"BaseBox-bmPWx\\"><div class=\\"CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 zckFh\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hgWdUa\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx bYimaU\\"><p class=\\"StyledBaseText-dVBfTO ktUwvA\\" data-blade-component=\\"text\\">You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.</p></div></div></div></div></div><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div></div><div data-blade-component=\\"accordion-item\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"collapsible\\" class=\\"BaseBox-bmPWx ctIUBs\\"><div role=\\"heading\\" aria-level=\\"3\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx iGUFMG\\"><button aria-expanded=\\"false\\" aria-controls=\\"collapsible-body-undefined\\" data-blade-component=\\"accordion-button\\" class=\\"StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 gIhPca\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx iIWYyh\\"><span class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">How can I setup QR Codes?</span></div><div direction=\\"bottom\\" aria-hidden=\\"true\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"20px\\" viewBox=\\"0 0 24 24\\" width=\\"20px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"currentColor\\" fill-rule=\\"evenodd\\" data-blade-component=\\"svg-path\\"></path></svg></div></button></div><div id=\\"collapsible-body-undefined\\" role=\\"region\\" aria-hidden=\\"true\\" data-blade-component=\\"collapsible-body\\" class=\\"BaseBox-bmPWx\\"><div class=\\"CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 zckFh\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hgWdUa\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx bYimaU\\"><p class=\\"StyledBaseText-dVBfTO ktUwvA\\" data-blade-component=\\"text\\">Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.</p></div></div></div></div></div><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div></div><div data-blade-component=\\"accordion-item\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"collapsible\\" class=\\"BaseBox-bmPWx ctIUBs\\"><div role=\\"heading\\" aria-level=\\"3\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx iGUFMG\\"><button aria-expanded=\\"false\\" aria-controls=\\"collapsible-body-undefined\\" data-blade-component=\\"accordion-button\\" class=\\"StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 gIhPca\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx iIWYyh\\"><span class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">How can I setup Subscriptions?</span></div><div direction=\\"bottom\\" aria-hidden=\\"true\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"20px\\" viewBox=\\"0 0 24 24\\" width=\\"20px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z\\" clip-rule=\\"evenodd\\" fill=\\"currentColor\\" fill-rule=\\"evenodd\\" data-blade-component=\\"svg-path\\"></path></svg></div></button></div><div id=\\"collapsible-body-undefined\\" role=\\"region\\" aria-hidden=\\"true\\" data-blade-component=\\"collapsible-body\\" class=\\"BaseBox-bmPWx\\"><div class=\\"CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 zckFh\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hgWdUa\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx bYimaU\\"><p class=\\"StyledBaseText-dVBfTO ktUwvA\\" data-blade-component=\\"text\\">Just use Razorpay.</p></div></div></div></div></div><div class=\\"Dividerweb__Divider-sc-7extwn-0 eRlzeO\\"></div></div></div></div>"`;
 
 exports[`<Accordion /> should render Accordion on server 2`] = `
 <div
@@ -22,6 +22,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
         <div
           aria-level="3"
           class="BaseBox-bmPWx iGUFMG"
+          data-blade-component="base-box"
           role="heading"
         >
           <button
@@ -32,6 +33,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
           >
             <div
               class="BaseBox-bmPWx iIWYyh"
+              data-blade-component="base-box"
             >
               <span
                 class="StyledBaseText-dVBfTO dFejDk"
@@ -43,6 +45,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
             <div
               aria-hidden="true"
               class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz"
+              data-blade-component="base-box"
               direction="bottom"
             >
               <svg
@@ -57,6 +60,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
                 <path
                   clip-rule="evenodd"
                   d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                  data-blade-component="svg-path"
                   fill="currentColor"
                   fill-rule="evenodd"
                 />
@@ -80,6 +84,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
             >
               <div
                 class="BaseBox-bmPWx bYimaU"
+                data-blade-component="base-box"
               >
                 <p
                   class="StyledBaseText-dVBfTO ktUwvA"
@@ -107,6 +112,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
         <div
           aria-level="3"
           class="BaseBox-bmPWx iGUFMG"
+          data-blade-component="base-box"
           role="heading"
         >
           <button
@@ -117,6 +123,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
           >
             <div
               class="BaseBox-bmPWx iIWYyh"
+              data-blade-component="base-box"
             >
               <span
                 class="StyledBaseText-dVBfTO dFejDk"
@@ -128,6 +135,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
             <div
               aria-hidden="true"
               class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz"
+              data-blade-component="base-box"
               direction="bottom"
             >
               <svg
@@ -142,6 +150,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
                 <path
                   clip-rule="evenodd"
                   d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                  data-blade-component="svg-path"
                   fill="currentColor"
                   fill-rule="evenodd"
                 />
@@ -165,6 +174,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
             >
               <div
                 class="BaseBox-bmPWx bYimaU"
+                data-blade-component="base-box"
               >
                 <p
                   class="StyledBaseText-dVBfTO ktUwvA"
@@ -192,6 +202,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
         <div
           aria-level="3"
           class="BaseBox-bmPWx iGUFMG"
+          data-blade-component="base-box"
           role="heading"
         >
           <button
@@ -202,6 +213,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
           >
             <div
               class="BaseBox-bmPWx iIWYyh"
+              data-blade-component="base-box"
             >
               <span
                 class="StyledBaseText-dVBfTO dFejDk"
@@ -213,6 +225,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
             <div
               aria-hidden="true"
               class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz"
+              data-blade-component="base-box"
               direction="bottom"
             >
               <svg
@@ -227,6 +240,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
                 <path
                   clip-rule="evenodd"
                   d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                  data-blade-component="svg-path"
                   fill="currentColor"
                   fill-rule="evenodd"
                 />
@@ -250,6 +264,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
             >
               <div
                 class="BaseBox-bmPWx bYimaU"
+                data-blade-component="base-box"
               >
                 <p
                   class="StyledBaseText-dVBfTO ktUwvA"

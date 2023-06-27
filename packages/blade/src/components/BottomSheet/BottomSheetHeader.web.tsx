@@ -5,7 +5,7 @@ import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute } from '~utils/metaAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -46,7 +46,7 @@ const _BottomSheetHeader = ({
       ref={ref}
       overflow={isHeaderEmpty ? 'visible' : 'auto'}
       flexShrink={0}
-      {...metaAttribute({ name: ComponentIds.BottomSheetHeader })}
+      {...metaAttribute({ name: MetaConstants.BottomSheetHeader })}
     >
       {isHeaderEmpty ? (
         <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />

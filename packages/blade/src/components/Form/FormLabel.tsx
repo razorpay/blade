@@ -3,6 +3,7 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType, useBreakpoint } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
@@ -140,6 +141,7 @@ const FormLabel = ({
         marginRight: makeSpace(theme.spacing[5]),
       }}
       id={id}
+      {...metaAttribute({ name: MetaConstants.FormLabel })}
     >
       <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.2'}>{textNode}</BaseBox>
     </Component>

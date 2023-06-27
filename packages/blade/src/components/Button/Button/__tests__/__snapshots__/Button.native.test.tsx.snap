@@ -81,6 +81,7 @@ exports[`<Button /> should render button with default properties 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -102,6 +103,7 @@ exports[`<Button /> should render button with default properties 1`] = `
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -217,6 +219,7 @@ exports[`<Button /> should render button with full width 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -238,6 +241,7 @@ exports[`<Button /> should render button with full width 1`] = `
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -353,6 +357,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -374,6 +379,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     >
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
@@ -392,6 +398,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="16px"
@@ -444,6 +451,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       </View>
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -559,6 +567,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -580,6 +589,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -611,6 +621,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       </Text>
       <View
         alignItems="center"
+        data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
@@ -629,6 +640,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="16px"
@@ -765,6 +777,7 @@ exports[`<Button /> should render disabled button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -786,6 +799,7 @@ exports[`<Button /> should render disabled button 1`] = `
     >
       <Text
         color="action.text.primary.disabled"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -901,6 +915,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -922,6 +937,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
     >
       <Text
         color="action.text.secondary.disabled"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -1037,6 +1053,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1058,6 +1075,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
     >
       <Text
         color="action.text.tertiary.disabled"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -1173,6 +1191,7 @@ exports[`<Button /> should render large size button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1194,6 +1213,7 @@ exports[`<Button /> should render large size button 1`] = `
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={200}
         fontWeight="bold"
         lineHeight={300}
@@ -1309,6 +1329,7 @@ exports[`<Button /> should render medium size button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1330,6 +1351,7 @@ exports[`<Button /> should render medium size button 1`] = `
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -1445,6 +1467,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1466,6 +1489,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
     >
       <Text
         color="action.text.secondary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -1581,6 +1605,7 @@ exports[`<Button /> should render small size button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1602,6 +1627,7 @@ exports[`<Button /> should render small size button 1`] = `
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={75}
         fontWeight="bold"
         lineHeight={50}
@@ -1717,6 +1743,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1738,6 +1765,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
     >
       <Text
         color="action.text.tertiary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -1853,6 +1881,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -1874,6 +1903,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={75}
         fontWeight="bold"
         lineHeight={50}

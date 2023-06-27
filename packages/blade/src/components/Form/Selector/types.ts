@@ -9,7 +9,7 @@ type SelectorLabelProps = {
    * Pass only on react-native
    */
   inputProps: any; // Partial<Extract<InputProps, { onPress: any }>>;
-  componentName?: string;
+  componentName: string;
   onMouseDown?: React.MouseEventHandler<HTMLLabelElement>;
   onMouseUp?: React.MouseEventHandler<HTMLLabelElement>;
   onMouseOut?: React.MouseEventHandler<HTMLLabelElement>;

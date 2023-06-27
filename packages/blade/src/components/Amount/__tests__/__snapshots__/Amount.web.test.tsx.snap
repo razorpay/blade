@@ -65,17 +65,20 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c2"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -148,17 +151,20 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       RM
     </span>
     <span
       class="c2"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -217,11 +223,13 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <div
       class="c2"
+      data-blade-component="base-text"
     >
       1k
     </div>
@@ -294,17 +302,20 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c2"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -537,17 +548,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c2"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -558,17 +572,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c4"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -579,17 +596,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c5"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -600,17 +620,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c6"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -621,17 +644,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   >
     <span
       class="c7"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c8"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c9"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -642,17 +668,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   >
     <span
       class="c7"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c10"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c9"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -663,17 +692,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c11"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -684,17 +716,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c12"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -705,17 +740,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   >
     <span
       class="c13"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c14"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c15"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -788,17 +826,20 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c2"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -871,17 +912,20 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c2"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>
@@ -940,11 +984,13 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <div
       class="c2"
+      data-blade-component="base-text"
     >
       1,000.00
     </div>
@@ -1017,17 +1063,20 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   >
     <span
       class="c1"
+      data-blade-component="base-text"
     >
       ₹
     </span>
     <span
       class="c2"
+      data-blade-component="base-text"
     >
       1,000
       .
     </span>
     <span
       class="c3"
+      data-blade-component="base-text"
     >
       00
     </span>

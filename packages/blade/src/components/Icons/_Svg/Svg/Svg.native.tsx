@@ -4,6 +4,7 @@ import type { ReactElement } from 'react';
 import { Svg as SvgNative } from 'react-native-svg';
 import React from 'react';
 import type { SvgProps } from './types';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 
@@ -19,6 +20,7 @@ const _Svg: React.ForwardRefRenderFunction<any, SvgProps> = (
   return (
     <StyledSvg
       {...makeAccessible({ hidden: true })}
+      {...metaAttribute({ name: MetaConstants.Icon })}
       height={height}
       viewBox={viewBox}
       width={width}

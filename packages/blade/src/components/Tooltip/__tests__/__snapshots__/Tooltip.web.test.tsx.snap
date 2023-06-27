@@ -132,9 +132,11 @@ exports[`<Tooltip /> should render 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Hover me
       </div>

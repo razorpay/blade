@@ -17,8 +17,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType, isReactNative, useBreakpoint } from '~utils';
-import { metaAttribute } from '~utils/metaAttribute';
 import type { Platform } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~utils/useInteraction';
@@ -717,6 +717,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               hasPopup={hasPopup}
               shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
               autoCapitalize={autoCapitalize}
+              {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}

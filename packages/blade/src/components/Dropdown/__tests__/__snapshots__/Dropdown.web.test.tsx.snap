@@ -593,9 +593,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 <div>
   <div
     class="c0"
+    data-blade-component="base-box"
   >
     <div
       class="c1"
+      data-blade-component="base-box"
     >
       <div
         class="c2"
@@ -613,20 +615,25 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       >
         <div
           class="c3"
+          data-blade-component="base-box"
         >
           <div
             class="c4"
+            data-blade-component="base-box"
           >
             <label
+              data-blade-component="form-label"
               for="dropdown-7-trigger-1-input-2"
               id="dropdown-7-label"
               style="width: auto; flex-shrink: 0; margin-right: 16px;"
             >
               <div
                 class="c5"
+                data-blade-component="base-box"
               >
                 <div
                   class="c6"
+                  data-blade-component="base-box"
                 >
                   <p
                     class="c7"
@@ -649,6 +656,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           </div>
           <div
             class="c9 c10"
+            data-blade-component="base-box"
           >
             <button
               aria-controls="dropdown-7-actionlist"
@@ -659,6 +667,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               aria-invalid="false"
               aria-required="false"
               class="c11"
+              data-blade-component="styled-base-input"
               id="dropdown-7-trigger-1-input-2"
               placeholder="Select Option"
               role="combobox"
@@ -669,12 +678,15 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             </button>
             <div
               class="c12"
+              data-blade-component="base-box"
             >
               <div
                 class="c13"
+                data-blade-component="base-box"
               >
                 <div
                   class="c14"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -688,6 +700,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                     <path
                       clip-rule="evenodd"
                       d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                      data-blade-component="svg-path"
                       fill="hsla(217, 56%, 17%, 1)"
                       fill-rule="evenodd"
                     />
@@ -697,20 +710,24 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             </div>
             <div
               class=" c15"
+              data-blade-component="base-box"
             />
           </div>
         </div>
         <div
           class="c16"
+          data-blade-component="base-box"
         >
           <div
             class="c17"
+            data-blade-component="base-box"
           />
         </div>
       </div>
     </div>
     <div
       class="c1"
+      data-blade-component="base-box"
     >
       <div
         class="c18 c19"
@@ -730,6 +747,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <svg
                 aria-hidden="true"
@@ -743,6 +761,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 <path
                   clip-rule="evenodd"
                   d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
+                  data-blade-component="svg-path"
                   fill="hsla(216, 16%, 60%, 1)"
                   fill-rule="evenodd"
                 />
@@ -750,6 +769,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             </div>
             <div
               class="c22"
+              data-blade-component="base-box"
             >
               <p
                 class="c23"
@@ -762,6 +782,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           <div
             aria-multiselectable="false"
             class=" c24"
+            data-blade-component="base-box"
             role="listbox"
           >
             <button
@@ -777,12 +798,15 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             >
               <div
                 class="c26"
+                data-blade-component="base-box"
               >
                 <div
                   class="c27"
+                  data-blade-component="base-box"
                 />
                 <div
                   class="c28"
+                  data-blade-component="base-box"
                 >
                   <p
                     class="c29"
@@ -793,10 +817,12 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 </div>
                 <div
                   class="c30"
+                  data-blade-component="base-box"
                 />
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               />
             </button>
             <button
@@ -812,12 +838,15 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             >
               <div
                 class="c26"
+                data-blade-component="base-box"
               >
                 <div
                   class="c27"
+                  data-blade-component="base-box"
                 />
                 <div
                   class="c28"
+                  data-blade-component="base-box"
                 >
                   <p
                     class="c29"
@@ -828,10 +857,12 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 </div>
                 <div
                   class="c30"
+                  data-blade-component="base-box"
                 />
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               />
             </button>
           </div>
@@ -843,6 +874,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <svg
                 aria-hidden="true"
@@ -856,6 +888,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 <path
                   clip-rule="evenodd"
                   d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
+                  data-blade-component="svg-path"
                   fill="hsla(216, 16%, 60%, 1)"
                   fill-rule="evenodd"
                 />
@@ -863,6 +896,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             </div>
             <div
               class="c32"
+              data-blade-component="base-box"
             >
               <p
                 class="c23"
@@ -873,6 +907,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             </div>
             <div
               class="c33"
+              data-blade-component="base-box"
             >
               <button
                 class="c34"
@@ -882,9 +917,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               >
                 <div
                   class="c35 c36"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c37"
+                    data-blade-component="base-text"
                   >
                     Apply
                   </div>
@@ -1137,6 +1174,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 <div>
   <div
     class="c0"
+    data-blade-component="base-box"
   >
     <button
       aria-activedescendant="dropdown-898-0"
@@ -1150,9 +1188,11 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
     >
       <div
         class="c2 c3"
+        data-blade-component="base-box"
       >
         <div
           class="c4"
+          data-blade-component="base-text"
         >
           My Account
         </div>
@@ -1160,6 +1200,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
     </button>
     <div
       class="c5"
+      data-blade-component="base-box"
     >
       <div
         class="c6 c7"
@@ -1175,6 +1216,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
         >
           <div
             class=" c9"
+            data-blade-component="base-box"
           >
             <button
               class=" c10 active-focus"
@@ -1188,12 +1230,15 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
             >
               <div
                 class="c11"
+                data-blade-component="base-box"
               >
                 <div
                   class="c12"
+                  data-blade-component="base-box"
                 />
                 <div
                   class="c13"
+                  data-blade-component="base-box"
                 >
                   <p
                     class="c14"
@@ -1204,10 +1249,12 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                 </div>
                 <div
                   class="c15"
+                  data-blade-component="base-box"
                 />
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               />
             </button>
             <a
@@ -1223,12 +1270,15 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
             >
               <div
                 class="c11"
+                data-blade-component="base-box"
               >
                 <div
                   class="c12"
+                  data-blade-component="base-box"
                 />
                 <div
                   class="c13"
+                  data-blade-component="base-box"
                 >
                   <p
                     class="c14"
@@ -1239,10 +1289,12 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                 </div>
                 <div
                   class="c15"
+                  data-blade-component="base-box"
                 />
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               />
             </a>
           </div>

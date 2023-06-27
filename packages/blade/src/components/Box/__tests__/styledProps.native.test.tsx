@@ -37,6 +37,7 @@ describe('styledProps with getStyledProps', () => {
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {

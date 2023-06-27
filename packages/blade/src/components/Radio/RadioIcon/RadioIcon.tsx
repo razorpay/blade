@@ -10,6 +10,7 @@ import { useTheme } from '~components/BladeProvider';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { makeSpace } from '~utils/makeSpace';
+import { metaAttribute } from '~utils/metaAttribute';
 
 export type RadioIconProps = {
   isDisabled?: boolean;
@@ -48,6 +49,7 @@ const RadioIcon = ({ isChecked, isDisabled, isNegative, size }: RadioIconProps) 
       isDisabled={isDisabled}
       isNegative={isNegative}
       isChecked={checked}
+      {...metaAttribute({ name: 'radio-icon-wrapper' })}
     >
       <Fade show={checked} styles={{ position: 'absolute', display: 'flex' }}>
         <CheckedIcon size={size} color={dotColor} />
