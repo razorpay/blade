@@ -6,15 +6,7 @@ import type { BladeNode } from './types/Blade';
 if (figma.editorType === 'dev' && figma.mode === 'codegen') {
   // Register a callback to the "generate" event
   figma.codegen.on('generate', ({ node }) => {
-    if (!node) {
-      figma.notify('Please select a node to generate code');
-      return;
-    }
-
-    const convertedSelection: BladeNode[] = convertIntoBladeNodes(
-      figma.currentPage.selection,
-      null,
-    );
+    const convertedSelection: BladeNode[] = convertIntoBladeNodes([node], null);
 
     const { component, imports } = generateBladeCode({
       bladeNodes: convertedSelection,
@@ -22,9 +14,14 @@ if (figma.editorType === 'dev' && figma.mode === 'codegen') {
 
     return [
       {
-        title: 'Blade',
+        title: 'Imports',
         language: 'TYPESCRIPT',
-        code: generateImportsCode(imports ?? {}).trim() + '\n\n' + component.trim(),
+        code: generateImportsCode(imports ?? {}).trim(),
+      },
+      {
+        title: 'Code',
+        language: 'TYPESCRIPT',
+        code: component.trim(),
       },
     ];
   });
