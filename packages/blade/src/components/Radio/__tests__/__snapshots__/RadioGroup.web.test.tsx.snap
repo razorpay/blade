@@ -423,7 +423,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           class="c14"
           data-blade-component="base-box"
         >
-          <div
+          <span
             class="c7"
             data-blade-component="base-box"
             style="word-break: break-all;"
@@ -434,7 +434,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             >
               Select one
             </span>
-          </div>
+          </span>
         </div>
       </div>
     </div>

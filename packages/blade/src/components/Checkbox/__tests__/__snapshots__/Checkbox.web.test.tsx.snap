@@ -671,7 +671,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       class="c9"
       data-blade-component="base-box"
     >
-      <div
+      <span
         class="c2"
         data-blade-component="base-box"
         style="word-break: break-all;"
@@ -714,7 +714,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         >
           This has to be checked
         </span>
-      </div>
+      </span>
     </div>
   </div>
 </div>
