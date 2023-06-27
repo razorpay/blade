@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.11.3
+
+### Patch Changes
+
+- e62244f8: fix: Dropdown opening up when clicked on ChevronDownIcon in disabled state
+
 ## 8.11.2
 
 ### Patch Changes
