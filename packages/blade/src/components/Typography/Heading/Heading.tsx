@@ -26,6 +26,7 @@ type HeadingCommonProps = {
   contrast?: ColorContrastTypes;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
+  textDecorationLine?: BaseTextProps['textDecorationLine'];
 } & TestID &
   StyledPropsBlade;
 
@@ -132,6 +133,7 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   children,
   testID,
   textAlign,
+  textDecorationLine,
   ...styledProps
 }: HeadingProps<T>): ReactElement => {
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
@@ -139,7 +141,12 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   const props = getProps({ as, variant, size, type, weight, color, contrast, testID });
 
   return (
-    <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>
+    <BaseText
+      {...props}
+      textAlign={textAlign}
+      textDecorationLine={textDecorationLine}
+      {...getStyledProps(styledProps)}
+    >
       {children}
     </BaseText>
   );
