@@ -1,8 +1,8 @@
 import get from 'lodash/get';
 import type { IconProps } from '..';
 import { useTheme } from '~components/BladeProvider';
-import { makeSize } from '~utils';
 import { size } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
 
 const iconSize = {
   xsmall: size[8],

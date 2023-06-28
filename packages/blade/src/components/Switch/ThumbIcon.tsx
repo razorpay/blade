@@ -1,11 +1,14 @@
 import isNumber from 'lodash/isNumber';
+import getIn from 'lodash/get';
 import type { SwitchProps } from './types';
 import { AnimatedThumbIcon } from './AnimatedThumbIcon';
 import { switchColors } from './switchTokens';
 import { useTheme } from '~components/BladeProvider';
-import { getIn, makeSize, makeSpace, useBreakpoint } from '~utils';
+import { useBreakpoint } from '~utils';
 import { Path } from '~components/Icons/_Svg';
 import { size } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
+import { makeSpace } from '~utils/makeSpace';
 
 const switchIconSize = {
   desktop: {

@@ -6,9 +6,9 @@ import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetBodyProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { isValidAllowedChildren } from '~utils';
 import { componentIds } from '~components/ActionList/componentIds';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { size } from '~tokens/global';
 
 const _BottomSheetBody = ({

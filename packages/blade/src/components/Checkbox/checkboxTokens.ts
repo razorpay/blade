@@ -1,6 +1,6 @@
 import type { Theme } from '~components/BladeProvider';
+import type { DotNotationColorStringToken } from '~utils/types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
-import type { DotNotationColorStringToken } from '~src/_helpers/types';
 import { size } from '~tokens/global';
 
 const checkboxSizes = {

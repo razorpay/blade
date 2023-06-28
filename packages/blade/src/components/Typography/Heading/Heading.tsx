@@ -4,12 +4,11 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import { isReactNative } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-
 import type { Theme } from '~components/BladeProvider';
-import type { TestID } from '~src/_helpers/types';
+import { isReactNative } from '~utils';
+import type { TestID } from '~utils/types';
 
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';

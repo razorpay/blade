@@ -5,15 +5,12 @@ import type { BaseTextProps } from '../BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import {
-  metaAttribute,
-  getPlatformType,
-  makeSpace,
-  MetaConstants,
-  makeTypographySize,
-} from '~utils';
+import { getPlatformType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { FontSize, Typography } from '~tokens/global';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~utils/types';
+import { makeSpace } from '~utils/makeSpace';
+import { makeTypographySize } from '~utils/makeTypographySize';
 
 type CodeCommonProps = {
   /**

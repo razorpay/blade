@@ -4,7 +4,7 @@ import { fireEvent } from '@testing-library/react-native';
 import React, { useState } from 'react';
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TextInput />', () => {
   it('should render', () => {

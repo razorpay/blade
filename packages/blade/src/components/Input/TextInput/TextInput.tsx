@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import isEmpty from 'lodash/isEmpty';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
@@ -7,13 +8,14 @@ import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, isEmpty, MetaConstants } from '~utils';
+import { MetaConstants } from '~utils/metaAttribute';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import { useBladeInnerRef } from '~utils/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getPlatformType } from '~utils';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;

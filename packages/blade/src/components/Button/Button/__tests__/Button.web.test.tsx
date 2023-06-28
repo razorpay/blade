@@ -2,7 +2,7 @@
 import { fireEvent } from '@testing-library/react';
 import { useRef } from 'react';
 import Button from '../Button';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());

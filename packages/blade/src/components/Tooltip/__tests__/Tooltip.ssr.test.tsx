@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tooltip } from '../Tooltip';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
 import { Button } from '~components/Button';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<Tooltip />', () => {
   it('should render Tooltip ssr', () => {

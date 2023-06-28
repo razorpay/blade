@@ -1,5 +1,5 @@
 import ReportsIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ReportsIcon />', () => {
   it('should render ReportsIcon', () => {

@@ -1,3 +1,4 @@
+import getIn from 'lodash/get';
 import React from 'react';
 import { dimensions } from './spinnerTokens';
 import SpinnerIcon from './SpinnerIcon';
@@ -6,11 +7,13 @@ import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { metaAttribute, getIn, makeAccessible, makeSize, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type BaseSpinnerProps = {
   intent?: Feedback;

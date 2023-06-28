@@ -6,7 +6,7 @@
 import React from 'react';
 import type { CheckboxGroupProps } from './CheckboxGroup';
 import type { CheckboxGroupContextType } from './CheckboxGroupContext';
-import { useControllableState } from '~src/hooks/useControllable';
+import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~components/BladeProvider';
 import { useFormId } from '~components/Form/useFormId';
 

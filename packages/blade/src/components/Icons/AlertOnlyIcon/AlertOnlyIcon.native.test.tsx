@@ -1,5 +1,5 @@
 import AlertOnlyIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<AlertOnlyIcon />', () => {
   it('should render AlertOnlyIcon', () => {

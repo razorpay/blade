@@ -2,7 +2,7 @@
 import React from 'react';
 import type { BladeElementRef } from '../useBladeInnerRef';
 import { useBladeInnerRef } from '../useBladeInnerRef';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('useBladeInnerRef', () => {
   it('should only expose focus and scrollIntoView', () => {

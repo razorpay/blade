@@ -1,5 +1,5 @@
 import CloudDrizzleIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CloudDrizzleIcon />', () => {
   it('should render CloudDrizzleIcon', () => {

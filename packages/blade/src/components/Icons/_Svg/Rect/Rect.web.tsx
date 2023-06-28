@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import type { RectProps } from './types';
-import { metaAttribute } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 
 const Rect = ({ height, width, rx, ry, x, y, fill }: RectProps): ReactElement => {
   return (

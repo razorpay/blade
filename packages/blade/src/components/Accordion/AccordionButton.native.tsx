@@ -7,18 +7,15 @@ import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
 import { getBackgroundColor, getTransitionDuration, getTransitionEasing } from './commonStyles';
 import { Heading } from '~components/Typography';
-import {
-  MetaConstants,
-  assignWithoutSideEffects,
-  castNativeType,
-  makeAccessible,
-  metaAttribute,
-} from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { castNativeType } from '~utils';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { IconProps } from '~components/Icons';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();

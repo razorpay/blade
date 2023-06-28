@@ -19,23 +19,18 @@ import { ComponentIds } from './componentIds';
 import type { BottomSheetProps } from './types';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
-
 import BaseBox from '~components/Box/BaseBox';
-import {
-  makeMotionTime,
-  assignWithoutSideEffects,
-  makeSize,
-  makeAccessible,
-  metaAttribute,
-  MetaConstants,
-} from '~utils';
-
-import { useScrollLock } from '~src/hooks/useScrollLock';
-import { useWindowSize } from '~src/hooks/useWindowSize';
-import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useScrollLock } from '~utils/useScrollLock';
+import { useWindowSize } from '~utils/useWindowSize';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
-import { useId } from '~src/hooks/useId';
+import { useId } from '~utils/useId';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 

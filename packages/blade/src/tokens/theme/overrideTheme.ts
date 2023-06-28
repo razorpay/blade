@@ -1,8 +1,11 @@
+import cloneDeep from 'lodash/cloneDeep';
+import isEqual from 'lodash/isEqual';
+import merge from 'lodash/merge';
 import paymentTheme from './paymentTheme';
 import bankingTheme from './bankingTheme';
 import type { ThemeTokens } from './theme';
-import type { DeepPartial } from '~utils';
-import { isEqual, merge, cloneDeep, isPartialMatchObjectKeys } from '~utils';
+import { isPartialMatchObjectKeys } from '~utils/isPartialMatchObjectKeys';
+import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 
 type OverrideTheme = {
   /**

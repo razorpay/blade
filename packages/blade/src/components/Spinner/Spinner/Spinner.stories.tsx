@@ -5,8 +5,8 @@ import type { SpinnerProps } from './Spinner';
 import { Spinner as SpinnerComponent } from './Spinner';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { useTheme } from '~components/BladeProvider';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 

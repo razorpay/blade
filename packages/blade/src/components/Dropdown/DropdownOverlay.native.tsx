@@ -5,8 +5,9 @@ import { componentIds } from './dropdownUtils';
 import type { DropdownOverlayProps } from './DropdownOverlay.web';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { makeSize, metaAttribute, MetaConstants } from '~utils';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSize } from '~utils/makeSize';
 
 const StyledDropdownOverlay = styled(BaseBox)<{ testID: 'dropdown-overlay' }>((props) => ({
   transform: `translateY(${makeSize(props.theme.spacing[3])})`,

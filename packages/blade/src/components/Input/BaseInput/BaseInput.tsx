@@ -16,25 +16,20 @@ import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import {
-  isReactNative,
-  metaAttribute,
-  getPlatformType,
-  makeAccessible,
-  useBreakpoint,
-  makeSize,
-  MetaConstants,
-} from '~utils';
-import type { AriaAttributes, Platform } from '~utils';
-
+import { getPlatformType, isReactNative, useBreakpoint } from '~utils';
+import type { Platform } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
-import useInteraction from '~src/hooks/useInteraction';
+import useInteraction from '~utils/useInteraction';
 import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { makeSize } from '~utils/makeSize';
+import type { AriaAttributes } from '~utils/makeAccessible';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'

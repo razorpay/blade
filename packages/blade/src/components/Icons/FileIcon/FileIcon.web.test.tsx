@@ -1,5 +1,5 @@
 import FileIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<FileIcon />', () => {
   it('should render FileIcon', () => {

@@ -4,7 +4,7 @@ import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Radio />', () => {
   it('should render radio with label', () => {

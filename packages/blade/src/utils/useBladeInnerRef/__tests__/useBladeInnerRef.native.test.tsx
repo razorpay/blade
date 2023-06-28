@@ -3,7 +3,7 @@ import React from 'react';
 import { View } from 'react-native';
 import type { BladeElementRef } from '../useBladeInnerRef';
 import { useBladeInnerRef } from '../useBladeInnerRef';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('useBladeInnerRef', () => {
   it('should only expose focus and scrollIntoView', () => {

@@ -4,10 +4,10 @@ import React from 'react';
 import type { TextAreaProps } from './TextArea';
 import { TextArea as TextAreaComponent } from './TextArea';
 import BaseBox from '~components/Box/BaseBox';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {

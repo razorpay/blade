@@ -5,7 +5,7 @@ import { getBaseInputStyles } from './baseInputStyles';
 
 import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const getWebInputStyles = (
   props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &

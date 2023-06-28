@@ -1,5 +1,5 @@
 import MusicIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<MusicIcon />', () => {
   it('should render MusicIcon', () => {

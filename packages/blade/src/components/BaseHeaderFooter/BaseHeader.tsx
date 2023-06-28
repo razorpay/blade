@@ -4,9 +4,12 @@ import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/sr
 import { Divider } from './Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
-import { assignWithoutSideEffects, getComponentId, isReactNative, metaAttribute } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { isReactNative } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 
 type BaseHeaderProps = {
   title?: string;

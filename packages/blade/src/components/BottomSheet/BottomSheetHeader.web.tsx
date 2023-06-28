@@ -5,9 +5,10 @@ import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects, metaAttribute, MetaConstants } from '~utils';
-import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _BottomSheetHeader = ({
   title,

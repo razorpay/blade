@@ -1,6 +1,6 @@
 import React from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
-import type { BladeElementRef } from './types';
+import type { BladeElementRef } from '../types';
 
 /**
  * A hook which only exposes the properties of html input element via imparative hook
@@ -10,7 +10,7 @@ import type { BladeElementRef } from './types';
  */
 const useBladeInnerRef = (
   targetRef: React.ForwardedRef<BladeElementRef>,
-  _handlers?: {
+  handlers?: {
     // In some scenarios, your native HTML element might have a different ref compared to visible element.
     // In those cases, you can call your visible element's focus
     onFocus?: (opts?: FocusOptions) => void;
@@ -21,9 +21,15 @@ const useBladeInnerRef = (
   React.useImperativeHandle(
     targetRef,
     (): BladeElementRef => {
-      return (innerRef.current as unknown) as BladeElementRef;
+      const element = innerRef.current as HTMLInputElement;
+      return {
+        focus: (opts) => (handlers?.onFocus ? handlers.onFocus(opts) : element?.focus?.(opts)),
+        scrollIntoView: (opts) => element?.scrollIntoView?.(opts),
+        getBoundingClientRect: () => element?.getBoundingClientRect(),
+        clientHeight: element.clientHeight,
+      };
     },
-    [innerRef],
+    [innerRef, handlers],
   );
 
   return innerRef;

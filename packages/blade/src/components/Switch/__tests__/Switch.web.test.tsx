@@ -3,9 +3,9 @@
 import userEvents from '@testing-library/user-event';
 import React from 'react';
 import { Switch } from '../Switch';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<Switch />', () => {
   it('should render switch', () => {

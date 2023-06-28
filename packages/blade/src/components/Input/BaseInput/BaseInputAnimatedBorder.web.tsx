@@ -4,10 +4,11 @@ import type { ReactElement } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
 import BaseBox from '~components/Box/BaseBox';
-import { makeBorderSize, makeMotionTime } from '~utils';
+import { makeMotionTime } from '~utils/makeMotionTime';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import type { ActionStates } from '~tokens/theme/theme';
+import { makeBorderSize } from '~utils/makeBorderSize';
 
 const scaleBorder = keyframes`
 from {

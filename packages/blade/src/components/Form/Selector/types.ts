@@ -1,6 +1,6 @@
 import type React from 'react';
+import type { DotNotationColorStringToken, TestID } from '~utils/types';
 import type { Theme } from '~components/BladeProvider';
-import type { DotNotationColorStringToken, TestID } from '~src/_helpers/types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type SelectorLabelProps = {

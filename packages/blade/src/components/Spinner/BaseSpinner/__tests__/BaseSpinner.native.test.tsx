@@ -1,5 +1,5 @@
 import { BaseSpinner } from '../BaseSpinner';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BaseSpinner />', () => {
   it('should render BaseSpinner with default props', () => {
