@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
+import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
 import type { HoverProps, SelectorInputProps } from './types';
 import type { Theme } from '~components/BladeProvider';
-import { castWebType, getIn, makeAccessible, makeMotionTime } from '~utils';
+import { castWebType } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import { useBladeInnerRef } from '~utils/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeMotionTime } from '~utils/makeMotionTime';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const getHoverStyles = ({
   theme,

@@ -13,6 +13,7 @@ exports[`<Circle /> should render react-native-svg Circle component 1`] = `
     align="xMidYMid"
     bbHeight="110"
     bbWidth="400"
+    data-blade-component="icon"
     focusable={false}
     height="110"
     importantForAccessibility="no-hide-descendants"

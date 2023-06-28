@@ -1,5 +1,6 @@
 import BaseBox from '../BaseBox';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 describe('<BaseBox />', () => {
   it('should render BaseBox component with the correct styles', () => {
@@ -71,5 +72,17 @@ describe('<BaseBox />', () => {
     expect(getByText(displayText)).not.toHaveAttribute('top');
     expect(getByText(displayText)).not.toHaveAttribute('align-self');
     expect(getByText(displayText)).not.toHaveAttribute('overflow');
+  });
+
+  it('should have proper meta attributes', () => {
+    const { getByText } = renderWithTheme(<BaseBox>hello</BaseBox>);
+    expect(getByText('hello')).toHaveAttribute('data-blade-component', MetaConstants.BaseBox);
+  });
+
+  it('passed in metaAttribute should override default one', () => {
+    const { getByText } = renderWithTheme(
+      <BaseBox {...metaAttribute({ name: 'test' })}>hello</BaseBox>,
+    );
+    expect(getByText('hello')).toHaveAttribute('data-blade-component', 'test');
   });
 });

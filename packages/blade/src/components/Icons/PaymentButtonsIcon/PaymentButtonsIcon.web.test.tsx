@@ -1,5 +1,5 @@
 import PaymentButtonsIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<PaymentButtonsIcon />', () => {
   it('should render PaymentButtonsIcon', () => {

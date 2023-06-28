@@ -1,5 +1,5 @@
 import SlidersIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SlidersIcon />', () => {
   it('should render SlidersIcon', () => {

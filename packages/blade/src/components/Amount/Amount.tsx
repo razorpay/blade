@@ -12,17 +12,12 @@ import { BaseText } from '~components/Typography/BaseText';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
-import type { TestID } from '~src/_helpers/types';
-import {
-  assignWithoutSideEffects,
-  castNativeType,
-  castWebType,
-  getPlatformType,
-  metaAttribute,
-  MetaConstants,
-} from '~utils';
+import type { TestID } from '~utils/types';
+import { castNativeType, castWebType, getPlatformType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type Currency = 'INR' | 'MYR';
 

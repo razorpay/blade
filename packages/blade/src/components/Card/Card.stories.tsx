@@ -17,13 +17,13 @@ import {
   CardHeaderLink,
   CardHeaderText,
 } from './';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import { UsersIcon, TrashIcon } from '~components/Icons';
 
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';

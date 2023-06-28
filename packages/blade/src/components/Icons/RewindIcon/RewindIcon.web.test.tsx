@@ -1,5 +1,5 @@
 import RewindIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<RewindIcon />', () => {
   it('should render RewindIcon', () => {

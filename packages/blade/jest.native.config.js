@@ -29,7 +29,8 @@ module.exports = {
   moduleNameMapper: {
     '^\\~src/(.*)': '<rootDir>/src/$1',
     '^\\~components/(.*)': '<rootDir>/src/components/$1',
-    '^\\~utils': '<rootDir>/src/utils',
+    '^\\~utils$': '<rootDir>/src/utils',
+    '^\\~utils/(.*)': '<rootDir>/src/utils/$1',
     '^\\~tokens/(.*)': '<rootDir>/src/tokens/$1',
   },
 };

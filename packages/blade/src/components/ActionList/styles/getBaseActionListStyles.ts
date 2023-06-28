@@ -1,7 +1,8 @@
 import type { CSSObject } from 'styled-components';
 import type { ActionListProps } from '../ActionList';
 import type { Theme } from '~components/BladeProvider';
-import { castWebType, isReactNative, makeSize } from '~utils';
+import { makeSize } from '~utils/makeSize';
+import { castWebType, isReactNative } from '~utils';
 
 type StyledActionListProps = {
   surfaceLevel: ActionListProps['surfaceLevel'];

@@ -1,5 +1,5 @@
 import ImageIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ImageIcon />', () => {
   it('should render ImageIcon', () => {

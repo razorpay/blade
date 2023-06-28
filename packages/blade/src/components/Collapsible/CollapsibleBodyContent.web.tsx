@@ -1,14 +1,17 @@
-import type { ReactElement, ReactNode, TransitionEventHandler } from 'react';
+import type { ReactElement, TransitionEventHandler } from 'react';
 import { useRef } from 'react';
 import styled from 'styled-components';
 import { useCollapsible } from './CollapsibleContext';
 import { useDidUpdate } from './useDidUpdate';
-import { castWebType, makeMotionTime, makeSize } from '~utils';
+import type { CollapsibleBodyContentProps } from './types';
+import {
+  getCollapsibleBodyContentBoxProps,
+  getOpacity,
+  getTransitionDuration,
+  getTransitionEasing,
+} from './commonStyles';
+import { castWebType, makeSize } from '~utils';
 import { Box } from '~components/Box';
-
-type CollapsibleBodyContentProps = {
-  children: ReactNode;
-};
 
 type StyledCollapsibleBodyContentProps = {
   defaultIsExpanded: boolean;
@@ -22,14 +25,16 @@ type StyledCollapsibleBodyContentProps = {
 const HEIGHT_EXPANDED = 'auto';
 const HEIGHT_COLLAPSED = '0px';
 
-// TODO: move common styles when implementing native
 const StyledCollapsibleBodyContent = styled.div<StyledCollapsibleBodyContentProps>((props) => {
   const { theme, defaultIsExpanded, isExpanded } = props;
+  const transitionDuration = castWebType(getTransitionDuration(theme));
+  const transitionTimingFunction = castWebType(getTransitionEasing(theme));
+
   return {
-    transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xmoderate)),
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    transitionDuration,
+    transitionTimingFunction,
     transitionProperty: 'height, opacity',
-    opacity: isExpanded ? 1 : 0.8,
+    opacity: getOpacity({ isExpanded }),
     /**
      * We need height explicitly here for initial styles because the component might be rendered on server,
      * in which case for expanded items this should be `auto` because we don't know the actual pixel value.
@@ -120,16 +125,7 @@ const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): Reac
       defaultIsExpanded={defaultIsExpanded}
       onTransitionEnd={onTransitionEnd}
     >
-      <Box
-        /**
-         * Need a margin inside the outside wrapper so this is
-         * included in height calculations and prevents jank
-         */
-        marginTop={direction === 'bottom' ? 'spacing.5' : 'spacing.0'}
-        marginBottom={direction === 'top' ? 'spacing.5' : 'spacing.0'}
-      >
-        {children}
-      </Box>
+      <Box {...getCollapsibleBodyContentBoxProps({ direction })}>{children}</Box>
     </StyledCollapsibleBodyContent>
   );
 };

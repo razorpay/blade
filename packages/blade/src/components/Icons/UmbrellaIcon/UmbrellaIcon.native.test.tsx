@@ -1,5 +1,5 @@
 import UmbrellaIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<UmbrellaIcon />', () => {
   it('should render UmbrellaIcon', () => {

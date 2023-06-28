@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
 import { DropdownButton } from '../DropdownButton';
 import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';

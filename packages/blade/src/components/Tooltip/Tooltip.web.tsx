@@ -24,9 +24,10 @@ import { getPlacementParts, mergeProps } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
-import { useId } from '~src/hooks/useId';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size } from '~tokens/global';
+import { useId } from '~utils/useId';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const Tooltip = ({
   content,

@@ -1,5 +1,5 @@
 import { Counter } from '../Counter';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Counter />', () => {
   it('should render Counter with default props', () => {

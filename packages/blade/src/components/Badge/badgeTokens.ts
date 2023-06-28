@@ -1,5 +1,5 @@
 import type { BadgeProps } from './Badge';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { IconProps } from '~components/Icons';
 
 const verticalPadding: Record<NonNullable<BadgeProps['size']>, DotNotationSpacingStringToken> = {

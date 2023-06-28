@@ -18,13 +18,13 @@ import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { useBottomSheetStack } from './BottomSheetStack';
-import { makeSpace, getComponentId } from '~utils';
-
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { useId } from '~src/hooks/useId';
-import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { useId } from '~utils/useId';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSpace } from '~utils/makeSpace';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
   return {
@@ -62,6 +62,8 @@ const _BottomSheet = ({
   const [headerHeight, setHeaderHeight] = React.useState(0);
   const [footerHeight, setFooterHeight] = React.useState(0);
   const [contentHeight, setContentHeight] = React.useState(0);
+  const [hasBodyPadding, setHasBodyPadding] = React.useState(true);
+  const [isHeaderEmpty, setIsHeaderEmpty] = React.useState(false);
   const initialSnapPoint = React.useRef<number>(0);
   const totalHeight = React.useMemo(() => {
     return headerHeight + footerHeight + contentHeight;
@@ -168,6 +170,10 @@ const _BottomSheet = ({
   const renderHandle = React.useCallback((): React.ReactElement => {
     return (
       <BaseBox
+        position={isHeaderEmpty ? 'absolute' : 'relative'}
+        top="spacing.0"
+        left="spacing.0"
+        right="spacing.0"
         onLayout={({ nativeEvent }) => {
           setHeaderHeight(nativeEvent.layout.height);
         }}
@@ -178,8 +184,9 @@ const _BottomSheet = ({
         {header.current}
       </BaseBox>
     );
-  }, [zIndex]);
+  }, [isHeaderEmpty, zIndex]);
 
+  const isHeaderFloating = !hasBodyPadding && isHeaderEmpty;
   const contextValue = React.useMemo<BottomSheetContextProps>(
     () => ({
       isInBottomSheet: true,
@@ -195,8 +202,11 @@ const _BottomSheet = ({
       scrollRef: () => {},
       bind: {} as never,
       defaultInitialFocusRef,
+      isHeaderFloating,
+      setHasBodyPadding,
+      setIsHeaderEmpty,
     }),
-    [_isOpen, contentHeight, footerHeight, handleOnClose, headerHeight],
+    [_isOpen, contentHeight, footerHeight, handleOnClose, headerHeight, isHeaderFloating],
   );
 
   // Hack: We need to <Portal> the GorhomBottomSheet to the root of the react-native app

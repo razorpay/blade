@@ -1,5 +1,5 @@
 import PhoneIncomingIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<PhoneIncomingIcon />', () => {
   it('should render PhoneIncomingIcon', () => {

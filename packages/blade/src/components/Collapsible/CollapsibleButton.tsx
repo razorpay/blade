@@ -4,9 +4,12 @@ import { forwardRef, useCallback } from 'react';
 import type { ButtonProps } from '../Button';
 import { useCollapsible } from './CollapsibleContext';
 import type { IconComponent } from '~components/Icons';
-import { MetaConstants, assignWithoutSideEffects, makeAccessible } from '~utils';
 import BaseButton from '~components/Button/BaseButton';
-import type { BladeElementRef } from '~src/hooks/types';
+import type { BladeElementRef } from '~utils/types';
+import { MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { isReactNative } from '~utils';
 
 type CollapsibleButtonProps = Pick<
   ButtonProps,
@@ -46,6 +49,7 @@ const _CollapsibleButton: React.ForwardRefRenderFunction<
       accessibilityLabel={accessibilityLabel}
       ref={ref}
       onClick={toggleIsExpanded}
+      alignSelf={isReactNative() ? 'flex-start' : undefined}
       {...makeAccessible({ controls: collapsibleBodyId, expanded: isExpanded })}
     >
       {children}

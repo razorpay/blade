@@ -16,15 +16,11 @@ import type { TextProps, TextVariant } from '~components/Typography';
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
-import {
-  metaAttribute,
-  MetaConstants,
-  getComponentId,
-  isValidAllowedChildren,
-  makeSpace,
-} from '~utils';
-import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSpace } from '~utils/makeSpace';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');

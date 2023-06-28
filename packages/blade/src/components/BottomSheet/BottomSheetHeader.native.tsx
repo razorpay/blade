@@ -5,8 +5,8 @@ import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _BottomSheetHeader = ({
   title,
@@ -17,11 +17,16 @@ const _BottomSheetHeader = ({
   showBackButton = false,
   onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
-  const { close, defaultInitialFocusRef } = useBottomSheetContext();
+  const { close, setIsHeaderEmpty, defaultInitialFocusRef } = useBottomSheetContext();
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
 
+  React.useEffect(() => {
+    setIsHeaderEmpty(isHeaderEmpty);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isHeaderEmpty]);
+
   return (
-    <BaseBox backgroundColor="white" overflow="visible" flexShrink={0}>
+    <BaseBox overflow="visible" flexShrink={0}>
       {isHeaderEmpty ? (
         <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />
       ) : (

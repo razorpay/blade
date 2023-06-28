@@ -6,7 +6,7 @@ import { mockViewport } from 'jsdom-testing-mocks';
 import { fireEvent, within } from '@testing-library/react';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
 import { Counter } from '../../Counter';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
 import { Dropdown } from '~components/Dropdown';
@@ -83,6 +83,21 @@ describe('<BottomSheet />', () => {
     const { container } = renderWithTheme(<Example />);
     expect(container).toMatchSnapshot();
     mockConsoleError.mockRestore();
+  });
+
+  it('should render empty header with padding 0', () => {
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true}>
+          <BottomSheetHeader />
+          <BottomSheetBody padding="spacing.0">
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+        </BottomSheet>
+      );
+    };
+    const { container } = renderWithTheme(<Example />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should open/close BottomSheet', async () => {

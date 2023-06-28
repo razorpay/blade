@@ -2,7 +2,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { SelectorLabelProps } from './types';
-import { makeSpace, metaAttribute } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
+import { makeSpace } from '~utils/makeSpace';
 
 const StyledSelectorLabel = styled.label(({ theme }) => {
   return {

@@ -13,10 +13,11 @@ import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportTe
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import type { StringChildrenType, TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute';
 
 type RadioProps = {
   /**
@@ -91,7 +92,11 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
 
   return (
     <BaseBox {...getStyledProps(styledProps)}>
-      <SelectorLabel inputProps={isReactNative ? inputProps : {}} testID={testID}>
+      <SelectorLabel
+        componentName={MetaConstants.RadioLabel}
+        inputProps={isReactNative ? inputProps : {}}
+        testID={testID}
+      >
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput

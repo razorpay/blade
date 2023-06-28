@@ -1,5 +1,5 @@
 import FlagIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<FlagIcon />', () => {
   it('should render FlagIcon', () => {

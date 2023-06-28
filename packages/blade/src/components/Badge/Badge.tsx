@@ -7,11 +7,13 @@ import BaseBox from '~components/Box/BaseBox';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
-import { assignWithoutSideEffects, metaAttribute, MetaConstants, isReactNative } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~utils/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { isReactNative } from '~utils';
 
 type BadgeProps = {
   /**

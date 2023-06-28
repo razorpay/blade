@@ -2,14 +2,13 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
-
 import type { CollapsibleProps } from './Collapsible';
 import { Collapsible as CollapsibleComponent } from './Collapsible';
 import { CollapsibleButton } from './CollapsibleButton';
 import { CollapsibleBody } from './CollapsibleBody';
 import { CollapsibleLink } from './CollapsibleLink';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
 import { Amount } from '~components/Amount';
@@ -19,7 +18,7 @@ const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Collapsible"
-      componentDescription="[Only available for web PRE RELEASE currently]: Collapsible is used to allow users to toggle the visibility of hidden content within a container."
+      componentDescription="Collapsible is used to allow users to toggle the visibility of hidden content within a container."
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=79-629874&t=sVxH3DOnx3L3F9rO-0',
@@ -30,7 +29,7 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { Collapsible_PRE_RELEASE as Collapsible, CollapsibleButton, CollapsibleBody, Text, Amount, Box } from '@razorpay/blade/components';
+        import { Collapsible, CollapsibleButton, CollapsibleBody, Text, Amount, Box } from '@razorpay/blade/components';
 
         function App() {
           return (
@@ -79,7 +78,7 @@ const Page = (): ReactElement => {
 };
 
 const meta: Meta<CollapsibleProps> = {
-  title: 'Components/Collapsible (PRE RELEASE)',
+  title: 'Components/Collapsible',
   component: CollapsibleComponent,
   args: {},
   argTypes: {
@@ -182,13 +181,26 @@ WithCollapsibleLink.parameters = {
   },
 };
 
+export const WithDirection = CollapsibleLinkTemplate.bind({});
+
+WithDirection.args = {
+  direction: 'top',
+};
+WithDirection.parameters = {
+  docs: {
+    description: {
+      story: 'Use `direction` prop to control in which direction the `Collapsible` expands in',
+    },
+  },
+};
+
 const CollapsibleControlledTemplate: ComponentStory<typeof CollapsibleComponent> = ({
   isExpanded: _isExpanded,
   onExpandChange,
   defaultIsExpanded,
   ...rest
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   return (
     <CollapsibleComponent
       {...rest}

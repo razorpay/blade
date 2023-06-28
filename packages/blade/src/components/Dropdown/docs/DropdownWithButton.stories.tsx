@@ -9,7 +9,7 @@ import {
   WithRightAlignedMenuStory,
   WithSimpleMenuStory,
 } from './stories';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
 import {

@@ -1,5 +1,5 @@
 import AtSignIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<AtSignIcon />', () => {
   it('should render AtSignIcon', () => {

@@ -13,8 +13,8 @@ import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { List, ListItem } from '~components/List';
 import { IconButton } from '~components/Button/IconButton';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import BaseBox from '~components/Box/BaseBox';
 import type { BladeCommonEvents } from '~components/types';
 

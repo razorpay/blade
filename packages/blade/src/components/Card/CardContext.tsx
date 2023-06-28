@@ -1,5 +1,5 @@
 import React from 'react';
-import { getComponentId } from '~utils';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
 type CardContextType = true | null;
 const CardContext = React.createContext<CardContextType>(null);

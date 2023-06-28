@@ -4,12 +4,11 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import { isReactNative } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-
 import type { Theme } from '~components/BladeProvider';
-import type { TestID } from '~src/_helpers/types';
+import { isReactNative } from '~utils';
+import type { TestID } from '~utils/types';
 
 type HeadingVariant = 'regular' | 'subheading';
 type HeadingSize = 'small' | 'medium' | 'large';
@@ -27,6 +26,7 @@ type HeadingCommonProps = {
   contrast?: ColorContrastTypes;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
+  textDecorationLine?: BaseTextProps['textDecorationLine'];
 } & TestID &
   StyledPropsBlade;
 
@@ -133,6 +133,7 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   children,
   testID,
   textAlign,
+  textDecorationLine,
   ...styledProps
 }: HeadingProps<T>): ReactElement => {
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
@@ -140,7 +141,12 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   const props = getProps({ as, variant, size, type, weight, color, contrast, testID });
 
   return (
-    <BaseText {...props} textAlign={textAlign} {...getStyledProps(styledProps)}>
+    <BaseText
+      {...props}
+      textAlign={textAlign}
+      textDecorationLine={textDecorationLine}
+      {...getStyledProps(styledProps)}
+    >
       {children}
     </BaseText>
   );

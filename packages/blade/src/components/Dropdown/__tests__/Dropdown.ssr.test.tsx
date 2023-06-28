@@ -2,7 +2,7 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { Dropdown, DropdownOverlay } from '../index';
 import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { SelectInput } from '~components/Input/SelectInput/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
