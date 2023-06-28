@@ -585,7 +585,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           }
                         >
                           <View
-                            backgroundColor="feedback.background.positive.lowContrast"
+                            backgroundColor="feedback.background.neutral.lowContrast"
                             data-blade-component="base-box"
                             platform="onMobile"
                             size="medium"
@@ -593,7 +593,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               Array [
                                 Object {
                                   "alignSelf": "center",
-                                  "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+                                  "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                                   "borderRadius": 9999,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
@@ -626,7 +626,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               }
                             >
                               <Text
-                                color="feedback.text.positive.lowContrast"
+                                color="feedback.text.neutral.lowContrast"
                                 data-blade-component="text"
                                 fontFamily="text"
                                 fontSize={75}
@@ -637,7 +637,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "color": "hsla(160, 100%, 26%, 1)",
+                                      "color": "hsla(216, 27%, 36%, 1)",
                                       "fontFamily": "Lato",
                                       "fontSize": 12,
                                       "fontStyle": "normal",

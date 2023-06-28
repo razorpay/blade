@@ -7,8 +7,12 @@ type FeedbackBackgroundColors = `feedback.background.${DotNotationColorStringTok
   Theme['colors']['feedback']['background']
 >}`;
 
+type BadgeBackgroundColors = `badge.background.${DotNotationColorStringToken<
+  Theme['colors']['badge']['background']
+>}`;
+
 export type StyledCounterProps = {
-  backgroundColor: FeedbackBackgroundColors;
+  backgroundColor: FeedbackBackgroundColors | BadgeBackgroundColors;
   size: NonNullable<CounterProps['size']>;
   platform: TypographyPlatforms;
   theme: Theme;
