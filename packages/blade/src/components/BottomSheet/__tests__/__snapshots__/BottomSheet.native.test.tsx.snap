@@ -1102,15 +1102,21 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 zIndex={2}
               >
                 <View
+                  contrast="low"
+                  orientation="horizontal"
                   style={
                     Array [
                       Object {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
                         "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                        "width": "100%",
                       },
                     ]
                   }
+                  thickness="thin"
+                  type="solid"
+                  variant="normal"
                 />
                 <View
                   data-blade-component="base-box"
