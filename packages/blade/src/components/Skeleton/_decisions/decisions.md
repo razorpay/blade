@@ -67,7 +67,7 @@ Basic usage:
 <Skeleton width="100%" height="20px" borderRadius="medium" marginY="spacing.1" />
 ```
 
-![Skeleton basic usage](./skeleton-usage-demo-1.png)
+<img src="./skeleton-usage-demo-1.png" alt="Skeleton basic usage" width="70%" />
 
 Complex usage: 
 
@@ -93,7 +93,7 @@ Complex usage:
 </Box>
 ```
 
-![Skeleton complex usage](./skeleton-usage-demo-2.png)
+<img src="./skeleton-usage-demo-2.png" alt="Skeleton complex usage" width="70%" />
 
 
 ### Should we inferring dimensions?
@@ -102,7 +102,7 @@ Providing width, height works well when consumers want to have control over the 
 
 Libraries like ChakraUI / MUI provides a way for consumers to infer dimensions based on exisiting components: 
 
-![MUI Skeleton Inferring text height](./mui-skeleton-dim-inference.png)
+<img src="./mui-skeleton-dim-inference.png" alt="MUI Skeleton Inferring text height" width="70%" />
 
 **Inferring Typography components:**
 
@@ -155,7 +155,7 @@ Similar to Amount component we can expose a `type` prop which will have predefin
 
 A real world usecase might look something like:
 
-![Card example without skeleton](./real-usage-demo-before.png)
+<img src="./real-usage-demo-before.png" alt="Card example without skeleton" width="70%" />
 
 ```jsx
 <Box
@@ -176,7 +176,7 @@ A real world usecase might look something like:
 </Box>
 ```
 
-![Card example with Skeleton](./real-usage-demo-after.png)
+<img src="./real-usage-demo-after.png" alt="Card example with Skeleton" width="70%" />
 
 **Block components:**
 
