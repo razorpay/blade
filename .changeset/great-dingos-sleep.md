@@ -20,7 +20,9 @@ If you still want to keep the UI for OTPInput on your existing screens the same,
 ```
 
 **Before this change (OTPInput with fixed width):**
-<img width="1889" alt="Screenshot 2023-06-27 at 2 56 31 PM" src="https://github.com/razorpay/blade/assets/24487274/98e8cc4f-a927-4f72-879a-81ea31be5b6e">
+
+<img width="362" alt="Screenshot 2023-06-28 at 2 50 05 PM" src="https://github.com/razorpay/blade/assets/24487274/6d23c4a8-6c27-44f1-bb47-0d2b61025a06">
 
 **After making OTPInput fluid width (OTPInput with fluid width):**
-<img width="1888" alt="Screenshot 2023-06-27 at 2 57 29 PM" src="https://github.com/razorpay/blade/assets/24487274/655b9e0b-6b85-45fa-97ed-b8790ef2f92a">
+
+<img width="354" alt="Screenshot 2023-06-28 at 2 49 57 PM" src="https://github.com/razorpay/blade/assets/24487274/c3e40176-9f22-451e-a443-1274c4333aec">
