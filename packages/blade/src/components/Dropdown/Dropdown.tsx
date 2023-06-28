@@ -2,21 +2,15 @@ import React from 'react';
 import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
 import { componentIds } from './dropdownUtils';
+import type { DropdownProps } from './types';
 import { useId } from '~src/hooks/useId';
 import { getComponentId, isValidAllowedChildren } from '~utils';
 import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
 import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-
-type DropdownProps = {
-  selectionType?: 'single' | 'multiple';
-  onDismiss?: () => void;
-  children: React.ReactNode[];
-} & StyledPropsBlade;
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -199,4 +193,4 @@ const _Dropdown = ({
 
 const Dropdown = assignWithoutSideEffects(_Dropdown, { componentId: componentIds.Dropdown });
 
-export { Dropdown, DropdownProps };
+export { Dropdown };

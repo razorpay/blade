@@ -86,11 +86,9 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
             onMouseDown: () => {
               setShouldIgnoreBlur(true);
               setIsClickedInsideFooter(true);
-              console.log('onMouseDown');
             },
             onMouseUp: () => {
               setIsClickedInsideFooter(false);
-              console.log('onMouseUp');
             },
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onKeyDown: (e: any) => {

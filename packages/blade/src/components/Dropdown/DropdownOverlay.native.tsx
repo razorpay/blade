@@ -2,9 +2,9 @@ import React from 'react';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 import { componentIds } from './dropdownUtils';
-import type { DropdownOverlayProps } from './DropdownOverlay.web';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
+import type { DropdownOverlayProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize, metaAttribute, MetaConstants } from '~utils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
@@ -60,4 +60,4 @@ const DropdownOverlay = assignWithoutSideEffects(_DropdownOverlay, {
   componentId: componentIds.DropdownOverlay,
 });
 
-export { DropdownOverlay, DropdownOverlayProps };
+export { DropdownOverlay };

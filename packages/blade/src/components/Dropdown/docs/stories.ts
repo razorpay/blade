@@ -1,4 +1,4 @@
-import type { DropdownProps } from '../Dropdown';
+import type { DropdownProps } from '../types';
 
 const Playground = `
   import { 

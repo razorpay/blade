@@ -19,7 +19,10 @@ const _BaseFooter = ({
   return (
     <>
       {showDivider && <Divider />}
-      <BaseBox {...metaAttribute({ name: metaComponentName, testID })} padding="spacing.5">
+      <BaseBox
+        {...metaAttribute({ name: metaComponentName, testID })}
+        padding={{ base: 'spacing.5', m: 'spacing.6' }}
+      >
         {children}
       </BaseBox>
     </>

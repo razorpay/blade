@@ -7,13 +7,13 @@ import type { DropdownPosition } from './dropdownUtils';
 import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
+import type { DropdownOverlayProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { spacing, size } from '~tokens/global';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import type { TestID } from '~src/_helpers/types';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
@@ -56,10 +56,6 @@ const AnimatedOverlay = styled(StyledDropdownOverlay)<{
       pointer-events: ${props.isOpen ? 'all' : 'none'};
     `,
 );
-
-type DropdownOverlayProps = {
-  children: React.ReactElement[] | React.ReactElement;
-} & TestID;
 
 /**
  * Overlay of dropdown
@@ -174,8 +170,6 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
           left="spacing.0"
           height="100%"
           width="100%"
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
-          // @ts-ignore: throws TS error that onClick doesn't exist in native even though its just web file
           onClick={() => setIsOpen(false)}
         />
       ) : null}
@@ -206,4 +200,4 @@ const DropdownOverlay = assignWithoutSideEffects(_DropdownOverlay, {
   componentId: componentIds.DropdownOverlay,
 });
 
-export { DropdownOverlay, DropdownOverlayProps };
+export { DropdownOverlay };
