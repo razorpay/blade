@@ -67,7 +67,7 @@ Basic usage:
 <Skeleton width="100%" height="20px" borderRadius="medium" marginY="spacing.1" />
 ```
 
-<img src="./skeleton-usage-demo-1.png" alt="Skeleton basic usage" width="70%" />
+<img src="./skeleton-usage-demo-1.png" alt="Skeleton basic usage" width="50%" />
 
 Complex usage: 
 
@@ -93,7 +93,7 @@ Complex usage:
 </Box>
 ```
 
-<img src="./skeleton-usage-demo-2.png" alt="Skeleton complex usage" width="70%" />
+<img src="./skeleton-usage-demo-2.png" alt="Skeleton complex usage" width="50%" />
 
 
 ### Should we inferring dimensions?
@@ -190,7 +190,7 @@ And for block components we won't give any predefined sizes instead consumers ca
 
 Check the motion [here](https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=16502-258345&scaling=min-zoom&page-id=16498%3A256331):
 
-![](./skeleton-motion.mov)
+https://github.com/razorpay/blade/assets/35374649/8298efde-f977-4aa3-bc2d-92fb50a8c830
 
 ## Open Questions
 
